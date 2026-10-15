@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "The static README provides", "zh": "静态 README 提供"},
+  "steps": [
+    {"lane": "you", "en": "Choose a trading research question and open the README", "zh": "选交易研究问题，打开 README"},
+    {"lane": "them", "en": "Expose method/problem headings through the contents links", "zh": "通过目录链接展示方法／问题分类", "component": {"en": "README contents", "zh": "README 目录"}},
+    {"lane": "you", "en": "Follow a topic and note candidate papers, authors and years", "zh": "进入主题，记录候选论文、作者和年份"},
+    {"lane": "them", "en": "List separate implementation, data and learning-resource leads", "zh": "另列实现、数据与学习资源线索", "component": {"en": "README resource sections", "zh": "README 资源章节"}},
+    {"lane": "you", "en": "Read original sources and check relevance, freshness and permission", "zh": "读原来源，核相关性、时效与许可"}
+  ],
+  "value": {"en": "A historical bibliography gives research leads, not a running trading model", "zh": "历史书目提供研究线索，不提供运行交易模型"},
+  "sources": [
+    "https://github.com/cbailes/awesome-deep-trading/blob/91eee433ec7791915ad20b15330f0eee04798f07/README.md#L10-L33",
+    "https://github.com/cbailes/awesome-deep-trading/blob/91eee433ec7791915ad20b15330f0eee04798f07/README.md#L66-L86",
+    "https://github.com/cbailes/awesome-deep-trading/blob/91eee433ec7791915ad20b15330f0eee04798f07/README.md#L142-L202"
+  ]
+}

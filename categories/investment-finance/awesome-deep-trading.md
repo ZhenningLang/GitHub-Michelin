@@ -3,11 +3,11 @@ name: awesome-deep-trading
 slug: awesome-deep-trading
 repo: https://github.com/cbailes/awesome-deep-trading
 category: investment-finance
-tags: [investment-finance, awesome-deep-trading, tool]
-language: Unknown
-license: NOASSERTION
-maturity: active, ~2,011 stars (as of 2026-07)
-last_verified: 2026-07-16
+tags: [investment-finance, literature-index, deep-learning, trading-research]
+language: Markdown
+license: MIT
+maturity: historical resource list, last main commit 2021-01-01, 2049 stars (as of 2026-10-13)
+last_verified: 2026-10-13
 type: tool
 upstream:
   pushed_at: 2023-08-08T19:55:49Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:23:07Z
+  computed_at: 2026-10-13T21:27:46Z
   overall: D
   overall_score: 1.0
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 2090
+        last_commit_age_days: 2111
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 2858
-        last_commit_age_days: 2090
+        repo_age_days: 2879
+        last_commit_age_days: 2111
         cohort: tool
     governance:
       grade: "?"
@@ -68,59 +68,84 @@ health:
 ---
 # awesome-deep-trading
 
-List of awesome resources for machine learning-based algorithmic trading
+You need starting papers on neural-network trading, but searches mix methods, markets and tutorial code. This README groups older literature and implementation/data leads; it does not train a model or place a trade.
 
 ![awesome-deep-trading — health radar](../../assets/health/awesome-deep-trading.svg)
 
 ## When to use
 
-You're evaluating a task in the `investment-finance` area and want a real repository in the GitHub-Michelin shortlist rather than an untracked name from a backlog. Reach for awesome-deep-trading when the upstream description matches the job, when its license and maintenance profile are acceptable after verification, and when adopting a public project is preferable to writing a local one-off.
-
-This is a first-pass intake page for a user-requested backlog item. Use it to route selection and compare nearby options, then reread the upstream README, license, examples, and release history before relying on it for high-stakes work.
+You are framing a literature review on reinforcement learning, portfolio methods or sentiment-based trading and need titles, authors and years to begin a search. Use this as a historical seed map when you want several method families in one short README, rather than a broad quant-software catalog or one executable tutorial's approach. Its entries are primarily 2016–2020 work, and the default branch has not changed since 2021; follow original sources and supplement it with current research.
 
 ## When NOT to use
 
-- **You need a deeply reviewed atlas page today.** Prefer an older in-index page from the comparison table until this entry has had a full semantic review.
-- **License is a hard constraint.** GitHub reported `NOASSERTION`; inspect the repository license files before commercial use, redistribution, or vendoring.
-- **Maintenance risk is unacceptable.** If the project is young, single-maintainer, low-star, unversioned, or quiet, choose a more established substitute in the same category.
-- **Your task needs a narrower substitute.** If another page's `When NOT to use` section names your exact constraint, prefer that page over this first-pass entry.
-- **You cannot verify the upstream workflow.** Do not install, run, or vendor this repo before checking its README, scripts, dependencies, and any external API requirements.
+- **You need current coverage or maintained recommendations.** Use a fresh literature search and [Awesome Quant](https://github.com/wilsonfreitas/awesome-quant) for broader software discovery. This default branch has been unchanged for over five years; its 2023 push timestamp does not establish updated content.
+- **You need to train and evaluate a policy.** Investigate [FinRL](finrl.md) and its actual examples, not this list. Its indexed page is still an intake stub; current upstream distinguishes classic educational/research FinRL from its newer production-oriented repository.
+- **You need a guided executable research workflow.** Use [Machine Learning for Trading](https://github.com/stefan-jansen/machine-learning-for-trading) with its edition/data environment. Here there are links, not notebooks or an experiment pipeline.
+- **You need live profitability evidence or deployable risk controls.** Use independently validated backtests, paper trading and a reviewed execution/risk stack. Paper titles and GitHub implementations do not establish out-of-sample returns.
+- **You want one MIT grant for every linked work.** Check each original publisher/repository's license instead. Root MIT covers this repo, not outside articles, data or code.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| Existing projects in this category | ✅ | Prefer a mature in-index page when it covers the same job with clearer dependencies and when-not guidance. | This page adds a backlog candidate; existing pages may be safer until deeper review is complete. |
-| Custom implementation | 未收录 | Build custom only when the needed scope is tiny and ongoing maintenance is cheaper than adopting a repo. | Avoids dependency risk but loses upstream fixes, docs, and ecosystem signals. |
+| [Awesome Quant](https://github.com/wilsonfreitas/awesome-quant) | not indexed | Choose it for software/data across quantitative finance; use this dormant list only to seed an older deep-trading literature review. | A broader catalog versus a narrow historical paper map; entries still need individual review. |
+| [Machine Learning for Trading](https://github.com/stefan-jansen/machine-learning-for-trading) | not indexed | Choose its edition-specific code to work through a research pipeline; use this list for bibliographic leads only. | Chapter/case-study environments versus low-setup browsing; neither proves profitable deployment. |
+| [FinRL](finrl.md) | ✅ | Choose classic FinRL for educational reinforcement-learning experiments after reading upstream and rechecking its stub page; use this list for preliminary reading. | Training/evaluation code versus a static list; current FinRL routes newer production work elsewhere. |
+
+## Quick start
+
+Open the [pinned README contents](https://github.com/cbailes/awesome-deep-trading/blob/91eee433ec7791915ad20b15330f0eee04798f07/README.md#L10-L33); reading needs no package installation or credentials. Pick a method/problem such as reinforcement learning or portfolio allocation, then record candidate papers' titles, authors and years from that section. Follow repository, dataset or course links for an implementation lead and independently confirm that it matches the paper and still works. This repo supplies navigation and bibliography; you supply source reading, licensing checks, newer literature and any experiment environment/data budget. External services/courses have their own terms, costs and dependencies; this list supplies no data API, automated evaluation or trading engine.
+
+![awesome-deep-trading — backbone user story](../../assets/flow/awesome-deep-trading.svg)
+
+<!-- flow-steps:begin (generated from flows/awesome-deep-trading.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Choose a trading research question and open the README
+2. **awesome-deep-trading**: Expose method/problem headings through the contents links — component: `README contents`
+3. **You**: Follow a topic and note candidate papers, authors and years
+4. **awesome-deep-trading**: List separate implementation, data and learning-resource leads — component: `README resource sections`
+5. **You**: Read original sources and check relevance, freshness and permission
+
+**Value**: A historical bibliography gives research leads, not a running trading model
+
+</details>
+<!-- flow-steps:end -->
+
+## Key techniques
+
+These are static content-organization mechanisms in README, not runtime algorithms.
+
+- **Expose method/problem anchors.** [`README.md:10–33`](https://github.com/cbailes/awesome-deep-trading/blob/91eee433ec7791915ad20b15330f0eee04798f07/README.md#L10-L33) navigates neural-network families, markets/problems and resource types. It narrows reading without executing retrieval or ranking; overlapping topics are not a formal taxonomy.
+- **Keep metadata beside papers.** [`README.md:66–86`](https://github.com/cbailes/awesome-deep-trading/blob/91eee433ec7791915ad20b15330f0eee04798f07/README.md#L66-L86) groups survey/CNN/LSTM entries with titles, authors, years and original links. It makes older work traceable, but attaches no quality score or replication result.
+- **Separate implementation/data leads from papers.** [`README.md:142–175`](https://github.com/cbailes/awesome-deep-trading/blob/91eee433ec7791915ad20b15330f0eee04798f07/README.md#L142-L175) lists outside repositories and task descriptions, then data/simulation resources. This is not a verified one-to-one paper/code mapping; algorithms and datasets belong to the linked sources, not this repo.
 
 
 ## Tech stack
 
-- **Primary language:** Unknown per GitHub metadata.
-- **Repository shape:** `cbailes/awesome-deep-trading`; this first-pass page has not exhaustively read every dependency manifest.
-- **Default branch snapshot:** last commit 2021-01-01; archived `false`. (GitHub's `pushed_at`, `2023-08-08T19:55:49Z`, records a later push that did not land on the default branch.)
+- **Markdown content:** README is the functional artifact, alongside LICENSE and `.github/FUNDING.yml`. There is no runtime implementation or dependency manifest.
+- **Distribution:** GitHub-rendered headings/links or a local Markdown viewer; no releases or package entry point.
 
 ## Dependencies
 
-- **Runtime dependencies:** not exhaustively verified in this intake pass; inspect upstream manifests and docs before production use.
-- **External services:** not exhaustively verified; check whether it needs API keys, data vendors, browsers, model providers, GPUs, databases, or queues.
-- **Operational input:** at minimum, you depend on the GitHub repository and its release/update process.
+- A browser or Markdown viewer; Git is optional for retaining a snapshot.
+- Internet access and original-source permissions for outside links. Linked projects need their own environment/data, not dependencies supplied by this list.
 
 ## Ops difficulty
 
-**Unknown to medium until deeper review.** Treat this page as an intake-backed starting point, not a full runbook. Library-style projects may be easy to try but still need version pinning, while apps/frameworks can hide data, service, and deployment requirements.
+**Low for reading, significant for research upkeep.** No service needs deployment. The work is checking stale links, matching papers to implementations and updating the bibliography; reproducing/trading with linked work is a separate operational task.
 
 
 ## Health & viability
 
-- **Maintenance snapshot (2026-07-16):** GitHub reports `archived=false` and `pushed_at=2023-08-08T19:55:49Z`, but the last commit on the default branch is 2021-01-01 — the list has not been updated for over five years.
-- **Adoption snapshot:** ~2,011 GitHub stars as of 2026-07; this is a noisy signal and low-star projects are still included when the repository is real and relevant.
-- **License snapshot:** `NOASSERTION` from GitHub metadata; manual license-file review remains required when license matters.
-- **Lindy / governance:** not fully reviewed in this intake pass. Check age, owner type, contributor concentration, releases, and issue response before long-term adoption.
-- **Risk flags:** first-pass page generated from the 2026-07-16 backlog; semantic comparison and dependency review are intentionally conservative.
+- **Maintenance (2026-10-13):** unarchived but dormant; last default-branch commit 2021-01-01, 2111 days ago, no releases. The later `pushed_at` does not indicate a newer default-branch content commit.
+- **Machine profile:** overall D (4/6 scored axes), maintenance/adoption/longevity E, license risk A. Responsiveness remains unknown (`no_window_signal`); governance is unknown (`unattributable`) with no active author after recent-window filtering. Old copyright ownership is not current response coverage.
+- **Age / backing:** created 2018-11-26, 2879 days old; Craig Bailes and funding links appear in the source. [推断：old unchanged main and missing recent response/governance signals] Age alone does not give this list an active-maintenance Lindy advantage.
+- **Attention / permission:** 2049 stars; the tool scorer's empty package lookup is E, not a reader census. LICENSE verifies MIT; README also offers CC-BY without a version, so this page records the explicit MIT grant.
 
 ## Caveats (unverified)
 
-- [未验证] This page is generated from public GitHub metadata plus the user-provided intake list; upstream README, docs, examples, releases, and dependency manifests still need deeper review.
-- [未验证] License, install commands, supported harnesses, and runtime requirements may differ from GitHub metadata; verify them in the repository before use.
-- [推断] The comparison table starts from nearby atlas categories rather than a complete substitute survey; refine it after reading the full upstream project and adjacent alternatives.
+- [未验证：outside sources were not individually reproduced] Paper/code correspondence, dataset access/licenses, live links and experimental returns need separate verification; the list supplies no results.
+- [未验证：README omits the CC-BY version] Its alternative CC-BY offer cannot identify specific terms; root MIT is the verified grant and does not license outside works.
+- [推断：2111-day inactivity and absent recent response/governance measurements] Treat it as historical bibliography, not maintained research advice or a deployable trading stack.

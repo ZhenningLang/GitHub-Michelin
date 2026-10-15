@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 import os
 import re
+import string
 import zlib
 import subprocess
 from collections import Counter
@@ -69,7 +70,13 @@ DUP_SECTIONS = {
     "何时使用": 0.55, "何时不用": 0.55,
     "Dependencies": 0.65, "Ops difficulty": 0.65, "依赖": 0.65, "运维难度": 0.65,
     "Q&A": 0.40, "快问快答": 0.55,
+    # Key techniques calibration: 21 pairs (21 EN / 21 ZH), 2026-10-14 UTC.
+    # Balanced link targets/URLs stripped; exact directed maxima EN 3/82=0.036585365853658534
+    # (t3code -> background-agents), ZH 1/21=0.047619047619047616
+    # (awesome-deep-trading -> nopecha-extension). Minimum 0.05 grid >= max + 0.10.
+    "Key techniques": 0.15, "技术要点": 0.15,
 }
+# Same citation labels can still overlap on short prose; this is not semantic duplicate proof.
 # Phrase blacklists only ever catch boilerplate someone already wrote. What makes boilerplate
 # boilerplate is not its wording but that it repeats: prose written without reading THIS project
 # says the same thing about every project. Measured over the current index, a page's `When to use`
@@ -203,6 +210,135 @@ def shingles(body: str) -> set[str]:
     }
 
 
+def _technique_link_end(body: str, start: int) -> tuple[int, bool]:
+    """Consume one inline destination/title; on failure preserve the consumed text."""
+    end = start
+    while end < len(body) and body[end] in " \t":
+        end += 1
+    if end < len(body) and body[end] == "<":
+        end += 1
+        while end < len(body) and body[end] != ">":
+            if body[end] in "\r\n<":
+                return end, False
+            # Escapes cannot bypass forbidden characters: only ASCII punctuation is escapable.
+            end += 2 if body[end] == "\\" and end + 1 < len(body) and body[end + 1] in string.punctuation else 1
+        if end == len(body):
+            return end, False
+        end += 1
+    else:
+        depth = 0
+        while end < len(body):
+            char = body[end]
+            if char.isspace() or ord(char) < 0x20 or ord(char) == 0x7F or char in "<>":
+                break
+            if char == "\\" and end + 1 < len(body) and body[end + 1] in string.punctuation:
+                end += 2
+                continue
+            if char == "(":
+                depth += 1
+            elif char == ")":
+                if depth == 0:
+                    break
+                depth -= 1
+            end += 1
+        if depth:
+            return end, False
+    separator = end
+    while end < len(body) and body[end] in " \t":
+        end += 1
+    if end < len(body) and body[end] in "\"'(":
+        if end == separator:
+            return end, False
+        close = ")" if body[end] == "(" else body[end]
+        end += 1
+        while end < len(body) and body[end] != close:
+            if body[end] in "\r\n" or (close == ")" and body[end] == "("):
+                return end, False
+            end += 2 if body[end] == "\\" and end + 1 < len(body) and body[end + 1] in string.punctuation else 1
+        if end == len(body):
+            return end, False
+        end += 1
+        while end < len(body) and body[end] in " \t":
+            end += 1
+    if end < len(body) and body[end] == ")":
+        return end + 1, True
+    return end, False
+
+
+def _technique_inline_links(body: str) -> str:
+    # Pre-index equal backtick runs: unmatched code delimiters never rescan the suffix.
+    next_tick: dict[int, int] = {}
+    latest: dict[int, int] = {}
+    for tick in reversed(list(re.finditer(r"`+", body))):
+        size = len(tick[0])
+        if size in latest:
+            next_tick[tick.start()] = latest[size]
+        latest[size] = tick.start()
+    tokens = re.compile(r"(?P<code>`+)|\[(?P<label>[^\[\]\\\n]+)\]\(")
+    pieces = []
+    cursor = 0
+    for token in tokens.finditer(body):
+        if token.start() < cursor:
+            continue
+        pieces.append(body[cursor:token.start()])
+        escape = token.start() - 1
+        while escape >= 0 and body[escape] == "\\":
+            escape -= 1
+        if (token.start() - escape - 1) % 2:
+            end = token.end()
+            pieces.append(body[token.start():end])
+        elif token["code"]:
+            end = next_tick.get(token.start(), token.start()) + len(token[0])
+            pieces.append(body[token.start():end])
+        else:
+            end, valid = _technique_link_end(body, token.end())
+            pieces.append(token["label"] if valid else body[token.start():end])
+        # Each destination and code span is visited once, including malformed spans.
+        cursor = end
+    pieces.append(body[cursor:])
+    return "".join(pieces)
+
+
+def _technique_bare_urls(body: str) -> str:
+    allowed = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_~./#?&=%+@:*$-()[]")
+    pieces = []
+    cursor = 0
+    for token in re.finditer(r"https?://", body):
+        if token.start() < cursor:
+            continue
+        pieces.append(body[cursor:token.start()])
+        end = token.end()
+        openings: list[tuple[str, int]] = []
+        while end < len(body) and body[end] in allowed:
+            char = body[end]
+            if char in "([":
+                openings.append((char, end))
+            elif char in ")]":
+                if not openings or openings[-1][0] != ("(" if char == ")" else "["):
+                    # Closing parentheses/brackets outside the URL remain visible prose.
+                    break
+                openings.pop()
+            end += 1
+        stop = openings[0][1] if openings else end
+        while stop > token.end() and body[stop - 1] in ".:!?":
+            stop -= 1
+        pieces.append(body[token.start():end] if end == token.end() else body[stop:end])
+        # Retain an unmatched suffix, but never rescan its characters as new URL starts.
+        cursor = end
+    pieces.append(body[cursor:])
+    return "".join(pieces)
+
+
+def technique_prose(body: str) -> str:
+    """Keep citation labels, not their targets, when comparing technical judgment."""
+    # ceiling: flat citation labels/backtick code/ASCII bare URLs, not a Markdown renderer.
+    # Extend only for observed richer syntax; do not delete malformed visible prose.
+    # Recognized legal titles are hover metadata, not prose; raw-MD readers can still see them.
+    body = _technique_inline_links(body)
+    body = re.sub(r"<https?://[^\s<>]+>", "", body)
+    return _technique_bare_urls(body)
+
+
 def detect_duplicated_sections(pages: list[Path], universe: list[Path], root: Path) -> list[Finding]:
     """Flag a judgment section that is near-identical to the same section on another page.
 
@@ -220,7 +356,7 @@ def detect_duplicated_sections(pages: list[Path], universe: list[Path], root: Pa
             body = section_body(text, section)
             if len(body) < DUP_MIN_CHARS:
                 continue
-            grams = shingles(body)
+            grams = shingles(technique_prose(body) if section in {"Key techniques", "技术要点"} else body)
             if grams:
                 bodies[page] = grams
                 texts[page] = text

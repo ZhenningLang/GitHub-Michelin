@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Webnovel Writer does", "zh": "Webnovel Writer 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the v6 Claude Code plugin and Python requirements", "zh": "安装 v6 Claude Code 插件和 Python 依赖"},
+    {"lane": "you", "en": "Initialize the book and supply its setting and outline", "zh": "初始化书籍，提供设定和大纲", "code": "/webnovel-init"},
+    {"lane": "them", "en": "Create story contracts and manuscript project files", "zh": "创建故事合同和书稿项目文件"},
+    {"lane": "you", "en": "Request the first chapter after planning its volume", "zh": "规划首卷后请求写首章", "code": "/webnovel-write 1"},
+    {"lane": "them", "en": "Prepare context, draft and review the chapter, then record accepted facts", "zh": "准备上下文、起草审查章节，再记录已接受事实", "component": {"en": "write skill and Python gates", "zh": "写章技能和 Python 闸门"}},
+    {"lane": "them", "en": "Save the chapter and derive queryable continuity state", "zh": "保存章节，派生可查询的连续性状态"}
+  ],
+  "value": {"en": "The next chapter can consult saved story facts rather than only chat history", "zh": "下一章可查询已保存的故事事实，不只依赖聊天历史"},
+  "sources": [
+    "https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/README.md",
+    "https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/webnovel-writer/skills/webnovel-write/SKILL.md",
+    "https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/webnovel-writer/scripts/data_modules/chapter_commit_service.py"
+  ]
+}

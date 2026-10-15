@@ -6,17 +6,17 @@ category: ui-taste
 tags: [agent-skill, ui-design, anti-slop, frontend, claude-code, codex, cursor]
 language: Markdown
 license: MIT
-maturity: v1.1.0 package, active, 4.7k stars (as of 2026-07)
-last_verified: 2026-07-13
+maturity: v1.1.0 package, main last committed 2026-08-06, 29999 stars (as of 2026-10-13)
+last_verified: 2026-10-13
 type: skill-pack
 upstream:
-  pushed_at: 2026-06-26T10:08:58Z
+  pushed_at: 2026-08-06T16:19:18Z
   default_branch: main
-  default_branch_sha: aeb42fb354ff4efa36ab475773a082315a3af2ce
+  default_branch_sha: 13ac0ec7e148655948100b6396439e481361d690
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T15:46:05Z
+  computed_at: 2026-10-13T17:14:06Z
   overall: B
   overall_score: 2.5
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 47
+        last_commit_age_days: 68
         active_weeks_13: 2
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 148
-        last_commit_age_days: 47
+        repo_age_days: 169
+        last_commit_age_days: 68
         cohort: skill-pack
     governance:
       grade: D
@@ -67,7 +67,7 @@ health:
 
 # Hallmark
 
-一个面向 Claude Code、Cursor 和 Codex 的 MIT 许可设计技能：用有主张的 brief、主题、审计、重设计和设计研究，引导 agent 避开重复的 AI 生成式 UI 模式。
+让助手“换个样子”，它却总做出同一种首屏加卡片页面。Hallmark 要求它先选页面结构、记住之前的选择，再自评后交付。
 
 ![Hallmark — 健康度雷达](../../../../assets/health/hallmark.zh.svg)
 
@@ -83,8 +83,8 @@ health:
 - **你需要 CSS 编译器或原子化样式框架。**改选 [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss)；Hallmark 不提供 utility class，也没有 CSS runtime。
 - **你需要确定性的视觉回归或可强制执行的质量闸门。**改用 Playwright 加截图断言，或 [Impeccable](../../../ai-design-generation/impeccable.zh.md) 这样的确定性检测器；Hallmark 的自评与 slop test 是由 agent 解读的建议式指令。
 - **你的 agent 无法加载自定义 skill，或你不使用 Claude Code、Cursor、Codex。**改用与 harness 无关的设计系统文档；Hallmark 的核心资产是由 harness 加载的 `SKILL.md`。
-- **已有严格的品牌系统，已规定 token、模板和审批流。**优先遵循该系统；Hallmark 的默认宏观结构和主题选择可能与受治理的品牌约束冲突。
-- **主要工作是重图片的零售、旅游或 lookbook 页面。**路线图把 image-heavy brief 列为当前限制，应与专门的美术指导、图像工作流搭配，而非把它当作唯一机制。
+- **已有严格品牌系统，规定了 token、模板和审批流。**以该系统为权威；当前 Hallmark 会先读 `design.md` 并服从既有 token，但模型解释不能代替确定性的政策执行。
+- **摄影美术指导或成品图片资产是主要工作。**搭配图片生产流程和人工审查；Hallmark 能指导布局、资产选择，Markdown 指令本身不会产出有许可的产品摄影。
 
 ## 横向对比
 
@@ -95,16 +95,44 @@ health:
 | [Impeccable](../../../ai-design-generation/impeccable.zh.md) | ✅ | 需要确定性检查既有前端产物时选 Impeccable；需要 agent 获得生成式设计 brief 与重设计流程时选 Hallmark。 | Impeccable 提供 CLI 与检测器；Hallmark 提供没有确定性执行力的审美指导。 |
 | [shadcn/ui](../../../web-ui/component-libraries/shadcn-ui.zh.md) | ✅ | 产物必须有无障碍组件基线时选 shadcn/ui；组件选择之前缺的是视觉方向时选 Hallmark。 | 组件让实现可复用；Hallmark 影响 agent 的设计选择，但不提供组件运行时。 |
 
+## 快速上手
+
+[README](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/README.md#L94-L106) 用 `npx skills add nutlope/hallmark` 安装技能；也可把 `skills/hallmark/SKILL.md` 和 references 复制到文档指定的 Claude Code、Codex 技能目录，或把正文适配为 Cursor 规则。在项目中要求助手构建页面，并提供受众、预期操作和语气；即使需求已带这些信息，技能仍会发出合并的上下文提问。它指导助手检查现有设计、选结构和主题、输出代码并自评，你批准改动范围并在浏览器检查页面。已有页面可用 `hallmark audit <target>` 请求只读问题清单；这是对助手的调用语句，不是独立 shell 可执行程序。你提供编程助手和模型、承担使用费用，Hallmark 只提供版本化指令与示例，不提供渲染器、托管或独立质量保证。
+
+![hallmark — 主干用户故事](../../../../assets/flow/hallmark.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/hallmark.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：把技能安装到编程助手 — `npx skills add nutlope/hallmark`
+2. **你**：提出页面需求，说明受众、预期操作和语气
+3. **Hallmark**：检查现有设计规则，提出上下文问题 — 组件：`SKILL.md`
+4. **你**：确认上下文，或授权助手选择剩余项
+5. **Hallmark**：选择结构和主题，指导代码生成与自评
+6. **你**：检查渲染后的页面，确认结果
+
+**价值**：得到有意选择的页面设计，而非又一个默认首屏卡片模板
+
+</details>
+<!-- flow-steps:end -->
+
+## 技术要点
+
+- **先读项目设计，再决定是否新建。**[`skills/hallmark/SKILL.md:147–201`](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/SKILL.md#L147-L201) 优先读取 `design.md`，再扫描字体、配色、动效、间距和框架，要求附源码定位，并缓存到 `.hallmark/preflight.json`。这样避免每次都把新审美覆盖既有 token；失效条件只点名部分 manifest、配置的修改时间，不是完整文件变更检测器。
+- **轮换结构，不只轮换颜色。**[`skills/hallmark/SKILL.md:264–331`](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/SKILL.md#L264-L331) 用 CSS 标记和 `.hallmark/log.json` 排除近期宏观结构，并改变主题、导航和页脚选择；先读精简索引，再只加载选中的参考文件，降低重复布局和无用上下文。存在权威 `design.md` 时，一致性优先于多样性，助手仍须真正读取和维护记录。
+- **小组件走专门路径，自评不等于检测。**[`skills/hallmark/SKILL.md:42–89`](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/SKILL.md#L42-L89) 要求六个维度按 1–5 自评，低于 3 则修改；组件路径跳过整页结构，要求八种交互状态。这些仍由模型解释，写下分数或清单不能证明浏览器状态、无障碍检查通过。
+
 ## 健康度与可持续性
 
-- **维护快照（2026-07-13）：**未归档，仓库级近期有 push，但当前 `main` 顶端提交停在 2026-06-04，且没有 GitHub Releases。
+- **维护快照（2026-10-13）：**未归档，main 提交 `13ac0ec` 来自 2026-08-06，GitHub Releases 返回空。manifest 和技能版本均为 `1.1.0`，不能用 29999 stars 掩盖仓库近期停更。
 - **治理与 bus factor：**仓库归个人账号所有。贡献历史中有多名贡献者，但维护归属和其所称 Together AI 关系都没有正式文档。[推断]
-- **年龄与 Lindy：**创建于 2026-04，历史不足三个月且没有长期发布记录。早期关注度不能被当作耐久性证明。
+- **年龄与 Lindy：**创建于 2026-04-27，不足六个月，没有长期发布记录；关注度不是耐久性证明。
 - **风险与采用：**MIT 降低许可摩擦。核心行为是提示词指令，产物质量与遵循程度取决于宿主 agent，而非确定性运行时。
+- **覆盖限制：**响应轴保留评分器已有的 `? / type_na`，因为它将 skill-pack 的 issue 排除在该测量通道外；采用轴另为 `N/A / no_install_channel`。两者不是同一状态，不证明响应好或没有用户，本次未手动重分类。
 
 ## 存疑（未验证）
 
-- [未验证] README 中“20 个主题”和“57 个 slop-test 闸门”是项目自身说法，完整性与有效性未被独立评估。
-- [未验证] `npx skills add` 依赖 skills 安装器且可能需要 Node.js/npm，而手动安装只复制 Markdown 资产；应核对目标 harness 的确切安装路径。
-- [未验证] “Made by Together AI”不足以证明 Together AI 提供正式支持、治理或维护承诺。
-- [推断] 没有发布产物且历史不足三个月时，固定一个已审查 commit 比把默认分支当作稳定、版本化依赖更稳妥。
+- [未验证：未做生成基准或浏览器运行] 未测试技能效果、各宿主加载和最终界面质量。README 称 57 个闸门，SKILL.md 也提到 58；都不是本次复现的确定性测试结果。
+- [未验证：未读到正式支持协议] README 的“Made by Together AI”归属表述不能证明组织提供维护承诺。
+- [推断：依据是年轻历史和无发布产物] 固定已读 commit，并独立检查渲染结果，不把自评分数标记当稳定质量闸门。

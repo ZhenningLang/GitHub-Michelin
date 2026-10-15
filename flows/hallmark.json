@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Hallmark guides the agent", "zh": "Hallmark 指导助手"},
+  "steps": [
+    {"lane": "you", "en": "Install the skill into your coding agent", "zh": "把技能安装到编程助手", "code": "npx skills add nutlope/hallmark"},
+    {"lane": "you", "en": "Request a page with its audience, intended action and tone", "zh": "提出页面需求，说明受众、预期操作和语气"},
+    {"lane": "them", "en": "Inspect existing design rules and ask the context question", "zh": "检查现有设计规则，提出上下文问题", "component": {"en": "SKILL.md", "zh": "SKILL.md"}},
+    {"lane": "you", "en": "Confirm the context or delegate the remaining choices", "zh": "确认上下文，或授权助手选择剩余项"},
+    {"lane": "them", "en": "Choose structure and theme, then guide code generation and self-critique", "zh": "选择结构和主题，指导代码生成与自评"},
+    {"lane": "you", "en": "Inspect the rendered page and approve the result", "zh": "检查渲染后的页面，确认结果"}
+  ],
+  "value": {"en": "Get a deliberate page design rather than another default hero-and-card template", "zh": "得到有意选择的页面设计，而非又一个默认首屏卡片模板"},
+  "sources": [
+    "https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/README.md",
+    "https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/SKILL.md"
+  ]
+}

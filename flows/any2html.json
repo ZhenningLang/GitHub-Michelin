@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "any2html instructions ask", "zh": "any2html 指令要求"},
+  "steps": [
+    {"lane": "you", "en": "After permission review, copy the skill into your existing agent", "zh": "核许可后，将技能复制到已有智能体", "code": "~/.gemini/skills/any2html/"},
+    {"lane": "you", "en": "Supply material and choose a card size", "zh": "提供材料，选卡片尺寸"},
+    {"lane": "them", "en": "Ask the model to produce an outline with figures and page planning", "zh": "要求模型先出含数字与分页规划的大纲", "component": {"en": "SKILL.md outline instructions", "zh": "SKILL.md 大纲指令"}},
+    {"lane": "you", "en": "Check the extracted figures and confirm the outline", "zh": "核对提取的数字，确认大纲"},
+    {"lane": "them", "en": "Ask the model to fill one HTML file using the supplied template", "zh": "要求模型用所给模板填写一个 HTML 文件", "component": {"en": "SKILL.md HTML skeleton", "zh": "SKILL.md HTML 骨架"}},
+    {"lane": "you", "en": "Inspect the rendered cards and capture the approved result", "zh": "查看卡片渲染，截取审核后的结果"}
+  ],
+  "value": {"en": "Content is reviewed before poster layout; the model's output still needs visual checks", "zh": "先审内容再排海报，模型输出仍要目检"},
+  "sources": [
+    "https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/README.md#L76-L81",
+    "https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L17-L23",
+    "https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L40-L107"
+  ]
+}

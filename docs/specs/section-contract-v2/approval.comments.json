@@ -1,0 +1,95 @@
+{
+  "schema_version": 2,
+  "spec_file": "docs/specs/section-contract-v2/approval.md",
+  "review_version": 1,
+  "anchors": {
+    "U-DEC-1": {
+      "kind": "unit",
+      "heading": "2. 要你拍的 4 件事",
+      "comments": [
+        {
+          "id": "c-2026-10-13T07-59-42-943Z-U-DEC-1-0",
+          "role": "user",
+          "kind": "decision",
+          "status": "resolved",
+          "classification": "decision",
+          "text": "门槛日期定在 10 月 13 日。",
+          "response": "已写回 U-DEC-1，投影已刷新",
+          "fingerprint_at_comment": "afa0",
+          "created_in_version": 1,
+          "resolved_in_version": 1
+        }
+      ],
+      "unit_id": "U-DEC-1"
+    },
+    "U-DEC-2": {
+      "kind": "unit",
+      "heading": "2. 要你拍的 4 件事",
+      "comments": [
+        {
+          "id": "c-2026-10-13T07-59-42-943Z-U-DEC-2-1",
+          "role": "user",
+          "kind": "decision",
+          "status": "resolved",
+          "classification": "decision",
+          "text": "规定之外的大标题报错。",
+          "response": "已写回 U-DEC-2，投影已刷新",
+          "fingerprint_at_comment": "7b0a",
+          "created_in_version": 1,
+          "resolved_in_version": 1
+        }
+      ],
+      "unit_id": "U-DEC-2"
+    },
+    "U-DEC-4": {
+      "kind": "unit",
+      "heading": "2. 要你拍的 4 件事",
+      "comments": [
+        {
+          "id": "c-2026-10-13T07-59-42-943Z-U-DEC-4-2",
+          "role": "user",
+          "kind": "decision",
+          "status": "resolved",
+          "classification": "decision",
+          "text": "我希望抽取 20个项目，补充技术要点查重",
+          "response": "已写回 U-DEC-4（聊天中确认取 20 个、按分类分散挑最久没复核的），新增第二、三段",
+          "fingerprint_at_comment": "6323",
+          "created_in_version": 1,
+          "resolved_in_version": 1
+        },
+        {
+          "id": "c-2026-10-13T07-59-42-943Z-U-DEC-4-4",
+          "role": "user",
+          "kind": "comment",
+          "status": "resolved",
+          "classification": "decision",
+          "text": "我希望抽取 10-20个项目，补充技术要点查重",
+          "response": "与同锚裁决合并：数量在聊天中确认为 20 个",
+          "fingerprint_at_comment": "6323",
+          "created_in_version": 1,
+          "resolved_in_version": 1
+        }
+      ],
+      "unit_id": "U-DEC-4"
+    },
+    "U-DEC-3": {
+      "kind": "unit",
+      "heading": "2. 要你拍的 4 件事",
+      "comments": [
+        {
+          "id": "c-2026-10-13T07-59-42-943Z-U-DEC-3-3",
+          "role": "user",
+          "kind": "comment",
+          "status": "resolved",
+          "classification": "decision",
+          "text": "手工搬",
+          "response": "按评论作为裁决写回 U-DEC-3：不加自动重排工具，复核时手工搬",
+          "fingerprint_at_comment": "ac9d",
+          "created_in_version": 1,
+          "resolved_in_version": 1
+        }
+      ],
+      "unit_id": "U-DEC-3"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Watch does", "zh": "Watch 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the Watch plugin in local Claude Code and permit media-tool setup", "zh": "在本地 Claude Code 安装 Watch 并批准媒体工具准备", "code": "/plugin install watch@claude-video"},
+    {"lane": "you", "en": "Give the skill a short local video and a question; select local with no speech fallback", "zh": "给技能短本地视频与问题，选本地且关闭语音回退", "code": "--engine local · --no-whisper"},
+    {"lane": "them", "en": "Extracts budgeted timestamped frames and reports available evidence", "zh": "按预算提取带时间戳的帧并报告可用证据", "component": {"en": "watch.py + frames.py", "zh": "watch.py + frames.py"}},
+    {"lane": "you", "en": "Have the host inspect the listed images and answer from timestamps", "zh": "让宿主查看所列图像并据时间戳回答"}
+  ],
+  "value": {"en": "A video question answered from visible evidence, with gaps made explicit", "zh": "根据可见证据回答视频问题，并明确证据缺口"},
+  "sources": [
+    "https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/README.md#L91-L155",
+    "https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/SKILL.md#L87-L128",
+    "https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L240-L265"
+  ]
+}

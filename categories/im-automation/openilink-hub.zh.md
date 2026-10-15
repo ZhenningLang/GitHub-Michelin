@@ -6,8 +6,8 @@ category: im-automation
 tags: [wechat, ilink, im-gateway, app-marketplace, webhook, websocket, self-hosted]
 language: Go
 license: MIT
-maturity: v0.1.36, active, 1.5k stars (as of 2026-07)
-last_verified: 2026-07-17
+maturity: v0.1.36, 1589 stars, no default-branch update since 2026-06 (as of 2026-10-14)
+last_verified: 2026-10-14
 type: app
 upstream:
   pushed_at: 2026-06-18T17:22:25Z
@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:19:32Z
-  overall: B
-  overall_score: 2.67
-  scored_axes: 6
+  computed_at: 2026-10-14T07:20:59Z
+  overall: C
+  overall_score: 2.4
+  scored_axes: 5
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -29,18 +29,12 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 96
+        last_commit_age_days: 118
         active_weeks_13: 0
         carve_out: null
     responsiveness:
-      grade: A
-      raw:
-        median_ttfr_hours: 102.8
-        qualifying_issues: 3
-        band: relaxed_solo
-        window_offset_days: 13
-        source: issue
-        inferred: false
+      grade: "?"
+      raw: {}
     adoption:
       grade: B
       raw:
@@ -51,10 +45,10 @@ health:
         graph_tier: B
         volume_tier: "?"
         cross_check_divergence: null
-        release_downloads: 1708
+        release_downloads: 1793
         release_assets: 199
         release_tier: D
-        docker_pulls: 13532
+        docker_pulls: 16148
         docker_image: openilink/openilink-hub
         docker_tier: D
         signal_basis: releases+docker
@@ -62,8 +56,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 185
-        last_commit_age_days: 96
+        repo_age_days: 206
+        last_commit_age_days: 118
         cohort: app
     governance:
       grade: D
@@ -80,11 +74,13 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    responsiveness: { reason: no_window_signal }
 ---
 
 # OpeniLink Hub
 
-一个年轻的自托管 Go／React 控制面，用于管理接入 iLink 的微信 Bot，组合了多 Bot 管理、消息追踪、WebSocket／Webhook 分发、App Registry，以及 SQLite 或 PostgreSQL 持久化；项目明确声明与 iLink 官方团队没有关联或授权关系。
+几个微信机器人各自转发消息，失败时你不知道卡在哪；OpeniLink Hub 集中路由和追踪，但增加了敏感管理面，也没有 iLink 官方关联。
 
 ![OpeniLink Hub — 健康度雷达](../../assets/health/openilink-hub.zh.svg)
 
@@ -109,9 +105,37 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [openilink-sdk-go](openilink-sdk-go.zh.md) | ✅ | 如果只要把 iLink transport 嵌入现有 Go 服务，选 SDK；如果用户、多 Bot、trace、App 和 Web 控制面都是需求，选 OpeniLink Hub。 | SDK 保持较小的进程与信任边界，但持久化、认证、routing 和运维都要自己实现；Hub 提供这些层，也把它们变成你的运维责任。 |
-| `openilink-tg` | 未收录 | 如果任务只是专用微信到 Telegram relay，选 `openilink-tg`；如果多个 destination、可安装 App 与集中管理足以支撑一个平台，选 Hub。 | 专用 bridge 更容易审计和运行，却没有 Hub 的 routing 与 marketplace 广度；Hub 能力更完整，复杂度也明显更高。 |
+| [openilink-tg](https://github.com/openilink/openilink-tg) | 未收录 | 现有客户端使用 Telegram Bot 风格 HTTP，却要经 iLink 发文本时选它；需要用户、多机器人和可安装 App 时选 Hub。 | 文档首版是 HTTP 兼容适配器，不是完整的微信到 Telegram 对话转发器；Hub 管理边界宽得多。 |
 | [WeChat Bot](wechat/wechat-bot.zh.md) | 已收录 | 如果要开发者自己操作的 CLI，把多个 IM 通道直接接到多个 LLM backend，选 WeChat Bot；如果更看重持久化多用户管理和 App 分发，选 OpeniLink Hub。 | WeChat Bot 是较轻的 assistant application，但个人微信走非官方 Wechaty 路径；Hub 控制面更广，并承担 iLink、数据库和认证风险。 |
-| 企业微信／微信官方 API | 未收录 | 如果官方支持、企业 identity 与有文档的生产契约决定选型，使用企业微信或其他官方 API；只有 iLink Bot 行为与自托管 App plane 的价值高于无官方关联风险时，才选 Hub。 | 官方 API 面向不同的企业或公众账号 workflow，可能限制个人 Bot 行为；Hub routing 更灵活，却继承协议、bootstrap 与 ecosystem 风险。 |
+| 企业微信／微信官方 API | 非仓库 | 官方企业或公众账号契约决定选型时，评估官方接口，不要假定 Hub 得到背书。 | 这是平台接口产品，不是一个开源仓库；账号和消息工作流不同。 |
+
+## 快速上手
+
+取得固定发布版二进制，或按 [README.md:334–339](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/README.md#L334-L339) 构建前端并执行 `go build -o oih .`，再运行 `oih`。把 `LISTEN` 设为私有或回环边界，先认领首个管理员再公开服务：文档默认监听 `:9800`，首次注册授予 `superadmin`；`RP_ORIGIN`、`RP_ID` 必须匹配浏览器实际地址。在授权账号流程中绑定机器人，创建或安装审过的 App，提供 Webhook——你的服务接收消息的 HTTP 回调——或 WebSocket 连接。入站消息带追踪路由到匹配 App，即时 Webhook 结果可通过保存的上下文发回机器人。Hub 提供管理与投递管道；账号权限、App 服务、接收端去重、留存和 24 小时回复窗口由你负责，提醒不能静默续期。不绑定账号的 App 开发还可用 README 中的 `cmd/appmock`；本页没有运行它或实际绑定。
+
+![OpeniLink Hub — 主干用户故事](../../assets/flow/openilink-hub.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/openilink-hub.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：私有启动固定构建，认领管理员并绑定授权机器人 — `oih` — 组件：`Go 服务与网页控制台`
+2. **你**：配置审过的 App，提供服务的 Webhook
+3. **OpeniLink Hub**：带追踪上下文，把入站消息路由到匹配 App — 组件：`App 调度器`
+4. **你**：由接收服务返回即时回复
+5. **OpeniLink Hub**：用保存的上下文令牌，经机器人发送回复 — 组件：`机器人管理器与 iLink 适配器`
+
+**价值**：取得可管理、可追踪的消息往返；账号政策和投递保证仍由你负责
+
+</details>
+<!-- flow-steps:end -->
+
+## 技术要点
+
+- **先匹配指定提及，再匹配通用事件，通道各自独立。** [app_dispatch.go:25–70](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L25-L70) 先处理提及和命令，再匹配订阅事件；[app_dispatch.go:120–199](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L120-L199) 为各自已配置的 WebSocket、内置处理器和 Webhook 独立投递并附追踪数据。它帮助定位失败环节，但多个通道可收到同一事件，接收端仍须去重。
+- **Webhook 重试在内存里，不是持久保证。** [retry.go:14–69](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/app/retry.go#L14-L69) 先同步尝试，再由协程等待 10 秒后重试；若仍失败，再等待 60 秒重试，不让初始调用者等待全部尝试，但重启会丢掉已调度工作。[app_dispatch.go:259–290](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L259-L290) 使用保存的上下文令牌处理即时结果；重试投递成功不证明同一回复路径也运行了。
+- **缓存注册表发现，并容忍陈旧结果。** [client.go:79–108](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/registry/client.go#L79-L108) 合并多个来源、跳过部分失败；[client.go:130–183](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/registry/client.go#L130-L183) 规范注册表网址、限制读取，并在获取或解析失败时返回缓存。可用性提高，但列出的 App 可能过期；发现机制不等于审计远端地址、工具和权限。
+- **用用户数量引导管理员认领。** [auth_password.go:37–61](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/api/auth_password.go#L37-L61) 把首位密码注册者设为超级管理员；[config_handler.go:236–243](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/api/config_handler.go#L236-L243) 在配置未明确为 false 时允许注册。这简化首次设置，不是公网加固；必须在私有边界先认领。
 
 ## 技术栈
 
@@ -137,13 +161,17 @@ health:
 
 ## 健康度与可持续性
 
-- **维护，截至 2026-07：** 仓库创建于 2026-03，在 2026-06-18 发布 `v0.1.36`，默认分支 head 与该 release 一致。从 `v0.1.32` 到 `v0.1.36` 的可见 release 序列说明它在持续迭代，不是只活跃于发布期的仓库。
-- **采用：** GitHub 报告约 1.5k star 与 123 fork，几个月内已经获得明显关注。但生产采用、规模与升级成功不能由 star 证明。
+- **实测信号（2026-10-14）：** C/?/B/C/D/A，整体由 B 降为 C，覆盖 5/6 轴。响应由 A 变自然 `no_window_signal`：截止评分前 13 天的 90 天窗口有流量却无合格首响，没有报告接口失败。
+- **维护：** 创建于 2026-03，最新 v0.1.36 发布于 2026-06-18，主分支从那时起未变。最近提交距今 118 天，早期发布历史不能证明当前仍在活跃迭代。
+- **采用：** 1589 star 说明关注，不证明部署成功。机器采用 B 来自注册表依赖信号与 D 级发布／容器安装信号；不能把其 1200 个依赖仓库当作实际 Hub 运行实例数。
 - **治理：** 仓库位于 organization 下，也有多名 contributor，但 GitHub contribution count 仍由一名 maintainer 大幅主导。目前没有基金会治理或长期运行记录来降低 bus-factor risk。
-- **年龄与 Lindy：** 这是新项目，也建立在新开放的协议面上。当前活跃度是正面信号，但只有几个月，无法评估年龄乘持续维护；快速 `v0.1.x` cadence 证明的是变化速度，不是稳定性。
+- **年龄与 Lindy：** 实测年龄 206 天，近期沉默；短公开记录和 v0.1.x 版本线不能证明长期协议或升级稳定性。
 - **风险姿态：** 决定性风险包括项目明确的无官方关联声明、24 小时发送窗口、首用户 `superadmin` bootstrap、公开注册默认值、WebAuthn origin 配置、远程 App Registry 信任，以及把敏感消息与 credential state 集中到单一服务。
 
 ## 存疑（未验证）
+
+- [未验证：抽样窗口无合格首响] 截止 2026-10-14 评分前 13 天的 90 天窗口无法度量当前支持速度；按本 phase 明确裁决保留自然 `no_window_signal`，不保留过期 A。
+- [未验证：未运行App或绑定微信] 没有实测投递重试、重启、接收端去重和当前账号兼容性；源码可见的追踪与重试不是端到端投递保证。
 
 - [未验证] 本页没有执行独立生产部署、持续吞吐测试、灾难恢复演练或跨版本升级测试。
 - [未验证] 本次没有从官方 protocol specification 核验底层 iLink 面的当前政策稳定性与长期可用性；仓库本身明确声明没有官方关联或背书。

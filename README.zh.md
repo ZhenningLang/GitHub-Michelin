@@ -483,7 +483,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **pytorch-captcha-recognition** | 想要一份可读的定长文字验证码教学基线（每个字符位一个 CNN 分类头）时用它——但它是 2020 年冻结的教程，PyTorch API 需要现代化改造，准确率数字也只来自它自己的合成数据。 | Apache-2.0 | D（4/6） | [中](categories/captcha/pytorch-captcha-recognition.zh.md) · [EN](categories/captcha/pytorch-captcha-recognition.md) |
 | **captcha (lepture)** | 当 Python 表单需要一个自托管、不调第三方的图片或语音验证码，而存储、过期和校验你打算自己写时用它——但扭曲文字挡不住廉价 OCR，只能当减速带，算不上机器人防护。 | BSD-3-Clause | B（5/6） | [中](categories/captcha/lepture-captcha.zh.md) · [EN](categories/captcha/lepture-captcha.md) |
 | **NopeCHA** | 只用于已授权、需无人值守覆盖多类验证码的自动化——持续维护的实现闭源，并依赖托管 API。 | MIT | B（6/6） | [中](categories/captcha/nopecha-extension.zh.md) · [EN](categories/captcha/nopecha-extension.md) |
-| **Buster** | 用于真人触发的 reCAPTCHA 音频无障碍辅助或已授权测试——源码可审计、可走本地模型，但覆盖窄且结果不确定。 | GPL-3.0-only | C（6/6） | [中](categories/captcha/buster.zh.md) · [EN](categories/captcha/buster.md) |
+| **Buster** | 用于真人触发的 reCAPTCHA 音频无障碍辅助或已授权测试——源码可审计、可走本地模型，但覆盖窄且结果不确定。 | GPL-3.0-only | C（5/6） | [中](categories/captcha/buster.zh.md) · [EN](categories/captcha/buster.md) |
 
 ### blockchain-dev-infrastructure
 
@@ -698,7 +698,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **olmOCR** | 当你要把成千上万份带公式、表格、多栏版面的 PDF 按阅读顺序转成干净 Markdown、拿去做 LLM 语料时用它——但本地运行要 12 GB 以上显存的 NVIDIA GPU，且上游自 2026-03 起已无提交。 | Apache-2.0 | C（5/6） | [中](categories/document-parsing/olmocr.zh.md) · [EN](categories/document-parsing/olmocr.md) |
 | **Marker** | 当你要在自己的机器上把几千份 PDF（论文、教材、扫描件）转成带真表格、LaTeX 公式、按需 OCR 的 Markdown 时用它——但模型权重只对融资或营收低于 500 万美元的主体免费。 | Apache-2.0 | B（6/6） | [EN](categories/document-parsing/marker.md) · [中](categories/document-parsing/marker.zh.md) |
 | **unstructured** | 当 RAG 流水线面对混杂的 PDF、邮件和 Office 文件，需要带页码元数据的类型化元素和按章节分块，而不只是一个 Markdown 字符串时用它——但开源版的 PDF 表格准确率不如 Docling 和 Marker，且默认开启统计回传。 | Apache-2.0 | A（6/6） | [EN](categories/document-parsing/unstructured.md) · [中](categories/document-parsing/unstructured.zh.md) |
-| **any2html** | Use it when you need any2html in the document-parsing area. | NOASSERTION | D（5/6） | [中](categories/document-parsing/any2html.zh.md) · [EN](categories/document-parsing/any2html.md) |
+| **any2html** | Use it when you need any2html in the document-parsing area. | NOASSERTION | D（4/5） | [中](categories/document-parsing/any2html.zh.md) · [EN](categories/document-parsing/any2html.md) |
 | **Dedoc** | 当混合 PDF 与 Office 归档必须转成带表格和附件的逻辑树时用它——本地解析面广，但 Linux 与系统包依赖很重。 | Apache-2.0 | B（5/6） | [中](categories/document-parsing/dedoc.zh.md) · [EN](categories/document-parsing/dedoc.md) |
 | **Bella Domify** | 当 Python RAG 管线需要细粒度 PDF／Office DOM tree 和可选视觉 OCR 时用它——许可证冲突与 provider／基础设施耦合会抬高采用成本。 | GPL-2.0-only | C（5/6） | [中](categories/document-parsing/bella-domify.zh.md) · [EN](categories/document-parsing/bella-domify.md) |
 | **MinerU Skill** | 当 agent 需要一条命令完成云端文档转 Markdown、批处理、续跑和投递时用它——文件会离开本地，质量取决于 MinerU。 | MIT | C（5/6） | [中](categories/document-parsing/mineru-skill.zh.md) · [EN](categories/document-parsing/mineru-skill.md) |
@@ -924,7 +924,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Douyin-Bot** | 仅当你想读一个用 Python 经 ADB 驱动安卓真机（截屏、打分、滑动／点击）的小巧示例时用它——它自 2020 年起已死，硬编码 2018 年抖音界面坐标，依赖的腾讯人脸 API 也已下线，切勿部署。 | MIT | D（3/6） | [中](categories/im-automation/douyin-bot.zh.md) · [EN](categories/im-automation/douyin-bot.md) |
 | **WeChat Bot** | 当一个 Node CLI 必须把微信、飞书、Telegram 与 WhatsApp 接到多个 LLM 时用它——个人微信仍走非官方通道，并伴随账号风险。 | MIT | B（5/6） | [中](categories/im-automation/wechat/wechat-bot.zh.md) · [EN](categories/im-automation/wechat/wechat-bot.md) |
 | **ChatGPT-wechat-bot** | 仅把它当作 2022 至 2023 年 Wechaty 与 ChatGPT 的小型参考代码——项目已停滞、默认配置过时，不适合作为生产底座。 | MIT | D（3/6） | [中](categories/im-automation/wechat/chatgpt-wechat-bot.zh.md) · [EN](categories/im-automation/wechat/chatgpt-wechat-bot.md) |
-| **OpeniLink Hub** | 当多个 iLink 微信 Bot 需要自托管管理、trace、Webhook 和 App 时用它——项目年轻且无官方关联，还扩大了认证与 Registry 信任边界。 | MIT | B（6/6） | [中](categories/im-automation/openilink-hub.zh.md) · [EN](categories/im-automation/openilink-hub.md) |
+| **OpeniLink Hub** | 当多个 iLink 微信 Bot 需要自托管管理、trace、Webhook 和 App 时用它——项目年轻且无官方关联，还扩大了认证与 Registry 信任边界。 | MIT | C（5/6） | [中](categories/im-automation/openilink-hub.zh.md) · [EN](categories/im-automation/openilink-hub.md) |
 | **Dify Enterprise WeChat Bot** | 仅用于维持固定 Windows 企业微信到 Dify 的桌面集成——项目已停滞、包含闭源 helper，Workflow 支持也未完成。 | NOASSERTION | C（3/6） | [中](categories/im-automation/wechat/dify-enterprise-wechat-bot.zh.md) · [EN](categories/im-automation/wechat/dify-enterprise-wechat-bot.md) |
 | **Wechaty** | 许多个人号机器人背后的多语言可复用框架：adapter 与命令层要自己掌控，押注某条通道前先确认各 provider 现状。 | Apache-2.0 | C（5/6） | [中](categories/im-automation/wechat/wechaty.zh.md) · [EN](categories/im-automation/wechat/wechaty.md) |
 | **CowAgent** | Python-first、多通道、模型后端可插拔的助手；即更名后的 `zhayujie/chatgpt-on-wechat`，通道已换成 iLink，而非被删除的个人号路径。 | MIT | B（5/6） | [中](categories/im-automation/wechat/cowagent.zh.md) · [EN](categories/im-automation/wechat/cowagent.md) |
@@ -1223,9 +1223,11 @@ categories/<分类>/<子类>/INDEX.md …           # 更深的节点 —— 树
 | 小节（英 / 中） | 必需于 | 承载什么 |
 |---|---|---|
 | `When to use` / `何时使用` | 所有类型 | **触发场景**——什么情况下该想到这个项目，以及它在该场景下为何胜过替代品 |
-| `How it works` / `怎么用起来` | 所有类型（回填中） | **主干用户故事**——大白话机制 + 自动生成的双泳道流程图（你做的 / 它做的） |
 | `When NOT to use` / `何时不用` | 所有类型 | 决定性筛子：反模式、规模天花板、锁定、维护风险 |
 | `Comparison` / `横向对比` | 所有类型 | 与真实替代品的对比表（替代品尚未收录则标 `未收录`） |
+| `Q&A` / `快问快答` | 章节可选，决定必做 | 先把有固定章节归属的问题搬过去；只留剩余问题，无剩余则记录 `no leftover Q&A`，绝不凑数 |
+| `Quick start` / `快速上手` | 所有类型，满足 FLOW 门槛时必需 | 开发者选定后的安装、配置、调用路径，说明你和项目各做什么，附自动生成的双泳道主干流程卡 |
+| `Key techniques` / `技术要点` | 所有 v2 类型 | 从源码可证的关键实现做法及限制，必写且非空 |
 | `Tech stack` / `技术栈` | 非 `skill-pack` | 它构建于哪些语言、框架、数据存储 |
 | `Dependencies` / `依赖` | 非 `skill-pack` | 你必须自己跑的运行时/基建（数据库、服务、硬件） |
 | `Ops difficulty` / `运维难度` | 非 `skill-pack` | 低 / 中 / 高 + 原因 |
@@ -1234,6 +1236,10 @@ categories/<分类>/<子类>/INDEX.md …           # 更深的节点 —— 树
 
 完整契约见 [tools/schema.md](tools/schema.md)；linter（[tools/lint.py](tools/lint.py)）强制这套形状
 （小节、中英对齐、中文全角标点、README 对齐）。
+表中为 v2 顺序，`last_verified >= 2026-10-13` 时生效（可用 `OSS_ATLAS_SECTIONS_V2_FROM`
+覆盖门槛）：全部 H2 必须在规定集合中、不重复、严格有序。旧 v1 页保留原顺序及
+`How it works` / `怎么用起来`，不批量迁移；下次复核时先手工搬章、改名、研究技术要点，再更新日期。
+快速上手继续受独立 FLOW 日期门槛（默认 `2026-09-20`）及 `OSS_ATLAS_REQUIRE_FLOW=1` 约束，生成的流程文字版不变。
 
 ## 新鲜度
 
@@ -1287,7 +1293,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **agent-governance-toolkit** | Microsoft 面向生产 AI agent 的 public-preview 治理工具包：策略门控 tool call、身份 / 信任、审计 / 合规、MCP security gateway、SRE 控制，以及围绕 agent framework 的多语言 SDK。 | MIT | B（6/6） | [中](categories/agent-governance/agent-governance-toolkit.zh.md) · [EN](categories/agent-governance/agent-governance-toolkit.md) |
-| **SkillSpector** | NVIDIA 的 AI agent skill 安全扫描器：安装前通过 CLI/MCP 检查 prompt injection、外传、危险脚本、MCP poisoning、依赖，并输出 SARIF/JSON 证据。 | Apache-2.0 | B（5/6） | [中](categories/agent-governance/skillspector.zh.md) · [EN](categories/agent-governance/skillspector.md) |
+| **SkillSpector** | NVIDIA 的 AI agent skill 安全扫描器：安装前通过 CLI/MCP 检查 prompt injection、外传、危险脚本、MCP poisoning、依赖，并输出 SARIF/JSON 证据。 | Apache-2.0 | B（6/6） | [中](categories/agent-governance/skillspector.zh.md) · [EN](categories/agent-governance/skillspector.md) |
 | **Snyk Agent Scan** | Snyk 的整机扫描器：清点 14 种编程 agent 里已装的 MCP 服务和 skill；发现在本地做，但每个结论都来自 Snyk 托管的闭源分析接口（要账号、有配额、数据外传）。 | Apache-2.0 | A（6/6） | [中](categories/agent-governance/agent-scan.zh.md) · [EN](categories/agent-governance/agent-scan.md) |
 | **claude-skill-audit** | 离线正则扫描整个 Claude Code `.claude/` 目录（skill、agent、hook、权限、MCP 配置、密钥）的零依赖 TypeScript 小工具；单一作者、0 star、检测浅，只能当快速 lint 用。 | MIT | C（5/6） | [中](categories/agent-governance/claude-skill-audit.zh.md) · [EN](categories/agent-governance/claude-skill-audit.md) |
 | **skills-scanner** | 零依赖的 Python CLI：盘点 Claude Code、Claude Desktop、Cursor、Windsurf 下的 skill、命令和 MCP 配置，离线跑规则，并与 SQLite 基线比对漂移。2026-05 起休眠且未上 PyPI：当模式来源看，不要当依赖用。 | Apache-2.0 | C（5/6） | [中](categories/agent-governance/skills-scanner.zh.md) · [EN](categories/agent-governance/skills-scanner.md) |

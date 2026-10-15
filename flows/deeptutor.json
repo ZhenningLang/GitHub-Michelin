@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "DeepTutor does", "zh": "DeepTutor 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install and configure language and embedding providers in a persistent runtime home", "zh": "在持久运行目录安装，配置语言和嵌入模型", "code": "pip install -U deeptutor · deeptutor init"},
+    {"lane": "you", "en": "Create a course library from your textbook", "zh": "从教材创建课程知识库", "code": "deeptutor kb create my-kb --doc textbook.pdf"},
+    {"lane": "them", "en": "Parse and index the material, retaining indexing status", "zh": "解析并索引材料，保留索引状态", "component": {"en": "knowledge library + LlamaIndex", "zh": "知识库与 LlamaIndex"}},
+    {"lane": "you", "en": "Ask a course question with retrieval enabled for that library", "zh": "对所选知识库启用检索，提出课程问题", "code": "deeptutor chat --capability deep_solve --tool rag --kb my-kb"},
+    {"lane": "them", "en": "Run bounded model/tool rounds and retain tool evidence", "zh": "运行有界模型／工具轮次，保留工具证据", "component": {"en": "AgentLoop", "zh": "AgentLoop"}},
+    {"lane": "them", "en": "Return the answer and any collected source references for review", "zh": "返回回答和收集到的来源，供你核验"}
+  ],
+  "value": {"en": "Your course materials and a traceable tool-assisted explanation share one study workflow", "zh": "课程材料和可追溯的工具辅助解释共用学习流程"},
+  "sources": [
+    "https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/README.md#L322-L336",
+    "https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/README.md#L531-L539",
+    "https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor_cli/kb.py#L221-L265",
+    "https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L309-L396"
+  ]
+}

@@ -486,7 +486,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **pytorch-captcha-recognition** | Use it as a readable teaching baseline for fixed-length text CAPTCHAs, one CNN head per character — but it is a frozen 2020 tutorial whose PyTorch APIs need modernizing, and its accuracy claims come from its own synthetic data. | Apache-2.0 | D (4/6) | [EN](categories/captcha/pytorch-captcha-recognition.md) · [中](categories/captcha/pytorch-captcha-recognition.zh.md) |
 | **captcha (lepture)** | Use it when a Python web form needs a self-hosted image or audio CAPTCHA with no third-party call and you will write storage, expiry and verification yourself — but distorted text falls to cheap OCR, so it is a speed bump, not bot defense. | BSD-3-Clause | B (5/6) | [EN](categories/captcha/lepture-captcha.md) · [中](categories/captcha/lepture-captcha.zh.md) |
 | **NopeCHA** | Use it only for authorized unattended automation across several CAPTCHA families — the maintained implementation is closed and depends on a hosted API. | MIT | B (6/6) | [EN](categories/captcha/nopecha-extension.md) · [中](categories/captcha/nopecha-extension.zh.md) |
-| **Buster** | Use it for human-triggered reCAPTCHA audio accessibility or authorized testing — source-auditable and local-capable, but narrow and nondeterministic. | GPL-3.0-only | C (6/6) | [EN](categories/captcha/buster.md) · [中](categories/captcha/buster.zh.md) |
+| **Buster** | Use it for human-triggered reCAPTCHA audio accessibility or authorized testing — source-auditable and local-capable, but narrow and nondeterministic. | GPL-3.0-only | C (5/6) | [EN](categories/captcha/buster.md) · [中](categories/captcha/buster.zh.md) |
 
 ### blockchain-dev-infrastructure
 
@@ -701,7 +701,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **olmOCR** | Use it when you are turning thousands to millions of PDFs with equations, tables and multi-column layouts into clean reading-order Markdown for an LLM corpus — but local runs need a 12 GB+ NVIDIA GPU, and upstream has been quiet since 2026-03. | Apache-2.0 | C (5/6) | [EN](categories/document-parsing/olmocr.md) · [中](categories/document-parsing/olmocr.zh.md) |
 | **Marker** | Use it when converting thousands of PDFs (papers, textbooks, scans) into Markdown with real tables, LaTeX math and selective OCR on your own hardware — but the model weights are free only below a $5M funding or revenue threshold. | Apache-2.0 | B (6/6) | [EN](categories/document-parsing/marker.md) · [中](categories/document-parsing/marker.zh.md) |
 | **unstructured** | Use it when a RAG pipeline over mixed PDFs, emails and Office files needs typed elements with page metadata and section-aware chunking rather than one Markdown string — but its open-source PDF table accuracy trails Docling and Marker, and analytics pings are on by default. | Apache-2.0 | A (6/6) | [EN](categories/document-parsing/unstructured.md) · [中](categories/document-parsing/unstructured.zh.md) |
-| **any2html** | Use it when you need any2html in the document-parsing area. | NOASSERTION | D (5/6) | [EN](categories/document-parsing/any2html.md) · [中](categories/document-parsing/any2html.zh.md) |
+| **any2html** | Use it when you need any2html in the document-parsing area. | NOASSERTION | D (4/5) | [EN](categories/document-parsing/any2html.md) · [中](categories/document-parsing/any2html.zh.md) |
 | **Dedoc** | Use it when mixed PDF and Office archives must become logical trees with tables and attachments — broad local parsing, but with heavy Linux and system-package dependencies. | Apache-2.0 | B (5/6) | [EN](categories/document-parsing/dedoc.md) · [中](categories/document-parsing/dedoc.zh.md) |
 | **Bella Domify** | Use it when a Python RAG pipeline needs detailed PDF/Office DOM trees and optional vision OCR — license conflict and provider/infrastructure coupling raise adoption cost. | GPL-2.0-only | C (5/6) | [EN](categories/document-parsing/bella-domify.md) · [中](categories/document-parsing/bella-domify.zh.md) |
 | **MinerU Skill** | Use it when an agent needs one-command cloud document-to-Markdown with batch, resume, and delivery — files leave your environment and quality depends on MinerU. | MIT | C (5/6) | [EN](categories/document-parsing/mineru-skill.md) · [中](categories/document-parsing/mineru-skill.zh.md) |
@@ -927,7 +927,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Douyin-Bot** | Use it only to read a compact example of driving an Android phone from Python over ADB (screencap, score, input swipe/tap) — it is dead since 2020, hard-codes 2018 Douyin coordinates, and its Tencent face API is gone, so never deploy it. | MIT | D (3/6) | [EN](categories/im-automation/douyin-bot.md) · [中](categories/im-automation/douyin-bot.zh.md) |
 | **WeChat Bot** | Use it when one Node CLI must bridge WeChat, Lark, Telegram, and WhatsApp to several LLMs — personal WeChat remains unofficial and account-risky. | MIT | B (5/6) | [EN](categories/im-automation/wechat/wechat-bot.md) · [中](categories/im-automation/wechat/wechat-bot.zh.md) |
 | **ChatGPT-wechat-bot** | Use it only as compact 2022–2023 Wechaty and ChatGPT reference code — it is stale, tied to old defaults, and not a production base. | MIT | D (3/6) | [EN](categories/im-automation/wechat/chatgpt-wechat-bot.md) · [中](categories/im-automation/wechat/chatgpt-wechat-bot.zh.md) |
-| **OpeniLink Hub** | Use it when multiple iLink WeChat bots need self-hosted management, tracing, webhooks, and Apps — it is young, unofficial, and widens the auth and registry trust boundary. | MIT | B (6/6) | [EN](categories/im-automation/openilink-hub.md) · [中](categories/im-automation/openilink-hub.zh.md) |
+| **OpeniLink Hub** | Use it when multiple iLink WeChat bots need self-hosted management, tracing, webhooks, and Apps — it is young, unofficial, and widens the auth and registry trust boundary. | MIT | C (5/6) | [EN](categories/im-automation/openilink-hub.md) · [中](categories/im-automation/openilink-hub.zh.md) |
 | **Dify Enterprise WeChat Bot** | Use it only to preserve a pinned Windows Enterprise WeChat-to-Dify desktop integration — it is stale, includes a closed helper, and leaves Workflow support unfinished. | NOASSERTION | C (3/6) | [EN](categories/im-automation/wechat/dify-enterprise-wechat-bot.md) · [中](categories/im-automation/wechat/dify-enterprise-wechat-bot.zh.md) |
 | **Wechaty** | The reusable multi-language framework behind many personal-account bots: own the adapter and command layer yourself, and check each provider before betting on a channel. | Apache-2.0 | C (5/6) | [EN](categories/im-automation/wechat/wechaty.md) · [中](categories/im-automation/wechat/wechaty.zh.md) |
 | **CowAgent** | Python-first multi-channel assistant with pluggable model backends; the renamed `zhayujie/chatgpt-on-wechat` lineage, now on an iLink channel instead of the deleted personal-account path. | MIT | B (5/6) | [EN](categories/im-automation/wechat/cowagent.md) · [中](categories/im-automation/wechat/cowagent.zh.md) |
@@ -1233,9 +1233,11 @@ labeled (`[未验证]` / `[推断]`), never asserted as eternal truth.
 | Section (EN / 中) | Required for | What it carries |
 |---|---|---|
 | `When to use` / `何时使用` | all types | the **trigger scenario** — when you should think of this project, and why it beats substitutes there |
-| `How it works` / `怎么用起来` | all types (backfilling) | the **backbone user story** — a plain-language mechanism + a generated two-lane flow card (you do / it does) |
 | `When NOT to use` / `何时不用` | all types | the decisive filter: anti-patterns, scale ceilings, lock-in, maintenance risk |
 | `Comparison` / `横向对比` | all types | a table vs real substitutes (`未收录` when an alternative isn't indexed yet) |
+| `Q&A` / `快问快答` | optional section, required decision | leftover questions; move material with a required-section home there first, or record `no leftover Q&A`; never pad |
+| `Quick start` / `快速上手` | all types when FLOW requires it | developer usage: install/configure/call, your work vs its work, plus the generated two-lane backbone flow card |
+| `Key techniques` / `技术要点` | all v2 types | non-empty source-backed implementation techniques and their limits |
 | `Tech stack` / `技术栈` | non-`skill-pack` | languages, frameworks, datastores it's built on |
 | `Dependencies` / `依赖` | non-`skill-pack` | runtime/infra you must run (db, services, hardware) |
 | `Ops difficulty` / `运维难度` | non-`skill-pack` | low / medium / high + why |
@@ -1244,6 +1246,11 @@ labeled (`[未验证]` / `[推断]`), never asserted as eternal truth.
 
 The full contract is [tools/schema.md](tools/schema.md); the linter ([tools/lint.py](tools/lint.py))
 enforces this shape (sections, bilingual parity, fullwidth Chinese punctuation, README parity).
+The table is v2, selected by `last_verified >= 2026-10-13` (`OSS_ATLAS_SECTIONS_V2_FROM`
+overrides): H2s must be in this set, unique and ordered. Older v1 pages retain their old order and
+`How it works` / `怎么用起来` until re-verification, when the maintainer manually reorders/renames
+and researches Key techniques before bumping the date. The independent FLOW date (default
+`2026-09-20`) and `OSS_ATLAS_REQUIRE_FLOW=1` govern Quick start; the generated flow text is unchanged.
 
 ## Freshness
 
@@ -1305,7 +1312,7 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **agent-governance-toolkit** | Microsoft's public-preview governance toolkit for production AI agents: policy-gated tool calls, identity/trust, audit/compliance, MCP security gateway, SRE controls, and multi-language SDKs around agent frameworks. | MIT | B (6/6) | [EN](categories/agent-governance/agent-governance-toolkit.md) · [中](categories/agent-governance/agent-governance-toolkit.zh.md) |
-| **SkillSpector** | NVIDIA's security scanner for AI agent skills: pre-install CLI/MCP scanning for prompt injection, exfiltration, dangerous scripts, MCP poisoning, dependencies, and SARIF/JSON evidence. | Apache-2.0 | B (5/6) | [EN](categories/agent-governance/skillspector.md) · [中](categories/agent-governance/skillspector.zh.md) |
+| **SkillSpector** | NVIDIA's security scanner for AI agent skills: pre-install CLI/MCP scanning for prompt injection, exfiltration, dangerous scripts, MCP poisoning, dependencies, and SARIF/JSON evidence. | Apache-2.0 | B (6/6) | [EN](categories/agent-governance/skillspector.md) · [中](categories/agent-governance/skillspector.zh.md) |
 | **Snyk Agent Scan** | Snyk's machine-wide scanner for installed MCP servers and agent skills across 14 coding agents; discovery is local, but every verdict comes from Snyk's hosted, closed analysis API (account, quota, data egress). | Apache-2.0 | A (6/6) | [EN](categories/agent-governance/agent-scan.md) · [中](categories/agent-governance/agent-scan.zh.md) |
 | **claude-skill-audit** | Offline regex scanner for a whole Claude Code `.claude/` directory — skills, agents, hooks, permissions, MCP config, secrets — in zero-dependency TypeScript; one author, 0 stars, shallow checks, use as a quick lint only. | MIT | C (5/6) | [EN](categories/agent-governance/claude-skill-audit.md) · [中](categories/agent-governance/claude-skill-audit.zh.md) |
 | **skills-scanner** | Zero-dependency Python CLI that inventories skills, commands and MCP configs across Claude Code, Claude Desktop, Cursor and Windsurf, runs offline rules, and diffs against a SQLite baseline. Dormant since 2026-05 and not on PyPI: a pattern source, not a dependency. | Apache-2.0 | C (5/6) | [EN](categories/agent-governance/skills-scanner.md) · [中](categories/agent-governance/skills-scanner.zh.md) |

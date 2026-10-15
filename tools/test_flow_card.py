@@ -141,6 +141,27 @@ class FlowSpecTest(unittest.TestCase):
 
 
 class FlowLintTest(unittest.TestCase):
+    def test_v2_acc2_10_quick_start_sync_and_legacy_fallback(self) -> None:
+        for zh in (False, True):
+            with self.subTest(zh=zh), tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                page = self._setup(root, zh=zh)
+                old = "## 怎么用起来" if zh else "## How it works"
+                new = "## 快速上手" if zh else "## Quick start"
+                legacy = page.read_text(encoding="utf-8")
+                old_span = flow_card.section_bounds(legacy, "zh" if zh else "en")
+                block = flow_card.BLOCK_RE.search(legacy).group(0)
+                self.assertEqual(flow_card.BLOCK_RE.search(legacy[old_span[0]:old_span[1]]).group(0), block)
+                text = legacy.replace(old, new).replace("Registers a hook", "BROKEN").replace("注册钩子", "坏块")
+                page.write_text(text, encoding="utf-8")
+                self.assertTrue(flow_card.sync_page(page, root, SPEC, "demo"))
+                synced = page.read_text(encoding="utf-8")
+                self.assertEqual(flow_card.BLOCK_RE.search(synced).group(0), block)
+                self.assertFalse(flow_card.sync_page(page, root, SPEC, "demo"))
+                span = flow_card.section_bounds(synced + f"\n{old}\n\nlegacy\n", "zh" if zh else "en")
+                self.assertIn(block, (synced + f"\n{old}\n\nlegacy\n")[span[0]:span[1]])
+                self.assertIsNotNone(old_span)
+
     def _setup(self, root: Path, zh: bool = False, section: str | None = None, spec: dict | None = SPEC) -> Path:
         page = root / "categories" / "demo" / ("demo.zh.md" if zh else "demo.md")
         page.parent.mkdir(parents=True, exist_ok=True)

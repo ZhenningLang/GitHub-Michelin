@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Backtrader does", "zh": "Backtrader 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install a pinned environment and prepare a local historical price file", "zh": "安装固定环境，准备本地历史价格文件", "code": "pip install backtrader"},
+    {"lane": "you", "en": "Define a signal strategy and register the feed plus an analyzer", "zh": "定义信号策略，注册数据流和分析器", "code": "bt.Cerebro() · bt.feeds.BacktraderCSVData"},
+    {"lane": "you", "en": "Run the historical simulation with your chosen costs and sizing", "zh": "按选定费用和仓位运行历史模拟", "code": "cerebro.run()"},
+    {"lane": "them", "en": "Advance the data clock and invoke strategy callbacks", "zh": "推进数据时钟，调用策略回调", "component": {"en": "Cerebro", "zh": "Cerebro"}},
+    {"lane": "them", "en": "Simulate fills, update cash/positions and collect analyzer results", "zh": "模拟成交，更新现金／持仓并收集分析结果", "component": {"en": "BackBroker + analyzers", "zh": "BackBroker 与分析器"}},
+    {"lane": "you", "en": "Inspect the returned analyzer data and validate the trading assumptions", "zh": "查看分析结果，核验交易假设", "code": "strat.analyzers.returns.get_analysis()"}
+  ],
+  "value": {"en": "Strategy decisions have inspectable simulated orders and portfolio state, not live-profit proof", "zh": "策略决策有可查模拟订单和组合状态，不等于实盘盈利证明"},
+  "sources": [
+    "https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/README.rst#L39-L60",
+    "https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/README.rst#L126-L140",
+    "https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/samples/strategy-selection/strategy-selection.py#L29-L68",
+    "https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/feeds/btcsv.py#L30-L59"
+  ]
+}

@@ -30,8 +30,8 @@ Checks (ERROR = non-zero exit; WARNING = printed, exit still 0):
   - every page has an upstream snapshot for cheap stale checks -> ERROR if absent/malformed
   - page Comparison tables include an explicit Our verdict / 我们的评价 column -> ERROR if absent
   - every page: a Caveats ledger section (## Caveats (unverified) / ## 存疑（未验证）) -> ERROR if absent
-  - optional Q&A / 快问快答: if present, non-empty, bilingual pair matches, sits after
-    When to use and before How it works (or When NOT if that section is absent)
+  - optional Q&A / 快问快答: if present, non-empty and bilingual pair matches; v2 sits after
+    Comparison and before Quick start (or Key techniques if absent); v1 retains its old position
     -> ERROR on empty / one-sided / wrong position
     NOTE: the *decision* to write the section (schema §2: "required decision, optional section",
     recorded as `no leftover Q&A` in the change summary) is intentionally NOT gateable — absence
@@ -50,11 +50,11 @@ Checks (ERROR = non-zero exit; WARNING = printed, exit still 0):
   - README.md / README.zh.md master listing stays in parity with the indexed pages
     (every EN page listed in README.md, every ZH page in README.zh.md) -> ERROR on drift
   - README/category INDEX project summary tables include Health / 健康度 -> ERROR if absent
-  - How it works / 怎么用起来 (backbone user-story flow, SSOT flows/<stem>.json):
+  - Quick start / 快速上手 (v1: How it works / 怎么用起来), backbone flow SSOT flows/<stem>.json:
     absent -> ERROR when the page's last_verified >= OSS_ATLAS_FLOW_REQUIRED_FROM (new + re-synced
     pages are authored under the contract), otherwise one aggregate backfill WARNING;
-    present -> ERROR on: wrong position (must sit between When to use and When NOT to use), no
-    mechanism prose, missing/invalid spec, missing/stale card, card not embedded, generated
+    present -> ERROR on: wrong version-dependent position, no usage prose (v1: mechanism prose),
+    missing/invalid spec, missing/stale card, card not embedded, generated
     step list drifting from the spec; a spec without a page section, or with no page -> ERROR
 
 NOTE: this linter is a STRUCTURAL gate, not a semantic review. It cannot judge whether a
@@ -64,7 +64,8 @@ prose is accurate — those stay human/agent judgment (see tools/schema.md).
 Pure stdlib. Usage:  python3 tools/lint.py [--root .]
 Env: OSS_ATLAS_STALE_DAYS (default 90), OSS_ATLAS_MAX_FANOUT (default 12),
      OSS_ATLAS_PROSE_LABEL_MAX (default 3), OSS_ATLAS_REQUIRE_FLOW (default 0),
-     OSS_ATLAS_FLOW_REQUIRED_FROM (default 2026-09-20)
+     OSS_ATLAS_FLOW_REQUIRED_FROM (default 2026-09-20),
+     OSS_ATLAS_SECTIONS_V2_FROM (default 2026-10-13)
 """
 from __future__ import annotations
 
@@ -90,6 +91,8 @@ CORE_ZH = ["## 何时使用", "## 何时不用", "## 横向对比"]
 EXTRA_ZH = ["## 技术栈", "## 依赖", "## 运维难度"]
 HEALTH_ZH = ["## 健康度与可持续性"]
 NO_EXTRA_TYPES = {"skill-pack"}  # these omit Tech stack / Dependencies / Ops difficulty
+V2_ORDER_EN = CORE_EN + ["## Q&A", "## Quick start", "## Key techniques"] + EXTRA_EN + HEALTH_EN + ["## Caveats"]
+V2_ORDER_ZH = CORE_ZH + ["## 快问快答", "## 快速上手", "## 技术要点"] + EXTRA_ZH + HEALTH_ZH + ["## 存疑"]
 
 INDEX_EN = "INDEX.md"
 INDEX_ZH = "INDEX.zh.md"
@@ -98,10 +101,11 @@ STALE_DAYS = int(os.environ.get("OSS_ATLAS_STALE_DAYS", "90"))
 MAX_FANOUT = int(os.environ.get("OSS_ATLAS_MAX_FANOUT", "12"))
 PROSE_LABEL_MAX = int(os.environ.get("OSS_ATLAS_PROSE_LABEL_MAX", "3"))
 REQUIRE_FLOW = os.environ.get("OSS_ATLAS_REQUIRE_FLOW", "0") == "1"
-# Pages verified on/after this date were authored under the How-it-works contract, so the section is
+# Pages verified on/after this date were authored under the FLOW contract, so the section is
 # required for them (add-project writes it; sync-entry bumps last_verified only after re-checking it).
 # Older pages are the backfill backlog: one aggregate WARNING, not 1000 errors.
 FLOW_REQUIRED_FROM = os.environ.get("OSS_ATLAS_FLOW_REQUIRED_FROM", "2026-09-20")
+SECTIONS_V2_FROM = os.environ.get("OSS_ATLAS_SECTIONS_V2_FROM", "2026-10-13")
 # A generator that has not read the upstream sources must say so with this marker instead of
 # writing plausible prose over the hole: prose that nobody earned reads exactly like prose that
 # somebody did, and no wording-based check can tell them apart after the fact. The marker gives the
@@ -169,6 +173,7 @@ class Report:
         self.errors: list[str] = []
         self.warnings: list[str] = []
         self.flow_missing: list[Path] = []   # pages still lacking How it works (backfill tally)
+        self.flow_missing_v2 = False        # keep the v1 aggregate wording unchanged unless v2 is tallied
         self.flow_stems: set[str] = set()    # stems referenced by some page (orphan-spec check)
 
     def error(self, where: Path | str, msg: str) -> None:
@@ -312,13 +317,20 @@ def is_table_separator(line: str) -> bool:
     return bool(cells) and all(cell and set(cell) <= set("-: ") and cell.count("-") >= 3 for cell in cells)
 
 
-def check_comparison_table(path: Path, text: str, zh: bool, rep: Report) -> None:
+def check_comparison_table(path: Path, text: str, zh: bool, rep: Report,
+                           sections: list[flow_card.H2Section] | None = None) -> None:
     heading = "## 横向对比" if zh else "## Comparison"
+    if sections is not None:
+        chapter = next((h for h in sections if h.exact and h.heading == heading), None)
+        if chapter is None:
+            return  # Required-section validation reports the missing real chapter.
+        text = heading + "\n" + text[chapter.body_start:chapter.end]
     lines = text.splitlines()
     for i, line in enumerate(lines):
         if line.strip() != heading:
             continue
-        next_h2 = next((j for j in range(i + 1, len(lines)) if re.match(r"^##[ \t]+\S", lines[j])), len(lines))
+        next_h2 = len(lines) if sections is not None else next(
+            (j for j in range(i + 1, len(lines)) if re.match(r"^##[ \t]+\S", lines[j])), len(lines))
         for j in range(i + 1, next_h2 - 1):
             header = lines[j].strip()
             if header.startswith("|") and header.endswith("|") and is_table_separator(lines[j + 1].strip()):
@@ -598,7 +610,7 @@ def check_health_block(path: Path, text: str, base: str, zh: bool, root: Path, d
 
 
 def flow_required(last_verified: object) -> bool:
-    """A page is on the hook for How it works once it was (re)verified under the contract."""
+    """A page requires the FLOW section once (re)verified under that contract."""
     if REQUIRE_FLOW:
         return True
     try:
@@ -607,45 +619,97 @@ def flow_required(last_verified: object) -> bool:
         return False
 
 
+def sections_v2(last_verified: object) -> bool:
+    """Version is a dated fact, never inferred from the page's chosen headings."""
+    try:
+        return dt.date.fromisoformat(str(last_verified)) >= dt.date.fromisoformat(SECTIONS_V2_FROM)
+    except ValueError:
+        return False
+
+
+def check_v2_order(path: Path, text: str, zh: bool, ptype: str, rep: Report,
+                   sections: list[flow_card.H2Section] | None = None) -> None:
+    """Reject unknown/duplicate H2s, then name the first descending contract heading."""
+    order = V2_ORDER_ZH if zh else V2_ORDER_EN
+    caveats = CAVEATS_RE_ZH if zh else CAVEATS_RE_EN
+    seen: set[str] = set()
+    previous = -1
+    misplaced = False
+    chapters = flow_card.scan_h2_sections(text) if sections is None else sections
+    for error in getattr(chapters, "errors", ()):
+        rep.error(path, error)
+    for chapter in chapters:
+        heading = chapter.heading
+        if not chapter.exact:
+            rep.error(path, f"v2 H2 must use exact column-zero ATX syntax: {heading}; " +
+                      (chapter.reason or "rewrite as column-zero ATX（改成顶格 ATX）; no indented/setext/container headings"))
+        canonical = order[-1] if caveats.match(heading) else heading
+        if canonical not in order:
+            rep.error(path, f"unknown v2 heading: {heading}; use the section contract in tools/schema.md")
+            continue
+        if canonical in seen:
+            rep.error(path, f"duplicate v2 heading: {heading}")
+        seen.add(canonical)
+        rank = order.index(canonical)
+        if rank < previous and not misplaced:
+            rep.error(path, f"first misplaced heading: {heading}; v2 order is {' → '.join(order)}")
+            misplaced = True
+        previous = max(previous, rank)
+
+
 def check_flow_section(path: Path, text: str, zh: bool, root: Path, duplicate_bases: set[str],
-                       rep: Report, last_verified: object = "") -> None:
-    """How it works / 怎么用起来: mechanism prose + backbone flow card + generated text twin."""
+                       rep: Report, last_verified: object = "",
+                       sections: list[flow_card.H2Section] | None = None) -> None:
+    """Versioned usage section (v1 mechanism) + backbone card + generated text twin."""
     lang = "zh" if zh else "en"
+    version = "v2" if sections_v2(last_verified) else "v1"
+    heading = flow_card.SECTION[version][lang]
     stem = flow_card.flow_stem(path, root, duplicate_bases)
     rep.flow_stems.add(stem)
     spec_path = root / "flows" / f"{stem}.json"
-    span = flow_card.section_bounds(text, lang)
+    if version == "v2" and sections is None:
+        sections = flow_card.scan_h2_sections(text)
+    if version == "v2" and getattr(sections, "errors", ()):
+        return  # check_v2_order already reports the primary errors; do not invent a missing FLOW.
+    span = flow_card.section_bounds(text, lang, version=version, sections=sections)
     if span is None:
         if spec_path.exists():
-            rep.error(path, f"flows/{stem}.json exists but the page has no '{flow_card.SECTION[lang]}' section")
+            rep.error(path, f"flows/{stem}.json exists but the page has no '{heading}' section")
         elif flow_required(last_verified):
-            rep.error(path, f"missing required section: {flow_card.SECTION[lang]} "
+            rep.error(path, f"missing required section: {heading} "
                             f"(required for pages with last_verified >= {FLOW_REQUIRED_FROM}; see tools/schema.md)")
         else:
             rep.flow_missing.append(path)
+            if version == "v2":
+                rep.flow_missing_v2 = True
         return
 
     # position: after When to use (or Q&A if present), right before When NOT to use
-    h2 = [m.group(0).strip() for m in re.finditer(r"(?m)^##[ \t]+\S.*$", text)]
+    h2 = ([h.heading for h in sections if h.exact] if sections is not None else
+          [m.group(0).strip() for m in re.finditer(r"(?m)^##[ \t]+\S.*$", text)])
     want_when, want_next = ("## 何时使用", "## 何时不用") if zh else ("## When to use", "## When NOT to use")
     callouts = "## 快问快答" if zh else "## Q&A"
     want_prev = callouts if callouts in h2 else want_when
-    i = h2.index(flow_card.SECTION[lang])
+    if version == "v2":
+        want_prev = callouts if callouts in h2 else ("## 横向对比" if zh else "## Comparison")
+        want_next = "## 技术要点" if zh else "## Key techniques"
+    i = h2.index(heading)
     if not (i > 0 and h2[i - 1] == want_prev and i + 1 < len(h2) and h2[i + 1] == want_next):
-        rep.error(path, f"{flow_card.SECTION[lang]} must sit between '{want_prev}' and '{want_next}'")
+        rep.error(path, f"{heading} must sit between '{want_prev}' and '{want_next}'")
 
     body = text[span[0]:span[1]]
     card_ref = flow_card.card_rel(path, root, stem, lang)
     img_at = body.find(f"]({card_ref})")
     if img_at == -1:
-        rep.error(path, f"flow card not embedded in {flow_card.SECTION[lang]}: {card_ref}")
+        rep.error(path, f"flow card not embedded in {heading}: {card_ref}")
     else:
         prose = body[: body.rfind("![", 0, img_at)] if "![" in body[:img_at] else body[:img_at]
         if not prose.strip():
-            rep.error(path, f"{flow_card.SECTION[lang]}: plain-language mechanism paragraph missing before the flow card")
+            prose_kind = "developer usage" if version == "v2" else "plain-language mechanism"
+            rep.error(path, f"{heading}: {prose_kind} paragraph missing before the flow card")
 
     if not spec_path.exists():
-        rep.error(path, f"{flow_card.SECTION[lang]} present but flows/{stem}.json is missing")
+        rep.error(path, f"{heading} present but flows/{stem}.json is missing")
         return
     try:
         spec = flow_card.load_spec(spec_path)
@@ -712,7 +776,31 @@ def check_qa(
     zh: bool,
     sibling_text: str | None,
     rep: Report,
+    last_verified: object = "",
+    sections: list[flow_card.H2Section] | None = None,
+    sibling_sections: list[flow_card.H2Section] | None = None,
 ) -> None:
+    if sections_v2(last_verified):
+        scanned = flow_card.scan_h2_sections(text) if sections is None else sections
+        chapters = [h for h in scanned if h.exact]
+        heading = "## 快问快答" if zh else "## Q&A"
+        found = next((h for h in chapters if h.heading == heading), None)
+        h2 = [h.heading for h in chapters]
+        if found:
+            if not text[found.body_start:found.end].strip():
+                rep.error(path, "Q&A / 快问快答 is empty — drop the heading; if there is genuinely nothing, record `no leftover Q&A` in the change summary")
+            want_prev = "## 横向对比" if zh else "## Comparison"
+            want_flow = "## 快速上手" if zh else "## Quick start"
+            want_next = want_flow if want_flow in h2 else ("## 技术要点" if zh else "## Key techniques")
+            i = h2.index(heading)
+            if not (i > 0 and h2[i - 1] == want_prev and i + 1 < len(h2) and h2[i + 1] == want_next):
+                rep.error(path, "Q&A / 快问快答 must sit between Comparison and Quick start "
+                                "(or Key techniques, if Quick start is absent)")
+        if sibling_text is not None and not zh:
+            other = flow_card.scan_h2_sections(sibling_text) if sibling_sections is None else sibling_sections
+            if bool(found) != any(h.exact and h.heading == "## 快问快答" for h in other):
+                rep.error(path, "Q&A / 快问快答 presence must match the bilingual sibling")
+        return
     own = QA_RE_ZH if zh else QA_RE_EN
     found = own.search(text)
     if found:
@@ -775,12 +863,34 @@ def check_page(path: Path, category_dir: Path, root: Path, duplicate_bases: set[
         except ValueError:
             rep.error(path, f"last_verified '{lv}' is not a valid YYYY-MM-DD date")
 
+    v2 = sections_v2(lv)
+    chapters = flow_card.scan_h2_sections(text) if v2 else None
+    chapter_names = {h.heading for h in chapters if h.exact} if chapters is not None else set()
+    if v2:
+        check_v2_order(path, text, zh, ptype, rep, chapters)
+        old = flow_card.SECTION["v1"]["zh" if zh else "en"]
+        new = flow_card.SECTION["v2"]["zh" if zh else "en"]
+        if old in chapter_names:
+            rep.error(path, f"v2 page: rename '{old}' to '{new}'")
+        key = "## 技术要点" if zh else "## Key techniques"
+        key_chapter = next((h for h in chapters if h.exact and h.heading == key), None)
+        if not key_chapter:
+            rep.error(path, f"missing required section: {key}")
+        elif not text[key_chapter.body_start:key_chapter.end].strip():
+            rep.error(path, "Key techniques / 技术要点 is empty")
+    else:
+        for heading in (["## 快速上手", "## 技术要点"] if zh else ["## Quick start", "## Key techniques"]):
+            if re.search(r"(?m)^" + re.escape(heading) + r"[ \t]*$", text):
+                rep.error(path, f"v1 page has '{heading}': new structure requires you to update last_verified "
+                                f"to {SECTIONS_V2_FROM} or later after re-verification")
+
     # H1 title: schema requires every page to open with `# <name>` (then a one-line TL;DR).
     if not re.search(r"(?m)^#[ \t]+\S", text):
         rep.error(path, "missing H1 title (`# <name>`) at the top of the page")
 
     for section in required_sections(ptype if ptype in ALLOWED_TYPES else "tool", zh):
-        if not re.search(r"(?m)^" + re.escape(section) + r"\s*$", text):
+        present = section in chapter_names if v2 else bool(re.search(r"(?m)^" + re.escape(section) + r"\s*$", text))
+        if not present:
             rep.error(path, f"missing required section: {section}")
 
     unresearched = text.count(UNRESEARCHED_MARKER)
@@ -788,30 +898,36 @@ def check_page(path: Path, category_dir: Path, root: Path, duplicate_bases: set[
         rep.error(path, f"{unresearched} section(s) still carry {UNRESEARCHED_MARKER}: the page was "
                         f"scaffolded but not researched. Read the upstream sources and write those "
                         f"sections (sync-entry), or drop the page — do not delete the marker alone.")
-    check_comparison_table(path, text, zh, rep)
+    check_comparison_table(path, text, zh, rep, chapters)
 
     # skill-pack pages must OMIT the extra sections, not pad them — forbid, don't just not-require.
     if ptype in NO_EXTRA_TYPES:
         for section in (EXTRA_ZH if zh else EXTRA_EN):
-            if re.search(r"(?m)^" + re.escape(section) + r"\s*$", text):
+            present = section in chapter_names if v2 else bool(re.search(r"(?m)^" + re.escape(section) + r"\s*$", text))
+            if present:
                 rep.error(path, f"skill-pack must omit (not include) section: {section}")
 
     # Caveats ledger (all types): the uncertainty list lives here, not sprinkled across the prose.
     cav_re = CAVEATS_RE_ZH if zh else CAVEATS_RE_EN
-    cav = cav_re.search(text)
+    cav = next((h for h in chapters if h.exact and cav_re.match(h.heading)), None) if v2 else cav_re.search(text)
     if cav is None:
         rep.error(path, "missing required section: ## 存疑（未验证） / ## Caveats (unverified)")
     # Prose-region label density: keep only load-bearing [未验证]/[推断] inline; converge the rest.
     # The "narrative prose" region ends at Health & viability OR Caveats (whichever comes first) —
     # both are labeled-judgment/ledger sections where labels are expected, not sprinkled prose.
-    health = (HEALTH_RE_ZH if zh else HEALTH_RE_EN).search(text)
-    bounds = [m.start() for m in (health, cav) if m]
+    health_re = HEALTH_RE_ZH if zh else HEALTH_RE_EN
+    health = next((h for h in chapters if h.exact and health_re.match(h.heading)), None) if v2 else health_re.search(text)
+    bounds = [h.start if v2 else h.start() for h in (health, cav) if h]
     prose = text[: min(bounds)] if bounds else text
-    callouts = (QA_RE_ZH if zh else QA_RE_EN).search(text)
+    qa_re = QA_RE_ZH if zh else QA_RE_EN
+    callouts = next((h for h in chapters if h.exact and qa_re.match(h.heading)), None) if v2 else qa_re.search(text)
     if callouts:
-        nxt = re.search(r"(?m)^##\s+", text[callouts.end():])
-        end = callouts.end() + nxt.start() if nxt else len(text)
-        prose = prose[: callouts.start()] + prose[end:]
+        if v2:
+            prose = prose[:callouts.start] + prose[callouts.end:]
+        else:
+            nxt = re.search(r"(?m)^##\s+", text[callouts.end():])
+            end = callouts.end() + nxt.start() if nxt else len(text)
+            prose = prose[: callouts.start()] + prose[end:]
     n_inline = len(LABEL_RE.findall(prose))
     if n_inline > PROSE_LABEL_MAX:
         rep.warn(path, f"{n_inline} inline [未验证]/[推断] before the Health/Caveats sections (> {PROSE_LABEL_MAX}); "
@@ -827,11 +943,17 @@ def check_page(path: Path, category_dir: Path, root: Path, duplicate_bases: set[
         sibling_text = sibling.read_text(encoding="utf-8")
         if normalized_frontmatter(text) != normalized_frontmatter(sibling_text):
             rep.error(path, f"frontmatter drift vs {sibling.name} (must be identical)")
-    check_qa(path, text, zh, sibling_text, rep)
+    sibling_chapters = flow_card.scan_h2_sections(sibling_text) if v2 and sibling_text is not None else None
+    check_qa(path, text, zh, sibling_text, rep, lv, chapters, sibling_chapters)
+    if v2 and sibling_chapters is not None:
+        own_key = "## Key techniques" in chapter_names
+        sibling_key = any(h.exact and h.heading == "## 技术要点" for h in sibling_chapters)
+        if own_key != sibling_key:
+            rep.error(path, "Key techniques / 技术要点 presence must match the bilingual sibling")
 
     check_health_block(path, text, base, zh, root, duplicate_bases, rep, today)
     check_upstream_block(path, text, rep)
-    check_flow_section(path, text, zh, root, duplicate_bases, rep, fm.get("last_verified", ""))
+    check_flow_section(path, text, zh, root, duplicate_bases, rep, lv, chapters)
 
     for link in md_links(text):
         if link.startswith(("http://", "https://", "#", "mailto:")):
@@ -981,8 +1103,11 @@ def main() -> int:
                 rep.error(spec, "orphan flow spec: no page resolves to this stem")
     if rep.flow_missing:
         total = len([p for p in categories_dir.rglob("*.md") if is_page(p.name)])
+        names = "'## How it works' / '## 怎么用起来'"
+        if rep.flow_missing_v2:
+            names += " / '## Quick start' / '## 快速上手'"
         rep.warn("how-it-works", f"{len(rep.flow_missing)}/{total} pages still lack "
-                                 f"'## How it works' / '## 怎么用起来' (backfill backlog; pages with "
+                                 f"{names} (backfill backlog; pages with "
                                  f"last_verified >= {FLOW_REQUIRED_FROM} already ERROR, and "
                                  f"OSS_ATLAS_REQUIRE_FLOW=1 makes every one an ERROR)")
 

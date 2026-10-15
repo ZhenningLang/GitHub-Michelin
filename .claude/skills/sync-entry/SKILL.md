@@ -47,6 +47,9 @@ upstream:
   pushes and tag/bot activity. The default-branch SHA is the stronger reread trigger.
 - If the cheap probe matches the stored snapshot, skip the full **prose/fact reread** and report
   `unchanged_upstream`; do not silently bump `last_verified` as if prose/facts were reread.
+  This health-only shortcut keeps the old date and structure. If you actually re-verify or intend
+  to bump the date, even on unchanged upstream, use steps 2–7 including the manual v2 migration
+  and source research for Key techniques; matching upstream is not evidence for a missing section.
 - **`unchanged_upstream` does NOT skip the health re-score.** Maintenance/longevity are functions
   of elapsed time: a repo that goes quiet keeps the same `default_branch_sha` forever while its
   real grade decays from A toward D — the quiet case is exactly the one that needs re-scoring.
@@ -78,8 +81,9 @@ It prints `unchanged_upstream` or `changed_upstream`, writes nothing, exits `0` 
    page's `default_branch_sha` shares history but may be a fork or re-upload — decide by hand,
    and if nothing official exists, record the vanished upstream in `maturity` / When NOT to use.
 1. **Cheap upstream probe**: compare `upstream` frontmatter against GitHub repo state. If unchanged,
-   skip steps 2–7 (prose/facts) but **still do steps 8–9** — health grades decay with elapsed time
-   even when upstream is frozen.
+   take the health-only path: skip steps 2–7, retain `last_verified` and the old structure, but
+   **still do steps 8–9** — health grades decay even when upstream is frozen. An actual re-verification
+   or date bump on unchanged upstream must instead run steps 2–7, including 6a below.
 2. **Refetch the source of truth**: GitHub repo page, latest release, README, last-commit date.
 3. **Diff the facts** against frontmatter + body:
    - license, primary language, latest version / `maturity`, dependencies, tech stack.
@@ -99,14 +103,28 @@ It prints `unchanged_upstream` or `changed_upstream`, writes nothing, exits `0` 
    `good choice`, or `open-source alternative`.
      **Q&A / 快问快答**: re-open the decision rather than inheriting it. If the re-read — or any
      conversation about this page since it shipped — produced leftover questions the template
-     cannot hold, write or refresh the Q&A; if they now fit a required section, delete the heading.
+     cannot hold, write or refresh the Q&A; first move questions that fit required sections there
+     (technical questions → Key techniques). Drop the heading only if no questions remain.
      If there are none, record `no leftover Q&A` in the change summary instead of omitting silently
      (schema §2); a later conversation is itself a reason to re-open.
-    **How it works**: if the page has `flows/<stem>.json`, re-check every `code` value against the
+   **Quick start / 快速上手**: write the developer's install/configure/call path and the division
+   of work, not an account of internals. If the page has `flows/<stem>.json`, re-check every `code` value against the
    refetched README/source (renamed commands, new install path, removed APIs) and fix the spec +
-   mechanism paragraph; then `python3 tools/flow_card.py <page>`. If the page lacks the section,
+   usage paragraph; then `python3 tools/flow_card.py <page>`. If the page lacks the section,
    add it per `tools/schema.md` while you have the sources open.
-7. **Update `upstream` and bump `last_verified` to today.** Only after actually re-checking — never
+6a. **Manually migrate to v2 before bumping.** When the intended new UTC `last_verified` is
+    `2026-10-13` or later (`OSS_ATLAS_SECTIONS_V2_FROM` overrides), hand-move the sections into When to use → When NOT →
+    Comparison → optional Q&A → Quick start → Key techniques → type-adaptive extras → Health →
+    Caveats. When migrating an old v1 page, rename `How it works` / `怎么用起来` to
+    `Quick start` / `快速上手` and rewrite it as developer usage. Untouched v1 pages keep the old title.
+    Research and write non-empty,
+    source-backed `Key techniques` / `技术要点` in both siblings, including skill-pack; do not invent
+    prose or delete an unresearched marker alone. Re-open Q&A after moving questions to their fixed
+    sections, place remaining Q&A between Comparison and Quick start (or Key techniques if Quick start
+    is absent), or record `no leftover Q&A`. Keep the generated flow block byte-identical when only
+    renaming/moving it. No automatic reorder tool. FLOW cutoff and force flag still apply independently.
+7. **Update `upstream` and bump `last_verified` to UTC today.** Only after actually re-checking and
+    completing 6a — including on unchanged upstream — never
    bump blindly.
    If the page is a **first-pass intake stub** (`quality_scan.py` reports it as `intake-stub-page`;
    its `When to use` describes picking software in general and Dependencies / Ops difficulty say

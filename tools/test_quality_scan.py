@@ -5,6 +5,8 @@ import sys
 import subprocess
 import tempfile
 import unittest
+import re
+from fractions import Fraction
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -13,6 +15,19 @@ import quality_scan
 
 
 ZERO_SHA = "0000000000000000000000000000000000000000"
+
+# FINAL_REVIEW_B synthetic input, not a factual description of Bella Domify.
+LINK_NOISE_REGRESSION = (
+    "它不靠版面模型猜结构，而是先用 PyMuPDF 取出每个字符的坐标与字号，再按行距和缩进把字符聚成段落；"
+    "表格单独走一条路：先找横竖线围出的格子，再把落在格子里的文字归位，没有线的表格只能退回按列对齐猜测，所以无框表常被拆散。"
+    "标题层级不是读目录，而是按字号从大到小排名后映射到一到六级，字号相同就看是否加粗，这一步在扫描件上完全失效，因为扫描件没有文字层。"
+    "见 [layout.py](https://github.com/acme/domify/blob/main/domify/layout.py#L40) 与 "
+    "[table.py](https://github.com/acme/domify/blob/main/domify/table.py#L12)。"
+)
+# Frozen pure-agentic.zh technical section at 52128061: self-contained regression twin.
+LINK_NOISE_TWIN = """- **将复用规则与项目上下文预算分开。** [scripts/context-check.sh:71–103](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L71-L103) 统计标记项目上下文块以外的行数，脚本其它部分执行角色与上下文 80 行、规格 50 行预算。它让复用骨架短小，但排除块仍能变大；行数不衡量相关性或真实模型词元。
+- **检查存储结构，但明确依赖缺口。** [scripts/context-check.sh:167–243](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L167-L243) 解析 YAML 意图与知识块，应用 JSON Schema 校验器并汇集文件级错误。缺 Python 包会跳过校验，缺 schema 文件会返回空 schema；退出 0 不能解释为所有 schema 或门都查过。
+- **对规格点名文件检测漂移。** [scripts/freshness-check.sh:32–104](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/freshness-check.sh#L32-L104) 从 UNIFY 知识块读 base SHA、找规格、提取 Impact Zones，并将这些路径与当前 HEAD 比较。它能发现规划后的已提交改动；解析不到影响文件只警告并退出 0，比较也不查未暂存编辑或证明语义仍新鲜。"""
 
 
 def write_page(root: Path, rel: str, body: str, *, sha: str = "0123456789abcdef0123456789abcdef01234567") -> Path:
@@ -118,6 +133,406 @@ def run_quality_scan_cli(root: Path, *args: str) -> subprocess.CompletedProcess[
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
     )
+
+
+class KeyTechniquesTest(unittest.TestCase):
+    def test_conservative_title_escape_cannot_skip_line_breaks(self) -> None:
+        # Multiline titles are deliberately unsupported here: retaining raw prose is conservative.
+        for visible in ("visible prose", "可见正文（备注）"):
+            for newline in ("\n", "\r", "\r\n"):
+                raw = '[src](https://x/a.py "outer\\' + newline + visible + '")'
+                expected = '[src]( "outer\\' + newline + visible + '")'
+                with self.subTest(visible=visible, newline=repr(newline)):
+                    self.assertEqual(quality_scan.technique_prose(raw), expected)
+
+    def test_unescaped_angle_opener_keeps_literal_destination_prose(self) -> None:
+        for visible in ("visible prose", "可见正文（备注）"):
+            raw = "[src](<https://x/<" + visible + ">)"
+            expected = "[src](<<" + visible + ">)"
+            with self.subTest(visible=visible):
+                self.assertEqual(quality_scan.technique_prose(raw), expected)
+
+    def test_unescaped_nested_parentheses_keep_literal_title_prose(self) -> None:
+        for visible in ("visible prose", "可见正文（备注）"):
+            raw = "[src](https://x/a.py (outer (" + visible + ")))"
+            expected = "[src]( (outer (" + visible + ")))"
+            with self.subTest(visible=visible):
+                self.assertEqual(quality_scan.technique_prose(raw), expected)
+
+    def test_blank_line_in_title_keeps_literal_prose(self) -> None:
+        for visible in ("visible prose", "可见正文（备注）"):
+            raw = '[src](https://x/a.py "outer\n\n' + visible + '")'
+            expected = '[src]( "outer\n\n' + visible + '")'
+            with self.subTest(visible=visible):
+                self.assertEqual(quality_scan.technique_prose(raw), expected)
+
+    def test_bare_destinations_reject_ascii_controls(self) -> None:
+        for control in ("\x01", "\x07", "\x7f"):
+            for visible in ("visible_prose", "可见正文（备注）"):
+                raw = "[src](https://x/a" + control + visible + ")"
+                expected = "[src](" + control + visible + ")"
+                with self.subTest(control=repr(control), visible=visible):
+                    self.assertEqual(quality_scan.technique_prose(raw), expected)
+
+    def test_nonpunctuation_escape_cannot_hide_bare_whitespace(self) -> None:
+        for whitespace in (" ", "\t"):
+            for visible in ("visible prose", "可见正文（备注）"):
+                escaped = visible.replace(" ", "\\ ")
+                raw = "[src](https://x/a\\" + whitespace + escaped + ")"
+                expected = "[src](\\" + whitespace + escaped + ")"
+                with self.subTest(whitespace=repr(whitespace), visible=visible):
+                    self.assertEqual(quality_scan.technique_prose(raw), expected)
+
+    def test_legitimate_separated_titles_keep_existing_label_policy(self) -> None:
+        for label in ("src", "来源"):
+            for destination, separator, tooltip in (
+                ("<https://x/a>", " ", '"tip"'),
+                ("<https://x/a>", "\t", "'tip'"),
+                ("https://x/a", " ", "(tip)"),
+                (r"https://x/a\(b\)", " ", r'"tip \"quoted\""'),
+            ):
+                with self.subTest(label=label, tooltip=tooltip):
+                    self.assertEqual(quality_scan.technique_prose(f"[{label}]({destination}{separator}{tooltip})"), label)
+
+    def test_titles_without_destination_separator_remain_visible(self) -> None:
+        for visible in ("visible prose", "可见正文（备注）"):
+            for left, right in (("\"", "\""), ("'", "'"), ("(", ")")):
+                raw = "[src](<https://x/a>" + left + visible + right + ")"
+                expected = "[src](" + left + visible + right + ")"
+                with self.subTest(visible=visible, delimiter=left):
+                    self.assertEqual(quality_scan.technique_prose(raw), expected)
+
+    def test_copied_prose_without_title_separator_is_gated(self) -> None:
+        for title, suffix, first, other in self.cases():
+            for left, right in (("\"", "\""), ("'", "'"), ("(", ")")):
+                wrapper = "[src](<https://x/a.py>" + left + first + right + ")"
+                visible = other + "[src](" + left + first + right + ")"
+                flat = re.sub(r"\W+", " ", visible.lower()).strip()
+                copied = re.sub(r"\W+", " ", first.lower()).strip()
+                padding = "x" * (-flat.index(copied) % quality_scan.SHINGLE_STEP)
+                with self.subTest(title=title, delimiter=left), tempfile.TemporaryDirectory() as td:
+                    root = Path(td)
+                    self.technique_pair(root, title, suffix, (first, padding + other + wrapper), fresh=True)
+                    result = quality_scan.scan(root)
+                    self.assertEqual(len([f for f in result.findings if f.category == "duplicated-section-prose-reverified"]), 2)
+
+    def test_angle_destinations_never_escape_line_endings(self) -> None:
+        for visible in ("visible prose (note)", "可见正文（备注）"):
+            for newline in ("\n", "\r", "\r\n"):
+                raw = "[src](<https://x/a" + "\\" + newline + visible + ">)"
+                expected = "[src](<\\" + newline + visible + ">)"
+                with self.subTest(newline=repr(newline), visible=visible):
+                    self.assertEqual(quality_scan.technique_prose(raw), expected)
+
+    def test_copied_prose_after_escaped_angle_newline_is_gated(self) -> None:
+        for title, suffix, first, other in self.cases():
+            for newline in ("\n", "\r", "\r\n"):
+                uri = "https://x/a.py"
+                wrapper = "[src](<" + uri + "\\" + newline + first + ">)"
+                visible = other + "[src](<\\" + newline + first + ">)"
+                flat = re.sub(r"\W+", " ", visible.lower()).strip()
+                copied = re.sub(r"\W+", " ", first.lower()).strip()
+                padding = "x" * (-flat.index(copied) % quality_scan.SHINGLE_STEP)
+                with self.subTest(title=title, newline=repr(newline)), tempfile.TemporaryDirectory() as td:
+                    root = Path(td)
+                    self.technique_pair(root, title, suffix, (first, padding + other + wrapper), fresh=True)
+                    result = quality_scan.scan(root)
+                    self.assertEqual(len([f for f in result.findings if f.category == "duplicated-section-prose-reverified"]), 2)
+
+    def test_parenthesized_link_targets_are_fully_removed(self) -> None:
+        for raw, expected in (
+            ("Keep [cursor](https://example.org/a(b(c))d), done (ordinary text).", "Keep cursor, done (ordinary text)."),
+            ("先看[游标](https://example.org/a(b(c))d)，再保留（普通正文）。", "先看游标，再保留（普通正文）。"),
+        ):
+            with self.subTest(raw=raw):
+                self.assertEqual(quality_scan.technique_prose(raw), expected)
+
+    def test_bare_parenthesized_urls_keep_sentence_parentheses(self) -> None:
+        for raw, expected in (
+            ("See https://example.org/a(b)c, next (ordinary text).", "See , next (ordinary text)."),
+            ("(see https://example.org/a(b(c))d) keep (ordinary text).", "(see ) keep (ordinary text)."),
+            ("（见https://example.org/a(b)c）保留正文。", "（见）保留正文。"),
+        ):
+            with self.subTest(raw=raw):
+                self.assertEqual(quality_scan.technique_prose(raw), expected)
+
+    def test_malformed_links_keep_visible_prose(self) -> None:
+        for raw, expected in (
+            ("[src](https://x/a.py <visible paragraph (note)>)", "[src]( <visible paragraph (note)>)"),
+            ("[open](https://x/a.py\nvisible paragraph (note) tail", "[open](\nvisible paragraph (note) tail"),
+            ("[来源](https://x/a.py <必须保留的正文（备注）>)", "[来源]( <必须保留的正文（备注）>)"),
+            ("[未闭合](https://x/a.py\n必须保留的正文 (备注) 后文", "[未闭合](\n必须保留的正文 (备注) 后文"),
+        ):
+            with self.subTest(raw=raw):
+                self.assertEqual(quality_scan.technique_prose(raw), expected)
+
+    def test_copied_prose_inside_malformed_links_remains_gated(self) -> None:
+        for title, suffix, first, other in self.cases():
+            for malformed in (f"See [src](https://github.com/o/r/blob/main/a.py <{first}>)",
+                              f"Typo [b.py](https://github.com/o/r/blob/main/b.py\n{first} (end)"):
+                with self.subTest(title=title, malformed=malformed[:40]), tempfile.TemporaryDirectory() as td:
+                    root = Path(td)
+                    uri = "https://github.com/o/r/blob/main/" + ("a.py" if malformed.startswith("See") else "b.py")
+                    visible = other + malformed.replace(uri, "")
+                    flat = re.sub(r"\W+", " ", visible.lower()).strip()
+                    copied = re.sub(r"\W+", " ", first.lower()).strip()
+                    # The unchanged sampler visits every third start; align this positive fixture.
+                    padding = "x" * (-flat.index(copied) % quality_scan.SHINGLE_STEP)
+                    second = padding + other + malformed
+                    self.assertEqual(quality_scan.technique_prose(second), padding + visible)
+                    self.technique_pair(root, title, suffix, (first, second), fresh=True)
+                    result = run_quality_scan_cli(root, "--fail-on-gated")
+                    self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+
+    def test_code_literals_keep_non_url_parameters(self) -> None:
+        for raw, expected in (
+            ('`cache[key](fallback)` and `f[x](durable_cursor="checkpoint", retry_policy="bounded")`',
+             '`cache[key](fallback)` and `f[x](durable_cursor="checkpoint", retry_policy="bounded")`'),
+            ('``[src](https://example.org/a(b)c)`` then `cache[key](fallback)`',
+             '``[src]()`` then `cache[key](fallback)`'),
+        ):
+            with self.subTest(raw=raw):
+                self.assertEqual(quality_scan.technique_prose(raw), expected)
+
+    def test_escaped_link_openers_keep_literal_parentheses(self) -> None:
+        for raw in (r"keep \[cursor](fallback(note)) and (ordinary text)", r"保留\[游标](fallback(note)) 与（普通正文）"):
+            with self.subTest(raw=raw):
+                self.assertEqual(quality_scan.technique_prose(raw), raw)
+
+    def test_parenthesized_citations_do_not_make_original_prose_duplicate(self) -> None:
+        first = LINK_NOISE_REGRESSION.split("见 [layout.py]")[0]
+        second = "甲" + self.cases()[1][3][:200]
+        target = "https://example.org/reference(foo)/distributed-cursor-checkpoint-recovery-and-leases"
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            self.technique_pair(root, "技术要点", ".zh.md", (first + f"见 [来源]({target})。", second + f"见 [来源]({target})。"), fresh=True)
+            result = quality_scan.scan(root)
+            self.assertEqual([f for f in result.findings if f.category.startswith("duplicated-section-prose")], [])
+
+    def test_scan_removes_link_noise_before_comparing_both_sides(self) -> None:
+        for title, suffix, first, other in self.cases():
+            citations = " ".join(f"[{{label}}](https://github.com/acme/research/blob/0123456789abcdef/source/dispatch-{i}.py#L120-L240)" for i in range(4))
+            # Equal-width, different labels keep the raw shared URLs in the same sampling phase.
+            bodies = (citations.format(label="scheduler") + " " + first[:200], citations.format(label="fontglyph") + " " + other[:200])
+            raw_grams = [quality_scan.shingles(body) for body in bodies]
+            raw_ratio = len(raw_grams[0] & raw_grams[1]) / len(raw_grams[0])
+            self.assertGreaterEqual(raw_ratio, quality_scan.DUP_SECTIONS[title])
+            with self.subTest(title=title), tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                pages = self.technique_pair(root, title, suffix, bodies, fresh=True)
+                result = quality_scan.scan(root, scope_paths=[pages[0]])
+                self.assertEqual([f for f in result.findings if f.category.startswith("duplicated-section-prose")], [])
+
+    def test_scoped_copy_requires_normalizing_the_unscanned_twin(self) -> None:
+        for title, suffix, first, _ in self.cases():
+            visible = "citation " + first[:200]
+            source = quality_scan.shingles(visible)
+            # The raw twin deliberately has a different sampling phase; the visible copy does not.
+            candidates = [f"[citation](https://example.org/{'z' * length}) " + first[:200] for length in (90, 91, 92)]
+            raw = next((candidate for candidate in candidates if len(source & quality_scan.shingles(candidate)) / len(source) < quality_scan.DUP_SECTIONS[title]), None)
+            self.assertIsNotNone(raw)
+            with self.subTest(title=title), tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                pages = self.technique_pair(root, title, suffix, (visible, raw), fresh=True)
+                result = quality_scan.scan(root, scope_paths=[pages[0]])
+                self.assertEqual(len([f for f in result.findings if f.category == "duplicated-section-prose-reverified"]), 1)
+
+    def test_calibrated_thresholds_use_minimal_grid_with_margin(self) -> None:
+        # Independently measured from the frozen 21-pair corpus at 52128061, after URL removal.
+        for title, maximum in (("Key techniques", Fraction(3, 82)), ("技术要点", Fraction(1, 21))):
+            with self.subTest(title=title):
+                threshold = Fraction(str(quality_scan.DUP_SECTIONS[title]))
+                self.assertGreaterEqual(threshold, maximum + Fraction(1, 10))
+                self.assertLess(threshold - Fraction(1, 20), maximum + Fraction(1, 10))
+                self.assertEqual((threshold * 20).denominator, 1)
+
+    def test_inline_links_preserve_labels_in_both_languages(self) -> None:
+        for raw, expected in (
+            ("Keep [cursor](https://example.org/src.py#L40) and [lease](http://example.net/t.py?x=1&y=2). "
+             "Keep the nearby words.", "Keep cursor and lease. Keep the nearby words."),
+            ("先看[游标](https://example.org/src.py#L40)，再看[租约](http://example.net/t.py?x=1&y=2)。", "先看游标，再看租约。"),
+        ):
+            with self.subTest(raw=raw):
+                self.assertEqual(quality_scan.technique_prose(raw), expected)
+
+    def test_autolinks_removed_in_both_languages(self) -> None:
+        for raw, expected in (
+            ("See <https://example.org/a#part>, then <http://example.net/b>.", "See , then ."),
+            ("见<https://example.org/a#part>；再看<http://example.net/b>。", "见；再看。"),
+        ):
+            with self.subTest(raw=raw):
+                self.assertEqual(quality_scan.technique_prose(raw), expected)
+
+    def test_bare_urls_preserve_adjacent_prose_in_both_languages(self) -> None:
+        for raw, expected in (
+            ("See http://example.net/b#L1,continue safely;https://example.org/a?x=1&y=2. End!", "See ,continue safely;. End!"),
+            ("裸链https://example.net/b#L1之后保留中文。再看http://example.org/a?x=1&y=2；结束！", "裸链之后保留中文。再看；结束！"),
+        ):
+            with self.subTest(raw=raw):
+                self.assertEqual(quality_scan.technique_prose(raw), expected)
+
+    def test_original_short_chinese_link_noise_is_not_duplicate(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            self.technique_pair(root, "技术要点", ".zh.md", (LINK_NOISE_REGRESSION, LINK_NOISE_TWIN), fresh=True)
+            result = quality_scan.scan(root)
+            self.assertEqual([f for f in result.findings if f.category.startswith("duplicated-section-prose")], [])
+
+    def test_regression_normalized_shingles_are_prose_only(self) -> None:
+        expected = (
+            "它不靠版面模型猜结构，而是先用 PyMuPDF 取出每个字符的坐标与字号，再按行距和缩进把字符聚成段落；"
+            "表格单独走一条路：先找横竖线围出的格子，再把落在格子里的文字归位，没有线的表格只能退回按列对齐猜测，所以无框表常被拆散。"
+            "标题层级不是读目录，而是按字号从大到小排名后映射到一到六级，字号相同就看是否加粗，这一步在扫描件上完全失效，因为扫描件没有文字层。"
+            "见 layout.py 与 table.py。"
+        )
+        self.assertEqual(quality_scan.shingles(quality_scan.technique_prose(LINK_NOISE_REGRESSION)), quality_scan.shingles(expected))
+
+    def test_copied_labels_with_different_targets_remain_gated(self) -> None:
+        for title, suffix, first, _ in self.cases():
+            with self.subTest(title=title), tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                bodies = (f"[{first}](https://example.org/a#L1)", f"[{first}](http://elsewhere.net/b#L2)")
+                pages = self.technique_pair(root, title, suffix, bodies, fresh=True)
+                result = quality_scan.scan(root, scope_paths=[pages[0]])
+                duplicates = [f for f in result.findings if f.category == "duplicated-section-prose-reverified"]
+                self.assertEqual([f.path for f in duplicates], [pages[0].relative_to(root).as_posix()])
+                self.assertIn(pages[1].relative_to(root).as_posix(), duplicates[0].message)
+
+    def test_linked_copies_cli_fresh_and_old_in_both_languages(self) -> None:
+        for title, suffix, first, _ in self.cases():
+            for fresh, expected_code, category in ((True, 1, "duplicated-section-prose-reverified"), (False, 0, "duplicated-section-prose")):
+                with self.subTest(title=title, fresh=fresh), tempfile.TemporaryDirectory() as td:
+                    root = Path(td)
+                    self.technique_pair(root, title, suffix, (f"[{first}](https://example.org/a)", f"[{first}](https://other.org/b)"), fresh=fresh)
+                    result = run_quality_scan_cli(root, "--fail-on-gated")
+                    self.assertEqual(result.returncode, expected_code, result.stdout + result.stderr)
+                    self.assertIn(f"`{category}`", result.stdout)
+
+    def test_original_length_gate_precedes_link_removal(self) -> None:
+        for title, suffix, _, _ in self.cases():
+            with self.subTest(title=title), tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                body = f"[{'c' * 110}](https://example.org/a/very/long/target)"
+                self.technique_pair(root, title, suffix, (body, body), fresh=True)
+                result = quality_scan.scan(root)
+                self.assertEqual(len([f for f in result.findings if f.category == "duplicated-section-prose-reverified"]), 2)
+
+    def test_nontechnical_sections_keep_link_targets(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            target = "https://example.org/" + "durable-shared-source-cursor-retry-boundary/" * 20
+            self.technique_pair(root, "When to use", ".md", ("c" * 150 + f" [source]({target})", "f" * 150 + f" [source]({target})"), fresh=True)
+            result = quality_scan.scan(root)
+            self.assertEqual(len([f for f in result.findings if f.category == "duplicated-section-prose-reverified"]), 2)
+
+    def test_malformed_link_inputs_are_bounded(self) -> None:
+        # No fuzz framework in this repo: truncated, mismatched, repeated and invalid-byte seeds.
+        for raw in ("[open](https://example.org/a", '[x]("https://example.org/a)>',
+                    "[x](https://example.org/a)" * 1000, b"\xffhttps://example.org/a\xfe".decode("utf-8", "replace")):
+            with self.subTest(raw=raw[:40]):
+                self.assertLessEqual(len(quality_scan.technique_prose(raw)), len(raw))
+
+    def test_fresh_identical_techniques_are_gated_in_both_languages(self) -> None:
+        for suffix, title, body in (
+            (".md", "Key techniques", "The event dispatcher records a durable cursor before releasing the worker. Separate leases constrain retries and each consumer validates its own acknowledgment boundary. " * 4),
+            (".zh.md", "技术要点", "事件调度器先保存持久游标，再释放工作线程。独立租约约束重试，各消费端检查自己的确认边界。重启恢复依赖游标记录，不把接收成功当作所有操作已经执行。" * 4),
+        ):
+            with self.subTest(title=title), tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                self.technique_pair(root, title, suffix, (body, body), fresh=True)
+                result = quality_scan.scan(root)
+                duplicates = [finding for finding in result.findings if finding.category == "duplicated-section-prose-reverified"]
+                self.assertEqual(len(duplicates), 2)
+                self.assertTrue(all(f"`{title}`" in finding.message for finding in duplicates))
+
+    def technique_pair(self, root: Path, title: str, suffix: str, bodies: tuple[str, str], *, fresh: bool = False) -> list[Path]:
+        pages = []
+        for slug, body in zip(("first", "second"), bodies):
+            page = write_page(root, f"categories/demo/{slug}{suffix}", f"## {title}\n\n{body}\n")
+            if fresh:
+                page.write_text(page.read_text().replace("last_verified: 2026-07-04", "last_verified: 2026-10-14"))
+            pages.append(page)
+        return pages
+
+    def cases(self) -> tuple[tuple[str, str, str, str], ...]:
+        return (
+            ("Key techniques", ".md",
+             "Astronomical catalog alignment projects stellar coordinates onto a calibrated celestial sphere. Observatory clocks anchor the exposure timestamps; orbital ephemerides compensate apparent motion before linking detections. " * 4,
+             "Font shaping traverses Unicode grapheme clusters and selects glyph substitutions from typographic tables. Kerning adjusts adjacent outlines while rasterization fills pixel coverage. Ligature boundaries preserve the original cursor positions. " * 4),
+            ("技术要点", ".zh.md",
+             "天文观测先校准恒星坐标，再投影到球面星图。观测站时钟记录曝光时间，轨道星历补偿视运动，最后关联不同夜晚的探测结果。云层遮挡会减少可用观测，不能补出没有收到的光子。" * 4,
+             "字体排版先拆分字符簇，再查字形替换表。相邻轮廓通过字距调整，栅格化计算像素覆盖，连字仍保留原始光标位置。缺少目标字体时必须回退，不能把替代字形当作原始设计。" * 4),
+        )
+
+    def test_different_techniques_are_not_reported_in_both_languages(self) -> None:
+        for title, suffix, first, second in self.cases():
+            with self.subTest(title=title), tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                self.technique_pair(root, title, suffix, (first, second), fresh=True)
+                result = quality_scan.scan(root)
+                self.assertFalse([f for f in result.findings if f.category.startswith("duplicated-section-prose")])
+
+    def test_old_near_duplicate_is_report_only_in_both_languages(self) -> None:
+        for title, suffix, first, second in self.cases():
+            with self.subTest(title=title), tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                self.technique_pair(root, title, suffix, (first, first + second[:80]))
+                result = quality_scan.scan(root)
+                duplicates = [f for f in result.findings if f.category.startswith("duplicated-section-prose")]
+                self.assertEqual(len(duplicates), 2)
+                self.assertEqual({f.category for f in duplicates}, {"duplicated-section-prose"})
+
+    def test_scoped_technique_scan_finds_an_unscanned_twin(self) -> None:
+        for title, suffix, first, _ in self.cases():
+            with self.subTest(title=title), tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                pages = self.technique_pair(root, title, suffix, (first, first), fresh=True)
+                result = quality_scan.scan(root, scope_paths=[pages[0]])
+                duplicates = [f for f in result.findings if f.category == "duplicated-section-prose-reverified"]
+                self.assertEqual([f.path for f in duplicates], [pages[0].relative_to(root).as_posix()])
+                self.assertIn(pages[1].relative_to(root).as_posix(), duplicates[0].message)
+
+    def test_technique_minimum_length_boundary_is_unchanged(self) -> None:
+        for title, suffix, _, _ in self.cases():
+            for length, count in ((119, 0), (120, 2)):
+                with self.subTest(title=title, length=length), tempfile.TemporaryDirectory() as td:
+                    root = Path(td)
+                    self.technique_pair(root, title, suffix, ("c" * length, "c" * length), fresh=True)
+                    result = quality_scan.scan(root)
+                    self.assertEqual(len([f for f in result.findings if f.category == "duplicated-section-prose-reverified"]), count)
+
+    def test_real_cli_fresh_old_and_different_techniques(self) -> None:
+        for title, suffix, first, second in self.cases():
+            for scenario, fresh, bodies, exit_code, category in (
+                ("fresh", True, (first, first), 1, "duplicated-section-prose-reverified"),
+                ("old", False, (first, first), 0, "duplicated-section-prose"),
+                ("different", True, (first, second), 0, None),
+            ):
+                with self.subTest(title=title, scenario=scenario), tempfile.TemporaryDirectory() as td:
+                    root = Path(td)
+                    self.technique_pair(root, title, suffix, bodies, fresh=fresh)
+                    result = run_quality_scan_cli(root, "--fail-on-gated")
+                    self.assertEqual(result.returncode, exit_code, result.stdout + result.stderr)
+                    if category:
+                        self.assertIn(f"`{category}`", result.stdout)
+                        self.assertIn(f"`{title}`", result.stdout)
+                    else:
+                        self.assertNotIn("is 100% the same text", result.stdout)
+
+    def test_real_cli_threshold_scale_still_clamps_at_one(self) -> None:
+        import os
+        for title, suffix, first, second in self.cases():
+            with self.subTest(title=title), tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                pages = self.technique_pair(root, title, suffix, (first, first + second), fresh=True)
+                normal = run_quality_scan_cli(root, "--scope", str(pages[1]), "--fail-on-gated")
+                self.assertEqual(normal.returncode, 1, normal.stdout + normal.stderr)
+                scaled = subprocess.run(
+                    [sys.executable, str(Path(quality_scan.__file__).resolve()), "--root", str(root), "--scope", str(pages[1]), "--fail-on-gated"],
+                    env=dict(os.environ, OSS_ATLAS_DUP_THRESHOLD_SCALE="20"), text=True, capture_output=True,
+                )
+                self.assertEqual(scaled.returncode, 0, scaled.stdout + scaled.stderr)
+                self.assertNotIn(f"`duplicated-section-prose-reverified`", scaled.stdout)
 
 
 class QualityScanTest(unittest.TestCase):

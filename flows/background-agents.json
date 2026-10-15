@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Open-Inspect does", "zh": "Open-Inspect 做的"},
+  "steps": [
+    {"lane": "you", "en": "Deploy the control plane and configure the GitHub App and sandbox credentials", "zh": "部署控制面，配置 GitHub App 和沙箱凭据", "code": "terraform apply"},
+    {"lane": "you", "en": "Create a team, grant repositories and add model credentials", "zh": "创建团队，授予仓库并添加模型凭据"},
+    {"lane": "you", "en": "Select the team and repository, then send a coding task in the web UI", "zh": "选择团队和仓库，在网页发送编程任务"},
+    {"lane": "them", "en": "Start the sandbox, check out repositories and dispatch the prompt", "zh": "启动沙箱、检出仓库并派发提示词", "component": {"en": "control plane", "zh": "控制面"}},
+    {"lane": "them", "en": "Stream the agent's progress to the shared session", "zh": "向共享会话推送助手的工作进度", "component": {"en": "session event stream", "zh": "会话事件流"}}
+  ],
+  "value": {"en": "Coding work continues in a shared cloud session after the requester leaves", "zh": "请求人离线后，编程工作仍在共享云会话继续"},
+  "sources": [
+    "https://github.com/ColeMurray/background-agents/blob/31d199996e4cc33fcc1f80c08785820db2f05537/docs/GETTING_STARTED.md",
+    "https://github.com/ColeMurray/background-agents/blob/31d199996e4cc33fcc1f80c08785820db2f05537/packages/control-plane/src/session/message-queue.ts",
+    "https://github.com/ColeMurray/background-agents/blob/31d199996e4cc33fcc1f80c08785820db2f05537/packages/control-plane/src/session/event-stream.ts"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "PoWFaucet does", "zh": "PoWFaucet 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the server; configure chain, funded wallet and mining policy", "zh": "安装服务，配置链、注资钱包与计算策略", "code": "faucet-config.yaml", "component": {"en": "faucet server", "zh": "水龙头服务"}},
+    {"lane": "them", "en": "Load configured modules and expose the recipient page", "zh": "加载配置模块，提供领取网页", "component": {"en": "module loader / web server", "zh": "模块加载器与网页服务"}},
+    {"lane": "you", "en": "Have a recipient enter an address and complete browser mining", "zh": "让领取者填地址并完成浏览器计算"},
+    {"lane": "them", "en": "Release the mining block so the session can proceed", "zh": "解除计算阻塞，让会话继续", "component": {"en": "PoW module", "zh": "计算模块"}},
+    {"lane": "you", "en": "Have the recipient claim the qualified reward", "zh": "让领取者申领已取得资格的奖励"},
+    {"lane": "them", "en": "Check claim state and limits, then queue a funded-wallet transfer", "zh": "检查领取状态与额度，排队从注资钱包转账", "component": {"en": "claim manager", "zh": "领取管理器"}}
+  ],
+  "value": {"en": "Qualified recipients reach a controlled payout queue, not an unrestricted address form", "zh": "合格领取者进入受控转账队列，不再任意填地址领币"},
+  "sources": [
+    "https://github.com/pk910/PoWFaucet/blob/92b8f7ba01a8ba694269bb35c1848966a3a8a75d/README.md#L63-L69",
+    "https://github.com/pk910/PoWFaucet/blob/92b8f7ba01a8ba694269bb35c1848966a3a8a75d/src/config/FaucetConfig.ts#L52-L64",
+    "https://github.com/pk910/PoWFaucet/blob/92b8f7ba01a8ba694269bb35c1848966a3a8a75d/src/app.ts#L56-L71",
+    "https://github.com/pk910/PoWFaucet/blob/92b8f7ba01a8ba694269bb35c1848966a3a8a75d/src/modules/pow/PoWModule.ts#L142-L187",
+    "https://github.com/pk910/PoWFaucet/blob/92b8f7ba01a8ba694269bb35c1848966a3a8a75d/src/eth/EthClaimManager.ts#L187-L231"
+  ]
+}

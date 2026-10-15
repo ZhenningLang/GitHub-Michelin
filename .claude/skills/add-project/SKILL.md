@@ -78,8 +78,11 @@ Author one conformant selection page. The contract is `tools/schema.md`; read it
      `type` decides which H2 sections are required (§2 table). Each file is monolingual.
    - **When to use** — the trigger scenario that defines the choice against substitutes (§2
      `"When to use" is the trigger scenario`).
-   - **How it works** — the mechanism paragraph only (§2 `"How it works" is the backbone user
-     story`); its flow card is generated in step 5.
+   - **Quick start / 快速上手** — developer usage: verified install/configure/call path and
+     your responsibilities vs the project's work (§2); its backbone flow card is generated in step 5.
+   - **Key techniques / 技术要点** — required, non-empty for every v2 type: read the source
+     paths that implement the project's distinguishing techniques, explain each and its limits.
+     Internals belong here, not in Quick start. Keep both siblings aligned.
    - **When NOT to use** — the strongest section; each anti-pattern names a substitute (§2
      `"When NOT to use" names substitutes`).
    - **Comparison** — 3–5 real substitutes; status per §2 `Status vocabulary` — `未收录` means a
@@ -95,8 +98,9 @@ Author one conformant selection page. The contract is `tools/schema.md`; read it
      `未收录` with the reason in the tradeoff cell and in the commit/PR summary. The obligation
      covers the 3–5 named direct substitutes, not transitive alternatives-of-alternatives.
     - **Health & viability** — required for all types; dated, labeled judgment per §7.
-    - **Q&A / 快问快答** — a required decision, an optional section (schema §2). After When to use,
-      before How it works. Harvest the human's actual questions that the template has no slot for,
+    - **Q&A / 快问快答** — a required decision, an optional section (schema §2). After Comparison,
+      before Quick start (or Key techniques if Quick start is absent). Move questions with a required
+      section home there first; harvest the human's actual questions that the template has no slot for,
       and short versions of the agent's answers. Not a transcript, and never padding. If the
       reading conversation produced none, that is a valid outcome — but **say so** (`no leftover
       Q&A`) in the commit/PR summary; silently dropping the section is the failure this rule
@@ -105,10 +109,15 @@ Author one conformant selection page. The contract is `tools/schema.md`; read it
       everything unverified gets a ledger bullet.
    - **Chinese punctuation** in `.zh.md` (§6) — fullwidth next to 汉字; lint ERRORs on violations.
    Model the negative-space writing on the golden examples listed in §2.
+   New pages use v2: When to use → When NOT → Comparison → optional Q&A → Quick start →
+   Key techniques → type-adaptive extras → Health → Caveats. `last_verified >= 2026-10-13`
+   selects v2 (`OSS_ATLAS_SECTIONS_V2_FROM` overrides); H2s must be known, unique and ordered.
+   FLOW still governs Quick start independently. v1 compatibility applies only to untouched older
+   pages: their old order and `How it works` / `怎么用起来` remain until re-verification.
 
-5. **Backbone flow card (generated — do not hand-draw).** The `How it works` section's diagram is
-   rendered from a spec; the contract is `tools/schema.md` §2 `"How it works" is the backbone user
-   story`. Author it while the sources from step 2 are still open:
+5. **Backbone flow card (generated — do not hand-draw).** The `Quick start` section's diagram is
+   rendered from a spec; the contract is `tools/schema.md` §2 developer usage and backbone user story.
+   Author it while the sources from step 2 are still open:
    - **Find the backbone in the sources, don't invent it.** The path is usually spelled out by the
      README quick start plus a real sample (`examples/`, `samples/`, `demo/`, the integration test,
      or the docs "getting started"). Keep the shortest path by which a developer gets the core
@@ -122,14 +131,14 @@ Author one conformant selection page. The contract is `tools/schema.md`; read it
      a handoff. `code` is what the user types or writes, never an internal function/class name.
      **One backbone, not two paths**: a project enterable two ways (run-the-demo vs wire-it-in, a
      customer surface vs an operator surface) still gets one card — keep the path to the core value,
-     move the other into the mechanism paragraph. **`phase`** (optional, ≤3, first step labeled) may
+     move the other into the usage paragraph. **`phase`** (optional, ≤3, first step labeled) may
      label real lifecycle stages ("Build" then "Every turn"; write then recall) when the card would
      otherwise hide that boundary; it is a label, not a branch.
    - **Every `code` value must appear verbatim in a source you actually read.** If you cannot find
      the command/annotation/API, write the step generically ("call its query API") — an invented
      command inside a diagram reads as authoritative and is worse than no command.
    - Render + wire: `python3 tools/flow_card.py categories/<category>/<slug>.md` (does both
-     siblings). Embed the card in each page inside `How it works`, right after the mechanism
+     siblings). Embed the card in each page inside `Quick start`, right after the usage
      paragraph: `![<slug> — backbone user story](../../assets/flow/<slug>.svg)` (EN) /
      `![<slug> — 主干用户故事](../../assets/flow/<slug>.zh.svg)` (ZH), then re-run the command so it
      writes the generated text twin under the card. Never hand-edit that block.

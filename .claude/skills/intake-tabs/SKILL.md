@@ -56,10 +56,16 @@ here. Deterministic parts live in `tools/tab_intake.py`; read its docstring once
        indexed alternative must be linked, not marked `未收录` (the gate fails).
      - *Batch siblings.* Never mark another repo **in this ledger** as `未收录`: it will be indexed
        before the batch merges and the gate will fail. Mention it in prose instead.
-     - *Q&A.* There is no reading conversation, so omit the section and write `no leftover Q&A` in
-       the commit message.
+     - *Q&A.* Decide explicitly: with no reading conversation and no leftover questions, omit the
+       section and write `no leftover Q&A` in the commit message. If a later conversation adds
+       questions, re-open the decision; move questions with a fixed-section home there first.
+       In v2 remaining Q&A follows Comparison, before Quick start (or Key techniques if absent).
+     - *v2.* New/re-verified pages use Quick start / 快速上手 for developer usage and Key techniques /
+       技术要点 for source-backed implementation, in schema §2 order. `last_verified >= 2026-10-13`
+       selects v2 (`OSS_ATLAS_SECTIONS_V2_FROM` overrides); sync-entry must manually migrate before
+       any date bump. Health-only unchanged-upstream sync retains the old date and structure.
    - `make gates` green → one commit per repo (`add(<owner/repo>): …` / `sync(<owner/repo>): …`,
-     body `Tab intake <date>. no leftover Q&A.`) → `set <repo> done --page <path>` →
+     body `Tab intake <date>.` plus the actual Q&A decision, `no leftover Q&A` when none remains) → `set <repo> done --page <path>` →
      `close --ledger … <repo>` (closes every tab of that repo, any subpath, case-insensitive).
    - Gates red after two real fix attempts → `set <repo> failed --note "<error>"`, tab stays,
      move on. Lint fanout WARN → a separate `refactor-index` commit, not inside the repo's commit.
