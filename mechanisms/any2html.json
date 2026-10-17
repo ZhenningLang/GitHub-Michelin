@@ -1,0 +1,28 @@
+{
+  "schema":1,
+  "direction":"down",
+  "nodes":[
+    {"id":"material","en":"Article facts and figures","zh":"文章事实与数字","kind":"input"},
+    {"id":"outline","en":"Prompt: preserve facts in a fixed outline","zh":"提示：按固定大纲保留事实","technique":[1]},
+    {"id":"capacity","en":"Canvas choice + module-count estimate","zh":"画布选择＋模块数量估算","technique":[2]},
+    {"id":"review","en":"Prompt: wait for outline confirmation","zh":"提示：等待大纲确认","kind":"external","technique":[1]},
+    {"id":"skeleton","en":"HTML skeleton: fonts, palette, flex, sizes","zh":"HTML 骨架：字体、配色、弹性布局、尺寸","technique":[3]},
+    {"id":"remote","en":"Remote Tailwind and Google Fonts","zh":"远端 Tailwind 与 Google Fonts","kind":"external","technique":[3]},
+    {"id":"conflict","en":"ECharts required AND forbidden: unresolved","zh":"ECharts 既要求又禁止：待解决","kind":"external","technique":[3]},
+    {"id":"visible","en":"Rendered card still needs clipping/spacing review","zh":"渲染卡片仍须检查裁切与间距","kind":"output","technique":[2,3]}
+  ],
+  "edges":[
+    {"from":"material","to":"outline"},
+    {"from":"outline","to":"capacity"},
+    {"from":"capacity","to":"review"},
+    {"from":"review","to":"skeleton","en":"prompt, not a hard gate","zh":"提示要求，非硬闸门"},
+    {"from":"remote","to":"skeleton","en":"network resources","zh":"联网资源"},
+    {"from":"conflict","to":"skeleton","style":"dashed","en":"resolve chart policy","zh":"显式裁决图表规则"},
+    {"from":"skeleton","to":"visible","en":"overflow may be hidden","zh":"溢出可能被隐藏"}
+  ],
+  "sources":[
+    "https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L17-L107",
+    "https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L131-L174",
+    "https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L240-L245"
+  ]
+}

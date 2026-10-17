@@ -7,7 +7,7 @@ tags: [html-cards, poster-layout, agent-skill, outline-review]
 language: Markdown
 license: NONE
 maturity: unversioned skill, last main commit 2026-04-26, 33 stars (as of 2026-10-13)
-last_verified: 2026-10-13
+last_verified: 2026-10-17
 type: skill-pack
 upstream:
   pushed_at: 2026-04-26T03:34:24Z
@@ -114,9 +114,52 @@ The [README installation section](https://github.com/blockpanda/any2html/blob/4a
 
 ## Key techniques
 
-- **Separate content approval from layout.** [`SKILL.md:40–84`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L40-L84) instructs the model to preserve figures, estimate modules/pages and output a fixed outline before stopping for confirmation. This makes omission review possible before design, but it is a prompt-level instruction, not an enforced execution gate.
-- **Plan around three explicit canvases.** [`SKILL.md:17–23`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L17-L23) distinguishes vertical multi-card, growing horizontal and fixed illustration layouts; [`SKILL.md:97–107`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L97-L107) prescribes page breaks and spacing. Model estimates are not pixel measurements, so manual rendering inspection remains necessary.
-- **Constrain output with a supplied HTML skeleton.** [`SKILL.md:131–174`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L131-L174) provides font, palette, flex layout and fixed dimensions, with remote Tailwind/fonts and hidden overflow. It reduces design choices but cannot certify visible content. The ECharts requirements at [`SKILL.md:91–96`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L91-L96) conflict with the prohibition at [`SKILL.md:240–245`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L240-L245).
+![any2html — mechanism diagram](../../assets/mechanism/any2html.svg)
+
+<!-- mechanism:begin (generated from mechanisms/any2html.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>Text version of the mechanism</summary>
+
+- Article facts and figures
+- Prompt: preserve facts in a fixed outline①
+- Canvas choice + module-count estimate②
+- Prompt: wait for outline confirmation①
+- HTML skeleton: fonts, palette, flex, sizes③
+- Remote Tailwind and Google Fonts③
+- ECharts required AND forbidden: unresolved③
+- Rendered card still needs clipping/spacing review②③
+
+- Article facts and figures → Prompt: preserve facts in a fixed outline①
+- Prompt: preserve facts in a fixed outline① → Canvas choice + module-count estimate②
+- Canvas choice + module-count estimate② → Prompt: wait for outline confirmation①
+- Prompt: wait for outline confirmation① → HTML skeleton: fonts, palette, flex, sizes③ (prompt, not a hard gate)
+- Remote Tailwind and Google Fonts③ → HTML skeleton: fonts, palette, flex, sizes③ (network resources)
+- ECharts required AND forbidden: unresolved③ → HTML skeleton: fonts, palette, flex, sizes③ (resolve chart policy) [optional/fallback]
+- HTML skeleton: fonts, palette, flex, sizes③ → Rendered card still needs clipping/spacing review②③ (overflow may be hidden)
+
+</details>
+<!-- mechanism:end -->
+
+### 1. Expose extracted facts before layout decisions
+
+- **Problem:** A one-shot poster prompt can discard important figures just to make the page fit.
+- **How:** The skill asks the model to preserve figures and units, estimate modules/pages, and fill a fixed outline containing content and chart plans. It instructs the model to stop for confirmation before writing HTML.
+- **Limits:** This creates a review opportunity, not an enforced execution gate; compliance depends on the agent following the prompt.
+- **Source:** [`SKILL.md:40–88`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L40-L88).
+
+### 2. Turn canvas choice into capacity and spacing rules
+
+- **Problem:** The same amount of text cannot fit equally well in a fixed illustration and a stack of portrait cards.
+- **How:** Portrait uses 1080×1440 cards with page breaks; horizontal uses width 1280 and growing height; illustration fixes 1280×720. Module-count estimates guide pagination, while explicit bottom gaps and whitespace remedies guide placement.
+- **Limits:** The model estimates capacity rather than measuring pixels; the reviewer must inspect actual rendering for clipping and awkward spacing.
+- **Source:** [`SKILL.md:17–23`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L17-L23), [`SKILL.md:51–57`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L51-L57), [`SKILL.md:97–114`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L97-L114).
+
+### 3. Reduce design freedom with an HTML skeleton, not a validator
+
+- **Problem:** Free-form generation can drift away from the requested retro palette and typography.
+- **How:** The supplied skeleton fixes fonts, palette, flex layout and dimensions, and loads Tailwind and Google Fonts remotely. `overflow:hidden` clips excess content instead of expanding the card.
+- **Limits:** Consistent styling cannot certify that all content is visible. The planning/generation instructions require ECharts, but the final output rule forbids it; the source supplies no unambiguous precedence, so resolve that conflict explicitly.
+- **Source:** [`SKILL.md:131–174`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L131-L174), [`SKILL.md:91–96`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L91-L96), [`SKILL.md:240–245`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L240-L245).
 
 ## Health & viability
 
