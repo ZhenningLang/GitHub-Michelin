@@ -160,7 +160,7 @@ Clone the actual `JonB32/pure-agentic` repository into a staging directory, then
 
 - **Problem:** Reusable agent instructions can grow until every new session must load a large scaffold.
 - **How:** `context-check.sh` excludes marked project-context blocks when counting the 80-line agent/role budgets. Specs have a separate 50-line count over the whole file; budget violations contribute errors to the final exit status.
-- **Limits:** The excluded project block can still grow without that cap. Lines measure neither relevance nor actual model tokens, and these file checks do not enforce the agent's lifecycle approvals.
+- **Limits:** The excluded project block is uncapped; under default Bash settings, the spec patterns cover only `specs/*.md` and `specs/*/*.md`, since the script does not enable recursive `globstar` matching. Lines measure neither relevance nor actual model tokens, and these file checks do not enforce the agent's lifecycle approvals.
 - **Source:** [scripts/context-check.sh:71–132](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L71-L132), [exit policy:245–251](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L245-L251).
 
 ### 2. Check saved record shapes only when validators are available

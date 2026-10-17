@@ -160,7 +160,7 @@ health:
 
 - **解决：** 可复用的 agent 指令不断膨胀，会让每个新会话都得加载庞大骨架。
 - **做法：** `context-check.sh` 检查 agent 与角色文件的 80 行预算时，排除标记过的项目上下文块。规格另按整个文件计 50 行预算，超限计入错误并影响最终退出码。
-- **边界：** 被排除的项目块仍可不受此上限地增长。行数既不衡量相关性，也不等于模型实际词元数；这些文件检查不会强制 agent 获得生命周期批准。
+- **边界：** 被排除的项目块不受此上限约束；脚本未开启递归通配选项 `globstar`，默认 Bash 设置下只检查 `specs/*.md` 和 `specs/*/*.md`，更深目录不会覆盖。行数既不衡量相关性，也不等于模型实际词元数；这些文件检查不会强制 agent 获得生命周期批准。
 - **源码：** [scripts/context-check.sh:71–132](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L71-L132)、[退出策略：245–251](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L245-L251)。
 
 ### 2. 校验器齐备时，才检查存档记录的形状

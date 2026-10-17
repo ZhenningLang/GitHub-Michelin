@@ -9,7 +9,7 @@
     {"id": "session", "en": "Configured session checks", "zh": "会话按配置检查", "kind": "input"},
     {"id": "pow", "en": "Mining block; zero reward; random seed", "zh": "计算阻塞、奖励清零、随机种子", "technique": [1]},
     {"id": "proceed", "en": "Other blocks / minimum reward still apply", "zh": "仍须满足其它阻塞与最低奖励", "technique": [1]},
-    {"id": "claim", "en": "Claimable / amount / duplicate checks; else reject", "zh": "查可领取、金额、重复，否则拒绝", "technique": [2]},
+    {"id": "claim", "en": "Check eligibility and duplicates; reject low / cap high amounts", "zh": "查资格与重复，低额拒绝、超额截断", "technique": [2]},
     {"id": "queue", "en": "Persist / restore queue; optional no-funds pause", "zh": "保存、恢复队列，可配置缺钱暂停", "technique": [2]},
     {"id": "rpc", "en": "Funded wallet / RPC; await receipt, may fail", "zh": "注资钱包与 RPC，待回执也可能失败", "kind": "external", "technique": [2]},
     {"id": "ticket", "en": "Optional Zupass: ticket ID, not account identity", "zh": "可选 Zupass：按票号而非账号身份", "kind": "input", "technique": [4]},

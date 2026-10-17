@@ -145,7 +145,7 @@ Use the operator instructions linked from [README.md:63–69](https://github.com
 - Configured session checks
 - Mining block; zero reward; random seed①
 - Other blocks / minimum reward still apply①
-- Claimable / amount / duplicate checks; else reject②
+- Check eligibility and duplicates; reject low / cap high amounts②
 - Persist / restore queue; optional no-funds pause②
 - Funded wallet / RPC; await receipt, may fail②
 - Optional Zupass: ticket ID, not account identity④
@@ -158,8 +158,8 @@ Use the operator instructions linked from [README.md:63–69](https://github.com
 - Configured session checks → Mining block; zero reward; random seed① (PoW enabled)
 - Configured session checks → Other blocks / minimum reward still apply① (explicit PoW skip) [optional/fallback]
 - Mining block; zero reward; random seed① → Other blocks / minimum reward still apply① (mining closes)
-- Other blocks / minimum reward still apply① → Claimable / amount / duplicate checks; else reject② (eligible)
-- Claimable / amount / duplicate checks; else reject② → Persist / restore queue; optional no-funds pause② (passes)
+- Other blocks / minimum reward still apply① → Check eligibility and duplicates; reject low / cap high amounts② (eligible)
+- Check eligibility and duplicates; reject low / cap high amounts② → Persist / restore queue; optional no-funds pause② (passes)
 - Persist / restore queue; optional no-funds pause② → Funded wallet / RPC; await receipt, may fail② (submit)
 - Funded wallet / RPC; await receipt, may fail② → Persist / restore queue; optional no-funds pause② (receipt status)
 - Optional Zupass: ticket ID, not account identity④ → Configured history and concurrency limits④
@@ -177,7 +177,7 @@ Use the operator instructions linked from [README.md:63–69](https://github.com
 ### 2. Restore payout work without confusing it with confirmation
 
 - **Problem:** A restart can lose pending work, while duplicate claims or an unfunded wallet can break distribution.
-- **How:** The claim manager restores queued/processing claims and watches saved pending transactions; new claims require claimable state, amount limits and duplicate protection. It persists claim state and processes a queue, pausing for wallet/RPC or gas shortages when `ethQueueNoFunds` is enabled.
+- **How:** The claim manager restores queued/processing claims and watches saved pending transactions; new claims require claimable state and duplicate protection, reject amounts below the minimum and cap amounts above the applicable maximum. It persists claim state and processes a queue, pausing for wallet/RPC or gas shortages when `ethQueueNoFunds` is enabled.
 - **Limits:** Without that pause option, the send path can mark such claims failed instead. A saved queue or submitted transaction is not finality: receipt success or failure updates its status later, and RPC availability remains external.
 - **Source:** [EthClaimManager.ts:78–116](https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/src/eth/EthClaimManager.ts#L78-L116), [claim and pause:187–253](https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/src/eth/EthClaimManager.ts#L187-L253), [send and receipt:283–348](https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/src/eth/EthClaimManager.ts#L283-L348).
 
