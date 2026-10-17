@@ -7,7 +7,7 @@ tags: [wechat, ilink, im-gateway, app-marketplace, webhook, websocket, self-host
 language: Go
 license: MIT
 maturity: v0.1.36, 1589 stars, no default-branch update since 2026-06 (as of 2026-10-14)
-last_verified: 2026-10-14
+last_verified: 2026-10-17
 type: app
 upstream:
   pushed_at: 2026-06-18T17:22:25Z
@@ -132,10 +132,65 @@ health:
 
 ## 技术要点
 
-- **先匹配指定提及，再匹配通用事件，通道各自独立。** [app_dispatch.go:25–70](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L25-L70) 先处理提及和命令，再匹配订阅事件；[app_dispatch.go:120–199](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L120-L199) 为各自已配置的 WebSocket、内置处理器和 Webhook 独立投递并附追踪数据。它帮助定位失败环节，但多个通道可收到同一事件，接收端仍须去重。
-- **Webhook 重试在内存里，不是持久保证。** [retry.go:14–69](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/app/retry.go#L14-L69) 先同步尝试，再由协程等待 10 秒后重试；若仍失败，再等待 60 秒重试，不让初始调用者等待全部尝试，但重启会丢掉已调度工作。[app_dispatch.go:259–290](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L259-L290) 使用保存的上下文令牌处理即时结果；重试投递成功不证明同一回复路径也运行了。
-- **缓存注册表发现，并容忍陈旧结果。** [client.go:79–108](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/registry/client.go#L79-L108) 合并多个来源、跳过部分失败；[client.go:130–183](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/registry/client.go#L130-L183) 规范注册表网址、限制读取，并在获取或解析失败时返回缓存。可用性提高，但列出的 App 可能过期；发现机制不等于审计远端地址、工具和权限。
-- **用用户数量引导管理员认领。** [auth_password.go:37–61](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/api/auth_password.go#L37-L61) 把首位密码注册者设为超级管理员；[config_handler.go:236–243](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/api/config_handler.go#L236-L243) 在配置未明确为 false 时允许注册。这简化首次设置，不是公网加固；必须在私有边界先认领。
+![OpeniLink Hub — 机制图](../../assets/mechanism/openilink-hub.zh.svg)
+
+<!-- mechanism:begin (generated from mechanisms/openilink-hub.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>机制文字版</summary>
+
+- 收到机器人消息
+- 提及→命令→订阅事件 附追踪，选中 App①
+- 有连接则走 WebSocket①
+- 有配置则走内置处理器①
+- Webhook 首次同步尝试①②
+- 内存任务：等 10 秒，必要时再等 60 秒 重启丢失，只重投递②
+- 符合条件的首次结果回复 使用已保存的上下文令牌②
+- 独立支线：注册表来源
+- 规范网址，最多读取 10 MiB 出错时用已有缓存③
+- 汇总可用列表，可能陈旧 全部来源失败则报错③
+- 独立支线：密码注册 检查用户数量④
+- 零用户：超级管理员 否则：检查注册开关，再创建成员④
+
+- 收到机器人消息 → 提及→命令→订阅事件 附追踪，选中 App①
+- 提及→命令→订阅事件 附追踪，选中 App① → 有连接则走 WebSocket①（独立判断）
+- 提及→命令→订阅事件 附追踪，选中 App① → 有配置则走内置处理器①（独立判断）
+- 提及→命令→订阅事件 附追踪，选中 App① → Webhook 首次同步尝试①②（独立判断）
+- Webhook 首次同步尝试①② → 内存任务：等 10 秒，必要时再等 60 秒 重启丢失，只重投递②（投递报错）〔可选／兜底〕
+- Webhook 首次同步尝试①② → 符合条件的首次结果回复 使用已保存的上下文令牌②（只处理首次结果）
+- 独立支线：注册表来源 → 规范网址，最多读取 10 MiB 出错时用已有缓存③
+- 规范网址，最多读取 10 MiB 出错时用已有缓存③ → 汇总可用列表，可能陈旧 全部来源失败则报错③
+- 独立支线：密码注册 检查用户数量④ → 零用户：超级管理员 否则：检查注册开关，再创建成员④
+
+</details>
+<!-- mechanism:end -->
+
+### 1. 优先处理定向消息，再向独立通道投递
+
+- **解决：** 指向某个 App 的消息不应再走通用订阅路径，但各个已配置的传输通道仍需分别尝试。
+- **做法：** 调度器依次尝试指定提及、斜杠命令、订阅消息事件，定向匹配被处理后就结束选路；对选中的每个 App，WebSocket、内置处理器和 Webhook 按各自条件独立运行，并附上能串联各次交接记录的追踪数据。
+- **边界：** 独立通道可能多次投递同一事件，接收端仍须去重；追踪能帮助定位失败，不是端到端送达保证。
+- **源码：** [app_dispatch.go:25–114](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L25-L114)、[独立通道：117–200](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L117-L200)。
+
+### 2. 后台重试投递，不延长即时回复链
+
+- **解决：** 如果等完所有 Webhook 重试，原始消息处理会被拖住。
+- **做法：** Hub 先同步尝试一次，失败后交给后台 goroutine，也就是 Go 的轻量任务，等 10 秒重试，仍失败再等 60 秒；调度器另行处理首次结果，对符合条件的即时回复使用已保存的上下文令牌。
+- **边界：** 已调度重试只在内存中，进程重启就会丢失；重试投递成功不会调用这条即时回复处理器。异步结果和空文本回复也不会通过它的同步文本路径发送。
+- **源码：** [retry.go:14–81](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/app/retry.go#L14-L81)、[首次结果处理：179–200](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L179-L200)、[回复处理：259–290](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L259-L290)。
+
+### 3. 限量读取并在失败时返回旧缓存
+
+- **解决：** 一个 App 注册表不可用，不应把其它来源的列表也全部抹掉。
+- **做法：** 客户端规范注册表网址，最多读取 10 MiB，再缓存解析后的清单，也就是可用 App 的描述列表；获取、HTTP、读取或解析失败时返回已有缓存。汇总时跳过失败来源，全部来源都失败且无可用结果才报错。
+- **边界：** 缓存成功可能掩盖列表已经过期，字节上限也不是信任检查；发现 App 不等于审计远端地址、工具和权限范围。
+- **源码：** [client.go:79–108](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/registry/client.go#L79-L108)、[缓存与获取：130–183](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/registry/client.go#L130-L183)。
+
+### 4. 按用户数量授予初始管理权
+
+- **解决：** 全新实例还没有普通成员时，必须先有人取得管理权。
+- **做法：** 密码注册在用户数为零时授予 `superadmin`，之后注册才按普通成员处理并检查注册开关；开关只有存储值恰为 `false` 才关闭，首用户路径还会绕过关闭注册的检查。
+- **边界：** 这只是便于首次认领，不是公网加固；必须先在私有边界认领，再对外开放。注册表发现和管理员初始化各自独立，不是每次消息投递的必经步骤。
+- **源码：** [auth_password.go:37–61](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/api/auth_password.go#L37-L61)、[config_handler.go:236–243](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/api/config_handler.go#L236-L243)。
 
 ## 技术栈
 

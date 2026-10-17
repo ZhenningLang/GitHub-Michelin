@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "message", "en": "Incoming bot message", "zh": "收到机器人消息", "kind": "input"},
+    {"id": "route", "en": "Mention → command → subscribed event\nAttach trace; select Apps", "zh": "提及→命令→订阅事件\n附追踪，选中 App", "technique": [1]},
+    {"id": "ws", "en": "WebSocket if connected", "zh": "有连接则走 WebSocket", "technique": [1]},
+    {"id": "builtin", "en": "Builtin handler if configured", "zh": "有配置则走内置处理器", "technique": [1]},
+    {"id": "hook", "en": "Webhook: first synchronous attempt", "zh": "Webhook 首次同步尝试", "technique": [1, 2]},
+    {"id": "retry", "en": "Memory task: wait 10s, then 60s if needed\nLost on restart; delivery only", "zh": "内存任务：等 10 秒，必要时再等 60 秒\n重启丢失，只重投递", "kind": "output", "technique": [2]},
+    {"id": "reply", "en": "Eligible first-result reply\nUse stored context token", "zh": "符合条件的首次结果回复\n使用已保存的上下文令牌", "kind": "output", "technique": [2]},
+    {"id": "registries", "en": "Independent: registry sources", "zh": "独立支线：注册表来源", "kind": "input"},
+    {"id": "cache", "en": "Normalize URL; read up to 10 MiB\nOn error use existing cache", "zh": "规范网址，最多读取 10 MiB\n出错时用已有缓存", "technique": [3]},
+    {"id": "apps", "en": "Merge available listings; may be stale\nAll sources fail: error", "zh": "汇总可用列表，可能陈旧\n全部来源失败则报错", "kind": "output", "technique": [3]},
+    {"id": "register", "en": "Independent: password registration\nCheck user count", "zh": "独立支线：密码注册\n检查用户数量", "kind": "input", "technique": [4]},
+    {"id": "roles", "en": "Zero users: superadmin\nOtherwise: registration gate, then member", "zh": "零用户：超级管理员\n否则：检查注册开关，再创建成员", "kind": "output", "technique": [4]}
+  ],
+  "edges": [
+    {"from": "message", "to": "route"},
+    {"from": "route", "to": "ws", "en": "independent", "zh": "独立判断"},
+    {"from": "route", "to": "builtin", "en": "independent", "zh": "独立判断"},
+    {"from": "route", "to": "hook", "en": "independent", "zh": "独立判断"},
+    {"from": "hook", "to": "retry", "en": "delivery error", "zh": "投递报错", "style": "dashed"},
+    {"from": "hook", "to": "reply", "en": "first result only", "zh": "只处理首次结果"},
+    {"from": "registries", "to": "cache"},
+    {"from": "cache", "to": "apps"},
+    {"from": "register", "to": "roles"}
+  ],
+  "sources": [
+    "https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L25-L200",
+    "https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L259-L290",
+    "https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/app/retry.go#L14-L81",
+    "https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/registry/client.go#L79-L183",
+    "https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/api/auth_password.go#L37-L61",
+    "https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/api/config_handler.go#L236-L243"
+  ]
+}
