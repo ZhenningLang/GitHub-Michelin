@@ -6,17 +6,17 @@ category: agent-governance
 tags: [agent-governance, agent-security, skill-scanner, prompt-injection, mcp, static-analysis, cli]
 language: Python
 license: Apache-2.0
-maturity: v2.12.0 release, active main, 20131 stars (as of 2026-10-13)
-last_verified: 2026-10-13
+maturity: v2.13.0 selected-backport release, main manifest 2.12.0, 20391 stars (as of 2026-10-17)
+last_verified: 2026-10-17
 type: tool
 upstream:
-  pushed_at: 2026-10-13T20:35:42Z
+  pushed_at: 2026-10-16T18:55:58Z
   default_branch: main
-  default_branch_sha: b07f181d9138878c3827de0947a9fd2c6a84a66c
+  default_branch_sha: cf5cac7ba5c756a6e0ebf52dc9763f49422f889f
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-13T21:01:57Z
+  computed_at: 2026-10-17T06:54:46Z
   overall: B
   overall_score: 3.33
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 90.4
-        qualifying_issues: 24
+        median_ttfr_hours: 80.7
+        qualifying_issues: 23
         band: relaxed_solo
         window_offset_days: 13
         source: issue
@@ -46,24 +46,24 @@ health:
       raw:
         registry: null
         canonical_package: null
-        homebrew_installs_90d: 148
+        homebrew_installs_90d: 158
         homebrew_tier: C
-        release_downloads: 29498
-        release_assets: 32
+        release_downloads: 31051
+        release_assets: 34
         release_tier: D
         signal_basis: homebrew+releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 207
+        repo_age_days: 210
         last_commit_age_days: 0
         cohort: tool
     governance:
       grade: A
       raw:
         active_maintainers_12mo: 97
-        top1_share: 0.135
-        top3_share: 0.303
+        top1_share: 0.143
+        top3_share: 0.342
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -108,7 +108,7 @@ Compared with general source scanners, its rules target agent instructions, tool
 
 ## Quick start
 
-Install with `uv tool install git+https://github.com/NVIDIA/skillspector.git` using Python `>=3.12,<3.15`, as documented in the [README](https://github.com/NVIDIA/SkillSpector/blob/b07f181d9138878c3827de0947a9fd2c6a84a66c/README.md#L34-L47). Keep the candidate skill in a directory before installation, then run `skillspector scan ./my-skill/ --no-llm --fail-on-incomplete --format json --output report.json`. The scanner returns findings, risk and analysis completeness without running that skill; inspect all three before deciding whether to install. You own the install policy, exception review and permissions of anything subsequently executed. This static path avoids model-token charges but still queries OSV with dependency coordinates; optional model review sends eligible file contents to your configured provider and incurs its costs. Default exit 0 alone is not a complete-scan verdict, as the [CLI branch](https://github.com/NVIDIA/SkillSpector/blob/b07f181d9138878c3827de0947a9fd2c6a84a66c/src/skillspector/cli.py#L871-L888) shows.
+Install with `uv tool install git+https://github.com/NVIDIA/skillspector.git` using Python `>=3.12,<3.15`, as documented in the [README](https://github.com/NVIDIA/SkillSpector/blob/cf5cac7ba5c756a6e0ebf52dc9763f49422f889f/README.md#L34-L71). This command follows main, not the selected-backport v2.13.0 release; pin the revision you audit. Keep the candidate skill in a directory before installation, then run `skillspector scan ./my-skill/ --no-llm --fail-on-incomplete --format json --output report.json`. The scanner returns findings, risk and analysis completeness without running that skill; inspect all three before deciding whether to install. You own the install policy, exception review and permissions of anything subsequently executed. Static mode avoids model-token charges but still sends dependency coordinates to OSV; optional model review sends eligible contents to your provider. The [CLI](https://github.com/NVIDIA/SkillSpector/blob/cf5cac7ba5c756a6e0ebf52dc9763f49422f889f/src/skillspector/cli.py#L878-L905) returns 2 for execution failure and 1 for requested completeness/findings/coverage gates or excessive risk; default exit 0 alone does not mean complete or finding-free.
 
 ![skillspector — backbone user story](../../assets/flow/skillspector.svg)
 
@@ -129,21 +129,69 @@ Install with `uv tool install git+https://github.com/NVIDIA/skillspector.git` us
 
 ## Key techniques
 
-- **Fan out analysis from a shared context.** [`graph.py:46–87`](https://github.com/NVIDIA/SkillSpector/blob/b07f181d9138878c3827de0947a9fd2c6a84a66c/src/skillspector/graph.py#L46-L87) resolves the input, builds context, wires available analyzers through guarded nodes, then runs meta analysis, ledger finalization and reporting. This separates file acquisition from complementary checks; an unavailable analyzer is not evidence that its checks passed.
-- **Keep coverage failures separate from risk findings.** [`finalize_inspection_ledger.py:734–843`](https://github.com/NVIDIA/SkillSpector/blob/b07f181d9138878c3827de0947a9fd2c6a84a66c/src/skillspector/nodes/finalize_inspection_ledger.py#L734-L843) adds reference/size findings and registry/runtime/output-limit events before deriving completeness. Consumers can distinguish a clean finding list from missing inspection. These bounded checks still cannot prove arbitrary runtime behavior safe.
-- **Bind exact suppressions to evidence.** [`suppression.py:216–280`](https://github.com/NVIDIA/SkillSpector/blob/b07f181d9138878c3827de0947a9fd2c6a84a66c/src/skillspector/suppression.py#L216-L280) hashes complete source content, scanner version and finding details into a SHA-256 fingerprint. Source or version changes require renewing exact acceptance instead of silently inheriting it; broader glob suppressions remain a reviewer-controlled exception.
+![SkillSpector — mechanism diagram](../../assets/mechanism/skillspector.svg)
+
+<!-- mechanism:begin (generated from mechanisms/skillspector.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>Text version of the mechanism</summary>
+
+- Untrusted skill files
+- Resolve input and build shared context①
+- Guarded parallel analyzers①
+- Meta review combines findings①
+- Reference, size, load and runtime gaps②
+- Finalize coverage ledger②
+- Content + version + finding fingerprint③
+- Reviewer-selected exact or glob baseline③
+- Report risk separately from completeness②
+
+- Untrusted skill files → Resolve input and build shared context①
+- Resolve input and build shared context① → Guarded parallel analyzers①
+- Guarded parallel analyzers① → Meta review combines findings①
+- Guarded parallel analyzers① → Reference, size, load and runtime gaps② (failures remain visible)
+- Meta review combines findings① → Finalize coverage ledger②
+- Reference, size, load and runtime gaps② → Finalize coverage ledger②
+- Resolve input and build shared context① → Content + version + finding fingerprint③
+- Meta review combines findings① → Content + version + finding fingerprint③
+- Content + version + finding fingerprint③ → Reviewer-selected exact or glob baseline③ (optional reviewed acceptance) [optional/fallback]
+- Reviewer-selected exact or glob baseline③ → Report risk separately from completeness② (suppresses findings, not coverage gaps) [optional/fallback]
+- Finalize coverage ledger② → Report risk separately from completeness②
+
+</details>
+<!-- mechanism:end -->
+
+### 1. Share file context across guarded analyzers
+
+- **Problem:** Reacquiring the same files for each check duplicates work, while one broken check can hide missing inspection.
+- **How:** LangGraph, the workflow engine, resolves input and builds shared context, fans out to available guarded analyzers, then runs meta review, ledger finalization and reporting. Guards turn analyzer exceptions into explicit failed-work records.
+- **Limits:** Unavailable analyzers are not passed checks; discovery or runtime gaps need coverage review. Scanned skill code is not executed or contained by this graph.
+- **Source:** [`graph.py:46–87`](https://github.com/NVIDIA/SkillSpector/blob/cf5cac7ba5c756a6e0ebf52dc9763f49422f889f/src/skillspector/graph.py#L46-L87), [`inspection_ledger.py:1143–1197`](https://github.com/NVIDIA/SkillSpector/blob/cf5cac7ba5c756a6e0ebf52dc9763f49422f889f/src/skillspector/inspection_ledger.py#L1143-L1197).
+
+### 2. Account for inspection gaps separately from risk
+
+- **Problem:** An empty finding list can mean either nothing suspicious was found or relevant content was never inspected.
+- **How:** The inspection ledger records checked and missed work; finalization adds reference/size findings plus analyzer-load, semantic-runtime and output-limit events before deriving completeness. The CLI can reject incomplete work with `--fail-on-incomplete` independently of risk scoring.
+- **Limits:** Bounded static checks do not prove arbitrary runtime behavior safe. Execution failure returns 2; a successful process can still return 0 with partial coverage when no stricter gate was requested.
+- **Source:** [`finalize_inspection_ledger.py:713–843`](https://github.com/NVIDIA/SkillSpector/blob/cf5cac7ba5c756a6e0ebf52dc9763f49422f889f/src/skillspector/nodes/finalize_inspection_ledger.py#L713-L843), [`cli.py:878–895`](https://github.com/NVIDIA/SkillSpector/blob/cf5cac7ba5c756a6e0ebf52dc9763f49422f889f/src/skillspector/cli.py#L878-L895).
+
+### 3. Make exact exceptions expire when evidence changes
+
+- **Problem:** A previously accepted finding should not silently exempt altered source or a different scanner version.
+- **How:** An exact baseline, the saved list of accepted findings, uses a full SHA-256 fingerprint of complete component content, scanner version and finding identity/evidence. A changed input needs renewed review and baseline generation.
+- **Limits:** Handwritten glob rules can deliberately match more broadly; they are reviewer-owned exceptions, not equally strict evidence binding. Suppressing a finding does not establish complete inspection.
+- **Source:** [`suppression.py:216–308`](https://github.com/NVIDIA/SkillSpector/blob/cf5cac7ba5c756a6e0ebf52dc9763f49422f889f/src/skillspector/suppression.py#L216-L308), [`README.md:231–255`](https://github.com/NVIDIA/SkillSpector/blob/cf5cac7ba5c756a6e0ebf52dc9763f49422f889f/README.md#L231-L255).
 
 ## Tech stack
 
 - **Python 3.12+ package** with a Typer CLI entry point named `skillspector` and a LangGraph workflow engine.
 - **Analyzers** include static regex/pattern checks, Python AST behavioral analysis, taint tracking, YARA signatures, OSV.dev dependency lookup, MCP least-privilege/tool-poisoning checks, and optional LLM semantic analysis.
 - **Outputs** include terminal, JSON, Markdown, and SARIF; baseline suppression is documented through `.skillspector-baseline.yaml`.
-- **Integrations** include a Dockerfile, an MCP server (`skillspector mcp`), and a Pi extension tool wrapper.
+- **Integrations** include a Dockerfile, an MCP server (`skillspector mcp`), and Pi/OpenCode extension tool wrappers.
 
 ## Dependencies
 
 - **Runtime:** Python `>=3.12,<3.15`; `uv` is the documented quick install path, with source installs through `make install` or `make install-dev`.
-- **Python dependencies:** README/`pyproject.toml` list Typer, Rich, HTTPX, PyYAML, Pydantic, OpenAI/LangChain/LangGraph/Anthropic/AWS/NVIDIA provider packages, boto3, LangSmith, and `yara-python`.
+- **Python dependencies:** the [manifest](https://github.com/NVIDIA/SkillSpector/blob/cf5cac7ba5c756a6e0ebf52dc9763f49422f889f/pyproject.toml#L32-L57) lists Typer, Rich, HTTPX, PyYAML, Pydantic, OpenAI/LangChain/LangGraph provider packages, boto3, LangSmith, `yara-python`, `pywhatwgurl`, `regex`, `packaging` and Google Auth.
 - **Network egress:** OSV.dev dependency lookup is used for live CVE data; LLM analysis sends file contents to the configured provider unless `--no-llm` is used.
 - **Optional deployment:** Docker image for isolated CLI runs; `skillspector[mcp]` extra for MCP server mode.
 
@@ -153,13 +201,13 @@ Install with `uv tool install git+https://github.com/NVIDIA/skillspector.git` us
 
 ## Health & viability
 
-- **Maintenance (2026-10-13):** unarchived NVIDIA repository, main committed that day; latest GitHub release v2.12.0 dates to 2026-09-23, matching the reviewed manifest version. Main has newer changes than the release, so pin the artifact you actually deploy.
-- **Measured viability:** overall B (6/6 scored axes), maintenance/responsiveness/governance A, adoption/longevity C and license risk A. The former responsiveness API failure recovered; the scorer measured a 90.4-hour median first response across 24 qualifying issues.
-- **Adoption / backing:** 20131 GitHub stars, 148 Homebrew installs over 90 days and 29498 release downloads in the scorer snapshot. NVIDIA ownership and multiple contributors are useful backing signals, not a support SLA or detection benchmark.
-- **Age / risk:** created 2026-03-21, 207 days old; the manifest still marks Alpha. [推断：based on short history and the documented static-analysis limits] Treat it as a promising young triage component, not a long-proven safety authority. Apache-2.0 is verified from LICENSE and manifest; contents/coordinates can leave the host through model/OSV analysis.
+- **Maintenance (2026-10-17):** unarchived NVIDIA repository; reviewed main committed on October 16 UTC. The [v2.13.0 release](https://github.com/NVIDIA/SkillSpector/releases/tag/v2.13.0), published October 16, selectively backports fixes and explicitly does not contain every main change; the reviewed main manifest remains 2.12.0. Do not infer artifact contents from the version number alone.
+- **Measured viability:** overall B (6/6 scored axes), maintenance/responsiveness/governance A, adoption/longevity C and license risk A; 80.7-hour median first response across 23 qualifying issues, with no new unknown axis.
+- **Adoption / backing:** 20391 GitHub stars, 158 Homebrew installs over 90 days and 31051 release downloads in the scorer snapshot. NVIDIA ownership and multiple contributors are backing signals, not a support SLA or detection benchmark.
+- **Age / risk:** created 2026-03-21, 210 days old in the scorer; the manifest still marks Alpha. [推断：based on short history and documented static-analysis limits] Treat it as young triage infrastructure, not a long-proven safety authority. Apache-2.0 is verified; model/OSV analysis still has data-egress boundaries. The release disables the Codex CLI provider over host-secret access concerns; this is a provider-specific warning, not proof that other providers are isolated.
 
 ## Caveats (unverified)
 
 - [未验证：no upstream installation or scan was performed] Commands and mechanisms were checked against the pinned main source, not exercised locally; the latest release may differ from this main snapshot.
 - [未验证：no detection benchmark was run] False-positive/false-negative rates and the README's research statistics were not independently established.
-- [推断：207-day history, Alpha classifier and documented static-only limits] NVIDIA backing does not yet supply a long operational track record; retain independent review and isolation after scanning.
+- [推断：210-day scorer age, Alpha classifier and documented static-only limits] NVIDIA backing does not yet supply a long operational track record; retain independent review and isolation after scanning.
