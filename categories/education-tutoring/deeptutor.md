@@ -137,6 +137,7 @@ For the full local package, use Python `>=3.11,<3.15` and Node.js 20+, choose a 
 - Count real roots before display limit② → Inventory or unavailable; not index proof②
 - Model exploration rounds③ → Dispatch tools / collect sources + replies③ (requested)
 - Dispatch tools / collect sources + replies③ → Model exploration rounds③ (evidence in next round)
+- Model exploration rounds③ → Answer for review, not correctness proof (no tools; answer ready)
 - Model exploration rounds③ → Bounded settlement / tool-less finish③ (budget reached)
 - Bounded settlement / tool-less finish③ → Answer for review, not correctness proof
 
@@ -160,9 +161,9 @@ For the full local package, use Python `>=3.11,<3.15` and Node.js 20+, choose a 
 ### 3. Return tool evidence to a bounded answer loop
 
 - **Problem:** Retrieved material and user clarifications are lost if each model call starts without the preceding tool results.
-- **How:** The loop appends requested tools, their messages and collected sources to the ongoing task, including replies to tool-requested user questions. An exploration budget leads to a bounded settlement phase, then a tool-less forced finish if necessary.
+- **How:** The loop appends requested tools, their messages and collected sources to the ongoing task, including replies to tool-requested user questions. With no tool request and a complete answer it exits normally; budget exhaustion instead leads to bounded settlement rounds and, if necessary, a tool-less forced finish.
 - **Limits:** Budgets bound tool exploration; saved evidence and an eventual answer do not guarantee a correct explanation or grade.
-- **Source:** [`agent_loop.py:403–451`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L403-L451), [`agent_loop.py:705–743`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L705-L743).
+- **Source:** [`agent_loop.py:403–451`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L403-L451), [`agent_loop.py:480–481`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L480-L481), [`agent_loop.py:655–743`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L655-L743), [`agent_loop.py:837–887`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L837-L887).
 
 ## Tech stack
 

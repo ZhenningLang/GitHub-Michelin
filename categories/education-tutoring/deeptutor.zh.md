@@ -137,6 +137,7 @@ health:
 - 数真实文档，再限展示条数② → 清单或不可用；不证明索引成功②
 - 模型探索轮次③ → 调用工具／收集来源与答复③（有工具请求）
 - 调用工具／收集来源与答复③ → 模型探索轮次③（证据进入下轮）
+- 模型探索轮次③ → 回答供核验，不保证正确（无工具请求，回答可收尾）
 - 模型探索轮次③ → 有限收尾／禁用工具结束③（探索额度耗尽）
 - 有限收尾／禁用工具结束③ → 回答供核验，不保证正确
 
@@ -160,9 +161,9 @@ health:
 ### 3. 把工具证据带回有界回答循环
 
 - **解决：** 模型每轮若看不到之前的工具结果，就会丢失已找回的材料和用户补充。
-- **做法：** 循环把工具请求、返回消息和收集到的来源接回当前任务，也保留工具向用户追问的答复。探索额度耗尽后进入有限收尾轮次，必要时禁用工具强制结束。
+- **做法：** 循环把工具请求、返回消息和收集到的来源接回当前任务，也保留工具向用户追问的答复。无工具请求且回答可收尾时正常结束；探索额度耗尽才进入有限收尾轮次，必要时禁用工具强制结束。
 - **边界：** 预算限制工具探索；保留证据并最终给出回答，不保证解释或评分正确。
-- **源码：** [`agent_loop.py:403–451`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L403-L451)、[`agent_loop.py:705–743`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L705-L743)。
+- **源码：** [`agent_loop.py:403–451`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L403-L451)、[`agent_loop.py:480–481`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L480-L481)、[`agent_loop.py:655–743`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L655-L743)、[`agent_loop.py:837–887`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L837-L887)。
 
 ## 技术栈
 

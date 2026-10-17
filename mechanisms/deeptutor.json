@@ -21,6 +21,7 @@
     {"from":"inventory","to":"manifest"},
     {"from":"round","to":"tools","en":"requested","zh":"有工具请求"},
     {"from":"tools","to":"round","en":"evidence in next round","zh":"证据进入下轮"},
+    {"from":"round","to":"answer","en":"no tools; answer ready","zh":"无工具请求，回答可收尾"},
     {"from":"round","to":"settle","en":"budget reached","zh":"探索额度耗尽"},
     {"from":"settle","to":"answer"}
   ],
@@ -29,6 +30,9 @@
     "https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/knowledge/indexing_run.py#L209-L250",
     "https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/knowledge/manifest.py#L147-L254",
     "https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L403-L451",
-    "https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L705-L743"
+    "https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L705-L743",
+    "https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L480-L481",
+    "https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L655-L667",
+    "https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L837-L887"
   ]
 }
