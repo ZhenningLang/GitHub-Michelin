@@ -7,7 +7,7 @@ tags: [captcha, browser-extension, captcha-solving, browser-automation, hosted-a
 language: JavaScript
 license: MIT
 maturity: stable 0.6.1, prerelease 0.6.2-rc.2, 11033 stars; current source closed (as of 2026-10-14)
-last_verified: 2026-10-14
+last_verified: 2026-10-17
 type: tool
 upstream:
   pushed_at: 2026-10-02T18:27:45Z
@@ -126,9 +126,51 @@ health:
 
 ## 技术要点
 
-- **当前可见的是分发边界，不是识别算法。** [README.md:100–118](https://github.com/NopeCHALLC/nopecha-extension/blob/5b198e1c256afddfc6ae4b01544d357e79ee4544/README.md#L100-L118) 组织商店入口，把按 IP 计数的无密钥使用与账号额度分开；[README.md:160–173](https://github.com/NopeCHALLC/nopecha-extension/blob/5b198e1c256afddfc6ae4b01544d357e79ee4544/README.md#L160-L173) 明确用发布构建替代当前公开源码。这解释获取方式与厂商依赖；当前检测、模型和在线强化学习内部无源码可查，本页不为其实现背书。
-- **仅历史 0.3.3：按挑战族分开注入页面框架。** [manifest.base.json:3–100](https://github.com/NopeCHALLC/nopecha-extension/blob/6d97479a82a9792b3b6741e751964867523d66a5/manifest.base.json#L3-L100) 声明全框架脚本、提供方网址模式，以及文档开始或结束时注入。旧扩展由浏览器侧处理器组成，不是一个进程内接口，并有广泛网页访问面。这些是历史清单事实，不代表维护中的 0.6.x 权限或识别机制。
-- **仅历史 0.3.3：共享源码加浏览器专属打包。** [build.py:193–250](https://github.com/NopeCHALLC/nopecha-extension/blob/6d97479a82a9792b3b6741e751964867523d66a5/build.py#L193-L250) 读取基础清单，复制共享及浏览器专属文件，删除模块导出生成 `utils.js`，合并权限后写清单和归档。它同步了旧工具代码的两种变体，不能复现构建当前闭源分发包。
+![NopeCHA — 机制图](../../assets/mechanism/nopecha-extension.zh.svg)
+
+<!-- mechanism:begin (generated from mechanisms/nopecha-extension.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>机制文字版</summary>
+
+- 当前 README：商店和发布包①
+- 文档中的 IP 额度／账号密钥①
+- 当前求解内部未公开 不能从旧源码复现①
+- 以下仅历史 0.3.3 源码
+- 共享文件加浏览器文件 派生 utils.js，合并清单③
+- 历史浏览器包 生产模式生成归档③
+- 匹配网址、框架与加载时机②
+- 历史页面处理脚本 不是当前权限或模型证据②
+
+- 当前 README：商店和发布包① → 文档中的 IP 额度／账号密钥①
+- 文档中的 IP 额度／账号密钥① → 当前求解内部未公开 不能从旧源码复现①（文档可见边界）
+- 以下仅历史 0.3.3 源码 → 共享文件加浏览器文件 派生 utils.js，合并清单③
+- 共享文件加浏览器文件 派生 utils.js，合并清单③ → 历史浏览器包 生产模式生成归档③
+- 历史浏览器包 生产模式生成归档③ → 匹配网址、框架与加载时机②
+- 匹配网址、框架与加载时机② → 历史页面处理脚本 不是当前权限或模型证据②
+
+</details>
+<!-- mechanism:end -->
+
+### 1. 当前产品只分发构建，不公开求解内部
+
+- **解决：** 公开仓库是获取扩展的入口，不是当前扩展实现本身。
+- **做法：** README 链接 Chrome／Firefox 商店和发布包，说明无密钥每天最多 100 次且按 IP 计数，更高额度使用账号密钥；闭源公告明确将当前分发与已停止维护的 0.3.x 档案分开。
+- **边界：** 当前检测、模型和在线强化学习，也就是所宣称的从服务交互中学习，均无公开源码可查，本页不推演这些内部实现。厂商文档不等于额度或服务保证，留存仓库的 MIT 许可也不能认证当前二进制的许可。
+- **源码：** 无公开的当前实现源码；见 [README.md:84–118](https://github.com/NopeCHALLC/nopecha-extension/blob/5b198e1c256afddfc6ae4b01544d357e79ee4544/README.md#L84-L118)、[闭源公告：160–173](https://github.com/NopeCHALLC/nopecha-extension/blob/5b198e1c256afddfc6ae4b01544d357e79ee4544/README.md#L160-L173)。
+
+### 2. 仅历史 0.3.3：按页面类型和加载时机注入处理脚本
+
+- **解决：** 不同挑战提供方把组件放在不同的嵌入页面框架里，需要在不同加载阶段接入。
+- **做法：** 旧清单匹配提供方网址模式，按配置向所有框架注入脚本，并分别在文档开始或结束时运行；旧扩展因此是一组浏览器页面处理器，而不是一个进程内接口。
+- **边界：** 部分匹配范围覆盖所有网址，网页访问面很广，但各条目的框架范围仍有差别。这些只是历史清单事实，不代表当前 0.6.x 的权限或识别内部。
+- **源码：** 历史 0.3.3 的 [manifest.base.json:3–100](https://github.com/NopeCHALLC/nopecha-extension/blob/6d97479a82a9792b3b6741e751964867523d66a5/manifest.base.json#L3-L100)。
+
+### 3. 仅历史 0.3.3：从共享文件派生浏览器包
+
+- **解决：** Chrome 和 Firefox 各维护一份工具代码，容易逐渐不一致。
+- **做法：** 旧构建读取基础清单，复制共享文件和浏览器专属文件，并删除 `utils.mjs` 的模块导出，派生 `utils.js`；随后合并浏览器权限、写出清单，生产模式再生成归档。
+- **边界：** 它只同步历史工具代码的变体，不能复现构建当前闭源扩展。图里的历史打包与注入支线，不与当前产品支线相连。
+- **源码：** 历史 0.3.3 的 [build.py:153–250](https://github.com/NopeCHALLC/nopecha-extension/blob/6d97479a82a9792b3b6741e751964867523d66a5/build.py#L153-L250)。
 
 ## 技术栈
 

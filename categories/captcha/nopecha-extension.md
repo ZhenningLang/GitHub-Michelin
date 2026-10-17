@@ -7,7 +7,7 @@ tags: [captcha, browser-extension, captcha-solving, browser-automation, hosted-a
 language: JavaScript
 license: MIT
 maturity: stable 0.6.1, prerelease 0.6.2-rc.2, 11033 stars; current source closed (as of 2026-10-14)
-last_verified: 2026-10-14
+last_verified: 2026-10-17
 type: tool
 upstream:
   pushed_at: 2026-10-02T18:27:45Z
@@ -126,9 +126,51 @@ For an environment you own or have explicit permission to test, use the Chrome o
 
 ## Key techniques
 
-- **Current distribution boundary, not an exposed solver mechanism.** [README.md:100–118](https://github.com/NopeCHALLC/nopecha-extension/blob/5b198e1c256afddfc6ae4b01544d357e79ee4544/README.md#L100-L118) routes users to browser stores and separates no-key IP-counted use from account-key quotas. [README.md:160–173](https://github.com/NopeCHALLC/nopecha-extension/blob/5b198e1c256afddfc6ae4b01544d357e79ee4544/README.md#L160-L173) explicitly replaces public current source with builds. That organization explains acquisition and the vendor dependency; current detection, model and online-RL internals have no source to inspect, so no implementation claim is made for them.
-- **Historical 0.3.3 only: separate frame injection by challenge family.** [manifest.base.json:3–100](https://github.com/NopeCHALLC/nopecha-extension/blob/6d97479a82a9792b3b6741e751964867523d66a5/manifest.base.json#L3-L100) declares all-frame scripts, provider URL patterns and different document-start/document-end timing. This made the old extension a collection of browser-side handlers rather than one in-process API, with broad page access. These are historical manifest facts, not the maintained 0.6.x permissions or recognition mechanism.
-- **Historical 0.3.3 only: shared sources, browser-specific packaging.** [build.py:193–250](https://github.com/NopeCHALLC/nopecha-extension/blob/6d97479a82a9792b3b6741e751964867523d66a5/build.py#L193-L250) reads the base manifest, copies shared and browser-specific files, removes module exports to derive `utils.js`, and merges browser manifest permissions before writing the manifest and archive. It kept old utility variants synchronized; it does not reproducibly build the current closed distribution.
+![NopeCHA — mechanism diagram](../../assets/mechanism/nopecha-extension.svg)
+
+<!-- mechanism:begin (generated from mechanisms/nopecha-extension.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>Text version of the mechanism</summary>
+
+- Current README: stores and published builds①
+- Documented IP quota / account key①
+- Current solver internals not public Not reproducible from legacy source①
+- Historical 0.3.3 sources only
+- Shared files + browser files Derive utils.js; merge manifest③
+- Historical browser package Archive in production mode③
+- Match URL / frame / loading stage②
+- Historical page handlers Not current permissions or model evidence②
+
+- Current README: stores and published builds① → Documented IP quota / account key①
+- Documented IP quota / account key① → Current solver internals not public Not reproducible from legacy source① (documentation boundary)
+- Historical 0.3.3 sources only → Shared files + browser files Derive utils.js; merge manifest③
+- Shared files + browser files Derive utils.js; merge manifest③ → Historical browser package Archive in production mode③
+- Historical browser package Archive in production mode③ → Match URL / frame / loading stage②
+- Match URL / frame / loading stage② → Historical page handlers Not current permissions or model evidence②
+
+</details>
+<!-- mechanism:end -->
+
+### 1. Current product: distribute builds instead of exposing the solver
+
+- **Problem:** The public repository is an acquisition route, not the current extension's implementation.
+- **How:** The README links Chrome/Firefox stores and published builds, describing up to 100 no-key requests daily counted by IP, with account keys for higher quotas. Its closed-source notice explicitly separates current distribution from the unsupported 0.3.x archive.
+- **Limits:** No public current source is available for detection, models or online reinforcement learning, the claimed learning from service interactions; no such internals are inferred here. These documented vendor terms are not a verified quota or service guarantee, and the retained MIT repository does not establish current-binary licensing.
+- **Source:** No public current implementation; [README.md:84–118](https://github.com/NopeCHALLC/nopecha-extension/blob/5b198e1c256afddfc6ae4b01544d357e79ee4544/README.md#L84-L118), [closed-source notice:160–173](https://github.com/NopeCHALLC/nopecha-extension/blob/5b198e1c256afddfc6ae4b01544d357e79ee4544/README.md#L160-L173).
+
+### 2. Historical 0.3.3 only: inject handlers by page family and timing
+
+- **Problem:** Different challenge providers place their widgets in different embedded page frames and need handlers at different loading stages.
+- **How:** The old manifest matches provider URL patterns, declares all-frame injection where configured, and starts selected scripts at document start or document end. The extension is thus a set of browser-page handlers rather than one in-process API.
+- **Limits:** Some patterns cover all URLs, creating broad page access; individual entries still differ in frame scope. These are historical manifest facts, not evidence of current 0.6.x permissions or recognition internals.
+- **Source:** Historical 0.3.3 [manifest.base.json:3–100](https://github.com/NopeCHALLC/nopecha-extension/blob/6d97479a82a9792b3b6741e751964867523d66a5/manifest.base.json#L3-L100).
+
+### 3. Historical 0.3.3 only: derive browser packages from shared files
+
+- **Problem:** Separate Chrome and Firefox packages can drift when their utility code is maintained twice.
+- **How:** The old build reads a base manifest and copies shared plus browser-specific files; it derives `utils.js` from `utils.mjs` by removing module exports. It then merges browser permissions, writes the manifest and, in production mode, creates an archive.
+- **Limits:** This synchronizes the historical utility variants only; it cannot reproducibly build the current closed extension. The diagram's historical packaging and injection branch is not connected to the current-product branch.
+- **Source:** Historical 0.3.3 [build.py:153–250](https://github.com/NopeCHALLC/nopecha-extension/blob/6d97479a82a9792b3b6741e751964867523d66a5/build.py#L153-L250).
 
 ## Tech stack
 
