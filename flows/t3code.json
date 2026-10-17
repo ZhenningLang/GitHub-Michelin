@@ -10,8 +10,8 @@
   ],
   "value": {"en": "Control coding-agent work without juggling provider terminals", "zh": "不必切换各提供商终端，即可控制编程助手工作"},
   "sources": [
-    "https://github.com/pingdotgg/t3code/blob/8d7523248964ec7b37cc08f91e15122def171821/README.md",
-    "https://github.com/pingdotgg/t3code/blob/8d7523248964ec7b37cc08f91e15122def171821/docs/user/install.md",
-    "https://github.com/pingdotgg/t3code/blob/8d7523248964ec7b37cc08f91e15122def171821/docs/internals/overview.md"
+    "https://github.com/pingdotgg/t3code/blob/47683f6ff476d0fc7747375c54583437fba30567/README.md",
+    "https://github.com/pingdotgg/t3code/blob/47683f6ff476d0fc7747375c54583437fba30567/docs/user/install.md",
+    "https://github.com/pingdotgg/t3code/blob/47683f6ff476d0fc7747375c54583437fba30567/docs/internals/overview.md"
   ]
 }

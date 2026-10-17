@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "command", "en": "Command ID and intended changes", "zh": "命令 ID 与预期改动", "kind": "input"},
+    {"id": "transaction", "en": "One transaction: receipt, events, projections, outbox", "zh": "同一事务：回执、事件、投影、待办队列", "technique": [1]},
+    {"id": "receipt", "en": "Accepted receipt, not tool completion", "zh": "接受回执，不是工具完成证明", "kind": "output", "technique": [1]},
+    {"id": "publish", "en": "Publish only after commit", "zh": "提交后才发布事件", "technique": [1]},
+    {"id": "worker", "en": "Worker claims and executes queued work", "zh": "worker 认领并执行待办工作", "technique": [1]},
+    {"id": "resume", "en": "Reconnect with a sequence cursor", "zh": "带序号游标重连", "kind": "input"},
+    {"id": "budget", "en": "Check cursor, raw bytes, 128 events and 1 MiB", "zh": "检查游标、原始字节、128 事件与 1 MiB", "technique": [2]},
+    {"id": "replay", "en": "Replay retained events", "zh": "回放保留的事件", "technique": [2]},
+    {"id": "snapshot", "en": "Bounded snapshot and older-history cursor", "zh": "有界快照与旧历史游标", "technique": [2]},
+    {"id": "live", "en": "Client continues with live events", "zh": "客户端继续接收实时事件", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "command", "to": "transaction"},
+    {"from": "transaction", "to": "receipt", "en": "receipt / reused ID", "zh": "回执／复用 ID"},
+    {"from": "transaction", "to": "publish", "en": "new commit", "zh": "新提交"},
+    {"from": "transaction", "to": "worker", "en": "committed outbox", "zh": "已提交的待办"},
+    {"from": "publish", "to": "live"},
+    {"from": "resume", "to": "budget"},
+    {"from": "budget", "to": "replay", "en": "within budget", "zh": "未超预算"},
+    {"from": "budget", "to": "snapshot", "style": "dashed", "en": "ahead cursor or excess", "zh": "游标领先或超限"},
+    {"from": "replay", "to": "live"},
+    {"from": "snapshot", "to": "live"}
+  ],
+  "sources": [
+    "https://github.com/pingdotgg/t3code/blob/47683f6ff476d0fc7747375c54583437fba30567/apps/server/src/orchestration-v2/EventSink.ts#L231-L261",
+    "https://github.com/pingdotgg/t3code/blob/47683f6ff476d0fc7747375c54583437fba30567/apps/server/src/orchestration-v2/EventSink.ts#L544-L624",
+    "https://github.com/pingdotgg/t3code/blob/47683f6ff476d0fc7747375c54583437fba30567/apps/server/src/orchestration-v2/EffectWorker.ts#L673-L734",
+    "https://github.com/pingdotgg/t3code/blob/47683f6ff476d0fc7747375c54583437fba30567/apps/server/src/orchestration-v2/ThreadStream.ts#L14-L109",
+    "https://github.com/pingdotgg/t3code/blob/47683f6ff476d0fc7747375c54583437fba30567/apps/server/src/ws.ts#L854-L927"
+  ]
+}

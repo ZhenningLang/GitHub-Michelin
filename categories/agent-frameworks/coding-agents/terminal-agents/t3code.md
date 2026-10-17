@@ -6,17 +6,17 @@ category: terminal-agents
 tags: [coding-agent, web-gui, desktop-app, codex, claude-code, cursor, opencode]
 language: TypeScript
 license: MIT
-maturity: v0.0.45 stable / v0.0.46 nightlies, active, 27350 stars (as of 2026-10-13)
-last_verified: 2026-10-13
+maturity: v0.1.0 stable / v0.1.1 nightlies, active, 28000 stars (as of 2026-10-17)
+last_verified: 2026-10-17
 type: app
 upstream:
-  pushed_at: 2026-10-13T16:56:30Z
+  pushed_at: 2026-10-17T05:57:36Z
   default_branch: main
-  default_branch_sha: 8d7523248964ec7b37cc08f91e15122def171821
+  default_branch_sha: 47683f6ff476d0fc7747375c54583437fba30567
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-13T16:54:21Z
+  computed_at: 2026-10-17T05:57:32Z
   overall: A
   overall_score: 3.5
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 0.0
-        qualifying_issues: 43
+        median_ttfr_hours: 0.1
+        qualifying_issues: 46
         band: relaxed_solo
         window_offset_days: 0
         source: issue
@@ -47,29 +47,29 @@ health:
         registry: npmjs.org
         canonical_package: t3
         dependent_repos_count: 2
-        downloads_last_month: 125074
+        downloads_last_month: 124061
         graph_tier: D
         volume_tier: C
         cross_check_divergence: null
-        homebrew_installs_90d: 6923
+        homebrew_installs_90d: 7326
         homebrew_tier: A
-        release_downloads: 10420848
-        release_assets: 2388
+        release_downloads: 11849421
+        release_assets: 2426
         release_tier: A
         signal_basis: homebrew+releases
         tier_source: homebrew+releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 247
+        repo_age_days: 250
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: B
       raw:
         active_maintainers_12mo: 94
-        top1_share: 0.47
-        top3_share: 0.68
+        top1_share: 0.484
+        top3_share: 0.689
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -91,12 +91,12 @@ You keep switching terminal windows to find which coding agent is waiting for in
 
 You're already authorized in more than one coding-agent CLI and want a single graphical workspace for sessions rather than several terminal windows. Pick T3 Code over writing your own wrapper because it exposes a local web UI, `npx t3@latest` entry point, and desktop builds around supported agent CLIs. Its deciding tradeoff is convenience across providers without becoming a model provider or replacing the underlying agents.
 
-Use it when a browser, desktop or mobile control surface is worth the added local service and you accept a fast-moving 0.0.x product. README explicitly supports Codex, Claude, Cursor, Grok Build, OpenCode and Antigravity; the install guide also documents Pi and Muse Code. A provider must be configured and authenticated before starting a thread, but managed ChatGPT/Antigravity paths do not require a preinstalled CLI.
+Use it when a browser, desktop or mobile control surface is worth the added local service and you accept a fast-moving 0.1.x product. README explicitly supports Codex, Claude, Cursor, Grok Build, OpenCode and Antigravity; the install guide also documents Pi and Muse Code. A provider must be configured and authenticated before starting a thread, but managed ChatGPT/Antigravity paths do not require a preinstalled CLI.
 
 ## When NOT to use
 
 - **You expect a free model or independent agent runtime.** Use the selected provider directly if you only need one agent; T3 Code controls existing or managed provider runtimes and you still need authentication and a subscription or API budget.
-- **You need mature documentation, predictable compatibility, or a stable production control plane.** Use a supported provider's native client; the README calls T3 Code very early, and current releases are still 0.0.x with frequent nightlies.
+- **You need mature documentation, predictable compatibility, or a stable production control plane.** Use a supported provider's native client; the README still calls T3 Code very early, despite reaching 0.1.0, and nightlies remain frequent.
 - **You want a minimal terminal-only workflow or the smallest local attack surface.** Use the selected provider's CLI directly; T3 Code adds a Node service, WebSocket UI, persistence, and optionally Electron.
 - **You need an open contribution process and externally governed roadmap.** Choose a project that accepts outside contributions; its contribution policy says external PRs may be closed, held indefinitely, or not reviewed.
 - **You require an air-gapped phone-to-server setup without reviewing remote connectivity.** Use a local provider CLI or local-only T3 session; mobile access adds a separately configured connection and credentials, not a hosted coding sandbox.
@@ -112,7 +112,7 @@ Use it when a browser, desktop or mobile control surface is worth the added loca
 
 ## Quick start
 
-Install and authenticate a provider on the machine containing your project; for example, the [README](https://github.com/pingdotgg/t3code/blob/8d7523248964ec7b37cc08f91e15122def171821/README.md) specifies `codex login` after installing Codex CLI. Try `npx t3@latest` to start the local server and web app, or install a desktop release; `docs/user/install.md` documents the persistent `t3` installation and service commands. In Settings → Providers, enable the provider for that environment, open your project and start a thread with a coding task. T3 Code presents agent responses and workspace changes while its server runs the provider on that machine; you answer approval requests and review the resulting diff. Provider subscriptions/API usage remain your responsibility, and phone access requires a separate remote-connection setup rather than moving execution to the phone.
+Install and authenticate a provider on the machine containing your project; for example, the [README](https://github.com/pingdotgg/t3code/blob/47683f6ff476d0fc7747375c54583437fba30567/README.md) specifies `codex login` after installing Codex CLI. Try `npx t3@latest` to start the local server and web app, or install a desktop release; `docs/user/install.md` documents the persistent `t3` installation and service commands. In Settings → Providers, enable the provider for that environment, open your project and start a thread with a coding task. T3 Code presents agent responses and workspace changes while its server runs the provider on that machine; you answer approval requests and review the resulting diff. Provider subscriptions/API usage remain your responsibility, and phone access requires a separate remote-connection setup rather than moving execution to the phone.
 
 ![t3code — backbone user story](../../../../assets/flow/t3code.svg)
 
@@ -133,12 +133,54 @@ Install and authenticate a provider on the machine containing your project; for 
 
 ## Key techniques
 
-- **Record intent before external work.** [`apps/server/src/orchestration-v2/EventSink.ts:240–261`](https://github.com/pingdotgg/t3code/blob/8d7523248964ec7b37cc08f91e15122def171821/apps/server/src/orchestration-v2/EventSink.ts#L240-L261) defines the commit/publish boundary; [`EventSink.ts:527–592`](https://github.com/pingdotgg/t3code/blob/8d7523248964ec7b37cc08f91e15122def171821/apps/server/src/orchestration-v2/EventSink.ts#L527-L592) reserves a command ID, appends events, updates projections and queues effects in one SQL transaction, then publishes committed events. Reusing an ID returns the old receipt instead of committing again. This separates durable accepted intent from provider execution: an acknowledgement does not mean a tool operation has finished.
-- **Bound reconnection work rather than replaying everything.** [`apps/server/src/orchestration-v2/ThreadStream.ts:14–124`](https://github.com/pingdotgg/t3code/blob/8d7523248964ec7b37cc08f91e15122def171821/apps/server/src/orchestration-v2/ThreadStream.ts#L14-L124) limits thread replay to 128 events and 1 MiB encoded data, checks raw payload safety, and falls back to a bounded snapshot when the cursor is invalid or the replay exceeds its budget. Clients receive history cursors to fetch more, rather than one unbounded transcript; snapshot delivery is not a promise that all old history is already loaded.
+![T3 Code — mechanism diagram](../../../../assets/mechanism/t3code.svg)
+
+<!-- mechanism:begin (generated from mechanisms/t3code.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>Text version of the mechanism</summary>
+
+- Command ID and intended changes
+- One transaction: receipt, events, projections, outbox①
+- Accepted receipt, not tool completion①
+- Publish only after commit①
+- Worker claims and executes queued work①
+- Reconnect with a sequence cursor
+- Check cursor, raw bytes, 128 events and 1 MiB②
+- Replay retained events②
+- Bounded snapshot and older-history cursor②
+- Client continues with live events
+
+- Command ID and intended changes → One transaction: receipt, events, projections, outbox①
+- One transaction: receipt, events, projections, outbox① → Accepted receipt, not tool completion① (receipt / reused ID)
+- One transaction: receipt, events, projections, outbox① → Publish only after commit① (new commit)
+- One transaction: receipt, events, projections, outbox① → Worker claims and executes queued work① (committed outbox)
+- Publish only after commit① → Client continues with live events
+- Reconnect with a sequence cursor → Check cursor, raw bytes, 128 events and 1 MiB②
+- Check cursor, raw bytes, 128 events and 1 MiB② → Replay retained events② (within budget)
+- Check cursor, raw bytes, 128 events and 1 MiB② → Bounded snapshot and older-history cursor② (ahead cursor or excess) [optional/fallback]
+- Replay retained events② → Client continues with live events
+- Bounded snapshot and older-history cursor② → Client continues with live events
+
+</details>
+<!-- mechanism:end -->
+
+### 1. Commit the command and pending work together
+
+- **Problem:** Retrying a command must not record it twice, and a UI acknowledgement must not race ahead of durable state.
+- **How:** In one SQL transaction, reserve the command ID, append events, update projections—the UI's read model—and queue external work in an outbox. Publish after commit; a reused ID returns the existing receipt, while a separate worker claims the queued work.
+- **Limits:** The receipt confirms accepted intent, not a completed provider turn or tool operation. It is not an exactly-once guarantee for arbitrary external effects.
+- **Source:** [`EventSink.ts:231–261`](https://github.com/pingdotgg/t3code/blob/47683f6ff476d0fc7747375c54583437fba30567/apps/server/src/orchestration-v2/EventSink.ts#L231-L261), [`EventSink.ts:544–624`](https://github.com/pingdotgg/t3code/blob/47683f6ff476d0fc7747375c54583437fba30567/apps/server/src/orchestration-v2/EventSink.ts#L544-L624), [`EffectWorker.ts:673–734`](https://github.com/pingdotgg/t3code/blob/47683f6ff476d0fc7747375c54583437fba30567/apps/server/src/orchestration-v2/EffectWorker.ts#L673-L734).
+
+### 2. Choose bounded replay or a snapshot on reconnection
+
+- **Problem:** Loading an entire long-running thread again would make reconnecting clients decode and apply unbounded history.
+- **How:** Check the cursor and stored payload size before decoding, then allow replay only within 128 events and 1 MiB encoded data. A cursor ahead of the server or an over-budget replay selects a bounded current snapshot, with cursors for fetching older history.
+- **Limits:** A snapshot is not all historical messages. The raw and encoded byte limits bound transport work, not total process memory.
+- **Source:** [`ThreadStream.ts:14–109`](https://github.com/pingdotgg/t3code/blob/47683f6ff476d0fc7747375c54583437fba30567/apps/server/src/orchestration-v2/ThreadStream.ts#L14-L109), [`ws.ts:854–927`](https://github.com/pingdotgg/t3code/blob/47683f6ff476d0fc7747375c54583437fba30567/apps/server/src/ws.ts#L854-L927).
 
 ## Tech stack
 
-- **Core:** TypeScript pnpm monorepo with a Node.js server, HTTP/WebSocket transport, and stdio JSON-RPC to local agent processes.
+- **Core:** TypeScript monorepo using Vite+ (`vp`) and pnpm, with a Node.js server, HTTP/WebSocket transport, and stdio JSON-RPC to local agent processes.
 - **Web:** React 19, Vite/Vite+, and Tailwind CSS 4.
 - **Desktop / mobile:** Electron desktop application and Expo/React Native mobile code.
 - **Integrations:** provider SDKs for Claude and OpenCode, local Codex app-server integration, SSH/Tailscale and relay-related packages.
@@ -156,12 +198,12 @@ Install and authenticate a provider on the machine containing your project; for 
 
 ## Health & viability
 
-- **Maintenance snapshot (2026-10-13):** unarchived, with active main and frequent nightlies; GitHub reports 27350 stars, an attention signal rather than adoption proof.
-- **Release discipline:** stable `v0.0.45` was published 2026-10-02; newest listed releases are `v0.0.46` nightly prereleases. Active release automation does not equal a stable compatibility contract. [推断：0.0.x versions and separate stable/nightly channels]
+- **Maintenance snapshot (2026-10-17):** unarchived, reviewed main commit `47683f6`, with frequent nightlies; GitHub reports 28000 stars, an attention signal rather than adoption proof.
+- **Release discipline:** stable `v0.1.0` was published 2026-10-15; the newest listed release is `v0.1.1-nightly.20261017.3238`. Active release automation does not equal a stable compatibility contract. [推断：early 0.1.x versions and separate stable/nightly channels]
 - **Governance / bus factor:** the repo belongs to the `pingdotgg` organization and has many contributors, but reported contributions are strongly concentrated in one maintainer and external contribution intake is deliberately restricted.
 - **Age / Lindy:** created 2026-02, so its high early interest has not had time to become a long-term reliability signal. MIT is low-friction legally.
 
 ## Caveats (unverified)
 
 - [未验证：providers and remote clients were not run] Provider authentication, desktop/mobile compatibility and remote connections were source-reviewed, not tested end to end.
-- [推断：0.0.x versions and frequent nightlies] Pin and test a release before rollout; active releases and stars do not establish a stable compatibility contract.
+- [推断：early 0.1.x versions and frequent nightlies] Pin and test a release before rollout; active releases and stars do not establish a stable compatibility contract.
