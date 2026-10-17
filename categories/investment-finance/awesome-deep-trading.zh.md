@@ -7,7 +7,7 @@ tags: [investment-finance, literature-index, deep-learning, trading-research]
 language: Markdown
 license: MIT
 maturity: historical resource list, last main commit 2021-01-01, 2049 stars (as of 2026-10-13)
-last_verified: 2026-10-13
+last_verified: 2026-10-17
 type: tool
 upstream:
   pushed_at: 2023-08-08T19:55:49Z
@@ -115,11 +115,51 @@ health:
 
 ## 技术要点
 
-以下是 README 的静态内容组织机制，不是运行算法。
+![awesome-deep-trading — 机制图](../../assets/mechanism/awesome-deep-trading.zh.svg)
 
-- **暴露方法／问题锚点。** [`README.md:10–33`](https://github.com/cbailes/awesome-deep-trading/blob/91eee433ec7791915ad20b15330f0eee04798f07/README.md#L10-L33) 按神经网络族、市场／问题和资源类型导航，不执行检索或排序也能缩小阅读范围；重叠主题不构成正式分类学。
-- **把元数据放在论文旁。** [`README.md:66–86`](https://github.com/cbailes/awesome-deep-trading/blob/91eee433ec7791915ad20b15330f0eee04798f07/README.md#L66-L86) 在综述／CNN／LSTM 组内保留标题、作者、年份和原文链接，便于追溯旧研究；没有质量分或复现结果。
-- **把实现／数据线索与论文分开。** [`README.md:142–175`](https://github.com/cbailes/awesome-deep-trading/blob/91eee433ec7791915ad20b15330f0eee04798f07/README.md#L142-L175) 列外部仓库及任务说明，再列数据／模拟资源。它不保证论文／代码一一对应；算法和数据属于外链源，不属于本仓实现。
+<!-- mechanism:begin (generated from mechanisms/awesome-deep-trading.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>机制文字版</summary>
+
+- 静态 README；无运行算法
+- 方法／市场／问题锚点①
+- 论文条目：标题、作者、年份②
+- 外部论文原文
+- 单列仓库与任务线索③
+- 数据／模拟链接③
+- 外部代码／数据；须另行核验
+
+- 静态 README；无运行算法 → 方法／市场／问题锚点①
+- 方法／市场／问题锚点① → 论文条目：标题、作者、年份②
+- 论文条目：标题、作者、年份② → 外部论文原文（原文链接）
+- 方法／市场／问题锚点① → 单列仓库与任务线索③
+- 单列仓库与任务线索③ → 数据／模拟链接③（后续章节）
+- 单列仓库与任务线索③ → 外部代码／数据；须另行核验
+- 数据／模拟链接③ → 外部代码／数据；须另行核验
+
+</details>
+<!-- mechanism:end -->
+
+### 1. 给静态书目保留多个入口
+
+- **解决：** 交易问题可能指向神经网络族、市场或投资组合，而不是某篇论文名。
+- **做法：** README 目录直接链接这些主题标题，也链接单列的资源章节。这是静态 Markdown 导航，不是检索或排序算法。
+- **边界：** 方法／问题标题帮助缩小阅读范围，但彼此重叠，不构成正式分类学。
+- **源码：** 无公开运行代码；本招的实际实现是 [README 目录第 10–33 行](https://github.com/cbailes/awesome-deep-trading/blob/91eee433ec7791915ad20b15330f0eee04798f07/README.md#L10-L33)。
+
+### 2. 把书目信息留在论文旁
+
+- **解决：** 多篇研究讨论相似交易方法，单靠标题不容易确认是哪一篇。
+- **做法：** 综述和神经网络章节把标题、作者、年份与原文链接放在一起。读者不运行数据库查询，也能定位并追溯旧研究。
+- **边界：** 条目没有质量分或复现结果；书目信息不证明交易能盈利。
+- **源码：** 无公开运行代码；参见真实的[综述／卷积网络／长短期记忆网络条目第 66–86 行](https://github.com/cbailes/awesome-deep-trading/blob/91eee433ec7791915ad20b15330f0eee04798f07/README.md#L66-L86)。
+
+### 3. 单列实现和数据线索
+
+- **解决：** 找到论文不等于找到可获取的代码和输入数据。
+- **做法：** 仓库章节给外部实现附上简短任务说明，后面再列数据与模拟资源。算法和数据仍属于这些外链源，不是本仓实现。
+- **边界：** 这种组织方式不核验论文／代码一一对应、环境可运行或外部数据可复用权限。
+- **源码：** 无公开运行代码；参见[仓库／数据／模拟清单第 142–175 行](https://github.com/cbailes/awesome-deep-trading/blob/91eee433ec7791915ad20b15330f0eee04798f07/README.md#L142-L175)。
 
 
 ## 技术栈

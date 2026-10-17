@@ -7,7 +7,7 @@ tags: [investment-finance, literature-index, deep-learning, trading-research]
 language: Markdown
 license: MIT
 maturity: historical resource list, last main commit 2021-01-01, 2049 stars (as of 2026-10-13)
-last_verified: 2026-10-13
+last_verified: 2026-10-17
 type: tool
 upstream:
   pushed_at: 2023-08-08T19:55:49Z
@@ -115,11 +115,51 @@ Open the [pinned README contents](https://github.com/cbailes/awesome-deep-tradin
 
 ## Key techniques
 
-These are static content-organization mechanisms in README, not runtime algorithms.
+![awesome-deep-trading — mechanism diagram](../../assets/mechanism/awesome-deep-trading.svg)
 
-- **Expose method/problem anchors.** [`README.md:10–33`](https://github.com/cbailes/awesome-deep-trading/blob/91eee433ec7791915ad20b15330f0eee04798f07/README.md#L10-L33) navigates neural-network families, markets/problems and resource types. It narrows reading without executing retrieval or ranking; overlapping topics are not a formal taxonomy.
-- **Keep metadata beside papers.** [`README.md:66–86`](https://github.com/cbailes/awesome-deep-trading/blob/91eee433ec7791915ad20b15330f0eee04798f07/README.md#L66-L86) groups survey/CNN/LSTM entries with titles, authors, years and original links. It makes older work traceable, but attaches no quality score or replication result.
-- **Separate implementation/data leads from papers.** [`README.md:142–175`](https://github.com/cbailes/awesome-deep-trading/blob/91eee433ec7791915ad20b15330f0eee04798f07/README.md#L142-L175) lists outside repositories and task descriptions, then data/simulation resources. This is not a verified one-to-one paper/code mapping; algorithms and datasets belong to the linked sources, not this repo.
+<!-- mechanism:begin (generated from mechanisms/awesome-deep-trading.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>Text version of the mechanism</summary>
+
+- Static README; no runtime algorithm
+- Method / market / problem anchors①
+- Paper entries: title + author + year②
+- External original papers
+- Separate repository + task leads③
+- Dataset / simulation links③
+- External code / data; verify separately
+
+- Static README; no runtime algorithm → Method / market / problem anchors①
+- Method / market / problem anchors① → Paper entries: title + author + year②
+- Paper entries: title + author + year② → External original papers (source links)
+- Method / market / problem anchors① → Separate repository + task leads③
+- Separate repository + task leads③ → Dataset / simulation links③ (following section)
+- Separate repository + task leads③ → External code / data; verify separately
+- Dataset / simulation links③ → External code / data; verify separately
+
+</details>
+<!-- mechanism:end -->
+
+### 1. Give the static bibliography several entry points
+
+- **Problem:** A trading question might name a neural-network family, a market or a portfolio problem rather than a paper title.
+- **How:** README contents link directly to those topic headings and to separate resource sections. This is a static Markdown navigation structure, not a retrieval or ranking algorithm.
+- **Limits:** Overlapping method/problem headings help narrow reading but do not form a formal taxonomy.
+- **Source:** No public runtime code; the implementation here is the [README contents:10–33](https://github.com/cbailes/awesome-deep-trading/blob/91eee433ec7791915ad20b15330f0eee04798f07/README.md#L10-L33).
+
+### 2. Keep bibliographic identity with each paper
+
+- **Problem:** A title alone is a poor lead when several works discuss similar trading methods.
+- **How:** Survey and neural-network sections place titles, authors, years and original-source links together. These fields let a reader identify and trace older work without running a database query.
+- **Limits:** The entries supply neither quality scores nor replication results; bibliographic metadata is not evidence of profitable trading.
+- **Source:** No public runtime code; see the actual [survey/CNN/LSTM entries:66–86](https://github.com/cbailes/awesome-deep-trading/blob/91eee433ec7791915ad20b15330f0eee04798f07/README.md#L66-L86).
+
+### 3. Keep implementation and data leads in separate lists
+
+- **Problem:** Finding a paper does not establish where its code or input data can be obtained.
+- **How:** A repositories section lists external implementations with short task descriptions, followed by dataset and simulation leads. The algorithms and datasets remain at those outside sources, not inside this repository.
+- **Limits:** This arrangement does not verify a one-to-one paper/code mapping, working environments or permission to reuse an external dataset.
+- **Source:** No public runtime code; see [repository/data/simulation lists:142–175](https://github.com/cbailes/awesome-deep-trading/blob/91eee433ec7791915ad20b15330f0eee04798f07/README.md#L142-L175).
 
 
 ## Tech stack
