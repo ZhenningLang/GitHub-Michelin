@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "query", "en": "Chapter goal, contracts and stored facts", "zh": "本章目标、合同与已存事实", "kind": "input"},
+    {"id": "candidates", "en": "Small: full scan; large: BM25 plus recent candidates", "zh": "小索引全扫；大索引取关键词与近期候选", "technique": [2]},
+    {"id": "rank", "en": "Fuse ranks, then rerank", "zh": "融合排名，再重排序", "technique": [2]},
+    {"id": "empty", "en": "Large-index query embedding missing: empty results", "zh": "大索引缺查询向量：返回空结果", "kind": "output", "technique": [2]},
+    {"id": "context", "en": "Context agent prepares writing brief", "zh": "上下文助手准备写作任务书", "technique": [3]},
+    {"id": "draft", "en": "Main workflow drafts the chapter", "zh": "主流程起草章节"},
+    {"id": "artifacts", "en": "Review and extracted facts; minimal marks review skipped", "zh": "审查与事实产物；minimal 明示未审查", "technique": [3]},
+    {"id": "gate", "en": "Validate review, outline, ambiguity and extraction", "zh": "校验审查、大纲、歧义与提取", "technique": [1]},
+    {"id": "reject", "en": "Rejected commit", "zh": "拒绝的章节提交", "kind": "output"},
+    {"id": "accept", "en": "Accepted chapter events", "zh": "已接受的章节事件", "technique": [1]},
+    {"id": "views", "en": "Update five views; record each status", "zh": "更新五路视图，分别记录状态", "technique": [1]},
+    {"id": "next", "en": "Queryable facts for later chapters", "zh": "后续章节可查询的事实", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "query", "to": "candidates"},
+    {"from": "candidates", "to": "rank", "en": "usable results", "zh": "有可用结果"},
+    {"from": "candidates", "to": "empty", "style": "dashed", "en": "large branch embed failure", "zh": "大索引查询向量失败"},
+    {"from": "query", "to": "context", "en": "context package", "zh": "上下文基础包"},
+    {"from": "rank", "to": "context", "style": "dashed", "en": "RAG clues", "zh": "检索线索"},
+    {"from": "context", "to": "draft"},
+    {"from": "draft", "to": "artifacts"},
+    {"from": "artifacts", "to": "gate"},
+    {"from": "gate", "to": "reject", "style": "dashed", "en": "blocking / missed / pending", "zh": "阻断／遗漏／未消歧"},
+    {"from": "gate", "to": "accept", "en": "accepted", "zh": "接受"},
+    {"from": "accept", "to": "views"},
+    {"from": "views", "to": "next", "en": "successful projections", "zh": "投影成功"}
+  ],
+  "sources": [
+    "https://github.com/lingfengQAQ/webnovel-writer/blob/86e617ee7f4f04be9d3f8575f90c38f879ed80ed/webnovel-writer/scripts/data_modules/chapter_commit_service.py#L33-L190",
+    "https://github.com/lingfengQAQ/webnovel-writer/blob/86e617ee7f4f04be9d3f8575f90c38f879ed80ed/webnovel-writer/scripts/data_modules/rag_adapter.py#L1156-L1287",
+    "https://github.com/lingfengQAQ/webnovel-writer/blob/86e617ee7f4f04be9d3f8575f90c38f879ed80ed/webnovel-writer/skills/webnovel-write/SKILL.md#L82-L265",
+    "https://github.com/lingfengQAQ/webnovel-writer/blob/86e617ee7f4f04be9d3f8575f90c38f879ed80ed/webnovel-writer/agents/context-agent.md#L21-L44",
+    "https://github.com/lingfengQAQ/webnovel-writer/blob/86e617ee7f4f04be9d3f8575f90c38f879ed80ed/webnovel-writer/agents/context-agent.md#L69-L77"
+  ]
+}

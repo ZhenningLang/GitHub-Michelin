@@ -11,8 +11,8 @@
   ],
   "value": {"en": "The next chapter can consult saved story facts rather than only chat history", "zh": "下一章可查询已保存的故事事实，不只依赖聊天历史"},
   "sources": [
-    "https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/README.md",
-    "https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/webnovel-writer/skills/webnovel-write/SKILL.md",
-    "https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/webnovel-writer/scripts/data_modules/chapter_commit_service.py"
+    "https://github.com/lingfengQAQ/webnovel-writer/blob/86e617ee7f4f04be9d3f8575f90c38f879ed80ed/README.md",
+    "https://github.com/lingfengQAQ/webnovel-writer/blob/86e617ee7f4f04be9d3f8575f90c38f879ed80ed/webnovel-writer/skills/webnovel-write/SKILL.md",
+    "https://github.com/lingfengQAQ/webnovel-writer/blob/86e617ee7f4f04be9d3f8575f90c38f879ed80ed/webnovel-writer/scripts/data_modules/chapter_commit_service.py"
   ]
 }
