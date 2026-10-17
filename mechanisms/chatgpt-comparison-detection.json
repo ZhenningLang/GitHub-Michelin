@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "raw", "en": "Answers in the filtering notebook", "zh": "过滤 notebook 中的回答", "kind": "input"},
+    {"id": "filter", "en": "Split sentences, normalize address, drop matching sentences", "zh": "切句、统一称呼、删除命中词表的整句", "technique": [1]},
+    {"id": "filtered", "en": "Filtered text; separate notebook output", "zh": "过滤后文本，独立 notebook 的产出", "kind": "output"},
+    {"id": "csv", "en": "Local train/test CSVs; independently prepared", "zh": "另行准备的本地训练与测试 CSV", "kind": "input"},
+    {"id": "mix", "en": "dl_train.py: optionally combine full answers and sentences", "zh": "dl_train.py：可合并全文与句子切分", "technique": [2]},
+    {"id": "tokens", "en": "Answer or question + answer; truncate", "zh": "回答或问题加回答，分词并截断", "technique": [2]},
+    {"id": "classifier", "en": "Train sequence classifier; all-train removes held-out test", "zh": "训练序列分类器，all-train 不再保留测试集", "kind": "output"},
+    {"id": "rank", "en": "ml_train.py: GPT-2 rank counts in four buckets", "zh": "ml_train.py：GPT-2 预测排名四档计数", "technique": [3]},
+    {"id": "lr", "en": "Logistic regression with repeated stratified folds", "zh": "逻辑回归，多次按标签比例分组验证", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "raw", "to": "filter"},
+    {"from": "filter", "to": "filtered"},
+    {"from": "csv", "to": "mix"},
+    {"from": "mix", "to": "tokens"},
+    {"from": "tokens", "to": "classifier"},
+    {"from": "csv", "to": "rank"},
+    {"from": "rank", "to": "lr"}
+  ],
+  "sources": [
+    "https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/HC3/demo_indicating_words.ipynb#L98-L127",
+    "https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/detect/dl_train.py#L53-L136",
+    "https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/detect/ml_train.py#L45-L81",
+    "https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/detect/ml_train.py#L241-L262"
+  ]
+}
