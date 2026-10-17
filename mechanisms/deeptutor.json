@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id":"library","en":"Course library documents","zh":"课程库文档","kind":"input"},
+    {"id":"lock","en":"Per-library lock + run journal","zh":"每库锁与任务记录","technique":[1]},
+    {"id":"worker","en":"Indexing worker","zh":"索引进程","technique":[1]},
+    {"id":"interrupted","en":"Dead owner: interrupted / unknown","zh":"进程已退出：中断／未知","kind":"output","technique":[1]},
+    {"id":"inventory","en":"Count real roots before display limit","zh":"数真实文档，再限展示条数","technique":[2]},
+    {"id":"manifest","en":"Inventory or unavailable; not index proof","zh":"清单或不可用；不证明索引成功","kind":"output","technique":[2]},
+    {"id":"round","en":"Model exploration rounds","zh":"模型探索轮次","technique":[3]},
+    {"id":"tools","en":"Dispatch tools / collect sources + replies","zh":"调用工具／收集来源与答复","technique":[3]},
+    {"id":"settle","en":"Bounded settlement / tool-less finish","zh":"有限收尾／禁用工具结束","technique":[3]},
+    {"id":"answer","en":"Answer for review, not correctness proof","zh":"回答供核验，不保证正确","kind":"output"}
+  ],
+  "edges": [
+    {"from":"library","to":"lock"},
+    {"from":"lock","to":"worker"},
+    {"from":"worker","to":"interrupted","en":"owner dies","zh":"原进程退出","style":"dashed"},
+    {"from":"library","to":"inventory"},
+    {"from":"inventory","to":"manifest"},
+    {"from":"round","to":"tools","en":"requested","zh":"有工具请求"},
+    {"from":"tools","to":"round","en":"evidence in next round","zh":"证据进入下轮"},
+    {"from":"round","to":"settle","en":"budget reached","zh":"探索额度耗尽"},
+    {"from":"settle","to":"answer"}
+  ],
+  "sources": [
+    "https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/knowledge/indexing_run.py#L85-L162",
+    "https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/knowledge/indexing_run.py#L209-L250",
+    "https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/knowledge/manifest.py#L147-L254",
+    "https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L403-L451",
+    "https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L705-L743"
+  ]
+}

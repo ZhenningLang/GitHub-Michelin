@@ -67,7 +67,7 @@
 <text class="num" x="62" y="317" text-anchor="middle">4</text>
 <text class="t" x="82" y="318">对所选知识库启用检索，提出课程问题</text>
 <text class="c" x="82" y="342">deeptutor chat --capability deep_solve</text>
-<text class="c" x="82" y="361">--tool rag --kb my-kb</text>
+<text class="c" x="82" y="361">--kb my-kb</text>
 <rect class="cardT" x="472" y="335" width="368" height="75" rx="8"/>
 <rect class="accT" x="472" y="335" width="4" height="75" rx="2"/>
 <circle class="accT" cx="494" cy="359" r="10"/>

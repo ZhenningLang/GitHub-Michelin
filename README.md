@@ -1305,7 +1305,7 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
-| **DeepTutor** | DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/. | NOASSERTION | B (5/6) | [EN](categories/education-tutoring/deeptutor.md) · [中](categories/education-tutoring/deeptutor.zh.md) |
+| **DeepTutor** | DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/. | NOASSERTION | B (4/6) | [EN](categories/education-tutoring/deeptutor.md) · [中](categories/education-tutoring/deeptutor.zh.md) |
 
 ### agent-governance
 
