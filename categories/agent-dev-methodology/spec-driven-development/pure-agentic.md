@@ -7,7 +7,7 @@ tags: [intent-driven, spec-driven, phase-gates, agent-registry, knowledge-blocks
 language: Shell
 license: MIT
 maturity: v0.1.0, main last changed 2026-05-26, experimental, 0 stars (as of 2026-10)
-last_verified: 2026-10-13
+last_verified: 2026-10-17
 type: framework
 upstream:
   pushed_at: 2026-05-26T18:33:55Z
@@ -123,9 +123,59 @@ Clone the actual `JonB32/pure-agentic` repository into a staging directory, then
 
 ## Key techniques
 
-- **Separate reusable rules from project context budgets.** [scripts/context-check.sh:71–103](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L71-L103) counts lines outside marked project-context blocks, enforcing 80-line role/context and 50-line spec budgets elsewhere in the script. This keeps reusable scaffolding short, but the excluded block can still become large; line budgets do not measure relevance or actual model tokens.
-- **Validate stored shapes, with an explicit dependency gap.** [scripts/context-check.sh:167–243](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L167-L243) parses YAML intents/knowledge blocks and applies JSON Schema validators, collecting file-level failures. Missing Python packages cause schema validation to be skipped, and missing schema files return no schema; exit 0 must therefore not be read as proof that every schema or gate was checked.
-- **Detect spec drift on named impact files.** [scripts/freshness-check.sh:32–104](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/freshness-check.sh#L32-L104) reads the UNIFY block's base SHA, finds its spec, extracts Impact Zones and compares those paths to current HEAD. This catches committed changes after planning; an empty parsed zone list only warns and exits 0, and the comparison does not inspect unstaged edits or prove semantic freshness.
+![PURE — mechanism diagram](../../../assets/mechanism/pure-agentic.svg)
+
+<!-- mechanism:begin (generated from mechanisms/pure-agentic.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>Text version of the mechanism</summary>
+
+- Context, specs, intents and phase records
+- Context: 80 lines outside project block; specs: 50 total①
+- Schema stage: packages and schema files available?②
+- Parse YAML; validate existing schemas; collect errors②
+- Missing packages or schema: corresponding checks omitted②
+- context-check result; exit 0 does not mean all checked
+- UNIFY record and linked spec
+- Read base commit and affected paths③
+- Compare named paths: base commit to HEAD③
+- No parsed paths: warn and exit 0③
+- Committed drift: exit 1; none: exit 0
+
+- Context, specs, intents and phase records → Context: 80 lines outside project block; specs: 50 total①
+- Context: 80 lines outside project block; specs: 50 total① → context-check result; exit 0 does not mean all checked
+- Context, specs, intents and phase records → Schema stage: packages and schema files available?②
+- Schema stage: packages and schema files available?② → Parse YAML; validate existing schemas; collect errors② (available)
+- Schema stage: packages and schema files available?② → Missing packages or schema: corresponding checks omitted② (missing) [optional/fallback]
+- Parse YAML; validate existing schemas; collect errors② → context-check result; exit 0 does not mean all checked
+- Missing packages or schema: corresponding checks omitted② → context-check result; exit 0 does not mean all checked
+- UNIFY record and linked spec → Read base commit and affected paths③
+- Read base commit and affected paths③ → Compare named paths: base commit to HEAD③ (nonempty)
+- Read base commit and affected paths③ → No parsed paths: warn and exit 0③ (empty) [optional/fallback]
+- Compare named paths: base commit to HEAD③ → Committed drift: exit 1; none: exit 0
+
+</details>
+<!-- mechanism:end -->
+
+### 1. Budget reusable context separately from project notes
+
+- **Problem:** Reusable agent instructions can grow until every new session must load a large scaffold.
+- **How:** `context-check.sh` excludes marked project-context blocks when counting the 80-line agent/role budgets. Specs have a separate 50-line count over the whole file; budget violations contribute errors to the final exit status.
+- **Limits:** The excluded project block can still grow without that cap. Lines measure neither relevance nor actual model tokens, and these file checks do not enforce the agent's lifecycle approvals.
+- **Source:** [scripts/context-check.sh:71–132](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L71-L132), [exit policy:245–251](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L245-L251).
+
+### 2. Check saved record shapes only when validators are available
+
+- **Problem:** Intent and knowledge-block files can parse as YAML while still violating the expected record fields.
+- **How:** With `PyYAML` and `jsonschema` installed, the script loads the existing intent and knowledge-block schemas, parses matching YAML files and collects per-file errors. JSON Schema describes allowed record structure, not whether its claims are true.
+- **Limits:** Missing Python packages skip the schema stage; a missing schema file means its records are not validated. Exit 0 therefore proves neither complete schema coverage nor that every human gate was checked; Tier 2/3 service designs are not supplied by this checker.
+- **Source:** [scripts/context-check.sh:167–243](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L167-L243), [exit policy:245–251](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L245-L251).
+
+### 3. Compare committed changes against the spec's named files
+
+- **Problem:** A spec may have been written before later commits changed the files it plans to touch.
+- **How:** `freshness-check.sh` reads the UNIFY phase record's base commit, finds the linked spec and extracts Impact Zones—the paths named as affected. It compares those paths between the base and current `HEAD`, reporting committed drift.
+- **Limits:** An empty parsed path list only warns and exits 0; missing required records or base data are errors. The comparison excludes uncommitted edits and cannot prove that the spec still makes semantic sense.
+- **Source:** [scripts/freshness-check.sh:32–104](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/freshness-check.sh#L32-L104), [drift result:107–123](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/freshness-check.sh#L107-L123).
 
 ## Tech stack
 

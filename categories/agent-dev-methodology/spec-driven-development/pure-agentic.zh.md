@@ -7,7 +7,7 @@ tags: [intent-driven, spec-driven, phase-gates, agent-registry, knowledge-blocks
 language: Shell
 license: MIT
 maturity: v0.1.0, main last changed 2026-05-26, experimental, 0 stars (as of 2026-10)
-last_verified: 2026-10-13
+last_verified: 2026-10-17
 type: framework
 upstream:
   pushed_at: 2026-05-26T18:33:55Z
@@ -123,9 +123,59 @@ health:
 
 ## 技术要点
 
-- **将复用规则与项目上下文预算分开。** [scripts/context-check.sh:71–103](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L71-L103) 统计标记项目上下文块以外的行数，脚本其它部分执行角色与上下文 80 行、规格 50 行预算。它让复用骨架短小，但排除块仍能变大；行数不衡量相关性或真实模型词元。
-- **检查存储结构，但明确依赖缺口。** [scripts/context-check.sh:167–243](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L167-L243) 解析 YAML 意图与知识块，应用 JSON Schema 校验器并汇集文件级错误。缺 Python 包会跳过校验，缺 schema 文件会返回空 schema；退出 0 不能解释为所有 schema 或门都查过。
-- **对规格点名文件检测漂移。** [scripts/freshness-check.sh:32–104](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/freshness-check.sh#L32-L104) 从 UNIFY 知识块读 base SHA、找规格、提取 Impact Zones，并将这些路径与当前 HEAD 比较。它能发现规划后的已提交改动；解析不到影响文件只警告并退出 0，比较也不查未暂存编辑或证明语义仍新鲜。
+![PURE — 机制图](../../../assets/mechanism/pure-agentic.zh.svg)
+
+<!-- mechanism:begin (generated from mechanisms/pure-agentic.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>机制文字版</summary>
+
+- 上下文、规格、意图与阶段记录
+- 上下文块外 80 行，规格全文 50 行①
+- 结构校验：依赖包与 schema 文件齐备？②
+- 解析 YAML，按现有 schema 校验并汇集错误②
+- 缺包或 schema：对应检查被跳过②
+- context-check 结果，退出 0 不等于全查过
+- UNIFY 记录与关联规格
+- 读取基准提交与受影响路径③
+- 点名路径：比较基准提交与 HEAD③
+- 未解析到路径：警告并退出 0③
+- 有已提交漂移退出 1，否则退出 0
+
+- 上下文、规格、意图与阶段记录 → 上下文块外 80 行，规格全文 50 行①
+- 上下文块外 80 行，规格全文 50 行① → context-check 结果，退出 0 不等于全查过
+- 上下文、规格、意图与阶段记录 → 结构校验：依赖包与 schema 文件齐备？②
+- 结构校验：依赖包与 schema 文件齐备？② → 解析 YAML，按现有 schema 校验并汇集错误②（齐备）
+- 结构校验：依赖包与 schema 文件齐备？② → 缺包或 schema：对应检查被跳过②（缺失）〔可选／兜底〕
+- 解析 YAML，按现有 schema 校验并汇集错误② → context-check 结果，退出 0 不等于全查过
+- 缺包或 schema：对应检查被跳过② → context-check 结果，退出 0 不等于全查过
+- UNIFY 记录与关联规格 → 读取基准提交与受影响路径③
+- 读取基准提交与受影响路径③ → 点名路径：比较基准提交与 HEAD③（非空）
+- 读取基准提交与受影响路径③ → 未解析到路径：警告并退出 0③（空）〔可选／兜底〕
+- 点名路径：比较基准提交与 HEAD③ → 有已提交漂移退出 1，否则退出 0
+
+</details>
+<!-- mechanism:end -->
+
+### 1. 将复用指令与项目笔记分开计预算
+
+- **解决：** 可复用的 agent 指令不断膨胀，会让每个新会话都得加载庞大骨架。
+- **做法：** `context-check.sh` 检查 agent 与角色文件的 80 行预算时，排除标记过的项目上下文块。规格另按整个文件计 50 行预算，超限计入错误并影响最终退出码。
+- **边界：** 被排除的项目块仍可不受此上限地增长。行数既不衡量相关性，也不等于模型实际词元数；这些文件检查不会强制 agent 获得生命周期批准。
+- **源码：** [scripts/context-check.sh:71–132](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L71-L132)、[退出策略：245–251](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L245-L251)。
+
+### 2. 校验器齐备时，才检查存档记录的形状
+
+- **解决：** 意图与知识块即使能解析成 YAML，也可能缺少协议要求的字段。
+- **做法：** 安装了 `PyYAML` 与 `jsonschema` 时，脚本加载现有的意图与知识块 schema，解析匹配的 YAML 文件，并汇集逐文件错误。JSON Schema 描述记录允许的结构，不证明记录里的说法真实。
+- **边界：** 缺 Python 包会跳过 schema 阶段；缺某个 schema 文件，该类记录就不校验。退出 0 因此既不证明 schema 全覆盖，也不证明每个人工门都查过；这个检查器也不提供 Tier 2/3 设计中的服务。
+- **源码：** [scripts/context-check.sh:167–243](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L167-L243)、[退出策略：245–251](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L245-L251)。
+
+### 3. 按规格点名的文件检查已提交漂移
+
+- **解决：** 规格写完后，后续提交可能已经改变了它打算修改的文件。
+- **做法：** `freshness-check.sh` 从 UNIFY 阶段记录读取基准提交，找到关联规格，再提取 Impact Zones，也就是点名的受影响路径。它将这些路径在基准与当前 `HEAD` 之间比较，报告已提交漂移。
+- **边界：** 解析出的路径列表为空时，只警告并退出 0；缺必需记录或基准数据则报错。比较不包含未提交编辑，也不能证明规格在语义上仍然适用。
+- **源码：** [scripts/freshness-check.sh:32–104](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/freshness-check.sh#L32-L104)、[漂移结果：107–123](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/freshness-check.sh#L107-L123)。
 
 ## 技术栈
 
