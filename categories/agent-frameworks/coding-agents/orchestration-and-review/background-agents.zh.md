@@ -6,17 +6,17 @@ category: orchestration-and-review
 tags: [coding-agent, background-jobs, sandbox, cloudflare, github-app, multi-repo, automation]
 language: TypeScript
 license: MIT
-maturity: v0.1.0 private workspace, active, 3354 stars, no GitHub Releases (as of 2026-10-13)
-last_verified: 2026-10-13
+maturity: v0.1.0 private workspace, active, 3365 stars, no GitHub Releases (as of 2026-10-17)
+last_verified: 2026-10-17
 type: app
 upstream:
-  pushed_at: 2026-10-13T16:39:16Z
+  pushed_at: 2026-10-16T01:14:14Z
   default_branch: main
-  default_branch_sha: 31d199996e4cc33fcc1f80c08785820db2f05537
+  default_branch_sha: 824d678830a4c1e88cb1ba9267356996e2d67e0e
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-13T16:46:52Z
+  computed_at: 2026-10-17T05:51:56Z
   overall: B
   overall_score: 3.2
   scored_axes: 5
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 10.6
-        qualifying_issues: 29
+        median_ttfr_hours: 22.2
+        qualifying_issues: 22
         band: relaxed_solo
         window_offset_days: 10
         source: issue
@@ -47,15 +47,15 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 261
-        last_commit_age_days: 0
+        repo_age_days: 264
+        last_commit_age_days: 1
         cohort: app
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 68
-        top1_share: 0.741
-        top3_share: 0.924
+        active_maintainers_12mo: 70
+        top1_share: 0.74
+        top3_share: 0.923
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -83,7 +83,7 @@ health:
 
 ## 何时不用
 
-- **你需要多租户 SaaS，或按个人 GitHub 权限授权。**改用逐组织独立部署或明确隔离租户的平台。Open-Inspect 已有团队、仓库授权和会话级 GitHub 凭据，但仍共享 App 安装、不比较个人 GitHub 权限，团队读取控制默认是 `shadow`，已签发令牌不能立即撤销。见所读版本的[安全模型](https://github.com/ColeMurray/background-agents/blob/31d199996e4cc33fcc1f80c08785820db2f05537/README.md#security-model-single-tenant-only)。
+- **你需要多租户 SaaS，或按个人 GitHub 权限授权。**改用逐组织独立部署或明确隔离租户的平台。Open-Inspect 已有团队、仓库授权和会话级 GitHub 凭据，但仍共享 App 安装、不比较个人 GitHub 权限，团队读取控制默认是 `shadow`，已签发令牌不能立即撤销。见所读版本的[安全模型](https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/README.md#security-model-single-tenant-only)。
 - **你是个人开发者，或只需终端结对编程。**改选 [OpenCode](../terminal-agents/opencode.zh.md)；Terraform、GitHub App、OAuth、云控制面和沙箱凭据的成本，对本地工作流不成比例。
 - **你的政策禁止云沙箱提供商。**改用 OpenCode 这类本地 agent，或评估自管的 [OpenHands](openhands.zh.md)；文档中的沙箱路径使用 Modal、Daytona、Vercel Sandbox、OpenComputer 或 E2B。AWS 托管可去掉 Cloudflare 依赖，不能去掉沙箱提供商的运维责任。
 - **你只需一个可审计的 CI 事件产生补丁。**改用 GitHub Actions 加 OpenCode；会话平台的凭据缓存、快照、secret 作用域、机器人和定时任务增加了需要管理的访问路径。
@@ -100,7 +100,9 @@ health:
 
 ## 快速上手
 
-按所读版本的[部署指南](https://github.com/ColeMurray/background-agents/blob/31d199996e4cc33fcc1f80c08785820db2f05537/docs/GETTING_STARTED.md)，准备 Node 24 以上、Terraform 1.14 以上和 Modal 的 Python 工具，fork 仓库，执行 `npm install`、`npm run build -w @open-inspect/shared`，在提供的 Terraform 文件中配置云账号和 GitHub App。在 `terraform/environments/production` 执行 `terraform init -backend-config=backend.tfvars`、`terraform apply`；这些命令创建会计费的云基础设施，不是本地演示。按照指南的 `npm run rbac:bootstrap-owner` 流程初始化工作区 Owner，创建团队、授予仓库、添加模型凭据，并在依赖团队私有读取前明确启用 `teams_enforcement = "on"`。网页中选择团队和仓库，输入编程任务，平台启动沙箱并推送助手的工作过程，也提供从会话创建拉取请求的功能。你承担托管、沙箱和模型费用，定义访问范围，并在合并前审查改动；启动成功或健康端点返回正常都不代表授权策略正确。
+以下是部署路径，不是一条命令就能运行的安装方法：还要在 `packages/modal-infra` 执行 `uv sync --frozen`，并在 Terraform 前构建指南列出的控制面与机器人 Worker。指南第一次 apply 创建不带绑定的 Worker，再打开两项绑定开关，第二次 apply；选择 Vercel 网页平台时，部署网页代码还是单独一步。
+
+按所读版本的[部署指南](https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/docs/GETTING_STARTED.md)，准备 Node 24 以上、Terraform 1.14 以上和 Modal 的 Python 工具，fork 仓库，执行 `npm install`、`npm run build -w @open-inspect/shared`，在提供的 Terraform 文件中配置云账号和 GitHub App。在 `terraform/environments/production` 执行 `terraform init -backend-config=backend.tfvars`、`terraform apply`；这些命令创建会计费的云基础设施，不是本地演示。按照指南的 `npm run rbac:bootstrap-owner` 流程初始化工作区 Owner，创建团队、授予仓库、添加模型凭据，并在依赖团队私有读取前明确启用 `teams_enforcement = "on"`。网页中选择团队和仓库，输入编程任务，平台启动沙箱并推送助手的工作过程，也提供从会话创建拉取请求的功能。你承担托管、沙箱和模型费用，定义访问范围，并在合并前审查改动；启动成功或健康端点返回正常都不代表授权策略正确。
 
 ![background-agents — 主干用户故事](../../../../assets/flow/background-agents.zh.svg)
 
@@ -121,9 +123,60 @@ health:
 
 ## 技术要点
 
-- **先持久化，沙箱就绪再派发。**[`session/message-queue.ts:422–580`](https://github.com/ColeMurray/background-agents/blob/31d199996e4cc33fcc1f80c08785820db2f05537/packages/control-plane/src/session/message-queue.ts#L422-L580) 检查模型提供商与执行器兼容性，在沙箱启动时延后派发，并把创建沙箱放到后台，避免机器人 HTTP 请求一直等待。它先认领已存储的提示词，再通过 WebSocket 发送；发送失败则恢复待处理状态并终止无响应沙箱。这是队列恢复机制，不代表任意工具副作用都恰好执行一次。
-- **可回放的会话历史。**[`session/event-stream.ts:21–107`](https://github.com/ColeMurray/background-agents/blob/31d199996e4cc33fcc1f80c08785820db2f05537/packages/control-plane/src/session/event-stream.ts#L21-L107) 用时间线游标读取事件仓库，排除心跳，限制回放与历史分页大小。客户端重新连接可恢复近期进度，不必让请求人的标签页一直开着；格式损坏的已存事件会被跳过，因此界面回放不保证审计导出的完整性。
-- **签发凭据时重新解析仓库范围。**[`source-control/session-scope.ts`](https://github.com/ColeMurray/background-agents/blob/31d199996e4cc33fcc1f80c08785820db2f05537/packages/control-plane/src/source-control/session-scope.ts) 重读会话归属和已存仓库成员；[`source-control/repository-scope.ts`](https://github.com/ColeMurray/background-agents/blob/31d199996e4cc33fcc1f80c08785820db2f05537/packages/control-plane/src/source-control/repository-scope.ts) 解析数字 ID，并与当前团队授权取交集。身份缺失直接拒绝，不扩大范围。它收窄 GitHub 安装凭据，但缓存令牌与文件系统快照仍有独立的撤销边界，GitLab 仍使用部署级 PAT。
+![Background Agents (Open-Inspect) — 机制图](../../../../assets/mechanism/background-agents.zh.svg)
+
+<!-- mechanism:begin (generated from mechanisms/background-agents.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>机制文字版</summary>
+
+- 收到提示词
+- 存为待处理提示词①
+- 检查模型与沙箱就绪状态①
+- 暂缓或后台创建沙箱①
+- 先认领，再经 WebSocket 发送①
+- 沙箱 agent 执行工具
+- 已存会话事件
+- 游标分页跳过心跳与坏事件②
+- 重读会话仓库与当前团队授权③
+- 签发限定仓库的 GitHub 令牌或拒绝③
+- 已签发令牌可能留在快照中③
+
+- 收到提示词 → 存为待处理提示词①
+- 存为待处理提示词① → 检查模型与沙箱就绪状态①
+- 检查模型与沙箱就绪状态① → 暂缓或后台创建沙箱①（未就绪）〔可选／兜底〕
+- 暂缓或后台创建沙箱① → 检查模型与沙箱就绪状态①（就绪后重查）〔可选／兜底〕
+- 检查模型与沙箱就绪状态① → 先认领，再经 WebSocket 发送①（已就绪）
+- 先认领，再经 WebSocket 发送① → 存为待处理提示词①（发送失败）〔可选／兜底〕
+- 先认领，再经 WebSocket 发送① → 沙箱 agent 执行工具（发送成功）
+- 沙箱 agent 执行工具 → 已存会话事件
+- 已存会话事件 → 游标分页跳过心跳与坏事件②
+- 沙箱 agent 执行工具 → 重读会话仓库与当前团队授权③（请求 Git 凭据）〔可选／兜底〕
+- 重读会话仓库与当前团队授权③ → 签发限定仓库的 GitHub 令牌或拒绝③
+- 签发限定仓库的 GitHub 令牌或拒绝③ → 已签发令牌可能留在快照中③（如已签发）〔可选／兜底〕
+
+</details>
+<!-- mechanism:end -->
+
+### 1. 沙箱能接收任务后，再认领并发送提示词
+
+- **解决：**机器人请求不该一直等沙箱启动，多个派发者也不能同时拿走同一条排队提示词。
+- **做法：**先存下提示词，检查模型与执行器是否兼容；沙箱未就绪就暂缓，缺沙箱就交后台创建。通过 WebSocket 发送前，先认领已存提示词；发送失败便恢复待处理状态，并终止无响应沙箱。
+- **边界：**等待认证结果后会重查取消和会话状态，但恢复队列记录不等于外部工具副作用恰好执行一次。
+- **源码：**[`message-queue.ts:405–625`](https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/packages/control-plane/src/session/message-queue.ts#L405-L625)、[`message-queue.ts:836–934`](https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/packages/control-plane/src/session/message-queue.ts#L836-L934)。
+
+### 2. 断线后按游标分批补回进度
+
+- **解决：**协作者重新连进会话时，需要看到近期进度，不必让请求人的浏览器标签页一直开着。
+- **做法：**按时间线游标读取已存事件，游标就是这一页读到哪的标记；心跳消息不进入回放。回放默认取 500 条，历史分页默认 200 条，并限制在 1–500 条。
+- **边界：**格式不合法的已存时间线事件会被跳过。这条界面恢复路径不保证审计导出的完整性。
+- **源码：**[`event-stream.ts:21–107`](https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/packages/control-plane/src/session/event-stream.ts#L21-L107)、[`event-stream.ts:136–139`](https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/packages/control-plane/src/session/event-stream.ts#L136-L139)。
+
+### 3. 签发 GitHub 凭据前，重算可访问仓库
+
+- **解决：**沙箱不应直接获得共享 GitHub App 能访问的全部仓库，尤其不能忽略团队授权的变化。
+- **做法：**重读会话归属和已存仓库成员，把仓库解析成数字 ID，再与所属团队当前的授权取交集。身份解析失败或范围为空便拒绝，不扩大访问范围。
+- **边界：**已签发的令牌和文件系统快照里的凭据不会立即失效。GitLab 仍使用部署级个人访问令牌，不具备这条会话级 GitHub 边界。
+- **源码：**[`session-scope.ts:9–34`](https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/packages/control-plane/src/source-control/session-scope.ts#L9-L34)、[`repository-scope.ts:7–43`](https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/packages/control-plane/src/source-control/repository-scope.ts#L7-L43)、[`credential-scope.ts:14–38`](https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/packages/control-plane/src/source-control/credential-scope.ts#L14-L38)、[`AUTH.md:394–417`](https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/docs/AUTH.md#L394-L417)。
 
 ## 技术栈
 
@@ -145,7 +198,7 @@ health:
 
 ## 健康度与可持续性
 
-- **维护快照（2026-10-13）：**未归档，默认分支提交 `31d1999` 来自当天；GitHub 显示 3354 stars，但 stars 不是安装量。工作区版本仍为 `0.1.0`，没有 GitHub Releases。
+- **维护快照（2026-10-17）：**未归档，核对的默认分支提交为 `824d678`；GitHub 显示 3365 stars，但 stars 不是安装量。工作区版本仍为 `0.1.0`，没有 GitHub Releases。
 - **治理与 bus factor：**仓库由个人账号拥有，贡献活动高度集中于 ColeMurray。项目正在活跃开发，但关键维护者风险实质存在。[推断]
 - **年龄与 Lindy：**创建于 2026-01，且没有 GitHub Releases，因此尚无长期运维史或稳定发布线信号。
 - **实测覆盖：**综合 B 覆盖 5/6 轴。采用量仍是 `? / no_package_structural`；根工作区为私有包，评分器未找到规范包或安装信号。这表示未测到，不表示没有用户，也不是许可证豁免。
