@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "engine", "en": "Resolve engine and Gemini key", "zh": "解析引擎与 Gemini key", "kind": "input", "technique": [1]},
+    {"id": "gemini", "en": "Gemini: URL or upload; attempt deletion", "zh": "Gemini：传 URL 或上传，尝试删除", "technique": [1]},
+    {"id": "remote", "en": "Gemini answer or failure; no local fallback", "zh": "Gemini 回答或失败，不自动转本地", "kind": "output"},
+    {"id": "local", "en": "Local route: frames and available speech evidence", "zh": "本地路径：帧与可用语音证据"},
+    {"id": "scene", "en": "Scene path: candidates across the whole interval", "zh": "场景路径：搜索整个区间的候选帧", "technique": [2]},
+    {"id": "uniform", "en": "Sparse scenes: uniform samples", "zh": "场景稀少：均匀采样", "technique": [2]},
+    {"id": "dedup", "en": "Optional 16x16 RGB dedup; decode failure keeps frames", "zh": "可选 16×16 RGB 去重，解码失败保留帧", "technique": [3]},
+    {"id": "budget", "en": "Scene survivors evenly capped; uniform already budgeted", "zh": "场景余帧均匀压预算，均匀采样已限量", "technique": [2]},
+    {"id": "captions", "en": "Try URL captions before media download", "zh": "下载媒体前先查 URL 字幕", "technique": [4]},
+    {"id": "speech", "en": "If enabled and audio available: transcribe chunks", "zh": "已启用且音频可用：分块转写", "technique": [4]},
+    {"id": "report", "en": "Local report: paths, source timestamps, gaps or failures", "zh": "本地报告：路径、源时间戳、缺口或失败", "kind": "output", "technique": [4]}
+  ],
+  "edges": [
+    {"from": "engine", "to": "gemini", "en": "Gemini", "zh": "Gemini"},
+    {"from": "gemini", "to": "remote"},
+    {"from": "engine", "to": "local", "en": "local", "zh": "本地"},
+    {"from": "local", "to": "scene"},
+    {"from": "scene", "to": "dedup", "en": "8+ candidates", "zh": "至少八候选"},
+    {"from": "scene", "to": "uniform", "style": "dashed", "en": "fewer than 8", "zh": "不足八个"},
+    {"from": "uniform", "to": "dedup"},
+    {"from": "dedup", "to": "budget"},
+    {"from": "budget", "to": "report"},
+    {"from": "local", "to": "captions"},
+    {"from": "captions", "to": "report", "en": "captions or no fallback", "zh": "字幕或不回退"},
+    {"from": "captions", "to": "speech", "style": "dashed", "en": "unavailable", "zh": "不可用"},
+    {"from": "speech", "to": "report"}
+  ],
+  "sources": [
+    "https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/config.py#L112-L129",
+    "https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L33-L91",
+    "https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L183-L357",
+    "https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/frames.py#L419-L581",
+    "https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/whisper.py#L276-L333"
+  ]
+}

@@ -7,7 +7,7 @@ tags: [video-audio, video-understanding, agent-skill, app]
 language: Python
 license: MIT
 maturity: v0.3.2, main updated 2026-09-25, 18489 stars (as of 2026-10)
-last_verified: 2026-10-13
+last_verified: 2026-10-17
 type: app
 upstream:
   pushed_at: 2026-09-25T01:25:54Z
@@ -123,9 +123,68 @@ In a local Claude Code session, enter `/plugin marketplace add bradautomates/cla
 
 ## Key techniques
 
-- **Explicit route selection prevents hidden engine changes.** [skills/watch/scripts/config.py:112–129](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/config.py#L112-L129) resolves the Gemini key and engine; [skills/watch/scripts/watch.py:33–91](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L33-L91) sends YouTube URLs or uploads other media and reports failures without falling back locally. Failed deletion produces a warning, not proof of immediate erasure; its temporary-directory cleanup also ignores filesystem errors.
-- **Detect across the interval, then thin the candidates.** [skills/watch/scripts/frames.py:517–581](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/frames.py#L517-L581) detects uncapped scene candidates before evenly sampling to the budget, with uniform fallback for sparse scenes. [skills/watch/scripts/frames.py:35–41](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/frames.py#L35-L41) defines the 16×16 thumbnail size; [skills/watch/scripts/frames.py:428–514](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/frames.py#L428-L514) decodes RGB thumbnails and drops near-duplicates by channel difference. This avoids keeping only an early prefix, but is sparse evidence, not complete event coverage; thumbnail failure skips deduplication and subtle edits can disappear.
-- **Retain useful modalities while exposing gaps.** [skills/watch/scripts/watch.py:183–209](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L183-L209) reads captions before downloading media; [skills/watch/scripts/whisper.py:301–333](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/whisper.py#L301-L333) records failed audio-chunk intervals while restoring successful chunks to source time. Reports can therefore carry partial evidence; exit 0 does not mean every modality or interval succeeded.
+![claude-video — mechanism diagram](../../../../assets/mechanism/claude-video.svg)
+
+<!-- mechanism:begin (generated from mechanisms/claude-video.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>Text version of the mechanism</summary>
+
+- Resolve engine and Gemini key①
+- Gemini: URL or upload; attempt deletion①
+- Gemini answer or failure; no local fallback
+- Local route: frames and available speech evidence
+- Scene path: candidates across the whole interval②
+- Sparse scenes: uniform samples②
+- Optional 16x16 RGB dedup; decode failure keeps frames③
+- Scene survivors evenly capped; uniform already budgeted②
+- Try URL captions before media download④
+- If enabled and audio available: transcribe chunks④
+- Local report: paths, source timestamps, gaps or failures④
+
+- Resolve engine and Gemini key① → Gemini: URL or upload; attempt deletion① (Gemini)
+- Gemini: URL or upload; attempt deletion① → Gemini answer or failure; no local fallback
+- Resolve engine and Gemini key① → Local route: frames and available speech evidence (local)
+- Local route: frames and available speech evidence → Scene path: candidates across the whole interval②
+- Scene path: candidates across the whole interval② → Optional 16x16 RGB dedup; decode failure keeps frames③ (8+ candidates)
+- Scene path: candidates across the whole interval② → Sparse scenes: uniform samples② (fewer than 8) [optional/fallback]
+- Sparse scenes: uniform samples② → Optional 16x16 RGB dedup; decode failure keeps frames③
+- Optional 16x16 RGB dedup; decode failure keeps frames③ → Scene survivors evenly capped; uniform already budgeted②
+- Scene survivors evenly capped; uniform already budgeted② → Local report: paths, source timestamps, gaps or failures④
+- Local route: frames and available speech evidence → Try URL captions before media download④
+- Try URL captions before media download④ → Local report: paths, source timestamps, gaps or failures④ (captions or no fallback)
+- Try URL captions before media download④ → If enabled and audio available: transcribe chunks④ (unavailable) [optional/fallback]
+- If enabled and audio available: transcribe chunks④ → Local report: paths, source timestamps, gaps or failures④
+
+</details>
+<!-- mechanism:end -->
+
+### 1. Resolve the engine before processing media
+
+- **Problem:** A cloud failure must not silently change the evidence route to local extraction.
+- **How:** `auto` selects Gemini when a key resolves; explicit `local` avoids that engine. Gemini receives a YouTube URL or an uploaded copy of other media, and its failures return an unavailable-evidence report without local fallback.
+- **Limits:** Upload deletion is attempted, but failure only emits a warning; temporary-directory removal ignores filesystem errors. Local extraction does not constrain where the answering host sends images or transcripts.
+- **Source:** [config.py:112–129](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/config.py#L112-L129), [watch.py:33–91](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L33-L91), [engine dispatch:164–166](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L164-L166), [host reads image paths:376–390](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L376-L390).
+
+### 2. Search the whole interval before spending the frame budget
+
+- **Problem:** Capping scene detection itself would keep early cuts and lose the tail of a long video.
+- **How:** The scene-based local path first detects candidates across the requested interval without a candidate cap, then evenly samples surviving frames to the budget. If fewer than eight scene candidates exist, it uses uniform sampling instead.
+- **Limits:** This spreads sparse evidence across time; it does not show every event or source frame. The diagram's scene branch describes this path, not every detail mode.
+- **Source:** [frames.py:25–33](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/frames.py#L25-L33), [scene selection and fallback:517–581](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/frames.py#L517-L581), [detail dispatch:240–260](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L240-L260).
+
+### 3. Compare tiny color thumbnails to remove near-duplicates
+
+- **Problem:** Held slides or nearly static recordings can consume the frame budget with repeated images.
+- **How:** FFmpeg decodes 16×16 RGB thumbnails, and the script compares their average color-channel difference with the last kept frame. Scene-path deduplication runs before budget sampling; the uniform fallback also deduplicates its extracted frames.
+- **Limits:** Tiny text edits can disappear at this resolution. A thumbnail decode or count failure skips deduplication and keeps the candidates rather than failing extraction; `--no-dedup` also bypasses it.
+- **Source:** [frames.py:35–41](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/frames.py#L35-L41), [thumbnail decode and comparison:419–514](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/frames.py#L419-L514), [call order:549–580](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/frames.py#L549-L580).
+
+### 4. Keep successful speech chunks and mark missing intervals
+
+- **Problem:** One failed audio slice should not discard every successful transcript segment or masquerade as silence.
+- **How:** The local route checks URL captions before downloading media; without usable captions it can use the selected speech fallback. Chunked transcription shifts successful chunks back to source timestamps, logs failed intervals and raises if every chunk fails.
+- **Limits:** Captions, frames and speech fallback can each be unavailable; the report exposes partial evidence and missing transcript intervals. Exit 0 does not prove every modality or interval succeeded.
+- **Source:** [watch.py:183–209](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L183-L209), [fallback handling:266–295](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L266-L295), [whisper.py:276–333](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/whisper.py#L276-L333), [gap reporting:345–357](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L345-L357).
 
 ## Tech stack
 

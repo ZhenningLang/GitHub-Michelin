@@ -7,7 +7,7 @@ tags: [video-audio, video-understanding, agent-skill, app]
 language: Python
 license: MIT
 maturity: v0.3.2, main updated 2026-09-25, 18489 stars (as of 2026-10)
-last_verified: 2026-10-13
+last_verified: 2026-10-17
 type: app
 upstream:
   pushed_at: 2026-09-25T01:25:54Z
@@ -123,9 +123,68 @@ health:
 
 ## 技术要点
 
-- **明确选路，避免暗中换引擎。** [skills/watch/scripts/config.py:112–129](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/config.py#L112-L129) 解析 Gemini key 与引擎；[skills/watch/scripts/watch.py:33–91](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L33-L91) 发送 YouTube URL 或上传其它媒体，失败后报告而不转本地。删除失败会产生警告，不证明立即擦除；临时目录清理也忽略文件系统错误。
-- **先找完整区间候选，再压到预算。** [skills/watch/scripts/frames.py:517–581](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/frames.py#L517-L581) 不限候选数地检测场景，再均匀抽到预算，场景稀少时改均匀采样。[skills/watch/scripts/frames.py:35–41](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/frames.py#L35-L41) 定义 16×16 缩略图大小；[skills/watch/scripts/frames.py:428–514](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/frames.py#L428-L514) 解码 RGB 缩略图，按通道差异删除近重复帧。它避免只留下前段，却仍是稀疏证据而非完整事件覆盖；缩略图失败会跳过去重，细小编辑可能被丢弃。
-- **保留可用模态，同时暴露缺口。** [skills/watch/scripts/watch.py:183–209](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L183-L209) 先取字幕，再下载媒体；[skills/watch/scripts/whisper.py:301–333](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/whisper.py#L301-L333) 记录失败音频块的区间，并将成功块恢复为源时间。报告可以只带部分证据；退出 0 不代表每种模态或每段区间成功。
+![claude-video — 机制图](../../../../assets/mechanism/claude-video.zh.svg)
+
+<!-- mechanism:begin (generated from mechanisms/claude-video.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>机制文字版</summary>
+
+- 解析引擎与 Gemini key①
+- Gemini：传 URL 或上传，尝试删除①
+- Gemini 回答或失败，不自动转本地
+- 本地路径：帧与可用语音证据
+- 场景路径：搜索整个区间的候选帧②
+- 场景稀少：均匀采样②
+- 可选 16×16 RGB 去重，解码失败保留帧③
+- 场景余帧均匀压预算，均匀采样已限量②
+- 下载媒体前先查 URL 字幕④
+- 已启用且音频可用：分块转写④
+- 本地报告：路径、源时间戳、缺口或失败④
+
+- 解析引擎与 Gemini key① → Gemini：传 URL 或上传，尝试删除①（Gemini）
+- Gemini：传 URL 或上传，尝试删除① → Gemini 回答或失败，不自动转本地
+- 解析引擎与 Gemini key① → 本地路径：帧与可用语音证据（本地）
+- 本地路径：帧与可用语音证据 → 场景路径：搜索整个区间的候选帧②
+- 场景路径：搜索整个区间的候选帧② → 可选 16×16 RGB 去重，解码失败保留帧③（至少八候选）
+- 场景路径：搜索整个区间的候选帧② → 场景稀少：均匀采样②（不足八个）〔可选／兜底〕
+- 场景稀少：均匀采样② → 可选 16×16 RGB 去重，解码失败保留帧③
+- 可选 16×16 RGB 去重，解码失败保留帧③ → 场景余帧均匀压预算，均匀采样已限量②
+- 场景余帧均匀压预算，均匀采样已限量② → 本地报告：路径、源时间戳、缺口或失败④
+- 本地路径：帧与可用语音证据 → 下载媒体前先查 URL 字幕④
+- 下载媒体前先查 URL 字幕④ → 本地报告：路径、源时间戳、缺口或失败④（字幕或不回退）
+- 下载媒体前先查 URL 字幕④ → 已启用且音频可用：分块转写④（不可用）〔可选／兜底〕
+- 已启用且音频可用：分块转写④ → 本地报告：路径、源时间戳、缺口或失败④
+
+</details>
+<!-- mechanism:end -->
+
+### 1. 处理媒体前先确定引擎
+
+- **解决：** 云端调用失败，不应暗中换成本地提取，让证据来源发生变化。
+- **做法：** `auto` 解析到 key 就选 Gemini，明确选 `local` 则避开该引擎。Gemini 接收 YouTube URL 或其它媒体的上传副本，失败就返回证据不可用的报告，不自动转本地。
+- **边界：** 上传文件会尝试删除，但删除失败只告警；临时目录删除也忽略文件系统错误。本地提取不能限制回答宿主向哪里发送图片或转录。
+- **源码：** [config.py:112–129](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/config.py#L112-L129)、[watch.py:33–91](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L33-L91)、[引擎分流：164–166](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L164-L166)、[宿主读取图像路径：376–390](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L376-L390)。
+
+### 2. 先搜索整个区间，再分配帧预算
+
+- **解决：** 如果检测场景时就限制数量，长视频只会留下早期切换，后半段会丢失。
+- **做法：** 本地场景路径先在请求区间内不限候选数量地检测，再将保留下来的帧均匀抽到预算。场景候选不足八个时，改用均匀采样。
+- **边界：** 这只是把稀疏证据分散到时间轴上，不会展示每个事件或每个原始帧。图中的场景分支只描述这条路径，不代表所有细节模式。
+- **源码：** [frames.py:25–33](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/frames.py#L25-L33)、[场景选择与回退：517–581](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/frames.py#L517-L581)、[细节模式分流：240–260](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L240-L260)。
+
+### 3. 用微型彩色缩略图去掉近重复帧
+
+- **解决：** 停留的幻灯片或近乎静止的录屏，容易用重复图片耗尽帧预算。
+- **做法：** FFmpeg 解码出 16×16 的 RGB 缩略图，脚本比较它与上一个保留帧的平均颜色通道差异。场景路径先去重再按预算抽样，均匀回退路径也对抽出的帧去重。
+- **边界：** 微小文本编辑可能在这个分辨率下消失。缩略图解码或数量不匹配时跳过去重、保留候选，而非让提取失败；`--no-dedup` 也会绕过去重。
+- **源码：** [frames.py:35–41](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/frames.py#L35-L41)、[缩略图解码与比较：419–514](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/frames.py#L419-L514)、[调用顺序：549–580](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/frames.py#L549-L580)。
+
+### 4. 留下成功转写的片段，标出缺失区间
+
+- **解决：** 一个音频块失败，不该丢掉其它成功片段，也不能被当成那段没有语音。
+- **做法：** 本地路径先查 URL 字幕，再下载媒体；没有可用字幕时，可调用所选语音回退。分块转写将成功块移回源时间戳，记录失败区间；所有块都失败才抛错。
+- **边界：** 字幕、帧和语音回退都可能不可用，报告会暴露部分证据与缺失转录区间。退出 0 不证明每种模态或每段区间都成功。
+- **源码：** [watch.py:183–209](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L183-L209)、[回退处理：266–295](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L266-L295)、[whisper.py:276–333](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/whisper.py#L276-L333)、[缺口报告：345–357](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L345-L357)。
 
 ## 技术栈
 
