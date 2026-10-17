@@ -100,9 +100,9 @@ health:
 
 ## 快速上手
 
-以下是部署路径，不是一条命令就能运行的安装方法：还要在 `packages/modal-infra` 执行 `uv sync --frozen`，并在 Terraform 前构建指南列出的控制面与机器人 Worker。指南第一次 apply 创建不带绑定的 Worker，再打开两项绑定开关，第二次 apply；选择 Vercel 网页平台时，部署网页代码还是单独一步。
-
 按所读版本的[部署指南](https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/docs/GETTING_STARTED.md)，准备 Node 24 以上、Terraform 1.14 以上和 Modal 的 Python 工具，fork 仓库，执行 `npm install`、`npm run build -w @open-inspect/shared`，在提供的 Terraform 文件中配置云账号和 GitHub App。在 `terraform/environments/production` 执行 `terraform init -backend-config=backend.tfvars`、`terraform apply`；这些命令创建会计费的云基础设施，不是本地演示。按照指南的 `npm run rbac:bootstrap-owner` 流程初始化工作区 Owner，创建团队、授予仓库、添加模型凭据，并在依赖团队私有读取前明确启用 `teams_enforcement = "on"`。网页中选择团队和仓库，输入编程任务，平台启动沙箱并推送助手的工作过程，也提供从会话创建拉取请求的功能。你承担托管、沙箱和模型费用，定义访问范围，并在合并前审查改动；启动成功或健康端点返回正常都不代表授权策略正确。
+
+以下是部署路径，不是一条命令就能运行的安装方法：还要在 `packages/modal-infra` 执行 `uv sync --frozen`，并在 Terraform 前构建指南列出的控制面与机器人 Worker。指南第一次 apply 创建不带绑定的 Worker，再打开两项绑定开关，第二次 apply；选择 Vercel 网页平台时，部署网页代码还是单独一步。
 
 ![background-agents — 主干用户故事](../../../../assets/flow/background-agents.zh.svg)
 
@@ -131,7 +131,8 @@ health:
 
 - 收到提示词
 - 存为待处理提示词①
-- 检查模型与沙箱就绪状态①
+- 检查兼容性、认证与沙箱就绪①
+- 提示词失败，继续处理队列①
 - 暂缓或后台创建沙箱①
 - 先认领，再经 WebSocket 发送①
 - 沙箱 agent 执行工具
@@ -142,10 +143,11 @@ health:
 - 已签发令牌可能留在快照中③
 
 - 收到提示词 → 存为待处理提示词①
-- 存为待处理提示词① → 检查模型与沙箱就绪状态①
-- 检查模型与沙箱就绪状态① → 暂缓或后台创建沙箱①（未就绪）〔可选／兜底〕
-- 暂缓或后台创建沙箱① → 检查模型与沙箱就绪状态①（就绪后重查）〔可选／兜底〕
-- 检查模型与沙箱就绪状态① → 先认领，再经 WebSocket 发送①（已就绪）
+- 存为待处理提示词① → 检查兼容性、认证与沙箱就绪①
+- 检查兼容性、认证与沙箱就绪① → 提示词失败，继续处理队列①（不兼容或无认证）〔可选／兜底〕
+- 检查兼容性、认证与沙箱就绪① → 暂缓或后台创建沙箱①（沙箱未就绪）〔可选／兜底〕
+- 暂缓或后台创建沙箱① → 检查兼容性、认证与沙箱就绪①（就绪后重查）〔可选／兜底〕
+- 检查兼容性、认证与沙箱就绪① → 先认领，再经 WebSocket 发送①（已就绪）
 - 先认领，再经 WebSocket 发送① → 存为待处理提示词①（发送失败）〔可选／兜底〕
 - 先认领，再经 WebSocket 发送① → 沙箱 agent 执行工具（发送成功）
 - 沙箱 agent 执行工具 → 已存会话事件
@@ -160,7 +162,7 @@ health:
 ### 1. 沙箱能接收任务后，再认领并发送提示词
 
 - **解决：**机器人请求不该一直等沙箱启动，多个派发者也不能同时拿走同一条排队提示词。
-- **做法：**先存下提示词，检查模型与执行器是否兼容；沙箱未就绪就暂缓，缺沙箱就交后台创建。通过 WebSocket 发送前，先认领已存提示词；发送失败便恢复待处理状态，并终止无响应沙箱。
+- **做法：**先存下提示词；模型与执行器不兼容或提供商认证不可用时，该提示词会失败，不继续等待。其余请求在沙箱未就绪时暂缓、缺沙箱时交后台创建，发往 WebSocket 前先认领；发送失败便恢复待处理状态，并终止无响应沙箱。
 - **边界：**等待认证结果后会重查取消和会话状态，但恢复队列记录不等于外部工具副作用恰好执行一次。
 - **源码：**[`message-queue.ts:405–625`](https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/packages/control-plane/src/session/message-queue.ts#L405-L625)、[`message-queue.ts:836–934`](https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/packages/control-plane/src/session/message-queue.ts#L836-L934)。
 

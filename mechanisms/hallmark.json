@@ -8,7 +8,7 @@
     {"id": "memory", "en": "Read CSS stamps and recent page choices", "zh": "读取 CSS 标记与近期页面选择", "technique": [2]},
     {"id": "pick", "en": "Pick structure and theme; load chosen references", "zh": "选择结构和主题，只加载选中参考", "technique": [2]},
     {"id": "page", "en": "Agent builds page and records choices", "zh": "助手构建页面并记录选择", "technique": [2]},
-    {"id": "component", "en": "Agent builds eight states, no page rotation", "zh": "助手构建八态，不做整页轮换", "technique": [3]},
+    {"id": "component", "en": "Agent builds eight states, no page rotation", "zh": "助手构建八种交互状态，不做整页轮换", "technique": [3]},
     {"id": "critique", "en": "Agent self-scores six axes; revises below 3", "zh": "助手六维自评，低于 3 则修改", "technique": [3]},
     {"id": "out", "en": "Generated artifact needs independent verification", "zh": "生成产物仍需独立验证", "kind": "output"}
   ],

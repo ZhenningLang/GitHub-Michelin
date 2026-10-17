@@ -179,8 +179,8 @@ health:
 ### 3. 助手分别干活，脚本检查落盘产物
 
 - **解决：**只让一个起草助手口头说“检查过、记住了”，未必留下可用证据。
-- **做法：**写章技能把上下文准备、审查和事实提取交给不同助手，再调用 Python 提交前、提交后检查。只有某路投影失败时，恢复指令要求单独补跑，不重新起草整章。
-- **边界：**这是提示词流程加产物校验，不是独立的文学质量检测器。用户选 `--minimal` 时会跳过 reviewer，并明确写一份新的“未审查”产物。
+- **做法：**写章技能把上下文准备、审查和事实提取交给不同助手，再调用 Python 提交前、提交后检查。只有某路视图更新（投影）失败时，恢复指令要求单独补跑，不重新起草整章。
+- **边界：**这是提示词流程加产物校验，不是独立的文学质量检测器。用户选 `--minimal` 时会跳过审查助手，并明确写一份新的“未审查”产物。
 - **源码：**[`SKILL.md:82–168`](https://github.com/lingfengQAQ/webnovel-writer/blob/86e617ee7f4f04be9d3f8575f90c38f879ed80ed/webnovel-writer/skills/webnovel-write/SKILL.md#L82-L168)、[`SKILL.md:178–265`](https://github.com/lingfengQAQ/webnovel-writer/blob/86e617ee7f4f04be9d3f8575f90c38f879ed80ed/webnovel-writer/skills/webnovel-write/SKILL.md#L178-L265)。
 
 ## 技术栈

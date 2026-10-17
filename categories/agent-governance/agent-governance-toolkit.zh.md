@@ -169,9 +169,9 @@ health:
 ### 1. 先评估策略，再调用被包装的工具
 
 - **解决：**若原工具先执行，应用随后才看策略决定，就已经拦不住了。
-- **做法：**`GovernedCallable` 构造时加载策略；调用时整理上下文、检查配置的权限环，再评估并记录策略决定，最后才调用 `_fn`。拒绝默认抛 `GovernanceDenied`，也可交给调用方配置的拒绝回调。
+- **做法：**`GovernedCallable` 构造时加载策略；调用时整理上下文、检查配置的权限环（一种按信任分级的执行权限），再评估并记录策略决定，最后才调用 `_fn`。拒绝默认抛 `GovernanceDenied`，也可交给调用方配置的拒绝回调。
 - **边界：**只保护经过包装器的调用，不覆盖整个进程。默认审计只存内存，持久记录需要配置接收器和签名密钥。
-- **源码：**[`govern.py:243–270`](https://github.com/microsoft/agent-governance-toolkit/blob/8b2c96473742e8506e4052e2b0d38ac5a631966e/agent-governance-python/agent-mesh/src/agentmesh/governance/govern.py#L243-L270)、[`govern.py:319–505`](https://github.com/microsoft/agent-governance-toolkit/blob/8b2c96473742e8506e4052e2b0d38ac5a631966e/agent-governance-python/agent-mesh/src/agentmesh/governance/govern.py#L319-L505)。
+- **源码：**[`govern.py:243–270`](https://github.com/microsoft/agent-governance-toolkit/blob/8b2c96473742e8506e4052e2b0d38ac5a631966e/agent-governance-python/agent-mesh/src/agentmesh/governance/govern.py#L243-L270)、[`govern.py:319–505`](https://github.com/microsoft/agent-governance-toolkit/blob/8b2c96473742e8506e4052e2b0d38ac5a631966e/agent-governance-python/agent-mesh/src/agentmesh/governance/govern.py#L319-L505)、[`models.py:46–69`](https://github.com/microsoft/agent-governance-toolkit/blob/8b2c96473742e8506e4052e2b0d38ac5a631966e/agent-governance-python/agent-hypervisor/src/hypervisor/models.py#L46-L69)。
 
 ### 2. 把建议式分类与确定性拒绝分开
 
@@ -222,7 +222,6 @@ health:
 ## 存疑（未验证）
 
 - [未验证：未运行包解析器] 所读 core manifest [明确把可选的 `migrate` extra 标为无法解析](https://github.com/microsoft/agent-governance-toolkit/blob/8b2c96473742e8506e4052e2b0d38ac5a631966e/agent-governance-python/agent-governance-toolkit-core/pyproject.toml#L106-L111)，因为它依赖的 `agt-policies>=5.1.0` 尚未发布。这与 `govern()` 运行时分开，本次未独立复现注册表解析。
-
 - [未验证：没有安装包或运行符合性套件] 未复现已安装 wheel 的内容、多语言对等性、完整符合性套件或真实框架执行；本次读了源码、manifest 和示例。
 - [未验证：没有生产攻击模拟或审计保留部署] 源码中的拒绝分支不证明端到端隔离、分类器质量、持久审计耐久性或外部动作成功。
 - [推断：依据是 Public Preview 和源码发布版分流] 应固定并验证兼容包组合，不能假设 main 的迁移接口与最新 GitHub 发布版或 registry wheel 完全相同。

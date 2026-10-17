@@ -100,9 +100,9 @@ Choose it only when you can operate identity, a GitHub App, model credentials, a
 
 ## Quick start
 
-This is the deployment path, not a runnable single-command install: also run `uv sync --frozen` inside `packages/modal-infra` and build the control-plane and bot workers listed in the guide before Terraform. The guide's first apply creates Workers without bindings; enable both binding flags and apply again. With the Vercel web platform, deploying the web code is a separate step.
-
 Follow the reviewed [deployment guide](https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/docs/GETTING_STARTED.md): install Node 24+, Terraform 1.14+ and the Modal Python tooling, fork the repository, run `npm install` and `npm run build -w @open-inspect/shared`, then configure the cloud accounts and GitHub App in the provided Terraform files. From `terraform/environments/production`, run `terraform init -backend-config=backend.tfvars` and `terraform apply`; these create billable infrastructure, not a local demo. Bootstrap a workspace Owner using the guide's `npm run rbac:bootstrap-owner` procedure, create a team, grant its repositories, add model credentials, and explicitly enable `teams_enforcement = "on"` before relying on team-only reads. Select that team and repository in the web UI and send a coding task; the platform starts the sandbox and streams the agent's work, with pull-request creation available from the session. You pay for hosting, sandboxes and models, define access scopes, and review changes before merging; neither successful startup nor the health endpoint verifies authorization policy.
+
+This is the deployment path, not a runnable single-command install: also run `uv sync --frozen` inside `packages/modal-infra` and build the control-plane and bot workers listed in the guide before Terraform. The guide's first apply creates Workers without bindings; enable both binding flags and apply again. With the Vercel web platform, deploying the web code is a separate step.
 
 ![background-agents — backbone user story](../../../../assets/flow/background-agents.svg)
 
@@ -131,7 +131,8 @@ Follow the reviewed [deployment guide](https://github.com/ColeMurray/background-
 
 - Incoming prompt
 - Persist pending prompt①
-- Check model and sandbox readiness①
+- Check compatibility, authentication and sandbox readiness①
+- Fail prompt, then process next queued item①
 - Defer or create sandbox in background①
 - Claim prompt before WebSocket send①
 - Sandbox agent runs tools
@@ -142,10 +143,11 @@ Follow the reviewed [deployment guide](https://github.com/ColeMurray/background-
 - Issued tokens may remain in snapshots③
 
 - Incoming prompt → Persist pending prompt①
-- Persist pending prompt① → Check model and sandbox readiness①
-- Check model and sandbox readiness① → Defer or create sandbox in background① (not ready) [optional/fallback]
-- Defer or create sandbox in background① → Check model and sandbox readiness① (retry when ready) [optional/fallback]
-- Check model and sandbox readiness① → Claim prompt before WebSocket send① (ready)
+- Persist pending prompt① → Check compatibility, authentication and sandbox readiness①
+- Check compatibility, authentication and sandbox readiness① → Fail prompt, then process next queued item① (incompatible or unauthenticated) [optional/fallback]
+- Check compatibility, authentication and sandbox readiness① → Defer or create sandbox in background① (not ready) [optional/fallback]
+- Defer or create sandbox in background① → Check compatibility, authentication and sandbox readiness① (when ready) [optional/fallback]
+- Check compatibility, authentication and sandbox readiness① → Claim prompt before WebSocket send① (ready)
 - Claim prompt before WebSocket send① → Persist pending prompt① (send failed) [optional/fallback]
 - Claim prompt before WebSocket send① → Sandbox agent runs tools (send succeeded)
 - Sandbox agent runs tools → Stored session events
@@ -160,7 +162,7 @@ Follow the reviewed [deployment guide](https://github.com/ColeMurray/background-
 ### 1. Keep prompts pending until a sandbox can accept them
 
 - **Problem:** A bot request should not wait for a slow sandbox boot, and concurrent dispatchers must not both take the same queued prompt.
-- **How:** Store the prompt first, check model and harness compatibility, and defer or start sandbox creation in background work. Before WebSocket delivery, claim the stored prompt; a failed send returns it to pending and terminates the unresponsive sandbox.
+- **How:** Store the prompt first; incompatible model/harness choices or unavailable provider authentication fail that prompt rather than leave it waiting. Otherwise defer or start sandbox creation in background work, then claim before WebSocket delivery; a failed send returns it to pending and terminates the unresponsive sandbox.
 - **Limits:** Cancellation and session state are rechecked after authentication waits, but recovering a queue entry does not make external tool effects execute exactly once.
 - **Source:** [`message-queue.ts:405–625`](https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/packages/control-plane/src/session/message-queue.ts#L405-L625), [`message-queue.ts:836–934`](https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/packages/control-plane/src/session/message-queue.ts#L836-L934).
 

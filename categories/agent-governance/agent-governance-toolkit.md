@@ -169,9 +169,9 @@ The [README](https://github.com/microsoft/agent-governance-toolkit/blob/8b2c9647
 ### 1. Put policy evaluation before the wrapped call
 
 - **Problem:** A policy verdict is useless if the original tool can execute before the application checks it.
-- **How:** `GovernedCallable` loads policy at construction, builds the call context, checks any configured execution ring, then evaluates and audits the policy decision before calling `_fn`. Denial raises `GovernanceDenied` unless a supplied denial callback handles it.
+- **How:** `GovernedCallable` loads policy at construction, builds the call context, checks any configured execution ring (a trust-based privilege level), then evaluates and audits the policy decision before calling `_fn`. Denial raises `GovernanceDenied` unless a supplied denial callback handles it.
 - **Limits:** Only calls routed through the wrapper are covered, not the whole process. Default audit is memory-only; durable records require a configured sink and signing key.
-- **Source:** [`govern.py:243–270`](https://github.com/microsoft/agent-governance-toolkit/blob/8b2c96473742e8506e4052e2b0d38ac5a631966e/agent-governance-python/agent-mesh/src/agentmesh/governance/govern.py#L243-L270), [`govern.py:319–505`](https://github.com/microsoft/agent-governance-toolkit/blob/8b2c96473742e8506e4052e2b0d38ac5a631966e/agent-governance-python/agent-mesh/src/agentmesh/governance/govern.py#L319-L505).
+- **Source:** [`govern.py:243–270`](https://github.com/microsoft/agent-governance-toolkit/blob/8b2c96473742e8506e4052e2b0d38ac5a631966e/agent-governance-python/agent-mesh/src/agentmesh/governance/govern.py#L243-L270), [`govern.py:319–505`](https://github.com/microsoft/agent-governance-toolkit/blob/8b2c96473742e8506e4052e2b0d38ac5a631966e/agent-governance-python/agent-mesh/src/agentmesh/governance/govern.py#L319-L505), [`models.py:46–69`](https://github.com/microsoft/agent-governance-toolkit/blob/8b2c96473742e8506e4052e2b0d38ac5a631966e/agent-governance-python/agent-hypervisor/src/hypervisor/models.py#L46-L69).
 
 ### 2. Keep advisory classification distinct from deterministic denial
 
@@ -222,7 +222,6 @@ The [README](https://github.com/microsoft/agent-governance-toolkit/blob/8b2c9647
 ## Caveats (unverified)
 
 - [未验证：no package resolver run] The reviewed core manifest [marks its optional `migrate` extra as unresolvable](https://github.com/microsoft/agent-governance-toolkit/blob/8b2c96473742e8506e4052e2b0d38ac5a631966e/agent-governance-python/agent-governance-toolkit-core/pyproject.toml#L106-L111) because its `agt-policies>=5.1.0` dependency is unpublished. This is separate from the `govern()` runtime; registry resolution was not independently reproduced.
-
 - [未验证：no package installation or conformance run] Installed wheel contents, multi-language equivalence, the full conformance suite and real framework enforcement were not reproduced; this review read source, manifests and examples.
 - [未验证：no production attack simulation or audit-retention deployment] Source-level deny branches do not establish end-to-end containment, classifier quality, persistent audit durability or external action success.
 - [推断：Public Preview plus source/release version divergence] Pin and verify a compatible package set; the main migration surface cannot be assumed identical to the latest GitHub release or a registry wheel.
