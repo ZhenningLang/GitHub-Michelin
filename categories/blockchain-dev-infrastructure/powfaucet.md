@@ -6,17 +6,17 @@ category: blockchain-dev-infrastructure
 tags: [evm, ethereum, testnet, faucet, proof-of-work, anti-abuse, token-distribution]
 language: TypeScript
 license: AGPL-3.0
-maturity: v2.5.2, 5636 stars, new external module loader (as of 2026-10-14)
-last_verified: 2026-10-14
+maturity: stable v2.5.2; master adds unreleased Zupass ticket limits, 5639 stars (as of 2026-10-17)
+last_verified: 2026-10-17
 type: service
 upstream:
-  pushed_at: 2026-10-13T22:26:23Z
+  pushed_at: 2026-10-14T08:01:52Z
   default_branch: master
-  default_branch_sha: 92b8f7ba01a8ba694269bb35c1848966a3a8a75d
+  default_branch_sha: e93b953836db7e8c62cdc59f325830b5f4ed7b7d
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-14T05:25:33Z
+  computed_at: 2026-10-17T12:50:20Z
   overall: C
   overall_score: 2.2
   scored_axes: 5
@@ -29,8 +29,8 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
-        active_weeks_13: 9
+        last_commit_age_days: 3
+        active_weeks_13: 7
         carve_out: null
     responsiveness:
       grade: "?"
@@ -45,10 +45,10 @@ health:
         graph_tier: E
         volume_tier: "?"
         cross_check_divergence: null
-        release_downloads: 4242
+        release_downloads: 4234
         release_assets: 210
         release_tier: D
-        docker_pulls: 42916
+        docker_pulls: 43182
         docker_image: pk910/powfaucet
         docker_tier: D
         signal_basis: releases+docker
@@ -56,15 +56,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 1667
-        last_commit_age_days: 1
+        repo_age_days: 1671
+        last_commit_age_days: 3
         cohort: service
     governance:
       grade: D
       raw:
         active_maintainers_12mo: 5
-        top1_share: 0.821
-        top3_share: 0.923
+        top1_share: 0.825
+        top3_share: 0.925
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -88,7 +88,7 @@ Bots drain your testnet giveaway wallet through a simple address form; PoWFaucet
 
 You're operating a public or community EVM testnet whose users need small amounts of native currency or an ERC-20 token, but a simple address form is drained by bots. You are prepared to fund and secure a faucet hot wallet, connect reliable RPC endpoints, and run a persistent web service. PoWFaucet gives you a complete distribution service with transaction queues, wallet and outflow controls, SQLite or MySQL persistence, and optional protection modules for browser proof-of-work, CAPTCHA, IP reputation, recurring limits, GitHub identity, mainnet-wallet checks, Gitcoin Passport, Zupass, ENS, vouchers, and whitelists.
 
-You choose it over a small faucet script when abuse resistance and configurable reward policy justify the larger operational surface. Browser proof-of-work spends computation to qualify for a payout; it does not create coins. You supply native currency and gas, and arrange the token supply for ERC-20 distribution. The demo token's separately granted minting role is not a way to mint arbitrary assets ([README.md:16–18](https://github.com/pk910/PoWFaucet/blob/92b8f7ba01a8ba694269bb35c1848966a3a8a75d/README.md#L16-L18), [docs/demo/README.md:3–4](https://github.com/pk910/PoWFaucet/blob/92b8f7ba01a8ba694269bb35c1848966a3a8a75d/docs/demo/README.md#L3-L4)).
+You choose it over a small faucet script when abuse resistance and configurable reward policy justify the larger operational surface. Browser proof-of-work spends computation to qualify for a payout; it does not create coins. You supply native currency and gas, and arrange the token supply for ERC-20 distribution. The demo token's separately granted minting role is not a way to mint arbitrary assets ([README.md:16–18](https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/README.md#L16-L18), [docs/demo/README.md:3–4](https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/docs/demo/README.md#L3-L4)).
 
 ## When NOT to use
 
@@ -98,7 +98,7 @@ You choose it over a small faucet script when abuse resistance and configurable 
 - **You are distributing valuable mainnet assets, an airdrop, or user entitlements.** Use an audited Merkle-claim or allowlist contract backed by a multisig treasury; a testnet faucet is not a high-value distribution control plane.
 - **You only need to rate-limit a web form.** Keep protection inside your application; PoWFaucet adds unnecessary wallet, session and payout infrastructure.
 - **You cannot meet AGPL obligations.** Do not adopt it without license review. Its AGPL v3 license includes source-offer obligations for modified versions used through a network; the health scorer's D bucket is not a legal analysis.
-- **You require protection to fail closed at startup.** Audit enabled modules and startup logs: the loader skips modules that fail to load, and the application initialization catch exits with code 0, not a reliable readiness signal ([ModuleLoader.ts:249–280](https://github.com/pk910/PoWFaucet/blob/92b8f7ba01a8ba694269bb35c1848966a3a8a75d/src/loader/ModuleLoader.ts#L249-L280), [app.ts:74–76](https://github.com/pk910/PoWFaucet/blob/92b8f7ba01a8ba694269bb35c1848966a3a8a75d/src/app.ts#L74-L76)).
+- **You require protection to fail closed at startup.** Audit enabled modules and startup logs: the loader skips modules that fail to load, and the application initialization catch exits with code 0, not a reliable readiness signal ([ModuleLoader.ts:249–280](https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/src/loader/ModuleLoader.ts#L249-L280), [app.ts:74–76](https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/src/app.ts#L74-L76)).
 
 ## Comparison
 
@@ -110,7 +110,7 @@ You choose it over a small faucet script when abuse resistance and configurable 
 
 ## Quick start
 
-Use the operator instructions linked from [README.md:63–69](https://github.com/pk910/PoWFaucet/blob/92b8f7ba01a8ba694269bb35c1848966a3a8a75d/README.md#L63-L69) to obtain a server distribution or Docker image; do not substitute the unstable `snapshot` release for a pinned stable artifact. Configure `faucet-config.yaml` with your chain, RPC address—the service that reads and broadcasts chain transactions—funded wallet and protection policy; secrets can be supplied through `FAUCET_ETH_WALLET_KEY` and `FAUCET_SECRET` instead of copied demo keys. For the browser-mining path, enable `modules.pow`, start the configured server and publish its web page behind TLS. A recipient enters a destination address, completes the configured mining session and claims the reward; the service checks the session and queues a wallet transfer. You pay for funding and transaction fees, maintain storage and RPC availability, and verify confirmations; this page did not run a faucet or transact.
+Use the operator instructions linked from [README.md:63–69](https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/README.md#L63-L69) to obtain a server distribution or Docker image; do not substitute the unstable `snapshot` release for a pinned stable artifact. Configure `faucet-config.yaml` with your chain, RPC address—the service that reads and broadcasts chain transactions—funded wallet and protection policy; secrets can be supplied through `FAUCET_ETH_WALLET_KEY` and `FAUCET_SECRET` instead of copied demo keys. For the browser-mining path, enable `modules.pow`, start the configured server and publish its web page behind TLS. A recipient enters a destination address, completes the configured mining session and claims the reward; the service checks the session and queues a wallet transfer. You pay for funding and transaction fees, maintain storage and RPC availability, and verify confirmations; this page did not run a faucet or transact. The ticket-limit behavior described below is from reviewed master after v2.5.2; do not assume that selecting the stable archive includes it.
 
 ![PoWFaucet — backbone user story](../../assets/flow/powfaucet.svg)
 
@@ -132,9 +132,68 @@ Use the operator instructions linked from [README.md:63–69](https://github.com
 
 ## Key techniques
 
-- **Make work gate eligibility, not mint money.** [PoWModule.ts:142–158](https://github.com/pk910/PoWFaucet/blob/92b8f7ba01a8ba694269bb35c1848966a3a8a75d/src/modules/pow/PoWModule.ts#L142-L158) adds a blocking mining task, resets the reward and creates a random session preimage; [PoWModule.ts:184–187](https://github.com/pk910/PoWFaucet/blob/92b8f7ba01a8ba694269bb35c1848966a3a8a75d/src/modules/pow/PoWModule.ts#L184-L187) releases that block when mining closes. This separates qualification from payout, but configuration can explicitly skip the module.
-- **Recover and constrain the payout queue.** [EthClaimManager.ts:78–116](https://github.com/pk910/PoWFaucet/blob/92b8f7ba01a8ba694269bb35c1848966a3a8a75d/src/eth/EthClaimManager.ts#L78-L116) restores queued and pending claims from persisted sessions. [EthClaimManager.ts:187–231](https://github.com/pk910/PoWFaucet/blob/92b8f7ba01a8ba694269bb35c1848966a3a8a75d/src/eth/EthClaimManager.ts#L187-L231) checks claimable state, applies amount limits and guards duplicate claims; [EthClaimManager.ts:239–253](https://github.com/pk910/PoWFaucet/blob/92b8f7ba01a8ba694269bb35c1848966a3a8a75d/src/eth/EthClaimManager.ts#L239-L253) can pause for missing wallet funds or gas. Persistence helps recovery, not guaranteed chain finality.
-- **Load extensions against the live faucet registry.** [ModuleLoader.ts:169–198](https://github.com/pk910/PoWFaucet/blob/92b8f7ba01a8ba694269bb35c1848966a3a8a75d/src/loader/ModuleLoader.ts#L169-L198) discovers program, data-directory and configured module paths; [ModuleLoader.ts:249–340](https://github.com/pk910/PoWFaucet/blob/92b8f7ba01a8ba694269bb35c1848966a3a8a75d/src/loader/ModuleLoader.ts#L249-L340) tries candidates, checks the API version and injects the shared SDK before registration. This avoids disconnected duplicate registries, but modules are executable trusted code and loading errors can leave the faucet running without them.
+![PoWFaucet — mechanism diagram](../../assets/mechanism/powfaucet.svg)
+
+<!-- mechanism:begin (generated from mechanisms/powfaucet.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>Text version of the mechanism</summary>
+
+- Program / data / configured module paths
+- Try candidates; API check; inject live SDK③
+- Register trusted extension hooks③
+- No candidate loads: continue without module③
+- Configured session checks
+- Mining block; zero reward; random seed①
+- Other blocks / minimum reward still apply①
+- Claimable / amount / duplicate checks; else reject②
+- Persist / restore queue; optional no-funds pause②
+- Funded wallet / RPC; await receipt, may fail②
+- Optional Zupass: ticket ID, not account identity④
+- Configured history and concurrency limits④
+
+- Program / data / configured module paths → Try candidates; API check; inject live SDK③
+- Try candidates; API check; inject live SDK③ → Register trusted extension hooks③ (loads)
+- Try candidates; API check; inject live SDK③ → No candidate loads: continue without module③ (all fail) [optional/fallback]
+- Register trusted extension hooks③ → Configured session checks
+- Configured session checks → Mining block; zero reward; random seed① (PoW enabled)
+- Configured session checks → Other blocks / minimum reward still apply① (explicit PoW skip) [optional/fallback]
+- Mining block; zero reward; random seed① → Other blocks / minimum reward still apply① (mining closes)
+- Other blocks / minimum reward still apply① → Claimable / amount / duplicate checks; else reject② (eligible)
+- Claimable / amount / duplicate checks; else reject② → Persist / restore queue; optional no-funds pause② (passes)
+- Persist / restore queue; optional no-funds pause② → Funded wallet / RPC; await receipt, may fail② (submit)
+- Funded wallet / RPC; await receipt, may fail② → Persist / restore queue; optional no-funds pause② (receipt status)
+- Optional Zupass: ticket ID, not account identity④ → Configured history and concurrency limits④
+
+</details>
+<!-- mechanism:end -->
+
+### 1. Block reward eligibility until the mining stage ends
+
+- **Problem:** A recipient should not reach payout simply by submitting an address when browser work is part of the policy.
+- **How:** The PoW hook adds a blocking task, resets the reward to zero and creates a random session seed—the preimage used by the mining challenge—if none exists. Closing mining resolves that task and asks the session to proceed.
+- **Limits:** Configuration can explicitly skip PoW; other blocking tasks and the minimum reward still govern eligibility, and expired tasks can be removed by the session timer. This is payout qualification, not coin creation or proof of chain payment.
+- **Source:** [PoWModule.ts:142–187](https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/src/modules/pow/PoWModule.ts#L142-L187), [FaucetSession.ts:275–315](https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/src/session/FaucetSession.ts#L275-L315).
+
+### 2. Restore payout work without confusing it with confirmation
+
+- **Problem:** A restart can lose pending work, while duplicate claims or an unfunded wallet can break distribution.
+- **How:** The claim manager restores queued/processing claims and watches saved pending transactions; new claims require claimable state, amount limits and duplicate protection. It persists claim state and processes a queue, pausing for wallet/RPC or gas shortages when `ethQueueNoFunds` is enabled.
+- **Limits:** Without that pause option, the send path can mark such claims failed instead. A saved queue or submitted transaction is not finality: receipt success or failure updates its status later, and RPC availability remains external.
+- **Source:** [EthClaimManager.ts:78–116](https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/src/eth/EthClaimManager.ts#L78-L116), [claim and pause:187–253](https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/src/eth/EthClaimManager.ts#L187-L253), [send and receipt:283–348](https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/src/eth/EthClaimManager.ts#L283-L348).
+
+### 3. Inject the live registry into trusted extensions
+
+- **Problem:** An extension bundling its own faucet registry could register hooks that the running service never calls.
+- **How:** The loader searches program modules, data-directory modules and configured paths, preferring later copies and trying an older candidate if loading fails. It checks the module API version and injects the faucet's shared SDK—the extension interface—before initialization and registration.
+- **Limits:** Modules execute trusted code, not inside a sandbox; if no candidate loads, the service can continue without it. The separate application initialization catch exits 0 even on failure, so neither API compatibility nor a clean process exit proves protection readiness.
+- **Source:** [ModuleLoader.ts:169–198](https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/src/loader/ModuleLoader.ts#L169-L198), [candidate loading:219–340](https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/src/loader/ModuleLoader.ts#L219-L340), [SDK injection:476–522](https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/src/loader/ModuleLoader.ts#L476-L522), [app.ts:74–76](https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/src/app.ts#L74-L76).
+
+### 4. Follow the ticket rather than a replaceable Zupass account identity
+
+- **Problem:** Reissuing one event ticket to a fresh account identity could reset identity-keyed usage limits.
+- **How:** Current master keys the optional Zupass module's grant history and concurrent-session check on `ticketId`, not the attendee identity. Its version-2 module schema adds a ticket lookup index; the history query counts claimable, claiming and finished sessions within the configured window.
+- **Limits:** This post-v2.5.2 change does not mean the stable release contains the fix. Limits still depend on configuration: zero concurrency limit disables that check, and an optional grant can decline its benefit rather than reject the session.
+- **Source:** [ZupassModule.ts:255–325](https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/src/modules/zupass/ZupassModule.ts#L255-L325), [ZupassDB.ts:7–45](https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/src/modules/zupass/ZupassDB.ts#L7-L45), [ticket history:69–82](https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/src/modules/zupass/ZupassDB.ts#L69-L82).
 
 ## Tech stack
 
@@ -158,18 +217,18 @@ Use the operator instructions linked from [README.md:63–69](https://github.com
 
 ## Health & viability
 
-- **Measured signals (2026-10-14):** A/?/D/A/D/D, overall C with 5/6 axes scored. The existing responsiveness gap remains `no_window_signal`: the scorer found traffic but no qualifying response in its sampled window, not proof of slow responses.
-- **Maintenance:** v2.5.2 was published on 2026-10-13; the checked default branch includes the external module loader and runtime secret overrides. The repository is not archived; only 2.x is supported in `SECURITY.md`.
-- **Governance:** 5 measured active maintainers, with top-1 share 0.821, produce D rather than the old C. The security policy explicitly names the primary maintainer; community contributors do not eliminate concentration risk.
+- **Measured signals (2026-10-17):** A/?/D/A/D/D, overall C with 5/6 axes scored. The existing responsiveness gap remains `no_window_signal`: the scorer found traffic but no qualifying response in its sampled window, not proof of slow responses.
+- **Maintenance:** v2.5.2 was published on 2026-10-13; reviewed master additionally contains the unreleased Zupass ticket-limit fix and dependency-lock updates. The external module loader and runtime secret overrides remain present; the repository is not archived, and only the latest 2.x release is supported in `SECURITY.md`.
+- **Governance:** 5 measured active maintainers, with top-1 share 0.825, retain D. The security policy explicitly names the primary maintainer; community contributors do not eliminate concentration risk.
 - **Age and Lindy:** created in 2022 and still active after roughly four years, with public Sepolia, Hoodi, and Ephemery instances named in the README. This is a useful but not long-established infrastructure track record.
-- **Adoption:** 5636 stars and the README's named instances show interest, not security or load capacity. The measured install signals give D; the SDK's dependent count is not the number of faucet deployments.
+- **Adoption:** 5639 stars and the README's named instances show interest, not security or load capacity. The measured install signals give D; the SDK's dependent count is not the number of faucet deployments.
 - **Risk flags:** AGPL network obligations, hot-wallet custody, many optional secrets and identity integrations, privacy-sensitive IP and wallet data, external RPC dependencies, and public abuse economics.
 
 ## Caveats (unverified)
 
 - [未验证：未执行上游] Installation, runtime compatibility, wallet/RPC failure recovery and chain transfers were not tested here; source and release descriptions are the evidence.
 - [未验证：未取得独立审计或压测] Security and capacity under concurrent mining, RPC failures and malicious verifiers remain unproven.
-- [未验证] The effectiveness and fairness of CAPTCHA, IP, GitHub, Passport, Zupass, and proof-of-work modules depend on operator configuration and external services.
-- [未验证] The public instances listed in the README may run configurations or patches that differ from the default branch.
-- [推断] The primary category is blockchain development infrastructure because token distribution is the service's purpose; CAPTCHA and proof-of-work are optional anti-abuse modules.
-- [推断] The low bus factor raises long-term maintenance risk despite active releases and a substantial test suite.
+- [未验证：未进行防滥用效果实验] The effectiveness and fairness of CAPTCHA, IP, GitHub, Passport, Zupass, and proof-of-work modules depend on operator configuration and external services.
+- [未验证：未审计公共实例的部署版本] The public instances listed in the README may run configurations or patches that differ from the default branch.
+- [推断：按分发服务的主要目的归类] The primary category is blockchain development infrastructure because token distribution is the service's purpose; CAPTCHA and proof-of-work are optional anti-abuse modules.
+- [推断：依据是贡献集中与维护者政策，未来维护无法实测] The low bus factor raises long-term maintenance risk despite active releases and a substantial test suite.
