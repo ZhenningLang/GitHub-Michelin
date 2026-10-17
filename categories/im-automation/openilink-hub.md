@@ -139,27 +139,27 @@ Obtain a pinned release binary, or use the frontend build and `go build -o oih .
 <summary>Text version of the mechanism</summary>
 
 - Incoming bot message
-- Mention → command → subscribed event Attach trace; select Apps①
+- Mention → command → subscribed event; Attach trace; select Apps①
 - WebSocket if connected①
 - Builtin handler if configured①
 - Webhook: first synchronous attempt①②
-- Memory task: wait 10s, then 60s if needed Lost on restart; delivery only②
-- Eligible first-result reply Use stored context token②
+- Memory task: wait 10s, then 60s if needed; Lost on restart; delivery only②
+- Eligible first-result reply; Use stored context token②
 - Independent: registry sources
-- Normalize URL; read up to 10 MiB On error use existing cache③
-- Merge available listings; may be stale All sources fail: error③
-- Independent: password registration Check user count④
-- Zero users: superadmin Otherwise: registration gate, then member④
+- Normalize URL; read up to 10 MiB; On error use existing cache③
+- Merge available listings; may be stale; All sources fail: error③
+- Independent: password registration; Check user count④
+- Zero users: superadmin; Otherwise: registration gate, then member④
 
-- Incoming bot message → Mention → command → subscribed event Attach trace; select Apps①
-- Mention → command → subscribed event Attach trace; select Apps① → WebSocket if connected① (independent)
-- Mention → command → subscribed event Attach trace; select Apps① → Builtin handler if configured① (independent)
-- Mention → command → subscribed event Attach trace; select Apps① → Webhook: first synchronous attempt①② (independent)
-- Webhook: first synchronous attempt①② → Memory task: wait 10s, then 60s if needed Lost on restart; delivery only② (delivery error) [optional/fallback]
-- Webhook: first synchronous attempt①② → Eligible first-result reply Use stored context token② (first result only)
-- Independent: registry sources → Normalize URL; read up to 10 MiB On error use existing cache③
-- Normalize URL; read up to 10 MiB On error use existing cache③ → Merge available listings; may be stale All sources fail: error③
-- Independent: password registration Check user count④ → Zero users: superadmin Otherwise: registration gate, then member④
+- Incoming bot message → Mention → command → subscribed event; Attach trace; select Apps①
+- Mention → command → subscribed event; Attach trace; select Apps① → WebSocket if connected① (independent)
+- Mention → command → subscribed event; Attach trace; select Apps① → Builtin handler if configured① (independent)
+- Mention → command → subscribed event; Attach trace; select Apps① → Webhook: first synchronous attempt①② (independent)
+- Webhook: first synchronous attempt①② → Memory task: wait 10s, then 60s if needed; Lost on restart; delivery only② (delivery error) [optional/fallback]
+- Webhook: first synchronous attempt①② → Eligible first-result reply; Use stored context token② (first result only)
+- Independent: registry sources → Normalize URL; read up to 10 MiB; On error use existing cache③
+- Normalize URL; read up to 10 MiB; On error use existing cache③ → Merge available listings; may be stale; All sources fail: error③
+- Independent: password registration; Check user count④ → Zero users: superadmin; Otherwise: registration gate, then member④
 
 </details>
 <!-- mechanism:end -->

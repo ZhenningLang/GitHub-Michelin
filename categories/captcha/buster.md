@@ -130,7 +130,7 @@ Install Buster from one of the browser-store links in [README.md:6–21](https:/
 - Managed local / remote switches①
 - Check browser Prompt API status①
 - Browser Prompt API transcription
-- Cached Whisper tiny; WASM / q8 MV3 offscreen where needed②
+- Cached Whisper tiny; WASM / q8; MV3 offscreen where needed②
 - Local text or no text
 - Enabled managed remote recognition①
 - Fill directly or via optional native input③
@@ -140,10 +140,10 @@ Install Buster from one of the browser-store links in [README.md:6–21](https:/
 - Fetch challenge audio; trim both ends → Managed local / remote switches①
 - Managed local / remote switches① → Check browser Prompt API status① (local enabled)
 - Check browser Prompt API status① → Browser Prompt API transcription (available)
-- Check browser Prompt API status① → Cached Whisper tiny; WASM / q8 MV3 offscreen where needed② (unavailable only)
+- Check browser Prompt API status① → Cached Whisper tiny; WASM / q8; MV3 offscreen where needed② (unavailable only)
 - Check browser Prompt API status① → Local text or no text (other status: no text)
 - Browser Prompt API transcription → Local text or no text
-- Cached Whisper tiny; WASM / q8 MV3 offscreen where needed② → Local text or no text (unready yields no text)
+- Cached Whisper tiny; WASM / q8; MV3 offscreen where needed② → Local text or no text (unready yields no text)
 - Managed local / remote switches① → Enabled managed remote recognition① (local off; remote on) [optional/fallback]
 - Local text or no text → Enabled managed remote recognition① (no text; remote on) [optional/fallback]
 - Local text or no text → Fill directly or via optional native input③ (text)

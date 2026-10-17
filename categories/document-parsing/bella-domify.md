@@ -135,24 +135,24 @@ The documented library path starts with `pip install bella-domify` ([README.md:5
 - Registered adapter uploads / retrieves reference②
 - OCR switch / vision model / user / URL③
 - Empty OCR text; not extraction success
-- Vision request: timeout 30s Rate limit: up to 3 application attempts③
-- Separate usage report Report failure only logged③
+- Vision request: timeout 30s; Rate limit: up to 3 application attempts③
+- Separate usage report; Report failure only logged③
 - OCR text / empty-content marker / failure marker
-- Merge paragraphs; infer parents with stack Catalogue / title / font / list rules①
-- Document tree + Markdown Grouping / reading order need review①
+- Merge paragraphs; infer parents with stack; Catalogue / title / font / list rules①
+- Document tree + Markdown; Grouping / reading order need review①
 
 - Parsed PDF blocks → Image handlers: eight-worker pool②
 - Image handlers: eight-worker pool② → Registered adapter uploads / retrieves reference② (adapter present)
 - Registered adapter uploads / retrieves reference② → OCR switch / vision model / user / URL③ (both dimensions &gt; 28px)
 - Registered adapter uploads / retrieves reference② → Empty OCR text; not extraction success (exception or small image)
 - OCR switch / vision model / user / URL③ → Empty OCR text; not extraction success (conditions fail)
-- OCR switch / vision model / user / URL③ → Vision request: timeout 30s Rate limit: up to 3 application attempts③ (conditions met) [optional/fallback]
-- Vision request: timeout 30s Rate limit: up to 3 application attempts③ → Separate usage report Report failure only logged③ (response has usage) [optional/fallback]
-- Vision request: timeout 30s Rate limit: up to 3 application attempts③ → OCR text / empty-content marker / failure marker
-- OCR text / empty-content marker / failure marker → Merge paragraphs; infer parents with stack Catalogue / title / font / list rules①
-- Empty OCR text; not extraction success → Merge paragraphs; infer parents with stack Catalogue / title / font / list rules①
-- Image handlers: eight-worker pool② → Merge paragraphs; infer parents with stack Catalogue / title / font / list rules① (no image work)
-- Merge paragraphs; infer parents with stack Catalogue / title / font / list rules① → Document tree + Markdown Grouping / reading order need review①
+- OCR switch / vision model / user / URL③ → Vision request: timeout 30s; Rate limit: up to 3 application attempts③ (conditions met) [optional/fallback]
+- Vision request: timeout 30s; Rate limit: up to 3 application attempts③ → Separate usage report; Report failure only logged③ (response has usage) [optional/fallback]
+- Vision request: timeout 30s; Rate limit: up to 3 application attempts③ → OCR text / empty-content marker / failure marker
+- OCR text / empty-content marker / failure marker → Merge paragraphs; infer parents with stack; Catalogue / title / font / list rules①
+- Empty OCR text; not extraction success → Merge paragraphs; infer parents with stack; Catalogue / title / font / list rules①
+- Image handlers: eight-worker pool② → Merge paragraphs; infer parents with stack; Catalogue / title / font / list rules① (no image work)
+- Merge paragraphs; infer parents with stack; Catalogue / title / font / list rules① → Document tree + Markdown; Grouping / reading order need review①
 
 </details>
 <!-- mechanism:end -->
@@ -167,7 +167,7 @@ The documented library path starts with `pip install bella-domify` ([README.md:5
 ### 2. Store images before deciding whether to recognize them
 
 - **Problem:** An application needs to retain extracted images even when OCR, recognition of text in an image, is disabled.
-- **How:** Before building the tree, the parser schedules image handlers in an eight-worker thread pool; the registered storage adapter uploads each image and retrieves its reference before optional OCR. Only images wider and taller than 28 pixels pass the adapter's size check.
+- **How:** Before building the tree, the parser schedules image handlers in an eight-worker thread pool; the registered storage adapter uploads each image and retrieves its reference before optional OCR. Only images wider and taller than 28 pixels proceed to the OCR configuration checks; smaller images are still stored.
 - **Limits:** Disabling OCR does not disable storage calls or make them offline; provider exceptions become empty OCR text, which is not successful extraction. The abstract download method promises bytes while its caller uses the result as an image URL, so adapter compatibility still needs version-specific validation.
 - **Source:** [domtree_parser.py:43–64](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/domtree_parser.py#L43-L64), [image_provider.py:8–60](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/provider/image_provider.py#L8-L60), [TextBlockExtend.py:137–143](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/extend/text/TextBlockExtend.py#L137-L143).
 

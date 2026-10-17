@@ -6,7 +6,7 @@
     {"id": "switches", "en": "Managed local / remote switches", "zh": "托管本地与远端开关", "technique": [1]},
     {"id": "api", "en": "Check browser Prompt API status", "zh": "检查浏览器 Prompt API 状态", "technique": [1]},
     {"id": "prompt", "en": "Browser Prompt API transcription", "zh": "浏览器 Prompt API 转写"},
-    {"id": "whisper", "en": "Cached Whisper tiny; WASM / q8\nMV3 offscreen where needed", "zh": "缓存 Whisper tiny，WASM／q8\n适用 MV3 浏览器走离屏文档", "technique": [2]},
+    {"id": "whisper", "en": "Cached Whisper tiny; WASM / q8;\nMV3 offscreen where needed", "zh": "缓存 Whisper tiny，WASM／q8；\n适用 MV3 浏览器走离屏文档", "technique": [2]},
     {"id": "local", "en": "Local text or no text", "zh": "本地文本或无文本"},
     {"id": "remote", "en": "Enabled managed remote recognition", "zh": "已启用的托管远端识别", "kind": "external", "technique": [1]},
     {"id": "fill", "en": "Fill directly or via optional native input", "zh": "直接填写或可选原生输入", "technique": [3]},

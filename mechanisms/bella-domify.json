@@ -7,11 +7,11 @@
     {"id": "storage", "en": "Registered adapter uploads / retrieves reference", "zh": "注册的适配器上传并取回引用", "kind": "external", "technique": [2]},
     {"id": "gate", "en": "OCR switch / vision model / user / URL", "zh": "OCR 开关、视觉模型、用户、网址", "technique": [3]},
     {"id": "empty", "en": "Empty OCR text; not extraction success", "zh": "空 OCR 文本，不是抽取成功"},
-    {"id": "model", "en": "Vision request: timeout 30s\nRate limit: up to 3 application attempts", "zh": "视觉请求：超时参数 30 秒\n限流时应用层最多尝试三次", "kind": "external", "technique": [3]},
-    {"id": "usage", "en": "Separate usage report\nReport failure only logged", "zh": "独立上报用量\n上报失败记日志", "kind": "external", "technique": [3]},
+    {"id": "model", "en": "Vision request: timeout 30s;\nRate limit: up to 3 application attempts", "zh": "视觉请求：超时参数 30 秒；\n限流时应用层最多尝试三次", "kind": "external", "technique": [3]},
+    {"id": "usage", "en": "Separate usage report;\nReport failure only logged", "zh": "独立上报用量；\n上报失败记日志", "kind": "external", "technique": [3]},
     {"id": "ocr", "en": "OCR text / empty-content marker / failure marker", "zh": "OCR 文本／空内容标记／失败标记"},
-    {"id": "tree", "en": "Merge paragraphs; infer parents with stack\nCatalogue / title / font / list rules", "zh": "合段，按父节点栈推断归属\n目录、标题、字体与列表规则", "technique": [1]},
-    {"id": "out", "en": "Document tree + Markdown\nGrouping / reading order need review", "zh": "文档树与 Markdown\n分组和阅读顺序仍须复核", "kind": "output", "technique": [1]}
+    {"id": "tree", "en": "Merge paragraphs; infer parents with stack;\nCatalogue / title / font / list rules", "zh": "合段，按父节点栈推断归属；\n目录、标题、字体与列表规则", "technique": [1]},
+    {"id": "out", "en": "Document tree + Markdown;\nGrouping / reading order need review", "zh": "文档树与 Markdown；\n分组和阅读顺序仍须复核", "kind": "output", "technique": [1]}
   ],
   "edges": [
     {"from": "blocks", "to": "images"},

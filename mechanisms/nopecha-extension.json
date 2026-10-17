@@ -4,12 +4,12 @@
   "nodes": [
     {"id": "current", "en": "Current README: stores and published builds", "zh": "当前 README：商店和发布包", "kind": "input", "technique": [1]},
     {"id": "quota", "en": "Documented IP quota / account key", "zh": "文档中的 IP 额度／账号密钥", "technique": [1]},
-    {"id": "closed", "en": "Current solver internals not public\nNot reproducible from legacy source", "zh": "当前求解内部未公开\n不能从旧源码复现", "kind": "external", "technique": [1]},
+    {"id": "closed", "en": "Current solver internals not public;\nNot reproducible from legacy source", "zh": "当前求解内部未公开；\n不能从旧源码复现", "kind": "external", "technique": [1]},
     {"id": "legacy", "en": "Historical 0.3.3 sources only", "zh": "以下仅历史 0.3.3 源码", "kind": "input"},
-    {"id": "pack", "en": "Shared files + browser files\nDerive utils.js; merge manifest", "zh": "共享文件加浏览器文件\n派生 utils.js，合并清单", "technique": [3]},
-    {"id": "archive", "en": "Historical browser package\nArchive in production mode", "zh": "历史浏览器包\n生产模式生成归档", "technique": [3]},
+    {"id": "pack", "en": "Shared files + browser files;\nDerive utils.js; merge manifest", "zh": "共享文件加浏览器文件；\n派生 utils.js，合并清单", "technique": [3]},
+    {"id": "archive", "en": "Historical browser package;\nArchive in production mode", "zh": "历史浏览器包；\n生产模式生成归档", "technique": [3]},
     {"id": "match", "en": "Match URL / frame / loading stage", "zh": "匹配网址、框架与加载时机", "technique": [2]},
-    {"id": "handlers", "en": "Historical page handlers\nNot current permissions or model evidence", "zh": "历史页面处理脚本\n不是当前权限或模型证据", "kind": "output", "technique": [2]}
+    {"id": "handlers", "en": "Historical page handlers;\nNot current permissions or model evidence", "zh": "历史页面处理脚本；\n不是当前权限或模型证据", "kind": "output", "technique": [2]}
   ],
   "edges": [
     {"from": "current", "to": "quota"},

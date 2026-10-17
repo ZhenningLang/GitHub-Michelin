@@ -134,19 +134,19 @@ For an environment you own or have explicit permission to test, use the Chrome o
 
 - Current README: stores and published builds①
 - Documented IP quota / account key①
-- Current solver internals not public Not reproducible from legacy source①
+- Current solver internals not public; Not reproducible from legacy source①
 - Historical 0.3.3 sources only
-- Shared files + browser files Derive utils.js; merge manifest③
-- Historical browser package Archive in production mode③
+- Shared files + browser files; Derive utils.js; merge manifest③
+- Historical browser package; Archive in production mode③
 - Match URL / frame / loading stage②
-- Historical page handlers Not current permissions or model evidence②
+- Historical page handlers; Not current permissions or model evidence②
 
 - Current README: stores and published builds① → Documented IP quota / account key①
-- Documented IP quota / account key① → Current solver internals not public Not reproducible from legacy source① (documentation boundary)
-- Historical 0.3.3 sources only → Shared files + browser files Derive utils.js; merge manifest③
-- Shared files + browser files Derive utils.js; merge manifest③ → Historical browser package Archive in production mode③
-- Historical browser package Archive in production mode③ → Match URL / frame / loading stage②
-- Match URL / frame / loading stage② → Historical page handlers Not current permissions or model evidence②
+- Documented IP quota / account key① → Current solver internals not public; Not reproducible from legacy source① (documentation boundary)
+- Historical 0.3.3 sources only → Shared files + browser files; Derive utils.js; merge manifest③
+- Shared files + browser files; Derive utils.js; merge manifest③ → Historical browser package; Archive in production mode③
+- Historical browser package; Archive in production mode③ → Match URL / frame / loading stage②
+- Match URL / frame / loading stage② → Historical page handlers; Not current permissions or model evidence②
 
 </details>
 <!-- mechanism:end -->
