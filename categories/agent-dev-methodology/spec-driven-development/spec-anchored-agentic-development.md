@@ -7,7 +7,7 @@ tags: [spec-driven-development, agent-workflow, claude-code, code-review, confor
 language: Python
 license: MIT
 maturity: no GitHub releases, main updated 2026-09-02, 6 stars (as of 2026-10)
-last_verified: 2026-10-13
+last_verified: 2026-10-17
 type: skill-pack
 upstream:
   pushed_at: 2026-09-02T23:19:56Z
@@ -115,10 +115,66 @@ Review the bundle in a staging clone, then merge `AGENTS.md`, `.agents/`, `agent
 
 ## Key techniques
 
-- **Keep business truth addressable after delivery.** [spec-templates/capability-spec.md:15–94](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/spec-templates/capability-spec.md#L15-L94) gives one permanent entrypoint, stable rule/acceptance IDs and different representations for state, calculations and data shape. Tests and tickets can point to the same rule; the template still needs your real domain values and verification methods, not merely filled headings.
-- **Bind approval to content, policy and run identity.** [scripts/spec-anchored:632–768](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/scripts/spec-anchored#L632-L768) checks the canonical bundle against its resolved policy, hashes it, and checks approval records for matching fingerprint, repository and run. Changed plans or scope cannot silently reuse an old record; this is consistency checking, not authentication of an actual human/provider approval event.
-- **A worker's scope proposal is not its authority.** [scripts/spec-anchored:961–1106](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/scripts/spec-anchored#L961-L1106) intersects the manifest with an externally issued policy, applies absolute denies and separate truth/oracle grants. It can reject an unauthorized supplied diff; the launcher must still supply trustworthy policy and the complete real diff, and wire refusal into execution.
-- **Reject mixed or invented completion states.** [scripts/spec-anchored:1109–1208](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/scripts/spec-anchored#L1109-L1208) requires different fields for PR-ready, named-blocker and no-change results, forbids fields from other states, and checks repository/claim identities. That prevents a contradictory result envelope, but [scripts/spec-anchored:23–25](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/scripts/spec-anchored#L23-L25) explicitly separates shape from proving remote PRs, commits and reviews exist.
+![Spec-Anchored Agentic Development — mechanism diagram](../../../assets/mechanism/spec-anchored-agentic-development.svg)
+
+<!-- mechanism:begin (generated from mechanisms/spec-anchored-agentic-development.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>Text version of the mechanism</summary>
+
+- Permanent capability spec and stable rule IDs①
+- Canonical plan / scope / spec bundle fingerprint②
+- Supplied approval record; real event checked externally
+- Check fingerprint, repository and run match②
+- Trusted policy issued outside the worker③
+- Worker's proposed scope manifest③
+- Complete real diff supplied by launcher
+- Intersect grants; absolute denies; separate truth grants③
+- Supplied terminal result artifact
+- Check exclusive PR-ready / blocker / no-change fields④
+- Artifact consistency only; no proof of remote events②③④
+
+- Permanent capability spec and stable rule IDs① → Canonical plan / scope / spec bundle fingerprint②
+- Trusted policy issued outside the worker③ → Canonical plan / scope / spec bundle fingerprint②
+- Canonical plan / scope / spec bundle fingerprint② → Check fingerprint, repository and run match②
+- Supplied approval record; real event checked externally → Check fingerprint, repository and run match②
+- Check fingerprint, repository and run match② → Artifact consistency only; no proof of remote events②③④
+- Trusted policy issued outside the worker③ → Intersect grants; absolute denies; separate truth grants③
+- Worker's proposed scope manifest③ → Intersect grants; absolute denies; separate truth grants③
+- Complete real diff supplied by launcher → Intersect grants; absolute denies; separate truth grants③
+- Intersect grants; absolute denies; separate truth grants③ → Artifact consistency only; no proof of remote events②③④
+- Supplied terminal result artifact → Check exclusive PR-ready / blocker / no-change fields④
+- Check exclusive PR-ready / blocker / no-change fields④ → Artifact consistency only; no proof of remote events②③④
+
+</details>
+<!-- mechanism:end -->
+
+### 1. Give business rules lasting addresses
+
+- **Problem:** Tickets close, leaving later agents without an authoritative place to find a capability's rules.
+- **How:** The capability template keeps one permanent entrypoint and stable rule/acceptance IDs for tests and tickets to cite. It uses state models, formulas with reference values, schemas or properties when those express the rule better than event sentences.
+- **Limits:** The template is not domain truth by itself. You must supply real reference values and verification methods; filled headings do not establish correct business behavior.
+- **Source:** [spec-templates/capability-spec.md:15–94](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/spec-templates/capability-spec.md#L15-L94).
+
+### 2. Match approval records to the exact content and run
+
+- **Problem:** An old approval record could otherwise accompany a changed plan, broader scope or a different run.
+- **How:** The checker validates the approval bundle against the resolved policy, then hashes its canonical fields into a fingerprint. It compares that fingerprint, repository and run with the supplied approval record, binding the record to this bundle rather than a similar plan.
+- **Limits:** This proves artifact consistency, not an authenticated human or provider event. The surrounding harness must verify the real approval; a matching identity string is not identity authentication.
+- **Source:** [scripts/spec-anchored:632–768](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/scripts/spec-anchored#L632-L768), [environment boundary:23–26](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/scripts/spec-anchored#L23-L26).
+
+### 3. Keep the worker's proposed scope below external authority
+
+- **Problem:** A worker could authorize itself by writing a permissive scope manifest—a file proposing its allowed changes.
+- **How:** The scope checker intersects that proposal with an externally issued policy and checks the supplied changed paths. Denied paths stay denied; changing spec meaning, reference answers or metric baselines requires separate grants, so approval to edit a spec does not authorize changing its test oracle.
+- **Limits:** This can reject an unauthorized supplied diff, not discover omitted changes or make the issuer trustworthy. The launcher must provide the complete real diff and trusted policy, and actually stop execution on refusal.
+- **Source:** [scripts/spec-anchored:961–1106](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/scripts/spec-anchored#L961-L1106).
+
+### 4. Separate PR-ready, blocked and no-change results
+
+- **Problem:** A result could claim both readiness and a blocker, or attach unrelated evidence fields to a completion claim.
+- **How:** The result checker requires different fields for PR-ready, named-blocker and no-change states, while forbidding fields from the other states. It also checks repository references and whether the work claim must remain parked for human review or be released.
+- **Limits:** A consistent result envelope is not proof that its PR, commit or review exists. External event verification remains separate, and PR-ready still means awaiting human review, not permission to merge.
+- **Source:** [scripts/spec-anchored:1109–1208](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/scripts/spec-anchored#L1109-L1208), [environment boundary:23–26](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/scripts/spec-anchored#L23-L26).
 
 ## Health & viability
 

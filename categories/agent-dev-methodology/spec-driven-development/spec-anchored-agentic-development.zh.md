@@ -7,7 +7,7 @@ tags: [spec-driven-development, agent-workflow, claude-code, code-review, confor
 language: Python
 license: MIT
 maturity: no GitHub releases, main updated 2026-09-02, 6 stars (as of 2026-10)
-last_verified: 2026-10-13
+last_verified: 2026-10-17
 type: skill-pack
 upstream:
   pushed_at: 2026-09-02T23:19:56Z
@@ -115,10 +115,66 @@ health:
 
 ## 技术要点
 
-- **交付后仍可定位业务事实。** [spec-templates/capability-spec.md:15–94](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/spec-templates/capability-spec.md#L15-L94) 定义永久入口、稳定规则与验收编号，按状态、计算和数据形状选择表示法。测试与工单能指向同一规则；模板仍需真实领域参考值和验证方法，不是填满标题就够。
-- **批准绑定内容、策略与运行身份。** [scripts/spec-anchored:632–768](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/scripts/spec-anchored#L632-L768) 按解析后策略检查规范包、计算哈希，再核批准记录的指纹、仓库和运行一致。计划或范围变后不能暗用旧记录；这是内部一致性检查，不是认证真实人工或供应商批准事件。
-- **工作者的范围提案不是授权。** [scripts/spec-anchored:961–1106](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/scripts/spec-anchored#L961-L1106) 将 manifest 与外部发放策略求交，执行绝对拒绝与分开的事实、判定器授权。它能拒绝所给 diff 中越权路径；启动器仍须提供可信策略与完整真实 diff，并把拒绝接入执行路径。
-- **拒绝混合或捏造完成状态。** [scripts/spec-anchored:1109–1208](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/scripts/spec-anchored#L1109-L1208) 对 PR 就绪、具名阻断和无需改动分别要求字段，禁止其它状态字段，并核仓库与认领身份。它防止矛盾结果包，但 [scripts/spec-anchored:23–25](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/scripts/spec-anchored#L23-L25) 明确将结构检查与证明远端 PR、commit 和 review 存在分开。
+![Spec-Anchored Agentic Development — 机制图](../../../assets/mechanism/spec-anchored-agentic-development.zh.svg)
+
+<!-- mechanism:begin (generated from mechanisms/spec-anchored-agentic-development.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>机制文字版</summary>
+
+- 永久能力规格与稳定规则编号①
+- 规范计划、范围、规格包的哈希指纹②
+- 传入批准记录，真实事件由外部核验
+- 核对指纹、仓库与运行一致②
+- 工作者之外发放的可信策略③
+- 工作者提出的范围清单③
+- 启动器提供完整真实差异
+- 授权求交、绝对拒绝、事实分别授权③
+- 传入终态结果产物
+- 核对待审、阻断、无需改动的互斥字段④
+- 仅证明产物一致，不证明远端事件②③④
+
+- 永久能力规格与稳定规则编号① → 规范计划、范围、规格包的哈希指纹②
+- 工作者之外发放的可信策略③ → 规范计划、范围、规格包的哈希指纹②
+- 规范计划、范围、规格包的哈希指纹② → 核对指纹、仓库与运行一致②
+- 传入批准记录，真实事件由外部核验 → 核对指纹、仓库与运行一致②
+- 核对指纹、仓库与运行一致② → 仅证明产物一致，不证明远端事件②③④
+- 工作者之外发放的可信策略③ → 授权求交、绝对拒绝、事实分别授权③
+- 工作者提出的范围清单③ → 授权求交、绝对拒绝、事实分别授权③
+- 启动器提供完整真实差异 → 授权求交、绝对拒绝、事实分别授权③
+- 授权求交、绝对拒绝、事实分别授权③ → 仅证明产物一致，不证明远端事件②③④
+- 传入终态结果产物 → 核对待审、阻断、无需改动的互斥字段④
+- 核对待审、阻断、无需改动的互斥字段④ → 仅证明产物一致，不证明远端事件②③④
+
+</details>
+<!-- mechanism:end -->
+
+### 1. 给业务规则一个长期可引用的地址
+
+- **解决：** 工单关闭后，后来接手的 agent 可能找不到能力规则的权威入口。
+- **做法：** 能力模板保留永久入口与稳定的规则、验收编号，让测试和工单引用。状态模型、带参考值的公式、数据结构或不变量比事件句更合适时，就用对应表示法。
+- **边界：** 模板本身不是领域事实。你仍须提供真实参考值与验证方法；填满标题不证明业务行为正确。
+- **源码：** [spec-templates/capability-spec.md:15–94](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/spec-templates/capability-spec.md#L15-L94)。
+
+### 2. 让批准记录匹配确切内容与本次运行
+
+- **解决：** 计划变了、范围扩大了或换了运行，旧批准记录仍可能被拿来复用。
+- **做法：** 检查器先按解析后的策略校验批准包，再将规范字段计算成哈希指纹。它比较所给批准记录的指纹、仓库与运行标识，绑定的是这份包，不是相似计划。
+- **边界：** 这证明产物一致，不认证真人或供应商事件。外围宿主仍须核实真实批准；身份字符串相同不等于身份认证。
+- **源码：** [scripts/spec-anchored:632–768](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/scripts/spec-anchored#L632-L768)、[环境边界：23–26](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/scripts/spec-anchored#L23-L26)。
+
+### 3. 工作者提出的范围不能高于外部授权
+
+- **解决：** 工作者可能写一份宽松的范围清单，再用这份提案给自己授权。
+- **做法：** 范围检查器将提案与外部发放策略求交，并检查传入的变更路径。拒绝路径始终拒绝；规格语义、参考答案和指标基线分别要有授权，批准改规格不等于批准改测试判定器。
+- **边界：** 它能拒绝所给差异中的越权修改，不能发现漏报修改或证明授权方可信。启动器仍须提供完整真实差异和可信策略，并在检查拒绝时真正停止执行。
+- **源码：** [scripts/spec-anchored:961–1106](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/scripts/spec-anchored#L961-L1106)。
+
+### 4. 将待审、阻断与无需改动分成互斥结果
+
+- **解决：** 结果可能一边声称就绪，一边声称阻断，或附上不属于该状态的证据字段。
+- **做法：** 结果检查器对 PR 就绪、具名阻断、无需改动分别要求字段，并禁止其它状态字段。它还核对仓库引用，以及任务认领应保留待人工评审，还是释放。
+- **边界：** 自洽结果包不证明其中的 PR、提交或评审真实存在。远端事件核验仍须另做；PR 就绪仍是等待人工评审，不是允许合并。
+- **源码：** [scripts/spec-anchored:1109–1208](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/scripts/spec-anchored#L1109-L1208)、[环境边界：23–26](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/scripts/spec-anchored#L23-L26)。
 
 ## 健康度与可持续性
 
