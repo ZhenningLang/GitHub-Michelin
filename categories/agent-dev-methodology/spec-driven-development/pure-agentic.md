@@ -131,9 +131,9 @@ Clone the actual `JonB32/pure-agentic` repository into a staging directory, then
 
 - Context, specs, intents and phase records
 - Context: 80 lines outside project block; specs: 50 total①
-- Schema stage: packages and schema files available?②
-- Parse YAML; validate existing schemas; collect errors②
-- Missing packages or schema: corresponding checks omitted②
+- Schema checks: packages and nonempty schemas?②
+- Parse YAML against nonempty schemas; collect errors②
+- Missing packages or missing/empty schema: skip checks②
 - context-check result; exit 0 does not mean all checked
 - UNIFY record and linked spec
 - Read base commit and affected paths③
@@ -143,11 +143,11 @@ Clone the actual `JonB32/pure-agentic` repository into a staging directory, then
 
 - Context, specs, intents and phase records → Context: 80 lines outside project block; specs: 50 total①
 - Context: 80 lines outside project block; specs: 50 total① → context-check result; exit 0 does not mean all checked
-- Context, specs, intents and phase records → Schema stage: packages and schema files available?②
-- Schema stage: packages and schema files available?② → Parse YAML; validate existing schemas; collect errors② (available)
-- Schema stage: packages and schema files available?② → Missing packages or schema: corresponding checks omitted② (missing) [optional/fallback]
-- Parse YAML; validate existing schemas; collect errors② → context-check result; exit 0 does not mean all checked
-- Missing packages or schema: corresponding checks omitted② → context-check result; exit 0 does not mean all checked
+- Context, specs, intents and phase records → Schema checks: packages and nonempty schemas?②
+- Schema checks: packages and nonempty schemas?② → Parse YAML against nonempty schemas; collect errors② (available)
+- Schema checks: packages and nonempty schemas?② → Missing packages or missing/empty schema: skip checks② (missing) [optional/fallback]
+- Parse YAML against nonempty schemas; collect errors② → context-check result; exit 0 does not mean all checked
+- Missing packages or missing/empty schema: skip checks② → context-check result; exit 0 does not mean all checked
 - UNIFY record and linked spec → Read base commit and affected paths③
 - Read base commit and affected paths③ → Compare named paths: base commit to HEAD③ (nonempty)
 - Read base commit and affected paths③ → No parsed paths: warn and exit 0③ (empty) [optional/fallback]
@@ -167,7 +167,7 @@ Clone the actual `JonB32/pure-agentic` repository into a staging directory, then
 
 - **Problem:** Intent and knowledge-block files can parse as YAML while still violating the expected record fields.
 - **How:** With `PyYAML` and `jsonschema` installed, the script loads the existing intent and knowledge-block schemas, parses matching YAML files and collects per-file errors. JSON Schema describes allowed record structure, not whether its claims are true.
-- **Limits:** Missing Python packages skip the schema stage; a missing schema file means its records are not validated. Exit 0 therefore proves neither complete schema coverage nor that every human gate was checked; Tier 2/3 service designs are not supplied by this checker.
+- **Limits:** Missing Python packages skip the schema stage; a missing schema file or empty schema object skips that record type's checks, including YAML parsing. Exit 0 therefore proves neither complete schema coverage nor that every human gate was checked; Tier 2/3 service designs are not supplied by this checker.
 - **Source:** [scripts/context-check.sh:167–243](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L167-L243), [exit policy:245–251](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L245-L251).
 
 ### 3. Compare committed changes against the spec's named files

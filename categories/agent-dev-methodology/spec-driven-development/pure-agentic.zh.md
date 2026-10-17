@@ -131,9 +131,9 @@ health:
 
 - 上下文、规格、意图与阶段记录
 - 上下文块外 80 行，规格全文 50 行①
-- 结构校验：依赖包与 schema 文件齐备？②
-- 解析 YAML，按现有 schema 校验并汇集错误②
-- 缺包或 schema：对应检查被跳过②
+- 结构校验：有依赖包与非空 schema？②
+- 按非空 schema 解析、校验 YAML，汇集错误②
+- 缺包或 schema 缺失、为空：跳过对应检查②
 - context-check 结果，退出 0 不等于全查过
 - UNIFY 记录与关联规格
 - 读取基准提交与受影响路径③
@@ -143,11 +143,11 @@ health:
 
 - 上下文、规格、意图与阶段记录 → 上下文块外 80 行，规格全文 50 行①
 - 上下文块外 80 行，规格全文 50 行① → context-check 结果，退出 0 不等于全查过
-- 上下文、规格、意图与阶段记录 → 结构校验：依赖包与 schema 文件齐备？②
-- 结构校验：依赖包与 schema 文件齐备？② → 解析 YAML，按现有 schema 校验并汇集错误②（齐备）
-- 结构校验：依赖包与 schema 文件齐备？② → 缺包或 schema：对应检查被跳过②（缺失）〔可选／兜底〕
-- 解析 YAML，按现有 schema 校验并汇集错误② → context-check 结果，退出 0 不等于全查过
-- 缺包或 schema：对应检查被跳过② → context-check 结果，退出 0 不等于全查过
+- 上下文、规格、意图与阶段记录 → 结构校验：有依赖包与非空 schema？②
+- 结构校验：有依赖包与非空 schema？② → 按非空 schema 解析、校验 YAML，汇集错误②（齐备）
+- 结构校验：有依赖包与非空 schema？② → 缺包或 schema 缺失、为空：跳过对应检查②（缺失）〔可选／兜底〕
+- 按非空 schema 解析、校验 YAML，汇集错误② → context-check 结果，退出 0 不等于全查过
+- 缺包或 schema 缺失、为空：跳过对应检查② → context-check 结果，退出 0 不等于全查过
 - UNIFY 记录与关联规格 → 读取基准提交与受影响路径③
 - 读取基准提交与受影响路径③ → 点名路径：比较基准提交与 HEAD③（非空）
 - 读取基准提交与受影响路径③ → 未解析到路径：警告并退出 0③（空）〔可选／兜底〕
@@ -167,7 +167,7 @@ health:
 
 - **解决：** 意图与知识块即使能解析成 YAML，也可能缺少协议要求的字段。
 - **做法：** 安装了 `PyYAML` 与 `jsonschema` 时，脚本加载现有的意图与知识块 schema，解析匹配的 YAML 文件，并汇集逐文件错误。JSON Schema 描述记录允许的结构，不证明记录里的说法真实。
-- **边界：** 缺 Python 包会跳过 schema 阶段；缺某个 schema 文件，该类记录就不校验。退出 0 因此既不证明 schema 全覆盖，也不证明每个人工门都查过；这个检查器也不提供 Tier 2/3 设计中的服务。
+- **边界：** 缺 Python 包会跳过 schema 阶段；某个 schema 文件缺失或内容为空对象，该类记录就连 YAML 解析也不做。退出 0 因此既不证明 schema 全覆盖，也不证明每个人工门都查过；这个检查器也不提供 Tier 2/3 设计中的服务。
 - **源码：** [scripts/context-check.sh:167–243](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L167-L243)、[退出策略：245–251](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L245-L251)。
 
 ### 3. 按规格点名的文件检查已提交漂移
