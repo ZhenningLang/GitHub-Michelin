@@ -403,6 +403,10 @@ labels, and may set `style: "dashed"` for optional/fallback paths. `sources` is 
 metadata: when provided, a list of non-empty evidence references; an empty list is allowed.
 This does not waive each technique's required Source item and real evidence link.
 No implicit acyclicity or single-path constraint.
+A label may contain `\n` to wrap inside the box, but the generated text version joins lines
+with a single space, so **end every line but the last with punctuation** (EN `;` or `.`, ZH `；`
+or `。`): `"Internals not public;\nNot reproducible from source"`, not `"Internals not public\nNot
+reproducible from source"`, which reads as one run-on sentence. Lint does not check this.
 
 Write the four items from sources → write `mechanisms/<stem>.json` → run:
 
