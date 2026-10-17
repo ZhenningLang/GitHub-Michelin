@@ -10,7 +10,7 @@
   ],
   "value": {"en": "Tool execution follows explicit application policy rather than prompt-only requests", "zh": "工具执行服从明确的应用策略，不只靠提示词请求"},
   "sources": [
-    "https://github.com/microsoft/agent-governance-toolkit/blob/47abed7446d47e74cfa76d01a5913bb873ffcad9/README.md",
-    "https://github.com/microsoft/agent-governance-toolkit/blob/47abed7446d47e74cfa76d01a5913bb873ffcad9/agent-governance-python/agent-mesh/src/agentmesh/governance/govern.py"
+    "https://github.com/microsoft/agent-governance-toolkit/blob/8b2c96473742e8506e4052e2b0d38ac5a631966e/README.md",
+    "https://github.com/microsoft/agent-governance-toolkit/blob/8b2c96473742e8506e4052e2b0d38ac5a631966e/agent-governance-python/agent-mesh/src/agentmesh/governance/govern.py"
   ]
 }
