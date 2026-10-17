@@ -7,7 +7,7 @@ tags: [agent-skill, ui-design, anti-slop, frontend, claude-code, codex, cursor]
 language: Markdown
 license: MIT
 maturity: v1.1.0 package, main last committed 2026-08-06, 29999 stars (as of 2026-10-13)
-last_verified: 2026-10-13
+last_verified: 2026-10-17
 type: skill-pack
 upstream:
   pushed_at: 2026-08-06T16:19:18Z
@@ -119,9 +119,56 @@ The [README](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396
 
 ## Key techniques
 
-- **Read the project's design before inventing one.** [`skills/hallmark/SKILL.md:147–201`](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/SKILL.md#L147-L201) prioritizes an existing `design.md`, then scans fonts, palette, motion, spacing and framework. It requests source citations and a `.hallmark/preflight.json` cache, preserving established tokens rather than applying a fresh aesthetic everywhere. Cache invalidation names specific manifest/config mtimes, so the prompt's cache is not a comprehensive filesystem change detector.
-- **Rotate structure as well as color.** [`skills/hallmark/SKILL.md:264–331`](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/SKILL.md#L264-L331) uses CSS stamps and `.hallmark/log.json` to exclude recent macrostructures and vary theme/nav/footer choices. It reads a slim index and only the chosen reference files, reducing both repeated layouts and unnecessary context. With an authoritative `design.md`, consistency takes precedence over diversification; the agent must actually read and maintain the memory.
-- **Separate small-component work and self-critique.** [`skills/hallmark/SKILL.md:42–89`](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/SKILL.md#L42-L89) asks for six 1–5 critique scores and revisions below 3, while the component path skips whole-page structures and requires eight interaction states. These are instructions interpreted by a model; a stamped score or checklist does not prove that browser states or accessibility passed.
+![Hallmark — mechanism diagram](../../../../assets/mechanism/hallmark.svg)
+
+<!-- mechanism:begin (generated from mechanisms/hallmark.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>Text version of the mechanism</summary>
+
+- Requested design scope
+- Agent reads design.md, tokens and scan cache①
+- Agent distinguishes page from component③
+- Read CSS stamps and recent page choices②
+- Pick structure and theme; load chosen references②
+- Agent builds page and records choices②
+- Agent builds eight states, no page rotation③
+- Agent self-scores six axes; revises below 3③
+- Generated artifact needs independent verification
+
+- Requested design scope → Agent reads design.md, tokens and scan cache①
+- Agent reads design.md, tokens and scan cache① → Agent distinguishes page from component③
+- Agent distinguishes page from component③ → Read CSS stamps and recent page choices② (page)
+- Read CSS stamps and recent page choices② → Pick structure and theme; load chosen references②
+- Pick structure and theme; load chosen references② → Agent builds page and records choices②
+- Agent builds page and records choices② → Read CSS stamps and recent page choices② (next run) [optional/fallback]
+- Agent distinguishes page from component③ → Agent builds eight states, no page rotation③ (component)
+- Agent builds page and records choices② → Agent self-scores six axes; revises below 3③
+- Agent builds eight states, no page rotation③ → Agent self-scores six axes; revises below 3③
+- Agent self-scores six axes; revises below 3③ → Generated artifact needs independent verification (prompted handoff, not a test gate)
+
+</details>
+<!-- mechanism:end -->
+
+### 1. Preserve discovered design rules instead of replacing them
+
+- **Problem:** Applying a fresh palette and font stack to every task can break an existing project's visual system.
+- **How:** The prompt asks the agent to read `design.md` first, then inspect fonts, palette, motion, spacing and framework with file-and-line evidence. It keeps established tokens and saves findings in `.hallmark/preflight.json` for reuse.
+- **Limits:** Cache refresh watches named manifest/config modification times or an explicit user request, not every design-file change. This depends on the agent following the scan instructions.
+- **Source:** [`SKILL.md:147–201`](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/SKILL.md#L147-L201).
+
+### 2. Remember page shapes, not just the last color
+
+- **Problem:** Changing colors while repeating the same hero and card grid still makes every page look like the same template.
+- **How:** The agent reads CSS stamps and `.hallmark/log.json`, excludes recent page structures, and varies theme, navigation and footer choices. A slim catalog points to only the selected reference files; the build records its choices for later runs.
+- **Limits:** A governing `design.md` makes consistency more important than rotation. The log only helps when the agent actually reads and updates it; component runs do not participate in page rotation.
+- **Source:** [`SKILL.md:264–331`](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/SKILL.md#L264-L331), [`SKILL.md:443–462`](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/SKILL.md#L443-L462), [`macrostructures.md:25–49`](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/references/macrostructures.md#L25-L49).
+
+### 3. Route components separately and ask for self-critique
+
+- **Problem:** A button does not need a whole-page layout, and generated code can look finished while missing interaction states.
+- **How:** The component path skips page structures and requires eight interaction states. Across paths, the prompt asks for six self-critique scores from 1 to 5, revising any axis below 3 before handing output back.
+- **Limits:** These are model-interpreted instructions, not executable quality gates. A score stamp or state checklist does not prove that browser behavior or accessibility passed.
+- **Source:** [`SKILL.md:42–89`](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/SKILL.md#L42-L89), [`slop-test.md:9–24`](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/references/slop-test.md#L9-L24).
 
 ## Health & viability
 

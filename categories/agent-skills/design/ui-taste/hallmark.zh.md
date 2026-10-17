@@ -7,7 +7,7 @@ tags: [agent-skill, ui-design, anti-slop, frontend, claude-code, codex, cursor]
 language: Markdown
 license: MIT
 maturity: v1.1.0 package, main last committed 2026-08-06, 29999 stars (as of 2026-10-13)
-last_verified: 2026-10-13
+last_verified: 2026-10-17
 type: skill-pack
 upstream:
   pushed_at: 2026-08-06T16:19:18Z
@@ -119,9 +119,56 @@ health:
 
 ## 技术要点
 
-- **先读项目设计，再决定是否新建。**[`skills/hallmark/SKILL.md:147–201`](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/SKILL.md#L147-L201) 优先读取 `design.md`，再扫描字体、配色、动效、间距和框架，要求附源码定位，并缓存到 `.hallmark/preflight.json`。这样避免每次都把新审美覆盖既有 token；失效条件只点名部分 manifest、配置的修改时间，不是完整文件变更检测器。
-- **轮换结构，不只轮换颜色。**[`skills/hallmark/SKILL.md:264–331`](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/SKILL.md#L264-L331) 用 CSS 标记和 `.hallmark/log.json` 排除近期宏观结构，并改变主题、导航和页脚选择；先读精简索引，再只加载选中的参考文件，降低重复布局和无用上下文。存在权威 `design.md` 时，一致性优先于多样性，助手仍须真正读取和维护记录。
-- **小组件走专门路径，自评不等于检测。**[`skills/hallmark/SKILL.md:42–89`](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/SKILL.md#L42-L89) 要求六个维度按 1–5 自评，低于 3 则修改；组件路径跳过整页结构，要求八种交互状态。这些仍由模型解释，写下分数或清单不能证明浏览器状态、无障碍检查通过。
+![Hallmark — 机制图](../../../../assets/mechanism/hallmark.zh.svg)
+
+<!-- mechanism:begin (generated from mechanisms/hallmark.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>机制文字版</summary>
+
+- 请求的设计范围
+- 助手读取 design.md、设计变量与扫描缓存①
+- 助手区分整页与组件③
+- 读取 CSS 标记与近期页面选择②
+- 选择结构和主题，只加载选中参考②
+- 助手构建页面并记录选择②
+- 助手构建八态，不做整页轮换③
+- 助手六维自评，低于 3 则修改③
+- 生成产物仍需独立验证
+
+- 请求的设计范围 → 助手读取 design.md、设计变量与扫描缓存①
+- 助手读取 design.md、设计变量与扫描缓存① → 助手区分整页与组件③
+- 助手区分整页与组件③ → 读取 CSS 标记与近期页面选择②（整页）
+- 读取 CSS 标记与近期页面选择② → 选择结构和主题，只加载选中参考②
+- 选择结构和主题，只加载选中参考② → 助手构建页面并记录选择②
+- 助手构建页面并记录选择② → 读取 CSS 标记与近期页面选择②（下次运行）〔可选／兜底〕
+- 助手区分整页与组件③ → 助手构建八态，不做整页轮换③（组件）
+- 助手构建页面并记录选择② → 助手六维自评，低于 3 则修改③
+- 助手构建八态，不做整页轮换③ → 助手六维自评，低于 3 则修改③
+- 助手六维自评，低于 3 则修改③ → 生成产物仍需独立验证（提示词交付，不是测试闸门）
+
+</details>
+<!-- mechanism:end -->
+
+### 1. 先保留查到的设计规则，不急着换一套
+
+- **解决：**每次任务都换配色和字体，会破坏项目已有的视觉系统。
+- **做法：**提示词要求助手先读 `design.md`，再检查字体、配色、动效、间距和框架，并附文件行号。保留既有 token，也就是命名的设计变量，把发现存到 `.hallmark/preflight.json` 供下次复用。
+- **边界：**缓存刷新只看点名的清单、配置文件修改时间或用户明确要求，不监测所有设计文件变化；助手还得实际遵循扫描指令。
+- **源码：**[`SKILL.md:147–201`](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/SKILL.md#L147-L201)。
+
+### 2. 记住页面形状，不只记住上次的颜色
+
+- **解决：**换了颜色，却仍是同一种首屏加卡片网格，看起来还是套模板。
+- **做法：**助手读取 CSS 标记和 `.hallmark/log.json`，排除近期页面结构，轮换主题、导航和页脚。先读精简目录，再只加载选中的参考文件；构建后记录选择，留给下次使用。
+- **边界：**项目有权威 `design.md` 时，统一比轮换更重要。日志要被助手真正读取和更新才有用，小组件不参与整页轮换。
+- **源码：**[`SKILL.md:264–331`](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/SKILL.md#L264-L331)、[`SKILL.md:443–462`](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/SKILL.md#L443-L462)、[`macrostructures.md:25–49`](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/references/macrostructures.md#L25-L49)。
+
+### 3. 小组件单独走，自评也不冒充实测
+
+- **解决：**一个按钮用不上整页布局，代码看着写完也可能漏了交互状态。
+- **做法：**组件路径跳过整页结构，要求八种交互状态。各条路径交付前都要在六个维度按 1–5 自评，任何一项低于 3 就修改。
+- **边界：**这些是由模型解释的指令，不是可执行的质量闸门。分数标记或状态清单不能证明浏览器行为、无障碍检查通过。
+- **源码：**[`SKILL.md:42–89`](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/SKILL.md#L42-L89)、[`slop-test.md:9–24`](https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/references/slop-test.md#L9-L24)。
 
 ## 健康度与可持续性
 

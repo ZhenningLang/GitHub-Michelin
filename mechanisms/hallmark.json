@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "brief", "en": "Requested design scope", "zh": "请求的设计范围", "kind": "input"},
+    {"id": "scan", "en": "Agent reads design.md, tokens and scan cache", "zh": "助手读取 design.md、设计变量与扫描缓存", "technique": [1]},
+    {"id": "scope", "en": "Agent distinguishes page from component", "zh": "助手区分整页与组件", "technique": [3]},
+    {"id": "memory", "en": "Read CSS stamps and recent page choices", "zh": "读取 CSS 标记与近期页面选择", "technique": [2]},
+    {"id": "pick", "en": "Pick structure and theme; load chosen references", "zh": "选择结构和主题，只加载选中参考", "technique": [2]},
+    {"id": "page", "en": "Agent builds page and records choices", "zh": "助手构建页面并记录选择", "technique": [2]},
+    {"id": "component", "en": "Agent builds eight states, no page rotation", "zh": "助手构建八态，不做整页轮换", "technique": [3]},
+    {"id": "critique", "en": "Agent self-scores six axes; revises below 3", "zh": "助手六维自评，低于 3 则修改", "technique": [3]},
+    {"id": "out", "en": "Generated artifact needs independent verification", "zh": "生成产物仍需独立验证", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "brief", "to": "scan"},
+    {"from": "scan", "to": "scope"},
+    {"from": "scope", "to": "memory", "en": "page", "zh": "整页"},
+    {"from": "memory", "to": "pick"},
+    {"from": "pick", "to": "page"},
+    {"from": "page", "to": "memory", "style": "dashed", "en": "next run", "zh": "下次运行"},
+    {"from": "scope", "to": "component", "en": "component", "zh": "组件"},
+    {"from": "page", "to": "critique"},
+    {"from": "component", "to": "critique"},
+    {"from": "critique", "to": "out", "en": "prompted handoff, not a test gate", "zh": "提示词交付，不是测试闸门"}
+  ],
+  "sources": [
+    "https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/SKILL.md#L42-L89",
+    "https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/SKILL.md#L147-L201",
+    "https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/SKILL.md#L264-L331",
+    "https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/SKILL.md#L443-L462",
+    "https://github.com/Nutlope/hallmark/blob/13ac0ec7e148655948100b6396439e481361d690/skills/hallmark/references/slop-test.md#L9-L24"
+  ]
+}
