@@ -188,6 +188,26 @@ class KeyTechniquesTest(unittest.TestCase):
                 cli = run_quality_scan_cli(root, "--fail-on-gated")
                 self.assertEqual(cli.returncode, 1, cli.stdout + cli.stderr)
 
+    def test_structured_similar_not_identical_prose_gated_full_scoped_cli(self):
+        for title, suffix, first, _ in self.cases():
+            with self.subTest(title=title), tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                bodies = (
+                    self.structured(first + " Original ending.", suffix == ".zh.md"),
+                    self.structured(first + " A different ending.", suffix == ".zh.md", "Reworded heading", "new.svg")
+                    .replace("https://example.org/design", "https://elsewhere.net/revised-source"),
+                )
+                self.assertNotEqual(bodies[0], bodies[1])  # Fixture safety, not a separate behavior oracle.
+                pages = self.technique_pair(root, title, suffix, bodies, fresh=True)
+                for scope, expected in ((None, pages), ([pages[0]], [pages[0]])):
+                    result = quality_scan.scan(root, scope_paths=scope)
+                    duplicates = [f for f in result.findings if f.category == "duplicated-section-prose-reverified"]
+                    self.assertEqual({f.path for f in duplicates}, {p.relative_to(root).as_posix() for p in expected})
+                for scope_args in ((), ("--scope", str(pages[0]))):
+                    cli = run_quality_scan_cli(root, "--fail-on-gated", *scope_args)
+                    self.assertEqual(cli.returncode, 1, cli.stdout + cli.stderr)
+                    self.assertIn("duplicated-section-prose-reverified", cli.stdout)
+
     def test_malformed_generated_blocks_do_not_swallow_prose(self):
         for seed in ("<!-- mechanism:begin -->\nkept正文", '<!-- mechanism:begin "\nkept正文',
                      "<!-- mechanism:begin -->\n" * 1000 + "kept正文", "\ufffd<!-- mechanism:begin -->\nkept正文"):
@@ -397,8 +417,9 @@ class KeyTechniquesTest(unittest.TestCase):
                 self.assertEqual(len([f for f in result.findings if f.category == "duplicated-section-prose-reverified"]), 1)
 
     def test_calibrated_thresholds_use_minimal_grid_with_margin(self) -> None:
-        # Independently measured from the frozen 21-pair corpus at 52128061, after URL removal.
-        for title, maximum in (("Key techniques", Fraction(3, 82)), ("技术要点", Fraction(1, 21))):
+        # 21 fully structured pairs at a15138addad9be92544b43f585dfcc02a229e3d3,
+        # measured 2026-10-17 UTC with the unchanged directed prose-only sampler.
+        for title, maximum in (("Key techniques", Fraction(6, 124)), ("技术要点", Fraction(1, 43))):
             with self.subTest(title=title):
                 threshold = Fraction(str(quality_scan.DUP_SECTIONS[title]))
                 self.assertGreaterEqual(threshold, maximum + Fraction(1, 10))
