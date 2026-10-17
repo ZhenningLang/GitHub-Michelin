@@ -7,7 +7,7 @@ tags: [document-parsing, pdf, office, dom-tree, markdown, table-extraction, visi
 language: Python
 license: GPL-2.0-only
 maturity: v0.1.6.8 package metadata, no GitHub releases, 92 stars (as of 2026-10-14)
-last_verified: 2026-10-14
+last_verified: 2026-10-17
 type: library
 upstream:
   pushed_at: 2026-08-17T07:33:36Z
@@ -124,9 +124,59 @@ The documented library path starts with `pip install bella-domify` ([README.md:5
 
 ## Key techniques
 
-- **Infer hierarchy from layout rules instead of flattening everything.** [domtree.py:68–146](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/domtree/domtree.py#L68-L146) checks catalogue/title relationships, font size, boldness and list types to decide parentage. [domtree_parser.py:123–164](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/domtree_parser.py#L123-L164) merges continued paragraphs and walks a parent stack before generating Markdown. The output preserves inferred grouping, but these heuristics do not guarantee correct reading order on every layout.
-- **Treat image storage as a separate stage from OCR.** [domtree_parser.py:43–64](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/domtree_parser.py#L43-L64) submits image handlers to an eight-worker thread pool. [image_provider.py:47–60](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/provider/image_provider.py#L47-L60) uploads and retrieves the image before asking for optional OCR. This permits custom storage integration, but provider failures can become empty OCR text; the abstract download contract and its URL-shaped use also need version-specific integration validation.
-- **Gate optional model calls, then report usage separately.** [ocr.py:13–27](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/common/ocr.py#L13-L27) requires OCR enabled, a model, user and image URL. [ocr.py:39–96](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/common/ocr.py#L39-L96) sends that URL to chat completions with a 30-second timeout and up to three rate-limit attempts, then calls usage reporting. This bounds one call path, not all package network activity; an exhausted call yields a failure marker rather than trustworthy extracted text.
+![Bella Domify — mechanism diagram](../../assets/mechanism/bella-domify.svg)
+
+<!-- mechanism:begin (generated from mechanisms/bella-domify.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>Text version of the mechanism</summary>
+
+- Parsed PDF blocks
+- Image handlers: eight-worker pool②
+- Registered adapter uploads / retrieves reference②
+- OCR switch / vision model / user / URL③
+- Empty OCR text; not extraction success
+- Vision request: timeout 30s; Rate limit: up to 3 application attempts③
+- Separate usage report; Report failure only logged③
+- OCR text / empty-content marker / failure marker
+- Merge paragraphs; infer parents with stack; Catalogue / title / font / list rules①
+- Document tree + Markdown; Grouping / reading order need review①
+
+- Parsed PDF blocks → Image handlers: eight-worker pool②
+- Image handlers: eight-worker pool② → Registered adapter uploads / retrieves reference② (adapter present)
+- Registered adapter uploads / retrieves reference② → OCR switch / vision model / user / URL③ (both dimensions &gt; 28px)
+- Registered adapter uploads / retrieves reference② → Empty OCR text; not extraction success (exception or small image)
+- OCR switch / vision model / user / URL③ → Empty OCR text; not extraction success (conditions fail)
+- OCR switch / vision model / user / URL③ → Vision request: timeout 30s; Rate limit: up to 3 application attempts③ (conditions met) [optional/fallback]
+- Vision request: timeout 30s; Rate limit: up to 3 application attempts③ → Separate usage report; Report failure only logged③ (response has usage) [optional/fallback]
+- Vision request: timeout 30s; Rate limit: up to 3 application attempts③ → OCR text / empty-content marker / failure marker
+- OCR text / empty-content marker / failure marker → Merge paragraphs; infer parents with stack; Catalogue / title / font / list rules①
+- Empty OCR text; not extraction success → Merge paragraphs; infer parents with stack; Catalogue / title / font / list rules①
+- Image handlers: eight-worker pool② → Merge paragraphs; infer parents with stack; Catalogue / title / font / list rules① (no image work)
+- Merge paragraphs; infer parents with stack; Catalogue / title / font / list rules① → Document tree + Markdown; Grouping / reading order need review①
+
+</details>
+<!-- mechanism:end -->
+
+### 1. Reconstruct a parent tree from document cues
+
+- **Problem:** Flat text loses the relationship between a heading and the paragraphs or lists underneath it.
+- **How:** Parent checks combine catalogue/title constraints, font size, boldness and list types; continued paragraphs are merged before nodes are attached. A parent stack, the current path through the tree, is popped until a suitable parent is found, then the parser generates Markdown and a document-tree model.
+- **Limits:** These are layout heuristics, not a guarantee of correct grouping or reading order for every PDF.
+- **Source:** [domtree.py:68–146](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/domtree/domtree.py#L68-L146), [domtree_parser.py:123–164](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/domtree_parser.py#L123-L164).
+
+### 2. Store images before deciding whether to recognize them
+
+- **Problem:** An application needs to retain extracted images even when OCR, recognition of text in an image, is disabled.
+- **How:** Before building the tree, the parser schedules image handlers in an eight-worker thread pool; the registered storage adapter uploads each image and retrieves its reference before optional OCR. Only images wider and taller than 28 pixels proceed to the OCR configuration checks; smaller images are still stored.
+- **Limits:** Disabling OCR does not disable storage calls or make them offline; provider exceptions become empty OCR text, which is not successful extraction. The abstract download method promises bytes while its caller uses the result as an image URL, so adapter compatibility still needs version-specific validation.
+- **Source:** [domtree_parser.py:43–64](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/domtree_parser.py#L43-L64), [image_provider.py:8–60](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/provider/image_provider.py#L8-L60), [TextBlockExtend.py:137–143](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/extend/text/TextBlockExtend.py#L137-L143).
+
+### 3. Gate vision requests and keep failure markers visible
+
+- **Problem:** Optional image recognition must not call a model without the required configuration, or disguise an exhausted request as extracted text.
+- **How:** The OCR path requires its switch, a supported vision model, a user and an image URL; it sends the URL to chat completions with a 30-second timeout. Its application loop allows up to three attempts on rate limits, and a response containing usage triggers a separate usage-reporting call whose failure is logged.
+- **Limits:** These limits describe this path, not all package network activity or a total wall-clock bound; rate limits add sleeps. Missing responses/choices produce an OCR-failed marker, while empty content has a separate marker, neither of which is trustworthy document text.
+- **Source:** [ocr.py:13–105](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/common/ocr.py#L13-L105), [vision-model check:108–124](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/common/ocr.py#L108-L124).
 
 ## Tech stack
 

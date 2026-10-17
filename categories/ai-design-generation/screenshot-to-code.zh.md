@@ -7,7 +7,7 @@ tags: [screenshot-to-code, ui-generation, vision-llm, html, tailwind, coding-age
 language: Python
 license: MIT
 maturity: no tagged releases, active, 80.3k stars (as of 2026-10)
-last_verified: 2026-10-13
+last_verified: 2026-10-15
 type: app
 homepage: https://screenshottocode.com
 upstream:
@@ -133,7 +133,62 @@ health:
 
 ## 技术要点
 
-四层叠加。（1）它是带工具的 agent，不是一条提示词：模型用 `create_file` 一次写出整页，之后只能用精确字符串替换（`edit_file`）改，所以后面的修补不会顺手把已经对的部分重写掉。（2）真实图片从你的截图里来：Gemini 给每个 logo 或照片返回一个定位框——标出矩形位置的四个数，按 0–1000 缩放——后端按框从原图裁出；只有裁不出来的（被遮挡的照片、背景图）才通过 Replicate 生成。（3）自检：`screenshot_preview` 用无头 Chromium（没有窗口的真浏览器）按桌面和手机两种宽度渲染整页，把两张图回传给模型，看到哪里不对就修哪里。（4）不同厂商的四个版本并行生成，由你挑。好比一个仿写信件的人，邮票直接从原信上描下来，写完把两封信并排放在灯下比——但只用眼睛，不用尺子。
+![screenshot-to-code — 机制图](../../assets/mechanism/screenshot-to-code.zh.svg)
+
+<!-- mechanism:begin (generated from mechanisms/screenshot-to-code.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>机制文字版</summary>
+
+- 原始截图
+- 截图初稿选择四个模型槽位④
+- 每槽位独立的工具调用 agent
+- Gemini 定位框换算后裁原图②
+- 按需用 Replicate 生成替代图②
+- HTML 状态：整页创建或精确替换①
+- 可选 Chromium 桌面与手机截图③
+- 供人挑选的方案；无机器评分④
+
+- 原始截图 → 截图初稿选择四个模型槽位④
+- 截图初稿选择四个模型槽位④ → 每槽位独立的工具调用 agent（并发任务）
+- 原始截图 → Gemini 定位框换算后裁原图②（请求裁图时）〔可选／兜底〕
+- Gemini 定位框换算后裁原图② → 每槽位独立的工具调用 agent（裁图 URL 与预览）〔可选／兜底〕
+- 每槽位独立的工具调用 agent → 按需用 Replicate 生成替代图②〔可选／兜底〕
+- 按需用 Replicate 生成替代图② → 每槽位独立的工具调用 agent（图片 URL）〔可选／兜底〕
+- 每槽位独立的工具调用 agent → HTML 状态：整页创建或精确替换①（工具结果进入下一模型轮次）
+- HTML 状态：整页创建或精确替换① → 可选 Chromium 桌面与手机截图③〔可选／兜底〕
+- 可选 Chromium 桌面与手机截图③ → 每槽位独立的工具调用 agent（同一模型目测后可修补）〔可选／兜底〕
+- HTML 状态：整页创建或精确替换① → 供人挑选的方案；无机器评分④（各版本输出）
+
+</details>
+<!-- mechanism:end -->
+
+### 1. 用工具补丁修改，不反复重写整页
+
+- **解决：** 为了修一个间距重写整页，容易连已经对齐的部分一起改坏。
+- **做法：** 提示词要求先用一次 `create_file` 写完整 HTML，再用 `edit_file` 精确替换旧文字；匹配不到就向模型报错。agent（会选择并执行工具的模型）把工具结果送入下一轮。
+- **边界：** 精确匹配只约束补丁如何应用，不保证改得对或改得少；运行时不禁止再次调用 `create_file`，“只写一次”是指令，不是硬保证。
+- **源码：** [工具指令第 15–19 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/prompts/system_prompt.py#L15-L19)、[创建与替换第 101–257 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/runtime.py#L101-L257)、[工具结果循环第 278–325 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/engine.py#L278-L325)。
+
+### 2. 先裁原图素材，再按需生成替代图
+
+- **解决：** 模型编出的 logo 或照片，会让布局已接近的复刻仍显得不像。
+- **做法：** Gemini 用四个数标出素材的矩形位置，坐标统一缩放到 0–1000，后端换算成像素后裁原图。遇到被遮挡的照片、无法单独裁出的背景，提示词要求 agent 调用 Replicate（托管图像生成模型的服务）生成替代图。
+- **边界：** 这是模型选择的工具路径，不是裁图失败就自动生成；裁图需要 Gemini 和可用静态图，生成图片则要功能已启用且有 Replicate key。
+- **源码：** [素材指令第 21–25 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/prompts/system_prompt.py#L21-L25)、[坐标换算与裁图第 293–343 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/asset_extraction.py#L293-L343)、[Replicate 生成第 259–294 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/runtime.py#L259-L294)、[裁图可用条件第 336–351 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/engine.py#L336-L351)。
+
+### 3. 把浏览器实渲染结果交回同一模型目测
+
+- **解决：** HTML 读起来合理，真正渲染时仍可能布局错乱、间距不对。
+- **做法：** 模型若调用 `screenshot_preview`，无头 Chromium（没有窗口的真浏览器）就按桌面和手机两种宽度渲染当前 HTML。两张完整页面截图交回同一模型，提示词要求它检查并修补可见错误。
+- **边界：** Chromium 不可用时不提供预览工具，循环也不强制调用或计算相似度分数；停止看模型是否结束、是否到 30 轮或触及有定价模型的预算，不看质量阈值。
+- **源码：** [预览返回第 10–99 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/screenshot_preview.py#L10-L99)、[Chromium 渲染第 30–88 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/preview_screenshot/playwright_backend.py#L30-L88)、[工具可用条件第 25–39 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/providers/factory.py#L25-L39)、[预览指令第 19 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/prompts/system_prompt.py#L19-L19)、[循环停止条件第 218–276 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/engine.py#L218-L276)。
+
+### 4. 并行跑独立版本，不只押一个初稿
+
+- **解决：** 同一个模型自检时，可能继续看不出自己初稿里的视觉偏差。
+- **做法：** 截图初稿从有 key 的厂商中选出四个模型槽位（四份独立生成任务），每个槽位启动一个 agent 任务并发生成。最后由用户挑方案，不是机器按分数选冠军。
+- **边界：** 可用模型少时，多个槽位会重复同一模型；修改和录屏只跑两个版本，不是四个。备选多不等于像素级还原已获证明。
+- **源码：** [四槽位默认值第 3–4 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/config.py#L3-L4)、[选择与模式边界第 417–499 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/routes/generate_code.py#L417-L499)、[并发任务第 589–611 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/routes/generate_code.py#L589-L611)。
 
 ## 技术栈
 

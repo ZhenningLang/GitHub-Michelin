@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "prompt", "en": "Incoming prompt", "zh": "收到提示词", "kind": "input"},
+    {"id": "pending", "en": "Persist pending prompt", "zh": "存为待处理提示词", "technique": [1]},
+    {"id": "ready", "en": "Check compatibility, authentication and sandbox readiness", "zh": "检查兼容性、认证与沙箱就绪", "technique": [1]},
+    {"id": "failed", "en": "Fail prompt, then process next queued item", "zh": "提示词失败，继续处理队列", "kind": "output", "technique": [1]},
+    {"id": "spawn", "en": "Defer or create sandbox in background", "zh": "暂缓或后台创建沙箱", "technique": [1]},
+    {"id": "claim", "en": "Claim prompt before WebSocket send", "zh": "先认领，再经 WebSocket 发送", "technique": [1]},
+    {"id": "agent", "en": "Sandbox agent runs tools", "zh": "沙箱 agent 执行工具"},
+    {"id": "events", "en": "Stored session events", "zh": "已存会话事件"},
+    {"id": "replay", "en": "Cursor pages omit heartbeats and bad events", "zh": "游标分页跳过心跳与坏事件", "kind": "output", "technique": [2]},
+    {"id": "scope", "en": "Reload session repositories and current team grants", "zh": "重读会话仓库与当前团队授权", "technique": [3]},
+    {"id": "token", "en": "Issue scoped GitHub token or refuse", "zh": "签发限定仓库的 GitHub 令牌或拒绝", "technique": [3]},
+    {"id": "cache", "en": "Issued tokens may remain in snapshots", "zh": "已签发令牌可能留在快照中", "kind": "external", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "prompt", "to": "pending"},
+    {"from": "pending", "to": "ready"},
+    {"from": "ready", "to": "failed", "style": "dashed", "en": "incompatible or unauthenticated", "zh": "不兼容或无认证"},
+    {"from": "ready", "to": "spawn", "style": "dashed", "en": "not ready", "zh": "沙箱未就绪"},
+    {"from": "spawn", "to": "ready", "style": "dashed", "en": "when ready", "zh": "就绪后重查"},
+    {"from": "ready", "to": "claim", "en": "ready", "zh": "已就绪"},
+    {"from": "claim", "to": "pending", "style": "dashed", "en": "send failed", "zh": "发送失败"},
+    {"from": "claim", "to": "agent", "en": "send succeeded", "zh": "发送成功"},
+    {"from": "agent", "to": "events"},
+    {"from": "events", "to": "replay"},
+    {"from": "agent", "to": "scope", "style": "dashed", "en": "requests git credentials", "zh": "请求 Git 凭据"},
+    {"from": "scope", "to": "token"},
+    {"from": "token", "to": "cache", "style": "dashed", "en": "if issued", "zh": "如已签发"}
+  ],
+  "sources": [
+    "https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/packages/control-plane/src/session/message-queue.ts#L405-L625",
+    "https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/packages/control-plane/src/session/message-queue.ts#L836-L934",
+    "https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/packages/control-plane/src/session/event-stream.ts#L21-L139",
+    "https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/packages/control-plane/src/source-control/session-scope.ts#L9-L34",
+    "https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/packages/control-plane/src/source-control/repository-scope.ts#L7-L43",
+    "https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/docs/AUTH.md#L394-L417"
+  ]
+}

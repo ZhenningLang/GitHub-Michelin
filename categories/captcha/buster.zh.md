@@ -7,7 +7,7 @@ tags: [captcha, accessibility, browser-extension, recaptcha, speech-recognition,
 language: JavaScript
 license: GPL-3.0-only
 maturity: v3.4.0, 9336 stars, last default-branch update 2026-06 (as of 2026-10-14)
-last_verified: 2026-10-14
+last_verified: 2026-10-17
 type: tool
 upstream:
   pushed_at: 2026-06-27T11:49:18Z
@@ -120,9 +120,61 @@ health:
 
 ## 技术要点
 
-- **有条件先本地，不等于仅本地。** [background/main.js:663–748](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/background/main.js#L663-L748) 获取并裁剪音频，浏览器 Prompt API 可用时先用它，API 不可用时尝试已缓存的 Transformers 识别。无本地答案时，启用的托管远端识别仍可运行。[20260617113244_add_managed_services.js:8–14](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/storage/revisions/local/20260617113244_add_managed_services.js#L8-L14) 同时启用两条路径；扩展能跑本地模型，不代表已经建立禁止外发的边界。
-- **量化浏览器转写先检查就绪。** [models.js:101–115](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/utils/models.js#L101-L115) 选择 WASM 与 q8 权重的 Whisper tiny。[offscreen/main.js:21–37](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/offscreen/main.js#L21-L37) 在 MV3 服务工作线程之外处理音频，仅在缓存管线可用时转写。计算留在浏览器，但模型未就绪会没有文本，不保证返回答案。
-- **转写与组件操作分离。** [base/main.js:368–407](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/base/main.js#L368-L407) 向后台索取文本，再直接填写或发送原生输入命令后提交。交互路径明确可审查，但依赖 reCAPTCHA 的网页选择器，不能证明服务端接受答案。
+![Buster — 机制图](../../assets/mechanism/buster.zh.svg)
+
+<!-- mechanism:begin (generated from mechanisms/buster.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>机制文字版</summary>
+
+- 下载挑战音频，裁去首尾
+- 托管本地与远端开关①
+- 检查浏览器 Prompt API 状态①
+- 浏览器 Prompt API 转写
+- 缓存 Whisper tiny，WASM／q8； 适用 MV3 浏览器走离屏文档②
+- 本地文本或无文本
+- 已启用的托管远端识别①
+- 直接填写或可选原生输入③
+- 提交，不代表已获接受③
+- 无文本，不提交
+
+- 下载挑战音频，裁去首尾 → 托管本地与远端开关①
+- 托管本地与远端开关① → 检查浏览器 Prompt API 状态①（本地已启用）
+- 检查浏览器 Prompt API 状态① → 浏览器 Prompt API 转写（可用）
+- 检查浏览器 Prompt API 状态① → 缓存 Whisper tiny，WASM／q8； 适用 MV3 浏览器走离屏文档②（仅不可用时）
+- 检查浏览器 Prompt API 状态① → 本地文本或无文本（其它状态，无文本）
+- 浏览器 Prompt API 转写 → 本地文本或无文本
+- 缓存 Whisper tiny，WASM／q8； 适用 MV3 浏览器走离屏文档② → 本地文本或无文本（未就绪则无文本）
+- 托管本地与远端开关① → 已启用的托管远端识别①（本地关，远端开）〔可选／兜底〕
+- 本地文本或无文本 → 已启用的托管远端识别①（无文本，远端开）〔可选／兜底〕
+- 本地文本或无文本 → 直接填写或可选原生输入③（有文本）
+- 本地文本或无文本 → 无文本，不提交（无文本，远端关）
+- 已启用的托管远端识别① → 直接填写或可选原生输入③（有文本）
+- 已启用的托管远端识别① → 无文本，不提交（无文本）
+- 直接填写或可选原生输入③ → 提交，不代表已获接受③
+
+</details>
+<!-- mechanism:end -->
+
+### 1. 按可用状态和服务开关选择转写路径
+
+- **解决：** 浏览器本地识别器可能不可用，也可能不给答案；支持本地计算本身不能说明音频会不会外发。
+- **做法：** 后台下载音频并从首尾各裁去 1.5 秒；托管本地模式先检查浏览器 Prompt API，可用就调用，只有不可用才走 Transformers。没有本地答案时可调用启用的托管远端识别，已核查的迁移同时打开本地和远端开关。
+- **边界：** Prompt API 调用后没有文本，不会再转去 Transformers；下载中等中间状态也不走该分支。启用远端兜底意味着可能外发，不能当作仅本地保证。
+- **源码：** [background/main.js:663–756](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/background/main.js#L663-L756)、[托管服务迁移：8–14](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/storage/revisions/local/20260617113244_add_managed_services.js#L8-L14)。
+
+### 2. 本地转写先检查模型缓存是否就绪
+
+- **解决：** 选中了本地模型，不代表模型权重已经下载并缓存好。
+- **做法：** Transformers 选择 Whisper tiny，用浏览器可执行的 WASM 格式和八位量化的 q8 权重，并通过管线缓存判断可用性。对适用的 Manifest V3 浏览器，独立的离屏文档在扩展后台服务工作线程之外处理音频，只在管线可用时转写。
+- **边界：** 模型未就绪会没有文本；就绪检查不保证识别成功，也不免除模型和挑战音频的网络下载。
+- **源码：** [models.js:101–151](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/utils/models.js#L101-L151)、[offscreen/main.js:21–37](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/offscreen/main.js#L21-L37)、[background/main.js:694–723](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/background/main.js#L694-L723)。
+
+### 3. 拿到文本之后才填写和提交
+
+- **解决：** 识别音频与操作挑战组件，是两套不同的浏览器交互。
+- **做法：** 组件向后台索取转写，没有文本就停止；拿到文本后直接填答案，或通过可选原生客户端模拟鼠标和键盘输入，再触发验证按钮。
+- **边界：** 这条交互路径可审查，但仍依赖 reCAPTCHA 的 DOM 选择器，也就是脚本定位页面元素的地址。提交和内部的已解决通知，都不能证明服务端接受答案。
+- **源码：** [base/main.js:368–407](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/base/main.js#L368-L407)。
 
 ## 技术栈
 

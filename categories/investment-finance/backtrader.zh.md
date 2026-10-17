@@ -7,7 +7,7 @@ tags: [investment-finance, event-driven-backtesting, trading-strategies, broker-
 language: Python
 license: GPL-3.0-or-later
 maturity: v1.9.78.123, dormant main since 2023-04-19, 23469 stars (as of 2026-10-13)
-last_verified: 2026-10-13
+last_verified: 2026-10-17
 type: library
 upstream:
   pushed_at: 2024-08-19T17:47:36Z
@@ -116,9 +116,68 @@ health:
 
 ## 技术要点
 
-- **默认先预计算指标，再逐根推进策略。** [`cerebro.py:275–276`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L275-L276) 默认启用 `preload=True` 和 `runonce=True`。[`cerebro.py:1649–1704`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1649-L1704) 的批量路径先调用 `_once()` 预计算指标，再用 `advance_peek()` 和最小下一时间推进数据，逐根调用策略，不回退超前数据；[`lineiterator.py:293–318`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/lineiterator.py#L293-L318) 展示指标计算。逐步 next 模式的 [`cerebro.py:1498–1639`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1498-L1639) 才会回退超前数据；实时／重放／exactbars 设置或关闭 preload／runonce，通过 [`cerebro.py:1062–1079`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1062-L1079) 与 [`cerebro.py:1294–1303`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1294-L1303) 选择该路径。数据对齐和作弊模式的时间假设仍需明确审核。
-- **让数据与指标共享时间序列缓冲接口。** [`linebuffer.py:50–125`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/linebuffer.py#L50-L125) 用零下标表示当前项，并可选无界数值数组或节省内存的有界队列，实际取值在 [`linebuffer.py:162–163`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/linebuffer.py#L162-L163)。指标共享游标值，但历史是否可读与避免偷看未来仍是策略正确性的一部分。
-- **从价格柱和滑点明确模拟成交。** [`bbroker.py:853–919`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/brokers/bbroker.py#L853-L919) 按开高低收和订单时间区分市价／收盘／限价成交；[`bbroker.py:994–1038`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/brokers/bbroker.py#L994-L1038) 应用百分比／固定滑点和区间策略。假设因此可查，不代表默认贴合交易所；作弊选项与允许柱外价格都需明确审核。
+![backtrader — 机制图](../../assets/mechanism/backtrader.zh.svg)
+
+<!-- mechanism:begin (generated from mechanisms/backtrader.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>机制文字版</summary>
+
+- 当前同步：预载／批算／实时／重放／内存设置①②
+- 默认：预计算指标①
+- 预看最早下一时间，只推进到期数据①
+- 逐步模式：取下一根数据②
+- 交付前回退超前数据流②
+- 线缓冲：游标零项，数组或有界队列③
+- 逐根策略回调①②③
+- 带创建时间的订单
+- 价格柱：开／高／低／收
+- 按类型与时序判断可成交订单④
+- 滑点、区间与作弊设置④
+- 模拟成交或暂缓；非交易所实证
+
+- 当前同步：预载／批算／实时／重放／内存设置①② → 默认：预计算指标①（预载且批算）
+- 默认：预计算指标① → 预看最早下一时间，只推进到期数据①
+- 当前同步：预载／批算／实时／重放／内存设置①② → 逐步模式：取下一根数据②（否则）
+- 逐步模式：取下一根数据② → 交付前回退超前数据流②
+- 预看最早下一时间，只推进到期数据① → 逐根策略回调①②③
+- 交付前回退超前数据流② → 逐根策略回调①②③
+- 线缓冲：游标零项，数组或有界队列③ → 逐根策略回调①②③（当前值）
+- 逐根策略回调①②③ → 带创建时间的订单
+- 带创建时间的订单 → 按类型与时序判断可成交订单④（允许的模拟时点）
+- 价格柱：开／高／低／收 → 按类型与时序判断可成交订单④
+- 按类型与时序判断可成交订单④ → 滑点、区间与作弊设置④
+- 滑点、区间与作弊设置④ → 模拟成交或暂缓；非交易所实证
+
+</details>
+<!-- mechanism:end -->
+
+### 1. 批量计算指标，仍逐根执行策略
+
+- **解决：** 每个指标都通过 Python 回调重算会增加工作，但策略仍需按价格柱顺序作决策。
+- **做法：** 默认启用 `preload=True` 和 `runonce=True`，先用 `_once()` 预计算指标。批量路径再预看各数据流下一时间，只推进最早时间的数据流，逐根调用策略，不回退超前数据。
+- **边界：** 这里说的是当前同步路径，不是 `oldsync=True` 的旧模式；预计算指标不等于策略决策能独立做成矩阵。数据对齐和作弊模式的时间假设仍需审核。
+- **源码：** [`cerebro.py:275–276`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L275-L276)、[`cerebro.py:1649–1704`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1649-L1704)、[`lineiterator.py:293–318`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/lineiterator.py#L293-L318)。
+
+### 2. 用另一条逐步路径处理到来的数据
+
+- **解决：** 实时和重放数据不一定能在运行前预载完整序列。
+- **做法：** 实时模式关闭预载与批算；重放关闭预载，非零 `exactbars` 内存设置关闭批算。预载或 `runonce` 关闭后，逐步路径逐个取下一根数据，先回退超过所选模拟时间、尚不能交付的数据流，再调用策略。
+- **边界：** 回退属于 next 模式，不属于默认批量路径；`oldsync=True` 另选旧版例程。这些开关改变数据可见性与时序，不证明券商实时连接可用。
+- **源码：** [`cerebro.py:1062–1079`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1062-L1079)、[`cerebro.py:1294–1303`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1294-L1303)、[`cerebro.py:1498–1639`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1498-L1639)。
+
+### 3. 让数据和指标共用移动游标
+
+- **解决：** 否则每个指标都要另找办法，定位当前模拟价格柱对应的值。
+- **做法：** 共享时间序列容器叫作线缓冲，用零下标暴露当前值。内部可选无界数值数组，或丢弃旧历史以省内存的有界队列。
+- **边界：** 取值实际使用游标加请求偏移，接口不强制只能读过去。历史是否可用、是否偷看未来，仍属于策略正确性的一部分。
+- **源码：** [`linebuffer.py:50–125`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/linebuffer.py#L50-L125)、[`linebuffer.py:162–163`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/linebuffer.py#L162-L163)。
+
+### 4. 明确写出模拟成交假设
+
+- **解决：** 买入信号不是成交价格，忽略时序和价格移动会高估结果。
+- **做法：** 模拟券商按订单时间和每柱开高低收，区分市价、收盘与限价单。滑点指成交价格的不利偏移，可按百分比或固定值设置，越界价格可封顶、放行或暂不成交。
+- **边界：** 作弊选项改变允许成交的时间，`slip_out` 可放行柱外价格。规则可查不等于重建交易所订单簿，也不证明成交真实或策略盈利。
+- **源码：** [`bbroker.py:853–919`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/brokers/bbroker.py#L853-L919)、[`bbroker.py:994–1038`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/brokers/bbroker.py#L994-L1038)。
 
 ## 技术栈
 

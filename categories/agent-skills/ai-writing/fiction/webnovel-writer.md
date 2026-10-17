@@ -6,17 +6,17 @@ category: fiction
 tags: [claude-code, novel-writing, long-form-writing, rag, continuity, story-memory]
 language: Python
 license: GPL-3.0
-maturity: master v6.2.1 critical-bug maintenance only; v8 separate stable branch, 7467 stars (as of 2026-10-13)
-last_verified: 2026-10-13
+maturity: master v6.2.1 critical-bug maintenance only; v8 separate stable branch, 7526 stars (as of 2026-10-17)
+last_verified: 2026-10-17
 type: tool
 upstream:
-  pushed_at: 2026-10-12T07:25:52Z
+  pushed_at: 2026-10-14T14:30:32Z
   default_branch: master
-  default_branch_sha: 0af0c0b2fc2e4104e8a12c1d62136c6595a6a983
+  default_branch_sha: 86e617ee7f4f04be9d3f8575f90c38f879ed80ed
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-13T17:08:29Z
+  computed_at: 2026-10-17T06:02:38Z
   overall: C
   overall_score: 2.33
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 6
-        active_weeks_13: 7
+        last_commit_age_days: 3
+        active_weeks_13: 8
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 7.5
-        qualifying_issues: 13
+        median_ttfr_hours: 4.4
+        qualifying_issues: 12
         band: relaxed_solo
         window_offset_days: 0
         source: issue
@@ -46,21 +46,21 @@ health:
       raw:
         registry: null
         canonical_package: null
-        release_downloads: 1175
+        release_downloads: 1363
         release_assets: 61
         release_tier: D
         signal_basis: releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 284
-        last_commit_age_days: 6
+        repo_age_days: 288
+        last_commit_age_days: 3
         cohort: tool
     governance:
       grade: C
       raw:
         active_maintainers_12mo: 2
-        top1_share: 0.997
+        top1_share: 0.994
         top3_share: 1.0
         window_source: stats_contributors
         carve_out: null
@@ -83,7 +83,7 @@ Chapter 80 forgets a clue planted in chapter 12, and your next prompt cannot rec
 
 You're a serial-fiction author already working in Claude Code, and after dozens of chapters your model starts contradicting character motives, timelines, world rules, and planted clues. You need each chapter to pass through context preparation, drafting, review, fact extraction, a chapter commit, and derived state/index/summary projections. Pick Webnovel Writer over a generic writing prompt because it keeps an auditable project-side story system and queryable continuity state instead of treating every chapter as an isolated chat.
 
-This page's source review covers default branch `master`, the v6 Claude Code plugin. The [version policy](https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/README.md#L21-L29) now limits v6 maintenance to critical bugs, freezes v7, and names the separate DeepSeek Harness v8 branch as the current stable workbench. Choose v6 for an existing Claude Code manuscript that needs its continuity chain, not as the actively developed newest product; no validated direct migration of an old book to v8 is documented. Semantic retrieval is optional; README documents a BM25 keyword path when embedding credentials are absent.
+This page's source review covers default branch `master`, the v6 Claude Code plugin. The [version policy](https://github.com/lingfengQAQ/webnovel-writer/blob/86e617ee7f4f04be9d3f8575f90c38f879ed80ed/README.md#L21-L29) now limits v6 maintenance to critical bugs, freezes v7, and names the separate DeepSeek Harness v8 branch as the current stable workbench. Choose v6 for an existing Claude Code manuscript that needs its continuity chain, not as the actively developed newest product; no validated direct migration of an old book to v8 is documented. Semantic retrieval is optional; README documents a BM25 keyword path when embedding credentials are absent.
 
 ## When NOT to use
 
@@ -105,7 +105,7 @@ This page's source review covers default branch `master`, the v6 Claude Code plu
 
 ## Quick start
 
-For the reviewed v6 branch, install the Claude Code marketplace with `claude plugin marketplace add lingfengQAQ/webnovel-writer --scope user`, then `claude plugin install webnovel-writer@webnovel-writer-marketplace --scope user`, and install the Python requirements as shown in the [master README](https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/README.md#L129-L199). Run `/webnovel-init` and answer the book-setting questions; it creates the outline, manuscript directories and story-state files. Use `/webnovel-plan 1` and `/webnovel-write 1` to plan the first volume and draft its first chapter, then consult the saved chapter and review output. The plugin organizes context, review and fact projections; you decide the story, resolve blocking issues, keep backups and pay for Claude Code/model usage. Optional semantic retrieval sends text to embedding/rerank endpoints you configure; BM25 means keyword ranking, not a guarantee that arbitrary API failures silently fall back. These are v6 commands, not v8 installation or a validated book-migration procedure.
+For the reviewed v6 branch, install the Claude Code marketplace with `claude plugin marketplace add lingfengQAQ/webnovel-writer --scope user`, then `claude plugin install webnovel-writer@webnovel-writer-marketplace --scope user`, and install the Python requirements as shown in the [master README](https://github.com/lingfengQAQ/webnovel-writer/blob/86e617ee7f4f04be9d3f8575f90c38f879ed80ed/README.md#L129-L199). Run `/webnovel-init` and answer the book-setting questions; it creates the outline, manuscript directories and story-state files. Use `/webnovel-plan 1` and `/webnovel-write 1` to plan the first volume and draft its first chapter, then consult the saved chapter and review output. The plugin organizes context, review and fact projections; you decide the story, resolve blocking issues, keep backups and pay for Claude Code/model usage. Optional semantic retrieval sends text to embedding/rerank endpoints you configure; BM25 means keyword ranking, not a guarantee that arbitrary API failures silently fall back. These are v6 commands, not v8 installation or a validated book-migration procedure.
 
 ![webnovel-writer — backbone user story](../../../../assets/flow/webnovel-writer.svg)
 
@@ -127,9 +127,61 @@ For the reviewed v6 branch, install the Claude Code marketplace with `claude plu
 
 ## Key techniques
 
-- **Accept facts before deriving views.** [`webnovel-writer/scripts/data_modules/chapter_commit_service.py:33–190`](https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/webnovel-writer/scripts/data_modules/chapter_commit_service.py#L33-L190) validates review, outline fulfillment, ambiguity resolution and extraction artifacts. Blocking review issues, missed nodes or unresolved ambiguities mark the commit rejected; accepted events become the input to state/index/summary/memory/vector writers. Each writer's status is persisted separately, so a saved commit does not imply every projection succeeded. Review and extraction still depend on agents producing trustworthy artifacts.
-- **Spend vector work on candidates at larger scale.** [`webnovel-writer/scripts/data_modules/rag_adapter.py:1156–1280`](https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/webnovel-writer/scripts/data_modules/rag_adapter.py#L1156-L1280) uses a full vector scan for small indexes, but combines BM25 candidates with recent chunks before vector scoring for larger indexes. It fuses ranks by reciprocal-rank scoring and then calls reranking. Candidate filtering trades recall for bounded work; in the larger-index branch, a failed query embedding returns an empty result, so README's no-key BM25 path must not be confused with universal outage recovery.
-- **Separate prompts from executable gates.** [`webnovel-writer/skills/webnovel-write/SKILL.md:82–97`](https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/webnovel-writer/skills/webnovel-write/SKILL.md#L82-L97), [`SKILL.md:120–168`](https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/webnovel-writer/skills/webnovel-write/SKILL.md#L120-L168) and [`SKILL.md:178–245`](https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/webnovel-writer/skills/webnovel-write/SKILL.md#L178-L245) assign context/review/extraction to different agents and invoke Python precommit checks on their artifacts. The `--minimal` mode explicitly writes a no-review artifact rather than pretending review happened. This is a workflow with bypass modes, not an independent literary-quality detector.
+![Webnovel Writer — mechanism diagram](../../../../assets/mechanism/webnovel-writer.svg)
+
+<!-- mechanism:begin (generated from mechanisms/webnovel-writer.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>Text version of the mechanism</summary>
+
+- Chapter goal, contracts and stored facts
+- Small: full scan; large: BM25 plus recent candidates②
+- Fuse ranks, then rerank②
+- Large-index query embedding missing: empty results②
+- Context agent prepares writing brief③
+- Main workflow drafts the chapter
+- Review and extracted facts; minimal marks review skipped③
+- Validate review, outline, ambiguity and extraction①
+- Rejected commit
+- Accepted chapter events①
+- Update five views; record each status①
+- Queryable facts for later chapters
+
+- Chapter goal, contracts and stored facts → Small: full scan; large: BM25 plus recent candidates②
+- Small: full scan; large: BM25 plus recent candidates② → Fuse ranks, then rerank② (usable results)
+- Small: full scan; large: BM25 plus recent candidates② → Large-index query embedding missing: empty results② (large branch embed failure) [optional/fallback]
+- Chapter goal, contracts and stored facts → Context agent prepares writing brief③ (context package)
+- Fuse ranks, then rerank② → Context agent prepares writing brief③ (RAG clues) [optional/fallback]
+- Context agent prepares writing brief③ → Main workflow drafts the chapter
+- Main workflow drafts the chapter → Review and extracted facts; minimal marks review skipped③
+- Review and extracted facts; minimal marks review skipped③ → Validate review, outline, ambiguity and extraction①
+- Validate review, outline, ambiguity and extraction① → Rejected commit (blocking / missed / pending) [optional/fallback]
+- Validate review, outline, ambiguity and extraction① → Accepted chapter events① (accepted)
+- Accepted chapter events① → Update five views; record each status①
+- Update five views; record each status① → Queryable facts for later chapters (successful projections)
+
+</details>
+<!-- mechanism:end -->
+
+### 1. Accept chapter facts before building derived views
+
+- **Problem:** Updating the character state, search index and summaries independently could make them disagree about what happened in a chapter.
+- **How:** Validate review, outline coverage, resolved ambiguities and extracted facts, then mark the chapter commit accepted or rejected. Accepted events feed the state, index, summary, memory and vector writers; each writer records its own result.
+- **Limits:** Blocking review issues, missed outline nodes or pending ambiguities reject the commit. A saved commit is not proof that every view was updated, and the facts still depend on trustworthy agent artifacts.
+- **Source:** [`chapter_commit_service.py:33–190`](https://github.com/lingfengQAQ/webnovel-writer/blob/86e617ee7f4f04be9d3f8575f90c38f879ed80ed/webnovel-writer/scripts/data_modules/chapter_commit_service.py#L33-L190).
+
+### 2. Limit vector scoring to candidates when the index grows
+
+- **Problem:** Scoring every stored passage against each query becomes expensive as the manuscript grows.
+- **How:** Small indexes get a full vector scan; larger ones score a union of BM25 keyword candidates and recent passages. Combine keyword and vector ranks using reciprocal-rank scores, then rerank the candidates.
+- **Limits:** Filtering can miss relevant passages. In the larger-index branch, no query embedding means an empty result, not universal BM25 outage recovery; an empty rerank response instead retains the fused ranking.
+- **Source:** [`rag_adapter.py:1156–1287`](https://github.com/lingfengQAQ/webnovel-writer/blob/86e617ee7f4f04be9d3f8575f90c38f879ed80ed/webnovel-writer/scripts/data_modules/rag_adapter.py#L1156-L1287).
+
+### 3. Give agents distinct jobs and check their saved artifacts
+
+- **Problem:** A single drafting assistant could claim it reviewed and remembered a chapter without producing usable evidence.
+- **How:** The write skill assigns context preparation, review and fact extraction to different agents, then invokes Python precommit and postcommit checks. If only a projection fails, its recovery instructions retry that projection rather than draft the chapter again.
+- **Limits:** This is a prompted workflow plus artifact checks, not an independent literary-quality detector. User-selected `--minimal` skips the reviewer and explicitly writes a fresh no-review artifact.
+- **Source:** [`SKILL.md:82–168`](https://github.com/lingfengQAQ/webnovel-writer/blob/86e617ee7f4f04be9d3f8575f90c38f879ed80ed/webnovel-writer/skills/webnovel-write/SKILL.md#L82-L168), [`SKILL.md:178–265`](https://github.com/lingfengQAQ/webnovel-writer/blob/86e617ee7f4f04be9d3f8575f90c38f879ed80ed/webnovel-writer/skills/webnovel-write/SKILL.md#L178-L265).
 
 ## Tech stack
 
@@ -151,10 +203,10 @@ For the reviewed v6 branch, install the Claude Code marketplace with `claude plu
 
 ## Health & viability
 
-- **Maintenance snapshot (2026-10-13):** unarchived; master HEAD `0af0c0b` dates to 2026-10-07. The master version policy says v6 critical bugs only, while latest repository releases belong to the separate v8 workbench; a maintenance A does not override that support policy.
+- **Maintenance snapshot (2026-10-17):** unarchived; reviewed master HEAD `86e617e` dates to 2026-10-14. The master version policy still says v6 critical bugs only; the latest repository release is the separate workbench's `scriptor-v8.2.2` (2026-10-12). A maintenance A does not override that support policy.
 - **Governance / bus factor:** the current machine block measures two active maintainers with almost all commits from one contributor. README describes spare-time maintenance and lists sponsorships, not a foundation-backed support guarantee. [推断：concentrated contributions and the stated maintenance policy indicate key-maintainer risk]
 - **Age / Lindy:** created 2026-01, with less than one year of history; continued commits are useful signals but do not establish long-term durability.
-- **Adoption and risk:** 7467 stars are attention, not verified manuscript-scale performance. GPL-3.0 is a distribution constraint. Risk/license D retains the existing combined strong/network-copyleft bucket; it does not add AGPL network-use obligations to GPL.
+- **Adoption and risk:** 7526 stars are attention, not verified manuscript-scale performance. GPL-3.0 is a distribution constraint. Risk/license D retains the existing combined strong/network-copyleft bucket; it does not add AGPL network-use obligations to GPL.
 
 ## Caveats (unverified)
 

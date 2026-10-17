@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id":"mode","en":"Current sync: preload / runonce / live / replay / exactbars","zh":"当前同步：预载／批算／实时／重放／内存设置","kind":"input","technique":[1,2]},
+    {"id":"batch","en":"Default: precompute indicators","zh":"默认：预计算指标","technique":[1]},
+    {"id":"peek","en":"Peek minimum next time; advance due feeds","zh":"预看最早下一时间，只推进到期数据","technique":[1]},
+    {"id":"next","en":"Next mode: request bars","zh":"逐步模式：取下一根数据","technique":[2]},
+    {"id":"align","en":"Rewind ahead feeds before delivery","zh":"交付前回退超前数据流","technique":[2]},
+    {"id":"buffers","en":"Line buffers: cursor[0], array or bounded queue","zh":"线缓冲：游标零项，数组或有界队列","technique":[3]},
+    {"id":"strategy","en":"Per-bar strategy callbacks","zh":"逐根策略回调","technique":[1,2,3]},
+    {"id":"orders","en":"Orders with creation time","zh":"带创建时间的订单"},
+    {"id":"prices","en":"Bar open / high / low / close","zh":"价格柱：开／高／低／收","kind":"input"},
+    {"id":"fills","en":"Eligible order type + timing","zh":"按类型与时序判断可成交订单","technique":[4]},
+    {"id":"slip","en":"Slippage + range / cheat policies","zh":"滑点、区间与作弊设置","technique":[4]},
+    {"id":"result","en":"Simulated fill or defer; not venue proof","zh":"模拟成交或暂缓；非交易所实证","kind":"output"}
+  ],
+  "edges": [
+    {"from":"mode","to":"batch","en":"preload + runonce","zh":"预载且批算"},
+    {"from":"batch","to":"peek"},
+    {"from":"mode","to":"next","en":"otherwise","zh":"否则"},
+    {"from":"next","to":"align"},
+    {"from":"peek","to":"strategy"},
+    {"from":"align","to":"strategy"},
+    {"from":"buffers","to":"strategy","en":"current values","zh":"当前值"},
+    {"from":"strategy","to":"orders"},
+    {"from":"orders","to":"fills","en":"eligible simulation time","zh":"允许的模拟时点"},
+    {"from":"prices","to":"fills"},
+    {"from":"fills","to":"slip"},
+    {"from":"slip","to":"result"}
+  ],
+  "sources": [
+    "https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1062-L1079",
+    "https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1294-L1303",
+    "https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1498-L1704",
+    "https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/linebuffer.py#L50-L163",
+    "https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/brokers/bbroker.py#L853-L919",
+    "https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/brokers/bbroker.py#L994-L1038"
+  ]
+}

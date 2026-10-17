@@ -66,6 +66,18 @@ unverified claim. Don't deep-read for its own sake.
 - **Implementation source → `Key techniques` / `技术要点`** — concrete internal techniques,
   evidence locations and limitations, not an install tutorial or another tech-stack list. Move
   technical questions here from Q&A; keep only genuinely leftover questions, or record `no leftover Q&A`.
+  For v2 with UTC `last_verified >= 2026-10-15` (`OSS_ATLAS_TECHNIQUES_STRUCTURED_FROM` overrides),
+  extract 2–6 continuous `### n. Title` techniques, each four ordered non-empty items:
+  `- **Problem:**` / `How:` / `Limits:` / `Source:` (ZH `解决：` / `做法：` / `边界：` / `源码：`).
+  Source needs a Markdown link; indented continuations only. Fewer than 2 is ERROR, more than 6 WARNING.
+  Read sources → write `mechanisms/<stem>.json` (bilingual graph, 3–12 nodes, every technique mapped;
+  same stem as flow_card) → run `python3 tools/mechanism_card.py <page>` (all: `make mechanisms`)
+  to put the mechanism diagram + generated text before the first technique. d2 is local only
+  (`brew install d2`); absence exits 2 without writes. `--check-spec <json>` and CI hash/text checks
+  need no d2. Never hand-edit generated text; see `tools/schema.md` Key techniques for the full contract.
+  Closed/list-only entries still draw and explain, citing actual docs/releases/list entries rather
+  than inventing code. Earlier prose v2 and untouched v1 are not automatically migrated; keep
+  unresearched markers until actual research (marker ERROR remains, cascading shape errors skip).
 - **v2 structure** — When to use → When NOT → Comparison → optional Q&A → Quick start →
   Key techniques → type-adaptive extras → Health → Caveats. `last_verified >= 2026-10-13`
   selects v2 (`OSS_ATLAS_SECTIONS_V2_FROM` overrides); Quick start follows the independent FLOW rules.

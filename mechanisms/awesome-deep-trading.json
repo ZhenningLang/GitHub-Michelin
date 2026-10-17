@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "direction": "right",
+  "nodes": [
+    {"id":"readme","en":"Static README; no runtime algorithm","zh":"静态 README；无运行算法","kind":"input"},
+    {"id":"contents","en":"Method / market / problem anchors","zh":"方法／市场／问题锚点","technique":[1]},
+    {"id":"papers","en":"Paper entries: title + author + year","zh":"论文条目：标题、作者、年份","technique":[2]},
+    {"id":"originals","en":"External original papers","zh":"外部论文原文","kind":"external"},
+    {"id":"leads","en":"Separate repository + task leads","zh":"单列仓库与任务线索","technique":[3]},
+    {"id":"data","en":"Dataset / simulation links","zh":"数据／模拟链接","technique":[3]},
+    {"id":"outside","en":"External code / data; verify separately","zh":"外部代码／数据；须另行核验","kind":"external"}
+  ],
+  "edges": [
+    {"from":"readme","to":"contents"},
+    {"from":"contents","to":"papers"},
+    {"from":"papers","to":"originals","en":"source links","zh":"原文链接"},
+    {"from":"contents","to":"leads"},
+    {"from":"leads","to":"data","en":"following section","zh":"后续章节"},
+    {"from":"leads","to":"outside"},
+    {"from":"data","to":"outside"}
+  ],
+  "sources": [
+    "https://github.com/cbailes/awesome-deep-trading/blob/91eee433ec7791915ad20b15330f0eee04798f07/README.md#L10-L33",
+    "https://github.com/cbailes/awesome-deep-trading/blob/91eee433ec7791915ad20b15330f0eee04798f07/README.md#L66-L86",
+    "https://github.com/cbailes/awesome-deep-trading/blob/91eee433ec7791915ad20b15330f0eee04798f07/README.md#L142-L175"
+  ]
+}

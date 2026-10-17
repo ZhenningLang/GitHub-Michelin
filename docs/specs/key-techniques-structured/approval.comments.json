@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "spec_file": "approval.md",
+  "review_version": 1,
+  "anchors": {
+    "U-DEC-1": {
+      "kind": "unit",
+      "heading": "2. 要你拍的 3 件事",
+      "comments": [
+        {
+          "id": "c-2026-10-15T06-17-27-694Z-U-DEC-1-0",
+          "role": "user",
+          "kind": "decision",
+          "status": "resolved",
+          "classification": "decision",
+          "text": "选 A，一份中英对照的底稿出两张图。",
+          "response": "已写回 U-DEC-1，投影已刷新",
+          "fingerprint_at_comment": "cb1e",
+          "created_in_version": 1,
+          "resolved_in_version": null
+        }
+      ],
+      "unit_id": "U-DEC-1"
+    },
+    "U-DEC-2": {
+      "kind": "unit",
+      "heading": "2. 要你拍的 3 件事",
+      "comments": [
+        {
+          "id": "c-2026-10-15T06-17-27-694Z-U-DEC-2-1",
+          "role": "user",
+          "kind": "decision",
+          "status": "resolved",
+          "classification": "decision",
+          "text": "选 A，照样画图拆招。",
+          "response": "已写回 U-DEC-2，投影已刷新",
+          "fingerprint_at_comment": "0439",
+          "created_in_version": 1,
+          "resolved_in_version": null
+        }
+      ],
+      "unit_id": "U-DEC-2"
+    },
+    "U-DEC-3": {
+      "kind": "unit",
+      "heading": "2. 要你拍的 3 件事",
+      "comments": [
+        {
+          "id": "c-2026-10-15T06-17-27-694Z-U-DEC-3-2",
+          "role": "user",
+          "kind": "decision",
+          "status": "resolved",
+          "classification": "decision",
+          "text": "选 A，图里记下底稿版本，检查时只比记号。",
+          "response": "已写回 U-DEC-3，投影已刷新",
+          "fingerprint_at_comment": "c47d",
+          "created_in_version": 1,
+          "resolved_in_version": null
+        }
+      ],
+      "unit_id": "U-DEC-3"
+    }
+  }
+}

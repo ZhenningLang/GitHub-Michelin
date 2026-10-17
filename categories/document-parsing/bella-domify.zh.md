@@ -7,7 +7,7 @@ tags: [document-parsing, pdf, office, dom-tree, markdown, table-extraction, visi
 language: Python
 license: GPL-2.0-only
 maturity: v0.1.6.8 package metadata, no GitHub releases, 92 stars (as of 2026-10-14)
-last_verified: 2026-10-14
+last_verified: 2026-10-17
 type: library
 upstream:
   pushed_at: 2026-08-17T07:33:36Z
@@ -124,9 +124,59 @@ PDF 摊平成文本后，表格和所属标题分了家；Bella Domify 用规则
 
 ## 技术要点
 
-- **用版面规则推断层级，不把内容全摊平。** [domtree.py:68–146](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/domtree/domtree.py#L68-L146) 结合目录、标题、字号、粗体和列表类型判断父子关系；[domtree_parser.py:123–164](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/domtree_parser.py#L123-L164) 合并连续段落，并通过父节点栈生成 Markdown。输出保留推断分组，但这些启发式不能保证每种版面的阅读顺序正确。
-- **图片存储与 OCR 分成两段。** [domtree_parser.py:43–64](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/domtree_parser.py#L43-L64) 把图片处理交给八线程池；[image_provider.py:47–60](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/provider/image_provider.py#L47-L60) 先上传和取回图片，再请求可选 OCR。它允许定制存储，但存储失败可变成空 OCR 文本；抽象接口声明的下载字节与调用方按网址使用的关系，也须按版本验证。
-- **可选模型调用设条件，使用统计另行上报。** [ocr.py:13–27](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/common/ocr.py#L13-L27) 检查 OCR 开关、模型、用户和图片网址；[ocr.py:39–96](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/common/ocr.py#L39-L96) 把网址交给对话补全，单次超时 30 秒，限流最多尝试三次，并调用使用量上报。这只约束一条调用路径，不代表包无其他网络活动；耗尽失败返回失败标记，不是可信抽取文本。
+![Bella Domify — 机制图](../../assets/mechanism/bella-domify.zh.svg)
+
+<!-- mechanism:begin (generated from mechanisms/bella-domify.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>机制文字版</summary>
+
+- 已解析的 PDF 块
+- 图片处理：八线程池②
+- 注册的适配器上传并取回引用②
+- OCR 开关、视觉模型、用户、网址③
+- 空 OCR 文本，不是抽取成功
+- 视觉请求：超时参数 30 秒； 限流时应用层最多尝试三次③
+- 独立上报用量； 上报失败记日志③
+- OCR 文本／空内容标记／失败标记
+- 合段，按父节点栈推断归属； 目录、标题、字体与列表规则①
+- 文档树与 Markdown； 分组和阅读顺序仍须复核①
+
+- 已解析的 PDF 块 → 图片处理：八线程池②
+- 图片处理：八线程池② → 注册的适配器上传并取回引用②（存在适配器）
+- 注册的适配器上传并取回引用② → OCR 开关、视觉模型、用户、网址③（宽高均大于 28 像素）
+- 注册的适配器上传并取回引用② → 空 OCR 文本，不是抽取成功（异常或小图）
+- OCR 开关、视觉模型、用户、网址③ → 空 OCR 文本，不是抽取成功（条件不满足）
+- OCR 开关、视觉模型、用户、网址③ → 视觉请求：超时参数 30 秒； 限流时应用层最多尝试三次③（条件满足）〔可选／兜底〕
+- 视觉请求：超时参数 30 秒； 限流时应用层最多尝试三次③ → 独立上报用量； 上报失败记日志③（响应带用量）〔可选／兜底〕
+- 视觉请求：超时参数 30 秒； 限流时应用层最多尝试三次③ → OCR 文本／空内容标记／失败标记
+- OCR 文本／空内容标记／失败标记 → 合段，按父节点栈推断归属； 目录、标题、字体与列表规则①
+- 空 OCR 文本，不是抽取成功 → 合段，按父节点栈推断归属； 目录、标题、字体与列表规则①
+- 图片处理：八线程池② → 合段，按父节点栈推断归属； 目录、标题、字体与列表规则①（无需处理图片）
+- 合段，按父节点栈推断归属； 目录、标题、字体与列表规则① → 文档树与 Markdown； 分组和阅读顺序仍须复核①
+
+</details>
+<!-- mechanism:end -->
+
+### 1. 用文档线索重建父子树
+
+- **解决：** 纯文本会丢掉标题与其下段落、列表之间的归属关系。
+- **做法：** 父节点检查结合目录和标题约束、字号、粗体、列表类型，挂节点前先合并连续段落；父节点栈保存树中当前路径，不适合就逐层退出，找到父节点后再挂入，最后生成 Markdown 和文档树模型。
+- **边界：** 这些是版面启发式规则，不保证每份 PDF 的分组或阅读顺序都正确。
+- **源码：** [domtree.py:68–146](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/domtree/domtree.py#L68-L146)、[domtree_parser.py:123–164](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/domtree_parser.py#L123-L164)。
+
+### 2. 先存图片，再决定是否识别
+
+- **解决：** 应用即使关掉 OCR，也就是图片文字识别，仍可能需要保留提取出的图片。
+- **做法：** 构树之前，解析器用八线程池调度图片处理；注册的存储适配器先上传图片、取回引用，再进入可选 OCR。只有宽和高都超过 28 像素的图片才继续检查 OCR 配置，小图仍会存储。
+- **边界：** 关 OCR 不会关闭存储调用，也不能保证离线；适配器异常会变成空 OCR 文本，不是提取成功。抽象下载接口承诺返回字节，但调用方把返回值当图片网址，适配器兼容性仍须按版本验证。
+- **源码：** [domtree_parser.py:43–64](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/domtree_parser.py#L43-L64)、[image_provider.py:8–60](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/provider/image_provider.py#L8-L60)、[TextBlockExtend.py:137–143](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/extend/text/TextBlockExtend.py#L137-L143)。
+
+### 3. 视觉请求设门槛，失败标记不冒充正文
+
+- **解决：** 可选图片识别不能缺配置就调用模型，也不能把请求耗尽当成抽取成功。
+- **做法：** OCR 路径要求开关开启、有受支持的视觉模型、用户和图片网址，再把网址交给对话补全，超时参数为 30 秒；应用层循环在限流时最多尝试三次。响应带用量时另调统计上报，上报失败会记日志。
+- **边界：** 这些限制只描述此路径，不覆盖整个包的网络行为，也不是总耗时上限，限流还会等待。无响应或候选答案返回图片 OCR 失败标记，空内容另有标记，都不能当可信文档正文。
+- **源码：** [ocr.py:13–105](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/common/ocr.py#L13-L105)、[视觉模型检查：108–124](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/common/ocr.py#L108-L124)。
 
 ## 技术栈
 

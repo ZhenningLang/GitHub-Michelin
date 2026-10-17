@@ -65,7 +65,8 @@ Pure stdlib. Usage:  python3 tools/lint.py [--root .]
 Env: OSS_ATLAS_STALE_DAYS (default 90), OSS_ATLAS_MAX_FANOUT (default 12),
      OSS_ATLAS_PROSE_LABEL_MAX (default 3), OSS_ATLAS_REQUIRE_FLOW (default 0),
      OSS_ATLAS_FLOW_REQUIRED_FROM (default 2026-09-20),
-     OSS_ATLAS_SECTIONS_V2_FROM (default 2026-10-13)
+     OSS_ATLAS_SECTIONS_V2_FROM (default 2026-10-13),
+     OSS_ATLAS_TECHNIQUES_STRUCTURED_FROM (default 2026-10-15; v2 only)
 """
 from __future__ import annotations
 
@@ -77,6 +78,7 @@ import sys
 from pathlib import Path
 
 import flow_card
+import mechanism_card
 # Reuse the scorer's own name matcher rather than reimplementing it: the gate's whole
 # point is to re-check what health.py wrote, and a second copy of the rule would drift
 # from the one that produced the data. Import-only — health.py does no work at import.
@@ -106,6 +108,7 @@ REQUIRE_FLOW = os.environ.get("OSS_ATLAS_REQUIRE_FLOW", "0") == "1"
 # Older pages are the backfill backlog: one aggregate WARNING, not 1000 errors.
 FLOW_REQUIRED_FROM = os.environ.get("OSS_ATLAS_FLOW_REQUIRED_FROM", "2026-09-20")
 SECTIONS_V2_FROM = os.environ.get("OSS_ATLAS_SECTIONS_V2_FROM", "2026-10-13")
+TECHNIQUES_STRUCTURED_FROM = os.environ.get("OSS_ATLAS_TECHNIQUES_STRUCTURED_FROM", "2026-10-15")
 # A generator that has not read the upstream sources must say so with this marker instead of
 # writing plausible prose over the hole: prose that nobody earned reads exactly like prose that
 # somebody did, and no wording-based check can tell them apart after the fact. The marker gives the
@@ -214,9 +217,18 @@ def md_links(text: str) -> list[str]:
 def zh_punct_violations(text: str) -> int:
     """Count ASCII , ; ! ? : adjacent to a CJK char in a .zh.md body.
 
-    Skips YAML frontmatter (facts, kept identical to the EN sibling), fenced code blocks,
-    inline code, link targets, and URLs — the same regions the normalizer protects.
+    Skips YAML frontmatter (facts, kept identical to the EN sibling), generated blocks
+    only in a structured page's actual 技术要点 section, fenced/inline code, links and URLs.
     """
+    fm = parse_frontmatter(text)
+    if fm and techniques_structured(fm.get("last_verified")):
+        span = mechanism_card.section_bounds(text, "zh")
+        if span:
+            body = text[span[0]:span[1]]
+            _, blocks = mechanism_card.scan_body(body)
+            for block in reversed(blocks):
+                body = body[:block.start()] + body[block.end():]
+            text = text[:span[0]] + body + text[span[1]:]
     n = 0
     in_front = in_fence = False
     for i, line in enumerate(text.split("\n")):
@@ -627,6 +639,186 @@ def sections_v2(last_verified: object) -> bool:
         return False
 
 
+def techniques_structured(last_verified: object) -> bool:
+    try:
+        return sections_v2(last_verified) and dt.date.fromisoformat(str(last_verified)) >= dt.date.fromisoformat(TECHNIQUES_STRUCTURED_FROM)
+    except ValueError:
+        return False
+
+
+def source_prose(value: str) -> str:
+    """Plain Source prose only: ignore comments, reject HTML/quote containers.
+
+    The first line is the label's value. Remaining lines retain their source indentation:
+    '- ' contributes two columns, so six source columns mean four inside the item.
+    Indented code cannot interrupt a paragraph; a preceding blank line is significant.
+    """
+    value = re.sub(r"<!--.*?-->", "", value, flags=re.S)
+    lines = []
+    paragraph_open = True  # The label itself is already paragraph content, even if empty.
+    in_code = False
+    for i, raw in enumerate(re.split(r"\r\n|\r|\n", value)):
+        if i == 0:
+            if raw.lstrip(" \t").startswith(("<", ">")):
+                raise ValueError("Source must be plain prose with inline links")
+            lines.append(raw)
+            continue
+        expanded = raw.expandtabs(4)
+        if not expanded.strip():
+            lines.append("")
+            paragraph_open = False
+            continue
+        indent = len(expanded) - len(expanded.lstrip(" "))
+        prose = expanded[2:] if indent >= 2 else expanded
+        if prose.lstrip(" \t").startswith(("<", ">")):
+            raise ValueError("Source must be plain prose with inline links")
+        if indent >= 6 and (in_code or not paragraph_open):
+            in_code = True
+            lines.append("")
+            continue
+        in_code = False
+        paragraph_open = True
+        lines.append(prose)
+    return "\n".join(lines)
+
+
+def has_source_link(value: str) -> bool:
+    """A real inline citation in the authored list item, outside block/inline code."""
+    return any(_has_inline_source_link(paragraph)
+               for paragraph in re.split(r"\n[ \t]*\n", source_prose(value)))
+
+
+def _has_inline_source_link(value: str) -> bool:
+    """Recognize an inline citation outside code/escapes, not an image or code sample.
+
+    ceiling: flat citation labels, matching the page contract rather than a Markdown
+    renderer; extend for an observed richer citation syntax, not arbitrary nesting.
+    Backtick-run lookup avoids rescanning the suffix for every unmatched delimiter.
+    """
+    next_tick: dict[int, int] = {}
+    latest: dict[int, int] = {}
+    for tick in reversed(list(re.finditer(r"`+", value))):
+        width = len(tick[0])
+        if width in latest:
+            next_tick[tick.start()] = latest[width]
+        latest[width] = tick.start()
+    tokens = re.compile(r"(?P<escape>\\.)|(?P<code>`+)|(?P<link>!?\[[^\[\]\r\n]+\]\()")
+    destination = re.compile(r"[^\s)]+")
+    # Titles must be quoted, not an arbitrary suffix repeatedly rescanned for ')'.
+    # Possessive spaces/quoted bodies are available on CI's Python 3.12 as well.
+    closing = re.compile(r'''[ \t]*+(?:
+        "(?:\\[^\r\n]|[^"\\\r\n])*+" |
+        '(?:\\[^\r\n]|[^'\\\r\n])*+' |
+        \((?:\\[^\r\n]|[^()\\\r\n])*+\)
+        )?[ \t]*+\)''', re.X)
+    cursor = 0
+    for token in tokens.finditer(value):
+        if token.start() < cursor:
+            continue
+        if token["code"]:
+            close = next_tick.get(token.start())
+            cursor = close + len(token[0]) if close is not None else token.end()
+        elif token["link"]:
+            target = destination.match(value, token.end())
+            if target:
+                end = closing.match(value, target.end())
+                if end and not token["link"].startswith("!"):
+                    return True
+                # Each failed target token is consumed once, including nested-looking text.
+                cursor = end.end() if end else target.end()
+            else:
+                cursor = token.end()
+        else:
+            cursor = token.end()
+    return False
+
+
+def check_structured_techniques(path: Path, text: str, zh: bool, root: Path,
+                                duplicate_bases: set[str], rep: Report) -> None:
+    lang = "zh" if zh else "en"
+    span = mechanism_card.section_bounds(text, lang)
+    if span is None:
+        return  # Existing H2 gate reports the primary syntax/missing-section error.
+    body = text[span[0]:span[1]]
+    if UNRESEARCHED_MARKER in body:
+        return
+    stem = flow_card.flow_stem(path, root, duplicate_bases)
+    ref = mechanism_card.card_rel(path, root, stem, lang)
+    visible, blocks = mechanism_card.scan_body(body)
+    image_re = re.compile(r"!\[[^\r\n]+\]\(" + re.escape(ref) + r"\)[ \t]*")
+    image = next((line for line in visible if image_re.fullmatch(line[2])), None)
+    if not image:
+        rep.error(path, f"mechanism image missing: {ref}")
+    headings = mechanism_card.technique_headings(body)
+    if len(headings) < 2:
+        rep.error(path, "Key techniques needs at least 2 techniques")
+    elif len(headings) > 6:
+        rep.warn(path, "Key techniques has more than 6 techniques; consider a smaller explanation")
+    first = headings[0][0] if headings else len(body)
+    if (image and image[1] > first) or any(block.end() > first for block in blocks):
+        rep.error(path, "mechanism image and generated block must be before first technique")
+    labels = ("解决：", "做法：", "边界：", "源码：") if zh else ("Problem:", "How:", "Limits:", "Source:")
+    for i, (start, body_start, heading) in enumerate(headings, 1):
+        number = re.fullmatch(r"### ([0-9]+)\. (\S.*)", heading)
+        if not number or number[1] != str(i):
+            rep.error(path, f"technique headings must be continuous from 1: expected ### {i}. <title>")
+        end = headings[i][0] if i < len(headings) else len(body)
+        items: list[tuple[str, list[str]]] = []
+        extra = False
+        for line in re.split(r"\r\n|\r|\n", body[body_start:end]):
+            if not line.strip():
+                if items:
+                    items[-1][1].append(line)
+                continue
+            label = re.fullmatch(r"- \*\*([^*]+)\*\*[ \t]*(.*)", line)
+            if label:
+                items.append((label[1], [label[2]]))
+            elif line.startswith((" ", "\t")) and items:
+                items[-1][1].append(line)
+            else:
+                extra = True
+        if tuple(label for label, _ in items) != labels:
+            rep.error(path, f"technique {i}: exactly four labels required in order: {' / '.join(labels)}")
+        if extra:
+            rep.error(path, f"technique {i}: unexpected top-level content outside the four labels")
+        for label, values in items:
+            value = "\n".join(values)
+            if not value.strip():
+                rep.error(path, f"technique {i}: empty label value: {label}")
+            if label == labels[3]:
+                try:
+                    linked = has_source_link(value)
+                except ValueError as exc:
+                    rep.error(path, f"technique {i}: {exc}")
+                else:
+                    if not linked:
+                        rep.error(path, f"technique {i}: Source / 源码 must contain a Markdown link")
+    if len(blocks) != 1 or body.count("<!-- mechanism:begin") != 1 or body.count(mechanism_card.END) != 1:
+        rep.error(path, "mechanism text block missing or malformed (need exactly one generated block)")
+    source = root / "mechanisms" / f"{stem}.json"
+    try:
+        spec = mechanism_card.load_spec(source)
+    except (ValueError, OSError) as exc:
+        rep.error(path, f"mechanism spec: {exc}")
+        return
+    problems = mechanism_card.validate_spec(spec, len(headings))
+    if problems:
+        for problem in problems:
+            rep.error(source, f"mechanism spec: {problem}")
+        return
+    command = f"python3 tools/mechanism_card.py {path.relative_to(root)}"
+    if blocks and blocks[0][0] != mechanism_card.text_block(spec, lang, stem):
+        rep.error(path, f"mechanism text block drifted from mechanisms/{stem}.json; run {command}")
+    card = root / "assets/mechanism" / mechanism_card.card_name(stem, lang)
+    try:
+        svg = card.read_text(encoding="utf-8")
+    except (OSError, UnicodeError) as exc:
+        rep.error(path, f"mechanism SVG missing/unreadable: {card}: {exc}; run {command}")
+        return
+    if mechanism_card.svg_stamp(svg) != mechanism_card.spec_hash(spec):
+        rep.error(path, f"mechanism SVG stale or missing hash vs mechanisms/{stem}.json; run {command}")
+
+
 def check_v2_order(path: Path, text: str, zh: bool, ptype: str, rep: Report,
                    sections: list[flow_card.H2Section] | None = None) -> None:
     """Reject unknown/duplicate H2s, then name the first descending contract heading."""
@@ -868,6 +1060,8 @@ def check_page(path: Path, category_dir: Path, root: Path, duplicate_bases: set[
     chapter_names = {h.heading for h in chapters if h.exact} if chapters is not None else set()
     if v2:
         check_v2_order(path, text, zh, ptype, rep, chapters)
+        if techniques_structured(lv):
+            check_structured_techniques(path, text, zh, root, duplicate_bases, rep)
         old = flow_card.SECTION["v1"]["zh" if zh else "en"]
         new = flow_card.SECTION["v2"]["zh" if zh else "en"]
         if old in chapter_names:
@@ -950,6 +1144,15 @@ def check_page(path: Path, category_dir: Path, root: Path, duplicate_bases: set[
         sibling_key = any(h.exact and h.heading == "## 技术要点" for h in sibling_chapters)
         if own_key != sibling_key:
             rep.error(path, "Key techniques / 技术要点 presence must match the bilingual sibling")
+        if techniques_structured(lv):
+            own_span = mechanism_card.section_bounds(text, "en")
+            other_span = mechanism_card.section_bounds(sibling_text, "zh")
+            if own_span and other_span:
+                own_body = text[own_span[0]:own_span[1]]
+                other_body = sibling_text[other_span[0]:other_span[1]]
+                if UNRESEARCHED_MARKER not in own_body and UNRESEARCHED_MARKER not in other_body:
+                    if len(mechanism_card.technique_headings(own_body)) != len(mechanism_card.technique_headings(other_body)):
+                        rep.error(path, "Key techniques bilingual technique counts must match")
 
     check_health_block(path, text, base, zh, root, duplicate_bases, rep, today)
     check_upstream_block(path, text, rep)

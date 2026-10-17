@@ -7,7 +7,7 @@ tags: [llm-eval, ai-text-detection, dataset, detector]
 language: Python
 license: NOASSERTION
 maturity: research snapshot, main last changed 2023-06-27, 1479 stars (as of 2026-10)
-last_verified: 2026-10-13
+last_verified: 2026-10-17
 type: tool
 upstream:
   pushed_at: 2023-12-01T16:03:51Z
@@ -116,9 +116,53 @@ health:
 
 ## 技术要点
 
-- **先去掉轻易暴露身份的线索。** [HC3/demo_indicating_words.ipynb:98–127](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/HC3/demo_indicating_words.ipynb#L98-L127) 将回答切句，删除含清单提示词的整句，并统一一种中文称呼。这样能检查检测器是否只抓明显词语，而非更广写作模式；固定清单也会删除实质内容，不能排除所有捷径。
-- **在只看回答和同时看问题之间切换。** [detect/dl_train.py:53–98](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/detect/dl_train.py#L53-L98) 读取本地 CSV 切分，可合并全文与句子，再对回答或问题加回答分词并截断。问题能提供上下文，但长度上限会丢弃较长内容；`--all-train` 明确把测试数据并入训练，不能误当保留集评测。
-- **将词元可预测性变成小型分类器输入。** [detect/ml_train.py:45–81](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/detect/ml_train.py#L45-L81) 按 GPT-2 概率排名分四档计数；[detect/ml_train.py:241–262](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/detect/ml_train.py#L241-L262) 用重复分层交叉验证拟合逻辑回归。它将特征提取与分类分开，但继承评分模型与语料的偏差，交叉验证也不证明对未见生成模型有效。
+![chatgpt-comparison-detection — 机制图](../../assets/mechanism/chatgpt-comparison-detection.zh.svg)
+
+<!-- mechanism:begin (generated from mechanisms/chatgpt-comparison-detection.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>机制文字版</summary>
+
+- 过滤 notebook 中的回答
+- 切句、统一称呼、删除命中词表的整句①
+- 过滤后文本，独立 notebook 的产出
+- 另行准备的本地训练与测试 CSV
+- dl_train.py：可合并全文与句子切分②
+- 回答或问题加回答，分词并截断②
+- 训练序列分类器，all-train 不再保留测试集
+- ml_train.py：GPT-2 预测排名四档计数③
+- 逻辑回归，多次按标签比例分组验证③
+
+- 过滤 notebook 中的回答 → 切句、统一称呼、删除命中词表的整句①
+- 切句、统一称呼、删除命中词表的整句① → 过滤后文本，独立 notebook 的产出
+- 另行准备的本地训练与测试 CSV → dl_train.py：可合并全文与句子切分②
+- dl_train.py：可合并全文与句子切分② → 回答或问题加回答，分词并截断②
+- 回答或问题加回答，分词并截断② → 训练序列分类器，all-train 不再保留测试集
+- 另行准备的本地训练与测试 CSV → ml_train.py：GPT-2 预测排名四档计数③
+- ml_train.py：GPT-2 预测排名四档计数③ → 逻辑回归，多次按标签比例分组验证③
+
+</details>
+<!-- mechanism:end -->
+
+### 1. 删除暴露身份的整句，而不只删词
+
+- **解决：** 检测器可能只是认出了明确的身份提示词，并没有学到更广的写作模式。
+- **做法：** 过滤用的 notebook 先将回答切句，把中文称呼“您”统一成“你”，再删除含清单提示词的每个整句。
+- **边界：** 固定清单会误删实质内容，也排除不了所有捷径。这个 notebook 与训练脚本是独立研究工具，不是自动串好的流水线。
+- **源码：** [HC3/demo_indicating_words.ipynb:98–127](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/HC3/demo_indicating_words.ipynb#L98-L127)。
+
+### 2. 选择分类器能看到哪些上下文
+
+- **解决：** 只看回答就用不上问题的上下文；完整回答与单句也代表不同的检测条件。
+- **做法：** `dl_train.py` 读取本地训练与测试 CSV，可将全文和句子切分合并，再把回答单独或问题加回答转换成词元。训练序列分类器前，按配置长度截断输入。
+- **边界：** 截断会丢弃较长内容。`--all-train` 将测试集并入训练，并关闭该评测路径；这种运行不能当成保留集评测。
+- **源码：** [detect/dl_train.py:53–98](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/detect/dl_train.py#L53-L98)、[分类器与评测设置：109–136](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/detect/dl_train.py#L109-L136)。
+
+### 3. 先统计 GPT-2 的预测排名，再训练小型分类器
+
+- **解决：** 轻量分类器需要数字特征，不能直接吃进原始回答文本。
+- **做法：** 一条特征路径让 GPT-2 给实际下一个词元排预测名次，再统计前 10、10–99、100–999、1000 及以后的四档数量。逻辑回归从这些计数学习，并用重复分层交叉验证选参数，即多次分组验证且各组保持标签比例。
+- **边界：** 特征提取与分类分开，但都继承评分模型与语料的偏差。在这份材料内交叉验证，不证明对未见生成模型有效。
+- **源码：** [detect/ml_train.py:45–81](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/detect/ml_train.py#L45-L81)、[特征分流：197–215](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/detect/ml_train.py#L197-L215)、[分类器训练：241–262](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/detect/ml_train.py#L241-L262)。
 
 ## 技术栈
 

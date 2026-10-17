@@ -6,20 +6,20 @@ category: education-tutoring
 tags: [education-tutoring, document-qa, knowledge-base, study-workspace, agent-tools]
 language: Python
 license: Apache-2.0
-maturity: v1.6.14, active, 41298 stars (as of 2026-10-13)
-last_verified: 2026-10-13
+maturity: v1.6.14, active, 41531 stars (as of 2026-10-17)
+last_verified: 2026-10-17
 type: app
 upstream:
-  pushed_at: 2026-10-12T19:21:59Z
+  pushed_at: 2026-10-16T09:15:09Z
   default_branch: main
   default_branch_sha: 6cf793bd868ba5ecbe64722936d4be8fab5a01df
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-13T21:20:18Z
+  computed_at: 2026-10-17T08:09:10Z
   overall: B
-  overall_score: 3.4
-  scored_axes: 5
+  overall_score: 3.25
+  scored_axes: 4
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -29,33 +29,27 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 6
-        active_weeks_13: 13
+        last_commit_age_days: 9
+        active_weeks_13: 12
         carve_out: null
     responsiveness:
-      grade: A
-      raw:
-        median_ttfr_hours: 29.9
-        qualifying_issues: 32
-        band: relaxed_solo
-        window_offset_days: 4
-        source: issue
-        inferred: false
+      grade: "?"
+      raw: {}
     adoption:
       grade: "?"
       raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 289
-        last_commit_age_days: 6
+        repo_age_days: 293
+        last_commit_age_days: 9
         cohort: app
     governance:
       grade: B
       raw:
         active_maintainers_12mo: 97
-        top1_share: 0.55
-        top3_share: 0.664
+        top1_share: 0.549
+        top3_share: 0.663
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -66,6 +60,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
+    responsiveness: { reason: no_window_signal }
     adoption: { reason: no_package_structural }
 ---
 # DeepTutor
@@ -96,7 +91,7 @@ health:
 
 ## 快速上手
 
-完整本地包需要 Python `>=3.11,<3.15` 和 Node.js 20+，先选持久运行目录，再按 [README:322–336](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/README.md#L322-L336) 执行 `pip install -U deeptutor`、`deeptutor init`，网页应用用 `deeptutor start` 启动。入库课程材料前，配置回答用的语言模型和嵌入提供方，后者把文本变成供搜索使用的数字向量。[CLI 示例](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/README.md#L531-L539) 用 `deeptutor kb create my-kb --doc textbook.pdf`，再用 `deeptutor chat --capability deep_solve --tool rag --kb my-kb`；RAG 指找回文档段落交给模型。DeepTutor 解析／索引文件并运行工具辅助回答循环，你提供材料、凭据和问题，查看索引状态，再对照收集到的来源核答案。持久数据备份、模型／嵌入费用或本地硬件，以及可选解析／搜索／工具服务都由你负责。[工作区指南](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/docs-for-user/workspaces.md#L7-L19) 说明工作区划分学习数据，不划分全部账号设置和记忆。
+完整本地包需要 Python `>=3.11,<3.15` 和 Node.js 20+，先选持久运行目录，再按 [README:322–336](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/README.md#L322-L336) 执行 `pip install -U deeptutor`、`deeptutor init`，网页应用用 `deeptutor start` 启动。入库课程材料前，配置回答用的语言模型和嵌入提供方，后者把文本变成供搜索使用的数字向量。用 `deeptutor kb create my-kb --doc textbook.pdf` 建库，再用 `deeptutor chat --capability deep_solve --kb my-kb`；RAG 指找回文档段落交给模型。README 仍带 `--tool rag`，但 [CLI 指南](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor_cli/README.md#L65-L75) 和[工具装配代码](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/_shared/tool_composition.py#L186-L211) 按所附知识库挂载检索，不需要这个额外开关。DeepTutor 解析／索引文件并运行工具辅助回答循环，你提供材料、凭据和问题，查看索引状态，再对照收集到的来源核答案。持久数据备份、模型／嵌入费用或本地硬件，以及可选解析／搜索／工具服务都由你负责。[工作区指南](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/docs-for-user/workspaces.md#L7-L19) 说明工作区划分学习数据，不划分全部账号设置和记忆。
 
 ![deeptutor — 主干用户故事](../../assets/flow/deeptutor.zh.svg)
 
@@ -107,7 +102,7 @@ health:
 1. **你**：在持久运行目录安装，配置语言和嵌入模型 — `pip install -U deeptutor · deeptutor init`
 2. **你**：从教材创建课程知识库 — `deeptutor kb create my-kb --doc textbook.pdf`
 3. **DeepTutor**：解析并索引材料，保留索引状态 — 组件：`知识库与 LlamaIndex`
-4. **你**：对所选知识库启用检索，提出课程问题 — `deeptutor chat --capability deep_solve --tool rag --kb my-kb`
+4. **你**：对所选知识库启用检索，提出课程问题 — `deeptutor chat --capability deep_solve --kb my-kb`
 5. **DeepTutor**：运行有界模型／工具轮次，保留工具证据 — 组件：`AgentLoop`
 6. **DeepTutor**：返回回答和收集到的来源，供你核验
 
@@ -118,9 +113,57 @@ health:
 
 ## 技术要点
 
-- **记录索引中断，不编造完成。** [`indexing_run.py:85–162`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/knowledge/indexing_run.py#L85-L162) 校验持久任务／取消记录，把已退出执行者的待办工作投影为未知／中断。[`indexing_run.py:209–250`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/knowledge/indexing_run.py#L209-L250) 在建立新任务前取得每库操作系统锁。索引失败因此可查；没有检查点的中断阶段仍要重做。
-- **把文档清单与语义检索分开。** [`manifest.py:147–239`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/knowledge/manifest.py#L147-L239) 遍历真实文档根，先计数再截展示清单，区分缺失／远端目录与零文档。这样回答“我上传了这个文件吗”不用猜相似段落；清单却不能证明各文件都成功入索引。
-- **在一个有界回答循环里保留工具结果。** [`agent_loop.py:403–451`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L403-L451) 设置探索和收尾预算；[`agent_loop.py:705–743`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L705-L743) 分派工具、收集来源，把工具消息／用户回应带入后续轮次。证据因此接到当前任务，但预算与轨迹不保证解释或评分正确。
+![DeepTutor — 机制图](../../assets/mechanism/deeptutor.zh.svg)
+
+<!-- mechanism:begin (generated from mechanisms/deeptutor.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>机制文字版</summary>
+
+- 课程库文档
+- 每库锁与任务记录①
+- 索引进程①
+- 进程已退出：中断／未知①
+- 数真实文档，再限展示条数②
+- 清单或不可用；不证明索引成功②
+- 模型探索轮次③
+- 调用工具／收集来源与答复③
+- 有限收尾／禁用工具结束③
+- 回答供核验，不保证正确
+
+- 课程库文档 → 每库锁与任务记录①
+- 每库锁与任务记录① → 索引进程①
+- 索引进程① → 进程已退出：中断／未知①（原进程退出）〔可选／兜底〕
+- 课程库文档 → 数真实文档，再限展示条数②
+- 数真实文档，再限展示条数② → 清单或不可用；不证明索引成功②
+- 模型探索轮次③ → 调用工具／收集来源与答复③（有工具请求）
+- 调用工具／收集来源与答复③ → 模型探索轮次③（证据进入下轮）
+- 模型探索轮次③ → 回答供核验，不保证正确（无工具请求，回答可收尾）
+- 模型探索轮次③ → 有限收尾／禁用工具结束③（探索额度耗尽）
+- 有限收尾／禁用工具结束③ → 回答供核验，不保证正确
+
+</details>
+<!-- mechanism:end -->
+
+### 1. 记录谁在索引，明确标出中断
+
+- **解决：** 索引进程崩溃后，不能把“进行中”当作完成，也不能让两个进程同时写同一库。
+- **做法：** 新任务先取每库操作系统锁，持久记录任务进度和取消请求。状态读取器发现原进程已退出，就把未完成文档显示为未知，把任务显示为中断。
+- **边界：** 故障可查不等于任意位置都能续跑；重试复用已校验的解析结果和已完成分片，但没有保存检查点的中断阶段仍需重做。
+- **源码：** [`indexing_run.py:85–162`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/knowledge/indexing_run.py#L85-L162)、[`indexing_run.py:209–250`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/knowledge/indexing_run.py#L209-L250)。
+
+### 2. 直接数文档，不靠相似段落猜清单
+
+- **解决：** 检索到相似段落，不能可靠回答某个文件是否已经上传。
+- **做法：** 文档清单遍历真实文档根，先统计匹配数，再限制展示条数。目录缺失或远端库无法列举时，返回不可用，不报成空库。
+- **边界：** 远端有专用读取器时从服务列清单；本地清单不能证明每个列出的文件都成功入索引。
+- **源码：** [`manifest.py:147–239`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/knowledge/manifest.py#L147-L239)、[`manifest.py:242–254`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/knowledge/manifest.py#L242-L254)。
+
+### 3. 把工具证据带回有界回答循环
+
+- **解决：** 模型每轮若看不到之前的工具结果，就会丢失已找回的材料和用户补充。
+- **做法：** 循环把工具请求、返回消息和收集到的来源接回当前任务，也保留工具向用户追问的答复。无工具请求且回答可收尾时正常结束；探索额度耗尽才进入有限收尾轮次，必要时禁用工具强制结束。
+- **边界：** 预算限制工具探索；保留证据并最终给出回答，不保证解释或评分正确。
+- **源码：** [`agent_loop.py:403–451`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L403-L451)、[`agent_loop.py:480–481`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L480-L481)、[`agent_loop.py:655–743`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L655-L743)、[`agent_loop.py:837–887`](https://github.com/HKUDS/DeepTutor/blob/6cf793bd868ba5ecbe64722936d4be8fab5a01df/deeptutor/agents/loop/agent_loop.py#L837-L887)。
 
 ## 技术栈
 
@@ -141,13 +184,14 @@ health:
 
 ## 健康度与可持续性
 
-- **维护（2026-10-13）：** HKUDS 仓库未归档，默认分支提交与最新 release v1.6.14 都在 2026-10-08。README 记录密集功能／修复发布，应固定并测试升级，不能从版本号推定行为稳定。
-- **机器画像：** 综合 B（5/6 轴有分）；维护／响应 A，长青度 C，治理 B，许可风险 A。32 个合格 issue 首次响应中位数 29.9 小时。采用保持未知，因为评分器没有归属到规范包／安装计数，不是因为没有发布包。
-- **采用与支持：** 41298 个 star；PyPI 有 `deeptutor` 1.6.14，但包元数据没有项目 URL，本轮返回 `no_package_structural`。发布包和 star 能证明可获取／受关注，不能证明课堂使用量或教学效果。
-- **年龄与许可：** 创建于 2025-12-28，已有 289 天；HKUDS 归属和贡献者不构成多年支持历史。LICENSE 与 manifest 确认 Apache-2.0。[推断：依据是年轻项目和频繁功能变动] 应预留集成升级和教师审核成本。
+- **维护（2026-10-17）：** HKUDS 仓库未归档，默认分支提交与最新 release v1.6.14 都在 2026-10-08。README 记录密集功能／修复发布，应固定并测试升级，不能从版本号推定行为稳定。
+- **机器画像：** 综合 B（4/6 轴有分）；维护 A，长青度 C，治理 B，许可风险 A。响应现为未知（`no_window_signal`）：抽样 90 天内无符合条件的 issue／PR 回复信号，属未知，不是慢。采用保持未知，因为评分器没有归属到规范包／安装计数，不是因为没有发布包。
+- **采用与支持：** 41531 个 star；最新 release 发布 v1.6.14，但评分器对采用返回 `no_package_structural`。版本可获取和 star 不能证明课堂使用量或教学效果。
+- **年龄与许可：** 创建于 2025-12-28，已有 293 天；HKUDS 归属和贡献者不构成多年支持历史。LICENSE 与 manifest 确认 Apache-2.0。[推断：依据是年轻项目和频繁功能变动] 应预留集成升级和教师审核成本。
 
 ## 存疑（未验证）
 
 - [未验证：未运行应用、模型或索引] 安装、解析准确性、生成回答和教学结果仅对照源文件／API，没有课程数据集执行证据。
 - [未验证：评分器缺可归属的安装指标] PyPI 包已经发布，原采用未知仍保留；本页不从 star 推使用量，不替换机器等级。
-- [推断：依据是 289 天年龄和密集发布历史] 学习／工具表面需要升级测试和持续教师审查；账号／工作区边界不等于独立审计的隔离保证。
+- [未验证：抽样 90 天内没有合格 issue／PR 回复信号] 响应速度未知，不能据此认定维护者回复慢。
+- [推断：依据是 293 天年龄和密集发布历史] 学习／工具表面需要升级测试和持续教师审查；账号／工作区边界不等于独立审计的隔离保证。

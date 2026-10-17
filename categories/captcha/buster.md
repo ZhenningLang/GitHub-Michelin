@@ -7,7 +7,7 @@ tags: [captcha, accessibility, browser-extension, recaptcha, speech-recognition,
 language: JavaScript
 license: GPL-3.0-only
 maturity: v3.4.0, 9336 stars, last default-branch update 2026-06 (as of 2026-10-14)
-last_verified: 2026-10-14
+last_verified: 2026-10-17
 type: tool
 upstream:
   pushed_at: 2026-06-27T11:49:18Z
@@ -120,9 +120,61 @@ Install Buster from one of the browser-store links in [README.md:6–21](https:/
 
 ## Key techniques
 
-- **Local first is conditional, not local only.** [background/main.js:663–748](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/background/main.js#L663-L748) fetches and trims audio, tries the browser Prompt API when available, and otherwise uses cached Transformers recognition when the API is unavailable. Managed remote recognition can run when no local solution exists. [20260617113244_add_managed_services.js:8–14](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/storage/revisions/local/20260617113244_add_managed_services.js#L8-L14) enables both routes; installing a local-capable extension does not establish a no-egress boundary.
-- **Quantized browser transcription with a readiness gate.** [models.js:101–115](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/utils/models.js#L101-L115) selects Whisper tiny with WASM and q8 weights. [offscreen/main.js:21–37](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/offscreen/main.js#L21-L37) handles audio outside the MV3 service worker and only transcribes a cached, available pipeline. This keeps computation in the browser, but an unready model returns no text rather than guaranteeing a result.
-- **Separate transcription from widget interaction.** [base/main.js:368–407](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/base/main.js#L368-L407) asks the background for text, then either fills the response directly or sends native input commands before submitting. The interaction path is explicit and auditable, but depends on reCAPTCHA DOM selectors and does not prove the server accepted the answer.
+![Buster — mechanism diagram](../../assets/mechanism/buster.svg)
+
+<!-- mechanism:begin (generated from mechanisms/buster.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>Text version of the mechanism</summary>
+
+- Fetch challenge audio; trim both ends
+- Managed local / remote switches①
+- Check browser Prompt API status①
+- Browser Prompt API transcription
+- Cached Whisper tiny; WASM / q8; MV3 offscreen where needed②
+- Local text or no text
+- Enabled managed remote recognition①
+- Fill directly or via optional native input③
+- Submit; acceptance not established③
+- No text: do not submit
+
+- Fetch challenge audio; trim both ends → Managed local / remote switches①
+- Managed local / remote switches① → Check browser Prompt API status① (local enabled)
+- Check browser Prompt API status① → Browser Prompt API transcription (available)
+- Check browser Prompt API status① → Cached Whisper tiny; WASM / q8; MV3 offscreen where needed② (unavailable only)
+- Check browser Prompt API status① → Local text or no text (other status: no text)
+- Browser Prompt API transcription → Local text or no text
+- Cached Whisper tiny; WASM / q8; MV3 offscreen where needed② → Local text or no text (unready yields no text)
+- Managed local / remote switches① → Enabled managed remote recognition① (local off; remote on) [optional/fallback]
+- Local text or no text → Enabled managed remote recognition① (no text; remote on) [optional/fallback]
+- Local text or no text → Fill directly or via optional native input③ (text)
+- Local text or no text → No text: do not submit (no text; remote off)
+- Enabled managed remote recognition① → Fill directly or via optional native input③ (text)
+- Enabled managed remote recognition① → No text: do not submit (no text)
+- Fill directly or via optional native input③ → Submit; acceptance not established③
+
+</details>
+<!-- mechanism:end -->
+
+### 1. Route audio by availability and explicit service switches
+
+- **Problem:** A browser-local recognizer may be absent or return no answer; local support alone says nothing about whether audio can leave the browser.
+- **How:** The background fetches audio and trims 1.5 seconds from each end; managed local mode tries the browser Prompt API when available, and only an unavailable API selects Transformers. Managed remote recognition can run without a local answer, and the checked migration enables both local and remote switches.
+- **Limits:** A Prompt API call returning no text does not trigger the Transformers branch; downloading or other intermediate API states do not either. Enabled remote fallback is an outbound-data path, not a local-only guarantee.
+- **Source:** [background/main.js:663–756](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/background/main.js#L663-L756), [managed-service migration:8–14](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/storage/revisions/local/20260617113244_add_managed_services.js#L8-L14).
+
+### 2. Check model readiness before browser transcription
+
+- **Problem:** Selecting a local model is not enough when its weights have not been downloaded and cached.
+- **How:** Transformers selects Whisper tiny with WASM, a browser execution format, and q8, eight-bit model weights; availability is checked through the pipeline cache. On the relevant Manifest V3 browsers, a separate offscreen document processes audio outside the extension's background service worker and transcribes only an available pipeline.
+- **Limits:** An unready model returns no text; this readiness check neither guarantees recognition nor removes network downloads for models and challenge audio.
+- **Source:** [models.js:101–151](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/utils/models.js#L101-L151), [offscreen/main.js:21–37](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/offscreen/main.js#L21-L37), [background/main.js:694–723](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/background/main.js#L694-L723).
+
+### 3. Fill and submit only after receiving text
+
+- **Problem:** Recognizing audio and operating the challenge widget require different browser interactions.
+- **How:** The widget asks the background for a transcription and stops if it receives none. Otherwise it fills the answer directly or uses optional native mouse/keyboard commands, then activates the verification button.
+- **Limits:** The auditable interaction still depends on reCAPTCHA's DOM selectors, the page-element addresses used by the script. Submission and its internal solved notification do not prove server acceptance.
+- **Source:** [base/main.js:368–407](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/base/main.js#L368-L407).
 
 ## Tech stack
 

@@ -7,7 +7,7 @@ tags: [html-cards, poster-layout, agent-skill, outline-review]
 language: Markdown
 license: NONE
 maturity: unversioned skill, last main commit 2026-04-26, 33 stars (as of 2026-10-13)
-last_verified: 2026-10-13
+last_verified: 2026-10-17
 type: skill-pack
 upstream:
   pushed_at: 2026-04-26T03:34:24Z
@@ -114,9 +114,52 @@ health:
 
 ## 技术要点
 
-- **先审内容，再做布局。** [`SKILL.md:40–84`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L40-L84) 要求模型保留数字、估算模块／页数，再输出固定大纲并停止等待确认。这让你能在设计前查遗漏，但它是提示词约束，不是强制执行闸门。
-- **围绕三种明确画布规划。** [`SKILL.md:17–23`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L17-L23) 区分竖版多卡、可增长横版和固定插图；[`SKILL.md:97–107`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L97-L107) 指定分页与留白。模型估算不是像素测量，仍要人工看渲染。
-- **用已有 HTML 骨架限制输出。** [`SKILL.md:131–174`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L131-L174) 给出字体、配色、弹性布局和固定尺寸，同时加载远端 Tailwind／字体并隐藏溢出。它减少设计选择，却不能证明内容全部可见。[`SKILL.md:91–96`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L91-L96) 的 ECharts 要求与 [`SKILL.md:240–245`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L240-L245) 的禁止条款相反。
+![any2html — 机制图](../../assets/mechanism/any2html.zh.svg)
+
+<!-- mechanism:begin (generated from mechanisms/any2html.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>机制文字版</summary>
+
+- 文章事实与数字
+- 提示：按固定大纲保留事实①
+- 画布选择＋模块数量估算②
+- 提示：等待大纲确认①
+- HTML 骨架：字体、配色、弹性布局、尺寸③
+- 远端 Tailwind 与 Google Fonts③
+- ECharts 既要求又禁止：待解决③
+- 渲染卡片仍须检查裁切与间距②③
+
+- 文章事实与数字 → 提示：按固定大纲保留事实①
+- 提示：按固定大纲保留事实① → 画布选择＋模块数量估算②
+- 画布选择＋模块数量估算② → 提示：等待大纲确认①
+- 提示：等待大纲确认① → HTML 骨架：字体、配色、弹性布局、尺寸③（提示要求，非硬闸门）
+- 远端 Tailwind 与 Google Fonts③ → HTML 骨架：字体、配色、弹性布局、尺寸③（联网资源）
+- ECharts 既要求又禁止：待解决③ → HTML 骨架：字体、配色、弹性布局、尺寸③（显式裁决图表规则）〔可选／兜底〕
+- HTML 骨架：字体、配色、弹性布局、尺寸③ → 渲染卡片仍须检查裁切与间距②③（溢出可能被隐藏）
+
+</details>
+<!-- mechanism:end -->
+
+### 1. 布局前先摊开提取出的事实
+
+- **解决：** 一次性海报提示可能为了塞进一页，丢掉重要数字。
+- **做法：** 技能要求模型保留数字与量纲，估算模块／页数，再按固定模板列出内容和图表计划。写 HTML 前须停下等待确认。
+- **边界：** 这只是提供审查机会，不是强制执行闸门；是否遵守取决于智能体有没有照提示做。
+- **源码：** [`SKILL.md:40–88`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L40-L88)。
+
+### 2. 用画布选择约束容量与留白
+
+- **解决：** 固定插图和多张竖版卡片，不能用同一套文字容量假设。
+- **做法：** 竖版按 1080×1440 多卡分页，横版宽 1280 且高度可增长，插图固定 1280×720。模块数估算指导分页，底部间距和大片留白补救规则指导摆放。
+- **边界：** 模型只估容量，不测像素；审查者仍须看实际渲染，检查裁字与不合适的间距。
+- **源码：** [`SKILL.md:17–23`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L17-L23)、[`SKILL.md:51–57`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L51-L57)、[`SKILL.md:97–114`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L97-L114)。
+
+### 3. HTML 骨架收窄设计选择，但不验证完整性
+
+- **解决：** 自由生成容易偏离指定的复古配色与字体。
+- **做法：** 骨架固定字体、配色、弹性布局及尺寸，并从远端加载 Tailwind 和 Google Fonts。`overflow:hidden` 会裁掉多余内容，而不是把卡片撑开。
+- **边界：** 风格统一不能证明内容全部可见。规划／生成指令要求 ECharts，最终输出规则却禁止它；上游没有给出明确优先级，必须显式解决冲突。
+- **源码：** [`SKILL.md:131–174`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L131-L174)、[`SKILL.md:91–96`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L91-L96)、[`SKILL.md:240–245`](https://github.com/blockpanda/any2html/blob/4aac2a1eda45e30a951ba112cd2e28d75a2010fd/SKILL.md#L240-L245)。
 
 ## 健康度与可持续性
 

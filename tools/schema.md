@@ -105,7 +105,7 @@ its own contract. Then the required `##` sections below — **which ones are req
 | `## Comparison` | `## 横向对比` | **all types** | horizontal table vs real substitutes (see below) |
 | `## Q&A` | `## 快问快答` | **all types** — section optional, **decision required** | leftover questions from the reading conversation; move questions with a required-section home there first; write the rest, or record "no leftover Q&A" in the change summary — never pad |
 | `## Quick start` | `## 快速上手` | **all types** when FLOW requires it (see below) | developer usage after choosing it: install/configure/call, what you do vs what it does, plus the generated two-lane backbone flow card |
-| `## Key techniques` | `## 技术要点` | **all types in v2** | source-backed implementation techniques that explain how this project achieves its result, with constraints and source locations |
+| `## Key techniques` | `## 技术要点` | **all types in v2** | source-backed internals; structured cutoff 2026-10-15: one mechanism diagram + generated text + 2–6 numbered techniques, each with four labeled items (problem/how/limits/source) |
 | `## Tech stack` | `## 技术栈` | non-`skill-pack` | languages, frameworks, datastores it is built on |
 | `## Dependencies` | `## 依赖` | non-`skill-pack` | runtime/infra a user must run (db, services, hardware) |
 | `## Ops difficulty` | `## 运维难度` | non-`skill-pack` | low / medium / high + why; deploy + maintain burden |
@@ -364,15 +364,252 @@ for lint, although the renderer locates both. Card SVGs and generated flow-steps
 
 ### "Key techniques" explains the source-backed implementation
 
-Required and non-empty for every v2 type, including skill-pack. Read the relevant source paths and
-describe the few concrete techniques that distinguish this project: what each does, why it matters,
-and its limits. Keep source locations or links close to the claims; explain unfamiliar terms and
-use an analogy where it genuinely helps. A skill-pack's techniques may live in prompts, workflow
-rules or scripts rather than a runtime. This is not another Tech stack list, install tutorial, or
-generic description that survives replacing the project name with a competitor's. Move technical
-questions from Q&A here; re-open the leftover-Q&A decision afterwards. Unsupported claims still get
-a Caveats ledger entry. Unresearched scaffolds keep `<!-- oss-atlas:unresearched -->` in both new
-sections and cannot merge; never delete the marker without researching and writing the section.
+Required and non-empty for every v2 type, including skill-pack. Read the implementation paths,
+then explain what distinguishes this project, why each technique matters, and where it stops working.
+Explain unfamiliar terms on first use; use an analogy only if it helps. Internals belong here,
+not in Quick start's developer install/configure/call path or another Tech stack list. A skill-pack's
+implementation may be prompts, workflow rules or scripts. Move technical questions from Q&A here,
+then re-open the leftover-Q&A decision. Unsupported claims still need a Caveats ledger entry.
+
+**Independent structured cutoff.** A v2 page with `last_verified >= 2026-10-15` must use the
+shape below (`OSS_ATLAS_TECHNIQUES_STRUCTURED_FROM` overrides; lint's
+`TECHNIQUES_STRUCTURED_FROM` / `techniques_structured` also require v2). Earlier 2026-10-13/14
+v2 pages may retain researched prose; untouched v1 pages stay unchanged. All dates are UTC;
+never bump a date merely to select a format. This does not change FLOW's independent cutoff.
+
+**Shape:** one mechanism image and one generated `mechanism:begin` / `mechanism:end` text
+block, both **before** the first technique. Then `### 1. Title`, `### 2. Title`, etc., continuous
+from 1. Aim for **2–6** techniques: fewer than 2 is ERROR, more than 6 is WARNING, not truncation.
+Every technique has exactly four items, in order, with non-empty values:
+
+- EN: `- **Problem:**`, `- **How:**`, `- **Limits:**`, `- **Source:**`.
+- ZH: `- **解决：**`, `- **做法：**`, `- **边界：**`, `- **源码：**` (fullwidth colon).
+- Indented continuation lines are allowed after an item; no other top-level content inside a
+  technique. Keep each value to one or two plain-language sentences when possible.
+- Source must contain a Markdown link. Pin actual code paths/line ranges to the reviewed commit.
+  For a closed distribution or a list-only repository, still draw the mechanism and split techniques,
+  but cite real docs, prompts, release artifacts or list entries; distinguish observable behavior
+  from unavailable internals. **Never invent code or implementation evidence.**
+  Source values, including continuations, must be plain prose with inline links; HTML comments
+  do not count, and lines beginning with `<` or `>` after list indentation are ERRORs.
+
+**One bilingual graph source:** `mechanisms/<stem>.json`, where `<stem>` reuses
+`flow_card.flow_stem` (duplicate slugs get their category path prefix). Schema `1`, direction
+`right` or `down`, **3–12 nodes**, unique non-empty string ids, non-empty `en`/`zh` labels;
+node `kind` is `input | step | output | external`, omitted means `step`. Optional `technique`
+is an array of positive page technique numbers; no out-of-range number and every technique
+must have a node. Edges reference existing `from`/`to` ids, may have non-empty **both** `en`/`zh`
+labels, and may set `style: "dashed"` for optional/fallback paths. `sources` is optional graph
+metadata: when provided, a list of non-empty evidence references; an empty list is allowed.
+This does not waive each technique's required Source item and real evidence link.
+No implicit acyclicity or single-path constraint.
+
+Write the four items from sources → write `mechanisms/<stem>.json` → run:
+
+```bash
+python3 tools/mechanism_card.py --check-spec mechanisms/<stem>.json
+python3 tools/mechanism_card.py categories/<category>/<slug>.md
+# Either sibling implies both. All projects with graph sources:
+make mechanisms
+```
+
+The generator inserts/refreshes the image and generated text **only inside Key techniques**,
+and writes `assets/mechanism/<stem>.svg` plus `<stem>.zh.svg`. It preserves authored techniques
+and other sections. It builds quoted d2 strings with numbered node labels (①②…), renders with
+local `d2 --layout elk`, and declares Chinese font fallbacks in the ZH SVG. Install locally with
+`brew install d2`; missing d2 exits **2** with no page/image writes. `--check-spec` only checks JSON
+shape, without d2 or writes; lint also cross-checks technique numbers against actual pages.
+
+**CI never installs or invokes d2.** The SVG records `<!-- mechanism-src sha256=<hex> -->`.
+The hash is SHA-256 of UTF-8
+`json.dumps(spec, sort_keys=True, ensure_ascii=False) + RENDER_VERSION` (including default JSON
+separators; no extra delimiter). Lint recomputes this hash and the pure-Python
+`mechanism_card.text_block(spec, lang, stem)`; it does not re-render SVG bytes. Changing graph
+content or renderer version requires regeneration. A retained valid stamp does not authenticate
+hand-edited image contents. Never hand-edit generated text: it lists all nodes, then every edge
+in JSON order, with translated labels and technique badges.
+
+Lint ERRORs on missing images/files/blocks, text drift, stale/missing stamps, invalid/missing JSON,
+bad numbering/items/sources, mapping failures and unequal bilingual technique counts. The complete
+mechanism text block and fenced code are exempt from Chinese punctuation, not the four authored
+items. Unresearched scaffolds keep `<!-- oss-atlas:unresearched -->` and cannot merge; when it is
+inside this section, structure checks skip cascaded errors, **not** the original marker ERROR.
+Never delete a marker without researching and writing its section. Quality scan removes generated
+blocks, image lines, H3 titles and these four label prefixes, **not their prose values**;
+the duplicate-prose gate remains active (threshold recalibration is a separate corpus task).
+
+**Complete researched example — screenshot-to-code.** This is a frozen Phase 02
+sample (2026-10-15), based on upstream commit `a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc`.
+Later page re-verifications do not update this teaching snapshot automatically.
+`mechanisms/screenshot-to-code.json`:
+
+```json
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "shot", "en": "Original screenshot", "zh": "原始截图", "kind": "input"},
+    {"id": "variants", "en": "Select four model slots for a screenshot draft", "zh": "截图初稿选择四个模型槽位", "technique": [4]},
+    {"id": "agent", "en": "Independent tool-calling agent per slot", "zh": "每槽位独立的工具调用 agent"},
+    {"id": "crop", "en": "Gemini boxes to original-image crops", "zh": "Gemini 定位框换算后裁原图", "technique": [2]},
+    {"id": "gen", "en": "Optional Replicate image generation", "zh": "按需用 Replicate 生成替代图", "kind": "external", "technique": [2]},
+    {"id": "html", "en": "HTML state: create_file or exact edit_file", "zh": "HTML 状态：整页创建或精确替换", "kind": "output", "technique": [1]},
+    {"id": "preview", "en": "Optional Chromium desktop and mobile screenshots", "zh": "可选 Chromium 桌面与手机截图", "technique": [3]},
+    {"id": "pick", "en": "Alternatives for human selection; no machine score", "zh": "供人挑选的方案；无机器评分", "kind": "output", "technique": [4]}
+  ],
+  "edges": [
+    {"from": "shot", "to": "variants"},
+    {"from": "variants", "to": "agent", "en": "parallel tasks", "zh": "并发任务"},
+    {"from": "shot", "to": "crop", "en": "if extraction is requested", "zh": "请求裁图时", "style": "dashed"},
+    {"from": "crop", "to": "agent", "en": "crop URLs and previews", "zh": "裁图 URL 与预览", "style": "dashed"},
+    {"from": "agent", "to": "gen", "style": "dashed"},
+    {"from": "gen", "to": "agent", "en": "image URLs", "zh": "图片 URL", "style": "dashed"},
+    {"from": "agent", "to": "html", "en": "tool results feed next model turn", "zh": "工具结果进入下一模型轮次"},
+    {"from": "html", "to": "preview", "style": "dashed"},
+    {"from": "preview", "to": "agent", "en": "same model inspects and may patch", "zh": "同一模型目测后可修补", "style": "dashed"},
+    {"from": "html", "to": "pick", "en": "per-variant output", "zh": "各版本输出"}
+  ],
+  "sources": [
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/runtime.py#L68-L90",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/extract_assets.py#L1-L190",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/prompts/system_prompt.py#L15-L25",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/routes/generate_code.py#L589-L611",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/screenshot_preview.py#L10-L99",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/providers/factory.py#L25-L39",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/routes/generate_code.py#L417-L499",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/config.py#L3-L4",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/runtime.py#L101-L257",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/engine.py#L218-L325",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/asset_extraction.py#L293-L343"
+  ]
+}
+```
+
+EN subsection (at `categories/ai-design-generation/screenshot-to-code.md`; generated block copied unchanged):
+
+```markdown
+## Key techniques
+
+![screenshot-to-code — mechanism diagram](../../assets/mechanism/screenshot-to-code.svg)
+
+<!-- mechanism:begin (generated from mechanisms/screenshot-to-code.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>Text version of the mechanism</summary>
+
+- Original screenshot
+- Select four model slots for a screenshot draft④
+- Independent tool-calling agent per slot
+- Gemini boxes to original-image crops②
+- Optional Replicate image generation②
+- HTML state: create_file or exact edit_file①
+- Optional Chromium desktop and mobile screenshots③
+- Alternatives for human selection; no machine score④
+
+- Original screenshot → Select four model slots for a screenshot draft④
+- Select four model slots for a screenshot draft④ → Independent tool-calling agent per slot (parallel tasks)
+- Original screenshot → Gemini boxes to original-image crops② (if extraction is requested) [optional/fallback]
+- Gemini boxes to original-image crops② → Independent tool-calling agent per slot (crop URLs and previews) [optional/fallback]
+- Independent tool-calling agent per slot → Optional Replicate image generation② [optional/fallback]
+- Optional Replicate image generation② → Independent tool-calling agent per slot (image URLs) [optional/fallback]
+- Independent tool-calling agent per slot → HTML state: create_file or exact edit_file① (tool results feed next model turn)
+- HTML state: create_file or exact edit_file① → Optional Chromium desktop and mobile screenshots③ [optional/fallback]
+- Optional Chromium desktop and mobile screenshots③ → Independent tool-calling agent per slot (same model inspects and may patch) [optional/fallback]
+- HTML state: create_file or exact edit_file① → Alternatives for human selection; no machine score④ (per-variant output)
+
+</details>
+<!-- mechanism:end -->
+
+### 1. Patch the page through tools instead of regenerating it
+
+- **Problem:** Rewriting an entire page to fix one gap can disturb parts that already match.
+- **How:** The prompt asks for one `create_file` call with the full HTML, then `edit_file` calls that replace exact old text; an unmatched edit returns an error to the model. The agent — a model that selects and runs tools — feeds tool results into its next turn.
+- **Limits:** Exact matching constrains a patch, not its correctness or size; the runtime does not prevent another `create_file` call, so “write once” is an instruction, not a guarantee.
+- **Source:** [Tool instructions:15–19](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/prompts/system_prompt.py#L15-L19), [file creation and replacement:101–257](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/runtime.py#L101-L257), [tool-result loop:278–325](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/engine.py#L278-L325).
+
+### 2. Crop original assets before asking for substitutes
+
+- **Problem:** Invented logos or photos make an otherwise close replica look wrong.
+- **How:** Gemini locates a requested asset with four rectangle coordinates on a 0–1000 scale; the backend converts these to pixels and crops the original image. For obscured photos or backgrounds that cannot be isolated, the prompt asks the agent to use Replicate, a hosted image-generation service, to generate a substitute.
+- **Limits:** This is a model-chosen tool path, not an automatic crop-failure fallback; extraction needs Gemini and a usable still image, while generation must be enabled and have a Replicate key.
+- **Source:** [Asset instructions:21–25](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/prompts/system_prompt.py#L21-L25), [box-to-pixel crop:293–343](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/asset_extraction.py#L293-L343), [Replicate generation:259–294](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/runtime.py#L259-L294), [extraction availability:336–351](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/engine.py#L336-L351).
+
+### 3. Return browser renders to the same model for a visual check
+
+- **Problem:** HTML that reads plausibly can still have broken layout or wrong spacing when rendered.
+- **How:** If the model calls `screenshot_preview`, headless Chromium — a real browser without a window — renders the current HTML at desktop and mobile widths. Both full-page images return to the same model, which is instructed to inspect them and patch visible errors.
+- **Limits:** The preview tool is omitted when Chromium is unavailable, and the loop does not enforce its use or compute a similarity score; stopping follows model completion, 30 turns or the priced-model budget, not a quality threshold.
+- **Source:** [Preview result:10–99](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/screenshot_preview.py#L10-L99), [Chromium rendering:30–88](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/preview_screenshot/playwright_backend.py#L30-L88), [tool availability:25–39](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/providers/factory.py#L25-L39), [preview instruction:19](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/prompts/system_prompt.py#L19-L19), [loop stopping:218–276](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/engine.py#L218-L276).
+
+### 4. Run independent variants instead of trusting one draft
+
+- **Problem:** One model's visual blind spots can survive its own self-check.
+- **How:** Screenshot creation selects four model slots — four independent generation jobs — from providers for which keys are present, then starts an agent task per slot concurrently. The user chooses among the resulting alternatives rather than a machine score choosing a winner.
+- **Limits:** Slots can repeat a model when fewer are configured; edits and video use two variants, not four. More alternatives do not establish pixel-level fidelity.
+- **Source:** [Four-slot default:3–4](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/config.py#L3-L4), [selection and mode limits:417–499](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/routes/generate_code.py#L417-L499), [parallel tasks:589–611](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/routes/generate_code.py#L589-L611).
+```
+
+ZH subsection (at `categories/ai-design-generation/screenshot-to-code.zh.md`; generated block copied unchanged):
+
+```markdown
+## 技术要点
+
+![screenshot-to-code — 机制图](../../assets/mechanism/screenshot-to-code.zh.svg)
+
+<!-- mechanism:begin (generated from mechanisms/screenshot-to-code.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>机制文字版</summary>
+
+- 原始截图
+- 截图初稿选择四个模型槽位④
+- 每槽位独立的工具调用 agent
+- Gemini 定位框换算后裁原图②
+- 按需用 Replicate 生成替代图②
+- HTML 状态：整页创建或精确替换①
+- 可选 Chromium 桌面与手机截图③
+- 供人挑选的方案；无机器评分④
+
+- 原始截图 → 截图初稿选择四个模型槽位④
+- 截图初稿选择四个模型槽位④ → 每槽位独立的工具调用 agent（并发任务）
+- 原始截图 → Gemini 定位框换算后裁原图②（请求裁图时）〔可选／兜底〕
+- Gemini 定位框换算后裁原图② → 每槽位独立的工具调用 agent（裁图 URL 与预览）〔可选／兜底〕
+- 每槽位独立的工具调用 agent → 按需用 Replicate 生成替代图②〔可选／兜底〕
+- 按需用 Replicate 生成替代图② → 每槽位独立的工具调用 agent（图片 URL）〔可选／兜底〕
+- 每槽位独立的工具调用 agent → HTML 状态：整页创建或精确替换①（工具结果进入下一模型轮次）
+- HTML 状态：整页创建或精确替换① → 可选 Chromium 桌面与手机截图③〔可选／兜底〕
+- 可选 Chromium 桌面与手机截图③ → 每槽位独立的工具调用 agent（同一模型目测后可修补）〔可选／兜底〕
+- HTML 状态：整页创建或精确替换① → 供人挑选的方案；无机器评分④（各版本输出）
+
+</details>
+<!-- mechanism:end -->
+
+### 1. 用工具补丁修改，不反复重写整页
+
+- **解决：** 为了修一个间距重写整页，容易连已经对齐的部分一起改坏。
+- **做法：** 提示词要求先用一次 `create_file` 写完整 HTML，再用 `edit_file` 精确替换旧文字；匹配不到就向模型报错。agent（会选择并执行工具的模型）把工具结果送入下一轮。
+- **边界：** 精确匹配只约束补丁如何应用，不保证改得对或改得少；运行时不禁止再次调用 `create_file`，“只写一次”是指令，不是硬保证。
+- **源码：** [工具指令第 15–19 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/prompts/system_prompt.py#L15-L19)、[创建与替换第 101–257 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/runtime.py#L101-L257)、[工具结果循环第 278–325 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/engine.py#L278-L325)。
+
+### 2. 先裁原图素材，再按需生成替代图
+
+- **解决：** 模型编出的 logo 或照片，会让布局已接近的复刻仍显得不像。
+- **做法：** Gemini 用四个数标出素材的矩形位置，坐标统一缩放到 0–1000，后端换算成像素后裁原图。遇到被遮挡的照片、无法单独裁出的背景，提示词要求 agent 调用 Replicate（托管图像生成模型的服务）生成替代图。
+- **边界：** 这是模型选择的工具路径，不是裁图失败就自动生成；裁图需要 Gemini 和可用静态图，生成图片则要功能已启用且有 Replicate key。
+- **源码：** [素材指令第 21–25 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/prompts/system_prompt.py#L21-L25)、[坐标换算与裁图第 293–343 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/asset_extraction.py#L293-L343)、[Replicate 生成第 259–294 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/runtime.py#L259-L294)、[裁图可用条件第 336–351 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/engine.py#L336-L351)。
+
+### 3. 把浏览器实渲染结果交回同一模型目测
+
+- **解决：** HTML 读起来合理，真正渲染时仍可能布局错乱、间距不对。
+- **做法：** 模型若调用 `screenshot_preview`，无头 Chromium（没有窗口的真浏览器）就按桌面和手机两种宽度渲染当前 HTML。两张完整页面截图交回同一模型，提示词要求它检查并修补可见错误。
+- **边界：** Chromium 不可用时不提供预览工具，循环也不强制调用或计算相似度分数；停止看模型是否结束、是否到 30 轮或触及有定价模型的预算，不看质量阈值。
+- **源码：** [预览返回第 10–99 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/screenshot_preview.py#L10-L99)、[Chromium 渲染第 30–88 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/preview_screenshot/playwright_backend.py#L30-L88)、[工具可用条件第 25–39 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/providers/factory.py#L25-L39)、[预览指令第 19 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/prompts/system_prompt.py#L19-L19)、[循环停止条件第 218–276 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/engine.py#L218-L276)。
+
+### 4. 并行跑独立版本，不只押一个初稿
+
+- **解决：** 同一个模型自检时，可能继续看不出自己初稿里的视觉偏差。
+- **做法：** 截图初稿从有 key 的厂商中选出四个模型槽位（四份独立生成任务），每个槽位启动一个 agent 任务并发生成。最后由用户挑方案，不是机器按分数选冠军。
+- **边界：** 可用模型少时，多个槽位会重复同一模型；修改和录屏只跑两个版本，不是四个。备选多不等于像素级还原已获证明。
+- **源码：** [四槽位默认值第 3–4 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/config.py#L3-L4)、[选择与模式边界第 417–499 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/routes/generate_code.py#L417-L499)、[并发任务第 589–611 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/routes/generate_code.py#L589-L611)。
+```
 
 ### "When NOT to use" names substitutes
 

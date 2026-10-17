@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "blocks", "en": "Parsed PDF blocks", "zh": "已解析的 PDF 块", "kind": "input"},
+    {"id": "images", "en": "Image handlers: eight-worker pool", "zh": "图片处理：八线程池", "technique": [2]},
+    {"id": "storage", "en": "Registered adapter uploads / retrieves reference", "zh": "注册的适配器上传并取回引用", "kind": "external", "technique": [2]},
+    {"id": "gate", "en": "OCR switch / vision model / user / URL", "zh": "OCR 开关、视觉模型、用户、网址", "technique": [3]},
+    {"id": "empty", "en": "Empty OCR text; not extraction success", "zh": "空 OCR 文本，不是抽取成功"},
+    {"id": "model", "en": "Vision request: timeout 30s;\nRate limit: up to 3 application attempts", "zh": "视觉请求：超时参数 30 秒；\n限流时应用层最多尝试三次", "kind": "external", "technique": [3]},
+    {"id": "usage", "en": "Separate usage report;\nReport failure only logged", "zh": "独立上报用量；\n上报失败记日志", "kind": "external", "technique": [3]},
+    {"id": "ocr", "en": "OCR text / empty-content marker / failure marker", "zh": "OCR 文本／空内容标记／失败标记"},
+    {"id": "tree", "en": "Merge paragraphs; infer parents with stack;\nCatalogue / title / font / list rules", "zh": "合段，按父节点栈推断归属；\n目录、标题、字体与列表规则", "technique": [1]},
+    {"id": "out", "en": "Document tree + Markdown;\nGrouping / reading order need review", "zh": "文档树与 Markdown；\n分组和阅读顺序仍须复核", "kind": "output", "technique": [1]}
+  ],
+  "edges": [
+    {"from": "blocks", "to": "images"},
+    {"from": "images", "to": "storage", "en": "adapter present", "zh": "存在适配器"},
+    {"from": "storage", "to": "gate", "en": "both dimensions > 28px", "zh": "宽高均大于 28 像素"},
+    {"from": "storage", "to": "empty", "en": "exception or small image", "zh": "异常或小图"},
+    {"from": "gate", "to": "empty", "en": "conditions fail", "zh": "条件不满足"},
+    {"from": "gate", "to": "model", "en": "conditions met", "zh": "条件满足", "style": "dashed"},
+    {"from": "model", "to": "usage", "en": "response has usage", "zh": "响应带用量", "style": "dashed"},
+    {"from": "model", "to": "ocr"},
+    {"from": "ocr", "to": "tree"},
+    {"from": "empty", "to": "tree"},
+    {"from": "images", "to": "tree", "en": "no image work", "zh": "无需处理图片"},
+    {"from": "tree", "to": "out"}
+  ],
+  "sources": [
+    "https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/domtree/domtree.py#L68-L146",
+    "https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/domtree_parser.py#L43-L164",
+    "https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/provider/image_provider.py#L8-L60",
+    "https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/common/ocr.py#L13-L124"
+  ]
+}

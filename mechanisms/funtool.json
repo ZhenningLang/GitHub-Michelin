@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "catalog", "en": "Current README distribution map", "zh": "当前 README 分发映射", "kind": "input", "technique": [1]},
+    {"id": "kimi", "en": "Kimi EXE: internals not public", "zh": "Kimi 专用 EXE：内部未公开", "kind": "output", "technique": [1]},
+    {"id": "shared", "en": "Four headings share one EXE: internals not public", "zh": "四标题共用 EXE：内部未公开", "kind": "output", "technique": [1]},
+    {"id": "docs", "en": "Separate article per heading: bodies not obtained", "zh": "各标题独立文章：正文未取得", "kind": "external", "technique": [1]},
+    {"id": "offline", "en": "Historical WeChat tool: explicitly offline", "zh": "历史微信工具：已声明下线", "kind": "input"},
+    {"id": "ws", "en": "client.js: constructor, codes and callbacks", "zh": "client.js：构造、编号、回调", "technique": [2]},
+    {"id": "syntax", "en": "Syntax error at line 47: cannot load", "zh": "第 47 行语法错误：无法加载", "kind": "output", "technique": [2]},
+    {"id": "http", "en": "http.js: old client examples, not server", "zh": "http.js：旧客户端例子，非服务器", "technique": [3]},
+    {"id": "requests", "en": "POST shapes: text, picture, member, nickname", "zh": "POST 形状：文本、图片、成员、昵称", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "catalog", "to": "kimi", "en": "Kimi K2.5 file link", "zh": "Kimi K2.5 文件链接"},
+    {"from": "catalog", "to": "shared", "en": "GLM / Qwen / Step / DeepSeek file links", "zh": "GLM／Qwen／Step／DeepSeek 文件链接"},
+    {"from": "catalog", "to": "docs", "en": "documentation links only", "zh": "仅说明入口"},
+    {"from": "offline", "to": "ws"},
+    {"from": "ws", "to": "syntax", "en": "syntax-only check; no execution", "zh": "仅语法检查，未执行"},
+    {"from": "offline", "to": "http"},
+    {"from": "http", "to": "requests", "en": "definitions and text-send invocation, not run", "zh": "定义及发文本调用，未运行"}
+  ],
+  "sources": [
+    "https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/README.md#L12-L31",
+    "https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/client.js#L4-L49",
+    "https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/http.js#L35-L115"
+  ]
+}

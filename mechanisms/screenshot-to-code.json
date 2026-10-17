@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "shot", "en": "Original screenshot", "zh": "原始截图", "kind": "input"},
+    {"id": "variants", "en": "Select four model slots for a screenshot draft", "zh": "截图初稿选择四个模型槽位", "technique": [4]},
+    {"id": "agent", "en": "Independent tool-calling agent per slot", "zh": "每槽位独立的工具调用 agent"},
+    {"id": "crop", "en": "Gemini boxes to original-image crops", "zh": "Gemini 定位框换算后裁原图", "technique": [2]},
+    {"id": "gen", "en": "Optional Replicate image generation", "zh": "按需用 Replicate 生成替代图", "kind": "external", "technique": [2]},
+    {"id": "html", "en": "HTML state: create_file or exact edit_file", "zh": "HTML 状态：整页创建或精确替换", "kind": "output", "technique": [1]},
+    {"id": "preview", "en": "Optional Chromium desktop and mobile screenshots", "zh": "可选 Chromium 桌面与手机截图", "technique": [3]},
+    {"id": "pick", "en": "Alternatives for human selection; no machine score", "zh": "供人挑选的方案；无机器评分", "kind": "output", "technique": [4]}
+  ],
+  "edges": [
+    {"from": "shot", "to": "variants"},
+    {"from": "variants", "to": "agent", "en": "parallel tasks", "zh": "并发任务"},
+    {"from": "shot", "to": "crop", "en": "if extraction is requested", "zh": "请求裁图时", "style": "dashed"},
+    {"from": "crop", "to": "agent", "en": "crop URLs and previews", "zh": "裁图 URL 与预览", "style": "dashed"},
+    {"from": "agent", "to": "gen", "style": "dashed"},
+    {"from": "gen", "to": "agent", "en": "image URLs", "zh": "图片 URL", "style": "dashed"},
+    {"from": "agent", "to": "html", "en": "tool results feed next model turn", "zh": "工具结果进入下一模型轮次"},
+    {"from": "html", "to": "preview", "style": "dashed"},
+    {"from": "preview", "to": "agent", "en": "same model inspects and may patch", "zh": "同一模型目测后可修补", "style": "dashed"},
+    {"from": "html", "to": "pick", "en": "per-variant output", "zh": "各版本输出"}
+  ],
+  "sources": [
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/runtime.py#L68-L90",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/extract_assets.py#L1-L190",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/prompts/system_prompt.py#L15-L25",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/routes/generate_code.py#L589-L611",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/screenshot_preview.py#L10-L99",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/providers/factory.py#L25-L39",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/routes/generate_code.py#L417-L499",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/config.py#L3-L4",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/runtime.py#L101-L257",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/engine.py#L218-L325",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/asset_extraction.py#L293-L343"
+  ]
+}

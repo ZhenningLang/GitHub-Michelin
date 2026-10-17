@@ -7,7 +7,7 @@ tags: [llm-eval, ai-text-detection, dataset, detector]
 language: Python
 license: NOASSERTION
 maturity: research snapshot, main last changed 2023-06-27, 1479 stars (as of 2026-10)
-last_verified: 2026-10-13
+last_verified: 2026-10-17
 type: tool
 upstream:
   pushed_at: 2023-12-01T16:03:51Z
@@ -116,9 +116,53 @@ Use the corpus path first: open the English or Chinese dataset links in [README.
 
 ## Key techniques
 
-- **Remove easy identity clues before measuring detection.** [HC3/demo_indicating_words.ipynb:98–127](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/HC3/demo_indicating_words.ipynb#L98-L127) splits answers into sentences, removes any sentence containing a listed identifying phrase, and normalizes a Chinese form of address. This tests whether a detector relies on obvious phrases rather than broader writing patterns; the fixed lists can also remove substantive content and cannot eliminate every shortcut.
-- **Switch between answer-only and paired-question classification.** [detect/dl_train.py:53–98](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/detect/dl_train.py#L53-L98) reads local CSV splits, can combine full answers and sentences, then tokenizes either the answer or question plus answer with truncation. The question supplies context, but the length limit drops longer material; `--all-train` explicitly merges test data into training and must not be mistaken for held-out evaluation.
-- **Turn token predictability into small classifier inputs.** [detect/ml_train.py:45–81](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/detect/ml_train.py#L45-L81) counts tokens in four GPT-2 probability-rank buckets; [detect/ml_train.py:241–262](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/detect/ml_train.py#L241-L262) fits logistic regression with repeated stratified cross-validation. This separates feature extraction from classification, but inherits the scoring model and corpus biases, and cross-validation does not establish performance on unseen generators.
+![chatgpt-comparison-detection — mechanism diagram](../../assets/mechanism/chatgpt-comparison-detection.svg)
+
+<!-- mechanism:begin (generated from mechanisms/chatgpt-comparison-detection.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>Text version of the mechanism</summary>
+
+- Answers in the filtering notebook
+- Split sentences, normalize address, drop matching sentences①
+- Filtered text; separate notebook output
+- Local train/test CSVs; independently prepared
+- dl_train.py: optionally combine full answers and sentences②
+- Answer or question + answer; truncate②
+- Train sequence classifier; all-train removes held-out test
+- ml_train.py: GPT-2 rank counts in four buckets③
+- Logistic regression with repeated stratified folds③
+
+- Answers in the filtering notebook → Split sentences, normalize address, drop matching sentences①
+- Split sentences, normalize address, drop matching sentences① → Filtered text; separate notebook output
+- Local train/test CSVs; independently prepared → dl_train.py: optionally combine full answers and sentences②
+- dl_train.py: optionally combine full answers and sentences② → Answer or question + answer; truncate②
+- Answer or question + answer; truncate② → Train sequence classifier; all-train removes held-out test
+- Local train/test CSVs; independently prepared → ml_train.py: GPT-2 rank counts in four buckets③
+- ml_train.py: GPT-2 rank counts in four buckets③ → Logistic regression with repeated stratified folds③
+
+</details>
+<!-- mechanism:end -->
+
+### 1. Remove giveaway sentences, not just giveaway words
+
+- **Problem:** A detector may recognize an explicit identity phrase instead of learning broader writing patterns.
+- **How:** The filtering notebook splits an answer into sentences, normalizes the Chinese address “您” to “你”, and drops each whole sentence containing a listed identifying phrase.
+- **Limits:** The fixed lists can remove substantive content and cannot eliminate every shortcut. This notebook and the training scripts are separate research tools, not an automatically connected pipeline.
+- **Source:** [HC3/demo_indicating_words.ipynb:98–127](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/HC3/demo_indicating_words.ipynb#L98-L127).
+
+### 2. Choose what context the sequence classifier sees
+
+- **Problem:** Answer-only classification cannot use the question as context, and full answers and individual sentences test different conditions.
+- **How:** `dl_train.py` loads local train/test CSVs, optionally combines full-answer and sentence splits, and tokenizes either answers alone or question–answer pairs. It truncates inputs to the configured length before training a sequence classifier.
+- **Limits:** Truncation discards long material. `--all-train` merges the test split into training and disables its evaluation path; that run is not held-out evaluation.
+- **Source:** [detect/dl_train.py:53–98](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/detect/dl_train.py#L53-L98), [classifier and evaluation setup:109–136](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/detect/dl_train.py#L109-L136).
+
+### 3. Count GPT-2 prediction ranks before fitting a small classifier
+
+- **Problem:** A lightweight classifier needs numeric features rather than raw answer text.
+- **How:** One feature path uses GPT-2 to rank the actual next token among its predictions, then counts four rank buckets: top 10, 10–99, 100–999 and 1000 onward. Logistic regression learns from these counts, with hyperparameters selected by repeated stratified cross-validation—repeated folds that preserve label proportions.
+- **Limits:** Feature extraction is separate from classification, but both inherit scoring-model and corpus biases. Cross-validation within this material does not establish performance on unseen generators.
+- **Source:** [detect/ml_train.py:45–81](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/detect/ml_train.py#L45-L81), [feature dispatch:197–215](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/detect/ml_train.py#L197-L215), [classifier fitting:241–262](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/detect/ml_train.py#L241-L262).
 
 ## Tech stack
 

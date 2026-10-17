@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "wrapped", "en": "Call routed through govern wrapper", "zh": "调用经过 govern 包装器", "kind": "input"},
+    {"id": "policy", "en": "Build context; check configured ring and policy", "zh": "构建上下文，检查配置的权限环与策略", "technique": [1]},
+    {"id": "approval", "en": "Configured coordinator: bind and validate action approval", "zh": "已配置协调器：绑定并验证动作审批", "technique": [3]},
+    {"id": "audit", "en": "Record policy decision; default memory-only", "zh": "记录策略决定，默认仅存内存", "technique": [1]},
+    {"id": "advisory", "en": "Optional advisory; flag and ordinary errors do not block", "zh": "可选建议式检查；标注和普通异常不阻断", "technique": [2]},
+    {"id": "deny", "en": "Do not invoke tool", "zh": "不调用工具", "kind": "output"},
+    {"id": "tool", "en": "Invoke tool; validate external outcome separately", "zh": "调用工具，外部结果另行验证", "kind": "output"},
+    {"id": "acs", "en": "Alternative ACS host example", "zh": "另一条 ACS 宿主示例路径", "kind": "input"},
+    {"id": "verdict", "en": "Host checks pre_tool_call verdict", "zh": "宿主检查 pre_tool_call 决定", "technique": [4]},
+    {"id": "transform", "en": "Host substitutes transformed arguments", "zh": "宿主替换转换后的参数", "technique": [4]}
+  ],
+  "edges": [
+    {"from": "wrapped", "to": "policy"},
+    {"from": "policy", "to": "deny", "en": "ring denies", "zh": "权限环拒绝"},
+    {"from": "policy", "to": "approval", "style": "dashed", "en": "require approval + configured", "zh": "需审批且已配置"},
+    {"from": "approval", "to": "audit"},
+    {"from": "policy", "to": "audit", "en": "other verdict", "zh": "其它策略决定"},
+    {"from": "audit", "to": "deny", "en": "deny", "zh": "拒绝"},
+    {"from": "audit", "to": "advisory", "style": "dashed", "en": "allow + configured", "zh": "允许且已配置"},
+    {"from": "audit", "to": "tool", "en": "allow, no advisory", "zh": "允许且无建议层"},
+    {"from": "advisory", "to": "deny", "en": "block", "zh": "阻断"},
+    {"from": "advisory", "to": "tool", "en": "continue", "zh": "继续"},
+    {"from": "acs", "to": "verdict"},
+    {"from": "verdict", "to": "deny", "en": "not permitted", "zh": "不允许"},
+    {"from": "verdict", "to": "tool", "en": "allow", "zh": "允许"},
+    {"from": "verdict", "to": "transform", "en": "transform", "zh": "转换"},
+    {"from": "transform", "to": "tool"}
+  ],
+  "sources": [
+    "https://github.com/microsoft/agent-governance-toolkit/blob/8b2c96473742e8506e4052e2b0d38ac5a631966e/agent-governance-python/agent-mesh/src/agentmesh/governance/govern.py#L243-L270",
+    "https://github.com/microsoft/agent-governance-toolkit/blob/8b2c96473742e8506e4052e2b0d38ac5a631966e/agent-governance-python/agent-mesh/src/agentmesh/governance/govern.py#L319-L505",
+    "https://github.com/microsoft/agent-governance-toolkit/blob/8b2c96473742e8506e4052e2b0d38ac5a631966e/agent-governance-python/agent-mesh/src/agentmesh/governance/govern.py#L780-L917",
+    "https://github.com/microsoft/agent-governance-toolkit/blob/8b2c96473742e8506e4052e2b0d38ac5a631966e/agent-governance-python/agent-mesh/src/agentmesh/governance/govern.py#L965-L1011",
+    "https://github.com/microsoft/agent-governance-toolkit/blob/8b2c96473742e8506e4052e2b0d38ac5a631966e/examples/acs-email-tool/run.py#L22-L52",
+    "https://github.com/microsoft/agent-governance-toolkit/blob/8b2c96473742e8506e4052e2b0d38ac5a631966e/agent-governance-python/agent-mesh/src/agentmesh/governance/approval_protocol/coordinator.py#L205-L364"
+  ]
+}

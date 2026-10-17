@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "files", "en": "Context, specs, intents and phase records", "zh": "上下文、规格、意图与阶段记录", "kind": "input"},
+    {"id": "budget", "en": "Context: 80 lines outside project block; specs: 50 total", "zh": "上下文块外 80 行，规格全文 50 行", "technique": [1]},
+    {"id": "deps", "en": "Schema checks: packages and nonempty schemas?", "zh": "结构校验：有依赖包与非空 schema？", "technique": [2]},
+    {"id": "validate", "en": "Parse YAML against nonempty schemas; collect errors", "zh": "按非空 schema 解析、校验 YAML，汇集错误", "technique": [2]},
+    {"id": "skip", "en": "Missing packages or missing/empty schema: skip checks", "zh": "缺包或 schema 缺失、为空：跳过对应检查", "technique": [2]},
+    {"id": "contextresult", "en": "context-check result; exit 0 does not mean all checked", "zh": "context-check 结果，退出 0 不等于全查过", "kind": "output"},
+    {"id": "unify", "en": "UNIFY record and linked spec", "zh": "UNIFY 记录与关联规格", "kind": "input"},
+    {"id": "zones", "en": "Read base commit and affected paths", "zh": "读取基准提交与受影响路径", "technique": [3]},
+    {"id": "diff", "en": "Compare named paths: base commit to HEAD", "zh": "点名路径：比较基准提交与 HEAD", "technique": [3]},
+    {"id": "empty", "en": "No parsed paths: warn and exit 0", "zh": "未解析到路径：警告并退出 0", "kind": "output", "technique": [3]},
+    {"id": "drift", "en": "Committed drift: exit 1; none: exit 0", "zh": "有已提交漂移退出 1，否则退出 0", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "files", "to": "budget"},
+    {"from": "budget", "to": "contextresult"},
+    {"from": "files", "to": "deps"},
+    {"from": "deps", "to": "validate", "en": "available", "zh": "齐备"},
+    {"from": "deps", "to": "skip", "style": "dashed", "en": "missing", "zh": "缺失"},
+    {"from": "validate", "to": "contextresult"},
+    {"from": "skip", "to": "contextresult"},
+    {"from": "unify", "to": "zones"},
+    {"from": "zones", "to": "diff", "en": "nonempty", "zh": "非空"},
+    {"from": "zones", "to": "empty", "style": "dashed", "en": "empty", "zh": "空"},
+    {"from": "diff", "to": "drift"}
+  ],
+  "sources": [
+    "https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L71-L132",
+    "https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L167-L251",
+    "https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/freshness-check.sh#L32-L123"
+  ]
+}

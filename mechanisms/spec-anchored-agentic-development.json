@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "spec", "en": "Permanent capability spec and stable rule IDs", "zh": "永久能力规格与稳定规则编号", "kind": "input", "technique": [1]},
+    {"id": "bundle", "en": "Canonical plan / scope / spec bundle fingerprint", "zh": "规范计划、范围、规格包的哈希指纹", "technique": [2]},
+    {"id": "approval", "en": "Supplied approval record; real event checked externally", "zh": "传入批准记录，真实事件由外部核验", "kind": "external"},
+    {"id": "match", "en": "Check fingerprint, repository and run match", "zh": "核对指纹、仓库与运行一致", "technique": [2]},
+    {"id": "policy", "en": "Trusted policy issued outside the worker", "zh": "工作者之外发放的可信策略", "kind": "external", "technique": [3]},
+    {"id": "manifest", "en": "Worker's proposed scope manifest", "zh": "工作者提出的范围清单", "kind": "input", "technique": [3]},
+    {"id": "diff", "en": "Complete real diff supplied by launcher", "zh": "启动器提供完整真实差异", "kind": "input"},
+    {"id": "scope", "en": "Intersect grants; absolute denies; separate truth grants", "zh": "授权求交、绝对拒绝、事实分别授权", "technique": [3]},
+    {"id": "result", "en": "Supplied terminal result artifact", "zh": "传入终态结果产物", "kind": "input"},
+    {"id": "union", "en": "Check exclusive PR-ready / blocker / no-change fields", "zh": "核对待审、阻断、无需改动的互斥字段", "technique": [4]},
+    {"id": "shape", "en": "Artifact consistency only; no proof of remote events", "zh": "仅证明产物一致，不证明远端事件", "kind": "output", "technique": [2, 3, 4]}
+  ],
+  "edges": [
+    {"from": "spec", "to": "bundle"},
+    {"from": "policy", "to": "bundle"},
+    {"from": "bundle", "to": "match"},
+    {"from": "approval", "to": "match"},
+    {"from": "match", "to": "shape"},
+    {"from": "policy", "to": "scope"},
+    {"from": "manifest", "to": "scope"},
+    {"from": "diff", "to": "scope"},
+    {"from": "scope", "to": "shape"},
+    {"from": "result", "to": "union"},
+    {"from": "union", "to": "shape"}
+  ],
+  "sources": [
+    "https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/spec-templates/capability-spec.md#L15-L94",
+    "https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/scripts/spec-anchored#L632-L768",
+    "https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/scripts/spec-anchored#L961-L1208"
+  ]
+}

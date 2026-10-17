@@ -20,6 +20,8 @@ from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 
+import mechanism_card
+
 
 ZH_SUFFIX = ".zh.md"
 ZERO_SHA = "0000000000000000000000000000000000000000"
@@ -70,10 +72,11 @@ DUP_SECTIONS = {
     "何时使用": 0.55, "何时不用": 0.55,
     "Dependencies": 0.65, "Ops difficulty": 0.65, "依赖": 0.65, "运维难度": 0.65,
     "Q&A": 0.40, "快问快答": 0.55,
-    # Key techniques calibration: 21 pairs (21 EN / 21 ZH), 2026-10-14 UTC.
-    # Balanced link targets/URLs stripped; exact directed maxima EN 3/82=0.036585365853658534
-    # (t3code -> background-agents), ZH 1/21=0.047619047619047616
-    # (awesome-deep-trading -> nopecha-extension). Minimum 0.05 grid >= max + 0.10.
+    # Key techniques calibration: 21 structured pairs (21 EN / 21 ZH), 2026-10-17 UTC.
+    # Corpus a15138addad9be92544b43f585dfcc02a229e3d3; generated structure/URL targets stripped.
+    # Exact directed maxima EN 6/124=0.04838709677419355
+    # (awesome-deep-trading -> spec-anchored-agentic-development), ZH 1/43=0.023255813953488372
+    # (t3code -> background-agents). Minimum 0.05 grid >= max + 0.10; both remain 0.15.
     "Key techniques": 0.15, "技术要点": 0.15,
 }
 # Same citation labels can still overlap on short prose; this is not semantic duplicate proof.
@@ -334,6 +337,10 @@ def technique_prose(body: str) -> str:
     # ceiling: flat citation labels/backtick code/ASCII bare URLs, not a Markdown renderer.
     # Extend only for observed richer syntax; do not delete malformed visible prose.
     # Recognized legal titles are hover metadata, not prose; raw-MD readers can still see them.
+    body = mechanism_card.BLOCK_RE.sub("", body)
+    body = re.sub(r"(?m)^!\[[^\r\n]*\]\([^\r\n]*\)[ \t]*$", "", body)
+    body = re.sub(r"(?m)^###[ \t]+[^\r\n]*$", "", body)
+    body = re.sub(r"(?m)^- \*\*(?:Problem:|How:|Limits:|Source:|解决：|做法：|边界：|源码：)\*\*[ \t]*", "", body)
     body = _technique_inline_links(body)
     body = re.sub(r"<https?://[^\s<>]+>", "", body)
     return _technique_bare_urls(body)

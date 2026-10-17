@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id":"input","en":"Untrusted skill files","zh":"未受信技能文件","kind":"input"},
+    {"id":"context","en":"Resolve input and build shared context","zh":"解析输入并建立共享上下文","technique":[1]},
+    {"id":"analyzers","en":"Guarded parallel analyzers","zh":"有异常保护的并行分析器","technique":[1]},
+    {"id":"meta","en":"Meta review combines findings","zh":"汇总审查合并发现","technique":[1]},
+    {"id":"events","en":"Reference, size, load and runtime gaps","zh":"引用、大小、加载及运行缺口","technique":[2]},
+    {"id":"ledger","en":"Finalize coverage ledger","zh":"定稿覆盖账本","technique":[2]},
+    {"id":"fingerprint","en":"Content + version + finding fingerprint","zh":"内容＋版本＋发现指纹","technique":[3]},
+    {"id":"baseline","en":"Reviewer-selected exact or glob baseline","zh":"审查者选用精确或通配豁免","kind":"external","technique":[3]},
+    {"id":"report","en":"Report risk separately from completeness","zh":"分别报告风险与完整性","kind":"output","technique":[2]}
+  ],
+  "edges": [
+    {"from":"input","to":"context"},
+    {"from":"context","to":"analyzers"},
+    {"from":"analyzers","to":"meta"},
+    {"from":"analyzers","to":"events","en":"failures remain visible","zh":"失败仍留记录"},
+    {"from":"meta","to":"ledger"},
+    {"from":"events","to":"ledger"},
+    {"from":"context","to":"fingerprint"},
+    {"from":"meta","to":"fingerprint"},
+    {"from":"fingerprint","to":"baseline","style":"dashed","en":"optional reviewed acceptance","zh":"可选，经审查接受"},
+    {"from":"baseline","to":"report","style":"dashed","en":"suppresses findings, not coverage gaps","zh":"豁免发现，不抹去覆盖缺口"},
+    {"from":"ledger","to":"report"}
+  ],
+  "sources": [
+    "https://github.com/NVIDIA/SkillSpector/blob/cf5cac7ba5c756a6e0ebf52dc9763f49422f889f/src/skillspector/graph.py#L46-L87",
+    "https://github.com/NVIDIA/SkillSpector/blob/cf5cac7ba5c756a6e0ebf52dc9763f49422f889f/src/skillspector/nodes/finalize_inspection_ledger.py#L713-L843",
+    "https://github.com/NVIDIA/SkillSpector/blob/cf5cac7ba5c756a6e0ebf52dc9763f49422f889f/src/skillspector/suppression.py#L216-L308"
+  ]
+}

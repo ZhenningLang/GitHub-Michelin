@@ -7,7 +7,7 @@ tags: [wechat, ilink, im-gateway, app-marketplace, webhook, websocket, self-host
 language: Go
 license: MIT
 maturity: v0.1.36, 1589 stars, no default-branch update since 2026-06 (as of 2026-10-14)
-last_verified: 2026-10-14
+last_verified: 2026-10-17
 type: app
 upstream:
   pushed_at: 2026-06-18T17:22:25Z
@@ -132,10 +132,65 @@ Obtain a pinned release binary, or use the frontend build and `go build -o oih .
 
 ## Key techniques
 
-- **Route specific mentions before generic events, while keeping channels independent.** [app_dispatch.go:25–70](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L25-L70) tries mention and command routing before matching subscribed events. [app_dispatch.go:120–199](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L120-L199) independently sends through WebSocket, a builtin handler and Webhook when each is configured, attaching trace data. This exposes which handoff failed, but multiple active channels can deliver the same event; recipients still need deduplication.
-- **Retry Webhook delivery in memory, not as a durable guarantee.** [retry.go:14–69](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/app/retry.go#L14-L69) attempts once synchronously, then a goroutine waits 10 seconds before retrying and, if that fails, waits another 60 seconds before retrying again. This avoids blocking the first caller on all retries, but process restarts lose that scheduled work. [app_dispatch.go:259–290](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L259-L290) handles the immediate result with a stored context token; retry success is not proof that the same reply path ran.
-- **Cache registry discovery and tolerate stale results.** [client.go:79–108](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/registry/client.go#L79-L108) combines sources while skipping partial failures. [client.go:130–183](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/registry/client.go#L130-L183) normalizes the registry URL, bounds reads and returns cached manifests on fetch/parse failures. Availability improves, but a listed App can be stale; discovery is not an audit of its remote endpoints, tools or scopes.
-- **Bootstrap authority from user count.** [auth_password.go:37–61](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/api/auth_password.go#L37-L61) makes the first password registrant a superadministrator, while [config_handler.go:236–243](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/api/config_handler.go#L236-L243) permits registration unless the stored value is explicitly false. This simplifies first setup, not public hardening; claiming the instance privately is essential.
+![OpeniLink Hub — mechanism diagram](../../assets/mechanism/openilink-hub.svg)
+
+<!-- mechanism:begin (generated from mechanisms/openilink-hub.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>Text version of the mechanism</summary>
+
+- Incoming bot message
+- Mention → command → subscribed event; Attach trace; select Apps①
+- WebSocket if connected①
+- Builtin handler if configured①
+- Webhook: first synchronous attempt①②
+- Memory task: wait 10s, then 60s if needed; Lost on restart; delivery only②
+- Eligible first-result reply; Use stored context token②
+- Independent: registry sources
+- Normalize URL; read up to 10 MiB; On error use existing cache③
+- Merge available listings; may be stale; All sources fail: error③
+- Independent: password registration; Check user count④
+- Zero users: superadmin; Otherwise: registration gate, then member④
+
+- Incoming bot message → Mention → command → subscribed event; Attach trace; select Apps①
+- Mention → command → subscribed event; Attach trace; select Apps① → WebSocket if connected① (independent)
+- Mention → command → subscribed event; Attach trace; select Apps① → Builtin handler if configured① (independent)
+- Mention → command → subscribed event; Attach trace; select Apps① → Webhook: first synchronous attempt①② (independent)
+- Webhook: first synchronous attempt①② → Memory task: wait 10s, then 60s if needed; Lost on restart; delivery only② (delivery error) [optional/fallback]
+- Webhook: first synchronous attempt①② → Eligible first-result reply; Use stored context token② (first result only)
+- Independent: registry sources → Normalize URL; read up to 10 MiB; On error use existing cache③
+- Normalize URL; read up to 10 MiB; On error use existing cache③ → Merge available listings; may be stale; All sources fail: error③
+- Independent: password registration; Check user count④ → Zero users: superadmin; Otherwise: registration gate, then member④
+
+</details>
+<!-- mechanism:end -->
+
+### 1. Prioritize directed messages, then fan out through independent channels
+
+- **Problem:** A message addressed to one App should not also take the generic subscription route, while each configured transport still needs its own delivery attempt.
+- **How:** The dispatcher tries a specific mention, then a slash command, then subscribed message events, stopping route selection when a directed match is handled. For each selected App, WebSocket, the builtin handler and Webhook run independently when configured, with trace data that links the handoff records.
+- **Limits:** Independent channels can deliver the same event more than once, so recipients need deduplication. A trace helps locate failure; it is not an end-to-end delivery guarantee.
+- **Source:** [app_dispatch.go:25–114](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L25-L114), [independent channels:117–200](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L117-L200).
+
+### 2. Retry delivery without extending the immediate reply path
+
+- **Problem:** Waiting through every Webhook retry would delay the original message handler.
+- **How:** Hub makes one synchronous attempt; on failure a background goroutine, a lightweight Go task, waits 10 seconds and retries, then waits another 60 seconds if needed. The dispatcher processes the first result separately and uses the stored context token for an eligible immediate reply.
+- **Limits:** Scheduled retries live only in memory and disappear on process restart; successful retry delivery does not invoke that immediate-reply handler. Async results and empty text replies are also not sent through its synchronous text path.
+- **Source:** [retry.go:14–81](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/app/retry.go#L14-L81), [first-result handling:179–200](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L179-L200), [reply handling:259–290](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L259-L290).
+
+### 3. Keep discovery available with bounded reads and stale-cache fallback
+
+- **Problem:** One unavailable App registry should not erase every other source's listings.
+- **How:** The client normalizes registry URLs, reads at most 10 MiB and caches parsed manifests, the lists describing available Apps. Fetch/HTTP/read/parse failures return an existing cache; aggregation skips failed sources and errors if all sources fail without a usable result.
+- **Limits:** Cached success can hide stale listings, and the byte limit is not a trust check. Discovering an App does not audit its remote endpoints, tools or permission scopes.
+- **Source:** [client.go:79–108](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/registry/client.go#L79-L108), [cache/fetch handling:130–183](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/registry/client.go#L130-L183).
+
+### 4. Assign bootstrap authority from the user count
+
+- **Problem:** A fresh instance needs an initial administrator before ordinary membership exists.
+- **How:** Password registration assigns `superadmin` when the user count is zero; later registrations become members and check the registration switch. That switch defaults to enabled unless its stored value is exactly `false`, and the first-user path bypasses the closed-registration check.
+- **Limits:** This is convenient bootstrap, not public hardening; claim the instance privately before exposing it. Registry discovery and administrator bootstrap are separate mechanisms, not mandatory steps of each message delivery.
+- **Source:** [auth_password.go:37–61](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/api/auth_password.go#L37-L61), [config_handler.go:236–243](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/api/config_handler.go#L236-L243).
 
 ## Tech stack
 

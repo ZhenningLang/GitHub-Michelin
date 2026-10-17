@@ -952,6 +952,418 @@ class V2GeneratorTest(unittest.TestCase):
                         self.assertTrue(any("still carry <!-- oss-atlas:unresearched -->" in e for e in rep.errors))
 
 
+class StructuredTechniquesTest(unittest.TestCase):
+    def setUp(self):
+        import copy
+        import mechanism_card as mc
+        from test_mechanism_card import SPEC, technique_body, fake_d2
+        from test_flow_card import SPEC as FLOW
+        self.mc = mc
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        texts = [contract_page(zh).replace("last_verified: 2026-10-13", "last_verified: 2026-10-15").replace("A source-backed implementation technique.", technique_body(zh)) for zh in (False, True)]
+        self.page = LintContractTest()._write_pair(self.root, *texts)
+        (self.root / "flows").mkdir()
+        (self.root / "flows/demo.json").write_text(json.dumps(FLOW))
+        (self.root / "assets/flow").mkdir()
+        for lang, path in (("en", self.page), ("zh", self.page.with_name("demo.zh.md"))):
+            (self.root / f"assets/flow/demo{'.zh' if lang == 'zh' else ''}.svg").write_text(lint.flow_card.render(FLOW, lang))
+            lint.flow_card.sync_page(path, self.root, FLOW, "demo")
+        self.spec = copy.deepcopy(SPEC)
+        (self.root / "mechanisms").mkdir()
+        self.source = self.root / "mechanisms/demo.json"
+        self.source.write_text(json.dumps(self.spec))
+        self.d2 = fake_d2(self.root)
+        for key, value in {"SECTIONS_V2_FROM": "2026-10-13", "TECHNIQUES_STRUCTURED_FROM": "2026-10-15", "FLOW_REQUIRED_FROM": "2026-09-20", "REQUIRE_FLOW": False}.items():
+            patcher = mock.patch.object(lint, key, value, create=True)
+            patcher.start()
+            self.addCleanup(patcher.stop)
+        self.generate()
+        self.originals = [self.page.read_text(), self.page.with_name("demo.zh.md").read_text()]
+
+    def generate(self):
+        with mock.patch.object(self.mc, "ROOT", self.root), mock.patch.object(self.mc.shutil, "which", return_value=self.d2), contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(self.mc.main([str(self.page)]), 0)
+
+    def check(self, texts=None):
+        if texts is not None:
+            for path, text in zip((self.page, self.page.with_name("demo.zh.md")), texts):
+                path.write_text(text)
+        reports = []
+        for path in (self.page, self.page.with_name("demo.zh.md")):
+            rep = lint.Report()
+            lint.check_page(path, path.parent, self.root, set(), rep, lint.dt.date(2026, 10, 15))
+            reports.append(rep)
+        return reports
+
+    def assert_bad(self, edit, needle):
+        baseline = self.check(self.originals)
+        self.assertEqual([e for r in baseline for e in r.errors], [])
+        for i in (0, 1):
+            texts = self.originals.copy()
+            texts[i] = edit(texts[i], bool(i))
+            rep = self.check(texts)[i]
+            self.assertTrue(any(needle in e for e in rep.errors), rep.errors)
+
+    def test_kts_acc2_01_missing_image(self):
+        self.assert_bad(lambda text, zh: re.sub(r"(?m)^!\[Demo — (?:mechanism diagram|机制图)\].*\n", "", text), "mechanism image")
+
+    def test_kts_acc2_02_missing_image_file(self):
+        for suffix in ("", ".zh"):
+            (self.root / f"assets/mechanism/demo{suffix}.svg").unlink()
+        for report in self.check():
+            self.assertTrue(any("mechanism SVG missing" in e for e in report.errors), report.errors)
+
+    def test_kts_acc2_03_missing_generated_block(self):
+        self.assert_bad(lambda text, zh: self.mc.BLOCK_RE.sub("", text), "mechanism text block missing")
+
+    def test_kts_acc2_04_manual_text_edit(self):
+        self.assert_bad(lambda text, zh: text.replace("- 输入", "- 手改") if zh else text.replace("- Input", "- Edited"), "mechanism text block drifted")
+
+    def test_kts_acc2_05_stale_svg_hash(self):
+        for suffix in ("", ".zh"):
+            path = self.root / f"assets/mechanism/demo{suffix}.svg"
+            path.write_text(path.read_text().replace(self.mc.spec_hash(self.spec), "0" * 64))
+        for report in self.check():
+            self.assertTrue(any("mechanism SVG stale" in e and "python3 tools/mechanism_card.py" in e for e in report.errors), report.errors)
+
+    def test_kts_acc2_12_bilingual_technique_count(self):
+        text = self.originals[1]
+        self.page.with_name("demo.zh.md").write_text(re.sub(r"(?ms)^### 2\..*?(?=^## )", "", text))
+        report = self.check()[0]
+        self.assertTrue(any("technique counts must match" in e for e in report.errors), report.errors)
+
+    def test_kts_acc2_15_yesterday_prose_v2_is_accepted(self):
+        texts = [self.mc.BLOCK_RE.sub("", text).replace("last_verified: 2026-10-15", "last_verified: 2026-10-14") for text in self.originals]
+        texts = [re.sub(r"(?ms)^### 1\..*?(?=^## )", "Old researched prose.\n\n", text) for text in texts]
+        for report in self.check(texts):
+            self.assertEqual(report.errors, [])
+
+    def test_kts_acc2_16_v1_is_unaffected_even_with_earlier_threshold(self):
+        from test_flow_card import SPEC as FLOW
+        with mock.patch.object(lint, "TECHNIQUES_STRUCTURED_FROM", "2026-01-01"):
+            texts = [contract_page(zh, v2=False) for zh in (False, True)]
+            for path, text in zip((self.page, self.page.with_name("demo.zh.md")), texts):
+                path.write_text(text)
+                lint.flow_card.sync_page(path, self.root, FLOW, "demo")
+            for report in self.check():
+                self.assertEqual(report.errors, [])
+
+    def test_kts_acc2_17_unresearched_only_keeps_marker_error(self):
+        texts = []
+        for zh, text in enumerate(self.originals):
+            span = self.mc.section_bounds(text, "zh" if zh else "en")
+            texts.append(text[:span[0]] + "\n" + lint.UNRESEARCHED_MARKER + "\n\n" + text[span[1]:])
+        for report in self.check(texts):
+            self.assertEqual(len(report.errors), 1, report.errors)
+            self.assertIn("still carry", report.errors[0])
+
+    def test_bad_or_absent_source_and_stamp_are_diagnostic(self):
+        for invalid in (None, "{bad", "[]"):
+            if invalid is None:
+                self.source.unlink()
+            else:
+                self.source.write_text(invalid)
+            for report in self.check():
+                self.assertTrue(any("mechanism spec" in e for e in report.errors), report.errors)
+        self.source.write_text(json.dumps(self.spec))
+        for stamp in ("", "<!-- mechanism-src sha256=bad -->"):
+            for suffix in ("", ".zh"):
+                (self.root / f"assets/mechanism/demo{suffix}.svg").write_text(stamp + "<svg />")
+            for report in self.check():
+                self.assertTrue(any("mechanism SVG stale" in e for e in report.errors), report.errors)
+        (self.root / "assets/mechanism/demo.svg").write_bytes(b"\xff\xfe")
+        self.assertTrue(any("unreadable" in e for e in self.check()[0].errors))
+
+    def test_threshold_environment_invalid_date_and_unrelated_marker(self):
+        import os
+        import subprocess
+        default_env = dict(os.environ)
+        default_env.pop("OSS_ATLAS_TECHNIQUES_STRUCTURED_FROM", None)
+        default = subprocess.run([sys.executable, "-B", "-c", "import lint; print(lint.TECHNIQUES_STRUCTURED_FROM)"], cwd=Path(lint.__file__).parent, env=default_env, capture_output=True, text=True, check=True)
+        self.assertEqual(default.stdout.strip(), "2026-10-15")
+        for date, expected in (("2026-10-14", False), ("2026-10-15", True), ("bad", False), (None, False)):
+            self.assertEqual(lint.techniques_structured(date), expected)
+        with mock.patch.object(lint, "TECHNIQUES_STRUCTURED_FROM", "invalid"):
+            self.assertFalse(lint.techniques_structured("2026-10-15"))
+        env = dict(os.environ, OSS_ATLAS_TECHNIQUES_STRUCTURED_FROM="2026-10-16")
+        result = subprocess.run([sys.executable, "-B", "-c", "import lint; print(lint.techniques_structured('2026-10-15'), lint.techniques_structured('2026-10-16'))"], cwd=Path(lint.__file__).parent, env=env, capture_output=True, text=True, check=True)
+        self.assertEqual(result.stdout.strip(), "False True")
+        texts = [text.replace("You use it.", lint.UNRESEARCHED_MARKER) for text in self.originals]
+        texts[0] = self.mc.BLOCK_RE.sub("", texts[0])
+        report = self.check(texts)[0]
+        self.assertTrue(any("mechanism text block missing" in e for e in report.errors), report.errors)
+
+    def run_main(self):
+        for zh in (False, True):
+            suffix = ".zh.md" if zh else ".md"
+            (self.page.parent / f"INDEX{suffix}").write_text(f"[Demo](demo{suffix})\n")
+            (self.root / f"INDEX{suffix}").write_text(f"[Demo](categories/demo/INDEX{suffix})\n")
+            (self.root / f"README{suffix}").write_text(f"[Demo](categories/demo/demo{suffix})\n")
+        out = io.StringIO()
+        with mock.patch.object(lint, "today_utc", return_value=lint.dt.date(2026, 10, 15)), mock.patch.object(sys, "argv", ["lint.py", "--root", str(self.root)]), contextlib.redirect_stdout(out):
+            code = lint.main()
+        return code, out.getvalue()
+
+    def test_e2e_cli_lint_source_drift_and_recovery_without_d2(self):
+        with mock.patch.object(self.mc.shutil, "which", return_value=None), mock.patch.object(self.mc.subprocess, "run", side_effect=AssertionError("lint must not render")):
+            code, output = self.run_main()
+            self.assertEqual(code, 0, output)
+            self.spec["nodes"][1]["en"] = "Parse differently"
+            self.source.write_text(json.dumps(self.spec))
+            code, output = self.run_main()
+            self.assertEqual(code, 1)
+            self.assertIn("mechanism SVG stale", output)
+            self.assertIn("mechanism text block drifted", output)
+        self.generate()
+        self.assertEqual(self.run_main()[0], 0)
+        before = {p: p.read_bytes() for p in (self.page, self.page.with_name("demo.zh.md"), *sorted((self.root / "assets/mechanism").glob("*.svg")))}
+        with mock.patch.object(self.mc, "ROOT", self.root), mock.patch.object(self.mc.shutil, "which", return_value=None), contextlib.redirect_stderr(io.StringIO()):
+            self.assertEqual(self.mc.main([str(self.page)]), 2)
+        self.assertEqual({p: p.read_bytes() for p in before}, before)
+
+    def test_chinese_punctuation_main_and_generated_block_boundaries(self):
+        # Chinese label values may contain ASCII punctuation in JSON; only the generated block is exempt.
+        self.spec["nodes"][0]["zh"] = "输入,可见"
+        self.source.write_text(json.dumps(self.spec))
+        self.generate()
+        code, output = self.run_main()
+        self.assertEqual(code, 0, output)
+        path = self.page.with_name("demo.zh.md")
+        good = path.read_text()
+        for bad in (good.replace("**解决：**", "**解决:**", 1),
+                    good.replace("Value 1-0.", "汉字,", 1),
+                    good.replace(self.mc.END, "<!-- mechanism:broken -->", 1)):
+            path.write_text(bad)
+            code, output = self.run_main()
+            self.assertEqual(code, 1, output)
+            self.assertIn("ASCII , ; ! ?", output)
+        path.write_text(good + "\n```text\n汉字,\n```\n")
+        self.assertEqual(self.run_main()[0], 0)
+
+    def test_punctuation_fake_blocks_in_other_sections_still_fail_main(self):
+        fake = "<!-- mechanism:begin (not generated) -->\n汉字,汉字;\n<!-- mechanism:end -->\n"
+        self.assertEqual(self.run_main()[0], 0)
+        path = self.page.with_name("demo.zh.md")
+        good = path.read_text()
+        for heading in ("## 何时使用", "## 技术栈", "## 存疑（未验证）"):
+            with self.subTest(heading=heading):
+                path.write_text(good.replace(heading + "\n", heading + "\n\n" + fake, 1))
+                code, output = self.run_main()
+                self.assertEqual(code, 1, output)
+                self.assertIn("ASCII , ; ! ?", output)
+        path.write_text(good)
+
+    def test_punctuation_fake_blocks_in_summary_files_and_old_pages_not_exempt(self):
+        fake = "<!-- mechanism:begin (not generated) -->\n汉字,汉字;\n<!-- mechanism:end -->\n"
+        self.assertEqual(self.run_main()[0], 0)
+        # run_main refreshes fixture routing files, so capture its own main() invocation here.
+        for path in (self.root / "README.zh.md", self.page.parent / "INDEX.zh.md"):
+            original = path.read_text()
+            path.write_text(original + "\n" + fake)
+            out = io.StringIO()
+            with mock.patch.object(lint, "today_utc", return_value=lint.dt.date(2026, 10, 15)), mock.patch.object(sys, "argv", ["lint.py", "--root", str(self.root)]), contextlib.redirect_stdout(out):
+                code = lint.main()
+            self.assertEqual(code, 1, out.getvalue())
+            self.assertIn("ASCII , ; ! ?", out.getvalue())
+            path.write_text(original)
+        for date in ("2026-06-29", "2026-10-14"):
+            text = f"---\nlast_verified: {date}\n---\n\n## 技术要点\n\n{fake}"
+            self.assertEqual(lint.zh_punct_violations(text), 2)
+
+    def test_kts_acc2_06_too_few_techniques(self):
+        self.assert_bad(lambda text, zh: re.sub(r"(?ms)^### 2\..*?(?=^## )", "", text), "at least 2")
+
+    def test_kts_acc2_07_non_contiguous_numbering(self):
+        self.assert_bad(lambda text, zh: text.replace("### 2.", "### 3."), "continuous")
+
+    def test_kts_acc2_08_missing_label(self):
+        self.assert_bad(lambda text, zh: re.sub(r"(?m)^- \*\*(?:How:|做法：)\*\*.*\n", "", text, count=1), "four labels")
+
+    def test_kts_acc2_09_label_order(self):
+        self.assert_bad(lambda text, zh: text.replace("**解决：**", "**边界：**", 1) if zh else text.replace("**Problem:**", "**Limits:**", 1), "four labels")
+
+    def test_kts_acc2_10_empty_label_value(self):
+        self.assert_bad(lambda text, zh: text.replace("Value 1-0.", " \t ", 1), "empty label")
+
+    def test_kts_acc2_11_source_needs_link(self):
+        self.assert_bad(lambda text, zh: text.replace("[design](https://example.org/design)", "design", 1), "Source / 源码")
+
+    def test_source_links_inside_code_or_escaped_are_rejected_en_zh_via_main(self):
+        link = "[design](https://example.org/design)"
+        for fake in (f"`{link}`", f"``{link}``", "\\" + link, "!" + link):
+            for zh in (False, True):
+                with self.subTest(fake=fake, zh=zh):
+                    texts = self.originals.copy()
+                    texts[int(zh)] = texts[int(zh)].replace(link, fake)
+                    report = self.check(texts)[int(zh)]
+                    errors = [e for e in report.errors if "Source / 源码 must contain" in e]
+                    self.assertEqual(len(errors), 2, report.errors)
+                    code, output = self.run_main()
+                    self.assertEqual(code, 1, output)
+                    self.assertIn("Source / 源码 must contain", output)
+
+    def test_source_real_links_with_code_labels_and_continuations_remain_valid(self):
+        link = "[design](https://example.org/design)"
+        for actual in ("[`src.py:1–4`](https://example.org/src.py#L1-L4)",
+                       "`not a link` then " + link,
+                       "See the source below.\n  " + link,
+                       "\\\\" + link,
+                       "\\!" + link):
+            with self.subTest(actual=actual):
+                texts = [text.replace(link, actual) for text in self.originals]
+                self.assertEqual([e for r in self.check(texts) for e in r.errors], [])
+                code, output = self.run_main()
+                self.assertEqual(code, 0, output)
+
+    def test_source_indented_code_blocks_do_not_count_as_links_en_zh_via_main(self):
+        link = "[design](https://example.org/design)"
+        for indent in (" " * 6, " " * 8, "\t\t"):
+            for zh in (False, True):
+                with self.subTest(indent=repr(indent), zh=zh):
+                    texts = self.originals.copy()
+                    texts[int(zh)] = texts[int(zh)].replace(link, "Example only.\n\n" + indent + link)
+                    report = self.check(texts)[int(zh)]
+                    self.assertEqual(len([e for e in report.errors if "Source / 源码 must contain" in e]), 2, report.errors)
+                    code, output = self.run_main()
+                    self.assertEqual(code, 1, output)
+                    self.assertIn("Source / 源码 must contain", output)
+
+    def test_source_ordinary_continuations_and_links_after_code_stay_valid(self):
+        link = "[design](https://example.org/design)"
+        values = (
+            "See below.\n  " + link,
+            "See below.\n\n  " + link,
+            "See below.\n\n    " + link,  # four source spaces = two in the list item
+            "See below.\n      " + link,  # no blank: indented line continues the paragraph
+            "Example only.\n\n      `[fake](https://example.org/fake)`\n\n  " + link,
+            "[`src.py`](https://example.org/src.py)",
+        )
+        for value in values:
+            with self.subTest(value=value):
+                texts = [text.replace(link, value) for text in self.originals]
+                self.assertEqual([e for r in self.check(texts) for e in r.errors], [])
+                code, output = self.run_main()
+                self.assertEqual(code, 0, output)
+
+    def test_source_comments_html_and_quotes_do_not_count_en_zh_via_main(self):
+        link = "[design](https://example.org/design)"
+        probes = (
+            ("Example only. <!-- " + link + " -->", "Source / 源码 must contain"),
+            ("Example only. <!-- hidden\n  " + link + " -->", "Source / 源码 must contain"),
+            ("Example only.\n\n  <div>" + link + "</div>", "Source must be plain prose with inline links"),
+            ("Example only.\n\n  >     " + link, "Source must be plain prose with inline links"),
+        )
+        for value, message in probes:
+            for zh in (False, True):
+                with self.subTest(value=value, zh=zh):
+                    texts = self.originals.copy()
+                    texts[int(zh)] = texts[int(zh)].replace(link, value)
+                    report = self.check(texts)[int(zh)]
+                    self.assertEqual(len(report.errors), 2, report.errors)
+                    self.assertTrue(all(message in error for error in report.errors), report.errors)
+                    code, output = self.run_main()
+                    self.assertEqual(code, 1, output)
+                    self.assertIn(message, output)
+
+    def test_source_container_continuations_rejected_even_with_a_real_link(self):
+        link = "[design](https://example.org/design)"
+        for continuation in ("  <span>extra</span>", "  > quoted prose", "    <div>extra</div>"):
+            for zh in (False, True):
+                texts = self.originals.copy()
+                texts[int(zh)] = texts[int(zh)].replace(link, link + "\n\n" + continuation)
+                report = self.check(texts)[int(zh)]
+                self.assertTrue(any("Source must be plain prose with inline links" in error for error in report.errors), report.errors)
+                code, output = self.run_main()
+                self.assertEqual(code, 1, output)
+                self.assertIn("Source must be plain prose with inline links", output)
+
+    def test_source_real_links_outside_comments_stay_valid(self):
+        link = "[design](https://example.org/design)"
+        for value in ("Plain prose. <!-- note --> " + link,
+                      "Plain prose. <!-- hidden\n  <div>[fake](https://example.org/fake)</div> -->\n  " + link,
+                      "[`src.py`](https://example.org/src.py) <!-- note -->"):
+            texts = [text.replace(link, value) for text in self.originals]
+            self.assertEqual([e for r in self.check(texts) for e in r.errors], [])
+            code, output = self.run_main()
+            self.assertEqual(code, 0, output)
+
+    def test_shape_positions_extra_content_and_literal_headings(self):
+        edits = [
+            (lambda text, zh: re.sub(r"(?m)^(### 1\..*)$", r"\1\n\nUnexpected paragraph.", text), "top-level"),
+            (lambda text, zh: text.replace("Value 1-0.", "Value 1-0.\n- **Extra:** value", 1), "four labels"),
+            (lambda text, zh: text.replace("### 1.", "### No number", 1), "continuous"),
+            (lambda text, zh: text.replace("### 1.", "```markdown\n### 1.", 1).replace("### 2.", "```\n\n### 2.", 1), "at least 2"),
+        ]
+        for edit, needle in edits:
+            with self.subTest(needle=needle):
+                self.assert_bad(edit, needle)
+        for which in ("image", "block"):
+            def move(text, zh):
+                pattern = r"(?m)^!\[Demo — (?:mechanism diagram|机制图)\].*\n" if which == "image" else self.mc.BLOCK_RE
+                match = re.search(pattern, text) if isinstance(pattern, str) else pattern.search(text)
+                value = match[0]
+                text = text[:match.start()] + text[match.end():]
+                return text.replace("Value 1-3.", "Value 1-3.\n" + value) if "Value 1-3." in text else text.replace("### 2.", value + "\n\n### 2.")
+            self.assert_bad(move, "before first technique")
+
+    def test_literal_images_and_blocks_do_not_satisfy_structure(self):
+        self.assert_bad(lambda text, zh: re.sub(r"(?m)^(!\[Demo — (?:mechanism diagram|机制图)\].*)$", r"```markdown\n\1\n```", text), "mechanism image")
+        self.assert_bad(lambda text, zh: self.mc.BLOCK_RE.sub(lambda m: "```markdown\n" + m[0] + "\n```", text), "mechanism text block missing")
+
+    def test_hostile_heading_number_is_rejected_without_integer_conversion(self):
+        self.assert_bad(lambda text, zh: text.replace("### 1.", "### " + "9" * 5000 + ".", 1), "continuous")
+
+    def test_legal_indented_continuations_and_seven_techniques_warning(self):
+        from test_mechanism_card import technique_body
+        texts = [text.replace("Value 1-0.", "Value 1-0.\n  continued text") for text in self.originals]
+        self.assertEqual([e for r in self.check(texts) for e in r.errors], [])
+        for path, zh in ((self.page, False), (self.page.with_name("demo.zh.md"), True)):
+            text = self.originals[int(zh)]
+            span = self.mc.section_bounds(text, "zh" if zh else "en")
+            body = text[span[0]:span[1]]
+            start = body.index("### 1.")
+            path.write_text(text[:span[0]] + body[:start] + technique_body(zh, 7) + "\n\n" + text[span[1]:])
+        self.spec["nodes"][1]["technique"] = list(range(1, 8))
+        self.source.write_text(json.dumps(self.spec))
+        self.generate()
+        for report in self.check():
+            self.assertEqual(report.errors, [])
+            self.assertTrue(any("more than 6" in w for w in report.warnings))
+
+
+class SourceCitationTest(unittest.TestCase):
+    def test_large_unclosed_link_titles_finish_within_deadline(self):
+        import subprocess
+        script = "import lint; assert not lint.has_source_link('[a](x y ' * 8000); print('bounded citation PASS bytes=64000')"
+        result = subprocess.run([sys.executable, "-B", "-c", script], cwd=Path(lint.__file__).parent,
+                                text=True, capture_output=True, stdin=subprocess.DEVNULL, timeout=3)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("bounded citation PASS bytes=64000", result.stdout)
+
+    def test_code_runs_and_escape_parity(self):
+        for text, expected in (
+            ("", False), ("[x](url)", True), ("[`x.py`](url)", True),
+            (r"\[x](url)", False), (r"\\[x](url)", True), (r"\\\[x](url)", False),
+            ("`[x](url)`", False), ("``[x](url)``", False),
+            ("``code ` [x](url)``", False), ("`unmatched [x](url)", True),
+            ("![`x`](url)", False), (r"\![x](url)", True), (r"\`[x](url)", True),
+            ("[x]( )", False), ("[x](url 'title')", True),
+            ('[x](url "a \\"quote\\"")', True), ("[x](url (title))", True),
+            ("[x](url unquoted)", False),
+        ):
+            with self.subTest(text=text):
+                self.assertEqual(lint.has_source_link(text), expected)
+
+    def test_malformed_citation_seeds_terminate(self):
+        # No fuzz dependency: truncated, mismatched quotes, repetition and invalid-byte seeds.
+        for text in ("[open](", '[x]("unterminated', "[x](" * 1000,
+                     "`" * 1000, b"\xff[broken](".decode("utf-8", "replace")):
+            with self.subTest(seed=text[:30]):
+                self.assertIs(lint.has_source_link(text), False)
+
+
 class AdoptionEvidenceGateTest(unittest.TestCase):
     """An adoption grade must be traceable to evidence on the page itself.
 

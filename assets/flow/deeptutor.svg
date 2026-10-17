@@ -72,7 +72,7 @@
 <text class="t" x="82" y="384">Ask a course question with retrieval</text>
 <text class="t" x="82" y="406">enabled for that library</text>
 <text class="c" x="82" y="430">deeptutor chat --capability deep_solve</text>
-<text class="c" x="82" y="449">--tool rag --kb my-kb</text>
+<text class="c" x="82" y="449">--kb my-kb</text>
 <rect class="cardT" x="472" y="412" width="368" height="97" rx="8"/>
 <rect class="accT" x="472" y="412" width="4" height="97" rx="2"/>
 <circle class="accT" cx="494" cy="436" r="10"/>

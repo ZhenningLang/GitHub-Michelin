@@ -136,6 +136,85 @@ def run_quality_scan_cli(root: Path, *args: str) -> subprocess.CompletedProcess[
 
 
 class KeyTechniquesTest(unittest.TestCase):
+    def test_structured_cleanup_preserves_phase01_gating_policy(self):
+        self.assertEqual(quality_scan.DUP_SECTIONS["Key techniques"], 0.15)
+        self.assertEqual(quality_scan.DUP_SECTIONS["技术要点"], 0.15)
+        self.assertEqual(quality_scan.DUP_MIN_CHARS, 120)
+        self.assertEqual(quality_scan.GATED_DETERMINISTIC_CATEGORIES, {
+            "generic-comparison-template", "indexed-page-marked-non-repo",
+            "indexed-page-marked-not-indexed", "composite-alternative-partly-indexed",
+            "truncation-fragment", "zh-link-to-english-sibling", "intake-stub-page-reverified",
+            "duplicated-section-prose-reverified", "zh-lead-not-chinese-reverified",
+        })
+
+    @staticmethod
+    def structured(body, zh=False, title="Shared title", image="same.svg"):
+        labels = ("解决：", "做法：", "边界：", "源码：") if zh else ("Problem:", "How:", "Limits:", "Source:")
+        block = "<!-- mechanism:begin (generated) -->\n" + ("Shared generated node → edge " * 80) + "\n<!-- mechanism:end -->"
+        return f"![mechanism]({image})\n\n{block}\n\n### 1. {title}\n\n" + "\n".join(
+            f"- **{label}** {body if i < 3 else '[reference](https://example.org/design)'}" for i, label in enumerate(labels))
+
+    def test_structured_template_removed_values_and_continuations_retained(self):
+        for zh in (False, True):
+            text = self.structured("Distinct prose\n  continued", zh)
+            normalized = quality_scan.technique_prose(text)
+            self.assertNotIn("Shared generated", normalized)
+            self.assertNotIn("Shared title", normalized)
+            self.assertNotIn("mechanism]", normalized)
+            self.assertNotIn("**", normalized)
+            self.assertEqual(normalized.count("Distinct prose\n  continued"), 3)
+            self.assertIn("reference", normalized)
+
+    def test_structured_different_prose_not_duplicate_full_scoped_cli(self):
+        for title, suffix, first, second in self.cases():
+            with self.subTest(title=title), tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                bodies = tuple(self.structured(body, suffix == ".zh.md") for body in (first, second))
+                pages = self.technique_pair(root, title, suffix, bodies, fresh=True)
+                for scope in (None, [pages[0]]):
+                    result = quality_scan.scan(root, scope_paths=scope)
+                    self.assertFalse([f for f in result.findings if f.category.startswith("duplicated-section-prose")])
+                result = run_quality_scan_cli(root, "--fail-on-gated")
+                self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+    def test_structured_copy_still_gated_with_different_titles_and_images(self):
+        for title, suffix, first, _ in self.cases():
+            with self.subTest(title=title), tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                bodies = (self.structured(first, suffix == ".zh.md"), self.structured(first, suffix == ".zh.md", "Other title", "other.svg"))
+                pages = self.technique_pair(root, title, suffix, bodies, fresh=True)
+                result = quality_scan.scan(root, scope_paths=[pages[0]])
+                self.assertEqual(len([f for f in result.findings if f.category == "duplicated-section-prose-reverified"]), 1)
+                cli = run_quality_scan_cli(root, "--fail-on-gated")
+                self.assertEqual(cli.returncode, 1, cli.stdout + cli.stderr)
+
+    def test_structured_similar_not_identical_prose_gated_full_scoped_cli(self):
+        for title, suffix, first, _ in self.cases():
+            with self.subTest(title=title), tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                bodies = (
+                    self.structured(first + " Original ending.", suffix == ".zh.md"),
+                    self.structured(first + " A different ending.", suffix == ".zh.md", "Reworded heading", "new.svg")
+                    .replace("https://example.org/design", "https://elsewhere.net/revised-source"),
+                )
+                self.assertNotEqual(bodies[0], bodies[1])  # Fixture safety, not a separate behavior oracle.
+                pages = self.technique_pair(root, title, suffix, bodies, fresh=True)
+                for scope, expected in ((None, pages), ([pages[0]], [pages[0]])):
+                    result = quality_scan.scan(root, scope_paths=scope)
+                    duplicates = [f for f in result.findings if f.category == "duplicated-section-prose-reverified"]
+                    self.assertEqual({f.path for f in duplicates}, {p.relative_to(root).as_posix() for p in expected})
+                for scope_args in ((), ("--scope", str(pages[0]))):
+                    cli = run_quality_scan_cli(root, "--fail-on-gated", *scope_args)
+                    self.assertEqual(cli.returncode, 1, cli.stdout + cli.stderr)
+                    self.assertIn("duplicated-section-prose-reverified", cli.stdout)
+
+    def test_malformed_generated_blocks_do_not_swallow_prose(self):
+        for seed in ("<!-- mechanism:begin -->\nkept正文", '<!-- mechanism:begin "\nkept正文',
+                     "<!-- mechanism:begin -->\n" * 1000 + "kept正文", "\ufffd<!-- mechanism:begin -->\nkept正文"):
+            normalized = quality_scan.technique_prose(seed)
+            self.assertIn("kept正文", normalized)
+            self.assertLessEqual(len(normalized), len(seed))
+
     def test_conservative_title_escape_cannot_skip_line_breaks(self) -> None:
         # Multiline titles are deliberately unsupported here: retaining raw prose is conservative.
         for visible in ("visible prose", "可见正文（备注）"):
@@ -338,8 +417,9 @@ class KeyTechniquesTest(unittest.TestCase):
                 self.assertEqual(len([f for f in result.findings if f.category == "duplicated-section-prose-reverified"]), 1)
 
     def test_calibrated_thresholds_use_minimal_grid_with_margin(self) -> None:
-        # Independently measured from the frozen 21-pair corpus at 52128061, after URL removal.
-        for title, maximum in (("Key techniques", Fraction(3, 82)), ("技术要点", Fraction(1, 21))):
+        # 21 fully structured pairs at a15138addad9be92544b43f585dfcc02a229e3d3,
+        # measured 2026-10-17 UTC with the unchanged directed prose-only sampler.
+        for title, maximum in (("Key techniques", Fraction(6, 124)), ("技术要点", Fraction(1, 43))):
             with self.subTest(title=title):
                 threshold = Fraction(str(quality_scan.DUP_SECTIONS[title]))
                 self.assertGreaterEqual(threshold, maximum + Fraction(1, 10))

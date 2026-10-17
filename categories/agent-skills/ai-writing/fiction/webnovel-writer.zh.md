@@ -6,17 +6,17 @@ category: fiction
 tags: [claude-code, novel-writing, long-form-writing, rag, continuity, story-memory]
 language: Python
 license: GPL-3.0
-maturity: master v6.2.1 critical-bug maintenance only; v8 separate stable branch, 7467 stars (as of 2026-10-13)
-last_verified: 2026-10-13
+maturity: master v6.2.1 critical-bug maintenance only; v8 separate stable branch, 7526 stars (as of 2026-10-17)
+last_verified: 2026-10-17
 type: tool
 upstream:
-  pushed_at: 2026-10-12T07:25:52Z
+  pushed_at: 2026-10-14T14:30:32Z
   default_branch: master
-  default_branch_sha: 0af0c0b2fc2e4104e8a12c1d62136c6595a6a983
+  default_branch_sha: 86e617ee7f4f04be9d3f8575f90c38f879ed80ed
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-13T17:08:29Z
+  computed_at: 2026-10-17T06:02:38Z
   overall: C
   overall_score: 2.33
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 6
-        active_weeks_13: 7
+        last_commit_age_days: 3
+        active_weeks_13: 8
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 7.5
-        qualifying_issues: 13
+        median_ttfr_hours: 4.4
+        qualifying_issues: 12
         band: relaxed_solo
         window_offset_days: 0
         source: issue
@@ -46,21 +46,21 @@ health:
       raw:
         registry: null
         canonical_package: null
-        release_downloads: 1175
+        release_downloads: 1363
         release_assets: 61
         release_tier: D
         signal_basis: releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 284
-        last_commit_age_days: 6
+        repo_age_days: 288
+        last_commit_age_days: 3
         cohort: tool
     governance:
       grade: C
       raw:
         active_maintainers_12mo: 2
-        top1_share: 0.997
+        top1_share: 0.994
         top3_share: 1.0
         window_source: stats_contributors
         carve_out: null
@@ -83,7 +83,7 @@ health:
 
 你是已在 Claude Code 写连载小说的作者，写到几十章后模型开始让人物动机、时间线、世界规则和伏笔互相矛盾。你需要每章都经过上下文准备、起草、审查、事实提取、章节提交，以及派生状态、索引和摘要投影。此时选 Webnovel Writer，而不是通用写作提示词，因为它在项目内保存可追溯的故事系统和可查询的连续性状态，不会把每章当成孤立对话。
 
-本页源码复核覆盖默认 `master` 分支，即 v6 Claude Code 插件。[版本政策](https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/README.md#L21-L29) 已改为 v6 只修致命 bug、v7 冻结，另一个 DeepSeek Harness v8 分支才是当前正式工作台。已有 Claude Code 书稿需要这套事实链时才选 v6，不把它当成持续开发的新产品；文档没有经过验证的旧书直接迁移到 v8 方案。语义检索可选，README 记录了缺少 embedding 凭据时的 BM25 关键词路径。
+本页源码复核覆盖默认 `master` 分支，即 v6 Claude Code 插件。[版本政策](https://github.com/lingfengQAQ/webnovel-writer/blob/86e617ee7f4f04be9d3f8575f90c38f879ed80ed/README.md#L21-L29) 已改为 v6 只修致命 bug、v7 冻结，另一个 DeepSeek Harness v8 分支才是当前正式工作台。已有 Claude Code 书稿需要这套事实链时才选 v6，不把它当成持续开发的新产品；文档没有经过验证的旧书直接迁移到 v8 方案。语义检索可选，README 记录了缺少 embedding 凭据时的 BM25 关键词路径。
 
 ## 何时不用
 
@@ -105,7 +105,7 @@ health:
 
 ## 快速上手
 
-针对所读 v6 分支，在 Claude Code 执行 `claude plugin marketplace add lingfengQAQ/webnovel-writer --scope user`，再执行 `claude plugin install webnovel-writer@webnovel-writer-marketplace --scope user`，并按 [master README](https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/README.md#L129-L199) 安装 Python 依赖。运行 `/webnovel-init` 回答书籍设定问题，插件创建大纲、正文目录和故事状态文件。用 `/webnovel-plan 1` 规划首卷，再用 `/webnovel-write 1` 写首章，查看保存的章节和审查输出。插件整理上下文、审查和事实投影，你决定剧情、裁决阻断问题、保留备份，并承担 Claude Code 和模型费用。可选语义检索会把正文送到你配置的 embedding、rerank 端点；BM25 是关键词排序，不表示任意 API 故障都会静默回退。这些是 v6 命令，不是 v8 安装方式或已验证的迁移流程。
+针对所读 v6 分支，在 Claude Code 执行 `claude plugin marketplace add lingfengQAQ/webnovel-writer --scope user`，再执行 `claude plugin install webnovel-writer@webnovel-writer-marketplace --scope user`，并按 [master README](https://github.com/lingfengQAQ/webnovel-writer/blob/86e617ee7f4f04be9d3f8575f90c38f879ed80ed/README.md#L129-L199) 安装 Python 依赖。运行 `/webnovel-init` 回答书籍设定问题，插件创建大纲、正文目录和故事状态文件。用 `/webnovel-plan 1` 规划首卷，再用 `/webnovel-write 1` 写首章，查看保存的章节和审查输出。插件整理上下文、审查和事实投影，你决定剧情、裁决阻断问题、保留备份，并承担 Claude Code 和模型费用。可选语义检索会把正文送到你配置的 embedding、rerank 端点；BM25 是关键词排序，不表示任意 API 故障都会静默回退。这些是 v6 命令，不是 v8 安装方式或已验证的迁移流程。
 
 ![webnovel-writer — 主干用户故事](../../../../assets/flow/webnovel-writer.zh.svg)
 
@@ -127,9 +127,61 @@ health:
 
 ## 技术要点
 
-- **先接受事实，再派生视图。**[`webnovel-writer/scripts/data_modules/chapter_commit_service.py:33–190`](https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/webnovel-writer/scripts/data_modules/chapter_commit_service.py#L33-L190) 校验审查、大纲履行、消歧和事实提取产物。阻断问题、遗漏节点或待处理歧义让提交进入 rejected；已接受事件才供给状态、索引、摘要、记忆和向量写入器。每路投影分别保存状态，因此提交文件存在不等于所有投影成功；审查和提取仍依赖助手给出可信产物。
-- **大索引只对候选集做向量工作。**[`webnovel-writer/scripts/data_modules/rag_adapter.py:1156–1280`](https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/webnovel-writer/scripts/data_modules/rag_adapter.py#L1156-L1280) 对小索引全表扫描，对大索引先合并 BM25 候选和近期片段，再评分向量，按名次倒数融合后调用重排序。候选过滤用部分召回换取有界工作量；大索引分支的查询 embedding 失败会返回空结果，不能把 README 的无 key 关键词路径当成通用故障恢复。
-- **提示词流程与可执行闸门分工。**[`webnovel-writer/skills/webnovel-write/SKILL.md:82–97`](https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/webnovel-writer/skills/webnovel-write/SKILL.md#L82-L97)、[`SKILL.md:120–168`](https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/webnovel-writer/skills/webnovel-write/SKILL.md#L120-L168) 和 [`SKILL.md:178–245`](https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/webnovel-writer/skills/webnovel-write/SKILL.md#L178-L245) 把上下文、审查、提取交给不同助手，再调用 Python 提交前检查读取它们的产物。`--minimal` 模式明确写“未审查”产物，不伪称审查发生过；这是有绕过模式的工作流，不是独立文学质量检测器。
+![Webnovel Writer — 机制图](../../../../assets/mechanism/webnovel-writer.zh.svg)
+
+<!-- mechanism:begin (generated from mechanisms/webnovel-writer.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>机制文字版</summary>
+
+- 本章目标、合同与已存事实
+- 小索引全扫；大索引取关键词与近期候选②
+- 融合排名，再重排序②
+- 大索引缺查询向量：返回空结果②
+- 上下文助手准备写作任务书③
+- 主流程起草章节
+- 审查与事实产物；minimal 明示未审查③
+- 校验审查、大纲、歧义与提取①
+- 拒绝的章节提交
+- 已接受的章节事件①
+- 更新五路视图，分别记录状态①
+- 后续章节可查询的事实
+
+- 本章目标、合同与已存事实 → 小索引全扫；大索引取关键词与近期候选②
+- 小索引全扫；大索引取关键词与近期候选② → 融合排名，再重排序②（有可用结果）
+- 小索引全扫；大索引取关键词与近期候选② → 大索引缺查询向量：返回空结果②（大索引查询向量失败）〔可选／兜底〕
+- 本章目标、合同与已存事实 → 上下文助手准备写作任务书③（上下文基础包）
+- 融合排名，再重排序② → 上下文助手准备写作任务书③（检索线索）〔可选／兜底〕
+- 上下文助手准备写作任务书③ → 主流程起草章节
+- 主流程起草章节 → 审查与事实产物；minimal 明示未审查③
+- 审查与事实产物；minimal 明示未审查③ → 校验审查、大纲、歧义与提取①
+- 校验审查、大纲、歧义与提取① → 拒绝的章节提交（阻断／遗漏／未消歧）〔可选／兜底〕
+- 校验审查、大纲、歧义与提取① → 已接受的章节事件①（接受）
+- 已接受的章节事件① → 更新五路视图，分别记录状态①
+- 更新五路视图，分别记录状态① → 后续章节可查询的事实（投影成功）
+
+</details>
+<!-- mechanism:end -->
+
+### 1. 先接受章节事实，再更新各路视图
+
+- **解决：**人物状态、搜索索引和摘要若各自更新，可能对同一章发生的事说法不一。
+- **做法：**先校验审查结果、大纲覆盖、歧义处理和提取事实，再把章节提交标为接受或拒绝。已接受事件供给状态、索引、摘要、记忆和向量写入器，每一路分别记录更新结果。
+- **边界：**阻断审查问题、遗漏的大纲节点或未解决歧义都会拒绝提交。提交文件存在不等于每路视图都更新成功，事实本身也仍依赖可信的助手产物。
+- **源码：**[`chapter_commit_service.py:33–190`](https://github.com/lingfengQAQ/webnovel-writer/blob/86e617ee7f4f04be9d3f8575f90c38f879ed80ed/webnovel-writer/scripts/data_modules/chapter_commit_service.py#L33-L190)。
+
+### 2. 索引变大后，只给候选片段算向量
+
+- **解决：**书稿越长，每次查询都与全部片段计算相似度的成本越高。
+- **做法：**小索引全量扫描向量，大索引只处理 BM25 关键词候选与近期片段的并集。把关键词排名和向量排名按名次倒数合成分数，再对候选重新排序。
+- **边界：**候选过滤可能漏掉相关片段。大索引分支拿不到查询向量时返回空结果，不是通用的 BM25 故障兜底；重排序返回空时则保留融合后的排名。
+- **源码：**[`rag_adapter.py:1156–1287`](https://github.com/lingfengQAQ/webnovel-writer/blob/86e617ee7f4f04be9d3f8575f90c38f879ed80ed/webnovel-writer/scripts/data_modules/rag_adapter.py#L1156-L1287)。
+
+### 3. 助手分别干活，脚本检查落盘产物
+
+- **解决：**只让一个起草助手口头说“检查过、记住了”，未必留下可用证据。
+- **做法：**写章技能把上下文准备、审查和事实提取交给不同助手，再调用 Python 提交前、提交后检查。只有某路视图更新（投影）失败时，恢复指令要求单独补跑，不重新起草整章。
+- **边界：**这是提示词流程加产物校验，不是独立的文学质量检测器。用户选 `--minimal` 时会跳过审查助手，并明确写一份新的“未审查”产物。
+- **源码：**[`SKILL.md:82–168`](https://github.com/lingfengQAQ/webnovel-writer/blob/86e617ee7f4f04be9d3f8575f90c38f879ed80ed/webnovel-writer/skills/webnovel-write/SKILL.md#L82-L168)、[`SKILL.md:178–265`](https://github.com/lingfengQAQ/webnovel-writer/blob/86e617ee7f4f04be9d3f8575f90c38f879ed80ed/webnovel-writer/skills/webnovel-write/SKILL.md#L178-L265)。
 
 ## 技术栈
 
@@ -151,10 +203,10 @@ health:
 
 ## 健康度与可持续性
 
-- **维护快照（2026-10-13）：**未归档，master 提交 `0af0c0b` 来自 2026-10-07。master 版本政策明确 v6 只修致命 bug，仓库最新发布属于另一 v8 工作台；维护轴 A 不能覆盖这条支持政策。
+- **维护快照（2026-10-17）：**未归档，所读 master 提交 `86e617e` 来自 2026-10-14。master 版本政策仍明确 v6 只修致命 bug；仓库最新发布是另一工作台的 `scriptor-v8.2.2`（2026-10-12）。维护轴 A 不能覆盖这条支持政策。
 - **治理与 bus factor：**当前机器块测得两位活跃维护者，但几乎全部提交来自一人。README 自述业余维护并列出赞助，不等于基金会支持保证。[推断：依据是贡献集中和既定维护政策，关键维护者风险仍在]
 - **年龄与 Lindy：**创建于 2026-01，不到一年；持续提交有价值，但不能证明长期耐久性。
-- **采用与风险：**7467 stars 说明关注度，不证明实际书稿规模性能。GPL-3.0 是分发约束；许可风险 D 保留现有“强 copyleft／网络 copyleft”合并桶，不向 GPL 增添 AGPL 的网络使用披露义务。
+- **采用与风险：**7526 stars 说明关注度，不证明实际书稿规模性能。GPL-3.0 是分发约束；许可风险 D 保留现有“强 copyleft／网络 copyleft”合并桶，不向 GPL 增添 AGPL 的网络使用披露义务。
 
 ## 存疑（未验证）
 

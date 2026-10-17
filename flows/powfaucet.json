@@ -11,10 +11,10 @@
   ],
   "value": {"en": "Qualified recipients reach a controlled payout queue, not an unrestricted address form", "zh": "合格领取者进入受控转账队列，不再任意填地址领币"},
   "sources": [
-    "https://github.com/pk910/PoWFaucet/blob/92b8f7ba01a8ba694269bb35c1848966a3a8a75d/README.md#L63-L69",
-    "https://github.com/pk910/PoWFaucet/blob/92b8f7ba01a8ba694269bb35c1848966a3a8a75d/src/config/FaucetConfig.ts#L52-L64",
-    "https://github.com/pk910/PoWFaucet/blob/92b8f7ba01a8ba694269bb35c1848966a3a8a75d/src/app.ts#L56-L71",
-    "https://github.com/pk910/PoWFaucet/blob/92b8f7ba01a8ba694269bb35c1848966a3a8a75d/src/modules/pow/PoWModule.ts#L142-L187",
-    "https://github.com/pk910/PoWFaucet/blob/92b8f7ba01a8ba694269bb35c1848966a3a8a75d/src/eth/EthClaimManager.ts#L187-L231"
+    "https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/README.md#L63-L69",
+    "https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/src/config/FaucetConfig.ts#L52-L64",
+    "https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/src/app.ts#L56-L71",
+    "https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/src/modules/pow/PoWModule.ts#L142-L187",
+    "https://github.com/pk910/PoWFaucet/blob/e93b953836db7e8c62cdc59f325830b5f4ed7b7d/src/eth/EthClaimManager.ts#L187-L231"
   ]
 }

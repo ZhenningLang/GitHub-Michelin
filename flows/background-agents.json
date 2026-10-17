@@ -10,8 +10,8 @@
   ],
   "value": {"en": "Coding work continues in a shared cloud session after the requester leaves", "zh": "请求人离线后，编程工作仍在共享云会话继续"},
   "sources": [
-    "https://github.com/ColeMurray/background-agents/blob/31d199996e4cc33fcc1f80c08785820db2f05537/docs/GETTING_STARTED.md",
-    "https://github.com/ColeMurray/background-agents/blob/31d199996e4cc33fcc1f80c08785820db2f05537/packages/control-plane/src/session/message-queue.ts",
-    "https://github.com/ColeMurray/background-agents/blob/31d199996e4cc33fcc1f80c08785820db2f05537/packages/control-plane/src/session/event-stream.ts"
+    "https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/docs/GETTING_STARTED.md",
+    "https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/packages/control-plane/src/session/message-queue.ts",
+    "https://github.com/ColeMurray/background-agents/blob/824d678830a4c1e88cb1ba9267356996e2d67e0e/packages/control-plane/src/session/event-stream.ts"
   ]
 }

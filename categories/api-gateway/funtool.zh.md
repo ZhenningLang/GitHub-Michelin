@@ -7,7 +7,7 @@ tags: [claude-code, nvidia, llm-proxy, windows, binary-only]
 language: JavaScript
 license: MIT
 maturity: binary-only proxy distribution, master last changed 2026-02-09, 2520 stars (as of 2026-10)
-last_verified: 2026-10-14
+last_verified: 2026-10-15
 type: tool
 upstream:
   pushed_at: 2026-02-09T06:38:04Z
@@ -121,9 +121,53 @@ health:
 
 ## 技术要点
 
-- **当前分发是模型到文件与文档的映射，不是可见代理代码。** [README.md:14–31](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/README.md#L14-L31) 给 Kimi 单独 EXE，其它四模型标题共用另一 EXE，每项各有文章链接。它组织选择与获取，但不证明共用 EXE 如何选模型。**当前代理程序的内部机制无源码可查**；协议转换、鉴权和凭据存储仍未知，不能从文件名推断。
-- **历史 WebSocket 残留文件不能作为客户端运行。** [funtool/client.js:4–24](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/client.js#L4-L24) 写有本地 WebSocket 构造调用和消息编号常量；[funtool/client.js:32–49](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/client.js#L32-L49) 写有回调与打印骨架，但第 47–49 行括号不配对。仅检查语法的 `node --check` 在第 47 行失败，提交的文件无法加载，只能作为旧事件接口残留参考，不证明连接成功、收到消息或任何 NVIDIA/Claude 适配。[README.md:12](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/README.md#L12) 明确微信工具下线；历史端口不是当前代理配置值。
-- **历史 HTTP 例子组装消息请求，已下线，不是当前产品 API。** [funtool/http.js:35–67](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/http.js#L35-L67) POST 带微信用户 ID 的文本或图片 JSON；[funtool/http.js:74–115](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/http.js#L74-L115) 定义成员与昵称请求，并调用发送文本例子。这是客户端示例，不是服务器实现，也不证明当前 EXE 的模型路由、访问控制或兼容性。
+![Funtool — 机制图](../../assets/mechanism/funtool.zh.svg)
+
+<!-- mechanism:begin (generated from mechanisms/funtool.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>机制文字版</summary>
+
+- 当前 README 分发映射①
+- Kimi 专用 EXE：内部未公开①
+- 四标题共用 EXE：内部未公开①
+- 各标题独立文章：正文未取得①
+- 历史微信工具：已声明下线
+- client.js：构造、编号、回调②
+- 第 47 行语法错误：无法加载②
+- http.js：旧客户端例子，非服务器③
+- POST 形状：文本、图片、成员、昵称③
+
+- 当前 README 分发映射① → Kimi 专用 EXE：内部未公开①（Kimi K2.5 文件链接）
+- 当前 README 分发映射① → 四标题共用 EXE：内部未公开①（GLM／Qwen／Step／DeepSeek 文件链接）
+- 当前 README 分发映射① → 各标题独立文章：正文未取得①（仅说明入口）
+- 历史微信工具：已声明下线 → client.js：构造、编号、回调②
+- client.js：构造、编号、回调② → 第 47 行语法错误：无法加载②（仅语法检查，未执行）
+- 历史微信工具：已声明下线 → http.js：旧客户端例子，非服务器③
+- http.js：旧客户端例子，非服务器③ → POST 形状：文本、图片、成员、昵称③（定义及发文本调用，未运行）
+
+</details>
+<!-- mechanism:end -->
+
+### 1. 模型名映射到分发文件，不冒充可检查的代理实现
+
+- **解决：** 只看模型标题，不知道该找哪份程序、配哪篇说明。
+- **做法：** README 给 Kimi K2.5 单独的 EXE，GLM、Qwen3 Coder、Step、DeepSeek 四个标题则共用另一个 EXE 路径，每个标题各有文章链接。这是分发映射，不是可见的请求路由逻辑。
+- **边界：** 当前代理在此树中无公开源码，共用 EXE 如何选模型、如何转换协议、鉴权和保存凭据，都不能从文件名核实。本次没有检查文章正文、执行程序或逆向二进制内部。
+- **源码：** 当前代理无公开源码；[分发条目第 14–31 行](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/README.md#L14-L31)。
+
+### 2. 旧事件接口草图与可运行客户端分开看
+
+- **解决：** 追查旧微信消息接口时，需要知道事件词汇，但不能把残留文件当成当前适配器。
+- **做法：** 历史 `client.js` 写有本地 WebSocket 构造调用（与同一台机器维持消息连接）、消息编号常量，以及连接、断开、收到消息时的回调与打印。这些展示旧事件接口的形状。
+- **边界：** 结尾括号不配对，`node --check` 在第 47 行失败，所以这份提交文件无法加载，不证明连接或收消息成功。README 已标微信工具下线，旧端口也不是当前 NVIDIA/Claude 代理配置。
+- **源码：** [构造与编号第 4–24 行](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/client.js#L4-L24)、[回调与错误结尾第 32–49 行](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/client.js#L32-L49)、[下线声明第 12 行](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/README.md#L12-L12)。
+
+### 3. 展示历史消息请求形状，不当作当前网关 API
+
+- **解决：** 留存请求例子容易被误认成服务器实现，或替代代理的当前 API。
+- **做法：** 历史 `http.js` 把微信用户 ID 放进 JSON，组装发送文本、图片的 POST 请求，还定义成员和昵称请求，并从 `main` 调用发送文本例子。它演示旧客户端会提交什么，不解释服务器怎样处理。
+- **边界：** 这些是已下线微信工具的客户端例子，不证明当前 EXE 的模型路由、访问控制或兼容性；本次未执行任何示例请求。
+- **源码：** [文本与图片请求第 35–67 行](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/http.js#L35-L67)、[成员、昵称及调用第 74–115 行](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/http.js#L74-L115)、[下线声明第 12 行](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/README.md#L12-L12)。
 
 ## 技术栈
 

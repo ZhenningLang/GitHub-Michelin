@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "audio", "en": "Fetch challenge audio; trim both ends", "zh": "下载挑战音频，裁去首尾", "kind": "input"},
+    {"id": "switches", "en": "Managed local / remote switches", "zh": "托管本地与远端开关", "technique": [1]},
+    {"id": "api", "en": "Check browser Prompt API status", "zh": "检查浏览器 Prompt API 状态", "technique": [1]},
+    {"id": "prompt", "en": "Browser Prompt API transcription", "zh": "浏览器 Prompt API 转写"},
+    {"id": "whisper", "en": "Cached Whisper tiny; WASM / q8;\nMV3 offscreen where needed", "zh": "缓存 Whisper tiny，WASM／q8；\n适用 MV3 浏览器走离屏文档", "technique": [2]},
+    {"id": "local", "en": "Local text or no text", "zh": "本地文本或无文本"},
+    {"id": "remote", "en": "Enabled managed remote recognition", "zh": "已启用的托管远端识别", "kind": "external", "technique": [1]},
+    {"id": "fill", "en": "Fill directly or via optional native input", "zh": "直接填写或可选原生输入", "technique": [3]},
+    {"id": "submit", "en": "Submit; acceptance not established", "zh": "提交，不代表已获接受", "kind": "output", "technique": [3]},
+    {"id": "stop", "en": "No text: do not submit", "zh": "无文本，不提交", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "audio", "to": "switches"},
+    {"from": "switches", "to": "api", "en": "local enabled", "zh": "本地已启用"},
+    {"from": "api", "to": "prompt", "en": "available", "zh": "可用"},
+    {"from": "api", "to": "whisper", "en": "unavailable only", "zh": "仅不可用时"},
+    {"from": "api", "to": "local", "en": "other status: no text", "zh": "其它状态，无文本"},
+    {"from": "prompt", "to": "local"},
+    {"from": "whisper", "to": "local", "en": "unready yields no text", "zh": "未就绪则无文本"},
+    {"from": "switches", "to": "remote", "en": "local off; remote on", "zh": "本地关，远端开", "style": "dashed"},
+    {"from": "local", "to": "remote", "en": "no text; remote on", "zh": "无文本，远端开", "style": "dashed"},
+    {"from": "local", "to": "fill", "en": "text", "zh": "有文本"},
+    {"from": "local", "to": "stop", "en": "no text; remote off", "zh": "无文本，远端关"},
+    {"from": "remote", "to": "fill", "en": "text", "zh": "有文本"},
+    {"from": "remote", "to": "stop", "en": "no text", "zh": "无文本"},
+    {"from": "fill", "to": "submit"}
+  ],
+  "sources": [
+    "https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/background/main.js#L663-L756",
+    "https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/utils/models.js#L101-L151",
+    "https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/offscreen/main.js#L21-L37",
+    "https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/base/main.js#L368-L407"
+  ]
+}
