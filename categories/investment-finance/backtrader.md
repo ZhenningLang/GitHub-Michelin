@@ -7,7 +7,7 @@ tags: [investment-finance, event-driven-backtesting, trading-strategies, broker-
 language: Python
 license: GPL-3.0-or-later
 maturity: v1.9.78.123, dormant main since 2023-04-19, 23469 stars (as of 2026-10-13)
-last_verified: 2026-10-13
+last_verified: 2026-10-17
 type: library
 upstream:
   pushed_at: 2024-08-19T17:47:36Z
@@ -116,9 +116,68 @@ Install with `pip install backtrader` as in [README:126–140](https://github.co
 
 ## Key techniques
 
-- **Precompute indicators by default, then advance per-bar strategies.** [`cerebro.py:275–276`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L275-L276) defaults to `preload=True` and `runonce=True`. The batch path in [`cerebro.py:1649–1704`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1649-L1704) calls `_once()` for indicator precomputation, then uses `advance_peek()` and the minimum next timestamp to advance feeds and invoke per-bar strategy callbacks, without rewinding ahead feeds; [`lineiterator.py:293–318`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/lineiterator.py#L293-L318) shows the indicator work. In stepwise next mode, [`cerebro.py:1498–1639`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1498-L1639) can rewind feeds that are ahead; live/replay/exactbars settings or disabling preload/runonce select that route through [`cerebro.py:1062–1079`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1062-L1079) and [`cerebro.py:1294–1303`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1294-L1303). Data alignment and cheat-mode timing still need deliberate review.
-- **Share the time-series buffer idiom between data and indicators.** [`linebuffer.py:50–125`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/linebuffer.py#L50-L125) defines the active item at index zero and selects an unbounded numeric array or a bounded deque for reduced memory. The actual lookup is [`linebuffer.py:162–163`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/linebuffer.py#L162-L163). Indicators can share cursor-based values, but available history and lookahead discipline remain part of strategy correctness.
-- **Model fills explicitly from bar prices and slippage.** [`bbroker.py:853–919`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/brokers/bbroker.py#L853-L919) distinguishes market/close/limit fills using open/high/low/close and order timing; [`bbroker.py:994–1038`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/brokers/bbroker.py#L994-L1038) applies percentage/fixed slippage and range policies. This makes assumptions inspectable, not exchange-realistic by default; cheat flags and allowed outside-bar prices need deliberate review.
+![backtrader — mechanism diagram](../../assets/mechanism/backtrader.svg)
+
+<!-- mechanism:begin (generated from mechanisms/backtrader.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>Text version of the mechanism</summary>
+
+- Current sync: preload / runonce / live / replay / exactbars①②
+- Default: precompute indicators①
+- Peek minimum next time; advance due feeds①
+- Next mode: request bars②
+- Rewind ahead feeds before delivery②
+- Line buffers: cursor[0], array or bounded queue③
+- Per-bar strategy callbacks①②③
+- Orders with creation time
+- Bar open / high / low / close
+- Eligible order type + timing④
+- Slippage + range / cheat policies④
+- Simulated fill or defer; not venue proof
+
+- Current sync: preload / runonce / live / replay / exactbars①② → Default: precompute indicators① (preload + runonce)
+- Default: precompute indicators① → Peek minimum next time; advance due feeds①
+- Current sync: preload / runonce / live / replay / exactbars①② → Next mode: request bars② (otherwise)
+- Next mode: request bars② → Rewind ahead feeds before delivery②
+- Peek minimum next time; advance due feeds① → Per-bar strategy callbacks①②③
+- Rewind ahead feeds before delivery② → Per-bar strategy callbacks①②③
+- Line buffers: cursor[0], array or bounded queue③ → Per-bar strategy callbacks①②③ (current values)
+- Per-bar strategy callbacks①②③ → Orders with creation time
+- Orders with creation time → Eligible order type + timing④ (eligible simulation time)
+- Bar open / high / low / close → Eligible order type + timing④
+- Eligible order type + timing④ → Slippage + range / cheat policies④
+- Slippage + range / cheat policies④ → Simulated fill or defer; not venue proof
+
+</details>
+<!-- mechanism:end -->
+
+### 1. Batch indicators without batching strategy decisions
+
+- **Problem:** Recomputing every indicator through Python callbacks can add work, but a strategy still needs ordered decisions for each price bar.
+- **How:** With the default `preload=True` and `runonce=True`, `_once()` precomputes indicators. The batch path then peeks at each feed's next timestamp, advances only feeds at the minimum time and invokes per-bar strategy callbacks, without rewinding ahead feeds.
+- **Limits:** This describes the current synchronization path, not `oldsync=True`; precomputed indicators do not make strategy execution a matrix of independent decisions. Time alignment and cheat-mode timing still need review.
+- **Source:** [`cerebro.py:275–276`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L275-L276), [`cerebro.py:1649–1704`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1649-L1704), [`lineiterator.py:293–318`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/lineiterator.py#L293-L318).
+
+### 2. Use a separate stepwise path for arriving data
+
+- **Problem:** Live data and replay cannot always preload the complete series before running.
+- **How:** Live mode disables preload and batch calculation; replay disables preload, while nonzero `exactbars` memory settings disable batch calculation. With preload or runonce disabled, the stepwise path requests each feed's next bar and rewinds a feed ahead of the selected simulation time before strategy callbacks.
+- **Limits:** This rewind belongs to next mode, not the default batch path; `oldsync=True` selects separate legacy routines. These switches change data availability and timing, not the validity of a live broker connection.
+- **Source:** [`cerebro.py:1062–1079`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1062-L1079), [`cerebro.py:1294–1303`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1294-L1303), [`cerebro.py:1498–1639`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1498-L1639).
+
+### 3. Share a moving cursor across data and indicators
+
+- **Problem:** Each indicator would otherwise need a different way to locate the value for the current simulation bar.
+- **How:** A line buffer, the shared time-series container, exposes the active value at index zero. It stores values in an unbounded numeric array or a bounded queue that discards older history to save memory.
+- **Limits:** The lookup uses the cursor plus the requested offset; the interface does not enforce a past-only access policy. Available history and avoidance of future-data leakage remain part of strategy correctness.
+- **Source:** [`linebuffer.py:50–125`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/linebuffer.py#L50-L125), [`linebuffer.py:162–163`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/linebuffer.py#L162-L163).
+
+### 4. Make simulated fill assumptions explicit
+
+- **Problem:** A buy signal is not an execution price, and ignoring timing or price movement can overstate results.
+- **How:** The simulated broker distinguishes market, close and limit orders using order timing and each bar's open/high/low/close prices. Percentage or fixed slippage models unfavorable price movement, with policies that cap, allow or defer out-of-range prices.
+- **Limits:** Cheat flags change allowed execution timing, and `slip_out` can allow a price outside the bar. Inspectable rules do not reconstruct an exchange order book or prove realistic fills and profits.
+- **Source:** [`bbroker.py:853–919`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/brokers/bbroker.py#L853-L919), [`bbroker.py:994–1038`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/brokers/bbroker.py#L994-L1038).
 
 ## Tech stack
 
