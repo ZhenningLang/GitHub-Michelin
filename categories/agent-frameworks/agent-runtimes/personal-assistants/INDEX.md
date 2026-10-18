@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **PicoClaw** | Run a chat-driven assistant on a small ARM, MIPS or RISC-V Linux board without a Python/Node.js core runtime; model inference stays separate, remote exec defaults on and process isolation off. | B (6/6) | [→](picoclaw.md) |
 | **OpenClaw** | Use it when you want one personal assistant on your own computer answering across WhatsApp, iMessage, Slack, Telegram and 20+ more channels with shared memory — but one Gateway is one trust domain, so users who do not trust each other must not share it. | B (5/6) | [→](openclaw.md) |
 | **Hermes Agent** | Use it when you want one long-lived assistant on your own VPS that runs shell commands and scheduled jobs, remembers your environment and answers on Telegram or Slack — but its behaviour drifts as skills and memory change, and it is about 15 months old. | A (4/6) | [→](hermes-agent.md) |
 | **OpenHuman** | Use it when you want a local-first personal assistant that ingests your mail, calendar and repos into Markdown memory on a 20-minute loop and can be forced offline in its Rust core — but it's 7 months old, one author holds most commits, and it's GPL-3.0-only. | B (6/6) | [→](openhuman.md) |
@@ -23,6 +24,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [PicoClaw](picoclaw.md) | ✅ | B (6/6) | Cross-compiled Go core with chat adapters, tools and local state; buys deployability on small boards, not local model inference or an enabled-by-default OS sandbox. |
 | [OpenClaw](openclaw.md) | ✅ | B (5/6) | Buys the widest chat-channel coverage plus phone and desktop companion apps; costs tenant isolation, SSO and audit logs, on a project less than a year old. |
 | [Hermes Agent](hermes-agent.md) | ✅ | A (4/6) | Buys persistence under your control — bounded memory, self-written skills, session search and a scheduler; costs determinism, enterprise governance (no SSO, RBAC or audit) and any Lindy track record. |
 | [OpenHuman](openhuman.md) | ✅ | B (6/6) | Local-first desktop assistant that buys context by ingesting your accounts on a 20-minute loop instead of waiting for a learning loop; GPL-3.0-only, heavy build, vendor account by default. |

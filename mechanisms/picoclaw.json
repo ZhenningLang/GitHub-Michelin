@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "chat", "kind": "input", "en": "Chat message", "zh": "聊天消息"},
+    {"id": "core", "en": "Go core built for the target architecture", "zh": "为目标架构构建的 Go 核心", "technique": [1]},
+    {"id": "history", "en": "Session history; summary or turn-aware compression", "zh": "会话历史；摘要或按轮次压缩", "technique": [2]},
+    {"id": "model", "kind": "external", "en": "Separately configured model service", "zh": "单独配置的模型服务"},
+    {"id": "guard", "en": "Tool policy; path and command checks", "zh": "工具策略；路径与命令检查", "technique": [3]},
+    {"id": "child", "en": "Host child process; isolation only when enabled", "zh": "宿主子进程；隔离需主动开启", "technique": [3]},
+    {"id": "reply", "kind": "output", "en": "Reply in the same chat", "zh": "原聊天中的回复"}
+  ],
+  "edges": [
+    {"from": "chat", "to": "core"},
+    {"from": "history", "to": "core", "en": "context", "zh": "上下文"},
+    {"from": "core", "to": "model"},
+    {"from": "model", "to": "guard", "en": "if a shell tool is requested", "zh": "请求命令工具时", "style": "dashed"},
+    {"from": "guard", "to": "child", "en": "if allowed", "zh": "获准后", "style": "dashed"},
+    {"from": "child", "to": "core", "en": "tool result for the next model call", "zh": "工具结果供下一次模型调用", "style": "dashed"},
+    {"from": "model", "to": "reply", "en": "final answer via the core", "zh": "经核心发送最终回答"}
+  ],
+  "sources": [
+    "https://github.com/sipeed/picoclaw/blob/bbf6893ca7afad27f1d00a0f5a45982a549c6ed6/Makefile",
+    "https://github.com/sipeed/picoclaw/blob/bbf6893ca7afad27f1d00a0f5a45982a549c6ed6/pkg/agent/context_legacy.go",
+    "https://github.com/sipeed/picoclaw/blob/bbf6893ca7afad27f1d00a0f5a45982a549c6ed6/pkg/tools/shell.go",
+    "https://github.com/sipeed/picoclaw/blob/bbf6893ca7afad27f1d00a0f5a45982a549c6ed6/pkg/agent/pipeline_llm.go",
+    "https://github.com/sipeed/picoclaw/blob/bbf6893ca7afad27f1d00a0f5a45982a549c6ed6/pkg/agent/pipeline_execute.go"
+  ]
+}
