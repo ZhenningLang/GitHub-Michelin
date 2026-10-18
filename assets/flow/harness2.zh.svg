@@ -34,41 +34,41 @@
 <rect class="laneT" x="460" y="28" width="392" height="463" rx="10"/>
 <rect class="pillT" x="474" y="40" width="101.5" height="24" rx="12"/>
 <text class="hdr hT" x="488" y="57">Harness²</text>
-<path class="edge" d="M62,144 L62,168" marker-end="url(#a)"/>
-<path class="hand" d="M408,206.5 C439.0,206.5 439.0,230 470,230" marker-end="url(#a)"/>
-<path class="hand" d="M472,231.0 C441.0,231.0 441.0,293 410,293" marker-end="url(#a)"/>
-<path class="hand" d="M408,315.0 C439.0,315.0 439.0,339 470,339" marker-end="url(#a)"/>
-<path class="hand" d="M472,340.0 C441.0,340.0 441.0,411 410,411" marker-end="url(#a)"/>
+<path class="edge" d="M62,122 L62,146" marker-end="url(#a)"/>
+<path class="hand" d="M408,184.5 C439.0,184.5 439.0,208 470,208" marker-end="url(#a)"/>
+<path class="hand" d="M472,209.0 C441.0,209.0 441.0,271 410,271" marker-end="url(#a)"/>
+<path class="hand" d="M408,304.0 C439.0,304.0 439.0,328 470,328" marker-end="url(#a)"/>
+<path class="hand" d="M472,329.0 C441.0,329.0 441.0,411 410,411" marker-end="url(#a)"/>
 <path class="hand" d="M408,412.0 C439.0,412.0 439.0,447 470,447" marker-end="url(#a)"/>
-<rect class="card" x="40" y="72" width="368" height="72" rx="8"/>
-<rect class="accY" x="40" y="72" width="4" height="72" rx="2"/>
+<rect class="card" x="40" y="72" width="368" height="50" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="50" rx="2"/>
 <circle class="accY" cx="62" cy="96" r="10"/>
 <text class="num" x="62" y="100" text-anchor="middle">1</text>
-<text class="t" x="82" y="101">在隔离 Linux 安装，配置模型、凭据与</text>
-<text class="t" x="82" y="123">出网限制</text>
-<rect class="card" x="40" y="170" width="368" height="73" rx="8"/>
-<rect class="accY" x="40" y="170" width="4" height="73" rx="2"/>
-<circle class="accY" cx="62" cy="194" r="10"/>
-<text class="num" x="62" y="198" text-anchor="middle">2</text>
-<text class="t" x="82" y="199">安装 LAB 基准</text>
-<text class="c" x="82" y="223">harness2-setup lab</text>
-<rect class="cardT" x="472" y="206" width="368" height="50" rx="8"/>
-<rect class="accT" x="472" y="206" width="4" height="50" rx="2"/>
-<circle class="accT" cx="494" cy="230" r="10"/>
-<text class="num" x="494" y="234" text-anchor="middle">3</text>
-<text class="t" x="514" y="235">获取固定版本运行器与任务数据，创建基准环境</text>
-<rect class="card" x="40" y="269" width="368" height="92" rx="8"/>
-<rect class="accY" x="40" y="269" width="4" height="92" rx="2"/>
-<circle class="accY" cx="62" cy="293" r="10"/>
-<text class="num" x="62" y="297" text-anchor="middle">4</text>
-<text class="t" x="82" y="298">在一个法律领域运行一个任务</text>
+<text class="t" x="82" y="101">在隔离 Linux 安装，配置模型与凭据</text>
+<rect class="card" x="40" y="148" width="368" height="73" rx="8"/>
+<rect class="accY" x="40" y="148" width="4" height="73" rx="2"/>
+<circle class="accY" cx="62" cy="172" r="10"/>
+<text class="num" x="62" y="176" text-anchor="middle">2</text>
+<text class="t" x="82" y="177">安装 LAB 基准</text>
+<text class="c" x="82" y="201">harness2-setup lab</text>
+<rect class="cardT" x="472" y="184" width="368" height="50" rx="8"/>
+<rect class="accT" x="472" y="184" width="4" height="50" rx="2"/>
+<circle class="accT" cx="494" cy="208" r="10"/>
+<text class="num" x="494" y="212" text-anchor="middle">3</text>
+<text class="t" x="514" y="213">获取固定版本运行器与任务数据，创建基准环境</text>
+<rect class="card" x="40" y="247" width="368" height="114" rx="8"/>
+<rect class="accY" x="40" y="247" width="4" height="114" rx="2"/>
+<circle class="accY" cx="62" cy="271" r="10"/>
+<text class="num" x="62" y="275" text-anchor="middle">4</text>
+<text class="t" x="82" y="276">安装后阻断基准答案访问，再运行一个领域的一</text>
+<text class="t" x="82" y="298">个任务</text>
 <text class="c" x="82" y="322">--only-domains antitrust-competition</text>
 <text class="c" x="82" y="341">--max-tasks 1</text>
-<rect class="cardT" x="472" y="315" width="368" height="50" rx="8"/>
-<rect class="accT" x="472" y="315" width="4" height="50" rx="2"/>
-<circle class="accT" cx="494" cy="339" r="10"/>
-<text class="num" x="494" y="343" text-anchor="middle">5</text>
-<text class="t" x="514" y="344">试跑修改、合成配置，保存交付物与经验</text>
+<rect class="cardT" x="472" y="304" width="368" height="50" rx="8"/>
+<rect class="accT" x="472" y="304" width="4" height="50" rx="2"/>
+<circle class="accT" cx="494" cy="328" r="10"/>
+<text class="num" x="494" y="332" text-anchor="middle">5</text>
+<text class="t" x="514" y="333">试跑修改、合成配置，保存交付物与经验</text>
 <rect class="card" x="40" y="387" width="368" height="50" rx="8"/>
 <rect class="accY" x="40" y="387" width="4" height="50" rx="2"/>
 <circle class="accY" cx="62" cy="411" r="10"/>

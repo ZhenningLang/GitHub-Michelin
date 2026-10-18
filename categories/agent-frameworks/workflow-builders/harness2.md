@@ -5,7 +5,7 @@ repo: https://github.com/google-research/harness2
 category: workflow-builders
 tags: [agent, harness-optimization, recursive-improvement, frozen-models, benchmark, opencode, codex]
 language: Python
-license: Apache-2.0
+license: Apache-2.0 (core) + Custom Tencent (bundled WorkBuddy runner; EU limitation)
 maturity: v0.1.0 in source, no GitHub releases, 1828 stars (as of 2026-10-18)
 last_verified: 2026-10-18
 type: framework
@@ -89,11 +89,12 @@ Choose it over SkillOpt when the experiment must adapt a whole agent configurati
 - **You need a cheap, static instruction file at deployment.** Prefer [SkillOpt](skillopt.md) when you can pay for offline optimization and deploy the resulting document. Each Harness² recursion mode schedules `4k` task executions, including `k` references, plus `3k` improvement stages; selection and reflection can add calls. `k` is not a dollar cap. See [recursion accounting](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/harness2/core/recursion.py#L15-L19).
 - **The agent would share your workstation's secrets or unrestricted internet.** Keep production configuration unchanged and use [promptfoo](../../llm-eval/promptfoo.md) for controlled regression testing instead of running this optimizer on that host. Codex explicitly bypasses approvals and sandboxing; the release does not restrict executor networking. The authors report a validation rollout downloading its public grading rubric. Host isolation and outbound filtering are your work, not features supplied here. See [experiment warning](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/docs/EXPERIMENTS.md#web-access).
 - **You want ordinary application prompt optimization with labeled examples.** Pick [DSPy](dspy.md) to compile a Python pipeline against your metric. Harness² adds benchmark checkouts, CLI executors, repeated task runs, and experience libraries that a small extraction/classification app need not operate.
+- **You need to run WorkBuddy in the European Union.** Use the built-in LAB route instead for legal-task experiments, subject to its own data terms. The bundled WorkBuddy runner has a custom Tencent license with an additional territorial limitation: “IS NOT INTENDED FOR USE WITHIN THE EUROPEAN UNION.” The core's Apache license does not remove that condition. See the [bundled license, lines 3–16](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/third_party/wb_runner/LICENSE#L3-L16).
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | [SkillOpt](skillopt.md) | ✅ | Pick SkillOpt when a held-out score must gate a deployable skill document; pick Harness² for task-time adaptation across the wider harness without ground-truth feedback. | A static text artifact avoids extra deployment-time search; Harness² can edit more components but pays for probes on each task and lacks that acceptance guarantee. |
 | [DSPy](dspy.md) | ✅ | Pick DSPy when your application is a Python model pipeline with examples and a metric; pick Harness² to study edits to an existing CLI agent's configuration. | DSPy provides program/module optimization; Harness² preserves the model and execution substrate while searching prompts, skills, scripts, and other harness files. |
 | [promptfoo](../../llm-eval/promptfoo.md) | ✅ | Pick promptfoo when the decision is whether a prompt change may ship in CI; pick Harness² when the experiment must generate and probe the changes itself. | Regression assertions provide an external gate, not recursive harness editing; Harness²'s adaptation still needs separate evaluation before production adoption. |
@@ -108,10 +109,10 @@ Clone the source and follow the [Linux/Python setup guide](https://github.com/go
 <details>
 <summary>Text version of the flow</summary>
 
-1. **You**: Install on isolated Linux; set models, credentials, and outbound restrictions
+1. **You**: Install on isolated Linux; set models and credentials
 2. **You**: Install the LAB benchmark — `harness2-setup lab`
 3. **Harness²**: Fetch pinned runners and task data, and create benchmark environments
-4. **You**: Run one task in one legal domain — `--only-domains antitrust-competition --max-tasks 1`
+4. **You**: After setup, block benchmark-answer access; run one task in one legal domain — `--only-domains antitrust-competition --max-tasks 1`
 5. **Harness²**: Probe edits, compose a harness, and save deliverables and lessons
 6. **You**: Judge and report using the same experiment settings
 7. **Harness²**: Produce graded results for the adopted output
@@ -190,7 +191,7 @@ harness2-report --bench lab --k 1 --mode parallel
 
 - Linux, Python 3.12 recommended, uv, Node.js 20+, Git, and Google Cloud CLI for the documented benchmark route. Setup installs pinned benchmark/OpenCode checkouts and its own Bun runtime.
 - Vertex AI project, credentials, and model access for the documented model-backed route; model IDs are configuration, not included model weights. Other Responses endpoints are configurable for Codex.
-- LAB needs Pandoc and Poppler; WorkBuddy needs Docker. Benchmark code and datasets retain separate licenses. See [setup requirements](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/docs/SETUP.md#requirements) and [third-party notices](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/third_party/README.md).
+- LAB needs Pandoc and Poppler; WorkBuddy needs Docker. Both bundled runners and downloaded benchmarks/data retain separate licenses. WorkBuddy's custom Tencent license includes an EU territorial limitation, including the runner shipped in this repository. See [setup requirements](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/docs/SETUP.md#requirements) and the [third-party license table and territorial warning](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/dependencies/README.md#L7-L19).
 
 ## Ops difficulty
 
@@ -201,7 +202,7 @@ harness2-report --bench lab --k 1 --mode parallel
 - **Research-stage verdict, 2026-10-18.** The repository was created on 2026-10-06, last pushed on 2026-10-14, and is not archived. Source declares `0.1.0`; the GitHub releases endpoint returned no releases. About twelve days of history provides no durability evidence.
 - **Backing and governance.** Published by Google Research, with two contributors returned by the contributors endpoint at review time. Contributions require Google's CLA and code review. The README explicitly says this is not an officially supported Google product; institutional ownership is not a support contract. See [contribution rules](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/CONTRIBUTING.md).
 - **Adoption and longevity.** The measured 1,828 stars and 155 forks show launch interest, not verified production deployments. [推断] Based on its twelve-day age and research release shape, treat it as an experiment framework rather than a long-term production dependency.
-- **Risk flags.** Apache-2.0 covers the project's code, not every downloaded benchmark or dataset. Open [PR #37](https://github.com/google-research/harness2/pull/37) proposes subprocess-secret scrubbing and [PR #32](https://github.com/google-research/harness2/pull/32) proposes symlink/editable-tree containment; both were unmerged on 2026-10-18. These are proposed fixes, not shipped protections. Codex sandbox bypass and unrestricted executor networking are documented release behavior.
+- **Risk flags.** Apache-2.0 covers the core, not all bundled code: the shipped WorkBuddy runner uses a custom Tencent license that says it is not intended for use within the European Union. Downloaded benchmarks and datasets also retain their own terms; see the [license notices](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/dependencies/README.md#L7-L19). Open [PR #37](https://github.com/google-research/harness2/pull/37) proposes subprocess-secret scrubbing and [PR #32](https://github.com/google-research/harness2/pull/32) proposes symlink/editable-tree containment; both were unmerged on 2026-10-18. These are proposed fixes, not shipped protections. Codex sandbox bypass and unrestricted executor networking are documented release behavior.
 
 ## Caveats (unverified)
 
