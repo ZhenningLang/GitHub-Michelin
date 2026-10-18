@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Harness²", "zh": "Harness²"},
+  "steps": [
+    {"lane": "you", "en": "Install on isolated Linux; set models and credentials", "zh": "在隔离 Linux 安装，配置模型与凭据"},
+    {"lane": "you", "en": "Install the LAB benchmark", "zh": "安装 LAB 基准", "code": "harness2-setup lab"},
+    {"lane": "them", "en": "Fetch pinned runners and task data, and create benchmark environments", "zh": "获取固定版本运行器与任务数据，创建基准环境"},
+    {"lane": "you", "en": "After setup, block benchmark-answer access; run one task in one legal domain", "zh": "安装后阻断基准答案访问，再运行一个领域的一个任务", "code": "--only-domains antitrust-competition --max-tasks 1"},
+    {"lane": "them", "en": "Probe edits, compose a harness, and save deliverables and lessons", "zh": "试跑修改、合成配置，保存交付物与经验"},
+    {"lane": "you", "en": "Judge and report using the same experiment settings", "zh": "用相同实验参数评分并生成报表"},
+    {"lane": "them", "en": "Produce graded results for the adopted output", "zh": "产出已采纳交付物的评分结果"}
+  ],
+  "value": {"en": "A task-adapted harness, deliverable, and separately graded result without editing model weights", "zh": "不改模型权重，得到适配任务的配置、交付物和独立评分"},
+  "sources": [
+    "https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/README.md#run-a-benchmark",
+    "https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/docs/SETUP.md#benchmark-installation",
+    "https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/docs/EXPERIMENTS.md#web-access"
+  ]
+}
