@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Scion", "zh": "Scion"},
+  "steps": [
+    {"lane": "you", "en": "Install Scion, start its server and complete runtime, image and credential setup", "zh": "安装 Scion，启动服务并配置容器、镜像和凭据", "code": "scion server start"},
+    {"lane": "you", "en": "Initialize your repository", "zh": "初始化你的仓库", "code": "scion init"},
+    {"lane": "them", "en": "Links the project to the local Hub", "zh": "把项目关联到本地控制中心", "component": {"en": "Workstation Hub", "zh": "本机控制中心"}},
+    {"lane": "you", "en": "Name an agent and give it a task", "zh": "给 agent 起名并交代任务", "code": "scion start my-agent \"Your task here\""},
+    {"lane": "them", "en": "Runs the task in a container with an agent worktree", "zh": "在容器内执行任务，改动留在 agent 工作树", "component": {"en": "Runtime Broker + harness", "zh": "执行服务与 agent 配置包"}}
+  ],
+  "value": {"en": "Delegate repository work without manually creating each agent's container and workspace", "zh": "派发仓库任务，不再手工搭建每个 agent 的容器和工作区"},
+  "sources": [
+    "https://github.com/GoogleCloudPlatform/scion/blob/163f4e8f0c37bdd342a695a76433d8eab89a427a/README.md#quick-start",
+    "https://github.com/GoogleCloudPlatform/scion/blob/163f4e8f0c37bdd342a695a76433d8eab89a427a/docs-site/src/content/docs/getting-started/tutorial.md#2-initialize-your-repository",
+    "https://github.com/GoogleCloudPlatform/scion/blob/163f4e8f0c37bdd342a695a76433d8eab89a427a/docs-site/src/content/docs/getting-started/tutorial.md#7-clean-up"
+  ]
+}
