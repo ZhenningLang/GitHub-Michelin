@@ -18,6 +18,13 @@
 | **OpenResearch** | Use it when your coding agent and GPUs are already in place and the missing layer is the experiment bookkeeping — a branch-per-experiment tree, immutable commit snapshots, and runs dispatched across nine compute backends — accepting a 3.5-month-old, fast-release app whose managed-compute half is a closed service. | B (6/6) | [→](openresearch.md) |
 | **GitHub Agentic Workflows (gh-aw)** | Use it when you want coding agents doing unattended chores on a GitHub repo — issue triage, CI-failure digging, reports, docs PRs — written as Markdown and compiled into Actions workflows where the agent runs read-only and firewalled and only declared writes are applied — but it's GitHub-only, Public Preview, and ships weekly with 11 security advisories in 7 weeks. | B (4/6) | [→](gh-aw.md) |
 | **Codex plugin for Claude Code** | Use it when you live in Claude Code, already have a Codex login, and want OpenAI's Codex to review your diff or take over a stuck task without leaving the session — but it is one vendor, write-by-default on rescue, leaks broker processes, and nothing has been merged since 2026-07. | B (5/6) | [→](codex-plugin-cc.md) |
+| **Scion** | Use it when mixed agent CLIs need containerized workspaces and communication, from one workstation to hosted brokers — accepting pre-1.0 churn and no official Google product support. | B (6/6) | [→](scion.md) |
+
+## Comparison matrix
+
+| Option | Indexed | Health | One-line tradeoff |
+| --- | --- | --- | --- |
+| [Scion](scion.md) | ✅ | B (6/6) | Containerized mixed-harness teams with explicit workspace sharing; you operate images, credentials and the local or hosted Hub. |
 
 ## What belongs here
 

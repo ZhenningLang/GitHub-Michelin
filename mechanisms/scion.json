@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "task", "en": "Named agent task via CLI", "zh": "CLI 派发具名 agent 任务", "kind": "input"},
+    {"id": "hub", "en": "Hub dispatches to Runtime Broker", "zh": "控制中心派发给执行服务"},
+    {"id": "verify", "en": "Verify linked checkout and Git version", "zh": "核验关联仓库和 Git 版本", "technique": [1]},
+    {"id": "tree", "en": "Use local checkout as worktree source", "zh": "以本地仓库作为工作树来源", "technique": [1]},
+    {"id": "stage", "en": "Stage bundle, inputs and candidate secrets", "zh": "准备配置包、输入和候选凭据", "technique": [2]},
+    {"id": "script", "en": "Container pre-start writes native config", "zh": "容器内启动前脚本写原生配置", "technique": [2]},
+    {"id": "agent", "en": "Agent CLI runs with its workspace", "zh": "agent CLI 在工作区执行任务", "kind": "output"},
+    {"id": "refuse", "en": "Refuse invalid linked-checkout launch", "zh": "关联仓库核验失败则拒绝启动", "kind": "output", "technique": [1]}
+  ],
+  "edges": [
+    {"from": "task", "to": "hub"},
+    {"from": "hub", "to": "verify", "en": "linked workstation path", "zh": "关联本机仓库路径"},
+    {"from": "verify", "to": "tree", "en": "checks pass", "zh": "核验通过"},
+    {"from": "verify", "to": "refuse", "en": "checks fail", "zh": "核验失败"},
+    {"from": "hub", "to": "stage"},
+    {"from": "stage", "to": "script"},
+    {"from": "tree", "to": "agent"},
+    {"from": "script", "to": "agent"}
+  ],
+  "sources": [
+    "pkg/runtimebroker/linked_checkout.go:86-176 at 163f4e8f0c37bdd342a695a76433d8eab89a427a",
+    "pkg/harness/container_script_harness.go:33-40,173-231 at 163f4e8f0c37bdd342a695a76433d8eab89a427a",
+    "harnesses/codex/provision.py:75-130 at 163f4e8f0c37bdd342a695a76433d8eab89a427a"
+  ]
+}
