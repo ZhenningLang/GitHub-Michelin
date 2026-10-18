@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "PicoClaw does", "zh": "PicoClaw 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the matching core binary and initialize its workspace", "zh": "安装匹配的核心程序并初始化工作区", "code": "picoclaw onboard"},
+    {"lane": "you", "en": "Configure a model, Telegram credentials and an explicit sender allowlist", "zh": "配置模型、Telegram 凭据和明确的发送者白名单"},
+    {"lane": "you", "en": "Set tool policy, start the gateway and message your bot", "zh": "设置工具策略，启动网关并给机器人发任务", "code": "picoclaw gateway"},
+    {"lane": "them", "en": "Receives the message and calls your model with session context", "zh": "接收消息，带着会话上下文调用你的模型"},
+    {"lane": "them", "en": "Runs permitted tools, feeds results back and replies in the same chat", "zh": "执行获准工具，回传结果并在原聊天回复"}
+  ],
+  "value": {"en": "Your small board answers and acts through chat without a Python or Node.js core runtime", "zh": "小板子通过聊天接任务并回复，核心不需另装解释器"},
+  "sources": [
+    "https://github.com/sipeed/picoclaw/blob/bbf6893ca7afad27f1d00a0f5a45982a549c6ed6/README.md#L354-L399",
+    "https://github.com/sipeed/picoclaw/blob/bbf6893ca7afad27f1d00a0f5a45982a549c6ed6/docs/channels/telegram/README.md#L7-L40",
+    "https://github.com/sipeed/picoclaw/blob/bbf6893ca7afad27f1d00a0f5a45982a549c6ed6/docs/security/security_configuration.md",
+    "https://github.com/sipeed/picoclaw/blob/bbf6893ca7afad27f1d00a0f5a45982a549c6ed6/pkg/agent/pipeline_llm.go",
+    "https://github.com/sipeed/picoclaw/blob/bbf6893ca7afad27f1d00a0f5a45982a549c6ed6/pkg/agent/pipeline_execute.go"
+  ]
+}
