@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "task", "en": "Current task and fixed model", "zh": "当前任务与固定模型", "kind": "input"},
+    {"id": "base", "en": "Reference executions", "zh": "基线执行"},
+    {"id": "edits", "en": "Propose general and domain edits", "zh": "提出通用与领域修改", "technique": [1]},
+    {"id": "probes", "en": "Probe candidates on the same task", "zh": "在同一任务试跑候选", "technique": [1]},
+    {"id": "compose", "en": "Compose and execute final harnesses", "zh": "合成并执行最终配置", "technique": [1]},
+    {"id": "adopt", "en": "Adopt from finals only; baseline excluded", "zh": "仅从合成终稿采纳；排除基线", "technique": [2]},
+    {"id": "grade", "en": "Separate benchmark grading", "zh": "单独执行基准评分", "kind": "output", "technique": [2]},
+    {"id": "library", "en": "Reflect; store full tree and supported lesson", "zh": "反思；存完整配置树与有证据的经验", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "task", "to": "base"},
+    {"from": "base", "to": "edits"},
+    {"from": "edits", "to": "probes"},
+    {"from": "probes", "to": "compose"},
+    {"from": "compose", "to": "adopt"},
+    {"from": "adopt", "to": "grade"},
+    {"from": "adopt", "to": "library"},
+    {"from": "library", "to": "edits", "en": "earlier tasks in the same domain only", "zh": "仅限同领域的前序任务", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/harness2/core/recursion.py",
+    "https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/harness2/core/selection.py",
+    "https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/harness2/core/library.py"
+  ]
+}

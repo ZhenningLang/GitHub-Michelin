@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="643" viewBox="0 0 880 643" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="643" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="485" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="485" rx="10"/>
+<rect class="pillT" x="474" y="40" width="101.5" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Harness²</text>
+<path class="edge" d="M62,144 L62,168" marker-end="url(#a)"/>
+<path class="hand" d="M408,206.5 C439.0,206.5 439.0,230 470,230" marker-end="url(#a)"/>
+<path class="hand" d="M472,242.0 C441.0,242.0 441.0,293 410,293" marker-end="url(#a)"/>
+<path class="hand" d="M408,315.0 C439.0,315.0 439.0,339 470,339" marker-end="url(#a)"/>
+<path class="hand" d="M472,351.0 C441.0,351.0 441.0,411 410,411" marker-end="url(#a)"/>
+<path class="hand" d="M408,423.0 C439.0,423.0 439.0,447 470,447" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="72" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="72" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Install on isolated Linux; set models,</text>
+<text class="t" x="82" y="123">credentials, and outbound restrictions</text>
+<rect class="card" x="40" y="170" width="368" height="73" rx="8"/>
+<rect class="accY" x="40" y="170" width="4" height="73" rx="2"/>
+<circle class="accY" cx="62" cy="194" r="10"/>
+<text class="num" x="62" y="198" text-anchor="middle">2</text>
+<text class="t" x="82" y="199">Install the LAB benchmark</text>
+<text class="c" x="82" y="223">harness2-setup lab</text>
+<rect class="cardT" x="472" y="206" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="206" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="230" r="10"/>
+<text class="num" x="494" y="234" text-anchor="middle">3</text>
+<text class="t" x="514" y="235">Fetch pinned runners and task data,</text>
+<text class="t" x="514" y="257">and create benchmark environments</text>
+<rect class="card" x="40" y="269" width="368" height="92" rx="8"/>
+<rect class="accY" x="40" y="269" width="4" height="92" rx="2"/>
+<circle class="accY" cx="62" cy="293" r="10"/>
+<text class="num" x="62" y="297" text-anchor="middle">4</text>
+<text class="t" x="82" y="298">Run one task in one legal domain</text>
+<text class="c" x="82" y="322">--only-domains antitrust-competition</text>
+<text class="c" x="82" y="341">--max-tasks 1</text>
+<rect class="cardT" x="472" y="315" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="315" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="339" r="10"/>
+<text class="num" x="494" y="343" text-anchor="middle">5</text>
+<text class="t" x="514" y="344">Probe edits, compose a harness, and</text>
+<text class="t" x="514" y="366">save deliverables and lessons</text>
+<rect class="card" x="40" y="387" width="368" height="72" rx="8"/>
+<rect class="accY" x="40" y="387" width="4" height="72" rx="2"/>
+<circle class="accY" cx="62" cy="411" r="10"/>
+<text class="num" x="62" y="415" text-anchor="middle">6</text>
+<text class="t" x="82" y="416">Judge and report using the same</text>
+<text class="t" x="82" y="438">experiment settings</text>
+<rect class="cardT" x="472" y="423" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="423" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="447" r="10"/>
+<text class="num" x="494" y="451" text-anchor="middle">7</text>
+<text class="t" x="514" y="452">Produce graded results for the adopted</text>
+<text class="t" x="514" y="474">output</text>
+<rect class="val" x="28" y="527" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="551">VALUE</text>
+<text class="valT" x="48" y="575">A task-adapted harness, deliverable, and separately graded result without editing model</text>
+<text class="valT" x="48" y="597">weights</text>
+</svg>
