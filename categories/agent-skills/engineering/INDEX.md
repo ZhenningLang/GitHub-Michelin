@@ -7,6 +7,7 @@
 
 | Collection | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **SwiftUI Pro** | Focused API, data-flow and accessibility review for SwiftUI; advisory and SDK-version-sensitive. | B (4/5) | [→](swiftui-agent-skill.md) |
 | **Agent Skills (addyosmani)** | A curated pack of ~24 production-engineering skills (quality, security, web-perf, API, ship) installed into your coding agent and routed through ~8 SDLC slash commands. | A (4/5) | [→](addyosmani-agent-skills.md) |
 | **web-quality-skills** | A six-skill agent pack encoding Lighthouse / Core Web Vitals / WCAG / SEO best practices as on-demand instruction sets so a coding agent can audit and fix web-quality issues; advisory, not a measurement tool. | B (4/5) | [→](addyosmani-web-quality.md) |
 | **Scientific Agent Skills** | A large skill pack (~147 skills) that turns a coding agent into a research assistant for biology, chemistry, medicine, and drug discovery — each skill wraps a scientific Python library or database with a documented SKILL.md loaded on demand. | A (4/5) | [→](scientific-agent-skills.md) |
@@ -25,6 +26,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [SwiftUI Pro](swiftui-agent-skill.md) | ✅ | B (4/5) | Domain-specific references and file-level fixes; not a compiler, profiler or simulator operator. |
 | [Agent Skills (addyosmani)](addyosmani-agent-skills.md) | ✅ | A (4/5) | A curated pack of ~24 production-engineering skills (quality, security, web-perf, API, ship) installed into your coding agent and routed through ~8 SDLC slash commands. |
 | [web-quality-skills](addyosmani-web-quality.md) | ✅ | B (4/5) | A six-skill agent pack encoding Lighthouse / Core Web Vitals / WCAG / SEO best practices as on-demand instruction sets so a coding agent can audit and fix web-quality issues; advisory, not a measurement tool. |
 | [Scientific Agent Skills](scientific-agent-skills.md) | ✅ | A (4/5) | A large skill pack (~147 skills) that turns a coding agent into a research assistant for biology, chemistry, medicine, and drug discovery — each skill wraps a scientific Python library or database with a documented SKILL.md loaded on demand. |
