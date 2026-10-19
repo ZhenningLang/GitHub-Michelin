@@ -204,6 +204,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **PenguinHarness** | 固定模型和评测集，给运行框架改动分版本、评分；涨分仍需新任务验证。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/workflow-builders/penguin-harness.zh.md) · [EN](categories/agent-frameworks/workflow-builders/penguin-harness.md) |
+| **JiuwenSwarm** | 带聊天渠道与审批的团队工作台；分布式模式需要额外基础设施。 | Apache-2.0 | B（5/6） | [中](categories/agent-frameworks/agent-runtimes/agent-services/jiuwenswarm.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-services/jiuwenswarm.md) |
 | **Docker Agent** | 你要的 agent 应该是一个可分享的 YAML（模型、工具、队友），由 `docker agent run` 在本地像跑镜像一样执行时选它；循环必须嵌在你代码里时不选。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/agent-runtimes/docker-agent.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/docker-agent.md) |
 | **DSPy** | 你有评测数据和指标、想让优化器编译提示词而非手工调时。 | MIT | A（6/6） | [中](categories/agent-frameworks/workflow-builders/dspy.zh.md) · [EN](categories/agent-frameworks/workflow-builders/dspy.md) |
 | **Harness²** | 每个新任务都能无标准答案地调整整套 agent 配置；代价是重复试跑与自行隔离执行环境。 | 核心 Apache-2.0；自带 WorkBuddy 运行器为腾讯自定义许可（欧盟限制） | C（5/6） | [中](categories/agent-frameworks/workflow-builders/harness2.zh.md) · [EN](categories/agent-frameworks/workflow-builders/harness2.md) |

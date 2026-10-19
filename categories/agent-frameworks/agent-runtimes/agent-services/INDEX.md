@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **JiuwenSwarm** | Ready-made leader/team workbench with chat channels; distributed operation adds registry and session constraints. | B (5/6) | [→](jiuwenswarm.md) |
 | **Claude Commerce Agents** | You are building the assistant inside a product that sells something and want the shopping/merchant agent layer — prompt, guardrails, UI fill-in, approval — already decided, as a blueprint you read and vendor. | C (5/6) | [→](commerce-agents.md) |
 | **eve** | Your agent must wait days for a human or a webhook, survive redeploys, and answer on Slack/Discord/Teams — as one deployable TypeScript service. | A (6/6) | [→](eve.md) |
 | **Open Executive** | Use it when a small company needs one self-hosted executive voice over specialist agents, company docs, and Slack — not a framework you assemble, and not a personal pager. | B (4/6) | [→](open-executive.md) |
@@ -22,6 +23,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [JiuwenSwarm](jiuwenswarm.md) | ✅ | B (5/6) | Packaged multi-agent application, tool approvals and opt-in skill evolution; heavy dependencies and beta version drift. |
 | [Claude Commerce Agents](commerce-agents.md) | ✅ | C (5/6) | Anthropic's reference blueprint for a shopping agent plus a merchant agent over three runtimes; read and vendor it — it is unmaintained and not on any package index. |
 | [eve](eve.md) | ✅ | A (6/6) | Your agent must wait days for a human or a webhook, survive redeploys, and answer on Slack/Discord/Teams — as one deployable TypeScript service. |
 | [Open Executive](open-executive.md) | ✅ | B (4/6) | Use it when a small company needs one self-hosted executive voice over specialist agents, company docs, and Slack — not a framework you assemble, and not a personal pager. |

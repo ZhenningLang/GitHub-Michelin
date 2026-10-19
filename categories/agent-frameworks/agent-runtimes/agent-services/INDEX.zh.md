@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **JiuwenSwarm** | 现成的负责人和团队工作台，带聊天渠道；分布式另需注册服务并受会话限制。 | B（5/6） | [→](jiuwenswarm.zh.md) |
 | **Claude Commerce Agents** | 你要在一个卖东西的产品里做助手，想直接拿到购物/商家 agent 这一层——prompt、护栏、UI 回填、审批——已经定好，作为一份读来 vendor 的蓝图。 | C（5/6） | [→](commerce-agents.zh.md) |
 | **eve** | 你的 agent 要为一个人或一个 webhook 等上好几天、要扛住重新部署，还要能在 Slack／Discord／Teams 上应答——并且是一个可部署的 TypeScript 服务。 | A（6/6） | [→](eve.zh.md) |
 | **Open Executive** | 小公司要把领导问题收成一个自托管高管声音——背后是专家 agent、公司文档和 Slack——而不是自己组装框架，也不是个人传呼机。 | B（4/6） | [→](open-executive.zh.md) |
@@ -22,6 +23,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [JiuwenSwarm](jiuwenswarm.zh.md) | ✅ | B（5/6） | 打包的多 agent 应用、工具审批与可选技能演化；依赖较重，beta 分支与发布版本有差异。 |
 | [Claude Commerce Agents](commerce-agents.zh.md) | ✅ | C（5/6） | Anthropic 的参考蓝图：一个购物 agent 加一个商家 agent、跑在三条运行时上；读它并 vendor——它不维护，也不在任何包索引里。 |
 | [eve](eve.zh.md) | ✅ | A（6/6） | 你的 agent 要为一个人或一个 webhook 等上好几天、要扛住重新部署，还要能在 Slack／Discord／Teams 上应答——并且是一个可部署的 TypeScript 服务。 |
 | [Open Executive](open-executive.zh.md) | ✅ | B（4/6） | 小公司要把领导问题收成一个自托管高管声音——背后是专家 agent、公司文档和 Slack——而不是自己组装框架，也不是个人传呼机。 |
