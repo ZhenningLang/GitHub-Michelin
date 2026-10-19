@@ -523,6 +523,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | --- | --- | --- | --- | --- |
 | **book-to-skill** | 当编码智能体总要参考几本技术书或一个文档目录，你想把每本变成按章索引的技能、不再每次重贴 PDF 时用它——但它是概括而不是摘录原文，项目也才五个月左右。 | MIT | B（6/6） | [中](categories/agent-skills/book-to-skill.zh.md) · [EN](categories/agent-skills/book-to-skill.md) |
 | **distilly** | 当你想把某个人的聊天记录、文档与访谈蒸馏成可安装的 agent 技能，让它用这个人的判断与语气回答时用它。 | MIT | B（4/5） | [中](categories/agent-skills/distilly.zh.md) · [EN](categories/agent-skills/distilly.md) |
+| **visual-explainer** | 把有来源的差异与方案变成图文 HTML，保留源码与反馈；不是可编辑图模型，默认也非完全离线。 | MIT | C（5/6） | [EN](categories/agent-skills/design/visual-artifacts/visual-explainer.md) · [中](categories/agent-skills/design/visual-artifacts/visual-explainer.zh.md) |
 
 #### agent-skills / engineering
 
