@@ -1389,6 +1389,7 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **SolidCraft** | Editable parametric parts with built-in MCP; early Rust geometry and unsigned releases. | MIT OR Apache-2.0 | C (5/6) | [EN](categories/cad/solidcraft.md) · [中](categories/cad/solidcraft.zh.md) |
 | **FreeCAD** | Use it when you need an editable parametric history over a real solid model — sketch, constrain, pad/pocket, then re-dimension and let the part rebuild — on local files, with a Python API and no seat license. | LGPL-2.1-or-later | A (5/6) | [EN](categories/cad/freecad.md) · [中](categories/cad/freecad.zh.md) |
 
 ### desktop-launchers
