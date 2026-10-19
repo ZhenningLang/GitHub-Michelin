@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "direction": "right",
+  "nodes": [
+    {"id": "cmd", "en": "CLI command and credential profile", "zh": "CLI 命令与凭据配置", "kind": "input"},
+    {"id": "guard", "en": "Read-only request policy", "zh": "请求级只读政策", "technique": [1]},
+    {"id": "apple", "en": "Signed Apple API request", "zh": "签名后的苹果 API 请求", "kind": "external"},
+    {"id": "pages", "en": "Pagination; next-link cycle detection", "zh": "分页；后续链接循环检测", "technique": [2]},
+    {"id": "out", "en": "Structured results or explicit page error", "zh": "结构化结果或明确的分页错误", "kind": "output", "technique": [2]},
+    {"id": "deny", "en": "Refuse forbidden remote write", "zh": "拒绝不允许的远程写入", "kind": "output", "technique": [1]}
+  ],
+  "edges": [{"from": "cmd", "to": "guard"}, {"from": "guard", "to": "apple", "en": "permitted request", "zh": "允许的请求"}, {"from": "guard", "to": "deny", "en": "read-only violation", "zh": "违反只读政策"}, {"from": "apple", "to": "pages"}, {"from": "pages", "to": "apple", "en": "valid next link", "zh": "合法后续链接"}, {"from": "pages", "to": "out"}],
+  "sources": ["https://github.com/rorkai/App-Store-Connect-CLI/blob/b9520c3865b54c5c02f905793ac3565fc2885aee/internal/readonly/readonly.go", "https://github.com/rorkai/App-Store-Connect-CLI/blob/b9520c3865b54c5c02f905793ac3565fc2885aee/internal/asc/client_pagination.go"]
+}

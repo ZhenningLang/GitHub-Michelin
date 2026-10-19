@@ -400,6 +400,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **App Store Connect CLI** | Script Apple release metadata, TestFlight and review operations; standalone Go binary, credential and approval boundaries remain yours. | MIT | B (6/6) | [EN](categories/dev-utilities/app-store-connect-cli.md) · [中](categories/dev-utilities/app-store-connect-cli.zh.md) |
 | **DevToys** | Use it when you want about 30 dev utilities (JWT/Base64 decoding, JSON formatting, diff, hashing) in one offline desktop app so secrets never reach online formatters — but every 2.x build is a prerelease and updates arrive in rare bursts. | MIT | B (5/6) | [EN](categories/dev-utilities/data-tools/devtoys.md) · [中](categories/dev-utilities/data-tools/devtoys.zh.md) |
 | **CyberChef** | Use it when you need to chain encode/decode, crypto, compression and data-analysis transforms offline in your browser. | Apache-2.0 | A (6/6) | [EN](categories/dev-utilities/data-tools/cyberchef.md) · [中](categories/dev-utilities/data-tools/cyberchef.zh.md) |
 | **Cockpit** | Use it when you need a browser-based, systemd-native admin UI for a few Linux servers. | LGPL-2.1-or-later | B (5/6) | [EN](categories/dev-utilities/ops-infra/cockpit.md) · [中](categories/dev-utilities/ops-infra/cockpit.zh.md) |

@@ -397,6 +397,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **App Store Connect CLI** | 脚本化管理苹果发布文案、TestFlight 与审核；独立 Go 二进制，凭据和审批边界仍由你负责。 | MIT | B（6/6） | [中](categories/dev-utilities/app-store-connect-cli.zh.md) · [EN](categories/dev-utilities/app-store-connect-cli.md) |
 | **DevToys** | 当你想把 JWT/Base64 解码、JSON 格式化、diff、哈希等约 30 个开发小工具收进一个离线桌面应用、不再把密钥粘进在线网站时用它——但所有 2.x 构建都是预发布版，更新稀疏且成批出现。 | MIT | B（5/6） | [中](categories/dev-utilities/data-tools/devtoys.zh.md) · [EN](categories/dev-utilities/data-tools/devtoys.md) |
 | **CyberChef** | 当你需要在浏览器里离线串联编解码、加解密、压缩和数据分析变换、且数据不能外发时用它。 | Apache-2.0 | A（6/6） | [中](categories/dev-utilities/data-tools/cyberchef.zh.md) · [EN](categories/dev-utilities/data-tools/cyberchef.md) |
 | **Cockpit** | 当你需要为少数几台 Linux 服务器用浏览器做 systemd 原生的图形化管理时用它。 | LGPL-2.1-or-later | B（5/6） | [中](categories/dev-utilities/ops-infra/cockpit.zh.md) · [EN](categories/dev-utilities/ops-infra/cockpit.md) |

@@ -445,6 +445,7 @@ face_recognition (ageitgey/face_recognition),categories/computer-vision/deepface
 facenet-pytorch (timesler/facenet-pytorch),categories/computer-vision/deepface.md,,no
 FastAPI + Uvicorn,categories/llm-inference/serving-engines/ray-serve.md,,no
 faster-whisper,categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
+fastlane,categories/dev-utilities/app-store-connect-cli.md,,no
 FaucetETH (upstream: FaucETH),categories/blockchain-dev-infrastructure/INDEX.md,,no
 Feedly / Inoreader,categories/reading-tools/netnewswire.md,,no
 Fiddler,categories/debugging-proxy/whistle.md,,no

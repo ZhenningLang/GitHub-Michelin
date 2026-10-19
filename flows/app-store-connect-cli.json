@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "them": {"en": "asc", "zh": "asc"},
+  "steps": [
+    {"lane": "you", "en": "Install the binary and configure an Apple API-key profile", "zh": "安装二进制并配置苹果 API 密钥", "code": "brew install asc"},
+    {"lane": "you", "en": "Validate the profile and request a JSON app listing", "zh": "核验配置并请求 JSON 应用列表", "code": "asc apps list --output json"},
+    {"lane": "them", "en": "Sign the request locally with the configured key", "zh": "使用配置的密钥在本地签名请求"},
+    {"lane": "them", "en": "Fetch Apple account data and return script-readable app IDs", "zh": "读取苹果账户数据并返回脚本可用的应用编号"}
+  ],
+  "value": {"en": "Use account data in automation without clicking through the web console", "zh": "不用反复点后台，就能把账户数据接入自动化"},
+  "sources": ["https://github.com/rorkai/App-Store-Connect-CLI/blob/b9520c3865b54c5c02f905793ac3565fc2885aee/README.md", "https://github.com/rorkai/App-Store-Connect-CLI/blob/b9520c3865b54c5c02f905793ac3565fc2885aee/internal/asc/client_http.go"]
+}

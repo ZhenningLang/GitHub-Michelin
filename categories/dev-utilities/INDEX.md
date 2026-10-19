@@ -13,7 +13,17 @@
 | **Package Manager GUIs** | Desktop front ends for command-line package managers — browse, install and upgrade without the terminal (Homebrew on macOS today). | [→](package-manager-gui/INDEX.md) |
 | **Package Managers** | The command-line package manager itself — the tool that resolves, downloads and installs packages into a prefix (a faster Homebrew client today). | [→](package-managers/INDEX.md) |
 
+## Projects in this category
+
+| Project | Use when | Health | Page |
+| --- | --- | --- | --- |
+| **App Store Connect CLI** | Script Apple release metadata, TestFlight and review operations with a standalone Go CLI. | B (6/6) | [→](app-store-connect-cli.md) |
+
 ## Comparison matrix
+
+| Option | Indexed | Health | One-line tradeoff |
+| --- | --- | --- | --- |
+| [App Store Connect CLI](app-store-connect-cli.md) | ✅ | B (6/6) | Apple release API commands without Ruby; still needs credentials, approval and Xcode for local builds, with default-on telemetry. |
 
 | Option | Type | One-line tradeoff |
 | --- | --- | --- |
