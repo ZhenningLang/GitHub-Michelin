@@ -8,6 +8,7 @@
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **DeepTutor** | DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/. | B（4/6） | [→](deeptutor.zh.md) |
+| **edulab** | 用同源符号解答和绘图数据制作单题交互课件，或走独立检查的旁白视频路线。 | B（4/5） | [→](edulab.zh.md) |
 
 
 ## 对比矩阵
@@ -15,6 +16,7 @@
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [DeepTutor](deeptutor.zh.md) | ✅ | B（4/6） | DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/. |
+| [edulab](edulab.zh.md) | ✅ | B（4/5） | 用同源符号解答和绘图数据制作单题交互课件，或走独立检查的旁白视频路线。 |
 
 
 ## 什么该放这里

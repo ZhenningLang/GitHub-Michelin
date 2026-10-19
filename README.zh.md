@@ -1304,6 +1304,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **DeepTutor** | DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/. | NOASSERTION | B（4/6） | [中](categories/education-tutoring/deeptutor.zh.md) · [EN](categories/education-tutoring/deeptutor.md) |
+| **edulab** | 用同源符号解答和绘图数据制作单题交互课件，或走独立检查的旁白视频路线。 | Apache-2.0 | B（4/5） | [EN](categories/education-tutoring/edulab.md) · [中](categories/education-tutoring/edulab.zh.md) |
 
 ### agent-governance
 
