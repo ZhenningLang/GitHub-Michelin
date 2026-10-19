@@ -418,6 +418,7 @@ DrissionPage,categories/web-scraping/crawling-tools/fuck-login.md,,no
 dsh built-in context ring and stats line (`deepseek-ai/deepseek-harness`),categories/agent-tooling/session-history/dsh-context.md,,no
 dsh-TUI (`ccch1mneyyy/dsh-TUI`),categories/agent-tooling/session-history/dsh-context.md,,no
 DSSIM,categories/media-processing/quality-metrics/ssimulacra2.md,,no
+DuckLake,categories/databases/database-engines/duckdb-object-storage.md,,no
 E2B / Daytona (agent sandboxes),categories/desktop-automation/cua.md,,no
 Each agent's built-in skills / slash commands,categories/agent-skills/engineering/addyosmani-agent-skills.md,,no
 Ebook Translator Calibre Plugin (`bookfere/Ebook-Translator-Calibre-Plugin`),categories/reading-tools/translate-books-with-llms.md,,no
