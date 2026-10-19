@@ -1,0 +1,59 @@
+Final local delivery verification — 2026-10-18 UTC
+Publication: BLOCKED; no push/PR/merge claimed. Raw private-identity ledger remains local-only.
+Verified structural commit: 91b5347a70f189ddc3283126168624c6dfb54631
+Working tree after structural commit: intake reports/ledger updates only.
+Tool/source boundary: tools, flows, mechanisms and assets unchanged by the refactor.
+Generated at: 2026-10-18T11:50:52.616261+00:00
+
+Deliverables (existence / substance / wired):
+Entry pairs: 61 new pairs; source-backed content and generated cards; all INDEX/README routes checked.
+Existing entries: 13 fresh; date gate checked; no upstream re-verification claimed.
+Batch ledger: 81 rows; done 74 (add 61, sync 13), proposed 6, skipped 1, failed 0; no nonterminal rows.
+Per-repo audit: 61/61 logs, scoped quality records, committed pages and final bilingual paths checked.
+Taxonomy: 927 EN + 927 ZH; 195 nodes; 16 pairs moved; 6 overflows -> 0; max direct fanout 12.
+Refactor resources: 4591 tracked files unchanged; no tool changes.
+Chrome acceptance (main-session run): 7 unique repository tabs = 6 proposed + 1 skipped; done open 0; unmatched 0.
+
+Evidence layers:
+Inner-loop evidence: main-session make gates and make test rerun; exact key lines below.
+Acceptance evidence: actual Chrome/ledger reconciliation; committed page and routing audit; source-backed semantic review.
+Regression evidence: 927 pairs conserved; resource identities unchanged; baseline tool suite remains green.
+Holdout / unseen evidence: not applicable to model effectiveness; no upstream runtime or personal holdout experiment.
+Holdout source category: actual captured tabs; independent fixed-source sampling.
+Expected-value source: user request, repository contracts and pinned upstream source.
+Change relative to freeze: generated content and path-only migration; no evaluator/schema/gate/harness changes.
+Known gaps: no effectiveness/cost claim; 11 old external bookmark paths moved; 1544 non-blocking warnings remain; publication authorization unresolved.
+
+intake-2026-10-18-final-gates.log
+sha256: 1a85ec01fa30e9f6b5886c3e97dda636986d360862f0bb4a4304cc4152f7a73e
+Recorded exit code: 0
+195 category nodes, 927 EN + 927 ZH pages, 0 errors, 1544 warnings.
+reverse_index check: reports are current, no full mislabels (0 partly-indexed rows tracked in reports/project-intake-backlog.md)
+
+intake-2026-10-18-final-tests.log
+sha256: f4cee71cd9c081e2407582fbcd5d5df92fe15d86a971fa341d945eadb7261b97
+Recorded exit code: 0
+Ran 483 tests in 32.243s
+OK
+Skipped: 0 (unittest result is plain OK)
+
+Refactor acceptance (reused child machine evidence)
+sha256: 83c6dbde62fe74d3e8f61f31cb5a6e7f44a2d19724bf5473fd9983669b305f86
+PASS full page fidelity: 1854 files / 927 bilingual pairs; only category and semantically equivalent relative links changed
+PASS generated text blocks: 1856 byte-identical; 148 project files mechanically changed
+PASS overflow: 6 -> 0; max direct pairs = 12; 927 EN + 927 ZH conserved
+PASS four complete child clusters, retained parent sets and supervision destination match approved plan
+PASS assets: 4591 source/resource files SHA-256 identical, including 3679 SVGs; 0 additions/deletions/renames
+PASS 16 moved slugs globally unique; flow/card stems unchanged; regeneration unnecessary
+PASS README.md: 927 unique registrations; summaries/license/health intact; 16 moved rows correctly regrouped
+PASS README.zh.md: 927 unique registrations; summaries/license/health intact; 16 moved rows correctly regrouped
+PASS INDEX row fidelity: 60 original summary/comparison rows transferred; 4 absent comparison rows reused original summaries
+PASS all 26345 current local Markdown/image links resolve; original page anchors/query suffixes preserved
+PASS boundary regressions: image child, Maka, T3 Code, OpenChamber, OpenHands, LobsterAI, TimesFM, SwiftUI Pro kept paths
+PASS scope: no tool/config changes; HEAD unchanged; parent-owned intake changes excluded, not overwritten
+PASS frozen snapshot raw bytes match git HEAD: 2240 files; byte-exact generated-block comparison
+
+HTML companions (main-session final check): 0 errors, 0 warnings; both MD/HTML pairs current.
+Local links in two report sources: 29, all resolved.
+Preview: worker open returned exit 0 for each HTML; full browser visual/viewport inspection not performed.
+Final rescan: 0 new, 0 pending, 81 rows.

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>标签收录汇总与 Harness 吸收建议</title>
+<style>
+:root { color-scheme: light; --bg: #f8fafc; --panel: #ffffff; --text: #111827; --muted: #64748b; --border: #dbe3ef; --accent: #1f4b99; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.55; }
+main { max-width: 960px; margin: 0 auto; padding: 32px 20px 48px; }
+header { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin-bottom: 18px; }
+section { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+h1, h2, h3, h4, h5, h6 { line-height: 1.2; margin: 1.4em 0 0.5em; }
+header h1 { margin-top: 0; }
+p { margin: 0.75em 0; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+ul { padding-left: 1.4rem; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #0f172a; color: #e5e7eb; padding: 14px; border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+td code, th code { overflow-wrap: anywhere; }
+th { background: #eef4ff; }
+.meta { color: var(--muted); font-size: 0.92rem; }
+.diagram-figure { margin: 1.2rem 0; padding: 12px; background: #ffffff; border: 1px solid var(--border); border-radius: 10px; overflow-x: auto; text-align: center; }
+.diagram-figure svg { height: auto; } /* 不设 max-width：宽图保持自然尺寸，figure 的 overflow-x 负责滚动 */
+table.state-transitions { margin-top: -0.4rem; font-size: 0.92rem; }
+table.state-transitions caption { caption-side: top; text-align: left; color: var(--muted); font-size: 0.82rem; padding: 0 0 6px; }
+table.state-transitions td.st-num { width: 2.2em; text-align: center; font-size: 1.1rem; color: var(--accent); }
+.image-figure { margin: 1.2rem 0; padding: 12px; background: #ffffff; border: 1px solid var(--border); border-radius: 10px; text-align: center; }
+.image-figure img { max-width: 100%; height: auto; border-radius: 6px; }
+.image-figure figcaption { color: var(--muted); font-size: 0.85rem; margin-top: 8px; }
+.badge { display: inline-block; background: #e0ecff; color: var(--accent); border-radius: 999px; padding: 2px 10px; font-size: 0.82rem; margin-right: 8px; }
+blockquote.alert { margin: 1rem 0; padding: 10px 14px; border-left: 4px solid var(--accent); background: #f2f6fd; border-radius: 0 8px 8px 0; }
+blockquote.alert p { margin: 0.3em 0; }
+blockquote.alert .alert-label { margin: 0 0 4px; font-weight: 600; font-size: 0.86rem; color: var(--accent); }
+blockquote.alert-tip { border-left-color: #047857; background: #eefaf4; }
+blockquote.alert-tip .alert-label { color: #047857; }
+blockquote.alert-warning { border-left-color: #b45309; background: #fdf6ec; }
+blockquote.alert-warning .alert-label { color: #b45309; }
+blockquote.alert-important { border-left-color: #7c3aed; background: #f6f2fd; }
+blockquote.alert-important .alert-label { color: #7c3aed; }
+blockquote.alert-caution { border-left-color: #b91c1c; background: #fdf2f2; }
+blockquote.alert-caution .alert-label { color: #b91c1c; }
+sup.regid { font-size: 0.66em; color: var(--muted); margin-left: 2px; white-space: nowrap; font-family: ui-monospace, monospace; }
+pre.wireframe { white-space: pre; overflow-x: auto; background: #fffdf5; color: #1f2937; border: 1px dashed #c8b98a; border-radius: 10px; padding: 14px 16px; line-height: 1.35; position: relative; }
+pre.wireframe::before { content: "页面示意（线框）"; display: block; color: #8a7a4a; font-size: 0.78rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin-bottom: 8px; }
+.layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 0 8px; max-width: 1220px; margin: 0 auto; }
+.layout main { margin: 0; min-width: 0; }
+.sidebar { position: sticky; top: 0; align-self: start; max-height: 100vh; overflow-y: auto; box-sizing: border-box; padding: 32px 0 32px 20px; font-size: 0.9rem; }
+.back-link { display: inline-block; background: var(--panel); border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; margin-bottom: 10px; font-weight: 600; }
+.toc-title { color: var(--muted); font-size: 0.8rem; margin: 8px 0 4px; }
+ul.toc { list-style: none; padding-left: 0; margin: 0; }
+ul.toc li { margin: 2px 0; }
+ul.toc a { display: block; padding: 4px 8px; border-radius: 6px; color: var(--text); overflow-wrap: anywhere; }
+ul.toc a:hover { background: #e8eefc; color: var(--accent); text-decoration: none; }
+h2[id], h3[id] { scroll-margin-top: 16px; }
+@media (max-width: 1100px) { .layout { display: block; } .sidebar { position: static; max-height: none; padding: 20px 20px 0; } }
+</style>
+</head>
+<body>
+<main>
+<header>
+<span class="badge">research</span>
+<h1>标签收录汇总与 Harness 吸收建议</h1>
+<div class="meta">Source: /Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-18/intake/tabs-2026-10-18/harness-report/batch.md</div>
+<div class="meta">Generated: 2026-10-18T11:52:42+00:00</div>
+</header>
+<section>
+<h1>标签收录汇总与 Harness 吸收建议</h1>
+<p><strong>尚未发布：脱敏发布工作区的写入被护栏拦下。</strong> 本地收录、分类整理与工具验收已完成。本轮没有修改你的 harness，也没有安装这些框架。</p>
+<h2 id="待裁决与仍开标签">待裁决与仍开标签</h2>
+<p>六项都保留标签，未生成选型页。它们是待裁决候选，不是已经认定无价值或违法的项目。</p>
+<table><thead><tr><th>候选</th><th>保留原因</th><th>你需要决定什么</th></tr></thead><tbody><tr><td>breferrari/obsidian-mind</td><td>有独立记忆运行时，但复制技能的上游 MIT 声明保留存在缺口。</td><td>等上游补齐，或另行审查授权后收录。</td></tr><tr><td>liseami/CCBaga</td><td>NOTICE 披露复制组件缺独立上游许可声明，再分发条款待确认。</td><td>补齐许可声明并确认再分发条款，或隔离来源清楚的部分。</td></tr><tr><td>JimLiu/baoyu-design</td><td>自述重新打包 Anthropic 产品内容，提取内容授权覆盖未核实。</td><td>补授权材料后再决定；不以根 MIT 推导所有内容均获许可。</td></tr><tr><td>Bennettxai/FounderOS</td><td>多数文件与声明上游同源；当前许可证与 NOTICE 存在差异。</td><td>核实复制时点许可或单独授权；不据当前差异直接断言侵权。</td></tr><tr><td>dzhng/skills</td><td>约 42% 文件、约 80% 所选文本字节与声明上游相同，计量口径会影响判断。</td><td>是否按工程技能主轴收录。21 个工程技能不等于 21 个原创技能，也不能说八成技能都是复制。</td></tr><tr><td>私有候选，名称不公开</td><td>不是公开开源分发，未发现明确开源许可。</td><td>排除，或等待公开与明确许可；不发布其内容。</td></tr></tbody></table>
+<p>你自己的 <code>ZhenningLang/cpu-gpu-basic</code> 按规则跳过并保留。非 GitHub 标签、组织页和博客未扩展处理。</p>
+<p>Chrome 实际验收：仍开着 7 个不同 GitHub 仓库，分别是 6 个 proposed 和 1 个 skipped。已完成仓库仍开数量为 0，未匹配的新仓库为 0。</p>
+<h2 id="批次结果">批次结果</h2>
+<table><thead><tr><th>项目</th><th>数量</th></tr></thead><tbody><tr><td>新增双语页对</td><td>61</td></tr><tr><td>已有页面，仍新鲜，未改内容</td><td>13</td></tr><tr><td>重新研究并改写的 sync 页面</td><td>0</td></tr><tr><td>待裁决</td><td>6</td></tr><tr><td>跳过自有仓库</td><td>1</td></tr><tr><td>失败</td><td>0</td></tr><tr><td>非终态</td><td>0</td></tr></tbody></table>
+<p>81 行台账全部有终态。每个新增仓库均独立提交，在主会话全库门禁与双语范围质量扫描通过后，才标记 done 并关闭标签。13 个已有页均由主会话重新核对日期，未超过 90 天；没有用“同步”伪称重新研究。</p>
+<p>PR：尚未创建。原始本地分支含私有项名称，不能直接推送。已准备另一发布工作区，但写入因同仓库 sibling 限制被拒绝；没有换命令或换路径绕过。所有页面、补丁和本地恢复状态均保留。</p>
+<h2 id="对你的-Harness，最值得做什么">对你的 Harness，最值得做什么</h2>
+<p><strong>[推断：依据是现有控制流与上游固定源码，未做个人任务集实验]</strong> 保留现在的改进流程。最值得补的是“候选是否真的更好”的验收，而不是再加一个自动反思入口。</p>
+<p>现有系统已能聚合证据、暂存改动、逐条裁决并经分支发布。默认落地检查不要求新版本行为优于旧版。已有行为评测工具可以复用，但其禁用技能基线臂不自动等于新旧版本对照。</p>
+<p>优先借鉴三个机制：冻结实际实验输入；让程序依据原始结果算分；对最终实际发布版本重新验收。模型负责提案，人保留晋升权。</p>
+<p>深入依据：<a href="summary.html">机制研究阅读版</a>（<a href="summary.md">源稿</a>）、<a href="../evolution-evidence.md">六个项目的源码证据</a>、<a href="../harness-baseline.md">现有能力与缺口</a>、<a href="../facts-review.md">事实复核结论</a>。</p>
+<h2 id="值得吸收的机制">值得吸收的机制</h2>
+<p>这里只列对当前体系有中、高增量价值的候选。优先级是适配判断，不是性能排名。其余项目不作为新增 harness 机制推荐；业务功能有用，不代表应该进入全局配置。fresh 项没有重做上游研究，不将旧页当新发现。</p>
+<table><thead><tr><th>优先级／适配</th><th>项目与本地选型页</th><th>可借鉴什么</th><th>映射现有入口</th><th>不直接照搬什么</th></tr></thead><tbody><tr><td>优先／高</td><td><a href="../../../categories/agent-frameworks/agent-runtimes/agent-services/jiuwenswarm.zh.md">JiuwenSwarm</a></td><td>对最终筛选产物重测，并保护已知成功任务。</td><td><code>agent-harness-improvement</code>、现有行为评测工具</td><td>单 harness 内部留出为零；启用经验演化后的队员自动保存。</td></tr><tr><td>优先／高</td><td><a href="../../../categories/agent-frameworks/workflow-builders/penguin-harness.zh.md">Penguin Harness</a></td><td>固定实验配置、版本快照、单假设改动与逐题轨迹。</td><td>同一改进链的候选包与验证产物</td><td>默认与 OPRO 协议不能混用；汇总分不应由模型填写后直接信任。</td></tr><tr><td>其次／中</td><td><a href="../../../categories/agent-tooling/work-state/headroom.zh.md">Headroom</a></td><td>失败循环探测，以及压缩后保留原文回取。</td><td>会话判卷、上下文压缩</td><td>默认失败学习预览仍可能外发和计费；不启用直接写全局规则。</td></tr><tr><td>其次／中</td><td><a href="../../../categories/agent-memory/app-memory/hy-memory.zh.md">Hy-Memory</a></td><td>事实、经验与精确代码 diff 分账，保留修订关系。</td><td><code>assist-mem</code>、<code>assist-learn</code>、<code>compact-memory</code></td><td>不引入整套图存储；不把批次关联或默认关闭的 schema 证据门当真实性保证。</td></tr><tr><td>其次／中</td><td><a href="../../../categories/agent-frameworks/agent-runtimes/personal-assistants/atomic-agent.zh.md">Atomic Agent</a></td><td>将姓名来源约束和不同记忆变更类型，转为现有记忆门禁的反例样本。</td><td>记忆写入及整理验证</td><td>使用或复述得到正票，不等于记忆正确；有限文字核对不是身份认证。</td></tr><tr><td>按需／中</td><td><a href="../../../categories/knowledge-base/claude-obsidian.zh.md">Claude Obsidian</a></td><td>并行修改以操作包交付，预期哈希拒绝漂移，单写者处理回滚。</td><td>worker 交付合同、记忆整理</td><td>保留现有账本，不另造第二个长期记忆源。</td></tr><tr><td>按需／中</td><td><a href="../../../categories/social-media-management/solomcn.zh.md">SoloMCN</a></td><td>原始版、基线版、使用版三方合并，审批绑定具体差异。</td><td>staging 与分发升级</td><td>仅适用于确有本地覆写的场景；不改变当前软链单源策略。</td></tr><tr><td>按需／中</td><td><a href="../../../categories/agent-frameworks/coding-agents/terminal-agents/maka.zh.md">Maka</a></td><td>追加事件事实源、事务内状态投影和按事件恢复。</td><td>长任务 watcher 与恢复状态</td><td>先解决页面披露的授权审查问题；不为个人任务引入整套运行时。</td></tr><tr><td>按需／中</td><td><a href="../../../categories/mobile-automation/iphone-use.zh.md">iPhone Use</a></td><td>写超时标为结果不确定，先重新观察，不盲目重放。</td><td>浏览器／设备工具错误合同、验收</td><td>不默认加入手机控制权限；动作成功不等于用户目标成功。</td></tr><tr><td>按需／中</td><td><a href="../../../categories/dev-utilities/app-store-connect-cli.zh.md">App Store Connect CLI</a></td><td>请求层只读开关采用只能开启、不能互相关闭的合并规则；分页错误显式返回。</td><td>只读工具、批处理边界</td><td>不是 OS 沙箱，不导入 Apple 发布业务权限。</td></tr><tr><td>实验候选／中</td><td><a href="../../../categories/on-device-ml/apple-local-inference/fluiduse.zh.md">FluidUse</a></td><td>有限选项决策与真实控件回读，可用于窄场景路由实验。</td><td>低成本判定、工具验收</td><td>不用本地小模型替代安全授权；不能把包含式回读当精确一致。</td></tr><tr><td>实验候选／中</td><td><a href="../../../categories/decision-models/vegaml.zh.md">vegaml</a></td><td>显式拒答、预测集合与独立校准的接口设计。</td><td>便宜判卷与路由实验</td><td>拟合分类头可能没有拒答字段；未独立验证就不进入权限门。</td></tr><tr><td>按需／中</td><td><a href="../../../categories/observability/mac-performance-monitor.zh.md">Mac Performance Monitor</a></td><td>只读 SQL 多层限制、稳定时间桶、缺失值不补零。</td><td>worker 资源诊断与指标解释</td><td>不安装它的 MCP，也不默认读取个人历史。</td></tr><tr><td>可选／中</td><td><a href="../../../categories/knowledge-base/hister.zh.md">Hister</a></td><td>关键词保底、语义检索失败明确报告，可作已读网页取材入口。</td><td><code>web-read</code>、<code>write-source</code></td><td>不默认采集所有浏览页面，不新增常驻敏感资料源。</td></tr></tbody></table>
+<p>前两项优先，因为它们直接补已核实的验收缺口。其余条目是按需参考，不是十四项实施清单。许可待决的项目不进入当前吸收优先级；读机制也不代表拥有复制代码的许可。</p>
+<h2 id="横向对比选题池">横向对比选题池</h2>
+<p>以下八个分类均已实数复核，直接页至少四项。它们不是本轮追加调研任务。</p>
+<table><thead><tr><th>主题</th><th>已收录数</th><th>最值得比较的问题</th></tr></thead><tbody><tr><td>应用记忆</td><td>8</td><td>事实、经验和代码变更分别存什么，哪个动作才算真正的学习？</td></tr><tr><td>编码宿主记忆</td><td>10</td><td>插件自动捕获与显式便签，怎样约束误记和跨项目污染？</td></tr><tr><td>知识库</td><td>8</td><td>主张、证据与版本如何分账，检索到的片段怎样确认仍有效？</td></tr><tr><td>Agent 服务</td><td>11</td><td>多角色协作、人工审批、组织权限和进程隔离，谁真正实现了哪一层？</td></tr><tr><td>终端编码助手</td><td>12</td><td>工具成功、任务完成与会话恢复，哪些是机器门，哪些只是提示词？</td></tr><tr><td>视频制作</td><td>12</td><td>导演提示包与可执行制作管线分别省哪一步，何时才需要独立渲染引擎？</td></tr><tr><td>Apple 本地推理</td><td>4</td><td>MLX、Metal 与 Core ML 路线的模型覆盖、内存和真实设备权限如何取舍？</td></tr><tr><td>有限答案决策</td><td>4</td><td>几种本地决策模型怎样校准、拒答，为什么概率不能直接当授权？</td></tr></tbody></table>
+<h2 id="验证与已知缺口">验证与已知缺口</h2>
+<ul><li>逐项目证据：61 个新增各自通过全库门禁与范围质量扫描。新增页均有来源、反向场景、对比、技术机制及双语生成资产；没有执行上游安装器、测试、模型或设备动作。</li><li>真实用户路径：Chrome 中 done 仓库仍开数量为 0；六个待裁决和自有仓库保留；没有未匹配的新仓库。台账 81 行全部终态。</li><li>独立复核：页面按组检查固定源码。发现的权限、许可、评分、上传和认证顺序遗漏均修正后复核；未用结构门禁替代语义判断。</li></ul>
+<p>最终主会话复跑：<code>make gates</code> 退出 0，<code>195 category nodes, 927 EN + 927 ZH pages, 0 errors, 1544 warnings.</code>；<code>make test</code> 退出 0，<code>Ran 483 tests in 32.243s</code>，<code>OK</code>。告警不是零，多为既有陈旧性与健康度测量缺口；本轮六处分类溢出已归零。</p>
+<p>迁移保持 927 对页面守恒，16 对路径变更单独提交。710 处本地链接重定位，4,591 份图源及资源哈希保持不变。<a href="../final-verification.txt">最终机器记录</a> 与 <a href="../per-repo-verification.json">逐项目记录</a> 保留日志哈希和提交定位。</p>
+<p>独立汇总事实复核已关闭唯一措辞阻断：<a href="../batch-facts-review.md">复核记录</a>。</p>
+<p><strong>Inner-loop evidence：</strong> 本次复跑的门禁和 483 项工具测试。<strong>Acceptance evidence：</strong> 真实 Chrome 台账对账、61 条实际提交页核验、分类迁移保真和独立源码复核。<strong>Holdout / unseen evidence：</strong> 不适用模型效果验收；本轮是静态研究与内容收录。<strong>Holdout 来源类别：</strong> 真实捕获的标签集合与独立源码抽查。<strong>预期值来源：</strong> 用户需求、仓库契约及固定上游源码。<strong>本次改动相对冻结点的位置：</strong> 生成侧新增内容与纯路径迁移；未改判分器、schema、门禁或现有 harness。</p>
+<p>未做个人封存任务实验，不能承诺成功率或成本提升。分类迁移会改变 11 对既有页路径；仓库内链接会修复，外部书签不能自动恢复。发布仍受上述护栏阻断，因此没有 PR 链接。</p>
+<p>下一步：你批准把脱敏发布副本设为活动工作区后，我再完成脱敏重放，并单独请求 push 授权；不推原始含私有项的历史。</p>
+</section>
+</main>
+
+</body>
+</html>

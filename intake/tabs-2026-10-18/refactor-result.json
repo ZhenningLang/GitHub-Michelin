@@ -1,0 +1,403 @@
+{
+  "schema": 1,
+  "orchestrator_commit": "91b5347",
+  "orchestrator_status": "committed-locally-not-published",
+  "status": "verified-not-committed",
+  "verified_at_utc": "2026-10-18T11:42:32.694293+00:00",
+  "scope": "Approved 16-pair documentation-only taxonomy migration; no commits, browser operations, ledger edits, tools changes, or sibling worktrees. Parent-owned intake files excluded.",
+  "snapshot": {
+    "head": "eede19b4fbeb925c2f942e3676655b81674b3986",
+    "planning_head": "57f7c72e96b2fe497cebe31c1d453d16e976a6c5",
+    "planning_pairs": 926,
+    "added_since_plan": [
+      "categories/networking/opentunnel.md"
+    ],
+    "actual_pairs": 927,
+    "other_canonical_modifications_since_plan": 0,
+    "raw_bytes_verified_against_head_files": 2240,
+    "snapshot_log": "/private/var/folders/5m/p1nlq0ns455bc366q_z8zj4w0000gn/T/opencode/refactor-before.json",
+    "final_page_manifest_sha256": "8a390b554d344d9afdfc8b8260fe3fa7afbca2a5e0d26c30301025b66185d66d"
+  },
+  "statistics": {
+    "page_pairs": 927,
+    "page_files": 1854,
+    "moved_pairs": 16,
+    "moved_files": 32,
+    "project_files_with_mechanical_changes": 148,
+    "generated_blocks_identical": 1856,
+    "overflows_before": 6,
+    "overflows_after": 0,
+    "max_direct_pairs": 12,
+    "category_nodes_before": 191,
+    "category_nodes_after": 195,
+    "asset_files_identical": 4591,
+    "svg_files_identical": 3679,
+    "existing_index_rows_transferred": 60,
+    "comparison_rows_reusing_summaries": 4,
+    "local_links_resolved": 26345,
+    "readme_registrations_per_language": 927,
+    "relative_url_edits": 710,
+    "url_edit_source_files": 164,
+    "url_rebase_breakdown": {
+      "project": {
+        "occurrences": 584,
+        "files": 148
+      },
+      "category_index": {
+        "occurrences": 62,
+        "files": 14
+      },
+      "README": {
+        "occurrences": 64,
+        "files": 2
+      }
+    },
+    "staged_move_records": 32,
+    "report_files_changed": [
+      "reports/repo-page-index.csv",
+      "reports/unindexed-project-mentions.csv"
+    ],
+    "scoped_docs_changed_existing": 174,
+    "scoped_new_indexes": 8,
+    "snapshot_raw_bytes_verified": 2240
+  },
+  "moves": [
+    {
+      "old": "categories/agent-frameworks/coding-agents/orchestration-and-review/agor.md",
+      "new": "categories/agent-tooling/supervision-surfaces/agor.md",
+      "include_zh_sibling": true,
+      "previously_published": false
+    },
+    {
+      "old": "categories/agent-frameworks/coding-agents/terminal-agents/dsh-tui.md",
+      "new": "categories/agent-tooling/supervision-surfaces/dsh-tui.md",
+      "include_zh_sibling": true,
+      "previously_published": false
+    },
+    {
+      "old": "categories/video-production/hyperframes.md",
+      "new": "categories/video-production/render-engines/hyperframes.md",
+      "include_zh_sibling": true,
+      "previously_published": true
+    },
+    {
+      "old": "categories/video-production/remotion.md",
+      "new": "categories/video-production/render-engines/remotion.md",
+      "include_zh_sibling": true,
+      "previously_published": true
+    },
+    {
+      "old": "categories/video-production/fframes.md",
+      "new": "categories/video-production/render-engines/fframes.md",
+      "include_zh_sibling": true,
+      "previously_published": true
+    },
+    {
+      "old": "categories/agent-skills/engineering/scientific-agent-skills.md",
+      "new": "categories/agent-skills/engineering/scientific-workflows/scientific-agent-skills.md",
+      "include_zh_sibling": true,
+      "previously_published": true
+    },
+    {
+      "old": "categories/agent-skills/engineering/auto-empirical-research-skills.md",
+      "new": "categories/agent-skills/engineering/scientific-workflows/auto-empirical-research-skills.md",
+      "include_zh_sibling": true,
+      "previously_published": true
+    },
+    {
+      "old": "categories/agent-skills/engineering/nature-skills.md",
+      "new": "categories/agent-skills/engineering/scientific-workflows/nature-skills.md",
+      "include_zh_sibling": true,
+      "previously_published": false
+    },
+    {
+      "old": "categories/agent-frameworks/agent-runtimes/personal-assistants/openclaw.md",
+      "new": "categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/openclaw.md",
+      "include_zh_sibling": true,
+      "previously_published": true
+    },
+    {
+      "old": "categories/agent-frameworks/agent-runtimes/personal-assistants/hermes-agent.md",
+      "new": "categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.md",
+      "include_zh_sibling": true,
+      "previously_published": true
+    },
+    {
+      "old": "categories/agent-frameworks/agent-runtimes/personal-assistants/picoclaw.md",
+      "new": "categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/picoclaw.md",
+      "include_zh_sibling": true,
+      "previously_published": true
+    },
+    {
+      "old": "categories/agent-frameworks/agent-runtimes/personal-assistants/octop.md",
+      "new": "categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/octop.md",
+      "include_zh_sibling": true,
+      "previously_published": true
+    },
+    {
+      "old": "categories/on-device-ml/mlx-mlx-lm.md",
+      "new": "categories/on-device-ml/apple-local-inference/mlx-mlx-lm.md",
+      "include_zh_sibling": true,
+      "previously_published": true
+    },
+    {
+      "old": "categories/on-device-ml/uzu.md",
+      "new": "categories/on-device-ml/apple-local-inference/uzu.md",
+      "include_zh_sibling": true,
+      "previously_published": true
+    },
+    {
+      "old": "categories/on-device-ml/fluiduse.md",
+      "new": "categories/on-device-ml/apple-local-inference/fluiduse.md",
+      "include_zh_sibling": true,
+      "previously_published": false
+    },
+    {
+      "old": "categories/on-device-ml/turbo-fieldfare.md",
+      "new": "categories/on-device-ml/apple-local-inference/turbo-fieldfare.md",
+      "include_zh_sibling": true,
+      "previously_published": false
+    }
+  ],
+  "category_counts_after": [
+    {
+      "path": "categories/video-production",
+      "baseline": 11,
+      "before": 15,
+      "after_direct": 12,
+      "new_child": "render-engines",
+      "new_child_pairs": 3,
+      "actual_after": 12
+    },
+    {
+      "path": "categories/agent-skills/engineering",
+      "baseline": 12,
+      "before": 14,
+      "after_direct": 11,
+      "new_child": "scientific-workflows",
+      "new_child_pairs": 3,
+      "actual_after": 11
+    },
+    {
+      "path": "categories/agent-frameworks/agent-runtimes/personal-assistants",
+      "baseline": 12,
+      "before": 15,
+      "after_direct": 11,
+      "new_child": "messaging-daemons",
+      "new_child_pairs": 4,
+      "actual_after": 11
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents",
+      "baseline": 11,
+      "before": 13,
+      "after_direct": 12,
+      "move_to_existing": "categories/agent-tooling/supervision-surfaces",
+      "actual_after": 12
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/orchestration-and-review",
+      "baseline": 12,
+      "before": 13,
+      "after_direct": 12,
+      "move_to_existing": "categories/agent-tooling/supervision-surfaces",
+      "actual_after": 12
+    },
+    {
+      "path": "categories/on-device-ml",
+      "baseline": 10,
+      "before": 13,
+      "after_direct": 9,
+      "new_child": "apple-local-inference",
+      "new_child_pairs": 4,
+      "actual_after": 9
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces",
+      "baseline": 8,
+      "before": 8,
+      "after_direct": 10,
+      "actual_after": 10
+    }
+  ],
+  "new_categories": [
+    {
+      "path": "categories/video-production/render-engines",
+      "members": [
+        "hyperframes",
+        "remotion",
+        "fframes"
+      ],
+      "retained_parent_members": [
+        "anything2explainer",
+        "huashu-art-motion",
+        "hypit",
+        "lemo-opuscar",
+        "moneyprinter-turbo",
+        "open-creator",
+        "open-montage",
+        "seecut",
+        "shuohao-skills",
+        "stickman-video-director",
+        "video-shotcraft",
+        "video-use"
+      ]
+    },
+    {
+      "path": "categories/agent-skills/engineering/scientific-workflows",
+      "members": [
+        "scientific-agent-skills",
+        "auto-empirical-research-skills",
+        "nature-skills"
+      ],
+      "retained_parent_members": [
+        "addyosmani-agent-skills",
+        "addyosmani-web-quality",
+        "browser-act-skills",
+        "caveman",
+        "cc-skills-golang",
+        "i-have-adhd",
+        "mattpocock-skills",
+        "ponytail",
+        "swiftui-agent-skill",
+        "vercel-agent-skills",
+        "waza"
+      ]
+    },
+    {
+      "path": "categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons",
+      "members": [
+        "openclaw",
+        "hermes-agent",
+        "picoclaw",
+        "octop"
+      ],
+      "retained_parent_members": [
+        "atomic-agent",
+        "jarvis",
+        "lobsterai",
+        "opendots",
+        "openhuman",
+        "openmausbot",
+        "openminis",
+        "openmuse",
+        "openworker",
+        "rakazo",
+        "raven"
+      ]
+    },
+    {
+      "path": "categories/on-device-ml/apple-local-inference",
+      "members": [
+        "mlx-mlx-lm",
+        "uzu",
+        "fluiduse",
+        "turbo-fieldfare"
+      ],
+      "retained_parent_members": [
+        "ai-edge-gallery",
+        "birdnet-go",
+        "bitnet",
+        "cosmo-edge",
+        "litert-lm",
+        "minicpm",
+        "minicpm-v",
+        "needle",
+        "timesfm"
+      ]
+    }
+  ],
+  "preservation": {
+    "frontmatter": "Only moved-page category fields changed; all other facts, dates, health, upstream metadata intact.",
+    "body": "All 1854 project files compared; only semantically equivalent relative URLs allowed. Headings, judgments and ordering intact.",
+    "generated_text_blocks": "1856 blocks byte-identical; frozen text proven raw-byte equivalent to git HEAD.",
+    "assets": "4591 files unchanged by SHA-256, including 828 flow JSON, 84 mechanism JSON, 3679 SVG. No resource addition/deletion/renaming/rendering.",
+    "index_rows": "60 existing summary/comparison rows transferred exactly. Missing comparisons for mlx-mlx-lm and dsh-tui in both languages reuse their original summaries.",
+    "readme": "927 unique registrations per language; 16 moved rows regrouped per language, all summaries/licenses/health preserved.",
+    "anchors": "Original page anchor and query suffixes preserved by semantic link comparison.",
+    "slug_stems": "16 moved slugs globally unique; stems unchanged, no regeneration needed."
+  },
+  "link_statistics_note": "710 is the initial exact URL-rebasing pass across 164 source documents: 584 project URLs, 62 category-INDEX URLs, 64 README URLs. 60 INDEX occurrences subsequently moved with their rows; do not treat 710 as net added links. Current 26345 local links all resolve.",
+  "commands": [
+    {
+      "command": "python3 tools/sync_index_health.py --apply",
+      "exit_code": 0,
+      "seconds": 2.72,
+      "log": "/private/var/folders/5m/p1nlq0ns455bc366q_z8zj4w0000gn/T/opencode/refactor-health-resume.log"
+    },
+    {
+      "command": "python3 tools/reverse_index.py --write",
+      "exit_code": 0,
+      "seconds": 0.57,
+      "log": "/private/var/folders/5m/p1nlq0ns455bc366q_z8zj4w0000gn/T/opencode/refactor-reverse-resume.log"
+    },
+    {
+      "command": "make gates",
+      "exit_code": 0,
+      "seconds": 18.78,
+      "log": "/private/var/folders/5m/p1nlq0ns455bc366q_z8zj4w0000gn/T/opencode/refactor-gates-resume.log"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "evidence": "No output; no whitespace errors."
+    }
+  ],
+  "key_output": [
+    "fixed 0 row(s) across 392 summary files.",
+    "repo -> page entries: 927",
+    "full mislabels (blocking, must be 0): 0",
+    "195 category nodes, 927 EN + 927 ZH pages, 0 errors, 1544 warnings.",
+    "reverse_index check: reports are current, no full mislabels (0 partly-indexed rows tracked in reports/project-intake-backlog.md)",
+    "Project pages scanned: 1854",
+    "English canonical pages scanned: 927",
+    "make gates exit code: 0"
+  ],
+  "verification": {
+    "verdict": "VERIFIED",
+    "inner_loop_evidence": "All three make gates commands and git diff --check passed in this run.",
+    "acceptance_evidence": [
+      "PASS full page fidelity: 1854 files / 927 bilingual pairs; only category and semantically equivalent relative links changed",
+      "PASS generated text blocks: 1856 byte-identical; 148 project files mechanically changed",
+      "PASS overflow: 6 -> 0; max direct pairs = 12; 927 EN + 927 ZH conserved",
+      "PASS four complete child clusters, retained parent sets and supervision destination match approved plan",
+      "PASS assets: 4591 source/resource files SHA-256 identical, including 3679 SVGs; 0 additions/deletions/renames",
+      "PASS 16 moved slugs globally unique; flow/card stems unchanged; regeneration unnecessary",
+      "PASS README.md: 927 unique registrations; summaries/license/health intact; 16 moved rows correctly regrouped",
+      "PASS README.zh.md: 927 unique registrations; summaries/license/health intact; 16 moved rows correctly regrouped",
+      "PASS INDEX row fidelity: 60 original summary/comparison rows transferred; 4 absent comparison rows reused original summaries",
+      "PASS all 26345 current local Markdown/image links resolve; original page anchors/query suffixes preserved",
+      "PASS boundary regressions: image child, Maka, T3 Code, OpenChamber, OpenHands, LobsterAI, TimesFM, SwiftUI Pro kept paths",
+      "PASS scope: no tool/config changes; HEAD unchanged; parent-owned intake changes excluded, not overwritten"
+    ],
+    "holdout_unseen_evidence": "No independent unseen set: full-corpus raw-byte/text/link comparison plus explicit historical boundary regressions substitute for sampling.",
+    "holdout_source_category": "真实捕获",
+    "expected_values_source": [
+      "需求原文",
+      "已批准 refactor-plan.json",
+      "外部契约 tools/schema.md and tools/lint.py"
+    ],
+    "position_relative_to_freeze": "Only documentation generation/migration side changed after snapshot eede19b4; tools, lint thresholds, and judging code unchanged.",
+    "verifier_correction": "Initial scope assertion flagged parent-owned intake/tabs-2026-10-18/plan.md. Excluded parent-owned intake scope; no content repair was needed.",
+    "content_fix_attempts": 0,
+    "unit_tests": "Not run: pure Markdown/routing/report change; tools untouched. Full structural and quality gates plus full-corpus preservation checks are the acceptance verifier.",
+    "ui_observability": "Not applicable: no runtime/UI/error-handling code changed."
+  },
+  "known_gaps": [
+    "11 previously published page pairs changed paths; external bookmarks and third-party cached paths cannot be repaired inside this repository. No duplicate stub pages created.",
+    "1544 existing structural warnings and 75 report-only quality findings remain; gated quality categories are zero. No content-refresh scope added.",
+    "No independent holdout set; explicit historical boundary checks and complete corpus comparison used instead.",
+    "Parent-owned ledger and intake reports still require path updates by the main session; this task did not edit them.",
+    "No commit, push, PR or Chrome operation performed. git mv records are staged; following content/link edits and new INDEX/result files remain uncommitted."
+  ],
+  "logs": {
+    "acceptance": "/private/var/folders/5m/p1nlq0ns455bc366q_z8zj4w0000gn/T/opencode/refactor-acceptance.log",
+    "acceptance_json": "/private/var/folders/5m/p1nlq0ns455bc366q_z8zj4w0000gn/T/opencode/refactor-acceptance.json",
+    "link_mapping": "/private/var/folders/5m/p1nlq0ns455bc366q_z8zj4w0000gn/T/opencode/refactor-links.json",
+    "gates_before_interruption": "/private/var/folders/5m/p1nlq0ns455bc366q_z8zj4w0000gn/T/opencode/refactor-gates.log",
+    "gates_resumed": "/private/var/folders/5m/p1nlq0ns455bc366q_z8zj4w0000gn/T/opencode/refactor-gates-resume.log",
+    "health_resumed": "/private/var/folders/5m/p1nlq0ns455bc366q_z8zj4w0000gn/T/opencode/refactor-health-resume.log",
+    "reverse_resumed": "/private/var/folders/5m/p1nlq0ns455bc366q_z8zj4w0000gn/T/opencode/refactor-reverse-resume.log"
+  },
+  "boundary_decisions": "No unapproved boundary changes; accepted mixed parent nodes, responsibility-based supervision surfaces, Apple-first not Apple-exclusive scope."
+}
