@@ -714,6 +714,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **Rill** | Shared semantic metrics and exploratory dashboards authored as YAML/SQL over DuckDB or external OLAP. | Apache-2.0 | A (6/6) | [EN](categories/data-visualization/rill.md) · [中](categories/data-visualization/rill.zh.md) |
 | **Apache Superset** | Use it when you want self-hosted SQL BI dashboards and exploration over a warehouse — not infra metrics/observability. | Apache-2.0 | A (6/6) | [EN](categories/data-visualization/superset.md) · [中](categories/data-visualization/superset.zh.md) |
 | **Evidence** | Use it when analytics engineers want reports as Markdown plus SQL files in git that can be diffed, reviewed and edited by coding agents — but business users cannot click-build questions, and self-hosting gets only Basic Auth after a 2026 rewrite reset the codebase. | MIT | B (6/6) | [EN](categories/data-visualization/evidence.md) · [中](categories/data-visualization/evidence.zh.md) |
 | **Metabase** | Use it when non-SQL staff keep queueing simple data questions and you want a self-hosted app, up the same afternoon, where they click a table, filter and save to a shared dashboard — but SSO, row-level security and Git sync are paid; core is AGPL. | NOASSERTION (AGPL-3.0 core + Metabase Commercial License on enterprise/) | A (4/6) | [EN](categories/data-visualization/metabase.md) · [中](categories/data-visualization/metabase.zh.md) |

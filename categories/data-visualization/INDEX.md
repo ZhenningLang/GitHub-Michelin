@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Rill** | Review metrics and dashboards as YAML/SQL, then explore shared definitions locally or through a managed deployment. | A (6/6) | [→](rill.md) |
 | **Apache Superset** | Use it when you want self-hosted SQL BI dashboards and exploration over a warehouse — not infra metrics/observability. | A (6/6) | [→](superset.md) |
 | **Evidence** | Use it when analytics engineers want reports as Markdown plus SQL files in git that can be diffed, reviewed and edited by coding agents — but business users cannot click-build questions, and self-hosting gets only Basic Auth after a 2026 rewrite reset the codebase. | B (6/6) | [→](evidence.md) |
 | **Metabase** | Use it when non-SQL staff keep queueing simple data questions and you want a self-hosted app, up the same afternoon, where they click a table, filter and save to a shared dashboard — but SSO, row-level security and Git sync are paid; core is AGPL. | A (4/6) | [→](metabase.md) |
@@ -16,6 +17,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Rill](rill.md) | ✅ | A (6/6) | Code-owned semantic metrics over DuckDB/OLAP; local Developer is not a turnkey governed production portal. |
 | [Apache Superset](superset.md) | ✅ | A (6/6) | Self-hosted SQL BI + exploration over warehouses; heavier multi-service deploy than Metabase. |
 | [Grafana](../observability/grafana.md) | ✅ | B (5/6) | Metrics/logs/traces observability dashboards — not warehouse BI; different audience. |
 | Redash / Tableau / Looker | 未收录 | — | Other BI/analytics tools named across the pages. |
