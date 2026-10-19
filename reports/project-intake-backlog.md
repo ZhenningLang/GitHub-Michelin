@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1353
+- Named-but-unindexed alternatives: 1354
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -30,6 +30,7 @@ shape and are deliberately excluded here.
 | @nanostores/persistent (`nanostores/nanostores`) | `categories/web-ui/state-management/tanstack-persist.md` |
 | @ngneat/falso | `categories/dev-utilities/data-tools/faker-js.md` |
 | @xstate/store (`statelyai/xstate`) | `categories/web-ui/state-management/tanstack-store.md` |
+| [12306-skill](https://github.com/Joooook/12306-skill) | `categories/travel-planning/12306-mcp.md` |
 | [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client) | `categories/networking/amneziawg-installer.md` |
 | [angristan/wireguard-install](https://github.com/angristan/wireguard-install) | `categories/networking/amneziawg-installer.md` |
 | [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox) | `categories/knowledge-base/hister.md` |
@@ -51,4 +52,3 @@ shape and are deliberately excluded here.
 | [Fast-DetectGPT](https://github.com/baoguangsheng/fast-detect-gpt) | `categories/llm-eval/chatgpt-comparison-detection.md` |
 | [FaucETH](https://github.com/komputing/FaucETH) | `categories/blockchain-dev-infrastructure/powfaucet.md` |
 | [Fish Speech](https://github.com/fishaudio/fish-speech) | `categories/speech/index-tts.md` |
-| [FlClash](https://github.com/chen08209/FlClash) | `categories/dev-utilities/ops-infra/clash-verge-rev.md` |

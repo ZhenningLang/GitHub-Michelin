@@ -115,6 +115,12 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Twake Drive** | 当你想在 Twake/Cozy 栈里要一个 Google-Drive 形态的自托管文件网盘（而非 OCR 归档）时用它。 | AGPL-3.0 | B（5/6） | [中](categories/document-management/twake-drive.zh.md) · [EN](categories/document-management/twake-drive.md) |
 | **Immich** | 当家里有服务器、想在自己的硬盘上复刻 Google Photos 那套手机自动备份、共享时间线、人脸和按内容搜索时用它——但升级和 3-2-1 备份归你管，要约 6 GB 内存，照片在服务器上是明文。 | AGPL-3.0 | B（6/6） | [中](categories/document-management/immich.zh.md) · [EN](categories/document-management/immich.md) |
 
+### travel-planning
+
+| 项目 | 何时用 | 许可 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **12306-mcp** | 给 MCP 助手接入铁路查询；因公开议题 #72，精确站点和跨夜结果须人工核对。 | MIT | C（5/6） | [中](categories/travel-planning/12306-mcp.zh.md) · [EN](categories/travel-planning/12306-mcp.md) |
+
 ### on-device-ml
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |

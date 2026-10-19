@@ -118,6 +118,12 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Twake Drive** | Use it when you want a self-hosted Google-Drive-style file network drive inside the Twake/Cozy stack, not OCR archiving. | AGPL-3.0 | B (5/6) | [EN](categories/document-management/twake-drive.md) · [中](categories/document-management/twake-drive.zh.md) |
 | **Immich** | Use it when a household with a home server wants Google Photos-style phone backup, shared timeline, faces and content search on its own disks — but you own upgrades and 3-2-1 backups, it needs about 6 GB RAM, and photos sit unencrypted on the server. | AGPL-3.0 | B (6/6) | [EN](categories/document-management/immich.md) · [中](categories/document-management/immich.zh.md) |
 
+### travel-planning
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **12306-mcp** | Railway queries for an MCP assistant; exact-station and overnight results need manual verification due to open issue #72. | MIT | C (5/6) | [EN](categories/travel-planning/12306-mcp.md) · [中](categories/travel-planning/12306-mcp.zh.md) |
+
 ### on-device-ml
 
 | Project | Use when | License | Health | Page |

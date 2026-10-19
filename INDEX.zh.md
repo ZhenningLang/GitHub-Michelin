@@ -9,6 +9,7 @@
 | 分类 | 何时进来 | 路由 |
 |---|---|---|
 | **legal-documents** | 复用法律模板并准备可审阅合同初稿，不提供法律意见。 | [→](categories/legal-documents/INDEX.zh.md) |
+| **travel-planning** | 通过领域专用适配器查询铁路余票、中转与出行信息。 | [→](categories/travel-planning/INDEX.zh.md) |
 | **agent-tooling** | 为 AI 编码 agent 选「任务/工作追踪、持久记忆、agent 状态」，以及 agent 把控制权交还给你的人审/批准界面。 | [→](categories/agent-tooling/INDEX.zh.md) |
 | **sandboxing** | 隔离不可信代码与 agent 生成代码——虚拟机／内核级隔离运行时，以及建在其上的沙箱平台。 | [→](categories/sandboxing/INDEX.zh.md) |
 | **serverless** | 自己运维的 Kubernetes 原生 serverless／缩容到零服务层。 | [→](categories/serverless/INDEX.zh.md) |
