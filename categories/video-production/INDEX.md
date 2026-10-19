@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Stickman Video Director** | Approve a stick-figure storyboard and get standalone continuity prompts; generation and editing stay external. | C (4/5) | [→](stickman-video-director.md) |
 | **OpenMontage** | Use it when you want an AI coding assistant to produce full videos — explainers, trailers, animations, or documentary montages — from a plain-language prompt through research, scripting, asset generation, and render. | B (5/6) | [→](open-montage.md) |
 | **HyperFrames** | Use it when you need deterministic, code-form video — HTML compositions rendered to MP4 in CI — with agent skills covering the production loop; it is a rendering engine, not a generative video model. | B (6/6) | [→](hyperframes.md) |
 | **anything2explainer** | Use it when you want a Claude Code / Codex skill to turn a topic into a narrated motion-graphics explainer video (Chinese or English) through a governed 9-stage multi-agent pipeline with human checkpoints and quantitative QC — fixed black-canvas style, PolyForm noncommercial license. | C (3/5) | [→](anything2explainer.md) |
@@ -24,6 +25,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Stickman Video Director](stickman-video-director.md) | ✅ | C (4/5) | Prompt-only directing and voice locks, not a renderer or a guarantee of generated continuity. |
 | [OpenMontage](open-montage.md) | ✅ | B (5/6) | Use it when you want an AI coding assistant to produce full videos — explainers, trailers, animations, or documentary montages — from a plain-language prompt through research, scripting, asset generation, and render. |
 | [HyperFrames](hyperframes.md) | ✅ | B (6/6) | Deterministic HTML-to-MP4 rendering with 20 agent skills and Apache-2.0 licensing; the engine layer, not a governed pipeline and not generative footage. |
 | [anything2explainer](anything2explainer.md) | ✅ | C (3/5) | A Claude Code / Codex skill-pack with a full explainer-film method (research → narration → storyboard → parallel build → QC) and a reference film as the quality bar; fixed MG style, 8 days old, PolyForm noncommercial. |
