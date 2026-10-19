@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "review_type": "read-only semantic review",
+  "allowed": ["Kruk2/jasna"],
+  "blocked": [],
+  "allowed_repos": ["Kruk2/jasna"],
+  "blocked_repos": [],
+  "patchsha256": {
+    "Kruk2/jasna": "1ce58cdd50889fa85e7ff476cc2171025b4cd2c3cf7d588c9be6ec5485e0578d"
+  },
+  "must_fix": [],
+  "optional": [],
+  "repo": "Kruk2/jasna",
+  "decision": "allowed",
+  "patch": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-19-worker-3-results/kruk2--jasna.patch",
+  "fixed_sha": "099af50a3aac06f14db8d048efd8c6562e2c3d25",
+  "research_file": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-19-worker-3-results/research.md",
+  "full_read": [
+    "categories/media-processing/jasna.md",
+    "categories/media-processing/jasna.zh.md",
+    "flows/jasna.json",
+    "mechanisms/jasna.json"
+  ],
+  "source_identity_verification": {
+    "method": "Recompute each Git blob SHA1 from raw bytes and compare with both cached fixed tree and source-verification manifest",
+    "files_checked": 44,
+    "mismatches": [],
+    "tree_truncated": false
+  },
+  "verified_boundaries": [
+    "Public free BasicVSR++ source workflow is separate from official protected builds",
+    "Frozen Linux/Windows startup initializes private runtime before free CLI dispatch",
+    "Default AGPL does not cover all LTX, model, vendor or proprietary components",
+    "Mixed notices do not independently establish illegality or whole-release compatibility",
+    "Streaming listens on all interfaces, lacks handler authentication and permits cross-origin requests",
+    "Streaming is opt-in, post-export action defaults to none and commands default empty",
+    "Shell and poweroff execute only through selected action paths, not by default",
+    "Plausible model reconstruction does not establish original hidden pixels or forensic truth",
+    "Media authorization and preserving originals are explicit in both languages and graph inputs",
+    "Frame-budget queue is not an absolute memory cap",
+    "Private activation and telemetry behavior remain unaudited"
+  ],
+  "classification": {
+    "category": "media-processing",
+    "decision": "reasonable existing category",
+    "narrower_existing_category_required": false,
+    "closer_indexed_alternative_omitted": false,
+    "comparisons_read": ["Lada cached README", "Video2X cached README", "indexed FFmpeg selection page"]
+  },
+  "generated_artifacts": {
+    "languages_checked": ["en", "zh"],
+    "authored_techniques_per_language": 3,
+    "flow_text_exact": true,
+    "mechanism_text_exact": true,
+    "mechanism_source_stamp_matches": true,
+    "all_six_svg_xml_valid": true,
+    "browser_visual_review": false
+  },
+  "upstream_executed": false,
+  "installed_or_activated": false,
+  "models_or_media_executed": false,
+  "personal_data_accessed": false,
+  "attack_or_network_probe_performed": false,
+  "subagents_spawned": false,
+  "author_patch_modified": false,
+  "main_categories_readme_ledger_modified": false,
+  "previous_two_reviews_modified": false,
+  "main_session_gates_required": true,
+  "known_limits": [
+    "No runtime restoration quality, speed or GPU compatibility validation",
+    "No private protection binary or activation transport audit",
+    "No independent LTX upstream correspondence or legal compatibility verdict",
+    "No browser visual acceptance for generated SVGs"
+  ],
+  "report": "intake/tabs-2026-10-19/jasna-review.md"
+}

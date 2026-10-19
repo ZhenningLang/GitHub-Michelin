@@ -1,0 +1,209 @@
+{
+  "schema": 1,
+  "mode": "guard-review simple plus guard-secure read-only integration/privacy audit",
+  "head": "eb11fd1c89eff768854fa4c6a44588878ad934e8",
+  "base_main": "69ae87249c7ae9e57fd0635c59cf04a4c7d0e642",
+  "replay_end": "83a1e96c7f01e6e96903fd9b414464215122d660",
+  "source_tip": "b558b59773a0b94ceaa5d6886859571efa164a50",
+  "metadata_snapshot_at_utc": "2026-10-19T05:54:09.137176+00:00",
+  "scope": {
+    "old_entries": 61,
+    "taxonomy_pairs": 16,
+    "semantic_evidence": "reused existing reviewed source/fact/batch/migration records; no upstream re-research",
+    "new_entry_semantics_excluded": ["harness/harness", "parthh01/sphinx"],
+    "two_pass": false,
+    "subagents_spawned": 0,
+    "full_line_by_line_review_claimed": false,
+    "concurrent_worktree_updates": "only the recorded metadata snapshot is covered; later additions/edits require final review"
+  },
+  "manifest": {
+    "source": "approved temporary intake-public-diff-manifest.md",
+    "files": 876,
+    "added_lines_reported": 56055,
+    "removed_lines_reported": 570,
+    "path_status_sets_match_git": true,
+    "statuses": {"M": 205, "A": 649, "R": 22},
+    "handling": {"deep_review": 876, "deterministic_check": 0, "skip": 0},
+    "coverage_override": "user-requested simple integration/privacy scope; deterministic comparison and prior semantic evidence do not constitute full semantic review of all manifest files",
+    "groups": {
+      "categories_flows_mechanisms_assets": 846,
+      "root_indexes_readmes": 4,
+      "reports": 3,
+      "committed_intake": 23
+    }
+  },
+  "machine_checks": {
+    "source_tree": {
+      "method": "git ls-tree blob identity comparison across categories, flows, mechanisms, assets",
+      "compared_old_files": 6835,
+      "byte_identical_old_files": 6833,
+      "expected_differences": [
+        "categories/agent-frameworks/workflow-builders/INDEX.md",
+        "categories/agent-frameworks/workflow-builders/INDEX.zh.md"
+      ],
+      "difference_review": "only main Harness2 summary/comparison rows added",
+      "additional_main_content_files": 10,
+      "additional_main_content_files_identical_to_main": 10,
+      "unexpected_differences": []
+    },
+    "ancestry": {
+      "base_main_is_ancestor": true,
+      "source_tip_is_public_ancestor": false,
+      "public_mapping_rows": 61,
+      "public_mapping_commits_reachable": 61,
+      "mapping_commits_already_in_base": 0,
+      "main_pr_199_preserved": true
+    },
+    "taxonomy": {
+      "pre_migration_commit": "eede19b4fbeb925c2f942e3676655b81674b3986",
+      "moved_pairs": 16,
+      "old_paths_absent": 32,
+      "destination_paths_present": 32,
+      "project_files_compared": 1854,
+      "body_normalization": "category field and semantically resolved relative inline Markdown targets only; mapped old destinations; query/fragment suffixes retained",
+      "normalized_body_mismatches": [],
+      "generated_blocks_compared": 1856,
+      "generated_comparison": "raw bytes; no newline normalization",
+      "generated_block_mismatches": [],
+      "pre_migration_asset_files_compared": 4591,
+      "asset_mismatches": []
+    },
+    "routes": {
+      "documents_checked": 2250,
+      "local_content_link_occurrences_checked": 26369,
+      "unresolved_content_paths": [],
+      "method": "read committed Markdown inline links/reference definitions outside code fences; check md/svg/json/png/jpg/webp target existence",
+      "anchor_existence_reparsed": false,
+      "old_fragment_preservation": "included in full old-project normalized-text comparison",
+      "readme_en_old_rows": 927,
+      "readme_en_new_rows": 928,
+      "readme_zh_old_rows": 927,
+      "readme_zh_new_rows": 928,
+      "old_readme_rows_removed_or_changed": 0,
+      "extra_readme_rows_only_harness2": true,
+      "root_indexes_identical_to_source_tip": true,
+      "reports_vs_source_tip": "repo-page-index.csv has one Harness2 row added; other two reports identical"
+    },
+    "per_repo": {
+      "rows": 61,
+      "public_commit_mappings_match": 61,
+      "original_public_content_files_compared": 122,
+      "content_mismatches": [],
+      "final_bilingual_paths_present": 122,
+      "historical_gate_records_zero_errors": 61,
+      "historical_scoped_quality_records_clean": 61,
+      "historical_gate_commands_rerun": false
+    },
+    "protected_contracts": {
+      "checked_net_diff_and_all_new_commit_changes": true,
+      "paths": ["tools/", ".github/", "AGENTS.md at any depth", ".claude/", "skills/", "Makefile", ".pre-commit-config.yaml"],
+      "changes": []
+    },
+    "whitespace": {"command": "git diff --check origin/main..HEAD", "exit_code": 0},
+    "privacy": {
+      "new_commits_scanned": 65,
+      "unique_changed_blobs_scanned": 1201,
+      "commit_diff_metadata_and_paths_scanned": true,
+      "private_comparator_source": "corresponding single original local ledger row; no other private content",
+      "private_comparator_variants": "canonical identity, alias and distinctive repository-name component; case-insensitive",
+      "private_comparator_persisted": false,
+      "private_identity_hits": 0,
+      "credential_patterns": ["GitHub token", "AWS access key", "private key header", "Slack token", "model provider key", "URL embedded password"],
+      "high_confidence_credential_pattern_hits": [],
+      "working_metadata_files_scanned": 27,
+      "working_metadata_private_hits": 0,
+      "working_metadata_credential_hits": 0,
+      "limits": "not proof against arbitrary encoded identities or arbitrary-format secrets; no credential stores or sessions read"
+    }
+  },
+  "security_context": {
+    "threat_model": "docs/threat-model.md absent; generic STRIDE applied",
+    "focus": "information disclosure, document integrity, public ancestry",
+    "runtime_findings": "not applicable to unchanged runtime/tooling contracts",
+    "external_security_scans": false,
+    "network_requests": false,
+    "upstream_execution": false,
+    "browser_or_session_access": false,
+    "credential_store_access": false,
+    "dependency_cve_scan": "not run; no dependency changes",
+    "fp_adjudication": "not applicable; no Critical/Important security candidates"
+  },
+  "evidence_reuse": [
+    "intake/tabs-2026-10-18/evolution-evidence.md",
+    "intake/tabs-2026-10-18/facts-review.md",
+    "intake/tabs-2026-10-18/batch-facts-review.md",
+    "intake/tabs-2026-10-18/refactor-result.md",
+    "intake/tabs-2026-10-18/refactor-result.json",
+    "intake/tabs-2026-10-18/per-repo-verification.json",
+    "intake/tabs-2026-10-18/final-verification.txt"
+  ],
+  "metadata_manifest_sha256": "740a02f3a2b97ba5a28c1fa5d6af9f201cb51e232d6a6a43d7a7f0df3a9768ec",
+  "metadata_manifest_encoding": "SHA256 of UTF-8 json.dumps(metadata_sha256, sort_keys=True, separators=(',', ':'))",
+  "metadata_sha256": {
+    "intake/tabs-2026-10-18/per-repo-verification.json": "bc3c9282a2316bc9164de378a2a463834d9eedc17e291b99d6462b2985476527",
+    "intake/tabs-2026-10-18/absorption-assessment.json": "124698a9f424be893ec85c3c9f3fa4da6f3514d77d4ece155113e4a9a3736e51",
+    "intake/tabs-2026-10-18/facts-review.md": "5891747bf1ebc2d0354431c6c632d05620ad559c43f6a2a839d5843e760c83b4",
+    "intake/tabs-2026-10-18/evolution-evidence.md": "3b5d15a0c5343db2c18662d1fc5bc17b53ace0ac7618fb4817e29a2ad22000c4",
+    "intake/tabs-2026-10-18/refactor-result.md": "6f5adf3e004a91077f991732f996774c66af75c3db4e599e35dda48e538c1508",
+    "intake/tabs-2026-10-18/refactor-plan.json": "735217198b5cf44405805dbbe5347777666f7f93635f85dff466e9a2f29aabdc",
+    "intake/tabs-2026-10-18/baseline-verification.txt": "f5e9eec07140c20f8d1f2402e7ff45e32ff7badb932b6112f11cf2f6409c9ad5",
+    "intake/tabs-2026-10-18/batch-facts-review.md": "7d2330d9539787ebc1fe0212de80cbd8bc154f93f667f998c3253cda93ded8b8",
+    "intake/tabs-2026-10-18/batch-worker.md": "840ba4b68aff854a08bca505d7d89158e95a27d4302f7f03a6a576c78d58ea51",
+    "intake/tabs-2026-10-18/final-verification.txt": "c6f306f1d0143ed7ccfdf91b7759bce2af42c4854942ebbee9afda0b5c652399",
+    "intake/tabs-2026-10-18/refactor-plan.md": "894c94650bef9b6105232123f9db79f804af6dc7bd513f207c2c47366234fbd5",
+    "intake/tabs-2026-10-18/plan.md": "c08683fef63456e81ea30306e6e74042e086730890182aca4bfca392d2290503",
+    "intake/tabs-2026-10-18/ledger.md": "4604acba38e972c6be6153d5e70a75c63f4ac1f65fbf8921913f0278050f550e",
+    "intake/tabs-2026-10-18/integration-decisions.md": "918a118d9eae5b443387a35cc687443b397ef7f4d3b49ba83c95b1c8e4e66c9a",
+    "intake/tabs-2026-10-18/refactor-result.json": "d9812460a52de7367e6e840477454abc6a54fad36241da563bf10ce574cd0363",
+    "intake/tabs-2026-10-18/harness-baseline.md": "80515938cce134d4d106bf764df2779f10f1fdf233a03789ec0e4c85ac18b135",
+    "intake/tabs-2026-10-18/harness-report/summary.md": "9d093815f32734fa70467418fe96e6630d93833a5310d509d7152a2a4522e7d7",
+    "intake/tabs-2026-10-18/harness-report/batch.html": "97a88da32a95806eaaa68c224dfa86b2e9958c9f6d2016d7613da6ce54da046b",
+    "intake/tabs-2026-10-18/harness-report/summary.html": "4c5bc28a5cfa2132ae03ae7b2a8a801ba4d06d3f3757ccbd50c3214c9c91a5a6",
+    "intake/tabs-2026-10-18/harness-report/batch.md": "e30a3d784ba866591b659b13c88674b2d4aa350bef435f619be512b1ef1e5d7b",
+    "intake/tabs-2026-10-19/replay-audit.json": "a79da69110487b4f91303d279ceb2d68861a5d986b060b8a99625e7e16fad4b2",
+    "intake/tabs-2026-10-19/harness2-assessment.md": "145e424f54f92ed95b917b84c678c9b901a9ad7fad05abacefac5e4cb4ae9bb5",
+    "intake/tabs-2026-10-19/plan.md": "c89b21f24f692c93dd94b8cba5de2f77f54ba123fb02f41cb5c6f4855ae1ca9c",
+    "intake/tabs-2026-10-19/fresh-entry.json": "42e79e55d754b547f525a72f201cd672673a39b9d602e1f6292f281a5a28da6a",
+    "intake/tabs-2026-10-19/ledger.md": "1103b5a7beeca074e35427bef31c417dc3ea30638205298a92c42cc845546614",
+    "intake/tabs-2026-10-19/public-replay.json": "74d8b5b486ec61c9570aea138f9763b3cbcda0a3c37b492bf553cb336b055576",
+    "intake/tabs-2026-10-19/report/summary.md": "411033eb90d69ed3aee476f6f6d91eb0f033113348f0d0381c805b39fd29ad5a"
+  },
+  "audit_artifact_verification": {
+    "json_parse": "PASS",
+    "manifest_group_and_status_totals": "876/876",
+    "metadata_snapshot_digest": "PASS; 27 files",
+    "referenced_semantic_evidence_paths": "7/7 present",
+    "scope_and_no_final_merge_approval": "PASS",
+    "head_still_matches_at_verification": true,
+    "metadata_drift_at_verification": [],
+    "inner_loop_evidence": "this run: report structure/counts/digest/path checks",
+    "acceptance_evidence": "this run: old replay integrity, main preservation and specified privacy boundary",
+    "holdout_unseen_evidence": "no model-effectiveness holdout; full old corpus plus main-addition boundary regression used instead",
+    "holdout_source_category": "真实捕获",
+    "expected_values_source": ["需求原文", "已批准迁移映射", "外部契约"],
+    "position_relative_to_freeze": "judgment-side reports only; no generation-side edits; bound to HEAD and timestamped metadata snapshot",
+    "project_test_build_and_ui_verifiers": "not run; not applicable to this read-only two-document audit"
+  },
+  "issues": [],
+  "known_gaps": [
+    "Two new entries require independent semantic review.",
+    "Final HEAD gates, privacy scan and review remain pending.",
+    "Concurrent metadata edits after the recorded snapshot are not certified.",
+    "11 previously published page pairs moved; external bookmarks cannot be repaired here.",
+    "Historical nonblocking warnings remain; no gate/unit rerun or HTML visual acceptance in this audit.",
+    "Historical browser actions and permission events remain prior executor evidence, not independently replayed."
+  ],
+  "historical_publication_blocker_text": "dated process snapshots, not current content-security findings; main task is adding current-state pointers",
+  "assessment": {
+    "can_continue_publication_preparation": true,
+    "integration_privacy_blockers_found": 0,
+    "ready_to_merge": false,
+    "reason": "new-entry semantic reviews and final HEAD acceptance remain pending; not a final merge approval",
+    "raw_original_branch_must_remain_local": true
+  },
+  "writes_owned": [
+    "intake/tabs-2026-10-19/publication-audit.md",
+    "intake/tabs-2026-10-19/publication-audit.json"
+  ],
+  "commit_push_or_tag_performed": false
+}

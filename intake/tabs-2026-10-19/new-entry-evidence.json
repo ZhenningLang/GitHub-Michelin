@@ -1,0 +1,307 @@
+{
+  "rows": [
+    {
+      "repo": "harness/harness",
+      "status": "done",
+      "page": "categories/dev-utilities/ops-infra/harness-open-source.md",
+      "public_commit": "7fdb0e697b9b18b6b764f917a063b6c9ffbe4b80",
+      "patch_sha256": "d4ba5907bf5b3d8d544dcbedccfbc76679e7be8378197b80405716203d3d6ad4",
+      "qa_decision": "no leftover Q&A",
+      "dotfiles_zh": {
+        "fit": "low",
+        "what": "不建议吸收整个平台；可参考统一的解析后、连接前地址校验，以及逐条核实遥测出口和开关的审查方法。它不提供可直接复用的 agent 技能、记忆或模型路由资产。",
+        "where": "guard-secure 的外部 URL／网络边界审查规范；仅机制参考，本次不改 dotfiles。"
+      },
+      "sources": [
+        {
+          "repo": "harness/harness",
+          "fixed_sha": "f335f08374b83e9e4ddd54f4f47b4c6daad2fa54",
+          "files_read": [
+            "README.md",
+            "LICENSE",
+            "NOTICE",
+            "CONTRIBUTING.md",
+            "go.mod",
+            "web/package.json",
+            "cmd/gitness/main.go",
+            "cli/cli.go",
+            "cli/operations/server/server.go",
+            "types/config.go",
+            "Dockerfile",
+            "web/src/components/NewPipelineModal/NewPipelineModal.tsx",
+            "web/src/pages/AddUpdatePipeline/Constants.ts",
+            "app/router/api.go",
+            "app/api/controller/pipeline/create.go",
+            "app/api/controller/execution/create.go",
+            "app/api/controller/execution/controller.go",
+            "app/api/controller/secret/create.go",
+            "app/pipeline/triggerer/trigger.go",
+            "app/pipeline/runner/runner.go",
+            "app/pipeline/runner/poller.go",
+            "app/pipeline/manager/setup.go",
+            "app/services/metric/values.go",
+            "app/services/metric/collector_job.go",
+            "app/services/metric/posthog.go",
+            "netpolicy/netpolicy.go",
+            "app/services/webhook/http_client.go",
+            "app/services/importer/base_transport.go",
+            "app/gitspace/secret/password_resolver.go",
+            "app/gitspace/secret/wire.go",
+            "app/gitspace/orchestrator/utils/download_features.go",
+            "registry/app/api/controller/metadata/list_webhooks.go",
+            "registry/app/store/database/webhook.go",
+            "web/src/components/FavoriteStar/FavoriteStar.tsx",
+            ".engops/pr_source_code_changes.sh"
+          ],
+          "local_evidence": "upstream/",
+          "api_evidence": [
+            "metadata.json",
+            "commit.json",
+            "tree.json",
+            "releases.json",
+            "contributors.json",
+            "issues.json"
+          ],
+          "note": "All primary source links pinned; latest releases target legacy drone branch."
+        },
+        {
+          "repo": "go-gitea/gitea",
+          "fixed_sha": "458eda0f1d49f9413afdb353c561402b18267d43",
+          "files_read": [
+            "README.md"
+          ],
+          "local_evidence": "gitea-readme-pinned.txt",
+          "batch_action": "not added in this tab batch"
+        },
+        {
+          "repo": "woodpecker-ci/woodpecker",
+          "fixed_sha": "a810fc9a9d04314fb78c3c71615b063a6ff808f3",
+          "files_read": [
+            "README.md"
+          ],
+          "local_evidence": "woodpecker-readme-pinned.txt",
+          "batch_action": "not added in this tab batch"
+        }
+      ],
+      "main_gate_log": "intake-2026-10-19-harness-gates.log",
+      "main_gate_log_sha256": "ed75c794fb89861de8868615dacd4d11f21e59f80acc0c41d5f20152a68d59b3",
+      "main_gate_excerpt": [
+        "195 category nodes, 929 EN + 929 ZH pages, 0 errors, 1546 warnings.",
+        "reverse_index check: reports are current, no full mislabels (0 partly-indexed rows tracked in reports/project-intake-backlog.md)",
+        "No deterministic findings."
+      ],
+      "visual_check": "ZH flow/mechanism/radar converted with rsvg-convert and read by main session; no visible clipping",
+      "upstream_executed": false
+    },
+    {
+      "repo": "parthh01/sphinx",
+      "status": "done",
+      "page": "categories/agent-tooling/supervision-surfaces/sphinx.md",
+      "public_commit": "78bc5a4470647775e1cfc187cf147857d94b4a71",
+      "patch_sha256": "246945306d1cd340e35f1278edafa0d6d0be80b6e8268e633ff5bf23f7217e32",
+      "qa_decision": "no leftover Q&A",
+      "dotfiles_zh": {
+        "fit": "medium",
+        "what": "可吸收“先固定行为预测与因果最低标准，再听答案”，以及原操作等待、精确快照绑定和完成凭据重验；用于可选理解测验，不代替现有验证或授权。不建议直接安装全局 hook，避免改写现有配置与误判阻断。此为依据已读实现的迁移建议，未验证收益。",
+        "where": "readable-diff-explainer 的理解测验；guard-ship 前的可选人工理解检查与凭据绑定。无需本轮修改 dotfiles。"
+      },
+      "sources": [
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "README.md",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/README.md"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "LICENSE",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/LICENSE"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "package.json",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/package.json"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "examples/config.json",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/examples/config.json"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "src/git.js",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/src/git.js"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "src/git-gate.js",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/src/git-gate.js"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "src/review-workspace.js",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/src/review-workspace.js"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "src/evaluator.js",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/src/evaluator.js"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "src/sessions.js",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/src/sessions.js"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "src/pi-runtime.js",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/src/pi-runtime.js"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "src/ignore.js",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/src/ignore.js"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "src/install.js",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/src/install.js"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "src/user-file.js",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/src/user-file.js"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "src/agent-settings.js",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/src/agent-settings.js"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "src/browser-interview.js",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/src/browser-interview.js"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "src/openrouter.js",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/src/openrouter.js"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "src/update.js",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/src/update.js"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "src/github.js",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/src/github.js"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "src/config.js",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/src/config.js"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "scripts/postinstall.js",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/scripts/postinstall.js"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "docs/integrations.md",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/docs/integrations.md"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "eval/README.md",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/eval/README.md"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "eval/fixtures/known-false-negatives.json",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/eval/fixtures/known-false-negatives.json"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "site/package.json",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/site/package.json"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "site/app/layout.jsx",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/site/app/layout.jsx"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "test/git.test.js",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/test/git.test.js"
+        },
+        {
+          "sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+          "path": "test/evaluator.test.js",
+          "url": "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/test/evaluator.test.js"
+        }
+      ],
+      "main_gate_log": "intake-2026-10-19-sphinx-gates.log",
+      "main_gate_log_sha256": "766a14079a6443348b5173edeed83327e3539177ee901f96b8634a6be802f56f",
+      "main_gate_excerpt": [
+        "195 category nodes, 930 EN + 930 ZH pages, 0 errors, 1548 warnings.",
+        "reverse_index check: reports are current, no full mislabels (0 partly-indexed rows tracked in reports/project-intake-backlog.md)",
+        "No deterministic findings."
+      ],
+      "visual_check": "ZH flow/mechanism/radar converted with rsvg-convert and read by main session; no visible clipping",
+      "upstream_executed": false
+    },
+    {
+      "repo": "Kruk2/jasna",
+      "status": "done",
+      "page": "categories/media-processing/jasna.md",
+      "public_commit": "7490c7ea8cb8babcff5ba33a1516fdf87c9a7d87",
+      "patch_sha256": "1ce58cdd50889fa85e7ff476cc2171025b4cd2c3cf7d588c9be6ec5485e0578d",
+      "qa_decision": "no leftover Q&A",
+      "dotfiles_zh": {
+        "fit": "none",
+        "what": "没有真实 harness 增量价值。其核心是媒体与 GPU 修复，未发现值得迁入个人 agent harness 的独特技能、hook、记忆账本或模型路由机制；普通队列进度与错误处理不算新增价值。",
+        "where": "不适用；不修改 dotfiles"
+      },
+      "sources": [
+        {
+          "repo": "Kruk2/jasna",
+          "sha": "099af50a3aac06f14db8d048efd8c6562e2c3d25",
+          "kind": "reviewed_commit",
+          "url": "https://github.com/Kruk2/jasna/tree/099af50a3aac06f14db8d048efd8c6562e2c3d25",
+          "evidence": "source-verification.json: 44 read files verified against exact Git blob SHAs; raw texts in upstream/"
+        },
+        {
+          "repo": "ladaapp/lada",
+          "sha": "20cb34a20a83c72c87a991d2c949032c70085b16",
+          "kind": "api_tree_sha_and_pinned_readme",
+          "url": "https://codeberg.org/ladaapp/lada/raw/commit/20cb34a20a83c72c87a991d2c949032c70085b16/README.md",
+          "evidence": "lada-tree.json; lada-README.md"
+        },
+        {
+          "repo": "open-mmlab/mmagic",
+          "sha": "0a560bba9b79ebe78574e1d4cbbdd0e798e63568",
+          "kind": "comparison_tree_sha",
+          "evidence": "mmagic-tree.json; provenance comparison in source-verification.json"
+        },
+        {
+          "repo": "k4yt3x/video2x",
+          "sha": "7db9c18d6278bbad9c3eda0e4e4ae210f9a688eb",
+          "kind": "alternative_commit",
+          "url": "https://github.com/k4yt3x/video2x/blob/7db9c18d6278bbad9c3eda0e4e4ae210f9a688eb/README.md",
+          "evidence": "video2x-README.md"
+        }
+      ],
+      "main_gate_log": "intake-2026-10-19-jasna-gates.log",
+      "main_gate_log_sha256": "c64111f3d4d74a6189f3f123f51855c28236ff3401a5d6a09c40b1e5ac108529",
+      "main_gate_excerpt": [
+        "195 category nodes, 931 EN + 931 ZH pages, 0 errors, 1548 warnings.",
+        "reverse_index check: reports are current, no full mislabels (0 partly-indexed rows tracked in reports/project-intake-backlog.md)",
+        "No deterministic findings."
+      ],
+      "visual_check": "ZH flow/mechanism/radar rendered with rsvg-convert and read by main session; no visible clipping",
+      "upstream_executed": false
+    }
+  ]
+}

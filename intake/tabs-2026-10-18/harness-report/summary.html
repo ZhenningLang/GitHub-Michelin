@@ -63,13 +63,13 @@ h2[id], h3[id] { scroll-margin-top: 16px; }
 <header>
 <span class="badge">research</span>
 <h1>自进化框架：该吸收什么，不该接管什么</h1>
-<div class="meta">Source: /Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-18/intake/tabs-2026-10-18/harness-report/summary.md</div>
-<div class="meta">Generated: 2026-10-18T11:52:07+00:00</div>
+<div class="meta">Source: /Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-18-public/intake/tabs-2026-10-18/harness-report/summary.md</div>
+<div class="meta">Generated: 2026-10-19T05:52:15+00:00</div>
 </header>
 <section>
 <h1>自进化框架：该吸收什么，不该接管什么</h1>
 <p><strong>建议保留现有 harness，优先补行为验收。不要整套迁入自进化框架。</strong></p>
-<p>这份建议来自固定提交的源码对照，不是效果实测。未安装外部框架，未运行上游模型实验，也未修改现有 harness。标签批次已完成本地收录、提交和验收，但尚未发布；<a href="batch.html">批次结果阅读版</a>（<a href="batch.md">源稿</a>）列出计数、待裁决项与发布阻断。</p>
+<p>这份建议来自固定提交的源码对照，不是效果实测。未安装外部框架，未运行上游模型实验，也未修改现有 harness。<a href="batch.html">当日批次结果</a>（<a href="batch.md">源稿</a>）保留首轮计数；<a href="../../tabs-2026-10-19/report/summary.md">2026-10-19 最新汇总</a> 补充 Harness² 研究与公开发布进展。</p>
 <h2 id="先看结论">先看结论</h2>
 <p>现有系统已经能聚合重复摩擦、暂存修改、逐条裁决，再通过独立分支发布。它并不缺另一套“反思后写规则”的入口。主会话复核了落地控制流：默认验证命令只运行技能结构校验，未强制要求候选在真实任务中优于旧版。</p>
 <p><strong>[推断：依据是现有落地控制流与六条上游机制，未做个人任务集实验]</strong> 最值得吸收的是三件事：冻结实验输入、让程序根据原始结果算分、对最终实际发布版本重新验收。模型提出修改，但不能自行定义成功并批准生效。</p>
@@ -116,7 +116,7 @@ h2[id], h3[id] { scroll-margin-top: 16px; }
 <p>先读本页，再按需读 <a href="../evolution-evidence.md">79 处固定提交来源的上游报告</a>，最后读 <a href="../harness-baseline.md">82 处路径／行号核对的现有机制报告</a>。引用数量是报告核对记录，不是模型实验数量。</p>
 <p>主会话重新读取了 Penguin 汇总分测试、Jiuwen 留出配置、Headroom 写入顺序、Founder 队列函数，以及现有落地／评测控制流。源码解释与子任务结论相符。尚未运行上游测试，也没有宣称实测收益。</p>
 <p>索引基线机器检查：<code>make gates</code> 返回 0，<code>0 errors</code>；工具测试：<code>Ran 483 tests in 27.062s</code>，<code>OK</code>。<a href="../baseline-verification.txt">原始输出摘录与日志哈希</a> 绑定索引代码提交 <code>49cf44bd3ce9d5afa82c16668dcc1ffb3db4faf4</code>，当时仅收录台账文件有改动，工具和选型页未变。这些检查只证明收录工具基线，不证明外部框架效果。批量收录结果另以账本和最终门禁为准。</p>
-<p>下一步：先裁决脱敏发布，再由你决定是否为上述小实验另开方案；本轮不直接修改 harness。</p>
+<p>后续：脱敏发布按最新汇总推进；是否为上述小实验另开方案由你决定，本轮不直接修改 harness。</p>
 </section>
 </main>
 

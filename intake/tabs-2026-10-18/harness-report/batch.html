@@ -63,12 +63,12 @@ h2[id], h3[id] { scroll-margin-top: 16px; }
 <header>
 <span class="badge">research</span>
 <h1>标签收录汇总与 Harness 吸收建议</h1>
-<div class="meta">Source: /Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-18/intake/tabs-2026-10-18/harness-report/batch.md</div>
-<div class="meta">Generated: 2026-10-18T11:52:42+00:00</div>
+<div class="meta">Source: /Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-18-public/intake/tabs-2026-10-18/harness-report/batch.md</div>
+<div class="meta">Generated: 2026-10-19T05:52:13+00:00</div>
 </header>
 <section>
 <h1>标签收录汇总与 Harness 吸收建议</h1>
-<p><strong>尚未发布：脱敏发布工作区的写入被护栏拦下。</strong> 本地收录、分类整理与工具验收已完成。本轮没有修改你的 harness，也没有安装这些框架。</p>
+<p><strong>这是 2026-10-18 批次快照。</strong> 2026-10-19 已获授权切换活动工作区，并完成不含私有身份的公开重放；最新数量、研究补充与 PR 状态见<a href="../../tabs-2026-10-19/report/summary.md">二次收录汇总</a>。本轮没有修改你的 harness，也没有安装这些框架。</p>
 <h2 id="待裁决与仍开标签">待裁决与仍开标签</h2>
 <p>六项都保留标签，未生成选型页。它们是待裁决候选，不是已经认定无价值或违法的项目。</p>
 <table><thead><tr><th>候选</th><th>保留原因</th><th>你需要决定什么</th></tr></thead><tbody><tr><td>breferrari/obsidian-mind</td><td>有独立记忆运行时，但复制技能的上游 MIT 声明保留存在缺口。</td><td>等上游补齐，或另行审查授权后收录。</td></tr><tr><td>liseami/CCBaga</td><td>NOTICE 披露复制组件缺独立上游许可声明，再分发条款待确认。</td><td>补齐许可声明并确认再分发条款，或隔离来源清楚的部分。</td></tr><tr><td>JimLiu/baoyu-design</td><td>自述重新打包 Anthropic 产品内容，提取内容授权覆盖未核实。</td><td>补授权材料后再决定；不以根 MIT 推导所有内容均获许可。</td></tr><tr><td>Bennettxai/FounderOS</td><td>多数文件与声明上游同源；当前许可证与 NOTICE 存在差异。</td><td>核实复制时点许可或单独授权；不据当前差异直接断言侵权。</td></tr><tr><td>dzhng/skills</td><td>约 42% 文件、约 80% 所选文本字节与声明上游相同，计量口径会影响判断。</td><td>是否按工程技能主轴收录。21 个工程技能不等于 21 个原创技能，也不能说八成技能都是复制。</td></tr><tr><td>私有候选，名称不公开</td><td>不是公开开源分发，未发现明确开源许可。</td><td>排除，或等待公开与明确许可；不发布其内容。</td></tr></tbody></table>
@@ -77,7 +77,7 @@ h2[id], h3[id] { scroll-margin-top: 16px; }
 <h2 id="批次结果">批次结果</h2>
 <table><thead><tr><th>项目</th><th>数量</th></tr></thead><tbody><tr><td>新增双语页对</td><td>61</td></tr><tr><td>已有页面，仍新鲜，未改内容</td><td>13</td></tr><tr><td>重新研究并改写的 sync 页面</td><td>0</td></tr><tr><td>待裁决</td><td>6</td></tr><tr><td>跳过自有仓库</td><td>1</td></tr><tr><td>失败</td><td>0</td></tr><tr><td>非终态</td><td>0</td></tr></tbody></table>
 <p>81 行台账全部有终态。每个新增仓库均独立提交，在主会话全库门禁与双语范围质量扫描通过后，才标记 done 并关闭标签。13 个已有页均由主会话重新核对日期，未超过 90 天；没有用“同步”伪称重新研究。</p>
-<p>PR：尚未创建。原始本地分支含私有项名称，不能直接推送。已准备另一发布工作区，但写入因同仓库 sibling 限制被拒绝；没有换命令或换路径绕过。所有页面、补丁和本地恢复状态均保留。</p>
+<p>发布记录：当日因活动工作区限制而暂停，没有绕过护栏。翌日经用户授权切换到公开工作区，逐项目重放已验收内容；公开台账和新增历史不含私有候选身份。原始分支只留本地，不作为 PR 的祖先。所有页面、补丁和本地恢复状态均保留。</p>
 <h2 id="对你的-Harness，最值得做什么">对你的 Harness，最值得做什么</h2>
 <p><strong>[推断：依据是现有控制流与上游固定源码，未做个人任务集实验]</strong> 保留现在的改进流程。最值得补的是“候选是否真的更好”的验收，而不是再加一个自动反思入口。</p>
 <p>现有系统已能聚合证据、暂存改动、逐条裁决并经分支发布。默认落地检查不要求新版本行为优于旧版。已有行为评测工具可以复用，但其禁用技能基线臂不自动等于新旧版本对照。</p>
@@ -96,8 +96,8 @@ h2[id], h3[id] { scroll-margin-top: 16px; }
 <p>迁移保持 927 对页面守恒，16 对路径变更单独提交。710 处本地链接重定位，4,591 份图源及资源哈希保持不变。<a href="../final-verification.txt">最终机器记录</a> 与 <a href="../per-repo-verification.json">逐项目记录</a> 保留日志哈希和提交定位。</p>
 <p>独立汇总事实复核已关闭唯一措辞阻断：<a href="../batch-facts-review.md">复核记录</a>。</p>
 <p><strong>Inner-loop evidence：</strong> 本次复跑的门禁和 483 项工具测试。<strong>Acceptance evidence：</strong> 真实 Chrome 台账对账、61 条实际提交页核验、分类迁移保真和独立源码复核。<strong>Holdout / unseen evidence：</strong> 不适用模型效果验收；本轮是静态研究与内容收录。<strong>Holdout 来源类别：</strong> 真实捕获的标签集合与独立源码抽查。<strong>预期值来源：</strong> 用户需求、仓库契约及固定上游源码。<strong>本次改动相对冻结点的位置：</strong> 生成侧新增内容与纯路径迁移；未改判分器、schema、门禁或现有 harness。</p>
-<p>未做个人封存任务实验，不能承诺成功率或成本提升。分类迁移会改变 11 对既有页路径；仓库内链接会修复，外部书签不能自动恢复。发布仍受上述护栏阻断，因此没有 PR 链接。</p>
-<p>下一步：你批准把脱敏发布副本设为活动工作区后，我再完成脱敏重放，并单独请求 push 授权；不推原始含私有项的历史。</p>
+<p>未做个人封存任务实验，不能承诺成功率或成本提升。分类迁移会改变 11 对既有页路径；仓库内链接已修复，外部书签不能自动恢复。后续发布以二次收录汇总和对应 PR 状态为准。</p>
+<p>后续：以二次收录汇总为当前入口；不推原始含私有项的历史。</p>
 </section>
 </main>
 

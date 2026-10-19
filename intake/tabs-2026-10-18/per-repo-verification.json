@@ -13,7 +13,8 @@
       "log_file": "intake-main-agricidaniel--claude-obsidian.log",
       "log_sha256": "c3716089b5cc2471009833e91ab6b3c19b7d44e7930c6d59e2f35b2730bffc97",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "ba4cc9a50742b996a942d793e15b83d750da4632"
     },
     {
       "repo": "alchaincyf/huashu-art-motion",
@@ -25,7 +26,8 @@
       "log_file": "intake-main-alchaincyf--huashu-art-motion.log",
       "log_sha256": "2b7baabcbf3572fd02a28f2a1bb2cc3e6746d870641cd3e21303c1eee4bb6ced",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "421d73a8f1488163acd03565ed3a822eef672a05"
     },
     {
       "repo": "alejandrobujan/tendedero",
@@ -37,7 +39,8 @@
       "log_file": "intake-main-alejandrobujan--tendedero.log",
       "log_sha256": "2e9b1c9fae40d7aacae58244c8e5784a06d22c8d4ee0a4bef9cdf123e330af58",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "244d00c9db25ac0aee91ab393b218d6c7afef293"
     },
     {
       "repo": "anomalyco/opentunnel",
@@ -49,7 +52,8 @@
       "log_file": "intake-main-anomalyco--opentunnel.log",
       "log_sha256": "092bb964622f9d039648580ecf0d6ba6f1b1a53f5a8c7f392eeff889b7aed89b",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "3be5fad2c127db0e8e74db7727dd2b63537136d4"
     },
     {
       "repo": "apache/maka",
@@ -61,7 +65,8 @@
       "log_file": "intake-main-apache--maka.log",
       "log_sha256": "92dccd0d5ebebf455fea41c5e60575145f85ba149082b8a6378a43d3aafd5db9",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "4678704915917162c974edce1d3b372eb994cbf6"
     },
     {
       "repo": "apurvsinghgautam/robin",
@@ -73,7 +78,8 @@
       "log_file": "intake-main-apurvsinghgautam--robin.log",
       "log_sha256": "f930bb62a74fac8453f1ffaa3649cea56f4f10d11e0b73b324b9e03acbcb7d03",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "b5eef02e50ab25a85b41c8948dd57ac7f8ed74ce"
     },
     {
       "repo": "asciimoo/hister",
@@ -85,7 +91,8 @@
       "log_file": "intake-main-asciimoo--hister.log",
       "log_sha256": "591e7f733df0f5a601f59fad7105f400c08e684c945ee2a036649fc2b074929b",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "7fde49db23a64dda9c1eb611e03dd874387b889b"
     },
     {
       "repo": "AtomicBot-ai/atomic-agent",
@@ -97,7 +104,8 @@
       "log_file": "intake-main-atomicbot-ai--atomic-agent.log",
       "log_sha256": "8c895240da7845621f977477061e98f32aad2481802ba4f5c31a57c26f5fcd86",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "8e0f2b08402b53e9d7450f3bd4fe387d37a77f44"
     },
     {
       "repo": "tangency-labs/solidcraft",
@@ -109,7 +117,8 @@
       "log_file": "intake-main-tangency-labs--solidcraft.log",
       "log_sha256": "342c010e34c04320ffd0a17caf1820540da8a7f51178474fe868a8b8be392dca",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "0457277a0d08985d38a478d19ae6091ddbc9de2f"
     },
     {
       "repo": "ccch1mneyyy/dsh-TUI",
@@ -121,7 +130,8 @@
       "log_file": "intake-main-ccch1mneyyy--dsh-tui.log",
       "log_sha256": "9c196230c3f2040091c420fd9f6b049a480ce3d13205928bdfbefbdaf09c6255",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "a581d6fd08812dad28b38f9e8c6436a11ed74e5c"
     },
     {
       "repo": "CopilotKit/OpenIntelligentUI",
@@ -133,7 +143,8 @@
       "log_file": "intake-main-copilotkit--openintelligentui.log",
       "log_sha256": "e040b0ce7090bd42be229028206b835d9f3d58e8abf085e3aadf5167490b5a9e",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "42274fbbd73afb8e8f9c59af60d074645ced2306"
     },
     {
       "repo": "cosmo-wander-ai/cosmo-edge",
@@ -145,7 +156,8 @@
       "log_file": "intake-main-cosmo-wander-ai--cosmo-edge.log",
       "log_sha256": "b49e7badcdd352bfcf935ca369111ab3fc745b7653aabe6f056047259b4b23ba",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "6e6d3bdb33640656a04fd1c797ec79849bb6580b"
     },
     {
       "repo": "dentiny/duckdb-object-storage",
@@ -157,7 +169,8 @@
       "log_file": "intake-main-dentiny--duckdb-object-storage.log",
       "log_sha256": "01d9c7b74720ce16cbb2aea20a6aa4a0e0ac7023089cae37abed6dc0653beda7",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "271be51a7c3d3d9eb57e53f190f4c056cc5b9795"
     },
     {
       "repo": "docwriter-org/plain-writing-skill",
@@ -169,7 +182,8 @@
       "log_file": "intake-main-docwriter-org--plain-writing-skill.log",
       "log_sha256": "40af923e5948dd41839f45abbbcaff6c75797bb75af206b67fa86f6cc02cb235",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "783d8a983969d6cda89134372c2f5188961d78ea"
     },
     {
       "repo": "drumih/turbo-fieldfare",
@@ -181,7 +195,8 @@
       "log_file": "intake-main-drumih--turbo-fieldfare.log",
       "log_sha256": "98a21b33f766c957d7a1a3d43c3521d2827875dc1809c43f79b3a588b4044523",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "99a6026e7559e8cb875611163192f58120b5dca5"
     },
     {
       "repo": "eternityspring/shuohao-skills",
@@ -193,7 +208,8 @@
       "log_file": "intake-main-eternityspring--shuohao-skills.log",
       "log_sha256": "143ec43cf64d64c5ddef4524dc42844f4cff81729f8f83311b7f1085280a1b1a",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "99f13a4b9f3cdc6bee8d3c383c9baeb1b2ef2ba6"
     },
     {
       "repo": "fastclaw-ai/fastclaw",
@@ -205,7 +221,8 @@
       "log_file": "intake-main-fastclaw-ai--fastclaw.log",
       "log_sha256": "c4299ae2b7a12bd241aba89944d12c3730489197c4d193b93a6d9fe7fdb90b89",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "1645d25844df66bf9f4929aca5fb26514c647009"
     },
     {
       "repo": "FluidInference/FluidUse",
@@ -217,7 +234,8 @@
       "log_file": "intake-main-fluidinference--fluiduse.log",
       "log_sha256": "a66a4889181bb10473d68794caf6e19c328a3b4b90f0b3c9114b11a0b3a4b843",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "f26e333caf33f8feca3b36312893a5b7932e5a37"
     },
     {
       "repo": "General-Legal/legal-templates",
@@ -229,7 +247,8 @@
       "log_file": "intake-main-general-legal--legal-templates.log",
       "log_sha256": "3459597217f76b8e7a1b4a41bb8ffbcd963cdcbc860ea5cc08c30867f4a80ee3",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "10dffd72ee7eaa91c64ea7f5e872e8911f13ca75"
     },
     {
       "repo": "getopenscreen/openscreen",
@@ -241,7 +260,8 @@
       "log_file": "intake-main-getopenscreen--openscreen.log",
       "log_sha256": "ee639dc23111f13a0e2a8a92b6bd6d1095397769c59d7e3fe748a5ea18e35bde",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "ebedfcbf4897f55e662c7aa5952169b6cc606e56"
     },
     {
       "repo": "google/agentmesh",
@@ -253,7 +273,8 @@
       "log_file": "intake-main-google--agentmesh.log",
       "log_sha256": "00a0dcc75a46af615429e578df060d6d8da26b30364e5ed1f7a321d9909072fc",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "82ce9f1cef95306eb226406466d3bdf000a3aea4"
     },
     {
       "repo": "gpu-mode/Triton-Puzzles",
@@ -265,7 +286,8 @@
       "log_file": "intake-main-triton-puzzles.log",
       "log_sha256": "e1764ba7791df41a70e55243df1c8cba9c3ac2f356b574397dc5a196c7302264",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "2eaba11d7dce06d70552bb8540286a855c4eab34"
     },
     {
       "repo": "headroomlabs-ai/headroom",
@@ -277,7 +299,8 @@
       "log_file": "intake-main-headroomlabs-ai--headroom.log",
       "log_sha256": "9250cf1219a6ede6a73e2253fa62d68970c4e5302141482c5c858fe268efd802",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "45005665f8491af211995f47c9e23030949748bb"
     },
     {
       "repo": "isair/jarvis",
@@ -289,7 +312,8 @@
       "log_file": "intake-main-isair--jarvis.log",
       "log_sha256": "50cfe8a5605b6d2217e827203f2dda21440ec69fa56f727af3894d84f7675ec5",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "4ec21accf5d9bbec562b37adf5640b0dd823112e"
     },
     {
       "repo": "jakubkrehel/skills",
@@ -301,7 +325,8 @@
       "log_file": "intake-main-jakubkrehel--skills.log",
       "log_sha256": "fb1f4e7ca7fe3a468b133367863525c23a61c2bc4e87808c246c3b525a602332",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "4c6e629566b0e2e1a4085c926e1420b4e7722d9d"
     },
     {
       "repo": "Joooook/12306-mcp",
@@ -313,7 +338,8 @@
       "log_file": "intake-main-joooook--12306-mcp.log",
       "log_sha256": "bf998e35aae30eff028f7f1e594c1372182ab622c8e6349cdc83ae256bd4fa13",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "1a26dba962e864143816feffc62cee2670d82000"
     },
     {
       "repo": "kaomei/stickman-video-director",
@@ -325,7 +351,8 @@
       "log_file": "intake-main-kaomei--stickman-video-director.log",
       "log_sha256": "d0dc005ee803197e8a0ccd2dc57652a3441333dad146604283663a81a5dcd5fd",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "9b9210c8997814920a2754fca07b2e47c566babe"
     },
     {
       "repo": "leemysw/yovoice",
@@ -337,7 +364,8 @@
       "log_file": "intake-main-leemysw--yovoice.log",
       "log_sha256": "e731b5cb413d4003ac0391fa1135c42065440cf3bda50d4e37ff0019dd9e4248",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "f8cbd06b781581b03274807b15d1fcc942b4c2be"
     },
     {
       "repo": "lemomo-ai/lemo-opuscar",
@@ -349,7 +377,8 @@
       "log_file": "intake-main-lemomo-ai--lemo-opuscar.log",
       "log_sha256": "588d981a1aad54d2a1dbf6c6a44cec421926ad1cbfe7ccd0fa8ae831a56db648",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "3b5e01860385e489a4f474eb27826e46b4c68074"
     },
     {
       "repo": "lightningpixel/modly",
@@ -361,7 +390,8 @@
       "log_file": "intake-main-lightningpixel--modly.log",
       "log_sha256": "e34fa5b4623a307fe9780fff224981ddc8587332f33d604d66812b2358e4c0ee",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "24fe31c828eb37d5e5a46814d7648cb8c34e2fba"
     },
     {
       "repo": "lobehub/lobehub",
@@ -373,7 +403,8 @@
       "log_file": "intake-main-lobehub--lobehub.log",
       "log_sha256": "fb2e348a789a9209eb1acfcb7212e64e25c85cda4b317cf83ee63ad8a629e3ca",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "adea737fe8b2547ed22376b8fe9cb2a527ab68e8"
     },
     {
       "repo": "MDX-Tom/gpt-instruct",
@@ -385,7 +416,8 @@
       "log_file": "intake-main-mdx-tom--gpt-instruct.log",
       "log_sha256": "5a1723ca43bf8d51a5451a361ba5a7da1607cad5070031095f0bc31d6c6d37a8",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "ee9d678c57cf2f7108371fb55661c347e7283baa"
     },
     {
       "repo": "morluto/rea",
@@ -397,7 +429,8 @@
       "log_file": "intake-main-morluto--rea.log",
       "log_sha256": "0f19c55aa1092f6c9f0c4a142b10740fcafb51c04d66d981ad2db4bfe7d679f8",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "00b6dcb6776aa00c67d5968080e572e737b7d9d0"
     },
     {
       "repo": "NandhaKishorM/vegaml",
@@ -409,7 +442,8 @@
       "log_file": "intake-main-vegaml.log",
       "log_sha256": "465015dc4abdf824da9af132851aa4cbc0f6e86e7f94f048f7fc8ef7aaa4d7cc",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "cb0d088cffc899375212b737802b00f5e8e35690"
     },
     {
       "repo": "netease-youdao/LobsterAI",
@@ -421,7 +455,8 @@
       "log_file": "intake-main-netease-youdao--lobsterai.log",
       "log_sha256": "1ffe894f0a7536a09963f1c524e4f280591d8c2fc556dac3398e63ac4c21db7a",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "00f4078d7500e6aa05348bf021f52b2aa72ea8cb"
     },
     {
       "repo": "nicobailon/visual-explainer",
@@ -433,7 +468,8 @@
       "log_file": "intake-main-nicobailon--visual-explainer.log",
       "log_sha256": "ec1fb1c7e279260b06dd2a09351a412f2722a61535c2ede766fcb9f4e74a18f0",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "79f94118bf0fbdbba966784a68298307d3d9d086"
     },
     {
       "repo": "openai/skills",
@@ -445,7 +481,8 @@
       "log_file": "intake-main-openai--skills.log",
       "log_sha256": "5b6f873fa01e6e077f9000ca2b255b3de762389759f155c92ce8ae97565086d3",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "e472e422007053810bd8726da1d4f5fdfa5925ee"
     },
     {
       "repo": "opendataloader-project/opendataloader-pdf",
@@ -457,7 +494,8 @@
       "log_file": "intake-main-opendataloader-project--opendataloader-pdf.log",
       "log_sha256": "eb3cf74000d1241f4a822c5770d3171766db9394787c8ff1e4309f59cb3a6b45",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "aef44536ca08f357e8fbf026aceec01c75d247e7"
     },
     {
       "repo": "openJiuwen-ai/jiuwenswarm",
@@ -469,7 +507,8 @@
       "log_file": "intake-main-openjiuwen-ai--jiuwenswarm.log",
       "log_sha256": "fe0348e93a88b10302621bb01ceac76186c17dfa9a241649de158d93a21a0d0c",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "8bca1f1bc053fa73caf0a177a4befbfc87bd0b98"
     },
     {
       "repo": "OpenMinis/iCTRL",
@@ -481,7 +520,8 @@
       "log_file": "intake-main-openminis--ictrl.log",
       "log_sha256": "df5f3177e60ad274c37b02c8ff4f9674183d076b3afb41cbd416d66b645e9608",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "1085f4d76a84dd9af639a6e7ae0e65b10e49abf3"
     },
     {
       "repo": "p1neappleXpress/OpenFlux",
@@ -493,7 +533,8 @@
       "log_file": "intake-main-p1neapplexpress--openflux.log",
       "log_sha256": "18653a2e8cb81d51939388dc189f823ea40c90ee680d1761b5f7d3bc3ccdbee5",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "f420d174f5a5629161a5cdced2e91ac51b1bb35e"
     },
     {
       "repo": "preset-io/agor",
@@ -505,7 +546,8 @@
       "log_file": "intake-main-preset-io--agor.log",
       "log_sha256": "2128fab4359be49d027fd844275bedd097b5c0b53a0aafa77826661fd61938d5",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "e469f698b6b7d6de5b9d391af51c91754ab7448e"
     },
     {
       "repo": "Prism-Shadow/penguin-harness",
@@ -517,7 +559,8 @@
       "log_file": "intake-main-prism-shadow--penguin-harness.log",
       "log_sha256": "78f8a36360de0ddc76dd97b6be5ffd8bb98833ac16051ca2ed46ce4ace10d7a7",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "18fb809d48bf117d845128e9580c2f17436b519a"
     },
     {
       "repo": "qufei1993/skills-hub",
@@ -529,7 +572,8 @@
       "log_file": "intake-main-qufei1993--skills-hub.log",
       "log_sha256": "bd517fb38d4a478c44bd1961ecde0bb5ddfba64d2e0374ca0bec075d1d706e39",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "86b2a1717ff12aea452417cd4fb986c0fcbfa46e"
     },
     {
       "repo": "rilldata/rill",
@@ -541,7 +585,8 @@
       "log_file": "intake-main-rilldata--rill.log",
       "log_sha256": "c9a89f538d6fa07a2931c30fbc379d06ff072c5b544183544cbeb871913c60ee",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "7d4b88e453daee2915f56071baa5f94b66e16eeb"
     },
     {
       "repo": "Robbyant/lingbot-map",
@@ -553,7 +598,8 @@
       "log_file": "intake-main-robbyant--lingbot-map.log",
       "log_sha256": "038e21b905941e5379ae7a9bc80ac9b8b551c81700e6ebc67fa06eb4ba422d55",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "9cd9436ed6fa156dfbc570c5339b93080a8cca18"
     },
     {
       "repo": "rorkai/App-Store-Connect-CLI",
@@ -565,7 +611,8 @@
       "log_file": "intake-main-app-store-connect-cli.log",
       "log_sha256": "36a29a41131e1c2985e2df8a4f49de74034b07929303a9bffeffdcf2adb379fa",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "9495f06b5c95a59259c714ed258a7de3ad0a8260"
     },
     {
       "repo": "sgl-project/sglang-omni",
@@ -577,7 +624,8 @@
       "log_file": "intake-main-sgl-project--sglang-omni.log",
       "log_sha256": "831602136e92181e55317f52bc3ff1ed6f7325acf6ce3594d137dc95312ca641",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "404647a0b43ae68657a007a67fe6038e8422d1b2"
     },
     {
       "repo": "simplifaisoul/osiris",
@@ -589,7 +637,8 @@
       "log_file": "intake-main-simplifaisoul--osiris.log",
       "log_sha256": "42dc2ef4e49d2123dbc015386827c5974a7f56a886eddb672f7003ea986a3020",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "c8ab2ec2df25d86a13c0ef2946376c984522b6fd"
     },
     {
       "repo": "Tencent-Hunyuan/Hy-Memory",
@@ -601,7 +650,8 @@
       "log_file": "intake-main-tencent-hunyuan--hy-memory.log",
       "log_sha256": "ee170223d969fea3e424598036abc1be81b17520eff96fb4fbaf5195e3dde061",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "3e1fcf1f6dcb288c6ed525b9465f54db3352bbf6"
     },
     {
       "repo": "twostraws/SwiftUI-Agent-Skill",
@@ -613,7 +663,8 @@
       "log_file": "intake-main-twostraws--swiftui-agent-skill.log",
       "log_sha256": "3a88a7900162f4968cbf0860b38fc0b648d5f60288bd8292b6cac0db56df74f6",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "733294d9b9d16ace324aabcf91f2858dd264d177"
     },
     {
       "repo": "unisonweb/unison",
@@ -625,7 +676,8 @@
       "log_file": "intake-main-unisonweb--unison.log",
       "log_sha256": "6ae5bafa0f8a3222c1aa7eeeb261abf9de025ab86fd35802fff8f0b1f6f7b4d1",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "cc983a0a5b27bb37413f501050f12071779051a7"
     },
     {
       "repo": "withmarbleapp/os-taxonomy",
@@ -637,7 +689,8 @@
       "log_file": "intake-main-withmarbleapp--os-taxonomy.log",
       "log_sha256": "45e986321d7a3440f3f273eca1d0c75aa671c775313b41992af22dbf0c0363fe",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "c4836161a6c47afe728b49ff049cee7343a60cf7"
     },
     {
       "repo": "wy51ai/edulab",
@@ -649,7 +702,8 @@
       "log_file": "intake-main-wy51ai--edulab.log",
       "log_sha256": "9a1f6b1b9211f78bebf0266066f6a6e2280d141191fa459bf2102f96baf7e693",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "7f20093bfb415578edaae9df032fcedd212b6186"
     },
     {
       "repo": "xtool-org/xtool",
@@ -661,7 +715,8 @@
       "log_file": "intake-main-xtool-org--xtool.log",
       "log_sha256": "4c69c36b153a59e3c5357fe261f2995b87e25a1b33083f4ffd763423977cdda3",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "0b01871ae1d800624efe8e45d4a6cc9a4321f6cc"
     },
     {
       "repo": "ymybxx/SoloMCN",
@@ -673,7 +728,8 @@
       "log_file": "intake-main-ymybxx--solomcn.log",
       "log_sha256": "4d8fa925cd2353446384fa0124ef2ca70fc4ebe3dc7c4a361448dc9b16276df3",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "482a38bd758f2dd6c8c96ef661638fde2c5780db"
     },
     {
       "repo": "Yuan1z0825/nature-skills",
@@ -685,7 +741,8 @@
       "log_file": "intake-main-yuan1z0825--nature-skills.log",
       "log_sha256": "591f8a84b6fdeea91826c81f8834b304c4aa6fe6a9743ab489e168ba03240b1f",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "d9f9ce4d4c8c91ce96b9003f66641d6104d52329"
     },
     {
       "repo": "Zesty0wl/mac-performance-monitor",
@@ -697,7 +754,8 @@
       "log_file": "intake-main-zesty0wl--mac-performance-monitor.log",
       "log_sha256": "7dca393640d525dedfb9143366185f9162872b634c600cf7aea58e5bdcb1bfb0",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "387101260ad826e36ac3fc2b6ea8d93ceb5ca4e5"
     },
     {
       "repo": "zhihui-hu/one-ip",
@@ -709,7 +767,8 @@
       "log_file": "intake-main-zhihui-hu--one-ip.log",
       "log_sha256": "861bd4d5262b996cd55432d33a4d2c836b987cfc60cbedfe920ab9c978b31989",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "cf3650c246bd4593abe9c6dd88cf61afad1904d0"
     },
     {
       "repo": "zhongerxin/iPhone-use",
@@ -721,7 +780,8 @@
       "log_file": "intake-main-iphone-use.log",
       "log_sha256": "dfc3e69c108c0f0639afec9fb55dad605f3e09ade41cbcbb9c03eee274e70d74",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "2a586ad6360b1ee53001a6d370b2a41d7f0cc1e0"
     },
     {
       "repo": "zhuyansen/new-term-radar",
@@ -733,9 +793,11 @@
       "log_file": "intake-main-zhuyansen--new-term-radar.log",
       "log_sha256": "c54308617de3da131efca09d98a87556a0961d5538d7a1784f771f36ac63d5a4",
       "commit_page_exists": true,
-      "final_page_exists": true
+      "final_page_exists": true,
+      "public_content_commit": "6141ed65f06d42464204ea31c450e42e11799588"
     }
   ],
   "final_paths": "61/61 final bilingual paths checked after applied taxonomy migration",
-  "limits": "Log hashes bind local machine records. Gate output is not a runtime benchmark or model-effectiveness result."
+  "limits": "Log hashes bind local machine records. Gate output is not a runtime benchmark or model-effectiveness result.",
+  "publication_note": "content_commit retains original local evidence identity; public_content_commit is reachable on the sanitized publication branch."
 }
