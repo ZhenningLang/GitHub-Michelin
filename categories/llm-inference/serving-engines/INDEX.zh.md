@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **SGLang-Omni** | 一次语音请求要经过编码、逐词生成和音频解码，资源需求各不相同。SGLang-Omni 把这些阶段编成协同管线，再提供 HTTP 接口。 | B（6/6） | [→](sglang-omni.zh.md) |
 | **vLLM** | 当你想要事实上的开源 LLM 服务引擎，带 PagedAttention、连续批处理和 OpenAI 兼容 API 时用它——接受 NVIDIA 主导的 GPU 运维和快速迭代的代码库。 | A（5/6） | [→](vllm.zh.md) |
 | **SGLang** | 当 agent 流量反复带着同一段长提示、又要求输出符合 JSON schema，需要前缀缓存和结构化生成来省 GPU 时间时用它——但 v0.5.20 起要求 CUDA 13，生态和生产记录也比 vLLM 年轻。 | A（5/6） | [→](sglang.zh.md) |
 | **TensorRT-LLM** | 当你在 Hopper 或 Blackwell GPU 上服务高流量模型，需要 NVIDIA 调优内核、FP4 和整机柜并行来补上吞吐差距时用它——但它只跑在较新的 NVIDIA GPU 上，部分关键内核还是预编译二进制。 | B（5/6） | [→](tensorrt-llm.zh.md) |
@@ -22,6 +23,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [SGLang-Omni](sglang-omni.zh.md) | ✅ | B（6/6） | 一次语音请求要经过编码、逐词生成和音频解码，资源需求各不相同。SGLang-Omni 把这些阶段编成协同管线，再提供 HTTP 接口。 |
 | [vLLM](vllm.zh.md) | ✅ | A（5/6） | 事实上的开源服务引擎（PagedAttention、连续批处理）；NVIDIA 优先、迭代快，运维比本地运行时重。 |
 | [SGLang](sglang.zh.md) | ✅ | A（5/6） | 前缀复用和受约束解码加速 agent 负载，代价是版本迭代快，需要钉版本并每隔几周重新验证。 |
 | [TensorRT-LLM](tensorrt-llm.zh.md) | ✅ | B（5/6） | 最早用上 NVIDIA 硬件特性和吞吐，代价是厂商绑定、部分内核不可读、默认开启遥测，正式版发布也慢。 |

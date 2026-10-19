@@ -927,6 +927,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **SGLang-Omni** | 一次语音请求要经过编码、逐词生成和音频解码，资源需求各不相同。SGLang-Omni 把这些阶段编成协同管线，再提供 HTTP 接口。 | Apache-2.0 | B（6/6） | [EN](categories/llm-inference/serving-engines/sglang-omni.md) · [中](categories/llm-inference/serving-engines/sglang-omni.zh.md) |
 | **Modular Platform (MAX + Mojo)** | 当你想要高性能 GPU/CPU 推理平台（MAX）加 Mojo 系统语言、并接受单厂商绑定与部分非生产许可时用它。 | Apache-2.0 (mixed) | B（5/6） | [中](categories/llm-inference/serving-engines/modular.zh.md) · [EN](categories/llm-inference/serving-engines/modular.md) |
 | **omlx** | 当你想在 Mac（Apple Silicon）上用 MLX 跑带 SSD 分层 KV 缓存的本地 LLM 推理服务时用它——年轻的单人仓库，star 数存疑。 | Apache-2.0 | B（6/6） | [中](categories/llm-inference/local-runtimes/omlx.zh.md) · [EN](categories/llm-inference/local-runtimes/omlx.md) |
 | **MTPLX** | 当你想让模型自带的 MTP 头在 Mac 上以精确投机解码把 Qwen 3.8 跑出约 2 倍速、并要 OpenAI/Anthropic 服务器与应用形态时用它——接受约五个月大、作者主导的仓库与产品内署名条款。 | Apache-2.0（含署名 NOTICE） | B（6/6） | [中](categories/llm-inference/local-runtimes/mtplx.zh.md) · [EN](categories/llm-inference/local-runtimes/mtplx.md) |

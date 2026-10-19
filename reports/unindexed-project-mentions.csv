@@ -87,6 +87,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [v2rayA](https://github.com/v2rayA/v2rayA),categories/networking/dae.md,,no
 [v2rayN](https://github.com/2dust/v2rayN),categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 [vectorbt](https://github.com/polakowo/vectorbt),categories/investment-finance/backtrader.md,,no
+[vLLM-Omni](https://github.com/vllm-project/vllm-omni),categories/llm-inference/serving-engines/sglang-omni.md,,no
 [Wan2.2](https://github.com/Wan-Video/Wan2.2),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [wasmtime](https://github.com/bytecodealliance/wasmtime) (WASI CPython),categories/sandboxing/monty.md,,no
 [wg-easy](https://github.com/wg-easy/wg-easy),categories/networking/amneziawg-installer.md,,no
