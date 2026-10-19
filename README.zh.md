@@ -273,6 +273,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **Mem0** | 当你的 LLM agent 需要跨会话记住用户、又不想撑爆 prompt 上下文时用它。 | Apache-2.0 | A（6/6） | [中](categories/agent-memory/app-memory/mem0.zh.md) · [EN](categories/agent-memory/app-memory/mem0.md) |
+| **Hy Memory** | 通过分场景 SDK 保留对话事实与编码中间版本。 | Apache-2.0 | C（4/6） | [中](categories/agent-memory/app-memory/hy-memory.zh.md) · [EN](categories/agent-memory/app-memory/hy-memory.md) |
 | **Memori** | 当你想要 LLM 无关、通过包裹现有客户端自动捕获并召回的持久化 agent 记忆时使用。 | Apache-2.0 | B（5/6） | [中](categories/agent-memory/app-memory/memori.zh.md) · [EN](categories/agent-memory/app-memory/memori.md) |
 | **Claude Subconscious** | 当你想让一个后台 Letta agent 通过 hook 给 Claude Code 加上跨会话记忆时使用（仅 demo，非生产）。 | MIT | C（5/6） | [中](categories/agent-memory/coding-agent-memory/claude-subconscious.zh.md) · [EN](categories/agent-memory/coding-agent-memory/claude-subconscious.md) |
 | **claude-mem** | 当你的编码 agent 跨会话丢失上下文、你想要本地 hook/MCP 捕获并压缩后再注入的记忆时用它（star 数存疑）。 | Apache-2.0 | B（6/6） | [中](categories/agent-memory/coding-agent-memory/claude-mem.zh.md) · [EN](categories/agent-memory/coding-agent-memory/claude-mem.md) |

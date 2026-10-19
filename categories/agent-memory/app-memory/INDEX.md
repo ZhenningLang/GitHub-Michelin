@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Hy Memory** | Preserve conversation facts and intermediate coding revisions with a scene-aware SDK. | C (4/6) | [→](hy-memory.md) |
 | **Mem0** | Use it when your LLM agent must remember users across sessions without bloating the prompt context. | A (6/6) | [→](mem0.md) |
 | **Memori** | Use it when you want LLM-agnostic persistent agent memory captured by wrapping your existing client. | B (5/6) | [→](memori.md) |
 | **Letta (MemGPT)** | Use it only to plan a migration if you run a self-hosted Letta V1 server or a tutorial sent you here — but the server was retired to an `archive` branch in August 2026 with no security fixes; maintained Letta is now Letta Code. | B (6/6) | [→](letta.md) |
@@ -19,6 +20,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Hy Memory](hy-memory.md) | ✅ | C (4/6) | Working/coding memory and diff attachments; newly public and model-dependent. |
 | [Mem0](mem0.md) | ✅ | A (6/6) | Use it when your LLM agent must remember users across sessions without bloating the prompt context. |
 | [Memori](memori.md) | ✅ | B (5/6) | SQL-first client-wrapper memory for application code; an opinionated cloud vs the BYODB split. |
 | [Letta (MemGPT)](letta.md) | ✅ | B (6/6) | Buys a historically important self-editing-memory design (MemGPT) to learn from; costs migrating any install base off a frozen server whose `letta/letta` Docker image gets no patches. |

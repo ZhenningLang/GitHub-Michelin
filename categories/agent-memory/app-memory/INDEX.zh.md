@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Hy Memory** | 通过分场景 SDK 保留对话事实与编码中间版本。 | C（4/6） | [→](hy-memory.zh.md) |
 | **Mem0** | 当你的 LLM agent 需要跨会话记住用户、又不想撑爆 prompt 上下文时用它。 | A（6/6） | [→](mem0.zh.md) |
 | **Memori** | 当你想要 LLM 无关、通过包裹现有客户端自动捕获并召回的持久化 agent 记忆时使用。 | B（5/6） | [→](memori.zh.md) |
 | **Letta (MemGPT)** | 只在你跑着自托管的 Letta V1 服务器、或被教程带到这个仓库、需要规划迁移时看它——但该服务器已于 2026 年 8 月退役、挪到 `archive` 分支，不再有安全修复；还在维护的 Letta 现在是 Letta Code。 | B（6/6） | [→](letta.zh.md) |
@@ -19,6 +20,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Hy Memory](hy-memory.zh.md) | ✅ | C（4/6） | 工作、编码记忆与差异附件；公开时间极短，依赖模型。 |
 | [Mem0](mem0.zh.md) | ✅ | A（6/6） | 当你的 LLM agent 需要跨会话记住用户、又不想撑爆 prompt 上下文时用它。 |
 | [Memori](memori.zh.md) | ✅ | B（5/6） | SQL 优先、包裹客户端的应用记忆，带一个有主张的云与 BYODB 之分。 |
 | [Letta (MemGPT)](letta.zh.md) | ✅ | B（6/6） | 能换来的只是 MemGPT 那套自我改写记忆的设计思路；代价是要把已有部署从冻结的服务器和不再打补丁的 `letta/letta` Docker 镜像上迁走。 |

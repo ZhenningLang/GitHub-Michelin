@@ -276,6 +276,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **Mem0** | Use it when your LLM agent must remember users across sessions without bloating the prompt context. | Apache-2.0 | A (6/6) | [EN](categories/agent-memory/app-memory/mem0.md) · [中](categories/agent-memory/app-memory/mem0.zh.md) |
+| **Hy Memory** | Preserve conversation facts and intermediate coding revisions with a scene-aware SDK. | Apache-2.0 | C (4/6) | [EN](categories/agent-memory/app-memory/hy-memory.md) · [中](categories/agent-memory/app-memory/hy-memory.zh.md) |
 | **Memori** | Use it when you want LLM-agnostic persistent agent memory captured by wrapping your existing client. | Apache-2.0 | B (5/6) | [EN](categories/agent-memory/app-memory/memori.md) · [中](categories/agent-memory/app-memory/memori.zh.md) |
 | **Claude Subconscious** | Use it when you want a background Letta agent to give Claude Code cross-session memory via hooks. | MIT | C (5/6) | [EN](categories/agent-memory/coding-agent-memory/claude-subconscious.md) · [中](categories/agent-memory/coding-agent-memory/claude-subconscious.zh.md) |
 | **claude-mem** | Use it when your coding agent loses context across sessions and you want local hook/MCP-captured memory compressed and injected back in. | Apache-2.0 | B (6/6) | [EN](categories/agent-memory/coding-agent-memory/claude-mem.md) · [中](categories/agent-memory/coding-agent-memory/claude-mem.zh.md) |
