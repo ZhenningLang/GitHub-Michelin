@@ -8,6 +8,7 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **LobsterAI** | You want an office task to work on local files and return through your chat channel; LobsterAI adds a desktop session, artifact and approval layer around an OpenClaw runtime. | B (6/6) | [→](lobsterai.md) |
+| **Atomic Agent** | Local-model workstation operator with compact tool prompts; developer preview and default-on analytics. | B (6/6) | [→](atomic-agent.md) |
 | **PicoClaw** | Run a chat-driven assistant on a small ARM, MIPS or RISC-V Linux board without a Python/Node.js core runtime; model inference stays separate, remote exec defaults on and process isolation off. | B (6/6) | [→](picoclaw.md) |
 | **OpenClaw** | Use it when you want one personal assistant on your own computer answering across WhatsApp, iMessage, Slack, Telegram and 20+ more channels with shared memory — but one Gateway is one trust domain, so users who do not trust each other must not share it. | B (5/6) | [→](openclaw.md) |
 | **Hermes Agent** | Use it when you want one long-lived assistant on your own VPS that runs shell commands and scheduled jobs, remembers your environment and answers on Telegram or Slack — but its behaviour drifts as skills and memory change, and it is about 15 months old. | A (4/6) | [→](hermes-agent.md) |
@@ -27,6 +28,7 @@
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [LobsterAI](lobsterai.md) | ✅ | B (6/6) | You want an office task to work on local files and return through your chat channel; LobsterAI adds a desktop session, artifact and approval layer around an OpenClaw runtime. |
+| [Atomic Agent](atomic-agent.md) | ✅ | B (6/6) | Managed llama.cpp and session-scoped approvals; model hardware and outbound reporting need explicit choices. |
 | [PicoClaw](picoclaw.md) | ✅ | B (6/6) | Cross-compiled Go core with chat adapters, tools and local state; buys deployability on small boards, not local model inference or an enabled-by-default OS sandbox. |
 | [OpenClaw](openclaw.md) | ✅ | B (5/6) | Buys the widest chat-channel coverage plus phone and desktop companion apps; costs tenant isolation, SSO and audit logs, on a project less than a year old. |
 | [Hermes Agent](hermes-agent.md) | ✅ | A (4/6) | Buys persistence under your control — bounded memory, self-written skills, session search and a scheduler; costs determinism, enterprise governance (no SSO, RBAC or audit) and any Lindy track record. |

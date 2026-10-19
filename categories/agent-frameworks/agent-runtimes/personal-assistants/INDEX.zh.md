@@ -8,6 +8,7 @@
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **LobsterAI** | 你想让办公任务处理本地文件，再从聊天渠道回传结果。LobsterAI 在 OpenClaw 运行时外增加桌面会话、产物和审批界面。 | B（6/6） | [→](lobsterai.zh.md) |
+| **Atomic Agent** | 用压缩工具提示词驱动本地工作站操作；仍是开发预览，分析外发默认开启。 | B（6/6） | [→](atomic-agent.zh.md) |
 | **PicoClaw** | 小型 ARM、MIPS、RISC-V Linux 板子要用聊天接任务，又不想维护解释器环境时选它；模型推理另配，远程命令默认开启，进程隔离默认关闭。 | B（6/6） | [→](picoclaw.zh.md) |
 | **OpenClaw** | 当你想在自己电脑上跑一个个人助手，在 WhatsApp、iMessage、Slack、Telegram 等 20 多个渠道里带着同一份记忆应答你时用它——但一个 Gateway 就是一个信任域，互不信任的人不能共用一套部署。 | B（5/6） | [→](openclaw.zh.md) |
 | **Hermes Agent** | 当你想在自己的 VPS 上养一个长期在线的助手，能跑 shell 和定时任务、记得你的环境、在 Telegram 或 Slack 上回你时用它——但技能和记忆一变它的做法就跟着变，项目也才约 15 个月大。 | A（4/6） | [→](hermes-agent.zh.md) |
@@ -27,6 +28,7 @@
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [LobsterAI](lobsterai.zh.md) | ✅ | B（6/6） | 你想让办公任务处理本地文件，再从聊天渠道回传结果。LobsterAI 在 OpenClaw 运行时外增加桌面会话、产物和审批界面。 |
+| [Atomic Agent](atomic-agent.zh.md) | ✅ | B（6/6） | 托管 llama.cpp 并按会话审批；模型硬件与外发策略需明确配置。 |
 | [PicoClaw](picoclaw.zh.md) | ✅ | B（6/6） | 可交叉编译的 Go 核心带聊天接入、工具和本地状态；换来小板子上的部署便利，不是本地模型推理，也不是默认开启的系统沙箱。 |
 | [OpenClaw](openclaw.zh.md) | ✅ | B（5/6） | 换来最广的聊天渠道覆盖，外加手机和桌面配套 App；代价是没有租户隔离、SSO 和审计日志，而且项目还不满一岁。 |
 | [Hermes Agent](hermes-agent.zh.md) | ✅ | A（4/6） | 换来由你掌控的持续积累：有上限的记忆、自己写的技能、会话搜索和定时器；代价是行为不确定、没有企业治理（无 SSO、RBAC、审计），也没有 Lindy 记录。 |
