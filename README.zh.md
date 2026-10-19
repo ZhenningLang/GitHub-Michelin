@@ -375,6 +375,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **gpt-instruct** | 研究提示词托管部署与局部回滚，不用于无限制生产执行。 | MIT | C（5/6） | [中](categories/agent-dev-methodology/study-and-experiments/gpt-instruct.zh.md) · [EN](categories/agent-dev-methodology/study-and-experiments/gpt-instruct.md) |
 | **12-Factor Agents** | 当一个用大框架搭的 agent 一上生产就抖、你想要一套有名有姓的原则（掌控 prompt、context window、控制流）来评审或重新设计它时用它——但它只是一套文集，没有可安装的代码，2025-09 之后再没更新。 | CC-BY-SA-4.0 (content) / Apache-2.0 (code examples) | "?"（2/5） | [中](categories/agent-dev-methodology/spec-driven-development/12-factor-agents.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/12-factor-agents.md) |
 | **Claude Code Templates** | 当你想在一个大目录里逛逛、单点自选地安装现成的 Claude Code agent、命令、hook、MCP 和 skill，而不是自己从头写时，用它。 | MIT | B（6/6） | [中](categories/agent-dev-methodology/coding-agent-harnesses/claude-code-templates.zh.md) · [EN](categories/agent-dev-methodology/coding-agent-harnesses/claude-code-templates.md) |
 | **Superpowers** | 当你想给编程 agent 装一套即插即用的「头脑风暴→计划→TDD→验证」SDLC 方法论时用它。 | MIT | B（4/5） | [中](categories/agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) · [EN](categories/agent-dev-methodology/coding-agent-harnesses/superpowers.md) |
