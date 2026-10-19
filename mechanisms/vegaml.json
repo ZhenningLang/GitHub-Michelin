@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "direction": "right",
+  "nodes": [
+    {"id": "record", "en": "State, question and options", "zh": "记录、问题与候选项", "kind": "input"},
+    {"id": "reader", "en": "Frozen reader; selected-layer features", "zh": "冻结模型；指定层特征", "technique": [1]},
+    {"id": "port", "en": "Reader statistics and linear feature port", "zh": "模型统计量与线性特征映射", "technique": [1]},
+    {"id": "engine", "en": "Decision engine and route calibration", "zh": "决策引擎与路由校准", "technique": [2]},
+    {"id": "head", "en": "Optional fitted TTT head; no abstention fields", "zh": "可选 TTT 分类头；没有拒答字段", "technique": [2]},
+    {"id": "answer", "en": "Typed result with explicit readout", "zh": "标明实际路径的有类型结果", "kind": "output"}
+  ],
+  "edges": [{"from": "record", "to": "reader"}, {"from": "reader", "to": "port"}, {"from": "port", "to": "engine"}, {"from": "reader", "to": "head", "style": "dashed", "en": "auto may select a fitted head", "zh": "自动模式可能选择已拟合分类头"}, {"from": "engine", "to": "answer"}, {"from": "head", "to": "answer", "style": "dashed"}],
+  "sources": ["https://github.com/NandhaKishorM/vegaml/blob/37012fb3ef583163df1b695394233e5ae14627b4/vegaml/_universal.py", "https://github.com/NandhaKishorM/vegaml/blob/37012fb3ef583163df1b695394233e5ae14627b4/vegaml/__init__.py"]
+}
