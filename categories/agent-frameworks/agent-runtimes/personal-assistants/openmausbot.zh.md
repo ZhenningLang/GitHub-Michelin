@@ -136,7 +136,7 @@ OpenMausBot 由两个进程组成。应用本身——Electron 里的一个 Reac
 | [Rakazo](rakazo.zh.md) | ✅ | bot 要用你已有登录态去跑真正的 Claude Code / Codex 命令行时，选 OpenMausBot；要一台服务端、每个 bot 一台自托管且会备份的 Docker 桌面、代码全是 Apache 许可时，选 Rakazo。 | OpenMausBot 以桌面为先、自带 agent、运维更轻，但电脑依赖 Boat 或你自己的 Mac，还有一层开源内核外的商业代码；Rakazo 更重（Postgres、worker、桌面镜像），用的是它自己的 agent 循环。 |
 | [OpenMuse](openmuse.zh.md) | ✅ | 一个人把跑腿活委派出去、要审批门和不联网的终端，选 OpenMuse；要在聊天应用里跑好几个 bot、启动不需要托管 key，选 OpenMausBot。 | OpenMuse 需要 CopilotKit 云端 key，但给终端设了边界；OpenMausBot 本地就能启动，但动作安全交给了各 CLI 自己的权限模式。 |
 | [Ekko Studio](../../../agent-tooling/supervision-surfaces/ekko-studio.zh.md) | ✅ | 想要一个本地控制台同时管 Hermes 和编码 agent CLI、还要工作流画布，并且能接受非商用许可，Ekko Studio 合适；想要消费级的 bot 名册，带电脑、连接应用和语音，并且是 Apache-2.0，选 OpenMausBot。 | Ekko Studio 是 BSL-1.1（2029 年前不可商用）、有工作流画布；OpenMausBot 在 `enterprise/` 之外是 Apache-2.0、贡献者更多，但没有工作流画布。 |
-| [OpenClaw](openclaw.zh.md) | ✅ | 助手必须在 WhatsApp、Telegram 等聊天软件里回你，选 OpenClaw；想要一个自己的聊天应用、每个联系人都是一个带电脑的独立 CLI agent，选 OpenMausBot。 | OpenClaw 在你已有的渠道里找你、社区大得多；OpenMausBot 是独立应用，增加的是 agent 数量而不是渠道数量。 |
+| [OpenClaw](messaging-daemons/openclaw.zh.md) | ✅ | 助手必须在 WhatsApp、Telegram 等聊天软件里回你，选 OpenClaw；想要一个自己的聊天应用、每个联系人都是一个带电脑的独立 CLI agent，选 OpenMausBot。 | OpenClaw 在你已有的渠道里找你、社区大得多；OpenMausBot 是独立应用，增加的是 agent 数量而不是渠道数量。 |
 
 ## 技术栈
 

@@ -121,7 +121,7 @@ NextChat is a Next.js/React app with one client core: a PWA whose conversations 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [LibreChat](librechat.md) | ✅ | Choose LibreChat when you need a full multi-user platform rather than a lightweight single-deploy client. | Accounts, many auth backends, RAG, assistants, and code interpreter; far more capable and far heavier to run. NextChat is a lighter client, not a team platform. |
-| Lobe Chat | 未收录 | Choose Lobe Chat when you want a polished multi-provider UI with plugins, knowledge base, and optional multi-user modes. | Broader feature surface and heavier once cloud/DB features are enabled. NextChat stays minimal and browser-local. |
+| [LobeHub](lobehub.md) | ✅ | Choose LobeHub when shared pages and agent groups matter more than a minimal browser-local client. | Formerly Lobe Chat; broader backend stack and commercial derivative restrictions. |
 | [Open WebUI](open-webui.md) | ✅ | Choose Open WebUI when Ollama/local-model serving, RBAC, users, and pipelines matter more than a static/Vercel-style client. | Strong self-hosted UI for local models, but it needs a server and database. NextChat trades those features for simpler deployment and less backend operation. |
 | [HiveChat](../team-chat/hivechat.md) | ✅ | Choose HiveChat when you need admin-managed team chat with per-group model access, token quotas, and Postgres-backed user accounts. | HiveChat is the team-governance answer NextChat's community edition deliberately is not. |
 | ChatGPT / Claude.ai (commercial SaaS) | 未收录 | Choose commercial SaaS when zero-ops vendor management is more important than self-hosting and provider choice. | Locked to one model family with the provider holding your data; NextChat trades that convenience for self-hosting, multi-provider choice, and key/data control. |
@@ -161,4 +161,4 @@ NextChat is a Next.js/React app with one client core: a PWA whose conversations 
 - [未验证] The paid Enterprise Edition's terms were not verified here — the README advertises it (business@nextchat.club) but the product is closed and separate from this MIT repo.
 - [推断] "Single-user-shaped community edition" is inferred from the `CODE`-password-only access model and browser-local storage, not from a documented hard limit on concurrent users.
 - [推断] "Maintenance decelerating" reads one 48-day quiet stretch together with a 14-month release gap; it could resume without warning — check again before betting on it either way.
-- [推断] Comparison verdicts (LibreChat/Open WebUI being broader, Lobe Chat heavier) reflect general project positioning, not a benchmarked head-to-head; LibreChat, Open WebUI, and HiveChat are indexed here, Lobe Chat is not.
+- [推断] Comparison verdicts reflect general project positioning, not a benchmarked head-to-head; LibreChat, Open WebUI, HiveChat and LobeHub are indexed here.

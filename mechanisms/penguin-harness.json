@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id":"default_reference","en":"Default: frozen benchmark, runtime and best reference","zh":"默认路线：固定评测、运行配置与最佳参考版本","kind":"input","technique":[1]},
+    {"id":"default_candidate","en":"One hypothesis and candidate from the reference; protect its snapshot","zh":"从参考版本提出单个假设与候选；先保护快照","technique":[1]},
+    {"id":"default_evaluation","en":"Evaluate complete case-by-run matrix","zh":"评测完整用例与重复次数矩阵","technique":[1]},
+    {"id":"default_decision","en":"Strictly higher: retain and append accepted score; otherwise restore","zh":"严格涨分才保留并登记接纳成绩；否则恢复","kind":"output","technique":[1]},
+    {"id":"opro_initial","en":"OPRO: fixed model and rest of harness; one instruction slot","zh":"OPRO：固定模型及其余框架；只搜索一个指令槽","kind":"input","technique":[2]},
+    {"id":"opro_history","en":"History of every valid measurement, losing candidates included","zh":"所有有效测量历史，包含落选候选","technique":[2]},
+    {"id":"opro_batch","en":"Independent proposals share one history snapshot per step","zh":"每轮独立提案共享同一历史快照","technique":[2]},
+    {"id":"opro_evaluation","en":"Snapshot and measure each surviving instruction sequentially","zh":"对保留的指令逐一快照并完成测量","technique":[2]},
+    {"id":"opro_winner","en":"After search: restore highest training-score snapshot; earliest wins ties","zh":"搜索结束：恢复训练最高分快照；同分保留最早版本","kind":"output","technique":[2]},
+    {"id":"opro_test","en":"Optional separate test: baseline and winner; never used for selection","zh":"可选独立测试：基线与胜出版本；不参与选优","kind":"output","technique":[2]}
+  ],
+  "edges": [
+    {"from":"default_reference","to":"default_candidate"},
+    {"from":"default_candidate","to":"default_evaluation"},
+    {"from":"default_evaluation","to":"default_decision"},
+    {"from":"default_decision","to":"default_candidate","en":"next round from retained reference","zh":"下一轮从保留的参考版本出发"},
+    {"from":"opro_initial","to":"opro_history","en":"measure seed","zh":"测量初始指令"},
+    {"from":"opro_history","to":"opro_batch","en":"next search step","zh":"下一搜索轮"},
+    {"from":"opro_batch","to":"opro_evaluation"},
+    {"from":"opro_evaluation","to":"opro_history","en":"append every valid score, not only improvements","zh":"登记全部有效分数，不限涨分候选"},
+    {"from":"opro_history","to":"opro_winner","en":"configured search ends","zh":"指定搜索结束"},
+    {"from":"opro_winner","to":"opro_test","style":"dashed"}
+  ],
+  "sources": [
+    "https://github.com/Prism-Shadow/penguin-harness/blob/7e08d23f67e8f3945d37fbc793d398d55454b9bd/plugins/default-rsi-toolkit/skills/agent-optimization/SKILL.md",
+    "https://github.com/Prism-Shadow/penguin-harness/blob/7e08d23f67e8f3945d37fbc793d398d55454b9bd/plugins/opro-rsi-toolkit/skills/opro-rsi-toolkit/SKILL.md"
+  ]
+}

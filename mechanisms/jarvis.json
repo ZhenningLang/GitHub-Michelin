@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "speech", "en": "Transcribed room speech", "zh": "房间语音转写", "kind": "input"},
+    {"id": "buffer", "en": "Timestamped rolling buffer", "zh": "带时间戳的滚动缓存", "technique": [1]},
+    {"id": "gate", "en": "Recent-tool and word-coverage recall gate", "zh": "按近期工具与词汇覆盖判断召回", "technique": [2]},
+    {"id": "scrub", "en": "Pattern-based credential scrubbing", "zh": "按模式清理凭据", "technique": [3]},
+    {"id": "context", "en": "Context for model reply", "zh": "供模型回答的上下文", "kind": "output"}
+  ],
+  "edges": [{"from": "speech", "to": "buffer"}, {"from": "buffer", "to": "context"}, {"from": "gate", "to": "context", "en": "include memory unless redundant", "zh": "非冗余时加入记忆"}, {"from": "scrub", "to": "context"}],
+  "sources": ["src/jarvis/listening/transcript_buffer.py", "src/jarvis/memory/recall_gate.py", "src/jarvis/utils/redact.py"]
+}

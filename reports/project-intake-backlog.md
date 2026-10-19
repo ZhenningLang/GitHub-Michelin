@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1328
+- Named-but-unindexed alternatives: 1365
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -30,8 +30,10 @@ shape and are deliberately excluded here.
 | @nanostores/persistent (`nanostores/nanostores`) | `categories/web-ui/state-management/tanstack-persist.md` |
 | @ngneat/falso | `categories/dev-utilities/data-tools/faker-js.md` |
 | @xstate/store (`statelyai/xstate`) | `categories/web-ui/state-management/tanstack-store.md` |
+| [12306-skill](https://github.com/Joooook/12306-skill) | `categories/travel-planning/12306-mcp.md` |
 | [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client) | `categories/networking/amneziawg-installer.md` |
 | [angristan/wireguard-install](https://github.com/angristan/wireguard-install) | `categories/networking/amneziawg-installer.md` |
+| [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox) | `categories/knowledge-base/hister.md` |
 | [Awesome Quant](https://github.com/wilsonfreitas/awesome-quant) | `categories/investment-finance/awesome-deep-trading.md` |
 | [Backtesting.py](https://github.com/kernc/backtesting.py) | `categories/investment-finance/backtrader.md` |
 | [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
@@ -40,15 +42,13 @@ shape and are deliberately excluded here.
 | [BirdNET-Analyzer](https://github.com/birdnet-team/BirdNET-Analyzer) | `categories/on-device-ml/birdnet-go.md` |
 | [BirdNET-Pi (Nachtzuster fork)](https://github.com/Nachtzuster/BirdNET-Pi) | `categories/on-device-ml/birdnet-go.md` |
 | [Bitwarden server](https://github.com/bitwarden/server) | `categories/dev-utilities/ops-infra/vaultwarden.md` |
+| [btop](https://github.com/aristocratos/btop) | `categories/observability/mac-performance-monitor.md` |
 | [Cedar](https://github.com/cedar-policy/cedar) | `categories/agent-governance/agent-governance-toolkit.md` |
 | [Cedarling (Janssen)](https://github.com/JanssenProject/jans) | `categories/agent-governance/agent-governance-toolkit.md` |
 | [Cipher](https://github.com/campfirein/cipher) | `categories/agent-memory/coding-agent-memory/claude-subconscious.md` |
 | [Clash Nyanpasu](https://github.com/libnyanpasu/clash-nyanpasu) | `categories/dev-utilities/ops-infra/clash-verge-rev.md` |
+| [cloudflared](https://github.com/cloudflare/cloudflared) | `categories/networking/opentunnel.md` |
 | [CosyVoice](https://github.com/QwenAudio/CosyVoice) | `categories/speech/index-tts.md` |
 | [daed](https://github.com/daeuniverse/daed) | `categories/networking/dae.md` |
 | [darktable](https://github.com/darktable-org/darktable) | `categories/photo-editing/lightcraft.md` |
-| [Fast-DetectGPT](https://github.com/baoguangsheng/fast-detect-gpt) | `categories/llm-eval/chatgpt-comparison-detection.md` |
-| [FaucETH](https://github.com/komputing/FaucETH) | `categories/blockchain-dev-infrastructure/powfaucet.md` |
-| [Fish Speech](https://github.com/fishaudio/fish-speech) | `categories/speech/index-tts.md` |
-| [FlClash](https://github.com/chen08209/FlClash) | `categories/dev-utilities/ops-infra/clash-verge-rev.md` |
-| [fortuneexcel](https://github.com/corbe30/fortuneexcel) | `categories/office-editors/fortune-sheets.md` |
+| [Elixir](https://github.com/elixir-lang/elixir) | `categories/programming-languages/unison.md` |

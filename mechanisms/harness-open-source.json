@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "request", "en": "Repository and run request", "zh": "仓库与运行请求", "kind": "input"},
+    {"id": "auth", "en": "Check pipeline permission", "zh": "检查流水线权限", "technique": [2]},
+    {"id": "commit", "en": "Read YAML at the resolved commit", "zh": "按解析后的提交读取 YAML", "technique": [1]},
+    {"id": "schedule", "en": "Persist execution and stages; enqueue pending stages", "zh": "保存执行与阶段；入队待执行阶段", "technique": [1]},
+    {"id": "runner", "en": "Docker runner; selected privileged plugins", "zh": "Docker 执行器；指定插件有特权", "technique": [2]},
+    {"id": "result", "en": "Status and logs", "zh": "状态与日志", "kind": "output"},
+    {"id": "policy", "en": "Shared dial-time policy for webhooks and imports", "zh": "webhook 与导入共用连接前地址策略", "technique": [3]},
+    {"id": "external", "en": "Allowed external destinations", "zh": "允许访问的外部目标", "kind": "external"},
+    {"id": "metrics", "en": "Opt-out daily collector; separate keyed PostHog events", "zh": "默认开启每日采集；另有带密钥的 PostHog 事件", "technique": [4]},
+    {"id": "stats", "en": "Configured telemetry endpoints", "zh": "配置的遥测接收端", "kind": "external"}
+  ],
+  "edges": [
+    {"from": "request", "to": "auth"},
+    {"from": "auth", "to": "commit"},
+    {"from": "commit", "to": "schedule"},
+    {"from": "schedule", "to": "runner"},
+    {"from": "runner", "to": "result"},
+    {"from": "request", "to": "policy", "en": "separate webhook/import paths", "zh": "独立的 webhook／导入路径", "style": "dashed"},
+    {"from": "policy", "to": "external"},
+    {"from": "request", "to": "metrics", "en": "installation and usage metadata", "zh": "安装与使用元数据", "style": "dashed"},
+    {"from": "metrics", "to": "stats", "en": "unless disabled", "zh": "未关闭时", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/harness/harness/blob/f335f08374b83e9e4ddd54f4f47b4c6daad2fa54/app/pipeline/triggerer/trigger.go",
+    "https://github.com/harness/harness/blob/f335f08374b83e9e4ddd54f4f47b4c6daad2fa54/app/pipeline/runner/runner.go",
+    "https://github.com/harness/harness/blob/f335f08374b83e9e4ddd54f4f47b4c6daad2fa54/netpolicy/netpolicy.go",
+    "https://github.com/harness/harness/blob/f335f08374b83e9e4ddd54f4f47b4c6daad2fa54/app/services/metric/collector_job.go"
+  ]
+}

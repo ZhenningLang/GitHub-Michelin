@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Jasna does", "zh": "Jasna 做的"},
+  "steps": [
+    {"lane": "you", "en": "Unpack the release for your GPU into an ASCII-only local path", "zh": "将匹配显卡的发布包解压到纯 ASCII 本地路径"},
+    {"lane": "you", "en": "Submit an authorized video and an output file", "zh": "提交有权处理的视频与输出文件", "code": "jasna --input input.mp4 --output output.mkv"},
+    {"lane": "them", "en": "Detect mosaic regions and track overlapping clips", "zh": "检测马赛克区域并跟踪重叠片段", "component": {"en": "detector and clip tracker", "zh": "检测器与片段跟踪器"}},
+    {"lane": "them", "en": "Restore cropped clips with free BasicVSR++", "zh": "用免费 BasicVSR++ 修复裁剪片段", "component": {"en": "BasicVSR++ restorer", "zh": "BasicVSR++ 修复器"}},
+    {"lane": "them", "en": "Blend restored regions and encode the output video with audio", "zh": "混合修复区域并编码带音频的输出视频"}
+  ],
+  "value": {"en": "A region-restored video without assembling detection, tracking and model stages yourself", "zh": "得到局部修复视频，不必自己拼接检测、跟踪与模型阶段"},
+  "sources": [
+    "https://github.com/Kruk2/jasna/blob/099af50a3aac06f14db8d048efd8c6562e2c3d25/README.md#quick-start",
+    "https://github.com/Kruk2/jasna/blob/099af50a3aac06f14db8d048efd8c6562e2c3d25/README.md#command-line",
+    "https://github.com/Kruk2/jasna/blob/099af50a3aac06f14db8d048efd8c6562e2c3d25/jasna/pipeline_processing.py",
+    "https://github.com/Kruk2/jasna/blob/099af50a3aac06f14db8d048efd8c6562e2c3d25/jasna/pipeline_threads.py"
+  ]
+}

@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Skills Hub** | 跨工具、项目和 git 同步设备管理技能库；接管前核对已有软链。 | B（6/6） | [→](skills-hub.zh.md) |
 | **Vercel Skills** | 当你想要一个 npm 风格的 CLI 来跨多个编码 agent 安装、查找、更新 SKILL.md 技能包时使用。 | A（6/6） | [→](vercel-skills.zh.md) |
 | **CLI-Anything** | 当你想让编码 agent 驱动只有 GUI 的软件、走由应用自身引擎支撑的生成式 CLI harness 时用它——但它仍在 1.0 之前，且每个 harness 由社区维护。 | B（6/6） | [→](cli-anything.zh.md) |
 | **codex-chatgpt-web** | 当 Codex 配额先耗尽、而付费的 ChatGPT 网页订阅闲着，想让 Codex 任务改记到 Web 套餐的独立额度上时用它——走的是一条上游随时能掐断的非官方浏览器桥。 | C（5/6） | [→](codex-chatgpt-web.zh.md) |
@@ -18,6 +19,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Skills Hub](skills-hub.zh.md) | ✅ | B（6/6） | Tauri 桌面与共享 CLI，支持项目范围和 git 合并；也是 agent 指令文件的额外写入者。 |
 | [Vercel Skills](vercel-skills.zh.md) | ✅ | A（6/6） | 技能包的包管理器：跨约 70 个 agent 安装、查找、更新 `SKILL.md`——它负责分发能力，不负责定义能力。 |
 | [CLI-Anything](cli-anything.zh.md) | ✅ | B（6/6） | 基于应用自身引擎生成的 CLI harness，让 agent 能驱动只有 GUI 的软件——覆盖广，但逐个 harness 由社区维护。 |
 | [codex-chatgpt-web](codex-chatgpt-web.zh.md) | ✅ | C（5/6） | 把 ChatGPT 网页会话（Plus/Pro，含网页独占档位）桥进 Codex 模型选择器、记在 Web 套餐额度上——纯粹的配额套利，命脉握在 ChatGPT 的 DOM 和 ToS 手里。 |

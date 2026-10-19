@@ -1,0 +1,40 @@
+{
+  "unique_repositories": 85,
+  "today_rows": 11,
+  "today_status": {
+    "proposed": 6,
+    "done": 4,
+    "skipped": 1
+  },
+  "combined_status": {
+    "done": 78,
+    "proposed": 6,
+    "skipped": 1
+  },
+  "today_done_actions": {
+    "sync": 1,
+    "add": 3
+  },
+  "combined_done_actions": {
+    "add": 64,
+    "sync": 14
+  },
+  "remaining": [],
+  "chrome_acceptance": {
+    "unique_repository_tabs_open": 7,
+    "ledger_states_open": {
+      "proposed": 6,
+      "skipped": 1
+    },
+    "done_still_open": 0,
+    "unmatched": 0,
+    "non_github_tabs_not_modified": true
+  },
+  "index": {
+    "bilingual_pairs": 931,
+    "category_nodes": 195,
+    "overflows": 0,
+    "max_direct_pages": 12
+  },
+  "source": "Merged public redacted ledgers and actual Chrome readout; private identity only matched in memory"
+}

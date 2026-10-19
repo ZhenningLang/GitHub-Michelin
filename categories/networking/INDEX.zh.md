@@ -7,6 +7,10 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Agent Mesh** | 跨 NAT 连接 agent 工具和模型，验证身份并按服务名授权；尚未到 1.0，不属 Google 官方支持产品。 | B（6/6） | [→](agentmesh.zh.md) |
+| **One IP** | 在 Worker 面板里比较浏览器与终端出口、信誉和服务探测；仍依赖外部源及 AGPL 条款。 | C（3/6） | [→](one-ip.zh.md) |
+| **OpenFlux** | 获授权的隧道实验需要切换多种承载通道。OpenFlux 把 IPv4 数据包送入可替换传输，再由你运营的出口转发。 | B（6/6） | [→](openflux.zh.md) |
+| **OpenTunnel** | 分享本地 HTTPS，但访客 TLS 私钥仍留本机；应用认证由你负责。 | B（6/6） | [→](opentunnel.zh.md) |
 | **Paramiko** | 当 Python 代码需要以编程方式建立 SSH／SFTP 连接并执行远程命令时用它——但它是纯 Python（比 OpenSSH 慢）、仅支持线程模型，且采用 LGPL-2.1 许可。 | B（6/6） | [→](paramiko.zh.md) |
 | **sshtunnel** | 只在已有 Python 脚本早就依赖它的 `with` 块 SSH 端口转发、经堡垒机连私网数据库时继续用它——新装的版本在 Paramiko 4 及以上直接报错，而且 2021 年后再没发过版。 | B（4/6） | [→](sshtunnel.zh.md) |
 | **dnspython** | 当 Python 需要查询任意记录类型、自定义解析器、区域传输、DNSSEC 或 DoH／DoT 时用它——但它绕过 /etc/hosts 与系统解析器，要求 Python 3.10+，且是库而非命令行工具。 | A（5/6） | [→](dnspython.zh.md) |
@@ -19,6 +23,10 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Agent Mesh](agentmesh.zh.md) | ✅ | B（6/6） | 获得协议感知的私有服务接入，代价是控制面、中继和凭据运维。 |
+| [One IP](one-ip.zh.md) | ✅ | C（3/6） | 综合诊断与小型终端 API，不是独立 IP 情报或账号资格证明。 |
+| [OpenFlux](openflux.zh.md) | ✅ | B（6/6） | 获授权的隧道实验需要切换多种承载通道。OpenFlux 把 IPv4 数据包送入可替换传输，再由你运营的出口转发。 |
+| [OpenTunnel](opentunnel.zh.md) | ✅ | B（6/6） | 不解密的 TLS 中继与本机终止；不会替目标增加 HTTP 信任或认证。 |
 | [Paramiko](paramiko.zh.md) | ✅ | B（6/6） | 当 Python 代码需要以编程方式建立 SSH／SFTP 连接并执行远程命令时用它——但它是纯 Python（比 OpenSSH 慢）、仅支持线程模型，且采用 LGPL-2.1 许可。 |
 | [sshtunnel](sshtunnel.zh.md) | ✅ | B（4/6） | 隧道随代码块自动开关；代价是得把 paramiko 锁在 4 以下、放弃它的安全更新。新代码直接在 Paramiko 或 AsyncSSH 上写转发。 |
 | [dnspython](dnspython.zh.md) | ✅ | A（5/6） | 当 Python 需要查询任意记录类型、自定义解析器、区域传输、DNSSEC 或 DoH／DoT 时用它——但它绕过 /etc/hosts 与系统解析器，要求 Python 3.10+，且是库而非命令行工具。 |

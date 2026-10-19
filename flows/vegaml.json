@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "them": {"en": "vegaml", "zh": "vegaml"},
+  "steps": [
+    {"lane": "you", "en": "Install the package and load the default local reader", "zh": "安装包并加载默认本地模型", "code": "pip install vegaml"},
+    {"lane": "them", "en": "Load the reader, feature port, engine and calibration", "zh": "加载冻结模型、特征映射、引擎与校准"},
+    {"lane": "you", "en": "Supply the record, question types and candidate criteria; select engine mode", "zh": "提供记录、问题类型与候选标准，选择引擎路径"},
+    {"lane": "them", "en": "Return typed answers, probabilities, prediction sets and abstention flags", "zh": "返回有类型的答案、概率、候选集合与拒答标志"}
+  ],
+  "value": {"en": "Route fixed-answer records without parsing generated prose", "zh": "不用解析生成的文字，就能对固定选项做分流"},
+  "sources": ["https://github.com/NandhaKishorM/vegaml/blob/37012fb3ef583163df1b695394233e5ae14627b4/README.md", "https://github.com/NandhaKishorM/vegaml/blob/37012fb3ef583163df1b695394233e5ae14627b4/vegaml/__init__.py"]
+}

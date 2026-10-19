@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **JiuwenSwarm** | Ready-made leader/team workbench with chat channels; distributed operation adds registry and session constraints. | B (5/6) | [→](jiuwenswarm.md) |
 | **Claude Commerce Agents** | You are building the assistant inside a product that sells something and want the shopping/merchant agent layer — prompt, guardrails, UI fill-in, approval — already decided, as a blueprint you read and vendor. | C (5/6) | [→](commerce-agents.md) |
 | **eve** | Your agent must wait days for a human or a webhook, survive redeploys, and answer on Slack/Discord/Teams — as one deployable TypeScript service. | A (6/6) | [→](eve.md) |
 | **Open Executive** | Use it when a small company needs one self-hosted executive voice over specialist agents, company docs, and Slack — not a framework you assemble, and not a personal pager. | B (4/6) | [→](open-executive.md) |
@@ -16,11 +17,13 @@
 | **OpenFang** | You want autonomous agents that run on a schedule from one self-hosted Rust binary. | C (5/6) | [→](openfang.md) |
 | **Parlant** | Use it when you build a customer-facing agent that must stay on-rails via behavioral guidelines — overkill for simple or free-form agents. | C (5/6) | [→](parlant.md) |
 | **Symphony** | Your Linear backlog and Codex agent need a self-hosted orchestrator running isolated per-issue autonomous implementation runs. | C (5/6) | [→](symphony.md) |
+| **FastClaw** | Run multiple assistant identities through one Go service with scoped configuration and durable sessions; source-available, host execution by default. | C (4/6) | [→](fastclaw.md) |
 
 ## Comparison matrix
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [JiuwenSwarm](jiuwenswarm.md) | ✅ | B (5/6) | Packaged multi-agent application, tool approvals and opt-in skill evolution; heavy dependencies and beta version drift. |
 | [Claude Commerce Agents](commerce-agents.md) | ✅ | C (5/6) | Anthropic's reference blueprint for a shopping agent plus a merchant agent over three runtimes; read and vendor it — it is unmaintained and not on any package index. |
 | [eve](eve.md) | ✅ | A (6/6) | Your agent must wait days for a human or a webhook, survive redeploys, and answer on Slack/Discord/Teams — as one deployable TypeScript service. |
 | [Open Executive](open-executive.md) | ✅ | B (4/6) | Use it when a small company needs one self-hosted executive voice over specialist agents, company docs, and Slack — not a framework you assemble, and not a personal pager. |
@@ -30,6 +33,7 @@
 | [OpenFang](openfang.md) | ✅ | C (5/6) | You want autonomous agents that run on a schedule from one self-hosted Rust binary. |
 | [Parlant](parlant.md) | ✅ | C (5/6) | Use it when you build a customer-facing agent that must stay on-rails via behavioral guidelines — overkill for simple or free-form agents. |
 | [Symphony](symphony.md) | ✅ | C (5/6) | Your Linear backlog and Codex agent need a self-hosted orchestrator running isolated per-issue autonomous implementation runs. |
+| [FastClaw](fastclaw.md) | ✅ | C (4/6) | Run multiple assistant identities through one Go service with scoped configuration and durable sessions; source-available, host execution by default. |
 
 ## What belongs here
 

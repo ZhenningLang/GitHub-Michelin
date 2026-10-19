@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "direction": "right",
+  "nodes": [
+    {"id": "reference", "en": "Typed PyTorch reference", "zh": "带形状的 PyTorch 参考函数", "kind": "input", "technique": [1]},
+    {"id": "inputs", "en": "Seeded tensors and launch grid", "zh": "固定随机输入与启动网格", "technique": [1]},
+    {"id": "kernel", "en": "Learner's Triton kernel", "zh": "学习者补全的 Triton 内核", "kind": "input"},
+    {"id": "trace", "en": "Triton-Viz interpreter trace", "zh": "Triton-Viz 解释执行轨迹", "technique": [2]},
+    {"id": "compare", "en": "allclose comparison and visualization", "zh": "数值容差比较与访存可视化", "kind": "output", "technique": [1, 2]}
+  ],
+  "edges": [{"from": "reference", "to": "inputs"}, {"from": "inputs", "to": "trace"}, {"from": "kernel", "to": "trace"}, {"from": "reference", "to": "compare"}, {"from": "trace", "to": "compare"}],
+  "sources": ["https://github.com/gpu-mode/Triton-Puzzles/blob/4d794abed02292081500ebf4b1e35cd5fc5fb019/Triton-Puzzles.ipynb"]
+}

@@ -9,6 +9,8 @@
 
 | Category | Use when | Route |
 |---|---|---|
+| **legal-documents** | Reuse legal templates and prepare reviewable contract drafts, not legal advice. | [→](categories/legal-documents/INDEX.md) |
+| **travel-planning** | Query rail tickets, transfers and travel information through domain-specific adapters. | [→](categories/travel-planning/INDEX.md) |
 | **agent-tooling** | Infrastructure for AI coding agents — task/work tracking, persistent memory, agent state, and the human review/approval surfaces where the agent hands control back to you. | [→](categories/agent-tooling/INDEX.md) |
 | **sandboxing** | Isolate untrusted or agent-generated code — VM/kernel isolation runtimes and the sandbox platforms built on them. | [→](categories/sandboxing/INDEX.md) |
 | **serverless** | Kubernetes-native serverless / scale-to-zero serving layers you operate yourself. | [→](categories/serverless/INDEX.md) |
@@ -26,6 +28,7 @@
 | **agent-dev-methodology** | Frameworks and methodologies that shape *how* an agent builds software — spec-driven, context-engineering, persona/command systems. | [→](categories/agent-dev-methodology/INDEX.md) |
 | **ai-design-generation** | Agent-driven generation of UI/design, slide decks, social cards, and HTML artifacts. | [→](categories/ai-design-generation/INDEX.md) |
 | **dev-utilities** | Standalone devtools, data-wrangling swiss-army-knives, and self-hostable infrastructure. | [→](categories/dev-utilities/INDEX.md) |
+| **programming-languages** | Choose a language and its compiler/toolchain, including alternative code-storage and effect models. | [→](categories/programming-languages/INDEX.md) |
 | **frontend-animation** | JavaScript animation engines and motion libraries for the web. | [→](categories/frontend-animation/INDEX.md) |
 | **api-gateway** | API / AI gateways that route, secure, rate-limit, and govern service and LLM traffic. | [→](categories/api-gateway/INDEX.md) |
 | **geospatial** | Geographic information systems (GIS) — view, edit, and analyze spatial data. | [→](categories/geospatial/INDEX.md) |
@@ -67,7 +70,7 @@
 | **reading-tools** | Reading tools — reader-mode extensions and RSS readers. | [→](categories/reading-tools/INDEX.md) |
 | **speech** | Speech processing toolkits (ASR, TTS, speaker tasks). | [→](categories/speech/INDEX.md) |
 | **terminal-ui** | Terminal/CLI UI libraries — colors, TUIs, ASCII art, terminal rendering. | [→](categories/terminal-ui/INDEX.md) |
-| **video-production** | AI-orchestrated end-to-end video production — research, scripting, asset generation, composition, and rendering driven by an agent inside a coding assistant. | [→](categories/video-production/INDEX.md) |
+| **video-production** | Agent-driven video directing methods, production pipelines and creator apps; descend for code-defined rendering engines. | [→](categories/video-production/INDEX.md) |
 | **investment-finance** | Quant finance, market-data, trading research, and investment-analysis tooling. | [→](categories/investment-finance/INDEX.md) |
 | **education-tutoring** | AI tutoring, learning assistants, and education-focused agent systems. | [→](categories/education-tutoring/INDEX.md) |
 | **agent-governance** | Governance, policy enforcement, identity, sandboxing, and reliability controls for AI agents. | [→](categories/agent-governance/INDEX.md) |
@@ -88,6 +91,7 @@
 | **pentest** | Autonomous / AI-assisted penetration testing of authorized web apps, APIs & local networks (Wi-Fi) — agent swarms, pentest automation, exploit chaining (authorization-first). | [→](categories/pentest/INDEX.md) |
 | **disk-cleanup** | Reclaim disk space and tidy a desktop OS — cache and build-artifact cleaners, space analyzers, duplicate finders, app uninstallers and Windows debloat scripts. | [→](categories/disk-cleanup/INDEX.md) |
 | **3d-reconstruction** | Turn photos, video or scans into 3D scenes — structure-from-motion, Gaussian-splatting / radiance-field training, and meshing the result. | [→](categories/3d-reconstruction/INDEX.md) |
+| **3d-generation** | Generate plausible 3D assets from images or prompts, without assuming measured geometry. | [→](categories/3d-generation/INDEX.md) |
 | **streaming-clients** | Alternative client apps for watching and listening to streaming services (YouTube, BiliBili, SoundCloud…) without the official app — no ads, no account, background play. | [→](categories/streaming-clients/INDEX.md) |
 | **computer-vision** | Detect, recognize and analyze faces, objects and people in images and video — face verification/recognition, detection and attribute analysis as libraries you call. | [→](categories/computer-vision/INDEX.md) |
 | **meeting-intelligence** | AI meeting copilots and note-takers — record calls, transcribe live, assist in-meeting, and automate the post-meeting follow-up. | [→](categories/meeting-intelligence/INDEX.md) |

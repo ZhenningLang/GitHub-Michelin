@@ -7,6 +7,8 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **claude-obsidian** | Let your agent maintain a source-grounded Obsidian vault through reviewed, recoverable operations. | C (6/6) | [→](claude-obsidian.md) |
+| **Hister** | Find visited pages by their contents with local full-text search and optional embeddings. | B (6/6) | [→](hister.md) |
 | **LLM Wiki** | Use it when you want your own documents compiled once into an interlinked local wiki the LLM keeps current, instead of re-deriving answers with RAG on every query. | C (5/6) | [→](llm-wiki.md) |
 | **Logseq** | Use it when you want a local-first outliner you author yourself and query with Datalog, with LLM features left to plugins. | B (6/6) | [→](logseq.md) |
 | **SiYuan** | Use it when you want a self-hosted block-level knowledge workspace where humans and AI agents co-edit — but some features are paywalled (open-core). | B (6/6) | [→](siyuan.md) |
@@ -19,6 +21,8 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [claude-obsidian](claude-obsidian.md) | ✅ | C (6/6) | Let your agent maintain a source-grounded Obsidian vault through reviewed, recoverable operations. |
+| [Hister](hister.md) | ✅ | B (6/6) | Find visited pages by their contents with local full-text search and optional embeddings. |
 | [LLM Wiki](llm-wiki.md) | ✅ | C (5/6) | Compiles sources into a maintained wiki under a co-evolved schema — but it is young (2026-04), single-maintainer, and pre-compiled errors get trusted later. |
 | [Logseq](logseq.md) | ✅ | B (6/6) | Mature local-first outliner with Datalog queries and a large community — but the human does the linking, and the DB rewrite is beta with a data-loss warning. |
 | [SiYuan](siyuan.md) | ✅ | B (6/6) | Block-level references plus a Go kernel and Docker self-hosting — but open-core paywalls and a single-vendor ecosystem. |

@@ -127,7 +127,7 @@ Token Optimizer 以外部 Python 标准库进程的形式挂在 agent 的钩子�
 |---|---|---|---|
 | [RTK](rtk.zh.md) | 已收录 | 浪费主要来自命令输出、且要宽松许可证或单个 Rust 代理二进制时选 RTK；compaction 存活、结构性浪费审计和美元记账比许可证纯度更重要时选本页。 | RTK 在 shell 层压缩开发命令（号称 60–90%），Apache-2.0，采用面巨大；但只覆盖命令输出这部分（Token Optimizer 的 README 称约 15–25%，`[未验证]`）——没有检查点、会话库和行为检测器。 |
 | [Context Mode](context-mode.zh.md) | 已收录 | 想把重活搬进一个沙箱执行器、让 agent 写脚本只拿回 stdout 时选 Context Mode；想让回路原样不动、只压缩它的边缘时选本页。 | Context Mode 的沙箱加 MCP 形态要 Node ≥22.5，还得把任意代码执行交给 `ctx_execute`；Token Optimizer 始终是被动的标准库 Python 钩子层。两者都非 OSI（ELv2 对 PolyForm-NC）。 |
-| Headroom（headroomlabs-ai/headroom） | 未收录 | 想要一个透明代理形态的输出压缩、且覆盖 coding agent 之外的更多 LLM 应用时选它。 | 只压缩工具输出／日志／RAG 分块，没有 compaction 检查点和浪费检测器；有可选遥测。本次 tab-intake 批次未收录。 |
+| [Headroom](headroom.zh.md) | ✅ | 想要一个透明代理形态的输出压缩、且覆盖 coding agent 之外的更多 LLM 应用时选它。 | 在内容进入模型前压缩工具输出、日志和检索分块；据 2026-10-18 源码阅读，遥测默认开启，可以关闭。 |
 | ccusage（ccusage/ccusage） | 未收录 | 只需要用量／成本分析、且不允许任何东西改动 agent 上下文时选它。 | 读本地 JSONL，MIT，约 1.88 万 star；只测量不省钱。本次 tab-intake 批次未收录。 |
 | JFrog Boost | 非仓库 | 厂商封闭 beta（无公开仓库）——只有接受其 beta 数据收集条款才谈得上可选。 | 以产品形态提供命令输出压缩；其 Beta 协议覆盖收集命令、参数、退出码和 IP——与 Token Optimizer 的纯本地立场正好相反。 |
 

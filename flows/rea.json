@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "them": {"en": "REA does", "zh": "REA 做的"},
+  "steps": [
+    {"lane": "you", "en": "Review setup and register REA with your agent", "zh": "审查安装向导并接入 agent", "code": "npx rea-agents setup"},
+    {"lane": "you", "en": "Supply an authorized local app and ask a behavior question", "zh": "提供有权检查的本地应用和行为问题"},
+    {"lane": "them", "en": "Inspect artifacts and return findings with evidence and limitations", "zh": "检查产物并返回带证据及局限的结果"},
+    {"lane": "you", "en": "Explain findings; independently implement only after separately obtaining all necessary rights", "zh": "解释结果；另获必要权利后才独立实现"}
+  ],
+  "value": {"en": "Explain a source-unavailable feature from inspectable evidence", "zh": "用可检查的证据解释无源码的功能"},
+  "sources": ["https://github.com/morluto/rea/blob/b83b9caf4a5f0241a5fd370792f1aed1bffbb2cf/README.md#quick-start", "https://github.com/morluto/rea/blob/b83b9caf4a5f0241a5fd370792f1aed1bffbb2cf/DISCLAIMER.md#L45-L71"]
+}

@@ -1,0 +1,12 @@
+{
+  "compared_old_content_files": 6835,
+  "all_old_source_asset_files_identical_except_main_route_addition": true,
+  "expected_differences": [
+    "categories/agent-frameworks/workflow-builders/INDEX.md",
+    "categories/agent-frameworks/workflow-builders/INDEX.zh.md"
+  ],
+  "private_identity_absent_from_all_new_commits": true,
+  "tools_ci_and_agent_contract_unchanged": true,
+  "base_main": "69ae87249c7ae9e57fd0635c59cf04a4c7d0e642",
+  "head": "eb11fd1c89eff768854fa4c6a44588878ad934e8"
+}

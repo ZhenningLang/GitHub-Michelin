@@ -115,7 +115,7 @@ Pydantic AI 是一个库，不是一个服务：`uv add pydantic-ai`（需要 Py
 ## 何时不用
 
 - **你的技术栈是 TypeScript/JavaScript。** Pydantic AI 只支持 Python；要在 Node 或边缘运行时里用带类型的智能体循环，选 [TanStack AI](tanstack-ai.zh.md) 或 Vercel AI SDK（未收录）。
-- **你要的是现成助手，不是库。** Pydantic AI 给你的是一个要嵌进自己代码的 `Agent` 对象；如果你想要一个已经能在 Telegram 上应答、记得你是谁、会定时跑任务的东西，改用 [Hermes Agent](../personal-assistants/hermes-agent.zh.md) 或 [OpenClaw](../personal-assistants/openclaw.zh.md)。
+- **你要的是现成助手，不是库。** Pydantic AI 给你的是一个要嵌进自己代码的 `Agent` 对象；如果你想要一个已经能在 Telegram 上应答、记得你是谁、会定时跑任务的东西，改用 [Hermes Agent](../personal-assistants/messaging-daemons/hermes-agent.zh.md) 或 [OpenClaw](../personal-assistants/messaging-daemons/openclaw.zh.md)。
 - **你的流程是显式的多步图，很多节点要存检查点、等人工审批。** Pydantic AI 也能做（`pydantic-graph`、延迟工具），但 [LangGraph](langgraph.zh.md) 把图、持久化状态和回溯调试当作头等抽象；当图本身就是设计时选它。
 - **你要的是主要用 YAML 配置、按角色分工的多智能体“团队”。** [CrewAI](crewai.zh.md) 围绕“带角色的智能体协作”构建；Pydantic AI 的多智能体方案是用代码写委派和子智能体。
 - **你扛不住 API 频繁变动。** V2 在 2026-06-23 转正，之后三个半月发了 50 多个小版本；版本策略承诺小版本不会故意引入破坏性变更，但 beta 模块不受约束，而且 2026-09-23 之后随时可以发 V3。V1 只在 V2 发布后至少 6 个月内收安全修复。如果你需要慢速演进的 API，就锁死版本，或者选核心更小、变动更少的 [smolagents](smolagents.zh.md)。

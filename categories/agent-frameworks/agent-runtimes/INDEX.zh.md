@@ -8,7 +8,7 @@
 | 子分类 | 何时进入 | 路由 |
 | --- | --- | --- |
 | **Agent SDK／框架** | 你自己写 agent，需要把循环、编排和工具调用接进自己的代码里。 | [→](agent-sdks/INDEX.zh.md) |
-| **个人助手** | 你要的是一个自己能用的助手，而不是一个需要写代码的库。 | [→](personal-assistants/INDEX.zh.md) |
+| **个人助手** | 你要的是现成助手，而非需要编程的库；IM 常驻助手进入其中的子类。 | [→](personal-assistants/INDEX.zh.md) |
 | **Agent 服务** | agent 负载要以你部署并运维的基础设施形态运行，而不是一个聊天窗口。 | [→](agent-services/INDEX.zh.md) |
 
 ## 本分类项目

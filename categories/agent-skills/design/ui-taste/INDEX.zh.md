@@ -7,6 +7,7 @@
 
 | 合集 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Interfaces Skills** | 六领域循证界面评审，明确区分本次退化和未审查领域。 | B（4/5） | [→](jakubkrehel-skills.zh.md) |
 | **Designer Skills** | 覆盖面很广的设计实践 skill pack——9 个 plugin 下共 97 个 skill、30 个 command（研究、设计系统、UX 策略、UI、交互、原型/测试、design ops、工具箱、视觉批评），适用于 Claude Code 和 Gemini CLI。 | B（4/5） | [→](designer-skills.zh.md) |
 | **Skills For Design Engineers** | Emil Kowalski 的 13 个 skill：先判断界面该不该动，要动时定曲线、时长和展开位置，附会拦截的动效评审和只读全库体检。 | B（4/5） | [→](emilkowalski-skills.zh.md) |
 | **make-interfaces-feel-better** | 一个单一、聚焦的 agent skill，把约 16 条具体的 UI 打磨原则（同心圆角、可中断过渡、等宽数字、入场/出场动画）注入 coding agent，让界面「感觉」做完了，而不只是功能正确。 | B（4/5） | [→](make-interfaces-feel-better.zh.md) |
@@ -21,6 +22,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Interfaces Skills](jakubkrehel-skills.zh.md) | ✅ | B（4/5） | 六领域循证界面评审，明确区分本次退化和未审查领域。 |
 | [Designer Skills](designer-skills.zh.md) | ✅ | B（4/5） | 覆盖面很广的设计实践 skill pack——9 个 plugin 下共 97 个 skill、30 个 command（研究、设计系统、UX 策略、UI、交互、原型/测试、design ops、工具箱、视觉批评），适用于 Claude Code 和 Gemini CLI。 |
 | [Skills For Design Engineers](emilkowalski-skills.zh.md) | ✅ | B（4/5） | 页面看着对、动起来不对时最合适；UX research 或设计系统用更宽的设计包。 |
 | [make-interfaces-feel-better](make-interfaces-feel-better.zh.md) | ✅ | B（4/5） | 一个单一、聚焦的 agent skill，把约 16 条具体的 UI 打磨原则（同心圆角、可中断过渡、等宽数字、入场/出场动画）注入 coding agent，让界面「感觉」做完了，而不只是功能正确。 |

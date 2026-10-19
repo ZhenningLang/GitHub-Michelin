@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "video", "en": "Authorized input video", "zh": "有权处理的输入视频", "kind": "input"},
+    {"id": "detect", "en": "Decode and detect mosaic masks", "zh": "解码并检测马赛克掩膜", "technique": [2]},
+    {"id": "track", "en": "Track clips with overlap and scene-cut flush", "zh": "跟踪重叠片段；切镜清空轨迹", "technique": [1]},
+    {"id": "queue", "en": "Frame-count queues between worker stages", "zh": "处理阶段之间按帧数排队", "technique": [2]},
+    {"id": "basic", "en": "Public free BasicVSR++ restoration", "zh": "公开免费 BasicVSR++ 修复", "technique": [2, 3]},
+    {"id": "protected", "en": "Private protection for supporter models", "zh": "支持者模型依赖私有保护组件", "kind": "external", "technique": [3]},
+    {"id": "out", "en": "Blend regions and encode video", "zh": "混合局部区域并编码视频", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "video", "to": "detect"},
+    {"from": "detect", "to": "track"},
+    {"from": "track", "to": "queue"},
+    {"from": "queue", "to": "basic"},
+    {"from": "basic", "to": "out"},
+    {"from": "protected", "to": "out", "en": "separate optional restoration path", "zh": "独立可选修复路径", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/Kruk2/jasna/blob/099af50a3aac06f14db8d048efd8c6562e2c3d25/jasna/tracking/clip_tracker.py",
+    "https://github.com/Kruk2/jasna/blob/099af50a3aac06f14db8d048efd8c6562e2c3d25/jasna/frame_queue.py",
+    "https://github.com/Kruk2/jasna/blob/099af50a3aac06f14db8d048efd8c6562e2c3d25/jasna/license_api.py",
+    "https://github.com/Kruk2/jasna/blob/099af50a3aac06f14db8d048efd8c6562e2c3d25/jasna/__main__.py"
+  ]
+}

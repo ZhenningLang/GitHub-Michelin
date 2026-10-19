@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **SGLang-Omni** | One speech request passes through encoders, token generation and audio decoding with different resource needs; SGLang-Omni runs those stages as a coordinated serving pipeline behind an HTTP API. | B (6/6) | [→](sglang-omni.md) |
 | **vLLM** | Use it when you want the de-facto open-source LLM serving engine with PagedAttention, continuous batching, and an OpenAI-compatible API — accepting NVIDIA-centric GPU ops and a fast-moving codebase. | A (5/6) | [→](vllm.md) |
 | **SGLang** | Use it when agent traffic repeats long shared prompts and needs schema-constrained JSON, so prefix caching and structured generation cut GPU time — but since v0.5.20 it requires CUDA 13, and its ecosystem and track record are younger than vLLM's. | A (5/6) | [→](sglang.md) |
 | **TensorRT-LLM** | Use it when you serve high-traffic models on Hopper or Blackwell GPUs and need NVIDIA-tuned kernels, FP4 and rack-scale parallelism to close a throughput gap — but it runs only on recent NVIDIA GPUs and some key kernels ship as precompiled binaries. | B (5/6) | [→](tensorrt-llm.md) |
@@ -22,6 +23,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [SGLang-Omni](sglang-omni.md) | ✅ | B (6/6) | One speech request passes through encoders, token generation and audio decoding with different resource needs; SGLang-Omni runs those stages as a coordinated serving pipeline behind an HTTP API. |
 | [vLLM](vllm.md) | ✅ | A (5/6) | The de-facto open-source serving engine (PagedAttention, continuous batching); NVIDIA-first, fast-moving, operationally heavier than a local runtime. |
 | [SGLang](sglang.md) | ✅ | A (5/6) | Prefix reuse and constrained decoding speed up agent workloads, at the cost of a fast release train that needs pinning and revalidation every few weeks. |
 | [TensorRT-LLM](tensorrt-llm.md) | ✅ | B (5/6) | First access to NVIDIA hardware features and throughput, at the cost of vendor lock-in, unreadable kernels, telemetry on by default and a slow stable-release cadence. |

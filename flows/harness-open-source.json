@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "Harness does", "zh": "Harness 做的"},
+  "steps": [
+    {"lane": "you", "en": "Start an isolated evaluation with persistent data and unwanted features disabled", "zh": "在隔离宿主启动评估，持久存储并关闭不需要的功能", "code": "harness/harness", "component": {"en": "Docker image", "zh": "Docker 镜像"}},
+    {"lane": "them", "en": "Serve the repository UI and Git endpoints", "zh": "提供仓库界面与 Git 入口", "component": {"en": "gitness server", "zh": "gitness 服务端"}},
+    {"lane": "you", "en": "Create a repository and commit your container-build YAML", "zh": "创建仓库，提交容器构建 YAML"},
+    {"lane": "you", "en": "Register its file path and branch as a pipeline, then request a run", "zh": "登记流水线文件路径和分支，再请求运行", "code": "config_path"},
+    {"lane": "them", "en": "Read the definition at the selected commit and schedule its stages", "zh": "按选定提交读取定义，调度构建阶段", "component": {"en": "pipeline triggerer", "zh": "流水线触发器"}},
+    {"lane": "them", "en": "Run container steps and return build status and logs", "zh": "执行容器步骤，返回构建状态与日志", "component": {"en": "Docker runner", "zh": "Docker 执行器"}}
+  ],
+  "value": {"en": "Repository revisions and container-build results live in one platform", "zh": "仓库版本与容器构建结果放在同一平台"},
+  "sources": [
+    "https://github.com/harness/harness/blob/f335f08374b83e9e4ddd54f4f47b4c6daad2fa54/README.md#L8-L23",
+    "https://github.com/harness/harness/blob/f335f08374b83e9e4ddd54f4f47b4c6daad2fa54/Dockerfile#L74-L96",
+    "https://github.com/harness/harness/blob/f335f08374b83e9e4ddd54f4f47b4c6daad2fa54/web/src/components/NewPipelineModal/NewPipelineModal.tsx#L59-L75",
+    "https://github.com/harness/harness/blob/f335f08374b83e9e4ddd54f4f47b4c6daad2fa54/app/api/controller/execution/create.go#L29-L84",
+    "https://github.com/harness/harness/blob/f335f08374b83e9e4ddd54f4f47b4c6daad2fa54/app/pipeline/triggerer/trigger.go#L166-L382",
+    "https://github.com/harness/harness/blob/f335f08374b83e9e4ddd54f4f47b4c6daad2fa54/app/pipeline/runner/runner.go#L73-L137"
+  ]
+}

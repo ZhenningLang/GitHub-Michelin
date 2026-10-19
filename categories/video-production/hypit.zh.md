@@ -82,15 +82,15 @@ health:
 
 你在做付费投流或 TikTok Shop 的内容运营。你找到了一条能转化的爆款结构，这周要出 50 个变体——换 hook、换产品、换主持人、换语言——广告两周疲劳后还要再换开头重跑。在剪映里手剪撑不起这个量，而裸调生成模型只能得到不可修改的一次性成片：改一句字幕就得整段重摇。
 
-这时你选 Hypit，因为它的复用单元是**整条 workflow**，不是脚本也不是单条片段。把参考视频丢进去，你的 agent（Claude Code / Codex，经 `/hypit` skill）把它分解成 SVML——字幕锚定在 WhisperX 词级对齐上，A-roll/B-roll 槽位绑定可插拔的生成 provider（Seedance、GPT Image、MiniMax H3 等），排行榜板、卡拉 OK 字幕等代码渲染元素经本地 headless Chromium + FFmpeg 编译成片。克隆只替换变化的槽位、复用其余部分，所以第 50 个变体只为增量付生成费（作者报告的示例成本：每条成片 $1.07–$1.15）。相对最近替代品的决定性取舍：[MoneyPrinterTurbo](moneyprinter-turbo.zh.md) 能从主题生成「一条」视频，但克隆不了「那一条特定爆款」的结构；[HyperFrames](hyperframes.zh.md)/[Remotion](remotion.zh.md) 给你代码渲染引擎，但整条生成与对齐管线要自己搭；Hypit 把克隆→生成→对齐→渲染接成一个 agent 驱动的闭环——代价是非 OSI 许可证和非常年轻的代码库。
+这时你选 Hypit，因为它的复用单元是**整条 workflow**，不是脚本也不是单条片段。把参考视频丢进去，你的 agent（Claude Code / Codex，经 `/hypit` skill）把它分解成 SVML——字幕锚定在 WhisperX 词级对齐上，A-roll/B-roll 槽位绑定可插拔的生成 provider（Seedance、GPT Image、MiniMax H3 等），排行榜板、卡拉 OK 字幕等代码渲染元素经本地 headless Chromium + FFmpeg 编译成片。克隆只替换变化的槽位、复用其余部分，所以第 50 个变体只为增量付生成费（作者报告的示例成本：每条成片 $1.07–$1.15）。相对最近替代品的决定性取舍：[MoneyPrinterTurbo](moneyprinter-turbo.zh.md) 能从主题生成「一条」视频，但克隆不了「那一条特定爆款」的结构；[HyperFrames](render-engines/hyperframes.zh.md)/[Remotion](render-engines/remotion.zh.md) 给你代码渲染引擎，但整条生成与对齐管线要自己搭；Hypit 把克隆→生成→对齐→渲染接成一个 agent 驱动的闭环——代价是非 OSI 许可证和非常年轻的代码库。
 
 ## 何时不用
 
 - **你需要真实产品镜头、真实 UI 录屏或品牌规范严格的企业视频。** Hypit 的管线是围绕 AI 生成素材（人脸、场景、B-roll）优化的。真实素材的品牌片请用人类剪辑师配 DaVinci Resolve / Premiere Pro（未收录），因为生成画面替代不了产品本身。
 - **你只要一条精致视频，就一次。** 整套环境（coding agent + 模型 API key + 本地运行时）只有在 workflow 被复用成变体时才回本。单条视频用剪映 / CapCut（未收录）或生成类 SaaS，时间和钱都更省。
 - **长视频（YouTube 深度内容、纪录片）。** 它的设计中心是 20 秒级竖屏短视频——词锚定卡拉 OK 字幕、hook 替换、卡点剪辑。长视频叙事管线请用 [OpenMontage](open-montage.zh.md) 或人工剪辑。
-- **你要做多租户 SaaS 或商业再分发。** 许可证对两者都要求另行付费获得商业授权，且 producer 可单方面修改条款。请改用 Apache-2.0 引擎（如 [HyperFrames](hyperframes.zh.md)）自己搭编排层。
-- **你需要 CI 里确定性、零生成模型的渲染。** Hypit 也能不调模型纯代码渲染，但如果只要这个，SVML 层就是多余的间接层——直接驱动 [HyperFrames](hyperframes.zh.md) 或 [Remotion](remotion.zh.md)。
+- **你要做多租户 SaaS 或商业再分发。** 许可证对两者都要求另行付费获得商业授权，且 producer 可单方面修改条款。请改用 Apache-2.0 引擎（如 [HyperFrames](render-engines/hyperframes.zh.md)）自己搭编排层。
+- **你需要 CI 里确定性、零生成模型的渲染。** Hypit 也能不调模型纯代码渲染，但如果只要这个，SVML 层就是多余的间接层——直接驱动 [HyperFrames](render-engines/hyperframes.zh.md) 或 [Remotion](render-engines/remotion.zh.md)。
 - **涉及真人脸的合规敏感场景。** 克隆真人创作者的爆款意味着经生成模型换脸/换声；多数平台有 AI 披露或肖像权规则 [推断]——上线前先查平台政策。
 
 ## 横向对比
@@ -98,8 +98,8 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [MoneyPrinterTurbo](moneyprinter-turbo.zh.md) | ✅ | 如果你要的是从「主题」批量出片（每日口播素材流短视频、近零成本、非程序员可用 WebUI），选 MoneyPrinterTurbo；如果你要克隆「某一条特定爆款」的结构并跨变体换脸/换词/换 B-roll，选 Hypit，因为 MPT 的素材库幻灯片风格复现不了参考视频的构图。 | MPT 自包含、MIT、便宜，但画面同质化；Hypit 结构忠实、agent 可编辑，但要付费生成 API 和 coding agent。 |
-| [HyperFrames](hyperframes.zh.md) | ✅ | 如果你只需要确定性 HTML→MP4 渲染（字幕、动效图形、数据可视化）、不要生成式画面，选 HyperFrames；如果视频需要生成的 A-roll/B-roll 和词级对齐接进同一条 workflow，选 Hypit，因为 HyperFrames 是引擎层，那段管线要你自己搭。 | HyperFrames 是 Apache-2.0、CI 友好；Hypit 多了生成/克隆闭环，但带来非 OSI 许可证和向厂商托管服务的导流。 |
-| [Remotion](remotion.zh.md) | ✅ | 如果你的团队 React 优先、要一个 6 年验证的程序化视频框架加成熟 Lambda 渲染，选 Remotion；如果你的入口是「克隆这条爆款」而非「写组件」，选 Hypit，因为 Remotion 没有克隆/对齐管线，且其许可证对 3 人以上公司收费。 | Remotion 给长期验证和生态深度；Hypit 给克隆到变体的闭环，但验证时仅 7 周龄。 |
+| [HyperFrames](render-engines/hyperframes.zh.md) | ✅ | 如果你只需要确定性 HTML→MP4 渲染（字幕、动效图形、数据可视化）、不要生成式画面，选 HyperFrames；如果视频需要生成的 A-roll/B-roll 和词级对齐接进同一条 workflow，选 Hypit，因为 HyperFrames 是引擎层，那段管线要你自己搭。 | HyperFrames 是 Apache-2.0、CI 友好；Hypit 多了生成/克隆闭环，但带来非 OSI 许可证和向厂商托管服务的导流。 |
+| [Remotion](render-engines/remotion.zh.md) | ✅ | 如果你的团队 React 优先、要一个 6 年验证的程序化视频框架加成熟 Lambda 渲染，选 Remotion；如果你的入口是「克隆这条爆款」而非「写组件」，选 Hypit，因为 Remotion 没有克隆/对齐管线，且其许可证对 3 人以上公司收费。 | Remotion 给长期验证和生态深度；Hypit 给克隆到变体的闭环，但验证时仅 7 周龄。 |
 | [OpenMontage](open-montage.zh.md) | ✅ | 如果你要带审批闸门的端到端治理管线（调研→脚本→素材→渲染）做解说类视频，选 OpenMontage；如果你的事实源是一条待克隆的现成爆款而非待调研的主题，选 Hypit，因为 OpenMontage 从零合成，Hypit 分解参考片。 | OpenMontage 给闸门和 AGPL 开放性；Hypit 给结构克隆和批量变体，但许可证受限。 |
 | Runway / Pika / HeyGen（SaaS） | 未收录 | 如果你要零代码的一次性写实生成，选生成类 SaaS；如果你要 workflow 本身可编辑、可重跑、规模化无水印，选 Hypit，因为 SaaS 产出是按次计价的一次性渲染，没有可改的合成源。 | SaaS 单条即得且精致；Hypit 是复利型——workflow 资产随变体增多而增值——但要 agent + API 管线。 |
 
@@ -107,7 +107,7 @@ health:
 
 - TypeScript monorepo（Node.js ≥ 22.15、pnpm 10.33、约 130 个 workspace 包），以 coding-agent skill（`npx skills add hypit-ai/hypit`）加 `hypit` CLI 分发；npm 包名 `@hypit/hypit`。
 - SVML：项目自有的视频标记语言，合成事件锚定到词而非时间戳；compiler/elaborator 链把 SVML 编译成可渲染帧。
-- 渲染：本地「HyperFrames」渲染器（自研、基于浏览器帧——与 HeyGen 的 [HyperFrames](hyperframes.zh.md) 同名，但未发现代码关联 [推断]）驱动 headless Chromium（README 称 64 进程并发）+ FFmpeg 合成。
+- 渲染：本地「HyperFrames」渲染器（自研、基于浏览器帧——与 HeyGen 的 [HyperFrames](render-engines/hyperframes.zh.md) 同名，但未发现代码关联 [推断]）驱动 headless Chromium（README 称 64 进程并发）+ FFmpeg 合成。
 - 本地服务（Python 3.10–3.13、uv）：WhisperX 词级对齐、OpenCV 图像处理、yt-dlp 下载参考视频。
 - 生成层走可插拔的 Model–Provider–Endpoint 体系：内置 HypiHub（厂商托管服务）、TokenDance、HiAPI、Pollo、Monid 的 provider；Seedance、Seedream、GPT Image、Nano Banana、Grok Imagine、MiniMax H3、Wan、Pixverse 各有独立模型包；TTS 走 ElevenLabs / FishAudio / Mimo。自部署模型经同一接口接入。
 

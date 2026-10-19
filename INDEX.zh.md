@@ -8,6 +8,8 @@
 
 | 分类 | 何时进来 | 路由 |
 |---|---|---|
+| **legal-documents** | 复用法律模板并准备可审阅合同初稿，不提供法律意见。 | [→](categories/legal-documents/INDEX.zh.md) |
+| **travel-planning** | 通过领域专用适配器查询铁路余票、中转与出行信息。 | [→](categories/travel-planning/INDEX.zh.md) |
 | **agent-tooling** | 为 AI 编码 agent 选「任务/工作追踪、持久记忆、agent 状态」，以及 agent 把控制权交还给你的人审/批准界面。 | [→](categories/agent-tooling/INDEX.zh.md) |
 | **sandboxing** | 隔离不可信代码与 agent 生成代码——虚拟机／内核级隔离运行时，以及建在其上的沙箱平台。 | [→](categories/sandboxing/INDEX.zh.md) |
 | **serverless** | 自己运维的 Kubernetes 原生 serverless／缩容到零服务层。 | [→](categories/serverless/INDEX.zh.md) |
@@ -25,6 +27,7 @@
 | **agent-dev-methodology** | 塑造 agent **如何**构建软件的框架与方法论——spec 驱动、上下文工程、persona/命令体系。 | [→](categories/agent-dev-methodology/INDEX.zh.md) |
 | **ai-design-generation** | agent 驱动的 UI/设计、幻灯片、社交卡片与 HTML 产物生成。 | [→](categories/ai-design-generation/INDEX.zh.md) |
 | **dev-utilities** | 独立开发者工具、数据处理瑞士军刀与可自托管的基础设施。 | [→](categories/dev-utilities/INDEX.zh.md) |
+| **programming-languages** | 选择编程语言及编译工具链，包括不同的代码存储和副作用模型。 | [→](categories/programming-languages/INDEX.zh.md) |
 | **frontend-animation** | 面向 Web 的 JavaScript 动画引擎与运动库。 | [→](categories/frontend-animation/INDEX.zh.md) |
 | **api-gateway** | 路由、保护、限流并治理服务与 LLM 流量的 API / AI 网关。 | [→](categories/api-gateway/INDEX.zh.md) |
 | **geospatial** | 地理信息系统（GIS）——查看、编辑、分析空间数据。 | [→](categories/geospatial/INDEX.zh.md) |
@@ -66,7 +69,7 @@
 | **reading-tools** | 阅读工具——阅读模式扩展与 RSS 阅读器。 | [→](categories/reading-tools/INDEX.zh.md) |
 | **speech** | 语音处理工具包（ASR、TTS、说话人任务）。 | [→](categories/speech/INDEX.zh.md) |
 | **terminal-ui** | 终端/CLI UI 库——着色、TUI、ASCII art、终端渲染。 | [→](categories/terminal-ui/INDEX.zh.md) |
-| **video-production** | AI 编排的端到端视频制作——由编码助手内的 agent 驱动研究、脚本撰写、素材生成、合成与渲染。 | [→](categories/video-production/INDEX.zh.md) |
+| **video-production** | agent 驱动的视频导演方法、制作管线与创作应用；代码渲染引擎继续进入子类。 | [→](categories/video-production/INDEX.zh.md) |
 | **investment-finance** | 量化金融、市场数据、交易研究与投资分析工具。 | [→](categories/investment-finance/INDEX.zh.md) |
 | **education-tutoring** | AI 辅导、学习助手与教育场景 agent 系统。 | [→](categories/education-tutoring/INDEX.zh.md) |
 | **agent-governance** | AI agent 的治理、策略执行、身份、沙箱与可靠性控制。 | [→](categories/agent-governance/INDEX.zh.md) |
@@ -87,6 +90,7 @@
 | **pentest** | 授权范围内 web 应用、API 与本地网络（Wi-Fi）的自主／AI 辅助渗透测试——agent swarm、渗透测试自动化、漏洞利用链（授权优先）。 | [→](categories/pentest/INDEX.zh.md) |
 | **disk-cleanup** | 腾出磁盘空间、整理桌面系统——缓存与构建产物清理、空间分析、重复文件查找、应用卸载、Windows 减负脚本。 | [→](categories/disk-cleanup/INDEX.zh.md) |
 | **3d-reconstruction** | 把照片、视频或扫描变成三维场景——运动恢复结构、高斯泼溅／辐射场训练，以及把结果转成网格。 | [→](categories/3d-reconstruction/INDEX.zh.md) |
+| **3d-generation** | 从图片或提示词生成合理的三维资产，不预设实测几何精度。 | [→](categories/3d-generation/INDEX.zh.md) |
 | **streaming-clients** | 替代官方 App 观看、收听流媒体平台（YouTube、B 站、SoundCloud……）的第三方客户端——无广告、免账号、可后台播放。 | [→](categories/streaming-clients/INDEX.zh.md) |
 | **computer-vision** | 在图片和视频里检测、识别、分析人脸、物体和人——人脸比对／识别、检测和属性分析，作为你调用的库。 | [→](categories/computer-vision/INDEX.zh.md) |
 | **meeting-intelligence** | AI 会议副驾驶与会议记录器——录制线上会议、实时转写、会中智能辅助，并自动完成会后跟进产物。 | [→](categories/meeting-intelligence/INDEX.zh.md) |

@@ -113,7 +113,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [web-quality-skills (addyosmani)](addyosmani-web-quality.zh.md) | ✅ | 只做 web 性能、无障碍与质量审计时，选这个更聚焦的姊妹包；本包已把该主题（`/webperf`、web-performance-auditor）收进完整 SDLC。 | 聚焦的审计深度 vs 全生命周期广度——只有你真的逐阶段走，才值回 25 个技能的路由成本。 |
-| [scientific-agent-skills](scientific-agent-skills.zh.md) | ✅ | 工作是科研/科学计算工程（实验、数据管线、可复现性）时选 Scientific Agent Skills；通用产品软件选本包。 | 领域匹配决定一切：实验室级科研工作流 vs 谷歌系生产工程纪律。 |
+| [scientific-agent-skills](scientific-workflows/scientific-agent-skills.zh.md) | ✅ | 工作是科研/科学计算工程（实验、数据管线、可复现性）时选 Scientific Agent Skills；通用产品软件选本包。 | 领域匹配决定一切：实验室级科研工作流 vs 谷歌系生产工程纪律。 |
 | [Waza](waza.zh.md) | ✅ | 想要一组短小锐利的工程习惯、不要仪式感时选 Waza；要明确的 define→plan→build→verify→review→ship 主脊时选本包。 | 轻量启发式 vs 重型带闸门 SDLC；结构更多也意味着更多要绕的东西。 |
 | [vercel-labs/agent-skills](vercel-agent-skills.zh.md) | ✅ | 你的栈就是 React/Vercel、厂商精选规则胜过通用流程时选 Vercel Agent Skills；要技术栈中立的生命周期纪律选本包。 | 厂商范围精选（自家平台常新、其余窄）vs 厂商中立广度。 |
 | [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) | ✅ | 重心是 brainstorm→plan→TDD→verify 方法论加 subagent 编排时选 Superpowers；要各阶段的具体实践技能（评审五轴、OWASP、Core Web Vitals、发布清单）时选本包。 | 上游自己发布了并列对比（docs/comparison.md）：方法论主脊 vs 实践域广度——目标重叠、形状不同。 |

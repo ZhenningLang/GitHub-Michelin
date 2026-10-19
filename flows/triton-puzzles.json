@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "them": {"en": "Triton Puzzles", "zh": "Triton Puzzles"},
+  "steps": [
+    {"lane": "you", "en": "Open the notebook and run its setup cells", "zh": "打开 notebook 并执行配置单元", "code": "Triton-Puzzles.ipynb"},
+    {"lane": "you", "en": "Fill the constant-add kernel using the reference function", "zh": "按参考函数补全加常量内核", "code": "add_kernel"},
+    {"lane": "them", "en": "Create seeded tensors and trace the kernel's memory operations", "zh": "生成固定随机输入并跟踪内核访存"},
+    {"lane": "them", "en": "Compare output with the PyTorch answer and show matching or differing values", "zh": "对照 PyTorch 答案并显示结果或差异"}
+  ],
+  "value": {"en": "See whether your block addresses implement the tensor formula", "zh": "直接检查分块地址是否实现了张量公式"},
+  "sources": ["https://github.com/gpu-mode/Triton-Puzzles/blob/4d794abed02292081500ebf4b1e35cd5fc5fb019/Triton-Puzzles.ipynb"]
+}

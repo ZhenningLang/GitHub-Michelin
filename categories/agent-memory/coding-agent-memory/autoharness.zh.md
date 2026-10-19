@@ -124,7 +124,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Hermes Agent](../../agent-frameworks/agent-runtimes/personal-assistants/hermes-agent.zh.md) | ✅ | 你在挑 agent 本身、想要技能生成、记忆和消息渠道都内置时选 Hermes Agent；你要留在 Claude Code、只想让它的技能层自己学习和淘汰时选 autoharness。 | Hermes：一个集成运行时，自带学习循环和调度器，但你得离开 Claude Code。autoharness：把同一个思路（它的 README 致谢了 Hermes）装到 Claude Code 上，不需要常驻进程，按干了多少活而不是空闲时长触发，但只管技能。 |
+| [Hermes Agent](../../agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.zh.md) | ✅ | 你在挑 agent 本身、想要技能生成、记忆和消息渠道都内置时选 Hermes Agent；你要留在 Claude Code、只想让它的技能层自己学习和淘汰时选 autoharness。 | Hermes：一个集成运行时，自带学习循环和调度器，但你得离开 Claude Code。autoharness：把同一个思路（它的 README 致谢了 Hermes）装到 Claude Code 上，不需要常驻进程，按干了多少活而不是空闲时长触发，但只管技能。 |
 | [backpass](backpass.zh.md) | ✅ | agent 指令的每条改动都必须经人审、且你用好几家 agent 时选 backpass；只用 Claude Code、想让经验不经审阅就落地并自动淘汰时选 autoharness。 | backpass：离线批处理七家 agent 已有的记录，至少两个会话作证、有 token 预算、逐条接受。autoharness：持续、免手动，按使用情况淘汰，但只支持 Claude Code，也没有人工闸门。 |
 | [Beacon](agent-beacon.zh.md) | ✅ | 你需要跨工具留下每个编码会话的审计轨迹、经验批准后才安装时选 Beacon；想要零配置、纯本地、只服务 Claude Code、没有采集器也没有面板的闭环时选 autoharness。 | Beacon：跨工具采集、审阅后才装技能、可转发 SIEM，但默认要后台采集器和托管评估。autoharness：没有服务也没有审阅，用生命周期计数代替审批队列。 |
 | Claudeception | 未收录 | 想要最小的版本——一个技能加一个 hook，提醒 Claude 在当前会话里把不显然的发现存成技能——选 Claudeception；还要合并、校验器和淘汰时选 autoharness。 | Claudeception（blader，约 2.4k stars，MIT，最后推送 2026-02-21）：没有子会话、没有额外花费，但技能库只增不减，README 里没写任何淘汰环节。本批次未收录。 |

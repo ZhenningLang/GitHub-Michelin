@@ -1,0 +1,26 @@
+Index-tools baseline run evidence
+Execution date: 2026-10-18 UTC
+Tested code commit: 49cf44bd3ce9d5afa82c16668dcc1ffb3db4faf4
+Working tree at run: intake ledger/plan/worker-contract changes only; categories and tools unchanged.
+These are oss-atlas tool tests, NOT upstream framework tests.
+Source logs retained in the approved temporary directory; excerpts below are machine-selected from them.
+
+intake-2026-10-18-baseline-gates.log
+sha256: 0bee9a535d20213cd412a83d88ae7a2487f646237e338fc39af94c74bc432924
+python3 tools/lint.py
+187 category nodes, 866 EN + 866 ZH pages, 0 errors, 1450 warnings.
+python3 tools/reverse_index.py --check
+reverse_index check: reports are current, no full mislabels (0 partly-indexed rows tracked in reports/project-intake-backlog.md)
+python3 tools/quality_scan.py --fail-on-gated
+
+intake-2026-10-18-baseline-tests.log
+sha256: 686bac8ab320294ef567aaa4b32e5d68bbd22680720263995463f481b20e0fbc
+python3 -m unittest tools/test_health.py tools/test_health_card.py tools/test_sync_health_to_body.py tools/test_refresh_health_bullets.py tools/test_health_audit.py tools/test_health_backfill.py tools/test_lint.py tools/test_quality_scan.py tools/test_upstream_snapshot.py tools/test_repo_moves.py tools/test_repo_moves_issue.py tools/test_verify_quality_batch.py tools/test_flow_card.py tools/test_mechanism_card.py tools/test_intake_sweep.py tools/test_tab_intake.py
+...................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+----------------------------------------------------------------------
+Ran 483 tests in 27.062s
+
+OK
+
+Recorded process exit statuses: make gates=0; make test=0.
+These statuses are from the main-session subprocess execution results.

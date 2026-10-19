@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **OpenDataLoader PDF** | Java 解析 PDF，保留页面坐标，可选 Docling 分诊并生成标签 PDF。 | B（6/6） | [→](opendataloader-pdf.zh.md) |
 | **Docling** | 当你需要把杂乱的 PDF/DOCX/PPTX 解析成干净的结构化 Markdown/JSON 以喂给 RAG 时用它——是解析器，不是文档管理系统。 | A（5/6） | [→](docling.zh.md) |
 | **MarkItDown** | 当 agent 或 RAG 流水线要用一次轻量 Python 调用，把混杂的 Office 文件、HTML、EPUB 和简单 PDF 统一转成 Markdown 时用它——但扫描件或复杂版面 PDF 要用 Marker 或 Docling，它没有 OCR 和版面模型。 | B（6/6） | [→](markitdown.zh.md) |
 | **olmOCR** | 当你要把成千上万份带公式、表格、多栏版面的 PDF 按阅读顺序转成干净 Markdown、拿去做 LLM 语料时用它——但本地运行要 12 GB 以上显存的 NVIDIA GPU，且上游自 2026-03 起已无提交。 | C（5/6） | [→](olmocr.zh.md) |
@@ -23,6 +24,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [OpenDataLoader PDF](opendataloader-pdf.zh.md) | ✅ | B（6/6） | CPU Java 基线与可选模型后端；只处理 PDF，PDF/UA 导出属企业版。 |
 | [Docling](docling.zh.md) | ✅ | A（5/6） | 富文档解析（版面 + 表格）成结构化 Markdown/JSON；模型依赖比纯文本提取更重。 |
 | [MarkItDown](markitdown.zh.md) | ✅ | B（6/6） | 换来广泛的格式覆盖、无需 GPU 和模型，代价是版面还原能力弱，部分可选功能还会把文件发给外部大模型或 Azure。 |
 | [olmOCR](olmocr.zh.md) | ✅ | C（5/6） | 换来 VLM 级的公式与脏扫描件还原；代价是每页都要 GPU 推理——版面保真不那么要紧时，纯 CPU 的 Docling 或 PyMuPDF 更便宜。 |

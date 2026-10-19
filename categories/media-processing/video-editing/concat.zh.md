@@ -89,7 +89,7 @@ health:
 
 - **付费客户项目需要稳定性。** Concat 是只有 25 天历史的 0.2.x beta，公开 issue 里已经有 Linux／rpm 版卡顿到几乎不可用、Android 无法导入媒体的报告。改用 DaVinci Resolve（未收录），或等一个稳定的 tagged 版本，因为项目中途崩溃的代价高于你想省下的订阅费。
 - **你现在就要专业特效栈——可跟踪遮罩、关键帧曲线编辑器、调整图层、速度曲线。** 这些在 Concat 自己的 roadmap 上全部未打勾。要已经发布的遮罩与曲线编辑器，去看 OpenCut v0.3.0 的功能集或商业 NLE（未收录）。
-- **你只需要脚本化、可重复渲染，不需要交互式剪辑。** 图形编辑器是错的形态——批量管线用 [MoviePy](../video-audio/editing-and-cutting/moviepy.zh.md)，需要在 CI 里渲染确定性组件时用 [Remotion](../../video-production/remotion.zh.md)。
+- **你只需要脚本化、可重复渲染，不需要交互式剪辑。** 图形编辑器是错的形态——批量管线用 [MoviePy](../video-audio/editing-and-cutting/moviepy.zh.md)，需要在 CI 里渲染确定性组件时用 [Remotion](../../video-production/render-engines/remotion.zh.md)。
 - **你要自建编辑器或无头剪辑服务。** 不要为了时间线模型去 fork 一个年轻 beta；用 [MLT](../video-audio/editing-and-cutting/mlt.zh.md)，也就是 Shotcut、Kdenlive 底下的 LGPL 引擎，因为它给你时间线语义，而不会让你背上一个 AGPL 应用。
 - **你的组织无法接受 AGPL-3.0 义务，或无法接受发行包里的许可组合。** Concat 本体是 AGPL-3.0-or-later 加插件例外，而分发出去的 bundle 里还带 FFmpeg（GPL，含 x264）、sherpa-onnx 与 espeak-ng（GPL-3.0），以及以 GPL-3.0 选项使用的 Slint。AGPL 是硬约束时，改用 MIT 许可的编辑器，例如 [OpenCut](opencut.zh.md)。
 - **剪辑只是更大管线里的一个通用环节。** Concat 没有文档化的无头渲染模式；直接驱动 [FFmpeg](../video-audio/transcoding-and-pipelines/ffmpeg.zh.md) 更合适，因为桌面应用无法当作批处理任务来调度。

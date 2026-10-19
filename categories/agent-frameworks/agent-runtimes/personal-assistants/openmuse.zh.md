@@ -74,7 +74,7 @@ health:
 
 ## 何时使用
 
-你是一个开发者，想有一个能从手机上派活、回来后能逐条审计的个人 agent：计划可见、动作要过你的审批、每次执行都留回执、它浏览网页的浏览器你可以直接打开接手（「Take control」）。你在 [OpenClaw](openclaw.zh.md) 之上选 OpenMuse，是因为决定性能力是「自己的 App 背后有一台能干活的计算机」——按线程保活的 Chromium、可选的非 root Docker Linux 终端、靠 SQL 租约扛过重启的持久任务——而不是 OpenClaw 那种在 20+ 个聊天渠道上找到你的触达力。你在 [OpenHuman](openhuman.zh.md) 之上选它，是因为你要 agent 在你的账号里*做事*（搜邮件、填 PDF 表单、备好待审的回复），而不只是通过摄取循环*记住*它们。模型自带（OpenAI、Anthropic 或 Google 的 key 只留在服务端），应用数据在你盘上的 PGlite/PostgreSQL 里——唯独你不拥有的那块是会话持久化，那是 CopilotKit 的云。
+你是一个开发者，想有一个能从手机上派活、回来后能逐条审计的个人 agent：计划可见、动作要过你的审批、每次执行都留回执、它浏览网页的浏览器你可以直接打开接手（「Take control」）。你在 [OpenClaw](messaging-daemons/openclaw.zh.md) 之上选 OpenMuse，是因为决定性能力是「自己的 App 背后有一台能干活的计算机」——按线程保活的 Chromium、可选的非 root Docker Linux 终端、靠 SQL 租约扛过重启的持久任务——而不是 OpenClaw 那种在 20+ 个聊天渠道上找到你的触达力。你在 [OpenHuman](openhuman.zh.md) 之上选它，是因为你要 agent 在你的账号里*做事*（搜邮件、填 PDF 表单、备好待审的回复），而不只是通过摄取循环*记住*它们。模型自带（OpenAI、Anthropic 或 Google 的 key 只留在服务端），应用数据在你盘上的 PGlite/PostgreSQL 里——唯独你不拥有的那块是会话持久化，那是 CopilotKit 的云。
 
 ## 快问快答
 
@@ -107,23 +107,23 @@ App、服务端、任务引擎和计算机的两半是一起交付的——你�
 
 ## 何时不用
 
-- **你需要零厂商依赖或离线运行。** key 强制不是文档口号：`apps/server/src/config.ts` 无条件调用 `required("CPK_INTELLIGENCE_API_KEY", …)`（2026-09-27 核实），PR #38 删掉了跳过 Intelligence 的代码路径，请求把它改为可选的 issue #73 开着且无人回应。改用 [OpenHuman](openhuman.zh.md)，它的 Rust core 在构造期就硬性拒绝联网；或者对「没有强制 SaaS」要求没那么苛刻时改用 [OpenClaw](openclaw.zh.md)。
-- **你想让助理住在你已有的聊天工具里。** OpenMuse 是自己的 Expo/React Native 应用（iOS、Android、Web），仓库里没有 WhatsApp/Telegram/Slack 桥接。渠道触达就是卖点时，用 [OpenClaw](openclaw.zh.md)。
+- **你需要零厂商依赖或离线运行。** key 强制不是文档口号：`apps/server/src/config.ts` 无条件调用 `required("CPK_INTELLIGENCE_API_KEY", …)`（2026-09-27 核实），PR #38 删掉了跳过 Intelligence 的代码路径，请求把它改为可选的 issue #73 开着且无人回应。改用 [OpenHuman](openhuman.zh.md)，它的 Rust core 在构造期就硬性拒绝联网；或者对「没有强制 SaaS」要求没那么苛刻时改用 [OpenClaw](messaging-daemons/openclaw.zh.md)。
+- **你想让助理住在你已有的聊天工具里。** OpenMuse 是自己的 Expo/React Native 应用（iOS、Android、Web），仓库里没有 WhatsApp/Telegram/Slack 桥接。渠道触达就是卖点时，用 [OpenClaw](messaging-daemons/openclaw.zh.md)。
 - **你只想要一个套本地或远端模型的聊天窗口。** 用 [Open WebUI](../../../llm-chat-ui/open-webui.zh.md)，因为 OpenMuse 会为你本可一个容器搞定的界面，额外拖进任务库、浏览器 worker、加密密钥和一个必配的云 key。
 - **你在构建自己的 agent 产品，要的是框架。** OpenMuse 是一个完成度的单主人应用 monorepo（附带虚构示例数据），不是可嵌入的 runtime；直接用 CopilotKit SDK 本身，或 [LangChain](../../workflow-builders/langchain.zh.md) 这类框架。
-- **你需要多用户或生产级加固部署。** README 明说：一个主人 + 一把共享 access key，「不是多租户认证系统」；多用户认证和部署加固是 roadmap 上未勾选项。要给多人隔离共用，改用 [Octop](octop.zh.md)。
+- **你需要多用户或生产级加固部署。** README 明说：一个主人 + 一把共享 access key，「不是多租户认证系统」；多用户认证和部署加固是 roadmap 上未勾选项。要给多人隔离共用，改用 [Octop](messaging-daemons/octop.zh.md)。
 - **你需要钉住一个版本。** 截至 2026-09-27 没有任何 GitHub release 或 tag——只有 main 上 `package.json` 里的 `0.1.0`，自我标注 Alpha，自家 `docs/VERIFICATION.md` 也列明真实模型与真实 Google 账号的验收尚未完成。破坏性变更会随 main 到来。
-- **你期待自主订票、自动结账或图形桌面。** 浏览器 worker 会关掉弹窗和对话框、禁用 WebSocket 与 service worker；终端非交互、30 秒限时。预订、购买、桌面应用都是 roadmap 项。要更松的工具循环，改用 [OpenClaw](openclaw.zh.md) 或 [Hermes Agent](hermes-agent.zh.md)，或者再等等。
-- **你想让 agent 越用越强。** 记忆是一份可在应用里编辑的清单，不是学习循环。用 [Hermes Agent](hermes-agent.zh.md)。
+- **你期待自主订票、自动结账或图形桌面。** 浏览器 worker 会关掉弹窗和对话框、禁用 WebSocket 与 service worker；终端非交互、30 秒限时。预订、购买、桌面应用都是 roadmap 项。要更松的工具循环，改用 [OpenClaw](messaging-daemons/openclaw.zh.md) 或 [Hermes Agent](messaging-daemons/hermes-agent.zh.md)，或者再等等。
+- **你想让 agent 越用越强。** 记忆是一份可在应用里编辑的清单，不是学习循环。用 [Hermes Agent](messaging-daemons/hermes-agent.zh.md)。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| [OpenClaw](openclaw.zh.md) | ✅ | 助理必须在你已有的聊天软件里找到你时，选 OpenClaw；决定性能力是「派出去的差事有可见的浏览器和终端，能审计能接管」时，选 OpenMuse。 | OpenClaw 消息原生、无强制云；OpenMuse 换来更强的工作面，代价是一个强制的 CopilotKit Intelligence key 加一套自己的 App UI。 |
+| [OpenClaw](messaging-daemons/openclaw.zh.md) | ✅ | 助理必须在你已有的聊天软件里找到你时，选 OpenClaw；决定性能力是「派出去的差事有可见的浏览器和终端，能审计能接管」时，选 OpenMuse。 | OpenClaw 消息原生、无强制云；OpenMuse 换来更强的工作面，代价是一个强制的 CopilotKit Intelligence key 加一套自己的 App UI。 |
 | [OpenHuman](openhuman.zh.md) | ✅ | 产品价值是第一天就懂你的账号上下文时，选 OpenHuman；是「在你的账号里替你把事办了」（浏览、填表、待审发送）时，选 OpenMuse。 | OpenHuman 构造期强制离线、GPL-3.0；OpenMuse 离线起不来（云 key），是 MIT 应用 + SaaS 依赖的组合。 |
-| [Hermes Agent](hermes-agent.zh.md) | ✅ | 你要一个从经验里给自己写技能的 agent 时，选 Hermes；今天就要一个成套、工具面固定且可审阅的 App 时，选 OpenMuse。 | Hermes 是框架形态的 runtime、没有手机应用；OpenMuse 的能力边界就是这个仓库发出来的东西。 |
-| [Octop](octop.zh.md) | ✅ | 几个人共用一台机器、各自隔离的 agent 挂在飞书/企微上时，选 Octop；一个人要一台会浏览会跑命令的机器、入口在手机时，选 OpenMuse。 | Octop 多用户但核心是私有 wheel 的 Python 胶水；OpenMuse 单主人、TypeScript 全可读、手机优先。 |
+| [Hermes Agent](messaging-daemons/hermes-agent.zh.md) | ✅ | 你要一个从经验里给自己写技能的 agent 时，选 Hermes；今天就要一个成套、工具面固定且可审阅的 App 时，选 OpenMuse。 | Hermes 是框架形态的 runtime、没有手机应用；OpenMuse 的能力边界就是这个仓库发出来的东西。 |
+| [Octop](messaging-daemons/octop.zh.md) | ✅ | 几个人共用一台机器、各自隔离的 agent 挂在飞书/企微上时，选 Octop；一个人要一台会浏览会跑命令的机器、入口在手机时，选 OpenMuse。 | Octop 多用户但核心是私有 wheel 的 Python 胶水；OpenMuse 单主人、TypeScript 全可读、手机优先。 |
 | [Open WebUI](../../../llm-chat-ui/open-webui.zh.md) | ✅ | 一个打磨过的自托管聊天前端就够用时，选 Open WebUI；只有「带审批的可恢复派活」才是真需求时，才值得 OpenMuse。 | Open WebUI 多年沉淀、云可选；OpenMuse 是 12 天的 Alpha，且持久化层握在别人手里。 |
 
 ## 技术栈

@@ -11,6 +11,7 @@
 | **drawio-skill** | An agent skill that turns prose, code, IaC and API schemas into editable `.drawio` files, then re-syncs them from the source without discarding a hand-tuned layout. | B (4/5) | [→](drawio-skill.md) |
 | **diagram-design** | Agent skill for publishable diagrams in your own brand: onboards your site's palette and fonts, then draws 44 editorial diagram and chart types as one self-contained HTML+SVG file — at the cost of any editable source. | B (4/5) | [→](diagram-design.md) |
 | **huashu-design** | HTML-native design skill for prototypes, slide decks, editable PPTX, animation/MP4/GIF, infographics, and visual artifact generation. | B (5/6) | [→](huashu-design.md) |
+| **visual-explainer** | Turn source-backed diffs and plans into figure-led HTML with retained source and reader feedback; not an editable diagram model or fully offline default. | C (5/6) | [→](visual-explainer.md) |
 
 
 ## Comparison matrix
@@ -21,6 +22,7 @@
 | [drawio-skill](drawio-skill.md) | ✅ | B (4/5) | Best when the deliverable is an editable `.drawio` that must track a real source; choose Mermaid when the diagram should stay plain text, or archify when no draw.io install is acceptable. |
 | [diagram-design](diagram-design.md) | ✅ | B (4/5) | Best when the diagram will be published and must match your brand; choose Mermaid when it lives in git and changes often, drawio-skill when someone must keep editing it. |
 | [huashu-design](huashu-design.md) | ✅ | B (5/6) | Best for agent-generated HTML artifacts; choose Stitch for implementation handoff or Taste-Skill for lightweight UI taste guidance. |
+| [visual-explainer](visual-explainer.md) | ✅ | C (5/6) | Turn source-backed diffs and plans into figure-led HTML with retained source and reader feedback; not an editable diagram model or fully offline default. |
 
 
 ## What belongs here

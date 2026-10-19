@@ -1,0 +1,33 @@
+# October 19 final local verification
+Content HEAD: 7490c7ea8cb8babcff5ba33a1516fdf87c9a7d87
+85 unique candidates; 64 new pairs; 14 fresh; 6 proposed; 1 skipped; no failed or nonterminal rows.
+Actual Chrome: 7 open repositories = 6 proposed + 1 skipped; done open 0; unmatched 0.
+931 EN + 931 ZH; 195 category nodes; no overflows.
+No upstream installers, models, media, activation, paid experiments or security payloads executed.
+No personal harness changes. Original private branch is not pushed.
+Private identity redacted before first commit of publication branch.
+New semantic reviews: Harness OSS, Sphinx and Jasna all allowed, no must-fix items.
+ZH flow/mechanism/radar for all three: rendered to PNG and visually read, no visible clipping.
+Old content: independent integration/privacy audit reused, not a new runtime or upstream benchmark.
+
+intake-oct19-final-gates.log
+sha256: dfeae769d964ba71380c5adf16b2c9c76d2c56ca94a117c865cf55f3b70298ea
+exit: 0
+195 category nodes, 931 EN + 931 ZH pages, 0 errors, 1548 warnings.
+reverse_index check: reports are current, no full mislabels (0 partly-indexed rows tracked in reports/project-intake-backlog.md)
+
+intake-2026-10-19-final-tests.log
+sha256: bbbb30ceb9b02872ab7f975493216b5496fb18d7da8412edd8c8cbd17a8af8f4
+exit: 0
+Ran 483 tests in 75.127s
+OK
+check_companion_set: 0 error(s), 0 warning(s) in intake/tabs-2026-10-18/harness-report
+check_companion_set: 0 error(s), 0 warning(s) in intake/tabs-2026-10-19/report
+
+Inner-loop: local gates and 483 tools tests, real process logs.
+Acceptance: exact Chrome/ledger reconciliation; committed bilingual entries; semantic source review; route and generated asset checks.
+Holdout/unseen effectiveness: not applicable, no model improvement experiment.
+Expected values: user request, schema and frozen upstream source.
+Change boundary: content and relative paths only; tools/CI/AGENTS unchanged.
+Known gaps: no personal effectiveness/cost proof; 1548 warnings retained; 11 moved old external bookmarks cannot be repaired automatically.
+Remote CI and merge are separate next-stage evidence, not claimed by local results.

@@ -129,7 +129,7 @@ eve 把文件系统当作编写界面：`agent/` 目录里放 `instructions.md`�
 | [LangGraph](../agent-sdks/langgraph.zh.md) | ✅ | 想把 agent 建模成一张检查点由你掌控的显式图、并且身处庞大 Python 生态时，选 LangGraph；想让持久化和服务面（HTTP 路由、渠道、沙箱）一并交给你时，选 eve。 | LangGraph 的 checkpointer 在 Python 里覆盖了持久化和中断，但服务器、沙箱、聊天集成都得你自己补。eve 把这些打包好，换来的是放弃 Python 和图层面的控制力。 |
 | [OpenAI Agents SDK](../agent-sdks/openai-agents-sdk.zh.md) | ✅ | 想在已有应用里塞一个轻量、依赖极少的 agent 循环时，选 OpenAI Agents SDK；当 agent 必须是独立的长生命周期部署、要等上几天并能在聊天平台上应答时，选 eve。 | 该 SDK 极简、对托管方式不表态——没有持久会话存储、没有沙箱、没有渠道。eve 更重、更强制，但它提供的正是这三样。 |
 | [Pydantic AI](../agent-sdks/pydantic-ai.zh.md) | ✅ | 想要类型安全的 Python agent，并通过依赖注入接进现有服务时，选 Pydantic AI；当 agent 需要把持久等待和多渠道投递做成一等能力时，选 eve。 | Pydantic AI 的长处是在你已有的生态里写出有类型、可测试的 agent 代码；持久会话和渠道层得你自己做，而这恰好是 eve 自带的部分。 |
-| [OpenClaw](../personal-assistants/openclaw.zh.md) | ✅ | 想在自己设备上开箱获得一个横跨多消息平台的个人助手时，选 OpenClaw；当你是在**为别人**做这个产品、需要多租户鉴权、按租户隔离的凭据和可部署服务时，选 eve。 | OpenClaw 是现成的个人产品——极其年轻，没有 Lindy 记录。eve 是需要你自己装配和运维的框架：前期更费工，但具备多租户、持久会话以及 OpenClaw 不暴露的 HTTP／会话流接口。 |
+| [OpenClaw](../personal-assistants/messaging-daemons/openclaw.zh.md) | ✅ | 想在自己设备上开箱获得一个横跨多消息平台的个人助手时，选 OpenClaw；当你是在**为别人**做这个产品、需要多租户鉴权、按租户隔离的凭据和可部署服务时，选 eve。 | OpenClaw 是现成的个人产品——极其年轻，没有 Lindy 记录。eve 是需要你自己装配和运维的框架：前期更费工，但具备多租户、持久会话以及 OpenClaw 不暴露的 HTTP／会话流接口。 |
 
 ## 技术栈
 

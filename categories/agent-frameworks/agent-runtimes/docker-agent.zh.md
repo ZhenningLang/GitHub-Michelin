@@ -122,7 +122,7 @@ Docker Agent 是一个单 Go 二进制，可独立使用，也可作为 `docker`
 - **你要把 agent 嵌进自己的应用，而不是放在旁边。** 它没有进程内 API——入口只有 CLI、TUI 和单次会话暴露的 HTTP/MCP 端点；嵌入意味着起一个独立进程再对话。要程序自己握着调用栈、自定义工具就是普通函数时，用 [LangGraph](agent-sdks/langgraph.zh.md) 或 [Pydantic AI](agent-sdks/pydantic-ai.zh.md)。
 - **团队要的是平台，不是逐次会话的 CLI**——Web 控制台、账号体系、共享工作区、常驻托管端点。用 [Dify](../workflow-builders/dify.zh.md) 或 [Langflow](../workflow-builders/langflow.zh.md)：它们用一台你要运维的服务器换来这些中心能力，而 docker-agent 刻意保持为一个二进制。
 - **不可信输入在驱动 agent。** `filesystem` 与 `shell` 工具默认以你的身份在宿主机上执行；逐条审批、四档安全模式、allow/deny 清单这些护栏是默认开启的“提示”，真正的隔离要靠显式的 `--sandbox` 或 `deferred` 运行时。如果隔离是承重特性，选默认路径就带沙箱的运行时（见 [AgentScope](agent-sdks/agentscope.zh.md)），或沙箱化类目里的 micro-VM 层。
-- **你想要的是成品助手，不是 agent 工厂。** 不带配置执行 `docker agent run` 得到的是通用默认 agent；[OpenClaw](personal-assistants/openclaw.zh.md) 这类打包助手已经做好了 20 多个消息渠道的接入，用 docker-agent 这些都得自己写配置。
+- **你想要的是成品助手，不是 agent 工厂。** 不带配置执行 `docker agent run` 得到的是通用默认 agent；[OpenClaw](personal-assistants/messaging-daemons/openclaw.zh.md) 这类打包助手已经做好了 20 多个消息渠道的接入，用 docker-agent 这些都得自己写配置。
 - **你的环境不允许“默认设置直接跑”。** 遥测默认开启，且官方文档明说命令位置参数（可能含提示词、文件路径）和错误文本都在采集范围；再加上大约每 2–3 天一个 minor 版本，钉住版本的配置要追着 schema 走。两者都能关、能管，但需要合规评审的环境最好先知道自己买的是什么。
 
 ## 横向对比
@@ -132,7 +132,7 @@ Docker Agent 是一个单 Go 二进制，可独立使用，也可作为 `docker`
 | [LangGraph](agent-sdks/langgraph.zh.md) | ✅ | 循环、审批、委派、分发都想要现成的、交付物是可分享的 YAML 时选 Docker Agent；控制流图本身必须是类型化、可测试、随应用版本化的代码时选 LangGraph。 | 配置优先换来零胶水代码和 OCI 原生分享；代码优先换来进程内自定义工具和可当图评审的确定性控制流，代价是 harness 要自己写、自己养。 |
 | [Dify](../workflow-builders/dify.zh.md) | ✅ | 团队里不写代码的人要在浏览器里搭流程、看运行，且你愿意运维它的服务器时选 Dify；本地/CI 场景、以配置 diff 作为评审面时选 Docker Agent。 | Dify 把数据集、应用和 API key 集中进自托管 Web 平台；Docker Agent 让每个 agent 都只是你机器上的一个文件——不用养服务器，但也没有控制台。 |
 | [CrewAI](agent-sdks/crewai.zh.md) | ✅ | 角色与流程的团队抽象必须从你产品内的 Python 调用时起作用，选 CrewAI；同一个“协调者＋专家”的思路想以声明式表达、每个 agent 单独钉模型时，选 Docker Agent。 | CrewAI 是进程内 Python 框架，扩展生态大；Docker Agent 用配置和 `transfer_task` 委派团队，团队拓扑可评审、可分享，但不能被 import。 |
-| [OpenClaw](personal-assistants/openclaw.zh.md) | ✅ | 要一个已经活在 20 多个消息渠道里、自己管记忆的成品个人助手，选 OpenClaw；产出是 N 个由团队撰写、运行、分发的专用 agent 时，选 Docker Agent。 | OpenClaw 是替你把渠道胶水做完的 to-C 产品；Docker Agent 是不带渠道的 builder/runtime，换来任意 agent 团队和 OCI 分发。 |
+| [OpenClaw](personal-assistants/messaging-daemons/openclaw.zh.md) | ✅ | 要一个已经活在 20 多个消息渠道里、自己管记忆的成品个人助手，选 OpenClaw；产出是 N 个由团队撰写、运行、分发的专用 agent 时，选 Docker Agent。 | OpenClaw 是替你把渠道胶水做完的 to-C 产品；Docker Agent 是不带渠道的 builder/runtime，换来任意 agent 团队和 OCI 分发。 |
 | [OpenAI Agents SDK](agent-sdks/openai-agents-sdk.zh.md) | ✅ | 你打算在 Python/TypeScript 里亲手写 handoff 和 guardrail、且默认就是 OpenAI 模型线时选该 SDK；审批、会话、沙箱、registry 分享想要围着 provider 无关的 `provider/model` 串预装好时选 Docker Agent。 | SDK 保持最小、留在你的程序里；Docker Agent 是更重的主见运行时——默认项要多学，但一个文件就有一个能用多工具的 agent。 |
 
 ## 技术栈

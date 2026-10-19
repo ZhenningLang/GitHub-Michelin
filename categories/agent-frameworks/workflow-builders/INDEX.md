@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **PenguinHarness** | Version and evaluate harness changes with a fixed model and benchmark; training-score gains still need unseen-task checks. | B (6/6) | [→](penguin-harness.md) |
 | **DSPy** | You have eval data and a metric and want optimizers to compile prompts instead of hand-tuning them. | A (6/6) | [→](dspy.md) |
 | **Harness²** | Adapt a frozen-model agent's whole harness on the current task without ground-truth feedback; repeated probes cost extra, and finals-only adoption can regress. | C (5/6) | [→](harness2.md) |
 | **SkillOpt** | Use it when you must optimize an agent's natural-language skill doc for a frozen LLM against a scorable benchmark — but without a reliable eval to gate edits the method has no signal, and it's a brand-new v0.1.0. | B (6/6) | [→](skillopt.md) |
@@ -23,6 +24,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [PenguinHarness](penguin-harness.md) | ✅ | B (6/6) | Version and evaluate harness changes with a fixed model and benchmark; training-score gains still need unseen-task checks. |
 | [DSPy](dspy.md) | ✅ | A (6/6) | You have eval data and a metric and want optimizers to compile prompts instead of hand-tuning them. |
 | [Harness²](harness2.md) | ✅ | C (5/6) | Recursive task-time harness editing and per-domain experience; no baseline-in-pool guarantee, and executor isolation is your responsibility. |
 | [SkillOpt](skillopt.md) | ✅ | B (6/6) | Use it when you must optimize an agent's natural-language skill doc for a frozen LLM against a scorable benchmark — but without a reliable eval to gate edits the method has no signal, and it's a brand-new v0.1.0. |

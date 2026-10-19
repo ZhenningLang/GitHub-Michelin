@@ -120,7 +120,7 @@ Easel 不自带 Agent 内核——它把 OpenClaw（开源 Agent 运行时，npm
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [OpenClaw](../agent-frameworks/agent-runtimes/personal-assistants/openclaw.zh.md) | ✅ | 要一个跨聊天频道的通用私人助理时直接用 OpenClaw；活儿就是中文社媒内容运营、想要现成技能加画像加发布闭环时选 Easel。 | Easel 补上了内容工作台，但绑死在它支持的平台集合上；OpenClaw 是随你塑造的运行时，出厂没有卡片／视频／发布技能。 |
+| [OpenClaw](../agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/openclaw.zh.md) | ✅ | 要一个跨聊天频道的通用私人助理时直接用 OpenClaw；活儿就是中文社媒内容运营、想要现成技能加画像加发布闭环时选 Easel。 | Easel 补上了内容工作台，但绑死在它支持的平台集合上；OpenClaw 是随你塑造的运行时，出厂没有卡片／视频／发布技能。 |
 | [MoneyPrinterTurbo](../video-production/moneyprinter-turbo.zh.md) | ✅ | 只要“主题→口播库存素材短视频”且边际成本趋零时选 MoneyPrinterTurbo；链路必须延伸到真实发布和账号学习时选 Easel。 | 家电式部署、单条成本极低，但没有账号画像、没有平台发布、没有归因——视频到文件为止。 |
 | [guizang-social-card-skill](../agent-skills/visual-content/guizang-social-card.zh.md) | ✅ | 只要小红书规格卡片、且已有 coding agent 时装这一个技能就够；发现→发布→归因的完整链条才轮到 Easel。 | 一个 Markdown 技能、零基础设施；热点、发布和数据复盘仍然全靠手动。 |
 | social-auto-upload（dreammis） | 未收录 | 内容已做好、唯一痛点是自动发到多个中文平台时，这个 MIT 上传器更轻；内容还不存在、需要从选题做起时才用 Easel。 | 真实仓库（MIT，约 1.5 万星），本批次未收录；取舍是只管上传的定位对比 Easel 的创作闭环。 |

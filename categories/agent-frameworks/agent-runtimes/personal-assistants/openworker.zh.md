@@ -84,7 +84,7 @@ health:
 
 ## 何时使用
 
-你是小团队里唯一的工程师、团队里没有安全岗；或者你是整天泡在 Slack、GitHub、Jira 和日历里的运营角色，总是把上下文贴进聊天机器人，然后自己动手干真正的活。你想说一句「扫一遍这个仓库的漏洞，把修复 PR 准备好」或「根据 HubSpot 和我的邮箱，给我准备 Acme 那通电话的简报」，拿回来的是一个文件、一个 PR 或一条线程回复——事后还要能回答「那条命令是谁跑的、我批过没有」。你在 [OpenClaw](openclaw.zh.md) 之上选 OpenWorker，是因为决定性的是桌面上的管控，而不是聊天渠道的触达：写操作默认要审批、有任何自动审批模式都降不下来的「人工底线」、每次工具调用都带审批来源的审计记录。你在 [OpenMuse](openmuse.zh.md) 之上选它，是因为你不接受强制的厂商云 key——OpenWorker 不登录也能完整使用，模型可选约 15 家提供商或本地 Ollama；你在通用编程 agent 之上选它，是因为它按岗位打包：内置的 Security coworker 自带岗位说明、工具清单和扫描器技能（semgrep、gitleaks），开箱即接好。
+你是小团队里唯一的工程师、团队里没有安全岗；或者你是整天泡在 Slack、GitHub、Jira 和日历里的运营角色，总是把上下文贴进聊天机器人，然后自己动手干真正的活。你想说一句「扫一遍这个仓库的漏洞，把修复 PR 准备好」或「根据 HubSpot 和我的邮箱，给我准备 Acme 那通电话的简报」，拿回来的是一个文件、一个 PR 或一条线程回复——事后还要能回答「那条命令是谁跑的、我批过没有」。你在 [OpenClaw](messaging-daemons/openclaw.zh.md) 之上选 OpenWorker，是因为决定性的是桌面上的管控，而不是聊天渠道的触达：写操作默认要审批、有任何自动审批模式都降不下来的「人工底线」、每次工具调用都带审批来源的审计记录。你在 [OpenMuse](openmuse.zh.md) 之上选它，是因为你不接受强制的厂商云 key——OpenWorker 不登录也能完整使用，模型可选约 15 家提供商或本地 Ollama；你在通用编程 agent 之上选它，是因为它按岗位打包：内置的 Security coworker 自带岗位说明、工具清单和扫描器技能（semgrep、gitleaks），开箱即接好。
 
 ## 怎么用起来
 
@@ -113,8 +113,8 @@ health:
 
 - **你需要 agent 的命令默认就被隔离。** 文档写得很直白：「在你为这台机器打开 OpenShell 之前，桌面应用一直直接执行命令」（`docs/openshell.md`，2026-09-29 读），macOS/Windows 沙箱同样要手动开启。审批闸门是人工检查点，不是一堵墙。如果你要不靠记得开设置就有隔离，改用在容器里跑任务的编程 agent，比如 [OpenHands](../../coding-agents/orchestration-and-review/openhands.zh.md)，它的任务一开始就在 Docker 沙箱里执行。
 - **你需要整条链路都开源，包括一键连接器。** 不登录时手动粘 token 能用，但托管 OAuth 走 OpenWorker Cloud 中转（Auth0 登录、`coworker/cloud.py` 里的 `POST /v1/oauth/{provider}/start`），其源码不公开——代码里引用的 `opencoworker-cloud` 仓库访问返回 404。想要本地优先、内核能强制断网的助手，改用 [OpenHuman](openhuman.zh.md)。
-- **你想让它在 WhatsApp、Telegram 或 iMessage 里回你。** OpenWorker 的对话入口是自己的桌面应用加 Slack 的 @ 提及；渠道触达才是需求时，改用 [OpenClaw](openclaw.zh.md)。
-- **你需要 Linux 桌面版。** 安装包只有 macOS（Apple Silicon；release 里也附了 Intel 版）和 Windows 10/11，Windows 版没有代码签名（SmartScreen 会报警）。Linux 上只能跑无界面的服务端，作为「远程机器」由 Mac/PC 桌面端控制，或者从源码跑。要 Linux 上托管的助手，改用 [OpenMuse](openmuse.zh.md) 或 [Hermes Agent](hermes-agent.zh.md)。
+- **你想让它在 WhatsApp、Telegram 或 iMessage 里回你。** OpenWorker 的对话入口是自己的桌面应用加 Slack 的 @ 提及；渠道触达才是需求时，改用 [OpenClaw](messaging-daemons/openclaw.zh.md)。
+- **你需要 Linux 桌面版。** 安装包只有 macOS（Apple Silicon；release 里也附了 Intel 版）和 Windows 10/11，Windows 版没有代码签名（SmartScreen 会报警）。Linux 上只能跑无界面的服务端，作为「远程机器」由 Mac/PC 桌面端控制，或者从源码跑。要 Linux 上托管的助手，改用 [OpenMuse](openmuse.zh.md) 或 [Hermes Agent](messaging-daemons/hermes-agent.zh.md)。
 - **你要的是 CI 级别、可复现的安全扫描。** Security coworker 调用 semgrep 和 gitleaks，再让模型分诊；分诊是一种判断。要每次都给出同一结论的门禁，直接在 CI 里跑扫描器，只把 OpenWorker 用在上面那层「分诊 + 修复 PR」。
 - **你需要一个可嵌入的 SDK 来搭自己的 agent。** 这是一个成品应用；README 自己就把你指向 aisuite（未收录），或者用 [LangChain](../../workflow-builders/langchain.zh.md) 这类 agent SDK。
 - **你需要锁定版本、长期支持或响应及时的 issue 区。** SECURITY.md 只支持「最新版本」，应用会自动更新；2026-09-29 时 issue 区 226 个未关闭、26 个已关闭，近期的报告大多零评论，README 还提醒偏离内部路线图的功能 PR 可能被拒。更新后没法重测的东西，别指望它不变。
@@ -124,7 +124,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| [OpenClaw](openclaw.zh.md) | ✅ | 助手必须在你已经在用的聊天软件里（WhatsApp、Telegram、iMessage 等）找到你时，选 OpenClaw；要的是桌面上逐项审批、每次调用都能审计的干活方式时，选 OpenWorker。 | OpenClaw 换来渠道触达和大社区；OpenWorker 换来人工底线、长期审批的升级阶梯和岗位 persona，但只活在一个桌面应用加 Slack 里。 |
+| [OpenClaw](messaging-daemons/openclaw.zh.md) | ✅ | 助手必须在你已经在用的聊天软件里（WhatsApp、Telegram、iMessage 等）找到你时，选 OpenClaw；要的是桌面上逐项审批、每次调用都能审计的干活方式时，选 OpenWorker。 | OpenClaw 换来渠道触达和大社区；OpenWorker 换来人工底线、长期审批的升级阶梯和岗位 persona，但只活在一个桌面应用加 Slack 里。 |
 | [OpenMuse](openmuse.zh.md) | ✅ | 想要一个能在手机上接管的持久浏览器，选 OpenMuse；不接受强制厂商 key、要的是本机文件、终端和 25+ 连接器，选 OpenWorker。 | OpenMuse 缺少 CopilotKit 云 key 时 API 拒绝启动；OpenWorker 不登录也能跑，只有可选的一键 OAuth 依赖闭源中转。 |
 | [OpenHuman](openhuman.zh.md) | ✅ | 产品本身就是「早就了解你所有账号、还能强制断网」的助手时，选 OpenHuman；要带审批的成品交付（PR、文档、线程回复）时，选 OpenWorker。 | OpenHuman 是 GPL-3.0-only，内核可强制纯本地；OpenWorker 是 MIT、多模型，但数据会发给你选的模型和连接器。 |
 | Eigent（`eigent-ai/eigent`） | 未收录 | 想要基于多 agent 协作、Apache-2.0 许可的桌面「cowork」，去评估 Eigent；你买的就是管控（底线、审计来源、沙箱可选）时，选 OpenWorker。 | Eigent 早一年（2025-07）创建，桌面形态相近；本批 tab 收录未加入，这里没有深入调研它的取舍。 |

@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "TurboFieldfare does", "zh": "TurboFieldfare 做的"},
+  "steps": [
+    {"lane": "you", "en": "Build and open the native app on a supported Mac", "zh": "在受支持的 Mac 上构建并打开应用", "code": "swift build -c release"},
+    {"lane": "you", "en": "Choose Download Model and a destination", "zh": "点击下载模型并选择目录"},
+    {"lane": "them", "en": "Streams the pinned checkpoint into a verified .gturbo directory", "zh": "把固定检查点流式重排成已校验的模型目录"},
+    {"lane": "you", "en": "Load the model, enter a prompt and choose Generate", "zh": "加载模型，输入提示词并点击生成"},
+    {"lane": "them", "en": "Reads selected experts from SSD and returns generated text", "zh": "从 SSD 读取选中的专家，返回生成文字"}
+  ],
+  "value": {"en": "Use the pinned Gemma model without keeping all expert weights resident", "zh": "无需让全部专家权重常驻，也能运行固定 Gemma 模型"},
+  "sources": ["https://github.com/drumih/turbo-fieldfare/blob/2e9ea50e8c35a65d9170e3bff9d1063be8931ec0/README.md#try-it"]
+}

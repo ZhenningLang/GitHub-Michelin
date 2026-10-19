@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "direction": "right",
+  "nodes": [
+    {"id": "app", "en": "Local app artifacts", "zh": "本地应用产物", "kind": "input"},
+    {"id": "graph", "en": "Reconstruct and validate application graph", "zh": "重建并验证应用关系图", "technique": [1]},
+    {"id": "record", "en": "Hashed evidence and explicit limitations", "zh": "带散列与明确局限的证据", "technique": [1]},
+    {"id": "ledger", "en": "Immutable ledger rejects ID conflicts", "zh": "不可变账本拒绝标识冲突", "technique": [2]},
+    {"id": "agent", "en": "Agent explanation for human validation", "zh": "待人工验证的 agent 解释", "kind": "output"}
+  ],
+  "edges": [{"from": "app", "to": "graph"}, {"from": "graph", "to": "record"}, {"from": "record", "to": "ledger"}, {"from": "ledger", "to": "agent"}],
+  "sources": ["https://github.com/morluto/rea/blob/b83b9caf4a5f0241a5fd370792f1aed1bffbb2cf/src/application/investigation/EvidenceLedger.ts", "https://github.com/morluto/rea/blob/b83b9caf4a5f0241a5fd370792f1aed1bffbb2cf/src/application/javascript/JavaScriptApplicationService.ts"]
+}

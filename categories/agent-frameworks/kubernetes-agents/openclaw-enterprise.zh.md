@@ -78,7 +78,7 @@ health:
 
 ## 何时使用
 
-你是一家公司的平台团队，OpenClaw（或 Codex）agent 已经走出了试点。五个部门都要自己的 agent，各配各的模型密钥、Slack 工作区和文件工作区；安全团队问“财务 agent 用的那把密钥谁能读”，没人答得上来，因为每个 agent 都是某个人拿自己凭据起的一个网关进程。当你缺的是**围绕 agent 的治理**、而不是 agent 本身时，就会想到 OpenClaw Enterprise：每个租户一个 Namespace；一套在每次资源操作时都检查的 IAM 模型（Role、AccessBinding，以及优先拒绝的 Restriction）；Secret 只投递到某个 agent 的运行时，API 永远不回显它的值；每次部署生成一个不可变的 AgentRevision；审计记录和变更在同一个事务里提交。和 [kagent](kagent.zh.md) 比，你不是把 agent 写成 CRD、用 `kubectl` 评审——agent 循环就是原版 OpenClaw 或 Codex，界面是自带 IAM 的 API 和控制台。和直接跑 [OpenClaw](../agent-runtimes/personal-assistants/openclaw.zh.md) 比，你用单操作者的信任模型换来每个 agent 独立身份和租户隔离，代价是一个 Kubernetes 集群、一套 PostgreSQL，以及一个才一个月大的项目。
+你是一家公司的平台团队，OpenClaw（或 Codex）agent 已经走出了试点。五个部门都要自己的 agent，各配各的模型密钥、Slack 工作区和文件工作区；安全团队问“财务 agent 用的那把密钥谁能读”，没人答得上来，因为每个 agent 都是某个人拿自己凭据起的一个网关进程。当你缺的是**围绕 agent 的治理**、而不是 agent 本身时，就会想到 OpenClaw Enterprise：每个租户一个 Namespace；一套在每次资源操作时都检查的 IAM 模型（Role、AccessBinding，以及优先拒绝的 Restriction）；Secret 只投递到某个 agent 的运行时，API 永远不回显它的值；每次部署生成一个不可变的 AgentRevision；审计记录和变更在同一个事务里提交。和 [kagent](kagent.zh.md) 比，你不是把 agent 写成 CRD、用 `kubectl` 评审——agent 循环就是原版 OpenClaw 或 Codex，界面是自带 IAM 的 API 和控制台。和直接跑 [OpenClaw](../agent-runtimes/personal-assistants/messaging-daemons/openclaw.zh.md) 比，你用单操作者的信任模型换来每个 agent 独立身份和租户隔离，代价是一个 Kubernetes 集群、一套 PostgreSQL，以及一个才一个月大的项目。
 
 ## 怎么用起来
 
@@ -103,7 +103,7 @@ health:
 
 ## 何时不用
 
-- **你只有一个人或一个小团队、一个助手。** 文档专门强调 OCC 不能沿用核心网关“单操作者”的信任假设，这套机制正是为多操作者准备的；只有一个操作者时它纯属成本。直接跑 [OpenClaw](../agent-runtimes/personal-assistants/openclaw.zh.md)。
+- **你只有一个人或一个小团队、一个助手。** 文档专门强调 OCC 不能沿用核心网关“单操作者”的信任假设，这套机制正是为多操作者准备的；只有一个操作者时它纯属成本。直接跑 [OpenClaw](../agent-runtimes/personal-assistants/messaging-daemons/openclaw.zh.md)。
 - **你不跑 Kubernetes。** 能端到端部署 agent 的只有 Kubernetes 路径：Docker／Podman 的 Compose 配置只是控制面预览，官方文档明说它不能部署 Agent；SSH Compute 只能跑内嵌 OpenClaw，没有专用 Codex，也没有 OCC 托管的模型凭据。没有集群、只想协调几个 agent，用 [Paperclip](../../agent-tooling/supervision-surfaces/paperclip.zh.md)。
 - **你要把 agent 做成 Kubernetes 自定义资源、走 GitOps 评审。** OCC 的资源存在 PostgreSQL 里、挡在它自己的 API 和 IAM 后面，不在 etcd 里；`kubectl get` 看不到 Agent，Kubernetes RBAC 也替代不了它的授权。用 [kagent](kagent.zh.md)。
 - **你要自己写 agent 循环。** Harness 只能选 OpenClaw 或 Codex，没有给你写规划器的框架 API。用 [LangGraph](../agent-runtimes/agent-sdks/langgraph.zh.md)，再按需托管。
@@ -116,7 +116,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [OpenClaw](../agent-runtimes/personal-assistants/openclaw.zh.md) | ✅ | 助手和它的凭据归一个操作者管，选原版 OpenClaw；多个团队的 OpenClaw agent 要在共享集群上各有身份、密钥和审计，选 OpenClaw Enterprise。 | OCE 在底下跑的就是 OpenClaw，不是替代它；多出来的是 IAM、版本和租户隔离，代价是 Kubernetes 集群、PostgreSQL 和一个还不成熟的控制面。 |
+| [OpenClaw](../agent-runtimes/personal-assistants/messaging-daemons/openclaw.zh.md) | ✅ | 助手和它的凭据归一个操作者管，选原版 OpenClaw；多个团队的 OpenClaw agent 要在共享集群上各有身份、密钥和审计，选 OpenClaw Enterprise。 | OCE 在底下跑的就是 OpenClaw，不是替代它；多出来的是 IAM、版本和租户隔离，代价是 Kubernetes 集群、PostgreSQL 和一个还不成熟的控制面。 |
 | [kagent](kagent.zh.md) | ✅ | agent 要做成用 `kubectl` 和 GitOps 评审的 CRD、并在它的引擎上开发，选 kagent；agent 就是原版 OpenClaw／Codex、你要的是带细粒度 IAM 的控制台和 API，选 OCE。 | kagent 继承 Kubernetes RBAC 和 etcd；OCE 把状态放在 PostgreSQL、用自己的 IAM 和审计，Kubernetes 工具看不见。 |
 | [AX](ax.zh.md) | ✅ | 一大批短命、大多空闲的沙箱任务要声明和挂起，选 AX；数量较少、长期存在、有名字的 agent 需要按租户治理，选 OCE。 | AX 在 Agent Substrate 上优化密度、不带 agent；OCE 带 agent 运行时和治理，但每个网关一直开着。 |
 | [Paperclip](../../agent-tooling/supervision-surfaces/paperclip.zh.md) | ✅ | 独立创业者或小团队要一块能唤醒 agent、给它们封顶预算的任务板，选 Paperclip；组织要给 agent 做租户隔离、IAM 和可审计部署，选 OCE。 | Paperclip 轻、不需要 Kubernetes，但没有租户和 IAM 模型；OCE 有，但要求集群和运维能力。 |

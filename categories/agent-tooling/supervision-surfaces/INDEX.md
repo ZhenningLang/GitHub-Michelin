@@ -1,12 +1,15 @@
 # supervision-surfaces
 
-> Category node. The screen a human looks at: review and approval gates over what the agent produced, browser/mobile cockpits for its sessions, and desktop control planes over several agents at once.
+> Category node. The human's view, approval and steering surface over agent work: terminal, browser, mobile and desktop interfaces all qualify.
 > ← back to [agent-tooling](../INDEX.md) · root: [category route](../../../INDEX.md) · 中文：[INDEX.zh.md](INDEX.zh.md)
 
 ## Projects in this category
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Sphinx** | Pause a local Git push to answer source-grounded behavior questions; bypassable learning aid, not release authorization. | C (5/6) | [→](sphinx.md) |
+| **dsh-TUI** | Your DeepSeek Harness session has tools, approvals and background work scattered across text; dsh-TUI projects that state into terminal cards, panels and a session browser. | B (5/6) | [→](dsh-tui.md) |
+| **Agor** | Coordinate mixed coding agents and colleagues on live branch boards; BSL, database and execution-security operations remain yours. | D (6/6) | [→](agor.md) |
 | **Agent Orchestrator** | Use it when you supervise several parallel coding agents on real branches and want a desktop control plane that isolates each in a git worktree and auto-routes CI/review/conflict feedback — but it's ~4.5 months old, pre-1.0, single-User-owned, with a loopback-no-auth daemon. | B (6/6) | [→](agent-orchestrator.md) |
 | **Hermes Workspace** | Use it when you run Nous's hermes-agent and want its state as a web console — chat, memory, skills, terminal, tmux swarm dispatch, phone via PWA/Tailscale — but its enhanced panes are keyed to the Hermes gateway/dashboard APIs and it's ~6 months old. | B (5/6) | [→](hermes-workspace.md) |
 | **Ekko Studio** | Use it when you run Hermes Agent *and* coding agents like Claude Code/Codex and want one local console — chats, @mention group rooms, a workflow canvas with approval gates, files and terminal — but it's BSL-1.1 (non-commercial until 2029), relicensed from MIT a month in, ~5.5 months old and mostly one author. | D (6/6) | [→](ekko-studio.md) |
@@ -20,6 +23,9 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Sphinx](sphinx.md) | ✅ | C (5/6) | Tests your prediction of committed behavior before Git continues; adds model cost and fallible grading rather than review findings. |
+| [dsh-TUI](dsh-tui.md) | ✅ | B (5/6) | Your DeepSeek Harness session has tools, approvals and background work scattered across text; dsh-TUI projects that state into terminal cards, panels and a session browser. |
+| [Agor](agor.md) | ✅ | D (6/6) | Coordinate mixed coding agents and colleagues on live branch boards; BSL, database and execution-security operations remain yours. |
 | [Agent Orchestrator](agent-orchestrator.md) | ✅ | B (6/6) | A desktop control plane that fans work out to many agents in worktrees and routes CI/review feedback back — breadth over one artifact. |
 | [Hermes Workspace](hermes-workspace.md) | ✅ | B (5/6) | Vendor-shaped web console for one agent's whole state; the richest view, the most coupled to its host's APIs. |
 | [Ekko Studio](ekko-studio.md) | ✅ | D (6/6) | One local switchboard over Hermes plus six coding-agent CLIs — group rooms and workflow canvas included — paid for with a non-commercial source-available licence. |
@@ -32,4 +38,4 @@
 
 ## What belongs here
 
-Interfaces whose primary job is the **human's view and decision** over agent work: review/approval gates, session cockpits, multi-agent control planes. Not LLM-authored review findings (see `ai-code-review`), not the task/plan state the agent runs on (see `work-state`), and not post-hoc transcript analytics (see `session-history`).
+Interfaces whose primary job is the **human's view and decision** over agent work: review/approval gates, session cockpits, shared branch boards and multi-agent control planes, whether in a terminal, browser or desktop app. Not complete agents selected for their own execution core (see `agent-frameworks`), not LLM-authored review findings (see `ai-code-review`), not the task/plan state the agent runs on (see `work-state`), and not post-hoc transcript analytics (see `session-history`).

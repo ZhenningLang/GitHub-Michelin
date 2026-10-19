@@ -111,8 +111,8 @@ SkillsGate 是个 Electron 应用，所有文件操作都在主进程里做，�
 
 - **同一台机器上你也在跑 `npx skills`。** SkillsGate 按**第 1 版**格式读写 `~/.agents/.skill-lock.json`；上游 skills.sh CLI（`vercel-labs/skills` 的 `src/skill-lock.ts`）已经是**第 3 版**，读到旧版锁文件会直接清空。反过来，SkillsGate 把第 3 版锁文件当成空的，在新建、删除、更新 skill 时覆盖写回（issue #30，2026-09-26，报告人用假数据复现）。两个工具来回改同一个锁文件，会丢掉安装来源记录。只选**一个**管理器：想要 CLI 和它的更新追踪，用 [Vercel Skills](vercel-skills.zh.md)；只在图形界面里操作，才用 SkillsGate。
 - **你只想从一个多 skill 仓库里装其中一个。** Discover 的 Install 传的是 skill 的 `owner/repo` 来源，安装器会把克隆下来的仓库里*所有* `SKILL.md` 都装给勾选的 agent（[推断]：依据是 v0.7.3 标签下 `ipc-handlers.ts` 的 `skills:install` 源码，未实际运行）。要精确安装，用 [Vercel Skills](vercel-skills.zh.md) 的 `npx skills add <repo> --skill <name>`。
-- **你需要按项目区分 skill 组合或“配置档”。** 安装只有全局一种（`installSkill(source, agents, "global")`）；`.claude/skills` 这类项目目录只会被*扫描展示*，不受它管理，“配置档”功能仍是未关闭的需求（issue #13）。Skills Hub 或 xingkongliang 的 Skills Manager（均未收录）有项目级工作区和预设。
-- **你要让 skill 库通过 git 在多台电脑间同步。** SkillsGate 的同步是单向的 SSH 推送/镜像到你登记的服务器，没有基于 git 的库。Skills Hub（未收录）能通过 GitHub/GitLab/Gitee 同步整个库。
+- **你需要按项目区分 skill 组合或“配置档”。** 安装只有全局一种（`installSkill(source, agents, "global")`）；`.claude/skills` 这类项目目录只会被*扫描展示*，不受它管理，“配置档”功能仍是未关闭的需求（issue #13）。[Skills Hub](skills-hub.zh.md) 支持项目部署；xingkongliang 的 Skills Manager（未收录）是另一个工作区与预设选项。
+- **你要让 skill 库通过 git 在多台电脑间同步。** SkillsGate 的同步是单向的 SSH 推送/镜像到你登记的服务器，没有基于 git 的库。[Skills Hub](skills-hub.zh.md) 能通过 GitHub/GitLab/Gitee 同步整个库。
 - **你要无界面、可脚本化的工具。** 终端界面以及 `skillsgate` / `@skillsgate/tui` 两个 npm 包已于 2026 年 9 月停止维护（README；PR #27），剩下的只有图形界面。在 CI、dotfiles 初始化脚本或 SSH 会话里，用 [Vercel Skills](vercel-skills.zh.md) 或一段 `git clone` 加符号链接的脚本。
 - **你需要经过审核的目录。** Discover 查询的是 skills.sh 的公开 API，搜索结果指向哪个仓库就克隆哪个，进入 agent 上下文之前没有任何审核。每次安装都当作引入第三方提示词内容来对待——这一行里的任何管理器都替你解决不了这个问题。
 - **你还在旧版本上，或者网络路径不稳。** 0.7.0 及更早版本的 macOS 自动更新是坏的（README 顶部横幅：必须手动重装）；issue #28（macOS 上 Discover 报 `fetch failed`，而 `curl` 正常）还在通过 PR #29 修复。要预留一次手动升级。
@@ -123,7 +123,7 @@ SkillsGate 是个 Electron 应用，所有文件操作都在主进程里做，�
 |---|---|---|---|
 | [Vercel Skills](vercel-skills.zh.md) | ✅ | 习惯终端或需要脚本化安装，选 `npx skills` 命令行；只有当你缺的正是 skill × agent 的可视矩阵和 SSH 推送时，才选 SkillsGate。 | CLI 是 SkillsGate 目录和锁文件格式的上游，有 Node 的地方就能跑，支持 `--skill` 和项目级安装——但没有界面、编辑器和远程服务器视图；两者在同一台机器上混用会弄坏共享锁文件（第 1 版对第 3 版）。 |
 | Skills Manager（xingkongliang/skills-manager） | 未收录 | 想要项目工作区、预设组合和多设备备份、又想要更轻的原生应用，选这个 Rust/Tauri 管理器；要把 skill 推到开发服务器，选 SkillsGate。 | 约 5.1k 星、MIT、2026-09 仍活跃，有中央库、按项目同步、可由 agent 驱动管理；我们没找到 SSH 远程服务器面板。本批次按标签页收录，未添加。 |
-| Skills Hub（qufei1993/skills-hub） | 未收录 | skill 库要跟着你换电脑，选 Skills Hub——它用 GitHub/GitLab/Gitee 仓库同步、还能定时更新；同步目标是远程服务器而不是另一台笔记本时，选 SkillsGate。 | Tauri + React、MIT、2026-09 仍活跃；多了标签、回收站、全局/项目两种范围和定时更新——功能更多，要理解的状态也更多。本批次按标签页收录，未添加。 |
+| [Skills Hub](skills-hub.zh.md) | ✅ | skill 库要跟着你换电脑，选 Skills Hub——它用 GitHub/GitLab/Gitee 仓库同步、还能定时更新；同步目标是远程服务器而不是另一台笔记本时，选 SkillsGate。 | Tauri + React、MIT；多了标签、回收站、全局/项目两种范围和定时更新——功能更多，要理解的状态也更多。 |
 | Skills Manager（jiweiyeah/Skills-Manager） | 未收录 | 想要同样的“符号链接到 32 个工具”模型，外加 Homebrew cask 和 AI 翻译 skill，选这个；更看重经过公证的 macOS 安装包和 SSH 服务器，选 SkillsGate。 | 约 1k 星、MIT；它的 cask 只做了 ad-hoc 签名并会去掉隔离属性，README 里还挂着赞助广告。本批次按标签页收录，未添加。 |
 | dotfiles 里一段 `git clone` + `ln -s` 脚本 | 非仓库 | 只有几个自己写的 skill、dotfiles 本来就在版本管理里，十行符号链接脚本胜过任何图形界面；等到浏览目录和按 agent 开关值得一个 Electron 应用时，再选 SkillsGate。 | 零依赖、完全可审查，但每个 agent 的路径表要自己维护，也没有发现功能和编辑器。这是一种做法，不是一个项目。 |
 

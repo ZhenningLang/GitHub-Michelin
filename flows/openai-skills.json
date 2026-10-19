@@ -1,0 +1,17 @@
+{
+  "schema":1,
+  "them":{"en":"OpenAI Skills","zh":"OpenAI Skills"},
+  "steps":[
+    {"lane":"you","en":"Review a historical skill folder, its helpers and license at a fixed ref","zh":"固定版本，审查历史技能目录、助手及许可"},
+    {"lane":"you","en":"Select the reviewed source folder and installation destination","zh":"选择审查过的来源目录与安装目标","code":"--repo · --path · --ref","component":{"en":"skill-installer arguments","zh":"技能安装器参数"}},
+    {"lane":"them","en":"Fetch the selected source and copy a valid skill into a new directory","zh":"获取选定来源，将有效技能复制到新目录","component":{"en":"Python installer","zh":"Python 安装器"}},
+    {"lane":"you","en":"Load the skill in a compatible host and supply the real task input","zh":"在兼容宿主加载技能，提供真实任务输入"},
+    {"lane":"them","en":"Guide the host through the task procedure and bundled helpers","zh":"指导宿主按任务流程使用配套助手","component":{"en":"SKILL.md and helper scripts","zh":"技能指令与助手脚本"}}
+  ],
+  "value":{"en":"Reuse an inspectable historical task procedure without treating the whole catalogue as maintained or uniformly licensed","zh":"复用可审查的历史流程，不误认为全仓仍维护或统一授权"},
+  "sources":[
+    "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/README.md",
+    "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.system/skill-installer/SKILL.md",
+    "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/gh-fix-ci/SKILL.md"
+  ]
+}

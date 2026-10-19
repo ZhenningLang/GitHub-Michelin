@@ -1,0 +1,781 @@
+{
+  "scope": "Two-round unique repository assessments; fit is an incremental mechanism judgment, not measured performance",
+  "counts": {
+    "medium": 13,
+    "low": 61,
+    "none": 8,
+    "high": 3
+  },
+  "pending_review": [],
+  "rows": [
+    {
+      "repo": "AgriciDaniel/claude-obsidian",
+      "result": "done",
+      "incremental_fit": "medium",
+      "reason": "可作具体机制或反例参考；按需适配，不默认新增工具或权限。",
+      "page": "categories/knowledge-base/claude-obsidian.md",
+      "mechanism": "可研究操作包统一写入、预期哈希防漂移、单写者回滚、来源与主张分账，以及检索片段新鲜度校验。不得把 prompt 的来源要求误当事实验证器。",
+      "maps_to": "assist-mem ledger、write-source、compact-memory、并行 worker 交付合同"
+    },
+    {
+      "repo": "alchaincyf/huashu-art-motion",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/video-production/huashu-art-motion.md",
+      "mechanism": "可借鉴成品实测门禁与机器事实段完整性检查；其私人色板和镜头审美不宜变成全局要求。",
+      "maps_to": "guard-verify、readable-figure、write-flow 的产物验收"
+    },
+    {
+      "repo": "alejandrobujan/tendedero",
+      "result": "done",
+      "incremental_fit": "none",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/media-processing/image-processing/tendedero.md",
+      "mechanism": "原生截图交互工具，不直接改善个人 agent harness；剪贴板类型过滤可作通用安全参考。",
+      "maps_to": "无直接接入点"
+    },
+    {
+      "repo": "anomalyco/opentunnel",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/networking/opentunnel.md",
+      "mechanism": "可临时分享本地评审页面，但会暴露本地监听服务，必须先加认证并遵守外发授权。",
+      "maps_to": "assist-review-doc／本地评审服务器"
+    },
+    {
+      "repo": "anthropics/claude-plugins-official",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "fresh，仅核刷新门槛；未重研，不把已有内容算作本轮新增改进。",
+      "page": "categories/agent-skills/vendor-collections/agent-vendors/claude-plugins-official.md",
+      "mechanism": "本次只走日期门控，未重新评估可吸收机制。",
+      "maps_to": "不适用"
+    },
+    {
+      "repo": "anthropics/knowledge-work-plugins",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "fresh，仅核刷新门槛；未重研，不把已有内容算作本轮新增改进。",
+      "page": "categories/agent-skills/vendor-collections/agent-vendors/knowledge-work-plugins.md",
+      "mechanism": "本次日期门控跳过，未做新的机制评估。",
+      "maps_to": "无"
+    },
+    {
+      "repo": "apache/maka",
+      "result": "done",
+      "incremental_fit": "medium",
+      "reason": "可作具体机制或反例参考；按需适配，不默认新增工具或权限。",
+      "page": "categories/agent-frameworks/coding-agents/terminal-agents/maka.md",
+      "mechanism": "可吸收追加式事件事实源、派生状态与事件同事务、按最后事件分类失败恢复的机制。",
+      "maps_to": "长任务 watcher、会话状态与恢复机制"
+    },
+    {
+      "repo": "apurvsinghgautam/robin",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/osint/robin.md",
+      "mechanism": "可借鉴无结果与不可达的状态拆分，以及不可信文本分隔符清理；不需要安装暗网调查工具。",
+      "maps_to": "web-read 的失败分类与外部文本信任边界"
+    },
+    {
+      "repo": "asciimoo/hister",
+      "result": "done",
+      "incremental_fit": "medium",
+      "reason": "可作具体机制或反例参考；按需适配，不默认新增工具或权限。",
+      "page": "categories/knowledge-base/hister.md",
+      "mechanism": "可用作个人读过网页的可检索资料入口，或参考关键词保底、语义失败显式警告的组合检索；不宜默认采集所有敏感页面。",
+      "maps_to": "web-read、write-source 的可选来源检索入口"
+    },
+    {
+      "repo": "Asymptote-Labs/agent-beacon",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "fresh，仅核刷新门槛；未重研，不把已有内容算作本轮新增改进。",
+      "page": "categories/agent-memory/coding-agent-memory/agent-beacon.md",
+      "mechanism": "fresh 门控跳过，未重新评估吸收价值。",
+      "maps_to": "不适用"
+    },
+    {
+      "repo": "AtomicBot-ai/atomic-agent",
+      "result": "done",
+      "incremental_fit": "medium",
+      "reason": "可作具体机制或反例参考；按需适配，不默认新增工具或权限。",
+      "page": "categories/agent-frameworks/agent-runtimes/personal-assistants/atomic-agent.md",
+      "mechanism": "罕用工具说明按需加载，以及父子会话共享拒绝记录，值得作为个人 harness 的机制参考；不建议直接迁移整套运行时。",
+      "maps_to": "工具上下文加载、权限护栏与多 worker 编排"
+    },
+    {
+      "repo": "Bennettxai/FounderOS",
+      "result": "proposed",
+      "incremental_fit": "low",
+      "reason": "来源或授权待决，本轮不推荐复制接入；不代表没有可复用机制。",
+      "page": null,
+      "mechanism": "显式外发与定时任务开关值得参考；许可证来源未厘清，不建议直接吸收代码。",
+      "maps_to": "guard-gitops／外发授权边界"
+    },
+    {
+      "repo": "tangency-labs/solidcraft",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/cad/solidcraft.md",
+      "mechanism": "可借鉴 MCP 默认文件范围、显式扩大范围及测量后接受建模结果；CAD 本身与通用 harness 无关。",
+      "maps_to": "MCP 权限约定与 guard-verify"
+    },
+    {
+      "repo": "breferrari/obsidian-mind",
+      "result": "proposed",
+      "incremental_fit": "low",
+      "reason": "来源或授权待决，本轮不推荐复制接入；不代表没有可复用机制。",
+      "page": null,
+      "mechanism": "可借鉴按项目显式作用域、纠错替代链、promoted 锚点失效门禁，以及验证上下文真正送达的交付测试。只建议吸收机制，不直接复制许可存疑的技能。",
+      "maps_to": "assist-mem、compact-memory、session-start 上下文注入与验证门禁"
+    },
+    {
+      "repo": "ccch1mneyyy/dsh-TUI",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/agent-tooling/supervision-surfaces/dsh-tui.md",
+      "mechanism": "可参考后端专属恢复标记、序列化状态投影与权限界面分离，不建议把全部 TUI 引入现有 harness。",
+      "maps_to": "会话恢复、watcher 状态展示"
+    },
+    {
+      "repo": "CopilotKit/OpenIntelligentUI",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/ai-design-generation/open-intelligent-ui.md",
+      "mechanism": "可借鉴渲染工具路由与窄通信桥校验；完整应用栈不适合个人命令行 harness。",
+      "maps_to": "readable-html-artifact 的交互回传边界"
+    },
+    {
+      "repo": "cosmo-wander-ai/cosmo-edge",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/on-device-ml/cosmo-edge.md",
+      "mechanism": "可借鉴把平台、模型与验证产物身份绑定，严格区分稳定发布证据和未发布主干证据；与个人通用代理运行时无直接集成需求。",
+      "maps_to": "guard-verify 的产物身份和验收证据合同"
+    },
+    {
+      "repo": "dentiny/duckdb-object-storage",
+      "result": "done",
+      "incremental_fit": "none",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/databases/database-engines/duckdb-object-storage.md",
+      "mechanism": "数据库对象后端与个人 agent harness 无直接关系。",
+      "maps_to": "不适用"
+    },
+    {
+      "repo": "docwriter-org/plain-writing-skill",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/agent-skills/ai-writing/de-ai-writing/plain-writing-skill.md",
+      "mechanism": "结论先行后补背景的 deslopify 指令、前后例句与对照评测值得参考；禁类比、直引号等英文规则不宜覆盖中文全局输出。",
+      "maps_to": "readable-final-answer、output-readability capsule"
+    },
+    {
+      "repo": "drumih/turbo-fieldfare",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/on-device-ml/apple-local-inference/turbo-fieldfare.md",
+      "mechanism": "本机低内存推理可作离线实验后端，但模型专用且服务器无远程认证，不宜直接替换现有模型路由。",
+      "maps_to": "模型路由／本地模型后端"
+    },
+    {
+      "repo": "dzhng/skills",
+      "result": "proposed",
+      "incremental_fit": "low",
+      "reason": "来源或授权待决，本轮不推荐复制接入；不代表没有可复用机制。",
+      "page": null,
+      "mechanism": "独立的 audit-choices 要求追溯 spec 留白、按置信度呈现决策，最终按实际代码重审账本。值得定点借鉴，不宜全量安装其覆盖式安装器或继承永不阻塞的人审规则。",
+      "maps_to": "boundary-decisions、dev-long-run 交接与 guard-review 的决策审查"
+    },
+    {
+      "repo": "emilkowalski/skills",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "fresh，仅核刷新门槛；未重研，不把已有内容算作本轮新增改进。",
+      "page": "categories/agent-skills/design/ui-taste/emilkowalski-skills.md",
+      "mechanism": "本次日期门控跳过，未做新的机制评估。",
+      "maps_to": "无"
+    },
+    {
+      "repo": "eternityspring/shuohao-skills",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/video-production/shuohao-skills.md",
+      "mechanism": "可借鉴从事实 JSON 确定性预填、结构门与语义判断分离、可编辑报告导出后重验。",
+      "maps_to": "文档评审、结构化工作流与验证门"
+    },
+    {
+      "repo": "fastclaw-ai/fastclaw",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/agent-frameworks/agent-runtimes/agent-services/fastclaw.md",
+      "mechanism": "可借鉴系统到用户到 agent 的明确配置优先级，以及工作区恢复的缺失文件可见性。",
+      "maps_to": "模型路由配置与 dev-operational-task 的恢复检查"
+    },
+    {
+      "repo": "FluidInference/FluidUse",
+      "result": "done",
+      "incremental_fit": "medium",
+      "reason": "可作具体机制或反例参考；按需适配，不默认新增工具或权限。",
+      "page": "categories/on-device-ml/apple-local-inference/fluiduse.md",
+      "mechanism": "可研究有限选项决策作为低成本路由，以及模型快照校验、子进程失败关闭合同；不能未经评测拿小模型替换安全授权。",
+      "maps_to": "模型路由实验、guard-verify 的独立评测；不安装模型或改运行时"
+    },
+    {
+      "repo": "Gaurav-Gosain/tuios",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "fresh，仅核刷新门槛；未重研，不把已有内容算作本轮新增改进。",
+      "page": "categories/agent-frameworks/coding-agents/agent-multiplexers/tuios.md",
+      "mechanism": "fresh 门控跳过，未重新评估吸收价值。",
+      "maps_to": "不适用"
+    },
+    {
+      "repo": "General-Legal/legal-templates",
+      "result": "done",
+      "incremental_fit": "none",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/legal-documents/legal-templates.md",
+      "mechanism": "业务合同资产，不是个人 agent harness；最多给保密材料进入模型前的授权检查提供案例。",
+      "maps_to": "无直接接入点"
+    },
+    {
+      "repo": "getopenscreen/openscreen",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/media-processing/video-editing/openscreen-community.md",
+      "mechanism": "可给功能变更附带录屏验收证据；复用脚本化录制、工程编辑、导出与逐帧复核机制，不安装其技能或 MCP。",
+      "maps_to": "guard-verify／前端验收证据"
+    },
+    {
+      "repo": "google/agentmesh",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/networking/agentmesh.md",
+      "mechanism": "只有需要跨设备共享 MCP 或模型时才值得引入；可借鉴发现不等于授权、出口标签底线和逐任务收权。",
+      "maps_to": "MCP 接入与权限边界；非当前本地 harness 必需项"
+    },
+    {
+      "repo": "gpu-mode/Triton-Puzzles",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/learning-resources/triton-puzzles.md",
+      "mechanism": "可借鉴用短参考函数和可见中间轨迹教学的方法，但没有可直接用于个人 agent harness 的记忆或工作流组件。",
+      "maps_to": "write-teach 的演示样例设计"
+    },
+    {
+      "repo": "headroomlabs-ai/headroom",
+      "result": "done",
+      "incremental_fit": "medium",
+      "reason": "可作具体机制或反例参考；按需适配，不默认新增工具或权限。",
+      "page": "categories/agent-tooling/work-state/headroom.md",
+      "mechanism": "可借鉴按内容选择压缩器、保留原文回取、区分输入缩减与估算输出收益；不直接接管现有模型路由。",
+      "maps_to": "上下文压缩、模型路由和记忆账本"
+    },
+    {
+      "repo": "isair/jarvis",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/agent-frameworks/agent-runtimes/personal-assistants/jarvis.md",
+      "mechanism": "可参考确定性召回门控与结构化凭据脱敏，但非商业衍生许可须先审查。",
+      "maps_to": "assist-mem 的召回门控与日志脱敏，先做许可审查"
+    },
+    {
+      "repo": "jakubkrehel/skills",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/agent-skills/design/ui-taste/jakubkrehel-skills.md",
+      "mechanism": "可吸收逐领域证据覆盖、未审查不等于无问题、diff 两侧与根因归因、旧问题限量单列，以及复用真实组件的临时状态台。应避免把模型 Approve 当机器验收。",
+      "maps_to": "fe-ui-critique、guard-review、fe-ui-visual-iterate"
+    },
+    {
+      "repo": "jamiepine/voicebox",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "fresh，仅核刷新门槛；未重研，不把已有内容算作本轮新增改进。",
+      "page": "categories/speech/voicebox.md",
+      "mechanism": "fresh 门控跳过，未重新评估吸收价值。",
+      "maps_to": "不适用"
+    },
+    {
+      "repo": "JimLiu/baoyu-design",
+      "result": "proposed",
+      "incremental_fit": "low",
+      "reason": "来源或授权待决，本轮不推荐复制接入；不代表没有可复用机制。",
+      "page": null,
+      "mechanism": "导入设计系统和产物自检流程可供思路参考；提取内容授权未厘清，不建议直接吸收。",
+      "maps_to": "fe-ui-design-system、fe-ui-visual-iterate"
+    },
+    {
+      "repo": "Joooook/12306-mcp",
+      "result": "done",
+      "incremental_fit": "none",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/travel-planning/12306-mcp.md",
+      "mechanism": "铁路出行领域查询，与个人编程助手配置栈无直接关系。",
+      "maps_to": "不适用"
+    },
+    {
+      "repo": "kaomei/stickman-video-director",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/video-production/stickman-video-director.md",
+      "mechanism": "可借鉴全局修改使批准失效、独立任务携带完整冻结约束，以及试听而非截图证明音频一致性。",
+      "maps_to": "readable-illustration、write-flow 及审批产物版本约定"
+    },
+    {
+      "repo": "Kuddev/pebrel",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "fresh，仅核刷新门槛；未重研，不把已有内容算作本轮新增改进。",
+      "page": "categories/terminal-ui/pebrel.md",
+      "mechanism": "本次日期门控跳过，未做新的机制评估。",
+      "maps_to": "无"
+    },
+    {
+      "repo": "leemysw/yovoice",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/speech/yovoice.md",
+      "mechanism": "可参考配置键复用子进程及临时输出校验后原子发布，音频创作本身不属于 harness。",
+      "maps_to": "长任务进程管理与产物交付"
+    },
+    {
+      "repo": "lemomo-ai/lemo-opuscar",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/video-production/lemo-opuscar.md",
+      "mechanism": "可吸收逐帧确定性、文字阅读时长检查，以及未检查不能算通过的退出码约定。",
+      "maps_to": "readable-illustration 与影片交付检查"
+    },
+    {
+      "repo": "lightningpixel/modly",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/3d-generation/modly.md",
+      "mechanism": "可参考扩展能力身份与权重存储身份分离、预检下载计划；不要照搬无限等待或把虚拟环境说成沙箱。",
+      "maps_to": "扩展工具供应链检查、dev-operational-task 反例"
+    },
+    {
+      "repo": "liseami/CCBaga",
+      "result": "proposed",
+      "incremental_fit": "low",
+      "reason": "来源或授权待决，本轮不推荐复制接入；不代表没有可复用机制。",
+      "page": null,
+      "mechanism": "可借鉴归档校验后提交指针、独立恢复检查点与失败后停止清理；不建议吸收身份轮换、指纹或代理配置。",
+      "maps_to": "guard-gitops、dev-operational-task 的恢复与破坏性操作边界"
+    },
+    {
+      "repo": "lobehub/lobehub",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/llm-chat-ui/lobehub.md",
+      "mechanism": "审批批次持久身份和状态机拆分可作参考；完整聊天工作区不适合吸收进个人 harness。",
+      "maps_to": "权限审批、长任务状态与恢复机制"
+    },
+    {
+      "repo": "MDX-Tom/gpt-instruct",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/agent-dev-methodology/study-and-experiments/gpt-instruct.md",
+      "mechanism": "只借鉴托管字段归属、非托管文件拒写、局部回滚和证据身份隔离；不吸收无限制提示词。",
+      "maps_to": "guard-gitops／配置发布与回滚机制"
+    },
+    {
+      "repo": "morluto/rea",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/dev-utilities/data-tools/rea.md",
+      "mechanism": "可借鉴不可变证据记录、冲突拒绝及未知项版本链；不宜直接运行 setup 覆写现有 harness。",
+      "maps_to": "guard-verify、assist-mem 的证据与未知项记录"
+    },
+    {
+      "repo": "NandhaKishorM/vegaml",
+      "result": "done",
+      "incremental_fit": "medium",
+      "reason": "可作具体机制或反例参考；按需适配，不默认新增工具或权限。",
+      "page": "categories/decision-models/vegaml.md",
+      "mechanism": "可把固定选项判定、明确拒答与独立校准当作便宜路由器设计参考；不建议九天项目直接成为 harness 的自动权限或安全裁决依赖。",
+      "maps_to": "模型路由、便宜模型判卷与 guard 门禁的拒答合同"
+    },
+    {
+      "repo": "netease-youdao/LobsterAI",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/agent-frameworks/agent-runtimes/personal-assistants/lobsterai.md",
+      "mechanism": "可参考请求与会话关联、结束清理和只由用户消息推动会话列表热度。现有 harness 不需吸收整个桌面应用。",
+      "maps_to": "watcher 状态与多会话展示"
+    },
+    {
+      "repo": "nicobailon/visual-explainer",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/agent-skills/design/visual-artifacts/visual-explainer.md",
+      "mechanism": "可吸收短源文件与最终页面分离、图外正文统计、读者反馈按数据处理，以及写入成功与请求打开分开报告。",
+      "maps_to": "readable-html-artifact、assist-review-doc 与 readable-final-answer"
+    },
+    {
+      "repo": "openai/skills",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/agent-skills/vendor-collections/agent-vendors/openai-skills.md",
+      "mechanism": "历史安装器的固定版本与目标存在即拒绝、CI 证据收集及先批方案可供对照。逐目录保留许可，不能用官方来源替代安全审查，也不能把提示词批准当硬授权。",
+      "maps_to": "skill-installer、guard-review、guard-verify 的历史参考；不修改 dotfiles"
+    },
+    {
+      "repo": "opendataloader-project/opendataloader-pdf",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/document-parsing/opendataloader-pdf.md",
+      "mechanism": "可作为文档取材的候选后端，保留页面坐标便于引用回查；需先对中文 PDF 做样本验收。",
+      "maps_to": "web-read、write-source 的 PDF 解析候选"
+    },
+    {
+      "repo": "openJiuwen-ai/jiuwenswarm",
+      "result": "done",
+      "incremental_fit": "high",
+      "reason": "直接对应已核实的候选实验与最终产物验收缺口；收益尚未实测。",
+      "page": "categories/agent-frameworks/agent-runtimes/agent-services/jiuwenswarm.md",
+      "mechanism": "观察者事件背压、权限引擎出错后转人工确认，以及按角色区分经验保存策略，可作 harness 设计参考；不直接引入其自动演化。",
+      "maps_to": "长任务观察、权限护栏、assist-learn/assist-mem 准入"
+    },
+    {
+      "repo": "OpenMinis/iCTRL",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/mobile-automation/ictrl.md",
+      "mechanism": "自描述接口与配对后才执行的边界可参考；真机自动化不是现有配置栈必需项，且不宜复制自制密码协议。",
+      "maps_to": "设备工具接入与授权边界"
+    },
+    {
+      "repo": "OpenMinis/OpenMinis",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "fresh，仅核刷新门槛；未重研，不把已有内容算作本轮新增改进。",
+      "page": "categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md",
+      "mechanism": "本次只走日期门控，未重新评估可吸收机制。",
+      "maps_to": "不适用"
+    },
+    {
+      "repo": "private-candidate-withheld",
+      "result": "proposed",
+      "incremental_fit": "none",
+      "reason": "私有且无公开许可，不作为公开机制来源。",
+      "page": null,
+      "mechanism": "",
+      "maps_to": ""
+    },
+    {
+      "repo": "p1neappleXpress/OpenFlux",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/networking/openflux.md",
+      "mechanism": "可参考通道存活判断与显式协商失败，但个人 agent harness 不需要引入网络隧道。",
+      "maps_to": "长任务外部调用健康检查"
+    },
+    {
+      "repo": "preset-io/agor",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/agent-tooling/supervision-surfaces/agor.md",
+      "mechanism": "区域切换触发统一会话创建、拒绝空模板，以及按用户隔离执行主目录的机制可借鉴；先审 BSL 许可。",
+      "maps_to": "dev-long-run 的阶段触发与多用户执行隔离"
+    },
+    {
+      "repo": "Prism-Shadow/penguin-harness",
+      "result": "done",
+      "incremental_fit": "high",
+      "reason": "直接对应已核实的候选实验与最终产物验收缺口；收益尚未实测。",
+      "page": "categories/agent-frameworks/workflow-builders/penguin-harness.md",
+      "mechanism": "可研究固定运行配置、完整评测矩阵、版本快照与回滚，以及 OPRO 训练选优和独立测试的分离。注意默认基线一次与候选多次不对等，且多数约束是技能指令。",
+      "maps_to": "agent-harness-improvement、guard-verify、技能评测账本；仅建议，不改配置"
+    },
+    {
+      "repo": "qgis/QGIS",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "fresh，仅核刷新门槛；未重研，不把已有内容算作本轮新增改进。",
+      "page": "categories/geospatial/qgis.md",
+      "mechanism": "fresh 门控跳过，未重新评估吸收价值。",
+      "maps_to": "不适用"
+    },
+    {
+      "repo": "qufei1993/skills-hub",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/agent-tooling/harness-extensions/skills-hub.md",
+      "mechanism": "源目标重叠检查、预期哈希替换与三方冲突规划可借鉴；不建议让 GUI 直接接管已有 dotfiles 双向软链。",
+      "maps_to": "技能分发与软链安装流程，版本冲突保护"
+    },
+    {
+      "repo": "rilldata/rill",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/data-visualization/rill.md",
+      "mechanism": "可借鉴指标口径即代码与缓存新鲜度身份，但 BI 工具本体不是个人助手配置栈依赖。",
+      "maps_to": "会话成本／质量指标报表机制"
+    },
+    {
+      "repo": "Robbyant/lingbot-map",
+      "result": "done",
+      "incremental_fit": "none",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/3d-reconstruction/lingbot-map.md",
+      "mechanism": "核心价值是 GPU 三维几何模型，与个人 coding-agent harness 无直接复用关系。",
+      "maps_to": "不适用"
+    },
+    {
+      "repo": "rorkai/App-Store-Connect-CLI",
+      "result": "done",
+      "incremental_fit": "medium",
+      "reason": "可作具体机制或反例参考；按需适配，不默认新增工具或权限。",
+      "page": "categories/dev-utilities/app-store-connect-cli.md",
+      "mechanism": "可借鉴请求层只读政策、环境与参数只能开启不能相互关闭、分页循环检测与部分失败显式返回；苹果业务命令本身不应接入通用 harness。",
+      "maps_to": "guard-gitops、运行时只读边界、批处理分页工具"
+    },
+    {
+      "repo": "sgl-project/sglang-omni",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/llm-inference/serving-engines/sglang-omni.md",
+      "mechanism": "可参考先编译执行拓扑、再启动工作进程和分离控制面与大数据传输；GPU 服务本身不属于个人 harness。",
+      "maps_to": "长任务执行计划与状态传输"
+    },
+    {
+      "repo": "shadcn-ui/ui",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "fresh，仅核刷新门槛；未重研，不把已有内容算作本轮新增改进。",
+      "page": "categories/web-ui/component-libraries/shadcn-ui.md",
+      "mechanism": "本次仅日期门控，无新增可吸收结论。",
+      "maps_to": "不适用"
+    },
+    {
+      "repo": "simplifaisoul/osiris",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/geospatial/osiris.md",
+      "mechanism": "可参考事件流显式携带局部失败和来源引用；不是自进化框架，不建议吸收其预测概率作为评测分数。",
+      "maps_to": "dev-observe、研究来源账本"
+    },
+    {
+      "repo": "Tencent-Hunyuan/Hy-Memory",
+      "result": "done",
+      "incremental_fit": "medium",
+      "reason": "可作具体机制或反例参考；按需适配，不默认新增工具或权限。",
+      "page": "categories/agent-memory/app-memory/hy-memory.md",
+      "mechanism": "可借鉴事实、经验与真实改动链分层，以及按用户、工作区和来源隔离。建议先试点，不替换现有记忆账本。",
+      "maps_to": "assist-mem、assist-mem-session、compact-memory"
+    },
+    {
+      "repo": "twostraws/SwiftUI-Agent-Skill",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/agent-skills/engineering/swiftui-agent-skill.md",
+      "mechanism": "局部审查只读相关参考、无关现代化单列建议，适合参考；SwiftUI 领域规则不适合全局注入。",
+      "maps_to": "guard-review 的专项路由与 scope 控制"
+    },
+    {
+      "repo": "unisonweb/unison",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/programming-languages/unison.md",
+      "mechanism": "内容身份与名字分离可启发记忆条目／缓存去重，但引入整套新语言不适合现有配置栈。",
+      "maps_to": "assist-mem／内容身份与缓存机制"
+    },
+    {
+      "repo": "vectorize-io/hindsight",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "fresh，仅核刷新门槛；未重研，不把已有内容算作本轮新增改进。",
+      "page": "categories/agent-memory/app-memory/hindsight.md",
+      "mechanism": "本次只走日期门控，未重新评估可吸收机制。",
+      "maps_to": "不适用"
+    },
+    {
+      "repo": "Vincentwei1021/video-shotcraft",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "fresh，仅核刷新门槛；未重研，不把已有内容算作本轮新增改进。",
+      "page": "categories/video-production/video-shotcraft.md",
+      "mechanism": "本次日期门控跳过，未做新的机制评估。",
+      "maps_to": "无"
+    },
+    {
+      "repo": "withmarbleapp/os-taxonomy",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/education-tutoring/os-taxonomy.md",
+      "mechanism": "来源与许可分层、仅编号输出及机器可校验数据清单可借鉴；小学课程内容与个人 harness 无关。",
+      "maps_to": "来源账本与静态数据完整性门"
+    },
+    {
+      "repo": "wy51ai/edulab",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/education-tutoring/edulab.md",
+      "mechanism": "可吸收免费预览先于付费调用、解答与画面同源，以及跳过检查必须单独报告的交付证据。",
+      "maps_to": "write-teach、readable-figure 与 guard-verify"
+    },
+    {
+      "repo": "xtool-org/xtool",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/xtool.md",
+      "mechanism": "可作为未来 iOS 开发任务的工具入口，不是跨代理记忆或自进化机制。可参考把构建、签名与设备验收分开记录。",
+      "maps_to": "iOS 项目专用开发技能或工具目录；当前不改 dotfiles"
+    },
+    {
+      "repo": "ymybxx/SoloMCN",
+      "result": "done",
+      "incremental_fit": "medium",
+      "reason": "可作具体机制或反例参考；按需适配，不默认新增工具或权限。",
+      "page": "categories/social-media-management/solomcn.md",
+      "mechanism": "可借鉴默认版、基线、使用版的三方合并，以及草稿差异、审批和精确撤回；不要吸收统一放行所有工具与全量凭据。",
+      "maps_to": "skill-creator、agent-harness-improvement 的 staging 与审批链"
+    },
+    {
+      "repo": "Yuan1z0825/nature-skills",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/agent-skills/engineering/scientific-workflows/nature-skills.md",
+      "mechanism": "任务维度清单、精确共享引用、带稳定来源编号的阅读产物与结构检查值得参考；整套科研方法不宜全局注入。",
+      "maps_to": "write-source、write-teach、引用核验与按需上下文加载"
+    },
+    {
+      "repo": "Zesty0wl/mac-performance-monitor",
+      "result": "done",
+      "incremental_fit": "medium",
+      "reason": "可作具体机制或反例参考；按需适配，不默认新增工具或权限。",
+      "page": "categories/observability/mac-performance-monitor.md",
+      "mechanism": "可借鉴三层只读 SQL 校验、行数／时限边界、缺失不补零和稳定时间桶，供本机 worker 资源诊断与会话指标使用；不安装其 MCP 或读取个人历史。",
+      "maps_to": "dev-long-run／本机资源诊断与指标输出"
+    },
+    {
+      "repo": "ZhenningLang/cpu-gpu-basic",
+      "result": "skipped",
+      "incremental_fit": "none",
+      "reason": "自有仓库，按批次规则跳过。",
+      "page": null,
+      "mechanism": "",
+      "maps_to": ""
+    },
+    {
+      "repo": "zhihui-hu/one-ip",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/networking/one-ip.md",
+      "mechanism": "可借鉴 unknown 不转 false、第三方正文限长及日志去敏；完整应用无需引入本地 agent harness。",
+      "maps_to": "dev-observe 与外部数据工具边界约定"
+    },
+    {
+      "repo": "zhongerxin/iPhone-use",
+      "result": "done",
+      "incremental_fit": "medium",
+      "reason": "可作具体机制或反例参考；按需适配，不默认新增工具或权限。",
+      "page": "categories/mobile-automation/iphone-use.md",
+      "mechanism": "可借鉴共享操作锁、读取与写入的不同失败语义、超时不推断断连、动作成功不等于任务完成，以及截图证据必须真正送入模型。手机业务工具不应默认加入通用 harness。",
+      "maps_to": "computer-use／agent-browser 类技能、工具错误合同与 guard-verify"
+    },
+    {
+      "repo": "zhuyansen/new-term-radar",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "业务能力或通用工程经验，不列入当前个人 harness 的新增优先项。",
+      "page": "categories/agent-skills/ai-writing/marketing-seo/new-term-radar.md",
+      "mechanism": "可参考来源快照增量、线索延迟复查与缺失数据显式报告；不自动接入付费 API，也不把启发式分数当事实。",
+      "maps_to": "调研与项目发现流程、定时任务状态账本"
+    },
+    {
+      "repo": "ZJU-REAL/Easel",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "fresh，仅核刷新门槛；未重研，不把已有内容算作本轮新增改进。",
+      "page": "categories/social-media-management/easel.md",
+      "mechanism": "本次仅日期门控，无新增可吸收结论。",
+      "maps_to": "不适用"
+    },
+    {
+      "repo": "harness/harness",
+      "result": "done",
+      "incremental_fit": "low",
+      "reason": "固定源码研究及主会话适配判断；不是实测收益",
+      "page": "categories/dev-utilities/ops-infra/harness-open-source.md",
+      "mechanism": "不建议吸收整个平台；可参考统一的解析后、连接前地址校验，以及逐条核实遥测出口和开关的审查方法。它不提供可直接复用的 agent 技能、记忆或模型路由资产。",
+      "maps_to": "guard-secure 的外部 URL／网络边界审查规范；仅机制参考，本次不改 dotfiles。",
+      "evidence": "new-entry-evidence.json"
+    },
+    {
+      "repo": "parthh01/sphinx",
+      "result": "done",
+      "incremental_fit": "medium",
+      "reason": "固定源码研究及主会话适配判断；不是实测收益",
+      "page": "categories/agent-tooling/supervision-surfaces/sphinx.md",
+      "mechanism": "可吸收“先固定行为预测与因果最低标准，再听答案”，以及原操作等待、精确快照绑定和完成凭据重验；用于可选理解测验，不代替现有验证或授权。不建议直接安装全局 hook，避免改写现有配置与误判阻断。此为依据已读实现的迁移建议，未验证收益。",
+      "maps_to": "readable-diff-explainer 的理解测验；guard-ship 前的可选人工理解检查与凭据绑定。无需本轮修改 dotfiles。",
+      "evidence": "new-entry-evidence.json"
+    },
+    {
+      "repo": "Kruk2/jasna",
+      "result": "done",
+      "incremental_fit": "none",
+      "reason": "固定源码研究及主会话适配判断；不是实测收益",
+      "page": "categories/media-processing/jasna.md",
+      "mechanism": "没有真实 harness 增量价值。其核心是媒体与 GPU 修复，未发现值得迁入个人 agent harness 的独特技能、hook、记忆账本或模型路由机制；普通队列进度与错误处理不算新增价值。",
+      "maps_to": "不适用；不修改 dotfiles",
+      "evidence": "jasna-review.json"
+    },
+    {
+      "repo": "google-research/harness2",
+      "result": "done",
+      "incremental_fit": "high",
+      "reason": "已有页面fresh；另行固定源码研究证据包与归因分类，非页面改写",
+      "page": "categories/agent-frameworks/workflow-builders/harness2.md",
+      "mechanism": "执行差异证据包和有害／无效果／混杂归因，保留外部基线和未见验收",
+      "maps_to": "agent-harness-improvement、assist-learn；本轮不修改配置",
+      "evidence": "harness2-assessment.md"
+    }
+  ]
+}

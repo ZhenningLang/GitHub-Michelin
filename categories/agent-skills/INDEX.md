@@ -5,9 +5,9 @@
 
 ## Sub-categories (by task)
 
-| Leaf | What's inside | Route |
+| Category | What's inside | Route |
 |---|---|---|
-| **engineering** | Code quality, web performance, testing, and scientific/eng workflows. | [→](engineering/INDEX.md) |
+| **engineering** | Code quality, web performance, testing and engineering habits; descend into its scientific-workflows child for research tasks. | [→](engineering/INDEX.md) |
 | **design** | Design taste / UI-UX judgment — critique, anti-slop, visual generation. | [→](design/INDEX.md) |
 | **slides-ppt** | Presentation and slide-deck skills for agent-generated decks. | [→](slides-ppt/INDEX.md) |
 | **visual-content** | Social cards, article illustrations, covers, and other visual-content skills. | [→](visual-content/INDEX.md) |

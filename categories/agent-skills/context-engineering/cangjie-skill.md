@@ -86,7 +86,7 @@ The decisive tradeoff is rigor versus speed. cangjie-skill's RIA-TV++ flow spend
 - **You are distilling a person or public figure.** Use [nuwa-skill](nuwa-skill.md) for perspective/persona distillation; cangjie-skill is for systematic content such as books, transcripts, courses, and long-form materials.
 - **You need a quick summary or study note.** Use a summarizer, notes workflow, or local writing skill instead; cangjie-skill deliberately filters, structures, links, and tests candidate skills.
 - **You cannot legally or ethically transform the source.** Do not use cangjie-skill to repackage copyrighted books, paid courses, or private transcripts without rights or permission; choose source-grounded private retrieval instead.
-- **You need executable tool wrappers.** Use [Scientific Agent Skills](../engineering/scientific-agent-skills.md) or a custom tool skill when the job is wrapping Python libraries or APIs; cangjie-skill extracts methodology, not runtime integrations.
+- **You need executable tool wrappers.** Use [Scientific Agent Skills](../engineering/scientific-workflows/scientific-agent-skills.md) or a custom tool skill when the job is wrapping Python libraries or APIs; cangjie-skill extracts methodology, not runtime integrations.
 
 ## Comparison
 

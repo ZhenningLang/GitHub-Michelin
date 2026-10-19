@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "push", "en": "Original Git push", "zh": "原 Git 推送", "kind": "input"},
+    {"id": "snapshot", "en": "Pinned code, destination and policy identity", "zh": "固定代码、目标与策略标识", "technique": [1, 3]},
+    {"id": "workspace", "en": "Filtered read-only Git object tools", "zh": "过滤后的只读 Git 对象工具", "technique": [1]},
+    {"id": "reviewer", "en": "Isolated reviewer;\nNo coding conversation", "zh": "隔离考官；\n不读编程对话", "technique": [4]},
+    {"id": "provider", "en": "Selected model provider receives evidence", "zh": "所选模型厂商收到证据", "kind": "external", "technique": [4]},
+    {"id": "rubric", "en": "Audited question and precommitted criteria", "zh": "复核后的题目与预先固定标准", "technique": [2]},
+    {"id": "human", "en": "Human prediction and causal reason", "zh": "人的行为预测与因果解释", "kind": "input"},
+    {"id": "grade", "en": "Source-grounded grading", "zh": "依据源码判分", "technique": [2]},
+    {"id": "receipt", "en": "Revalidate receipt before Git continues", "zh": "Git 继续前重验通关凭据", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "push", "to": "snapshot"},
+    {"from": "snapshot", "to": "workspace"},
+    {"from": "workspace", "to": "reviewer"},
+    {"from": "reviewer", "to": "provider"},
+    {"from": "provider", "to": "rubric"},
+    {"from": "rubric", "to": "human"},
+    {"from": "human", "to": "grade"},
+    {"from": "grade", "to": "rubric", "en": "wrong or invalid: new scenario", "zh": "答错或题目无效：新情境", "style": "dashed"},
+    {"from": "grade", "to": "receipt", "en": "pass", "zh": "通过"},
+    {"from": "snapshot", "to": "receipt", "en": "unchanged identity required", "zh": "要求标识不变"}
+  ],
+  "sources": ["https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/src/git-gate.js", "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/src/review-workspace.js", "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/src/evaluator.js", "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/src/pi-runtime.js"]
+}

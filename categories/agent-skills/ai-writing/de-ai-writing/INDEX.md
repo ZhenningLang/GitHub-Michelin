@@ -7,6 +7,7 @@
 
 | Entry | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Plain Writing Skill** | Repair context-free English agent replies with literal rules and before/after examples; not a voice-preserving editor. | B (4/5) | [→](plain-writing-skill.md) |
 | **Humanizer-zh** | Chinese editor skill that de-slops existing prose while keeping facts, hedges, and author stance; 31 checkpoints, not an AI detector. | C (4/5) | [→](humanizer-zh.md) |
 | **De-AI-Prompt-Enhancer-Writer-Booster-SKILL** | Chinese de-AI writing suite with `de-AI-writing` and `good-writing` SKILL folders; useful when author-style reconstruction is desired and license ambiguity is acceptable. | C (4/5) | [→](de-ai-prompt-enhancer-writer-booster-skill.md) |
 | **shuorenhua** | Chinese-first de-AI rewrite skill with protected spans, scenario rules, multi-harness docs, and MIT licensing. | C (5/6) | [→](shuorenhua.md) |
@@ -23,6 +24,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Plain Writing Skill](plain-writing-skill.md) | ✅ | B (4/5) | One portable Markdown style guide with deslopify and optional evals; no machine enforcement. |
 | [Humanizer-zh](humanizer-zh.md) | ✅ | C (4/5) | Chinese editor brief: strip template prose, keep facts and hedges; Claude-first, not a detector. |
 | [Baoyu Skills](../content-production/baoyu-skills.md) | ✅ | B (4/5) | Broader Chinese content/publishing bundle; Humanizer-zh is narrower and focused on de-AI rewriting. |
 | Custom voice guide | 未收录 | — | Better for one private author or brand voice; less reusable than a public skill. |

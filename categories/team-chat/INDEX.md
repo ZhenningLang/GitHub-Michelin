@@ -25,7 +25,7 @@
 | [Buzz](buzz.md) | ✅ | B (4/6) | Only option where agents are key-holding members in the same signed log as humans, but it is ~6 months old, pre-1.0, and needs Postgres + Redis + S3. |
 | [Macro](macro.md) | ✅ | B (6/6) | Links chat, Gmail, tasks, docs and CRM in one graph agents can read, but it is a young vendor's hosted-first product with a ~40-service, build-from-source self-host. |
 | [HiveChat](hivechat.md) | ✅ | D (3/6) | Gets central key custody, group quotas and Feishu/DingTalk/WeCom login in one deployment; costs a mandatory Postgres, a dormant v0.1.0 with no releases, and a license that restricts distributing derivatives. |
-| Lobe Chat | 未收录 | — | Other self-hosted chat UIs named on the pages. |
+| [LobeHub](../llm-chat-ui/lobehub.md) | ✅ | B (5/6) | Multi-model agent groups and pages; reviewed OSS Workspace role gates are pass-through stubs, not organization RBAC. |
 | Slack / Discord / Microsoft Teams | 未收录 | — | Hosted SaaS team chat named across the pages. |
 
 ## What belongs here

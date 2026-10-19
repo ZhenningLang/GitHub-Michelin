@@ -10,7 +10,7 @@
 | --- | --- | --- |
 | **Work State** | agent 总在运行中途丢掉计划、待办或上下文，你需要那份状态落在磁盘上、可被读回时。 | [→](work-state/INDEX.zh.md) |
 | **Session History** | 你想检索、回放或结算已经跑过的会话，而且要跨多个 agent 时。 | [→](session-history/INDEX.zh.md) |
-| **Supervision Surfaces** | 必须由人来看 agent 的活——评审计划或 diff、批准、同时盯多个 agent——而且不只在终端里看时。 | [→](supervision-surfaces/INDEX.zh.md) |
+| **Supervision Surfaces** | 人需要查看 agent 状态或产物、批准动作、引导会话或团队时；终端、浏览器与桌面界面均可。 | [→](supervision-surfaces/INDEX.zh.md) |
 | **UI Annotation** | 人看见的问题在**运行中的应用 UI** 里、要 agent 找到那个元素背后的准确代码时——点选批注的证据流，不是审工件。 | [→](ui-annotation/INDEX.zh.md) |
 | **Harness Extensions** | 你在扩展 agent 能触达、能安装的东西——技能包安装器、为只有 GUI 的软件造命令面、把新模型后端桥进 harness 时。 | [→](harness-extensions/INDEX.zh.md) |
 | **Concurrent Editing** | 并行 agent（或人）写同一个仓库、分支在 `git merge` 上因同一文件里互不相干的改动相撞——想让合并这一步自己看懂函数与键、而不是比行。 | [→](concurrent-editing/INDEX.zh.md) |

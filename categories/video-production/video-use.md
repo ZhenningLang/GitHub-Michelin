@@ -113,7 +113,7 @@ The LLM never watches the video. One ElevenLabs Scribe call per source produces 
 - **You want a desktop for subtitling, dubbing, and recutting one existing video.** Use [OpenCreator](open-creator.md). It is a Codex-native app; this is a `SKILL.md` plus helper scripts.
 - **You cannot send audio to ElevenLabs, or you will not pay Scribe.** Transcription is hosted Scribe, word-level, cached per file. The skill tells the agent not to run Whisper locally. No key means no edit.
 - **You need frame-level manual control in a traditional NLE.** Use DaVinci Resolve or Premiere (not a repo). video-use will not give you a node graph; it gives you an EDL the agent wrote.
-- **You need the HTML-to-MP4 engine itself.** Use [HyperFrames](hyperframes.md). video-use may `npx --yes hyperframes` inside one overlay slot; it does not replace that engine.
+- **You need the HTML-to-MP4 engine itself.** Use [HyperFrames](render-engines/hyperframes.md). video-use may `npx --yes hyperframes` inside one overlay slot; it does not replace that engine.
 - **You are betting on Lindy.** 27k stars on a 22-commit, five-month-old skill-pack is a hype signal. The README still points always-on VPS editing at "Browser Use Box"; current Browser Use docs say Box and Bux are retired.
 
 ## Comparison
@@ -124,7 +124,7 @@ The LLM never watches the video. One ElevenLabs Scribe call per source produces 
 | [OpenCreator](open-creator.md) | ✅ | Choose OpenCreator when you want a local desktop for subtitle/dub/portrait recut of *this* video; choose video-use when the input is a folder of raw takes and you already live in Claude Code or Codex. | OpenCreator is an app that requires a Codex login; video-use is a skill directory with no GUI. |
 | [anything2explainer](anything2explainer.md) | ✅ | Choose anything2explainer when there is no camera footage and the film should be drawn in Remotion from a topic; choose video-use when the files already exist and the pain is cutting them. | Explainer generates every frame (PolyForm noncommercial); video-use never generates the base picture, it edits what you dropped (MIT). |
 | [OpenMontage](open-montage.md) | ✅ | Choose OpenMontage when the agent should research, script, generate assets, and render a film from a prompt; choose video-use when the source of truth is camera takes. | OpenMontage is a from-scratch production pipeline under AGPL; video-use is an MIT editor that still needs a paid Scribe key. |
-| [HyperFrames](hyperframes.md) | ✅ | Choose HyperFrames when you need the HTML-to-MP4 engine; choose video-use when HyperFrames is at most one overlay slot inside a larger edit of real footage. | video-use can scaffold a HyperFrames slot with `npx --yes hyperframes`; it does not replace lint/validate/render of the engine itself. |
+| [HyperFrames](render-engines/hyperframes.md) | ✅ | Choose HyperFrames when you need the HTML-to-MP4 engine; choose video-use when HyperFrames is at most one overlay slot inside a larger edit of real footage. | video-use can scaffold a HyperFrames slot with `npx --yes hyperframes`; it does not replace lint/validate/render of the engine itself. |
 
 ## Health & viability
 

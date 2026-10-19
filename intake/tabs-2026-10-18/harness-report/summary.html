@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>自进化框架：该吸收什么，不该接管什么</title>
+<style>
+:root { color-scheme: light; --bg: #f8fafc; --panel: #ffffff; --text: #111827; --muted: #64748b; --border: #dbe3ef; --accent: #1f4b99; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.55; }
+main { max-width: 960px; margin: 0 auto; padding: 32px 20px 48px; }
+header { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin-bottom: 18px; }
+section { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+h1, h2, h3, h4, h5, h6 { line-height: 1.2; margin: 1.4em 0 0.5em; }
+header h1 { margin-top: 0; }
+p { margin: 0.75em 0; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+ul { padding-left: 1.4rem; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #0f172a; color: #e5e7eb; padding: 14px; border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+td code, th code { overflow-wrap: anywhere; }
+th { background: #eef4ff; }
+.meta { color: var(--muted); font-size: 0.92rem; }
+.diagram-figure { margin: 1.2rem 0; padding: 12px; background: #ffffff; border: 1px solid var(--border); border-radius: 10px; overflow-x: auto; text-align: center; }
+.diagram-figure svg { height: auto; } /* 不设 max-width：宽图保持自然尺寸，figure 的 overflow-x 负责滚动 */
+table.state-transitions { margin-top: -0.4rem; font-size: 0.92rem; }
+table.state-transitions caption { caption-side: top; text-align: left; color: var(--muted); font-size: 0.82rem; padding: 0 0 6px; }
+table.state-transitions td.st-num { width: 2.2em; text-align: center; font-size: 1.1rem; color: var(--accent); }
+.image-figure { margin: 1.2rem 0; padding: 12px; background: #ffffff; border: 1px solid var(--border); border-radius: 10px; text-align: center; }
+.image-figure img { max-width: 100%; height: auto; border-radius: 6px; }
+.image-figure figcaption { color: var(--muted); font-size: 0.85rem; margin-top: 8px; }
+.badge { display: inline-block; background: #e0ecff; color: var(--accent); border-radius: 999px; padding: 2px 10px; font-size: 0.82rem; margin-right: 8px; }
+blockquote.alert { margin: 1rem 0; padding: 10px 14px; border-left: 4px solid var(--accent); background: #f2f6fd; border-radius: 0 8px 8px 0; }
+blockquote.alert p { margin: 0.3em 0; }
+blockquote.alert .alert-label { margin: 0 0 4px; font-weight: 600; font-size: 0.86rem; color: var(--accent); }
+blockquote.alert-tip { border-left-color: #047857; background: #eefaf4; }
+blockquote.alert-tip .alert-label { color: #047857; }
+blockquote.alert-warning { border-left-color: #b45309; background: #fdf6ec; }
+blockquote.alert-warning .alert-label { color: #b45309; }
+blockquote.alert-important { border-left-color: #7c3aed; background: #f6f2fd; }
+blockquote.alert-important .alert-label { color: #7c3aed; }
+blockquote.alert-caution { border-left-color: #b91c1c; background: #fdf2f2; }
+blockquote.alert-caution .alert-label { color: #b91c1c; }
+sup.regid { font-size: 0.66em; color: var(--muted); margin-left: 2px; white-space: nowrap; font-family: ui-monospace, monospace; }
+pre.wireframe { white-space: pre; overflow-x: auto; background: #fffdf5; color: #1f2937; border: 1px dashed #c8b98a; border-radius: 10px; padding: 14px 16px; line-height: 1.35; position: relative; }
+pre.wireframe::before { content: "页面示意（线框）"; display: block; color: #8a7a4a; font-size: 0.78rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin-bottom: 8px; }
+.layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 0 8px; max-width: 1220px; margin: 0 auto; }
+.layout main { margin: 0; min-width: 0; }
+.sidebar { position: sticky; top: 0; align-self: start; max-height: 100vh; overflow-y: auto; box-sizing: border-box; padding: 32px 0 32px 20px; font-size: 0.9rem; }
+.back-link { display: inline-block; background: var(--panel); border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; margin-bottom: 10px; font-weight: 600; }
+.toc-title { color: var(--muted); font-size: 0.8rem; margin: 8px 0 4px; }
+ul.toc { list-style: none; padding-left: 0; margin: 0; }
+ul.toc li { margin: 2px 0; }
+ul.toc a { display: block; padding: 4px 8px; border-radius: 6px; color: var(--text); overflow-wrap: anywhere; }
+ul.toc a:hover { background: #e8eefc; color: var(--accent); text-decoration: none; }
+h2[id], h3[id] { scroll-margin-top: 16px; }
+@media (max-width: 1100px) { .layout { display: block; } .sidebar { position: static; max-height: none; padding: 20px 20px 0; } }
+</style>
+</head>
+<body>
+<main>
+<header>
+<span class="badge">research</span>
+<h1>自进化框架：该吸收什么，不该接管什么</h1>
+<div class="meta">Source: /Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-18-public/intake/tabs-2026-10-18/harness-report/summary.md</div>
+<div class="meta">Generated: 2026-10-19T05:52:15+00:00</div>
+</header>
+<section>
+<h1>自进化框架：该吸收什么，不该接管什么</h1>
+<p><strong>建议保留现有 harness，优先补行为验收。不要整套迁入自进化框架。</strong></p>
+<p>这份建议来自固定提交的源码对照，不是效果实测。未安装外部框架，未运行上游模型实验，也未修改现有 harness。<a href="batch.html">当日批次结果</a>（<a href="batch.md">源稿</a>）保留首轮计数；<a href="../../tabs-2026-10-19/report/summary.md">2026-10-19 最新汇总</a> 补充 Harness² 研究与公开发布进展。</p>
+<h2 id="先看结论">先看结论</h2>
+<p>现有系统已经能聚合重复摩擦、暂存修改、逐条裁决，再通过独立分支发布。它并不缺另一套“反思后写规则”的入口。主会话复核了落地控制流：默认验证命令只运行技能结构校验，未强制要求候选在真实任务中优于旧版。</p>
+<p><strong>[推断：依据是现有落地控制流与六条上游机制，未做个人任务集实验]</strong> 最值得吸收的是三件事：冻结实验输入、让程序根据原始结果算分、对最终实际发布版本重新验收。模型提出修改，但不能自行定义成功并批准生效。</p>
+<p>完整依据：<a href="../harness-baseline.md">现有能力与缺口</a>、<a href="../evolution-evidence.md">上游源码证据</a>。</p>
+<h2 id="“自进化”不是同一种能力">“自进化”不是同一种能力</h2>
+<table><thead><tr><th>能力</th><th>实际改变什么</th><th>本批代表</th><th>不能据此推导</th></tr></thead><tbody><tr><td>记忆维护</td><td>笔记、标签、事实、经验</td><td>Atomic、Hy-Memory</td><td>全局工作流已经改好</td></tr><tr><td>规则提案</td><td>从失败轨迹生成指令</td><td>Headroom learn</td><td>写入后成功率更高</td></tr><tr><td>基准选优</td><td>对提示、技能或工具候选打分</td><td>Penguin、Jiuwen RSI</td><td>分数上涨会迁移到未见任务</td></tr><tr><td>事实治理</td><td>区分待证主张和已晋升事实</td><td>FounderOS 的独立事实子系统</td><td>置信度等于独立验证</td></tr></tbody></table>
+<p>这里没有发现个人环境中在线训练模型权重的证据。Hy-Memory 上游称已发布训练后模型，与 SDK 运行时修改记忆是两件事；本轮未核验权重或训练收益。</p>
+<p>初筛也排除了名称误导：REA 是逆向工具，Osiris 是情报地图，OpenFlux 是隧道，AgentMesh 是网络基础设施。它们不因名字或使用 agent 就成为本题的自进化框架。仍按正常收录规则处理，不因与本题无关而丢弃。</p>
+<h2 id="优先级：先补现有链，而非换底座">优先级：先补现有链，而非换底座</h2>
+<p>以下优先级是适配判断，不是性能排名。所有收益均待隔离实验验证。</p>
+<table><thead><tr><th>优先级与适配度</th><th>借鉴对象</th><th>吸收机制</th><th>对应现有位置</th><th>不照搬的部分</th></tr></thead><tbody><tr><td>优先，高</td><td>Jiuwen 单 harness RSI</td><td>最终补丁经过筛选后，对最终实际包重新运行；已知成功任务不能退步</td><td><code>agent-harness-improvement</code> 的落地链，连接现有 <code>scripts/skill_eval/runner.py</code></td><td>内部留出集强制为零；队员经验自动写共享库</td></tr><tr><td>优先，高</td><td>Penguin 的离线优化协议</td><td>冻结候选版本、单轮单假设、保留逐题轨迹与还原点</td><td>同一改进链的暂存包与验证产物</td><td>模型填写汇总分；同题最高分即晋升；后台直接改 skill</td></tr><tr><td>其次，中</td><td>Headroom learn</td><td>从工具失败和重复循环生成可追溯提案；多宿主日志适配</td><td>已有会话采集和判卷模块</td><td>再造一个 writer；直接 apply 全局规则；把省 token 估算当收益</td></tr><tr><td>其次，中</td><td>Atomic 的来源约束</td><td>姓名等受支持字段不能由旧幻觉自证；区分正文与标签变更。这不是所有笔记的真实性保证</td><td><code>assist-mem</code>、<code>compact-memory</code> 的证据和整理规则</td><td>以“答案采用该记忆”作为正确奖励；自动反思直接写正式账本</td></tr><tr><td>按需，中</td><td>Hy-Memory 的代码变更链</td><td>将经验绑定精确 diff，保留不可变版本关系</td><td><code>assist-learn</code> 的项目笔记，与既有提交证据联结</td><td>引入整套图数据库；把同批交叉链接当独立证据</td></tr></tbody></table>
+<p>FounderOS 的 claim/fact 分离和临时提示 TTL 可作参考，但现有体系已有候选与正式记忆的边界，本轮不优先新增。具体的 <code>ImprovementTaskQueue.apply()</code> 只更新 Q 值，不能证明建议已被执行；其他记忆和提示写入路径仍存在。不要因队列状态变成 Applied 就将它算作改善成功。</p>
+<h2 id="为什么不直接装">为什么不直接装</h2>
+<h3 id="有评分，不代表有可信验收">有评分，不代表有可信验收</h3>
+<p>Penguin 的测试源码明确接受子运行分数为 80 和 82，而题目级汇总分为 80.2。scoreboard 读取服务展示存储值，不复算成 81。这是源码与测试断言固定的行为；本轮没有执行测试，也没有复现攻击。另开一个评价模型，也不能替代汇总一致性检查。</p>
+<p>Jiuwen 有程序判分、全量回归和安装回滚。它比只写反思更完整。但单 harness 构造器把 <code>candidate_holdout_cases</code> 覆盖为零，全部任务参与优化。它能检查已见任务回归，不能用同一批题证明未见任务收益；使用者仍可在外部另设封存验收。</p>
+<p>证据：<a href="https://github.com/Prism-Shadow/penguin-harness/blob/7e08d23f67e8f3945d37fbc793d398d55454b9bd/packages/server/test/benchmarks.test.ts#L302-L334">Penguin 测试</a>、<a href="https://github.com/openJiuwen-ai/agent-core/blob/4e6e53d4f3a97e4f39651be337ba309835de15e0/openjiuwen/rsi/harness_rsi/single_harness/iterative.py#L150-L174">Jiuwen 依赖实现</a>。主会话已重新读取两处。</p>
+<h3 id="只预览，不代表不外发">只预览，不代表不外发</h3>
+<p>Headroom 在默认失败学习模式中，先扫描和分析会话，再把 dry-run 传给 writer。默认预览只阻止写文件，不阻止前面的模型分析。云后端可能收到用户文字、工具参数和失败片段。因此，本次没有运行它扫描你的会话。</p>
+<p>现有改进路线已有材料范围、服务商确认与脱敏要求。外部适配器应服从这些要求，不能用一次 <code>--apply</code> 绕过它们。证据：<a href="https://github.com/headroomlabs-ai/headroom/blob/fbf7bc3278c11975299b9bd0a2ecf200dfd25a05/headroom/cli/learn.py#L289-L359">实际调用顺序</a>。主会话已重读该顺序。</p>
+<h3 id="记忆被使用，不代表记忆正确">记忆被使用，不代表记忆正确</h3>
+<p>Atomic 的投票提示将“答案采用了这条记忆”作为正票理由。Hy-Memory 的 System 2 新建 schema 强证据门默认关闭；启用后才执行该项独立来源要求。这不表示整个项目没有其他证据检查。它们各自有真实治理机制，但都不能直接变成全局规则的效果晋升门。</p>
+<p>来源：<a href="https://github.com/AtomicBot-ai/atomic-agent/blob/7899d173e0a07665f45cf014de065eb38f405127/src/memory/reflection/reflection-runner.ts#L425-L479">Atomic 姓名约束</a>、<a href="https://github.com/Tencent-Hunyuan/Hy-Memory/blob/0c59413ad81158a3bd4748beb7bdda354659b3af/hy_memory/pipelines/system2_agent.py#L72-L94">Hy 默认开关</a>、<a href="https://github.com/Tencent-Hunyuan/Hy-Memory/blob/0c59413ad81158a3bd4748beb7bdda354659b3af/hy_memory/pipelines/system2_agent.py#L813-L837">schema 校验函数</a>。</p>
+<p><strong>[推断：依据是奖励定义和证据开关，未做污染实验]</strong> 如果把引用次数、使用次数或模型置信度直接当正确性，错误信息可能越用越稳。应保留反证，并用独立任务结果检验。</p>
+<h2 id="当前系统最值得补的三个接口">当前系统最值得补的三个接口</h2>
+<p>这些是后续研究建议，不是本轮实现承诺，也不是新命令或已存在的数据格式。</p>
+<h3 id="冻结实际输入">冻结实际输入</h3>
+<p>现有改进计划冻结会话清单，但判卷阶段重新取正文。下一步实验包应绑定已批准的脱敏文本、内容哈希、实际参数、提示词版本和模型版本。重判不能静默换输入。</p>
+<h3 id="连接已有行为评测">连接已有行为评测</h3>
+<p>已有 runner 读取真实工具调用日志，并支持留出与回归样本。其自带基线臂是禁用技能的对照，不自动等于旧版与新版对照；需要按冻结版本分别运行。先复用它，不另造一套“模型说通过”的验证器。它目前擅长技能路由和受支持的输出判据，不能自动证明所有 hook、记忆或工作流收益。</p>
+<h3 id="绑定最终候选与晋升证据">绑定最终候选与晋升证据</h3>
+<p>人审删掉部分修改后，最终包可能已经不同于被测版本。应对最终实际产物重新验收，并绑定提交、样本和原始日志。正确性、安全回归不能用总分上涨抵消；生效仍走人工批准与受管发布。</p>
+<h2 id="可交给后续方案的最小实验">可交给后续方案的最小实验</h2>
+<p><strong>问题。</strong> 某个技能描述或规则修改，是否减少真实误路由，同时不削弱安全边界？这比“让整个系统自动变聪明”更可验收。</p>
+<p><strong>具体输入。</strong> 用本次真实请求作诊断场景：“执行 intake-tabs，并深入研究项目能否提升现有 harness。”应观察到收录与机制研究分工，且不因调研授权而安装框架、扫描私人会话或修改全局配置。本场景已经公开参与讨论，只能作诊断／回归材料，不能再当封存验收题。</p>
+<p><strong>做法。</strong> 冻结旧版与一个候选，限定一个技能表面。另准备不向候选生成者展示的改写请求、近邻误触发和拒绝场景。由现有 runner 留下原始调用日志，再人工检查目标产物。具体样本量、重复次数与费用上限应在实验前批准，不在本报告中任意定默认值。</p>
+<p><strong>验收。</strong> 对比目标完成、误路由、危险动作、重复摩擦、成本和耗时。报告逐题结果和不确定性；如果样本不足，就只报冒烟观察，不报成功率提升。最终版本通过封存验收后，也不自动取得发布权。</p>
+<p><strong>回退。</strong> 候选留在隔离分支；未通过不晋升。已发布修改通过受审查的 Git 改动撤回，不覆盖其他会话新增内容。</p>
+<h2 id="运行边界与未验证项">运行边界与未验证项</h2>
+<ul><li><strong>权限。</strong> 本轮只读公开源码和既有机制实现。没有读取私人会话、记忆正文或凭证，没有执行上游技能或安装器。</li><li><strong>外发与费用。</strong> 没有启动外部框架的模型分析。后续实验涉及材料外发、执行模型与配额，需按现有流程单独确认范围和费用。</li><li><strong>写入。</strong> 本轮只写索引及调研交付物，不改现有 harness。调研不等于允许自动安装、自动写规则或自动晋升。</li></ul>
+<p>[未验证：尚未执行个人封存任务实验] 不能给出提升比例、净节省费用或可靠的跨框架性能排名。报告也不证明默认文件权限、sandbox 或 rubric 隔离已经安全。</p>
+<p>深挖子任务有一次对 Hy-Memory 缓存的 grep 被权限系统拒绝；未绕过。该搜索未完成，不将缺失结果写成事实。其他结论的限定范围见证据报告。</p>
+<h2 id="验证证据与阅读顺序">验证证据与阅读顺序</h2>
+<p>先读本页，再按需读 <a href="../evolution-evidence.md">79 处固定提交来源的上游报告</a>，最后读 <a href="../harness-baseline.md">82 处路径／行号核对的现有机制报告</a>。引用数量是报告核对记录，不是模型实验数量。</p>
+<p>主会话重新读取了 Penguin 汇总分测试、Jiuwen 留出配置、Headroom 写入顺序、Founder 队列函数，以及现有落地／评测控制流。源码解释与子任务结论相符。尚未运行上游测试，也没有宣称实测收益。</p>
+<p>索引基线机器检查：<code>make gates</code> 返回 0，<code>0 errors</code>；工具测试：<code>Ran 483 tests in 27.062s</code>，<code>OK</code>。<a href="../baseline-verification.txt">原始输出摘录与日志哈希</a> 绑定索引代码提交 <code>49cf44bd3ce9d5afa82c16668dcc1ffb3db4faf4</code>，当时仅收录台账文件有改动，工具和选型页未变。这些检查只证明收录工具基线，不证明外部框架效果。批量收录结果另以账本和最终门禁为准。</p>
+<p>后续：脱敏发布按最新汇总推进；是否为上述小实验另开方案由你决定，本轮不直接修改 harness。</p>
+</section>
+</main>
+
+</body>
+</html>

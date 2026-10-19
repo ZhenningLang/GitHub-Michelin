@@ -1,12 +1,15 @@
 # supervision-surfaces
 
-> 分类节点。人看的那块屏：对 agent 产出的评审与批准闸门、会话的浏览器/移动驾驶舱，以及同时盯着多个 agent 的桌面控制面。
+> 分类节点。人查看、批准和引导 agent 工作的界面；终端、浏览器、手机与桌面均可。
 > ← 返回 [agent-tooling](../INDEX.zh.md) · 根路由：[分类路由](../../../INDEX.zh.md) · English: [INDEX.md](INDEX.md)
 
 ## 本分类项目
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Sphinx** | 本地 Git 推送前，按源码回答行为题；可绕过的学习辅助，不是发布授权。 | C（5/6） | [→](sphinx.zh.md) |
+| **dsh-TUI** | DeepSeek Harness 的工具、审批和后台任务散在文字里。dsh-TUI 把这些状态投影成终端卡片、面板和会话浏览器。 | B（5/6） | [→](dsh-tui.zh.md) |
+| **Agor** | 用实时分支看板协作混合编程助手；接受 BSL，并自行运营数据库与执行安全。 | D（6/6） | [→](agor.zh.md) |
 | **Agent Orchestrator** | 当你要监管多个跑在真实分支上的并行编码 agent、想要一个桌面控制面把每个隔离进 git worktree 并自动路由 CI/review/冲突反馈时用它——但它约 4.5 个月大、尚未到 1.0、单一 User 所有，且 daemon 是 loopback 无鉴权。 | B（6/6） | [→](agent-orchestrator.zh.md) |
 | **Hermes Workspace** | 当你跑的是 Nous 的 hermes-agent、想把它的状态当 Web 驾驶舱用——聊天、memory、skills、终端、tmux swarm 派发、手机经 PWA/Tailscale 可达——但它的增强面板锚定 Hermes gateway/dashboard API、且问世仅约 6 个月时用它。 | B（5/6） | [→](hermes-workspace.zh.md) |
 | **Ekko Studio** | 当你同时跑 Hermes Agent **和** Claude Code／Codex 等编码 agent、想要一个本地控制台——单聊、@ 多 agent 的群聊房间、带审批关口的工作流画布、文件与终端——时用它——但它是 BSL-1.1（2029 年前禁止商用）、建仓一个月就从 MIT 改许可、约 5.5 个月大且基本一人编写。 | D（6/6） | [→](ekko-studio.zh.md) |
@@ -20,6 +23,9 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Sphinx](sphinx.zh.md) | ✅ | C（5/6） | Git 继续前测试你对已提交行为的预测；增加模型费用与可能误判，不产代码评审意见。 |
+| [dsh-TUI](dsh-tui.zh.md) | ✅ | B（5/6） | DeepSeek Harness 的工具、审批和后台任务散在文字里。dsh-TUI 把这些状态投影成终端卡片、面板和会话浏览器。 |
+| [Agor](agor.zh.md) | ✅ | D（6/6） | 用实时分支看板协作混合编程助手；接受 BSL，并自行运营数据库与执行安全。 |
 | [Agent Orchestrator](agent-orchestrator.zh.md) | ✅ | B（6/6） | 桌面控制面把活铺给多个 agent 各自 worktree，再把 CI/评审反馈路由回来——广度优先，不聚焦单个产物。 |
 | [Hermes Workspace](hermes-workspace.zh.md) | ✅ | B（5/6） | 为单一 agent 的全状态做的厂商向 Web 控制台——视图最全，也最绑它宿主的 API。 |
 | [Ekko Studio](ekko-studio.zh.md) | ✅ | D（6/6） | 一个本地总机接管 Hermes 加六种编码 agent CLI——含群聊房间与工作流画布——代价是非商业的源码可用许可证。 |
@@ -32,4 +38,4 @@
 
 ## 什么该放这里
 
-主要职责是**人的视图与决定**的界面：评审/批准闸门、会话驾驶舱、多 agent 控制面。不含由 LLM 产出评审 finding 的工具（见 `ai-code-review`），不含 agent 运转所依据的任务/计划状态（见 `work-state`），也不是事后的对话记录分析（见 `session-history`）。
+主要职责是**人的视图与决定**的界面：评审／批准闸门、会话驾驶舱、共享分支板与多 agent 控制面，不限终端、浏览器或桌面载体。不含以自有执行核心为选型主轴的完整 agent（见 `agent-frameworks`），不含由 LLM 产出评审 finding 的工具（见 `ai-code-review`），不含 agent 运转所依据的任务／计划状态（见 `work-state`），也不是事后的对话记录分析（见 `session-history`）。

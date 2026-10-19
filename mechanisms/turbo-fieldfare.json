@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "direction": "right",
+  "nodes": [
+    {"id": "prompt", "kind": "input", "en": "Prompt tokens", "zh": "提示词序列"},
+    {"id": "attention", "en": "Attention with ring or linear history", "zh": "带循环或线性历史的注意力", "technique": [2]},
+    {"id": "router", "en": "Router selects eight experts", "zh": "路由器选择八个专家"},
+    {"id": "slots", "en": "LFU slots; pread only misses", "zh": "按频次管理槽位；只读缺失项", "technique": [1]},
+    {"id": "ssd", "kind": "external", "en": "Per-layer expert files on SSD", "zh": "SSD 上逐层保存的专家文件"},
+    {"id": "output", "kind": "output", "en": "Metal expert reduction and next token", "zh": "Metal 合并专家输出，生成下一词"}
+  ],
+  "edges": [{"from": "prompt", "to": "attention"}, {"from": "attention", "to": "router"}, {"from": "router", "to": "slots"}, {"from": "ssd", "to": "slots"}, {"from": "slots", "to": "output"}],
+  "sources": ["https://github.com/drumih/turbo-fieldfare/blob/2e9ea50e8c35a65d9170e3bff9d1063be8931ec0/docs/SYSTEM_DESIGN.md"]
+}

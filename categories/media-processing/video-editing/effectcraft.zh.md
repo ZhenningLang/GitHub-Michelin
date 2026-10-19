@@ -78,7 +78,7 @@ health:
 
 ## 何时使用
 
-你平时做短小的动态图形——一段 Logo 动画、产品视频里的动态字幕、App 空状态里循环播放的 Lottie——手艺是在 After Effects 里练出来的。现在你不想再为这点活付 Creative Cloud 的钱，或者你用的是 Linux，又或者你想让 agent 帮你搭动画、调参数。你知道的免费方案各卡在一处：Blender 的合成器不讲 After Effects 那套“图层＋关键帧”的语言，Natron 是给影视素材做节点合成的、不是做字幕动画的，[Remotion](../../video-production/remotion.zh.md) 这类代码优先的工具则要你把一个两秒的缓动重新写成 React 代码。你真正卡住的是这种东西：用了好几年的表达式——位置上的 `wiggle(2,30)`、旋转上的 `loopOut()`——还有按 F9 的缓入缓出，全世界只有一个付费软件认。
+你平时做短小的动态图形——一段 Logo 动画、产品视频里的动态字幕、App 空状态里循环播放的 Lottie——手艺是在 After Effects 里练出来的。现在你不想再为这点活付 Creative Cloud 的钱，或者你用的是 Linux，又或者你想让 agent 帮你搭动画、调参数。你知道的免费方案各卡在一处：Blender 的合成器不讲 After Effects 那套“图层＋关键帧”的语言，Natron 是给影视素材做节点合成的、不是做字幕动画的，[Remotion](../../video-production/render-engines/remotion.zh.md) 这类代码优先的工具则要你把一个两秒的缓动重新写成 React 代码。你真正卡住的是这种东西：用了好几年的表达式——位置上的 `wiggle(2,30)`、旋转上的 `loopOut()`——还有按 F9 的缓入缓出，全世界只有一个付费软件认。
 
 你会想到 EffectCraft，是因为它把这套语言原样搬了过来——项目、合成、时间线、效果控件这些面板，P、S、R、T、U 等属性快捷键，图表编辑器，带 After Effects 对象模型的 JavaScript 表达式，以及按 After Effects 原名实现的 306 个效果——做成一个 Rust 应用，跑在 macOS、Windows、Linux、FreeBSD 和浏览器里。和替代品相比，决定性的取舍是：EffectCraft 给你 After Effects 的工作方式，外加内置的 Lottie 导出和给 agent 用的 MCP／命令行接口；代价是它只有八天历史、打不开 `.aep`，而且还没人量过它的输出和 After Effects 差多少。想不订阅就试做动态图形、或者想让 agent 操作一个合成软件时选它；客户交付必须和现有 `.aep` 逐像素一致时，继续用 After Effects。
 
@@ -107,10 +107,10 @@ EffectCraft 是一个合成器：把一层层素材（纯色、形状、文字�
 ## 何时不用
 
 - **你必须打开或交付 After Effects 工程。** EffectCraft 读不了 `.aep`／`.aepx`（路线图上的未决项，issue #190，等维护者就净室范围拍板），第三方 After Effects 插件也跑不了。客户给你一个 `.aep`、或者要你交回一个 `.aep` 时，继续用 After Effects（非仓库）。
-- **你的输出必须和 After Effects 逐帧一致。** 项目自己的 `docs/gaps.md`（2026-10-05 评估）写明保真度“基本没测”，估计实际可用程度只有 30–50%，还说那个 99% 的功能清单是“由构建这些功能的同一批 agent 打的分”。广电或客户项目要求严格复现某个效果时，用 After Effects；如果是你自己掌控的、要求逐帧确定的自动化渲染，用 [Remotion](../../video-production/remotion.zh.md)，它的输出由你的代码定义，而不是靠和另一个软件对齐。
+- **你的输出必须和 After Effects 逐帧一致。** 项目自己的 `docs/gaps.md`（2026-10-05 评估）写明保真度“基本没测”，估计实际可用程度只有 30–50%，还说那个 99% 的功能清单是“由构建这些功能的同一批 agent 打的分”。广电或客户项目要求严格复现某个效果时，用 After Effects；如果是你自己掌控的、要求逐帧确定的自动化渲染，用 [Remotion](../../video-production/render-engines/remotion.zh.md)，它的输出由你的代码定义，而不是靠和另一个软件对齐。
 - **你要做影视素材上的节点式特效合成（抠像、Roto、多通道 CG）。** EffectCraft 是仿 After Effects 的图层堆叠式动态图形工具；这类活用 Natron（未收录，本批未添加；GPL-2.0，支持 OpenFX 插件）或 Blender 的合成器（未收录），它们的节点图和 OpenEXR 多通道流程就是为此设计的。
 - **你在 Linux 或 Windows 上、需要一个稳定的日常主力工具。** README 说 macOS 测得最多，Linux／Windows 用户碰到过基础交互 bug；Wayland 下拖放文件不可用（winit 的限制）；新的崩溃报告还在不断进来（例如 2026-10-09 提交的 #426：拖动时间线时崩溃）。需要一个在 Linux 上经过多年实际使用的工具，选 Friction（未收录，本批未添加；GPL-3.0，2023 年创建）或 Blender。
-- **你要的是脚本优先的视频流水线，而不是一个应用。** EffectCraft 的命令行能改属性、能渲染，但真正的数据源是一个要在界面里或通过命令编辑的 `.ecproj`。视频要在 CI 里由数据生成时，用 [Remotion](../../video-production/remotion.zh.md) 或 [MoviePy](../video-audio/editing-and-cutting/moviepy.zh.md)。
+- **你要的是脚本优先的视频流水线，而不是一个应用。** EffectCraft 的命令行能改属性、能渲染，但真正的数据源是一个要在界面里或通过命令编辑的 `.ecproj`。视频要在 CI 里由数据生成时，用 [Remotion](../../video-production/render-engines/remotion.zh.md) 或 [MoviePy](../video-audio/editing-and-cutting/moviepy.zh.md)。
 - **你需要一个能冻结几个月不动的版本。** 四天里发了五个版本（2026-10-05 的 v0.2.0 → 2026-10-08 的 v0.6.0），`main` 每天进几十个提交，行为和文件格式细节变得很快。要么锁定版本并保留导出的成片，要么等节奏慢下来。
 - **你打算把源码目录交给编码 agent 自己跑。** 仓库根目录带一个 `.mcp.json`，会执行 `cargo run … effectcraft-cli mcp`（编译并运行仓库里的代码），还有一个 `CLAUDE.md`，要求 agent 遵守“自主运行协议……不要停下来问”，并通过 `osascript` 操作本机的 After Effects。这是给维护者自己的 agent 用的；只想用这个软件，就装签名发行版，别在 agent 里打开源码树。
 
@@ -122,7 +122,7 @@ EffectCraft 是一个合成器：把一层层素材（纯色、形状、文字�
 | Natron | 未收录 | 要用 OpenFX 插件给影视素材做节点式特效合成，选 Natron；要做 After Effects 式的图层动画、文字和 Lottie，选 EffectCraft。 | 本批未添加。成熟的节点合成器（仓库始于 2018 年），GPL-2.0；最近一次推送在 2026-07，更新较慢，也没有字幕／形状／Lottie 工具。 |
 | Friction | 未收录 | 想要一个在 Linux 上有三年历史的 GPL 动态图形软件，选 Friction；想要 After Effects 的面板、表达式和效果名称、并接受一周大的代码库时，选 EffectCraft。 | 本批未添加。Friction 更小、更老、仍在维护（2023 年创建，2026-10 仍有推送），界面模型是自己的，许可证 GPL-3.0；EffectCraft 用这份历史换来纸面上广得多的 After Effects 对齐度。 |
 | Blender | 未收录 | 做 3D 动画或节点合成、需要庞大稳定的社区时，选 Blender；做 After Effects 式的 2D 动态设计和 Lottie 导出，选 EffectCraft。 | 本批未添加。几十年的 Lindy 加 GPL 许可，但它的合成器和蜡笔工具不是 After Effects 的“图层／关键帧／表达式”模型，动态设计师得重新学。 |
-| [Remotion](../../video-production/remotion.zh.md) | ✅ | 视频应当由 React 代码和数据在 CI 里生成时，选 Remotion；需要人（或经 MCP 的 agent）在时间线上交互式调动作时，选 EffectCraft。 | Remotion 换来确定、可审查的代码和服务端渲染，但它是源码可见许可、员工超过 3 人的公司要买授权；EffectCraft 换来图形界面和宽松的 MIT／Apache 许可，代价是保真度没测、只有一周历史。 |
+| [Remotion](../../video-production/render-engines/remotion.zh.md) | ✅ | 视频应当由 React 代码和数据在 CI 里生成时，选 Remotion；需要人（或经 MCP 的 agent）在时间线上交互式调动作时，选 EffectCraft。 | Remotion 换来确定、可审查的代码和服务端渲染，但它是源码可见许可、员工超过 3 人的公司要买授权；EffectCraft 换来图形界面和宽松的 MIT／Apache 许可，代价是保真度没测、只有一周历史。 |
 
 ## 技术栈
 

@@ -86,7 +86,7 @@ health:
 - **你在蒸馏一个人或公众人物。** 公共人物、主题视角和 persona 蒸馏用 [nuwa-skill](nuwa-skill.zh.md)；cangjie-skill 面向书、转写稿、课程等系统性内容。
 - **你只要快速摘要或学习笔记。** 用总结器、笔记流程或本地写作 skill；cangjie-skill 会刻意筛选、结构化、链接和测试候选 skills。
 - **你无权转换来源材料。** 未获授权时，不要用 cangjie-skill 重包装受版权保护的书、付费课程或私密转写稿；改用私有、带来源边界的检索方案。
-- **你需要可执行工具封装。** 如果任务是封装 Python 库或 API，用 [Scientific Agent Skills](../engineering/scientific-agent-skills.zh.md) 或自定义 tool skill；cangjie-skill 抽取方法论，不做运行时集成。
+- **你需要可执行工具封装。** 如果任务是封装 Python 库或 API，用 [Scientific Agent Skills](../engineering/scientific-workflows/scientific-agent-skills.zh.md) 或自定义 tool skill；cangjie-skill 抽取方法论，不做运行时集成。
 
 ## 横向对比
 

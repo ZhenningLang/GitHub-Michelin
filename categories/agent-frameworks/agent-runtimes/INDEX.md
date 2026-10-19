@@ -8,7 +8,7 @@
 | Sub-category | Enter when | Route |
 | --- | --- | --- |
 | **Agent SDKs** | You are writing the agent yourself and need the loop, orchestration and tool plumbing in your own code. | [→](agent-sdks/INDEX.md) |
-| **Personal Assistants** | You want a ready assistant for yourself rather than a library to program against. | [→](personal-assistants/INDEX.md) |
+| **Personal Assistants** | You want a ready assistant rather than a library; long-lived IM assistants have a child route inside. | [→](personal-assistants/INDEX.md) |
 | **Agent Services** | An agent workload must run as infrastructure you deploy and operate, not as a chat window. | [→](agent-services/INDEX.md) |
 
 ## Projects in this category

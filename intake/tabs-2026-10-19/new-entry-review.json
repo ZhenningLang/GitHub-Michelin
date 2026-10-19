@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "review_type": "read-only semantic review",
+  "allowed": ["harness/harness", "parthh01/sphinx"],
+  "blocked": [],
+  "allowed_repos": ["harness/harness", "parthh01/sphinx"],
+  "blocked_repos": [],
+  "patchsha256": {
+    "harness/harness": "d4ba5907bf5b3d8d544dcbedccfbc76679e7be8378197b80405716203d3d6ad4",
+    "parthh01/sphinx": "246945306d1cd340e35f1278edafa0d6d0be80b6e8268e633ff5bf23f7217e32"
+  },
+  "must_fix": [],
+  "optional": [
+    {
+      "repo": "parthh01/sphinx",
+      "title": "Preserve original upstream bytes in the research cache",
+      "blocking": false,
+      "paths": ["sources/src/evaluator.js", "sources/src/reviewer.js", "sources/src/mcp.js", "sources/src/working-context.js", "sources/test/evaluator.test.js"],
+      "evidence": "Five cache files differ from their fixed-tree Git blobs around control-character escapes. All 79 cache manifest SHA256 values match the cache. Independently fetched pinned originals for all five match the tree, and their differences do not change the page's reviewed semantic claims.",
+      "suggestion": "If retaining the evidence cache for future audits, save original bytes and update its manifest. This review did not modify it."
+    }
+  ],
+  "repos": [
+    {
+      "repo": "harness/harness",
+      "decision": "allowed",
+      "patch": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-19-worker-1-results/harness--harness.patch",
+      "patchsha256": "d4ba5907bf5b3d8d544dcbedccfbc76679e7be8378197b80405716203d3d6ad4",
+      "fixed_sha": "f335f08374b83e9e4ddd54f4f47b4c6daad2fa54",
+      "category": "dev-utilities/ops-infra",
+      "narrower_existing_category_found": false,
+      "closer_indexed_alternative_omitted": false,
+      "full_read": ["categories/dev-utilities/ops-infra/harness-open-source.md", "categories/dev-utilities/ops-infra/harness-open-source.zh.md", "flows/harness-open-source.json", "mechanisms/harness-open-source.json"],
+      "verified_boundaries": ["DevOps platform, not agent harness", "Docker socket and privileged plugins", "opt-out daily metrics distinct from keyed PostHog", "root Apache and file-level PolyForm notices", "wired fixed-password resolver", "authenticated raw registry sort-order SQL construction, not proven exploitation", "dial-time policy limited to wired transports, uncovered feature downloader", "main platform distinct from legacy Drone releases"],
+      "cache_blob_verification": {"checked": 6249, "mismatches": 0, "tree_truncated": false},
+      "generated_artifacts": {"languages_checked": ["en", "zh"], "authored_techniques_per_language": 4, "flow_text_exact": true, "mechanism_text_exact": true, "mechanism_source_stamp_matches": true, "all_six_svg_xml_valid": true}
+    },
+    {
+      "repo": "parthh01/sphinx",
+      "decision": "allowed",
+      "patch": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-19-worker-2-results/parthh01--sphinx.patch",
+      "patchsha256": "246945306d1cd340e35f1278edafa0d6d0be80b6e8268e633ff5bf23f7217e32",
+      "fixed_sha": "7485020c1e8784c060d9a616adcb5ddeea6da2fb",
+      "category": "agent-tooling/supervision-surfaces",
+      "narrower_existing_category_found": false,
+      "closer_indexed_alternative_omitted": false,
+      "full_read": ["categories/agent-tooling/supervision-surfaces/sphinx.md", "categories/agent-tooling/supervision-surfaces/sphinx.zh.md", "flows/sphinx.json", "mechanisms/sphinx.json"],
+      "verified_boundaries": ["human comprehension checkpoint, not data proxy or security certification", "global hooksPath default and explicit repository override", "original hooks run first and preserve failure", "Skip/yolo/documentation exemptions distinct from errors stopping Git", "GitHub publication is best-effort, not required authorization", "related allowed source and human answers reach model providers", "criteria precommitted before answers and separately audited", "same-user local isolation is not identity authorization", "known sufficient-answer false negatives"],
+      "cache_blob_verification": {"checked": 70, "mismatches": 5, "tree_truncated": false, "manifest_files_checked": 79, "manifest_sha256_mismatches": 0, "mismatched_files_independently_refetched": 5, "refetched_blob_matches": 5, "additional_pinned_entrypoint": "bin/sphinx.js", "entrypoint_blob_matches_tree": true, "semantic_claims_affected": false},
+      "generated_artifacts": {"languages_checked": ["en", "zh"], "authored_techniques_per_language": 4, "flow_text_exact": true, "mechanism_text_exact": true, "mechanism_source_stamp_matches": true, "all_six_svg_xml_valid": true}
+    }
+  ],
+  "upstream_executed": false,
+  "subagents_spawned": false,
+  "author_patches_modified": false,
+  "main_categories_readme_ledger_modified": false,
+  "main_session_gates_required": true,
+  "out_of_scope": ["Kruk2/jasna", "runtime exploitation", "installer execution", "paid model evaluation", "commits and browser tab closure"],
+  "report": "intake/tabs-2026-10-19/new-entry-review.md"
+}

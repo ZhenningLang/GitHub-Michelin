@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Tendedero** | 把 Mac 临时截图放入可收起图片条；早期应用，可接管系统截图设置。 | C（5/6） | [→](tendedero.zh.md) |
 | **ImageMagick** | 当脚本或 CI 任务要用一条 shell 命令把 TIFF、PSD、EPS、HEIC、多页 PDF 等 200 多种格式转换、缩放、合成时用它——但不加隔离就去解码不可信的上传图片，CVE 风险源源不断。 | B（5/6） | [→](imagemagick.zh.md) |
 | **sharp** | 当 Node.js 的上传处理、构建步骤或 API 路由要在进程内快速把大图转成缩略图和 WebP/AVIF 时用它——但它的预编译二进制解不了 HEIC、PDF、PSD 和相机 RAW。 | A（6/6） | [→](sharp.zh.md) |
 | **Screenshot Service** | 通过可隔离、可加固的小型内部 HTTP 服务，把受控 HTML 与 CSS 渲染成 PNG、JPEG 或 WebP。 | D（4/6） | [→](screenshot-service.zh.md) |
@@ -16,6 +17,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Tendedero](tendedero.zh.md) | ✅ | C（5/6） | 原生截图暂存条，不是完整编辑器；仅限 macOS，仓库仅十一天。 |
 | [ImageMagick](imagemagick.zh.md) | ✅ | B（5/6） | 格式覆盖最广、命令行可脚本化、各语言都有绑定；代价是解码器攻击面极大、缩放比 sharp 慢，开发集中在两位维护者身上。 |
 | [sharp](sharp.zh.md) | ✅ | A（6/6） | 一句 npm install 就拿到 libvips 的速度和低内存；代价是预编译格式集窄、运行时必须能加载 Node-API 原生扩展，项目实际上只靠一位维护者。 |
 | [Screenshot Service](screenshot-service.zh.md) | ✅ | D（4/6） | 只有可信 HTML 经隔离内部 endpoint 处理时才选它；浏览器保真度的代价是 Chromium 成本、不安全默认值、仓库许可证未确立，以及大量加固工作。 |

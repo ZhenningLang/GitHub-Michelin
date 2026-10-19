@@ -7,6 +7,7 @@
 
 | Collection | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **OpenAI Skills (historical)** | Inspect and reuse pinned historical Codex skills and helpers; deprecated upstream, with per-skill licenses rather than a repo-wide grant. | C (4/5) | [→](openai-skills.md) |
 | **Anthropic Skills** | Anthropic's official public collection of Agent Skills — self-contained SKILL.md folders (document editing, design, MCP/skill authoring, comms) installable into Claude Code, Claude.ai, or the Claude API. | A (3/5) | [→](anthropic-skills.md) |
 | **Claude Plugins (Official)** | Anthropic's first-party Claude Code plugin marketplace: a curated directory of installable plugins (commands, agents, skills, MCP servers) installed by name via the native /plugin system. | A (4/5) | [→](claude-plugins-official.md) |
 | **Cursor Plugins** | Cursor's official plugin marketplace repo: `/add-plugin <name>` installs skills, rules, subagents, hooks and MCP config into Cursor — 16 first-party plugins (headlined by poteto's pstack rigorous-engineering workflow) plus 80 thin connectors to vendor-hosted MCP servers. | B (3/5) | [→](cursor-plugins.md) |
@@ -18,6 +19,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [OpenAI Skills (historical)](openai-skills.md) | ✅ | C (4/5) | Inspect and reuse pinned historical Codex skills and helpers; deprecated upstream, with per-skill licenses rather than a repo-wide grant. |
 | [Anthropic Skills](anthropic-skills.md) | ✅ | A (3/5) | Anthropic's official public collection of Agent Skills — self-contained SKILL.md folders (document editing, design, MCP/skill authoring, comms) installable into Claude Code, Claude.ai, or the Claude API. |
 | [Claude Plugins (Official)](claude-plugins-official.md) | ✅ | A (4/5) | Anthropic's first-party Claude Code plugin marketplace: a curated directory of installable plugins (commands, agents, skills, MCP servers) installed by name via the native /plugin system. |
 | [Cursor Plugins](cursor-plugins.md) | ✅ | B (3/5) | Cursor-native plugins (per-role model panels, hooks, cloud-agent fan-out) plus one-click SaaS connectors; Cursor-only loader, installs track `main` with no tags, and most connectors are config pointing at vendor-hosted servers. |

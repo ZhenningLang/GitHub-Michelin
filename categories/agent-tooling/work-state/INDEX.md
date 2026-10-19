@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Headroom** | Your agent sends the same long JSON and logs on every turn; Headroom compresses model-bound payloads locally and keeps originals available through a retrieval tool. | B (5/6) | [→](headroom.md) |
 | **beads** | Use it when an AI agent loses task state across sessions and you want a versioned, dependency-aware task graph in the repo. | B (5/6) | [→](beads.md) |
 | **CCPM** | Use it when a feature is too big for one agent session and you want PRD-to-epic-to-GitHub-Issues specs plus parallel agents in git worktrees — but it requires GitHub Issues and has had no commits since 2026-03. | C (4/5) | [→](ccpm.md) |
 | **Ralph for Claude Code** | Use it when you want Claude Code to grind through a fix_plan.md checklist unattended with rate limits, a circuit breaker, and a dual-condition exit gate. | C (5/6) | [→](ralph-claude-code.md) |
@@ -20,6 +21,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Headroom](headroom.md) | ✅ | B (5/6) | Your agent sends the same long JSON and logs on every turn; Headroom compresses model-bound payloads locally and keeps originals available through a retrieval tool. |
 | [beads](beads.md) | ✅ | B (5/6) | A versioned, dependency-aware issue graph inside the repo — the strongest fit when the agent itself reads and writes the backlog. |
 | [CCPM](ccpm.md) | ✅ | C (4/5) | Buys written intent and merge-safe fan-out with GitHub Issues as shared truth; costs a five-phase ceremony that is pure overhead on small work, and lock-in to GitHub. |
 | [Ralph for Claude Code](ralph-claude-code.md) | ✅ | C (5/6) | A guarded unattended loop over a checklist — it drives the agent, it does not store the work. |

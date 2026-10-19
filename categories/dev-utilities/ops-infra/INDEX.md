@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Harness Open Source** | Consolidate Git hosting, container CI and artifacts; evaluate only after addressing Docker authority, opt-out reporting and source-confirmed security risks. | B (6/6) | [→](harness-open-source.md) |
 | **Cockpit** | Use it when you need a browser-based, systemd-native admin UI for a few Linux servers. | B (5/6) | [→](cockpit.md) |
 | **Telegraf** | Use it when you need one plugin-driven agent to collect and route heterogeneous metrics/logs to many backends. | A (6/6) | [→](telegraf.md) |
 | **Certbot** | Use it when a sysadmin must auto-provision & renew free Let's Encrypt TLS certs — though reverse proxies' built-in auto-TLS often makes it redundant. | A (5/6) | [→](certbot.md) |
@@ -21,6 +22,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Harness Open Source](harness-open-source.md) | ✅ | B (6/6) | One DevOps platform instead of a forge plus CI integrations; mixed file licenses and unresolved security paths block an unchanged public deployment. |
 | [Cockpit](cockpit.md) | ✅ | B (5/6) | Use it when you need a browser-based, systemd-native admin UI for a few Linux servers. |
 | [Telegraf](telegraf.md) | ✅ | A (6/6) | Use it when you need one plugin-driven agent to collect and route heterogeneous metrics/logs to many backends. |
 | [Certbot](certbot.md) | ✅ | A (5/6) | Use it when a sysadmin must auto-provision & renew free Let's Encrypt TLS certs — though reverse proxies' built-in auto-TLS often makes it redundant. |

@@ -13,7 +13,17 @@
 | **包管理器 GUI** | 命令行包管理器的桌面前端——不用终端就能浏览、安装与升级（当前是 macOS 上的 Homebrew）。 | [→](package-manager-gui/INDEX.zh.md) |
 | **包管理器** | 命令行包管理器本身——解析、下载并把软件包装进前缀的那个工具（当前是一个更快的 Homebrew 客户端）。 | [→](package-managers/INDEX.zh.md) |
 
+## 本分类项目
+
+| 项目 | 何时用 | 健康度 | 页面 |
+| --- | --- | --- | --- |
+| **App Store Connect CLI** | 用独立 Go 命令管理苹果发布文案、TestFlight 与审核操作。 | B（6/6） | [→](app-store-connect-cli.zh.md) |
+
 ## 对比矩阵
+
+| 选项 | 是否收录 | 健康度 | 一句话取舍 |
+| --- | --- | --- | --- |
+| [App Store Connect CLI](app-store-connect-cli.zh.md) | ✅ | B（6/6） | 不需要 Ruby 的苹果发布 API 命令；仍要管理凭据和审批，本地构建需要 Xcode，默认开启遥测。 |
 
 | 选项 | 类型 | 一句话取舍 |
 | --- | --- | --- |

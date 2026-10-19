@@ -111,7 +111,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Agent Skills (addyosmani)](addyosmani-agent-skills.zh.md) | ✅ | 需要通用工程覆盖、而不只是 web 质量时，选 Addy Osmani 的大包。 | 同作者更宽的通用 agent-skills 包；本包是窄的 web 质量垂类。想要通用 + web 质量都覆盖可两个都装，但留意路由重叠。 |
-| [Scientific Agent Skills](scientific-agent-skills.zh.md) | ✅ | 问题是科研或研究工程、不是 web 质量时，选 Scientific Agent Skills。 | 面向科研 / 工程工作流的姊妹技能包，与 web 质量无关——互补，不同领域。 |
+| [Scientific Agent Skills](scientific-workflows/scientific-agent-skills.zh.md) | ✅ | 问题是科研或研究工程、不是 web 质量时，选 Scientific Agent Skills。 | 面向科研 / 工程工作流的姊妹技能包，与 web 质量无关——互补，不同领域。 |
 | [Waza](waza.zh.md) | ✅ | 需要通用工程习惯覆盖（规划、调试、发版前 review 纪律）、而不是 web 质量检查器时，选 Waza。 | 本 leaf 下另一个工程技能集；Waza 覆盖整个开发周期但不含 Lighthouse/CWV 规则——按你的痛点是流程还是页面质量来选。 |
 | [Vercel Agent Skills](vercel-agent-skills.zh.md) | ✅ | 部署与 Next.js/Vercel 平台规则重要时，选 Vercel Agent Skills。 | Vercel 的 agent-skills 集，偏部署 / Next.js；在 web 性能上有重叠，但围绕其平台组织。 |
 | Lighthouse CI / WebPageTest | 未收录 | 需要真实指标、CI 预算和构建卡门时，选测量工具。 | 真正的测量 + CI 卡门工具（不是技能包）。需要数字和卡构建的预算时用它们；本包是解释并修复的建议层，不是仪表。 |
