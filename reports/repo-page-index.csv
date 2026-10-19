@@ -442,6 +442,7 @@ https://github.com/google-labs-code/stitch-skills,stitch-skills,design-to-code,c
 https://github.com/google-research/harness2,harness2,workflow-builders,categories/agent-frameworks/workflow-builders/harness2.md
 https://github.com/google-research/rrsi,rrsi,research-automation,categories/ml-research/research-automation/rrsi.md
 https://github.com/google-research/timesfm,timesfm,on-device-ml,categories/on-device-ml/timesfm.md
+https://github.com/google/agentmesh,agentmesh,networking,categories/networking/agentmesh.md
 https://github.com/google/ax,ax,kubernetes-agents,categories/agent-frameworks/kubernetes-agents/ax.md
 https://github.com/google/gvisor,gvisor,sandboxing,categories/sandboxing/gvisor.md
 https://github.com/google/or-tools,or-tools,optimization-solvers,categories/optimization-solvers/or-tools.md
