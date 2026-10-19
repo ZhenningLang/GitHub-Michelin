@@ -27,6 +27,7 @@
 | **agent-dev-methodology** | 塑造 agent **如何**构建软件的框架与方法论——spec 驱动、上下文工程、persona/命令体系。 | [→](categories/agent-dev-methodology/INDEX.zh.md) |
 | **ai-design-generation** | agent 驱动的 UI/设计、幻灯片、社交卡片与 HTML 产物生成。 | [→](categories/ai-design-generation/INDEX.zh.md) |
 | **dev-utilities** | 独立开发者工具、数据处理瑞士军刀与可自托管的基础设施。 | [→](categories/dev-utilities/INDEX.zh.md) |
+| **programming-languages** | 选择编程语言及编译工具链，包括不同的代码存储和副作用模型。 | [→](categories/programming-languages/INDEX.zh.md) |
 | **frontend-animation** | 面向 Web 的 JavaScript 动画引擎与运动库。 | [→](categories/frontend-animation/INDEX.zh.md) |
 | **api-gateway** | 路由、保护、限流并治理服务与 LLM 流量的 API / AI 网关。 | [→](categories/api-gateway/INDEX.zh.md) |
 | **geospatial** | 地理信息系统（GIS）——查看、编辑、分析空间数据。 | [→](categories/geospatial/INDEX.zh.md) |

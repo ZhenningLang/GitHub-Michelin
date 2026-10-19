@@ -1137,6 +1137,12 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **UI for Apache Kafka (provectus/kafka-ui)** | Use it when you want one docker run to give a browser view of Kafka brokers, topics, consumer-group lag and message contents — but this provectus upstream has had no release since 2024-04; deploy the maintained kafbat/kafka-ui fork for anything new. | Apache-2.0 | C (5/6) | [EN](categories/kafka-tools/kafka-ui.md) · [中](categories/kafka-tools/kafka-ui.zh.md) |
 | **kafka-python** | Use it when you want a pure-Python Kafka client that just `pip install`s with no librdkafka to compile — but a pure-Python client can't match `confluent-kafka`'s throughput and may trail the newest broker features. | Apache-2.0 | A (6/6) | [EN](categories/kafka-tools/kafka-python.md) · [中](categories/kafka-tools/kafka-python.zh.md) |
 
+### programming-languages
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **Unison** | Content-addressed functional code and typed abilities, with a database-centered codebase manager. | MIT | A (4/6) | [EN](categories/programming-languages/unison.md) · [中](categories/programming-languages/unison.zh.md) |
+
 ### networking
 
 | Project | Use when | License | Health | Page |

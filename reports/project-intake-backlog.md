@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1354
+- Named-but-unindexed alternatives: 1357
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -49,6 +49,6 @@ shape and are deliberately excluded here.
 | [CosyVoice](https://github.com/QwenAudio/CosyVoice) | `categories/speech/index-tts.md` |
 | [daed](https://github.com/daeuniverse/daed) | `categories/networking/dae.md` |
 | [darktable](https://github.com/darktable-org/darktable) | `categories/photo-editing/lightcraft.md` |
+| [Elixir](https://github.com/elixir-lang/elixir) | `categories/programming-languages/unison.md` |
 | [Fast-DetectGPT](https://github.com/baoguangsheng/fast-detect-gpt) | `categories/llm-eval/chatgpt-comparison-detection.md` |
 | [FaucETH](https://github.com/komputing/FaucETH) | `categories/blockchain-dev-infrastructure/powfaucet.md` |
-| [Fish Speech](https://github.com/fishaudio/fish-speech) | `categories/speech/index-tts.md` |

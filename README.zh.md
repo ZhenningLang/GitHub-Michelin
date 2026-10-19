@@ -1134,6 +1134,12 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **UI for Apache Kafka (provectus/kafka-ui)** | 当你想一条 docker run 起一个浏览器面板，看 Kafka broker、topic、消费组 lag 和消息内容时用它——但 provectus 上游自 2024-04 起再无发布，新部署请改用仍在维护的 kafbat/kafka-ui 分叉。 | Apache-2.0 | C（5/6） | [中](categories/kafka-tools/kafka-ui.zh.md) · [EN](categories/kafka-tools/kafka-ui.md) |
 | **kafka-python** | 当你想要一个纯 Python、pip install 即装、无需编译 librdkafka 的 Kafka 客户端时用它——但纯 Python 客户端的吞吐追不上 confluent-kafka，且对最新 broker 特性可能滞后支持。 | Apache-2.0 | A（6/6） | [中](categories/kafka-tools/kafka-python.zh.md) · [EN](categories/kafka-tools/kafka-python.md) |
 
+### programming-languages
+
+| 项目 | 何时用 | 许可 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **Unison** | 内容寻址函数式代码与类型化能力，采用以数据库为中心的代码库管理器。 | MIT | A（4/6） | [中](categories/programming-languages/unison.zh.md) · [EN](categories/programming-languages/unison.md) |
+
 ### networking
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
