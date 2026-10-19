@@ -472,6 +472,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **OSIRIS** | Inspect public flights, cameras and events on one map; optional simulations are not validated forecasts. | MIT | B (5/6) | [EN](categories/geospatial/osiris.md) · [中](categories/geospatial/osiris.zh.md) |
 | **QGIS** | Full-featured cross-platform desktop GIS (Qt/C++) to view, edit, analyze and publish vector/raster/mesh/point-cloud spatial data, with PyQGIS plugins and a headless server. | GPL-2.0-or-later | B (6/6) | [EN](categories/geospatial/qgis.md) · [中](categories/geospatial/qgis.zh.md) |
 
 ### team-chat

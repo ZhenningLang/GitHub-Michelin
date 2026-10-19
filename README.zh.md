@@ -469,6 +469,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **OSIRIS** | 在一张地图查看公开航班、摄像头与事件；可选推演不是已验证预测。 | MIT | B（5/6） | [中](categories/geospatial/osiris.zh.md) · [EN](categories/geospatial/osiris.md) |
 | **QGIS** | 功能完整、跨平台的桌面 GIS(Qt/C++)：浏览、编辑、分析、发布矢量/栅格/网格/点云空间数据，带 PyQGIS 插件和无界面 Server。 | GPL-2.0-or-later | B（6/6） | [中](categories/geospatial/qgis.zh.md) · [EN](categories/geospatial/qgis.md) |
 
 ### team-chat

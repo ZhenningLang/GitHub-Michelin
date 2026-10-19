@@ -78,6 +78,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [WhisperX](https://github.com/m-bain/whisperX),categories/speech/vibevoice.md,,no
 [whoBIRD](https://github.com/woheller69/whoBIRD),categories/on-device-ml/birdnet-go.md,,no
 [wiresock/amneziawg-install](https://github.com/wiresock/amneziawg-install),categories/networking/amneziawg-installer.md,,no
+[World Monitor](https://github.com/koala73/worldmonitor),categories/geospatial/osiris.md,,no
 "`/guard-secure`, `/guard-threat-model` style security skills in a personal/team skill stack",categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
 `bdeansrowe/beam`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
 `bdeansrowe/ltbl-brute`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
