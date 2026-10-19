@@ -8,6 +8,7 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **iPhone Use** | Let a supervised assistant operate real iPhone apps over USB through MCP and signed WDA. | C (6/6) | [→](iphone-use.md) |
+| **iCTRL** | Give a supervised agent a paired JSON-RPC endpoint on a real iPhone; signing, DDI and broad device authority remain yours. | C (5/6) | [→](ictrl.md) |
 | **baguette** | Use it when you want headless, scriptable control of an Apple-Silicon iOS Simulator — 60fps streaming, host-side gestures, a multi-device farm — but it needs Xcode 26 and rides private SimulatorKit symbols. | B (6/6) | [→](baguette.md) |
 | **idb** | Use it when you must automate iOS simulators AND real devices from a remote client with granular primitives — but iOS 26 broke parts of it and you run a companion per target. | B (6/6) | [→](idb.md) |
 | **AXe** | Use it when you want a single `axe tap / type / describe-ui` CLI against a simulator — but it is a single-maintainer project, quiet since 2026-07. | B (6/6) | [→](axe.md) |
@@ -22,6 +23,7 @@
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [iPhone Use](iphone-use.md) | ✅ | C (6/6) | Real-iPhone MCP tools, preview and visual recovery without a separate Appium Server; days-old plugin, signing burden and default telemetry. |
+| [iCTRL](ictrl.md) | ✅ | C (5/6) | Phone-hosted manual/schema and authenticated actions; custom protocol, private event APIs and signing burden. |
 | [baguette](baguette.md) | ✅ | B (6/6) | Headless simulator control with streaming + a farm, but Apple-Silicon/Xcode-26-only and on private symbols. |
 | [idb](idb.md) | ✅ | B (6/6) | Granular remote primitives for simulators *and* devices, but heavier (companion per target) and iOS-26 regressions are open. |
 | [AXe](axe.md) | ✅ | B (6/6) | The simplest simulator input CLI, but single-maintainer and stale since 2026-07. |

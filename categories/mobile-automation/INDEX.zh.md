@@ -8,6 +8,7 @@
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **iPhone Use** | 让受监督的助手通过 USB、MCP 与签名 WDA 操作真实 iPhone App。 | C（6/6） | [→](iphone-use.zh.md) |
+| **iCTRL** | 给受监督助手一个真机 iPhone 配对接口；签名、开发映像和广泛设备权限由你负责。 | C（5/6） | [→](ictrl.zh.md) |
 | **baguette** | 当你想无头、可脚本地控制 Apple Silicon 上的 iOS 模拟器——60fps 投屏、宿主机手势注入、多设备 farm——但它需要 Xcode 26，且骑在 SimulatorKit 私有符号上时使用。 | B（6/6） | [→](baguette.zh.md) |
 | **idb** | 当你要从远端客户端用细粒度原语自动化 iOS 模拟器**和**真机时用它——但 iOS 26 打坏了它一部分能力，且每个目标要挂一个 companion 进程。 | B（6/6） | [→](idb.zh.md) |
 | **AXe** | 当你想要一个 `axe tap／type／describe-ui` 命令直接操作模拟器时用它——但它是单人维护，2026-07 后就没动静了。 | B（6/6） | [→](axe.zh.md) |
@@ -22,6 +23,7 @@
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [iPhone Use](iphone-use.zh.md) | ✅ | C（6/6） | 真机 MCP 工具、预览与截图恢复，无需独立 Appium Server；插件仅十几天历史，要管签名且默认遥测。 |
+| [iCTRL](ictrl.zh.md) | ✅ | C（5/6） | 手机自带手册与方法结构、认证操作；代价是自有协议、私有事件接口和签名负担。 |
 | [baguette](baguette.zh.md) | ✅ | B（6/6） | 无头模拟器控制带投屏和 farm，但仅限 Apple Silicon＋Xcode 26，且依赖私有符号。 |
 | [idb](idb.zh.md) | ✅ | B（6/6） | 面向模拟器**和**真机的细粒度远端原语，但更重（每个目标一个 companion），且 iOS 26 回归问题仍开着。 |
 | [AXe](axe.zh.md) | ✅ | B（6/6） | 最省事的模拟器输入 CLI，但单人维护、2026-07 后停滞。 |

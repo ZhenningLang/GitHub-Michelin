@@ -139,6 +139,7 @@ https://github.com/OpenBMB/VoxCPM,voxcpm,speech,categories/speech/voxcpm.md
 https://github.com/OpenCut-app/OpenCut,opencut,video-editing,categories/media-processing/video-editing/opencut.md
 https://github.com/OpenHands/OpenHands,openhands,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/openhands.md
 https://github.com/OpenMinis/OpenMinis,openminis,personal-assistants,categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md
+https://github.com/OpenMinis/iCTRL,ictrl,mobile-automation,categories/mobile-automation/ictrl.md
 https://github.com/OpenPipe/ART,art,llm-training,categories/llm-training/art.md
 https://github.com/OrchestratorInc/agent-orchestrator,agent-orchestrator,supervision-surfaces,categories/agent-tooling/supervision-surfaces/agent-orchestrator.md
 https://github.com/OthmanAdi/planning-with-files,planning-with-files,work-state,categories/agent-tooling/work-state/planning-with-files.md
