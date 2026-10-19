@@ -129,6 +129,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **FluidUse** | Call specialized Core ML decisions from Swift and match form values to real Mac controls; not a general isolated agent. | Apache-2.0 | C (5/6) | [EN](categories/on-device-ml/fluiduse.md) · [中](categories/on-device-ml/fluiduse.zh.md) |
+| **CosmoEdge** | Deploy visually configured video inference and alarms on Sophon, Rockchip or x86; models and capacity stay platform-specific. | Apache-2.0 | B (6/6) | [EN](categories/on-device-ml/cosmo-edge.md) · [中](categories/on-device-ml/cosmo-edge.zh.md) |
 | **LiteRT-LM** | Use it when you want to run Gemma-class LLMs on phone/laptop/edge via Google's LiteRT runtime (CPU/GPU/NPU). | Apache-2.0 | B (6/6) | [EN](categories/on-device-ml/litert-lm.md) · [中](categories/on-device-ml/litert-lm.zh.md) |
 | **BitNet** | Use it when you need fast, low-energy CPU inference of natively-trained 1.58-bit ternary LLMs on x86/ARM laptops, offline. | MIT | B (5/6) | [EN](categories/on-device-ml/bitnet.md) · [中](categories/on-device-ml/bitnet.zh.md) |
 | **Google AI Edge Gallery** | Use it when you need to demo and benchmark on-device Gemma LLMs on real phones before building. | Apache-2.0 | B (6/6) | [EN](categories/on-device-ml/ai-edge-gallery.md) · [中](categories/on-device-ml/ai-edge-gallery.zh.md) |

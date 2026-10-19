@@ -14,6 +14,7 @@
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **FluidUse** | Swift 调专用 Core ML 决策，把表单资料匹配到真实 Mac 控件；不是通用隔离代理。 | C（5/6） | [→](fluiduse.zh.md) |
+| **CosmoEdge** | 在 Sophon、Rockchip 或 x86 可视化部署视频推理与告警；模型和容量仍分平台。 | B（6/6） | [→](cosmo-edge.zh.md) |
 | **LiteRT-LM** | 想用 Google LiteRT 运行时在手机/笔记本/边缘（CPU/GPU/NPU）上跑 Gemma 级 LLM 时用它。 | B（6/6） | [→](litert-lm.zh.md) |
 | **BitNet** | 当你要在 x86/ARM 笔记本上离线、快速、低能耗地用 CPU 跑原生三值（1.58-bit） LLM 时使用。 | B（5/6） | [→](bitnet.zh.md) |
 | **Google AI Edge Gallery** | 当你想在真机上先体验和基准测试端侧 Gemma LLM、为是否自建集成去风险时用它。 | B（6/6） | [→](ai-edge-gallery.zh.md) |
@@ -31,6 +32,7 @@
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [FluidUse](fluiduse.zh.md) | ✅ | C（5/6） | Swift 调专用 Core ML 决策，把表单资料匹配到真实 Mac 控件；不是通用隔离代理。 |
+| [CosmoEdge](cosmo-edge.zh.md) | ✅ | B（6/6） | 在 Sophon、Rockchip 或 x86 可视化部署视频推理与告警；模型和容量仍分平台。 |
 | [LiteRT-LM](litert-lm.zh.md) | ✅ | B（6/6） | 想用 Google LiteRT 运行时在手机/笔记本/边缘（CPU/GPU/NPU）上跑 Gemma 级 LLM 时用它。 |
 | [BitNet](bitnet.zh.md) | ✅ | B（5/6） | 当你要在 x86/ARM 笔记本上离线、快速、低能耗地用 CPU 跑原生三值（1.58-bit） LLM 时使用。 |
 | [Google AI Edge Gallery](ai-edge-gallery.zh.md) | ✅ | B（6/6） | 当你想在真机上先体验和基准测试端侧 Gemma LLM、为是否自建集成去风险时用它。 |
