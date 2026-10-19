@@ -73,6 +73,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [tldraw](https://github.com/tldraw/tldraw),categories/diagramming/excalidraw.md,,no
 [TorBot](https://github.com/DedSecInside/TorBot),categories/osint/robin.md,,no
 [TripoSR](https://github.com/VAST-AI-Research/TripoSR),categories/3d-generation/modly.md,,no
+[Tuist](https://github.com/tuist/tuist),categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/xtool.md,,no
 [v2rayA](https://github.com/v2rayA/v2rayA),categories/networking/dae.md,,no
 [v2rayN](https://github.com/2dust/v2rayN),categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 [vectorbt](https://github.com/polakowo/vectorbt),categories/investment-finance/backtrader.md,,no
@@ -83,6 +84,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [whoBIRD](https://github.com/woheller69/whoBIRD),categories/on-device-ml/birdnet-go.md,,no
 [wiresock/amneziawg-install](https://github.com/wiresock/amneziawg-install),categories/networking/amneziawg-installer.md,,no
 [World Monitor](https://github.com/koala73/worldmonitor),categories/geospatial/osiris.md,,no
+[XcodeGen](https://github.com/yonaskolb/XcodeGen),categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/xtool.md,,no
 "`/guard-secure`, `/guard-threat-model` style security skills in a personal/team skill stack",categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
 `bdeansrowe/beam`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
 `bdeansrowe/ltbl-brute`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
