@@ -263,6 +263,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **kagent** | 当 agent 应该是 Kubernetes 对象时用它——用 YAML 声明、由控制器与引擎运行，带模型配置、MCP 工具服务器与 OpenTelemetry 追踪。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/kubernetes-agents/kagent.zh.md) · [EN](categories/agent-frameworks/kubernetes-agents/kagent.md) |
 | **OpenClaw Enterprise** | 当多个团队的原版 OpenClaw 或 Codex agent 要在共享 Kubernetes 集群上按租户分命名空间、走 IAM、投递密钥、留不可变版本和审计时用它——不适合个人助手，也还不是正式发布的产品。 | MIT | B（5/6） | [中](categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.zh.md) · [EN](categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.md) |
 | **Jarvis** | 用本地语音模型和短期转写参与房间讨论；代价是非商业许可与桌面音频配置。 | LicenseRef-Jarvis-NonCommercial | C（5/6） | [EN](categories/agent-frameworks/agent-runtimes/personal-assistants/jarvis.md) · [中](categories/agent-frameworks/agent-runtimes/personal-assistants/jarvis.zh.md) |
+| **Agor** | 用实时分支看板协作混合编程助手；接受 BSL，并自行运营数据库与执行安全。 | BUSL-1.1 | D（6/6） | [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/agor.md) · [中](categories/agent-frameworks/coding-agents/orchestration-and-review/agor.zh.md) |
 
 ### agent-memory
 

@@ -266,6 +266,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **kagent** | Use it when agents should be Kubernetes objects — declared in YAML, run by a controller and engine, with model config, MCP tool servers and OpenTelemetry tracing. | Apache-2.0 | B (6/6) | [EN](categories/agent-frameworks/kubernetes-agents/kagent.md) · [中](categories/agent-frameworks/kubernetes-agents/kagent.zh.md) |
 | **OpenClaw Enterprise** | Use it when many teams' stock OpenClaw or Codex agents need per-tenant namespaces, IAM, secret delivery, immutable revisions and audit on a shared Kubernetes cluster — not for one person's assistant, and not yet for a released product. | MIT | B (5/6) | [EN](categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.md) · [中](categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.zh.md) |
 | **Jarvis** | Join room conversations with local speech models and temporary spoken context; non-commercial license and desktop audio setup are the price. | LicenseRef-Jarvis-NonCommercial | C (5/6) | [EN](categories/agent-frameworks/agent-runtimes/personal-assistants/jarvis.md) · [中](categories/agent-frameworks/agent-runtimes/personal-assistants/jarvis.zh.md) |
+| **Agor** | Coordinate mixed coding agents and colleagues on live branch boards; BSL, database and execution-security operations remain yours. | BUSL-1.1 | D (6/6) | [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/agor.md) · [中](categories/agent-frameworks/coding-agents/orchestration-and-review/agor.zh.md) |
 
 ### agent-memory
 
