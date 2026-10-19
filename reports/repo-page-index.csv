@@ -285,6 +285,7 @@ https://github.com/apache/airflow,airflow,workflow-orchestration,categories/work
 https://github.com/apache/apisix,apisix,api-gateway,categories/api-gateway/apisix.md
 https://github.com/apache/casbin,casbin,auth,categories/auth/casbin.md
 https://github.com/apache/incubator-kie-optaplanner,optaplanner,optimization-solvers,categories/optimization-solvers/optaplanner.md
+https://github.com/apache/maka,maka,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/maka.md
 https://github.com/apache/poi,apache-poi,office-automation,categories/office-automation/apache-poi.md
 https://github.com/apache/superset,superset,data-visualization,categories/data-visualization/superset.md
 https://github.com/appium/WebDriverAgent,webdriveragent,mobile-automation,categories/mobile-automation/webdriveragent.md

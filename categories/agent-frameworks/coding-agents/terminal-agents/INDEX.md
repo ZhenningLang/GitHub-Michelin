@@ -8,6 +8,7 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **dsh-TUI** | Your DeepSeek Harness session has tools, approvals and background work scattered across text; dsh-TUI projects that state into terminal cards, panels and a session browser. | B (5/6) | [→](dsh-tui.md) |
+| **Apache Maka (Incubating)** | After an agent crashes, its last tool action should not vanish with the window; Maka records model, tool and permission events in a local runtime ledger shared by desktop and terminal clients. | B (6/6) | [→](maka.md) |
 | **aider** | Use it when you want an AI to edit the files you name in your git repo from the terminal, with any model and each change landed as an undoable commit — but it is essentially one maintainer and has not released since 2025-08. | B (6/6) | [→](aider.md) |
 | **Codex** | Use it when you already pay for ChatGPT and want that plan to run a sandboxed edit-test-fix loop in your terminal — but custom providers must speak the Responses API, OpenAI accepts no external pull requests, and the 0.x interface changes almost daily. | A (5/6) | [→](codex.md) |
 | **Freebuff** | Use it when you want a terminal coding agent with no subscription or API key — hosted models paid for by text ads and a daily allowance, with prompts analyzed for ads and no shell-command approval gate. | B (6/6) | [→](freebuff.md) |
