@@ -414,6 +414,7 @@ django-allauth,categories/auth/authomatic.md,,no
 django-guardian,categories/auth/django-rules.md,,no
 django-simple-captcha,categories/captcha/lepture-captcha.md,,no
 dmn-js / form-js (bpmn.io),categories/diagramming/bpmn-js.md,,no
+docassemble,categories/legal-documents/legal-templates.md,,no
 Docker / containerd,categories/sandboxing/microsandbox.md,,no
 Docker `docker build --squash` / layer flattening,categories/dev-utilities/ops-infra/slim.md,,no
 DockerSlim (predecessor),categories/dev-utilities/ops-infra/slim.md,,no
@@ -1026,6 +1027,7 @@ PyRIT,categories/llm-eval/ai-infra-guard.md,,no
 PyRIT (`Azure/PyRIT`),categories/llm-eval/garak.md,,no
 Python (IPython) kernel,categories/python-tooling/gophernotes.md,,no
 Python `Faker`,categories/dev-utilities/data-tools/faker-js.md,,no
+python-docx-template,categories/legal-documents/legal-templates.md,,no
 python-phonenumbers,categories/osint/ghosttrack.md,,no
 python-social-auth,categories/auth/authomatic.md,,no
 PyTorch FSDP,categories/llm-training/colossalai.md,,no

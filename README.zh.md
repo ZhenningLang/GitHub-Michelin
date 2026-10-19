@@ -42,6 +42,12 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 完整索引，按分类分组。每个项目有一份英文页（`<slug>.md`）和一份中文页（`<slug>.zh.md`），点击直达。交互式浏览见 [INDEX.zh.md](INDEX.zh.md)；agent 从 [AGENTS.md](AGENTS.md) 开始。
 
+### legal-documents
+
+| 项目 | 何时使用 | 许可 | 健康度 | 页面 |
+|---|---|---|---|---|
+| **General Legal Templates** | 十二套初创公司法律模板，配 Markdown 与 Word；需律师与最终文件检查。 | CC0-1.0 | C（5/6） | [中](categories/legal-documents/legal-templates.zh.md) · [EN](categories/legal-documents/legal-templates.md) |
+
 ### agent-tooling
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |

@@ -45,6 +45,12 @@ installer surface.
 
 The complete index, grouped by category. Each project has an English page (`<slug>.md`) and a Chinese sibling (`<slug>.zh.md`) — click straight through. Browse interactively from [INDEX.md](INDEX.md); agents start at [AGENTS.md](AGENTS.md).
 
+### legal-documents
+
+| Project | Use when | License | Health | Page |
+|---|---|---|---|---|
+| **General Legal Templates** | Twelve startup templates as Markdown and Word; counsel and final-document checks required. | CC0-1.0 | C (5/6) | [EN](categories/legal-documents/legal-templates.md) · [中](categories/legal-documents/legal-templates.zh.md) |
+
 ### agent-tooling
 
 | Project | Use when | License | Health | Page |
