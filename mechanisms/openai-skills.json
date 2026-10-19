@@ -1,0 +1,28 @@
+{
+  "schema":1,
+  "direction":"down",
+  "nodes":[
+    {"id":"source","en":"Reviewed repo, ref, skill path and local license","zh":"审查过的仓库、版本、技能路径与本地许可","kind":"input"},
+    {"id":"fetch","en":"ZIP download or supported sparse-Git fallback","zh":"下载 ZIP 或按条件回退稀疏 Git 获取","technique":[1]},
+    {"id":"copy","en":"Check paths and SKILL.md; refuse existing destination","zh":"检查路径和技能文件；拒绝已有目标","technique":[1]},
+    {"id":"host","en":"Compatible host reads the selected task skill","zh":"兼容宿主读取选定任务技能"},
+    {"id":"checks","en":"CI example: gh checks and run or job logs","zh":"CI 示例：检查项与运行或作业日志","technique":[2]},
+    {"id":"evidence","en":"Bounded snippets, missing-log states and external URLs","zh":"有限日志片段、缺失日志状态和外部网址","technique":[2]},
+    {"id":"approval","en":"Host proposes repair and requests explicit approval","zh":"宿主提出修复方案并请求明确批准","technique":[2]},
+    {"id":"repair","en":"Host implements approved changes; not an installer guarantee","zh":"宿主实施批准的改动；不是安装器保证","kind":"output","technique":[2]}
+  ],
+  "edges":[
+    {"from":"source","to":"fetch"},
+    {"from":"fetch","to":"copy"},
+    {"from":"copy","to":"host"},
+    {"from":"host","to":"checks","en":"selected CI skill only","zh":"仅所选 CI 技能"},
+    {"from":"checks","to":"evidence"},
+    {"from":"evidence","to":"approval"},
+    {"from":"approval","to":"repair","en":"approval required by prompt","zh":"提示词要求批准"}
+  ],
+  "sources":[
+    "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.system/skill-installer/scripts/install-skill-from-github.py",
+    "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/gh-fix-ci/scripts/inspect_pr_checks.py",
+    "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/gh-fix-ci/SKILL.md"
+  ]
+}

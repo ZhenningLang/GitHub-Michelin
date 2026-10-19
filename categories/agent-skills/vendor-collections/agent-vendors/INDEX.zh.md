@@ -7,6 +7,7 @@
 
 | 合集 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **OpenAI Skills (historical)** | 审查复用固定版本的旧 Codex 技能与助手；上游已弃用，逐技能授权而非全仓许可。 | C（4/5） | [→](openai-skills.zh.md) |
 | **Anthropic Skills** | Anthropic 官方公开的 Agent Skills 合集——自包含的 SKILL.md 目录（文档编辑、设计、MCP 与 skill 编写、沟通），可装进 Claude Code、Claude.ai 或 Claude API。 | A（3/5） | [→](anthropic-skills.zh.md) |
 | **Claude Plugins (Official)** | Anthropic 官方的 Claude Code 插件市场：精选的可安装插件目录（命令、agent、skill、MCP server），通过原生 /plugin 系统按名安装。 | A（4/5） | [→](claude-plugins-official.zh.md) |
 | **Cursor Plugins** | Cursor 官方插件市场仓库：`/add-plugin <名字>` 把 skill、规则、子 agent、hook 和 MCP 配置装进 Cursor——16 个第一方插件（主打 poteto 的严谨工程工作流 pstack），外加 80 个连到厂商托管 MCP server 的薄连接器。 | B（3/5） | [→](cursor-plugins.zh.md) |
@@ -18,6 +19,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [OpenAI Skills (historical)](openai-skills.zh.md) | ✅ | C（4/5） | 审查复用固定版本的旧 Codex 技能与助手；上游已弃用，逐技能授权而非全仓许可。 |
 | [Anthropic Skills](anthropic-skills.zh.md) | ✅ | A（3/5） | Anthropic 官方公开的 Agent Skills 合集——自包含的 SKILL.md 目录（文档编辑、设计、MCP 与 skill 编写、沟通），可装进 Claude Code、Claude.ai 或 Claude API。 |
 | [Claude Plugins (Official)](claude-plugins-official.zh.md) | ✅ | A（4/5） | Anthropic 官方的 Claude Code 插件市场：精选的可安装插件目录（命令、agent、skill、MCP server），通过原生 /plugin 系统按名安装。 |
 | [Cursor Plugins](cursor-plugins.zh.md) | ✅ | B（3/5） | Cursor 原生插件（按角色分模型的评审面板、hook、云端 agent 分发）加一键 SaaS 连接器；只认 Cursor 的加载器，装的永远是没有 tag 的 `main`，多数连接器只是指向厂商托管 server 的配置。 |

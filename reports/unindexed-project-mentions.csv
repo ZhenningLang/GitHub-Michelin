@@ -58,6 +58,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [OmniVoice](https://github.com/k2-fsa/OmniVoice),categories/speech/voicestudio.md,,no
 [Open Policy Agent](https://github.com/open-policy-agent/opa),categories/agent-governance/agent-governance-toolkit.md,,no
 [Open-Sora-Plan](https://github.com/PKU-YuanGroup/Open-Sora-Plan),categories/ml-research/vision-and-multimodal/open-sora.md,,no
+[OpenAI Plugins](https://github.com/openai/plugins),categories/agent-skills/vendor-collections/agent-vendors/openai-skills.md,,no
 [openclaw/agent-skills](https://github.com/openclaw/agent-skills),categories/agent-skills/personal-collections/engineering-workflows/agent-scripts.md,,no
 [OpenCore Legacy Patcher](https://github.com/dortania/OpenCore-Legacy-Patcher),categories/hackintosh/nvidia-macos-driver.md,,no
 [openilink-tg](https://github.com/openilink/openilink-tg),categories/im-automation/openilink-hub.md,,no
