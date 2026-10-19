@@ -1112,6 +1112,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | --- | --- | --- | --- | --- |
 | **Agent Mesh** | 认证身份后跨机调用私有 agent 服务；尚未到 1.0，需维护策略与凭据。 | Apache-2.0 | B（6/6） | [中](categories/networking/agentmesh.zh.md) · [EN](categories/networking/agentmesh.md) |
 | **One IP** | Worker 后端的出口、IP 与浏览器诊断；依赖外部数据，不认证 AI 账号可用性。 | AGPL-3.0-only | C（3/6） | [中](categories/networking/one-ip.zh.md) · [EN](categories/networking/one-ip.md) |
+| **OpenFlux** | 获授权的隧道实验需要切换多种承载通道。OpenFlux 把 IPv4 数据包送入可替换传输，再由你运营的出口转发。 | GPL-3.0-or-later | B（6/6） | [EN](categories/networking/openflux.md) · [中](categories/networking/openflux.zh.md) |
 | **Paramiko** | 当 Python 代码需要以编程方式建立 SSH／SFTP 连接并执行远程命令时用它——但它是纯 Python（比 OpenSSH 慢）、仅支持线程模型，且采用 LGPL-2.1 许可。 | LGPL-2.1 | B（6/6） | [中](categories/networking/paramiko.zh.md) · [EN](categories/networking/paramiko.md) |
 | **sshtunnel** | 只在已有 Python 脚本早就依赖它的 `with` 块 SSH 端口转发、经堡垒机连私网数据库时继续用它——新装的版本在 Paramiko 4 及以上直接报错，而且 2021 年后再没发过版。 | MIT | B（4/6） | [中](categories/networking/sshtunnel.zh.md) · [EN](categories/networking/sshtunnel.md) |
 | **dnspython** | 当 Python 需要查询任意记录类型、自定义解析器、区域传输、DNSSEC 或 DoH／DoT 时用它——但它绕过 /etc/hosts 与系统解析器，要求 Python 3.10+，且是库而非命令行工具。 | ISC | A（5/6） | [中](categories/networking/dnspython.zh.md) · [EN](categories/networking/dnspython.md) |
