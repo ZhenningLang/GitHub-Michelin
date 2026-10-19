@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "iPhone Use", "zh": "iPhone Use"},
+  "steps": [
+    {"lane": "you", "en": "Install the local plugin and sign WDA for your USB-connected iPhone", "zh": "安装本地插件，为 USB 真机签名配置 WDA", "code": "sh scripts/install.sh"},
+    {"lane": "them", "en": "Reuse or start WDA and prove the phone session is ready", "zh": "复用或启动 WDA，并证明手机会话就绪", "code": "pua_ready"},
+    {"lane": "you", "en": "Authorize a concrete phone task and its expected final result", "zh": "授权具体手机任务，说明最终期望结果"},
+    {"lane": "them", "en": "Return screen observations and execute the model's chosen phone actions", "zh": "返回读屏信息并执行模型选择的手机动作"},
+    {"lane": "them", "en": "Provide fresh observations for final-result verification", "zh": "提供新观察，供核验最终结果"}
+  ],
+  "value": {"en": "Complete supervised tasks inside apps on your actual iPhone", "zh": "在本人监督下处理真实 iPhone App 内的任务"},
+  "sources": ["https://github.com/zhongerxin/iPhone-use/blob/80006885df81531ce7a874b3b0df65980e25e59b/README.en.md", "https://github.com/zhongerxin/iPhone-use/blob/80006885df81531ce7a874b3b0df65980e25e59b/skills/iphone-use/SKILL.md"]
+}

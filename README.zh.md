@@ -1067,6 +1067,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **iPhone Use** | 助手通过 MCP 与签名 WDA，在监督下操作 USB iPhone；要配置 Mac／Xcode，默认遥测，插件很年轻。 | MIT | C（6/6） | [中](categories/mobile-automation/iphone-use.zh.md) · [EN](categories/mobile-automation/iphone-use.md) |
 | **baguette** | 当你想无头、可脚本地控制 Apple Silicon 上的 iOS 模拟器——60fps 投屏、宿主机手势注入、多设备 farm——但它需要 Xcode 26，且骑在 SimulatorKit 私有符号上时使用。 | Apache-2.0 | B（6/6） | [中](categories/mobile-automation/baguette.zh.md) · [EN](categories/mobile-automation/baguette.md) |
 | **idb** | 当你要从远端客户端用细粒度原语自动化 iOS 模拟器**和**真机时用它——但 iOS 26 打坏了它一部分能力，且每个目标要挂一个 companion 进程。 | MIT | B（6/6） | [中](categories/mobile-automation/idb.zh.md) · [EN](categories/mobile-automation/idb.md) |
 | **AXe** | 当你想要一个 `axe tap／type／describe-ui` 命令直接操作模拟器时用它——但它是单人维护，2026-07 后就没动静了。 | MIT | B（6/6） | [中](categories/mobile-automation/axe.zh.md) · [EN](categories/mobile-automation/axe.md) |

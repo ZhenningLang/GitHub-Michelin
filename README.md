@@ -1070,6 +1070,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **iPhone Use** | Supervised assistant control of real USB-connected iPhones through MCP and signed WDA; Mac/Xcode setup, default telemetry and a very young plugin. | MIT | C (6/6) | [EN](categories/mobile-automation/iphone-use.md) · [中](categories/mobile-automation/iphone-use.zh.md) |
 | **baguette** | Use it when you want headless, scriptable control of an Apple-Silicon iOS Simulator — 60fps streaming, host-side gestures, a multi-device farm — but it needs Xcode 26 and rides private SimulatorKit symbols. | Apache-2.0 | B (6/6) | [EN](categories/mobile-automation/baguette.md) · [中](categories/mobile-automation/baguette.zh.md) |
 | **idb** | Use it when you must automate iOS simulators AND real devices from a remote client with granular primitives — but iOS 26 broke parts of it and you run a companion per target. | MIT | B (6/6) | [EN](categories/mobile-automation/idb.md) · [中](categories/mobile-automation/idb.zh.md) |
 | **AXe** | Use it when you want a single `axe tap / type / describe-ui` CLI against a simulator — but it is a single-maintainer project, quiet since 2026-07. | MIT | B (6/6) | [EN](categories/mobile-automation/axe.md) · [中](categories/mobile-automation/axe.zh.md) |

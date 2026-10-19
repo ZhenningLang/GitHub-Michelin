@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "direction": "right",
+  "nodes": [
+    {"id": "model", "en": "Host assistant's authorized tool call", "zh": "宿主助手的已授权工具调用", "kind": "input"},
+    {"id": "lock", "en": "Shared operation lock and saved session", "zh": "共享操作锁与已保存会话", "technique": [1]},
+    {"id": "wda", "en": "Loopback USB path to signed WDA", "zh": "本地 USB 通道连接已签名 WDA", "kind": "external", "technique": [1]},
+    {"id": "tree", "en": "Compact tree and scaled screenshot", "zh": "紧凑控件树与带比例的截图", "technique": [2]},
+    {"id": "error", "en": "Uncertain write or visual recovery evidence", "zh": "不确定写入或界面恢复证据", "technique": [1, 2]},
+    {"id": "review", "en": "Observe actual state; do not blindly replay", "zh": "读取真实状态；不盲目重放", "kind": "output", "technique": [2]}
+  ],
+  "edges": [{"from": "model", "to": "lock"}, {"from": "lock", "to": "wda"}, {"from": "wda", "to": "tree"}, {"from": "wda", "to": "error", "en": "timeout or UI failure", "zh": "超时或界面异常"}, {"from": "tree", "to": "review"}, {"from": "error", "to": "review"}],
+  "sources": ["https://github.com/zhongerxin/iPhone-use/blob/80006885df81531ce7a874b3b0df65980e25e59b/server/iphone_use.py", "https://github.com/zhongerxin/iPhone-use/blob/80006885df81531ce7a874b3b0df65980e25e59b/server/wda_controller.py", "https://github.com/zhongerxin/iPhone-use/blob/80006885df81531ce7a874b3b0df65980e25e59b/server/wda_client.py"]
+}
