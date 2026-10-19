@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Sphinx** | Pause a local Git push to answer source-grounded behavior questions; bypassable learning aid, not release authorization. | C (5/6) | [→](sphinx.md) |
 | **dsh-TUI** | Your DeepSeek Harness session has tools, approvals and background work scattered across text; dsh-TUI projects that state into terminal cards, panels and a session browser. | B (5/6) | [→](dsh-tui.md) |
 | **Agor** | Coordinate mixed coding agents and colleagues on live branch boards; BSL, database and execution-security operations remain yours. | D (6/6) | [→](agor.md) |
 | **Agent Orchestrator** | Use it when you supervise several parallel coding agents on real branches and want a desktop control plane that isolates each in a git worktree and auto-routes CI/review/conflict feedback — but it's ~4.5 months old, pre-1.0, single-User-owned, with a loopback-no-auth daemon. | B (6/6) | [→](agent-orchestrator.md) |
@@ -22,6 +23,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Sphinx](sphinx.md) | ✅ | C (5/6) | Tests your prediction of committed behavior before Git continues; adds model cost and fallible grading rather than review findings. |
 | [dsh-TUI](dsh-tui.md) | ✅ | B (5/6) | Your DeepSeek Harness session has tools, approvals and background work scattered across text; dsh-TUI projects that state into terminal cards, panels and a session browser. |
 | [Agor](agor.md) | ✅ | D (6/6) | Coordinate mixed coding agents and colleagues on live branch boards; BSL, database and execution-security operations remain yours. |
 | [Agent Orchestrator](agent-orchestrator.md) | ✅ | B (6/6) | A desktop control plane that fans work out to many agents in worktrees and routes CI/review feedback back — breadth over one artifact. |

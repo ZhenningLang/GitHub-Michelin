@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Sphinx** | 本地 Git 推送前，按源码回答行为题；可绕过的学习辅助，不是发布授权。 | C（5/6） | [→](sphinx.zh.md) |
 | **dsh-TUI** | DeepSeek Harness 的工具、审批和后台任务散在文字里。dsh-TUI 把这些状态投影成终端卡片、面板和会话浏览器。 | B（5/6） | [→](dsh-tui.zh.md) |
 | **Agor** | 用实时分支看板协作混合编程助手；接受 BSL，并自行运营数据库与执行安全。 | D（6/6） | [→](agor.zh.md) |
 | **Agent Orchestrator** | 当你要监管多个跑在真实分支上的并行编码 agent、想要一个桌面控制面把每个隔离进 git worktree 并自动路由 CI/review/冲突反馈时用它——但它约 4.5 个月大、尚未到 1.0、单一 User 所有，且 daemon 是 loopback 无鉴权。 | B（6/6） | [→](agent-orchestrator.zh.md) |
@@ -22,6 +23,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Sphinx](sphinx.zh.md) | ✅ | C（5/6） | Git 继续前测试你对已提交行为的预测；增加模型费用与可能误判，不产代码评审意见。 |
 | [dsh-TUI](dsh-tui.zh.md) | ✅ | B（5/6） | DeepSeek Harness 的工具、审批和后台任务散在文字里。dsh-TUI 把这些状态投影成终端卡片、面板和会话浏览器。 |
 | [Agor](agor.zh.md) | ✅ | D（6/6） | 用实时分支看板协作混合编程助手；接受 BSL，并自行运营数据库与执行安全。 |
 | [Agent Orchestrator](agent-orchestrator.zh.md) | ✅ | B（6/6） | 桌面控制面把活铺给多个 agent 各自 worktree，再把 CI/评审反馈路由回来——广度优先，不聚焦单个产物。 |

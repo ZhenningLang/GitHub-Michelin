@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "Sphinx does", "zh": "Sphinx 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install, choose a reviewer and define the repository's privacy and push policy", "zh": "安装并选择考官，配置仓库隐私和推送策略", "code": "sphinx install · sphinx init", "component": {"en": "CLI setup", "zh": "命令行配置"}},
+    {"lane": "you", "en": "Push the committed change to a branch covered by that policy", "zh": "把已提交改动推送到策略覆盖的分支", "code": "git push origin main"},
+    {"lane": "them", "en": "Hold the original Git operation and investigate the frozen change", "zh": "暂停原 Git 操作，调查固定版本改动", "component": {"en": "Git hook and reviewer", "zh": "Git hook 与考官"}},
+    {"lane": "you", "en": "Predict the code's behavior and give a short reason in the questionnaire", "zh": "在问卷中预测代码行为，并简述原因"},
+    {"lane": "them", "en": "After a pass, revalidate the receipt and let the same Git operation continue", "zh": "通过后重验凭据，让原 Git 操作继续", "component": {"en": "Git gate", "zh": "Git 关口"}}
+  ],
+  "value": {"en": "A local push pauses for your behavioral explanation, not another coding-agent summary", "zh": "本地推送先等你解释行为，而非再读一份编程助手总结"},
+  "sources": ["https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/README.md#L40-L128", "https://github.com/parthh01/sphinx/blob/7485020c1e8784c060d9a616adcb5ddeea6da2fb/src/git-gate.js#L29-L129"]
+}
