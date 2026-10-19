@@ -1345,6 +1345,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **claude-obsidian** | 让代理通过可审查、可恢复的操作维护有来源的 Obsidian 笔记库。 | MIT | C（6/6） | [中](categories/knowledge-base/claude-obsidian.zh.md) · [EN](categories/knowledge-base/claude-obsidian.md) |
+| **Hister** | 靠正文找回访问过的网页，默认全文搜索，可选向量检索。 | AGPL-3.0-or-later | B（6/6） | [中](categories/knowledge-base/hister.zh.md) · [EN](categories/knowledge-base/hister.md) |
 | **LLM Wiki** | 当你希望自己的文档被一次性编译成一份本地互链维基、由 LLM 持续保鲜，而不是每次查询都用 RAG 重新推导时用它。 | GPL-3.0 | C（5/6） | [中](categories/knowledge-base/llm-wiki.zh.md) · [EN](categories/knowledge-base/llm-wiki.md) |
 | **Logseq** | 当你想要一个本地优先、由你自己撰写并用 Datalog 查询的大纲笔记工具、且 LLM 能力交给插件时用它。 | AGPL-3.0 | B（6/6） | [中](categories/knowledge-base/logseq.zh.md) · [EN](categories/knowledge-base/logseq.md) |
 | **SiYuan** | 当你想要一个自托管、块级引用的知识工作空间、让人与 AI 智能体共同编辑时用它——但部分功能需付费（open-core）。 | AGPL-3.0 | B（6/6） | [中](categories/knowledge-base/siyuan.zh.md) · [EN](categories/knowledge-base/siyuan.md) |

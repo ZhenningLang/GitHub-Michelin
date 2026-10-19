@@ -1364,6 +1364,7 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **claude-obsidian** | Let your agent maintain a source-grounded Obsidian vault through reviewed, recoverable operations. | MIT | C (6/6) | [EN](categories/knowledge-base/claude-obsidian.md) · [中](categories/knowledge-base/claude-obsidian.zh.md) |
+| **Hister** | Find visited pages by their contents with local full-text search and optional embeddings. | AGPL-3.0-or-later | B (6/6) | [EN](categories/knowledge-base/hister.md) · [中](categories/knowledge-base/hister.zh.md) |
 | **LLM Wiki** | Use it when you want your own documents compiled once into an interlinked local wiki the LLM keeps current, instead of re-deriving answers with RAG on every query. | GPL-3.0 | C (5/6) | [EN](categories/knowledge-base/llm-wiki.md) · [中](categories/knowledge-base/llm-wiki.zh.md) |
 | **Logseq** | Use it when you want a local-first outliner you author yourself and query with Datalog, with LLM features left to plugins. | AGPL-3.0 | B (6/6) | [EN](categories/knowledge-base/logseq.md) · [中](categories/knowledge-base/logseq.zh.md) |
 | **SiYuan** | Use it when you want a self-hosted block-level knowledge workspace where humans and AI agents co-edit — but some features are paywalled (open-core). | AGPL-3.0 | B (6/6) | [EN](categories/knowledge-base/siyuan.md) · [中](categories/knowledge-base/siyuan.zh.md) |
