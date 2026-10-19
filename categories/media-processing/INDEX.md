@@ -13,6 +13,16 @@
 | **image-processing** | Image processing, conversion, resizing, and format tooling. | [→](image-processing/INDEX.md) |
 | **quality-metrics** | Perceptual media quality metrics and benchmarking tools. | [→](quality-metrics/INDEX.md) |
 
+## Projects
+
+- [Jasna](jasna.md) — Restore tracked mosaic regions in local videos; free public BasicVSR++ path, with private supporter components in official packages.
+
+## Comparison matrix
+
+| Project | Use when | Main constraint | Health |
+|---|---|---|---|
+| [Jasna](jasna.md) | Moving mosaic regions need detection, tracking and temporal restoration together. | GPU-specific setup; mixed component terms and opaque supporter runtime. | C (6/6) |
+
 ## What belongs here
 
 Decode, encode, transcode, filter, and score images, audio, and video.

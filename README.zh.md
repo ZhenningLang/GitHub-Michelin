@@ -827,6 +827,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **Jasna** | 跟踪修复局部马赛克，不是整段视频放大；免费源码路径与私有支持者运行时分开。 | AGPL-3.0-only（组件例外） | C（6/6） | [中](categories/media-processing/jasna.zh.md) · [EN](categories/media-processing/jasna.md) |
 | **Tendedero** | macOS 可收起截图暂存条；可选接管截图设置与剪贴板图片。 | MIT (code; branding excluded) | C（5/6） | [中](categories/media-processing/image-processing/tendedero.zh.md) · [EN](categories/media-processing/image-processing/tendedero.md) |
 | **OpenScreen Community** | 用仍维护的社区续作录制与润色软件演示，而非已归档原版。 | MIT | B（5/6） | [中](categories/media-processing/video-editing/openscreen-community.zh.md) · [EN](categories/media-processing/video-editing/openscreen-community.md) |
 | **FFmpeg** | 当你需要在管线里解码/编码/转码/滤镜处理几乎任何音视频时用它——注意 LGPL→GPL 的构建授权陷阱。 | LGPL-2.1-or-later | A（4/6） | [中](categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg.zh.md) · [EN](categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg.md) |

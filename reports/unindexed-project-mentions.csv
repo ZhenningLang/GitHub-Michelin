@@ -44,6 +44,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [HunyuanVideo](https://github.com/Tencent-Hunyuan/HunyuanVideo),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [KeePassXC](https://github.com/keepassxreboot/keepassxc),categories/dev-utilities/ops-infra/vaultwarden.md,,no
 [Kokoro](https://github.com/hexgrad/kokoro),categories/speech/vibevoice.md,,no
+[Lada](https://codeberg.org/ladaapp/lada),categories/media-processing/jasna.md,,no
 [LEAN](https://github.com/QuantConnect/Lean),categories/investment-finance/backtrader.md,,no
 [linkding](https://github.com/sissbruecker/linkding),categories/knowledge-base/hister.md,,no
 [localtunnel](https://github.com/localtunnel/localtunnel),categories/networking/opentunnel.md,,no
@@ -91,6 +92,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [v2rayA](https://github.com/v2rayA/v2rayA),categories/networking/dae.md,,no
 [v2rayN](https://github.com/2dust/v2rayN),categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 [vectorbt](https://github.com/polakowo/vectorbt),categories/investment-finance/backtrader.md,,no
+[Video2X](https://github.com/k4yt3x/video2x),categories/media-processing/jasna.md,,no
 [vLLM-Omni](https://github.com/vllm-project/vllm-omni),categories/llm-inference/serving-engines/sglang-omni.md,,no
 [Wan2.2](https://github.com/Wan-Video/Wan2.2),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [wasmtime](https://github.com/bytecodealliance/wasmtime) (WASI CPython),categories/sandboxing/monty.md,,no

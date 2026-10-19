@@ -830,6 +830,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **Jasna** | Restore tracked mosaic regions rather than upscale the whole video; free source path, private supporter runtime. | AGPL-3.0-only (component exceptions) | C (6/6) | [EN](categories/media-processing/jasna.md) · [中](categories/media-processing/jasna.zh.md) |
 | **Tendedero** | Retractable screenshot shelf for macOS; optional capture-setting and clipboard takeover. | MIT (code; branding excluded) | C (5/6) | [EN](categories/media-processing/image-processing/tendedero.md) · [中](categories/media-processing/image-processing/tendedero.zh.md) |
 | **OpenScreen Community** | Record and polish software demos using the maintained continuation, not the archived original. | MIT | B (5/6) | [EN](categories/media-processing/video-editing/openscreen-community.md) · [中](categories/media-processing/video-editing/openscreen-community.zh.md) |
 | **FFmpeg** | Use it when you must decode/encode/transcode/filter virtually any audio or video in a pipeline — mind the LGPL→GPL build trap. | LGPL-2.1-or-later | A (4/6) | [EN](categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg.md) · [中](categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg.zh.md) |
