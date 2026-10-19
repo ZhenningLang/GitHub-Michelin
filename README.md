@@ -55,6 +55,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **Skills Hub** | Central skill library across tools, projects and git-synced devices; audit file ownership first. | MIT | B (6/6) | [EN](categories/agent-tooling/harness-extensions/skills-hub.md) · [中](categories/agent-tooling/harness-extensions/skills-hub.zh.md) |
 | **beads** | Use it when an AI agent loses task state across sessions and you want a versioned, dependency-aware task graph in the repo. | MIT | B (5/6) | [EN](categories/agent-tooling/work-state/beads.md) · [中](categories/agent-tooling/work-state/beads.zh.md) |
 | **CCPM** | Use it when a feature is too big for one agent session and you want PRD-to-epic-to-GitHub-Issues specs plus parallel agents in git worktrees — but it requires GitHub Issues and has had no commits since 2026-03. | MIT | C (4/5) | [EN](categories/agent-tooling/work-state/ccpm.md) · [中](categories/agent-tooling/work-state/ccpm.zh.md) |
 | **Entire** | Use it when you want AI agent sessions captured as Git checkpoints alongside commits, searchable and rewindable. | MIT | B (6/6) | [EN](categories/agent-tooling/session-history/entire-cli.md) · [中](categories/agent-tooling/session-history/entire-cli.zh.md) |
