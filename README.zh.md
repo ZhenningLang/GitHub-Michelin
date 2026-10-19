@@ -701,6 +701,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **Mac Performance Monitor** | 用本地系统／进程历史、自适应告警和受限只读助手查询，回看已经结束的 Mac 卡顿。 | MIT | B（6/6） | [中](categories/observability/mac-performance-monitor.zh.md) · [EN](categories/observability/mac-performance-monitor.md) |
 | **Grafana** | 当你需要在 Prometheus/Loki/Elasticsearch 等多数据源之上加一层统一看板和告警时用它——它做可视化，不做存储。 | AGPL-3.0 | B（5/6） | [中](categories/observability/grafana.zh.md) · [EN](categories/observability/grafana.md) |
 | **Prometheus** | 当你要在 Kubernetes 或已暴露 /metrics 的云原生软件上拿到每个服务的请求率、错误率、延迟直方图，并用 PromQL 设告警时用它——但本地存储是单节点的，长期保留或高可用要加 Thanos、Mimir 或 VictoriaMetrics。 | Apache-2.0 | A（6/6） | [EN](categories/observability/prometheus.md) · [中](categories/observability/prometheus.zh.md) |
 | **OpenTelemetry Collector** | 当多个服务要把链路、指标、日志发往不止一个后端，并希望采样、脱敏、路由都在一份 YAML 里集中配置、而不是写进每个服务时用它——但只有一个服务、一个 OTLP 后端时，它只是多一个进程。 | Apache-2.0 | A（6/6） | [EN](categories/observability/opentelemetry-collector.md) · [中](categories/observability/opentelemetry-collector.zh.md) |

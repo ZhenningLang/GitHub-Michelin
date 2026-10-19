@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Mac Performance Monitor** | 回看苹果芯片 Mac 的历史卡顿，关联本地系统／进程记录，并允许受限只读助手查询。 | B（6/6） | [→](mac-performance-monitor.zh.md) |
 | **Grafana** | 当你需要在 Prometheus/Loki/Elasticsearch 等多数据源之上加一层统一看板和告警时用它——它做可视化，不做存储。 | B（5/6） | [→](grafana.zh.md) |
 | **Prometheus** | 当你要在 Kubernetes 或已暴露 /metrics 的云原生软件上拿到每个服务的请求率、错误率、延迟直方图，并用 PromQL 设告警时用它——但本地存储是单节点的，长期保留或高可用要加 Thanos、Mimir 或 VictoriaMetrics。 | A（6/6） | [→](prometheus.zh.md) |
 | **OpenTelemetry Collector** | 当多个服务要把链路、指标、日志发往不止一个后端，并希望采样、脱敏、路由都在一份 YAML 里集中配置、而不是写进每个服务时用它——但只有一个服务、一个 OTLP 后端时，它只是多一个进程。 | A（6/6） | [→](opentelemetry-collector.zh.md) |
@@ -18,6 +19,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Mac Performance Monitor](mac-performance-monitor.zh.md) | ✅ | B（6/6） | 单机历史证据、自适应告警与只读 MCP；要求 macOS 15 以上，可选特权覆盖，助手读取后可能外发提供商。 |
 | [Grafana](grafana.zh.md) | ✅ | B（5/6） | 多数据源之上的统一看板/告警；是可视化层而非存储（AGPL-3.0）。 |
 | [Telegraf](../dev-utilities/ops-infra/telegraf.zh.md) | ✅ | A（6/6） | 插件驱动的采集/路由 agent，负责把数据喂给 Grafana 读取的后端——分工不同。 |
 | Kibana / Datadog / Apache Superset | 部分已收录 | — | 各页对比里点到的其他看板/可观测/BI 方案；其中 Apache Superset 收录在 data-visualization 分类下，Kibana 与 Datadog 尚未收录。 |

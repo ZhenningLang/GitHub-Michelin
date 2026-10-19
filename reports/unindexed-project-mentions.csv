@@ -19,6 +19,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [BirdNET-Analyzer](https://github.com/birdnet-team/BirdNET-Analyzer),categories/on-device-ml/birdnet-go.md,,no
 [BirdNET-Pi (Nachtzuster fork)](https://github.com/Nachtzuster/BirdNET-Pi),categories/on-device-ml/birdnet-go.md,,no
 [Bitwarden server](https://github.com/bitwarden/server),categories/dev-utilities/ops-infra/vaultwarden.md,,no
+[btop](https://github.com/aristocratos/btop),categories/observability/mac-performance-monitor.md,,no
 [Cedar](https://github.com/cedar-policy/cedar),categories/agent-governance/agent-governance-toolkit.md,,no
 [Cedarling (Janssen)](https://github.com/JanssenProject/jans),categories/agent-governance/agent-governance-toolkit.md,,no
 [Cipher](https://github.com/campfirein/cipher),categories/agent-memory/coding-agent-memory/claude-subconscious.md,,no
@@ -73,6 +74,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Semgrep](https://github.com/semgrep/semgrep),categories/agent-governance/skillspector.md,,no
 [sing-box](https://github.com/SagerNet/sing-box),categories/networking/dae.md,,no
 [spcfox/amnezia-wg-easy](https://github.com/spcfox/amnezia-wg-easy),categories/networking/amneziawg-installer.md,,no
+[Stats](https://github.com/exelban/stats),categories/observability/mac-performance-monitor.md,,no
 [Sunshine](https://github.com/LizardByte/Sunshine) + [Moonlight](https://github.com/moonlight-stream/moonlight-qt),categories/dev-utilities/ops-infra/rustdesk.md,,no
 [Termux](https://github.com/termux/termux-app) + a CLI agent,categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md,,no
 [TigerVNC](https://github.com/TigerVNC/tigervnc),categories/dev-utilities/ops-infra/rustdesk.md,,no

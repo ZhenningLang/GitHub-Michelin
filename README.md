@@ -704,6 +704,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **Mac Performance Monitor** | Revisit past Mac slowdowns using local system/process history, adaptive alerts and bounded read-only agent queries. | MIT | B (6/6) | [EN](categories/observability/mac-performance-monitor.md) · [中](categories/observability/mac-performance-monitor.zh.md) |
 | **Grafana** | Use it when you need one dashboard + alerting layer over Prometheus/Loki/Elasticsearch and other sources — it visualizes, it doesn't store. | AGPL-3.0 | B (5/6) | [EN](categories/observability/grafana.md) · [中](categories/observability/grafana.zh.md) |
 | **Prometheus** | Use it when you need per-service request rates, error ratios and latency histograms with PromQL alerts on Kubernetes or cloud-native software that already exposes /metrics — but its local storage is single-node, so long retention or HA needs Thanos, Mimir or VictoriaMetrics. | Apache-2.0 | A (6/6) | [EN](categories/observability/prometheus.md) · [中](categories/observability/prometheus.zh.md) |
 | **OpenTelemetry Collector** | Use it when several services send traces, metrics and logs to more than one backend and you want sampling, PII redaction and routing set once in YAML, not per service — but with one service and one OTLP backend it is just an extra process. | Apache-2.0 | A (6/6) | [EN](categories/observability/opentelemetry-collector.md) · [中](categories/observability/opentelemetry-collector.zh.md) |
