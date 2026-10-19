@@ -525,6 +525,7 @@ Gotenberg,categories/media-processing/image-processing/screenshot-service.md,,no
 Gotenberg (`gotenberg/gotenberg`),categories/office-automation/dsh-libreoffice-kit.md,,no
 GPT-4o / Qwen-VL / Gemini (VLMs),categories/ocr/latex-ocr.md,,no
 gpu-mode/lectures,categories/learning-resources/gpu-perf-engineering-resources.md,,no
+GPU-Puzzles,categories/learning-resources/triton-puzzles.md,,no
 Grafana + Prometheus,categories/dev-utilities/ops-infra/cockpit.md,,no
 Grafana Alloy,categories/observability/opentelemetry-collector.md,,no
 Grafana Tempo,categories/observability/jaeger.md,,no
@@ -1230,6 +1231,7 @@ Traefik,categories/api-gateway/kong.md,,no
 TransformerLens / minGPT,categories/ml-research/INDEX.md,,no
 TrendRadar,categories/reading-tools/follow-builders.md,,no
 Trigger.dev (`triggerdotdev/trigger.dev`),categories/workflow-orchestration/tanstack-workflow.md,,no
+Triton official tutorials,categories/learning-resources/triton-puzzles.md,,no
 Trivy / Grype (scanners),categories/dev-utilities/ops-infra/slim.md,,no
 TrOCR,categories/ocr/INDEX.md,,no
 tRPC,categories/web-ui/frameworks/app-frameworks/tanstack-bling.md,,no

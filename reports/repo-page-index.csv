@@ -447,6 +447,7 @@ https://github.com/google/or-tools,or-tools,optimization-solvers,categories/opti
 https://github.com/googleapis/mcp-toolbox,mcp-toolbox,database-clients,categories/databases/database-clients/mcp-toolbox.md
 https://github.com/googlecolab/google-colab-cli,google-colab-cli,python-tooling,categories/python-tooling/google-colab-cli.md
 https://github.com/gopherdata/gophernotes,gophernotes,python-tooling,categories/python-tooling/gophernotes.md
+https://github.com/gpu-mode/Triton-Puzzles,triton-puzzles,learning-resources,categories/learning-resources/triton-puzzles.md
 https://github.com/grafana/grafana,grafana,observability,categories/observability/grafana.md
 https://github.com/grafana/loki,loki,observability,categories/observability/loki.md
 https://github.com/greekr4/playwright-bot-bypass,playwright-bot-bypass,agent-browser-tools,categories/web-automation/agent-browser-tools/playwright-bot-bypass.md
