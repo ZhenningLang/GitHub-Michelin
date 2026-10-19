@@ -266,6 +266,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **OpenClaw Enterprise** | 当多个团队的原版 OpenClaw 或 Codex agent 要在共享 Kubernetes 集群上按租户分命名空间、走 IAM、投递密钥、留不可变版本和审计时用它——不适合个人助手，也还不是正式发布的产品。 | MIT | B（5/6） | [中](categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.zh.md) · [EN](categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.md) |
 | **Jarvis** | 用本地语音模型和短期转写参与房间讨论；代价是非商业许可与桌面音频配置。 | LicenseRef-Jarvis-NonCommercial | C（5/6） | [EN](categories/agent-frameworks/agent-runtimes/personal-assistants/jarvis.md) · [中](categories/agent-frameworks/agent-runtimes/personal-assistants/jarvis.zh.md) |
 | **Agor** | 用实时分支看板协作混合编程助手；接受 BSL，并自行运营数据库与执行安全。 | BUSL-1.1 | D（6/6） | [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/agor.md) · [中](categories/agent-frameworks/coding-agents/orchestration-and-review/agor.zh.md) |
+| **FastClaw** | 用一个 Go 服务管理多个助手、分层配置与持久会话；源码可见，自托管默认可在宿主执行。 | LicenseRef-FastClaw-Community | C（4/6） | [EN](categories/agent-frameworks/agent-runtimes/agent-services/fastclaw.md) · [中](categories/agent-frameworks/agent-runtimes/agent-services/fastclaw.zh.md) |
 
 ### agent-memory
 

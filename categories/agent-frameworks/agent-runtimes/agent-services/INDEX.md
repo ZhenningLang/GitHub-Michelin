@@ -16,6 +16,7 @@
 | **OpenFang** | You want autonomous agents that run on a schedule from one self-hosted Rust binary. | C (5/6) | [→](openfang.md) |
 | **Parlant** | Use it when you build a customer-facing agent that must stay on-rails via behavioral guidelines — overkill for simple or free-form agents. | C (5/6) | [→](parlant.md) |
 | **Symphony** | Your Linear backlog and Codex agent need a self-hosted orchestrator running isolated per-issue autonomous implementation runs. | C (5/6) | [→](symphony.md) |
+| **FastClaw** | Run multiple assistant identities through one Go service with scoped configuration and durable sessions; source-available, host execution by default. | C (4/6) | [→](fastclaw.md) |
 
 ## Comparison matrix
 
@@ -30,6 +31,7 @@
 | [OpenFang](openfang.md) | ✅ | C (5/6) | You want autonomous agents that run on a schedule from one self-hosted Rust binary. |
 | [Parlant](parlant.md) | ✅ | C (5/6) | Use it when you build a customer-facing agent that must stay on-rails via behavioral guidelines — overkill for simple or free-form agents. |
 | [Symphony](symphony.md) | ✅ | C (5/6) | Your Linear backlog and Codex agent need a self-hosted orchestrator running isolated per-issue autonomous implementation runs. |
+| [FastClaw](fastclaw.md) | ✅ | C (4/6) | Run multiple assistant identities through one Go service with scoped configuration and durable sessions; source-available, host execution by default. |
 
 ## What belongs here
 
