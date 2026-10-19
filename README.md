@@ -1329,6 +1329,7 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **Marble Skill Taxonomy** | A flat curriculum list cannot tell your tutoring app what a child should learn first; this dataset connects elementary micro-topics to prerequisites, evidence criteria and curriculum identifiers. | (ODbL-1.0 AND CC-BY-SA-4.0) | D (5/6) | [EN](categories/education-tutoring/os-taxonomy.md) · [中](categories/education-tutoring/os-taxonomy.zh.md) |
 | **DeepTutor** | DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/. | NOASSERTION | B (4/6) | [EN](categories/education-tutoring/deeptutor.md) · [中](categories/education-tutoring/deeptutor.zh.md) |
 | **edulab** | Make one supported problem into an interactive lesson using shared symbolic solution and drawing data, or a separately checked narrated video. | Apache-2.0 | B (4/5) | [EN](categories/education-tutoring/edulab.md) · [中](categories/education-tutoring/edulab.zh.md) |
 

@@ -54,6 +54,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [openclaw/agent-skills](https://github.com/openclaw/agent-skills),categories/agent-skills/personal-collections/engineering-workflows/agent-scripts.md,,no
 [OpenCore Legacy Patcher](https://github.com/dortania/OpenCore-Legacy-Patcher),categories/hackintosh/nvidia-macos-driver.md,,no
 [openilink-tg](https://github.com/openilink/openilink-tg),categories/im-automation/openilink-hub.md,,no
+[OpenSALT](https://github.com/opensalt/opensalt),categories/education-tutoring/os-taxonomy.md,,no
 [OpenSSF Scorecard](https://github.com/ossf/scorecard),categories/agent-governance/skillspector.md,,no
 [Operit](https://github.com/AAswordman/Operit),categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md,,no
 [Passbolt](https://github.com/passbolt/passbolt_api),categories/dev-utilities/ops-infra/vaultwarden.md,,no
