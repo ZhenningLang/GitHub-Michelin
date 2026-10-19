@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Tendedero** | Keep temporary Mac screenshots on a retractable strip instead of the Desktop; early app with capture-setting takeover. | C (5/6) | [→](tendedero.md) |
 | **ImageMagick** | Use it when a script or CI job must convert, resize and composite images across 200+ formats — TIFF, PSD, EPS, HEIC, multi-page PDF — from one shell command — but decoding untrusted uploads without a sandbox is a steady CVE risk. | B (5/6) | [→](imagemagick.md) |
 | **sharp** | Use it when a Node.js upload handler, build step or API route must turn large photos into thumbnails and WebP/AVIF in-process and fast — but its prebuilt binaries cannot decode HEIC, PDF, PSD or camera RAW. | A (6/6) | [→](sharp.md) |
 | **Screenshot Service** | Render controlled HTML and CSS to PNG, JPEG, or WebP through a tiny internal HTTP service that you can isolate and harden. | D (4/6) | [→](screenshot-service.md) |
@@ -16,6 +17,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Tendedero](tendedero.md) | ✅ | C (5/6) | Native screenshot shelf rather than a full capture editor; macOS-only and eleven days old. |
 | [ImageMagick](imagemagick.md) | ✅ | B (5/6) | The widest format coverage and a scriptable CLI with bindings for most languages, paid for with a huge decoder attack surface, slower resizing than sharp, and development concentrated in two maintainers. |
 | [sharp](sharp.md) | ✅ | A (6/6) | libvips speed and low memory from one npm install, in exchange for a narrow prebuilt format set, a runtime that must load native Node-API add-ons, and a project that is effectively one maintainer. |
 | [Screenshot Service](screenshot-service.md) | ✅ | D (4/6) | Pick only for trusted HTML behind an isolated internal endpoint; browser fidelity comes with Chromium cost, unsafe defaults, no established repository license, and substantial hardening work. |
