@@ -32,6 +32,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [fortuneexcel](https://github.com/corbe30/fortuneexcel),categories/office-editors/fortune-sheets.md,,no
 [Foundry Anvil](https://github.com/foundry-rs/foundry),categories/blockchain-dev-infrastructure/powfaucet.md,,no
 [google_workspace_mcp](https://github.com/taylorwilsdon/google_workspace_mcp),categories/agent-tooling/harness-extensions/hey-cli.md,,no
+[Hunyuan3D-2](https://github.com/Tencent-Hunyuan/Hunyuan3D-2),categories/3d-generation/modly.md,,no
 [HunyuanVideo](https://github.com/Tencent-Hunyuan/HunyuanVideo),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [KeePassXC](https://github.com/keepassxreboot/keepassxc),categories/dev-utilities/ops-infra/vaultwarden.md,,no
 [Kokoro](https://github.com/hexgrad/kokoro),categories/speech/vibevoice.md,,no
@@ -71,6 +72,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [TigerVNC](https://github.com/TigerVNC/tigervnc),categories/dev-utilities/ops-infra/rustdesk.md,,no
 [tldraw](https://github.com/tldraw/tldraw),categories/diagramming/excalidraw.md,,no
 [TorBot](https://github.com/DedSecInside/TorBot),categories/osint/robin.md,,no
+[TripoSR](https://github.com/VAST-AI-Research/TripoSR),categories/3d-generation/modly.md,,no
 [v2rayA](https://github.com/v2rayA/v2rayA),categories/networking/dae.md,,no
 [v2rayN](https://github.com/2dust/v2rayN),categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 [vectorbt](https://github.com/polakowo/vectorbt),categories/investment-finance/backtrader.md,,no

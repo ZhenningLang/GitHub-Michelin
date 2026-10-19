@@ -88,6 +88,7 @@
 | **pentest** | Autonomous / AI-assisted penetration testing of authorized web apps, APIs & local networks (Wi-Fi) — agent swarms, pentest automation, exploit chaining (authorization-first). | [→](categories/pentest/INDEX.md) |
 | **disk-cleanup** | Reclaim disk space and tidy a desktop OS — cache and build-artifact cleaners, space analyzers, duplicate finders, app uninstallers and Windows debloat scripts. | [→](categories/disk-cleanup/INDEX.md) |
 | **3d-reconstruction** | Turn photos, video or scans into 3D scenes — structure-from-motion, Gaussian-splatting / radiance-field training, and meshing the result. | [→](categories/3d-reconstruction/INDEX.md) |
+| **3d-generation** | Generate plausible 3D assets from images or prompts, without assuming measured geometry. | [→](categories/3d-generation/INDEX.md) |
 | **streaming-clients** | Alternative client apps for watching and listening to streaming services (YouTube, BiliBili, SoundCloud…) without the official app — no ads, no account, background play. | [→](categories/streaming-clients/INDEX.md) |
 | **computer-vision** | Detect, recognize and analyze faces, objects and people in images and video — face verification/recognition, detection and attribute analysis as libraries you call. | [→](categories/computer-vision/INDEX.md) |
 | **meeting-intelligence** | AI meeting copilots and note-takers — record calls, transcribe live, assist in-meeting, and automate the post-meeting follow-up. | [→](categories/meeting-intelligence/INDEX.md) |

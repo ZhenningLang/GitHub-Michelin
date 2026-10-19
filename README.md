@@ -1512,3 +1512,10 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **NullMoth NVIDIA Driver for macOS** | Use it when an OpenCore PC on macOS 15 has only a Turing-or-later GeForce card and keeping that card matters more than stability — accepting a two-day-old single-author kernel driver validated on one RTX 5060, SIP/AMFI/Secure Boot relaxed, and a noncommercial license. | PolyForm-Noncommercial-1.0.0 + LGPL-3.0-or-later + MIT | D (4/6) | [EN](categories/hackintosh/nvidia-macos-driver.md) · [中](categories/hackintosh/nvidia-macos-driver.zh.md) |
+
+
+### 3d-generation
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **Modly** | Generate draft 3D meshes from images through reviewed local model extensions; not measured reconstruction. | LicenseRef-MIT-Attribution | B (5/6) | [EN](categories/3d-generation/modly.md) · [中](categories/3d-generation/modly.zh.md) |

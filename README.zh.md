@@ -1493,3 +1493,10 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **NullMoth NVIDIA Driver for macOS** | 当一台跑 macOS 15 的 OpenCore PC 里只有图灵或更新的 GeForce 卡，而且保住这张卡比稳定更重要时用它——代价是一个只有两天历史、单一作者、只在一张 RTX 5060 上验证过的内核驱动，要放宽 SIP／AMFI／安全启动，许可证禁止商用。 | PolyForm-Noncommercial-1.0.0 + LGPL-3.0-or-later + MIT | D（4/6） | [中](categories/hackintosh/nvidia-macos-driver.zh.md) · [EN](categories/hackintosh/nvidia-macos-driver.md) |
+
+
+### 3d-generation
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **Modly** | 通过已审查本地模型扩展，从图片生成三维网格草稿；不是实测重建。 | LicenseRef-MIT-Attribution | B（5/6） | [中](categories/3d-generation/modly.zh.md) · [EN](categories/3d-generation/modly.md) |
