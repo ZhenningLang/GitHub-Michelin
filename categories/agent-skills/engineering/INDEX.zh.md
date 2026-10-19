@@ -8,6 +8,7 @@
 | 合集 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **SwiftUI Pro** | 专项检查 SwiftUI 的 API、数据流和无障碍；仅为建议，依赖 SDK 版本。 | B（4/5） | [→](swiftui-agent-skill.zh.md) |
+| **Nature Skills** | 带来源映射的双语论文阅读与证据驱动稿件流程；专项运行时和人工审阅仍由你提供。 | B（4/5） | [→](nature-skills.zh.md) |
 | **Agent Skills (addyosmani)** | 约 24 个生产级工程技能包（质量/安全/web 性能/API/发布），装进 coding agent 并通过约 8 个 SDLC 斜杠命令路由。 | A（4/5） | [→](addyosmani-agent-skills.zh.md) |
 | **web-quality-skills** | 含六个技能的 agent 技能包，把 Lighthouse / Core Web Vitals / WCAG / SEO 最佳实践编码成按需加载的指令集，让 coding agent 审计并修复 web 质量问题；属建议层，非测量工具。 | B（4/5） | [→](addyosmani-web-quality.zh.md) |
 | **Scientific Agent Skills** | 一个大型 skill 包（约 147 个 skill），把 coding agent 变成生物、化学、医学、药物发现领域的科研助手——每个 skill 用一份带文档的 SKILL.md 封装一个科学 Python 库或数据库，按需加载。 | A（4/5） | [→](scientific-agent-skills.zh.md) |
@@ -27,6 +28,7 @@
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [SwiftUI Pro](swiftui-agent-skill.zh.md) | ✅ | B（4/5） | 专项参考与文件级修法；不是编译器、性能分析器或模拟器操作工具。 |
+| [Nature Skills](nature-skills.zh.md) | ✅ | B（4/5） | 清单路由科研产物并检查公式连接；不是官方期刊政策或已验证科学。 |
 | [Agent Skills (addyosmani)](addyosmani-agent-skills.zh.md) | ✅ | A（4/5） | 约 24 个生产级工程技能包（质量/安全/web 性能/API/发布），装进 coding agent 并通过约 8 个 SDLC 斜杠命令路由。 |
 | [web-quality-skills](addyosmani-web-quality.zh.md) | ✅ | B（4/5） | 含六个技能的 agent 技能包，把 Lighthouse / Core Web Vitals / WCAG / SEO 最佳实践编码成按需加载的指令集，让 coding agent 审计并修复 web 质量问题；属建议层，非测量工具。 |
 | [Scientific Agent Skills](scientific-agent-skills.zh.md) | ✅ | A（4/5） | 一个大型 skill 包（约 147 个 skill），把 coding agent 变成生物、化学、医学、药物发现领域的科研助手——每个 skill 用一份带文档的 SKILL.md 封装一个科学 Python 库或数据库，按需加载。 |
