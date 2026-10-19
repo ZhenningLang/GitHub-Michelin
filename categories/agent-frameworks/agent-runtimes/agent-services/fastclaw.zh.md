@@ -84,17 +84,17 @@ health:
 
 ## 何时不用
 
-- **只准 OSI 许可或需要白标平台：** Community License 在 Apache 文本上增加托管和品牌限制。个人或可信团队助手可选 MIT 的 [OpenClaw](../personal-assistants/openclaw.zh.md)；自建运行时可用 [Pydantic AI](../agent-sdks/pydantic-ai.zh.md)。
+- **只准 OSI 许可或需要白标平台：** Community License 在 Apache 文本上增加托管和品牌限制。个人或可信团队助手可选 MIT 的 [OpenClaw](../personal-assistants/messaging-daemons/openclaw.zh.md)；自建运行时可用 [Pydantic AI](../agent-sdks/pydantic-ai.zh.md)。
 - **默认配置直接接不可信用户：** 自托管默认仍使用宿主 shell，未强制时沙箱只是可选工具。应先加固；若目标是隔离租户基础设施，可考虑 [OpenClaw Enterprise](../../kubernetes-agents/openclaw-enterprise.zh.md)。
-- **只要一个私人助手，不想管理平台：** 选 [Hermes Agent](../personal-assistants/hermes-agent.zh.md)；FastClaw 额外引入账号、分层配置、接口密钥和数据库。
+- **只要一个私人助手，不想管理平台：** 选 [Hermes Agent](../personal-assistants/messaging-daemons/hermes-agent.zh.md)；FastClaw 额外引入账号、分层配置、接口密钥和数据库。
 - **必须完整恢复工作区才能运行：** 恢复实现会记录并跳过单文件失败。用 [Pydantic AI](../agent-sdks/pydantic-ai.zh.md) 在自己的应用里明确校验，不要假定沙箱一定包含全部保存文件。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [OpenClaw](../personal-assistants/openclaw.zh.md) | ✅ | 应用要管理多个 agent 和分层凭据，选 FastClaw；一个助手覆盖个人聊天渠道，选 OpenClaw。 | FastClaw 集中管理 agent 与用户会话，但增加社区许可限制和平台运维。 |
-| [Hermes Agent](../personal-assistants/hermes-agent.zh.md) | ✅ | 私人服务器助手积累操作方法，选 Hermes；后台和接口管理多个独立身份，选 FastClaw。 | Hermes 侧重持续存在的个人配置；FastClaw 将 agent、配置与凭据存进服务数据库。 |
+| [OpenClaw](../personal-assistants/messaging-daemons/openclaw.zh.md) | ✅ | 应用要管理多个 agent 和分层凭据，选 FastClaw；一个助手覆盖个人聊天渠道，选 OpenClaw。 | FastClaw 集中管理 agent 与用户会话，但增加社区许可限制和平台运维。 |
+| [Hermes Agent](../personal-assistants/messaging-daemons/hermes-agent.zh.md) | ✅ | 私人服务器助手积累操作方法，选 Hermes；后台和接口管理多个独立身份，选 FastClaw。 | Hermes 侧重持续存在的个人配置；FastClaw 将 agent、配置与凭据存进服务数据库。 |
 | [Pydantic AI](../agent-sdks/pydantic-ai.zh.md) | ✅ | Python 应用必须控制循环与校验，选 Pydantic AI；要直接运营 agent 服务，选 FastClaw。 | 库不绑定本平台的数据和界面约定，但会话、渠道和管理功能都要自己做。 |
 
 ## 快速上手

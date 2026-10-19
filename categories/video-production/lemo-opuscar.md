@@ -77,8 +77,8 @@ You already use a coding agent and have a short-film topic, a visual style and t
 
 ## When NOT to use
 
-- **Only a rendering engine for an existing composition:** choose [HyperFrames](hyperframes.md); this pack adds directing instructions, style selection, audio production and a separate library checkout.
-- **A mature React video platform with cloud rendering:** choose [Remotion](remotion.md), subject to its license; Lemo-Opuscar is a young browser-frame toolkit, not a comparable render service.
+- **Only a rendering engine for an existing composition:** choose [HyperFrames](render-engines/hyperframes.md); this pack adds directing instructions, style selection, audio production and a separate library checkout.
+- **A mature React video platform with cloud rendering:** choose [Remotion](render-engines/remotion.md), subject to its license; Lemo-Opuscar is a young browser-frame toolkit, not a comparable render service.
 - **A tightly governed fixed-style explainer:** consider [anything2explainer](anything2explainer.md), but its non-commercial license matters. Lemo's style variety and agent discretion trade against repeatability of direction.
 - **Photoreal footage or editing existing takes:** use a video-generation service such as Runway, or an editor such as DaVinci Resolve, respectively; these are closed products, not this pack's code-drawn-film path.
 - **No automatic dependency or library updates:** inspect and pin its setup workflow instead of adopting the default skill. It clones or updates a shared library and installs tiered dependencies; a bare skill file is not the complete installation.
@@ -87,8 +87,8 @@ You already use a coding agent and have a short-film topic, a visual style and t
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [HyperFrames](hyperframes.md) | ✅ | Choose HyperFrames when you already own the film workflow and need an HTML rendering engine; choose Lemo when reusable art direction and style prompts are the value. | Lemo bundles style guides, voice/music tools and review conventions; HyperFrames is a more general engine with Apache-2.0 licensing. |
-| [Remotion](remotion.md) | ✅ | Choose Remotion for a React team's parameterized video product and cloud-render ecosystem; choose Lemo for agent-directed short films with plain browser drawing. | Remotion has deeper engine infrastructure and its own commercial license; Lemo is smaller, locally rendered and much younger. |
+| [HyperFrames](render-engines/hyperframes.md) | ✅ | Choose HyperFrames when you already own the film workflow and need an HTML rendering engine; choose Lemo when reusable art direction and style prompts are the value. | Lemo bundles style guides, voice/music tools and review conventions; HyperFrames is a more general engine with Apache-2.0 licensing. |
+| [Remotion](render-engines/remotion.md) | ✅ | Choose Remotion for a React team's parameterized video product and cloud-render ecosystem; choose Lemo for agent-directed short films with plain browser drawing. | Remotion has deeper engine infrastructure and its own commercial license; Lemo is smaller, locally rendered and much younger. |
 | [anything2explainer](anything2explainer.md) | ✅ | Choose anything2explainer for a fixed motion-graphics explainer process with explicit checkpoints; choose Lemo when the story needs a named painting, cartoon or evidence-film style. | Lemo's code/docs are MIT and the looks vary; the alternative supplies a narrower method but is non-commercial. |
 
 ## Quick start

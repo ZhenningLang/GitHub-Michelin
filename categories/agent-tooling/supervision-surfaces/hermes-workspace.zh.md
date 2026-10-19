@@ -71,7 +71,7 @@ health:
 
 # Hermes Workspace
 
-面向 [hermes-agent](../../agent-frameworks/agent-runtimes/personal-assistants/hermes-agent.zh.md) 的自托管 Web 工作台与控制面：聊天、会话、memory、skills、MCP、jobs、Monaco 文件浏览器、PTY 终端、仪表盘，外加 tmux 支撑的多 agent「Swarm」模式——全部通过上游原生 agent 的 gateway（`:8642`）与 dashboard（`:9119`）API 对接。接不到 Hermes Agent 后端时自动降级为「portable 模式」：对任意 OpenAI 兼容端点的纯聊天。
+面向 [hermes-agent](../../agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.zh.md) 的自托管 Web 工作台与控制面：聊天、会话、memory、skills、MCP、jobs、Monaco 文件浏览器、PTY 终端、仪表盘，外加 tmux 支撑的多 agent「Swarm」模式——全部通过上游原生 agent 的 gateway（`:8642`）与 dashboard（`:9119`）API 对接。接不到 Hermes Agent 后端时自动降级为「portable 模式」：对任意 OpenAI 兼容端点的纯聊天。
 
 ![Hermes Workspace — 健康度雷达](../../../assets/health/hermes-workspace.zh.svg)
 
@@ -133,7 +133,7 @@ v2 的卖点是 *zero-fork*：workspace 不改 hermes-agent，只做它的前端
 
 ## 依赖
 
-- **完整功能的依赖：** 一个原装 [hermes-agent](../../agent-frameworks/agent-runtimes/personal-assistants/hermes-agent.zh.md) 安装，且要拉起*两个*服务——`:8642` 上的 gateway（`API_SERVER_ENABLED=true`；启用鉴权时配 `API_SERVER_KEY`/`HERMES_API_TOKEN`）和 `:9119` 上的 `hermes dashboard`（sessions/skills/config/jobs/MCP API）。从源码跑 agent 需要 Python 3.11+。
+- **完整功能的依赖：** 一个原装 [hermes-agent](../../agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.zh.md) 安装，且要拉起*两个*服务——`:8642` 上的 gateway（`API_SERVER_ENABLED=true`；启用鉴权时配 `API_SERVER_KEY`/`HERMES_API_TOKEN`）和 `:9119` 上的 `hermes dashboard`（sessions/skills/config/jobs/MCP API）。从源码跑 agent 需要 Python 3.11+。
 - **agent 够得着的模型后端：** 某家 API key（OpenAI/OpenRouter/Google/…）或本地服务（Ollama、LM Studio、vLLM、llama.cpp、LocalAI）。用纯 OpenAI 兼容后端*替代* agent 时，只剩 portable 模式（仅聊天）。
 - **tmux** 在宿主机上支撑 Swarm worker（POSIX；Windows 走 PowerShell + WSL 辅助脚本）。
 - **无数据库**——状态活在 agent 自己的文件/服务后面；workspace 覆写值持久化在 `~/.hermes/workspace-overrides.json`。
@@ -146,7 +146,7 @@ v2 的卖点是 *zero-fork*：workspace 不改 hermes-agent，只做它的前端
 
 - **维护（2026-09）。** 2026-03-16 创建；2,030 commits，`main` 上最后一次提交是 2026-08-22（距本次核对约一个月；2026-09-10 的 `pushed_at` 来自别的分支）——main 仍活跃。反面：最新 GitHub Release 停在 v2.3.0（2026-05-08），约 4 个月发布空窗，检查时点挂着 60 个 open issues、103 个 open PRs——trunk 跑在发布流程前面。
 - **治理/bus factor。** `owner.type` 是 **User**（"Eric"，账号 2025-03 注册，19 个公开仓库）。12 个月贡献分布的实测值是头部作者占 35%、共 69 名列出的贡献者（health 评分器，2026-09）——比纯单人仓库分散，但依然无基金会、未发现 GOVERNANCE/CODEOWNERS；SECURITY.md 把漏洞上报引到 owner 的 X 私信。单人路线图风险真实存在。[推断]
-- **背书与上游赌注。** workspace 本身无机构背书，但其*底座*有：[hermes-agent](../../agent-frameworks/agent-runtimes/personal-assistants/hermes-agent.zh.md) 显示 247,693 stars 且当天有 push（2026-09-21，GitHub API 查询）——workspace 的可持续性在很大程度上是对该上游端点约定与持续势头的衍生赌注。[推断]
+- **背书与上游赌注。** workspace 本身无机构背书，但其*底座*有：[hermes-agent](../../agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.zh.md) 显示 247,693 stars 且当天有 push（2026-09-21，GitHub API 查询）——workspace 的可持续性在很大程度上是对该上游端点约定与持续势头的衍生赌注。[推断]
 - **年龄 × Lindy（2026-09）。** 约 6 个月、6.6k stars：高热、零 Lindy 信用；v1→v2 零 fork 转向已击穿一种部署模型（fork 安装被废弃）。稳定性主张视为未证实。[推断]
 - **采用与生态。** 1.1k forks、ghcr 镜像、Codespaces/devcontainer、PaaS 配方（Coolify/Easypanel/Unraid）、PWA + Tailscale 移动端叙事，说明自托管人群是真买账；文档异常齐全（docs/swarm/、逐功能页）。「2,000+ skills」浏览主张未独立核实。
 - **风险标记。** 发布空窗 + 大 open-PR 积压；安全修复 2026-09 仍在落地（SSRF 绕过、COOP/COEP、CSP）；SECURITY.md 写着「Security Measures (v3.0.0+)」而最新发布是 v2.3.0——文档/版本漂移信号；Electron 与云托管是「已官宣未出货」路线图。MIT 许可（LICENSE 文件直读），无再许可历史。

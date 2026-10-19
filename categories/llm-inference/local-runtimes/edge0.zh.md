@@ -85,7 +85,7 @@ health:
 
 你有一台 24 GB 的 Mac mini 或一台 16 GB 的 MacBook，想在本地跑一个够用的助手——Qwen3.6-35B-A3B 这一档——挂在 OpenAI 风格的接口后面，数据不出机器。4 比特的检查点约 23 GB，按常规方式加载要和其他程序抢内存，在 16 GB 的机器上干脆装不下。Edge0 的 `edge0-35b` 档就是已经为流式读取准备好的这个模型：下载一个目录，运行 `edge0 serve edge0-35b`，作者在 24 GB 的 M4 Pro 上测得 14.9–17.7 tok/s、峰值活跃内存 2.9 GiB。同样的两个模型还配有 iPhone、Android、macOS 和 Windows 的端侧应用，需要你自己编译。
 
-当决定性的约束是内存而不是模型选择时，选它而不是 [llama.cpp](llama-cpp.zh.md) 或 [MLX / mlx-lm](../../on-device-ml/mlx-mlx-lm.zh.md)：那些引擎要求权重常驻内存（或者让操作系统盲目地对映射文件换页），Edge0 则带着一个训练好的预测器，在下一层开算之前就告诉加载器它要用哪些专家。当机器只有 16–24 GB 而不是 96 GB、35B 这一档模型已经够用时，选它而不是 [ds4](ds4.zh.md)。决定性的取舍：换来的是内存占用和开箱即用的整条流水线，付出的是只有两个预览版检查点可选、相对 fp16 底座有少量精度损失（作者给出的 35B 档平均低 3.9 分），以及一个只有一个月大的代码库。
+当决定性的约束是内存而不是模型选择时，选它而不是 [llama.cpp](llama-cpp.zh.md) 或 [MLX / mlx-lm](../../on-device-ml/apple-local-inference/mlx-mlx-lm.zh.md)：那些引擎要求权重常驻内存（或者让操作系统盲目地对映射文件换页），Edge0 则带着一个训练好的预测器，在下一层开算之前就告诉加载器它要用哪些专家。当机器只有 16–24 GB 而不是 96 GB、35B 这一档模型已经够用时，选它而不是 [ds4](ds4.zh.md)。决定性的取舍：换来的是内存占用和开箱即用的整条流水线，付出的是只有两个预览版检查点可选、相对 fp16 底座有少量精度损失（作者给出的 35B 档平均低 3.9 分），以及一个只有一个月大的代码库。
 
 ## 怎么用起来
 
@@ -112,8 +112,8 @@ MoE（混合专家）模型的每一层里有很多小的子网络，叫“专�
 
 ## 何时不用
 
-- **想跑 Edge0 两个档位以外的任何模型，改用 [llama.cpp](llama-cpp.zh.md)、[Ollama](ollama.zh.md) 或 [MLX / mlx-lm](../../on-device-ml/mlx-mlx-lm.zh.md)。** 注册表里只有 `edge0-35b`（底座 Qwen3.6-35B-A3B）和 `edge0-8b`（底座 Ling 3.0 tiny）。`docs/adding-a-model.md` 说明新模型家族要写自己的适配模块，而整条流水线的价值依赖为该模型训练好的预路由头和 LoRA；用 `--no-prerouter --no-lora` 只能跑普通底座，等于放弃了这个项目的意义。
-- **需要底座模型原样的输出，就在内存够大的机器上用 [MLX / mlx-lm](../../on-device-ml/mlx-mlx-lm.zh.md) 或 [llama.cpp](llama-cpp.zh.md) 直接跑 Qwen3.6-35B-A3B。** Edge0 用预测的路由替换了模型自己的路由，又量化到 int4；在作者的 OpenCompass 测试里，35B 档的 AIME 2026 从 92.7 降到 86.6，平均比 fp16 低 3.9 分。要求独立核验评测的 issue #109 到 2026-10-09 仍未关闭。
+- **想跑 Edge0 两个档位以外的任何模型，改用 [llama.cpp](llama-cpp.zh.md)、[Ollama](ollama.zh.md) 或 [MLX / mlx-lm](../../on-device-ml/apple-local-inference/mlx-mlx-lm.zh.md)。** 注册表里只有 `edge0-35b`（底座 Qwen3.6-35B-A3B）和 `edge0-8b`（底座 Ling 3.0 tiny）。`docs/adding-a-model.md` 说明新模型家族要写自己的适配模块，而整条流水线的价值依赖为该模型训练好的预路由头和 LoRA；用 `--no-prerouter --no-lora` 只能跑普通底座，等于放弃了这个项目的意义。
+- **需要底座模型原样的输出，就在内存够大的机器上用 [MLX / mlx-lm](../../on-device-ml/apple-local-inference/mlx-mlx-lm.zh.md) 或 [llama.cpp](llama-cpp.zh.md) 直接跑 Qwen3.6-35B-A3B。** Edge0 用预测的路由替换了模型自己的路由，又量化到 int4；在作者的 OpenCompass 测试里，35B 档的 AIME 2026 从 92.7 降到 86.6，平均比 fp16 低 3.9 分。要求独立核验评测的 issue #109 到 2026-10-09 仍未关闭。
 - **用 Linux 或 NVIDIA 显卡，改用 [FreeToken](freetoken.zh.md)（NVIDIA 台式机，专家放内存）或 [llama.cpp](llama-cpp.zh.md)。** Python 框架只支持搭载 Apple 芯片的 macOS；CUDA 后端只是一个预留目录，承诺 2026 年第四季度交付（issue #107 未关闭），issue #128 里有用户在 Linux 上硬跑，回复“totally broken”。Windows 有应用，但那是基于 Vulkan 的 llama.cpp 构建，不是 Python 那条流水线。
 - **需要硬性的内存上限，或者只有 8 GB 的机器，按真实常驻内存估算，别看标题数字。** GitHub 简介写“~2.5 GB of RAM”；README 的 2.9 GiB 是 MLX 分配器的峰值，维护者在 issue #106 里承认进程 RSS 更高（macOS 应用自己的表格里，35B 在 M3 Air 上常驻 4 GB）。一位 8 GB M1 用户测得约 0.7 tok/s（issue #17），因为解码变成了被缺页中断卡住。内存紧张时，在 [Ollama](ollama.zh.md) 下跑一个小的稠密模型更稳妥。
 - **不止一个人调用这个接口，改用 [vLLM](../serving-engines/vllm.zh.md)。** Python 服务端是“single-slot serving loop”，用一把锁把生成请求排成串行，而且没有鉴权；macOS 守护进程只在非本机访问时要求 bearer token，Windows 引擎只监听本机。
@@ -127,7 +127,7 @@ MoE（混合专家）模型的每一层里有很多小的子网络，叫“专�
 | [llama.cpp](llama-cpp.zh.md) | ✅ | 需要任意 GGUF 模型、Linux／CUDA／CPU 目标或稳定的嵌入接口时选 llama.cpp；明确要在 16–24 GB 的 Mac 或手机上跑 35B 的 MoE、并接受只有两个预览模型时选 Edge0。 | Edge0 的 Android 和 Windows 引擎本身就是 llama.cpp（固定在 b11100）加重放补丁（Android 20 个、Windows 8 个），在这两个平台上你继承的是 llama.cpp 的行为和 Edge0 跟进上游的滞后。llama.cpp 赢在覆盖面；Edge0 为自家检查点加上了训练过的预取和精度恢复适配器。 |
 | [DwarfStar (ds4)](ds4.zh.md) | ✅ | 你有 96 GB 以上的 Mac、DGX Spark 或 Strix Halo，想给编程智能体跑 DeepSeek V4、GLM 5.x 这类前沿 MoE 时选 ds4；机器只有 16–24 GB、35B 档就够用时选 Edge0。 | 两者都从固态硬盘流式读取专家。ds4 为少数超大模型手工调优，用 2 比特专家和被动缓存；Edge0 面向小得多的内存，用学出来的提前一步预测器，但只服务自家两个检查点。 |
 | [FreeToken](freetoken.zh.md) | ✅ | 机器是带独立 NVIDIA 显卡、主机内存充足的 Linux 台式机时选 FreeToken；在 Apple 芯片或手机上、专家只能从闪存读取时选 Edge0。 | FreeToken 加载原始 safetensors，把全部专家放在主机内存、显卡做缓存，内存必须装得下所有专家；Edge0 内存里只需活跃专家，但只能跑它训练过适配器的模型。 |
-| [MLX / mlx-lm](../../on-device-ml/mlx-mlx-lm.zh.md) | ✅ | 模型能装进 Mac 内存、又想用一个包覆盖大量 Hugging Face 模型并做量化和微调时选 mlx-lm；同一个 MoE 装不下、又接受预先准备好的检查点时选 Edge0。 | Edge0 的 Python 后端建在 mlx 0.30.6 上，并内置了一份 mlx-lm 的模型文件，加上了流式读取、预取和 LoRA 钩子；它也把这些版本锁死，你没法跟着 mlx-lm 升级。 |
+| [MLX / mlx-lm](../../on-device-ml/apple-local-inference/mlx-mlx-lm.zh.md) | ✅ | 模型能装进 Mac 内存、又想用一个包覆盖大量 Hugging Face 模型并做量化和微调时选 mlx-lm；同一个 MoE 装不下、又接受预先准备好的检查点时选 Edge0。 | Edge0 的 Python 后端建在 mlx 0.30.6 上，并内置了一份 mlx-lm 的模型文件，加上了流式读取、预取和 LoRA 钩子；它也把这些版本锁死，你没法跟着 mlx-lm 升级。 |
 | [AirLLM](airllm.zh.md) | ✅ | 做离线打分或能力检查、必须用未量化的原始权重、每个 token 等几秒也能接受时选 AirLLM；要交互式聊天、速度到两位数 tok/s 时选 Edge0。 | AirLLM 按整层流式读取、不做预测，保留原始权重；Edge0 只读取预测到的 int4 专家，用一部分精度换交互速度。 |
 
 ## 技术栈

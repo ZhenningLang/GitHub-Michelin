@@ -18,7 +18,7 @@
 | [SoloMCN](solomcn.zh.md) | ✅ | C（4/6） | 持久创作状态与可评审技能；本地助手和凭据权限广，优先 Mac。 |
 | [Easel](easel.zh.md) | ✅ | B（5/6） | 中文平台完整内容闭环（热点、创作、发布、归因），跑在 OpenClaw 上；验证时仅一个月大，小红书自动化连作者自己都警告有账号风控风险。 |
 | [xiaohongshu-mcp](xiaohongshu-mcp.zh.md) | ✅ | B（6/6） | 一个 Go 二进制，让任何 MCP 客户端在小红书上能读能写；可无头跑在服务器上，代价是多一个可被识别的登录，自家 issue 区就有封号报告。 |
-| [OpenClaw](../agent-frameworks/agent-runtimes/personal-assistants/openclaw.zh.md) | ✅ | B（5/6） | Easel 底下那层通用 Agent 运行时；活儿不是中文社媒内容运营时直接用它。 |
+| [OpenClaw](../agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/openclaw.zh.md) | ✅ | B（5/6） | Easel 底下那层通用 Agent 运行时；活儿不是中文社媒内容运营时直接用它。 |
 | [MoneyPrinterTurbo](../video-production/moneyprinter-turbo.zh.md) | ✅ | B（6/6） | 主题→口播短视频家电；到视频文件为止——没有账号、没有发布、没有学习闭环。 |
 | social-auto-upload | 未收录 | — | 只做上传的浏览器自动化，面向做好的视频；本批次未收录。 |
 | Postiz | 未收录 | — | 面向全球平台（X／Instagram／YouTube）的自托管排期；本批次未收录。 |

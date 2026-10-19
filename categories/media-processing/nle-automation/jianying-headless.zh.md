@@ -107,7 +107,7 @@ health:
 ## 何时不用
 
 - **你不是 Apple Silicon 的 macOS 26 机器**，或者装不了指定的那个剪映版本。改选 [Concat](../video-editing/concat.zh.md) 或走 FFmpeg／OTIO 的拼装路线，因为这个桥链接的是应用自带的 arm64 库，并且把库哈希、编译器／SDK／链接器、以及签名身份全部钉死。
-- **任何商业用途**——客户交付、公司内部工具、付费产品或 SaaS。许可只允许个人非商用，否则要取得书面授权；请改选 [MoneyPrinterTurbo](../../video-production/moneyprinter-turbo.zh.md)（MIT）或 [HyperFrames](../../video-production/hyperframes.zh.md)（Apache-2.0）。
+- **任何商业用途**——客户交付、公司内部工具、付费产品或 SaaS。许可只允许个人非商用，否则要取得书面授权；请改选 [MoneyPrinterTurbo](../../video-production/moneyprinter-turbo.zh.md)（MIT）或 [HyperFrames](../../video-production/render-engines/hyperframes.zh.md)（Apache-2.0）。
 - **你要的是从主题直接出成片，而不是可编辑工程。** 用 [MoneyPrinterTurbo](../../video-production/moneyprinter-turbo.zh.md) 或 [Hypit](../../video-production/hypit.zh.md)；这里的交付物就是草稿本身，而单条精致视频在剪映里手剪更省。
 - **你让剪映自动更新，或者要同时支持多个版本。** 导出路径依赖逐版本固定的函数偏移、结构体布局和引擎日志字符串；没被审查过的版本会被拒绝而不是勉强跑。请优先选不依赖闭源 ABI 的工具。
 - **你需要 Linux 服务器上无人值守的批量生产。** 它没有服务端组件，也没有无头应用——这是桌面 macOS 集成，登记草稿前还要求你完全退出剪映。参见 [MoneyPrinterTurbo](../../video-production/moneyprinter-turbo.zh.md)。

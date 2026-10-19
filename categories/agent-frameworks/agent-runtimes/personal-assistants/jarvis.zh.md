@@ -83,19 +83,19 @@ health:
 
 ## 何时不用
 
-- **未经单独授权就商用：** LICENSE 只允许非商业用途，衍生作品还须沿用相同条款。商业助手集成可考虑 MIT 的 [OpenClaw](openclaw.zh.md)；Jarvis 属于源码可见，不是无限制开源。
+- **未经单独授权就商用：** LICENSE 只允许非商业用途，衍生作品还须沿用相同条款。商业助手集成可考虑 MIT 的 [OpenClaw](messaging-daemons/openclaw.zh.md)；Jarvis 属于源码可见，不是无限制开源。
 - **多人共用聊天服务：** 选 [Open WebUI](../../../llm-chat-ui/open-webui.zh.md)，它提供浏览器账号和文档问答；Jarvis 是需要麦克风权限的个人桌面应用。
-- **从多个聊天平台找同一个机器人：** 选 [OpenClaw](openclaw.zh.md)；Jarvis 的重点是房间语音和配套文字窗口。
-- **在服务器定时跑终端任务：** 选 [Hermes Agent](hermes-agent.zh.md)，不必为无界面任务维护桌面音频栈。
+- **从多个聊天平台找同一个机器人：** 选 [OpenClaw](messaging-daemons/openclaw.zh.md)；Jarvis 的重点是房间语音和配套文字窗口。
+- **在服务器定时跑终端任务：** 选 [Hermes Agent](messaging-daemons/hermes-agent.zh.md)，不必为无界面任务维护桌面音频栈。
 - **明确需要 macOS 26 听写：** README 将其列为不可用。VoiceInk 等专用听写产品属于另一条路线，但选前仍要核对当前系统支持。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [OpenClaw](openclaw.zh.md) | ✅ | 要从手机聊天平台找助手，选 OpenClaw；要本地语音参与身边讨论，选 Jarvis。 | Jarvis 换来近期口头语境，但聊天渠道更少，且有非商业许可限制。 |
+| [OpenClaw](messaging-daemons/openclaw.zh.md) | ✅ | 要从手机聊天平台找助手，选 OpenClaw；要本地语音参与身边讨论，选 Jarvis。 | Jarvis 换来近期口头语境，但聊天渠道更少，且有非商业许可限制。 |
 | [Open WebUI](../../../llm-chat-ui/open-webui.zh.md) | ✅ | 多人共用本地模型并上传文档，选 Open WebUI；一台桌面的麦克风和语音回复，选 Jarvis。 | 浏览器服务提供账号与检索；Jarvis 则需要音频权限、语音模型和本地模型运行环境。 |
-| [Hermes Agent](hermes-agent.zh.md) | ✅ | 服务器常驻、终端任务和调度，选 Hermes；必须听见房间对话，选 Jarvis。 | Hermes 提供终端后端和自主积累技能；Jarvis 提供本地语音与桌面记忆查看器。 |
+| [Hermes Agent](messaging-daemons/hermes-agent.zh.md) | ✅ | 服务器常驻、终端任务和调度，选 Hermes；必须听见房间对话，选 Jarvis。 | Hermes 提供终端后端和自主积累技能；Jarvis 提供本地语音与桌面记忆查看器。 |
 
 ## 快速上手
 

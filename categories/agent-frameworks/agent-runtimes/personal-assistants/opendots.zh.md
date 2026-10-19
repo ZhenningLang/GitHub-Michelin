@@ -104,15 +104,15 @@ OpenDots 就是一个 Node 服务（Hono 加 CopilotKit runtime）和一个 Reac
 
 ## 何时不用
 
-- **对话不能经过 CopilotKit 的基础设施，或者要离线跑。** 没有 Intelligence 密钥就聊不了：`src/server/platform.ts` 直接返回 `Setup required … Conversations require CopilotKit Intelligence`（2026-10-08 读）。不走托管的选项只有两个：本地评估版，要 macOS + Docker Desktop、4 核 12 GiB、登录 CopilotKit 账号、安装和续期都要联网，官方写明“不是生产安装”；或者一个*需要许可*的自托管部署。要求本地存储的 #74、#87 仍开着，协作者的回复是“OpenDots still requires Intelligence”。改用 [Rakazo](rakazo.zh.md)（启动和聊天都不需要托管服务）或 [OpenClaw](openclaw.zh.md)。
-- **你要非 OpenAI 接口或本地模型作为一等选项。** agent 只用了一个 `openaiCompatibleText` 适配器，并固定走 `chat-completions`；支不支持 Gemini、Ollama 还是个开着的问题（#118），推理模型带工具时每轮都失败（#58，修复还在草稿 PR #104 里，等 CopilotKit runtime 发版）。语音只支持 OpenAI Realtime。模型选择是硬需求时，用 [Hermes Agent](hermes-agent.zh.md) 或 [OpenWorker](openworker.zh.md)。
+- **对话不能经过 CopilotKit 的基础设施，或者要离线跑。** 没有 Intelligence 密钥就聊不了：`src/server/platform.ts` 直接返回 `Setup required … Conversations require CopilotKit Intelligence`（2026-10-08 读）。不走托管的选项只有两个：本地评估版，要 macOS + Docker Desktop、4 核 12 GiB、登录 CopilotKit 账号、安装和续期都要联网，官方写明“不是生产安装”；或者一个*需要许可*的自托管部署。要求本地存储的 #74、#87 仍开着，协作者的回复是“OpenDots still requires Intelligence”。改用 [Rakazo](rakazo.zh.md)（启动和聊天都不需要托管服务）或 [OpenClaw](messaging-daemons/openclaw.zh.md)。
+- **你要非 OpenAI 接口或本地模型作为一等选项。** agent 只用了一个 `openaiCompatibleText` 适配器，并固定走 `chat-completions`；支不支持 Gemini、Ollama 还是个开着的问题（#118），推理模型带工具时每轮都失败（#58，修复还在草稿 PR #104 里，等 CopilotKit runtime 发版）。语音只支持 OpenAI Realtime。模型选择是硬需求时，用 [Hermes Agent](messaging-daemons/hermes-agent.zh.md) 或 [OpenWorker](openworker.zh.md)。
 - **你的工具要走 OAuth，或者要在 Slack 里审批。** MCP 连接只接受带 bearer token 的 Streamable HTTP 地址——“OAuth-only servers are not supported yet”；审批卡片只在网页里出现，从 Slack 或定时任务触发的需审批工具只会让你回浏览器继续（`docs/CONNECTIONS.md`）。要通过 OAuth 接 Google 邮件和日历、发信前过审批，用 [OpenMuse](openmuse.zh.md)。
 - **会有多个人用。** README 自称“单 owner 的起点”：没有身份体系、没有 Space 成员、没有协同编辑；Slack 里被放行的用户全部映射成那一个 owner，回复整条 Slack 线程都看得见。要 SSO、管理员授权和策略网关，用同厂的 [OpenBot](../agent-services/openbot.zh.md)。
 - **你要的是能升级的依赖，而不是自己维护的 fork。** 它是 `"private": true`，没有 release、没有 tag，README 写的是“Clone this template and customize it”；头 9 天 53 个提交都直接进 `main`。要稳定的 API 边界，就基于 CopilotKit SDK（`CopilotKit/CopilotKit`）或 [LangChain](../../workflow-builders/langchain.zh.md) 这类框架去做。
 - **你把 Dot 的 shell 当安全边界。** 电脑只用普通 Docker 隔离，和宿主共享内核，没有出网策略；supervisor 挂载了 Docker socket；gVisor 是可选项、不会替你装（`docs/COMPUTERS.md`）。有 shell 权限就能读到这个 Dot 自己的浏览器配置。如果命令必须在无网络、非 root 环境里跑，[OpenMuse](openmuse.zh.md) 那个非 root、只读、断网的终端更严格。
 - **默认就不允许遥测和第三方外发。** CopilotKit SDK 遥测默认开、采样率 1，并通过 `CPK_TELEMETRY_ID` 关联到你的 Intelligence 账号；仓库里甚至放着厂商自己的 PostHog 漏斗查询。调研请求默认发给 Parallel，除非设 `WEB_SEARCH_PROVIDER=disabled`。可以关（`DO_NOT_TRACK=1`），但如果要求默认就静默，用可强制纯本地的 [OpenHuman](openhuman.zh.md)。
 - **你只想要一个对接模型的聊天窗口。** 用 [Open WebUI](../../../llm-chat-ui/open-webui.zh.md)；OpenDots 要你带上文档工作区、Intelligence 项目和可选的 Docker 电脑，换来的界面一个容器就能给你。
-- **你想让助理出现在很多聊天软件里。** 这里只有 Slack。要 WhatsApp、Telegram、iMessage 等，用 [OpenClaw](openclaw.zh.md)。
+- **你想让助理出现在很多聊天软件里。** 这里只有 Slack。要 WhatsApp、Telegram、iMessage 等，用 [OpenClaw](messaging-daemons/openclaw.zh.md)。
 
 ## 横向对比
 
@@ -121,7 +121,7 @@ OpenDots 就是一个 Node 服务（Hono 加 CopilotKit runtime）和一个 Reac
 | [OpenMuse](openmuse.zh.md) | ✅ | 一个人从手机 App 派活、要接 Google 邮件日历和隔离终端时选 OpenMuse；要多个按角色划权限的专职 Dot、页面工作区、Slack 和语音通话时选 OpenDots。 | 同一家公司、同样依赖 Intelligence；OpenMuse 没密钥就拒绝启动，但有持久任务引擎和断网终端；OpenDots 没密钥能进配置页，电脑复用 OpenBot 的容器，只有普通 Docker 隔离。 |
 | [OpenBot](../agent-services/openbot.zh.md) | ✅ | 公司要给大量员工铺 agent、需要 SSO、管理员授权和默认拒绝的策略审计时选 OpenBot；一个人的几个 AI 同事、逐工具审批卡片就够用时选 OpenDots。 | OpenDots 借用了 OpenBot 的电脑和 supervisor（固定版本，加一处凭据补丁），但去掉了多用户认证和策略网关；运维轻得多，代价是没有租户边界。 |
 | [Rakazo](rakazo.zh.md) | ✅ | 对话链路里不允许任何托管服务、且必须能换任意模型时选 Rakazo；想让 MCP 写操作过审批、又想要一份 CopilotKit/AG-UI 代码去 fork 时选 OpenDots。 | Rakazo 要 Postgres 和 Docker，但不依赖托管服务，bot 在自己电脑里动作不经审批；OpenDots 依赖 Intelligence，但存页面和调非只读 MCP 之前会先问你。 |
-| [OpenClaw](openclaw.zh.md) | ✅ | 助理必须在 WhatsApp、Telegram、iMessage 等十几个渠道里回你时选 OpenClaw；专职角色、文档工作区和审批卡片比渠道覆盖更重要时选 OpenDots。 | OpenClaw 以消息渠道为主，社区大得多，也不强制依赖厂商服务；OpenDots 只有 Slack，外加语音和页面，对话存储由厂商托管。 |
+| [OpenClaw](messaging-daemons/openclaw.zh.md) | ✅ | 助理必须在 WhatsApp、Telegram、iMessage 等十几个渠道里回你时选 OpenClaw；专职角色、文档工作区和审批卡片比渠道覆盖更重要时选 OpenDots。 | OpenClaw 以消息渠道为主，社区大得多，也不强制依赖厂商服务；OpenDots 只有 Slack，外加语音和页面，对话存储由厂商托管。 |
 | CopilotKit（`CopilotKit/CopilotKit`） | 未收录 | 在做自己的 agent 产品、想要一个有版本号 API 的库时，直接用 CopilotKit SDK；fork 一个完整的参考工作区比拥有升级路径更省事时选 OpenDots。 | SDK 是发布出来、可以升级的依赖；OpenDots 是克隆后归你所有的应用，基于这个 SDK，没有发版线。本批次未收录。 |
 
 ## 技术栈

@@ -69,7 +69,7 @@
 | **reading-tools** | 阅读工具——阅读模式扩展与 RSS 阅读器。 | [→](categories/reading-tools/INDEX.zh.md) |
 | **speech** | 语音处理工具包（ASR、TTS、说话人任务）。 | [→](categories/speech/INDEX.zh.md) |
 | **terminal-ui** | 终端/CLI UI 库——着色、TUI、ASCII art、终端渲染。 | [→](categories/terminal-ui/INDEX.zh.md) |
-| **video-production** | AI 编排的端到端视频制作——由编码助手内的 agent 驱动研究、脚本撰写、素材生成、合成与渲染。 | [→](categories/video-production/INDEX.zh.md) |
+| **video-production** | agent 驱动的视频导演方法、制作管线与创作应用；代码渲染引擎继续进入子类。 | [→](categories/video-production/INDEX.zh.md) |
 | **investment-finance** | 量化金融、市场数据、交易研究与投资分析工具。 | [→](categories/investment-finance/INDEX.zh.md) |
 | **education-tutoring** | AI 辅导、学习助手与教育场景 agent 系统。 | [→](categories/education-tutoring/INDEX.zh.md) |
 | **agent-governance** | AI agent 的治理、策略执行、身份、沙箱与可靠性控制。 | [→](categories/agent-governance/INDEX.zh.md) |

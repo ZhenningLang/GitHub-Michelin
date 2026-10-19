@@ -19,14 +19,12 @@
 | **GitHub Agentic Workflows (gh-aw)** | 当你想让 coding agent 在 GitHub 仓库上无人值守地干杂活（issue 分诊、查 CI 失败、写报告、提文档 PR），用 Markdown 写、编译成 Actions 工作流，agent 只读并在防火墙后运行、只有声明过的写操作才会执行时用它——但它只限 GitHub、处于 Public Preview、每周发版，7 周内出了 11 个安全公告。 | B（4/6） | [→](gh-aw.zh.md) |
 | **Codex plugin for Claude Code** | 当你以 Claude Code 为主、手上已有 Codex 登录，想让 OpenAI 的 Codex 不离开会话就审你的改动、或接手卡住的任务时用它——但它只接一家厂商，rescue 默认可写，会泄漏中转进程，而且 2026-07 之后没有合并过任何东西。 | B（5/6） | [→](codex-plugin-cc.zh.md) |
 | **Scion** | 混合 agent CLI 需要容器工作区和通信，并希望从本机迁到托管执行服务时选它；要接受尚未到 1.0 的变化，且没有 Google 官方产品支持。 | B（6/6） | [→](scion.zh.md) |
-| **Agor** | 用实时分支看板协作混合编程助手；接受 BSL，并自行运营数据库与执行安全。 | D（6/6） | [→](agor.zh.md) |
 
 ## 横向对比
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [Scion](scion.zh.md) | ✅ | B（6/6） | 用容器运行混合 agent 团队，并明确选择工作区共享方式；镜像、凭据和本机或托管控制中心归你维护。 |
-| [Agor](agor.zh.md) | ✅ | D（6/6） | 用实时分支看板协作混合编程助手；接受 BSL，并自行运营数据库与执行安全。 |
 
 ## 什么该放这里
 

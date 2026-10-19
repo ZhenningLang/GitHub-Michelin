@@ -84,7 +84,7 @@ health:
 
 ## 何时使用
 
-你带一个小团队（或者就你一个人），想要“AI 同事”这种产品形态：给 bot 起个名字、交代一次，它在自己的电脑上后台干活，需要登录、需要拍板或需要批准时再回来找你。但你不能或不愿用 xAI 的 Grok Bot：你想自己挑模型（包括本地模型），想让电脑和数据留在自己的机器上，或者不想按席位付订阅。选 Rakazo 而不是 [OpenMuse](openmuse.zh.md)，是因为它启动时不依赖任何托管服务（OpenMuse 没有 CopilotKit 云端 key 就起不来；Rakazo 有 Postgres 和 Docker、在界面里接一个模型就能跑），而且它是为多个 bot 共用一台团队电脑、各自有独立桌面和 Chrome 配置设计的，不是一个人的跑腿助手。选它而不是 [OpenClaw](openclaw.zh.md) 或 [Hermes Agent](hermes-agent.zh.md)，是当你看重的是那台持久的图形电脑——屏幕能看、能接管，浏览器登录态重启后还在，工作区会备份到机器之外——而不是在一堆聊天软件里找到你，或者自己长技能的学习循环。
+你带一个小团队（或者就你一个人），想要“AI 同事”这种产品形态：给 bot 起个名字、交代一次，它在自己的电脑上后台干活，需要登录、需要拍板或需要批准时再回来找你。但你不能或不愿用 xAI 的 Grok Bot：你想自己挑模型（包括本地模型），想让电脑和数据留在自己的机器上，或者不想按席位付订阅。选 Rakazo 而不是 [OpenMuse](openmuse.zh.md)，是因为它启动时不依赖任何托管服务（OpenMuse 没有 CopilotKit 云端 key 就起不来；Rakazo 有 Postgres 和 Docker、在界面里接一个模型就能跑），而且它是为多个 bot 共用一台团队电脑、各自有独立桌面和 Chrome 配置设计的，不是一个人的跑腿助手。选它而不是 [OpenClaw](messaging-daemons/openclaw.zh.md) 或 [Hermes Agent](messaging-daemons/hermes-agent.zh.md)，是当你看重的是那台持久的图形电脑——屏幕能看、能接管，浏览器登录态重启后还在，工作区会备份到机器之外——而不是在一堆聊天软件里找到你，或者自己长技能的学习循环。
 
 ## 怎么用起来
 
@@ -112,11 +112,11 @@ Rakazo 是那个一直在线的部分：API、Graphile Worker 任务进程和 Po
 
 - **你要求 bot 在电脑里的每一步都经过审核。** 执行命令、写文件、浏览器和桌面操作都在免审批清单里；只有往外部目标写入、处理密钥、删除和启动云端 agent 才停下等批准。团队电脑里的 bot 共用同一个系统用户、工作区和 X11，文档原话是这些文件夹“不是安全边界”，要隔离就用不同电脑。每一步都要能审，请用 [OpenMuse](openmuse.zh.md)（副作用有审批门，终端非 root、无网络）或 [OpenWorker](openworker.zh.md)（分级授权加逐次调用审计）。
 - **你打算在共享服务器上打开“This Mac”/desktop 模式。** `SANDBOX_PROVIDER=desktop` 会用你的系统账号在服务主机上直接跑 bot 的命令，macOS 也不会弹权限框；文档明确说不要在公开或共享的服务上开。保持默认的 Docker，公开的多用户部署把电脑放到 [E2B](../../../sandboxing/e2b.zh.md) 上。
-- **你想让助手住在你的聊天软件里。** Rakazo 是一个独立应用；Slack、Telegram、WhatsApp 私聊可以找到 bot，但群聊只支持 iMessage，而且要走 Sendblue。聊天渠道覆盖面才是重点的话，用 [OpenClaw](openclaw.zh.md)。
+- **你想让助手住在你的聊天软件里。** Rakazo 是一个独立应用；Slack、Telegram、WhatsApp 私聊可以找到 bot，但群聊只支持 iMessage，而且要走 Sendblue。聊天渠道覆盖面才是重点的话，用 [OpenClaw](messaging-daemons/openclaw.zh.md)。
 - **你需要锁定一个稳定版本。** 官方镜像默认是从 main 构建的 `edge` 标签；最后一个打了 tag 的版本是 2026-09-08 的 v0.1.6，而 main 每周有 37–282 个提交，部署文档也说在稳定版出来前不要假定有 `latest`。还开着的 #1104 就是桌面端内置界面和服务端 API 对不上。要升级稳定，先等等；只要成熟的自托管聊天界面、不需要电脑的话，用 [Open WebUI](../../../llm-chat-ui/open-webui.zh.md)。
 - **你只想和模型聊天。** 为了一个聊天窗口起 Postgres、worker、沙箱 supervisor 和桌面镜像太重了，用 [Open WebUI](../../../llm-chat-ui/open-webui.zh.md)。
 - **你在做自己的 agent 产品。** Rakazo 是一个成品应用仓库，还带着一份它会坚守的产品愿景（“定时任务就是定时的提示词，不会变成可视化工作流语言”），不是 SDK。agent 循环直接用 [Pi](../../coding-agents/terminal-agents/pi.zh.md)，或用 [LangChain](../../workflow-builders/langchain.zh.md) 这类框架。
-- **你想要一个从经验里自我改进的 agent。** 这里的记忆只是存和取，没有自动写技能的学习循环，用 [Hermes Agent](hermes-agent.zh.md)。
+- **你想要一个从经验里自我改进的 agent。** 这里的记忆只是存和取，没有自动写技能的学习循环，用 [Hermes Agent](messaging-daemons/hermes-agent.zh.md)。
 
 ## 横向对比
 
@@ -124,9 +124,9 @@ Rakazo 是那个一直在线的部分：API、Graphile Worker 任务进程和 Po
 | --- | --- | --- | --- |
 | Grok Bot（xAI） | 非仓库 | 想要“持久 AI 同事”又完全不想运维、接受 xAI 的订阅和模型阵容，就付费用 Grok Bot；模型要自己选、电脑和数据要放在自己手里时选 Rakazo。 | 闭源托管产品，随 SuperGrok Heavy / Cursor Ultra 提供；你放弃 xAI 托管的云电脑（所有 bot 共用登录态），换来自己运维 Postgres、Docker 和升级。 |
 | [OpenMuse](openmuse.zh.md) | ✅ | 一个人把跑腿活委派出去、每个副作用都要审，选 OpenMuse；要多个 bot 共用一台带图形桌面的电脑、启动不依赖任何托管服务，选 Rakazo。 | OpenMuse 的终端非 root、无网络，但必须有 CopilotKit 云端 key；Rakazo 什么托管服务都不需要，但 bot 在容器里可以自由动手。 |
-| [OpenClaw](openclaw.zh.md) | ✅ | 助手必须在 WhatsApp、Telegram 等十几个渠道里回你，选 OpenClaw；bot 自己那台持久的桌面和浏览器才是重点时，选 Rakazo。 | OpenClaw 以消息渠道为先、社区大得多；Rakazo 以应用为先、渠道少，但每个 bot 有一台会备份的电脑。 |
+| [OpenClaw](messaging-daemons/openclaw.zh.md) | ✅ | 助手必须在 WhatsApp、Telegram 等十几个渠道里回你，选 OpenClaw；bot 自己那台持久的桌面和浏览器才是重点时，选 Rakazo。 | OpenClaw 以消息渠道为先、社区大得多；Rakazo 以应用为先、渠道少，但每个 bot 有一台会备份的电脑。 |
 | [OpenWorker](openworker.zh.md) | ✅ | 单个用户要一个每次调用都审批、都留审计的桌面同事，选 OpenWorker；要一台合上笔记本后还在跑多个 bot 和定时任务的服务端，选 Rakazo。 | OpenWorker 以本地桌面为先、审批溯源更强；Rakazo 以服务端为先、网页桌面手机三端都有，但审批范围更粗。 |
-| [Hermes Agent](hermes-agent.zh.md) | ✅ | 要一个会自己写技能、5 美元 VPS 就能跑的 agent，选 Hermes；要开箱即用的图形电脑和面向团队的界面，选 Rakazo。 | Hermes 轻、偏框架形态；Rakazo 重（Postgres、worker、桌面镜像）、偏产品形态。 |
+| [Hermes Agent](messaging-daemons/hermes-agent.zh.md) | ✅ | 要一个会自己写技能、5 美元 VPS 就能跑的 agent，选 Hermes；要开箱即用的图形电脑和面向团队的界面，选 Rakazo。 | Hermes 轻、偏框架形态；Rakazo 重（Postgres、worker、桌面镜像）、偏产品形态。 |
 
 ## 技术栈
 

@@ -113,7 +113,7 @@ LLM 从不看视频。每个源文件一次 ElevenLabs Scribe 调用，得到逐
 - **你要一个桌面，给已经存在的那一条视频做字幕、配音、重切。** 用 [OpenCreator](open-creator.zh.md)。那是 Codex 原生应用；这是一份 `SKILL.md` 加帮手脚本。
 - **音频不能送给 ElevenLabs，或者你不想付 Scribe。** 转写是托管的 Scribe，逐词、按文件缓存。skill 明确不让 agent 在本地跑 Whisper。没密钥就剪不成。
 - **你要传统 NLE 里的帧级手动控制。** 用达芬奇或 Premiere（不是仓库）。video-use 不给你节点图，给你的是 agent 写的 EDL。
-- **你要的是 HTML 转 MP4 那台引擎本身。** 用 [HyperFrames](hyperframes.zh.md)。video-use 可以在某个叠加槽里 `npx --yes hyperframes`；它替不了那台引擎。
+- **你要的是 HTML 转 MP4 那台引擎本身。** 用 [HyperFrames](render-engines/hyperframes.zh.md)。video-use 可以在某个叠加槽里 `npx --yes hyperframes`；它替不了那台引擎。
 - **你在赌 Lindy。** 五个月大、22 次提交的 skill-pack 上挂着 2.7 万 star，这是炒作信号。README 仍把长期 VPS 剪辑指向 “Browser Use Box”；Browser Use 现在的文档写着 Box 和 Bux 已退役。
 
 ## 横向对比
@@ -124,7 +124,7 @@ LLM 从不看视频。每个源文件一次 ElevenLabs Scribe 调用，得到逐
 | [OpenCreator](open-creator.zh.md) | ✅ | 要本机桌面给*这一条*视频做字幕／配音／竖屏重切时选 OpenCreator；输入是一文件夹素材、你已经住在 Claude Code 或 Codex 里时选 video-use。 | OpenCreator 是应用，必须 Codex 登录；video-use 是 skill 目录，没有 GUI。 |
 | [anything2explainer](anything2explainer.zh.md) | ✅ | 没有摄像机素材、片子该用 Remotion 从主题画出来时选 anything2explainer；文件已经在、痛点是剪它们时选 video-use。 | 讲解片生成每一帧（PolyForm 非商用）；video-use 从不生成底片，只剪你丢进去的东西（MIT）。 |
 | [OpenMontage](open-montage.zh.md) | ✅ | agent 该从一句提示去做研究、脚本、生成素材并渲成片时选 OpenMontage；真相来源是摄像机 take 时选 video-use。 | OpenMontage 是 AGPL 的从零制作管线；video-use 是 MIT 的剪辑器，但仍要一把付费的 Scribe 密钥。 |
-| [HyperFrames](hyperframes.zh.md) | ✅ | 你要 HTML 转 MP4 那台引擎时选 HyperFrames；HyperFrames 最多只是真实素材剪辑里的一个叠加槽时选 video-use。 | video-use 可以用 `npx --yes hyperframes` 搭一个槽；它替不了引擎自己的 lint／validate／render。 |
+| [HyperFrames](render-engines/hyperframes.zh.md) | ✅ | 你要 HTML 转 MP4 那台引擎时选 HyperFrames；HyperFrames 最多只是真实素材剪辑里的一个叠加槽时选 video-use。 | video-use 可以用 `npx --yes hyperframes` 搭一个槽；它替不了引擎自己的 lint／validate／render。 |
 
 ## 健康度与可持续性
 

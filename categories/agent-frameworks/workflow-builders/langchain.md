@@ -119,7 +119,7 @@ You write tools as ordinary Python functions; the docstring becomes the descript
 - **Hand-designed control flow, deterministic steps mixed with agent steps, tight latency control.** LangChain's own README sends these cases to LangGraph. Use [LangGraph](../agent-runtimes/agent-sdks/langgraph.md) directly instead of `create_agent`, because you get explicit nodes, edges and state rather than a prebuilt loop.
 - **You are maintaining a pre-1.0 codebase or following an old tutorial.** `from langchain.chains import LLMChain`-style code no longer lives in `langchain`; it moved to `langchain-classic`. Pin `langchain-classic` to keep old code running, and port to `create_agent` deliberately, because mixing both styles doubles your surface area.
 - **Framework-level lock-in aversion.** Tools, messages and middleware written against LangChain types are costly to move later. If independence matters most, use [LiteLLM](../../api-gateway/litellm.md) for model routing plus your own small loop, or Pydantic AI, because they keep your code closer to plain provider APIs.
-- **You want a ready-to-run agent.** LangChain is a library; nothing runs until you write the app. Use [AutoGPT](autogpt.md) or [Hermes Agent](../agent-runtimes/personal-assistants/hermes-agent.md) instead, because they ship a runtime and UI.
+- **You want a ready-to-run agent.** LangChain is a library; nothing runs until you write the app. Use [AutoGPT](autogpt.md) or [Hermes Agent](../agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.md) instead, because they ship a runtime and UI.
 
 ## Comparison
 

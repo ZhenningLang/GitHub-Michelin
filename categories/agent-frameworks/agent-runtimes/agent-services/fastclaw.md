@@ -84,17 +84,17 @@ You are building an application with several assistant roles, each answering thr
 
 ## When NOT to use
 
-- **An OSI-only or white-label platform:** its Community License adds SaaS and branding restrictions to Apache text. Choose MIT [OpenClaw](../personal-assistants/openclaw.md) for a personal/trusted-team assistant, or [Pydantic AI](../agent-sdks/pydantic-ai.md) to build your own licensed runtime.
+- **An OSI-only or white-label platform:** its Community License adds SaaS and branding restrictions to Apache text. Choose MIT [OpenClaw](../personal-assistants/messaging-daemons/openclaw.md) for a personal/trusted-team assistant, or [Pydantic AI](../agent-sdks/pydantic-ai.md) to build your own licensed runtime.
 - **Untrusted users with default settings:** self-hosted execution uses the host shell by default; sandbox use is optional unless enforced. Use an explicitly hardened deployment, or [OpenClaw Enterprise](../../kubernetes-agents/openclaw-enterprise.md) when isolated tenant infrastructure is the actual requirement.
-- **A tiny private assistant without platform administration:** choose [Hermes Agent](../personal-assistants/hermes-agent.md); FastClaw adds accounts, scoped configuration, API keys and a database you must manage.
+- **A tiny private assistant without platform administration:** choose [Hermes Agent](../personal-assistants/messaging-daemons/hermes-agent.md); FastClaw adds accounts, scoped configuration, API keys and a database you must manage.
 - **Guaranteed all-or-nothing workspace restoration:** the hydration implementation logs and skips per-file failures. For transaction-like workflows, build explicit validation in your application using [Pydantic AI](../agent-sdks/pydantic-ai.md), not an assumption that a sandbox contains every saved file.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [OpenClaw](../personal-assistants/openclaw.md) | ✅ | Choose FastClaw for an application-facing roster of agents and scoped credentials; choose OpenClaw for one assistant spanning personal channels. | FastClaw centralizes agent records and per-user sessions, but brings a restrictive community license and platform administration. |
-| [Hermes Agent](../personal-assistants/hermes-agent.md) | ✅ | Choose Hermes for a personal server assistant that accumulates reusable procedures; choose FastClaw for a dashboard and API managing separate agent identities. | Hermes emphasizes one persistent assistant profile; FastClaw keeps agents, settings and credentials in a service database. |
+| [OpenClaw](../personal-assistants/messaging-daemons/openclaw.md) | ✅ | Choose FastClaw for an application-facing roster of agents and scoped credentials; choose OpenClaw for one assistant spanning personal channels. | FastClaw centralizes agent records and per-user sessions, but brings a restrictive community license and platform administration. |
+| [Hermes Agent](../personal-assistants/messaging-daemons/hermes-agent.md) | ✅ | Choose Hermes for a personal server assistant that accumulates reusable procedures; choose FastClaw for a dashboard and API managing separate agent identities. | Hermes emphasizes one persistent assistant profile; FastClaw keeps agents, settings and credentials in a service database. |
 | [Pydantic AI](../agent-sdks/pydantic-ai.md) | ✅ | Choose Pydantic AI when your Python application must own the agent loop and validation; choose FastClaw when you want an operated agent service. | A library avoids adopting this platform's storage and UI conventions, but you build sessions, channels and administration yourself. |
 
 ## Quick start

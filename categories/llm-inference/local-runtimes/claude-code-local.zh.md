@@ -116,9 +116,9 @@ Claude Code 弹出“你已达到用量上限”，要等好几个小时才恢�
 - **多人或多个会话要共用这台服务器** → 用 [Ollama](ollama.zh.md) 或 [vLLM](../serving-engines/vllm.zh.md) 这类服务引擎。`server.py` 是单线程的 `http.server.HTTPServer`，只绑 `127.0.0.1`，生成过程挂在一把全局锁后面，提示词缓存也只有一份全局的。#46（2026-08）实测这份缓存会污染**互不相关**的会话（长期不重启的服务器上 10 个任务只完成 1 个，每次新起服务器则 6 个全过；维护者还看到它把第一个会话的答案原样复读）；#47 已修，但设计仍是一次一个用户、一段对话。
 - **你期待 Claude Code 保持云端 Claude 的水平** → 保留云端 Claude，用 [claude-code-router](../../api-gateway/claude-code-router.zh.md) 或作者自己的 `claude-failover`（未收录）加一个本地兜底。README 自己的模型表写着最小档模型“声称运行了一个它根本没写出来的文件”，排行榜分数也来自另一个精简测试框架，“不是在 Claude Code 里测的”。
 - **你看中的是 README 里的速度数字** → Qwen 3.8 每秒 20–29 token 那组数，是在作者的 Agent-12 测试框架里配合 DFlash 2 投机解码草稿模型跑出来的；`server.py` 里没有草稿模型，也没有投机解码（2026-09-28 核对）。如果你要的就是投机解码带来的解码速度，去看 [MTPLX](mtplx.zh.md)。
-- **别的客户端需要 OpenAI 兼容接口** → 用 [mlx-lm](../../on-device-ml/mlx-mlx-lm.zh.md) 自带的服务器或 [omlx](omlx.zh.md)。本服务器只暴露 Anthropic 形状的路由。
+- **别的客户端需要 OpenAI 兼容接口** → 用 [mlx-lm](../../on-device-ml/apple-local-inference/mlx-mlx-lm.zh.md) 自带的服务器或 [omlx](omlx.zh.md)。本服务器只暴露 Anthropic 形状的路由。
 - **长的、带工具的轮次也要实时流式输出** → 要知道只有不带工具的请求才实时流式；带工具的请求（也就是几乎每一轮 Claude Code）会先整段生成、解析完，再当作流回放，所以长回答在完成前看起来像卡住了。另一堵墙是预填充（先把整段提示读一遍）：#28 在 64 GB M1 Max 上测到，Claude Code 约 5.6k token 的工具描述让每轮光预填充就要约 60 秒，后来才做了裁剪。想要短而能吃满缓存的轮次，仓库自带的原生引擎（不用 Claude Code）就是为此存在的。
-- **公司托管或要过合规审查的电脑** → 安装方式是 `curl … | bash`，没有 Homebrew 会先装 Homebrew，会往 `~/.zshrc` 追加一行 `source`，主启动器用 `--permission-mode auto --bare` 启动 Claude Code。除最小档和最大档外，各内存档的默认模型都是作者自己 Hugging Face 账号上发布的“abliterated”版本（拒答被调低的模型）。用 `MLX_MODEL=…` 钉死一个厂商原版模型，或者直接用 [mlx-lm](../../on-device-ml/mlx-mlx-lm.zh.md) 配上游权重、自己接 Claude Code。
+- **公司托管或要过合规审查的电脑** → 安装方式是 `curl … | bash`，没有 Homebrew 会先装 Homebrew，会往 `~/.zshrc` 追加一行 `source`，主启动器用 `--permission-mode auto --bare` 启动 Claude Code。除最小档和最大档外，各内存档的默认模型都是作者自己 Hugging Face 账号上发布的“abliterated”版本（拒答被调低的模型）。用 `MLX_MODEL=…` 钉死一个厂商原版模型，或者直接用 [mlx-lm](../../on-device-ml/apple-local-inference/mlx-mlx-lm.zh.md) 配上游权重、自己接 Claude Code。
 
 ## 横向对比
 
@@ -126,7 +126,7 @@ Claude Code 弹出“你已达到用量上限”，要等好几个小时才恢�
 | --- | --- | --- | --- |
 | [Ollama](ollama.zh.md) | ✅ | 想在任意操作系统上让 Claude Code 用本地模型，或者本来就在用 Ollama，就把 Claude Code 指向 Ollama 的 Anthropic 接口；只有在 Apple Silicon Mac 上、想省掉逐模型调工具调用的功夫时，才选 claude-code-local。 | Ollama：跨平台、模型目录、多客户端服务、维护团队大；claude-code-local：MLX 原生、专为 Claude Code 做的解析与启动器、一个人维护。 |
 | [claude-code-router](../../api-gateway/claude-code-router.zh.md) | ✅ | 要让 Claude Code 按任务在多家供应商（云端和本地）之间路由，选 claude-code-router；目标是一台完全离线、不开任何供应商账号的 Mac，选 claude-code-local。 | 路由器：供应商覆盖广，但得有个后端给它路由；claude-code-local：自带推理，但同一时间只能跑一个本地模型。 |
-| [mlx-lm](../../on-device-ml/mlx-mlx-lm.zh.md) | ✅ | 想用苹果维护的通用库跑 MLX 模型、要 OpenAI 风格服务器，直接用 mlx-lm；claude-code-local 是叠在它上面的一层薄薄的单人代码，只有客户端是 Claude Code 时才有意义。 | mlx-lm：上游背书、接口宽、没有 Claude Code 适配；claude-code-local：Anthropic 接口、工具调用修补、启动器，但不锁版本地继承 mlx-lm 的每次改动。 |
+| [mlx-lm](../../on-device-ml/apple-local-inference/mlx-mlx-lm.zh.md) | ✅ | 想用苹果维护的通用库跑 MLX 模型、要 OpenAI 风格服务器，直接用 mlx-lm；claude-code-local 是叠在它上面的一层薄薄的单人代码，只有客户端是 Claude Code 时才有意义。 | mlx-lm：上游背书、接口宽、没有 Claude Code 适配；claude-code-local：Anthropic 接口、工具调用修补、启动器，但不锁版本地继承 mlx-lm 的每次改动。 |
 | [MTPLX](mtplx.zh.md) | ✅ | 想要一个带 Anthropic 接口、并靠投机解码让 Qwen 解码更快的 Mac MLX 服务器，选 MTPLX；想要更轻的安装、以及覆盖 Gemma、Qwen、Hermes 的 Claude Code 专用工具调用处理，选 claude-code-local。 | MTPLX：速度和一个桌面应用，但安装更重、带署名 NOTICE；claude-code-local：普通 MIT 脚本栈，没有投机解码。 |
 | claude-code-proxy（1rgs/claude-code-proxy） | 未收录 | 模型已经挂在 OpenAI 兼容服务器后面、只需要给 Claude Code 做格式翻译时选它；claude-code-local 则用 MLX 上的原生 Anthropic 服务取代这层翻译。本批标签页收录未添加。 | 代理：不挑后端，但多一跳，且 GitHub 上没有声明许可证（API，2026-09-28）；claude-code-local：没有中间跳，只限 Mac。 |
 

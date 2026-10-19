@@ -86,7 +86,7 @@ health:
 
 你是研究者或一人产品团队，手上的活跨好几个领域：这周是“调研一下 X 的文献，做个原型，跑一晚上实验，再给我一套汇报幻灯片”。你已经在付 Claude Code 或 Codex 的钱，痛点在衔接：开一个 agent、等它、把它的报告贴进下一个的提示词；第二天回来，谁也不记得昨天定了什么。这时你要的是一个**宿主 agent**：一个入口（网页界面、终端界面或 IM 频道），把需求变成一张 DAG——任务依赖图，每个节点只等它依赖的那几个节点——再把节点派给自带的专项 agent（Raven-Research、Raven-Code、Raven-Design、Raven-Oncall），或者通过 ACP（Agent Client Protocol，agent 客户端协议）、命令行、OpenAI 兼容接口派给 13 个预置的第三方 agent。
 
-决定性的取舍是：如果你要的是**调度别的 agent 和领域专项 agent**，而不是一个住在聊天软件里的单体助手，选它而不选 [Hermes Agent](hermes-agent.zh.md) 或 [OpenClaw](openclaw.zh.md)；如果活不只是写代码（调研报告、`.pptx` 幻灯片、无人值守的实验），选它而不选 [oh-my-claudecode](../../coding-agents/orchestration-and-review/oh-my-claudecode.zh.md)；如果你要的是一个拿来就能对话的成品应用，而不是一个自己编程搭多 agent 系统的库，选它而不选 [AgentScope](../agent-sdks/agentscope.zh.md)。
+决定性的取舍是：如果你要的是**调度别的 agent 和领域专项 agent**，而不是一个住在聊天软件里的单体助手，选它而不选 [Hermes Agent](messaging-daemons/hermes-agent.zh.md) 或 [OpenClaw](messaging-daemons/openclaw.zh.md)；如果活不只是写代码（调研报告、`.pptx` 幻灯片、无人值守的实验），选它而不选 [oh-my-claudecode](../../coding-agents/orchestration-and-review/oh-my-claudecode.zh.md)；如果你要的是一个拿来就能对话的成品应用，而不是一个自己编程搭多 agent 系统的库，选它而不选 [AgentScope](../agent-sdks/agentscope.zh.md)。
 
 ## 怎么用起来
 
@@ -115,7 +115,7 @@ Raven 是一个 Python 宿主进程——agent 运行时从 nanobot 分叉而来
 
 - **你要求命令默认就与本机隔离。** 沙箱配置 `tools.sandbox.backend` 默认是 `"none"`，即 shell 命令直接在宿主机上跑；Boxlite 微虚拟机后端是要你另装、另开的可选项。更糟的是，未关闭的 issue #796（2026-09-25，v0.2.1）报告：即使配置了 Boxlite，DAG 节点的 shell 工具仍用宿主机执行器——只有 `spawn` 路径进了虚拟机；#798 报告 `raven playbook run` 也一样。在这两个问题关闭前，如果隔离是硬要求，用 [OpenHands](../../coding-agents/orchestration-and-review/openhands.zh.md)，它的任务从一开始就在 Docker 沙箱里执行。
 - **你需要持久化的工作流引擎。** 文档原话：DAG 编排是“Raven 宿主内部的编排，不是持久化的分布式工作流服务”，并行节点也不会各自拿到独立的 worktree 或文件锁。要可重试、可持久、跨机器的工作流，用 [Temporal](../../../workflow-orchestration/temporal.zh.md)，在它的 activity 里调用 agent。
-- **你只想要一个住在聊天软件里的助手。** Raven 有 IM 频道（Telegram、Slack、Discord、飞书、企业微信、钉钉、QQ 等，都是可选扩展），但它的重心在编排、自带专项 agent 和网页界面。如果要的就是一个跨聊天软件、常驻的单体助手，[OpenClaw](openclaw.zh.md) 或 [Hermes Agent](hermes-agent.zh.md) 更轻、社区也更大。
+- **你只想要一个住在聊天软件里的助手。** Raven 有 IM 频道（Telegram、Slack、Discord、飞书、企业微信、钉钉、QQ 等，都是可选扩展），但它的重心在编排、自带专项 agent 和网页界面。如果要的就是一个跨聊天软件、常驻的单体助手，[OpenClaw](messaging-daemons/openclaw.zh.md) 或 [Hermes Agent](messaging-daemons/hermes-agent.zh.md) 更轻、社区也更大。
 - **你只在一个仓库里调度编程 agent。** 这时 Raven 的调研、设计、值守产品和记忆层都是负担；Claude Code 上的编排层如 [oh-my-claudecode](../../coding-agents/orchestration-and-review/oh-my-claudecode.zh.md) 就待在你已经在用的工具里。
 - **你要在代码里搭自己的多 agent 系统。** Raven 是一个应用，扩展点是 agent 目录、插件和 playbook。要一个可编程的消息传递、流水线库，用 [AgentScope](../agent-sdks/agentscope.zh.md) 或 [AutoGen](../agent-sdks/autogen.zh.md)。
 - **你把“自我进化”当成稳定、有支持的功能。** Curator 是实验性的，不在安装包里；Evolver 的 README（2026-09-29 读）写明这棵目录树“计划退役”，只待合作方签字确认。把自我改进当研究预览看；要可控的调优，自己跑评测循环。
@@ -126,8 +126,8 @@ Raven 是一个 Python 宿主进程——agent 运行时从 nanobot 分叉而来
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| [Hermes Agent](hermes-agent.zh.md) | ✅ | 如果你要一个能在廉价 VPS 上跑、跨聊天软件应答的自我改进型单体助手，选 Hermes Agent；如果需求要几个专项 agent 加第三方编程 agent 按任务图协同，选 Raven。 | Hermes 换来更大的社区和更简单的单 agent 形态；Raven 换来 DAG 编排和自带的调研、设计、值守 agent，代价是更重、仍在 pre-alpha 的技术栈（Raven 的终端界面就是从 Hermes 移植的）。 |
-| [OpenClaw](openclaw.zh.md) | ✅ | 如果硬要求是频道覆盖和常驻的个人助手，选 OpenClaw；如果你要从一个入口把活分给 Claude Code、Codex 和自带专项 agent，选 Raven。 | OpenClaw 的用户和频道都多得多；Raven 把 OpenClaw 当作 13 个第三方预置之一接进来，而不是在消息渠道上跟它竞争。 |
+| [Hermes Agent](messaging-daemons/hermes-agent.zh.md) | ✅ | 如果你要一个能在廉价 VPS 上跑、跨聊天软件应答的自我改进型单体助手，选 Hermes Agent；如果需求要几个专项 agent 加第三方编程 agent 按任务图协同，选 Raven。 | Hermes 换来更大的社区和更简单的单 agent 形态；Raven 换来 DAG 编排和自带的调研、设计、值守 agent，代价是更重、仍在 pre-alpha 的技术栈（Raven 的终端界面就是从 Hermes 移植的）。 |
+| [OpenClaw](messaging-daemons/openclaw.zh.md) | ✅ | 如果硬要求是频道覆盖和常驻的个人助手，选 OpenClaw；如果你要从一个入口把活分给 Claude Code、Codex 和自带专项 agent，选 Raven。 | OpenClaw 的用户和频道都多得多；Raven 把 OpenClaw 当作 13 个第三方预置之一接进来，而不是在消息渠道上跟它竞争。 |
 | [oh-my-claudecode](../../coding-agents/orchestration-and-review/oh-my-claudecode.zh.md) | ✅ | 如果活就是写代码、你本来就住在 Claude Code 里，选 oh-my-claudecode；如果同一件活还要调研报告、幻灯片或通宵实验，选 Raven。 | oh-my-claudecode 在一个 CLI 里加分阶段的多 agent 团队，不引入新宿主；Raven 是独立的宿主应用，要另外维护自己的模型供应商、记忆和权限模型。 |
 | [AgentScope](../agent-sdks/agentscope.zh.md) | ✅ | 如果你在用 Python 代码搭多 agent 应用，选 AgentScope；如果你要一个已经替你调度 agent 的成品应用，选 Raven。 | AgentScope 给你可编程的消息传递和更长的历史；Raven 给你现成界面、自带 agent 和记忆，但内部实现每个版本都在变。 |
 | nanobot（`HKUDS/nanobot`） | 未收录 | 如果你想要一个小而易读、便于研究和扩展的个人助手运行时，选 nanobot；如果你要的是已经加上编排、专项 agent 和记忆的版本，选 Raven。 | Raven 在 v0.1.5.post3 分叉了 nanobot 并通篇改写（见 NOTICES.md）；nanobot（MIT，2026-09-29 时 4.86 万星）是更精简的上游。本批次（tab-intake）未收录。 |

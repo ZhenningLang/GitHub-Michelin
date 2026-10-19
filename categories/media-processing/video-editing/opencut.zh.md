@@ -87,7 +87,7 @@ OpenCut 是一个面向网页、桌面与移动端的 TypeScript 编辑器。截
 - **你想提 PR。** README 声明项目尚未准备好接收外部贡献；去有公开审查流程的项目贡献，或等架构宣布稳定。
 - **你需要可靠的发布节奏或稳定的扩展 API。** 编辑器 API、插件系统、MCP server 与无头模式在 README 里都还是「即将到来」，而本次核对前默认分支最后一次提交是 2026-08-01（重写版桌面外壳的脚手架），v0.3.0（2026-04-15）之后没有新的 tagged 版本。
 - **编辑器必须在普通硬件上完全离线运行。** OpenCut 通过 WASM 合成器在浏览器里渲染，网页端经 OpenNext 部署；需要自带编解码器、不依赖浏览器的原生二进制时，用 [Concat](concat.zh.md)。
-- **你只需要由代码生成、确定性的视频。** 时间线编辑器是错的层次——需要 CI 里渲染 React 组合时用 [Remotion](../../video-production/remotion.zh.md)，自己造编辑器时用 [MLT](../video-audio/editing-and-cutting/mlt.zh.md)。
+- **你只需要由代码生成、确定性的视频。** 时间线编辑器是错的层次——需要 CI 里渲染 React 组合时用 [Remotion](../../video-production/render-engines/remotion.zh.md)，自己造编辑器时用 [MLT](../video-audio/editing-and-cutting/mlt.zh.md)。
 
 ## 横向对比
 
@@ -95,7 +95,7 @@ OpenCut 是一个面向网页、桌面与移动端的 TypeScript 编辑器。截
 |---|---|---|---|
 | [Concat](concat.zh.md) | ✅ | 想今天就能装上原生编辑器开剪——离线、自带 FFmpeg／Whisper、有 API／CLI／server——选 Concat；更看重社区规模、MIT 许可与规划中的插件／MCP 架构而非可运行构建时选 OpenCut，因为 OpenCut 仓库正在重写且不接受贡献。 | Concat：现在可运行、原生、AGPL、单人维护。OpenCut：宽松许可与庞大社区，当前该仓库没有可下载产物。 |
 | [MLT](../video-audio/editing-and-cutting/mlt.zh.md) | ✅ | 你在造编辑器而不是用编辑器时选 MLT；只想跟进架构时看 OpenCut，因为 MLT 是成熟的 LGPL 引擎、已在为落地编辑器提供动力，而 OpenCut 的重写没有公布日期。 | MLT：经证实的引擎，无界面，LGPL。OpenCut：完整应用与浏览器触达，但未发货。 |
-| [Remotion](../../video-production/remotion.zh.md) | ✅ | 视频由代码批量生成且必须确定性时选 Remotion；人在时间线上交互剪辑时选 OpenCut，因为 Remotion 没有时间线界面，而 OpenCut 不是渲染框架。 | Remotion：代码定义的视频与成熟渲染器。OpenCut：面向人的交互式时间线剪辑。 |
+| [Remotion](../../video-production/render-engines/remotion.zh.md) | ✅ | 视频由代码批量生成且必须确定性时选 Remotion；人在时间线上交互剪辑时选 OpenCut，因为 Remotion 没有时间线界面，而 OpenCut 不是渲染框架。 | Remotion：代码定义的视频与成熟渲染器。OpenCut：面向人的交互式时间线剪辑。 |
 | CapCut（字节跳动） | 未收录 | 想要打磨成熟、带云端 AI 的免费编辑器且不在意账号时选 CapCut；许可与自托管比现成打磨更重要时选 OpenCut，因为 CapCut 闭源，并把 4K 与 AI 放在 Pro 后面。 | CapCut：特效成熟、绑定云端、闭源。OpenCut：MIT 可自托管，但当前不发货。 |
 | DaVinci Resolve／Premiere Pro | 未收录 | 专业剪辑师需要可跟踪遮罩、调色与成熟关键帧编辑器来完成交付时选商业 NLE；你要自建或自托管开源编辑器、而不是完成一部影片时选 OpenCut，因为商业工具闭源且不可嵌入。 | 商业 NLE：深度与稳定。OpenCut：开放许可与浏览器触达，架构仍在进行中。 |
 

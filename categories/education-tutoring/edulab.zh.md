@@ -79,7 +79,7 @@ health:
 
 - **需要课程库和持续学习上下文的完整产品：** 选 [DeepTutor](deeptutor.zh.md)；这里是一组技能、计算核心和逐题产物。
 - **任意定理或必须保证证明正确：** 先由教师核对解答；要自定义数学动画可用 [Manim](https://github.com/ManimCommunity/manim)。精确运算不能纠正读错题面或错误建模。
-- **普通产品影片，不是讲一道题：** 选 [HyperFrames](../video-production/hyperframes.zh.md) 的通用渲染基础；edulab 模板固定了课堂布局和中文口语规则。
+- **普通产品影片，不是讲一道题：** 选 [HyperFrames](../video-production/render-engines/hyperframes.zh.md) 的通用渲染基础；edulab 模板固定了课堂布局和中文口语规则。
 - **视频不得联网，也不提供云端凭据：** 交互页面与视频依赖不同。视频可能用 GLM 或联网 edge-tts；macOS `say` 可兜底，但没 GLM 凭据会跳过语音识别核对，不代表读音正确。
 - **把未经检查的学生输入直接交给代码：** 助手和脚本有本地文件权限。应另建沙箱服务，不能把安装技能当作多用户安全隔离。
 
@@ -89,7 +89,7 @@ health:
 |---|---|---|---|
 | [DeepTutor](deeptutor.zh.md) | ✅ | 上传教材、持续学习和练习，选 DeepTutor；发布一份可检查的交互课件或解题视频，选 edulab。 | 完整学习应用提供课程状态与检索；edulab 的产物流程更小，但依赖已有助手和教师复核。 |
 | [Manim](https://github.com/ManimCommunity/manim) | 未收录 | Python 自定义数学动画选 Manim；已支持的题型和带旁白课件流程吻合时选 edulab。 | Manim 提供通用动画框架，不提供本包的课件方法；本次关闭对比品扩录，因此未收录。 |
-| [HyperFrames](../video-production/hyperframes.zh.md) | ✅ | 通用确定性 HTML 视频选 HyperFrames；需要学科解题旁白、读音检查和推导图，选 edulab。 | HyperFrames 是引擎层；edulab 加教学约定，但布局更窄，另需 Python、浏览器和音频依赖。 |
+| [HyperFrames](../video-production/render-engines/hyperframes.zh.md) | ✅ | 通用确定性 HTML 视频选 HyperFrames；需要学科解题旁白、读音检查和推导图，选 edulab。 | HyperFrames 是引擎层；edulab 加教学约定，但布局更窄，另需 Python、浏览器和音频依赖。 |
 
 ## 快速上手
 

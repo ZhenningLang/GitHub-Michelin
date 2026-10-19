@@ -77,8 +77,8 @@ health:
 
 ## 何时不用
 
-- **只缺渲染已有构图的引擎：** 选 [HyperFrames](hyperframes.zh.md)；本包额外引入导演指令、风格选择、音频制作和独立共享库。
-- **要成熟 React 视频平台与云渲染：** 在许可允许时选 [Remotion](remotion.zh.md)；Lemo-Opuscar 是年轻的浏览器逐帧工具，不是同级渲染服务。
+- **只缺渲染已有构图的引擎：** 选 [HyperFrames](render-engines/hyperframes.zh.md)；本包额外引入导演指令、风格选择、音频制作和独立共享库。
+- **要成熟 React 视频平台与云渲染：** 在许可允许时选 [Remotion](render-engines/remotion.zh.md)；Lemo-Opuscar 是年轻的浏览器逐帧工具，不是同级渲染服务。
 - **要严格固定风格的解说流程：** 可看 [anything2explainer](anything2explainer.zh.md)，但其非商业许可是约束。Lemo 的多风格与助手自由裁量，换来较低的导演过程重复性。
 - **要写实生成素材或剪已有片段：** 分别考虑 Runway 等视频生成服务，或 DaVinci Resolve 等编辑器；这些是闭源产品，不属于本包的代码绘片路线。
 - **不允许自动更新库和安装依赖：** 先审查并固定 setup 流程，不直接沿用默认技能。它会克隆或更新共享库，并按层安装依赖；单个技能文件不是完整安装。
@@ -87,8 +87,8 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [HyperFrames](hyperframes.zh.md) | ✅ | 已有制片流程，只缺 HTML 渲染引擎，选 HyperFrames；需要复用美术指导和风格提示词，选 Lemo。 | Lemo 包含风格、配音配乐和复核约定；HyperFrames 是更通用的 Apache-2.0 引擎。 |
-| [Remotion](remotion.zh.md) | ✅ | React 团队做参数化视频产品与云端渲染，选 Remotion；助手用浏览器绘制导演短片，选 Lemo。 | Remotion 引擎基础设施更深，并有商业许可要求；Lemo 更小、本地渲染且年轻得多。 |
+| [HyperFrames](render-engines/hyperframes.zh.md) | ✅ | 已有制片流程，只缺 HTML 渲染引擎，选 HyperFrames；需要复用美术指导和风格提示词，选 Lemo。 | Lemo 包含风格、配音配乐和复核约定；HyperFrames 是更通用的 Apache-2.0 引擎。 |
+| [Remotion](render-engines/remotion.zh.md) | ✅ | React 团队做参数化视频产品与云端渲染，选 Remotion；助手用浏览器绘制导演短片，选 Lemo。 | Remotion 引擎基础设施更深，并有商业许可要求；Lemo 更小、本地渲染且年轻得多。 |
 | [anything2explainer](anything2explainer.zh.md) | ✅ | 固定动态图形解说和明确审批点，选 anything2explainer；故事需要绘画、卡通或实证影像风格，选 Lemo。 | Lemo 的代码文档为 MIT，外观多样；对方流程更窄，但有非商业限制。 |
 
 ## 快速上手

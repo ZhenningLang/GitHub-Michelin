@@ -79,7 +79,7 @@ You teach or explain a particular geometry, conic-section or chemistry problem, 
 
 - **A complete tutoring product with course libraries and saved learning context:** choose [DeepTutor](deeptutor.md); this repository is a set of installed skills, kernels and per-problem artifacts.
 - **An arbitrary theorem or a guaranteed correct proof:** use an instructor-reviewed solution and, for custom mathematical animation, [Manim](https://github.com/ManimCommunity/manim). Symbolic arithmetic cannot correct a wrongly extracted problem or unsupported modeling assumption.
-- **General product films rather than teaching a problem:** choose [HyperFrames](../video-production/hyperframes.md) for a broader rendering foundation; edulab's templates encode classroom layouts and spoken Chinese conventions.
+- **General product films rather than teaching a problem:** choose [HyperFrames](../video-production/render-engines/hyperframes.md) for a broader rendering foundation; edulab's templates encode classroom layouts and spoken Chinese conventions.
 - **No network and no cloud credentials for video:** interactive page generation and the video path have different requirements. The video path may use GLM or networked edge-tts; macOS `say` is a fallback, and missing GLM credentials skip ASR instead of proving pronunciation correct.
 - **Unreviewed student uploads as arbitrary code input:** the agent and scripts have local file authority. Use a separately sandboxed service rather than treating skill installation as multi-user security.
 
@@ -89,7 +89,7 @@ You teach or explain a particular geometry, conic-section or chemistry problem, 
 |---|---|---|---|
 | [DeepTutor](deeptutor.md) | ✅ | Choose DeepTutor for persistent study with uploaded textbooks and practice; choose edulab to publish one inspectable interactive lesson or problem video. | A full study app supplies course state and retrieval; edulab keeps the artifact workflow smaller but assumes an existing agent and instructor review. |
 | [Manim](https://github.com/ManimCommunity/manim) | not indexed | Choose Manim for custom mathematical animation authored in Python; choose edulab when its supported problem kernels and narrated lesson workflow already fit. | Manim offers a general animation framework rather than this lesson method; not added in this tab batch because comparison intake is disabled. |
-| [HyperFrames](../video-production/hyperframes.md) | ✅ | Choose HyperFrames for general deterministic HTML video compositions; choose edulab for subject-specific problem narration, pronunciation checks and worked diagrams. | HyperFrames is the engine layer; edulab adds teaching conventions but narrows the layout and requires its own Python/browser/audio dependencies. |
+| [HyperFrames](../video-production/render-engines/hyperframes.md) | ✅ | Choose HyperFrames for general deterministic HTML video compositions; choose edulab for subject-specific problem narration, pronunciation checks and worked diagrams. | HyperFrames is the engine layer; edulab adds teaching conventions but narrows the layout and requires its own Python/browser/audio dependencies. |
 
 ## Quick start
 

@@ -84,7 +84,7 @@ health:
 
 ## 何时使用
 
-你基本活在 iPhone（或 arm64 的 Android 手机）上，已经在为 Claude、GPT 或 Gemini 的 API 付费，想要一个能把手机上的杂事办完、而不是只告诉你怎么办的助手：“把这顿饭记下来”“把明天航班的邮件变成日程”“总结我的 X 时间线，做成闹钟播给我听”。官方 Claude / ChatGPT 应用写不了 HealthKit，也跑不了 `pip install`；本分类里自托管的助手（[OpenClaw](openclaw.zh.md)、[Hermes Agent](hermes-agent.zh.md)、[Rakazo](rakazo.zh.md)）把 agent 放在服务器上，只通过聊天渠道够到你的手机，碰不到手机自己的健康或 HomeKit 数据。当手机本身就是那台电脑时选 OpenMinis：应用里跑着一个沙箱化的 Alpine Linux shell，系统框架以 shell 命令的形式交给 agent，为 Claude、Codex、OpenClaw 或 Hermes Agent 写的技能（`SKILL.md` 文件夹）一般能直接用，而且不需要另一台机器一直开着。和 [Operit](https://github.com/AAswordman/Operit)（未收录）比，你要 iOS，或者 HealthKit / HomeKit / 快捷指令的集成比跑本地模型更重要时，选 OpenMinis。
+你基本活在 iPhone（或 arm64 的 Android 手机）上，已经在为 Claude、GPT 或 Gemini 的 API 付费，想要一个能把手机上的杂事办完、而不是只告诉你怎么办的助手：“把这顿饭记下来”“把明天航班的邮件变成日程”“总结我的 X 时间线，做成闹钟播给我听”。官方 Claude / ChatGPT 应用写不了 HealthKit，也跑不了 `pip install`；本分类里自托管的助手（[OpenClaw](messaging-daemons/openclaw.zh.md)、[Hermes Agent](messaging-daemons/hermes-agent.zh.md)、[Rakazo](rakazo.zh.md)）把 agent 放在服务器上，只通过聊天渠道够到你的手机，碰不到手机自己的健康或 HomeKit 数据。当手机本身就是那台电脑时选 OpenMinis：应用里跑着一个沙箱化的 Alpine Linux shell，系统框架以 shell 命令的形式交给 agent，为 Claude、Codex、OpenClaw 或 Hermes Agent 写的技能（`SKILL.md` 文件夹）一般能直接用，而且不需要另一台机器一直开着。和 [Operit](https://github.com/AAswordman/Operit)（未收录）比，你要 iOS，或者 HealthKit / HomeKit / 快捷指令的集成比跑本地模型更重要时，选 OpenMinis。
 
 ## 怎么用起来
 
@@ -111,7 +111,7 @@ health:
 ## 何时不用
 
 - **你想让模型本身在手机上离线跑。** OpenMinis 没有端侧推理，每一轮都发给云端服务商，或你自己托管的 OpenAI / Anthropic 兼容端点（代码里提到 Ollama、LM Studio、LiteLLM——都在另一台机器上）。要在手机上跑本地模型，用 [Google AI Edge Gallery](../../../on-device-ml/ai-edge-gallery.zh.md) 或 PocketPal AI；在 Android 上，Operit 在 agent 旁边自带了 MNN 和 llama.cpp 本地推理。
-- **你需要长时间无人值守或定时跑的任务。** iOS 只给退到后台的应用大约 30 秒，除非你打开“增强后台”里的定位心跳或后台音频（`BackgroundKeepAliveManager.swift`）；iOS 沙箱在**所有会话之间同一时刻只跑一条命令**，还有 10 分钟抢占规则（`docs/specs/ios-sandbox-ish-summary.md`）。如果手机锁屏后 agent 也得继续干活，把 [Hermes Agent](hermes-agent.zh.md)、[OpenClaw](openclaw.zh.md) 或 [Rakazo](rakazo.zh.md) 跑在服务器上，再从手机跟它说话。
+- **你需要长时间无人值守或定时跑的任务。** iOS 只给退到后台的应用大约 30 秒，除非你打开“增强后台”里的定位心跳或后台音频（`BackgroundKeepAliveManager.swift`）；iOS 沙箱在**所有会话之间同一时刻只跑一条命令**，还有 10 分钟抢占规则（`docs/specs/ios-sandbox-ish-summary.md`）。如果手机锁屏后 agent 也得继续干活，把 [Hermes Agent](messaging-daemons/hermes-agent.zh.md)、[OpenClaw](messaging-daemons/openclaw.zh.md) 或 [Rakazo](rakazo.zh.md) 跑在服务器上，再从手机跟它说话。
 - **你要求每一次碰个人数据都经过审核。** 隐私类工具默认 `Bypass`；“询问一次”要按工具、按会话自己打开。检查只看命令的第一个词——源码注释写明，经由 `sh -c`、`env` 或脚本的间接调用不在覆盖范围内（相关绕过 #242 已于 2026-08-19 关闭）。在 Android 上，agent 的设备控制 shell 继承 Shizuku 启动时的权限，包括 root，应用里没有上限（#389，未关闭）。如果每个动作都要审批、留审计，换成桌面上的 [OpenWorker](openworker.zh.md)。
 - **你想贡献代码，或作为分支长期跟上游。** 这个仓库是私有开发树在发版时的镜像，明确不收 pull request，历史按版本整批进来。想贡献就去 `OpenMinis/MinisSkills` 写技能，或者选在 GitHub 上收贡献的 Operit。
 - **你想把 agent 嵌进自己的应用或产品。** 这是成品应用，不是 SDK；而且因为链接了 iSH（GPLv3）和 PRoot（GPLv2），合并作品是 GPL-3.0：你分发的任何衍生版都得按 GPLv3 公开源码。改用 agent SDK（见 [Agent SDKs](../agent-sdks/INDEX.zh.md)）。
@@ -122,7 +122,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| [OpenClaw](openclaw.zh.md) | ✅ | agent 应该住在一台常开的机器上、通过 WhatsApp、Telegram 或 iMessage 找你时，选 OpenClaw；活就在手机本身上——健康、日历、HomeKit、快捷指令——又不想运维服务器时，选 OpenMinis。 | OpenClaw 社区大得多，手机睡了它还在跑；OpenMinis 不要主机，但受 iOS 后台限制和“一次一条命令”的沙箱约束。 |
+| [OpenClaw](messaging-daemons/openclaw.zh.md) | ✅ | agent 应该住在一台常开的机器上、通过 WhatsApp、Telegram 或 iMessage 找你时，选 OpenClaw；活就在手机本身上——健康、日历、HomeKit、快捷指令——又不想运维服务器时，选 OpenMinis。 | OpenClaw 社区大得多，手机睡了它还在跑；OpenMinis 不要主机，但受 iOS 后台限制和“一次一条命令”的沙箱约束。 |
 | [Operit](https://github.com/AAswordman/Operit) | 未收录 | 在 Android 上，要本地模型（MNN、llama.cpp）、Ubuntu 24.04 用户空间和一个收 pull request 的项目时选 Operit；需要 iOS 或两个平台一个产品时选 OpenMinis。 | 本批次未收录。Operit 更老（2025-03 创建，LGPL-3.0），只有 Android，iOS 要等它另起炉灶的 Operit 2；OpenMinis 有 Apple 生态集成，但开发树不公开。 |
 | [Termux](https://github.com/termux/termux-app) + 命令行 agent | 未收录 | 如果你愿意自己拼一套，Android 上的 Termux 加一个终端编程 agent 能给你原生速度的 Linux，没有应用强加的工具层；想要设备集成、技能和聊天界面都已接好时选 OpenMinis。 | 本批次未收录。Termux 是成熟终端、跑原生二进制，但没有 agent、没有 iOS 版、没有 HealthKit 这类桥接，胶水代码要你自己写自己养。 |
 | [PocketPal AI](https://github.com/a-ghorbani/pocketpal-ai) | 未收录 | 要求模型完全在手机上跑、不要 API key 时选 PocketPal；要求 agent 能动手——shell、浏览器、设备数据——并用前沿云端模型时选 OpenMinis。 | 本批次未收录。PocketPal（MIT）让提示词留在设备上，但它是小型本地模型的聊天应用，没有工具；OpenMinis 每一轮都发给服务商，换来能力。 |

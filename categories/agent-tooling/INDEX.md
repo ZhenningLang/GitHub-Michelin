@@ -10,7 +10,7 @@
 | --- | --- | --- |
 | **Work State** | The agent keeps losing the plan, the backlog or the context mid-run, and you need that state somewhere on disk it can read back. | [→](work-state/INDEX.md) |
 | **Session History** | You want to search, replay or cost-account for sessions that already happened, across several agents. | [→](session-history/INDEX.md) |
-| **Supervision Surfaces** | A human has to look at the agent's work — review a plan or diff, approve it, steer several agents — from something other than the terminal. | [→](supervision-surfaces/INDEX.md) |
+| **Supervision Surfaces** | A human needs to inspect agent state or work, approve actions, or steer sessions and teams — through a terminal, browser or desktop surface. | [→](supervision-surfaces/INDEX.md) |
 | **UI Annotation** | A human sees the problem in the *running app's UI* and needs the agent to find the exact element and code behind it — click-to-annotate evidence, not artifact review. | [→](ui-annotation/INDEX.md) |
 | **Harness Extensions** | You are extending what the agent can reach or install — skill-pack managers, command surfaces for GUI-only software. | [→](harness-extensions/INDEX.md) |
 | **Concurrent Editing** | Parallel agents (or people) write to the same repo and their branches collide at `git merge` on independent same-file edits — you want the merge itself to understand functions and keys instead of lines. | [→](concurrent-editing/INDEX.md) |

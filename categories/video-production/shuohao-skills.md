@@ -85,7 +85,7 @@ You are adapting a Chinese-first short drama and character identities, props and
 
 - Need a finished explanatory film rather than drama preparation? Choose [OpenMontage](open-montage.md).
 - Need a product promo from real UI captures? Choose [video-shotcraft](video-shotcraft.md), not a novel-adaptation workflow.
-- Need deterministic timeline rendering? Choose [Remotion](remotion.md); this collection is not a rendering engine.
+- Need deterministic timeline rendering? Choose [Remotion](render-engines/remotion.md); this collection is not a rendering engine.
 - Need fully English character data without adaptation? Use a custom workflow instead: the character validator explicitly rejects English in some authored fields, despite English report interfaces.
 
 ## Comparison
@@ -94,7 +94,7 @@ You are adapting a Chinese-first short drama and character identities, props and
 | --- | --- | --- | --- |
 | [OpenMontage](open-montage.md) | ✅ | Choose OpenMontage for a whole video pipeline; choose shuohao-skills for character and staging continuity in short drama. | Broader production automation versus specialized reviewable preparation. |
 | [video-shotcraft](video-shotcraft.md) | ✅ | Choose video-shotcraft for product footage and shot recipes; choose this collection when a novel must become scenes and consistent cast. | UI-grounded promo assets versus narrative and spatial planning. |
-| [Remotion](remotion.md) | ✅ | Choose Remotion to render a coded timeline; choose these skills to prepare drama material for external generators. | A rendering runtime versus prompts, JSON contracts and validators; Remotion's separate license still matters if added downstream. |
+| [Remotion](render-engines/remotion.md) | ✅ | Choose Remotion to render a coded timeline; choose these skills to prepare drama material for external generators. | A rendering runtime versus prompts, JSON contracts and validators; Remotion's separate license still matters if added downstream. |
 
 ## Quick start
 

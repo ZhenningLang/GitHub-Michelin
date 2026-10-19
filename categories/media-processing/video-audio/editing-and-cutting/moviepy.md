@@ -120,7 +120,7 @@ MoviePy turns media into Python objects. Opening a file starts an FFmpeg process
 - **Live or low-latency media.** MoviePy is file-in, file-out. For camera feeds, RTSP/WebRTC or anything that must run continuously, use [GStreamer](../transcoding-and-pipelines/gstreamer.md).
 - **Your code, tutorials or LLM snippets are MoviePy 1.x.** v2.0 broke the API: `moviepy.editor` is gone, `subclip` became `subclipped`, `clip.fx(...)` became `with_effects([...])`, and v1 is no longer maintained. Budget a migration with the upstream "updating to v2" guide rather than pinning `moviepy<2`.
 - **You want a timeline editor or a GUI.** MoviePy has no project file, no preview-driven editing and no undo. Use [MLT](mlt.md) / Shotcut for a real non-linear editor.
-- **Your stack is web/React and the video is a templated UI.** Use [Remotion](../../../video-production/remotion.md), which renders React components to video, instead of rebuilding layouts in Python.
+- **Your stack is web/React and the video is a templated UI.** Use [Remotion](../../../video-production/render-engines/remotion.md), which renders React components to video, instead of rebuilding layouts in Python.
 
 ## Comparison
 
@@ -129,7 +129,7 @@ MoviePy turns media into Python objects. Opening a file starts an FFmpeg process
 | [FFmpeg](../transcoding-and-pipelines/ffmpeg.md) | ✅ | For trims, joins and transcodes that FFmpeg can express in one command, use FFmpeg; reach for MoviePy only when the edit has layers and timing you need to read back later. | Fastest path and stream copy without quality loss; the cost is filter-graph syntax that stops being maintainable past a few overlays. |
 | [ffmpeg-python](../transcoding-and-pipelines/ffmpeg-python.md) | ✅ | When you want FFmpeg's speed but generated from Python, pick ffmpeg-python; pick MoviePy when you need per-frame Python effects or a clip/layer model. | Frames never enter Python, so it stays fast; you still think in FFmpeg filters, not in clips. |
 | [PyAV](../transcoding-and-pipelines/pyav.md) | ✅ | For custom decode/encode loops or packet-level control inside one process, pick PyAV; pick MoviePy when you want compositing and text without writing the loop yourself. | In-process libav bindings with no subprocess; lower-level, and you build the editing concepts yourself. |
-| [Remotion](../../../video-production/remotion.md) | ✅ | When the video is a designed layout (charts, captions, branded templates) and the team writes React, pick Remotion; stay with MoviePy when the pipeline and data are in Python and the input is existing footage. | Web-grade layout and preview tooling; adds Node, a headless browser and its own license terms for companies. |
+| [Remotion](../../../video-production/render-engines/remotion.md) | ✅ | When the video is a designed layout (charts, captions, branded templates) and the team writes React, pick Remotion; stay with MoviePy when the pipeline and data are in Python and the input is existing footage. | Web-grade layout and preview tooling; adds Node, a headless browser and its own license terms for companies. |
 | [MLT](mlt.md) / Shotcut | 部分已收录 | For a human editing a multitrack timeline, pick MLT/Shotcut; pick MoviePy when no human should touch each video. | A real NLE engine with project files; heavier and not built for writing edits as Python code. |
 | OpenCV | 未收录 | Use OpenCV when the frames are input to computer vision; use MoviePy when the output is an edited video. | Excellent per-frame image processing; no notion of clips, audio, layers or transitions. |
 

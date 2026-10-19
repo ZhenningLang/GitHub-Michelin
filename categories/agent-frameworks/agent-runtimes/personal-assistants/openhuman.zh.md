@@ -83,7 +83,7 @@ health:
 
 ## 何时使用
 
-你想让助手第一天就了解你的工作现场，而不是每天早上再给另一个聊天窗口重新交代一遍。你把 Gmail、日历、GitHub、Notion、Slack 接一次，后台循环就把新增内容持续拉进本机记忆——存成打分的 Markdown，并镜像成你能直接打开、编辑的 Obsidian 库——于是你问的第一个真问题，就落在它趁你不在时已经建好的上下文上。比起 [Hermes Agent](hermes-agent.zh.md)，选它的理由是你想要靠“把数据源灌进来”前置上下文，而不是靠学习循环花几周慢慢攒；比起 [OpenClaw](openclaw.zh.md)，选它的理由是决定性的功能是记忆流水线加可视化工作流画布加一个图形界面，而不是一个样样自带、以消息渠道覆盖见长的运行时。
+你想让助手第一天就了解你的工作现场，而不是每天早上再给另一个聊天窗口重新交代一遍。你把 Gmail、日历、GitHub、Notion、Slack 接一次，后台循环就把新增内容持续拉进本机记忆——存成打分的 Markdown，并镜像成你能直接打开、编辑的 Obsidian 库——于是你问的第一个真问题，就落在它趁你不在时已经建好的上下文上。比起 [Hermes Agent](messaging-daemons/hermes-agent.zh.md)，选它的理由是你想要靠“把数据源灌进来”前置上下文，而不是靠学习循环花几周慢慢攒；比起 [OpenClaw](messaging-daemons/openclaw.zh.md)，选它的理由是决定性的功能是记忆流水线加可视化工作流画布加一个图形界面，而不是一个样样自带、以消息渠道覆盖见长的运行时。
 
 它在“说到做到”这件事上也更少见：`local_only` 是 Rust core 里的构造期拒绝——不建云端 provider、不给网络工具、不给集成、不给云端 embedding——“数据留在我机器上”是可核对的，而不是系统提示里的一句话。同一个 core 还提供 JSON-RPC，并自带 CLI 与 TUI 前端，所以桌面窗口只是一层界面，不是锁定点。
 
@@ -124,8 +124,8 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| [OpenClaw](openclaw.zh.md) | ✅ | 如果你要的是把模型指向自己后端的自托管 MIT 助手、并且消息渠道覆盖最广，选 OpenClaw；如果决定性功能是持续灌入的本地记忆加可视化工作流画布，就选 OpenHuman。 | OpenClaw 赢在许可宽松、渠道数量和自托管控制权；OpenHuman 为记忆流水线付出的代价是必须有厂商账号、桌面构建重得多，而且没有宽松许可。 |
-| [Hermes Agent](hermes-agent.zh.md) | ✅ | 如果助手的价值应该来自把经验变成技能的学习循环，选 Hermes；如果你宁可让它一上来就读你已有的数据源、而不是攒几周能力，就选 OpenHuman。 | Hermes 靠自我改进挣来上下文、一台小 VPS 就能跑；OpenHuman 靠每 20 分钟灌入你的邮件聊天和仓库来买上下文，见效更快但隐私面更大。 |
+| [OpenClaw](messaging-daemons/openclaw.zh.md) | ✅ | 如果你要的是把模型指向自己后端的自托管 MIT 助手、并且消息渠道覆盖最广，选 OpenClaw；如果决定性功能是持续灌入的本地记忆加可视化工作流画布，就选 OpenHuman。 | OpenClaw 赢在许可宽松、渠道数量和自托管控制权；OpenHuman 为记忆流水线付出的代价是必须有厂商账号、桌面构建重得多，而且没有宽松许可。 |
+| [Hermes Agent](messaging-daemons/hermes-agent.zh.md) | ✅ | 如果助手的价值应该来自把经验变成技能的学习循环，选 Hermes；如果你宁可让它一上来就读你已有的数据源、而不是攒几周能力，就选 OpenHuman。 | Hermes 靠自我改进挣来上下文、一台小 VPS 就能跑；OpenHuman 靠每 20 分钟灌入你的邮件聊天和仓库来买上下文，见效更快但隐私面更大。 |
 | [claude-mem](../../../agent-memory/coding-agent-memory/claude-mem.zh.md) | ✅ | 如果你真正缺的是 Claude Code／Codex 下的编码会话上下文，选 claude-mem；只有当你要的是横跨邮件、日历、聊天的通用助手时才选 OpenHuman。 | claude-mem 是一个本地钩子层，不要账号也不要图形界面；OpenHuman 是完整助手，覆盖面更广、活动部件更多、数据经过的环节也更多。 |
 | [eve](../agent-services/eve.zh.md) | ✅ | 如果你要的是部署成服务、带人工审批的持久 agent 后端，选 eve；如果你要的是让非技术用户从桌面窗口直接操作，就选 OpenHuman。 | eve 给你文件、HTTP 服务和检查点，跑在你自己的基础设施上；OpenHuman 给你一个消费级安装形态加托管推理，代价是 GPL 和更重的工具链。 |
 | [OpenFang](../agent-services/openfang.zh.md) | ✅ | 如果你要的是单个 Rust 二进制跑计划任务型自治 agent、不要桌面外壳，选 OpenFang；如果助手必须吃进个人数据源、并由人看着图形界面来掌舵，就选 OpenHuman。 | OpenFang 更小、更好自托管；OpenHuman 自带集成、图形界面和托管模型路由，而这恰好可能是你不想背的重量。 |

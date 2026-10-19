@@ -85,9 +85,9 @@ health:
 
 ## 何时不用
 
-- **需要稳定的发布契约。** README 明确写着开发者预览。优先考虑有签名发布流程的 [OpenClaw](openclaw.zh.md)，仍需加固宿主机。
+- **需要稳定的发布契约。** README 明确写着开发者预览。优先考虑有签名发布流程的 [OpenClaw](messaging-daemons/openclaw.zh.md)，仍需加固宿主机。
 - **把本地优先理解成不外发。** 分析事件与 Sentry 默认开启。首次启动前设置 `ATOMIC_AGENT_ANALYTICS=off`；明确离线模式是硬约束时，评估 [OpenHuman](openhuman.zh.md)。
-- **部署目标是小开发板。** 选 [PicoClaw](picoclaw.zh.md) 并单独托管推理。Atomic 的模型权重与缓存不属于 agent 本身的内存占用。
+- **部署目标是小开发板。** 选 [PicoClaw](messaging-daemons/picoclaw.zh.md) 并单独托管推理。Atomic 的模型权重与缓存不属于 agent 本身的内存占用。
 - **只想嵌入可编程调用循环。** 选 [Pydantic AI](../agent-sdks/pydantic-ai.zh.md)。Atomic 会接管会话、工具、记忆与进程生命周期，而非只提供类型化调用。
 - **需要高可信事实记录。** 使用带来源、另行审阅事实的账本，不能把记忆分数当作核验。[投票提示词](https://github.com/AtomicBot-ai/atomic-agent/blob/7899d173e0a07665f45cf014de065eb38f405127/src/memory/voting/vote-prompt.ts#L59-L77)允许在回答采用、复述条目或遵循其建议时触发 UPVOTE；[存储层](https://github.com/AtomicBot-ai/atomic-agent/blob/7899d173e0a07665f45cf014de065eb38f405127/src/memory/voting/vote-store.ts#L302-L313)只增减并限幅保存分数。采用与复述属于使用奖励，不是记忆内容正确的外部证据。
 - **需要多语言身份核验。** 使用权威认证身份系统，不能依赖记住的姓名。[反思过滤器](https://github.com/AtomicBot-ai/atomic-agent/blob/7899d173e0a07665f45cf014de065eb38f405127/src/memory/reflection/reflection-grounding.ts#L729-L771)主要比较拉丁与西里尔文字证据；[其他文字姓名，以及证据主要用其他文字时的拉丁姓名](https://github.com/AtomicBot-ai/atomic-agent/blob/7899d173e0a07665f45cf014de065eb38f405127/src/memory/reflection/reflection-grounding.ts#L885-L896)，可能被判为不可比较，并[跳过该姓名过滤](https://github.com/AtomicBot-ai/atomic-agent/blob/7899d173e0a07665f45cf014de065eb38f405127/src/memory/reflection/reflection-grounding.ts#L1083-L1086)，不代表核验成功。[对助手前一条姓名询问的简短确认](https://github.com/AtomicBot-ai/atomic-agent/blob/7899d173e0a07665f45cf014de065eb38f405127/src/memory/name-grounding.ts#L71-L90)也可作为会话证据。这些启发式只核对会话支持，不认证现实身份。
@@ -96,9 +96,9 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Hermes Agent](hermes-agent.zh.md) | ✅ | 托管本地推理与压缩工具提示词优先，选 Atomic；重点是服务器常驻、自写技能和定时任务，选 Hermes。 | Atomic 把操作助手与本地后端管理结合；Hermes 使用 Python 和自己的记忆演化路径。 |
-| [OpenClaw](openclaw.zh.md) | ✅ | 聊天渠道与配套客户端决定选型时，选 OpenClaw；小模型提示词成本决定时，选 Atomic。 | 更广的渠道对比 llama.cpp 优先的循环；宿主工具权限都不等于租户隔离。 |
-| [PicoClaw](picoclaw.zh.md) | ✅ | 嵌入式开发板上的小型运行时选 PicoClaw；工作站交互操作助手选 Atomic。 | 小型 Go 核心对比丰富的操作界面；模型下载还需另算。 |
+| [Hermes Agent](messaging-daemons/hermes-agent.zh.md) | ✅ | 托管本地推理与压缩工具提示词优先，选 Atomic；重点是服务器常驻、自写技能和定时任务，选 Hermes。 | Atomic 把操作助手与本地后端管理结合；Hermes 使用 Python 和自己的记忆演化路径。 |
+| [OpenClaw](messaging-daemons/openclaw.zh.md) | ✅ | 聊天渠道与配套客户端决定选型时，选 OpenClaw；小模型提示词成本决定时，选 Atomic。 | 更广的渠道对比 llama.cpp 优先的循环；宿主工具权限都不等于租户隔离。 |
+| [PicoClaw](messaging-daemons/picoclaw.zh.md) | ✅ | 嵌入式开发板上的小型运行时选 PicoClaw；工作站交互操作助手选 Atomic。 | 小型 Go 核心对比丰富的操作界面；模型下载还需另算。 |
 
 ## 快速上手
 

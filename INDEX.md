@@ -70,7 +70,7 @@
 | **reading-tools** | Reading tools — reader-mode extensions and RSS readers. | [→](categories/reading-tools/INDEX.md) |
 | **speech** | Speech processing toolkits (ASR, TTS, speaker tasks). | [→](categories/speech/INDEX.md) |
 | **terminal-ui** | Terminal/CLI UI libraries — colors, TUIs, ASCII art, terminal rendering. | [→](categories/terminal-ui/INDEX.md) |
-| **video-production** | AI-orchestrated end-to-end video production — research, scripting, asset generation, composition, and rendering driven by an agent inside a coding assistant. | [→](categories/video-production/INDEX.md) |
+| **video-production** | Agent-driven video directing methods, production pipelines and creator apps; descend for code-defined rendering engines. | [→](categories/video-production/INDEX.md) |
 | **investment-finance** | Quant finance, market-data, trading research, and investment-analysis tooling. | [→](categories/investment-finance/INDEX.md) |
 | **education-tutoring** | AI tutoring, learning assistants, and education-focused agent systems. | [→](categories/education-tutoring/INDEX.md) |
 | **agent-governance** | Governance, policy enforcement, identity, sandboxing, and reliability controls for AI agents. | [→](categories/agent-governance/INDEX.md) |

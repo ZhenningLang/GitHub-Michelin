@@ -115,7 +115,7 @@ Palmier Pro 是一个 Swift 应用，建在苹果自家的媒体栈上（AVFound
 
 - **你要一个会持续修 bug 的开源剪辑器。** 只有 `last-gpl-source` 标签（2026-08-24，对应 v0.7.6）之前的源码是 GPL-3.0；v0.7.6 之后的版本是专有软件、不公开源码，仓库也在 2026-08-28 停止接受贡献。要当前版本仍然开源的剪辑器，选 [Concat](concat.zh.md) 或 Kdenlive（未收录），因为冻结的快照不会再从原作者那里得到安全和兼容性修复。
 - **你不在 macOS 26 加 Apple 芯片上。** README 和 `Package.swift` 都要求 macOS 26（Tahoe）与 M 系列芯片，项目开发规范还明确不为其他系统版本或架构加兼容。Windows、Linux 用 [Concat](concat.zh.md) 或 Kdenlive（未收录）；想在浏览器里剪，关注 [OpenCut](opencut.zh.md)。
-- **你要在服务器上无人值守地批量出片。** MCP 服务只在 Mac 上的图形应用开着时存在，一个应用实例对应它开着的工程；有工作室在 issue #302 里问无头运行和并行出片，得到的回复是“发邮件聊”。CI 里按模板渲染用 [Remotion](../../video-production/remotion.zh.md)；Python 批量剪辑用 [MoviePy](../video-audio/editing-and-cutting/moviepy.zh.md)。
+- **你要在服务器上无人值守地批量出片。** MCP 服务只在 Mac 上的图形应用开着时存在，一个应用实例对应它开着的工程；有工作室在 issue #302 里问无头运行和并行出片，得到的回复是“发邮件聊”。CI 里按模板渲染用 [Remotion](../../video-production/render-engines/remotion.zh.md)；Python 批量剪辑用 [MoviePy](../video-audio/editing-and-cutting/moviepy.zh.md)。
 - **你想生成素材却不想绑定厂商账号，或想用自己的模型密钥。** 生成片段调用的是 Palmier 的 Convex 后端（`generations:submit`），按 Palmier 额度扣费；后端代码不在仓库里，没有 Palmier 的 Clerk／Convex 配置自编出来的版本，会把账号后端标成配置缺失。想自己掌控生成链路，就直接调各家模型 API，或用 [OpenMontage](../../video-production/open-montage.zh.md) 这类流水线。
 - **你不信任同一台 Mac 上的其他本地进程。** MCP 端点只绑定 `127.0.0.1` 并校验 `Origin` 头，但没有令牌；任何本地进程都能操控开着的工程，issue #302 也指出了这一点。在共用机器上别开着它，或改用 [Concat](concat.zh.md)——它的本地服务每次运行都生成随机令牌。
 - **你要做自己的剪辑器或无头剪辑服务。** fork 一个单厂商、已冻结的 Swift 应用，会把你绑在 macOS 26 和 GPL 义务上；要可复用的时间线引擎，用 [MLT](../video-audio/editing-and-cutting/mlt.zh.md)。

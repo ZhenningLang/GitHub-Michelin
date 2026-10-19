@@ -103,7 +103,7 @@ health:
 - **你要能装上就跑的 skill。** 用 [Anthropic Skills](../vendor-collections/agent-vendors/anthropic-skills.zh.md)（或 OpenAI 的 `openai/skills` 目录）。这里每个连接器 skill 都要调用 Muse 独有的程序和路径（`hatch_gws_cli gmail …`、`/opt/hatch/skills/gmail/manifest.yaml`），以及 `credentials.request_api_access` 这类平台工具；README 自己也列出了快照里缺失的辅助程序（artifacts 验证脚本、skill-creator 的连接器脚手架、Magic Moment 的 `mm` 程序）。frontmatter 还用下划线命名（`wide_research`、`skill_creator`）并带 Muse 专有的 `metadata.includeInPrompt` 键，拷进别的 harness，就算能加载，调用的命令也根本不存在。
 - **你要把文字抄进自己的产品或仓库。** 仓库没有 LICENSE 文件，README 明说不代原权利人授予任何额外权利，原有版权和商标保持不变。文件自称是 Meta 的产品（“Muse is Meta's personal AI agent product”），仓库里没有任何迹象表明 Meta 授权了发布——应当视为未经授权转载的专有材料 [推断：法律定性未经裁决；截至 2026-09-29 未见下架通知]。读来找思路，然后自己写；需要能合法引入的文字，用 [Anthropic Skills](../vendor-collections/agent-vendors/anthropic-skills.zh.md) 里 Apache-2.0 的 skill（并逐个核对许可）。
 - **你需要 Muse 当前的行为。** 这是一次性抓取的单个环境（六次提交全在 2026-09-25 至 2026-09-28，没有可同步的源头），距 Muse 2026-09-08 上线才三周。导出的指令会随产品每次发布而漂移，而且部分文档自己承认只对该账号成立（语音文档第一句就是 “Live voice conversations in the app are not available on this account”）。想知道 Muse 今天怎么做，去看 Meta 的产品和帮助页面——那不是仓库。
-- **你想自托管一个类似 Muse 的个人 agent。** 这份快照启动不了：核心程序是 Linux x86-64 可执行文件，没有源码和构建定义，rootfs、宿主服务、数据库迁移和控制面都缺（见 README “可运行性与已知缺项”）。运行来源不明、未签名的二进制本身就是安全风险。用 [OpenClaw](../../agent-frameworks/agent-runtimes/personal-assistants/openclaw.zh.md)，一个真能部署的开源个人助手运行时。
+- **你想自托管一个类似 Muse 的个人 agent。** 这份快照启动不了：核心程序是 Linux x86-64 可执行文件，没有源码和构建定义，rootfs、宿主服务、数据库迁移和控制面都缺（见 README “可运行性与已知缺项”）。运行来源不明、未签名的二进制本身就是安全风险。用 [OpenClaw](../../agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/openclaw.zh.md)，一个真能部署的开源个人助手运行时。
 - **你要一个跨厂商、持续更新的生产系统提示词语料。** 用 `x1xhlol/system-prompts-and-models-of-ai-tools` 或 `asgeirtj/system_prompts_leaks`，它们覆盖几十个产品并随产品更新；本仓库只覆盖一个产品的一个时刻，好处是深得多（权限清单、评测、运行脚本都在）。
 - **你只要文本，却在装了 LFS 的机器上直接 `git clone`。** 那会把约 2 GB 的专有二进制拉到本地。按 README 设置 `GIT_LFS_SKIP_SMUDGE=1`，或者直接在 GitHub 上浏览 Markdown。
 
@@ -114,7 +114,7 @@ health:
 | [Anthropic Skills](../vendor-collections/agent-vendors/anthropic-skills.zh.md) | ✅ | 要让 skill 在 Claude Code 或 API 里真正加载运行，选 Anthropic Skills；只有想研究消费级 agent 怎么划连接器权限和征询规则时才打开 MuseAI-Skills，那是 Anthropic 的教学示例没有展示的。 | Anthropic 的合集官方、可安装、部分为 Apache-2.0，但定位是演示；MuseAI-Skills 展示生产级连接器策略（配额、逐方法放行/先问、评测场景），却无授权、跑不起来。 |
 | x1xhlol/system-prompts-and-models-of-ai-tools | 未收录 | 想横向看许多 AI 产品怎么写系统提示词，选这个大合集；想看单个产品从 skill 到权限清单到评测的完整一套，MuseAI-Skills 更深。 | 一边是覆盖约 30 个产品、持续更新的广度，一边是冻结在某天的单个 agent 的深度；两者都在未获厂商授权的情况下转载厂商文字。本次标签页收录批次未添加。 |
 | asgeirtj/system_prompts_leaks | 未收录 | 需要持续追踪 Claude、ChatGPT、Gemini、Grok 等基础模型的最新系统提示词时选它；它完全没有连接器权限清单和评测文件，而这正是 MuseAI-Skills 存在的理由。 | 更新频繁、维护者声明为 CC0，但 CC0 无法授权维护者并不拥有的文字；MuseAI-Skills 无授权且静态。本次标签页收录批次未添加。 |
-| [OpenClaw](../../agent-frameworks/agent-runtimes/personal-assistants/openclaw.zh.md) | ✅ | 目标是自己跑一个接邮件、日历、设备的个人 agent，选 OpenClaw；MuseAI-Skills 能给你写它的 skill 提供参考，但自己什么都跑不了。 | OpenClaw 开源可部署，但连接器策略要你自己设计；Muse 快照展示了一套打磨过的策略设计，却不能执行、也不能原样复用。 |
+| [OpenClaw](../../agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/openclaw.zh.md) | ✅ | 目标是自己跑一个接邮件、日历、设备的个人 agent，选 OpenClaw；MuseAI-Skills 能给你写它的 skill 提供参考，但自己什么都跑不了。 | OpenClaw 开源可部署，但连接器策略要你自己设计；Muse 快照展示了一套打磨过的策略设计，却不能执行、也不能原样复用。 |
 | Meta Muse（muse.ai） | 非仓库 | 只想要这个 agent 的能力，直接用托管产品；这份存档只对阅读其内部设计有用。 | 闭源托管的消费级产品（据上线报道有免费档和付费档）；永远是最新的，但从外面看不到它的指令。 |
 
 ## 健康度与可持续性

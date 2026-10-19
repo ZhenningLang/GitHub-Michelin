@@ -244,7 +244,7 @@ Basic Memory,categories/agent-memory/coding-agent-memory/agent-beacon.md,,no
 bat,categories/terminal-ui/terminal-markdown-viewer.md,,no
 Bazarr,categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.md,,no
 Beekeeper Studio,categories/databases/database-clients/dbeaver.md,,no
-Bespoke per-library prompting (write your own SKILL.md),categories/agent-skills/engineering/scientific-agent-skills.md,,no
+Bespoke per-library prompting (write your own SKILL.md),categories/agent-skills/engineering/scientific-workflows/scientific-agent-skills.md,,no
 Bespoke per-task prompting (write your own `SKILL.md`),categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
 bettercap,categories/pentest/wifit3.md,,no
 BGE / FlagEmbedding (BAAI),categories/rag-retrieval/vector-search/text2vec.md,,no
@@ -750,7 +750,7 @@ MacPorts (`macports/macports-base`),categories/dev-utilities/package-managers/ze
 "Managed container apps platforms (Cloud Run, Azure Container Apps, AWS App Runner)",categories/serverless/knative-serving.md,,no
 Managed-cloud node autoscaling and provider rebalancing features,categories/dev-utilities/ops-infra/descheduler.md,,no
 manhole / remote pdb,categories/python-tooling/pyrasite.md,,no
-Manim,categories/video-production/fframes.md,,no
+Manim,categories/video-production/render-engines/fframes.md,,no
 Mantine,categories/web-ui/component-libraries/chakra-ui.md,,no
 Manual interview notes,categories/agent-skills/context-engineering/tacit-mining.md,,no
 Manual rebuild,categories/agent-skills/design/design-to-code/ai-website-cloner-template.md,,no
@@ -802,18 +802,18 @@ Miniflux,categories/reading-tools/freshrss.md,,no
 MinIO,categories/document-management/copyparty.md,,no
 mistral.rs,categories/llm-inference/local-runtimes/airframe.md,,no
 MITRE ATT&CK Navigator / framework docs (read the source mappings yourself),categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
-MLC LLM (`mlc-ai/mlc-llm`),categories/on-device-ml/uzu.md,,no
+MLC LLM (`mlc-ai/mlc-llm`),categories/on-device-ml/apple-local-inference/uzu.md,,no
 MLC LLM / ONNX Runtime,categories/on-device-ml/INDEX.md,,no
 MLPerf Inference (mlcommons/inference),categories/llm-inference/inference-benchmarks/inferencex.md,,no
 mlx-lm (`mlx_lm.server`),categories/llm-inference/local-runtimes/omlx.md,,no
-mlx-vlm (`Blaizzy/mlx-vlm`),categories/on-device-ml/mlx-mlx-lm.md,,no
+mlx-vlm (`Blaizzy/mlx-vlm`),categories/on-device-ml/apple-local-inference/mlx-mlx-lm.md,,no
 Modern agent frameworks (function-calling / MCP-based tooling),categories/ml-research/vision-and-multimodal/taskmatrix.md,,no
 Modern multimodal LLMs (GPT-4o / Gemini / Claude vision / Qwen-VL),categories/ml-research/vision-and-multimodal/taskmatrix.md,,no
 Moirai (Salesforce),categories/on-device-ml/timesfm.md,,no
 Mole (`tw93/Mole`),categories/disk-cleanup/mangodisk.md,,no
 Morphic,categories/deep-research/vane.md,,no
 Motion / Framer Motion,categories/frontend-animation/anime.md,,no
-Motion Canvas,categories/video-production/fframes.md,,no
+Motion Canvas,categories/video-production/render-engines/fframes.md,,no
 Motion One,categories/frontend-animation/anime.md,,no
 Mousetrap (`ccampbell/mousetrap`),categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md,,no
 Mozilla fathom / custom ML,categories/web-scraping/article-extraction/dragnet.md,,no
@@ -1115,7 +1115,7 @@ RouteLLM,categories/api-gateway/vllm-semantic-router.md,,no
 RSSHub,categories/reading-tools/horizon.md,,no
 RTK Query (`reduxjs/redux-toolkit`),categories/web-ui/data-fetching/tanstack-query.md,,no
 rumdl,categories/markdown-tools/markdownlint.md,,no
-Runway / Pika (SaaS),categories/video-production/hyperframes.md,,no
+Runway / Pika (SaaS),categories/video-production/render-engines/hyperframes.md,,no
 Runway / Pika / HeyGen,categories/video-production/INDEX.md,,no
 Runway / Pika / HeyGen (SaaS),categories/video-production/hypit.md,,no
 Rust + PyO3,categories/python-tooling/cython.md,,no
@@ -1201,7 +1201,7 @@ Stable Diffusion WebUI Forge,categories/on-device-ml/local-image-generation/comf
 Stagehand,categories/web-automation/agent-browser-tools/browser-use.md,,no
 StarRocks,categories/databases/database-engines/clickhouse.md,,no
 Starry Night (`wooorm/starry-night`),categories/markdown-tools/tanstack-highlight.md,,no
-StatsPAI (brycewang-stanford/StatsPAI),categories/agent-skills/engineering/auto-empirical-research-skills.md,,no
+StatsPAI (brycewang-stanford/StatsPAI),categories/agent-skills/engineering/scientific-workflows/auto-empirical-research-skills.md,,no
 Stencil,categories/web-ui/frameworks/view-frameworks/lit.md,,no
 Stirling-PDF,categories/pdf-tools/pdf-transform-signing/ocrmypdf.md,,no
 Streamdown,categories/markdown-tools/tanstack-markdown.md,,no

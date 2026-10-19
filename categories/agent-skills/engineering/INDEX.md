@@ -1,18 +1,21 @@
 # engineering
 
-> Leaf of [agent-skills](../INDEX.md). Code quality, web performance, testing, and scientific/eng workflows.
+> Category node of [agent-skills](../INDEX.md). Code quality, web performance, testing and engineering habits; scientific workflows have their own child category.
 > ← up to [agent-skills](../INDEX.md) · root [route](../../../INDEX.md) · 中文：[INDEX.zh.md](INDEX.zh.md)
 
-## Collections in this leaf
+## Sub-categories
+
+| Sub-category | Enter when | Route |
+| --- | --- | --- |
+| **scientific-workflows** | The agent needs domain procedures for scientific analysis, empirical research or evidence-linked papers, rather than software-development practice. | [→](scientific-workflows/INDEX.md) |
+
+## Collections in this category
 
 | Collection | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **SwiftUI Pro** | Focused API, data-flow and accessibility review for SwiftUI; advisory and SDK-version-sensitive. | B (4/5) | [→](swiftui-agent-skill.md) |
-| **Nature Skills** | Source-mapped bilingual paper readers and evidence-led manuscript workflows; task-specific runtimes and human review remain yours. | B (4/5) | [→](nature-skills.md) |
 | **Agent Skills (addyosmani)** | A curated pack of ~24 production-engineering skills (quality, security, web-perf, API, ship) installed into your coding agent and routed through ~8 SDLC slash commands. | A (4/5) | [→](addyosmani-agent-skills.md) |
 | **web-quality-skills** | A six-skill agent pack encoding Lighthouse / Core Web Vitals / WCAG / SEO best practices as on-demand instruction sets so a coding agent can audit and fix web-quality issues; advisory, not a measurement tool. | B (4/5) | [→](addyosmani-web-quality.md) |
-| **Scientific Agent Skills** | A large skill pack (~147 skills) that turns a coding agent into a research assistant for biology, chemistry, medicine, and drug discovery — each skill wraps a scientific Python library or database with a documented SKILL.md loaded on demand. | A (4/5) | [→](scientific-agent-skills.md) |
-| **Auto-Empirical Research Skills** | Use it when a coding agent must run an empirical social-science paper (DiD/IV/RDD/SCM, robustness, journal tables) and you need a catalog that routes to one skill instead of a general coding prompt. | C (3/5) | [→](auto-empirical-research-skills.md) |
 | **Vercel Agent Skills** | Vercel's official agent-skill pack — install-on-demand React/Next.js/Vercel deploy, web-design, and docs audit guides in the agentskills.io/skills.sh format. | B (4/6) | [→](vercel-agent-skills.md) |
 | **cc-skills-golang** | Use it when your coding agent writes Go that compiles but isn't idiomatic — error wrapping, nil traps, naming — and you want on-demand Go instruction files rather than a process/TDD pack. | C (5/6) | [→](cc-skills-golang.md) |
 | **Waza** | A compact collection of eight "engineering habit" skills (plan, design, review, debug, write, research, read, audit) a coding agent loads on demand across Claude Code, Codex, and Cursor. | C (5/6) | [→](waza.md) |
@@ -27,12 +30,10 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Scientific workflows](scientific-workflows/INDEX.md) | Sub-category | — | Scientific libraries, empirical methods and evidence-linked papers; software-development practice remains here. |
 | [SwiftUI Pro](swiftui-agent-skill.md) | ✅ | B (4/5) | Domain-specific references and file-level fixes; not a compiler, profiler or simulator operator. |
-| [Nature Skills](nature-skills.md) | ✅ | B (4/5) | Manifest-routed research artifacts and equation linkage checks; not official journal policy or validated science. |
 | [Agent Skills (addyosmani)](addyosmani-agent-skills.md) | ✅ | A (4/5) | A curated pack of ~24 production-engineering skills (quality, security, web-perf, API, ship) installed into your coding agent and routed through ~8 SDLC slash commands. |
 | [web-quality-skills](addyosmani-web-quality.md) | ✅ | B (4/5) | A six-skill agent pack encoding Lighthouse / Core Web Vitals / WCAG / SEO best practices as on-demand instruction sets so a coding agent can audit and fix web-quality issues; advisory, not a measurement tool. |
-| [Scientific Agent Skills](scientific-agent-skills.md) | ✅ | A (4/5) | A large skill pack (~147 skills) that turns a coding agent into a research assistant for biology, chemistry, medicine, and drug discovery — each skill wraps a scientific Python library or database with a documented SKILL.md loaded on demand. |
-| [Auto-Empirical Research Skills](auto-empirical-research-skills.md) | ✅ | C (3/5) | Catalog-plus-router for empirical social science (DiD/IV/RDD, journal tables); not life-science libraries, and licenses are mixed. |
 | [Vercel Agent Skills](vercel-agent-skills.md) | ✅ | B (4/6) | Vercel's official agent-skill pack — install-on-demand React/Next.js/Vercel deploy, web-design, and docs audit guides in the agentskills.io/skills.sh format. |
 | [cc-skills-golang](cc-skills-golang.md) | ✅ | C (5/6) | On-demand Go idiom skills for a coding agent; not a process/TDD pack, and installing all of it biases toward the author's libraries. |
 | [Waza](waza.md) | ✅ | C (5/6) | A compact collection of eight "engineering habit" skills (plan, design, review, debug, write, research, read, audit) a coding agent loads on demand across Claude Code, Codex, and Cursor. |
@@ -45,4 +46,4 @@
 
 ## What belongs here
 
-Skill/prompt collections that make a coding agent better at **engineering tasks** — code review, performance, testing, scientific workflows.
+Skill/prompt collections that make a coding agent better at **software-engineering tasks** — code review, performance, testing, browser engineering and communication habits. Scientific analysis, empirical research and evidence-linked paper workflows go in [scientific-workflows](scientific-workflows/INDEX.md).

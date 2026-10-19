@@ -120,7 +120,7 @@ MoviePy 把媒体变成 Python 对象。打开文件时，它启动一个 FFmpeg
 - **直播或低延迟媒体。** MoviePy 只做文件进、文件出。摄像头流、RTSP/WebRTC 或任何要持续运行的场景，用 [GStreamer](../transcoding-and-pipelines/gstreamer.zh.md)。
 - **你的代码、教程或大模型生成的片段是 MoviePy 1.x 写法。** v2.0 破坏了 API：`moviepy.editor` 没了，`subclip` 改成 `subclipped`，`clip.fx(...)` 改成 `with_effects([...])`，而 v1 已不再维护。按上游“updating to v2”指南预留迁移工作量，而不是锁死 `moviepy<2`。
 - **你要时间线剪辑器或图形界面。** MoviePy 没有工程文件、没有边预览边剪、没有撤销。要真正的非线性剪辑，用 [MLT](mlt.zh.md) / Shotcut。
-- **技术栈是 Web/React，视频本质是模板化界面。** 用把 React 组件渲染成视频的 [Remotion](../../../video-production/remotion.zh.md)，别在 Python 里重搭版式。
+- **技术栈是 Web/React，视频本质是模板化界面。** 用把 React 组件渲染成视频的 [Remotion](../../../video-production/render-engines/remotion.zh.md)，别在 Python 里重搭版式。
 
 ## 横向对比
 
@@ -129,7 +129,7 @@ MoviePy 把媒体变成 Python 对象。打开文件时，它启动一个 FFmpeg
 | [FFmpeg](../transcoding-and-pipelines/ffmpeg.zh.md) | ✅ | 一条命令能表达的裁剪、拼接、转码，直接用 FFmpeg；只有当剪辑带图层和时间点、以后还要回头读时，才换 MoviePy。 | 最快，还能流复制不损画质；代价是滤镜图语法，叠加超过几层就难以维护。 |
 | [ffmpeg-python](../transcoding-and-pipelines/ffmpeg-python.zh.md) | ✅ | 想要 FFmpeg 的速度、又想从 Python 生成命令，选 ffmpeg-python；需要逐帧 Python 特效或片段/图层模型时选 MoviePy。 | 帧不进 Python，所以快；但你仍然在用 FFmpeg 滤镜思考，而不是片段。 |
 | [PyAV](../transcoding-and-pipelines/pyav.zh.md) | ✅ | 要在单进程里自定义解码/编码循环或按包控制，选 PyAV；想要合成和文字、又不想自己写循环，选 MoviePy。 | 进程内 libav 绑定、不起子进程；更底层，剪辑概念得自己搭。 |
-| [Remotion](../../../video-production/remotion.zh.md) | ✅ | 视频是设计出来的版式（图表、字幕、品牌模板）且团队写 React，选 Remotion；管线和数据在 Python、输入是现成素材，留在 MoviePy。 | Web 级排版和预览工具；多出 Node、无头浏览器，以及面向公司的单独许可条款。 |
+| [Remotion](../../../video-production/render-engines/remotion.zh.md) | ✅ | 视频是设计出来的版式（图表、字幕、品牌模板）且团队写 React，选 Remotion；管线和数据在 Python、输入是现成素材，留在 MoviePy。 | Web 级排版和预览工具；多出 Node、无头浏览器，以及面向公司的单独许可条款。 |
 | [MLT](mlt.zh.md) / Shotcut | 部分已收录 | 由人在多轨时间线上剪，选 MLT/Shotcut；每条视频都不该有人手动碰时，选 MoviePy。 | 真正的非线性剪辑引擎，有工程文件；更重，也不是为“用 Python 代码写剪辑”设计的。 |
 | OpenCV | 未收录 | 帧是计算机视觉的输入时用 OpenCV；产出是一段剪好的视频时用 MoviePy。 | 逐帧图像处理很强；没有片段、音频、图层、转场的概念。 |
 

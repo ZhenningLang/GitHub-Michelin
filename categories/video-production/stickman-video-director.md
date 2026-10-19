@@ -78,7 +78,7 @@ You make a short educational or everyday-life video and want stick figures rathe
 ## When NOT to use
 
 - **You expect a finished MP4 from one invocation.** Choose [anything2explainer](anything2explainer.md) for an orchestrated code-rendered explainer; this skill stops at prompts and editing notes.
-- **Text must be exact and every frame reproducible.** Choose [HyperFrames](hyperframes.md); generated footage is stochastic and this pack normally forbids visible words inside generated clips.
+- **Text must be exact and every frame reproducible.** Choose [HyperFrames](render-engines/hyperframes.md); generated footage is stochastic and this pack normally forbids visible words inside generated clips.
 - **You already direct clips yourself and need a generation interface.** Use Google Flow directly. This repository adds planning instructions, not a video model or an API integration.
 - **Exact voice identity is mandatory.** Use a continuous external narration track in your editor; repeated voice text is a prompt-level consistency aid, not a guaranteed shared voice asset.
 
@@ -87,7 +87,7 @@ You make a short educational or everyday-life video and want stick figures rathe
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [anything2explainer](anything2explainer.md) | ✅ | Choose it for a whole code-rendered explainer pipeline; choose this pack for short generative stick-figure storyboards. | More production automation versus narrower prompt-only adoption; the alternative has noncommercial toolkit terms. |
-| [HyperFrames](hyperframes.md) | ✅ | Choose HyperFrames for editable exact text and deterministic graphics; choose this pack for generative character scenes without writing animation code. | Browser-based rendering versus model variability and manual assembly. |
+| [HyperFrames](render-engines/hyperframes.md) | ✅ | Choose HyperFrames for editable exact text and deterministic graphics; choose this pack for generative character scenes without writing animation code. | Browser-based rendering versus model variability and manual assembly. |
 | Google Flow | not a repo | Use Flow alone if you already own the directing method; add this skill when continuity and approval discipline are missing. | Hosted commercial generation service, not a repository; generation costs remain separate. |
 
 ## Quick start

@@ -85,8 +85,8 @@ health:
 
 ## 何时不用
 
-- 要不带 Electron 的无头网关，直接选 [OpenClaw](openclaw.zh.md)。
-- 要 VPS 上长期运行的助手，选 [Hermes Agent](hermes-agent.zh.md)，桌面界面帮助不大。
+- 要不带 Electron 的无头网关，直接选 [OpenClaw](messaging-daemons/openclaw.zh.md)。
+- 要 VPS 上长期运行的助手，选 [Hermes Agent](messaging-daemons/hermes-agent.zh.md)，桌面界面帮助不大。
 - 要不同的桌面审批与审计设计，可比较 [OpenWorker](openworker.zh.md)。两者都需审查实际沙箱，弹窗不是隔离证明。
 - 多个互不信任用户，应分开主机与账号，不能把一个桌面网关当企业租户隔离。
 - 所有敏感命令必须逐次人审，或必须强制沙箱时，应改用独立强制沙箱与审批方案。此快照中非企业模式把沙箱设为 `off`；渠道会话的命令审批，或未被识别为删除的命令，会进入自动允许路径。权限事件和项目目录选择都不证明上述保证。
@@ -95,8 +95,8 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| [OpenClaw](openclaw.zh.md) | ✅ | 要直接无头网关选 OpenClaw；要围绕该运行时的桌面办公流程选 LobsterAI。 | 少一层产品机制，对比本地产物、设置与会话管理。 |
-| [Hermes Agent](hermes-agent.zh.md) | ✅ | 要常驻 VPS 助手选 Hermes；桌面文件与丰富产物审核更重要时选 LobsterAI。 | 服务端运维，对比较重的图形应用。 |
+| [OpenClaw](messaging-daemons/openclaw.zh.md) | ✅ | 要直接无头网关选 OpenClaw；要围绕该运行时的桌面办公流程选 LobsterAI。 | 少一层产品机制，对比本地产物、设置与会话管理。 |
+| [Hermes Agent](messaging-daemons/hermes-agent.zh.md) | ✅ | 要常驻 VPS 助手选 Hermes；桌面文件与丰富产物审核更重要时选 LobsterAI。 | 服务端运维，对比较重的图形应用。 |
 | [OpenWorker](openworker.zh.md) | ✅ | 审批阶梯与审计轨迹决定选型时比较 OpenWorker；围绕 OpenClaw 渠道和办公套件集成时选 LobsterAI。 | 策略和运行时边界不同，界面本身均不证明系统隔离。 |
 
 ## 快速上手

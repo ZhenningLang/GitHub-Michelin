@@ -93,7 +93,7 @@ You want to ask for an industry report from a browser or Feishu and have a leade
 |---|---|---|---|
 | [CrewAI](../agent-sdks/crewai.md) | ✅ | Choose JiuwenSwarm for a workbench and existing chat channels; choose CrewAI when your Python application should own roles and task integration. | Packaged user surfaces versus application-controlled assembly; both require validating model-led handoffs. |
 | [LangGraph](../agent-sdks/langgraph.md) | ✅ | Choose LangGraph for explicit resumable transitions; choose JiuwenSwarm for an immediately usable leader/team application. | More control costs graph code and service assembly. |
-| [OpenClaw](../personal-assistants/openclaw.md) | ✅ | Choose OpenClaw for one personal assistant across many channels; choose JiuwenSwarm when visible team formation and role handoffs are the main task. | A personal gateway versus a larger multi-agent workbench; neither removes the need to constrain host access. |
+| [OpenClaw](../personal-assistants/messaging-daemons/openclaw.md) | ✅ | Choose OpenClaw for one personal assistant across many channels; choose JiuwenSwarm when visible team formation and role handoffs are the main task. | A personal gateway versus a larger multi-agent workbench; neither removes the need to constrain host access. |
 
 ## Quick start
 

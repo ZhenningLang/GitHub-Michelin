@@ -83,19 +83,19 @@ You want a personal desktop companion that can join a spoken discussion without 
 
 ## When NOT to use
 
-- **Commercial deployment without a separate license:** the actual license permits non-commercial use only and requires derivatives to keep those terms. Consider MIT-licensed [OpenClaw](openclaw.md) for commercial assistant integrations instead; this is source-available, not unrestricted open source.
+- **Commercial deployment without a separate license:** the actual license permits non-commercial use only and requires derivatives to keep those terms. Consider MIT-licensed [OpenClaw](messaging-daemons/openclaw.md) for commercial assistant integrations instead; this is source-available, not unrestricted open source.
 - **A shared chat service:** choose [Open WebUI](../../../llm-chat-ui/open-webui.md) for browser accounts and document chat; Jarvis is a microphone-enabled personal desktop app.
-- **Bots reached from many messaging apps:** choose [OpenClaw](openclaw.md); Jarvis prioritizes room voice and a companion text window.
-- **Server-side scheduled shell work:** choose [Hermes Agent](hermes-agent.md), rather than maintaining an audio desktop stack for a headless task.
+- **Bots reached from many messaging apps:** choose [OpenClaw](messaging-daemons/openclaw.md); Jarvis prioritizes room voice and a companion text window.
+- **Server-side scheduled shell work:** choose [Hermes Agent](messaging-daemons/hermes-agent.md), rather than maintaining an audio desktop stack for a headless task.
 - **You specifically need macOS 26 dictation:** the README lists it as unavailable. A dedicated dictation product such as VoiceInk is a different option, but verify its current platform support before choosing it.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [OpenClaw](openclaw.md) | ✅ | Pick OpenClaw for an assistant reached from phone chat apps; pick Jarvis for ambient room conversation through local speech models. | Jarvis adds recent spoken context but lacks OpenClaw's breadth of channels and has a non-commercial license. |
+| [OpenClaw](messaging-daemons/openclaw.md) | ✅ | Pick OpenClaw for an assistant reached from phone chat apps; pick Jarvis for ambient room conversation through local speech models. | Jarvis adds recent spoken context but lacks OpenClaw's breadth of channels and has a non-commercial license. |
 | [Open WebUI](../../../llm-chat-ui/open-webui.md) | ✅ | Pick Open WebUI for several people chatting with local models and uploaded documents; pick Jarvis for one desktop microphone and voice replies. | A browser server supports accounts and retrieval; Jarvis instead needs audio permissions, downloaded speech models and a local model runtime. |
-| [Hermes Agent](hermes-agent.md) | ✅ | Pick Hermes for a persistent VPS assistant running shell tasks and schedules; pick Jarvis when hearing the conversation is the requirement. | Hermes supplies terminal backends and agent-written skills; Jarvis supplies local speech and a desktop memory viewer. |
+| [Hermes Agent](messaging-daemons/hermes-agent.md) | ✅ | Pick Hermes for a persistent VPS assistant running shell tasks and schedules; pick Jarvis when hearing the conversation is the requirement. | Hermes supplies terminal backends and agent-written skills; Jarvis supplies local speech and a desktop memory viewer. |
 
 ## Quick start
 

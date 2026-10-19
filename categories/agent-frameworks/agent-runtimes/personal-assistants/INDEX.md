@@ -1,7 +1,13 @@
 # personal-assistants
 
-> Category node. Packaged assistants aimed at one person: install it, connect it to your accounts/model, and talk to it.
+> Category node. Packaged assistants for personal use: phone, voice, desktop and workspace forms remain here; long-lived messaging assistants have their own child category.
 > ← back to [agent-runtimes](../INDEX.md) · root: [category route](../../../../INDEX.md) · 中文：[INDEX.zh.md](INDEX.zh.md)
+
+## Sub-categories
+
+| Sub-category | Enter when | Route |
+| --- | --- | --- |
+| **messaging-daemons** | You want a long-lived assistant on your own host or board, reached mainly through existing messaging channels and scheduled jobs. | [→](messaging-daemons/INDEX.md) |
 
 ## Projects in this category
 
@@ -9,11 +15,7 @@
 | --- | --- | --- | --- |
 | **LobsterAI** | You want an office task to work on local files and return through your chat channel; LobsterAI adds a desktop session, artifact and approval layer around an OpenClaw runtime. | B (6/6) | [→](lobsterai.md) |
 | **Atomic Agent** | Local-model workstation operator with compact tool prompts; developer preview and default-on analytics. | B (6/6) | [→](atomic-agent.md) |
-| **PicoClaw** | Run a chat-driven assistant on a small ARM, MIPS or RISC-V Linux board without a Python/Node.js core runtime; model inference stays separate, remote exec defaults on and process isolation off. | B (6/6) | [→](picoclaw.md) |
-| **OpenClaw** | Use it when you want one personal assistant on your own computer answering across WhatsApp, iMessage, Slack, Telegram and 20+ more channels with shared memory — but one Gateway is one trust domain, so users who do not trust each other must not share it. | B (5/6) | [→](openclaw.md) |
-| **Hermes Agent** | Use it when you want one long-lived assistant on your own VPS that runs shell commands and scheduled jobs, remembers your environment and answers on Telegram or Slack — but its behaviour drifts as skills and memory change, and it is about 15 months old. | A (4/6) | [→](hermes-agent.md) |
 | **OpenHuman** | Use it when you want a local-first personal assistant that ingests your mail, calendar and repos into Markdown memory on a 20-minute loop and can be forced offline in its Rust core — but it's 7 months old, one author holds most commits, and it's GPL-3.0-only. | B (6/6) | [→](openhuman.md) |
-| **Octop** | Use it when a household or small team needs isolated agents on Feishu/WeCom with chats on your disk — not when you want finished office skills, and the LangGraph core is still a private wheel. | B (5/6) | [→](octop.md) |
 | **OpenMuse** | Use it when you want a self-hosted personal agent with a working computer — persistent browser you can take over, sandboxed Linux terminal, durable approval-gated tasks — but it refuses to start without a CopilotKit cloud key, and the alpha is 12 days old with zero releases. | B (4/6) | [→](openmuse.md) |
 | **OpenWorker** | Use it when you want a desktop AI coworker that finishes real tasks with your own model key behind approval gates and a per-call audit trail — but the command sandbox is opt-in, one-click connectors use a closed OAuth broker, and it is a 71-day-old beta. | B (6/6) | [→](openworker.md) |
 | **Raven** | Use it when you want one surface that splits a big brief into a task graph and hands the nodes to built-in research/code/design/on-call agents or to Claude Code and Codex — but it's a 4-month-old pre-alpha, the sandbox is off by default, and DAG nodes can bypass it (#796). | B (6/6) | [→](raven.md) |
@@ -27,13 +29,10 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Messaging daemons](messaging-daemons/INDEX.md) | Sub-category | — | Existing chat channels and scheduled jobs are the primary entry points; phone, voice, desktop and workspace forms remain below. |
 | [LobsterAI](lobsterai.md) | ✅ | B (6/6) | You want an office task to work on local files and return through your chat channel; LobsterAI adds a desktop session, artifact and approval layer around an OpenClaw runtime. |
 | [Atomic Agent](atomic-agent.md) | ✅ | B (6/6) | Managed llama.cpp and session-scoped approvals; model hardware and outbound reporting need explicit choices. |
-| [PicoClaw](picoclaw.md) | ✅ | B (6/6) | Cross-compiled Go core with chat adapters, tools and local state; buys deployability on small boards, not local model inference or an enabled-by-default OS sandbox. |
-| [OpenClaw](openclaw.md) | ✅ | B (5/6) | Buys the widest chat-channel coverage plus phone and desktop companion apps; costs tenant isolation, SSO and audit logs, on a project less than a year old. |
-| [Hermes Agent](hermes-agent.md) | ✅ | A (4/6) | Buys persistence under your control — bounded memory, self-written skills, session search and a scheduler; costs determinism, enterprise governance (no SSO, RBAC or audit) and any Lindy track record. |
 | [OpenHuman](openhuman.md) | ✅ | B (6/6) | Local-first desktop assistant that buys context by ingesting your accounts on a 20-minute loop instead of waiting for a learning loop; GPL-3.0-only, heavy build, vendor account by default. |
-| [Octop](octop.md) | ✅ | B (5/6) | TencentCloud's self-hosted multi-user assistant for Feishu/WeCom on one Python process; two months old, and the agent runtime is a PyPI wheel whose GitHub repo 404s. |
 | [OpenMuse](openmuse.md) | ✅ | B (4/6) | CopilotKit's MIT personal-agent app with a persistent browser and bounded Linux computer; buys that working surface at the price of a mandatory Intelligence (hosted) project key. |
 | [OpenWorker](openworker.md) | ✅ | B (6/6) | Desktop cowork app by Andrew Ng's team: human-only floors, standing-approval ladder and audit provenance, ~15 model providers signed-out; sandbox off by default, two-person core, weak issue response. |
 | [Raven](raven.md) | ✅ | B (6/6) | EverMind's host agent (nanobot fork) that orchestrates its own specialists and 13 third-party agents as a DAG, with EverOS memory; buys breadth at the price of pre-alpha churn and a sandbox you must enable and verify. |
@@ -45,4 +44,4 @@
 
 ## What belongs here
 
-Packaged assistants aimed at one person: install it, connect it to your accounts/model, and talk to it.
+Packaged assistants for personal use: phone agents, voice companions, desktop coworkers and workspaces. A chat adapter or scheduler alone does not determine the category. Assistants primarily deployed as long-lived services behind existing messaging channels go in [messaging-daemons](messaging-daemons/INDEX.md).

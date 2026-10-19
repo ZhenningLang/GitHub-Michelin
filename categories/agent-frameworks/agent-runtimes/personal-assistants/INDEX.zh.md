@@ -1,7 +1,13 @@
 # personal-assistants
 
-> 分类节点。面向个人的成品助手：装上、接上你的账号或模型，然后直接跟它对话。
+> 分类节点。面向个人使用的成品助手；手机、语音、桌面与工作区形态留在这里，消息常驻助手单列子类。
 > ← 返回 [agent-runtimes](../INDEX.zh.md) · 根：[分类路由](../../../../INDEX.zh.md) · English: [INDEX.md](INDEX.md)
+
+## 子分类
+
+| 子分类 | 何时进入 | 路由 |
+| --- | --- | --- |
+| **messaging-daemons** | 你要在自有主机或小板上常驻助手，主要通过现有聊天渠道和定时任务使用。 | [→](messaging-daemons/INDEX.zh.md) |
 
 ## 本分类项目
 
@@ -9,11 +15,7 @@
 | --- | --- | --- | --- |
 | **LobsterAI** | 你想让办公任务处理本地文件，再从聊天渠道回传结果。LobsterAI 在 OpenClaw 运行时外增加桌面会话、产物和审批界面。 | B（6/6） | [→](lobsterai.zh.md) |
 | **Atomic Agent** | 用压缩工具提示词驱动本地工作站操作；仍是开发预览，分析外发默认开启。 | B（6/6） | [→](atomic-agent.zh.md) |
-| **PicoClaw** | 小型 ARM、MIPS、RISC-V Linux 板子要用聊天接任务，又不想维护解释器环境时选它；模型推理另配，远程命令默认开启，进程隔离默认关闭。 | B（6/6） | [→](picoclaw.zh.md) |
-| **OpenClaw** | 当你想在自己电脑上跑一个个人助手，在 WhatsApp、iMessage、Slack、Telegram 等 20 多个渠道里带着同一份记忆应答你时用它——但一个 Gateway 就是一个信任域，互不信任的人不能共用一套部署。 | B（5/6） | [→](openclaw.zh.md) |
-| **Hermes Agent** | 当你想在自己的 VPS 上养一个长期在线的助手，能跑 shell 和定时任务、记得你的环境、在 Telegram 或 Slack 上回你时用它——但技能和记忆一变它的做法就跟着变，项目也才约 15 个月大。 | A（4/6） | [→](hermes-agent.zh.md) |
 | **OpenHuman** | 当你想要一个本地优先、每 20 分钟把邮件、日历、仓库灌成本机 Markdown 记忆、并且能在 Rust 内核里强制断网的个人助手时用它——但它只有 7 个月，绝大多数提交来自一个人，而且许可是 GPL-3.0-only。 | B（6/6） | [→](openhuman.zh.md) |
-| **Octop** | 家里或小团队要在飞书/企微上共用隔离 Agent、对话留在本机磁盘时用它——不是现成办公技能，LangGraph 内核仍是未公开源码的 wheel。 | B（5/6） | [→](octop.zh.md) |
 | **OpenMuse** | 当你想要一个能派活的自托管个人助理——浏览器接管、隔离 Linux 终端、可恢复且逐项审批的任务——时用它；但它每种模式都强制要求 CopilotKit 云 key，而且是个 12 天大、零 release 的 Alpha。 | B（4/6） | [→](openmuse.zh.md) |
 | **OpenWorker** | 当你想要一个用自己的模型 key、在审批闸门和逐次审计记录下把真活干完的桌面 AI 同事时用它——但命令沙箱要手动开启，一键连接器走闭源 OAuth 中转，而且它是个 71 天大的公测版。 | B（6/6） | [→](openworker.zh.md) |
 | **Raven** | 当你想要一个入口把一大份需求拆成任务图、分给自带的调研/编程/设计/值守 agent 或 Claude Code、Codex 时用它——但它是四个月大的 pre-alpha，沙箱默认关闭，DAG 节点还可能绕过沙箱（#796）。 | B（6/6） | [→](raven.zh.md) |
@@ -27,13 +29,10 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [消息常驻服务](messaging-daemons/INDEX.zh.md) | 子分类 | — | 主要入口是既有聊天渠道与定时任务；手机、语音、桌面与工作区形态留在下方。 |
 | [LobsterAI](lobsterai.zh.md) | ✅ | B（6/6） | 你想让办公任务处理本地文件，再从聊天渠道回传结果。LobsterAI 在 OpenClaw 运行时外增加桌面会话、产物和审批界面。 |
 | [Atomic Agent](atomic-agent.zh.md) | ✅ | B（6/6） | 托管 llama.cpp 并按会话审批；模型硬件与外发策略需明确配置。 |
-| [PicoClaw](picoclaw.zh.md) | ✅ | B（6/6） | 可交叉编译的 Go 核心带聊天接入、工具和本地状态；换来小板子上的部署便利，不是本地模型推理，也不是默认开启的系统沙箱。 |
-| [OpenClaw](openclaw.zh.md) | ✅ | B（5/6） | 换来最广的聊天渠道覆盖，外加手机和桌面配套 App；代价是没有租户隔离、SSO 和审计日志，而且项目还不满一岁。 |
-| [Hermes Agent](hermes-agent.zh.md) | ✅ | A（4/6） | 换来由你掌控的持续积累：有上限的记忆、自己写的技能、会话搜索和定时器；代价是行为不确定、没有企业治理（无 SSO、RBAC、审计），也没有 Lindy 记录。 |
 | [OpenHuman](openhuman.zh.md) | ✅ | B（6/6） | 靠每 20 分钟灌入你的账号来买上下文的本地优先桌面助手，而不是等学习循环；代价是 GPL-3.0-only、构建重、默认要厂商账号。 |
-| [Octop](octop.zh.md) | ✅ | B（5/6） | 腾讯云的自托管多用户助手，飞书/企微加一个 Python 进程；两个月大，Agent 运行时是 GitHub 404 的 PyPI wheel。 |
 | [OpenMuse](openmuse.zh.md) | ✅ | B（4/6） | CopilotKit 的 MIT 个人助理应用，自带持久浏览器和有界的 Linux 计算机；代价是强制绑定托管的 Intelligence 项目 key。 |
 | [OpenWorker](openworker.zh.md) | ✅ | B（6/6） | 吴恩达团队的桌面 cowork 应用：人工底线、长期审批阶梯和审计溯源，不登录可用约 15 家模型；沙箱默认关闭，两人核心，issue 响应弱。 |
 | [Raven](raven.zh.md) | ✅ | B（6/6） | EverMind 的宿主 agent（nanobot 分叉），把自带专项 agent 和 13 个第三方 agent 按 DAG 调度，带 EverOS 记忆；换来覆盖面，代价是 pre-alpha 的频繁变动和一个要自己开、自己验证的沙箱。 |
@@ -45,4 +44,4 @@
 
 ## 什么该放这里
 
-面向个人的成品助手：装上、接上你的账号或模型，然后直接跟它对话。
+面向个人使用的成品助手，包括手机助手、语音伴侣、桌面同事与工作区。有聊天适配器或定时器并不直接决定分类。主要以常驻服务部署、通过既有消息渠道接活的助手走 [messaging-daemons](messaging-daemons/INDEX.zh.md)。

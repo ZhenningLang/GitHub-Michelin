@@ -93,7 +93,7 @@ health:
 |---|---|---|---|
 | [CrewAI](../agent-sdks/crewai.zh.md) | ✅ | 要现成工作台与聊天渠道，选 JiuwenSwarm；让自己的 Python 应用管理角色和任务集成，选 CrewAI。 | 打包的用户界面对比自主组装；两者都要验证模型驱动的交接。 |
 | [LangGraph](../agent-sdks/langgraph.zh.md) | ✅ | 要显式可恢复的状态转移，选 LangGraph；要直接使用负责人和团队应用，选 JiuwenSwarm。 | 更多控制要付出流程代码和服务组装成本。 |
-| [OpenClaw](../personal-assistants/openclaw.zh.md) | ✅ | 多渠道里的单个个人助手选 OpenClaw；主要需求是可见的组队与角色交接，选 JiuwenSwarm。 | 个人网关对比更大的多 agent 工作台；都必须约束宿主访问权限。 |
+| [OpenClaw](../personal-assistants/messaging-daemons/openclaw.zh.md) | ✅ | 多渠道里的单个个人助手选 OpenClaw；主要需求是可见的组队与角色交接，选 JiuwenSwarm。 | 个人网关对比更大的多 agent 工作台；都必须约束宿主访问权限。 |
 
 ## 快速上手
 

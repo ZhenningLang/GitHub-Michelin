@@ -18,7 +18,7 @@
 | [SoloMCN](solomcn.md) | ✅ | C (4/6) | Persistent creator state and reviewable skills; broad local agent/credential access, Mac-first. |
 | [Easel](easel.md) | ✅ | B (5/6) | Full Chinese-platform content loop (trends, creation, publishing, attribution) on OpenClaw; one month old at verification, and Xiaohongshu automation carries account-risk warnings from the authors themselves. |
 | [xiaohongshu-mcp](xiaohongshu-mcp.md) | ✅ | B (6/6) | One Go binary that gives any MCP client read/write hands on Xiaohongshu; headless and server-friendly, but a second detectable login with ban reports in its own tracker. |
-| [OpenClaw](../agent-frameworks/agent-runtimes/personal-assistants/openclaw.md) | ✅ | B (5/6) | The general agent runtime Easel wraps; choose it directly when the job isn't specifically Chinese social-media content ops. |
+| [OpenClaw](../agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/openclaw.md) | ✅ | B (5/6) | The general agent runtime Easel wraps; choose it directly when the job isn't specifically Chinese social-media content ops. |
 | [MoneyPrinterTurbo](../video-production/moneyprinter-turbo.md) | ✅ | B (6/6) | Topic → narrated shorts appliance; stops at the video file — no accounts, no publishing, no learning loop. |
 | social-auto-upload | 未收录 | — | Upload-only browser automation for ready-made videos; not added in this tab-intake batch. |
 | Postiz | 未收录 | — | Self-hosted scheduler for the global platforms (X/Instagram/YouTube); not added in this tab-intake batch. |

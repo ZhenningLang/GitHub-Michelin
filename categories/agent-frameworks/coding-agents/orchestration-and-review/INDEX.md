@@ -19,14 +19,12 @@
 | **GitHub Agentic Workflows (gh-aw)** | Use it when you want coding agents doing unattended chores on a GitHub repo — issue triage, CI-failure digging, reports, docs PRs — written as Markdown and compiled into Actions workflows where the agent runs read-only and firewalled and only declared writes are applied — but it's GitHub-only, Public Preview, and ships weekly with 11 security advisories in 7 weeks. | B (4/6) | [→](gh-aw.md) |
 | **Codex plugin for Claude Code** | Use it when you live in Claude Code, already have a Codex login, and want OpenAI's Codex to review your diff or take over a stuck task without leaving the session — but it is one vendor, write-by-default on rescue, leaks broker processes, and nothing has been merged since 2026-07. | B (5/6) | [→](codex-plugin-cc.md) |
 | **Scion** | Use it when mixed agent CLIs need containerized workspaces and communication, from one workstation to hosted brokers — accepting pre-1.0 churn and no official Google product support. | B (6/6) | [→](scion.md) |
-| **Agor** | Coordinate mixed coding agents and colleagues on live branch boards; BSL, database and execution-security operations remain yours. | D (6/6) | [→](agor.md) |
 
 ## Comparison matrix
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [Scion](scion.md) | ✅ | B (6/6) | Containerized mixed-harness teams with explicit workspace sharing; you operate images, credentials and the local or hosted Hub. |
-| [Agor](agor.md) | ✅ | D (6/6) | Coordinate mixed coding agents and colleagues on live branch boards; BSL, database and execution-security operations remain yours. |
 
 ## What belongs here
 

@@ -85,8 +85,8 @@ You prepare reports, local data dashboards or scheduled digests and need a deskt
 
 ## When NOT to use
 
-- For a headless gateway without Electron, choose [OpenClaw](openclaw.md) directly.
-- For a VPS-first persistent assistant, choose [Hermes Agent](hermes-agent.md); a desktop cowork UI adds little to that deployment.
+- For a headless gateway without Electron, choose [OpenClaw](messaging-daemons/openclaw.md) directly.
+- For a VPS-first persistent assistant, choose [Hermes Agent](messaging-daemons/hermes-agent.md); a desktop cowork UI adds little to that deployment.
 - For a different desktop approval and audit design, compare [OpenWorker](openworker.md); inspect both projects' actual sandbox settings rather than equating approval dialogs with isolation.
 - For mutually untrusted users, use separate hosts and accounts rather than treating one desktop gateway as enterprise tenant isolation.
 - If every sensitive command must wait for a person or execution must be sandboxed, use a separately enforced sandbox-and-approval setup instead. In this snapshot, non-enterprise configuration maps sandbox mode to `off`; channel-session exec approvals, or commands not classified as deletion, enter an automatic-allow path. A permission event or selected project directory is not proof of either guarantee.
@@ -95,8 +95,8 @@ You prepare reports, local data dashboards or scheduled digests and need a deskt
 
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
-| [OpenClaw](openclaw.md) | ✅ | Choose OpenClaw for a direct headless gateway; choose LobsterAI for desktop office workflows over that runtime. | Less product-layer machinery versus local artifacts, settings and session management. |
-| [Hermes Agent](hermes-agent.md) | ✅ | Choose Hermes for a persistent VPS assistant; choose LobsterAI when desktop files and rich artifact review are central. | Server-first operation versus a heavier graphical application. |
+| [OpenClaw](messaging-daemons/openclaw.md) | ✅ | Choose OpenClaw for a direct headless gateway; choose LobsterAI for desktop office workflows over that runtime. | Less product-layer machinery versus local artifacts, settings and session management. |
+| [Hermes Agent](messaging-daemons/hermes-agent.md) | ✅ | Choose Hermes for a persistent VPS assistant; choose LobsterAI when desktop files and rich artifact review are central. | Server-first operation versus a heavier graphical application. |
 | [OpenWorker](openworker.md) | ✅ | Compare OpenWorker when its approval ladder and audit trail decide; choose LobsterAI when OpenClaw channels and office kits are the integration target. | Different policy and runtime boundaries; neither UI alone establishes OS isolation. |
 
 ## Quick start

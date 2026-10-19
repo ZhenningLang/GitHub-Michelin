@@ -5,9 +5,9 @@
 
 ## 子分类（按任务）
 
-| 叶子 | 里面是什么 | 路由 |
+| 分类 | 里面是什么 | 路由 |
 |---|---|---|
-| **engineering** | 代码质量、Web 性能、测试与科研/工程工作流。 | [→](engineering/INDEX.zh.md) |
+| **engineering** | 代码质量、Web 性能、测试与工程习惯；科研任务继续进入其 scientific-workflows 子类。 | [→](engineering/INDEX.zh.md) |
 | **design** | 设计审美 / UI-UX 判断——critique、反 AI 味、视觉生成。 | [→](design/INDEX.zh.md) |
 | **slides-ppt** | 面向演示文稿与幻灯片 deck 的 agent 生成技能。 | [→](slides-ppt/INDEX.zh.md) |
 | **visual-content** | 社交卡片、文章配图、封面和其他视觉内容技能。 | [→](visual-content/INDEX.zh.md) |

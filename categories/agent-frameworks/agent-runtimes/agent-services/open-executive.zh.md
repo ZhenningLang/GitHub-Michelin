@@ -78,7 +78,7 @@ health:
 
 你管一家小公司，每周都是同一类领导问题——竞品动作、现金、招人、董事会更新——但它们现在散落在通用聊天窗口、表格和上个月的 Slack 线程里。你不想自己写一套 CrewAI crew 或 LangGraph。你想部署一个应用、填一份公司档案，然后对着一个已经带着 CSO / CFO / CHRO / GC / COO / CMO / CPO / Board Comms 的声音说话，并且它还能坐在 Slack、Discord、Telegram、邮件或 MCP 客户端上。
 
-选 Open Executive 的决定性取舍是**包装好的高管产品，对你自己组装的框架**。相对 [CrewAI](../agent-sdks/crewai.zh.md)，你交出图级控制，换来入职向导、情景记忆、调度器和 Web 界面。相对 [OpenClaw](../personal-assistants/openclaw.zh.md)，你交出消费级即时通讯覆盖，换来公司档案和专家委员会。相对 [eve](eve.zh.md)，你交出“等好几天”的持久工作流，换来已经写好的高管人设。
+选 Open Executive 的决定性取舍是**包装好的高管产品，对你自己组装的框架**。相对 [CrewAI](../agent-sdks/crewai.zh.md)，你交出图级控制，换来入职向导、情景记忆、调度器和 Web 界面。相对 [OpenClaw](../personal-assistants/messaging-daemons/openclaw.zh.md)，你交出消费级即时通讯覆盖，换来公司档案和专家委员会。相对 [eve](eve.zh.md)，你交出“等好几天”的持久工作流，换来已经写好的高管人设。
 
 ## 怎么用起来
 
@@ -108,8 +108,8 @@ health:
 ## 何时不用
 
 - **你想自己编排 agent 图。** 用 [CrewAI](../agent-sdks/crewai.zh.md) 或 [LangGraph](../agent-sdks/langgraph.zh.md) 代替 Open Executive，因为这个仓是带八个具名专家的意见化产品，不是你能丢进自己服务的库。
-- **你是一个人，任务是“在 WhatsApp / Telegram / iMessage 上答我”。** 用 [OpenClaw](../personal-assistants/openclaw.zh.md) 代替 Open Executive，因为 OpenClaw 的价值是设备上的渠道覆盖；Open Executive 多出来的是公司档案、委员会，以及你要运维的两个容器。
-- **几个人必须在飞书 / 企微上共用隔离 Agent。** 用 [Octop](../personal-assistants/octop.zh.md) 代替 Open Executive，因为 Open Executive 的 `SECURITY.md` 写明：部署后的产品是共享工作区，没有按用户隔离数据——允许名单上的每个人都被当作可信。
+- **你是一个人，任务是“在 WhatsApp / Telegram / iMessage 上答我”。** 用 [OpenClaw](../personal-assistants/messaging-daemons/openclaw.zh.md) 代替 Open Executive，因为 OpenClaw 的价值是设备上的渠道覆盖；Open Executive 多出来的是公司档案、委员会，以及你要运维的两个容器。
+- **几个人必须在飞书 / 企微上共用隔离 Agent。** 用 [Octop](../personal-assistants/messaging-daemons/octop.zh.md) 代替 Open Executive，因为 Open Executive 的 `SECURITY.md` 写明：部署后的产品是共享工作区，没有按用户隔离数据——允许名单上的每个人都被当作可信。
 - **Agent 必须为一个人或一个 webhook 等上好几天，并以工作流形态扛住重新部署。** 用 [eve](eve.zh.md) 代替 Open Executive，因为 Open Executive 的调度器是单进程里的 SQLite 轮询，不是持久会话运行时。
 - **你要一个二进制、按计划无人值守干活。** 用 [OpenFang](openfang.zh.md) 代替 Open Executive，因为 Open Executive 是 FastAPI + Next.js，还带着 ChromaDB 和 sentence-transformers，不是单个 Rust OS。
 - **你需要跑不止一个 API 副本。** `docs/deployment.md` 写死了：第二个 API 容器会把每条定时动作再发一遍。把 API 钉成单实例，或换一个有选主的运行时。
@@ -123,8 +123,8 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [CrewAI](../agent-sdks/crewai.zh.md) | ✅ | 你要在自己的 Python 应用里写基于角色的 crew，选 CrewAI；你要一个已经接好界面、记忆和渠道的现成高管应用，选 Open Executive。 | CrewAI 是你编程的框架；Open Executive 是你部署的产品。你拿到委员会和向导，交出图级控制和更成熟的生态。 |
-| [OpenClaw](../personal-assistants/openclaw.zh.md) | ✅ | 你要一个人在许多消费级即时通讯上被应答，选 OpenClaw；用户是一家公司、声音必须是同一个高管，选 Open Executive。 | OpenClaw 赢在渠道数量和个人形态；Open Executive 赢在公司档案、专家路由和 Web 控制台，代价是更重的 Python/Node 栈。 |
-| [Octop](../personal-assistants/octop.zh.md) | ✅ | 几个人必须在飞书/企微上共用隔离 Agent、对话留在磁盘，选 Octop；不需要隔离、任务是一个共享的高管委员会，选 Open Executive。 | Octop 的前提是腾讯 IM 上的 JWT 多用户；Open Executive 的前提是一个可信工作区。彼此替不了对方的威胁模型。 |
+| [OpenClaw](../personal-assistants/messaging-daemons/openclaw.zh.md) | ✅ | 你要一个人在许多消费级即时通讯上被应答，选 OpenClaw；用户是一家公司、声音必须是同一个高管，选 Open Executive。 | OpenClaw 赢在渠道数量和个人形态；Open Executive 赢在公司档案、专家路由和 Web 控制台，代价是更重的 Python/Node 栈。 |
+| [Octop](../personal-assistants/messaging-daemons/octop.zh.md) | ✅ | 几个人必须在飞书/企微上共用隔离 Agent、对话留在磁盘，选 Octop；不需要隔离、任务是一个共享的高管委员会，选 Open Executive。 | Octop 的前提是腾讯 IM 上的 JWT 多用户；Open Executive 的前提是一个可信工作区。彼此替不了对方的威胁模型。 |
 | [eve](eve.zh.md) | ✅ | Agent 必须是能停好几天的持久基础设施，选 eve；你要高管人设和公司 RAG、不要工作流 SDK，选 Open Executive。 | eve 是用文件编写的 TypeScript 框架；Open Executive 是带固定委员会的应用。持久性和多租户在 eve；MBA 知识和入职向导在这里。 |
 | [OpenFang](openfang.zh.md) | ✅ | 你要一个 Rust 二进制按计划自治干活，选 OpenFang；操作者会在浏览器和 Slack 里把它当虚拟高管来聊，选 Open Executive。 | OpenFang 是带调度器、体积小的 agent OS；Open Executive 是两个容器、ChromaDB 和 Next.js 界面。体积与无人值守，对高管体验。 |
 

@@ -85,7 +85,7 @@ health:
 
 - 要完整讲解视频而非短剧准备，选 [OpenMontage](open-montage.zh.md)。
 - 要真实界面截图组成的产品宣传片，选 [video-shotcraft](video-shotcraft.zh.md)。
-- 要确定性时间线渲染，选 [Remotion](remotion.zh.md)，本项目不是渲染引擎。
+- 要确定性时间线渲染，选 [Remotion](render-engines/remotion.zh.md)，本项目不是渲染引擎。
 - 要不改流程就生成全英文人物数据，应自建流程。英文报告界面不代表人物字段可写英文，部分校验明确拒绝英文。
 
 ## 横向对比
@@ -94,7 +94,7 @@ health:
 | --- | --- | --- | --- |
 | [OpenMontage](open-montage.zh.md) | ✅ | 要完整视频管线选 OpenMontage；要短剧人物和站位连续性选本组技能。 | 更广的生产自动化，对比专门且可审查的准备材料。 |
 | [video-shotcraft](video-shotcraft.zh.md) | ✅ | 产品镜头和真实截图选 video-shotcraft；小说拆场与人物一致性选本组技能。 | 产品素材，对比叙事与空间规划。 |
-| [Remotion](remotion.zh.md) | ✅ | 要渲染代码时间线选 Remotion；要给外部生成器准备短剧材料选本组技能。 | 渲染运行时，对比提示词、数据契约和检查器；下游使用 Remotion 仍须另审许可。 |
+| [Remotion](render-engines/remotion.zh.md) | ✅ | 要渲染代码时间线选 Remotion；要给外部生成器准备短剧材料选本组技能。 | 渲染运行时，对比提示词、数据契约和检查器；下游使用 Remotion 仍须另审许可。 |
 
 ## 快速上手
 

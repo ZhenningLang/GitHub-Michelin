@@ -81,18 +81,18 @@ You already use a coding agent and need a narrated explainer or art-style animat
 
 ## When NOT to use
 
-- **You need a general HTML video engine rather than a prescribed workflow.** Pick [HyperFrames](hyperframes.md); this package mixes rendering code with strong personal art-direction rules and a mostly Chinese skill.
-- **You already author reusable React compositions or need mature cloud rendering.** Evaluate [Remotion](remotion.md), including its company-license terms, rather than moving to this smaller Canvas engine.
+- **You need a general HTML video engine rather than a prescribed workflow.** Pick [HyperFrames](render-engines/hyperframes.md); this package mixes rendering code with strong personal art-direction rules and a mostly Chinese skill.
+- **You already author reusable React compositions or need mature cloud rendering.** Evaluate [Remotion](render-engines/remotion.md), including its company-license terms, rather than moving to this smaller Canvas engine.
 - **Your inputs are existing takes to cut, not scenes to draw.** Pick [video-use](video-use.md); this project's core value is scene construction, not transcript-based take selection.
 - **You want freely reusable demo characters.** Supply your own cleared assets with HyperFrames or another engine. The MIT grant excludes Huashu's likeness/frame libraries and Clawd fan-demo GIFs/film; fonts and stroke-order data retain separate licenses.
-- **Portrait output must be reliable without testing each effect.** Use a validated [HyperFrames](hyperframes.md) composition or test a minimal clip first. Open issues #10 and #11 report landscape-coordinate assumptions in transitions/post-processing.
+- **Portrait output must be reliable without testing each effect.** Use a validated [HyperFrames](render-engines/hyperframes.md) composition or test a minimal clip first. Open issues #10 and #11 report landscape-coordinate assumptions in transitions/post-processing.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [HyperFrames](hyperframes.md) | ✅ | Choose HyperFrames for general HTML compositions; choose huashu-art-motion for reusable painting recipes and opinionated storyboard/delivery checks. | Broader engine integrations versus a compact Canvas workflow with a strong visual prescription. |
-| [Remotion](remotion.md) | ✅ | Choose Remotion for React templates and cloud rendering; choose this skill for local art-directed clips without adopting a React composition project. | Mature engine ecosystem versus a young skill, with separate licensing constraints on both engines/assets to review. |
+| [HyperFrames](render-engines/hyperframes.md) | ✅ | Choose HyperFrames for general HTML compositions; choose huashu-art-motion for reusable painting recipes and opinionated storyboard/delivery checks. | Broader engine integrations versus a compact Canvas workflow with a strong visual prescription. |
+| [Remotion](render-engines/remotion.md) | ✅ | Choose Remotion for React templates and cloud rendering; choose this skill for local art-directed clips without adopting a React composition project. | Mature engine ecosystem versus a young skill, with separate licensing constraints on both engines/assets to review. |
 | [video-use](video-use.md) | ✅ | Choose video-use for cutting recorded takes; choose this skill when the scene must be constructed and animated in code. | Footage/transcript editing versus scene authoring and art-style control. |
 
 ## Quick start

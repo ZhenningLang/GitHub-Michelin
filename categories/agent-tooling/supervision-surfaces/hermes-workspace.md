@@ -71,7 +71,7 @@ health:
 
 # Hermes Workspace
 
-A self-hosted web workspace and control plane for [hermes-agent](../../agent-frameworks/agent-runtimes/personal-assistants/hermes-agent.md): chat, sessions, memory, skills, MCP, jobs, a Monaco file browser, a PTY terminal, dashboards — plus a tmux-backed multi-agent "Swarm" mode — all talking to the vanilla upstream agent over its gateway (`:8642`) and dashboard (`:9119`) APIs. Without a Hermes Agent backend it degrades to "portable mode": plain chat against any OpenAI-compatible endpoint.
+A self-hosted web workspace and control plane for [hermes-agent](../../agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.md): chat, sessions, memory, skills, MCP, jobs, a Monaco file browser, a PTY terminal, dashboards — plus a tmux-backed multi-agent "Swarm" mode — all talking to the vanilla upstream agent over its gateway (`:8642`) and dashboard (`:9119`) APIs. Without a Hermes Agent backend it degrades to "portable mode": plain chat against any OpenAI-compatible endpoint.
 
 ![Hermes Workspace — health radar](../../../assets/health/hermes-workspace.svg)
 
@@ -133,7 +133,7 @@ The v2 pitch is *zero-fork*: the workspace does not patch hermes-agent, it front
 
 ## Dependencies
 
-- **For full features:** a stock [hermes-agent](../../agent-frameworks/agent-runtimes/personal-assistants/hermes-agent.md) install serving *two* services — the gateway on `:8642` (`API_SERVER_ENABLED=true`; add `API_SERVER_KEY`/`HERMES_API_TOKEN` if authenticated) and `hermes dashboard` on `:9119` (sessions/skills/config/jobs/MCP APIs). Running the agent from source needs Python 3.11+.
+- **For full features:** a stock [hermes-agent](../../agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.md) install serving *two* services — the gateway on `:8642` (`API_SERVER_ENABLED=true`; add `API_SERVER_KEY`/`HERMES_API_TOKEN` if authenticated) and `hermes dashboard` on `:9119` (sessions/skills/config/jobs/MCP APIs). Running the agent from source needs Python 3.11+.
 - **A model backend** reachable by the agent: an API key (OpenAI/OpenRouter/Google/…) or a local server (Ollama, LM Studio, vLLM, llama.cpp, LocalAI). With a plain OpenAI-compatible backend *instead of* the agent, you get portable mode (chat only).
 - **tmux** on the host for Swarm workers (POSIX; Windows is handled via a PowerShell + WSL helper script).
 - **No database** — state lives behind the agent's own files/services; workspace overrides persist to `~/.hermes/workspace-overrides.json`.
@@ -146,7 +146,7 @@ The v2 pitch is *zero-fork*: the workspace does not patch hermes-agent, it front
 
 - **Maintenance (2026-09).** Created 2026-03-16; 2,030 commits, the last on `main` on 2026-08-22 (about a month before this check; the 2026-09-10 `pushed_at` came from another branch) — main is active. The flip side: latest tagged GitHub release is v2.3.0 (2026-05-08), a ~4-month release gap, with 60 open issues and 103 open PRs at check time — trunk runs ahead of the release process.
 - **Governance / bus factor.** `owner.type` is **User** ("Eric", account created 2025-03, 19 public repos). Measured 12-month contribution spread puts the top author at 35% of commits across 69 listed contributors (health scorer, 2026-09) — spread wider than a pure solo repo, but still no foundation and no GOVERNANCE/CODEOWNERS found; SECURITY.md routes reports to the owner's X handle. Single-person roadmap risk is real. [推断]
-- **Backing & the upstream bet.** The workspace itself has no institutional backing, but its *substrate* does: [hermes-agent](../../agent-frameworks/agent-runtimes/personal-assistants/hermes-agent.md) showed 247,693 stars and a same-day push (2026-09-21 via GitHub API) — the workspace's viability is largely a derivative bet on that upstream's endpoint contract and continued momentum. [推断]
+- **Backing & the upstream bet.** The workspace itself has no institutional backing, but its *substrate* does: [hermes-agent](../../agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.md) showed 247,693 stars and a same-day push (2026-09-21 via GitHub API) — the workspace's viability is largely a derivative bet on that upstream's endpoint contract and continued momentum. [推断]
 - **Age × Lindy (2026-09).** ~6 months old with 6.6k stars: high heat, zero Lindy credit; the v1→v2 zero-fork pivot already broke one deployment model (fork-based installs deprecated). Treat stability claims as unproven. [推断]
 - **Adoption & ecosystem.** 1.1k forks, ghcr images, Codespaces/devcontainer, PaaS recipes (Coolify/Easypanel/Unraid) and PWA + Tailscale mobile stories suggest real self-hoster pull; docs are unusually thorough (docs/swarm/, per-feature pages). The "2,000+ skills" browsing claim is not independently verified.
 - **Risk flags.** Release gap + big open-PR backlog; security fixes still landing in 2026-09 (SSRF bypass, COOP/COEP, CSP); SECURITY.md speaks of "Security Measures (v3.0.0+)" while the latest release is v2.3.0 — a doc/version drift signal; Electron and cloud hosting are announced-but-unshipped roadmap. MIT license (LICENSE file read directly), no relicense history.

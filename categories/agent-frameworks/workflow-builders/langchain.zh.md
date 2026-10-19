@@ -119,7 +119,7 @@ health:
 - **要自己设计控制流、确定性步骤和 agent 步骤混排、严格控制延迟。** LangChain 自己的 README 就把这些情况指向 LangGraph。请直接用 [LangGraph](../agent-runtimes/agent-sdks/langgraph.zh.md)，不要用 `create_agent`，因为你会得到显式的节点、边和状态，而不是一个预制循环。
 - **你在维护 1.0 之前的代码库，或者照着旧教程写。** `from langchain.chains import LLMChain` 这类代码已经不在 `langchain` 里，搬到了 `langchain-classic`。想让旧代码继续跑就锁定 `langchain-classic`，再有计划地迁到 `create_agent`，因为两种写法混用会让你要维护的面翻倍。
 - **在框架层面排斥锁定。** 基于 LangChain 类型写的工具、消息和中间件，以后搬走成本很高。如果独立性最重要，请用 [LiteLLM](../../api-gateway/litellm.zh.md) 做模型路由、再写一个自己的小循环，或者用 Pydantic AI，因为它们让你的代码更贴近厂商原生 API。
-- **你想要开箱即用的 agent。** LangChain 是库，你不写应用就什么都不会跑。请改用 [AutoGPT](autogpt.zh.md) 或 [Hermes Agent](../agent-runtimes/personal-assistants/hermes-agent.zh.md)，因为它们自带运行时和界面。
+- **你想要开箱即用的 agent。** LangChain 是库，你不写应用就什么都不会跑。请改用 [AutoGPT](autogpt.zh.md) 或 [Hermes Agent](../agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.zh.md)，因为它们自带运行时和界面。
 
 ## 横向对比
 

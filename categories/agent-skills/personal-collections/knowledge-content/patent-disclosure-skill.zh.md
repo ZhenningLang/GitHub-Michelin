@@ -89,7 +89,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Scientific Agent Skills](../../engineering/scientific-agent-skills.zh.md) | ✅ | 领域是生物／化学／医药、且每个 skill 包着一个真实科研库时，选 Scientific Agent Skills；领域是中国专利实务、价值在国知局检索加国知局式文档模板时，选 patent-disclosure-skill。 | Scientific Agent Skills 是约 147 个窄技能的大型精选库；patent-disclosure-skill 是八个更粗的工作流技能，本地工具链更重（Word／OMML、浏览器、Obsidian）。 |
+| [Scientific Agent Skills](../../engineering/scientific-workflows/scientific-agent-skills.zh.md) | ✅ | 领域是生物／化学／医药、且每个 skill 包着一个真实科研库时，选 Scientific Agent Skills；领域是中国专利实务、价值在国知局检索加国知局式文档模板时，选 patent-disclosure-skill。 | Scientific Agent Skills 是约 147 个窄技能的大型精选库；patent-disclosure-skill 是八个更粗的工作流技能，本地工具链更重（Word／OMML、浏览器、Obsidian）。 |
 | [writing-agent](../../ai-writing/content-production/writing-agent.zh.md) | ✅ | 交付物是可发布的中文文章、还要去 AI 味与事实核查时，选 writing-agent；交付物是必须满足专利文件结构并配查新的交底书或申请文件时，选 patent-disclosure-skill。 | writing-agent 优化文笔和读者测试；patent-disclosure-skill 优化文档结构、附图和检索，行文是刻意法条化的专利文体。 |
 | [ljg-skills](ljg-skills.zh.md) | ✅ | 要把论文／书读成大白话中文时，选 ljg-skills；要专门把专利权利要求和国知局记录读进带地图的 Obsidian 专利库时，选 patent-disclosure-skill。 | ljg-skills 是轻量、通用的阅读／改写包；patent-disclosure-skill 多了专利解析、引证／术语图谱和一个本机服务，代价是安装体量大得多、且依赖 Obsidian。 |
 | 商业专利 SaaS（智慧芽 PatSnap、incoPat、专利之星） | 未收录 | 需要召回完备的检索、法律状态数据和持续维护的数据库时，选商业 SaaS；需要起草／解读留在本地、可脚本化、产出可进 Git 版本管理的文件时，选 patent-disclosure-skill。 | SaaS 胜在数据覆盖、时效和法律状态；本包胜在本地化、成本与可编辑产出物，但检索浅，数据就是公开站点当下展示的那些。 |
