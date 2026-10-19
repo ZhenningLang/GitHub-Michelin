@@ -8,6 +8,7 @@
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **Stickman Video Director** | 批准火柴人分镜后取得独立连续性提示词；生成与剪辑仍在外部完成。 | C（4/5） | [→](stickman-video-director.zh.md) |
+| **huashu-art-motion** | 助手按分镜规则构建艺术动画，用成片实测门禁交付。 | C（5/6） | [→](huashu-art-motion.zh.md) |
 | **OpenMontage** | 当你想让 AI 编程助手从一句自然语言描述出发，完成研究、脚本、素材生成、合成与渲染，产出完整视频（解说、预告片、动画、纪录片蒙太奇）时使用。 | B（5/6） | [→](open-montage.zh.md) |
 | **HyperFrames** | 当你需要确定性、代码形态的视频——HTML composition 在 CI 里渲染成 MP4——并希望 agent skill 覆盖整条生产回路时用它；它是渲染引擎，不是生成式视频模型。 | B（6/6） | [→](hyperframes.zh.md) |
 | **anything2explainer** | 当你想让 Claude Code / Codex skill 把一个主题做成带配音的 MG 科普讲解视频（中文或英文）时用它——9 阶段多 agent 流水线带人工确认点和量化 QC；固定黑底风格，PolyForm 非商用许可。 | C（3/5） | [→](anything2explainer.zh.md) |
@@ -26,6 +27,7 @@
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [Stickman Video Director](stickman-video-director.zh.md) | ✅ | C（4/5） | 提示层导演与声音约束，不是渲染器，也不保证生成连续性。 |
+| [huashu-art-motion](huashu-art-motion.zh.md) | ✅ | C（5/6） | 绘画配方与本地 Canvas 渲染；中文指令为主，年轻单人项目。 |
 | [OpenMontage](open-montage.zh.md) | ✅ | B（5/6） | 当你想让 AI 编程助手从一句自然语言描述出发，完成研究、脚本、素材生成、合成与渲染，产出完整视频（解说、预告片、动画、纪录片蒙太奇）时使用。 |
 | [HyperFrames](hyperframes.zh.md) | ✅ | B（6/6） | 确定性的 HTML 转 MP4 渲染，带 20 个 agent skill，Apache-2.0 许可；它是引擎层，不是带治理的管线，也不是生成式画面。 |
 | [anything2explainer](anything2explainer.zh.md) | ✅ | C（3/5） | Claude Code / Codex skill-pack，带完整讲解片制作方法（调研→解说词→分镜→并行构建→QC）和一条样片作质量标尺；固定 MG 风格，仅 8 天龄，PolyForm 非商用许可。 |
