@@ -791,6 +791,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **Tendedero** | macOS 可收起截图暂存条；可选接管截图设置与剪贴板图片。 | MIT (code; branding excluded) | C（5/6） | [中](categories/media-processing/image-processing/tendedero.zh.md) · [EN](categories/media-processing/image-processing/tendedero.md) |
+| **OpenScreen Community** | 用仍维护的社区续作录制与润色软件演示，而非已归档原版。 | MIT | B（5/6） | [中](categories/media-processing/video-editing/openscreen-community.zh.md) · [EN](categories/media-processing/video-editing/openscreen-community.md) |
 | **FFmpeg** | 当你需要在管线里解码/编码/转码/滤镜处理几乎任何音视频时用它——注意 LGPL→GPL 的构建授权陷阱。 | LGPL-2.1-or-later | A（4/6） | [中](categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg.zh.md) · [EN](categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg.md) |
 | **HandBrake** | 当一堆手机视频、录屏或无加密光盘要压成更小、到处能播的 MP4/MKV，并想在图形界面或 HandBrakeCLI 里选个有名字的预设就完事时用它——但它永远重编码，也打不开有拷贝保护的光盘。 | GPL-2.0-only | A（5/6） | [中](categories/media-processing/video-audio/transcoding-and-pipelines/handbrake.zh.md) · [EN](categories/media-processing/video-audio/transcoding-and-pipelines/handbrake.md) |
 | **ffmpeg-python** | 当你在 Python 里要拼 trim、concat、overlay 这类滤镜图、手写 -filter_complex 已经读不懂时用它——但它只是替已安装的 ffmpeg 二进制拼命令行，拿不到逐帧数据，且自 2022 年起已停止演进。 | Apache-2.0 | C（4/6） | [中](categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg-python.zh.md) · [EN](categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg-python.md) |

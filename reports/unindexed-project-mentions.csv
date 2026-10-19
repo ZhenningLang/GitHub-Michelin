@@ -46,6 +46,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [neomutt](https://github.com/neomutt/neomutt),categories/agent-tooling/harness-extensions/hey-cli.md,,no
 [Nethereum.Faucet](https://github.com/Nethereum/Nethereum.Faucet),categories/blockchain-dev-infrastructure/powfaucet.md,,no
 [NVIDIA open-gpu-kernel-modules](https://github.com/NVIDIA/open-gpu-kernel-modules) on Linux,categories/hackintosh/nvidia-macos-driver.md,,no
+[OBS Studio](https://github.com/obsproject/obs-studio),categories/media-processing/video-editing/openscreen-community.md,,no
 [Official Codex (openai/codex)](https://github.com/openai/codex),categories/agent-tooling/harness-extensions/codex-chatgpt-web.md,,no
 [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex),categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.md,,no
 [OmniVoice](https://github.com/k2-fsa/OmniVoice),categories/speech/voicestudio.md,,no

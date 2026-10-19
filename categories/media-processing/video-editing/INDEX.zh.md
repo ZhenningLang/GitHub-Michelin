@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **OpenScreen Community** | 要当前修复、原生录屏与可选模型编辑的软件演示成片时用它；不是已归档原版。 | B（5/6） | [→](openscreen-community.zh.md) |
 | **Concat** | 需要一款当下就能安装运行、原生、离线、可脚本化的类 CapCut 编辑器时用它——代价是仅有 25 天历史的 0.2.x beta 与单一维护者。 | C（6/6） | [→](concat.zh.md) |
 | **OpenCut** | 想跟进或基于浏览器／WASM 重写架构开发时用它——不适用于需要可用编辑器的场景，因为仓库正在重写，能用的版本在已归档的 classic 仓库里。 | B（5/6） | [→](opencut.zh.md) |
 | **Palmier Pro** | 想让 agent（Claude Code、Codex、Cursor）通过本机 MCP 服务直接改你在 macOS 26 Apple 芯片 Mac 上开着的时间线时用它——要知道只有 v0.7.6 之前的源码是 GPL，之后的版本已闭源。 | C（6/6） | [→](palmier-pro.zh.md) |
@@ -17,6 +18,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [OpenScreen Community](openscreen-community.zh.md) | ✅ | B（5/6） | 仍维护的 MIT 续作，光标驱动缩放与原生导出；代价是工程／命令行变更和默认匿名计数。 |
 | [Concat](concat.zh.md) | ✅ | C（6/6） | 需要原生 Rust 桌面／移动编辑器，自带 FFmpeg 与 Whisper 并暴露 API／CLI／server 时选它；代价是 beta 稳定性与单人 bus factor。 |
 | [OpenCut](opencut.zh.md) | ✅ | B（5/6） | 想跟进或基于下一代浏览器／WASM 架构开发时选它；代价是重写期间该仓库不产出可用版本。 |
 | [Palmier Pro](palmier-pro.zh.md) | ✅ | C（6/6） | 需要 agent 经 MCP 在真正的 Mac 时间线上剪辑、外加内置生成时选它；代价是只支持 macOS 26 加 Apple 芯片、生成依赖厂商后端，而且开源线自 2026-08 起已冻结。 |
