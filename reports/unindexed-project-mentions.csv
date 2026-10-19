@@ -599,8 +599,6 @@ hcxdumptool (`ZerBea/hcxdumptool`),categories/pentest/wifit3.md,,no
 Headless Chrome/Chromium + Puppeteer,categories/web-automation/browser-driver-frameworks/phantomjs.md,,no
 Headless UI,categories/web-ui/component-libraries/radix-ui.md,,no
 Headless UI (`tailwindlabs/headlessui`),categories/web-ui/component-libraries/tanstack-select.md,,no
-Headroom,categories/agent-skills/engineering/caveman.md,,no
-Headroom (headroomlabs-ai/headroom),categories/agent-tooling/work-state/token-optimizer.md,,no
 Headscale,categories/networking/agentmesh.md,,no
 Helicone,categories/llm-eval/pezzo.md,,no
 herdr-annotate / Plannotator TUI (same maintainer's terminal and TUI variants),categories/agent-tooling/supervision-surfaces/plannotator.md,,no

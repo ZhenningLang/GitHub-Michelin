@@ -53,6 +53,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **Skills Hub** | 跨工具、项目和 git 同步设备的中央技能库；先核对文件管理权。 | MIT | B（6/6） | [中](categories/agent-tooling/harness-extensions/skills-hub.zh.md) · [EN](categories/agent-tooling/harness-extensions/skills-hub.md) |
+| **Headroom** | agent 每轮都把长串 JSON 和日志发给模型。Headroom 在本机压缩请求，并保留可按需取回的原文。 | Apache-2.0 | B（5/6） | [EN](categories/agent-tooling/work-state/headroom.md) · [中](categories/agent-tooling/work-state/headroom.zh.md) |
 | **beads** | 当 AI agent 跨会话丢失任务状态、你想在仓库里要一张可版本化、感知依赖的任务图时用它。 | MIT | B（5/6） | [中](categories/agent-tooling/work-state/beads.zh.md) · [EN](categories/agent-tooling/work-state/beads.md) |
 | **CCPM** | 当一个功能大到单次 agent 会话装不下、你想要从 PRD 到 epic 再到 GitHub Issues 的成文规格，加上在 git worktree 里并行的多个 agent 时用它——但它强制依赖 GitHub Issues，且 2026-03 之后再无提交。 | MIT | C（4/5） | [中](categories/agent-tooling/work-state/ccpm.zh.md) · [EN](categories/agent-tooling/work-state/ccpm.md) |
 | **Entire** | 想把 AI agent 会话以 Git checkpoint 形式与 commit 并列捕获、可搜索可回滚时用它。 | MIT | B（6/6） | [中](categories/agent-tooling/session-history/entire-cli.zh.md) · [EN](categories/agent-tooling/session-history/entire-cli.md) |

@@ -135,7 +135,7 @@ MIT 技能是小入口：一份规则文件覆盖 30 多种 agent，有 `/cavema
 | [RTK](../../agent-tooling/work-state/rtk.zh.md) | ✅ | 浪费只在 shell 命令输出、且必须 Apache-2.0 时，选 RTK；Read/Grep/JSON/diff 也会灌进上下文时，选 caveman 的 wrap。 | RTK 是确定性的 shell 代理，遥测默认关闭；caveman 的 wrap 覆盖更多载荷类型并保留原件，但引擎是 BSL-1.1，CLI 遥测默认打开。 |
 | [Context Mode](../../agent-tooling/work-state/context-mode.zh.md) | ✅ | 需要沙箱让原始工具输出永不进入上下文、外加熬过压缩的会话记忆时，选 Context Mode；想让同一个 agent 就地压缩并带取回句柄时，选 caveman。 | Context Mode 让 agent 写脚本，许可证是 Elastic-2.0；caveman 压缩现有数据流并声称字节级可恢复，没有那层执行面。 |
 | [no-ai-slop](../ai-writing/de-ai-writing/no-ai-slop.zh.md) | ✅ | 产物是将要发布、改完仍须像作者本人的文稿，选 no-ai-slop；产物是 agent 当场的回复或它反复读的工具输出，选 caveman。 | no-ai-slop 先盘点并保护你的声音，再就地改文；caveman 从不声称保留作者声音——它让 agent 少说话，可选地少读。 |
-| Headroom | 未收录 | 想要另一个压缩工具输出和历史的本地 wrap 时，评估 Headroom；还想要 MIT 技能覆盖层以及项目自己的并排 wrap 数字时，选 caveman。 | Headroom 的 README 把 caveman 列成可以坐在它后面的东西；caveman 钉住的 wrap 表（此处未独立复现）在该套件上报告了更多输入 token 削减和更少答错，并留着一行红色的 HTML 结果。 |
+| [Headroom](../../agent-tooling/work-state/headroom.zh.md) | ✅ | 想要另一个压缩工具输出和历史的本地 wrap 时，评估 Headroom；还想要 MIT 技能覆盖层以及项目自己的并排 wrap 数字时，选 caveman。 | Headroom 的 README 把 caveman 列成可以坐在它后面的东西；caveman 钉住的 wrap 表（此处未独立复现）在该套件上报告了更多输入 token 削减和更少答错，并留着一行红色的 HTML 结果。 |
 
 ## 技术栈
 
