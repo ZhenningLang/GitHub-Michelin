@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "them": {"en": "Jarvis does", "zh": "Jarvis 做的"},
+  "steps": [
+    {"lane": "you", "en": "Open the platform app and choose local speech and chat models", "zh": "打开对应平台应用，选择本地语音和聊天模型"},
+    {"lane": "them", "en": "Downloads models and starts listening after microphone permission", "zh": "获得麦克风权限后下载模型并开始聆听"},
+    {"lane": "you", "en": "Address Jarvis during your conversation", "zh": "在讨论中叫 Jarvis 的名字并提问"},
+    {"lane": "them", "en": "Uses recent spoken context to answer aloud", "zh": "结合近期口头语境并朗读回答"}
+  ],
+  "value": {"en": "The assistant can answer about the discussion you just had", "zh": "助手能回应你们刚刚讨论的内容"},
+  "sources": ["https://github.com/isair/jarvis/blob/380cf069714e819e11c6479d3fc20a19191d0dee/README.md#quick-install"]
+}
