@@ -24,7 +24,7 @@
 | **Needle** | Use it when a tiny on-device model must do English tool calling, typed extraction or embeddings offline (29–121M params, 2-bit) — but the base model needs a fine-tune and your own guards on refusals. | B (4/6) | [→](needle.md) |
 | **BirdNET-Go** | Use it when you want an always-on bird (and bat) sound station on a Raspberry Pi 4/5 or mini PC with a local web dashboard, multiple mics/RTSP streams and MQTT/Home Assistant alerts — but the code and models are non-commercial (CC BY-NC-SA), the default install tracks a single maintainer's nightly build, and batch file analysis belongs to other tools. | B (5/6) | [→](birdnet-go.md) |
 | **uzu** | Use it when an LLM must run inside your own iOS/macOS app and you want a Swift/Python/TS SDK that picks, downloads and runs a pre-converted model on the Apple GPU — but it needs OS 26.4+, uses Mirai's own model format and hosted registry, and sends default-on telemetry. | B (6/6) | [→](uzu.md) |
-
+| **TurboFieldfare** | Run pinned Gemma 4 on an 8 GB Mac by streaming experts from SSD; Apple-only and model-specific. | C (6/6) | [→](turbo-fieldfare.md) |
 
 ## Comparison matrix
 
@@ -41,6 +41,7 @@
 | [BirdNET-Go](birdnet-go.md) | ✅ | B (5/6) | Self-hosted Go app that classifies live audio with BirdNET v2.4 (plus optional Perch v2 and bat models) and logs detections with clips; trades reproducibility and commercial use for a turnkey 24/7 station — non-OSI licence, nightly-by-default, one maintainer. |
 | [uzu](uzu.md) | ✅ | B (6/6) | Mirai's Rust engine with Swift/Python/TS bindings and hand-written Metal 4 kernels: names a catalog model, downloads a pre-converted copy and runs it in-app; Apple-only (OS 26.4+), own model format, vendor registry and default-on telemetry, young single-company project. |
 | MLC LLM / ONNX Runtime | 未收录 | — | Other on-device inference runtimes named across the pages (llama.cpp and Ollama are indexed under `llm-inference`). |
+| [TurboFieldfare](turbo-fieldfare.md) | ✅ | C (6/6) | Fixed expert buffers trade SSD reads for lower resident-weight memory; macOS 26 and one pinned Gemma checkpoint. |
 
 ## What belongs here
 

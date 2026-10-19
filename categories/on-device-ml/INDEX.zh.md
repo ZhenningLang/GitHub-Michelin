@@ -24,7 +24,7 @@
 | **Needle** | 当需要一个小体积端侧模型离线完成**英文**工具调用、类型化抽取或嵌入时用它（29–121M 参数、2-bit）——但基座模型需要微调，拒绝类请求要自建守卫。 | B（4/6） | [→](needle.zh.md) |
 | **BirdNET-Go** | 当你想在树莓派 4/5 或小主机上搭一个全天候的鸟类（及蝙蝠）声音监测站，带本地网页仪表盘、多路麦克风和 RTSP 音源、MQTT 与 Home Assistant 告警时用它——但代码和模型都禁止商用（CC BY-NC-SA），默认安装跟的是单人维护的每夜构建，批量文件分析要交给别的工具。 | B（5/6） | [→](birdnet-go.zh.md) |
 | **uzu** | 当你要把大模型直接跑在自己的 iOS/macOS 应用里，想要一个 Swift/Python/TS SDK 替你挑模型、下载转换好的版本并在苹果 GPU 上运行时用它——但系统要 26.4 以上，只用 Mirai 自有模型格式和托管注册服务，遥测默认开启。 | B（6/6） | [→](uzu.zh.md) |
-
+| **TurboFieldfare** | 在 8 GB Mac 上从 SSD 流式读取专家，运行固定 Gemma 4；只支持苹果平台与指定模型。 | C（6/6） | [→](turbo-fieldfare.zh.md) |
 
 ## 对比矩阵
 
@@ -41,6 +41,7 @@
 | [BirdNET-Go](birdnet-go.zh.md) | ✅ | B（5/6） | 自托管的 Go 应用，用 BirdNET v2.4（可加装 Perch v2 和蝙蝠模型）给实时音频分类，把检出连同录音片段记下来；用可复现性和商用权换一个开箱即用的全天候站点——非 OSI 许可证、默认跟 nightly、单人维护。 |
 | [uzu](uzu.zh.md) | ✅ | B（6/6） | Mirai 用 Rust 写的引擎，配 Swift/Python/TS 绑定和手写 Metal 4 内核：报目录里的模型名，下载转换好的版本在应用内运行；只限苹果（系统 26.4+），自有模型格式、厂商注册服务、默认开启遥测，单一公司的年轻项目。 |
 | MLC LLM / ONNX Runtime | 未收录 | — | 各页对比里点到的其他端侧推理运行时（llama.cpp 与 Ollama 已收录在 `llm-inference`）。 |
+| [TurboFieldfare](turbo-fieldfare.zh.md) | ✅ | C（6/6） | 固定专家缓冲区以 SSD 读取换较低常驻权重内存；要求 macOS 26 和指定 Gemma 检查点。 |
 
 ## 什么该放这里
 
