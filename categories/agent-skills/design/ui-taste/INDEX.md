@@ -7,6 +7,7 @@
 
 | Collection | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Interfaces Skills** | Evidence-led interface reviews across six disciplines, with change-caused regressions and unreviewed domains explicit. | B (4/5) | [→](jakubkrehel-skills.md) |
 | **Designer Skills** | A broad design-practice skill pack — 97 skills and 30 commands across 9 plugins (research, design systems, UX strategy, UI, interaction, prototyping/testing, design ops, toolkit, visual critique) for Claude Code and Gemini CLI. | B (4/5) | [→](designer-skills.md) |
 | **Skills For Design Engineers** | Emil Kowalski's 13-skill pack that decides when UI should not animate and, when it should, which curve, duration and origin — with a blocking motion review and a read-only codebase audit. | B (4/5) | [→](emilkowalski-skills.md) |
 | **make-interfaces-feel-better** | A single, focused agent skill that injects ~16 concrete UI-polish principles (concentric radius, interruptible transitions, tabular numbers, enter/exit animation) so a coding agent ships interfaces that feel finished, not merely correct. | B (4/5) | [→](make-interfaces-feel-better.md) |
@@ -21,6 +22,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Interfaces Skills](jakubkrehel-skills.md) | ✅ | B (4/5) | Evidence-led interface reviews across six disciplines, with change-caused regressions and unreviewed domains explicit. |
 | [Designer Skills](designer-skills.md) | ✅ | B (4/5) | A broad design-practice skill pack — 97 skills and 30 commands across 9 plugins (research, design systems, UX strategy, UI, interaction, prototyping/testing, design ops, toolkit, visual critique) for Claude Code and Gemini CLI. |
 | [Skills For Design Engineers](emilkowalski-skills.md) | ✅ | B (4/5) | Best when the page looks right but moves wrong; choose broader design packs for UX research or design systems. |
 | [make-interfaces-feel-better](make-interfaces-feel-better.md) | ✅ | B (4/5) | A single, focused agent skill that injects ~16 concrete UI-polish principles (concentric radius, interruptible transitions, tabular numbers, enter/exit animation) so a coding agent ships interfaces that feel finished, not merely correct. |
