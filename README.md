@@ -700,6 +700,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **OpenDataLoader PDF** | Ordered PDF text and source-region JSON with optional model processing. | Apache-2.0 | B (6/6) | [EN](categories/document-parsing/opendataloader-pdf.md) · [中](categories/document-parsing/opendataloader-pdf.zh.md) |
 | **Docling** | Use it when you must parse messy PDF/DOCX/PPTX into clean structured Markdown/JSON for RAG ingestion — a parser, not a DMS. | MIT | A (5/6) | [EN](categories/document-parsing/docling.md) · [中](categories/document-parsing/docling.zh.md) |
 | **MarkItDown** | Use it when an agent or RAG pipeline must turn mixed Office files, HTML, EPUB and simple PDFs into Markdown with one lightweight Python call — but scanned or complex-layout PDFs need Marker or Docling, since it has no OCR or layout model. | MIT | B (6/6) | [EN](categories/document-parsing/markitdown.md) · [中](categories/document-parsing/markitdown.zh.md) |
 | **olmOCR** | Use it when you are turning thousands to millions of PDFs with equations, tables and multi-column layouts into clean reading-order Markdown for an LLM corpus — but local runs need a 12 GB+ NVIDIA GPU, and upstream has been quiet since 2026-03. | Apache-2.0 | C (5/6) | [EN](categories/document-parsing/olmocr.md) · [中](categories/document-parsing/olmocr.zh.md) |
