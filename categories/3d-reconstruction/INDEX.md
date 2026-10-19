@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **LingBot-Map** | Stream camera poses and depth from long RGB sequences; research model with GPU and cache tuning, not a splat editor. | B (4/6) | [→](lingbot-map.md) |
 | **Spirula Studio** | Use it when you want video or photos to become a Gaussian splat and textured mesh in one unzip-and-run app on any-vendor GPU (Vulkan), with built-in SfM, masking and 360°/fisheye support — accepting a one-person maintainer and GPL-3.0. | C (6/6) | [→](spirula-studio.md) |
 
 
@@ -14,6 +15,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [LingBot-Map](lingbot-map.md) | ✅ | B (4/6) | Frame-wise learned geometry with retained context, at the cost of checkpoint, CUDA and sequence-range constraints. |
 | [Spirula Studio](spirula-studio.md) | ✅ | C (6/6) | Self-contained C++ desktop app + CLI: built-in SfM, AI masking, quantized splat training on Vulkan or CUDA, meshing — at the cost of a bus factor of one, a few-months-old product line and driver-specific crashes. |
 | LichtFeld Studio · Brush · OpenSplat · gsplat | 未收录 | — | Open-source splat trainers (NVIDIA-only desktop app, WebGPU/browser trainer, LibTorch headless trainer, PyTorch research library) — weighed in Spirula Studio's comparison table, not added in this tab-intake batch. |
 | COLMAP · Meshroom | 未收录 | — | Classic structure-from-motion and dense photogrammetry pipelines for measured geometry rather than splats — named in Spirula Studio's When NOT to use, not yet indexed. |

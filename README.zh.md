@@ -1424,6 +1424,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **LingBot-Map** | 长 RGB 拍摄序列的流式位姿和深度研究；需自行调缓存并验证几何。 | Apache-2.0 | B（4/6） | [中](categories/3d-reconstruction/lingbot-map.zh.md) · [EN](categories/3d-reconstruction/lingbot-map.md) |
 | **Spirula Studio** | 当你想把视频或照片在一个解压即用的程序里变成高斯泼溅和带贴图的网格、任意厂商 GPU 都能跑（Vulkan）、自带 SfM、抠图和全景／鱼眼支持时用它——代价是只有一位维护者和 GPL-3.0。 | GPL-3.0 | C（6/6） | [中](categories/3d-reconstruction/spirula-studio.zh.md) · [EN](categories/3d-reconstruction/spirula-studio.md) |
 
 ### streaming-clients

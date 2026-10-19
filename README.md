@@ -1443,6 +1443,7 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **LingBot-Map** | Streaming pose/depth research on long RGB captures; tune caches and validate geometry yourself. | Apache-2.0 | B (4/6) | [EN](categories/3d-reconstruction/lingbot-map.md) · [中](categories/3d-reconstruction/lingbot-map.zh.md) |
 | **Spirula Studio** | Use it when you want video or photos to become a Gaussian splat and textured mesh in one unzip-and-run app on any-vendor GPU (Vulkan), with built-in SfM, masking and 360°/fisheye support — accepting a one-person maintainer and GPL-3.0. | GPL-3.0 | C (6/6) | [EN](categories/3d-reconstruction/spirula-studio.md) · [中](categories/3d-reconstruction/spirula-studio.zh.md) |
 
 ### streaming-clients
