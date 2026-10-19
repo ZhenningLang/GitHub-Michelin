@@ -1351,6 +1351,7 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | **Sherlock** | Simple, battle-tested username existence checks across 480+ social networks with org governance and a huge community — coarser profile-page signals, no dossier extraction. | MIT | A (6/6) | [EN](categories/osint/sherlock.md) · [中](categories/osint/sherlock.zh.md) |
 | **GHunt** | Authenticated deep-dive OSINT on Google accounts (Gmail→profile, Gaia ID, Drive, BSSID) using your own Google session — powerful, AGPL-3.0, highest ToS/legal risk. | AGPL-3.0 | B (5/6) | [EN](categories/osint/ghunt.md) · [中](categories/osint/ghunt.zh.md) |
 | **GhostTrack** | Zero-setup Termux menu that prints public metadata for an IP (ipwho.is region/ISP) or phone number (country, original carrier, timezone) plus a naive 24-site username check — no real location tracking, false-positive username hits, no license, unmaintained since 2024-01. | NONE (no LICENSE file — all rights reserved) | E (5/6) | [EN](categories/osint/ghosttrack.md) · [中](categories/osint/ghosttrack.zh.md) |
+| **Robin** | Investigate lawful onion-content topics through Tor search and model summaries; not a username checker or anonymity guarantee. | MIT | B (6/6) | [EN](categories/osint/robin.md) · [中](categories/osint/robin.zh.md) |
 
 ### knowledge-base
 

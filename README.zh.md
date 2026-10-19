@@ -1332,6 +1332,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | **Sherlock** | 在 480+ 社交网络做简单、久经考验的用户名存在性核查，组织治理、社区庞大——个人页信号较粗，不做档案提取。 | MIT | A（6/6） | [中](categories/osint/sherlock.zh.md) · [EN](categories/osint/sherlock.md) |
 | **GHunt** | 用你自己的 Google 会话对 Google 账户做认证式深挖 OSINT（Gmail→资料、Gaia ID、Drive、BSSID）——能力强，AGPL-3.0，ToS/法律风险最高。 | AGPL-3.0 | B（5/6） | [中](categories/osint/ghunt.zh.md) · [EN](categories/osint/ghunt.md) |
 | **GhostTrack** | Termux 上零配置的菜单脚本，打印一个 IP（ipwho.is 的地区/ISP）或手机号（国家、原始运营商、时区）的公开元数据，外加 24 站的粗糙用户名检查——并不能真正定位，用户名结果会误报，无许可证，2024-01 起无人维护。 | NONE (no LICENSE file — all rights reserved) | E（5/6） | [中](categories/osint/ghosttrack.zh.md) · [EN](categories/osint/ghosttrack.md) |
+| **Robin** | 通过 Tor 搜索和模型摘要调查有授权的洋葱网页主题；不做用户名探测，也不保证匿名。 | MIT | B（6/6） | [EN](categories/osint/robin.md) · [中](categories/osint/robin.zh.md) |
 
 ### knowledge-base
 

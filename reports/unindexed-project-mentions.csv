@@ -67,6 +67,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Termux](https://github.com/termux/termux-app) + a CLI agent,categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md,,no
 [TigerVNC](https://github.com/TigerVNC/tigervnc),categories/dev-utilities/ops-infra/rustdesk.md,,no
 [tldraw](https://github.com/tldraw/tldraw),categories/diagramming/excalidraw.md,,no
+[TorBot](https://github.com/DedSecInside/TorBot),categories/osint/robin.md,,no
 [v2rayA](https://github.com/v2rayA/v2rayA),categories/networking/dae.md,,no
 [v2rayN](https://github.com/2dust/v2rayN),categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 [vectorbt](https://github.com/polakowo/vectorbt),categories/investment-finance/backtrader.md,,no
