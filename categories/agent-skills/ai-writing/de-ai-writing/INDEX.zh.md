@@ -7,6 +7,7 @@
 
 | 条目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Plain Writing Skill** | 用字面化规则与前后示例补齐英文 agent 回复背景；不以保留作者声音为先。 | B（4/5） | [→](plain-writing-skill.zh.md) |
 | **Humanizer-zh** | 给已有中文稿去套话和模板腔，同时保住事实、确定程度和作者立场；31 个检查点，不是检测器。 | C（4/5） | [→](humanizer-zh.zh.md) |
 | **De-AI-Prompt-Enhancer-Writer-Booster-SKILL** | 中文去 AI 味套件，含 `de-AI-writing` 和 `good-writing` 两个 SKILL 文件夹；适合作者风格复现，但许可证不清。 | C（4/5） | [→](de-ai-prompt-enhancer-writer-booster-skill.zh.md) |
 | **shuorenhua** | 中文优先的去 AI 味改写 skill，带 protected spans、场景规则、多 harness 文档和 MIT 许可证。 | C（5/6） | [→](shuorenhua.zh.md) |
@@ -23,6 +24,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Plain Writing Skill](plain-writing-skill.zh.md) | ✅ | B（4/5） | 单份可移植 Markdown 文风指南，带改写命令与可选评测，没有机器强制执行。 |
 | [Humanizer-zh](humanizer-zh.zh.md) | ✅ | C（4/5） | 中文编辑说明：去掉套话、保住事实和不确定措辞；偏 Claude，不是检测器。 |
 | [Baoyu Skills](../content-production/baoyu-skills.zh.md) | ✅ | B（4/5） | 更宽的中文内容 / 发布套件；Humanizer-zh 更窄，聚焦去 AI 味改写。 |
 | 自写 voice guide | 未收录 | — | 更适合一个私有作者或品牌 voice；但不如公共 skill 可复用。 |
