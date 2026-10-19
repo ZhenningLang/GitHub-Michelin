@@ -13,6 +13,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **FluidUse** | Call specialized Core ML decisions from Swift and match form values to real Mac controls; not a general isolated agent. | C (5/6) | [→](fluiduse.md) |
 | **LiteRT-LM** | Use it when you want to run Gemma-class LLMs on phone/laptop/edge via Google's LiteRT runtime (CPU/GPU/NPU). | B (6/6) | [→](litert-lm.md) |
 | **BitNet** | Use it when you need fast, low-energy CPU inference of natively-trained 1.58-bit ternary LLMs on x86/ARM laptops, offline. | B (5/6) | [→](bitnet.md) |
 | **Google AI Edge Gallery** | Use it when you need to demo and benchmark on-device Gemma LLMs on real phones before building. | B (6/6) | [→](ai-edge-gallery.md) |
@@ -29,6 +30,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [FluidUse](fluiduse.md) | ✅ | C (5/6) | Call specialized Core ML decisions from Swift and match form values to real Mac controls; not a general isolated agent. |
 | [LiteRT-LM](litert-lm.md) | ✅ | B (6/6) | Use it when you want to run Gemma-class LLMs on phone/laptop/edge via Google's LiteRT runtime (CPU/GPU/NPU). |
 | [BitNet](bitnet.md) | ✅ | B (5/6) | Use it when you need fast, low-energy CPU inference of natively-trained 1.58-bit ternary LLMs on x86/ARM laptops, offline. |
 | [Google AI Edge Gallery](ai-edge-gallery.md) | ✅ | B (6/6) | Use it when you need to demo and benchmark on-device Gemma LLMs on real phones before building. |
