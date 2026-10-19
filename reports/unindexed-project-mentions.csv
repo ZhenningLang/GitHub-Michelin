@@ -347,6 +347,7 @@ Crawl4AI,categories/web-scraping/crawling-tools/firecrawl.md,,no
 Crawlee for Python,categories/web-scraping/crawling-tools/scrapling.md,,no
 create-t3-app (`t3-oss/create-t3-app`),categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-alt-cli.md,,no
 create-vite (`vitejs/vite`),categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-alt-cli.md,,no
+CreepJS,categories/networking/one-ip.md,,no
 CRNN + CTC implementations,categories/captcha/pytorch-captcha-recognition.md,,no
 crystal / claude-squad,categories/agent-frameworks/coding-agents/orchestration-and-review/claude-octopus.md,,no
 CSS `@keyframes` / transitions,categories/frontend-animation/anime.md,,no
@@ -504,6 +505,7 @@ GitNexus,categories/rag-retrieval/code-intelligence/ix.md,,no
 Glean,categories/rag-retrieval/code-intelligence/scip.md,,no
 GLiClass (knowledgator/GLiClass),categories/decision-models/laya.md,,no
 GLiNER,categories/healthcare-ai/openmed.md,,no
+Globalping,categories/networking/one-ip.md,,no
 glow,categories/terminal-ui/terminal-markdown-viewer.md,,no
 GluonTS,categories/ml-research/nlp-and-time-series/lstm-time-series.md,,no
 Glyphs / RoboFont,categories/dev-utilities/data-tools/fonttools.md,,no
