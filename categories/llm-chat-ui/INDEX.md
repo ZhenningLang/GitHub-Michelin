@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **LobeHub** | Self-host agent groups and pages, not cloud Workspace RBAC; substantial backend and commercial derivative restrictions. | B (5/6) | [→](lobehub.md) |
 | **NextChat** | Use it when you want a private, self-deployable multi-provider AI chat UI across web/desktop/mobile — not a multi-user RBAC team platform. | B (6/6) | [→](nextchat.md) |
 | **Open WebUI** | Use it when you serve local models through Ollama and want a ChatGPT-style web UI with accounts, group permissions and document RAG, even fully offline — but its license is not OSI-approved and forbids rebranding above 50 users without permission. | B (5/6) | [→](open-webui.md) |
 | **LibreChat** | Use it when an organisation wants one self-hosted, SSO-protected chat app where staff pick OpenAI, Anthropic, Bedrock, Azure or local models from one menu, with history in your database — but it requires MongoDB and ClickHouse has owned it since 2025. | B (5/6) | [→](librechat.md) |
@@ -19,7 +20,7 @@
 | [NextChat](nextchat.md) | ✅ | B (6/6) | Light, cross-platform, one-click-deploy chat UI; single-user-shaped, not RBAC/quota team admin. |
 | [Open WebUI](open-webui.md) | ✅ | B (5/6) | The shortest path from local models to a shared chat workspace, at the cost of a custom branding license, a CLA and a founder-dominated roadmap. |
 | [HiveChat](../team-chat/hivechat.md) | ✅ | D (3/6) | Admin-managed multi-user team chat with per-group model access and token quotas. |
-| Lobe Chat | 未收录 | — | Other self-hosted chat UIs named across the pages (some with multi-user/RBAC). |
+| [LobeHub](lobehub.md) | ✅ | B (5/6) | Formerly Lobe Chat; agent groups and pages do not implement cloud Workspace role governance in the reviewed OSS build. |
 
 ## What belongs here
 

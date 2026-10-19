@@ -862,6 +862,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **LobeHub** | Multi-provider agent groups and pages; reviewed OSS lacks cloud Workspace RBAC, with heavy backend and derivative restrictions. | LobeHub Community License | B (5/6) | [EN](categories/llm-chat-ui/lobehub.md) · [中](categories/llm-chat-ui/lobehub.zh.md) |
 | **NextChat** | Use it when you want a private, self-deployable multi-provider AI chat UI across web/desktop/mobile — not a multi-user RBAC team platform. | MIT | B (6/6) | [EN](categories/llm-chat-ui/nextchat.md) · [中](categories/llm-chat-ui/nextchat.zh.md) |
 | **Open WebUI** | Use it when you serve local models through Ollama and want a ChatGPT-style web UI with accounts, group permissions and document RAG, even fully offline — but its license is not OSI-approved and forbids rebranding above 50 users without permission. | NOASSERTION (Open WebUI License — BSD-3-Clause plus a branding clause above 50 users; CLA) | B (5/6) | [EN](categories/llm-chat-ui/open-webui.md) · [中](categories/llm-chat-ui/open-webui.zh.md) |
 | **LibreChat** | Use it when an organisation wants one self-hosted, SSO-protected chat app where staff pick OpenAI, Anthropic, Bedrock, Azure or local models from one menu, with history in your database — but it requires MongoDB and ClickHouse has owned it since 2025. | MIT | B (5/6) | [EN](categories/llm-chat-ui/librechat.md) · [中](categories/llm-chat-ui/librechat.zh.md) |

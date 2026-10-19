@@ -111,7 +111,7 @@ HiveChat 就是一个 Next.js 网页应用加一个 PostgreSQL 数据库，库�
 |---|---|---|---|
 | [LibreChat](../llm-chat-ui/librechat.zh.md) | ✅ | 需要更成熟、更大功能面，包括 RAG、assistants、代码解释器和多种认证后端时，选 LibreChat。 | MIT 许可且功能更广，但运维更重，也不如 HiveChat 专注小团队管理员-配额流程。 |
 | [Open WebUI](../llm-chat-ui/open-webui.zh.md) | ✅ | 本地模型服务、RBAC 和 pipelines 比多云供应商配额更重要时，选 Open WebUI。 | 更广也更活跃，但甜点区是 Ollama/本地模型服务，而不是 HiveChat 的按组配额定位。 |
-| Lobe Chat | 未收录 | 需要面向个人/进阶玩家的精致多服务商 UI、插件和自托管时，选 Lobe Chat。 | 不那么围绕 token 配额做集中式管理员团队治理。 |
+| [LobeHub](../llm-chat-ui/lobehub.zh.md) | ✅ | agent 团队和共享页面协作选 LobeHub；只有管理员配额流程足以抵偿维护风险时才选 HiveChat。 | LobeHub 后端更广，商业衍生品受限；此处不声称配额功能完全对等。 |
 | Chatbox / Cherry Studio | 未收录 | 每个人各自带 key，且不需要中心治理时，选桌面客户端。 | 没有中心管理员、分组、配额或共享服务端。 |
 | ChatGPT Team / Claude Team（SaaS） | 未收录 | 能接受零运维和锁定单一模型家族时，选托管团队 SaaS。 | HiveChat 用自托管、多供应商选择和密钥/数据掌控换取这份便利的反面。 |
 
@@ -149,6 +149,6 @@ HiveChat 就是一个 Next.js 网页应用加一个 PostgreSQL 数据库，库�
 - [推断] “休眠”只根据提交历史判断（2025-09-16 之后无提交）；没找到维护方的弃用声明，厂商也可能在别处继续开发。
 - [推断] 许可证：GitHub 报 `NOASSERTION`；`LICENSE` 文件是 Apache-2.0 加针对衍生作品的商业条款。frontmatter 为工具链保留 `Apache-2.0`，但你内部的某个改动算不算“分发衍生作品”，是本页不做的法律判断——把改过的版本交给客户之前请咨询律师。
 - [未验证] 所支持的模型供应商清单、认证集成（飞书/钉钉/企业微信）与能力（MCP SSE、图片理解、网络搜索）均取自 README；依赖前请对照当前代码/管理后台核实。
-- [推断] 对比结论（LibreChat/Open WebUI/Lobe Chat 更广或更成熟、桌面客户端缺中心管理）反映的是项目大致定位，不是基准化的正面对比；LibreChat 和 Open WebUI 已收录，Lobe Chat、桌面客户端和团队 SaaS 未收录。
+- [推断] 对比结论反映项目大致定位，不是基准化正面对比；LibreChat、Open WebUI 与 LobeHub 已收录，桌面客户端和团队 SaaS 此处没有页面。
 - [推断] token 额度是在每次请求时强制执行（超额就拦下对话），而不只是展示，这是从 README 的“按分组设置每月 Token 限额”功能推断的；没读执行这部分的代码。
 - [推断] 「中小团队」规模（约 5–50 人）是示意性框定，不是文档明确的硬上限；未找到公开的规模/负载数据。

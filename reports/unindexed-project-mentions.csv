@@ -724,8 +724,6 @@ LLMs-from-scratch (rasbt),categories/llm-training/study-and-experiments/train-ll
 llms.txt (`AnswerDotAI/llms-txt`),categories/agent-tooling/harness-extensions/tanstack-intent.md,,no
 LM Studio,categories/llm-inference/local-runtimes/llama-cpp.md,,no
 lm-evaluation-harness,categories/llm-eval/swe-bench.md,,no
-Lobe Chat,categories/llm-chat-ui/INDEX.md,,no
-Lobe Chat (`lobehub/lobe-chat`),categories/llm-chat-ui/librechat.md,,no
 lobe-icons,categories/web-ui/icon-libraries/thesvg.md,,no
 "Local RAG stacks (LlamaIndex / LangChain retrievers, etc.)",categories/agent-skills/context-engineering/notebooklm-skill.md,,no
 LocalAI,categories/llm-inference/local-runtimes/shimmy.md,,no

@@ -124,7 +124,7 @@ LibreChat 是一个夹在用户和模型服务商之间的 Web 应用（React �
 | [Open WebUI](open-webui.zh.md) | ✅ | 给全公司做一个接多家云服务商的聊天门户，选 LibreChat；以 Ollama 本地模型为中心、且要用 SQLite 或 Postgres 替代 MongoDB 时，选 Open WebUI。 | Open WebUI 起步更轻，本地模型和内置 RAG 更强，但许可证要求超过 50 个用户时必须保留“Open WebUI”品牌；LibreChat 是 MIT，代价是要运维 MongoDB、Meilisearch 和 pgvector。 |
 | [NextChat](nextchat.zh.md) | ✅ | 几分钟部署一个自带 key 的个人客户端，选 NextChat；一旦需要每人一个账号和服务端历史，选 LibreChat。 | NextChat 单容器、历史存浏览器、只有一个共享密码；LibreChat 要付出一套数据库，换来 SSO、搜索、智能体和管理面板。 |
 | [HiveChat](../team-chat/hivechat.zh.md) | ✅ | 小团队主要诉求是按分组分配模型和 token 额度、想要轻量的 Postgres 应用时，选 HiveChat；更看重智能体、MCP、文件检索和多种认证后端时，选 LibreChat。 | HiveChat 范围更窄、更好运维，但更年轻、更不活跃；LibreChat 功能面更大，运维也更重。 |
-| Lobe Chat（`lobehub/lobe-chat`） | 未收录 | 最看重精致的消费级界面和它的插件、智能体市场时，选 Lobe Chat；要企业认证和服务商覆盖面时，选 LibreChat。 | 两者都是 TypeScript 聊天平台；我们没读过 Lobe Chat 的仓库，这里的定位是一般印象，未经核实。 |
+| [LobeHub](lobehub.zh.md) | ✅ | 单点登录和可编辑角色权限决定选型时，选 LibreChat；不要求云端 Workspace RBAC、只取团队和页面流程时，再评估公开版 LobeHub。 | 原 Lobe Chat；已读 OSS 角色中间件直通，且尽管包清单写 MIT，真实 LICENSE 仍限制商业衍生品分发。 |
 | [Dify](../agent-frameworks/workflow-builders/dify.zh.md) | ✅ | 要搭建并发布 LLM 应用和工作流，选 Dify；要给员工一个统一的聊天工作台，选 LibreChat。 | Dify 是应用和工作流搭建平台，许可证带附加条件；LibreChat 是终端用户聊天应用，不是搭建器。 |
 
 ## 技术栈

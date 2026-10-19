@@ -859,6 +859,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **LobeHub** | 多模型 agent 团队与页面；已读 OSS 无云端工作区角色治理，后端较重，商业衍生品受限。 | LobeHub Community License | B（5/6） | [中](categories/llm-chat-ui/lobehub.zh.md) · [EN](categories/llm-chat-ui/lobehub.md) |
 | **NextChat** | 当你想要一个私有、可自部署、跨 web/桌面/移动 的多 provider AI 聊天前端时用它——不是多用户 RBAC 团队平台。 | MIT | B（6/6） | [中](categories/llm-chat-ui/nextchat.zh.md) · [EN](categories/llm-chat-ui/nextchat.md) |
 | **Open WebUI** | 当你用 Ollama 跑本地模型，想要一个带账号、分组权限和文档问答的 ChatGPT 式网页界面，甚至完全离线运行时用它——但许可证不是 OSI 认可的，超过 50 个用户的部署未经许可不得换品牌。 | NOASSERTION (Open WebUI License — BSD-3-Clause plus a branding clause above 50 users; CLA) | B（5/6） | [中](categories/llm-chat-ui/open-webui.zh.md) · [EN](categories/llm-chat-ui/open-webui.md) |
 | **LibreChat** | 当一个组织想要一套挂在 SSO 后面的自托管聊天应用，让员工在同一个菜单里选 OpenAI、Anthropic、Bedrock、Azure 或本地模型，聊天记录留在自己的数据库里时用它——但必须用 MongoDB，且自 2025 年起归 ClickHouse 所有。 | MIT | B（5/6） | [EN](categories/llm-chat-ui/librechat.md) · [中](categories/llm-chat-ui/librechat.zh.md) |

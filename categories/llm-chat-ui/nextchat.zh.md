@@ -121,7 +121,7 @@ NextChat 是一个 Next.js/React 应用：客户端是一个 PWA，对话和设�
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [LibreChat](librechat.zh.md) | ✅ | 需要完整多用户平台，而不是轻量单次部署客户端时，选 LibreChat。 | 账号、多种鉴权后端、RAG、assistants、代码解释器；能力强得多，也重得多。NextChat 是更轻的客户端，不是团队平台。 |
-| Lobe Chat | 未收录 | 需要精致的多服务商 UI、插件、知识库和可选多用户模式时，选 Lobe Chat。 | 功能面更宽，开启 cloud/DB 功能后更重。NextChat 保持极简、浏览器本地。 |
+| [LobeHub](lobehub.zh.md) | ✅ | 共享页面和 agent 团队比极简浏览器本地客户端更重要时，选 LobeHub。 | 原 Lobe Chat；后端更重，商业衍生品受授权限制。 |
 | [Open WebUI](open-webui.zh.md) | ✅ | Ollama/本地模型服务、RBAC、用户和 pipelines 比静态/Vercel 式客户端更重要时，选 Open WebUI。 | 它是强本地模型场景的自部署 UI，但需要服务器和数据库。NextChat 用这些能力换来了更简单的部署和更少后端运维。 |
 | [HiveChat](../team-chat/hivechat.zh.md) | ✅ | 需要管理员托管的团队聊天、按组模型权限、token 配额和 Postgres 用户账号时，选 HiveChat。 | HiveChat 正是 NextChat 社区版有意不去做的团队治理答案。 |
 | ChatGPT / Claude.ai（商业 SaaS） | 未收录 | 零运维厂商托管比自部署和服务商选择更重要时，选商业 SaaS。 | 锁定单一模型家族，数据由服务商持有。NextChat 用这份便利换来了自部署、多服务商选择和 key/数据掌控。 |
@@ -161,4 +161,4 @@ NextChat 是一个 Next.js/React 应用：客户端是一个 PWA，对话和设�
 - [未验证] 收费企业版的条款未在此核实——README 确在推销它（business@nextchat.club），但该产品闭源、独立于这个 MIT 仓库。
 - [推断]「社区版是单用户形态」是从「只有 `CODE` 密码的访问模型 + 浏览器本地存储」推断出来的，而非来自某个文档化的并发用户硬上限。
 - [推断]「维护减速」是把一段 48 天的静默与 14 个月的发版落差合起来读的；它可能无预警恢复——无论往哪个方向下注，都请先再核查。
-- [推断] 对比结论（LibreChat/Open WebUI 更宽、Lobe Chat 更重）反映的是一般项目定位，而非实测正面对决；LibreChat、Open WebUI、HiveChat 此处已收录，Lobe Chat 未收录。
+- [推断] 对比结论反映一般项目定位，而非实测正面对决；LibreChat、Open WebUI、HiveChat 与 LobeHub 此处已收录。

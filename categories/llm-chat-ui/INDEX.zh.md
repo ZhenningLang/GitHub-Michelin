@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **LobeHub** | 自托管 agent 团队与页面，不包含云端工作区角色治理；后端较重，商业衍生品受限。 | B（5/6） | [→](lobehub.zh.md) |
 | **NextChat** | 当你想要一个私有、可自部署、跨 web/桌面/移动 的多 provider AI 聊天前端时用它——不是多用户 RBAC 团队平台。 | B（6/6） | [→](nextchat.zh.md) |
 | **Open WebUI** | 当你用 Ollama 跑本地模型，想要一个带账号、分组权限和文档问答的 ChatGPT 式网页界面，甚至完全离线运行时用它——但许可证不是 OSI 认可的，超过 50 个用户的部署未经许可不得换品牌。 | B（5/6） | [→](open-webui.zh.md) |
 | **LibreChat** | 当一个组织想要一套挂在 SSO 后面的自托管聊天应用，让员工在同一个菜单里选 OpenAI、Anthropic、Bedrock、Azure 或本地模型，聊天记录留在自己的数据库里时用它——但必须用 MongoDB，且自 2025 年起归 ClickHouse 所有。 | B（5/6） | [→](librechat.zh.md) |
@@ -19,7 +20,7 @@
 | [NextChat](nextchat.zh.md) | ✅ | B（6/6） | 轻量、跨平台、一键部署的聊天前端；偏单用户，不做 RBAC/配额团队管理。 |
 | [Open WebUI](open-webui.zh.md) | ✅ | B（5/6） | 从本地模型到多人共享聊天工作台的最短路径，代价是带品牌条款的自定义许可、CLA 和创始人主导的路线图。 |
 | [HiveChat](../team-chat/hivechat.zh.md) | ✅ | D（3/6） | 管理员统管的多用户团队聊天，带分组模型权限和 token 配额。 |
-| Lobe Chat | 未收录 | — | 各页对比里点到的其他自托管聊天前端（部分带多用户/RBAC）。 |
+| [LobeHub](lobehub.zh.md) | ✅ | B（5/6） | 原 Lobe Chat；已读 OSS 的团队与页面不实现云端 Workspace 角色治理。 |
 
 ## 什么该放这里
 

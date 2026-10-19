@@ -24,7 +24,7 @@
 | [Buzz](buzz.zh.md) | ✅ | B（4/6） | 唯一让 agent 成为与人同处一条签名日志的持钥成员，但项目仅约 6 个月、pre-1.0，且需要 Postgres + Redis + S3。 |
 | [Macro](macro.zh.md) | ✅ | B（6/6） | 把聊天、Gmail、任务、文档和 CRM 连成一张 agent 可读的图，但它是一家年轻厂商以托管为主的产品，自托管要从源码编译约 40 个服务。 |
 | [HiveChat](hivechat.zh.md) | ✅ | D（3/6） | 换来集中保管 key、分组配额和飞书/钉钉/企业微信登录，一次部署全有；代价是必须配 Postgres、项目停在没发过版的 v0.1.0 且已休眠，许可证还限制分发衍生作品。 |
-| Lobe Chat | 未收录 | — | 各页面点到的其他自托管聊天界面。 |
+| [LobeHub](../llm-chat-ui/lobehub.zh.md) | ✅ | B（5/6） | 多模型 agent 团队与页面；已读 OSS 工作区角色检查直通，不是组织 RBAC。 |
 | Slack / Discord / Microsoft Teams | 未收录 | — | 各页面点到的托管 SaaS 团队聊天。 |
 
 ## 什么该放这里
