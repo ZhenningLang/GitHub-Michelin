@@ -14,6 +14,7 @@
 | **open-slide** | Use it when your coding agent should write a React slide deck on a fixed 1920×1080 canvas and you revise it by clicking elements and leaving comments — not when the deck must live as an editable PowerPoint file or be exported headlessly in CI. | C (6/6) | [→](open-slide.md) |
 | **SdPaint** | Use it when you already run AUTOMATIC1111 with ControlNet and want each brushstroke turned into a generated image live — but it has no model of its own and has been stalled since 2024-04. | D (3/6) | [→](sdpaint.md) |
 | **screenshot-to-code** | Use it when you have only a screenshot and want a self-hosted, close visual replica as one HTML file with your real images cropped in — not production components, and with no fidelity metric. | B (5/6) | [→](screenshot-to-code.md) |
+| **Open Intelligent UI** | Build chat answers as interactive calculators, maps and diagrams; requires hosted Jev routing and ephemeral checkpoint storage replacement for production. | B (4/6) | [→](open-intelligent-ui.md) |
 
 ## Comparison matrix
 
@@ -30,6 +31,7 @@
 | [Guizang Social Card Skill](../agent-skills/visual-content/guizang-social-card.md) | ✅ | D (3/5) | Portable social-card skill; moved to agent-skills because it is installed into an agent harness. |
 | [ian-xiaohei-illustrations](../agent-skills/visual-content/ian-illustrations.md) | ✅ | B (4/5) | Portable article-illustration skill; moved to agent-skills because it is selected as a skill. |
 | v0 / Lovable / tldraw make-real | 未收录 | — | Other agentic UI/design generators named across the pages. |
+| [Open Intelligent UI](open-intelligent-ui.md) | ✅ | B (4/6) | Build chat answers as interactive calculators, maps and diagrams; requires hosted Jev routing and ephemeral checkpoint storage replacement for production. |
 
 ## What belongs here
 

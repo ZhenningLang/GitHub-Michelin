@@ -395,6 +395,8 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Lieflat Charts** | 当你想让编码助手把数据做成模板锁定、可直接发布的单文件 HTML 图表或 12 套中英双语整页报告、整套交付共用一种编辑风视觉语言时用它。 | PolyForm-Noncommercial-1.0.0 | C（3/5） | [中](categories/agent-skills/visual-content/lieflat-charts.zh.md) · [EN](categories/agent-skills/visual-content/lieflat-charts.md) |
 | **SdPaint** | 当你已在跑带 ControlNet 的 AUTOMATIC1111、想让每一笔涂鸦实时变成生成图时用它——但它自身不带模型，且自 2024-04 起停滞。 | MIT | D（3/6） | [中](categories/ai-design-generation/sdpaint.zh.md) · [EN](categories/ai-design-generation/sdpaint.md) |
 | **screenshot-to-code** | 手里只有一张截图、想自建部署拿到一个带原图素材的单文件 HTML 复刻页时用它——产出不是工程化组件，也没有还原度指标。 | MIT | B（5/6） | [中](categories/ai-design-generation/screenshot-to-code.zh.md) · [EN](categories/ai-design-generation/screenshot-to-code.md) |
+| **Open Intelligent UI** | 把聊天回答变成计算器、地图和交互图；依赖托管 Jev 路由，生产部署需替换临时检查点。 | MIT | B（4/6） | [EN](categories/ai-design-generation/open-intelligent-ui.md) · [中](categories/ai-design-generation/open-intelligent-ui.zh.md) |
+
 ### dev-utilities
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |

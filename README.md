@@ -398,6 +398,8 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Lieflat Charts** | Use it when a coding agent must turn your data into template-locked, publish-ready single-file HTML charts or 12 bilingual full-page reports in one editorial visual language. | PolyForm-Noncommercial-1.0.0 | C (3/5) | [EN](categories/agent-skills/visual-content/lieflat-charts.md) · [中](categories/agent-skills/visual-content/lieflat-charts.zh.md) |
 | **SdPaint** | Use it when you already run AUTOMATIC1111 with ControlNet and want each brushstroke turned into a generated image live — but it has no model of its own and has been stalled since 2024-04. | MIT | D (3/6) | [EN](categories/ai-design-generation/sdpaint.md) · [中](categories/ai-design-generation/sdpaint.zh.md) |
 | **screenshot-to-code** | Use it when you have only a screenshot and want a self-hosted, close visual replica as one HTML file with your real images cropped in — not production components, and with no fidelity metric. | MIT | B (5/6) | [EN](categories/ai-design-generation/screenshot-to-code.md) · [中](categories/ai-design-generation/screenshot-to-code.zh.md) |
+| **Open Intelligent UI** | Build chat answers as interactive calculators, maps and diagrams; requires hosted Jev routing and ephemeral checkpoint storage replacement for production. | MIT | B (4/6) | [EN](categories/ai-design-generation/open-intelligent-ui.md) · [中](categories/ai-design-generation/open-intelligent-ui.zh.md) |
+
 ### dev-utilities
 
 | Project | Use when | License | Health | Page |
