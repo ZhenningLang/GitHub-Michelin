@@ -38,6 +38,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Frigate](https://github.com/blakeblackshear/frigate),categories/on-device-ml/cosmo-edge.md,,no
 [frp](https://github.com/fatedier/frp),categories/networking/opentunnel.md,,no
 [GHC / Haskell](https://github.com/ghc/ghc),categories/programming-languages/unison.md,,no
+[Gitea](https://github.com/go-gitea/gitea),categories/dev-utilities/ops-infra/harness-open-source.md,,no
 [google_workspace_mcp](https://github.com/taylorwilsdon/google_workspace_mcp),categories/agent-tooling/harness-extensions/hey-cli.md,,no
 [Hunyuan3D-2](https://github.com/Tencent-Hunyuan/Hunyuan3D-2),categories/3d-generation/modly.md,,no
 [HunyuanVideo](https://github.com/Tencent-Hunyuan/HunyuanVideo),categories/ml-research/vision-and-multimodal/open-sora.md,,no
@@ -98,6 +99,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [whoBIRD](https://github.com/woheller69/whoBIRD),categories/on-device-ml/birdnet-go.md,,no
 [WireGuard](https://github.com/WireGuard/wireguard-go),categories/networking/openflux.md,,no
 [wiresock/amneziawg-install](https://github.com/wiresock/amneziawg-install),categories/networking/amneziawg-installer.md,,no
+[Woodpecker](https://github.com/woodpecker-ci/woodpecker),categories/dev-utilities/ops-infra/harness-open-source.md,,no
 [World Monitor](https://github.com/koala73/worldmonitor),categories/geospatial/osiris.md,,no
 [XcodeGen](https://github.com/yonaskolb/XcodeGen),categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/xtool.md,,no
 "`/guard-secure`, `/guard-threat-model` style security skills in a personal/team skill stack",categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no

@@ -480,6 +480,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Effect** | 把 TypeScript 操作的错误、依赖和取消写进类型，并跑在一个零依赖的纤程运行时上，schema、HTTP、SQL 和追踪都在同一个包里——但这套模型会传染，4.0 才发布一周，核心之外的大多数模块还标着 unstable。 | MIT | A（6/6） | [中](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/effect.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/effect.md) |
 | **fzf** | 当你在终端里频繁从长列表（历史命令、文件、分支、进程）里挑一项、想用 CTRL-R、CTRL-T 边敲边筛时用它——但它只过滤喂给它的行、不搜文件内容，而且实际上是单人维护。 | MIT | A（6/6） | [EN](categories/dev-utilities/data-tools/fzf.md) · [中](categories/dev-utilities/data-tools/fzf.zh.md) |
 | **jq** | 当终端里满是嵌套 JSON（kubectl、aws、gh api、webhook 负载），你要用一行能接管道的命令抽取或过滤字段时用它——但不适合几 GB 的分析型查询、非 JSON 输入，或超过 2^53 的整数运算。 | MIT | A（5/6） | [EN](categories/dev-utilities/data-tools/jq.md) · [中](categories/dev-utilities/data-tools/jq.zh.md) |
+| **Harness Open Source** | 整合 Git 托管、容器 CI 和制品；部署前需审查 Docker 权限、默认上报和未解决的安全路径。 | 根许可 Apache-2.0；部分文件为 PolyForm | B（6/6） | [中](categories/dev-utilities/ops-infra/harness-open-source.zh.md) · [EN](categories/dev-utilities/ops-infra/harness-open-source.md) |
 | **Descheduler** | 当 Kubernetes 集群已经失衡、你想要一个 CronJob 定期驱逐违反策略的 Pod、让调度器重新安置它们时用它——它不是算出来的 placement 计划。 | Apache-2.0 | A（6/6） | [中](categories/dev-utilities/ops-infra/descheduler.zh.md) · [EN](categories/dev-utilities/ops-infra/descheduler.md) |
 
 ### frontend-animation
