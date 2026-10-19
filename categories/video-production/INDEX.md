@@ -20,6 +20,7 @@
 | **video-use** | Use it when a coding agent should cut a folder of raw takes from a packed transcript — confirm the plan, then ffmpeg — not generate footage; needs ElevenLabs Scribe, 22 commits under 27k stars. | B (4/5) | [→](video-use.md) |
 | **SeeCut** | Use it when a coding agent should polish your talking-head or AI-avatar A-roll into a high-energy motion short — real evidence screenshots on screen, every version gated by a video-native judge (Gemini via Antigravity CLI) — delivered as MP4 plus an editable JianYing layered draft; PolyForm noncommercial, 4 days old at verification. | D (4/6) | [→](seecut.md) |
 | **fframes** | Use it when code- or agent-authored motion graphics must render fast on your own GPU with no browser in the loop — Rust + SVG frames, linked libav, a per-project CLI that checks frames and loudness for an author that cannot watch — MIT, but a native toolchain, 1.0 only since 2026-09-28 and a single maintainer. | B (4/6) | [→](fframes.md) |
+| **Lemo-Opuscar** | Have a coding agent direct style-led films with deterministic browser frames, sound and reading-time checks; code MIT, gallery media CC BY. | C (4/6) | [→](lemo-opuscar.md) |
 
 
 ## Comparison matrix
@@ -41,6 +42,7 @@
 | [fframes](fframes.md) | ✅ | B (4/6) | Rust + SVG frames drawn by Skia on the GPU and encoded through linked libav, with inspect/strip/audio-analyze commands for agents; MIT and ~1.5× faster than Remotion's best in its own benchmark, paid for in a native build toolchain, no cloud renderer, 1.0 two days old, bus factor 1. |
 | Runway / Pika / HeyGen | 未收录 | — | Closed-source SaaS — faster one-click generation but no pipeline customization, no agent approval gates, no open-source extensibility. |
 | DaVinci Resolve / Premiere Pro | 未收录 | — | Professional NLEs — human editors, not agent-driven; the right tool when you need frame-level manual control and a traditional post-production team. |
+| [Lemo-Opuscar](lemo-opuscar.md) | ✅ | C (4/6) | Have a coding agent direct style-led films with deterministic browser frames, sound and reading-time checks; code MIT, gallery media CC BY. |
 
 
 ## What belongs here

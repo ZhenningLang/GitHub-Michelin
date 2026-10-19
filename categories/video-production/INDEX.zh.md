@@ -20,6 +20,7 @@
 | **video-use** | 当 coding agent 该对着一文件夹素材、靠打包转写稿来剪——先确认方案再 ffmpeg——而不是生成底片时用它；硬依赖 ElevenLabs Scribe，22 次提交却有 2.7 万 star。 | B（4/5） | [→](video-use.zh.md) |
 | **SeeCut** | 当 coding agent 该把真人/数字人口播 A-roll 精剪成高网感动效短视频时用它：画面铺真证据截图，每版都要过一个能看视频的 AI 评委（agy 调 Gemini），交付成片加可选的剪映分层草稿；PolyForm 非商用，验证时仅 4 天龄。 | D（4/6） | [→](seecut.zh.md) |
 | **fframes** | 当代码或 agent 写的动效视频要在自己的 GPU 上、不经浏览器快速渲染时用它——Rust + SVG 写帧、链接 libav 编码，每个项目自带给“看不见的作者”检查画面和响度的命令行；MIT 许可，但要原生工具链，1.0 在 2026-09-28 才发布，单人维护。 | B（4/6） | [→](fframes.zh.md) |
+| **Lemo-Opuscar** | 让编程助手按风格导演短片，逐帧渲染、配音并检查阅读时间；代码 MIT，画廊媒体另用 CC BY。 | C（4/6） | [→](lemo-opuscar.zh.md) |
 
 
 ## 对比矩阵
@@ -41,6 +42,7 @@
 | [fframes](fframes.zh.md) | ✅ | B（4/6） | Rust + SVG 写帧、Skia 在 GPU 上画、经链接的 libav 编码，带给 agent 用的 inspect／strip／audio analyze 命令；MIT，自测比 Remotion 最优配置快约 1.5 倍，代价是原生构建工具链、没有云渲染、1.0 仅两天、巴士因子为 1。 |
 | Runway / Pika / HeyGen | 未收录 | — | 闭源 SaaS——一键生成更快，但无管线定制、无 agent 审批门、无开源扩展性。 |
 | DaVinci Resolve / Premiere Pro | 未收录 | — | 专业非线性剪辑软件——面向人工剪辑师，非 agent 驱动；需要帧级手动控制与传统后期团队时选它。 |
+| [Lemo-Opuscar](lemo-opuscar.zh.md) | ✅ | C（4/6） | 让编程助手按风格导演短片，逐帧渲染、配音并检查阅读时间；代码 MIT，画廊媒体另用 CC BY。 |
 
 
 ## 什么该放这里
