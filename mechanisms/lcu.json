@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "agent", "en": "Existing coding harness", "zh": "现有编程宿主", "kind": "input"},
+    {"id": "relay", "en": "Relay tracks separate turn lifetimes", "zh": "中继跟踪独立轮次生命周期", "technique": [3]},
+    {"id": "select", "en": "Validate the local app and resolve original runtime", "zh": "核验本机应用并定位原始运行时", "technique": [1]},
+    {"id": "runtime", "en": "Installed proprietary computer-use engine", "zh": "已安装的闭源电脑控制引擎", "kind": "external", "technique": [1]},
+    {"id": "guard", "en": "Decline approval for agent-hosting apps", "zh": "拒绝承载 agent 的应用授权", "technique": [2]},
+    {"id": "person", "en": "Human approval for eligible macOS target", "zh": "由人批准符合条件的 macOS 目标", "kind": "external"},
+    {"id": "result", "en": "Window state and action results", "zh": "窗口状态与操作结果", "kind": "output"},
+    {"id": "end", "en": "Forward matching Stop or Interrupt", "zh": "转发对应 Stop 或 Interrupt", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "agent", "to": "relay"},
+    {"from": "relay", "to": "select"},
+    {"from": "select", "to": "runtime"},
+    {"from": "runtime", "to": "guard", "en": "macOS native-app approval", "zh": "macOS 原生应用授权"},
+    {"from": "guard", "to": "person", "en": "non-host target only", "zh": "仅非宿主目标"},
+    {"from": "person", "to": "runtime", "en": "approved scope", "zh": "批准的作用域"},
+    {"from": "runtime", "to": "result"},
+    {"from": "result", "to": "relay"},
+    {"from": "agent", "to": "end", "en": "turn finishes", "zh": "轮次结束"},
+    {"from": "end", "to": "runtime", "en": "original lifecycle cleanup", "zh": "原始生命周期清理"}
+  ],
+  "sources": ["lcu/runtime.mjs:25-60,210-264,538-568 at 99d0759a7610e38251037759a69fcdbef816a8c2", "adapters/host-guard.mjs:74-150 at 99d0759a7610e38251037759a69fcdbef816a8c2", "adapters/claude.mjs:43-99,221-290 at 99d0759a7610e38251037759a69fcdbef816a8c2"]
+}

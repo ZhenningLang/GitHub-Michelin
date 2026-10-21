@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "LCU", "zh": "LCU"},
+  "steps": [
+    {"lane": "you", "en": "Install the official app and harness; verify and extract the matching LCU release", "zh": "安装官方应用与宿主，核验并解压对应发布包"},
+    {"lane": "you", "en": "Register Codex from the extracted macOS release", "zh": "从解压后的 macOS 发布包注册 Codex", "code": "./scripts/install.sh --agent codex"},
+    {"lane": "them", "en": "Validate the installed app and register the computer-use adapter", "zh": "检查本机应用，注册电脑控制适配器", "component": {"en": "installer and adapter", "zh": "安装器与适配器"}},
+    {"lane": "you", "en": "Restart the harness, request a harmless window screenshot and approve access", "zh": "重启宿主，请求无敏感内容的窗口截图并批准访问"},
+    {"lane": "them", "en": "Run the installed app's computer-use engine and return the screenshot to the agent", "zh": "调用已装应用的电脑控制引擎，把截图返回 agent", "component": {"en": "original runtime and relay", "zh": "原始运行时与中继"}}
+  ],
+  "value": {"en": "Your existing coding agent can inspect a native app without you rebuilding desktop-control plumbing", "zh": "现有编程 agent 能读取原生应用，不必另写桌面控制接线"},
+  "sources": ["https://github.com/amontlabs/lcu/blob/99d0759a7610e38251037759a69fcdbef816a8c2/docs/INSTALLATION.md#macos", "https://github.com/amontlabs/lcu/blob/99d0759a7610e38251037759a69fcdbef816a8c2/README.md"]
+}
