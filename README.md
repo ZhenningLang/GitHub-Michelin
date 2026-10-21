@@ -1561,6 +1561,7 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **Call.md** | Use it when you want an open-source macOS meeting copilot that records you vs them, fires your MCP tools mid-call, and auto-drafts action items — accepting that capture and transcription run through VideoDB's cloud. | MIT | C (4/6) | [EN](categories/meeting-intelligence/call-md.md) · [中](categories/meeting-intelligence/call-md.zh.md) |
+| **Biscotti** | Keep meeting audio and post-call speaker-labeled summaries on an Apple Silicon Mac; accept macOS 15+ and a competition-restricting license. | PolyForm-Perimeter-1.0.1 | C (5/6) | [EN](categories/meeting-intelligence/biscotti.md) · [中](categories/meeting-intelligence/biscotti.zh.md) |
 
 ### social-media-management
 

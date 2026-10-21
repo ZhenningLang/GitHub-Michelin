@@ -1542,6 +1542,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **Call.md** | 当你想要一个开源 macOS 会议副驾驶：录下你与对方、会中自动调用你的 MCP 工具、会后自动起草行动项——同时接受录制与转写走 VideoDB 云。 | MIT | C（4/6） | [中](categories/meeting-intelligence/call-md.zh.md) · [EN](categories/meeting-intelligence/call-md.md) |
+| **Biscotti** | 在 Apple Silicon Mac 上本地保存会议录音、会后说话人标注和摘要；接受 macOS 15 以上与禁止竞争的许可。 | PolyForm-Perimeter-1.0.1 | C（5/6） | [中](categories/meeting-intelligence/biscotti.zh.md) · [EN](categories/meeting-intelligence/biscotti.md) |
 
 ### social-media-management
 

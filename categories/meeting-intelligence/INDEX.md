@@ -8,12 +8,14 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **Call.md** | Use it when you want an open-source macOS meeting copilot that records you vs them, fires your MCP tools mid-call, and auto-drafts action items — accepting that capture and transcription run through VideoDB's cloud. | C (4/6) | [→](call-md.md) |
+| **Biscotti** | Keep meeting audio and post-call speaker-labeled summaries on an Apple Silicon Mac; accept macOS 15+ and a competition-restricting license. | C (5/6) | [→](biscotti.md) |
 
 ## Comparison matrix
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [Call.md](call-md.md) | ✅ | C (4/6) | Use it when you want an open-source macOS meeting copilot that records you vs them, fires your MCP tools mid-call, and auto-drafts action items — accepting that capture and transcription run through VideoDB's cloud. |
+| [Biscotti](biscotti.md) | ✅ | C (5/6) | Native Mac recording and local post-call models, rather than cloud-backed live assistance; noncompete license. |
 | (alternatives named across the pages) | 未收录 | — | Substitutes referenced in each page's Comparison. |
 
 ## What belongs here
