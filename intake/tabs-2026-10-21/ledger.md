@@ -14,9 +14,9 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | gamedev-skills/awesome-gamedev-agent-skills | add | running |  | 已分派独立工作区调研；no leftover Q&A | gamedev-skills/awesome-gamedev-agent-skills |
 | IvanMurzak/Unity-MCP | add | running |  | 已分派独立工作区调研；no leftover Q&A | ivanmurzak/unity-mcp |
 | JimLiu/baoyu-design | add | running |  | 已分派独立工作区调研；no leftover Q&A | jimliu/baoyu-design |
-| kenn-io/agentsview | sync | running | categories/agent-tooling/session-history/agentsview.md | fresh：核验于 2026-09-28，距今 23 天，不重读上游、不改页面；no leftover Q&A | kenn-io/agentsview |
+| kenn-io/agentsview | sync | done | categories/agent-tooling/session-history/agentsview.md | fresh：核验于 2026-09-28，距今 23 天，不重读上游、不改页面；no leftover Q&A；commit 6ad7094a | kenn-io/agentsview |
 | kividbio/kividb | add | running |  | 已分派独立工作区调研；no leftover Q&A | kividbio/kividb |
-| Leonxlnx/taste-skill | sync | pending | categories/agent-skills/design/ui-taste/taste-skill.md |  | leonxlnx/taste-skill |
+| Leonxlnx/taste-skill | sync | running | categories/agent-skills/design/ui-taste/taste-skill.md | fresh：核验于 2026-09-27，距今 24 天，不重读上游、不改页面；no leftover Q&A | leonxlnx/taste-skill |
 | liseami/CCBaga | add | running |  | 已分派独立工作区调研；no leftover Q&A | liseami/ccbaga |
 | microg/GmsCore | add | running |  | 已分派独立工作区调研；no leftover Q&A | microg/gmscore |
 | OrchestratorInc/agent-orchestrator | sync | pending | categories/agent-tooling/supervision-surfaces/agent-orchestrator.md |  | orchestratorinc/agent-orchestrator |
