@@ -579,6 +579,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **awesome-gamedev-agent-skills** | Route engine/version-specific gameplay and asset recipes without an editor bridge. | Apache-2.0 | B (4/5) | [EN](categories/agent-skills/engineering/awesome-gamedev-agent-skills.md) · [中](categories/agent-skills/engineering/awesome-gamedev-agent-skills.zh.md) |
 | **Agent Skills (addyosmani)** | A curated pack of ~24 production-engineering skills (quality, security, web-perf, API, ship) installed into your coding agent and routed through ~8 SDLC slash commands. | MIT | A (4/5) | [EN](categories/agent-skills/engineering/addyosmani-agent-skills.md) · [中](categories/agent-skills/engineering/addyosmani-agent-skills.zh.md) |
 | **web-quality-skills** | A six-skill agent pack encoding Lighthouse / Core Web Vitals / WCAG / SEO best practices as on-demand instruction sets so a coding agent can audit and fix web-quality issues; advisory, not a measurement tool. | MIT | B (4/5) | [EN](categories/agent-skills/engineering/addyosmani-web-quality.md) · [中](categories/agent-skills/engineering/addyosmani-web-quality.zh.md) |
 | **Vercel Agent Skills** | Vercel's official agent-skill pack — install-on-demand React/Next.js/Vercel deploy, web-design, and docs audit guides in the agentskills.io/skills.sh format. | MIT | B (4/6) | [EN](categories/agent-skills/engineering/vercel-agent-skills.md) · [中](categories/agent-skills/engineering/vercel-agent-skills.zh.md) |

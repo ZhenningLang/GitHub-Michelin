@@ -576,6 +576,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **awesome-gamedev-agent-skills** | 按引擎版本选择玩法与素材配方，不接入编辑器桥接服务。 | Apache-2.0 | B（4/5） | [中](categories/agent-skills/engineering/awesome-gamedev-agent-skills.zh.md) · [EN](categories/agent-skills/engineering/awesome-gamedev-agent-skills.md) |
 | **Agent Skills (addyosmani)** | 约 24 个生产级工程技能包（质量/安全/web 性能/API/发布），装进 coding agent 并通过约 8 个 SDLC 斜杠命令路由。 | MIT | A（4/5） | [中](categories/agent-skills/engineering/addyosmani-agent-skills.zh.md) · [EN](categories/agent-skills/engineering/addyosmani-agent-skills.md) |
 | **web-quality-skills** | 含六个技能的 agent 技能包，把 Lighthouse / Core Web Vitals / WCAG / SEO 最佳实践编码成按需加载的指令集，让 coding agent 审计并修复 web 质量问题；属建议层，非测量工具。 | MIT | B（4/5） | [中](categories/agent-skills/engineering/addyosmani-web-quality.zh.md) · [EN](categories/agent-skills/engineering/addyosmani-web-quality.md) |
 | **Vercel Agent Skills** | Vercel 官方 agent-skill 包——按需安装的 React/Next.js/Vercel 部署、Web 设计与文档审查指南，采用 agentskills.io/skills.sh 格式。 | MIT | B（4/6） | [中](categories/agent-skills/engineering/vercel-agent-skills.zh.md) · [EN](categories/agent-skills/engineering/vercel-agent-skills.md) |

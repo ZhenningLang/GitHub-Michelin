@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Game-dev skills + agent", "zh": "游戏技能与助手"},
+  "steps": [
+    {"lane": "you", "en": "Install the router and game-dev skill catalog", "zh": "安装路由器与游戏技能目录", "code": "npx skills add gamedev-skills/awesome-gamedev-agent-skills"},
+    {"lane": "them", "en": "Expose short skill descriptions for selection", "zh": "提供简短技能说明，供助手选择", "component": {"en": "SKILL.md metadata", "zh": "技能元数据"}},
+    {"lane": "you", "en": "Ask for a double jump in your Godot project", "zh": "在 Godot 工程中请求加二段跳"},
+    {"lane": "them", "en": "Identify engine/version and read movement plus platformer guides", "zh": "识别版本，读移动与平台跳跃指引", "component": {"en": "router", "zh": "路由器"}},
+    {"lane": "them", "en": "Guide controller edits using the selected engine recipe", "zh": "按所选引擎配方指导角色控制器修改", "component": {"en": "movement + platformer skills", "zh": "移动与平台跳跃技能"}}
+  ],
+  "value": {"en": "Stop rebuilding the engine-and-gameplay briefing for every request; you still compile and playtest", "zh": "不必每次重讲引擎与玩法规则；编译和试玩仍由你负责"},
+  "sources": [
+    "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/0a70cfc64672d512c5b5b6006b5dcb5cf90dbdbd/README.md#L40-L90",
+    "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/0a70cfc64672d512c5b5b6006b5dcb5cf90dbdbd/router/SKILL.md#L161-L185",
+    "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/0a70cfc64672d512c5b5b6006b5dcb5cf90dbdbd/skills/godot/godot-2d-movement/SKILL.md#L27-L70"
+  ]
+}
