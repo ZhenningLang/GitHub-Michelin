@@ -19,12 +19,12 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | Leonxlnx/taste-skill | sync | done | categories/agent-skills/design/ui-taste/taste-skill.md | fresh：核验于 2026-09-27，距今 24 天，不重读上游、不改页面；no leftover Q&A；commit b200b6ac | leonxlnx/taste-skill |
 | liseami/CCBaga | add | running |  | 已分派独立工作区调研；no leftover Q&A | liseami/ccbaga |
 | microg/GmsCore | add | running |  | 已分派独立工作区调研；no leftover Q&A | microg/gmscore |
-| OrchestratorInc/agent-orchestrator | sync | running | categories/agent-tooling/supervision-surfaces/agent-orchestrator.md | fresh：核验于 2026-09-28，距今 23 天，不重读上游、不改页面；no leftover Q&A | orchestratorinc/agent-orchestrator |
+| OrchestratorInc/agent-orchestrator | sync | done | categories/agent-tooling/supervision-surfaces/agent-orchestrator.md | fresh：核验于 2026-09-28，距今 23 天，不重读上游、不改页面；no leftover Q&A；commit 08c7fec7 | orchestratorinc/agent-orchestrator |
 | private-candidate | add | running |  | 已分派独立工作区调研；no leftover Q&A | private-candidate |
 | public-clis/twitter-cli | add | running |  | 已分派独立工作区调研；no leftover Q&A | public-clis/twitter-cli |
 | Renhuai123/ziwei-doushu | add | running |  | 已分派独立工作区调研；no leftover Q&A | renhuai123/ziwei-doushu |
 | scosman/Biscotti | add | running |  | 已分派独立工作区调研；no leftover Q&A | scosman/biscotti |
-| tangency-labs/solidcraft | sync | pending | categories/cad/solidcraft.md |  | tangency-labs/solidcraft |
+| tangency-labs/solidcraft | sync | running | categories/cad/solidcraft.md | fresh：核验于 2026-10-18，距今 3 天，不重读上游、不改页面；no leftover Q&A | tangency-labs/solidcraft |
 | wshobson/agents | sync | pending | categories/agent-skills/subagent-collections/wshobson-agents.md |  | wshobson/agents |
 | zai-org/ZCode | add | running |  | 已分派独立工作区调研；no leftover Q&A | zai-org/zcode |
 | ZhenningLang/cpu-gpu-basic | skip | skipped |  | owner 是 ZhenningLang，标签不动 | zhenninglang/cpu-gpu-basic |
