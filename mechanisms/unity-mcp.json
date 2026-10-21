@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "metadata", "en": "Tool metadata in the Unity plugin", "zh": "Unity 插件中的工具元数据", "kind": "input"},
+    {"id": "skills", "en": "Generate CLI invocation skills", "zh": "生成 CLI 调用技能", "technique": [1]},
+    {"id": "agent", "en": "Agent chooses a tool call", "zh": "助手选择工具调用", "kind": "external"},
+    {"id": "server", "en": "MCP server routes to the plugin", "zh": "MCP 服务把调用转给插件"},
+    {"id": "compile", "en": "Prepare C# snippet with Roslyn", "zh": "通过 Roslyn 准备 C# 片段", "technique": [2]},
+    {"id": "queue", "en": "Queue for the editor update pump", "zh": "排队等待编辑器更新回调", "technique": [3]},
+    {"id": "execute", "en": "Bind live objects and execute on the main thread", "zh": "绑定真实对象，在主线程执行", "technique": [2, 3]},
+    {"id": "result", "en": "Serialized result or error returns to agent", "zh": "序列化结果或错误返回助手", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "metadata", "to": "skills"},
+    {"from": "skills", "to": "agent", "en": "invocation instructions", "zh": "调用说明"},
+    {"from": "agent", "to": "server"},
+    {"from": "server", "to": "compile", "en": "script-execute path", "zh": "代码执行路径"},
+    {"from": "compile", "to": "queue"},
+    {"from": "queue", "to": "execute"},
+    {"from": "execute", "to": "result"}
+  ],
+  "sources": [
+    "https://github.com/IvanMurzak/Unity-MCP/blob/c89aec4da7bc1d328f9d6813077598d30dceddbc/Unity-MCP-Plugin/Packages/com.ivanmurzak.unity.mcp/Editor/Scripts/Utils/UnitySkillFileGenerator.cs#L20-L100",
+    "https://github.com/IvanMurzak/Unity-MCP/blob/c89aec4da7bc1d328f9d6813077598d30dceddbc/Unity-MCP-Plugin/Packages/com.ivanmurzak.unity.mcp/Editor/Scripts/API/Tool/Script.Execute.cs#L101-L153",
+    "https://github.com/IvanMurzak/Unity-MCP/blob/c89aec4da7bc1d328f9d6813077598d30dceddbc/Unity-MCP-Plugin/Packages/com.ivanmurzak.unity.mcp/Runtime/Utils/MainThread.Editor.cs#L52-L89",
+    "https://github.com/IvanMurzak/Unity-MCP/blob/c89aec4da7bc1d328f9d6813077598d30dceddbc/docs/mcp-server.md#topology"
+  ]
+}

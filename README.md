@@ -1174,6 +1174,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **Unity-MCP** | Let an agent inspect and change a running Unity project; generated CLI skills and C# execution remove manual handoffs, but require broad editor trust and mixed-license review. | Apache-2.0 AND PolyForm-Shield-1.0.0 | B (6/6) | [EN](categories/game-dev/unity-mcp.md) · [中](categories/game-dev/unity-mcp.zh.md) |
 | **pygame** | Use it when you are learning or teaching programming and want a small 2D Python game — window, event loop, sprites, sound — in a few dozen lines — but it is a CPU-blitting library with no editor or 3D, unreleased since 2024-09. | LGPL-2.1 | C (4/6) | [EN](categories/game-dev/pygame.md) · [中](categories/game-dev/pygame.zh.md) |
 | **kaplay** | Use it when you want a jam-scale 2D web game in plain JS/TS with zero engine ceremony — but for a long-lived product or 3D, the stalled stable line and 2D-only scope say look elsewhere. | MIT | B (6/6) | [EN](categories/game-dev/kaplay.md) · [中](categories/game-dev/kaplay.zh.md) |
 | **pyxel** | Use it when you want a retro pixel-art game in Python with built-in sprite/sound editors and one-command web export — but for 3D, a modern look, store/console shipping, or a team-owned engine, its fixed specs and single maintainer say look elsewhere. | MIT | B (5/6) | [EN](categories/game-dev/pyxel.md) · [中](categories/game-dev/pyxel.zh.md) |

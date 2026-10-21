@@ -1171,6 +1171,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **Unity-MCP** | 让助手读取、修改运行中的 Unity 项目；生成 CLI 技能与 C# 执行省去人工传话，但需信任编辑器权限并核验混合许可。 | Apache-2.0 AND PolyForm-Shield-1.0.0 | B（6/6） | [中](categories/game-dev/unity-mcp.zh.md) · [EN](categories/game-dev/unity-mcp.md) |
 | **pygame** | 当你在学或教编程、想用几十行可读的 Python 写出一个小型 2D 游戏（窗口、事件循环、精灵、声音）时用它——但它是 CPU 绘制的库，没有编辑器和 3D，且自 2024-09 的 2.6.1 起再没发版。 | LGPL-2.1 | C（4/6） | [中](categories/game-dev/pygame.zh.md) · [EN](categories/game-dev/pygame.md) |
 | **kaplay** | 想用纯 JS/TS 零仪式感地做一个 Jam 规模的 2D 网页游戏时用它——但要做长生命周期产品或 3D，停滞的稳定线和纯 2D 定位说明该另寻它路。 | MIT | B（6/6） | [中](categories/game-dev/kaplay.zh.md) · [EN](categories/game-dev/kaplay.md) |
 | **pyxel** | 想用 Python 做复古像素风小游戏、要自带精灵／音乐编辑器和一条命令导出网页时用它——但做 3D、现代画风、上商店或主机，或需要团队接手引擎时，固定规格和单人维护说明该另寻它路。 | MIT | B（5/6） | [中](categories/game-dev/pyxel.zh.md) · [EN](categories/game-dev/pyxel.md) |
