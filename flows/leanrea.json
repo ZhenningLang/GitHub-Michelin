@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Agent following leanrea", "zh": "遵循 leanrea 的 agent"},
+  "steps": [
+    {"lane": "you", "en": "Review and install the skill for your chosen agent", "zh": "审查技能，再为选定的 agent 安装", "code": "npx skills add aicodeking/leanrea"},
+    {"lane": "you", "en": "Supply an authorized target copy and ask one feature question", "zh": "提供有权检查的目标副本，问一个功能问题"},
+    {"lane": "them", "en": "Identify the artifact and run its cheapest inventory probes", "zh": "识别产物，先运行低成本线索检查", "component": {"en": "SKILL.md router", "zh": "SKILL.md 分流表"}},
+    {"lane": "them", "en": "Follow specific strings and calls into bounded code slices", "zh": "沿具体字符串和调用读取有限代码片段"},
+    {"lane": "them", "en": "Explain the feature with cited clues, inferences and unknowns", "zh": "引用线索解释功能，区分推断与未知"}
+  ],
+  "value": {"en": "Explain a shipped feature without first configuring an analysis tool server", "zh": "无需先配置分析工具服务器，就能据线索解释成品功能"},
+  "sources": [
+    "https://github.com/aicodeking/leanrea/blob/09ba4aa0217f82cd880f855a60b877f59f39b22b/README.md#L48-L74",
+    "https://github.com/aicodeking/leanrea/blob/09ba4aa0217f82cd880f855a60b877f59f39b22b/leanrea/SKILL.md#L10-L18",
+    "https://github.com/aicodeking/leanrea/blob/09ba4aa0217f82cd880f855a60b877f59f39b22b/leanrea/SKILL.md#L35-L63"
+  ]
+}

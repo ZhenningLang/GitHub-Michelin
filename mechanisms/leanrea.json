@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "target", "en": "Authorized artifact copy", "zh": "有权检查的产物副本", "kind": "input"},
+    {"id": "route", "en": "File type and magic bytes select a recipe", "zh": "按文件类型和特征字节选路线", "technique": [1]},
+    {"id": "tools", "en": "External CLI tools return imports and strings", "zh": "外部命令行工具返回导入和字符串", "kind": "external", "technique": [1]},
+    {"id": "slice", "en": "Hidden-file search and bounded code slices", "zh": "搜索隐藏文件，只读有限代码片段", "technique": [2]},
+    {"id": "evidence", "en": "Agent labels seen, inferred and unknown", "zh": "agent 区分亲见、推断和未知", "technique": [3]},
+    {"id": "answer", "en": "Cited explanation; no enforced evidence ledger", "zh": "带引用的解释；没有强制证据账本", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "target", "to": "route"},
+    {"from": "route", "to": "tools"},
+    {"from": "tools", "to": "slice"},
+    {"from": "slice", "to": "evidence"},
+    {"from": "evidence", "to": "answer"}
+  ],
+  "sources": [
+    "https://github.com/aicodeking/leanrea/blob/09ba4aa0217f82cd880f855a60b877f59f39b22b/leanrea/SKILL.md#L10-L18",
+    "https://github.com/aicodeking/leanrea/blob/09ba4aa0217f82cd880f855a60b877f59f39b22b/leanrea/SKILL.md#L35-L63"
+  ]
+}
