@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "mode", "en": "Resolve demo or real mode", "zh": "解析演示或真实模式", "kind": "input", "technique": [1]},
+    {"id": "demo", "en": "Rebuilt fictional demo store", "zh": "可重建的虚构演示存储", "technique": [1]},
+    {"id": "real", "en": "Real SQLite and service credentials", "zh": "真实 SQLite 与服务凭据", "technique": [1, 2]},
+    {"id": "checks", "en": "Cached per-connector status and reads", "zh": "各连接器的缓存状态与读取", "technique": [2]},
+    {"id": "board", "en": "External Paperclip board", "zh": "外部 Paperclip 看板", "kind": "external", "technique": [3]},
+    {"id": "bridge", "en": "Board projection with network breaker", "zh": "带网络断路器的看板投影", "technique": [3]},
+    {"id": "files", "en": "Deliverable names and deadlines", "zh": "交付物名称与截止时间", "kind": "input", "technique": [4]},
+    {"id": "queue", "en": "Classified and ranked human requests", "zh": "分类排序后的待人裁决事项", "technique": [4]},
+    {"id": "view", "en": "One operator's business dashboard", "zh": "单人经营操控看板", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "mode", "to": "demo", "en": "demo", "zh": "演示"},
+    {"from": "mode", "to": "real", "en": "real", "zh": "真实"},
+    {"from": "real", "to": "checks"},
+    {"from": "checks", "to": "view"},
+    {"from": "demo", "to": "view", "en": "fictional state only", "zh": "仅虚构状态"},
+    {"from": "board", "to": "bridge", "en": "when configured", "zh": "配置后", "style": "dashed"},
+    {"from": "bridge", "to": "view"},
+    {"from": "files", "to": "queue"},
+    {"from": "queue", "to": "view"}
+  ],
+  "sources": [
+    "https://github.com/Bennettxai/FounderOS/blob/fb974bfcdf529cb6c8faeb1473d561d26e3d103a/lib/paths.ts",
+    "https://github.com/Bennettxai/FounderOS/blob/fb974bfcdf529cb6c8faeb1473d561d26e3d103a/lib/connectors/index.ts",
+    "https://github.com/Bennettxai/FounderOS/blob/fb974bfcdf529cb6c8faeb1473d561d26e3d103a/founderos/lib/connectors/paperclip.ts",
+    "https://github.com/Bennettxai/FounderOS/blob/fb974bfcdf529cb6c8faeb1473d561d26e3d103a/founderos/lib/board-approvals.ts"
+  ]
+}

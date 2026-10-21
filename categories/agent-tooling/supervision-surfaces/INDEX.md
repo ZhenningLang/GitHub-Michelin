@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **FounderOS** | Put income, inbox and agent work on one local operator screen; real services and agent execution remain separate, and first-run data is fictional. | B (4/6) | [→](founderos.md) |
 | **Sphinx** | Pause a local Git push to answer source-grounded behavior questions; bypassable learning aid, not release authorization. | C (5/6) | [→](sphinx.md) |
 | **dsh-TUI** | Your DeepSeek Harness session has tools, approvals and background work scattered across text; dsh-TUI projects that state into terminal cards, panels and a session browser. | B (5/6) | [→](dsh-tui.md) |
 | **Agor** | Coordinate mixed coding agents and colleagues on live branch boards; BSL, database and execution-security operations remain yours. | D (6/6) | [→](agor.md) |
@@ -23,6 +24,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [FounderOS](founderos.md) | ✅ | B (4/6) | Broad MIT business cockpit over SQLite and external services, not a turnkey autonomous company or multi-user workspace. |
 | [Sphinx](sphinx.md) | ✅ | C (5/6) | Tests your prediction of committed behavior before Git continues; adds model cost and fallible grading rather than review findings. |
 | [dsh-TUI](dsh-tui.md) | ✅ | B (5/6) | Your DeepSeek Harness session has tools, approvals and background work scattered across text; dsh-TUI projects that state into terminal cards, panels and a session browser. |
 | [Agor](agor.md) | ✅ | D (6/6) | Coordinate mixed coding agents and colleagues on live branch boards; BSL, database and execution-security operations remain yours. |
