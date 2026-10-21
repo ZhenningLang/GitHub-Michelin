@@ -14,6 +14,7 @@
 | **sandboxing** | 隔离不可信代码与 agent 生成代码——虚拟机／内核级隔离运行时，以及建在其上的沙箱平台。 | [→](categories/sandboxing/INDEX.zh.md) |
 | **serverless** | 自己运维的 Kubernetes 原生 serverless／缩容到零服务层。 | [→](categories/serverless/INDEX.zh.md) |
 | **document-management** | 选「文档归档/OCR/打标签/全文检索」系统。 | [→](categories/document-management/INDEX.zh.md) |
+| **content-management** | 给网站编辑提供后台、内容模型、媒体和发布流程。 | [→](categories/content-management/INDEX.zh.md) |
 | **on-device-ml** | 选「在端侧/边缘设备（手机、笔记本、IoT）本地跑模型」的运行时。 | [→](categories/on-device-ml/INDEX.zh.md) |
 | **function-calling** | 选「把自然语言请求变成受 schema 约束的工具/函数调用」的模型与服务栈。 | [→](categories/function-calling/INDEX.zh.md) |
 | **web-automation** | 选「驱动/自动化 Web 界面」的工具——浏览器自动化，或页内自然语言 GUI agent。 | [→](categories/web-automation/INDEX.zh.md) |

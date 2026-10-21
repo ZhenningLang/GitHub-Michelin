@@ -114,6 +114,12 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | --- | --- | --- | --- | --- |
 | **Knative Serving** | Use it when HTTP services sit idle most of the day and you want revisioned rollouts plus autoscaling to zero without adopting a FaaS product. | Apache-2.0 | B (6/6) | [EN](categories/serverless/knative-serving.md) · [中](categories/serverless/knative-serving.zh.md) |
 
+### content-management
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **EmDash** | Editors need live publishing inside an Astro site; accept persistent state and platform-specific plugin sandbox limits. | MIT | B (6/6) | [EN](categories/content-management/emdash.md) · [中](categories/content-management/emdash.zh.md) |
+
 ### document-management
 
 | Project | Use when | License | Health | Page |

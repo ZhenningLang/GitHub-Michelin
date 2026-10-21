@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "them": {"en": "EmDash does", "zh": "EmDash 做的"},
+  "steps": [
+    {"lane": "you", "en": "Scaffold and start a Node.js Starter site", "zh": "生成并启动 Node.js Starter 站点", "code": "npm create emdash@latest"},
+    {"lane": "you", "en": "Open the admin, name the site, and register an administrator passkey", "zh": "打开后台，填写站点信息并注册管理员通行密钥"},
+    {"lane": "them", "en": "Apply the Starter content model and sample posts to SQLite", "zh": "把模板的内容模型和示例文章写入 SQLite"},
+    {"lane": "you", "en": "Edit the Welcome post and publish the changes", "zh": "修改 Welcome 文章并发布"},
+    {"lane": "them", "en": "Render the published version on the next home-page request", "zh": "在下次首页请求中呈现已发布版本"}
+  ],
+  "value": {"en": "Editors publish to your Astro site without a code commit or content rebuild", "zh": "编辑无需提交代码或重新构建内容，就能在 Astro 站点发布"},
+  "sources": [
+    "https://github.com/emdash-cms/emdash/blob/333abdeae27093db6ef9df9ecb8ae26eeea8dde6/docs/src/content/docs/getting-started.mdx#L24-L139"
+  ]
+}

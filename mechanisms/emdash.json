@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "model", "en": "Editor-defined collections and fields", "zh": "编辑定义集合和字段", "kind": "input", "technique": [1]},
+    {"id": "registry", "en": "Schema registry creates tables and stored columns", "zh": "模型注册器创建表和存储列", "technique": [1]},
+    {"id": "database", "en": "SQL content and publication state", "zh": "SQL 内容及发布状态", "kind": "external"},
+    {"id": "loader", "en": "Astro live loader defaults to published entries", "zh": "Astro 实时加载器默认查询已发布条目", "technique": [1]},
+    {"id": "page", "en": "Template renders current published content", "zh": "模板呈现当前已发布内容", "kind": "output"},
+    {"id": "manifest", "en": "Sandboxed plugin manifest and code", "zh": "沙箱插件清单与代码", "kind": "input", "technique": [2]},
+    {"id": "isolate", "en": "Worker isolate blocks direct outbound access", "zh": "Worker 隔离实例阻止直接出站访问", "technique": [2]},
+    {"id": "bridge", "en": "Host bridge checks declared capabilities", "zh": "宿主能力桥检查声明的权限", "technique": [2]}
+  ],
+  "edges": [
+    {"from": "model", "to": "registry"},
+    {"from": "registry", "to": "database"},
+    {"from": "database", "to": "loader"},
+    {"from": "loader", "to": "page"},
+    {"from": "manifest", "to": "isolate"},
+    {"from": "isolate", "to": "bridge", "en": "RPC, not direct database access", "zh": "远程调用，不直接访问数据库"},
+    {"from": "bridge", "to": "database", "en": "authorized calls", "zh": "授权调用"}
+  ],
+  "sources": [
+    "https://github.com/emdash-cms/emdash/blob/333abdeae27093db6ef9df9ecb8ae26eeea8dde6/packages/core/src/schema/registry.ts#L517-L629",
+    "https://github.com/emdash-cms/emdash/blob/333abdeae27093db6ef9df9ecb8ae26eeea8dde6/packages/core/src/loader.ts#L1764-L1799",
+    "https://github.com/emdash-cms/emdash/blob/333abdeae27093db6ef9df9ecb8ae26eeea8dde6/packages/cloudflare/src/sandbox/runner.ts#L349-L405",
+    "https://github.com/emdash-cms/emdash/blob/333abdeae27093db6ef9df9ecb8ae26eeea8dde6/packages/cloudflare/src/sandbox/bridge.ts#L424-L435"
+  ]
+}

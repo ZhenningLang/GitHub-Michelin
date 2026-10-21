@@ -15,6 +15,7 @@
 | **sandboxing** | Isolate untrusted or agent-generated code — VM/kernel isolation runtimes and the sandbox platforms built on them. | [→](categories/sandboxing/INDEX.md) |
 | **serverless** | Kubernetes-native serverless / scale-to-zero serving layers you operate yourself. | [→](categories/serverless/INDEX.md) |
 | **document-management** | Ingest, OCR, tag, and full-text-search scanned documents / paperwork. | [→](categories/document-management/INDEX.md) |
+| **content-management** | Give website editors a dashboard, content models, media, and publishing workflows. | [→](categories/content-management/INDEX.md) |
 | **on-device-ml** | Run ML / LLM inference locally on edge devices (phone, laptop, IoT) instead of in the cloud. | [→](categories/on-device-ml/INDEX.md) |
 | **function-calling** | Turn natural-language requests into schema-constrained tool/function calls — function-calling models and their serving stacks. | [→](categories/function-calling/INDEX.md) |
 | **web-automation** | Drive or automate a web UI — browser automation, or an in-page natural-language GUI agent. | [→](categories/web-automation/INDEX.md) |

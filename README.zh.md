@@ -111,6 +111,12 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | --- | --- | --- | --- | --- |
 | **Knative Serving** | 当 HTTP 服务一天里大部分时间闲着、你想要按 revision 的发布加缩容到零，又不想采用某个 FaaS 产品时用它。 | Apache-2.0 | B（6/6） | [中](categories/serverless/knative-serving.zh.md) · [EN](categories/serverless/knative-serving.md) |
 
+### content-management
+
+| 项目 | 何时使用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **EmDash** | 编辑需要在 Astro 网站内实时发稿；接受持久化状态，以及因平台而异的插件沙箱限制。 | MIT | B（6/6） | [中](categories/content-management/emdash.zh.md) · [EN](categories/content-management/emdash.md) |
+
 ### document-management
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
