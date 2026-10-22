@@ -1567,6 +1567,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **md2wechat** | 检查 Markdown、预览 HTML，再按明确请求创建微信草稿；排版 API 付费，源码可见许可限制商用。 | LicenseRef-md2wechat-Source-Available | D（6/6） | [中](categories/social-media-management/md2wechat-skill.zh.md) · [EN](categories/social-media-management/md2wechat-skill.md) |
 | **twitter-cli** | 把 X 账号信息流和书签变成 JSON／YAML；借用会话凭据，不是官方 API，已有未解决的兼容问题。 | Apache-2.0 | C（6/6） | [中](categories/social-media-management/twitter-cli.zh.md) · [EN](categories/social-media-management/twitter-cli.md) |
 | **SoloMCN** | 用本地 Claude Code 工作台制作视频系列，评审技能并交接发布。 | MIT | C（4/6） | [中](categories/social-media-management/solomcn.zh.md) · [EN](categories/social-media-management/solomcn.md) |
 | **Easel** | 在中文平台（小红书／抖音／知乎／B 站等）运营账号，想要一个自托管智能体工作台覆盖发现→创作→发布→归因、且带账号画像时用它——代价是项目只有一个月大（v0.x），小红书自动化有作者自述的风控暴露。 | Apache-2.0 | B（5/6） | [中](categories/social-media-management/easel.zh.md) · [EN](categories/social-media-management/easel.md) |

@@ -1586,6 +1586,7 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **md2wechat** | Inspect Markdown, review HTML and explicitly request WeChat drafts; paid formatting API and source-available commercial restrictions. | LicenseRef-md2wechat-Source-Available | D (6/6) | [EN](categories/social-media-management/md2wechat-skill.md) · [中](categories/social-media-management/md2wechat-skill.zh.md) |
 | **twitter-cli** | Feed and bookmarks from an X account as JSON/YAML; session-cookie access, not an official API, with unresolved compatibility reports. | Apache-2.0 | C (6/6) | [EN](categories/social-media-management/twitter-cli.md) · [中](categories/social-media-management/twitter-cli.zh.md) |
 | **SoloMCN** | Local Claude Code video-series workbench with reviewed skills and publishing handoff. | MIT | C (4/6) | [EN](categories/social-media-management/solomcn.md) · [中](categories/social-media-management/solomcn.zh.md) |
 | **Easel** | Use it when you run accounts on the Chinese platforms (Xiaohongshu/Douyin/Zhihu/Bilibili/…) and want one self-hosted agent workbench covering discover → create → publish → attribute with per-account profiles — accepting a one-month-old, v0.x project and platform risk-control exposure. | Apache-2.0 | B (5/6) | [EN](categories/social-media-management/easel.md) · [中](categories/social-media-management/easel.zh.md) |

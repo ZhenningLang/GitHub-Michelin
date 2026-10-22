@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "article", "en": "Markdown article and chosen target", "zh": "Markdown 文章与所选目标", "kind": "input"},
+    {"id": "inspect", "en": "Local metadata and readiness blockers", "zh": "本地元数据与准备状态阻断项", "technique": [1]},
+    {"id": "api", "en": "Paid conversion service", "zh": "付费转换服务", "kind": "external", "technique": [2]},
+    {"id": "prompt", "en": "AI prompt awaiting host execution", "zh": "等待宿主执行的 AI 提示词", "kind": "output", "technique": [2]},
+    {"id": "html", "en": "Validated final API HTML", "zh": "校验通过的 API 成品 HTML"},
+    {"id": "preview", "en": "Atomic local preview file", "zh": "原子写入的本地预览文件", "kind": "output", "technique": [3]},
+    {"id": "effects", "en": "Opt-in upload and draft side effects", "zh": "显式开启的上传与草稿副作用", "technique": [3]},
+    {"id": "draft", "en": "WeChat assets and unpublished draft", "zh": "微信素材与未发布草稿", "kind": "output"},
+    {"id": "local", "en": "Local semantic HTML and raster images", "zh": "本地语义 HTML 与位图", "technique": [4]},
+    {"id": "browser", "en": "Host browser follows embedded platform SOP", "zh": "宿主浏览器按内置平台规程操作", "kind": "external", "technique": [4]},
+    {"id": "otherdraft", "en": "Reopened and checked platform draft", "zh": "重开并核验的平台草稿", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "article", "to": "inspect", "en": "recommended inspect-first protocol", "zh": "规程建议先检查"},
+    {"from": "inspect", "to": "api", "en": "API path sends article content", "zh": "API 路径发送正文"},
+    {"from": "inspect", "to": "prompt", "en": "explicit AI mode instead", "zh": "显式选择 AI 模式", "style": "dashed"},
+    {"from": "api", "to": "html"},
+    {"from": "html", "to": "preview", "en": "standalone preview", "zh": "独立预览命令"},
+    {"from": "html", "to": "effects", "en": "publish path only", "zh": "仅发布路径", "style": "dashed"},
+    {"from": "effects", "to": "draft", "en": "draft also requires credentials and cover", "zh": "草稿还需凭据与封面", "style": "dashed"},
+    {"from": "article", "to": "local", "en": "separate sync prepare path", "zh": "独立跨平台准备路径", "style": "dashed"},
+    {"from": "local", "to": "browser", "en": "action required, not remote completion", "zh": "待宿主执行，不是远端完成", "style": "dashed"},
+    {"from": "browser", "to": "otherdraft", "en": "save and verify the same draft", "zh": "保存并核验同一草稿", "style": "dashed"}
+  ],
+  "sources": [
+    "internal/inspect/inspect.go:151-207,604-703 @ a8e2900033e5c9ee152a629e108fe57228ba31e6",
+    "internal/converter/api.go:74-140; internal/converter/ai.go:42-85 @ a8e2900033e5c9ee152a629e108fe57228ba31e6",
+    "cmd/md2wechat/preview.go:136-168; internal/publish/service.go:110-173 @ a8e2900033e5c9ee152a629e108fe57228ba31e6",
+    "internal/syncprepare/prepare.go:41-190; skills/md2wechat/references/sync/workflow.md:37-43 @ a8e2900033e5c9ee152a629e108fe57228ba31e6"
+  ]
+}
