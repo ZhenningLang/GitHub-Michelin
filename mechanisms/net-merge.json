@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "apps", "en": "Application TCP and UDP flows", "zh": "应用的 TCP 与 UDP 流", "kind": "input"},
+    {"id": "capture", "en": "Per-family /1 routes into TUN", "zh": "每地址族的 /1 路由导入虚拟网卡", "technique": [2]},
+    {"id": "v6", "en": "IPv6 policy; reject early when coverage differs", "zh": "IPv6 策略；覆盖不齐时尽早拒绝", "technique": [5]},
+    {"id": "stack", "en": "Userspace stack terminates captured flows", "zh": "用户态协议栈终止捕获的流"},
+    {"id": "probe", "en": "Per-interface and family TCP reachability", "zh": "逐接口与地址族的 TCP 可达探测", "technique": [3]},
+    {"id": "measure", "en": "Relay bytes drive weights; OS bytes are separate", "zh": "中转字节调整权重；系统字节另计", "technique": [4]},
+    {"id": "pick", "en": "Weighted new-flow choice; UDP releases load slot", "zh": "加权选择新流；UDP 立即释放负载槽", "technique": [1]},
+    {"id": "socket", "en": "Source and interface pinned socket", "zh": "绑定源地址和接口的套接字", "technique": [1, 2]},
+    {"id": "internet", "en": "Direct egress; one link per flow", "zh": "直接出站；每流只走一条链路", "kind": "output"},
+    {"id": "restore", "en": "Stop or later cleanup attempts state recovery", "zh": "停止或后续清理尝试恢复状态", "technique": [6]}
+  ],
+  "edges": [
+    {"from": "apps", "to": "capture"},
+    {"from": "capture", "to": "v6"},
+    {"from": "v6", "to": "stack", "en": "accepted flows", "zh": "获准的流"},
+    {"from": "stack", "to": "pick"},
+    {"from": "probe", "to": "pick", "en": "up / unknown / down tiers", "zh": "已通／未知／失败分层"},
+    {"from": "measure", "to": "pick", "en": "per-family weights", "zh": "逐地址族权重"},
+    {"from": "pick", "to": "socket"},
+    {"from": "socket", "to": "internet"},
+    {"from": "socket", "to": "measure", "en": "successful byte counts", "zh": "成功读写字节"},
+    {"from": "capture", "to": "restore", "en": "no session migration guarantee", "zh": "不保证会话迁移", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/tun/tun.go",
+    "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/engine/sched.go",
+    "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/engine/probe.go",
+    "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/engine/flowconn.go",
+    "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/tun/forward.go"
+  ]
+}

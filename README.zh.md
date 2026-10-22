@@ -1210,6 +1210,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **net-merge** | 让电脑的独立 TCP／UDP 流分走本地多出口；不用服务器，不做单流叠速或会话迁移。 | MIT | C（5/6） | [中](categories/networking/net-merge.zh.md) · [EN](categories/networking/net-merge.md) |
 | **Agent Mesh** | 认证身份后跨机调用私有 agent 服务；尚未到 1.0，需维护策略与凭据。 | Apache-2.0 | B（6/6） | [中](categories/networking/agentmesh.zh.md) · [EN](categories/networking/agentmesh.md) |
 | **One IP** | Worker 后端的出口、IP 与浏览器诊断；依赖外部数据，不认证 AI 账号可用性。 | AGPL-3.0-only | C（3/6） | [中](categories/networking/one-ip.zh.md) · [EN](categories/networking/one-ip.md) |
 | **OpenFlux** | 获授权的隧道实验需要切换多种承载通道。OpenFlux 把 IPv4 数据包送入可替换传输，再由你运营的出口转发。 | GPL-3.0-or-later | B（6/6） | [EN](categories/networking/openflux.md) · [中](categories/networking/openflux.zh.md) |

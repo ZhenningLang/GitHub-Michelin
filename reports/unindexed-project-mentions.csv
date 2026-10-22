@@ -65,6 +65,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Meetily](https://github.com/Zackriya-Solutions/meeting-minutes),categories/meeting-intelligence/biscotti.md,,no
 [MeshCentral](https://github.com/Ylianst/MeshCentral),categories/dev-utilities/ops-infra/rustdesk.md,,no
 [mihomo](https://github.com/MetaCubeX/mihomo),categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
+[mwan3](https://github.com/openwrt/packages/tree/master/net/mwan3),categories/networking/net-merge.md,,no
 [neomutt](https://github.com/neomutt/neomutt),categories/agent-tooling/harness-extensions/hey-cli.md,,no
 [Nethereum.Faucet](https://github.com/Nethereum/Nethereum.Faucet),categories/blockchain-dev-infrastructure/powfaucet.md,,no
 [NVIDIA open-gpu-kernel-modules](https://github.com/NVIDIA/open-gpu-kernel-modules) on Linux,categories/hackintosh/nvidia-macos-driver.md,,no
@@ -80,6 +81,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [openclaw/agent-skills](https://github.com/openclaw/agent-skills),categories/agent-skills/personal-collections/engineering-workflows/agent-scripts.md,,no
 [OpenCore Legacy Patcher](https://github.com/dortania/OpenCore-Legacy-Patcher),categories/hackintosh/nvidia-macos-driver.md,,no
 [openilink-tg](https://github.com/openilink/openilink-tg),categories/im-automation/openilink-hub.md,,no
+[OpenMPTCProuter](https://github.com/Ysurac/openmptcprouter),categories/networking/net-merge.md,,no
 [OpenSALT](https://github.com/opensalt/opensalt),categories/education-tutoring/os-taxonomy.md,,no
 [OpenSSF Scorecard](https://github.com/ossf/scorecard),categories/agent-governance/skillspector.md,,no
 [Operit](https://github.com/AAswordman/Operit),categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md,,no
