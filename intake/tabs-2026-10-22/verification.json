@@ -1,0 +1,139 @@
+{
+  "captured_at_utc": "2026-10-22T05:03:21.355178+00:00",
+  "this_run": {
+    "ledger_rows": 6,
+    "added": 0,
+    "synced_changed": 0,
+    "synced_fresh": 0,
+    "proposed": 5,
+    "skipped": 1,
+    "failed": 0,
+    "nonterminal": 0,
+    "public_candidates_rechecked": 4,
+    "unchanged_default_shas": 3,
+    "changed_default_shas": 1,
+    "anonymous_nonpublic_records": 2,
+    "repository_tabs_closed": 0
+  },
+  "browser_acceptance": {
+    "all_six_retained_rows_still_open": true,
+    "open_repository_tab_states": {
+      "proposed": 5,
+      "skipped": 1
+    },
+    "unmatched_repository_tabs": 0,
+    "done_repository_tabs_open": 0
+  },
+  "cross_round": {
+    "previous_unique_candidates": 29,
+    "current_retained_subset": 6,
+    "combined_unique_candidates": 29,
+    "no_double_counting": true
+  },
+  "public_checks": [
+    {
+      "repo": "breferrari/obsidian-mind",
+      "status": "proposed",
+      "previous_sha": "fae7be467fc5e23bf9d51df7207d41f0c07e2754",
+      "current_sha": "fae7be467fc5e23bf9d51df7207d41f0c07e2754",
+      "unchanged": true,
+      "worker_checked_at_utc": "2026-10-22T04:51:17Z",
+      "parent_head_recheck_exit": 0,
+      "source_urls": [
+        "https://github.com/breferrari/obsidian-mind/commit/fae7be467fc5e23bf9d51df7207d41f0c07e2754",
+        "https://github.com/breferrari/obsidian-mind/blob/fae7be467fc5e23bf9d51df7207d41f0c07e2754/LICENSE#L1-L13",
+        "https://github.com/kepano/obsidian-skills/blob/3ccff5338ea700537839b21900aa5358a0402c98/LICENSE#L1-L13",
+        "https://github.com/breferrari/obsidian-mind/tree/fae7be467fc5e23bf9d51df7207d41f0c07e2754",
+        "https://github.com/kepano/obsidian-skills/tree/3ccff5338ea700537839b21900aa5358a0402c98",
+        "https://github.com/breferrari/obsidian-mind/blob/fae7be467fc5e23bf9d51df7207d41f0c07e2754/.claude/scripts/lib/memory-recall.ts#L216-L245",
+        "https://github.com/breferrari/obsidian-mind/blob/fae7be467fc5e23bf9d51df7207d41f0c07e2754/.claude/scripts/lib/session-start.ts#L130-L209"
+      ],
+      "reason_zh": "保留 proposed：当前默认分支提交与上轮完全相同，目标文件没有变化。复用上轮固定源码取证：与 kepano/obsidian-skills 有十个同 blob 文件，其中八个为技能或参考文档；完整归档的 325 个文本文件扫描未找到 Steph Ango 的上游 MIT 版权声明。本轮重读双方 LICENSE，目标根 MIT 仍仅署 Brenno Ferrari。具体声明保留缺口未修复。README 致谢不等于补齐该声明。项目有实质记忆与 hook 实现；不因年轻、风险或部分同 blob 内容拒收，也不称其整体复制。此结论是 worth check 待裁决，不是侵权法律判决；未建页，未收录。"
+    },
+    {
+      "repo": "dzhng/skills",
+      "status": "proposed",
+      "previous_sha": "dc8f546c3adaa615ab86e8328449ae6efe23aca4",
+      "current_sha": "8e74252ad975acff3de6305299cf82c4b14cc026",
+      "unchanged": false,
+      "worker_checked_at_utc": "2026-10-22T04:51:34.535772Z",
+      "parent_head_recheck_exit": 0,
+      "source_urls": [
+        "https://github.com/dzhng/skills/commit/8e74252ad975acff3de6305299cf82c4b14cc026",
+        "https://github.com/dzhng/skills/compare/dc8f546c3adaa615ab86e8328449ae6efe23aca4...8e74252ad975acff3de6305299cf82c4b14cc026",
+        "https://github.com/dzhng/skills/blob/8e74252ad975acff3de6305299cf82c4b14cc026/LICENSE#L1-L13",
+        "https://github.com/helloianneo/ian-xiaohei-illustrations/blob/686575741a61e2c0be5e4c6d3615ebf6217dd322/LICENSE#L1-L13",
+        "https://github.com/dzhng/skills/tree/8e74252ad975acff3de6305299cf82c4b14cc026/skills/graphics/xiaohei-illustrations",
+        "https://github.com/dzhng/skills/blob/8e74252ad975acff3de6305299cf82c4b14cc026/README.md#L189-L205",
+        "https://github.com/dzhng/skills/commit/a424d1504b5e81090f1dc10a7f69b7bfe2d5a595",
+        "https://github.com/dzhng/skills/pull/11",
+        "https://github.com/dzhng/skills/blob/8e74252ad975acff3de6305299cf82c4b14cc026/skills/engineering/audit-choices/SKILL.md#L96-L136",
+        "https://github.com/dzhng/skills/blob/8e74252ad975acff3de6305299cf82c4b14cc026/skills/visual/screenshot-critique/scripts/receipts.mjs#L9-L19",
+        "https://github.com/dzhng/skills/blob/8e74252ad975acff3de6305299cf82c4b14cc026/skills/engineering/write-tests/SKILL.md#L10-L17"
+      ],
+      "reason_zh": "仍保留 proposed：默认分支新增一个提交，只修改四份工程测试规范，未修复小黑插画复制子树的原始 MIT 声明保留缺口。当前根 LICENSE 仍仅署 Copyright (c) 2026 David Zhang；原作者固定版本 LICENSE 署 Copyright (c) 2026 Ian，并要求保留版权和许可声明。当前复制子树全部六份 Markdown 未找到该声明，也没有子树 LICENSE／NOTICE；根目录无 NOTICE。README 仅有致谢及复制说明，不能替代 MIT 要求的声明。本结论是收录资格待裁决，不是侵权法律判定；不否定项目具有实质性的原创工程核心，也不称其已入库。",
+      "delta": {
+        "ahead_by": 1,
+        "changed_files": [
+          "skills/authoring/audit-agents/assets/example-agents.md",
+          "skills/engineering/code-review/SKILL.md",
+          "skills/engineering/implement-spec/SKILL.md",
+          "skills/engineering/write-tests/SKILL.md"
+        ],
+        "license_subtree_unchanged": true
+      }
+    },
+    {
+      "repo": "JimLiu/baoyu-design",
+      "status": "proposed",
+      "previous_sha": "6530033592bf7fa58bc1a5a2a2ad278da45213a9",
+      "current_sha": "6530033592bf7fa58bc1a5a2a2ad278da45213a9",
+      "unchanged": true,
+      "worker_checked_at_utc": "2026-10-22T04:49:53Z",
+      "parent_head_recheck_exit": 0,
+      "source_urls": [
+        "https://github.com/JimLiu/baoyu-design/commit/6530033592bf7fa58bc1a5a2a2ad278da45213a9",
+        "https://github.com/JimLiu/baoyu-design/blob/6530033592bf7fa58bc1a5a2a2ad278da45213a9/README.md#credits--license",
+        "https://github.com/JimLiu/baoyu-design/blob/6530033592bf7fa58bc1a5a2a2ad278da45213a9/LICENSE",
+        "https://github.com/JimLiu/baoyu-design/blob/6530033592bf7fa58bc1a5a2a2ad278da45213a9/skills/baoyu-design/references/upstream-sync/provenance.json",
+        "https://github.com/JimLiu/baoyu-design/blob/6530033592bf7fa58bc1a5a2a2ad278da45213a9/skills/baoyu-design/references/upstream-sync/apply-report.json"
+      ],
+      "reason_zh": "当前公开仓库 main 的 SHA 与既有资格审查目标完全一致，因此该提交树中的 README Credits、LICENSE、provenance 和 apply-report 目标文件未变。复用既有固定来源记录：项目有实际脚本和可复用组件，但记录包含从 Claude Design 产品前端提取和复制的内容，根 MIT 仅列 Jim Liu，既有所读资料未包含该提取部分的再许可证明。按 add-project worth check 的来源及许可真实性灰区和 intake-tabs 对闭源产品提取内容的合同，维持 proposed，交维护者裁决；这不是侵权判决，也不表示整个项目缺乏原创实现。"
+    },
+    {
+      "repo": "liseami/CCBaga",
+      "status": "proposed",
+      "previous_sha": "bdfb90ceadfc5fae6772ffff597bddecb0b73cc3",
+      "current_sha": "bdfb90ceadfc5fae6772ffff597bddecb0b73cc3",
+      "unchanged": true,
+      "worker_checked_at_utc": "2026-10-22T04:51:07Z",
+      "parent_head_recheck_exit": 0,
+      "source_urls": [
+        "https://github.com/liseami/CCBaga/commit/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3",
+        "https://github.com/liseami/CCBaga/tree/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3",
+        "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/NOTICE.md#vendored-interface",
+        "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/LICENSE",
+        "https://github.com/liseami/CCBaga/tree/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/vendor/cromma-ui",
+        "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/identities/store.rs#L452-L630"
+      ],
+      "reason_zh": "默认分支 SHA 与旧目标完全相同，旧版本文件内容未变。沿用原 proposed：上游 NOTICE 明示 vendor/cromma-ui 是复制的组件树，当前未含独立上游许可声明，要求发布前确认再分发条款并恢复必要声明。本轮也重新读取了该固定 SHA 的 NOTICE，文字仍与旧记录一致。根 MIT 和 GitHub 检测到 MIT 均不能替代第三方授权证据；缺声明不等于已证实无授权，不作侵权或违法定性。原创身份归档与恢复实现有实质内容，不因凭据功能、删除功能或项目年轻而拒收。等待 owner 裁决，不自动转为 ready_for_add。"
+    }
+  ],
+  "private_metadata_only": [
+    {
+      "alias": "private-candidate-1",
+      "private": true,
+      "detected_license": null,
+      "action": "propose",
+      "internal_content_read": false
+    },
+    {
+      "alias": "own-private-repository",
+      "private": true,
+      "detected_license": null,
+      "action": "skip",
+      "internal_content_read": false
+    }
+  ],
+  "evidence_boundary": "Current heads and the dzhng compare were rechecked by the parent. Same-tree historical research is explicitly reused; no upstream execution or new project page."
+}
