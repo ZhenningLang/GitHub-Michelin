@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "KiviDB does", "zh": "KiviDB 做的"},
+  "steps": [
+    {"lane": "you", "en": "Build the full server and start a local trial", "zh": "构建完整服务并启动本地试用", "code": "cargo build --release --features lua,tls"},
+    {"lane": "them", "en": "Accept Redis-protocol client connections on port 6380", "zh": "在 6380 端口接受 Redis 协议连接"},
+    {"lane": "you", "en": "Declare a product index and write product hashes", "zh": "声明商品索引并写入商品哈希", "code": "FT.CREATE · HSET"},
+    {"lane": "them", "en": "Maintain search indexes beside the stored product fields", "zh": "在原始商品字段旁维护搜索索引"},
+    {"lane": "you", "en": "Send a keyword query through your Redis client", "zh": "通过 Redis 客户端发送关键词查询", "code": "FT.SEARCH"},
+    {"lane": "them", "en": "Return matching product keys and fields", "zh": "返回匹配的商品键与字段"}
+  ],
+  "value": {"en": "Search the stored catalogue without synchronizing a second search service", "zh": "直接搜索已存商品，不再同步第二套搜索服务"},
+  "sources": [
+    "https://github.com/kividbio/kividb/blob/5b7addee851c6f04a4c0728b466d363a6eec2118/README.md#L159-L191",
+    "https://github.com/kividbio/kividb/blob/5b7addee851c6f04a4c0728b466d363a6eec2118/tests/e2e/modules/test_fulltext_search.py#L40-L52",
+    "https://github.com/kividbio/kividb/blob/5b7addee851c6f04a4c0728b466d363a6eec2118/tests/e2e/modules/test_fulltext_search.py#L94-L140"
+  ]
+}

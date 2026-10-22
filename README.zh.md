@@ -1109,6 +1109,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **KiviDB** | 试用多核 Redis 协议存储与集成关键词／向量搜索；关键服务迁移前先验证兼容性与恢复。 | AGPL-3.0-only | D（5/6） | [中](categories/databases/database-engines/kividb.zh.md) · [EN](categories/databases/database-engines/kividb.md) |
 | **DuckDB Object Storage** | 单写者条件下把原生数据库持久化到对象后端。 | MIT | C（6/6） | [中](categories/databases/database-engines/duckdb-object-storage.zh.md) · [EN](categories/databases/database-engines/duckdb-object-storage.md) |
 | **PikiwiDB** | 当大规模 Redis 数据集撑爆内存、内存成本成为主要负担时用它——RocksDB 落盘、兼容 Redis 协议，单节点可存数百 GB；但它以延迟换容量，若每次操作都要微秒级则不合适。 | BSD-3-Clause | B（6/6） | [中](categories/databases/database-engines/pikiwidb.zh.md) · [EN](categories/databases/database-engines/pikiwidb.md) |
 | **elasticsearch-dsl-py** | 只在阅读或迁移锁定 elasticsearch-dsl 8.17 及更老版本的遗留代码时用它——但它已归档；新代码请装 `elasticsearch>=8.18` 并改用 `elasticsearch.dsl`。 | Apache-2.0 | C（5/6） | [中](categories/databases/database-clients/elasticsearch-dsl-py.zh.md) · [EN](categories/databases/database-clients/elasticsearch-dsl-py.md) |

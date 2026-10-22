@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "client", "en": "Redis-protocol commands", "zh": "Redis 协议命令", "kind": "input"},
+    {"id": "gate", "en": "Shared command slots; exclusive transaction gate", "zh": "命令共享槽位；事务独占闸门", "technique": [2]},
+    {"id": "shards", "en": "Hash-selected memory shards with independent locks", "zh": "按哈希选择独立加锁的内存分片", "technique": [1]},
+    {"id": "search", "en": "Text candidates and FLAT or HNSW vector lookup", "zh": "文本候选与 FLAT 或 HNSW 向量查询", "technique": [3]},
+    {"id": "results", "en": "Stored values and search matches", "zh": "存储值与搜索匹配结果", "kind": "output"},
+    {"id": "cut", "en": "Freeze dataset and rotate the write delta", "zh": "冻结数据集并轮换写入增量", "technique": [4]},
+    {"id": "disk", "en": "Snapshot plus generation-marked AOF delta", "zh": "快照加带代次的 AOF 增量", "kind": "output", "technique": [4]}
+  ],
+  "edges": [
+    {"from": "client", "to": "gate"},
+    {"from": "gate", "to": "shards"},
+    {"from": "shards", "to": "search"},
+    {"from": "shards", "to": "results", "en": "key-value reads", "zh": "键值读取"},
+    {"from": "search", "to": "results"},
+    {"from": "shards", "to": "cut"},
+    {"from": "cut", "to": "disk"}
+  ],
+  "sources": [
+    "https://github.com/kividbio/kividb/blob/5b7addee851c6f04a4c0728b466d363a6eec2118/src/store/mod.rs#L12-L179",
+    "https://github.com/kividbio/kividb/blob/5b7addee851c6f04a4c0728b466d363a6eec2118/src/command_gate.rs#L1-L60",
+    "https://github.com/kividbio/kividb/blob/5b7addee851c6f04a4c0728b466d363a6eec2118/src/commands/search.rs#L1220-L1259",
+    "https://github.com/kividbio/kividb/blob/5b7addee851c6f04a4c0728b466d363a6eec2118/src/aof.rs#L574-L752"
+  ]
+}

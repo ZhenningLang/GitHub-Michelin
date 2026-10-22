@@ -1112,6 +1112,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **KiviDB** | Trial multi-core Redis-protocol storage with integrated keyword/vector search; validate compatibility and recovery before migrating a critical service. | AGPL-3.0-only | D (5/6) | [EN](categories/databases/database-engines/kividb.md) · [中](categories/databases/database-engines/kividb.zh.md) |
 | **DuckDB Object Storage** | Native database persistence through a single-writer object-backed filesystem. | MIT | C (6/6) | [EN](categories/databases/database-engines/duckdb-object-storage.md) · [中](categories/databases/database-engines/duckdb-object-storage.zh.md) |
 | **PikiwiDB** | Use it when a large Redis dataset has blown past RAM and memory cost dominates — RocksDB-backed, Redis-protocol, so one node holds hundreds of GB; but it trades latency for capacity, wrong if every op must be microsecond-fast. | BSD-3-Clause | B (6/6) | [EN](categories/databases/database-engines/pikiwidb.md) · [中](categories/databases/database-engines/pikiwidb.zh.md) |
 | **elasticsearch-dsl-py** | Use it only to read or migrate legacy code pinned to elasticsearch-dsl 8.17 or older — but it is archived; for new code install `elasticsearch>=8.18` and import `elasticsearch.dsl` instead. | Apache-2.0 | C (5/6) | [EN](categories/databases/database-clients/elasticsearch-dsl-py.md) · [中](categories/databases/database-clients/elasticsearch-dsl-py.zh.md) |
