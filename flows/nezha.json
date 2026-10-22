@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Nezha", "zh": "Nezha"},
+  "steps": [
+    {"lane": "you", "en": "Install Nezha and an authenticated Claude Code or Codex CLI", "zh": "安装 Nezha，备好已登录的助手命令行"},
+    {"lane": "you", "en": "Open a repo, describe a task, and explicitly select worktree mode and a base branch", "zh": "打开仓库写任务，主动选工作树及基准分支"},
+    {"lane": "them", "en": "Creates a task branch and working directory, then starts the chosen agent there", "zh": "创建任务分支与目录，再在其中启动助手", "component": {"en": "Git worktree and PTY", "zh": "Git 工作树与伪终端"}},
+    {"lane": "them", "en": "Shows the live terminal and flags permission requests or completed turns", "zh": "显示实时终端，标出待审批或本轮结束", "component": {"en": "Hook bridge and task board", "zh": "hook 桥接与任务看板"}},
+    {"lane": "you", "en": "Open the waiting task and inspect its conversation and Git diff before deciding", "zh": "打开待处理任务，看对话与差异再作决定"}
+  ],
+  "value": {"en": "Find the task that needs you and review its changes without hunting across terminals and Git clients", "zh": "不用逐个翻终端和 Git 客户端，就能找到待处理任务并审查改动"},
+  "sources": [
+    "https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/README_EN.md#L52-L103",
+    "https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src/components/new-task/LaunchModeSelector.tsx",
+    "https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src/App.tsx#L789-L850",
+    "https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/event_watcher.rs#L154-L285"
+  ]
+}

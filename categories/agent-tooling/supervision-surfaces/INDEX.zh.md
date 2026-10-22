@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Nezha** | 在本地用终端、会话与 Git 视图监管 Claude Code／Codex；须主动选工作树，并接受启动时的 hook 改动。 | C（6/6） | [→](nezha.zh.md) |
 | **FounderOS** | 在本地单人界面汇总收入、收件箱与 agent 工作；真实服务和执行后端另接，首次启动的数据是虚构的。 | B（4/6） | [→](founderos.zh.md) |
 | **Sphinx** | 本地 Git 推送前，按源码回答行为题；可绕过的学习辅助，不是发布授权。 | C（5/6） | [→](sphinx.zh.md) |
 | **dsh-TUI** | DeepSeek Harness 的工具、审批和后台任务散在文字里。dsh-TUI 把这些状态投影成终端卡片、面板和会话浏览器。 | B（5/6） | [→](dsh-tui.zh.md) |
@@ -24,6 +25,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Nezha](nezha.zh.md) | ✅ | C（6/6） | 聚焦两种助手任务与 Git 流程的 Tauri 桌面；工作树可选，会改 Codex 全局 hook，退出应用不保活。 |
 | [FounderOS](founderos.zh.md) | ✅ | B（4/6） | SQLite 与外部服务上的 MIT 经营操控界面，不是开箱即用的自治公司，也不是多人工作区。 |
 | [Sphinx](sphinx.zh.md) | ✅ | C（5/6） | Git 继续前测试你对已提交行为的预测；增加模型费用与可能误判，不产代码评审意见。 |
 | [dsh-TUI](dsh-tui.zh.md) | ✅ | B（5/6） | DeepSeek Harness 的工具、审批和后台任务散在文字里。dsh-TUI 把这些状态投影成终端卡片、面板和会话浏览器。 |
