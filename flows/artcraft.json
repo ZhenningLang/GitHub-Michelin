@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "ArtCraft does", "zh": "ArtCraft 做的"},
+  "steps": [
+    {"lane": "you", "en": "Prepare the desktop toolchain, launch the app and sign in", "zh": "准备桌面工具链，启动应用并登录", "code": "./script/artcraft/unix_dev.sh"},
+    {"lane": "you", "en": "Place cleared assets, pose the character and frame the stage camera", "zh": "摆放有授权的素材，调整人物姿势和场景机位"},
+    {"lane": "them", "en": "Capture the camera frame and automatically upload the still to the gallery", "zh": "按相机画面截图，自动上传静态图到图库", "component": {"en": "Scene editor", "zh": "场景编辑器"}},
+    {"lane": "you", "en": "Open the image for editing, choose a cloud model and describe the desired shot", "zh": "打开图片继续编辑，选云端模型并描述目标镜头"},
+    {"lane": "them", "en": "Submit the reference and prompt, track the remote job and show its result", "zh": "提交参考图和提示词，追踪远程任务并展示结果", "component": {"en": "Native client and cloud API", "zh": "原生客户端与云端接口"}},
+    {"lane": "you", "en": "Choose a usable generated image and download it", "zh": "挑选可用的生成图片并下载"}
+  ],
+  "value": {"en": "A model-generated shot guided by your staged composition, without wiring the scene editor to a provider yourself", "zh": "用自己摆好的构图引导模型出图，不必自行对接场景编辑器和供应商"},
+  "sources": [
+    "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/_docs/dev_setup.md",
+    "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/README.md",
+    "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/frontend/libs/components/pagescene/src/lib/actions/recordOutput.ts",
+    "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/frontend/libs/components/pagescene/src/lib/comps/CompletionModal/CompletionModal.tsx",
+    "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/frontend/libs/components/pagescene/src/lib/adapter.ts#L264-L278",
+    "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/crates/desktop/artcraft/src/core/commands/generate/omni/dispatch.rs"
+  ]
+}

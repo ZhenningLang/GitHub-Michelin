@@ -26,6 +26,7 @@
 | **video-use** | Use it when a coding agent should cut a folder of raw takes from a packed transcript — confirm the plan, then ffmpeg — not generate footage; needs ElevenLabs Scribe, 22 commits under 27k stars. | B (4/5) | [→](video-use.md) |
 | **SeeCut** | Use it when a coding agent should polish your talking-head or AI-avatar A-roll into a high-energy motion short — real evidence screenshots on screen, every version gated by a video-native judge (Gemini via Antigravity CLI) — delivered as MP4 plus an editable JianYing layered draft; PolyForm noncommercial, 4 days old at verification. | D (4/6) | [→](seecut.md) |
 | **Lemo-Opuscar** | Have a coding agent direct style-led films with deterministic browser frames, sound and reading-time checks; code MIT, gallery media CC BY. | C (4/6) | [→](lemo-opuscar.md) |
+| **ArtCraft** | Stage a camera and character pose before cloud image/video generation; permissive desktop code, separately restricted backend and excluded demo assets. | A (6/6) | [→](artcraft.md) |
 
 
 ## Comparison matrix
@@ -48,6 +49,7 @@
 | Runway / Pika / HeyGen | 未收录 | — | Closed-source SaaS — faster one-click generation but no pipeline customization, no agent approval gates, no open-source extensibility. |
 | DaVinci Resolve / Premiere Pro | 未收录 | — | Professional NLEs — human editors, not agent-driven; the right tool when you need frame-level manual control and a traditional post-production team. |
 | [Lemo-Opuscar](lemo-opuscar.md) | ✅ | C (4/6) | Have a coding agent direct style-led films with deterministic browser frames, sound and reading-time checks; code MIT, gallery media CC BY. |
+| [ArtCraft](artcraft.md) | ✅ | A (6/6) | Visual 2D/3D composition instead of inference-graph authoring; cloud jobs and auto-uploaded captures, not local inference or a wholly permissive service stack. |
 
 
 ## What belongs here

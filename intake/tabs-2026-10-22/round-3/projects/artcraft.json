@@ -1,0 +1,245 @@
+{
+  "repo": "storytold/artcraft",
+  "status": "done",
+  "category_path": "categories/video-production/artcraft.md",
+  "source_sha": "800217ed04d10fc12706c28e6e91ae2a6b286092",
+  "verification_scope": "static：通过 gh api 枚举完整未截断目录树，读取 README、许可、NOTICE、清单、发布、问题、贡献者与关键实现；另查公开服务仓库的许可和部署依赖。没有逐文件审计所有源码；未安装、编译、登录、运行上游脚本、调用收费生成服务或读写 .pen。",
+  "notes_zh": "归入 video-production：核心是用二维画布和三维机位／姿势引导云端镜头生成，不是本机推理引擎。已补双语页、INDEX／README、上下游快照、健康／流程／机制图和报告；no leftover Q&A。",
+  "risk_zh": [
+    "桌面作者代码采用 MIT OR Apache-2.0，不代表整个文件包可自由再分发。NOTICE 明确排除任天堂音效、表情图、部分天空盒、MMD 动作和 Mixamo 动画渲染图；字体、图标和商标另有边界。",
+    "2026-10-10 的改许可提交还明确说头像、默认封面、部分角色图片和白天天空盒来源未清，已写入双语存疑账本。不能凭许可证徽章分发这些素材。",
+    "配套 artcraft-services 是公开源码，不是闭源；但它仍采用自定义非 OSI 条款，限制商业销售、开发竞品和删除付费服务／社区链接。桌面宽松许可不覆盖该后端。",
+    "常规生成依赖托管 API、账号与额度；截图自动上传图库。fal 自有 key 路径仍可访问 ArtCraft 解析素材、记录提示词，不能宣称脱云。登录后还有使用计数上报。",
+    "供应商 API key 通过 std::fs::write 保存为普通文件。未执行完整网络或凭据安全审计。",
+    "健康评分由工具生成，为 A（6/6），没有手动改分。其 relicense_36mo:false 漏掉提交 8abde75133d2d66fe73b8184eaec8372efae2abf 的真实许可变更，正文已明确指出；许可轴 A 也没有覆盖排除资产和独立后端。",
+    "纯 Rust 的 artcraft-native 是另一套前端，README 把非图片／视频／音频工具标为占位，不能将其当作完整三维布景工作流。",
+    "未验证模型输出、服务可用性、实际费用、Linux 构建和自托管环境。上述运行验证被任务明确排除。"
+  ],
+  "dotfiles_zh": {
+    "fit": "low",
+    "what": "可借鉴远端已接单与本地任务落库分开处理：幂等标识、每个任务持久化，以及落库失败时不诱导重复提交。图形编辑器与付费媒体云本身不适合并入个人 agent harness。",
+    "where": "dev-operational-task 的幂等、恢复与失败状态合同；仅方法参考，无需直接引入此应用"
+  },
+  "worth_check": {
+    "reusable_substance": {
+      "decision": "pass",
+      "command": "gh api repos/storytold/artcraft/git/trees/800217ed04d10fc12706c28e6e91ae2a6b286092?recursive=1；再读取桌面与前端清单、场景／画布／原生调度实现",
+      "exit_code": 0,
+      "evidence_zh": "目录树未截断，5824 个文件；Rust／TS／TSX 共4920个，其中非 vendor 路径4911个，合计约16.6MB。抽读确认有真实场景序列化、画布工作线程、原生生成调度和本地 SQLite 任务逻辑，不是论文演示或只含说明。文件计数不是原创性证明。"
+    },
+    "provenance": {
+      "decision": "pass_with_review_limits",
+      "command": "gh api repos/storytold/artcraft；读取 NOTICE、crates/vendor/tauri-plugin-http/LICENSE_MIT、normalize.css 首行及作者实现；检查配套服务 README",
+      "exit_code": 0,
+      "evidence_zh": "API 标记 fork=false；vendor 目录仅30个文件，保留 Tauri 许可，normalize.css 保留 MIT 标头；NOTICE 逐项列出第三方内容。两仓 README 互指，明确同一项目的桌面／服务拆分。[推断：根据未截断目录树、清单与实现抽读] 未见主体只是另一项目拷贝的证据；未做全部文件的原创性鉴定。"
+    },
+    "license_truth": {
+      "decision": "pass_for_authored_desktop_code_with_explicit_exclusions",
+      "command": "读取 LICENSE-MIT、LICENSE-APACHE、NOTICE，并读取 gh api repos/storytold/artcraft/commits/8abde75133d2d66fe73b8184eaec8372efae2abf；另读 services/LICENSE.md",
+      "exit_code": 0,
+      "evidence_zh": "桌面许可版权人为 2026 ArtCraft Team and contributors，改许可提交于2026-10-10删旧 fair-source、加入 MIT／Apache，来源与作者身份一致。NOTICE 没有把已知第三方专有素材假称为 MIT，而是明确不授予权利。尚未清源的资产和独立受限后端已单列风险，不把整包或后端写成宽松开源。"
+    },
+    "live_hazard_without_purpose": {
+      "decision": "pass_with_documented_egress_and_install_risks",
+      "command": "枚举 .claude／.cursor 等路径；读取 script/artcraft/unix_dev.sh、frontend/package.json、CompletionModal、fal handler、activity thread 和 API-key persistence",
+      "exit_code": 0,
+      "evidence_zh": "发现 .claude/rules 下三份规则，未发现对应自动执行 hook；根前端清单没有安装生命周期脚本。Unix 启动器在缺 Vite 时会 npm install；截图自动上传、生成请求和活动上报均是可定位的产品功能，存在独立可复用桌面实现，不是只有伤害载荷。全部仅静态阅读，未运行。"
+    },
+    "better_canonical_repo": {
+      "decision": "pass",
+      "command": "gh api repos/storytold/artcraft；gh api repos/storytold/artcraft-services；读取两仓 README 和桌面开发指南；核查候选 storytold/storyteller",
+      "exit_codes": [
+        0,
+        0,
+        1
+      ],
+      "evidence_zh": "主仓为非 fork 的公开桌面仓库；配套服务仓库也公开，README 明确把桌面指回本仓，不是替代／继任实现。旧候选 storytold/storyteller 返回404，未把404推断为私有。没有发现更合适的桌面 canonical 仓库；本地搜索未发现已收录重复。"
+    }
+  },
+  "api_metadata": {
+    "public": true,
+    "private": false,
+    "visibility": "public",
+    "fork": false,
+    "archived": false,
+    "owner_type": "Organization",
+    "created_at": "2022-03-31T23:19:12Z",
+    "pushed_at": "2026-10-21T20:00:55Z",
+    "default_branch": "main",
+    "stars_observed": 35305,
+    "forks_observed": 5592,
+    "latest_release_observed": "artcraft-v0.41.0",
+    "latest_release_published_at": "2026-09-26T11:14:22Z"
+  },
+  "sources_read": [
+    {
+      "url": "https://api.github.com/repos/storytold/artcraft",
+      "purpose": "公开性、非 fork、创建／推送日期、组织、关注数"
+    },
+    {
+      "url": "https://api.github.com/repos/storytold/artcraft/git/trees/800217ed04d10fc12706c28e6e91ae2a6b286092?recursive=1",
+      "purpose": "完整目录树、代码规模、vendor、治理与 hooks 路径检查；不读取 .pen"
+    },
+    {
+      "url": "https://api.github.com/repos/storytold/artcraft/releases?per_page=3",
+      "purpose": "发布版本、日期和 beta／fal key 发布说明"
+    },
+    {
+      "url": "https://api.github.com/repos/storytold/artcraft/contributors?per_page=10",
+      "purpose": "贡献集中度参考；与 health 的年度统计口径不同"
+    },
+    {
+      "url": "https://api.github.com/repos/storytold/artcraft/issues?state=all&per_page=8",
+      "purpose": "近期问题和 PR 内容抽读"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/README.md",
+      "purpose": "产品工作流、模型停用／受限标记、下载与文档入口"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/LICENSE-MIT",
+      "purpose": "读取实际 MIT 正文与版权人"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/LICENSE-APACHE",
+      "purpose": "读取实际 Apache-2.0 正文"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/NOTICE",
+      "purpose": "第三方许可、商标与不授权素材边界"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/commit/8abde75133d2d66fe73b8184eaec8372efae2abf",
+      "purpose": "核实2026-10-10改许可历史与尚未清源素材"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/_docs/dev_setup.md",
+      "purpose": "源码启动路径、Linux 范围、桌面／服务拆分"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/Cargo.toml",
+      "purpose": "完整工作区与原生依赖"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/frontend/package.json",
+      "purpose": "React、Three.js、Konva、构建工具与脚本"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/crates/desktop/artcraft/Cargo.toml",
+      "purpose": "桌面清单、许可、SQLx／SQLite 路径及 HTTP 插件"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/crates/desktop/artcraft/tauri.conf.json",
+      "purpose": "开发版0.42.0、CSP与外部服务范围"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/docs/website-login.md",
+      "purpose": "原生登录与会话、本地／生产服务环境边界"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/script/artcraft/unix_dev.sh",
+      "purpose": "核实真正启动命令，发现缺依赖时 npm install；仅阅读"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/frontend/libs/components/pagedraw/src/lib/utilities/generatePipeline.ts",
+      "purpose": "位图转移、请求映射、失败处理"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/frontend/libs/components/pagedraw/src/lib/utilities/generatePipeline.worker.ts",
+      "purpose": "离屏合成与遮罩机制"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/frontend/libs/components/pagescene/src/lib/proxy/storyteller_proxy_scene.ts",
+      "purpose": "场景变换、姿势保存及素材解析边界"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/frontend/libs/components/pagescene/src/lib/actions/recordOutput.ts",
+      "purpose": "机位截图与视频录制入口"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/frontend/libs/components/pagescene/src/lib/comps/CompletionModal/CompletionModal.tsx",
+      "purpose": "核实图片自动上传、视频手动上传和预览交接"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/frontend/libs/components/pagescene/src/lib/adapter.ts",
+      "purpose": "素材解析、云端持久化、图片继续编辑／生成／下载接口"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/crates/desktop/artcraft/src/core/commands/generate/generate_image/generate_image_command.rs",
+      "purpose": "验证实际原生入口对 Omni／兼容路由的接线"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/crates/desktop/artcraft/src/core/commands/generate/omni/dispatch.rs",
+      "purpose": "登录、估价／提交、参考图解析、幂等和任务落库失败语义"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/crates/desktop/artcraft/src/core/commands/enqueue/task_enqueue_success.rs",
+      "purpose": "SQLite 待处理任务、provider job id 结构"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/crates/desktop/artcraft/src/core/commands/generate/generate_image/providers/artcraft_router/handle_api_providers.rs",
+      "purpose": "fal BYOK 并不完全绕过 ArtCraft；素材 URL 与提示词记录"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/crates/desktop/artcraft/src/core/state/app_env_configs/app_env_configs.rs",
+      "purpose": "默认生产 API 与可选 localhost"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/crates/desktop/artcraft/src/core/providers/credentials/provider_credential_loading_cache.rs",
+      "purpose": "凭据文件目录、加载和缓存行为"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/crates/desktop/artcraft/src/core/providers/credentials/payload/api_key.rs",
+      "purpose": "确认 API key 为普通文件读写"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/crates/desktop/artcraft/src/services/storyteller/threads/storyteller_activity_thread.rs",
+      "purpose": "登录后的平台与使用次数上报"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/artcraft-native/README.md",
+      "purpose": "另一套纯 Rust 前端的已交付与占位功能、云依赖"
+    },
+    {
+      "url": "https://api.github.com/repos/storytold/artcraft-services",
+      "purpose": "确认后端公开且非 fork"
+    },
+    {
+      "url": "https://api.github.com/repos/storytold/artcraft-services/git/trees/main?recursive=1",
+      "purpose": "配套后端目录结构，20905个条目，未截断"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft-services/blob/e57ee3d63ac478a24149384bf1473ef97aa067f8/README.md",
+      "purpose": "HTTP／workers／MySQL／Redis／Elasticsearch／对象存储、部署及桌面 canonical 关系"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft-services/blob/e57ee3d63ac478a24149384bf1473ef97aa067f8/LICENSE.md",
+      "purpose": "完整读取自定义 fair-source 的禁止商业销售、竞品和删链接条款"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft-services/blob/e57ee3d63ac478a24149384bf1473ef97aa067f8/_docs/dev_setup.md",
+      "purpose": "后端运行所需服务、SQLX_OFFLINE 的实际边界"
+    },
+    {
+      "url": "https://github.com/storytold/artcraft-services/blob/e57ee3d63ac478a24149384bf1473ef97aa067f8/_docs/dev_setup_server.md",
+      "purpose": "MySQL迁移、Redis和未完成部署说明"
+    },
+    {
+      "url": "https://github.com/blender/blender/blob/main/README.md",
+      "purpose": "确认 Blender 的三维制作范围和真实仓库身份"
+    },
+    {
+      "url": "https://runwayml.com",
+      "purpose": "确认比较对象是云端 Creative 托管产品，不把同品牌研究仓库混为一谈"
+    }
+  ],
+  "checked_at_utc": "2026-10-22T08:48:54.842434+00:00",
+  "parent_validation": {
+    "gates_exit": 0,
+    "scoped_quality_exit": 0,
+    "shared_indices_serially_integrated": true,
+    "semantic_page_read": true,
+    "runtime_upstream_executed": false
+  },
+  "qa_decision": "no leftover Q&A"
+}

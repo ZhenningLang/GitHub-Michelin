@@ -26,6 +26,7 @@
 | **video-use** | 当 coding agent 该对着一文件夹素材、靠打包转写稿来剪——先确认方案再 ffmpeg——而不是生成底片时用它；硬依赖 ElevenLabs Scribe，22 次提交却有 2.7 万 star。 | B（4/5） | [→](video-use.zh.md) |
 | **SeeCut** | 当 coding agent 该把真人/数字人口播 A-roll 精剪成高网感动效短视频时用它：画面铺真证据截图，每版都要过一个能看视频的 AI 评委（agy 调 Gemini），交付成片加可选的剪映分层草稿；PolyForm 非商用，验证时仅 4 天龄。 | D（4/6） | [→](seecut.zh.md) |
 | **Lemo-Opuscar** | 让编程助手按风格导演短片，逐帧渲染、配音并检查阅读时间；代码 MIT，画廊媒体另用 CC BY。 | C（4/6） | [→](lemo-opuscar.zh.md) |
+| **ArtCraft** | 先摆机位和人物姿势，再交云端生成图片／视频；桌面代码宽松授权，后端另有限制，演示素材存在排除项。 | A（6/6） | [→](artcraft.zh.md) |
 
 
 ## 对比矩阵
@@ -48,6 +49,7 @@
 | Runway / Pika / HeyGen | 未收录 | — | 闭源 SaaS——一键生成更快，但无管线定制、无 agent 审批门、无开源扩展性。 |
 | DaVinci Resolve / Premiere Pro | 未收录 | — | 专业非线性剪辑软件——面向人工剪辑师，非 agent 驱动；需要帧级手动控制与传统后期团队时选它。 |
 | [Lemo-Opuscar](lemo-opuscar.zh.md) | ✅ | C（4/6） | 让编程助手按风格导演短片，逐帧渲染、配音并检查阅读时间；代码 MIT，画廊媒体另用 CC BY。 |
+| [ArtCraft](artcraft.zh.md) | ✅ | A（6/6） | 用二维／三维构图代替推理图编排；任务在云端执行，截图自动上传，不是本机推理或整套宽松授权的服务。 |
 
 
 ## 什么该放这里

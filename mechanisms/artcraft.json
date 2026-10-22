@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "drawing", "en": "Base image and drawing", "zh": "底图与笔迹", "kind": "input", "technique": [1]},
+    {"id": "worker", "en": "Offscreen worker composites PNG or mask", "zh": "离屏工作线程合成 PNG 或遮罩", "technique": [1]},
+    {"id": "stage", "en": "Scene transforms and bone pose", "zh": "场景变换与骨骼姿势", "kind": "input", "technique": [2]},
+    {"id": "capture", "en": "Render-camera still; automatic gallery upload", "zh": "渲染相机截图；自动上传图库", "technique": [2]},
+    {"id": "request", "en": "Native request resolves image references", "zh": "原生请求解析参考图", "technique": [3]},
+    {"id": "artcraft", "en": "ArtCraft cloud; session and generation charges", "zh": "ArtCraft 云端；登录与生成费用", "kind": "external", "technique": [3]},
+    {"id": "fal", "en": "fal cloud with user API key", "zh": "使用个人 API key 的 fal 云端", "kind": "external", "technique": [3]},
+    {"id": "jobs", "en": "Remote job IDs in local SQLite tasks", "zh": "远程任务标识写入本机 SQLite", "technique": [3]},
+    {"id": "output", "en": "Generated media in the application", "zh": "应用内的生成素材", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "drawing", "to": "worker"},
+    {"from": "worker", "to": "request"},
+    {"from": "stage", "to": "capture"},
+    {"from": "capture", "to": "request"},
+    {"from": "request", "to": "artcraft"},
+    {"from": "request", "to": "fal", "en": "selected image provider", "zh": "选择该图片供应商时", "style": "dashed"},
+    {"from": "artcraft", "to": "jobs"},
+    {"from": "fal", "to": "jobs", "style": "dashed"},
+    {"from": "jobs", "to": "output"}
+  ],
+  "sources": [
+    "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/frontend/libs/components/pagedraw/src/lib/utilities/generatePipeline.worker.ts",
+    "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/frontend/libs/components/pagescene/src/lib/actions/recordOutput.ts",
+    "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/crates/desktop/artcraft/src/core/commands/generate/omni/dispatch.rs",
+    "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/crates/desktop/artcraft/src/core/commands/generate/generate_image/providers/artcraft_router/handle_api_providers.rs"
+  ]
+}

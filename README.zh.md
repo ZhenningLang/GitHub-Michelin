@@ -898,6 +898,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **SeeCut** | 当 coding agent 该把真人/数字人口播 A-roll 精剪成高网感动效短视频时用它：画面铺真证据截图，每版都要过一个能看视频的 AI 评委（agy 调 Gemini），交付成片加可选的剪映分层草稿；PolyForm 非商用，验证时仅 4 天龄。 | PolyForm-Noncommercial-1.0.0 | D（4/6） | [中](categories/video-production/seecut.zh.md) · [EN](categories/video-production/seecut.md) |
 | **claude-video** | 让 Claude “看视频”的 `/watch` skill：下载视频、抽帧、转录，并把这些证据交给 Claude。 | MIT | C（6/6） | [中](categories/media-processing/video-audio/speech-and-subtitles/claude-video.zh.md) · [EN](categories/media-processing/video-audio/speech-and-subtitles/claude-video.md) |
 | **Lemo-Opuscar** | 让编程助手按风格导演短片，逐帧渲染、配音并检查阅读时间；代码 MIT，画廊媒体另用 CC BY。 | MIT | C（4/6） | [EN](categories/video-production/lemo-opuscar.md) · [中](categories/video-production/lemo-opuscar.zh.md) |
+| **ArtCraft** | 先摆机位和人物姿势，再交云端生成图片／视频；桌面许可不覆盖受限后端和排除授权的演示素材。 | MIT OR Apache-2.0 | A（6/6） | [中](categories/video-production/artcraft.zh.md) · [EN](categories/video-production/artcraft.md) |
 
 
 #### video-production / render-engines

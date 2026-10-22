@@ -901,6 +901,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **SeeCut** | Use it when a coding agent should polish your talking-head or AI-avatar A-roll into a high-energy motion short — real evidence screenshots on screen, every version gated by a video-native judge (Gemini via Antigravity CLI) — delivered as MP4 plus an editable JianYing layered draft; PolyForm noncommercial, 4 days old at verification. | PolyForm-Noncommercial-1.0.0 | D (4/6) | [EN](categories/video-production/seecut.md) · [中](categories/video-production/seecut.zh.md) |
 | **claude-video** | Give Claude the ability to watch any video. /watch downloads, extracts frames, transcribes, hands it all to Claude. | MIT | C (6/6) | [EN](categories/media-processing/video-audio/speech-and-subtitles/claude-video.md) · [中](categories/media-processing/video-audio/speech-and-subtitles/claude-video.zh.md) |
 | **Lemo-Opuscar** | Have a coding agent direct style-led films with deterministic browser frames, sound and reading-time checks; code MIT, gallery media CC BY. | MIT | C (4/6) | [EN](categories/video-production/lemo-opuscar.md) · [中](categories/video-production/lemo-opuscar.zh.md) |
+| **ArtCraft** | Stage a camera and character pose before cloud image/video generation; desktop license does not cover the restricted backend or excluded demo assets. | MIT OR Apache-2.0 | A (6/6) | [EN](categories/video-production/artcraft.md) · [中](categories/video-production/artcraft.zh.md) |
 
 
 #### video-production / render-engines
