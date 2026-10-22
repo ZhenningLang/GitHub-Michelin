@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "request", "en": "Dimensions and design request", "zh": "尺寸与设计要求", "kind": "input"},
+    {"id": "agent", "en": "Host agent follows CAD skill", "zh": "宿主 agent 遵循 CAD 技能", "kind": "external"},
+    {"id": "source", "en": "Python model declares output files", "zh": "Python 模型声明输出文件", "technique": [1]},
+    {"id": "gate", "en": "Compare tracked inputs and saved output hashes", "zh": "比较追踪输入与保存产物的哈希", "technique": [2]},
+    {"id": "solid", "en": "Build or reuse local solid artifacts", "zh": "构建或复用本地实体产物", "kind": "output"},
+    {"id": "review", "en": "Read saved geometry and render snapshots", "zh": "读回保存的几何并渲染截图", "technique": [3]},
+    {"id": "handoff", "en": "Agent checks; user reviews model", "zh": "agent 检查；用户查看模型", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "request", "to": "agent"},
+    {"from": "agent", "to": "source"},
+    {"from": "source", "to": "gate"},
+    {"from": "gate", "to": "solid"},
+    {"from": "solid", "to": "review"},
+    {"from": "review", "to": "handoff"},
+    {"from": "handoff", "to": "source", "en": "repair when a check fails", "zh": "检查失败时修源码", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/packages/cadgen/src/cadgen/authoring.py#L484-L615",
+    "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/packages/cadgen/src/cadgen/store/gate.py#L164-L269",
+    "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/skills/cad/SKILL.md#L174-L227"
+  ]
+}

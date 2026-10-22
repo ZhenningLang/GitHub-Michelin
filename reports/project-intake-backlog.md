@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1381
+- Named-but-unindexed alternatives: 1382
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -43,6 +43,7 @@ shape and are deliberately excluded here.
 | [BirdNET-Pi (Nachtzuster fork)](https://github.com/Nachtzuster/BirdNET-Pi) | `categories/on-device-ml/birdnet-go.md` |
 | [Bitwarden server](https://github.com/bitwarden/server) | `categories/dev-utilities/ops-infra/vaultwarden.md` |
 | [btop](https://github.com/aristocratos/btop) | `categories/observability/mac-performance-monitor.md` |
+| [build123d](https://github.com/gumyr/build123d) | `categories/cad/text-to-cad.md` |
 | [Cedar](https://github.com/cedar-policy/cedar) | `categories/agent-governance/agent-governance-toolkit.md` |
 | [Cedarling (Janssen)](https://github.com/JanssenProject/jans) | `categories/agent-governance/agent-governance-toolkit.md` |
 | [Cipher](https://github.com/campfirein/cipher) | `categories/agent-memory/coding-agent-memory/claude-subconscious.md` |
@@ -51,4 +52,3 @@ shape and are deliberately excluded here.
 | [CoderGamester/mcp-unity](https://github.com/CoderGamester/mcp-unity) | `categories/agent-skills/engineering/awesome-gamedev-agent-skills.md` |
 | [Coding-Solo/godot-mcp](https://github.com/Coding-Solo/godot-mcp) | `categories/agent-skills/engineering/awesome-gamedev-agent-skills.md` |
 | [CoplayDev/unity-mcp](https://github.com/CoplayDev/unity-mcp) | `categories/game-dev/unity-mcp.md` |
-| [CosyVoice](https://github.com/QwenAudio/CosyVoice) | `categories/speech/index-tts.md` |

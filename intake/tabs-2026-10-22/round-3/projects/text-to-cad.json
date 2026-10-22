@@ -1,0 +1,244 @@
+{
+  "repo": "earthtojake/text-to-cad",
+  "status": "done",
+  "category_path": "categories/cad/text-to-cad.md",
+  "source_sha": "2f793659fb7bab537e2f00836e06448fc4087cb2",
+  "verification_scope": "static: GitHub API metadata, pinned raw README/docs/manifests/source/license reads, local content generators and repository gates only; no upstream install, hooks, model execution, browser session or remote payload execution",
+  "notes_zh": "已完整收录到 CAD 类，包含双语页、三项源码机制、流程图、机制图、健康卡和四处列表接线。它是给现有 agent 使用的本地 CAD 工具链，不是模型权重；no leftover Q&A。",
+  "risk_zh": "默认遥测需持久关闭，版本检查另有开关；本地查看器无认证，不应外网暴露。Python 模型按普通代码执行，制造正确性仍需独立验收；仅静态研究，未运行上游。",
+  "dotfiles_zh": {
+    "fit": "low",
+    "what": "可借鉴其读回最终产物、独立截图复查、最后给用户查看的分离规则，以及技能与运行时共用固定版本的检查。CAD 内核和制造流程不适合整体吸收到个人 harness。",
+    "where": "guard-verify、fe-ui-visual-iterate，以及技能分发版本一致性检查"
+  },
+  "worth_check": {
+    "reusable_substance": {
+      "verdict": "pass",
+      "command": "gh api 'repos/earthtojake/text-to-cad/git/trees/2f793659fb7bab537e2f00836e06448fc4087cb2?recursive=1'",
+      "exit_code": 0,
+      "evidence_zh": "完整树有 3023 个文件，未截断；cadgen/src 下有 232 个文件，tests 下有 281 个，skills 下有 85 个。抽查 step.py、gate.py、closure.py、analytics.py、cli/telemetry.py 共 3406 行，包含实际建模入口、依赖缓存判定和遥测开关实现，不是论文演示或纯说明。"
+    },
+    "provenance": {
+      "verdict": "pass",
+      "command": "gh api repos/earthtojake/text-to-cad; gh api repos/earthtojake/text-to-cad/contents/packages/cadgen/pyproject.toml?ref=2f793659fb7bab537e2f00836e06448fc4087cb2; pinned raw source reads",
+      "exit_codes": [
+        0,
+        0,
+        0
+      ],
+      "evidence_zh": "API 标明不是 fork；包作者标为 earthtojake，技能标出本仓库来源。几何依赖 build123d 和 OCP 在清单中直接声明，运行时包含独立的声明、缓存、产物复查实现。未发现需要对疑似被搬运主体做 blob 相同比对的迹象；未做全历史版权审计。"
+    },
+    "license_truth": {
+      "verdict": "pass",
+      "command": "gh api repos/earthtojake/text-to-cad/contents/LICENSE; gh api repos/earthtojake/text-to-cad/contents/packages/cadgen/LICENSE; gh api repos/earthtojake/text-to-cad/contents/skills/cad/LICENSE; pinned privacy-policy raw read",
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "evidence_zh": "根目录、cadgen 包和 CAD 技能均为完整 MIT 文本，署名 Thompson Labs LLC。项目隐私政策也明确由该公司运营 text-to-cad，署名与项目身份相符；没有把 API 的 SPDX 检测结果当作唯一证据。"
+    },
+    "live_hazard_without_purpose": {
+      "verdict": "pass_with_documented_risks",
+      "command": "pinned raw reads: README.md, SECURITY.md, claude.mcp.json, analytics.py, cli/telemetry.py, _internal/api.py, .githooks/pre-commit, scripts/git-hooks/pre-commit",
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evidence_zh": "插件显式启动固定版本的本地 MCP 服务，遥测在 CLI 告知后默认开启并有持久拒绝机制，接口为 api.texttocad.dev/v1；查看器是无认证本地工具。仓库 git hook 只是调用本仓库构建检查。风险有文档且项目有完整可复用 CAD 工具链，不符合无其他用途的恶意载荷排除条件；未执行任何上游代码。"
+    },
+    "better_canonical_repo": {
+      "verdict": "pass_canonical_is_requested_repo",
+      "command": "gh api 'users/earthtojake/repos?per_page=100'; gh api repos/earthtojake/cad-skill/readme; gh api repos/earthtojake/cadgen; gh api repos/earthtojake/cadgen/readme",
+      "exit_codes": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "evidence_zh": "作者旧 cad-skill 仓库已归档，README 明确 moved to earthtojake/text-to-cad；旧 cad-viewer 也已归档。单独 cadgen 仓库 size=0，README 查询返回 404；实际 PyPI 包的清单和代码均位于本次仓库的 packages/cadgen，因此本次仓库是合适的完整收录单位。"
+    }
+  },
+  "api_metadata": {
+    "private": false,
+    "visibility": "public",
+    "fork": false,
+    "archived": false,
+    "owner_type": "User",
+    "created_at": "2026-04-22T01:09:45Z",
+    "pushed_at": "2026-10-22T07:28:16Z",
+    "default_branch": "main",
+    "default_branch_commit_at": "2026-10-20T19:03:44Z",
+    "stars_observed": 22386,
+    "forks_observed": 2190,
+    "latest_release": "v0.7.26",
+    "latest_release_at": "2026-10-20T19:07:54Z",
+    "license_file_holder": "Copyright (c) 2026 Thompson Labs LLC"
+  },
+  "sources_read": [
+    {
+      "url": "https://api.github.com/repos/earthtojake/text-to-cad",
+      "purpose": "公开性、非 fork、创建日期、推送、关注与分支元数据"
+    },
+    {
+      "url": "https://api.github.com/repos/earthtojake/text-to-cad/git/trees/2f793659fb7bab537e2f00836e06448fc4087cb2?recursive=1",
+      "purpose": "源码实质、文件计数、测试与治理文件存在性"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/README.md",
+      "purpose": "技能和插件安装、latest 通道、遥测、Windows 原生模块限制"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/LICENSE",
+      "purpose": "实际 MIT 条款与版权方"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/packages/cadgen/LICENSE",
+      "purpose": "Python 包许可证一致性"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/skills/cad/LICENSE",
+      "purpose": "技能许可证一致性"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/packages/cadgen/pyproject.toml",
+      "purpose": "版本、作者、Python 下限、Beta 状态和直接依赖"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/skills/cad/SKILL.md",
+      "purpose": "最短用户路径、官方代码示例、保存产物复查和界限"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/skills/cad/references/repair-loop.md",
+      "purpose": "失败修复、保留尺寸约束、可视与几何检查"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/SECURITY.md",
+      "purpose": "无认证回环信任边界和支持版本"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/claude.mcp.json",
+      "purpose": "插件启动固定 Python 和 cadgen 版本"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/CONTRIBUTING.md",
+      "purpose": "包边界、构建产物、发布通道和测试契约"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/packages/cadgen/README.md",
+      "purpose": "产物与源码分离、缓存仅为派生数据、发布包结构"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/packages/cadgen/src/cadgen/authoring.py",
+      "purpose": "模型声明、顶层构建、子模型组合和网格装饰器"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/packages/cadgen/src/cadgen/step.py",
+      "purpose": "模型执行与文档操作的分离、延迟内核导入"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/packages/cadgen/src/cadgen/_internal/format_namespace.py",
+      "purpose": "格式命名空间同时支持装饰器和文档操作"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/packages/cadgen/src/cadgen/store/gate.py",
+      "purpose": "输入依赖、常量、子模型、对象完整性及输出哈希门禁"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/packages/cadgen/src/cadgen/store/closure.py",
+      "purpose": "语法树哈希、定义切片、动态行为回退"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/packages/cadgen/src/cadgen/snapshot_core.py",
+      "purpose": "首次浏览器下载、本地 Chromium 渲染和结果写入"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/packages/cadgen/src/cadgen/_internal/node_runtime.py",
+      "purpose": "Node 查找顺序及 Playwright 自带 Node 回退"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/packages/cadgen/src/cadgen/analytics.py",
+      "purpose": "遥测默认告知、持久选择、后台进程环境规则"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/packages/cadgen/src/cadgen/cli/telemetry.py",
+      "purpose": "关闭遥测与删除请求的实际实现"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/packages/cadgen/src/cadgen/_internal/api.py",
+      "purpose": "外发 API 基地址与版本检查共用服务"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/apps/docs/src/app/privacy-policy/page.tsx",
+      "purpose": "运营主体、遥测目的、供应商和关闭开关"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/.githooks/pre-commit",
+      "purpose": "静态检查 hook 行为，未执行"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/scripts/git-hooks/pre-commit",
+      "purpose": "确认 hook 只进入本地构建检查，未执行"
+    },
+    {
+      "url": "https://api.github.com/repos/earthtojake/text-to-cad/releases?per_page=3",
+      "purpose": "发布节奏与 0.7.26 的 Node 回退修复"
+    },
+    {
+      "url": "https://api.github.com/repos/earthtojake/text-to-cad/contributors?per_page=10",
+      "purpose": "维护者集中度、机器人和 agent 账号区分"
+    },
+    {
+      "url": "https://api.github.com/repos/earthtojake/text-to-cad/commits?per_page=3",
+      "purpose": "默认分支提交日期与精确研究 SHA"
+    },
+    {
+      "url": "https://api.github.com/repos/earthtojake/text-to-cad/issues?state=all&per_page=100",
+      "purpose": "近期问题正文，区分 PR 与实际用户反馈"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/issues/626",
+      "purpose": "0.7.21 内存包络拒绝加载的用户报告，未外推统一上限"
+    },
+    {
+      "url": "https://github.com/earthtojake/text-to-cad/issues/629",
+      "purpose": "旧版本缺少 PATH Node 的错误，与新源码回退交叉核对"
+    },
+    {
+      "url": "https://api.github.com/repos/gumyr/build123d/readme",
+      "purpose": "直接替代库的能力、用法和建模边界"
+    },
+    {
+      "url": "https://api.github.com/users/earthtojake/repos?per_page=100",
+      "purpose": "同作者规范仓库和继任项目检查"
+    },
+    {
+      "url": "https://api.github.com/repos/earthtojake/cad-skill/readme",
+      "purpose": "旧技能明确迁到 text-to-cad"
+    },
+    {
+      "url": "https://api.github.com/repos/earthtojake/cad-viewer",
+      "purpose": "旧查看器已归档"
+    },
+    {
+      "url": "https://api.github.com/repos/earthtojake/cadgen",
+      "purpose": "同名独立仓库为空，不能替代本次完整源码仓库"
+    }
+  ],
+  "checked_at_utc": "2026-10-22T08:34:00.996659+00:00",
+  "parent_validation": {
+    "gates_exit": 0,
+    "scoped_quality_exit": 0,
+    "shared_indices_serially_integrated": true,
+    "semantic_page_read": true,
+    "runtime_upstream_executed": false
+  },
+  "qa_decision": "no leftover Q&A"
+}

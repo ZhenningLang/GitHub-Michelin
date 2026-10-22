@@ -20,6 +20,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [BirdNET-Pi (Nachtzuster fork)](https://github.com/Nachtzuster/BirdNET-Pi),categories/on-device-ml/birdnet-go.md,,no
 [Bitwarden server](https://github.com/bitwarden/server),categories/dev-utilities/ops-infra/vaultwarden.md,,no
 [btop](https://github.com/aristocratos/btop),categories/observability/mac-performance-monitor.md,,no
+[build123d](https://github.com/gumyr/build123d),categories/cad/text-to-cad.md,,no
 [Cedar](https://github.com/cedar-policy/cedar),categories/agent-governance/agent-governance-toolkit.md,,no
 [Cedarling (Janssen)](https://github.com/JanssenProject/jans),categories/agent-governance/agent-governance-toolkit.md,,no
 [Cipher](https://github.com/campfirein/cipher),categories/agent-memory/coding-agent-memory/claude-subconscious.md,,no
