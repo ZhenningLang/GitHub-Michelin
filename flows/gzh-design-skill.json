@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "gzh-design guides", "zh": "gzh-design 引导助手"},
+  "steps": [
+    {"lane": "you", "en": "Install the reviewed skill into your agent", "zh": "把审过的技能装入助手", "code": "npx skills add https://github.com/isjiamu/gzh-design-skill"},
+    {"lane": "you", "en": "Supply an existing article and choose a theme", "zh": "提供已有文章并指定主题", "code": "article.md"},
+    {"lane": "them", "en": "Read the theme recipe and assemble inline-styled article HTML", "zh": "读取主题配方，装配内联样式正文", "component": {"en": "SKILL and component references", "zh": "技能指令与组件参考"}},
+    {"lane": "them", "en": "Check the fragment, repair findings and wrap a copy-button preview", "zh": "检查并修复正文，生成复制按钮预览", "component": {"en": "validator and preview wrapper", "zh": "检查器与预览包装脚本"}},
+    {"lane": "you", "en": "Copy the reviewed preview and paste it into the WeChat editor", "zh": "复制审过的预览，粘进公众号编辑器"}
+  ],
+  "value": {"en": "Reusable article layout without rebuilding WeChat components for every draft", "zh": "复用文章版式，不必每篇重建公众号组件"},
+  "sources": [
+    "https://github.com/isjiamu/gzh-design-skill/blob/750a50dffdc4abb5e853b98136dad13a57e64ce3/README.md#L95-L119",
+    "https://github.com/isjiamu/gzh-design-skill/blob/750a50dffdc4abb5e853b98136dad13a57e64ce3/SKILL.md#L39-L98"
+  ]
+}

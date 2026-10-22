@@ -630,6 +630,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **Baoyu Skills** | 宝玉出品的 20+ 个 coding agent 技能合集（翻译、markdown/HTML 排版、字幕与网页抓取、图片/图表/幻灯片生成），可装入 Claude Code、Codex 等支持 skill 的 harness。 | MIT | B（4/5） | [中](categories/agent-skills/ai-writing/content-production/baoyu-skills.zh.md) · [EN](categories/agent-skills/ai-writing/content-production/baoyu-skills.md) |
+| **gzh-design-skill** | 六套微信组件主题，助手按配方排版并做静态检查；手动复制粘贴，不负责发草稿或保证显示保真。 | AGPL-3.0-or-later | C（4/6） | [中](categories/agent-skills/ai-writing/content-production/gzh-design-skill.zh.md) · [EN](categories/agent-skills/ai-writing/content-production/gzh-design-skill.md) |
 | **translate-book** | 面向 Codex、Claude Code 和 OpenClaw 的 agent skill：用并行 subagent 把整本书（PDF/DOCX/EPUB）翻译成任意语言。 | MIT | B（4/5） | [中](categories/agent-skills/ai-writing/translation/translate-book.zh.md) · [EN](categories/agent-skills/ai-writing/translation/translate-book.md) |
 | **claude_translater** | shell 脚本＋Claude CLI 的文档翻译工具箱（PDF/DOCX/EPUB/PPTX）；translate-book 的灵感来源，但已不维护且无许可证。 | NOASSERTION | D（4/6） | [中](categories/agent-skills/ai-writing/translation/claude-translater.zh.md) · [EN](categories/agent-skills/ai-writing/translation/claude-translater.md) |
 | **Humanizer-zh** | 给已有中文稿去套话和模板腔，同时保住事实、确定程度和作者立场；31 个检查点，不是检测器。 | MIT | C（4/5） | [中](categories/agent-skills/ai-writing/de-ai-writing/humanizer-zh.zh.md) · [EN](categories/agent-skills/ai-writing/de-ai-writing/humanizer-zh.md) |

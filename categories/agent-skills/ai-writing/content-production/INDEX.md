@@ -7,6 +7,7 @@
 
 | Collection | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **gzh-design-skill** | Assemble an existing article from six WeChat theme libraries, check local HTML, then copy manually; model and platform fidelity remain yours. | C (4/6) | [→](gzh-design-skill.md) |
 | **Baoyu Skills** | A 20+ skill pack for coding agents (translation, markdown/HTML formatting, transcript/URL capture, image/diagram/slide generation), installable into Claude Code, Codex, and other skill-capable harnesses. | B (4/5) | [→](baoyu-skills.md) |
 | **huashu-skills** | Chinese creator toolkit with 21 skills for articles, topics, research, video outlines, images, PDF export, and creator workflows. | B (4/5) | [→](huashu-skills.md) |
 | **writing-agent** | Chinese long-form writing production line with staged planning, evidence ledger, review, de-AI pass, fact-check gate, and final clean text. | B (5/6) | [→](writing-agent.md) |
@@ -16,6 +17,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [gzh-design-skill](gzh-design-skill.md) | ✅ | C (4/6) | One AGPL layout skill with theme recipes and static checks; no model, publishing API or mobile-fidelity guarantee. |
 | [Baoyu Skills](baoyu-skills.md) | ✅ | B (4/5) | A 20+ general content/formatting utility pack; broad but not a novel- or marketing-specific pipeline. |
 | [huashu-skills](huashu-skills.md) | ✅ | B (4/5) | Broad Chinese creator toolkit; license ambiguity and per-skill install paths make it riskier. |
 | [writing-agent](writing-agent.md) | ✅ | B (5/6) | Strict Chinese article production line with an evidence ledger; heavier than modular creator toolkits. |
