@@ -83,9 +83,9 @@ pi 编码 agent 的会话以不透明的 JSONL 文件堆在 `~/.pi/agent` 里，
 
 ## 何时使用
 
-你用 [pi](../../agent-frameworks/coding-agents/terminal-agents/pi.zh.md) 做编码 agent，项目会话躺在 `~/.pi/agent/sessions/<encoded-cwd>/<timestamp>_<uuid>.jsonl` 里，而你一直在丢全局视图：哪条会话还在跑、哪条把上下文窗口烧满了、哪条是你午饭后想接着用的。想要一块浏览器工作台时选 Pi Web——会话按项目分组、带运行状态／上下文用量／花费；从早前消息分支（「Edit from here」）或另起独立会话；供应商登录、API key、模型测试、插件包和 skills 都在 Models 面板里配；项目文件、git diff、worktree 切换不出标签页。
+你用 [pi](../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/pi.zh.md) 做编码 agent，项目会话躺在 `~/.pi/agent/sessions/<encoded-cwd>/<timestamp>_<uuid>.jsonl` 里，而你一直在丢全局视图：哪条会话还在跑、哪条把上下文窗口烧满了、哪条是你午饭后想接着用的。想要一块浏览器工作台时选 Pi Web——会话按项目分组、带运行状态／上下文用量／花费；从早前消息分支（「Edit from here」）或另起独立会话；供应商登录、API key、模型测试、插件包和 skills 都在 Models 面板里配；项目文件、git diff、worktree 切换不出标签页。
 
-对比替代品的决定性取舍：Pi Web 不重新实现 pi——它用 pi 自己的引擎读写 pi 自己的磁盘状态，浏览器和终端是同一张桌子的两个窗口（零迁移、零重复登录）。对比 [CloudCLI (Claude Code UI)](claudecodeui.zh.md)，选择只在于你的大脑是哪家：CloudCLI 面向 Claude Code／Codex／Cursor CLI 家族，Pi Web 只面向 pi；对比 [Hermes Workspace](hermes-workspace.zh.md)（增强面板锚定 Hermes gateway API）同理；对比终端里的 [pi](../../agent-frameworks/coding-agents/terminal-agents/pi.zh.md) 本身，你是为一个浏览器界面多付一个本地服务进程，而 MIT 许可让它能进 CloudCLI 的 AGPL 进不了的场合。
+对比替代品的决定性取舍：Pi Web 不重新实现 pi——它用 pi 自己的引擎读写 pi 自己的磁盘状态，浏览器和终端是同一张桌子的两个窗口（零迁移、零重复登录）。对比 [CloudCLI (Claude Code UI)](claudecodeui.zh.md)，选择只在于你的大脑是哪家：CloudCLI 面向 Claude Code／Codex／Cursor CLI 家族，Pi Web 只面向 pi；对比 [Hermes Workspace](hermes-workspace.zh.md)（增强面板锚定 Hermes gateway API）同理；对比终端里的 [pi](../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/pi.zh.md) 本身，你是为一个浏览器界面多付一个本地服务进程，而 MIT 许可让它能进 CloudCLI 的 AGPL 进不了的场合。
 
 ## 怎么用起来
 
@@ -112,7 +112,7 @@ pi 编码 agent 的会话以不透明的 JSONL 文件堆在 `~/.pi/agent` 里，
 ## 何时不用
 
 - **你的编码 agent 不是 pi。** Pi Web 读的是 pi 的会话／配置目录、内嵌的是 pi 引擎，无法驱动 Claude Code、Codex、Cursor CLI 或 hermes-agent。Claude 家族用 [CloudCLI (Claude Code UI)](claudecodeui.zh.md)，hermes-agent 用 [Hermes Workspace](hermes-workspace.zh.md)。
-- **终端已经够用。** pi 自带的 TUI 读写同一批会话，却不需要多跑、多更新、多设防一个服务进程；如果你从不在浏览器里翻历史或调模型，[pi 本身](../../agent-frameworks/coding-agents/terminal-agents/pi.zh.md)是活动部件更少的答案。
+- **终端已经够用。** pi 自带的 TUI 读写同一批会话，却不需要多跑、多更新、多设防一个服务进程；如果你从不在浏览器里翻历史或调模型，[pi 本身](../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/pi.zh.md)是活动部件更少的答案。
 - **想把它暴露到公网。** README 自己警告：绑非回环地址「exposes an agent that can execute high-privilege actions」，而且密码登录不加密连接——明文 HTTP 暴露出局。留在 `127.0.0.1`、可信局域网，或走 VPN／HTTPS 反向代理。
 - **需要多用户或团队界面。** 鉴权是单一共享密码（`PI_WEB_PASSWORD`；API 客户端用 Basic Auth、用户名 `pi`）——设计上就是单人操作。团队聊天平台用 [LibreChat](../../llm-chat-ui/librechat.zh.md) 或 [Open WebUI](../../llm-chat-ui/open-webui.zh.md)；并行监管多个 agent 用 [Agent Orchestrator](agent-orchestrator.zh.md)。
 - **在意与最新 pi 的引擎同步。** Pi Web 把 `@earendil-works/pi-coding-agent` 精确锁定在一个版本（v0.9.3 对应 0.87.1），而 pi 本体持续发版——两次 Pi Web 发版之间，浏览器里的内嵌引擎可能落后于同一台机器上的 pi CLI。引擎一致性比界面更重要时，用 pi 的 TUI。[推断]
@@ -122,7 +122,7 @@ pi 编码 agent 的会话以不透明的 JSONL 文件堆在 `~/.pi/agent` 里，
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Pi](../../agent-frameworks/coding-agents/terminal-agents/pi.zh.md) | ✅ | 终端已经够用就留在 pi 自带 TUI；当浏览／恢复大量会话、文件预览、网页端模型配置值得多跑一个本地服务进程时，才伸手拿 Pi Web。 | Pi Web 在 pi 自己的磁盘状态上加一层界面（零重复实现），代价是引擎版本被精确锁定、多一个要跑要更新的进程。 |
+| [Pi](../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/pi.zh.md) | ✅ | 终端已经够用就留在 pi 自带 TUI；当浏览／恢复大量会话、文件预览、网页端模型配置值得多跑一个本地服务进程时，才伸手拿 Pi Web。 | Pi Web 在 pi 自己的磁盘状态上加一层界面（零重复实现），代价是引擎版本被精确锁定、多一个要跑要更新的进程。 |
 | [CloudCLI (Claude Code UI)](claudecodeui.zh.md) | ✅ | 大脑是 Claude Code／Codex／Cursor CLI 时选 CloudCLI，是 pi 时选 Pi Web——两个驾驶舱各读一家的磁盘状态，互相读不了对方的会话。 | 同一产品形态（本地编码 agent 的浏览器驾驶舱）。CloudCLI：AGPL、插件生态、厂商云、多 CLI；Pi Web：MIT、单一 agent、与 pi 共享会话／配置存储。 |
 | [Hermes Workspace](hermes-workspace.zh.md) | ✅ | 大脑是 Nous 的 hermes-agent 才选 Hermes Workspace——增强面板锚定 Hermes gateway／dashboard API；Pi Web 锚定的则是 pi 的数据目录。 | 两者都是单 agent Web 控制台；Pi Web 的底座（pi）更年轻但实测采用量大得多，Hermes Workspace 则多了 tmux swarm 派发。 |
 | [Open WebUI](../../llm-chat-ui/open-webui.zh.md) | ✅ | 要模型聊天平台（用户、RAG、预设）且不需要编码 agent 界面时选 Open WebUI；工作单元是编码 agent 的会话（文件、diff、worktree）时选 Pi Web。 | Open WebUI 渲染与模型的对话；Pi Web 渲染 agent 的工作区。重叠只有一个浏览器标签页。 |

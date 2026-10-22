@@ -2,7 +2,7 @@
 name: T3 Code
 slug: t3code
 repo: https://github.com/pingdotgg/t3code
-category: terminal-agents
+category: independent-runtimes
 tags: [coding-agent, web-gui, desktop-app, codex, claude-code, cursor, opencode]
 language: TypeScript
 license: MIT
@@ -85,7 +85,7 @@ health:
 
 You keep switching terminal windows to find which coding agent is waiting for input, and cannot inspect its work from your phone. T3 Code puts agent threads in a shared graphical control surface while execution stays on the workspace machine.
 
-![T3 Code — health radar](../../../../assets/health/t3code.svg)
+![T3 Code — health radar](../../../../../assets/health/t3code.svg)
 
 ## When to use
 
@@ -106,15 +106,15 @@ Use it when a browser, desktop or mobile control surface is worth the added loca
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [OpenCode](opencode.md) | ✅ | Choose OpenCode when a model-flexible terminal agent is sufficient; choose T3 Code when its GUI must coordinate an already installed OpenCode alongside other agents. | OpenCode is an agent runtime; T3 Code is an interface layer and adds local UI complexity. |
-| [Codex CLI](codex.md) | ✅ | Choose Codex CLI when OpenAI's terminal workflow is all you need; choose T3 Code only to unify it with other authenticated providers. | Native CLI has fewer moving parts; T3 Code provides cross-provider session UX. |
+| [Codex CLI](../vendor-agents/codex.md) | ✅ | Choose Codex CLI when OpenAI's terminal workflow is all you need; choose T3 Code only to unify it with other authenticated providers. | Native CLI has fewer moving parts; T3 Code provides cross-provider session UX. |
 | Claude Code vendor client | not a repo | Choose Claude Code when Anthropic's native workflow is the desired standard; choose T3 Code when switching to Codex, Cursor, or OpenCode in one GUI matters more. | This row refers to the proprietary client, not its public documentation repository; its [license](https://github.com/anthropics/claude-code/blob/main/LICENSE.md) reserves all rights. T3 Code adds a multi-provider interface rather than replacing that runtime. |
-| [CC Switch](../orchestration-and-review/cc-switch.md) | ✅ | Choose CC Switch for a desktop manager of agent configurations and providers; choose T3 Code for a session-oriented GUI around agent runs. | Both add a meta-layer; CC Switch focuses on tool management, while T3 Code hosts coding-agent interactions. |
+| [CC Switch](../../orchestration-and-review/cc-switch.md) | ✅ | Choose CC Switch for a desktop manager of agent configurations and providers; choose T3 Code for a session-oriented GUI around agent runs. | Both add a meta-layer; CC Switch focuses on tool management, while T3 Code hosts coding-agent interactions. |
 
 ## Quick start
 
 Install and authenticate a provider on the machine containing your project; for example, the [README](https://github.com/pingdotgg/t3code/blob/47683f6ff476d0fc7747375c54583437fba30567/README.md) specifies `codex login` after installing Codex CLI. Try `npx t3@latest` to start the local server and web app, or install a desktop release; `docs/user/install.md` documents the persistent `t3` installation and service commands. In Settings → Providers, enable the provider for that environment, open your project and start a thread with a coding task. T3 Code presents agent responses and workspace changes while its server runs the provider on that machine; you answer approval requests and review the resulting diff. Provider subscriptions/API usage remain your responsibility, and phone access requires a separate remote-connection setup rather than moving execution to the phone.
 
-![t3code — backbone user story](../../../../assets/flow/t3code.svg)
+![t3code — backbone user story](../../../../../assets/flow/t3code.svg)
 
 <!-- flow-steps:begin (generated from flows/t3code.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -133,7 +133,7 @@ Install and authenticate a provider on the machine containing your project; for 
 
 ## Key techniques
 
-![T3 Code — mechanism diagram](../../../../assets/mechanism/t3code.svg)
+![T3 Code — mechanism diagram](../../../../../assets/mechanism/t3code.svg)
 
 <!-- mechanism:begin (generated from mechanisms/t3code.json by tools/mechanism_card.py; do not edit) -->
 <details>

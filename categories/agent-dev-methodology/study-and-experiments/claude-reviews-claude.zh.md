@@ -102,8 +102,8 @@ health:
 ## 何时不用
 
 - **你要知道 Claude Code *现在* 的行为。** 分析钉死在 v2.1.88；到 2026-09-28，npm 上的版本已经到 v2.1.284，而这个仓库自 2026-04-01 起再没动过。提示词、特性开关、工具和权限流水线都已经变了。要看当前行为，用 Anthropic 官方文档和 `anthropics/claude-code` 仓库里的 `CHANGELOG.md`（未收录）；要看当前提示词原文，用 Piebald-AI/claude-code-system-prompts（未收录），它每次发版几分钟内就重新提取一遍。
-- **你所在的组织不能碰由泄露的专有代码衍生出来的材料。** 它分析的源码从来没有被授权再分发——v2.1.88 已从 npm 下架（截至 2026-09-29 该版本返回 404，而 2.1.87 和 2.1.89 都还在），仓库自己的 DISCLAIMER 写明代码“归 Anthropic, PBC 所有”，摘录靠的是合理使用的主张；抽查的三章（01、07、17）每章有 23–36 个代码块。MIT 许可只覆盖作者自己写的评论。如果法务会否掉它，就从允许阅读和复用代码的开源 harness 学同样的机制——[Codex](../../agent-frameworks/coding-agents/terminal-agents/codex.zh.md)（Apache-2.0）或 [OpenCode](../../agent-frameworks/coding-agents/terminal-agents/opencode.zh.md)——或者用 [Learn Claude Code](learn-claude-code.zh.md) 自己重建一遍。
-- **你想要能直接抄进自己 harness 的可运行代码。** 这里没有任何能运行、测试或 import 的代码；摘录都是删节过的（“… 900+ lines of orchestration”），还依赖你手上没有的内部模块。要可运行的参考实现，用 [Learn Claude Code](learn-claude-code.zh.md)（每个机制一份独立 Python），或者直接读 [Codex](../../agent-frameworks/coding-agents/terminal-agents/codex.zh.md) 的源码。
+- **你所在的组织不能碰由泄露的专有代码衍生出来的材料。** 它分析的源码从来没有被授权再分发——v2.1.88 已从 npm 下架（截至 2026-09-29 该版本返回 404，而 2.1.87 和 2.1.89 都还在），仓库自己的 DISCLAIMER 写明代码“归 Anthropic, PBC 所有”，摘录靠的是合理使用的主张；抽查的三章（01、07、17）每章有 23–36 个代码块。MIT 许可只覆盖作者自己写的评论。如果法务会否掉它，就从允许阅读和复用代码的开源 harness 学同样的机制——[Codex](../../agent-frameworks/coding-agents/terminal-agents/vendor-agents/codex.zh.md)（Apache-2.0）或 [OpenCode](../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/opencode.zh.md)——或者用 [Learn Claude Code](learn-claude-code.zh.md) 自己重建一遍。
+- **你想要能直接抄进自己 harness 的可运行代码。** 这里没有任何能运行、测试或 import 的代码；摘录都是删节过的（“… 900+ lines of orchestration”），还依赖你手上没有的内部模块。要可运行的参考实现，用 [Learn Claude Code](learn-claude-code.zh.md)（每个机制一份独立 Python），或者直接读 [Codex](../../agent-frameworks/coding-agents/terminal-agents/vendor-agents/codex.zh.md) 的源码。
 - **你需要能引用的数字。** 文中数字是作者自己数的，而且自相矛盾——README 一处说 477,439 行 TypeScript，另一处说 512,664 行——“七层防御”“约 108 个缺失模块”这类说法是作者的归纳框架。只把它们当方向感；真要引用精确的内部细节，得去查原始材料，比如 ChinaSiro/claude-code-sourcemap（未收录），并承担随之而来的法律风险。
 - **你期待有人勘误、有社区持续维护。** 所有 commit 出自同一个账号；唯一一个实质性问题（#14，2026-07-13，“请问解析的是哪个开源 github？”）和唯一一个正经 PR（#13，2026-07-01）截至 2026-09-29 都没有维护者回复，其余 issue 大多是围观留言。要持续维护的学习材料，用 [Learn Claude Code](learn-claude-code.zh.md)。
 
@@ -112,7 +112,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Learn Claude Code](learn-claude-code.zh.md) | ✅ | 想把 harness 机制理解到能自己造出来，选 Learn Claude Code；只有当你明确需要知道 v2.1.88 发布版本里实际怎么做时才选本系列，因为那门课是可以合法运行和扩展的净室重写。 | 得到可运行、有人维护、许可干净的教学代码；代价是它讲的是“Claude Code 式”设计，不是产品真实的内部实现，也没有生产环境才有的遥测和特性开关机制。 |
-| [Codex](../../agent-frameworks/coding-agents/terminal-agents/codex.zh.md) | ✅ | 想完整研究一个真实的生产级编码 agent harness，去读 Codex 的 Apache-2.0 源码；只有问题专门针对 Claude Code 时才选本系列，因为 Codex 的代码是最新的、完整的、可复用的。 | 得到真实、当前的实现，没有泄露来源的包袱；代价是它是另一个产品的设计取舍，也没有导读，映射工作要你自己做。 |
+| [Codex](../../agent-frameworks/coding-agents/terminal-agents/vendor-agents/codex.zh.md) | ✅ | 想完整研究一个真实的生产级编码 agent harness，去读 Codex 的 Apache-2.0 源码；只有问题专门针对 Claude Code 时才选本系列，因为 Codex 的代码是最新的、完整的、可复用的。 | 得到真实、当前的实现，没有泄露来源的包袱；代价是它是另一个产品的设计取舍，也没有导读，映射工作要你自己做。 |
 | Piebald-AI/claude-code-system-prompts | 未收录 | 需要 Claude Code 当前实际发出的提示词和工具描述原文，选 Piebald 的仓库；需要提示词之外的控制流（循环、权限、压缩）时选本系列，因为光看提示词看不到这些。本批 tab-intake 未添加。 | 每次发版几分钟内更新，带逐版本变更记录；但内容是提取出来的 Anthropic 文本（其 README 写着“© Anthropic PBC. All rights reserved”），而且只覆盖提示词，不讲架构。 |
 | ChinaSiro/claude-code-sourcemap | 未收录 | 必须拿原文核对某个具体内部细节时，去看提取出来的源码本身；先用本系列弄清该看哪里，因为 1,900 个没有注释的文件不看地图读不下去。本批 tab-intake 未添加。 | 得到一手证据而不是别人的总结；代价是它是对未授权专有代码的再分发（没有许可证文件，2026-03-31 推送一次后再无更新），是这里所有选项里法律风险最重的。 |
 | Claude Code 官方文档 | 非仓库 | 需要受支持的、当前的行为和配置（hook、设置、权限），用 Anthropic 托管的文档；只有想看它们背后在 2026 年 3 月时的实现，才选本系列。 | 权威且持续更新，但只从外部描述接口；它是闭源产品的文档，不是仓库。 |

@@ -115,7 +115,7 @@ Cline 是一个带工具箱的 agent 循环——读文件、写文件、跑 she
 
 - **你想用一份订阅把模型、编辑器和账单一起包掉。** Cline 是反着来的：key 你自己带、token 花销你自己盯、diff 你自己读。如果这份操心正是你想省掉的成本，那就选 Cursor 或 GitHub Copilot，代价是接受一个闭源产品。
 - **JetBrains 支持必须是开源的。** 这个仓库里 JetBrains 插件并未开源，而是和付费 Enterprise 档绑定。如果「开源的 JetBrains 支持」是硬要求，先去看看 [Kilo Code](kilocode.zh.md) 的开放插件再决定。
-- **任务只是改一个文件。** 为了重命名一个符号去走「计划—批准—checkpoint」全套流程太重；在 git 仓库里做小而准的改动，[Aider](../terminal-agents/aider.zh.md) 是更轻的终端结对工具。
+- **任务只是改一个文件。** 为了重命名一个符号去走「计划—批准—checkpoint」全套流程太重；在 git 仓库里做小而准的改动，[Aider](../terminal-agents/independent-runtimes/aider.zh.md) 是更轻的终端结对工具。
 - **agent 该在服务器上无人值守地跑，而不是在你笔记本上。** Cline 的无界面 CLI 可以写进脚本，但「夜里自己认领 issue 并开 PR」属于沙箱化的服务端场景，那是 [OpenHands](../orchestration-and-review/openhands.zh.md) 的地盘。
 - **你要做自己的 agent 产品。** `@cline/sdk` 是真的，但年轻，而且形态围着 Cline 自己的产品长；要嵌入一个中立的 runtime，用 LangGraph 这类框架，而不是一个后来才长出 SDK 的终端产品。[推断]
 - **你需要一个不会每周变动的界面。** 它一天发好几个版本。如果你的约束是「工具不许在我脚下变」，这份 churn 是开源也消不掉的成本。

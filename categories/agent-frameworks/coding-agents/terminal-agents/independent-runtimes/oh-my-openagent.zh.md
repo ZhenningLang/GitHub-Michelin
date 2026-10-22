@@ -2,7 +2,7 @@
 name: OmO
 slug: oh-my-openagent
 repo: https://github.com/code-yeongyu/oh-my-openagent
-category: terminal-agents
+category: independent-runtimes
 tags: [coding-agent, terminal, multi-agent-orchestration, model-routing, agent-memory, typescript]
 language: TypeScript
 license: SUL-1.0 (source-available, non-OSI)
@@ -83,7 +83,7 @@ health:
 
 你把一个大任务交给终端 agent，结果一晚上都在把它拽回正轨，下周还得把同样的项目决策重新交代一遍。OmO 把这些拖拽的活接了过去：一句 `mass ulw`，任务就变成一张并行 worker 的依赖图，每一块跑在合适的模型上、验证通过才算完成，学到的东西沉淀成一个 git 笔记仓库。
 
-![OmO — 健康度雷达](../../../../assets/health/oh-my-openagent.zh.svg)
+![OmO — 健康度雷达](../../../../../assets/health/oh-my-openagent.zh.svg)
 
 ## 何时使用
 
@@ -95,7 +95,7 @@ health:
 
 OmO 是一个 TypeScript TUI，跑在 senpi（[Pi](pi.zh.md) 的 fork）上，其余全是 harness 在会话外叠加的层。升级靠关键词：裸提示词由会话模型直接回答；打出 `ulw` 关键词后，主 agent 先摸代码库、在记事本里做计划、把每个实现单元经 `task` 工具派出去，结果带着证据验证完才算数。打 `mass ulw` 时，主 agent 改为定义一张带依赖的节点图，经 `workflow` 工具逐阶段推进；`/ulw-plan` 加 `/ulw-execute` 则先给你一份写成文档、独立评审过的计划（plan consultant 找漏洞，plan reviewer 只对查实的 blocker 说不行，最多五轮），每波跑在任务专属的 worktree 里，每个清单项过五道验证门，boulder 状态文件让之后的会话能接着干。派发按类别而非模型名路由——`quick`、`deep-low`、`ultrabrain`、`visual-engineering`、`writing`——每个类别映射到一条回退链，订阅通道排在按 token 计费的 API 通道前面。记忆默认开启，存成一个 git 管的 markdown 仓库：每约 25 步跑一次反思、写下耐久笔记；Kibitzer——一个吃脱敏会话事件的常驻廉价小模型——只在已存记忆会改变下一步时提醒主 agent，提示词上限 200 字符。属于你的：仓库、provider 登录和预算。它接管的：`.omo/` 下的计划产物、worker 派发、验证门和记忆仓库。
 
-![oh-my-openagent — 主干用户故事](../../../../assets/flow/oh-my-openagent.zh.svg)
+![oh-my-openagent — 主干用户故事](../../../../../assets/flow/oh-my-openagent.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/oh-my-openagent.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -117,10 +117,10 @@ OmO 是一个 TypeScript TUI，跑在 senpi（[Pi](pi.zh.md) 的 fork）上，�
 ## 何时不用
 
 - **你的用途不是内部、个人或非商业。** 它的许可（Sustainable Use License 1.0）只授权「为自己的内部业务目的、非商业或个人用途」使用，分发也只能是非商业且免费。把 OmO 嵌进你卖的产品超出了授权范围 [推断——对许可文本的解读，不构成法律意见]。需要一个可以随商业产品分发的宽松许可 agent 时，改用 [OpenCode](opencode.zh.md)（MIT）或 [Pi](pi.zh.md)（MIT）。
-- **你在逐 token 精打细算。** 项目自己的宣言就是用更高 token 消耗换自主性——并行 worker 蜂群、独立验证评审、每约 25 步一次记忆反思。API 预算紧张时改用 [aider](aider.zh.md) 或 [Codex](codex.zh.md)，因为单模型循环每步只花一个模型的钱，不是一个机队的钱。
+- **你在逐 token 精打细算。** 项目自己的宣言就是用更高 token 消耗换自主性——并行 worker 蜂群、独立验证评审、每约 25 步一次记忆反思。API 预算紧张时改用 [aider](aider.zh.md) 或 [Codex](../vendor-agents/codex.zh.md)，因为单模型循环每步只花一个模型的钱，不是一个机队的钱。
 - **你想要一个能逐行审计的极简 harness。** OmO 是约 30 个 workspace 包加 Rust 桌面组件，关键词触发行为切换，深度默认值埋在 `~/.omo/omo.jsonc` 里。改用 [Pi](pi.zh.md)——OmO 自己就是从它 fork 出来的那个小而可审计的内核。
-- **你需要罩住 worker 的安全沙箱。** 并行 worktree 有文件系统隔离（克隆加合并回去），但没有文档化的 OS 级沙箱；worker 的 shell 命令以你的用户权限执行 [推断]。改用 [Open Interpreter](open-interpreter.zh.md) 或 [Codex](codex.zh.md)，它们把沙箱执行写进了产品文档。
-- **默认开启的匿名遥测过不了合规。** PostHog 遥测缺省即启用，可以关（`telemetry: false`、`OMO_DISABLE_POSTHOG=1`）。如果「先开再关」本身就违反你的政策，改用 [OpenCode](opencode.zh.md) 或 [Codex](codex.zh.md)。
+- **你需要罩住 worker 的安全沙箱。** 并行 worktree 有文件系统隔离（克隆加合并回去），但没有文档化的 OS 级沙箱；worker 的 shell 命令以你的用户权限执行 [推断]。改用 [Open Interpreter](open-interpreter.zh.md) 或 [Codex](../vendor-agents/codex.zh.md)，它们把沙箱执行写进了产品文档。
+- **默认开启的匿名遥测过不了合规。** PostHog 遥测缺省即启用，可以关（`telemetry: false`、`OMO_DISABLE_POSTHOG=1`）。如果「先开再关」本身就违反你的政策，改用 [OpenCode](opencode.zh.md) 或 [Codex](../vendor-agents/codex.zh.md)。
 - **你要一个 Lindy 背书、低变动的工具。** 仓库 2025-12-03 才创建，十个月冲到约 69.6k stars，90 个 beta 之后发 v5.0.0，还改过名（oh-my-opencode → oh-my-openagent，两个 npm 包仍在并行发布），路线图握在一个人类维护者加他的 AI 助手手里。当「年龄 × 仍在活跃」是决定性先验时，改用 [aider](aider.zh.md)——十个月的火热在这个索引里是风险信号，不是证明。
 
 ## 横向对比
@@ -129,7 +129,7 @@ OmO 是一个 TypeScript TUI，跑在 senpi（[Pi](pi.zh.md) 的 fork）上，�
 |---|---|---|---|
 | [OpenCode](opencode.zh.md) | ✅ | 要一个宽松许可、编排自己拼装的精简终端 agent，选 OpenCode；要派发类别、记忆和模型混用出厂即配好，选 OmO——前提是接受 SUL 条款。 | OpenCode 是宽松、极简的日常主力；OmO 是电池全含的后继者（曾是它的插件），代价是更高 token 消耗和商业再分发受限。 |
 | [Pi](pi.zh.md) | ✅ | 想要一个行为由仓库文件决定、一下午能读完的极简 agent，选 Pi；想直接继承一套已定型的编排栈，选 OmO。 | OmO 的引擎（senpi）是 Pi 的 fork；Pi 保持小而 MIT，OmO 用体积和许可换内建类别、验证门和记忆。 |
-| [Codex](codex.zh.md) | ✅ | 要厂商背书、有文档化沙箱、出事有一个问责主体的终端 agent，选 Codex；要跨 provider 混用订阅加自主验证，选 OmO。 | Codex 是 OpenAI 形状、OS 边界更易信任；OmO 跨 provider、编排更丰富，但无沙箱且许可受限。 |
+| [Codex](../vendor-agents/codex.zh.md) | ✅ | 要厂商背书、有文档化沙箱、出事有一个问责主体的终端 agent，选 Codex；要跨 provider 混用订阅加自主验证，选 OmO。 | Codex 是 OpenAI 形状、OS 边界更易信任；OmO 跨 provider、编排更丰富，但无沙箱且许可受限。 |
 | Claude Code | 未收录 | 接受专有、绑定 Anthropic 的终端 agent 换取打磨过的托管体验，选 Claude Code；要跨 provider 混用且能看源码，选 OmO。 | Claude Code 闭源、绑定订阅；OmO 跨 provider 且源码可见，但受 SUL-1.0 约束。它是真实产品而非本索引可收录的仓库——本 tab-intake 批次未添加。 |
 | [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex) | 未收录 | 生活在 Codex 里、想要 Ultragoal／UltraQA 式自主循环跑在 Codex 内部，选 oh-my-codex；要这套自主性独立成体、跨 provider，选 OmO。 | OmO 自认 oh-my-codex 是概念来源并重新实现；它是真实仓库但本批未收录（tab-intake 批次未添加），请自行到它的仓库判断。 |
 

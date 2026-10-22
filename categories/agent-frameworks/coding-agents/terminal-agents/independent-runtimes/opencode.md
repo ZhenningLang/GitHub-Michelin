@@ -2,7 +2,7 @@
 name: OpenCode
 slug: opencode
 repo: https://github.com/anomalyco/opencode
-category: terminal-agents
+category: independent-runtimes
 tags: [coding-agent, ai-agent, terminal, cli, typescript, model-agnostic, client-server, lsp]
 language: TypeScript
 license: MIT
@@ -75,7 +75,7 @@ health:
 
 Your coding-agent habits — the commands, the `AGENTS.md`, the muscle memory — are tied to one vendor's CLI, so when a better or cheaper model ships elsewhere you either switch tools or stay put. OpenCode is an MIT-licensed coding agent that keeps the same terminal workflow and swaps the model underneath: 75+ providers, local models, or a ChatGPT / Copilot subscription you already pay for.
 
-![OpenCode — health radar](../../../../assets/health/opencode.svg)
+![OpenCode — health radar](../../../../../assets/health/opencode.svg)
 
 ## When to use
 
@@ -87,7 +87,7 @@ Pick OpenCode over Claude Code or Codex when *model freedom* is the requirement,
 
 Running `opencode` starts two things: a local HTTP server that owns the sessions, tools and model calls, and a terminal UI that is just one client of it. The same server is what the desktop app, the VS Code/Cursor extension, `opencode run` (non-interactive) and the JS SDK talk to, which is why one agent shows up in so many places. Model access goes through the Vercel AI SDK plus the Models.dev catalogue — the list of providers and models — so a new provider is a config entry, not a new tool. What OpenCode does for you: the agent loop (read files, edit, run shell commands), language-server diagnostics fed back to the model, `/undo` / `/redo` of its edits, and per-tool permission rules (`allow` / `ask` / `deny`). What you do: connect providers, write `AGENTS.md` (or let `/init` draft it), set permission rules if the permissive defaults are too loose for you, and review what it changed.
 
-![opencode — backbone user story](../../../../assets/flow/opencode.svg)
+![opencode — backbone user story](../../../../../assets/flow/opencode.svg)
 
 <!-- flow-steps:begin (generated from flows/opencode.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -108,9 +108,9 @@ Running `opencode` starts two things: a local HTTP server that owns the sessions
 
 ## When NOT to use
 
-- **You want the agent fenced in by default.** OpenCode's documented defaults are permissive — most permissions are `allow`, so edits and shell commands run without asking unless you write `permission` rules — and it has no built-in OS sandbox. If you want a sandbox and approvals out of the box, use [Codex](codex.md) or [Open Interpreter](open-interpreter.md) instead of OpenCode, because they run commands inside an OS-level sandbox before you've configured anything. [推断]
+- **You want the agent fenced in by default.** OpenCode's documented defaults are permissive — most permissions are `allow`, so edits and shell commands run without asking unless you write `permission` rules — and it has no built-in OS sandbox. If you want a sandbox and approvals out of the box, use [Codex](../vendor-agents/codex.md) or [Open Interpreter](open-interpreter.md) instead of OpenCode, because they run commands inside an OS-level sandbox before you've configured anything. [推断]
 - **You want to use your Claude Pro/Max subscription.** OpenCode's docs say Anthropic prohibits using Pro/Max plans through third-party tools and that OpenCode stopped bundling the plugins that did it as of v1.3.0. If the subscription is your Claude budget, use Claude Code instead of OpenCode, because only the vendor tool is allowed to spend it; OpenCode needs an Anthropic API key (pay per token) or another provider.
-- **You want an editor-native agent with in-editor diff approval.** The OpenCode IDE extension mostly opens the terminal UI in a split pane and passes your selection to it. If you want approve/reject buttons and inline diffs inside VS Code, use [Cline](../ide-agents/cline.md) or [Kilo Code](../ide-agents/kilocode.md) instead, because their whole UX lives in the editor.
+- **You want an editor-native agent with in-editor diff approval.** The OpenCode IDE extension mostly opens the terminal UI in a split pane and passes your selection to it. If you want approve/reject buttons and inline diffs inside VS Code, use [Cline](../../ide-agents/cline.md) or [Kilo Code](../../ide-agents/kilocode.md) instead, because their whole UX lives in the editor.
 - **You found an "OpenCode" written in Go.** That is `opencode-ai/opencode`, a different, now-archived project whose author continued it as Charm's Crush (未收录). If you want that Go terminal agent, follow Crush instead of this repo — configs and docs are not interchangeable.
 - **You need a slow-moving, stable tool.** OpenCode ships several releases a week (v1.18.x as of 2026-10) and has reshaped config before (the `tools` booleans were folded into `permission` in v1.1.1). If you script around it in CI, pin a version; if you need a tool whose CLI barely changes, use [aider](aider.md) instead, because its interface has been stable for years.
 - **Sharing sessions would leak code.** `/share` uploads the conversation to opencode.ai's servers and serves it from a public link (manual by default, `auto` if configured). In a regulated codebase set `"share": "disabled"` in `opencode.json` — or pick a tool without a hosted share feature — before anyone types `/share`.
@@ -120,9 +120,9 @@ Running `opencode` starts two things: a local HTTP server that owns the sessions
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
 | Claude Code | 未收录 | If you are all-in on Claude and want to spend a Pro/Max subscription, pick Claude Code; pick OpenCode when you want the same terminal workflow across many vendors. | Claude Code is closed-source and Anthropic-only but can use the subscription; OpenCode is MIT and multi-provider but must use API keys for Anthropic models. |
-| [Codex](codex.md) | ✅ | When you mostly use OpenAI models and want an OS sandbox by default, pick Codex; pick OpenCode when switching providers per task matters more than default isolation. | Codex is Apache-2.0 and sandboxed but tuned for OpenAI; OpenCode reaches 75+ providers but starts from permissive permissions. |
+| [Codex](../vendor-agents/codex.md) | ✅ | When you mostly use OpenAI models and want an OS sandbox by default, pick Codex; pick OpenCode when switching providers per task matters more than default isolation. | Codex is Apache-2.0 and sandboxed but tuned for OpenAI; OpenCode reaches 75+ providers but starts from permissive permissions. |
 | [Open Interpreter](open-interpreter.md) | ✅ | To run cheap open models through the vendor-style harness they were tuned for, pick Open Interpreter; pick OpenCode for one consistent agent with desktop, IDE and server surfaces. | Open Interpreter changes the scaffolding per model on a young Codex fork; OpenCode keeps one loop and a broader client ecosystem. |
-| [Kilo Code](../ide-agents/kilocode.md) | ✅ | If your team lives in VS Code or JetBrains and wants an in-editor agent with a model gateway, pick Kilo Code; pick OpenCode when the terminal is home. | Kilo's CLI is itself a fork of OpenCode; Kilo adds editor UI and a hosted gateway, OpenCode stays the upstream terminal-first core. |
+| [Kilo Code](../../ide-agents/kilocode.md) | ✅ | If your team lives in VS Code or JetBrains and wants an in-editor agent with a model gateway, pick Kilo Code; pick OpenCode when the terminal is home. | Kilo's CLI is itself a fork of OpenCode; Kilo adds editor UI and a hosted gateway, OpenCode stays the upstream terminal-first core. |
 | [aider](aider.md) | ✅ | For careful pair programming where every edit becomes a git commit, pick aider; pick OpenCode for autonomous plan/build agents and subagents. | aider is older and steadier with less autonomy; OpenCode does more per prompt and changes faster. |
 
 ## Tech stack

@@ -118,7 +118,7 @@ Continue splits into a core engine, thin per-surface clients, and a small GUI, a
 - **You are choosing an agent to adopt today.** The repository is read-only and the maintainers state it is no longer actively maintained, so security fixes and new model support end here. Use [Cline](cline.md) or [Kilo Code](kilocode.md) instead.
 - **You built automation on the hosted Hub or on sign-in.** The final release removed anonymous telemetry and pulled out authentication; treat the local config file as the only supported surface and do not design around a hosted account.
 - **You want autocomplete and nothing else, with the model managed for you.** That is GitHub Copilot's product rather than Continue's: less control, no config file to maintain, and a vendor-set model list.
-- **You want a terminal-first pair programmer for small diffs.** Continue's CLI is a second surface, not the primary one; [Aider](../terminal-agents/aider.md) is built terminal-first for surgical edits.
+- **You want a terminal-first pair programmer for small diffs.** Continue's CLI is a second surface, not the primary one; [Aider](../terminal-agents/independent-runtimes/aider.md) is built terminal-first for surgical edits.
 - **Your procurement requires a vendor that answers CVEs and ships fixes.** A frozen codebase is a liability regardless of how good the design is; weigh that before reusing it in anything long-lived.
 - **You need a plugin ecosystem or an SDK to build on.** Continue's extension points are its config format, not a plugin API; for programmatic agent construction use a framework instead.
 

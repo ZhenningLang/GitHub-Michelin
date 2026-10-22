@@ -2,7 +2,7 @@
 name: ZCode
 slug: zcode
 repo: https://github.com/zai-org/ZCode
-category: terminal-agents
+category: vendor-agents
 tags: [coding-agent, desktop, terminal, workflows, hooks, agent-memory, glm]
 language: TypeScript
 license: Apache-2.0
@@ -73,19 +73,19 @@ health:
 
 Your coding task spans a desktop window, a remote workspace and unattended terminal jobs, but each has different agent settings. ZCode supplies its own agent runtime with desktop, web and terminal interfaces, plus dependency-aware workflows and content-bound approval for project hooks.
 
-![ZCode — health radar](../../../../assets/health/zcode.svg)
+![ZCode — health radar](../../../../../assets/health/zcode.svg)
 
 ## When to use
 
 You maintain a codebase on a workstation and an SSH host. You want to inspect changes visually, then run a repeatable CLI task without rebuilding provider, skill and hook integration around a second agent. Choose ZCode when you want the runtime itself available in source, a shared desktop/web interface, custom model endpoints and a built-in workflow scheduler. For example, after an agent task stops, you can examine its saved sessions and workflow artifacts rather than reconstructing progress from several terminal windows.
 
-The deciding tradeoff against [T3 Code](t3code.md) is owning one supplied agent rather than wrapping several existing agent CLIs. Against [OpenCode](opencode.md), prefer ZCode when its integrated workflow and Z.ai account surfaces matter more than OpenCode's broader provider ecosystem. The [README](https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/README.en.md) documents SSH/WSL workspaces; its [CLI configuration guide](https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/apps/zcode-cli/docs/usage/03-config.md) supports Chat Completions, Responses and Anthropic Messages protocols. This is not a promise that the open build reproduces every commercial feature.
+The deciding tradeoff against [T3 Code](../independent-runtimes/t3code.md) is owning one supplied agent rather than wrapping several existing agent CLIs. Against [OpenCode](../independent-runtimes/opencode.md), prefer ZCode when its integrated workflow and Z.ai account surfaces matter more than OpenCode's broader provider ecosystem. The [README](https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/README.en.md) documents SSH/WSL workspaces; its [CLI configuration guide](https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/apps/zcode-cli/docs/usage/03-config.md) supports Chat Completions, Responses and Anthropic Messages protocols. This is not a promise that the open build reproduces every commercial feature.
 
 ## When NOT to use
 
 - **You need an OS sandbox before processing an untrusted repository.** Prefer [Codex](codex.md) with its sandbox enabled. ZCode's [NOTICE](https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/NOTICE.md#L5-L30) explicitly disclaims a default OS sandbox; non-interactive `--prompt` defaults to `yolo`. The permission service allows ordinary yolo calls before normal deny-rule checks, while special interaction and always-ask gates differ. A mode name or tool filter is not containment.
-- **You only want a GUI around agents you already use.** Prefer [T3 Code](t3code.md). ZCode supplies its own CLI/runtime and configuration model; adopting a whole agent is unnecessary when the problem is merely finding existing sessions.
-- **Broad provider support matters more than Z.ai product integration.** Prefer [OpenCode](opencode.md). ZCode supports custom APIs, but its [NOTICE](https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/NOTICE.md#L32-L69) describes account services, official-endpoint gateway forwarding, remote credential synchronization and local model-input/output logs. Do not mistake source availability for no network traffic or secrets remaining on one host; OpenCode's own optional hosted services also require review.
+- **You only want a GUI around agents you already use.** Prefer [T3 Code](../independent-runtimes/t3code.md). ZCode supplies its own CLI/runtime and configuration model; adopting a whole agent is unnecessary when the problem is merely finding existing sessions.
+- **Broad provider support matters more than Z.ai product integration.** Prefer [OpenCode](../independent-runtimes/opencode.md). ZCode supports custom APIs, but its [NOTICE](https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/NOTICE.md#L32-L69) describes account services, official-endpoint gateway forwarding, remote credential synchronization and local model-input/output logs. Do not mistake source availability for no network traffic or secrets remaining on one host; OpenCode's own optional hosted services also require review.
 - **You need the commercial app's native desktop-control feature or complete training traces.** For coding, use [Codex](codex.md) and validate any extra automation separately. ZCode's open Computer Use package only throws an unavailable error. Its [automation guide](https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/apps/zcode-cli/docs/usage/13-automation.md#L77-L101) records failed default-log conversion and `record:prompt` paths; these are not a ready training-data pipeline.
 - **You require an uncomplicated redistribution audit.** Prefer a narrower agent such as [Codex](codex.md), then audit its exact artifact too. ZCode's first-party Apache license is real, but its [third-party inventory documentation](https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/third-party/README.md) records 25 unresolved review items and says strict checks fail. That is a release-compliance cost, not evidence that the entire runtime is closed.
 
@@ -93,15 +93,15 @@ The deciding tradeoff against [T3 Code](t3code.md) is owning one supplied agent 
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [OpenCode](opencode.md) | ✅ | Choose OpenCode for a terminal workflow across a broad model/provider ecosystem; choose ZCode when its integrated workflow scheduler and Z.ai-oriented desktop experience decide the choice. | ZCode adds a supplied desktop/web stack and workflow machinery; you accept product-service integration and a much shorter public maintenance history. |
+| [OpenCode](../independent-runtimes/opencode.md) | ✅ | Choose OpenCode for a terminal workflow across a broad model/provider ecosystem; choose ZCode when its integrated workflow scheduler and Z.ai-oriented desktop experience decide the choice. | ZCode adds a supplied desktop/web stack and workflow machinery; you accept product-service integration and a much shorter public maintenance history. |
 | [Codex](codex.md) | ✅ | Choose Codex when default OS-level execution isolation matters; choose ZCode for one source-available runtime spanning its desktop, web and CLI with three configurable model protocols. | Codex narrows custom providers to Responses; ZCode offers protocol flexibility but requires you to supply execution containment. |
-| [T3 Code](t3code.md) | ✅ | Choose T3 Code to coordinate already authenticated coding agents visually; choose ZCode when you want to modify and standardize the agent runtime itself. | T3 Code inherits provider-runtime behavior; ZCode owns more of the loop, configuration, extensions and upgrade burden. |
+| [T3 Code](../independent-runtimes/t3code.md) | ✅ | Choose T3 Code to coordinate already authenticated coding agents visually; choose ZCode when you want to modify and standardize the agent runtime itself. | T3 Code inherits provider-runtime behavior; ZCode owns more of the loop, configuration, extensions and upgrade burden. |
 
 ## Quick start
 
 Use the [source quick start](https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/apps/zcode-cli/docs/usage/01-quickstart.md): prepare Git, Node.js 24.14.0 and pnpm 10.33.2, then run `pnpm install --frozen-lockfile` and `pnpm --filter @zcode/cli... build`. Keep the generated bundle and adjacent resources; the guide uses `zcode` as shorthand for that executable or `node /absolute/path/to/zcode.cjs`. Configure your model provider—the endpoint and credentials used for model requests—in `~/.zcode/v2/provider_config.json`; runtime, permissions and extensions live separately in `~/.zcode/cli/config.json`. Submit a task in a disposable project with an explicit `--mode`; begin with `plan` for analysis, and only use `yolo` for unattended edits inside isolation you control. ZCode runs the model/tool loop and returns session and response data; you pay for model calls, secure credentials and verify actual files, tool failures and test results rather than trusting the final answer. For a graphical source build, the root README instead documents `pnpm bootstrap` followed by `pnpm dev:desktop` or `pnpm dev:web`; these are separate entry paths, not requirements for CLI use.
 
-![zcode — backbone user story](../../../../assets/flow/zcode.svg)
+![zcode — backbone user story](../../../../../assets/flow/zcode.svg)
 
 <!-- flow-steps:begin (generated from flows/zcode.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -120,7 +120,7 @@ Use the [source quick start](https://github.com/zai-org/ZCode/blob/3c5b227649371
 
 ## Key techniques
 
-![ZCode — mechanism diagram](../../../../assets/mechanism/zcode.svg)
+![ZCode — mechanism diagram](../../../../../assets/mechanism/zcode.svg)
 
 <!-- mechanism:begin (generated from mechanisms/zcode.json by tools/mechanism_card.py; do not edit) -->
 <details>

@@ -3,7 +3,7 @@ name: Open Interpreter
 slug: open-interpreter
 repo: https://github.com/openinterpreter/openinterpreter
 homepage: https://www.openinterpreter.com/
-category: terminal-agents
+category: independent-runtimes
 tags: [coding-agent, terminal, codex-fork, harness, code-execution, mcp, acp, local-models]
 language: Rust
 license: Apache-2.0
@@ -85,7 +85,7 @@ health:
 
 你把 Kimi、GLM 这类便宜模型接进一个 Codex 式终端 agent，结果它改文件、调工具频频出错，而同一个模型在它自家厂商的 CLI 里明显顺手得多——外面那层脚手架是照别家模型调的。Open Interpreter 是 OpenAI Codex 的一个 fork，让你在同一个终端程序里，按模型家族换上它习惯的那套提示词和工具脚手架（也就是“harness”）。
 
-![open-interpreter — 健康度雷达](../../../../assets/health/open-interpreter.zh.svg)
+![open-interpreter — 健康度雷达](../../../../../assets/health/open-interpreter.zh.svg)
 
 > **身份已变——请先读这段。** 你也许记得的那个项目——用 Python 写的“自然语言操作你的电脑”REPL，在本地生成并执行代码——*不是*这个仓库今天交付的东西。那套 Python 代码最后一次发版是 `v0.4.2`（2024-10），如今作为社区 fork 存活在 [`endolith/open-interpreter`](https://github.com/endolith/open-interpreter)。这个仓库（现名 `openinterpreter/openinterpreter`，旧的 `open-interpreter` 地址会自动跳转）已用 **Rust 重写成 Codex 的 fork**，于 2026 年重新发布。下文描述的全部是*当前*这个 Rust 项目。想要老的 Python 工具，请用社区 fork，而不是看这一页。
 
@@ -99,7 +99,7 @@ health:
 
 Open Interpreter 的底子就是 Codex——同一套 Rust agent 循环、沙箱和 exec 协议——只多了一层：一组重新实现的 **harness**，每个都是某家厂商编码 CLI（Kimi Code、ZCode、Qwen Code、Claude Code 等）所用提示词、工具定义和编辑格式的复刻。你只做三件事：装好二进制、选 provider 和模型、选用哪个 harness 包住它；之后 Open Interpreter 就按那家厂商自己工具的方式和模型对话，同时每条命令照样过 Codex 的 OS 沙箱和审批规则。可以把它想成同一副车身，按司机换不同的方向盘和踏板布局。因为它讲 Codex exec 协议和 ACP，编辑器、或基于 Codex SDK 写的应用，只要改一行二进制路径就能改由它来驱动。
 
-![open-interpreter — 主干用户故事](../../../../assets/flow/open-interpreter.zh.svg)
+![open-interpreter — 主干用户故事](../../../../../assets/flow/open-interpreter.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/open-interpreter.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -122,15 +122,15 @@ Open Interpreter 的底子就是 Codex——同一套 Rust agent 循环、沙箱
 - **你打算在一台要紧的机器上跑 LLM 编码 agent——先搞清楚执行风险。** 这个 agent 会按模型输出执行 shell 命令、改文件。“原生沙箱”加审批是缓解，不是豁免：被提示注入或单纯出错的输出，仍可能在你批准的范围内删文件、泄露密钥、跑破坏性命令。审它做了什么、限制访问范围、别让它碰到生产凭据，先读[沙箱与审批文档](https://www.openinterpreter.com/docs/terminal/sandbox)；需要硬边界时，把它放进一次性容器或虚拟机里跑，而不是直接在工作机上跑。[推断]
 - **你想要的是老的 Python“对电脑说话”REPL。** 它已经不在这个仓库里了。依赖 Python `interpreter` 包 / API 的代码属于社区 fork [`endolith/open-interpreter`](https://github.com/endolith/open-interpreter)——改用它，而不是这个仓库。
 - **你需要*这套代码*有稳定 API 或生产业绩。** Rust 线在不到四个月里发了约 40 个 `0.0.x` 版本，现在是 `rust-v0.0.56`（2026-10-07）——快、未冻结、很年轻。需要稳定发版线，就选 [aider](aider.zh.md)（多年、模型无关），因为它的 CLI 和编辑格式跨很多版本都保持稳定。
-- **你只用 OpenAI 模型。** 这里的价值在于给*其他*厂商模型的定制 harness。用 GPT 模型就直接用 [Codex](codex.zh.md)，而不是 Open Interpreter，因为上游团队更大、功能先到——Open Interpreter 要晚一步合并。
-- **你想要一个用来*构建*多 agent 系统的库。** 这是面向终端用户的编码 agent（外加 ACP / Codex SDK 接口），不是编排框架。需要在自己代码里组合 agent，就用 [AgentScope](../../agent-runtimes/agent-sdks/agentscope.zh.md) 或 [smolagents](../../agent-runtimes/agent-sdks/smolagents.zh.md)，而不是 Open Interpreter。
+- **你只用 OpenAI 模型。** 这里的价值在于给*其他*厂商模型的定制 harness。用 GPT 模型就直接用 [Codex](../vendor-agents/codex.zh.md)，而不是 Open Interpreter，因为上游团队更大、功能先到——Open Interpreter 要晚一步合并。
+- **你想要一个用来*构建*多 agent 系统的库。** 这是面向终端用户的编码 agent（外加 ACP / Codex SDK 接口），不是编排框架。需要在自己代码里组合 agent，就用 [AgentScope](../../../agent-runtimes/agent-sdks/agentscope.zh.md) 或 [smolagents](../../../agent-runtimes/agent-sdks/smolagents.zh.md)，而不是 Open Interpreter。
 - **你需要浏览器 / 原生应用 QA 模式可靠。** 借外部工具（agent-browser、trycua）驱动应用，跨 OS 版本、应用更新和屏幕状态都很脆弱。关键的浏览器测试流程请用 Playwright 这类脚本化测试框架，而不是 LLM 驱动的 QA skill，因为前者确定、可审查。[未验证]
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Codex](codex.zh.md) | ✅ | 用的是 OpenAI 模型就选 Codex；想用同一套 Codex 运行时，按各家风格的 harness 驱动 Kimi、GLM、DeepSeek 或 Qwen 时选 Open Interpreter。 | Codex 是上游：团队更大、功能先到。Open Interpreter 加了可切换的 harness 层和开源模型 provider 目录，代价是比上游慢一次合并。 |
+| [Codex](../vendor-agents/codex.zh.md) | ✅ | 用的是 OpenAI 模型就选 Codex；想用同一套 Codex 运行时，按各家风格的 harness 驱动 Kimi、GLM、DeepSeek 或 Qwen 时选 Open Interpreter。 | Codex 是上游：团队更大、功能先到。Open Interpreter 加了可切换的 harness 层和开源模型 provider 目录，代价是比上游慢一次合并。 |
 | Claude Code | 未收录 | 愿意为 Claude 付费、要最打磨的厂商体验，选 Claude Code；想在更便宜的模型外面套一层 Claude Code 风格的 harness，选 Open Interpreter。 | Claude Code 闭源且只用 Anthropic 模型；Open Interpreter 是 Apache-2.0、模型无关，但它的 `claude-code` harness 只是模拟，不是正品。 |
 | [OpenCode](opencode.zh.md) | ✅ | 要模型无关、带桌面应用、IDE 扩展和客户端/服务端 API 的 agent，选 OpenCode；要 Codex 的 OS 沙箱加按模型模拟 harness，选 Open Interpreter。 | OpenCode 用同一套 agent 循环接 75+ provider，默认权限偏宽松；Open Interpreter 保留 Codex 沙箱，按模型家族换脚手架。 |
 | [aider](aider.zh.md) | ✅ | 要长期稳定、每次改动一个 git 提交、跨多家 provider 的结对编程，选 aider；要带沙箱 shell 执行的自主 Codex 式 agent，选 Open Interpreter。 | aider 成熟稳定，但不是沙箱化的自主执行器；Open Interpreter 更新、变动也更快。 |

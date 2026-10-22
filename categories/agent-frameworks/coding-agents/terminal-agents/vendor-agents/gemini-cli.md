@@ -2,7 +2,7 @@
 name: Gemini CLI
 slug: gemini-cli
 repo: https://github.com/google-gemini/gemini-cli
-category: terminal-agents
+category: vendor-agents
 tags: [coding-agent, terminal, ai-agent, gemini, google, mcp-client]
 language: TypeScript
 license: Apache-2.0
@@ -83,19 +83,19 @@ health:
 
 You want an AI agent that reads your whole repo and runs commands from the terminal, but every option seems to start with "paste your API key" and a monthly bill. Gemini CLI is Google's open-source terminal agent that you sign into with an ordinary Google account and use for free within a daily quota, with Gemini's very large context window for big codebases.
 
-![Gemini CLI — health radar](../../../../assets/health/gemini-cli.svg)
+![Gemini CLI — health radar](../../../../../assets/health/gemini-cli.svg)
 
 ## When to use
 
 You're a developer — a student, a hobbyist, or someone whose employer hasn't bought an AI tool yet — and you want to ask "summarise every change that went into this repo yesterday" or "write a Discord bot that answers from this FAQ.md" and have the agent actually open files, search the web, and run shell commands. You don't want to manage API keys or a credit card for an experiment. You run `npx @google/gemini-cli`, choose *Sign in with Google*, and get the free tier (the README states 60 requests/minute and 1,000/day) with Gemini models and a 1M-token context, which matters when the question spans a large codebase. Later the same tool scripts into CI with `gemini -p "…" --output-format json`, plugs into GitHub through the `run-gemini-cli` Action, or is driven by other front-ends over ACP (`gemini --acp`).
 
-Pick it over [Codex](codex.md) when you have no paid ChatGPT plan and want the no-cost path; over [OpenCode](opencode.md) when you would rather sign in once with Google than configure provider keys; over Claude Code (not indexed) when you need the agent's source under Apache-2.0. The deciding tradeoff: the cheapest way into a capable terminal agent and the biggest context window, in exchange for being Gemini-only and having its sandbox switched off by default.
+Pick it over [Codex](codex.md) when you have no paid ChatGPT plan and want the no-cost path; over [OpenCode](../independent-runtimes/opencode.md) when you would rather sign in once with Google than configure provider keys; over Claude Code (not indexed) when you need the agent's source under Apache-2.0. The deciding tradeoff: the cheapest way into a capable terminal agent and the biggest context window, in exchange for being Gemini-only and having its sandbox switched off by default.
 
 ## How it works
 
 Gemini CLI is a Node.js program with an interactive terminal UI. You type a request; it sends the request, your project's `GEMINI.md` context file (persistent instructions for this repo), and the definitions of its built-in tools to a Gemini model. The model replies by calling tools — read or write a file, run a shell command, fetch a URL, or search Google ("grounding": letting the model cite fresh search results instead of guessing from memory) — and the CLI runs them and feeds the results back until the task is done. By default every tool call waits for your approval; `--approval-mode auto_edit` approves file edits only, and `--yolo` approves everything (and turns on the sandbox by default). Sandboxing — running commands inside macOS Seatbelt or a Docker/Podman container so they cannot touch the rest of your machine — is **off** unless you pass `-s` or set `GEMINI_SANDBOX`. Think of it as a capable intern who asks before every action unless you hand over the keys. It does the loop, the tools, checkpointing and MCP plumbing (MCP, the Model Context Protocol, is a plug format for adding external tools); you choose the login, write `GEMINI.md`, approve actions, and decide whether to sandbox.
 
-![gemini-cli — backbone user story](../../../../assets/flow/gemini-cli.svg)
+![gemini-cli — backbone user story](../../../../../assets/flow/gemini-cli.svg)
 
 <!-- flow-steps:begin (generated from flows/gemini-cli.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -115,19 +115,19 @@ Gemini CLI is a Node.js program with an interactive terminal UI. You type a requ
 
 ## When NOT to use
 
-- **You need to switch between OpenAI, Anthropic or local models.** Gemini CLI talks only to Gemini (via Google login, Gemini API key or Vertex AI). Use [OpenCode](opencode.md) for multi-provider work, or Qwen Code (not indexed) — a project that began as a Gemini CLI fork and now supports OpenAI, Anthropic, Gemini and local models.
-- **You work offline or air-gapped.** There is no local-model path; every turn goes to Google's API. Use [OpenCode](opencode.md) or [Codex](codex.md) (`--oss` with Ollama / LM Studio) against a local model server instead.
-- **You expect safe defaults on an unsandboxed machine.** The sandbox is opt-in; with `--yolo` or a broad `--allowed-tools`, shell commands run with your user's rights. If you can't enforce `-s` or a system settings file, prefer [Codex](codex.md), whose OS sandbox is on by default, or keep agents in CI with [gh-aw](../orchestration-and-review/gh-aw.md).
-- **Your code may not leave the company under consumer terms.** The free tier rides on a personal Google account; organisations should use Vertex AI or a paid Gemini Code Assist licence and lock settings down with the system settings file (login-domain restriction, tool allowlists, enforced sandbox, OpenTelemetry export). The enterprise guide itself warns these are guardrails against accidents, not a security boundary against a determined local admin. If you need a hard server-side boundary, run agents in CI ([gh-aw](../orchestration-and-review/gh-aw.md)) rather than on laptops.
-- **You need complex multi-agent orchestration.** Gemini CLI is one agent per session; for supervising several agents across machines use [OpenHands](../orchestration-and-review/openhands.md) (which can drive Gemini CLI over ACP).
+- **You need to switch between OpenAI, Anthropic or local models.** Gemini CLI talks only to Gemini (via Google login, Gemini API key or Vertex AI). Use [OpenCode](../independent-runtimes/opencode.md) for multi-provider work, or Qwen Code (not indexed) — a project that began as a Gemini CLI fork and now supports OpenAI, Anthropic, Gemini and local models.
+- **You work offline or air-gapped.** There is no local-model path; every turn goes to Google's API. Use [OpenCode](../independent-runtimes/opencode.md) or [Codex](codex.md) (`--oss` with Ollama / LM Studio) against a local model server instead.
+- **You expect safe defaults on an unsandboxed machine.** The sandbox is opt-in; with `--yolo` or a broad `--allowed-tools`, shell commands run with your user's rights. If you can't enforce `-s` or a system settings file, prefer [Codex](codex.md), whose OS sandbox is on by default, or keep agents in CI with [gh-aw](../../orchestration-and-review/gh-aw.md).
+- **Your code may not leave the company under consumer terms.** The free tier rides on a personal Google account; organisations should use Vertex AI or a paid Gemini Code Assist licence and lock settings down with the system settings file (login-domain restriction, tool allowlists, enforced sandbox, OpenTelemetry export). The enterprise guide itself warns these are guardrails against accidents, not a security boundary against a determined local admin. If you need a hard server-side boundary, run agents in CI ([gh-aw](../../orchestration-and-review/gh-aw.md)) rather than on laptops.
+- **You need complex multi-agent orchestration.** Gemini CLI is one agent per session; for supervising several agents across machines use [OpenHands](../../orchestration-and-review/openhands.md) (which can drive Gemini CLI over ACP).
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
 | [Codex](codex.md) | ✅ | If you already pay for ChatGPT and want sandboxing on by default, pick Codex; if you want a free personal-account tier and a 1M-token context, pick Gemini CLI. | Codex sandboxes every command by default but is OpenAI-centric and closed to outside PRs; Gemini CLI accepts PRs and costs nothing to start, but its sandbox is opt-in. |
-| [OpenCode](opencode.md) | ✅ | If you need to swap providers or run local models, pick OpenCode; if one Google login and Gemini's context window are enough, pick Gemini CLI. | OpenCode is provider-agnostic but you bring and pay for keys; Gemini CLI is single-vendor but free to try. |
-| [Open Interpreter](open-interpreter.md) | ✅ | If your budget is cheap or open-weight models and you need a harness tuned for them, pick Open Interpreter; for Gemini models, pick Gemini CLI. | Open Interpreter (a Codex fork) works across providers with OS sandboxing; Gemini CLI has first-party Gemini tooling such as Search grounding. |
+| [OpenCode](../independent-runtimes/opencode.md) | ✅ | If you need to swap providers or run local models, pick OpenCode; if one Google login and Gemini's context window are enough, pick Gemini CLI. | OpenCode is provider-agnostic but you bring and pay for keys; Gemini CLI is single-vendor but free to try. |
+| [Open Interpreter](../independent-runtimes/open-interpreter.md) | ✅ | If your budget is cheap or open-weight models and you need a harness tuned for them, pick Open Interpreter; for Gemini models, pick Gemini CLI. | Open Interpreter (a Codex fork) works across providers with OS sandboxing; Gemini CLI has first-party Gemini tooling such as Search grounding. |
 | Qwen Code | 未收录 | If you like Gemini CLI's workflow but need OpenAI, Anthropic, Qwen or local models, pick Qwen Code; stay on Gemini CLI for the official Google tooling and free tier. | Qwen Code forked from Gemini CLI v0.8.2 and diverged; you gain providers but lose upstream fixes and Google-specific features. |
 | Claude Code | 未收录 | If your team standardises on Anthropic models and accepts a closed-source binary, pick Claude Code; if you need an open-source agent with a free tier, pick Gemini CLI. | Claude Code is closed-source and subscription-based; Gemini CLI is Apache-2.0 but Gemini-only. |
 

@@ -2,7 +2,7 @@
 name: Letta Code
 slug: letta-code
 repo: https://github.com/letta-ai/letta-code
-category: terminal-agents
+category: independent-runtimes
 tags: [coding-agent, terminal, cli, typescript, agent-memory, stateful-agents, memgpt, letta]
 language: TypeScript
 license: Apache-2.0
@@ -84,19 +84,19 @@ health:
 
 每次新开编码 agent 的会话，它都不认识你：这个仓库用 pnpm、跑测试前要先灌好数据库、你只要小改动，又得从头讲一遍。Letta Code 让同一个 agent 跨会话一直活着——它把学到的东西写进用 git 记版本的记忆文件，下次启动时再放回自己的提示词里。
 
-![Letta Code — 健康度雷达](../../../../assets/health/letta-code.zh.svg)
+![Letta Code — 健康度雷达](../../../../../assets/health/letta-code.zh.svg)
 
 ## 何时使用
 
 你每天都在终端里用编码 agent，它老犯同一个错：在 pnpm 工作区里跑 `npm install`，你纠正了，第二天早上新开的会话照犯不误，因为那句纠正只活在昨天的聊天记录里。`AGENTS.md` 这类规则文件能缓解，但发现教训、动手写下来的那个人还是你。
 
-想让 agent 自己接过这件事时，就想到 Letta Code。它是 MemGPT 团队还在维护的产品（已退役的 [Letta V1 服务器](../../../agent-memory/app-memory/letta.zh.md) 就指向这里）：你一直跟同一个长期存在的 agent 对话，它学到持久的东西时会改写自己的“记忆块”——钉在系统提示词里的几段文字——每次改动都是一个你能看的 git 提交。如果决定性的需求是跨会话学习，而不是 provider 覆盖面或极简内核，选它而不选 [OpenCode](opencode.zh.md) 或 [Pi](pi.zh.md)；如果你愿意为了“agent 自己改写的记忆”换掉手上的 agent，而不是只要一份回放给它的日志，选它而不是给 Claude Code 装 [claude-mem](../../../agent-memory/coding-agent-memory/claude-mem.zh.md)。
+想让 agent 自己接过这件事时，就想到 Letta Code。它是 MemGPT 团队还在维护的产品（已退役的 [Letta V1 服务器](../../../../agent-memory/app-memory/letta.zh.md) 就指向这里）：你一直跟同一个长期存在的 agent 对话，它学到持久的东西时会改写自己的“记忆块”——钉在系统提示词里的几段文字——每次改动都是一个你能看的 git 提交。如果决定性的需求是跨会话学习，而不是 provider 覆盖面或极简内核，选它而不选 [OpenCode](opencode.zh.md) 或 [Pi](pi.zh.md)；如果你愿意为了“agent 自己改写的记忆”换掉手上的 agent，而不是只要一份回放给它的日志，选它而不是给 Claude Code 装 [claude-mem](../../../../agent-memory/coding-agent-memory/claude-mem.zh.md)。
 
 ## 怎么用起来
 
 Letta Code 是一个 TypeScript 写的命令行工具（`letta`），在你的机器上跑 agent 循环，带着常见的编码工具——读文件、改文件、打补丁、grep、shell、git worktree。它的不同之处在于 agent 的状态放在哪。每个 agent 有一个叫 MemFS 的记忆目录（“记忆文件系统”：一堆受 git 版本管理的普通文件），其中一部分在每一轮开始时被编进系统提示词，所以 agent 不用搜索就能看到自己的笔记。**Letta Code 替你做的：**存储记忆并记版本；agent 学到东西时（或你说 `/remember …` 时）让它自己改写记忆；在后台跑“做梦”——子 agent 回看最近的对话、把教训归并整理；并让同一个 agent 在终端、桌面端、浏览器、Slack/Telegram/Discord 里都能找到。**你要做的：**装好 CLI，决定状态存在哪（默认是 Letta Cloud，也可以选存在本机），接上自己的模型 key 或编码订阅，然后一直和这个 agent 干活，而不是每次新建一个。可以把它想成一个把笔记本放在 git 仓库里的同事，而不是一件你每天早上都要重新配置的工具。
 
-![letta-code — 主干用户故事](../../../../assets/flow/letta-code.zh.svg)
+![letta-code — 主干用户故事](../../../../../assets/flow/letta-code.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/letta-code.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -117,22 +117,22 @@ Letta Code 是一个 TypeScript 写的命令行工具（`letta`），在你的�
 
 ## 何时不用
 
-- **你要 agent 每天的行为都一样。** Letta agent 干活时会改自己的提示词、记忆和技能，昨天的行为不是固定基线。改用 [OpenCode](opencode.zh.md) 或 [Codex](codex.zh.md)，因为它们的行为来自你编辑的配置，而不是 agent 自己决定记住什么。
-- **agent 状态必须不经额外操作就不进厂商基础设施。** 除非首次启动时选了本地，否则默认用 Letta Cloud；源码把本地后端当作备用模式；自托管的 agent 用不了 chat.letta.com、远程电脑、跨机器 secrets，也没有自动备份。默认就自托管的场景改用 [Hermes Agent](../../agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.zh.md)；根本不需要持久记忆时，改用 [OpenCode](opencode.zh.md) 接本地模型。
-- **你想给手上正在用的编码 agent 加记忆。** Letta Code 是替换你的 agent，不是给它加东西。Claude Code 用户改用 [claude-mem](../../../agent-memory/coding-agent-memory/claude-mem.zh.md)，因为它记录并回放会话，不用换工具。
-- **你在自己应用的 agent 循环里做记忆。** Letta Code 要当运行时。改用 [Mem0](../../../agent-memory/app-memory/mem0.zh.md) 或 [LangMem](../../../agent-memory/app-memory/langmem.zh.md)，因为它们把记忆加进一个仍由你掌控的循环。
+- **你要 agent 每天的行为都一样。** Letta agent 干活时会改自己的提示词、记忆和技能，昨天的行为不是固定基线。改用 [OpenCode](opencode.zh.md) 或 [Codex](../vendor-agents/codex.zh.md)，因为它们的行为来自你编辑的配置，而不是 agent 自己决定记住什么。
+- **agent 状态必须不经额外操作就不进厂商基础设施。** 除非首次启动时选了本地，否则默认用 Letta Cloud；源码把本地后端当作备用模式；自托管的 agent 用不了 chat.letta.com、远程电脑、跨机器 secrets，也没有自动备份。默认就自托管的场景改用 [Hermes Agent](../../../agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.zh.md)；根本不需要持久记忆时，改用 [OpenCode](opencode.zh.md) 接本地模型。
+- **你想给手上正在用的编码 agent 加记忆。** Letta Code 是替换你的 agent，不是给它加东西。Claude Code 用户改用 [claude-mem](../../../../agent-memory/coding-agent-memory/claude-mem.zh.md)，因为它记录并回放会话，不用换工具。
+- **你在自己应用的 agent 循环里做记忆。** Letta Code 要当运行时。改用 [Mem0](../../../../agent-memory/app-memory/mem0.zh.md) 或 [LangMem](../../../../agent-memory/app-memory/langmem.zh.md)，因为它们把记忆加进一个仍由你掌控的循环。
 - **你需要一个能稳定写脚本调用的接口。** 它还是 0.x，2026-07-23 到 2026-10-09 之间发了 100 个版本，功能有增也有删：AgentFile（`.af`）导入导出被直接移除了。比起记忆更看重慢节奏、活得久的工具时，改用 [aider](aider.zh.md)。
-- **你需要多个 agent 共用一份记忆。** 记忆属于单个 agent；2026-06 提的未关闭 issue #2666 报告说，不管别的 agent 知道什么，新 agent 都从一张白纸开始。多个 agent 或工具必须读同一个记忆库时，改用 [Mem0](../../../agent-memory/app-memory/mem0.zh.md)。
+- **你需要多个 agent 共用一份记忆。** 记忆属于单个 agent；2026-06 提的未关闭 issue #2666 报告说，不管别的 agent 知道什么，新 agent 都从一张白纸开始。多个 agent 或工具必须读同一个记忆库时，改用 [Mem0](../../../../agent-memory/app-memory/mem0.zh.md)。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Hermes Agent](../../agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.zh.md) | ✅ | 想在 VPS 上自托管一个常驻助手、它也会自己学技能和记忆时，选 Hermes；agent 主要在你的仓库里干活、你要它的记忆用 git 记版本时，选 Letta Code。 | Hermes 只留两个有上限的小记忆文件，默认跑在你自己的机器上；Letta Code 维护一棵更大的 git 记忆树，默认连 Letta Cloud。 |
+| [Hermes Agent](../../../agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.zh.md) | ✅ | 想在 VPS 上自托管一个常驻助手、它也会自己学技能和记忆时，选 Hermes；agent 主要在你的仓库里干活、你要它的记忆用 git 记版本时，选 Letta Code。 | Hermes 只留两个有上限的小记忆文件，默认跑在你自己的机器上；Letta Code 维护一棵更大的 git 记忆树，默认连 Letta Cloud。 |
 | [OpenCode](opencode.zh.md) | ✅ | 想要一个配一次就好、底下 provider 随便换的终端 agent，选 OpenCode；想让 agent 自己积累项目知识，选 Letta Code。 | OpenCode 是 MIT，作为本地进程运行、不需要账号，除非你写进规则文件，否则它不会跨会话学到任何东西；Letta Code 用默认路径里的厂商账号，换来自己维护的记忆。 |
 | [Pi](pi.zh.md) | ✅ | 想要一个极简 agent、行为由你写的文件决定，选 Pi；想让 agent 自己写、自己维护那些文件，选 Letta Code。 | Letta Code 的本地后端就用了 Pi 的 provider 库（`@earendil-works/pi-ai`）；Pi 保持小巧、记忆留给你，Letta Code 加上了记忆、聊天渠道和一个云服务。 |
-| [claude-mem](../../../agent-memory/coding-agent-memory/claude-mem.zh.md) | ✅ | 继续用 Claude Code、只想让它记住过去的会话，选 claude-mem；为了拿到 agent 自己改写的记忆而愿意换 agent，选 Letta Code。 | claude-mem 挂在你现有的 agent 上，把会话活动压缩成观察记录存到本地再注入回去；Letta Code 是一整套 agent 运行时，带自改写的记忆块和做梦。 |
-| [Letta (MemGPT)](../../../agent-memory/app-memory/letta.zh.md) | ✅ | 不要采用已退役的 Letta V1 服务器；新项目一律选 Letta Code，Letta 页面只用来规划迁移。 | V1 Python 服务器 2026 年 8 月归档，不再有安全修复；同一个团队现在在 Letta Code 里发版。 |
+| [claude-mem](../../../../agent-memory/coding-agent-memory/claude-mem.zh.md) | ✅ | 继续用 Claude Code、只想让它记住过去的会话，选 claude-mem；为了拿到 agent 自己改写的记忆而愿意换 agent，选 Letta Code。 | claude-mem 挂在你现有的 agent 上，把会话活动压缩成观察记录存到本地再注入回去；Letta Code 是一整套 agent 运行时，带自改写的记忆块和做梦。 |
+| [Letta (MemGPT)](../../../../agent-memory/app-memory/letta.zh.md) | ✅ | 不要采用已退役的 Letta V1 服务器；新项目一律选 Letta Code，Letta 页面只用来规划迁移。 | V1 Python 服务器 2026 年 8 月归档，不再有安全修复；同一个团队现在在 Letta Code 里发版。 |
 
 ## 技术栈
 

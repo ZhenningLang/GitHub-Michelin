@@ -2,7 +2,7 @@
 name: Prime Agent
 slug: prime-agent
 repo: https://github.com/PrimeIntellect-ai/prime-agent
-category: terminal-agents
+category: independent-runtimes
 tags: [coding-agent, rlm, terminal, cli, typescript, python-kernel, long-running]
 language: TypeScript
 license: MIT
@@ -77,13 +77,13 @@ health:
 
 A long coding session fills the model's window with files, command dumps, and summaries until it forgets the original goal and starts guessing. Prime Agent keeps that material in a persistent Python interpreter and makes the model write code to inspect it, spawn child agents, and keep going after you close the terminal.
 
-![Prime Agent — health radar](../../../../assets/health/prime-agent.svg)
+![Prime Agent — health radar](../../../../../assets/health/prime-agent.svg)
 
 ## When to use
 
 You are mid a multi-hour coding or evaluation job — a repo-wide refactor, a research sweep over a large log, a SWE-style rollout that should still be running after you log out — and the usual terminal agent is already losing the plot. The chat is a stack of file dumps and compaction summaries; a bug that only makes sense when two distant files are in the same window never gets seen together. You do not want another list of tools. You want the model to treat the working set as data it can slice in code.
 
-Reach for Prime Agent when that is the constraint. It is a hard fork of `pi` (earendil-works) now shipped by Prime Intellect: the model's one built-in tool is a persistent Python kernel, `rlm.spawn(...)` starts real child agents, and a local daemon keeps the session, kernel, and children alive after the TUI detaches. Choose it over [OpenCode](opencode.md) or [Codex](codex.md) when programmatic context folding and detachable long runs are the point, not model-agnostic pair-programming. Choose it over [OpenHands](../orchestration-and-review/openhands.md) when you want a local CLI/TUI rather than a self-hosted agent platform with its own sandbox. The cost is a multi-process runtime (daemon, worker, kernel), Node.js ≥ 22.8 and Python ≥ 3.11, an install path that is `curl | sh` from Prime's domain, and no default security sandbox.
+Reach for Prime Agent when that is the constraint. It is a hard fork of `pi` (earendil-works) now shipped by Prime Intellect: the model's one built-in tool is a persistent Python kernel, `rlm.spawn(...)` starts real child agents, and a local daemon keeps the session, kernel, and children alive after the TUI detaches. Choose it over [OpenCode](opencode.md) or [Codex](../vendor-agents/codex.md) when programmatic context folding and detachable long runs are the point, not model-agnostic pair-programming. Choose it over [OpenHands](../../orchestration-and-review/openhands.md) when you want a local CLI/TUI rather than a self-hosted agent platform with its own sandbox. The cost is a multi-process runtime (daemon, worker, kernel), Node.js ≥ 22.8 and Python ≥ 3.11, an install path that is `curl | sh` from Prime's domain, and no default security sandbox.
 
 ## Q&A
 
@@ -100,7 +100,7 @@ On long jobs, stuffing the window kills you first, so they pay the other cost. O
 
 The TypeScript host owns providers, transcripts, child lifecycles, and scheduling. What the model sees is a persistent Python REPL: files, shell, skills, and subagents are all reached by writing code, not by a menu of separate tools. `rlm.spawn("…", name="…")` admits a child `AgentSession` with its own context; the call returns a handle immediately, and answers come back as messages or files, not as the spawn return value. Compaction summarizes old chat while kernel variables survive. A daemon worker keeps that tree running after you detach; `/refine` can write small, reviewable updates into supplemental prompts, memories, skill descriptions, or subagent specs without touching the immutable base system prompt. What stays yours: the repo, the provider login, and whether the working tree is disposable. What it takes over: the Python control loop, child admission, session JSONL, and background continuity. Analogy: other agents paste the binder into the conversation; this one hands the model a desk and a filing cabinet and asks it to write the retrieval program.
 
-![Prime Agent — backbone user story](../../../../assets/flow/prime-agent.svg)
+![Prime Agent — backbone user story](../../../../../assets/flow/prime-agent.svg)
 
 <!-- flow-steps:begin (generated from flows/prime-agent.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -121,21 +121,21 @@ The TypeScript host owns providers, transcripts, child lifecycles, and schedulin
 
 ## When NOT to use
 
-- **The task is short, and the model needs the materials in the same window.** Cross-file bugs and short math-like jobs live or die on the parent actually seeing A and B together. Prime Intellect's own RLM write-up reports the scaffold hurting math-python versus a plain LLM-plus-Python-tool. Use [Codex](codex.md) or [OpenCode](opencode.md) instead of Prime Agent, because they spend the model's forward pass on the files rather than on writing a retrieval program.
-- **You need a default security sandbox.** The README states workers and kernels improve lifecycle isolation, not security; they run with your user permissions. Use [Open Interpreter](open-interpreter.md) or [Codex](codex.md) instead of Prime Agent, because those document OS/native sandbox execution as part of the product, not as an optional extension.
+- **The task is short, and the model needs the materials in the same window.** Cross-file bugs and short math-like jobs live or die on the parent actually seeing A and B together. Prime Intellect's own RLM write-up reports the scaffold hurting math-python versus a plain LLM-plus-Python-tool. Use [Codex](../vendor-agents/codex.md) or [OpenCode](opencode.md) instead of Prime Agent, because they spend the model's forward pass on the files rather than on writing a retrieval program.
+- **You need a default security sandbox.** The README states workers and kernels improve lifecycle isolation, not security; they run with your user permissions. Use [Open Interpreter](open-interpreter.md) or [Codex](../vendor-agents/codex.md) instead of Prime Agent, because those document OS/native sandbox execution as part of the product, not as an optional extension.
 - **You want the smallest local attack surface and no background service.** Prime Agent starts a daemon, a session worker, a Python kernel, and a catalog process, then stores auth in `~/.prime/agent/auth.json`. Use [aider](aider.md) or [OpenCode](opencode.md) instead of Prime Agent, because they stay closer to a single CLI process.
-- **You want an in-editor agent.** This is a TUI/CLI. Use [Cline](../ide-agents/cline.md) or [Kilo Code](../ide-agents/kilocode.md) instead of Prime Agent, because those live in the editor.
-- **You will not run `curl | sh` from app.primeintellect.ai, or you need a pinned npm/pip coordinate as the public install.** Docs say the inherited `@earendil-works/pi-coding-agent` workspace name is an implementation detail, not the install path. Use [OpenCode](opencode.md) (`npm`) or [Codex](codex.md) instead of Prime Agent, because their published packages are the thing you install.
-- **You need a Lindy-backed, low-bus-factor-risk tool.** The repo was created 2026-05-08; as of 2026-09-22 it had ~21.2k stars and ~2.3k forks in about four and a half months, with one author (badlogic / Mario Zechner) at ~64% of sampled top-contributor commits. Use [Codex](codex.md) or [aider](aider.md) instead of Prime Agent, because age × still-active is the prior this index uses, and a young hyped repo is a risk flag rather than proof.
+- **You want an in-editor agent.** This is a TUI/CLI. Use [Cline](../../ide-agents/cline.md) or [Kilo Code](../../ide-agents/kilocode.md) instead of Prime Agent, because those live in the editor.
+- **You will not run `curl | sh` from app.primeintellect.ai, or you need a pinned npm/pip coordinate as the public install.** Docs say the inherited `@earendil-works/pi-coding-agent` workspace name is an implementation detail, not the install path. Use [OpenCode](opencode.md) (`npm`) or [Codex](../vendor-agents/codex.md) instead of Prime Agent, because their published packages are the thing you install.
+- **You need a Lindy-backed, low-bus-factor-risk tool.** The repo was created 2026-05-08; as of 2026-09-22 it had ~21.2k stars and ~2.3k forks in about four and a half months, with one author (badlogic / Mario Zechner) at ~64% of sampled top-contributor commits. Use [Codex](../vendor-agents/codex.md) or [aider](aider.md) instead of Prime Agent, because age × still-active is the prior this index uses, and a young hyped repo is a risk flag rather than proof.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [OpenCode](opencode.md) | ✅ | Choose OpenCode when you want a model-flexible terminal pair-programmer with an npm install; choose Prime Agent when the model must program over context and keep a daemon-backed session after detach. | OpenCode is the smaller daily driver; Prime Agent adds a Python kernel, recursive children, and a multi-process runtime you then have to operate. |
-| [Codex](codex.md) | ✅ | Choose Codex when you want OpenAI's terminal agent with documented sandboxing and git-native edits; choose Prime Agent when you reject stuffing the working set into the chat and want code-shaped delegation. | Codex is vendor-shaped and simpler to reason about at the OS boundary; Prime Agent is MIT and provider-flexible, but the kernel is not a sandbox. |
+| [Codex](../vendor-agents/codex.md) | ✅ | Choose Codex when you want OpenAI's terminal agent with documented sandboxing and git-native edits; choose Prime Agent when you reject stuffing the working set into the chat and want code-shaped delegation. | Codex is vendor-shaped and simpler to reason about at the OS boundary; Prime Agent is MIT and provider-flexible, but the kernel is not a sandbox. |
 | [Open Interpreter](open-interpreter.md) | ✅ | Choose Open Interpreter when OS sandbox execution and a harness tuned for cheap/open models are the priority; choose Prime Agent when recursive Python-kernel agents and detachable long runs matter more than the sandbox. | Open Interpreter is a Codex-fork rewrite aimed at harness swapping inside a native sandbox; Prime Agent is an RLM/TUI stack that tells you up front it is not one. |
-| [OpenHands](../orchestration-and-review/openhands.md) | ✅ | Choose OpenHands when you want a self-hosted coding-agent platform that owns the sandbox; choose Prime Agent when you want a local TUI whose model writes Python and spawns children on your machine. | OpenHands is heavier and closer to a product you deploy; Prime Agent is a workstation CLI with a research-shaped programming model and a larger default trust assumption. |
+| [OpenHands](../../orchestration-and-review/openhands.md) | ✅ | Choose OpenHands when you want a self-hosted coding-agent platform that owns the sandbox; choose Prime Agent when you want a local TUI whose model writes Python and spawns children on your machine. | OpenHands is heavier and closer to a product you deploy; Prime Agent is a workstation CLI with a research-shaped programming model and a larger default trust assumption. |
 | [aider](aider.md) | ✅ | Choose aider for git-native terminal pair-programming with a long, still-active history; choose Prime Agent only if the RLM loop (kernel + `rlm.spawn` + daemon) is the feature you are buying. | aider is the Lindy-safer pair-programmer; Prime Agent is younger, hotter, and operationally heavier. |
 
 ## Tech stack

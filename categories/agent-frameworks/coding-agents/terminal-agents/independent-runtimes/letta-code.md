@@ -2,7 +2,7 @@
 name: Letta Code
 slug: letta-code
 repo: https://github.com/letta-ai/letta-code
-category: terminal-agents
+category: independent-runtimes
 tags: [coding-agent, terminal, cli, typescript, agent-memory, stateful-agents, memgpt, letta]
 language: TypeScript
 license: Apache-2.0
@@ -84,19 +84,19 @@ health:
 
 Every new session with a coding agent starts from zero: you explain again that this repo uses pnpm, that the tests need a seeded database, that you want small diffs. Letta Code keeps one agent alive across sessions instead — it writes what it learns into git-versioned memory files and loads them back into its own prompt next time.
 
-![Letta Code — health radar](../../../../assets/health/letta-code.svg)
+![Letta Code — health radar](../../../../../assets/health/letta-code.svg)
 
 ## When to use
 
 You use a terminal coding agent every day, and it keeps making the same mistake: it runs `npm install` in a pnpm workspace, you correct it, and the next morning's session does it again because the correction lived only in yesterday's chat. A rules file such as `AGENTS.md` helps, but you are the one who has to notice the lesson and write it down.
 
-Reach for Letta Code when you want the agent itself to own that loop. It is the maintained product from the MemGPT team (the retired [Letta V1 server](../../../agent-memory/app-memory/letta.md) pointed here): you talk to one long-lived agent, it rewrites its own "memory blocks" — sections of text pinned into its system prompt — when it learns something durable, and every change is a git commit you can read. Pick it over [OpenCode](opencode.md) or [Pi](pi.md) when cross-session learning is the deciding feature rather than provider breadth or a minimal core; pick it over adding [claude-mem](../../../agent-memory/coding-agent-memory/claude-mem.md) to Claude Code when you are willing to change agents to get memory that the agent edits itself rather than a log that is replayed to it.
+Reach for Letta Code when you want the agent itself to own that loop. It is the maintained product from the MemGPT team (the retired [Letta V1 server](../../../../agent-memory/app-memory/letta.md) pointed here): you talk to one long-lived agent, it rewrites its own "memory blocks" — sections of text pinned into its system prompt — when it learns something durable, and every change is a git commit you can read. Pick it over [OpenCode](opencode.md) or [Pi](pi.md) when cross-session learning is the deciding feature rather than provider breadth or a minimal core; pick it over adding [claude-mem](../../../../agent-memory/coding-agent-memory/claude-mem.md) to Claude Code when you are willing to change agents to get memory that the agent edits itself rather than a log that is replayed to it.
 
 ## How it works
 
 Letta Code is a TypeScript CLI (`letta`) that runs the agent loop on your machine with the usual coding tools — read, edit, patch, grep, shell, git worktrees. What makes it different is where the agent's state lives. Each agent has a memory folder called MemFS ("memory file system": plain files under git version control); part of it is compiled into the system prompt at the start of every turn, so the agent sees its own notes without having to search for them. **What Letta Code does for you:** it stores and versions that memory, lets the agent rewrite it when it learns something (or when you say `/remember …`), runs background "dreaming" passes — sub-agents that reread recent conversations and consolidate lessons — and keeps the same agent reachable from the terminal, the desktop app, a browser, or Slack/Telegram/Discord. **What you do:** install the CLI, decide where state is kept (Letta Cloud, the default, or local on your machine), connect your own model keys or a coding plan, and keep working with the agent instead of starting new ones. Think of it as a colleague who keeps a notebook in a git repo, not a tool you reconfigure every morning.
 
-![letta-code — backbone user story](../../../../assets/flow/letta-code.svg)
+![letta-code — backbone user story](../../../../../assets/flow/letta-code.svg)
 
 <!-- flow-steps:begin (generated from flows/letta-code.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -117,22 +117,22 @@ Letta Code is a TypeScript CLI (`letta`) that runs the agent loop on your machin
 
 ## When NOT to use
 
-- **You want the agent to behave the same way every day.** A Letta agent changes its own prompt, memory and skills as it works, so yesterday's behaviour is not a fixed baseline. Use [OpenCode](opencode.md) or [Codex](codex.md) instead, because their behaviour comes from configuration you edit, not from what the agent decided to remember.
-- **Agent state must stay off vendor infrastructure without extra work.** Letta Cloud is the default unless you choose local on first launch, the source treats the local backend as the fallback mode, and self-hosted agents lose chat.letta.com access, remote computers, cross-machine secrets and automatic backups. Use [Hermes Agent](../../agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.md) instead when self-hosting is the default, or [OpenCode](opencode.md) with a local model when you do not need persistent memory at all.
-- **You want memory for the coding agent you already use.** Letta Code replaces your agent rather than adding to it. Use [claude-mem](../../../agent-memory/coding-agent-memory/claude-mem.md) for Claude Code instead, because it captures and replays sessions without changing the tool you work in.
-- **You are building memory into your own application's agent loop.** Letta Code wants to be the runtime. Use [Mem0](../../../agent-memory/app-memory/mem0.md) or [LangMem](../../../agent-memory/app-memory/langmem.md) instead, because they add memory to a loop you keep control of.
+- **You want the agent to behave the same way every day.** A Letta agent changes its own prompt, memory and skills as it works, so yesterday's behaviour is not a fixed baseline. Use [OpenCode](opencode.md) or [Codex](../vendor-agents/codex.md) instead, because their behaviour comes from configuration you edit, not from what the agent decided to remember.
+- **Agent state must stay off vendor infrastructure without extra work.** Letta Cloud is the default unless you choose local on first launch, the source treats the local backend as the fallback mode, and self-hosted agents lose chat.letta.com access, remote computers, cross-machine secrets and automatic backups. Use [Hermes Agent](../../../agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.md) instead when self-hosting is the default, or [OpenCode](opencode.md) with a local model when you do not need persistent memory at all.
+- **You want memory for the coding agent you already use.** Letta Code replaces your agent rather than adding to it. Use [claude-mem](../../../../agent-memory/coding-agent-memory/claude-mem.md) for Claude Code instead, because it captures and replays sessions without changing the tool you work in.
+- **You are building memory into your own application's agent loop.** Letta Code wants to be the runtime. Use [Mem0](../../../../agent-memory/app-memory/mem0.md) or [LangMem](../../../../agent-memory/app-memory/langmem.md) instead, because they add memory to a loop you keep control of.
 - **You need a stable interface to script against.** It is 0.x and shipped 100 releases between 2026-07-23 and 2026-10-09, and features disappear as well as appear: AgentFile (`.af`) import/export was removed outright. Use [aider](aider.md) instead when a slower-moving, long-lived tool matters more than memory.
-- **You need memory shared across several agents.** Memory belongs to one agent; open issue #2666 (2026-06) reports that a new agent starts from a blank slate whatever the other agents know. Use [Mem0](../../../agent-memory/app-memory/mem0.md) instead when several agents or tools must read one memory store.
+- **You need memory shared across several agents.** Memory belongs to one agent; open issue #2666 (2026-06) reports that a new agent starts from a blank slate whatever the other agents know. Use [Mem0](../../../../agent-memory/app-memory/mem0.md) instead when several agents or tools must read one memory store.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Hermes Agent](../../agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.md) | ✅ | Choose Hermes when you want a self-hosted, always-on assistant on a VPS that also learns skills and memory; choose Letta Code when the agent mainly works in your repos and you want its memory versioned in git. | Hermes keeps two small capped memory files and defaults to your own host; Letta Code keeps a larger git-tracked memory tree and defaults to Letta Cloud. |
+| [Hermes Agent](../../../agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.md) | ✅ | Choose Hermes when you want a self-hosted, always-on assistant on a VPS that also learns skills and memory; choose Letta Code when the agent mainly works in your repos and you want its memory versioned in git. | Hermes keeps two small capped memory files and defaults to your own host; Letta Code keeps a larger git-tracked memory tree and defaults to Letta Cloud. |
 | [OpenCode](opencode.md) | ✅ | Choose OpenCode when you want a terminal agent you configure once and swap providers under freely; choose Letta Code when you want the agent to accumulate project knowledge by itself. | OpenCode is MIT, runs as a local process with no account required, and learns nothing across sessions unless you write it into rules files; Letta Code buys self-maintained memory at the price of a vendor account in the default path. |
 | [Pi](pi.md) | ✅ | Choose Pi when you want a minimal agent whose behaviour comes from files you author; choose Letta Code when you want the agent to author and maintain those files itself. | Letta Code uses Pi's provider library (`@earendil-works/pi-ai`) for its local backend; Pi stays small and leaves memory to you, Letta Code adds memory, channels and a cloud service. |
-| [claude-mem](../../../agent-memory/coding-agent-memory/claude-mem.md) | ✅ | Choose claude-mem when you are staying on Claude Code and want past sessions remembered; choose Letta Code when you will switch agents to get memory the agent rewrites itself. | claude-mem hooks your existing agent, compresses session activity into observations in a local store and injects them back; Letta Code is a whole agent runtime with self-edited memory blocks and dreaming. |
-| [Letta (MemGPT)](../../../agent-memory/app-memory/letta.md) | ✅ | Do not adopt the retired Letta V1 server; choose Letta Code for anything new, and use the Letta page only to plan a migration. | The V1 Python server was archived in August 2026 with no security fixes; Letta Code is where the same team now ships. |
+| [claude-mem](../../../../agent-memory/coding-agent-memory/claude-mem.md) | ✅ | Choose claude-mem when you are staying on Claude Code and want past sessions remembered; choose Letta Code when you will switch agents to get memory the agent rewrites itself. | claude-mem hooks your existing agent, compresses session activity into observations in a local store and injects them back; Letta Code is a whole agent runtime with self-edited memory blocks and dreaming. |
+| [Letta (MemGPT)](../../../../agent-memory/app-memory/letta.md) | ✅ | Do not adopt the retired Letta V1 server; choose Letta Code for anything new, and use the Letta page only to plan a migration. | The V1 Python server was archived in August 2026 with no security fixes; Letta Code is where the same team now ships. |
 
 ## Tech stack
 

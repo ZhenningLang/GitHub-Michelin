@@ -3,7 +3,7 @@ name: Open Interpreter
 slug: open-interpreter
 repo: https://github.com/openinterpreter/openinterpreter
 homepage: https://www.openinterpreter.com/
-category: terminal-agents
+category: independent-runtimes
 tags: [coding-agent, terminal, codex-fork, harness, code-execution, mcp, acp, local-models]
 language: Rust
 license: Apache-2.0
@@ -85,7 +85,7 @@ health:
 
 You point a Codex-style terminal agent at a cheap model like Kimi or GLM and it fumbles edits and tool calls it handles noticeably better inside its own vendor's CLI — the scaffolding around it was tuned for someone else's model. Open Interpreter is a fork of OpenAI's Codex that lets you swap in the prompt-and-tool scaffolding (the "harness") each model family is used to, from one terminal app.
 
-![open-interpreter — health radar](../../../../assets/health/open-interpreter.svg)
+![open-interpreter — health radar](../../../../../assets/health/open-interpreter.svg)
 
 > **Identity change — read this first.** The project you may remember — the Python "natural-language interface for your computer" REPL that wrote and executed code locally — is *not* what this repo ships today. That Python codebase last shipped `v0.4.2` (2024-10) and now lives on as a community fork at [`endolith/open-interpreter`](https://github.com/endolith/open-interpreter). The repo (now `openinterpreter/openinterpreter`; the old `open-interpreter` URL redirects) was rewritten in **Rust as a Codex fork** and relaunched in 2026. Everything below describes the *current* Rust project. If you want the old Python tool, use the community fork, not this page.
 
@@ -99,7 +99,7 @@ Pick it over plain Codex when the model you want to run is *not* an OpenAI model
 
 Open Interpreter is Codex underneath — the same Rust agent loop, sandbox and exec protocol — with one extra layer: a set of re-implemented **harnesses**, each a copy of the prompt, tool definitions and edit format that a specific vendor's coding CLI uses (Kimi Code, ZCode, Qwen Code, Claude Code and so on). You do three things: install the binary, choose a provider/model, and choose which harness to wrap it in; Open Interpreter then talks to the model the way that model's own vendor tool would, while still running every command through Codex's OS sandbox and approval rules. Think of it as one car body that accepts a different steering setup per driver. Because it speaks the Codex exec protocol and ACP, an editor or an app built on the Codex SDK can drive it instead of `codex` with a one-line binary override.
 
-![open-interpreter — backbone user story](../../../../assets/flow/open-interpreter.svg)
+![open-interpreter — backbone user story](../../../../../assets/flow/open-interpreter.svg)
 
 <!-- flow-steps:begin (generated from flows/open-interpreter.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -122,15 +122,15 @@ Open Interpreter is Codex underneath — the same Rust agent loop, sandbox and e
 - **You are about to run an LLM coding agent on a machine that matters — understand the execution risk first.** This agent runs shell commands and edits files based on model output. "Native sandboxing" plus approvals is mitigation, not immunity: prompt-injected or simply wrong output can still delete files, leak secrets or run destructive commands within whatever scope you approve. Review what it does, scope its access, keep production credentials out of reach, and read the [sandbox & approvals docs](https://www.openinterpreter.com/docs/terminal/sandbox) first; if you need a hard boundary, run it inside a disposable container or VM instead of on your workstation. [推断]
 - **You wanted the old Python "talk to your computer" REPL.** It's gone from this repo. Code that imports the Python `interpreter` package / API belongs to the community fork [`endolith/open-interpreter`](https://github.com/endolith/open-interpreter) — use that instead of this repo.
 - **You need a stable API or production track record for *this* codebase.** The Rust line is at `rust-v0.0.56` (2026-10-07) after roughly 40 `0.0.x` releases in under four months — fast, unfrozen, and young. If you need a settled release line, use [aider](aider.md) (multi-year, model-agnostic) instead, because its CLI and edit format have stayed stable across many releases.
-- **You only use OpenAI models.** The value here is the per-model harness for *other* vendors' models. For GPT models, use [Codex](codex.md) directly instead of Open Interpreter, because the upstream has the larger team and gets features first — Open Interpreter merges them later.
-- **You want a library to *build* multi-agent systems.** This is an end-user coding agent (plus ACP / Codex-SDK surfaces), not an orchestration framework. Use [AgentScope](../../agent-runtimes/agent-sdks/agentscope.md) or [smolagents](../../agent-runtimes/agent-sdks/smolagents.md) instead of Open Interpreter when you need to compose agents in your own code.
+- **You only use OpenAI models.** The value here is the per-model harness for *other* vendors' models. For GPT models, use [Codex](../vendor-agents/codex.md) directly instead of Open Interpreter, because the upstream has the larger team and gets features first — Open Interpreter merges them later.
+- **You want a library to *build* multi-agent systems.** This is an end-user coding agent (plus ACP / Codex-SDK surfaces), not an orchestration framework. Use [AgentScope](../../../agent-runtimes/agent-sdks/agentscope.md) or [smolagents](../../../agent-runtimes/agent-sdks/smolagents.md) instead of Open Interpreter when you need to compose agents in your own code.
 - **You need the browser / native-app QA mode to be reliable.** Driving apps through external tools (agent-browser, trycua) is fragile across OS versions, app updates and screen states. For a critical browser-testing workflow, use a scripted test framework like Playwright instead of an LLM-driven QA skill, because it is deterministic and reviewable. [未验证]
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Codex](codex.md) | ✅ | When your models are OpenAI's, pick Codex; pick Open Interpreter when you want the same Codex runtime driving Kimi, GLM, DeepSeek or Qwen through their own vendor-style harness. | Codex is the upstream: larger team, features land there first. Open Interpreter adds the swappable harness layer and an open-model provider catalog, at the cost of trailing upstream by a merge. |
+| [Codex](../vendor-agents/codex.md) | ✅ | When your models are OpenAI's, pick Codex; pick Open Interpreter when you want the same Codex runtime driving Kimi, GLM, DeepSeek or Qwen through their own vendor-style harness. | Codex is the upstream: larger team, features land there first. Open Interpreter adds the swappable harness layer and an open-model provider catalog, at the cost of trailing upstream by a merge. |
 | Claude Code | 未收录 | If you are happy paying for Claude and want the most polished vendor experience, pick Claude Code; pick Open Interpreter when you want to emulate a Claude-Code-style harness around a cheaper model. | Claude Code is closed-source and Anthropic-only; Open Interpreter is Apache-2.0 and model-agnostic but its `claude-code` harness is an emulation, not the real product. |
 | [OpenCode](opencode.md) | ✅ | For a model-agnostic agent with a desktop app, IDE extension and client/server API, pick OpenCode; pick Open Interpreter when you want Codex's OS sandbox and per-model harness emulation. | OpenCode runs one agent loop over 75+ providers with permissive default permissions; Open Interpreter keeps Codex's sandbox and changes the scaffolding per model family. |
 | [aider](aider.md) | ✅ | For long-lived, git-commit-per-change pair programming across many providers, pick aider; pick Open Interpreter when you want an autonomous Codex-style agent with sandboxed shell execution. | aider is mature and stable but is not a sandboxed autonomous runner; Open Interpreter is newer and churns faster. |

@@ -7,7 +7,7 @@ https://github.com/AUGMXNT/deccp,deccp,model-editing,categories/model-editing/de
 https://github.com/AUTOMATIC1111/stable-diffusion-webui,stable-diffusion-webui,local-image-generation,categories/on-device-ml/local-image-generation/stable-diffusion-webui.md
 https://github.com/Agents365-ai/drawio-skill,drawio-skill,visual-artifacts,categories/agent-skills/design/visual-artifacts/drawio-skill.md
 https://github.com/AgriciDaniel/claude-obsidian,claude-obsidian,knowledge-base,categories/knowledge-base/claude-obsidian.md
-https://github.com/Aider-AI/aider,aider,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/aider.md
+https://github.com/Aider-AI/aider,aider,independent-runtimes,categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/aider.md
 https://github.com/AmElmo/pointa,pointa,ui-annotation,categories/agent-tooling/ui-annotation/pointa.md
 https://github.com/Anil-matcha/open-dots,open-dots,agent-services,categories/agent-frameworks/agent-runtimes/agent-services/open-dots.md
 https://github.com/AprilNEA/OpenLogi,openlogi,peripherals,categories/peripherals/openlogi.md
@@ -27,7 +27,7 @@ https://github.com/Chachamaru127/claude-code-harness,claude-code-harness,enginee
 https://github.com/ChatGPTNextWeb/NextChat,nextchat,llm-chat-ui,categories/llm-chat-ui/nextchat.md
 https://github.com/ChromeDevTools/chrome-devtools-mcp,chrome-devtools-mcp,agent-browser-tools,categories/web-automation/agent-browser-tools/chrome-devtools-mcp.md
 https://github.com/ClickHouse/ClickHouse,clickhouse,database-engines,categories/databases/database-engines/clickhouse.md
-https://github.com/CodebuffAI/freebuff,freebuff,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/freebuff.md
+https://github.com/CodebuffAI/freebuff,freebuff,independent-runtimes,categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/freebuff.md
 https://github.com/ColeMurray/background-agents,background-agents,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/background-agents.md
 https://github.com/CollaboraOnline/online,collabora-online,office-editors,categories/office-editors/collabora-online.md
 https://github.com/Comfy-Org/ComfyUI,comfyui,local-image-generation,categories/on-device-ml/local-image-generation/comfyui.md
@@ -158,7 +158,7 @@ https://github.com/PixlOne/logiops,logiops,peripherals,categories/peripherals/lo
 https://github.com/PleasePrompto/notebooklm-skill,notebooklm-skill,context-engineering,categories/agent-skills/context-engineering/notebooklm-skill.md
 https://github.com/PowerJob/PowerJob,powerjob,task-queue,categories/task-queue/powerjob.md
 https://github.com/PrefectHQ/prefect,prefect,workflow-orchestration,categories/workflow-orchestration/prefect.md
-https://github.com/PrimeIntellect-ai/prime-agent,prime-agent,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/prime-agent.md
+https://github.com/PrimeIntellect-ai/prime-agent,prime-agent,independent-runtimes,categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/prime-agent.md
 https://github.com/Prism-Shadow/penguin-harness,penguin-harness,workflow-builders,categories/agent-frameworks/workflow-builders/penguin-harness.md
 https://github.com/PyAV-Org/PyAV,pyav,transcoding-and-pipelines,categories/media-processing/video-audio/transcoding-and-pipelines/pyav.md
 https://github.com/RVC-Boss/GPT-SoVITS,gpt-sovits,speech,categories/speech/gpt-sovits.md
@@ -278,7 +278,7 @@ https://github.com/amontlabs/lcu,lcu,desktop-automation,categories/desktop-autom
 https://github.com/andrewyng/openworker,openworker,personal-assistants,categories/agent-frameworks/agent-runtimes/personal-assistants/openworker.md
 https://github.com/android/skills,android-skills,product-vendors,categories/agent-skills/vendor-collections/product-vendors/android-skills.md
 https://github.com/angular/angular,angular,view-frameworks,categories/web-ui/frameworks/view-frameworks/angular.md
-https://github.com/anomalyco/opencode,opencode,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/opencode.md
+https://github.com/anomalyco/opencode,opencode,independent-runtimes,categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/opencode.md
 https://github.com/anomalyco/opentunnel,opentunnel,networking,categories/networking/opentunnel.md
 https://github.com/ant-design/ant-design,ant-design,component-libraries,categories/web-ui/component-libraries/ant-design.md
 https://github.com/ant-research/AntSpeaker,antspeaker,speech,categories/speech/antspeaker.md
@@ -294,7 +294,7 @@ https://github.com/apache/airflow,airflow,workflow-orchestration,categories/work
 https://github.com/apache/apisix,apisix,api-gateway,categories/api-gateway/apisix.md
 https://github.com/apache/casbin,casbin,auth,categories/auth/casbin.md
 https://github.com/apache/incubator-kie-optaplanner,optaplanner,optimization-solvers,categories/optimization-solvers/optaplanner.md
-https://github.com/apache/maka,maka,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/maka.md
+https://github.com/apache/maka,maka,independent-runtimes,categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/maka.md
 https://github.com/apache/poi,apache-poi,office-automation,categories/office-automation/apache-poi.md
 https://github.com/apache/superset,superset,data-visualization,categories/data-visualization/superset.md
 https://github.com/appium/WebDriverAgent,webdriveragent,mobile-automation,categories/mobile-automation/webdriveragent.md
@@ -365,7 +365,7 @@ https://github.com/cloudflare/computer,cloudflare-computer,sandboxing,categories
 https://github.com/cloudflare/skills,cloudflare-skills,product-vendors,categories/agent-skills/vendor-collections/product-vendors/cloudflare-skills.md
 https://github.com/cloudinary/ssimulacra2,ssimulacra2,quality-metrics,categories/media-processing/quality-metrics/ssimulacra2.md
 https://github.com/cockpit-project/cockpit,cockpit,ops-infra,categories/dev-utilities/ops-infra/cockpit.md
-https://github.com/code-yeongyu/oh-my-openagent,oh-my-openagent,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.md
+https://github.com/code-yeongyu/oh-my-openagent,oh-my-openagent,independent-runtimes,categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/oh-my-openagent.md
 https://github.com/codelucas/newspaper,newspaper,article-extraction,categories/web-scraping/article-extraction/newspaper.md
 https://github.com/coldteadotai/pr-lens,pr-lens,diagramming,categories/diagramming/pr-lens.md
 https://github.com/commonmark/commonmark.js,commonmark,markdown-tools,categories/markdown-tools/commonmark.md
@@ -417,7 +417,7 @@ https://github.com/duckdb/duckdb,duckdb,database-engines,categories/databases/da
 https://github.com/dzhng/deep-research,deep-research,deep-research,categories/deep-research/deep-research.md
 https://github.com/dzhng/jevgrep,jevgrep,code-intelligence,categories/rag-retrieval/code-intelligence/jevgrep.md
 https://github.com/e2b-dev/E2B,e2b,sandboxing,categories/sandboxing/e2b.md
-https://github.com/earendil-works/pi,pi,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/pi.md
+https://github.com/earendil-works/pi,pi,independent-runtimes,categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/pi.md
 https://github.com/elastic/elasticsearch-dsl-py,elasticsearch-dsl-py,database-clients,categories/databases/database-clients/elasticsearch-dsl-py.md
 https://github.com/elie222/rakazo,rakazo,personal-assistants,categories/agent-frameworks/agent-runtimes/personal-assistants/rakazo.md
 https://github.com/elliottwaves-20/agent-guard,agent-guard,agent-governance,categories/agent-governance/agent-guard.md
@@ -473,7 +473,7 @@ https://github.com/globocom/m3u8,m3u8,transcoding-and-pipelines,categories/media
 https://github.com/go-mysql-org/go-mysql-elasticsearch,go-mysql-elasticsearch,data-sync,categories/databases/data-sync/go-mysql-elasticsearch.md
 https://github.com/google-ai-edge/LiteRT-LM,litert-lm,on-device-ml,categories/on-device-ml/litert-lm.md
 https://github.com/google-ai-edge/gallery,ai-edge-gallery,on-device-ml,categories/on-device-ml/ai-edge-gallery.md
-https://github.com/google-gemini/gemini-cli,gemini-cli,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/gemini-cli.md
+https://github.com/google-gemini/gemini-cli,gemini-cli,vendor-agents,categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/gemini-cli.md
 https://github.com/google-labs-code/stitch-skills,stitch-skills,design-to-code,categories/agent-skills/design/design-to-code/stitch-skills.md
 https://github.com/google-research/harness2,harness2,workflow-builders,categories/agent-frameworks/workflow-builders/harness2.md
 https://github.com/google-research/rrsi,rrsi,research-automation,categories/ml-research/research-automation/rrsi.md
@@ -596,7 +596,7 @@ https://github.com/lemomo-ai/lemo-opuscar,lemo-opuscar,video-production,categori
 https://github.com/lepture/captcha,lepture-captcha,captcha,categories/captcha/lepture-captcha.md
 https://github.com/letta-ai/claude-subconscious,claude-subconscious,coding-agent-memory,categories/agent-memory/coding-agent-memory/claude-subconscious.md
 https://github.com/letta-ai/letta,letta,app-memory,categories/agent-memory/app-memory/letta.md
-https://github.com/letta-ai/letta-code,letta-code,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/letta-code.md
+https://github.com/letta-ai/letta-code,letta-code,independent-runtimes,categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/letta-code.md
 https://github.com/lewislulu/html-ppt-skill,html-ppt-skill,slides-ppt,categories/agent-skills/slides-ppt/html-ppt-skill.md
 https://github.com/lexiforest/curl_cffi,curl-cffi,python-tooling,categories/python-tooling/curl-cffi.md
 https://github.com/lexmount/moli,moli,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/moli.md
@@ -708,7 +708,7 @@ https://github.com/open-telemetry/opentelemetry-collector,opentelemetry-collecto
 https://github.com/open-webui/open-webui,open-webui,llm-chat-ui,categories/llm-chat-ui/open-webui.md
 https://github.com/openJiuwen-ai/jiuwenswarm,jiuwenswarm,agent-services,categories/agent-frameworks/agent-runtimes/agent-services/jiuwenswarm.md
 https://github.com/openai/CLIP,clip,vision-and-multimodal,categories/ml-research/vision-and-multimodal/clip.md
-https://github.com/openai/codex,codex,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/codex.md
+https://github.com/openai/codex,codex,vendor-agents,categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/codex.md
 https://github.com/openai/codex-plugin-cc,codex-plugin-cc,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/codex-plugin-cc.md
 https://github.com/openai/openai-agents-python,openai-agents-sdk,agent-sdks,categories/agent-frameworks/agent-runtimes/agent-sdks/openai-agents-sdk.md
 https://github.com/openai/skills,openai-skills,agent-vendors,categories/agent-skills/vendor-collections/agent-vendors/openai-skills.md
@@ -724,7 +724,7 @@ https://github.com/openedclaude/claude-reviews-claude,claude-reviews-claude,stud
 https://github.com/openfga/openfga,openfga,auth,categories/auth/openfga.md
 https://github.com/openilink/openilink-hub,openilink-hub,im-automation,categories/im-automation/openilink-hub.md
 https://github.com/openilink/openilink-sdk-go,openilink-sdk-go,im-automation,categories/im-automation/openilink-sdk-go.md
-https://github.com/openinterpreter/openinterpreter,open-interpreter,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/open-interpreter.md
+https://github.com/openinterpreter/openinterpreter,open-interpreter,independent-runtimes,categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/open-interpreter.md
 https://github.com/openresty/lua-nginx-module,lua-nginx-module,nginx-modules,categories/nginx-modules/lua-nginx-module.md
 https://github.com/openresty/lua-resty-redis,lua-resty-redis,nginx-modules,categories/nginx-modules/lua-resty-redis.md
 https://github.com/opensandbox-group/OpenSandbox,opensandbox,sandboxing,categories/sandboxing/opensandbox.md
@@ -747,7 +747,7 @@ https://github.com/petergyang/no-ai-slop,no-ai-slop,de-ai-writing,categories/age
 https://github.com/pezzolabs/pezzo,pezzo,llm-eval,categories/llm-eval/pezzo.md
 https://github.com/pgsty/silo,silo,object-storage,categories/object-storage/silo.md
 https://github.com/pinchtab/pinchtab,pinchtab,agent-browser-tools,categories/web-automation/agent-browser-tools/pinchtab.md
-https://github.com/pingdotgg/t3code,t3code,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/t3code.md
+https://github.com/pingdotgg/t3code,t3code,independent-runtimes,categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/t3code.md
 https://github.com/pk910/PoWFaucet,powfaucet,blockchain-dev-infrastructure,categories/blockchain-dev-infrastructure/powfaucet.md
 https://github.com/plantuml/plantuml,plantuml,diagramming,categories/diagramming/plantuml.md
 https://github.com/praw-dev/praw,praw,crawling-tools,categories/web-scraping/crawling-tools/praw.md
@@ -930,7 +930,7 @@ https://github.com/youssofal/MTPLX,mtplx,local-runtimes,categories/llm-inference
 https://github.com/yt-dlp/yt-dlp,yt-dlp,media-download,categories/media-download/yt-dlp.md
 https://github.com/ytdl-org/youtube-dl,youtube-dl,media-download,categories/media-download/youtube-dl.md
 https://github.com/yuin/goldmark,goldmark,markdown-tools,categories/markdown-tools/goldmark.md
-https://github.com/zai-org/ZCode,zcode,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/zcode.md
+https://github.com/zai-org/ZCode,zcode,vendor-agents,categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/zcode.md
 https://github.com/zarazhangrui/follow-builders,follow-builders,reading-tools,categories/reading-tools/follow-builders.md
 https://github.com/zarazhangrui/frontend-slides,frontend-slides,slides-ppt,categories/agent-skills/slides-ppt/frontend-slides.md
 https://github.com/zed-industries/zed,zed,code-editors,categories/dev-utilities/editors-and-runtimes/code-editors/zed.md

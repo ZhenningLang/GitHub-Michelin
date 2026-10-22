@@ -2,7 +2,7 @@
 name: OpenCode
 slug: opencode
 repo: https://github.com/anomalyco/opencode
-category: terminal-agents
+category: independent-runtimes
 tags: [coding-agent, ai-agent, terminal, cli, typescript, model-agnostic, client-server, lsp]
 language: TypeScript
 license: MIT
@@ -75,7 +75,7 @@ health:
 
 你用编码 agent 的那套习惯——命令、`AGENTS.md`、手感——全绑在某一家厂商的 CLI 上，别家出了更强或更便宜的模型，你要么换工具重学，要么干看着。OpenCode 是一个 MIT 许可的编码 agent，终端里的工作方式不变，底下的模型随便换：75+ 家 provider、本地模型，或者你已经在付费的 ChatGPT / Copilot 订阅。
 
-![OpenCode — 健康度雷达](../../../../assets/health/opencode.zh.svg)
+![OpenCode — 健康度雷达](../../../../../assets/health/opencode.zh.svg)
 
 ## 何时使用
 
@@ -87,7 +87,7 @@ health:
 
 运行 `opencode` 会同时启动两样东西：一个本地 HTTP 服务，管会话、工具和模型调用；一个终端界面，它只是这个服务的一个客户端。桌面应用、VS Code / Cursor 扩展、非交互的 `opencode run` 和 JS SDK 连的都是同一个服务，所以同一个 agent 能出现在这么多地方。模型接入走 Vercel AI SDK 加 Models.dev 目录（一份 provider 和模型清单），所以多接一家 provider 只是多一条配置，而不是换一个工具。OpenCode 替你做的：agent 循环（读文件、改文件、跑 shell 命令）、把语言服务器的诊断信息回喂给模型、`/undo` / `/redo` 撤销重做它的改动、按工具执行权限规则（`allow` / `ask` / `deny`）。你要做的：接好 provider，写 `AGENTS.md`（或让 `/init` 起个草稿），默认权限太宽就自己写规则，最后审它改了什么。
 
-![opencode — 主干用户故事](../../../../assets/flow/opencode.zh.svg)
+![opencode — 主干用户故事](../../../../../assets/flow/opencode.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/opencode.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -108,9 +108,9 @@ health:
 
 ## 何时不用
 
-- **你希望 agent 默认就被关在笼子里。** OpenCode 文档写明默认权限偏宽松——大多数权限是 `allow`，不写 `permission` 规则的话，改文件和 shell 命令都不会先问你——而且没有内置 OS 沙箱。想要开箱即用的沙箱和审批，用 [Codex](codex.zh.md) 或 [Open Interpreter](open-interpreter.zh.md)，而不是 OpenCode，因为它们在你什么都没配之前就把命令放进 OS 级沙箱里跑。[推断]
+- **你希望 agent 默认就被关在笼子里。** OpenCode 文档写明默认权限偏宽松——大多数权限是 `allow`，不写 `permission` 规则的话，改文件和 shell 命令都不会先问你——而且没有内置 OS 沙箱。想要开箱即用的沙箱和审批，用 [Codex](../vendor-agents/codex.zh.md) 或 [Open Interpreter](open-interpreter.zh.md)，而不是 OpenCode，因为它们在你什么都没配之前就把命令放进 OS 级沙箱里跑。[推断]
 - **你想用自己的 Claude Pro/Max 订阅。** OpenCode 文档说 Anthropic 明确禁止通过第三方工具使用 Pro/Max 套餐，OpenCode 从 v1.3.0 起也不再捆绑实现这件事的插件。如果订阅就是你的 Claude 预算，用 Claude Code 而不是 OpenCode，因为只有厂商自家工具被允许用它；OpenCode 用 Anthropic 模型得走 API key（按 token 计费）或换别的 provider。
-- **你要的是编辑器原生、在编辑器里逐块批准 diff 的 agent。** OpenCode 的 IDE 扩展主要是在分屏终端里打开它的终端界面，并把你选中的内容传过去。想在 VS Code 里有“接受 / 拒绝”按钮和行内 diff，用 [Cline](../ide-agents/cline.zh.md) 或 [Kilo Code](../ide-agents/kilocode.zh.md)，因为它们整个交互都长在编辑器里。
+- **你要的是编辑器原生、在编辑器里逐块批准 diff 的 agent。** OpenCode 的 IDE 扩展主要是在分屏终端里打开它的终端界面，并把你选中的内容传过去。想在 VS Code 里有“接受 / 拒绝”按钮和行内 diff，用 [Cline](../../ide-agents/cline.zh.md) 或 [Kilo Code](../../ide-agents/kilocode.zh.md)，因为它们整个交互都长在编辑器里。
 - **你找到的“OpenCode”是 Go 写的。** 那是 `opencode-ai/opencode`，另一个项目，已归档，作者把它延续成了 Charm 的 Crush（未收录）。要那个 Go 终端 agent，就跟 Crush 走，别用这个仓库——两边的配置和文档不通用。
 - **你需要一个变化慢、稳定的工具。** OpenCode 一周发好几个版本（截至 2026-10 为 v1.18.x），也改过配置结构（v1.1.1 把 `tools` 布尔开关并进了 `permission`）。在 CI 里写脚本调用它就锁定版本；需要 CLI 几乎不变的工具，就用 [aider](aider.zh.md)，因为它的界面多年来一直很稳。
 - **分享会话会泄露代码。** `/share` 会把对话上传到 opencode.ai 的服务器，生成公开链接（默认手动，配置成 `auto` 则自动）。在受监管的代码库里，先在 `opencode.json` 里设 `"share": "disabled"`——或者换一个没有托管分享功能的工具——别等有人敲了 `/share` 再说。
@@ -120,9 +120,9 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
 | Claude Code | 未收录 | 全押 Claude、想花掉 Pro/Max 订阅，选 Claude Code；想在多家厂商之间保持同一套终端工作流，选 OpenCode。 | Claude Code 闭源、只用 Anthropic，但能用订阅；OpenCode 是 MIT、多 provider，但用 Anthropic 模型必须走 API key。 |
-| [Codex](codex.zh.md) | ✅ | 主要用 OpenAI 模型、想默认有 OS 沙箱，选 Codex；按任务切换 provider 比默认隔离更重要时，选 OpenCode。 | Codex 是 Apache-2.0、带沙箱，但为 OpenAI 调优；OpenCode 能接 75+ provider，但默认权限宽松。 |
+| [Codex](../vendor-agents/codex.zh.md) | ✅ | 主要用 OpenAI 模型、想默认有 OS 沙箱，选 Codex；按任务切换 provider 比默认隔离更重要时，选 OpenCode。 | Codex 是 Apache-2.0、带沙箱，但为 OpenAI 调优；OpenCode 能接 75+ provider，但默认权限宽松。 |
 | [Open Interpreter](open-interpreter.zh.md) | ✅ | 想让便宜的开源模型跑在它们习惯的厂商风格 harness 里，选 Open Interpreter；想要一个统一的 agent，外加桌面、IDE 和服务端入口，选 OpenCode。 | Open Interpreter 在一个年轻的 Codex fork 上按模型换脚手架；OpenCode 保持同一个循环，客户端生态更广。 |
-| [Kilo Code](../ide-agents/kilocode.zh.md) | ✅ | 团队常驻 VS Code 或 JetBrains、想要编辑器内 agent 加模型网关，选 Kilo Code；主场在终端，选 OpenCode。 | Kilo 的 CLI 本身就是 OpenCode 的 fork；Kilo 多了编辑器界面和托管网关，OpenCode 是终端优先的上游核心。 |
+| [Kilo Code](../../ide-agents/kilocode.zh.md) | ✅ | 团队常驻 VS Code 或 JetBrains、想要编辑器内 agent 加模型网关，选 Kilo Code；主场在终端，选 OpenCode。 | Kilo 的 CLI 本身就是 OpenCode 的 fork；Kilo 多了编辑器界面和托管网关，OpenCode 是终端优先的上游核心。 |
 | [aider](aider.zh.md) | ✅ | 想谨慎结对、每次编辑都成一个 git 提交，选 aider；想要自主的 plan / build agent 和子 agent，选 OpenCode。 | aider 更老更稳、自主性低；OpenCode 每个提示能做更多，变化也更快。 |
 
 ## 技术栈

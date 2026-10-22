@@ -2,7 +2,7 @@
 name: OmO
 slug: oh-my-openagent
 repo: https://github.com/code-yeongyu/oh-my-openagent
-category: terminal-agents
+category: independent-runtimes
 tags: [coding-agent, terminal, multi-agent-orchestration, model-routing, agent-memory, typescript]
 language: TypeScript
 license: SUL-1.0 (source-available, non-OSI)
@@ -83,7 +83,7 @@ health:
 
 You hand a coding agent a big job and spend the evening steering it back on course — then re-explain the same project decisions to it next week. OmO is a terminal agent that takes the steering over: type `mass ulw` and the job becomes a graph of parallel workers, each run on the model that fits it and checked before anything is called done, with what it learns kept in a git repo of notes.
 
-![OmO — health radar](../../../../assets/health/oh-my-openagent.svg)
+![OmO — health radar](../../../../../assets/health/oh-my-openagent.svg)
 
 ## When to use
 
@@ -95,7 +95,7 @@ Reach for OmO when you want to delegate the entire job. One `omo` command, `/log
 
 OmO is one TypeScript TUI built on senpi, a fork of [Pi](pi.md); everything else is layers the harness adds around the session. Escalation is by keyword: a bare prompt is answered directly by your session model, while the `ulw` keyword switches the main agent into a mode that explores the codebase first, plans in a notepad, delegates every implementation unit through the `task` tool, and verifies results with evidence before calling them done. With `mass ulw` the main agent instead defines a dependency graph of nodes and drives it phase by phase through the `workflow` tool; `/ulw-plan` plus `/ulw-execute` gives you a written, independently reviewed plan first (a plan consultant hunts gaps, a reviewer rejects verified blockers, capped at five rounds), with per-wave task-owned worktrees, a five-gate verification per checklist item, and boulder state that resumes the work in a later session. Delegation routes by category, not model name — `quick`, `deep-low`, `ultrabrain`, `visual-engineering`, `writing` — and each category maps to a fallback chain that prefers subscription lanes over per-token billing. Memory ships on by default as a git repository of markdown: a reflection pass writes durable notes every ~25 steps, and Kibitzer — a cheap resident sidecar model fed redacted session events — nudges the main agent only when a stored memory would change the next step, in a hint capped at 200 characters. What stays yours: the repo, the provider logins, and the budget. What it takes over: planning artifacts under `.omo/`, worker dispatch, verification gates, and the memory repo.
 
-![oh-my-openagent — backbone user story](../../../../assets/flow/oh-my-openagent.svg)
+![oh-my-openagent — backbone user story](../../../../../assets/flow/oh-my-openagent.svg)
 
 <!-- flow-steps:begin (generated from flows/oh-my-openagent.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -117,10 +117,10 @@ OmO is one TypeScript TUI built on senpi, a fork of [Pi](pi.md); everything else
 ## When NOT to use
 
 - **Your use is not internal, personal, or non-commercial.** The license (Sustainable Use License 1.0) grants use only "for your own internal business purposes or for non-commercial or personal use", and distribution only free of charge for non-commercial purposes. Embedding OmO in something you sell is outside it [推断 — reading of the license text; not legal advice]. If you need a permissively licensed agent you can ship inside a commercial offering, use [OpenCode](opencode.md) (MIT) or [Pi](pi.md) (MIT) instead.
-- **You meter every token.** The project's own manifesto accepts higher token usage in exchange for autonomy — parallel worker swarms, independent verification reviewers, memory reflection every ~25 steps. On a tight API-key budget, use [aider](aider.md) or [Codex](codex.md) instead of OmO, because a single-model loop spends one model's worth of tokens per step, not a fleet's.
+- **You meter every token.** The project's own manifesto accepts higher token usage in exchange for autonomy — parallel worker swarms, independent verification reviewers, memory reflection every ~25 steps. On a tight API-key budget, use [aider](aider.md) or [Codex](../vendor-agents/codex.md) instead of OmO, because a single-model loop spends one model's worth of tokens per step, not a fleet's.
 - **You want a minimal harness you can audit line by line.** OmO is ~30 workspace packages plus Rust desktop components, with keyword-triggered behavior changes and opinionated defaults deep in `~/.omo/omo.jsonc`. Use [Pi](pi.md) instead of OmO, because Pi is the small auditable core OmO itself forked from.
-- **You need a security sandbox around spawned workers.** Filesystem isolation exists for parallel worktrees (clone + merge-back), but no OS-level sandbox is documented; workers' shell commands run with your user permissions [推断]. Use [Open Interpreter](open-interpreter.md) or [Codex](codex.md) instead of OmO, because those document sandboxed execution as part of the product.
-- **Anonymous telemetry on by default is a compliance problem.** PostHog-backed telemetry is enabled when omitted; opt-out exists (`telemetry: false`, `OMO_DISABLE_POSTHOG=1`). If default-on analytics fail your policy before you can turn them off, use [OpenCode](opencode.md) or [Codex](codex.md) instead.
+- **You need a security sandbox around spawned workers.** Filesystem isolation exists for parallel worktrees (clone + merge-back), but no OS-level sandbox is documented; workers' shell commands run with your user permissions [推断]. Use [Open Interpreter](open-interpreter.md) or [Codex](../vendor-agents/codex.md) instead of OmO, because those document sandboxed execution as part of the product.
+- **Anonymous telemetry on by default is a compliance problem.** PostHog-backed telemetry is enabled when omitted; opt-out exists (`telemetry: false`, `OMO_DISABLE_POSTHOG=1`). If default-on analytics fail your policy before you can turn them off, use [OpenCode](opencode.md) or [Codex](../vendor-agents/codex.md) instead.
 - **You need a Lindy-backed, low-churn tool.** The repo was created 2025-12-03, reached ~69.6k stars in ten months, shipped v5.0.0 after 90 betas, renamed itself (oh-my-opencode → oh-my-openagent, two npm packages still publishing in tandem), and routes through one human maintainer plus his AI assistant. Use [aider](aider.md) instead of OmO when age × still-active is the prior that decides, because ten hot months is a risk flag here, not proof.
 
 ## Comparison
@@ -129,7 +129,7 @@ OmO is one TypeScript TUI built on senpi, a fork of [Pi](pi.md); everything else
 |---|---|---|---|
 | [OpenCode](opencode.md) | ✅ | Choose OpenCode for a lean MIT terminal agent whose orchestration you assemble yourself; choose OmO when you want delegation categories, memory, and model mixing to arrive pre-wired — and SUL terms are acceptable. | OpenCode is the permissive, minimalist daily driver; OmO is the batteries-included descendant (formerly its plugin) that spends more tokens and restricts commercial redistribution. |
 | [Pi](pi.md) | ✅ | Choose Pi when you want a minimal agent whose behavior lives in files you can read in an afternoon; choose OmO when inheriting a decided orchestration stack beats building one. | OmO's engine (senpi) is a fork of Pi; Pi stays small and MIT, OmO trades size and license for built-in categories, verification gates, and memory. |
-| [Codex](codex.md) | ✅ | Choose Codex when you want a vendor-backed terminal agent with documented sandboxing and one throat to choke; choose OmO when mixing subscriptions across providers and autonomous verification matter more. | Codex is OpenAI-shaped and simpler to trust at the OS boundary; OmO is provider-agnostic and orchestration-rich, but unsandboxed and license-restricted. |
+| [Codex](../vendor-agents/codex.md) | ✅ | Choose Codex when you want a vendor-backed terminal agent with documented sandboxing and one throat to choke; choose OmO when mixing subscriptions across providers and autonomous verification matter more. | Codex is OpenAI-shaped and simpler to trust at the OS boundary; OmO is provider-agnostic and orchestration-rich, but unsandboxed and license-restricted. |
 | Claude Code | 未收录 | Choose Claude Code when you accept a proprietary Anthropic-bound terminal agent for its polished managed experience; choose OmO when multi-provider mixing with source access is the requirement. | Claude Code is closed and subscription-bound; OmO is source-available across providers but gated by SUL-1.0. Real product, not a repo this index can page — not added in this tab-intake batch. |
 | [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex) | 未收录 | Choose oh-my-codex when you live inside Codex and want its Ultragoal/UltraQA-style autonomy loop there; choose OmO when you want that autonomy standalone across providers. | OmO credits oh-my-codex as the concept source and reimplements the ideas; it is a real repo left 未收录 (not added in this tab-intake batch), so judge it from its own tree. |
 

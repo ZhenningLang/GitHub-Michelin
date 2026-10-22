@@ -2,7 +2,7 @@
 name: Apache Maka (Incubating)
 slug: maka
 repo: https://github.com/apache/maka
-category: terminal-agents
+category: independent-runtimes
 tags: [coding-agent, event-log, crash-recovery, desktop]
 language: TypeScript
 license: Apache-2.0
@@ -83,7 +83,7 @@ health:
 
 agent 崩溃后，最后一次工具操作不该随窗口消失。Maka 把模型、工具和权限事件写入本地账本，供桌面和终端共同读取。
 
-![Maka — 健康度雷达](../../../../assets/health/maka.zh.svg)
+![Maka — 健康度雷达](../../../../../assets/health/maka.zh.svg)
 
 ## 何时使用
 
@@ -109,7 +109,7 @@ agent 崩溃后，最后一次工具操作不该随窗口消失。Maka 把模型
 
 运行 `npm install --global maka-agent@nightly`，然后在目标项目启动 `maka`。首次设置要求填写供应商密钥并启用模型，之后用 `/setup` 修改连接，用 `/model` 切换模型。Maka 执行任务并记录事件；你负责需求、特权操作审批和结果验收。要可重复使用，应固定已审阅的 nightly 版本，不能把早期占位版 `latest` 当作完整 CLI。Apache 正式发布物是签名源码包，npm 和桌面包是便利构建。来源为[命令行文档](https://github.com/apache/maka/blob/d14cec5719352f77d324e1065e0c1943c33772c7/packages/cli/README.md)。
 
-![maka — 主干用户故事](../../../../assets/flow/maka.zh.svg)
+![maka — 主干用户故事](../../../../../assets/flow/maka.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/maka.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -128,7 +128,7 @@ agent 崩溃后，最后一次工具操作不该随窗口消失。Maka 把模型
 
 ## 技术要点
 
-![Apache Maka (Incubating) — 机制图](../../../../assets/mechanism/maka.zh.svg)
+![Apache Maka (Incubating) — 机制图](../../../../../assets/mechanism/maka.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/maka.json by tools/mechanism_card.py; do not edit) -->
 <details>

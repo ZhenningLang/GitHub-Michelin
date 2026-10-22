@@ -2,7 +2,7 @@
 name: Apache Maka (Incubating)
 slug: maka
 repo: https://github.com/apache/maka
-category: terminal-agents
+category: independent-runtimes
 tags: [coding-agent, event-log, crash-recovery, desktop]
 language: TypeScript
 license: Apache-2.0
@@ -83,7 +83,7 @@ health:
 
 After an agent crashes, its last tool action should not vanish with the window; Maka records model, tool and permission events in a local runtime ledger shared by desktop and terminal clients.
 
-![Maka — health radar](../../../../assets/health/maka.svg)
+![Maka — health radar](../../../../../assets/health/maka.svg)
 
 ## When to use
 
@@ -109,7 +109,7 @@ You need to investigate why an autonomous coding task stopped after asking permi
 
 Install `npm install --global maka-agent@nightly`, then run `maka` from the target project. The setup flow asks for a provider key and enabled models; `/setup` changes connections and `/model` switches models. Maka executes turns and records their events while you supply the task, approve privileged operations and validate the result. Pin a reviewed nightly version for reproducibility: `latest` is an early alpha stub, not the full CLI. Official Apache releases are signed source archives; npm and desktop packages are convenience artifacts. See the [CLI guide](https://github.com/apache/maka/blob/d14cec5719352f77d324e1065e0c1943c33772c7/packages/cli/README.md).
 
-![maka — backbone user story](../../../../assets/flow/maka.svg)
+![maka — backbone user story](../../../../../assets/flow/maka.svg)
 
 <!-- flow-steps:begin (generated from flows/maka.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -128,7 +128,7 @@ Install `npm install --global maka-agent@nightly`, then run `maka` from the targ
 
 ## Key techniques
 
-![Apache Maka (Incubating) — mechanism diagram](../../../../assets/mechanism/maka.svg)
+![Apache Maka (Incubating) — mechanism diagram](../../../../../assets/mechanism/maka.svg)
 
 <!-- mechanism:begin (generated from mechanisms/maka.json by tools/mechanism_card.py; do not edit) -->
 <details>

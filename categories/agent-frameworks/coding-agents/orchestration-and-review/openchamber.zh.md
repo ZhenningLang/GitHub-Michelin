@@ -87,7 +87,7 @@ health:
 
 你已经在用 OpenCode 干活、它也确实能干，但终端形态成了天花板：一个窗口一个会话，换台机器就断，想比两个模型就得开两个终端对眼瞪着两份 diff，看一个大改动只能顺着按路径排序的补丁往下滚。你希望这些活变成可列、可续、可 review、能在手机上接着处理的——同时不离开 OpenCode。
 
-此时选 OpenChamber，而不是 [T3 Code](../terminal-agents/t3code.zh.md) 或 [CC Switch](cc-switch.zh.md) 这类多 agent 切换器：那些项目是把**多个** CLI 统一起来、多数止步于把它启动起来；OpenChamber 的深度在**一个** runtime 内部——会话带一个目标并逐轮被审计直到完成，一条提示词可以同时发给五个模型（各自拥有 worktree），结果以有序讲解加 git/PR 面板交回来。也不要自己拿 tmux 加脚本拼：跨设备那一半（配对手机、经端到端加密 relay 在外网访问而本机不开端口）和 review 界面，恰恰是你自己得写、还得自己维护的部分。决定性取舍是：你接受一个年轻、变动快、单一厂商、只绑一个 agent runtime 的应用，换来 CLI 给不了的运行界面。
+此时选 OpenChamber，而不是 [T3 Code](../terminal-agents/independent-runtimes/t3code.zh.md) 或 [CC Switch](cc-switch.zh.md) 这类多 agent 切换器：那些项目是把**多个** CLI 统一起来、多数止步于把它启动起来；OpenChamber 的深度在**一个** runtime 内部——会话带一个目标并逐轮被审计直到完成，一条提示词可以同时发给五个模型（各自拥有 worktree），结果以有序讲解加 git/PR 面板交回来。也不要自己拿 tmux 加脚本拼：跨设备那一半（配对手机、经端到端加密 relay 在外网访问而本机不开端口）和 review 界面，恰恰是你自己得写、还得自己维护的部分。决定性取舍是：你接受一个年轻、变动快、单一厂商、只绑一个 agent runtime 的应用，换来 CLI 给不了的运行界面。
 
 ## 怎么用起来
 
@@ -116,10 +116,10 @@ OpenChamber 是 OpenCode **外面**的运行层，不是另一个 agent。它负
 
 ## 何时不用
 
-- **你不用 OpenCode，或者不愿被它绑住。**这个 UI 说的是 OpenCode 的 API（`@opencode-ai/sdk/v2`），runtime 换不掉；要驱动 Claude Code 或 Codex，得走第三方 provider 插件（如 [`opencode-claude`](https://github.com/openchamber/opencode-claude)），不是原生路径。如果你要的是“一个 GUI 罩住我**已经登录过的那几个** CLI”，改用 [T3 Code](../terminal-agents/t3code.zh.md)（Codex、Claude、Cursor、OpenCode）或用 [CC Switch](cc-switch.zh.md) 做配置层管理，因为它们是围绕多个 runtime 设计的。[推断]
+- **你不用 OpenCode，或者不愿被它绑住。**这个 UI 说的是 OpenCode 的 API（`@opencode-ai/sdk/v2`），runtime 换不掉；要驱动 Claude Code 或 Codex，得走第三方 provider 插件（如 [`opencode-claude`](https://github.com/openchamber/opencode-claude)），不是原生路径。如果你要的是“一个 GUI 罩住我**已经登录过的那几个** CLI”，改用 [T3 Code](../terminal-agents/independent-runtimes/t3code.zh.md)（Codex、Claude、Cursor、OpenCode）或用 [CC Switch](cc-switch.zh.md) 做配置层管理，因为它们是围绕多个 runtime 设计的。[推断]
 - **你无法接受一个浏览器可达的“机器控制面”。**`SECURITY.md` 自己列了暴露面：UI 认证与 JWT、隧道、PTY 终端会话、git 凭据与 SSH key、文件系统操作；而仓库自带的 `docker-compose.yml` 把 `./data/ssh` 挂进容器，并以强制 `OPENCHAMBER_UI_PASSWORD` 绑定 `0.0.0.0`。它默认只听 `127.0.0.1`、relay 也是按需开启，但“把这个工作台暴露出去”真实含义就是“把终端和你的密钥暴露出去”。如果环境不允许，就让 agent 留在 SSH 后面的 CLI 里、或用本机终端复用器（tmux），因为那些不额外引入 HTTP 认证面；若必须远程访问，请自托管 [`openchamber-relay`](https://github.com/openchamber/openchamber-relay)，而不是走项目方的共享 relay。
 - **你需要钉住版本并有人长期支持。**没有 LTS，也没有回移策略（`SECURITY.md`：修复只落在最新版本），发布节奏是每 1–3 天一次，而且已经有一条面向 OpenCode v2 的 v2 预览线——所以一个小版本升级就可能在你脚下挪动行为。需要冻结控制面契约的话，请自己钉住镜像/版本并自行承担升级，或继续用 agent 自带的 CLI，因为 OpenChamber 不承诺跨版本兼容。
-- **你只在一台机器上跑一个会话。**那么继电器、手机配对、多模型 run、变更讲解、浏览器面板这些最贵的能力一样也用不上。直接用 [OpenCode](../terminal-agents/opencode.zh.md) 的 TUI/CLI，因为那是同一个 agent，但没有多出来的服务、密码和第二个要跟着更新的 UI。
+- **你只在一台机器上跑一个会话。**那么继电器、手机配对、多模型 run、变更讲解、浏览器面板这些最贵的能力一样也用不上。直接用 [OpenCode](../terminal-agents/independent-runtimes/opencode.zh.md) 的 TUI/CLI，因为那是同一个 agent，但没有多出来的服务、密码和第二个要跟着更新的 UI。
 - **你需要在网页标签页里、或在 VS Code 里用浏览器面板。**标注页面元素和让 agent 自己操作面板都只在桌面版可用，VS Code 扩展干脆没有浏览器面板；在普通浏览器标签页里面板只能显示页面、看不进去。没有桌面版又要 agent 驱动浏览器，改用 [BrowserSkill](../../../web-automation/agent-browser-tools/browserskill.zh.md) 这类浏览器自动化工具，因为它可以无头运行、也能借用你已登录的浏览器。[未验证]
 - **你需要组织级治理。**没有 RBAC、没有审计日志、没有 SSO、没有管理员/多租户层，它是单人操作的工具。需要席位、策略和 agent 审计轨迹的话，选 [Dify](../../workflow-builders/dify.zh.md) 这类有治理层的平台，因为 OpenChamber 的全部访问控制就是密码、passkey 和可撤销的按设备令牌。
 - **你今天就需要商店分发的手机 App。**安装文档只给了两条路：iOS 的 TestFlight 测试版，以及从最新 Release 下载的 Android APK——没有文档给出 App Store 或 Play Store 的商店页面。如果“上架商店”是硬要求，就用浏览器装 PWA——原生 App 只是同一个服务上的额外便利，不是另一个产品。
@@ -128,9 +128,9 @@ OpenChamber 是 OpenCode **外面**的运行层，不是另一个 agent。它负
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| [T3 Code](../terminal-agents/t3code.zh.md) | ✅ | 要点是“一个 GUI 罩住多个已登录 CLI”（Codex、Claude、Cursor、OpenCode）时选 T3 Code；你已锁定 OpenCode、想要更深的循环——按目标审计的会话、五模型并行加 worktree、变更讲解、手机接管——时选 OpenChamber。 | T3 Code 支持多 runtime、更轻，但停在“启动 + 会话壳”这一层；OpenChamber 在一个 runtime 里挖得更深，代价是离开 OpenCode 就毫无用处。 |
+| [T3 Code](../terminal-agents/independent-runtimes/t3code.zh.md) | ✅ | 要点是“一个 GUI 罩住多个已登录 CLI”（Codex、Claude、Cursor、OpenCode）时选 T3 Code；你已锁定 OpenCode、想要更深的循环——按目标审计的会话、五模型并行加 worktree、变更讲解、手机接管——时选 OpenChamber。 | T3 Code 支持多 runtime、更轻，但停在“启动 + 会话壳”这一层；OpenChamber 在一个 runtime 里挖得更深，代价是离开 OpenCode 就毫无用处。 |
 | [CC Switch](cc-switch.zh.md) | ✅ | 要在桌面端管理多个 agent 的 provider/CLI 配置时选 CC Switch；缺的不是配置而是“跑 agent、审 agent 产出”本身时选 OpenChamber。 | 两者只在壳这一层重叠：CC Switch 换的是 agent **是什么**，OpenChamber 跑并审 agent **做了什么**。 |
-| [OpenCode](../terminal-agents/opencode.zh.md) | ✅ | 这是叠加关系而非二选一：两条路都要装 OpenCode；想要多设备、多模型和 review 界面时再加 OpenChamber，单个终端会话够用时就不必加。 | OpenChamber 在一个本来就能独立工作的 agent 之上，多加了服务、UI、密码和一条升级跑步机。 |
+| [OpenCode](../terminal-agents/independent-runtimes/opencode.zh.md) | ✅ | 这是叠加关系而非二选一：两条路都要装 OpenCode；想要多设备、多模型和 review 界面时再加 OpenChamber，单个终端会话够用时就不必加。 | OpenChamber 在一个本来就能独立工作的 agent 之上，多加了服务、UI、密码和一条升级跑步机。 |
 | [OpenHands](openhands.zh.md) | ✅ | 想要一个自带沙箱 runtime、能按 issue 自主推进的自托管 agent 平台时选 OpenHands；runtime 已定（OpenCode）、缺的只是运行与评审界面时选 OpenChamber。 | OpenHands 拥有整条栈（更重，agent 是自己的）；OpenChamber 只拥有别人 agent 之上的那一层（更轻，也依赖别人）。 |
 | tmux + git worktree + agent CLI（自研） | 未收录 | 要同样的并行、又不想引入未经检验的依赖、升级压力和暴露的 HTTP 面时，选自研；手机配对、有序 diff 讲解、点选元素回传这条链值得一个打包好的应用时，选 OpenChamber。 | 自研的成本是你得把跨设备和评审这两块造出来（迟早要造）；OpenChamber 的成本是依赖一个 12 个月大、单人主控的项目，以及那个暴露决策。 |
 

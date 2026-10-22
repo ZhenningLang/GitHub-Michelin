@@ -87,18 +87,18 @@ DeepSeek Harness 的工具、审批和后台任务散在文字里。dsh-TUI 把�
 
 ## 何时不用
 
-- 要独立的多供应商 agent，而非 DSH 配置，选 [OpenCode](../../agent-frameworks/coding-agents/terminal-agents/opencode.zh.md)。
-- 要桌面界面管理已装 agent，选 [T3 Code](../../agent-frameworks/coding-agents/terminal-agents/t3code.zh.md)，不必使用终端渲染。
-- 要减少适配漂移，直接用 [Codex](../../agent-frameworks/coding-agents/terminal-agents/codex.zh.md)。dsh-TUI 没有独立沙箱；Windows 的 DSH 配置默认全访问且不审批。
+- 要独立的多供应商 agent，而非 DSH 配置，选 [OpenCode](../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/opencode.zh.md)。
+- 要桌面界面管理已装 agent，选 [T3 Code](../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/t3code.zh.md)，不必使用终端渲染。
+- 要减少适配漂移，直接用 [Codex](../../agent-frameworks/coding-agents/terminal-agents/vendor-agents/codex.zh.md)。dsh-TUI 没有独立沙箱；Windows 的 DSH 配置默认全访问且不审批。
 - 关界面后仍要继续跑，应使用受监督运行器。DSH 后台会话会随本进程退出。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| [OpenCode](../../agent-frameworks/coding-agents/terminal-agents/opencode.zh.md) | ✅ | 要独立 agent 和供应商生态选 OpenCode；要 DSH 原生可视化流程选 dsh-TUI。 | 独立执行循环，对比随 DSH 版本变化的适配层。 |
-| [T3 Code](../../agent-frameworks/coding-agents/terminal-agents/t3code.zh.md) | ✅ | 要管理已装 agent 的本地图形界面选 T3 Code；工作区在终端时选 dsh-TUI。 | 桌面交互，对比终端协议与渲染约束。 |
-| [Codex](../../agent-frameworks/coding-agents/terminal-agents/codex.zh.md) | ✅ | 要直接使用原生协议与控制选 Codex；确需统一终端呈现才加 dsh-TUI。 | 原生功能及时性，对比固定协议版本的实验适配。 |
+| [OpenCode](../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/opencode.zh.md) | ✅ | 要独立 agent 和供应商生态选 OpenCode；要 DSH 原生可视化流程选 dsh-TUI。 | 独立执行循环，对比随 DSH 版本变化的适配层。 |
+| [T3 Code](../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/t3code.zh.md) | ✅ | 要管理已装 agent 的本地图形界面选 T3 Code；工作区在终端时选 dsh-TUI。 | 桌面交互，对比终端协议与渲染约束。 |
+| [Codex](../../agent-frameworks/coding-agents/terminal-agents/vendor-agents/codex.zh.md) | ✅ | 要直接使用原生协议与控制选 Codex；确需统一终端呈现才加 dsh-TUI。 | 原生功能及时性，对比固定协议版本的实验适配。 |
 
 ## 快速上手
 

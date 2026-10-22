@@ -2,7 +2,7 @@
 name: Freebuff
 slug: freebuff
 repo: https://github.com/CodebuffAI/freebuff
-category: terminal-agents
+category: independent-runtimes
 tags: [coding-agent, terminal, cli, free-tier, ad-supported, multi-agent, byok, sdk, typescript]
 language: TypeScript
 license: Apache-2.0
@@ -79,19 +79,19 @@ health:
 
 You want a coding agent in your terminal, but every serious one asks for a $20/month subscription or an API key that bills per token. Freebuff gives you one for nothing: its company pays for the models and shows you text ads, with a daily allowance and region limits as the catch.
 
-![Freebuff — health radar](../../../../assets/health/freebuff.svg)
+![Freebuff — health radar](../../../../../assets/health/freebuff.svg)
 
 ## When to use
 
 You are a student, a hobbyist, or a developer in a team that will not expense another AI subscription, and you want to try agentic coding on a real repo tonight. The usual answers stall at the first screen: Codex wants an OpenAI subscription or API key, OpenCode and aider want you to paste a provider key and then watch a token meter, and Gemini CLI only gives you Google's models. You do not want to configure anything; you want `npm install -g freebuff`, `freebuff`, and a prompt like "add pagination to the orders API and fix the tests".
 
-Reach for Freebuff in that situation. It is the open client half of Codebuff's multi-agent harness (file-picker agents, editor, reviewer, browser and research agents) wired to a hosted model catalog that its operator pays for with ads and paid upsells. Pick it over [Gemini CLI](gemini-cli.md) when you want several model families on a free plan instead of one vendor's; pick it over [OpenCode](opencode.md) or [aider](aider.md) when not managing a key or a bill matters more than controlling exactly where your code goes. The same CLI also has a `/byok` mode that sends requests straight to OpenRouter or any OpenAI-compatible endpoint with ads off — useful once you outgrow the free tier, but then you are choosing it on harness quality alone.
+Reach for Freebuff in that situation. It is the open client half of Codebuff's multi-agent harness (file-picker agents, editor, reviewer, browser and research agents) wired to a hosted model catalog that its operator pays for with ads and paid upsells. Pick it over [Gemini CLI](../vendor-agents/gemini-cli.md) when you want several model families on a free plan instead of one vendor's; pick it over [OpenCode](opencode.md) or [aider](aider.md) when not managing a key or a bill matters more than controlling exactly where your code goes. The same CLI also has a `/byok` mode that sends requests straight to OpenRouter or any OpenAI-compatible endpoint with ads off — useful once you outgrow the free tier, but then you are choosing it on harness quality alone.
 
 ## How it works
 
 The repository is a public mirror of a private source tree: the terminal client (an OpenTUI + React TUI), the `@codebuff/sdk` package, the agent runtime, and the agent definitions are here, while the backend, billing, web app and Desktop app are not. `npm install -g freebuff` installs a small launcher that downloads a platform binary and checks its SHA-256 (a fingerprint of the file) before running it. On first launch you sign in through freebuff.com in the browser. When you type a request, the root agent does not answer alone: it spawns helper agents — file pickers that map the relevant files, an editor, a reviewer — the way a site foreman sends people to measure before anyone cuts wood. Every model call goes through the Freebuff backend, which routes it to the model you picked, counts your daily "Freebucks" allowance, and serves text ads. What stays yours: the repository, the prompt, and the judgement about which commands are safe — the agent runs shell commands itself, and the only brake is an instruction in its prompt, not a permission prompt. In `/byok` mode the SDK skips the backend completely: no account, no analytics events, no ads, and no hosted web-research tools.
 
-![freebuff — backbone user story](../../../../assets/flow/freebuff.svg)
+![freebuff — backbone user story](../../../../../assets/flow/freebuff.svg)
 
 <!-- flow-steps:begin (generated from flows/freebuff.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -110,22 +110,22 @@ The repository is a public mirror of a private source tree: the terminal client 
 
 ## When NOT to use
 
-- **Your code or prompts must not leave a controlled boundary.** The README's data-use notice says Freebuff uses prompts, code, files and agent traces to provide the service, may analyze prompts to personalize ads, and that some models (the "Space Bunny Alpha" stealth model is named) retain prompts or allow training. Use [aider](aider.md) or [OpenCode](opencode.md) with a provider you already have a data agreement with, or [Codex](codex.md) under an OpenAI business plan, instead of the free Freebuff tier, because their data path is the one your company signed.
-- **You need enforced guardrails on shell commands.** There is no approval gate, read-only mode or project-directory jail: the `run_terminal_command` tool only tells the model to ask before risky commands, and issue #1450 (2026-09-29) reports the agent deleting most of a repository without asking. Use [Codex](codex.md) or [Open Interpreter](open-interpreter.md) instead of Freebuff, because they run commands inside an OS sandbox that the model cannot talk its way out of.
-- **You are outside the "full access" regions, or behind a VPN or corporate proxy.** Those users get "limited" mode: a handful of cheaper models and 25 Freebucks a day (20 on a VPN), per the README. Use [Gemini CLI](gemini-cli.md) with a personal Google account, or [OpenCode](opencode.md) with your own key, instead of Freebuff, because their quota does not depend on the country your IP resolves to.
+- **Your code or prompts must not leave a controlled boundary.** The README's data-use notice says Freebuff uses prompts, code, files and agent traces to provide the service, may analyze prompts to personalize ads, and that some models (the "Space Bunny Alpha" stealth model is named) retain prompts or allow training. Use [aider](aider.md) or [OpenCode](opencode.md) with a provider you already have a data agreement with, or [Codex](../vendor-agents/codex.md) under an OpenAI business plan, instead of the free Freebuff tier, because their data path is the one your company signed.
+- **You need enforced guardrails on shell commands.** There is no approval gate, read-only mode or project-directory jail: the `run_terminal_command` tool only tells the model to ask before risky commands, and issue #1450 (2026-09-29) reports the agent deleting most of a repository without asking. Use [Codex](../vendor-agents/codex.md) or [Open Interpreter](open-interpreter.md) instead of Freebuff, because they run commands inside an OS sandbox that the model cannot talk its way out of.
+- **You are outside the "full access" regions, or behind a VPN or corporate proxy.** Those users get "limited" mode: a handful of cheaper models and 25 Freebucks a day (20 on a VPN), per the README. Use [Gemini CLI](../vendor-agents/gemini-cli.md) with a personal Google account, or [OpenCode](opencode.md) with your own key, instead of Freebuff, because their quota does not depend on the country your IP resolves to.
 - **You need a stable model contract for repeatable work.** The catalog rotates (the README notes DeepSeek V4 Pro was retired and replaced), models may be served quantized (Q8_0), and "free" models are priced in an internal currency that the operator can reprice. Use [aider](aider.md) or [OpenCode](opencode.md) pinned to a specific provider model instead of Freebuff, because the model then changes only when you change it.
-- **You want to self-host the whole stack or fork the product.** Only the client, SDK, runtime and agents are public; CONTRIBUTING says the private repo is the source of truth, PRs are hand-ported rather than merged, and backend/billing code is refused. Issue #1441 reports an account suspended after running a community-patched build against the free service. Use [OpenCode](opencode.md) or [Kilo Code](../ide-agents/kilocode.md) instead of Freebuff, because their open code is the whole product and you can run your fork without asking anyone.
-- **You want the agent inside your editor.** This page is the terminal client; the Desktop/Web/Cloud products are closed. Use [Kilo Code](../ide-agents/kilocode.md) or [Cline](../ide-agents/cline.md) instead of Freebuff, because they live in VS Code with diffs you approve inline.
+- **You want to self-host the whole stack or fork the product.** Only the client, SDK, runtime and agents are public; CONTRIBUTING says the private repo is the source of truth, PRs are hand-ported rather than merged, and backend/billing code is refused. Issue #1441 reports an account suspended after running a community-patched build against the free service. Use [OpenCode](opencode.md) or [Kilo Code](../../ide-agents/kilocode.md) instead of Freebuff, because their open code is the whole product and you can run your fork without asking anyone.
+- **You want the agent inside your editor.** This page is the terminal client; the Desktop/Web/Cloud products are closed. Use [Kilo Code](../../ide-agents/kilocode.md) or [Cline](../../ide-agents/cline.md) instead of Freebuff, because they live in VS Code with diffs you approve inline.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Gemini CLI](gemini-cli.md) | ✅ | For a free terminal agent where Google's models are acceptable, pick Gemini CLI; pick Freebuff when you want several model families and a multi-agent harness on the free plan. | Gemini CLI's free tier is tied to a personal Google account but carries no ads; Freebuff spreads you across many vendors' models and pays for it with ads, region tiers and prompt analysis. |
+| [Gemini CLI](../vendor-agents/gemini-cli.md) | ✅ | For a free terminal agent where Google's models are acceptable, pick Gemini CLI; pick Freebuff when you want several model families and a multi-agent harness on the free plan. | Gemini CLI's free tier is tied to a personal Google account but carries no ads; Freebuff spreads you across many vendors' models and pays for it with ads, region tiers and prompt analysis. |
 | [OpenCode](opencode.md) | ✅ | When you will bring your own provider key and want the client to be the whole open product, pick OpenCode; pick Freebuff when the point is not paying or configuring a key at all. | OpenCode means a token bill but a data path you choose; Freebuff is zero-setup and zero-cost, but the backend that routes your prompts is closed. |
 | [aider](aider.md) | ✅ | For git-native pair programming with any model you choose, pick aider; pick Freebuff when you want an agent that plans and spawns helpers rather than a commit-per-change pair programmer. | aider auto-commits every change so undo is a git command, and dates from 2023, though its last push was 2026-05-22; Freebuff does more on its own per prompt but gives you no command approval gate. |
-| [Codex](codex.md) | ✅ | If you already pay OpenAI or need an OS sandbox around shell commands, pick Codex; pick Freebuff when no subscription is the hard constraint. | Codex enforces its sandbox in the OS; Freebuff's safety is a line in the prompt, and its free models come from a shifting catalog. |
-| [Kilo Code](../ide-agents/kilocode.md) | ✅ | When you want a BYOK agent inside VS Code with an open code base you can fork, pick Kilo Code; pick Freebuff when you live in the terminal and want hosted models without a key. | Kilo Code costs you a provider bill and an IDE; Freebuff costs you ads and a closed backend. |
+| [Codex](../vendor-agents/codex.md) | ✅ | If you already pay OpenAI or need an OS sandbox around shell commands, pick Codex; pick Freebuff when no subscription is the hard constraint. | Codex enforces its sandbox in the OS; Freebuff's safety is a line in the prompt, and its free models come from a shifting catalog. |
+| [Kilo Code](../../ide-agents/kilocode.md) | ✅ | When you want a BYOK agent inside VS Code with an open code base you can fork, pick Kilo Code; pick Freebuff when you live in the terminal and want hosted models without a key. | Kilo Code costs you a provider bill and an IDE; Freebuff costs you ads and a closed backend. |
 
 ## Tech stack
 

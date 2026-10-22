@@ -2,7 +2,7 @@
 name: Pi
 slug: pi
 repo: https://github.com/earendil-works/pi
-category: terminal-agents
+category: independent-runtimes
 tags: [coding-agent, terminal, cli, typescript, extensible, agent-sdk, agent-loop, mit]
 language: TypeScript
 license: MIT
@@ -79,17 +79,17 @@ health:
 
 开箱就顺手的那种终端 agent，往往正是你改不动的那种：system prompt 编在代码里、压缩逻辑是个黑箱，唯一想改的那一处行为只是路线图上的一个条目。Pi 把循环刻意做小，把旋钮交出来——就是你仓库里的文件：prompt 模板、技能、以及它自己也能写的 TypeScript 扩展。
 
-![Pi — 健康度雷达](../../../../assets/health/pi.zh.svg)
+![Pi — 健康度雷达](../../../../../assets/health/pi.zh.svg)
 
 ## 何时使用
 
 你整天泡在终端里，对 agent 在你这里该怎么表现有具体要求：哪些文件承担指令、什么操作不许它不问就做、会话里留多少东西。第一印象很好的那些 agent，恰恰在你最在意的这一层是关的——你只能配置它们，不能改它们，一个项目特有的怪癖就变成了一张 feature request。
 
-与其这样，不如用文件把行为搭出来，那就选 Pi。终端界面之下是一个很小的 agent 内核，而内核之上的东西几乎全是资源：`.pi/skills/` 放按需加载的指令，`.pi/prompts/` 放暴露成斜杠命令的片段，`.pi/extensions/` 放会被加载进进程的 TypeScript 模块，再加 `SYSTEM.md` / `APPEND_SYSTEM.md` 覆盖或追加 prompt——可以放在用户级（`~/.pi/agent/`），也可以在你授予项目信任之后按项目放。相比 [OpenCode](opencode.zh.md)，当你想要的扩展点是一个 TypeScript 模块而不是一堆设置项时选它；相比 [Codex](codex.zh.md)，当你宁愿自己承担隔离这件事、而不想继承厂商的沙箱主张时选它。还有两点把它和普通 CLI 分开：同一个内核还能以 print、JSON 事件流、RPC 三种模式运行，并提供一个 TypeScript SDK；而 `/login` 挂的是订阅，不一定是 API key。
+与其这样，不如用文件把行为搭出来，那就选 Pi。终端界面之下是一个很小的 agent 内核，而内核之上的东西几乎全是资源：`.pi/skills/` 放按需加载的指令，`.pi/prompts/` 放暴露成斜杠命令的片段，`.pi/extensions/` 放会被加载进进程的 TypeScript 模块，再加 `SYSTEM.md` / `APPEND_SYSTEM.md` 覆盖或追加 prompt——可以放在用户级（`~/.pi/agent/`），也可以在你授予项目信任之后按项目放。相比 [OpenCode](opencode.zh.md)，当你想要的扩展点是一个 TypeScript 模块而不是一堆设置项时选它；相比 [Codex](../vendor-agents/codex.zh.md)，当你宁愿自己承担隔离这件事、而不想继承厂商的沙箱主张时选它。还有两点把它和普通 CLI 分开：同一个内核还能以 print、JSON 事件流、RPC 三种模式运行，并提供一个 TypeScript SDK；而 `/login` 挂的是订阅，不一定是 API key。
 
 ## 快问快答
 
-**Pi 和 [Harness SDK](../../agent-runtimes/agent-sdks/harness-sdk.zh.md) 这类 agent SDK 是一类东西吗？**
+**Pi 和 [Harness SDK](../../../agent-runtimes/agent-sdks/harness-sdk.zh.md) 这类 agent SDK 是一类东西吗？**
 不在同一层。Pi 的产品是那个终端 agent；真正和 agent SDK 抢同一格的是它的库层——`@earendil-works/pi-ai` 负责供应商抽象、`@earendil-works/pi-agent-core` 负责循环——这两个包是单独发布的，也能单独用。如果你要把 agent 嵌进自己的服务，该看的是这两个包，不是这个 CLI。
 
 **“可扩展、能自己适配自己”落到实际是什么？**
@@ -102,7 +102,7 @@ health:
 
 Pi 是一个 TypeScript 程序，拥有唯一一个 agent 循环，并用几种界面把它露出来。一条消息被追加到会话树的当前分支上，Pi 用 system prompt、这个分支、工具定义和技能描述拼出模型请求；供应商回流文本和工具调用，Pi 执行它们、记录结果，一轮结束——只有当还有活要干时才开启下一轮。会话是 JSONL 文件，每一条记录都指向自己的父节点，于是“继续”和“分支”是同一个操作：换一个父节点而已；压缩也只是插入一条摘要记录，原始记录留在盘上。它接管的是：上下文拼装、压缩、工具分发、会话存储和终端渲染。留在你手里的是：模型账号、工作目录，以及“给这个进程套多少隔离”的决定——因为它没有内置权限层，只有负责资源加载的项目信任。一个站得住脚的比喻：它不像是你配置的应用，更像一个自带参考客户端的小运行时，所以同一份代码既是 TUI，也是可脚本化的命令，还是一个 SDK。
 
-![Pi — 主干用户故事](../../../../assets/flow/pi.zh.svg)
+![Pi — 主干用户故事](../../../../../assets/flow/pi.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/pi.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -123,11 +123,11 @@ Pi 是一个 TypeScript 程序，拥有唯一一个 agent 循环，并用几种�
 
 ## 何时不用
 
-- **你要工具本身成为安全边界。** README 说得很直白：Pi 不含用于限制文件系统、进程、网络或凭证访问的权限系统，项目信任管的是资源加载、不是工具执行。这时候用 [Open Interpreter](open-interpreter.zh.md) 或 [Codex](codex.zh.md)，因为原生或操作系统级沙箱是它们产品的一部分，而不是你后加的一个扩展。
-- **你要一个长在编辑器里的 agent。** Pi 是 CLI 加 TUI。这时候用 [Cline](../ide-agents/cline.zh.md) 或 [Kilo Code](../ide-agents/kilocode.zh.md)，因为“看 diff、审改动”这套循环在它们那里发生在编辑器内。
+- **你要工具本身成为安全边界。** README 说得很直白：Pi 不含用于限制文件系统、进程、网络或凭证访问的权限系统，项目信任管的是资源加载、不是工具执行。这时候用 [Open Interpreter](open-interpreter.zh.md) 或 [Codex](../vendor-agents/codex.zh.md)，因为原生或操作系统级沙箱是它们产品的一部分，而不是你后加的一个扩展。
+- **你要一个长在编辑器里的 agent。** Pi 是 CLI 加 TUI。这时候用 [Cline](../../ide-agents/cline.zh.md) 或 [Kilo Code](../../ide-agents/kilocode.zh.md)，因为“看 diff、审改动”这套循环在它们那里发生在编辑器内。
 - **你要一个 Lindy 撑腰、低风险的依赖。** 仓库建于 2025-08-09，约十三个月涨到 10.88 万星，而提交历史主要压在一位作者（`badlogic` / Mario Zechner）身上。这时候用 [aider](aider.zh.md) 或 [OpenCode](opencode.zh.md)，因为本索引的先验是“年龄乘持续活跃”，年轻又高热是风险标记而不是证明。
 - **你打算往上游送补丁、或指望社区响应速度。** 新贡献者的 issue 和 PR 默认被自动关闭，由维护者每天批量过一遍。这时候用 [OpenCode](opencode.zh.md) 或 [aider](aider.zh.md)，因为如果你的计划里包含参与上游，它们那条贡献路径才是平常的那条。
-- **你需要工具背后有说得出口的厂商与企业采购故事。** Pi 是一个独立项目，背后是一个很小的组织。这时候用 [Codex](codex.zh.md) 或 [Gemini CLI](gemini-cli.zh.md)，当采购要的是具名厂商、支持合同和客户团队时。
+- **你需要工具背后有说得出口的厂商与企业采购故事。** Pi 是一个独立项目，背后是一个很小的组织。这时候用 [Codex](../vendor-agents/codex.zh.md) 或 [Gemini CLI](../vendor-agents/gemini-cli.zh.md)，当采购要的是具名厂商、支持合同和客户团队时。
 - **你要的是能把上下文当程序处理、还能脱离终端活下去的长任务。** Pi 的循环和启动它的那个进程同生共死。这时候用 [Prime Agent](prime-agent.zh.md)，因为那个分叉加了 daemon、常驻 Python 内核和 `rlm.spawn(...)`，专门为关掉终端还得继续跑的活准备。
 
 ## 横向对比
@@ -135,7 +135,7 @@ Pi 是一个 TypeScript 程序，拥有唯一一个 agent 循环，并用几种�
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [OpenCode](opencode.zh.md) | 已收录 | 要一个靠配置和插件驱动的、模型可换的终端 agent，选 OpenCode；想改的是 agent 循环本身、并且接受用 TypeScript 来改，选 Pi。 | 两者都是 npm 安装的 MIT 终端 agent；OpenCode 押配置面的宽度，Pi 押一个你能用代码扩展的小内核。 |
-| [Codex](codex.zh.md) | 已收录 | 有文档化的沙箱和厂商背书的产品是决定因素时，选 Codex；想让沙箱是你自己的容器决定、而不是工具替你拿主意时，选 Pi。 | Codex 给你安全默认值，也把你系在 OpenAI 的栈上；Pi 保持供应商可换，把隔离留给你。 |
+| [Codex](../vendor-agents/codex.zh.md) | 已收录 | 有文档化的沙箱和厂商背书的产品是决定因素时，选 Codex；想让沙箱是你自己的容器决定、而不是工具替你拿主意时，选 Pi。 | Codex 给你安全默认值，也把你系在 OpenAI 的栈上；Pi 保持供应商可换，把隔离留给你。 |
 | [aider](aider.zh.md) | 已收录 | 要 git 原生、有多年持续活跃历史的结对编程，选 aider；自修改资源和多界面嵌入对你更重要，选 Pi。 | aider 是 Lindy 上更稳、面更窄的那个；Pi 更年轻、更宽、也更冒险。 |
 | [Prime Agent](prime-agent.zh.md) | 已收录 | 长任务必须活得比终端久、并且要让模型对着上下文写程序，选 Prime Agent；要上游那个最小 agent、不要 daemon 和 Python 内核，选 Pi。 | Prime Agent 是硬分叉，加了一整套多进程运行时和 RLM 循环；Pi 是它分叉的那个更小的底座。 |
 | [Open Interpreter](open-interpreter.zh.md) | 已收录 | 要原生操作系统沙箱、以及为便宜模型调过的 harness，选 Open Interpreter；上游的极小内核和 TypeScript 扩展模型才是重点，选 Pi。 | Open Interpreter 用更重的分叉血统换来安全与模型经济性；Pi 用一个小内核换你自带边界。 |

@@ -83,7 +83,7 @@ health:
 
 你在做双语频道或本地化台。反复出现的活不是“从一个主题发明一支片子”——而是“这堂 46 分钟的演讲要中英字幕且不能叠字、要一条配音轨、还要切一版竖屏进 Shorts”，明天同一份素材还要出小红书文案和一条 Seedance 片子。CapCut（非仓库）能手搓一条精修；生成式 SaaS 给你一条无法当作本机项目再跑一遍的一次性成片；[MoneyPrinterTurbo](moneyprinter-turbo.zh.md) 能从关键词吐一条库存素材口播短视频，然后就停了。
 
-选 OpenCreator，是因为它是*本机创作者家电，agent 就在同一扇窗口里*：十个可视化工具（视频翻译、下载、封面、图／视频生成、文章／小红书／短视频脚本、火柴人动画、智能配音）共用 Fastify Runtime、SQLite 项目库和带版本的修订；Codex CLI 负责 agent 循环、Skills 和 MCP。相对 [OpenMontage](open-montage.zh.md) 的取舍在界面，不在口号：OpenMontage 是 coding assistant 里从提示词研究并渲染成片的管线；OpenCreator 是你坐进去的桌面，目前最硬的已交付路径仍是 KrillinAI 那条翻译／配音／竖屏管线，生成和写作是后来接上的。相对 [Codex](../agent-frameworks/coding-agents/terminal-agents/codex.zh.md) 本身：Codex 是你本来就要的引擎；OpenCreator 是套在它外面的创作者界面、媒体工具链和项目记忆。
+选 OpenCreator，是因为它是*本机创作者家电，agent 就在同一扇窗口里*：十个可视化工具（视频翻译、下载、封面、图／视频生成、文章／小红书／短视频脚本、火柴人动画、智能配音）共用 Fastify Runtime、SQLite 项目库和带版本的修订；Codex CLI 负责 agent 循环、Skills 和 MCP。相对 [OpenMontage](open-montage.zh.md) 的取舍在界面，不在口号：OpenMontage 是 coding assistant 里从提示词研究并渲染成片的管线；OpenCreator 是你坐进去的桌面，目前最硬的已交付路径仍是 KrillinAI 那条翻译／配音／竖屏管线，生成和写作是后来接上的。相对 [Codex](../agent-frameworks/coding-agents/terminal-agents/vendor-agents/codex.zh.md) 本身：Codex 是你本来就要的引擎；OpenCreator 是套在它外面的创作者界面、媒体工具链和项目记忆。
 
 ## 怎么用起来
 
@@ -109,7 +109,7 @@ health:
 
 ## 何时不用
 
-- **你拒绝 Codex 登录，或想用 Claude Code／OpenCode 当 agent。** 真实模型任务必须有有效的 Codex CLI 登录；桌面包*内含* Codex CLI，但不能替换它。用终端里的 [Codex](../agent-frameworks/coding-agents/terminal-agents/codex.zh.md)，或 Claude 宿主上的 skill，例如 [anything2explainer](anything2explainer.zh.md)／[video-shotcraft](video-shotcraft.zh.md)——在这里换引擎等于重写会话层。
+- **你拒绝 Codex 登录，或想用 Claude Code／OpenCode 当 agent。** 真实模型任务必须有有效的 Codex CLI 登录；桌面包*内含* Codex CLI，但不能替换它。用终端里的 [Codex](../agent-frameworks/coding-agents/terminal-agents/vendor-agents/codex.zh.md)，或 Claude 宿主上的 skill，例如 [anything2explainer](anything2explainer.zh.md)／[video-shotcraft](video-shotcraft.zh.md)——在这里换引擎等于重写会话层。
 - **你需要 Linux 桌面版。** v3.2.2 只发 `OpenCreator-*-mac-*.dmg` 和 `OpenCreator-*-win-x64.exe`；Linux 资源是 KrillinAI CLI／Server 压缩包，不是 Electron 安装包。从源码跑 `pnpm web:dev`，或改用 CLI 家电 [MoneyPrinterTurbo](moneyprinter-turbo.zh.md)。
 - **你要把某条爆款克隆成词锚定的批量变体。** OpenCreator 做本地化和生成，不把参考片拆成可替换槽位。用 [Hypit](hypit.zh.md)。
 - **你要在 coding assistant 里跑带治理的「调研 → 脚本 → QC」成片管线。** 用 [OpenMontage](open-montage.zh.md) 或 [anything2explainer](anything2explainer.zh.md)。README 工具表里 Auto Clips 和数字人标成「开发中」。
@@ -125,7 +125,7 @@ health:
 | [MoneyPrinterTurbo](moneyprinter-turbo.zh.md) | ✅ | 产品是无人值守的「主题 → 口播库存短视频」、只要 WebUI／API、不要 coding agent 时选 MPT；活是把*这一条*视频做字幕／配音／竖屏，外加同一桌面里的写作和生成时选 OpenCreator——MPT 没有翻译管线，OpenCreator 也没有零密钥的库存幻灯片路径。 | MPT：MIT、便宜、画面通用、不要 Codex；OpenCreator：绑 Codex、本地化更硬、媒体核是 GPL。 |
 | [OpenMontage](open-montage.zh.md) | ✅ | coding assistant 要从提示词做调研、脚本、素材、渲染并带门禁时选 OpenMontage；人坐在可视化工作区、agent 当同一任务的副驾驶时选 OpenCreator——OpenMontage 没有桌面家电，OpenCreator 已交付的长处是翻译／配音而不是从零做讲解片。 | OpenMontage：AGPL 管线在 agent 里；OpenCreator：Apache-2.0 应用包着 Codex + GPL 的 KrillinAI。 |
 | [Hypit](hypit.zh.md) | ✅ | 必须克隆一条爆款结构、再批量换脸／换词／换 B-roll 时选 Hypit；源是一场演讲或节目、要字幕和配音时选 OpenCreator——Hypit 没有本地化工作区，OpenCreator 没有 SVML 克隆环。 | Hypit：非 OSI、agent 优先、生成按 API 计费；OpenCreator：Apache-2.0 桌面、强制 Codex、本地化优先。 |
-| [Codex](../agent-frameworks/coding-agents/terminal-agents/codex.zh.md) | ✅ | 只要终端 coding agent、媒体工具自己接时选 Codex；要创作者表单、KrillinAI 管线、带版本的工作区和 Electron 宿主已经套在这条循环上时选 OpenCreator——OpenCreator 不替代 Codex，它依赖 Codex。 | Codex：引擎，没有创作者界面；OpenCreator：界面 + 媒体工具链 + 硬依赖一次 Codex 登录。 |
+| [Codex](../agent-frameworks/coding-agents/terminal-agents/vendor-agents/codex.zh.md) | ✅ | 只要终端 coding agent、媒体工具自己接时选 Codex；要创作者表单、KrillinAI 管线、带版本的工作区和 Electron 宿主已经套在这条循环上时选 OpenCreator——OpenCreator 不替代 Codex，它依赖 Codex。 | Codex：引擎，没有创作者界面；OpenCreator：界面 + 媒体工具链 + 硬依赖一次 Codex 登录。 |
 | [Concat](../media-processing/video-editing/concat.zh.md) | ✅ | 需要离线原生时间线、人手（或脚本）去剪时选 Concat；活是 AI 翻译／生成而不是帧级剪辑时选 OpenCreator——Concat 是 NLE，OpenCreator 不是。 | Concat：AGPL 测试版剪辑器，不要 Codex；OpenCreator：创作者工作区，没有时间线。 |
 
 ## 技术栈

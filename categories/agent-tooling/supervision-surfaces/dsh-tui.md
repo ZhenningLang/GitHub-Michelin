@@ -87,18 +87,18 @@ You already use DeepSeek Harness and want visible tool status, session switching
 
 ## When NOT to use
 
-- Want one independent multi-provider agent rather than a DSH profile? Choose [OpenCode](../../agent-frameworks/coding-agents/terminal-agents/opencode.md).
-- Want a desktop surface for installed agents? Choose [T3 Code](../../agent-frameworks/coding-agents/terminal-agents/t3code.md) rather than a terminal renderer.
-- Need the vendor's exact sandbox behavior with less adapter drift? Use [Codex](../../agent-frameworks/coding-agents/terminal-agents/codex.md) directly. dsh-TUI adds no sandbox; its Windows DSH profile defaults to full access with no approval.
+- Want one independent multi-provider agent rather than a DSH profile? Choose [OpenCode](../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/opencode.md).
+- Want a desktop surface for installed agents? Choose [T3 Code](../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/t3code.md) rather than a terminal renderer.
+- Need the vendor's exact sandbox behavior with less adapter drift? Use [Codex](../../agent-frameworks/coding-agents/terminal-agents/vendor-agents/codex.md) directly. dsh-TUI adds no sandbox; its Windows DSH profile defaults to full access with no approval.
 - Need work to continue after closing the UI? Use a supervised runner instead; DSH background sessions stop with this process.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
-| [OpenCode](../../agent-frameworks/coding-agents/terminal-agents/opencode.md) | ✅ | Choose OpenCode for an independent agent and provider ecosystem; choose dsh-TUI for a DSH-native visual workflow. | New agent loop versus an adapter whose compatibility tracks DSH releases. |
-| [T3 Code](../../agent-frameworks/coding-agents/terminal-agents/t3code.md) | ✅ | Choose T3 Code for a local GUI over installed agents; choose dsh-TUI when terminal sessions are the workspace. | Desktop interaction versus terminal rendering and terminal-protocol constraints. |
-| [Codex](../../agent-frameworks/coding-agents/terminal-agents/codex.md) | ✅ | Choose native Codex for its direct protocol and controls; choose dsh-TUI only when its shared terminal presentation earns the extra adapter. | Native feature timing versus an experimental backend with pinned app-server compatibility. |
+| [OpenCode](../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/opencode.md) | ✅ | Choose OpenCode for an independent agent and provider ecosystem; choose dsh-TUI for a DSH-native visual workflow. | New agent loop versus an adapter whose compatibility tracks DSH releases. |
+| [T3 Code](../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/t3code.md) | ✅ | Choose T3 Code for a local GUI over installed agents; choose dsh-TUI when terminal sessions are the workspace. | Desktop interaction versus terminal rendering and terminal-protocol constraints. |
+| [Codex](../../agent-frameworks/coding-agents/terminal-agents/vendor-agents/codex.md) | ✅ | Choose native Codex for its direct protocol and controls; choose dsh-TUI only when its shared terminal presentation earns the extra adapter. | Native feature timing versus an experimental backend with pinned app-server compatibility. |
 
 ## Quick start
 

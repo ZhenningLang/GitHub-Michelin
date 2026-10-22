@@ -2,7 +2,7 @@
 name: T3 Code
 slug: t3code
 repo: https://github.com/pingdotgg/t3code
-category: terminal-agents
+category: independent-runtimes
 tags: [coding-agent, web-gui, desktop-app, codex, claude-code, cursor, opencode]
 language: TypeScript
 license: MIT
@@ -85,7 +85,7 @@ health:
 
 你不断切换终端窗口，找哪个编程助手正在等输入，出门后又不能从手机查看进度。T3 Code 把这些会话放进统一图形界面，执行仍留在项目所在机器。
 
-![T3 Code — 健康度雷达](../../../../assets/health/t3code.zh.svg)
+![T3 Code — 健康度雷达](../../../../../assets/health/t3code.zh.svg)
 
 ## 何时使用
 
@@ -106,15 +106,15 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [OpenCode](opencode.zh.md) | ✅ | 只需模型灵活的终端 agent 时选 OpenCode；必须用 GUI 协调已安装的 OpenCode 与其他 agent 时选 T3 Code。 | OpenCode 是 agent runtime；T3 Code 是界面层，会增加本地 UI 复杂度。 |
-| [Codex CLI](codex.zh.md) | ✅ | 只需 OpenAI 的终端工作流时选 Codex CLI；只有在要和其他已认证提供商统一时才选 T3 Code。 | 原生 CLI 的运行部件更少；T3 Code 提供跨提供商会话体验。 |
+| [Codex CLI](../vendor-agents/codex.zh.md) | ✅ | 只需 OpenAI 的终端工作流时选 Codex CLI；只有在要和其他已认证提供商统一时才选 T3 Code。 | 原生 CLI 的运行部件更少；T3 Code 提供跨提供商会话体验。 |
 | Claude Code 厂商客户端 | 非仓库 | Anthropic 原生工作流是团队标准时选 Claude Code；在一个 GUI 里切换 Codex、Cursor、OpenCode 更重要时选 T3 Code。 | 本行指专有客户端，不指其公开文档仓库；[许可证](https://github.com/anthropics/claude-code/blob/main/LICENSE.md) 保留全部权利。T3 Code 增加多提供商界面，不替换该运行时。 |
-| [CC Switch](../orchestration-and-review/cc-switch.zh.md) | ✅ | 要管理 agent 配置与提供商的桌面工具时选 CC Switch；要围绕 agent 实际运行建立会话 GUI 时选 T3 Code。 | 两者都会增加元管理层；CC Switch 偏工具管理，T3 Code 承载编程 agent 交互。 |
+| [CC Switch](../../orchestration-and-review/cc-switch.zh.md) | ✅ | 要管理 agent 配置与提供商的桌面工具时选 CC Switch；要围绕 agent 实际运行建立会话 GUI 时选 T3 Code。 | 两者都会增加元管理层；CC Switch 偏工具管理，T3 Code 承载编程 agent 交互。 |
 
 ## 快速上手
 
 先在项目所在机器安装、认证提供商；例如所读版本的 [README](https://github.com/pingdotgg/t3code/blob/47683f6ff476d0fc7747375c54583437fba30567/README.md) 指定安装 Codex CLI 后执行 `codex login`。用 `npx t3@latest` 试启动本地服务和网页，或安装桌面发布版；`docs/user/install.md` 记录了持久安装 `t3` 和后台服务命令。在 Settings → Providers 为该运行环境启用提供商，打开项目，用编程任务开始会话。T3 Code 展示助手响应和工作区改动，由服务端在那台机器运行提供商；你回答权限确认并检查最终 diff。提供商订阅或 API 费用仍由你承担，手机访问另需远程连接配置，执行不会移到手机。
 
-![t3code — 主干用户故事](../../../../assets/flow/t3code.zh.svg)
+![t3code — 主干用户故事](../../../../../assets/flow/t3code.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/t3code.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -133,7 +133,7 @@ health:
 
 ## 技术要点
 
-![T3 Code — 机制图](../../../../assets/mechanism/t3code.zh.svg)
+![T3 Code — 机制图](../../../../../assets/mechanism/t3code.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/t3code.json by tools/mechanism_card.py; do not edit) -->
 <details>

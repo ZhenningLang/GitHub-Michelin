@@ -67,7 +67,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [OBS Studio](https://github.com/obsproject/obs-studio),categories/media-processing/video-editing/openscreen-community.md,,no
 [OCaml](https://github.com/ocaml/ocaml),categories/programming-languages/unison.md,,no
 [Official Codex (openai/codex)](https://github.com/openai/codex),categories/agent-tooling/harness-extensions/codex-chatgpt-web.md,,no
-[oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex),categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.md,,no
+[oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex),categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/oh-my-openagent.md,,no
 [OmniVoice](https://github.com/k2-fsa/OmniVoice),categories/speech/voicestudio.md,,no
 [Open GApps](https://github.com/opengapps/opengapps),categories/android-system-services/microg-gmscore.md,,no
 [Open Policy Agent](https://github.com/open-policy-agent/opa),categories/agent-governance/agent-governance-toolkit.md,,no
@@ -335,7 +335,7 @@ Chroma,categories/rag-retrieval/vector-search/milvus.md,,no
 Chronos (Amazon),categories/on-device-ml/timesfm.md,,no
 Cisco skill-scanner (`cisco-ai-defense/skill-scanner`),categories/agent-governance/claude-skill-audit.md,,no
 cisco-ai-defense/skill-scanner,categories/agent-governance/agent-scan.md,,no
-Claude Code,categories/agent-frameworks/coding-agents/terminal-agents/codex.md,,no
+Claude Code,categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/oh-my-openagent.md,,no
 Claude Code GitHub Action (general),categories/ai-code-review/claude-code-security-review.md,,no
 Claude Code plugin marketplaces (`.claude-plugin/marketplace.json`),categories/agent-tooling/harness-extensions/vercel-skills.md,,no
 Claude Code subagents (built-in),categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
@@ -475,7 +475,7 @@ Electron,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/ta
 ElevenLabs,categories/speech/coqui-ai-tts.md,,no
 Emscripten,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/netwasm.md,,no
 endesive,categories/pdf-tools/pdf-transform-signing/pyhanko.md,,no
-endolith/open-interpreter (the old Python OI),categories/agent-frameworks/coding-agents/terminal-agents/open-interpreter.md,,no
+endolith/open-interpreter (the old Python OI),categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/open-interpreter.md,,no
 Ente,categories/document-management/immich.md,,no
 esbuild,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/bun.md,,no
 ESLint + a11y plugins (eslint-plugin-jsx-a11y),categories/ai-design-generation/impeccable.md,,no
@@ -1064,7 +1064,7 @@ Qdrant,categories/rag-retrieval/vector-search/faiss.md,,no
 QEMU / general-purpose hypervisors,categories/sandboxing/firecracker.md,,no
 Quartz,categories/task-queue/INDEX.md,,no
 Quasar,categories/web-ui/frameworks/app-frameworks/nuxt.md,,no
-Qwen Code,categories/agent-frameworks/coding-agents/terminal-agents/gemini-cli.md,,no
+Qwen Code,categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/gemini-cli.md,,no
 Qwen-VL / Qwen3.5 small line (Alibaba),categories/on-device-ml/minicpm-v.md,,no
 Qwen3.5 small models (QwenLM),categories/on-device-ml/minicpm.md,,no
 qwerty472123/wxappUnpacker (upstream),categories/im-automation/wechat/wxappunpacker.md,,no

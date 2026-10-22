@@ -104,7 +104,7 @@ health:
 
 ## 何时不用
 
-- **任何商用场景。** 整个仓库是 **CC BY-NC 4.0**（读的是 `LICENSE` 文件；GitHub API 显示为 `NOASSERTION`）。软件套上非商业的内容许可，意味着框架本身、SGLang 补丁和技能演化循环都不能进产品。想在编码 agent 里用同样的镜像文件机制，用 pi-clm（给 [Pi](../agent-frameworks/coding-agents/terminal-agents/pi.zh.md) 的独立扩展，MIT 许可）；生产环境要“模型自己改记忆”，用 [Letta](../agent-memory/app-memory/letta.zh.md)（Apache-2.0）；或者照论文自己重新实现。
+- **任何商用场景。** 整个仓库是 **CC BY-NC 4.0**（读的是 `LICENSE` 文件；GitHub API 显示为 `NOASSERTION`）。软件套上非商业的内容许可，意味着框架本身、SGLang 补丁和技能演化循环都不能进产品。想在编码 agent 里用同样的镜像文件机制，用 pi-clm（给 [Pi](../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/pi.zh.md) 的独立扩展，MIT 许可）；生产环境要“模型自己改记忆”，用 [Letta](../agent-memory/app-memory/letta.zh.md)（Apache-2.0）；或者照论文自己重新实现。
 - **你要的是跨会话留存的记忆。** CLM 管的是*单次运行之内*的上下文，trial 结束什么都不留。去 [agent-memory](../agent-memory/INDEX.zh.md) 分类挑一个存储，比如 [Letta](../agent-memory/app-memory/letta.zh.md)。
 - **你的 agent 不跑在 Harbor 上。** `ClmAgent` 继承自 Harbor 的 `BaseAgent`，包钉死了 `harbor==0.16.1` 和 Python `>=3.12,<3.14`，trial 默认跑在 Docker（或 Singularity）沙箱里。用 Pi 就装 pi-clm；用别的框架就移植协议——`clm_agent/prompts.yaml` 里的系统提示才是能带走的部分——别为此把 agent 塞进 Harbor。
 - **你要处理不可信内容，又没法审计模型往自己上下文里写了什么。** 论文的讨论部分原话是：“Editable context can become another channel through which prompt injections or self-generated instructions persist across turns.”（可编辑的上下文可能成为提示注入或模型自生指令跨轮留存的又一条通道。）编辑闸门只查大小。网页或工具输出可能夹带指令的场景，保留由框架掌控的总结器（论文对比过的 Codex 式总结），让框架而不是模型决定哪些内容留下。

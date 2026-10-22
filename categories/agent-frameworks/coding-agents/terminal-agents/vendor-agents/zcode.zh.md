@@ -2,7 +2,7 @@
 name: ZCode
 slug: zcode
 repo: https://github.com/zai-org/ZCode
-category: terminal-agents
+category: vendor-agents
 tags: [coding-agent, desktop, terminal, workflows, hooks, agent-memory, glm]
 language: TypeScript
 license: Apache-2.0
@@ -73,19 +73,19 @@ health:
 
 桌面查看改动、远程主机写代码、终端跑批任务，各自又要配一套 agent。ZCode 把自带运行时放进桌面、网页和终端，并提供按依赖调度的工作流，以及绑定声明内容的项目 Hook 授权。
 
-![ZCode — 健康度雷达](../../../../assets/health/zcode.zh.svg)
+![ZCode — 健康度雷达](../../../../../assets/health/zcode.zh.svg)
 
 ## 何时使用
 
 你在工作站和 SSH 主机上维护同一个代码库。你既想直观看改动，又想通过 CLI 重复跑任务，不想围绕第二个 agent 重建模型、技能和 Hook 接线。需要可修改源码的自带运行时、共享桌面／网页界面、自定义模型地址和内置工作流调度时，可以考虑 ZCode。例如，任务停下后，你可以查保存的会话和工作流产物，而不是在多个终端窗口里拼进度。
 
-与 [T3 Code](t3code.zh.md) 相比，关键选择是采用一个自带 agent，而非包住多个现有 CLI。与 [OpenCode](opencode.zh.md) 相比，只有内置工作流和 Z.ai 账号界面比广泛的提供商生态更重要时，才优先选 ZCode。[README](https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/README.md) 记录了 SSH／WSL 工作区；[CLI 配置指南](https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/apps/zcode-cli/docs/usage/03-config.md) 支持 Chat Completions、Responses 和 Anthropic Messages 三种协议。这不代表开源构建具有商业产品的全部能力。
+与 [T3 Code](../independent-runtimes/t3code.zh.md) 相比，关键选择是采用一个自带 agent，而非包住多个现有 CLI。与 [OpenCode](../independent-runtimes/opencode.zh.md) 相比，只有内置工作流和 Z.ai 账号界面比广泛的提供商生态更重要时，才优先选 ZCode。[README](https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/README.md) 记录了 SSH／WSL 工作区；[CLI 配置指南](https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/apps/zcode-cli/docs/usage/03-config.md) 支持 Chat Completions、Responses 和 Anthropic Messages 三种协议。这不代表开源构建具有商业产品的全部能力。
 
 ## 何时不用
 
 - **必须先用系统沙箱隔离不可信仓库。** 优先选启用沙箱的 [Codex](codex.zh.md)。ZCode 的[声明](https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/NOTICE.md#L5-L30) 明确没有默认系统沙箱，非交互 `--prompt` 默认采用 `yolo`。权限服务先放行普通 yolo 调用，再走常规拒绝规则；交互工具和强制确认工具另有规则。模式名称和工具过滤都不等于隔离。
-- **只想给已有 agent 加图形界面。** 选 [T3 Code](t3code.zh.md)。ZCode 自带 CLI、运行时和配置模型；如果问题只是找不到已有会话，没有必要换整套 agent。
-- **多提供商接入比 Z.ai 产品接线更重要。** 优先选 [OpenCode](opencode.zh.md)。ZCode 支持自定义 API，但其[声明](https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/NOTICE.md#L32-L69) 记录了账号服务、官方端点的网关转发、远端凭据同步和本地模型输入输出日志。源码公开不等于没有外发，也不等于密钥只留在一台机器；OpenCode 自己的可选托管服务也要审查。
+- **只想给已有 agent 加图形界面。** 选 [T3 Code](../independent-runtimes/t3code.zh.md)。ZCode 自带 CLI、运行时和配置模型；如果问题只是找不到已有会话，没有必要换整套 agent。
+- **多提供商接入比 Z.ai 产品接线更重要。** 优先选 [OpenCode](../independent-runtimes/opencode.zh.md)。ZCode 支持自定义 API，但其[声明](https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/NOTICE.md#L32-L69) 记录了账号服务、官方端点的网关转发、远端凭据同步和本地模型输入输出日志。源码公开不等于没有外发，也不等于密钥只留在一台机器；OpenCode 自己的可选托管服务也要审查。
 - **需要商业应用的原生桌面控制或完整训练轨迹。** 编程任务可选 [Codex](codex.zh.md)，额外自动化另行验收。ZCode 开源版 Computer Use 只会报不可用错误。[批量任务指南](https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/apps/zcode-cli/docs/usage/13-automation.md#L77-L101) 还记录了默认日志转换及 `record:prompt` 失败，不能当作现成训练数据流水线。
 - **要求简单明了的再分发审计。** 优先考虑 [Codex](codex.zh.md) 等范围更窄的 agent，再审计其实际产物。ZCode 第一方 Apache 许可真实存在，但[第三方材料说明](https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/third-party/README.md) 记录了 25 项待核验事项，并说明严格检查会失败。这增加发行合规成本，不代表整个运行时闭源。
 
@@ -93,15 +93,15 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [OpenCode](opencode.zh.md) | ✅ | 要跨广泛模型和提供商的终端工作流，选 OpenCode；内置工作流调度和 Z.ai 桌面体验决定选择时，才选 ZCode。 | ZCode 提供自带桌面／网页栈与工作流机制，代价是产品服务接线和更短的公开维护历史。 |
+| [OpenCode](../independent-runtimes/opencode.zh.md) | ✅ | 要跨广泛模型和提供商的终端工作流，选 OpenCode；内置工作流调度和 Z.ai 桌面体验决定选择时，才选 ZCode。 | ZCode 提供自带桌面／网页栈与工作流机制，代价是产品服务接线和更短的公开维护历史。 |
 | [Codex](codex.zh.md) | ✅ | 默认系统级执行隔离最重要时，选 Codex；要自带运行时贯通桌面、网页和 CLI，并配置三类模型协议时，考虑 ZCode。 | Codex 自定义提供商限制为 Responses；ZCode 协议更灵活，但执行隔离由你承担。 |
-| [T3 Code](t3code.zh.md) | ✅ | 要可视化协调已登录的编程 agent，选 T3 Code；要修改并统一 agent 运行时本身，选 ZCode。 | T3 Code 继承下层运行时行为；ZCode 自管更多循环、配置和扩展，也承担更多升级负担。 |
+| [T3 Code](../independent-runtimes/t3code.zh.md) | ✅ | 要可视化协调已登录的编程 agent，选 T3 Code；要修改并统一 agent 运行时本身，选 ZCode。 | T3 Code 继承下层运行时行为；ZCode 自管更多循环、配置和扩展，也承担更多升级负担。 |
 
 ## 快速上手
 
 按[源码快速开始](https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/apps/zcode-cli/docs/usage/01-quickstart.md)，准备 Git、Node.js 24.14.0 和 pnpm 10.33.2，再执行 `pnpm install --frozen-lockfile` 与 `pnpm --filter @zcode/cli... build`。保留构建出的 bundle 及相邻资源；指南用 `zcode` 代指可执行文件，普通 bundle 则使用 `node /absolute/path/to/zcode.cjs`。在 `~/.zcode/v2/provider_config.json` 配模型提供商，也就是模型请求的地址和凭据；运行、权限及扩展设置另放在 `~/.zcode/cli/config.json`。先在一次性项目里提交任务，并显式写 `--mode`，分析先用 `plan`，无人值守改文件才在自行隔离的环境使用 `yolo`。ZCode 执行模型与工具循环，返回会话和回答数据；你承担模型费用、凭据保护，并检查真实文件、工具错误及测试结果，不能只信最终回答。若要图形界面，根 README 另列 `pnpm bootstrap` 后接 `pnpm dev:desktop` 或 `pnpm dev:web`，这些是另一条入口，不是 CLI 的前置要求。
 
-![zcode — 主干用户故事](../../../../assets/flow/zcode.zh.svg)
+![zcode — 主干用户故事](../../../../../assets/flow/zcode.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/zcode.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -120,7 +120,7 @@ health:
 
 ## 技术要点
 
-![ZCode — 机制图](../../../../assets/mechanism/zcode.zh.svg)
+![ZCode — 机制图](../../../../../assets/mechanism/zcode.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/zcode.json by tools/mechanism_card.py; do not edit) -->
 <details>

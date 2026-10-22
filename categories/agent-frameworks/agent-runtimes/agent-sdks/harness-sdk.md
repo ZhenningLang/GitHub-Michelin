@@ -102,7 +102,7 @@ Yes, and a few more. The lower SDK tree carries hooks, plugins, interventions, m
 **How is it different from Pydantic AI or LangGraph?**
 It bets on better defaults, not a better abstraction. The same-shaped projects are OpenAI Agents SDK and smolagents' CodeAgent; LangGraph is a different tool (an explicit graph you maintain), not a substitute for what `create_harness()` does.
 
-**Is it the same kind of thing as [Pi](../../coding-agents/terminal-agents/pi.md)?**
+**Is it the same kind of thing as [Pi](../../coding-agents/terminal-agents/independent-runtimes/pi.md)?**
 Same kind, opposite center of gravity. Both projects call themselves a harness; Pi's center of gravity is a finished terminal coding agent, the Strands harness is a library you embed. Pi's reusable library layer is `pi-agent-core`, and that layer — not the CLI — is what shares a cell with Strands.
 
 **Should I worry that it is young?**
@@ -137,7 +137,7 @@ It has no Lindy advantage: about 16 months old, and the assembled harness layer 
 - **Your compliance surface forbids the model's own queries leaving your environment.** On Bedrock Converse and similar, web search is off by default; turning it on routes through Exa, a third party that receives every search query the model writes. Use a provider with native search, or drop the tool, instead of shipping the Bedrock default, because the egress is the model's, not yours to filter.
 - **You need web search on Bedrock and will not touch IAM.** Bedrock Web Search needs the `bedrock-websearch` actions; without them the request succeeds and each search fails, which is the worst failure shape to debug. Use [OpenAI Agents SDK](openai-agents-sdk.md) or another provider whose search needs no extra IAM, or grant the actions first.
 - **You need API stability on the assembled layer.** The SDK is past 1.0, the harness is not, and its only published compatibility note enumerates what the SDK will *not* treat as breaking. Pick [Microsoft Agent Framework](agent-framework.md) or [LangGraph](langgraph.md) if a version guarantee on the whole stack is a purchase condition.
-- **You want a batteries-included terminal coding agent.** The `strands` CLI chats with a harness agent; it is not a coding agent with a keyboard-driven TUI. Use [Pi](../../coding-agents/terminal-agents/pi.md) or [OpenCode](../../coding-agents/terminal-agents/opencode.md) instead, because pair-programming in a terminal is their whole product.
+- **You want a batteries-included terminal coding agent.** The `strands` CLI chats with a harness agent; it is not a coding agent with a keyboard-driven TUI. Use [Pi](../../coding-agents/terminal-agents/independent-runtimes/pi.md) or [OpenCode](../../coding-agents/terminal-agents/independent-runtimes/opencode.md) instead, because pair-programming in a terminal is their whole product.
 
 ## Comparison
 

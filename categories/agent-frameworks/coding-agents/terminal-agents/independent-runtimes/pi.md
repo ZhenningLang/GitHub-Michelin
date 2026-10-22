@@ -2,7 +2,7 @@
 name: Pi
 slug: pi
 repo: https://github.com/earendil-works/pi
-category: terminal-agents
+category: independent-runtimes
 tags: [coding-agent, terminal, cli, typescript, extensible, agent-sdk, agent-loop, mit]
 language: TypeScript
 license: MIT
@@ -79,17 +79,17 @@ health:
 
 The terminal agent that is pleasant out of the box is the one you cannot change: its system prompt is compiled in, compaction is a black box, and the one behaviour you want different is a roadmap item. Pi keeps the loop deliberately small and hands you the levers as files in your own repository — prompt templates, skills, and TypeScript extensions it can also write for itself.
 
-![Pi — health radar](../../../../assets/health/pi.svg)
+![Pi — health radar](../../../../../assets/health/pi.svg)
 
 ## When to use
 
 You live in a terminal and you have opinions about how an agent should behave in yours: which files carry instructions, what it may run without asking, how much of the session it remembers. Most agents that feel good on the first run are closed at exactly the layer you care about — you configure them, you do not modify them, and a project-specific quirk turns into a feature request.
 
-Reach for Pi when you would rather build that behaviour out of files you own. Under the terminal UI sits a small agent core, and nearly everything above the core is a resource: `.pi/skills/` for on-demand instructions, `.pi/prompts/` for snippets exposed as slash commands, `.pi/extensions/` for TypeScript modules loaded into the process, plus `SYSTEM.md` / `APPEND_SYSTEM.md` to override or extend the prompt — at user level (`~/.pi/agent/`) or per project once you grant project trust. Choose it over [OpenCode](opencode.md) when the extension point you want is a TypeScript module rather than a settings surface, and over [Codex](codex.md) when you would rather own the isolation story yourself than inherit a vendor's sandboxing. Two more things separate it from a plain CLI: the same core runs as print, JSON-event and RPC modes and as a TypeScript SDK, and `/login` can attach a subscription instead of an API key.
+Reach for Pi when you would rather build that behaviour out of files you own. Under the terminal UI sits a small agent core, and nearly everything above the core is a resource: `.pi/skills/` for on-demand instructions, `.pi/prompts/` for snippets exposed as slash commands, `.pi/extensions/` for TypeScript modules loaded into the process, plus `SYSTEM.md` / `APPEND_SYSTEM.md` to override or extend the prompt — at user level (`~/.pi/agent/`) or per project once you grant project trust. Choose it over [OpenCode](opencode.md) when the extension point you want is a TypeScript module rather than a settings surface, and over [Codex](../vendor-agents/codex.md) when you would rather own the isolation story yourself than inherit a vendor's sandboxing. Two more things separate it from a plain CLI: the same core runs as print, JSON-event and RPC modes and as a TypeScript SDK, and `/login` can attach a subscription instead of an API key.
 
 ## Q&A
 
-**Is Pi the same kind of thing as an agent SDK like [Harness SDK](../../agent-runtimes/agent-sdks/harness-sdk.md)?**
+**Is Pi the same kind of thing as an agent SDK like [Harness SDK](../../../agent-runtimes/agent-sdks/harness-sdk.md)?**
 Not at the same layer. Pi's product is the terminal agent; what shares a cell with an agent SDK is its library layer — `@earendil-works/pi-ai` for the provider abstraction and `@earendil-works/pi-agent-core` for the loop — which is published separately and usable on its own. If you are embedding an agent in your own service, judge it by those packages, not by the CLI.
 
 **What does "extensible, it can adapt itself" actually mean in practice?**
@@ -102,7 +102,7 @@ Project trust decides which project resources Pi loads; it does not decide what 
 
 Pi is a TypeScript program that owns one agent loop and exposes it through several interfaces. A message is appended to the active branch of a session tree, and Pi builds a model request from the system prompt, that branch, the tool definitions and the skill descriptions; the provider streams back text and tool calls, Pi executes them and records the results, and the turn ends — another turn starts only if there is more work. Sessions are JSONL files where each entry points at its parent, which makes "resume" and "branch" the same operation: you pick a different parent, and compaction simply inserts a summary entry while the originals stay on disk. What it takes over: context assembly, compaction, tool dispatch, session storage and the terminal rendering. What stays yours: the model account, the working folder, and the decision about how much isolation to put around the process — because there is no built-in permission layer, only project trust for resource loading. An analogy that stays true: it is less an application you configure and more a small runtime with a reference client, which is why the same code appears as a TUI, a scriptable command, and an SDK.
 
-![Pi — backbone user story](../../../../assets/flow/pi.svg)
+![Pi — backbone user story](../../../../../assets/flow/pi.svg)
 
 <!-- flow-steps:begin (generated from flows/pi.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -123,11 +123,11 @@ Pi is a TypeScript program that owns one agent loop and exposes it through sever
 
 ## When NOT to use
 
-- **You need the tool itself to be a security boundary.** The README is explicit that Pi has no built-in permission system for filesystem, process, network or credential access, and that project trust gates resource loading rather than tool execution. Use [Open Interpreter](open-interpreter.md) or [Codex](codex.md) instead, because native or OS-level sandbox execution is part of those products rather than an extension you add.
-- **You want an editor-integrated agent.** Pi is a CLI and TUI. Use [Cline](../ide-agents/cline.md) or [Kilo Code](../ide-agents/kilocode.md) instead, because the diff-and-review loop lives in the editor there.
+- **You need the tool itself to be a security boundary.** The README is explicit that Pi has no built-in permission system for filesystem, process, network or credential access, and that project trust gates resource loading rather than tool execution. Use [Open Interpreter](open-interpreter.md) or [Codex](../vendor-agents/codex.md) instead, because native or OS-level sandbox execution is part of those products rather than an extension you add.
+- **You want an editor-integrated agent.** Pi is a CLI and TUI. Use [Cline](../../ide-agents/cline.md) or [Kilo Code](../../ide-agents/kilocode.md) instead, because the diff-and-review loop lives in the editor there.
 - **You want a Lindy-backed, low-risk dependency.** The repository was created 2025-08-09 and reached ~108.8k stars in about thirteen months, with one author (`badlogic` / Mario Zechner) holding most of the commit history. Use [aider](aider.md) or [OpenCode](opencode.md) instead of Pi, because age × still-active is the prior this index uses and a young, hyped repository is a risk flag rather than proof.
 - **You plan to send patches upstream or lean on community response times.** New issues and pull requests from new contributors are closed automatically and reviewed in daily batches. Use [OpenCode](opencode.md) or [aider](aider.md) instead, because their contribution path is the ordinary one if upstream participation is part of your plan.
-- **You want a vendor with an enterprise story behind the tool.** Pi is an independent project with a small org behind it. Use [Codex](codex.md) or [Gemini CLI](gemini-cli.md) instead when procurement wants a named vendor, a support contract, and an account team.
+- **You want a vendor with an enterprise story behind the tool.** Pi is an independent project with a small org behind it. Use [Codex](../vendor-agents/codex.md) or [Gemini CLI](../vendor-agents/gemini-cli.md) instead when procurement wants a named vendor, a support contract, and an account team.
 - **You need detachable long runs whose context is programmatic rather than conversational.** Pi's loop lives and dies with the process it started in. Use [Prime Agent](prime-agent.md) instead, because that fork adds a daemon, a persistent Python kernel and `rlm.spawn(...)` for jobs that must survive a closed terminal.
 
 ## Comparison
@@ -135,7 +135,7 @@ Pi is a TypeScript program that owns one agent loop and exposes it through sever
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [OpenCode](opencode.md) | ✅ | Choose OpenCode when you want a model-flexible terminal agent steered by config and plugins; choose Pi when the thing you want to rewrite is the agent loop itself and TypeScript is an acceptable price. | Both are npm-installed MIT terminal agents; OpenCode optimises for configuration breadth, Pi for a small core you extend in code. |
-| [Codex](codex.md) | ✅ | Choose Codex when documented sandboxing and a vendor-backed product are the deciding factors; choose Pi when you want the sandbox to be your container decision rather than the tool's opinion. | Codex hands you safety defaults and ties you to OpenAI's stack; Pi stays provider-flexible and leaves isolation to you. |
+| [Codex](../vendor-agents/codex.md) | ✅ | Choose Codex when documented sandboxing and a vendor-backed product are the deciding factors; choose Pi when you want the sandbox to be your container decision rather than the tool's opinion. | Codex hands you safety defaults and ties you to OpenAI's stack; Pi stays provider-flexible and leaves isolation to you. |
 | [aider](aider.md) | ✅ | Choose aider for git-native pair-programming with years of still-active history; choose Pi when self-modifying resources and multi-interface embedding matter more than longevity. | aider is the Lindy-safe choice with a narrower surface; Pi is the younger, wider, riskier one. |
 | [Prime Agent](prime-agent.md) | ✅ | Choose Prime Agent when a long run must outlive the terminal and the model should program over context; choose Pi when you want the upstream minimal agent without a daemon and a Python kernel. | Prime Agent is a hard fork that adds a multi-process runtime and an RLM loop; Pi is the smaller base it forked from. |
 | [Open Interpreter](open-interpreter.md) | ✅ | Choose Open Interpreter when you want a native OS sandbox and a harness tuned for cheaper models; choose Pi when upstream minimality and the TypeScript extension model are the point. | Open Interpreter buys safety and model economy with a heavier fork lineage; Pi buys a small core and asks you to bring the boundary. |
