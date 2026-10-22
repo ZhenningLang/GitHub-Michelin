@@ -1,0 +1,72 @@
+{
+  "status": "done",
+  "mode": "fresh",
+  "category_path": "categories/web-ui/frameworks/site-frameworks/astro.md",
+  "freshness": {
+    "today_utc": "2026-10-22",
+    "last_verified": "2026-09-20",
+    "age_days": 32,
+    "threshold_days": 90
+  },
+  "notes_zh": [
+    "Astro 已收录。条目距上次核验 32 天，未超过 sync-entry 默认 90 天门槛。本轮走 fresh 跳过路径，不新增、不刷新、不重评分、不迁移格式。",
+    "下列项目用途、反选、比较、许可、依赖与风险均摘自本地旧页，不代表 2026-10-22 上游实况。本轮没有读取上游源码、README、发布或安装运行 Astro。",
+    "旧页保留 last_verified=2026-09-20、upstream.default_branch_sha=db2eaf17ce84a5f75c5eab30f4ae15af32de1a13。旧页版本字段写 v7.3.3，发布日期写 2026-09-16；不能将其称为今日最新版。",
+    "旧页 health.computed_at=2026-09-23T03:06:08Z，overall=A，评分覆盖 5/6；维护、响应、采用、寿命与治理轴为 A，许可风险轴为 ?，原因是 license_unparsed。这是旧评分，不是本轮计算。",
+    "主会话提供了 canonical=withastro/astro、private=false/public 的 gh metadata 检查结果。本 worker 未重复调用；这只支持仓库可见性，不支持今日全面事实核验。"
+  ],
+  "use_zh": [
+    "旧页用途：文档、博客、产品站与营销站以内容为主，只需少量交互组件。默认生成 HTML，并以 client:* 指令为交互组件单独加载 JavaScript。",
+    "旧页用途：希望按组件混用 React、Vue、Svelte、Solid 或 Preact，而不为整站绑定一个客户端应用。"
+  ],
+  "not_use_zh": [
+    "旧页反选：需要现成的文档版本、侧边栏和国际化时，优先看 Docusaurus。此处只转述旧页裁决，未复核替代品当前能力。",
+    "旧页反选：必须共享 Next.js 运行时、路由和依赖时，选 Next.js；文档嵌入该应用时看 Nextra。控制台、个性化与 server actions 等应用型场景，旧页也偏向 Next.js。",
+    "旧页反选：Vue 与极简 Markdown 文档看 VitePress；避免 Node 工具链、偏好 Go 模板时看 Hugo。旧页将二者标为未收录，本轮未核实全库当前收录状态。",
+    "旧页反选：运行环境低于 Node 22.12.0，或使用奇数版 Node 时不合适。这是旧页记载的前置要求，本轮未确认当前版本要求。",
+    "旧页反选：仅发布文本笔记时看 Quarkdown 或 Asciidoctor；交付 PDF、印刷或电子书时看 LaTeX、Typst 或 Quarkdown，而非维护网站框架。"
+  ],
+  "tradeoff_zh": [
+    "旧页比较：Astro 换来默认 HTML、少量客户端 JS 与按组件选框架的自由；代价是通用站点框架没有替你配好全部文档信息架构。纯版本化文档站更偏向 Docusaurus。",
+    "旧页比较：相对 Next.js／Nextra，Astro 偏向少交互的内容集合；代价是不能直接共享既有 Next.js 运行时与生态约束。应用型需求应重新评估。",
+    "旧页比较：VitePress 偏向 Vue 文档的简单配置，Hugo 偏向无 Node 的构建链；Astro 偏向组件创作与局部交互。旧页关于最快构建、最大主题生态等比较级没有本轮基准证据，不作为今日实测结论。"
+  ],
+  "license_zh": "旧页 frontmatter 标为 MIT。旧页正文记载 LICENSE 为 MIT、版权署名 Fred K. Schott，但 GitHub SPDX 返回 NOASSERTION，许可风险轴因此为 ?。旧页存疑账本保留了这一差异；本轮未重新读取 LICENSE 或 API，也不将 ? 等同于已知许可违规。",
+  "stack_zh": [
+    "旧页技术栈：TypeScript、Vite、HTML 优先的 .astro 组件、Markdown／MDX 与 content collections；UI 框架通过可选集成接入。",
+    "旧页依赖：Node.js 22.12.0 或更高，排除奇数版本；astro 本地安装而非全局安装。仅使用某个 UI 框架时增加对应包。此要求未对今日上游重核。",
+    "旧页部署：静态构建不需要服务端适配器，也不要求数据库、账号或独立服务。SSR／server islands 等按需渲染需要匹配托管目标的适配器。",
+    "旧页运维：静态站难度低，上传构建目录即可；服务端渲染难度中等，需要管理适配器、服务或函数，以及 Vite 和各集成的依赖升级。"
+  ],
+  "risks_zh": [
+    "旧页存疑：大版本升级的实际工作量未测量。",
+    "旧页存疑：LICENSE 与 GitHub NOASSERTION 差异未解决。",
+    "旧页存疑：核心维护者雇佣关系、商业结构与赞助关系未确认。",
+    "旧页推断：少量未关闭 issue 可能反映积极分诊，但单靠 issue 数量无法排除低使用量；本轮不将该推断升级为事实。",
+    "旧页存疑：遥测的默认开关与退出方式没有读取。",
+    "旧页存疑：大内容集合的性能没有测量；低客户端 JS 不等同于构建速度快。",
+    "旧页存疑：content collections 的类型 schema 易用性及跨版本稳定性未评估。",
+    "本轮静态读取发现旧页内部口径差异：health frontmatter 采用包为 astro，正文写 @astrojs/internal-helpers；响应样本数 frontmatter 为 22，正文为 16。可能来自不同日期，原因未验证；按 fresh 约束保留，不冒称已校正。"
+  ],
+  "source_sha": "db2eaf17ce84a5f75c5eab30f4ae15af32de1a13",
+  "source_sha_scope_zh": "只来自旧页 upstream.default_branch_sha，不是本轮查询的 current 上游 SHA。",
+  "qa_decision": "no leftover Q&A",
+  "repo": "withastro/astro",
+  "parent_visibility": {
+    "private": false,
+    "visibility": "public"
+  },
+  "checked_at_utc": "2026-10-22T11:39:56.647582+00:00",
+  "page_sha256": {
+    "categories/web-ui/frameworks/site-frameworks/astro.md": "0619a00a964c819f27cb1f2e79a1bdc084a12450243083047013a6523f31af19",
+    "categories/web-ui/frameworks/site-frameworks/astro.zh.md": "f458967a02bcf5d2444675f43dfe9f571b5be9e680917cdc3117f028421d4c97"
+  },
+  "parent_verified_unchanged_from_base": true,
+  "worker_worktree_clean": true,
+  "verification_scope": "Existing local selection-page read only. No upstream fact/README/source/license refresh, no date or health change, no runtime execution.",
+  "dotfiles_zh": {
+    "fit": "low",
+    "what": "可作为独立内容站的技术候选，不是个人agent配置栈的新增组件；本次不搭建站点。",
+    "where": "仅后续文档站任务参考，不修改dotfiles。"
+  }
+}
