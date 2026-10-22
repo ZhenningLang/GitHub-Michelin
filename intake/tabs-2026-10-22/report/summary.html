@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>标签收录完整报告：本轮复核与累计成果</title>
+<style>
+:root { color-scheme: light; --bg: #f8fafc; --panel: #ffffff; --text: #111827; --muted: #64748b; --border: #dbe3ef; --accent: #1f4b99; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.55; }
+main { max-width: 960px; margin: 0 auto; padding: 32px 20px 48px; }
+header { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin-bottom: 18px; }
+section { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+h1, h2, h3, h4, h5, h6 { line-height: 1.2; margin: 1.4em 0 0.5em; }
+header h1 { margin-top: 0; }
+p { margin: 0.75em 0; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+ul { padding-left: 1.4rem; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #0f172a; color: #e5e7eb; padding: 14px; border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+td code, th code { overflow-wrap: anywhere; }
+th { background: #eef4ff; }
+.meta { color: var(--muted); font-size: 0.92rem; }
+.diagram-figure { margin: 1.2rem 0; padding: 12px; background: #ffffff; border: 1px solid var(--border); border-radius: 10px; overflow-x: auto; text-align: center; }
+.diagram-figure svg { height: auto; } /* 不设 max-width：宽图保持自然尺寸，figure 的 overflow-x 负责滚动 */
+table.state-transitions { margin-top: -0.4rem; font-size: 0.92rem; }
+table.state-transitions caption { caption-side: top; text-align: left; color: var(--muted); font-size: 0.82rem; padding: 0 0 6px; }
+table.state-transitions td.st-num { width: 2.2em; text-align: center; font-size: 1.1rem; color: var(--accent); }
+.image-figure { margin: 1.2rem 0; padding: 12px; background: #ffffff; border: 1px solid var(--border); border-radius: 10px; text-align: center; }
+.image-figure img { max-width: 100%; height: auto; border-radius: 6px; }
+.image-figure figcaption { color: var(--muted); font-size: 0.85rem; margin-top: 8px; }
+.badge { display: inline-block; background: #e0ecff; color: var(--accent); border-radius: 999px; padding: 2px 10px; font-size: 0.82rem; margin-right: 8px; }
+blockquote.alert { margin: 1rem 0; padding: 10px 14px; border-left: 4px solid var(--accent); background: #f2f6fd; border-radius: 0 8px 8px 0; }
+blockquote.alert p { margin: 0.3em 0; }
+blockquote.alert .alert-label { margin: 0 0 4px; font-weight: 600; font-size: 0.86rem; color: var(--accent); }
+blockquote.alert-tip { border-left-color: #047857; background: #eefaf4; }
+blockquote.alert-tip .alert-label { color: #047857; }
+blockquote.alert-warning { border-left-color: #b45309; background: #fdf6ec; }
+blockquote.alert-warning .alert-label { color: #b45309; }
+blockquote.alert-important { border-left-color: #7c3aed; background: #f6f2fd; }
+blockquote.alert-important .alert-label { color: #7c3aed; }
+blockquote.alert-caution { border-left-color: #b91c1c; background: #fdf2f2; }
+blockquote.alert-caution .alert-label { color: #b91c1c; }
+sup.regid { font-size: 0.66em; color: var(--muted); margin-left: 2px; white-space: nowrap; font-family: ui-monospace, monospace; }
+pre.wireframe { white-space: pre; overflow-x: auto; background: #fffdf5; color: #1f2937; border: 1px dashed #c8b98a; border-radius: 10px; padding: 14px 16px; line-height: 1.35; position: relative; }
+pre.wireframe::before { content: "页面示意（线框）"; display: block; color: #8a7a4a; font-size: 0.78rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin-bottom: 8px; }
+.layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 0 8px; max-width: 1220px; margin: 0 auto; }
+.layout main { margin: 0; min-width: 0; }
+.sidebar { position: sticky; top: 0; align-self: start; max-height: 100vh; overflow-y: auto; box-sizing: border-box; padding: 32px 0 32px 20px; font-size: 0.9rem; }
+.back-link { display: inline-block; background: var(--panel); border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; margin-bottom: 10px; font-weight: 600; }
+.toc-title { color: var(--muted); font-size: 0.8rem; margin: 8px 0 4px; }
+ul.toc { list-style: none; padding-left: 0; margin: 0; }
+ul.toc li { margin: 2px 0; }
+ul.toc a { display: block; padding: 4px 8px; border-radius: 6px; color: var(--text); overflow-wrap: anywhere; }
+ul.toc a:hover { background: #e8eefc; color: var(--accent); text-decoration: none; }
+h2[id], h3[id] { scroll-margin-top: 16px; }
+@media (max-width: 1100px) { .layout { display: block; } .sidebar { position: static; max-height: none; padding: 20px 20px 0; } }
+</style>
+</head>
+<body>
+<main>
+<header>
+<span class="badge">research</span>
+<h1>标签收录完整报告：本轮复核与累计成果</h1>
+<div class="meta">Source: intake/tabs-2026-10-22/report/summary.md</div>
+<div class="meta">Generated: 2026-10-22T05:07:50+00:00</div>
+</header>
+<section>
+<h1>标签收录完整报告：本轮复核与累计成果</h1>
+<p>五项资格问题仍待裁决；本轮没有新增选型页。 当前六个仓库标签全部来自上一轮保留项，不是六个新发现项目。重复执行不等于自动豁免来源或许可检查。</p>
+<h2 id="本轮结论与统计">本轮结论与统计</h2>
+<table><thead><tr><th>结果</th><th>本轮 2026-10-22</th><th>上轮已合并成果</th></tr></thead><tbody><tr><td>新增项目页</td><td>0</td><td>17 对中英文页</td></tr><tr><td>刷新已有页</td><td>0</td><td>6 项 fresh，未刷新事实</td></tr><tr><td>暂缓 proposed</td><td>5</td><td>相同的 5 项，不重复计数</td></tr><tr><td>自有项目跳过</td><td>1</td><td>相同的 1 项，不重复计数</td></tr><tr><td>failed</td><td>0</td><td>0</td></tr><tr><td>关闭仓库标签</td><td>0；本轮没有 done 仓库</td><td>已完成的 23 项全部关闭</td></tr></tbody></table>
+<p>本轮新核四个公开候选的默认分支，以及两条非公开记录的可见性元数据。三项公开候选提交未变；dzhng 新增一项提交，但没有修复许可声明缺口。 非公开候选和自有私有仓库均匿名。没有读取它们的内部内容，也没有改写既有 Git 历史；匿名承诺针对本轮新产物，不声称清除过去已经发布的标识。</p>
+<p>上轮结果已通过 <a href="https://github.com/ZhenningLang/GitHub-Michelin/pull/201">PR #201</a> 合并。本轮报告不把历史页表述成今天重新研究、安装或运行过的项目。</p>
+<h2 id="当前仍开着的项目与裁决点">当前仍开着的项目与裁决点</h2>
+<table><thead><tr><th>项目</th><th>本轮查到的变化</th><th>为什么仍不建页</th><th>维护者可决定什么</th></tr></thead><tbody><tr><td>breferrari/obsidian-mind</td><td>默认分支提交未变；补读双方 MIT 及两段记忆实现。</td><td>沿用旧树／全文取证：复制的上游内容未保留原作者 MIT 声明。不是对整个项目原创性的否定。</td><td>等补齐声明，或在核对权利依据后明确授权带警告收录。</td></tr><tr><td>dzhng/skills</td><td>新增一个提交，修改四份测试规范；小黑复制子树的 blob 映射未变。</td><td>重新读当前许可、README 和子树六份 Markdown，原作者版权与许可声明仍未补齐。</td><td>保留工程核心的价值判断，但不能用根 MIT 替第三方素材背书。</td></tr><tr><td>JimLiu/baoyu-design</td><td>默认分支提交未变；复用固定版本的来源记录。</td><td>项目记录了 Claude Design 产品前端提取内容，既有所读资料未提供该部分再许可证明。</td><td>先补可核验授权依据，或明确决定如何限定可介绍、可复用的部分。</td></tr><tr><td>liseami/CCBaga</td><td>默认分支提交未变；本轮重读 NOTICE。</td><td>NOTICE 仍明示复制 UI 子树缺独立许可声明，要求确认再分发条款。</td><td>等上游补证，或另审证据后决定是否带明确告警收录。</td></tr><tr><td>一个非公开候选</td><td>仅查可见性与检测许可元数据。</td><td>公开索引读者不能访问它；本轮没有公开可核验的开源资格依据。</td><td>先决定是否公开并补齐许可，不从私有材料生成公开选型页。</td></tr><tr><td>一个自有私有仓库</td><td>元数据确认私有。</td><td>自有项目按本 skill 范围跳过，与技术优劣无关。</td><td>不需要为本轮收录操作；标签保留。</td></tr></tbody></table>
+<p>以上是收录资格的待裁决状态，不是侵权判决。GitHub 检测到 MIT，也不证明第三方部分的许可已经闭合；检测许可为空，也不能单独证明内部没有 LICENSE。</p>
+<h2 id="公开候选的证据与用途">公开候选的证据与用途</h2>
+<h3 id="Obsidian-Mind：工作知识库，不是无条件共享记忆">Obsidian Mind：工作知识库，不是无条件共享记忆</h3>
+<p>它把工作记录、跨会话教训和关联笔记留在 Markdown／Obsidian 体系，结合 hooks 和工具检索。适合研究人能读、能追溯的知识库；代价是模板、宿主兼容和整理流程都要维护。</p>
+<p>本轮确认目标仍为 <a href="https://github.com/breferrari/obsidian-mind/commit/fae7be467fc5e23bf9d51df7207d41f0c07e2754"><code>fae7be46</code></a>。<a href="https://github.com/breferrari/obsidian-mind/blob/fae7be467fc5e23bf9d51df7207d41f0c07e2754/LICENSE#L1-L13">目标 MIT</a>只署 Brenno Ferrari；<a href="https://github.com/kepano/obsidian-skills/blob/3ccff5338ea700537839b21900aa5358a0402c98/LICENSE#L1-L13">上游 MIT</a>署 Steph Ango，并要求保留声明。 十个同 blob 文件和 325 个文本文件的缺声明扫描，明确复用<a href="../../tabs-2026-10-21/proposals.md#breferrariobsidian-mind">上轮取证</a>，不是本轮重新全量扫描。</p>
+<p>可研究<a href="https://github.com/breferrari/obsidian-mind/blob/fae7be467fc5e23bf9d51df7207d41f0c07e2754/.claude/scripts/lib/memory-recall.ts#L216-L245">显式召回范围</a>和<a href="https://github.com/breferrari/obsidian-mind/blob/fae7be467fc5e23bf9d51df7207d41f0c07e2754/.claude/scripts/lib/session-start.ts#L130-L209">按字节分级注入</a>。后者不是无条件硬上限：非正数预算会返回完整内容，不可降级部分也没有在本轮证明总能满足预算。</p>
+<h3 id="dzhng/skills：选择审计有价值，许可缺口没有随测试更新消失">dzhng/skills：选择审计有价值，许可缺口没有随测试更新消失</h3>
+<p>原创工程核心围绕探索、规格、分片实施、测试与选择审计。最有价值的角度是把规格留白处的决定从大 diff 中单独提出；账本依旧依赖模型与项目验证，不是授权硬门。</p>
+<p>默认分支从 <code>dc8f546c</code> 前进到 <a href="https://github.com/dzhng/skills/commit/8e74252ad975acff3de6305299cf82c4b14cc026"><code>8e74252a</code></a>。<a href="https://github.com/dzhng/skills/compare/dc8f546c3adaa615ab86e8328449ae6efe23aca4...8e74252ad975acff3de6305299cf82c4b14cc026">四文件差异</a>涉及回归测试优先放在端到端／系统层、单测服务具体反馈效率的策略，没有许可修复。 这不意味着应删除现有单测或改掉本地 TDD；这里只记录上游的新主张，本轮未验证收益，也未改变个人规则。</p>
+<p><a href="https://github.com/dzhng/skills/blob/8e74252ad975acff3de6305299cf82c4b14cc026/LICENSE#L1-L13">当前根许可</a>仍只署 David Zhang；<a href="https://github.com/helloianneo/ian-xiaohei-illustrations/blob/686575741a61e2c0be5e4c6d3615ebf6217dd322/LICENSE#L1-L13">原作者许可</a>署 Ian。新旧完整树对比确认复制子树未变；本轮重新检查其六份 Markdown 与许可路径，不能用 README 致谢代替完整声明。 机制入口是<a href="https://github.com/dzhng/skills/blob/8e74252ad975acff3de6305299cf82c4b14cc026/skills/engineering/audit-choices/SKILL.md#L96-L136">选择审计账本</a>和<a href="https://github.com/dzhng/skills/blob/8e74252ad975acff3de6305299cf82c4b14cc026/skills/visual/screenshot-critique/scripts/receipts.mjs#L9-L19">证据 receipts 的能力边界</a>：数字旁有命令转录，不等于命令真实执行过。</p>
+<h3 id="baoyu-design：可复用接线不等于提取内容全部获许可">baoyu-design：可复用接线不等于提取内容全部获许可</h3>
+<p>既有研究发现本地设计脚本、组件、设计系统绑定和导出编排，不是空仓库。它能作为本地设计工作流的候选，但许可来源必须先讲清楚。</p>
+<p>当前仍为 <a href="https://github.com/JimLiu/baoyu-design/commit/6530033592bf7fa58bc1a5a2a2ad278da45213a9"><code>65300335</code></a>。<a href="https://github.com/JimLiu/baoyu-design/blob/6530033592bf7fa58bc1a5a2a2ad278da45213a9/README.md#credits--license">Credits</a>、<a href="https://github.com/JimLiu/baoyu-design/blob/6530033592bf7fa58bc1a5a2a2ad278da45213a9/skills/baoyu-design/references/upstream-sync/provenance.json">提取来源</a>和<a href="https://github.com/JimLiu/baoyu-design/blob/6530033592bf7fa58bc1a5a2a2ad278da45213a9/skills/baoyu-design/references/upstream-sync/apply-report.json">复制记录</a>沿用上轮固定证据；本轮没有重新抓取整个仓库或完成新一轮法律授权审计。 提交未变只证明该提交树的文件未变，不证明站外协议、其他分支或所有授权事实均未变化。</p>
+<h3 id="CCBaga：归档恢复思想可研究，不能替整包授予-MIT">CCBaga：归档恢复思想可研究，不能替整包授予 MIT</h3>
+<p>它有实质身份归档、恢复和浏览器环境实现。研究价值不因凭据功能或删除能力而被否定；同样，恢复步骤存在也不证明崩溃恢复一定成功。</p>
+<p>当前仍为 <a href="https://github.com/liseami/CCBaga/commit/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3"><code>bdfb90ce</code></a>。本轮重新读取 <a href="https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/NOTICE.md#vendored-interface">NOTICE</a>：复制组件缺独立声明、需确认再分发条款的文字仍在。根 MIT 不替代其他版权人的许可。 <a href="https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/identities/store.rs#L452-L630">先校验归档、保存当前状态、设置待恢复标记并处理回滚</a>的实现判断沿用旧静态源码证据；本轮没跑恢复，也没读取个人凭据。</p>
+<h2 id="已完成项目的完整用途索引">已完成项目的完整用途索引</h2>
+<p>下面是上轮已合并的 17 个新增项目，不是本轮新增。用途与限制复用已读的<a href="../../tabs-2026-10-21/report/summary.md">上轮完整报告</a>，仍按其原核验日期理解，不冒称今天重核了全部上游。</p>
+<table><thead><tr><th>项目</th><th>何时想到它</th><th>决定性边界</th></tr></thead><tbody><tr><td><a href="../../../categories/desktop-automation/lcu.zh.md">LCU</a></td><td>现有编程助手要操作原生桌面应用。</td><td>依赖本机闭源引擎，不自带虚拟机；Linux 没有逐应用授权。</td></tr><tr><td><a href="../../../categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/zcode.zh.md">ZCode</a></td><td>想统一桌面、Web 和 CLI 的自带 agent 运行时。</td><td>默认无系统沙箱，开放构建缺原生 Computer Use。</td></tr><tr><td><a href="../../../categories/agent-tooling/supervision-surfaces/agent-cockpits/founderos.zh.md">FounderOS</a></td><td>单人业务要同时看收入、收件箱与 agent 工作。</td><td>是监管界面，不是安装即运行的自治公司；真实执行另接服务。</td></tr><tr><td><a href="../../../categories/agent-tooling/supervision-surfaces/agent-cockpits/nezha.zh.md">Nezha</a></td><td>监管 Claude Code／Codex 的任务、终端和 Git。</td><td>默认本地目录，工作树须主动选；会改全局 hook，存在绕过参数。</td></tr><tr><td><a href="../../../categories/agent-skills/security/leanrea.zh.md">leanrea</a></td><td>授权范围内解释成品应用的一项功能。</td><td>短指令不是分析引擎；危险命令与缺失脚本不适合无人值守。</td></tr><tr><td><a href="../../../categories/rag-retrieval/structured-retrieval/sag.zh.md">SAG</a></td><td>相似段落检索不足以连接跨文档事件。</td><td>默认快速策略不走完整扩展；单用户边界不是租户隔离。</td></tr><tr><td><a href="../../../categories/content-management/emdash.zh.md">EmDash</a></td><td>Astro 网站需要数据库驱动的编辑后台。</td><td>不继承 PHP 插件；原生插件与沙箱插件权限不同。</td></tr><tr><td><a href="../../../categories/document-parsing/oxr.zh.md">OXR</a></td><td>科研 PDF／图片需要拆开版面检测与识别。</td><td>GPU 与商业许可门槛；内存任务不是持久队列，占位 key 不是鉴权。</td></tr><tr><td><a href="../../../categories/meeting-intelligence/biscotti.zh.md">Biscotti</a></td><td>Mac 本地会议录制、会后转写与摘要。</td><td>Apple Silicon、macOS 15 以上；非竞争许可，MCP 开放本机读取。</td></tr><tr><td><a href="../../../categories/social-media-management/twitter-cli.zh.md">twitter-cli</a></td><td>把个人 X 书签与信息流交给脚本。</td><td>非官方会话客户端，兼容性与账号风险不能由延迟／指纹选项消除。</td></tr><tr><td><a href="../../../categories/social-media-management/md2wechat-skill.zh.md">md2wechat</a></td><td>检查 Markdown、预览排版、明确创建公众号草稿。</td><td>主排版依赖付费服务且受商用限制；AI 模式只交接提示词。</td></tr><tr><td><a href="../../../categories/agent-skills/ai-writing/content-production/gzh-design-skill.zh.md">gzh-design-skill</a></td><td>对已有文章套主题组件后手动复制。</td><td>不是自动发布或确定性排版；零退出不等于正文与手机效果验收通过。</td></tr><tr><td><a href="../../../categories/databases/database-engines/kividb.zh.md">KiviDB</a></td><td>Redis 风格存储需要同库文本／向量搜索。</td><td>AGPL、短历史、兼容与恢复语义需验证；确认写入不等于同步落盘。</td></tr><tr><td><a href="../../../categories/android-system-services/microg-gmscore.zh.md">microG</a></td><td>自定义安卓系统仍需兼容现有 Google 服务调用。</td><td>替客户端不等于替 Google 后端；签名与逐应用兼容需系统支持。</td></tr><tr><td><a href="../../../categories/agent-skills/engineering/awesome-gamedev-agent-skills.zh.md">GameDev Agent Skills</a></td><td>补游戏引擎版本、玩法与素材领域配方。</td><td>技能文本不是编辑器连接；最终还要编译和场景测试。</td></tr><tr><td><a href="../../../categories/game-dev/unity-mcp.zh.md">Unity-MCP</a></td><td>让助手真实读取、修改 Unity 场景和运行编辑器工具。</td><td>编辑器执行权限不是沙箱；混合许可不能只看根 Apache。</td></tr><tr><td><a href="../../../categories/traditional-divination/ziwei-doushu.zh.md">紫微斗数</a></td><td>研究传统排盘规则与文化娱乐界面。</td><td>不含完整商业后端；时间边界与引文权利需核对，不验证预测有效。</td></tr></tbody></table>
+<p>上轮还核对了六个 fresh 项目：</p>
+<table><thead><tr><th>项目</th><th>使用判断</th><th>原核验日</th></tr></thead><tbody><tr><td><a href="../../../categories/agent-tooling/session-history/agentsview.zh.md">AgentsView</a></td><td>跨助手会话检索与用量分析，不是生产 LLM 追踪平台。</td><td>2026-09-28</td></tr><tr><td><a href="../../../categories/agent-skills/design/ui-taste/taste-skill.zh.md">Taste-Skill</a></td><td>缺设计系统时补品味输入，不叠加第二套相互冲突的规范。</td><td>2026-09-27</td></tr><tr><td><a href="../../../categories/agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.zh.md">Agent Orchestrator</a></td><td>多分支监管与反馈回送；单助手通常不需要整套控制平面。</td><td>2026-09-28</td></tr><tr><td><a href="../../../categories/cad/solidcraft.zh.md">SolidCraft</a></td><td>可编辑参数的零件原型，不独撑生产关键工程。</td><td>2026-10-18</td></tr><tr><td><a href="../../../categories/agent-skills/subagent-collections/wshobson-agents.zh.md">wshobson/agents</a></td><td>按域取专家，不把大目录整包叠到已有技能栈上。</td><td>2026-09-28</td></tr><tr><td><a href="../../../categories/agent-skills/vendor-collections/product-vendors/android-skills.zh.md">Android Skills</a></td><td>用平台官方流程补特定 Android 任务，不替代开发生命周期和 CI。</td><td>2026-09-22</td></tr></tbody></table>
+<p>两轮去重后仍是同一组 29 个候选：23 项已有页面、5 项待裁决、1 项自有跳过，不是 35 个新项目。</p>
+<h2 id="对个人-harness-的借鉴裁决">对个人 harness 的借鉴裁决</h2>
+<p>只记机制候选，不启动实验，不安装整包，不改 dotfiles。下列 medium 表示值得比较的思想，不表示现有系统存在已证实缺陷或收益已经实测。</p>
+<table><thead><tr><th>优先级／适配</th><th>思想与边界</th><th>对应落点</th><th>本地阅读入口</th></tr></thead><tbody><tr><td>优先，medium</td><td>dzhng：把规格留白的选择、影响、信心和裁决写成单独账本；静态转录不冒充执行证据。</td><td>边界决策账本、<code>guard-review</code>、<code>guard-verify</code>。保留现有审批，不抄五分钟无人回复即决定的策略。</td><td>本报告“dzhng/skills”节；未建选型页。</td></tr><tr><td>后续，medium</td><td>Obsidian Mind：显式记忆可见性与分级降级清单；不能把预算策略当绝对硬上限。</td><td><code>assist-mem</code>、<code>compact-memory</code>、上下文 capsule。先比现有作用域和丢弃计数，不替换账本。</td><td>本报告“Obsidian Mind”节；未建选型页。</td></tr><tr><td>后续，medium</td><td>CCBaga：归档先验收，当前状态先检查点，再提交恢复标记和回滚。</td><td><code>dev-operational-task</code>、<code>guard-gitops</code>。仅思想候选，不接入身份轮换、指纹或凭据处理。</td><td>本报告“CCBaga”节；未建选型页。</td></tr><tr><td>已有，high</td><td>AgentsView 的跨助手日志归一化和检索已在现有取数链中。</td><td><code>agent-harness-improvement</code>。这是已接入的数据源，不重复建设或吸收耦合其库表的内部记忆模块。</td><td><a href="../../../categories/agent-tooling/session-history/agentsview.md">本地页</a></td></tr><tr><td>延续，medium</td><td>ZCode 的声明摘要绑定授权、LCU 的宿主自审批防护、FounderOS 的待人裁决队列。</td><td>hooks 信任准入、<code>computer-use</code>、<code>dev-long-run</code>／<code>sidecar</code>。全部仅设计参考，不搬自动授权与全局配置接管。</td><td><a href="../../../categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/zcode.md">ZCode</a>、<a href="../../../categories/desktop-automation/lcu.md">LCU</a>、<a href="../../../categories/agent-tooling/supervision-surfaces/agent-cockpits/founderos.md">FounderOS</a></td></tr></tbody></table>
+<p>baoyu-design 本轮没有足够新增证据支持 medium／high 接入建议；非公开候选和自有项目不做内部机制挖掘。其余已收录项目的逐项中高适配判断与本地页路径，见<a href="../../tabs-2026-10-21/report/summary.md#可借鉴的-harness-机制">上轮机制表</a>。 没有本地选型页的 proposed 不会被伪装成已收录；本报告的固定源码与证据节是临时研究入口，不替代正式页面。</p>
+<h2 id="对比选题池">对比选题池</h2>
+<p>本轮没有新增覆盖，因此没有“因本轮入库而新达四项”的分类。以下延续已有四项以上的比较池，且不把未收录的 proposed 计入项目数：</p>
+<ul><li><strong>记忆与上下文：</strong> 作用域隔离、分级注入和可见降级分别解决什么，哪些已经被现有轻量账本覆盖？</li><li><strong>工程技能：</strong> 选择审计与端到端回归如何补 TDD，什么时候只是增加另一套指令？</li><li><strong>设计与内容生产：</strong> 设计系统、主题组件与发布 CLI 各负责到哪一步，许可和完成证据怎么分开？</li><li><strong>agent 监管：</strong> 会话入口、待人裁决队列和 PR／CI 自动回送，究竟缺哪一层才值得加控制平面？</li></ul>
+<p>更完整的桌面、数据库、检索、游戏、社媒和文档解析问题见<a href="../../tabs-2026-10-21/report/summary.md#横向对比选题池">上轮选题池</a>。这些是选题，不是本轮追加开发承诺。</p>
+<h2 id="验证范围与不确定性">验证范围与不确定性</h2>
+<p>本轮新核：本人 Chrome 标签、公开性、默认分支 SHA、dzhng 的四文件增量与相关许可子树，以及部分固定许可／NOTICE。其余固定提交的已读事实明确复用上轮材料。 提交相同只约束该 git 树；不证明站外授权、其他分支、分发包、作者承诺或未来状态未变。缺少公开补证不等于已证实没有私下授权。</p>
+<p>本轮没有安装／执行上游、读取业务凭据、接入模型或调用付费接口。没有新页面，因此不会以空范围扫描冒充内容页验收，也不重打健康度雷达或改核验日期。 上轮已披露的健康卡排版问题、中文对比行漏译和旧事实口径差异不是本轮修复目标；不声称它们已修复。</p>
+<p>自动验证与最终标签对账记录在本轮 <code>verification.json</code>；门禁、工具测试和报告审查结果在发布记录中给出。</p>
+<p>本轮已复跑的关键输出：</p>
+<pre data-lang="text"><code>make gates: 202 category nodes, 948 EN + 948 ZH pages, 0 errors, 1572 warnings.
+reverse_index check: reports are current, no full mislabels.
+make test: Ran 483 tests in 26.435s; OK; no skipped.
+browser acceptance: 6 terminal rows; 5 proposed; 1 skipped; 0 failed.
+browser acceptance: all 6 intended tabs retained; 0 unmatched repositories.</code></pre>
+<p>这些是索引和本轮操作的验证，不是对未建页项目的运行或安全认证。项目页、分类、工具及反向索引的 git diff 均为空，没有借报告修改事实或修上轮遗留问题。 Inner-loop evidence：本轮门禁、工具单测、报告与链接检查。 Acceptance evidence：真实标签与匿名公开台账一致；四项资格复核有当前提交依据；proposed／自有标签全部保留。 Holdout / unseen evidence：不适用模型效果评测，以真实提交差异与许可边界交叉核对；没有独立运行留出集。 Holdout 来源类别：真实捕获；历史事实另标为复用证据。 预期值来源：用户需求、仓库收录契约与固定版本来源，而非模型自行扩张的许可门槛。 本次改动相对冻结点的位置：只新增本轮台账、证据摘要和报告；不改项目页、分类、工具、门禁或个人 harness。</p>
+<p>下一步：维护者裁决五项资格问题。有可核验补证后再完整建页，不用反复执行来替代裁决。</p>
+</section>
+</main>
+
+</body>
+</html>
