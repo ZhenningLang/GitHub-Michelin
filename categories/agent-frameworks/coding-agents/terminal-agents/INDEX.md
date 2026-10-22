@@ -19,6 +19,13 @@
 | **Pi** | Use it when you want a minimal terminal agent whose behaviour comes from files in your repo — skills, prompt templates, TypeScript extensions it can also write itself — and you accept owning the sandbox. | B (5/6) | [→](pi.md) |
 | **Prime Agent** | Use it when a long coding session is rotting in the chat window and you want the model to program over a persistent Python kernel, spawn children, and keep running after you detach. | B (6/6) | [→](prime-agent.md) |
 | **T3 Code** | Use it when one local GUI should drive already authenticated Codex, Claude, Cursor, and OpenCode CLIs. | A (6/6) | [→](t3code.md) |
+| **ZCode** | Use one supplied coding runtime across desktop, web and CLI, with dependency-aware workflows and content-bound project-hook trust; no default OS sandbox and no native Computer Use in the open build. | C (5/6) | [→](zcode.md) |
+
+## Comparison matrix
+
+| Project | In index | Health | Deciding tradeoff |
+|---|---|---|---|
+| [ZCode](zcode.md) | ✅ | C (5/6) | Supplies its own desktop/web/CLI agent with persisted workflows; you own execution isolation and source-build compliance checks. |
 
 ## What belongs here
 

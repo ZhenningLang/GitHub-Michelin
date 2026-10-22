@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "ZCode does", "zh": "ZCode 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install dependencies and build the CLI with its workspace resources", "zh": "安装依赖并构建 CLI 及工作区资源", "code": "pnpm --filter @zcode/cli... build"},
+    {"lane": "you", "en": "Configure a model provider and prepare an isolated project", "zh": "配置模型提供商，准备隔离项目", "code": "~/.zcode/v2/provider_config.json"},
+    {"lane": "you", "en": "Submit the task with an explicit permission mode", "zh": "提交任务，显式选择权限模式", "component": {"en": "Agent CLI", "zh": "Agent CLI"}},
+    {"lane": "them", "en": "Call the model and execute its tools under that mode and enabled hooks", "zh": "调用模型，按模式和启用的 Hook 执行工具", "component": {"en": "core runtime", "zh": "核心运行时"}},
+    {"lane": "them", "en": "Return session and response data alongside observable file and command results", "zh": "返回会话和回答数据，留下可检查的文件与命令结果"}
+  ],
+  "value": {"en": "Run coding tasks through one supplied runtime instead of writing the model/tool loop yourself", "zh": "用自带运行时执行编程任务，不必自己拼模型与工具循环"},
+  "sources": [
+    "https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/apps/zcode-cli/docs/usage/01-quickstart.md",
+    "https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/apps/zcode-cli/docs/usage/03-config.md",
+    "https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/apps/zcode-cli/docs/usage/05-permissions.md",
+    "https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/apps/zcode-cli/docs/usage/09-hooks.md"
+  ]
+}
