@@ -58,6 +58,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **billion-context** | 当前编码会话靠模型挑选区间写摘要，并能取回已存原文；需接受代理与非标准署名条款。 | LicenseRef-MIT-Attribution | B（5/6） | [中](categories/agent-tooling/work-state/billion-context.zh.md) · [EN](categories/agent-tooling/work-state/billion-context.md) |
 | **Skills Hub** | 跨工具、项目和 git 同步设备的中央技能库；先核对文件管理权。 | MIT | B（6/6） | [中](categories/agent-tooling/harness-extensions/skills-hub.zh.md) · [EN](categories/agent-tooling/harness-extensions/skills-hub.md) |
 | **Headroom** | agent 每轮都把长串 JSON 和日志发给模型。Headroom 在本机压缩请求，并保留可按需取回的原文。 | Apache-2.0 | B（5/6） | [EN](categories/agent-tooling/work-state/headroom.md) · [中](categories/agent-tooling/work-state/headroom.zh.md) |
 | **beads** | 当 AI agent 跨会话丢失任务状态、你想在仓库里要一张可版本化、感知依赖的任务图时用它。 | MIT | B（5/6） | [中](categories/agent-tooling/work-state/beads.zh.md) · [EN](categories/agent-tooling/work-state/beads.md) |

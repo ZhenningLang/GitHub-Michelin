@@ -61,6 +61,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **billion-context** | Keep an ongoing coding conversation usable through model-selected range summaries and stored-original recovery; accept a proxy and nonstandard attribution terms. | LicenseRef-MIT-Attribution | B (5/6) | [EN](categories/agent-tooling/work-state/billion-context.md) · [中](categories/agent-tooling/work-state/billion-context.zh.md) |
 | **Skills Hub** | Central skill library across tools, projects and git-synced devices; audit file ownership first. | MIT | B (6/6) | [EN](categories/agent-tooling/harness-extensions/skills-hub.md) · [中](categories/agent-tooling/harness-extensions/skills-hub.zh.md) |
 | **Headroom** | Your agent sends the same long JSON and logs on every turn; Headroom compresses model-bound payloads locally and keeps originals available through a retrieval tool. | Apache-2.0 | B (5/6) | [EN](categories/agent-tooling/work-state/headroom.md) · [中](categories/agent-tooling/work-state/headroom.zh.md) |
 | **beads** | Use it when an AI agent loses task state across sessions and you want a versioned, dependency-aware task graph in the repo. | MIT | B (5/6) | [EN](categories/agent-tooling/work-state/beads.md) · [中](categories/agent-tooling/work-state/beads.zh.md) |

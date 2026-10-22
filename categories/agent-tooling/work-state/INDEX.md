@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **billion-context** | An ongoing coding conversation needs model-selected range summaries and stored-original recovery; accept proxy routing and extra attribution terms. | B (5/6) | [→](billion-context.md) |
 | **Headroom** | Your agent sends the same long JSON and logs on every turn; Headroom compresses model-bound payloads locally and keeps originals available through a retrieval tool. | B (5/6) | [→](headroom.md) |
 | **beads** | Use it when an AI agent loses task state across sessions and you want a versioned, dependency-aware task graph in the repo. | B (5/6) | [→](beads.md) |
 | **CCPM** | Use it when a feature is too big for one agent session and you want PRD-to-epic-to-GitHub-Issues specs plus parallel agents in git worktrees — but it requires GitHub Issues and has had no commits since 2026-03. | C (4/5) | [→](ccpm.md) |
@@ -21,6 +22,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [billion-context](billion-context.md) | ✅ | B (5/6) | Hierarchical range summaries with recoverable originals; model calls, routing compatibility and two updater channels remain your responsibility. |
 | [Headroom](headroom.md) | ✅ | B (5/6) | Your agent sends the same long JSON and logs on every turn; Headroom compresses model-bound payloads locally and keeps originals available through a retrieval tool. |
 | [beads](beads.md) | ✅ | B (5/6) | A versioned, dependency-aware issue graph inside the repo — the strongest fit when the agent itself reads and writes the backlog. |
 | [CCPM](ccpm.md) | ✅ | C (4/5) | Buys written intent and merge-safe fan-out with GitHub Issues as shared truth; costs a five-phase ceremony that is pure overhead on small work, and lock-in to GitHub. |
