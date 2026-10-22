@@ -66,6 +66,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Official Codex (openai/codex)](https://github.com/openai/codex),categories/agent-tooling/harness-extensions/codex-chatgpt-web.md,,no
 [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex),categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.md,,no
 [OmniVoice](https://github.com/k2-fsa/OmniVoice),categories/speech/voicestudio.md,,no
+[Open GApps](https://github.com/opengapps/opengapps),categories/android-system-services/microg-gmscore.md,,no
 [Open Policy Agent](https://github.com/open-policy-agent/opa),categories/agent-governance/agent-governance-toolkit.md,,no
 [Open-Sora-Plan](https://github.com/PKU-YuanGroup/Open-Sora-Plan),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [OpenAI Plugins](https://github.com/openai/plugins),categories/agent-skills/vendor-collections/agent-vendors/openai-skills.md,,no
@@ -96,6 +97,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [TorBot](https://github.com/DedSecInside/TorBot),categories/osint/robin.md,,no
 [TripoSR](https://github.com/VAST-AI-Research/TripoSR),categories/3d-generation/modly.md,,no
 [Tuist](https://github.com/tuist/tuist),categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/xtool.md,,no
+[UnifiedPush Android connector](https://github.com/UnifiedPush/android-connector),categories/android-system-services/microg-gmscore.md,,no
 [v2rayA](https://github.com/v2rayA/v2rayA),categories/networking/dae.md,,no
 [v2rayN](https://github.com/2dust/v2rayN),categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 [vectorbt](https://github.com/polakowo/vectorbt),categories/investment-finance/backtrader.md,,no

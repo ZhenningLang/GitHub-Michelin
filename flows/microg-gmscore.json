@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "microG Services", "zh": "microG Services"},
+  "steps": [
+    {"lane": "you", "en": "Install Services and Companion on a system with signature support", "zh": "在支持签名伪装的系统安装服务与配套组件"},
+    {"lane": "you", "en": "Enable registration and cloud messaging; allow background operation", "zh": "启用设备注册与云消息，允许后台运行"},
+    {"lane": "them", "en": "Registers the device and maintains its Google messaging connection", "zh": "注册设备并维持 Google 消息连接"},
+    {"lane": "you", "en": "Run the existing app's push-registration flow", "zh": "运行现有应用的推送注册流程"},
+    {"lane": "them", "en": "Receives cloud messages and delivers them to the target app", "zh": "接收云消息并转交目标应用"}
+  ],
+  "value": {"en": "Compatible apps receive Google-backed push without Google's proprietary Play services app", "zh": "兼容应用无需官方闭源服务程序，也能接收 Google 推送"},
+  "sources": [
+    "https://github.com/microg/GmsCore/wiki/Prerequisites",
+    "https://github.com/microg/GmsCore/wiki/Installation",
+    "https://github.com/microg/GmsCore/releases/tag/v0.3.17.252432",
+    "https://github.com/microg/GmsCore/blob/32bc8954ff872d0e1a05ddfae81561b6dbecef69/play-services-core/src/main/java/org/microg/gms/gcm/McsService.java#L557-L643"
+  ]
+}

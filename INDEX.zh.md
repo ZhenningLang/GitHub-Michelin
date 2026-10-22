@@ -8,6 +8,7 @@
 
 | 分类 | 何时进来 | 路由 |
 |---|---|---|
+| **android-system-services** | 替换或集成安卓系统服务接口，解决应用兼容问题，不是界面自动化。 | [→](categories/android-system-services/INDEX.zh.md) |
 | **legal-documents** | 复用法律模板并准备可审阅合同初稿，不提供法律意见。 | [→](categories/legal-documents/INDEX.zh.md) |
 | **travel-planning** | 通过领域专用适配器查询铁路余票、中转与出行信息。 | [→](categories/travel-planning/INDEX.zh.md) |
 | **agent-tooling** | 为 AI 编码 agent 选「任务/工作追踪、持久记忆、agent 状态」，以及 agent 把控制权交还给你的人审/批准界面。 | [→](categories/agent-tooling/INDEX.zh.md) |

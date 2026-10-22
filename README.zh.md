@@ -1591,3 +1591,9 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **Modly** | 通过已审查本地模型扩展，从图片生成三维网格草稿；不是实测重建。 | LicenseRef-MIT-Attribution | B（5/6） | [中](categories/3d-generation/modly.zh.md) · [EN](categories/3d-generation/modly.md) |
+
+### android-system-services
+
+| 项目 | 何时使用 | 许可证 | 健康度 | 页面 |
+|---|---|---|---|---|
+| **microG Services** | 兼容自定义系统上的现有应用需要 Google 服务，但你要自由客户端替代实现，并接受逐应用验证。 | Apache-2.0 | A（6/6） | [中](categories/android-system-services/microg-gmscore.zh.md) · [EN](categories/android-system-services/microg-gmscore.md) |

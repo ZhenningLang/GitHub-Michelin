@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "app", "en": "Existing app with Google client calls", "zh": "调用 Google 客户端接口的现有应用", "kind": "input"},
+    {"id": "identity", "en": "System exposes expected signing identity", "zh": "系统呈现预期签名身份", "technique": [2]},
+    {"id": "check", "en": "Self-Check compares observed signature digests", "zh": "自检比较实际读取的签名摘要", "technique": [2]},
+    {"id": "broker", "en": "Binder broker checks supported service IDs", "zh": "进程间服务代理检查支持的服务编号", "technique": [1]},
+    {"id": "impl", "en": "microG feature implementation", "zh": "microG 具体功能实现", "technique": [1]},
+    {"id": "google", "en": "Google check-in and messaging servers", "zh": "Google 设备注册与消息服务器", "kind": "external", "technique": [3]},
+    {"id": "mcs", "en": "TLS connection and message dispatcher", "zh": "加密连接与消息分派器", "technique": [3]},
+    {"id": "delivery", "en": "Message reaches the target app", "zh": "消息转交目标应用", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "identity", "to": "app", "en": "compatibility prerequisite", "zh": "兼容前提"},
+    {"from": "identity", "to": "check", "en": "diagnosis, not a system patch", "zh": "诊断，不给系统打补丁"},
+    {"from": "app", "to": "broker"},
+    {"from": "broker", "to": "impl", "en": "supported requests only", "zh": "仅限支持的请求"},
+    {"from": "impl", "to": "google", "en": "when cloud messaging is enabled", "zh": "启用云消息时", "style": "dashed"},
+    {"from": "google", "to": "mcs", "en": "push messages", "zh": "推送消息"},
+    {"from": "mcs", "to": "delivery", "en": "package or permission-checked receiver", "zh": "目标包或经过权限检查的接收器"}
+  ],
+  "sources": [
+    "https://github.com/microg/GmsCore/blob/32bc8954ff872d0e1a05ddfae81561b6dbecef69/play-services-base/core/src/main/java/org/microg/gms/AbstractGmsServiceBroker.java#L234-L263",
+    "https://github.com/microg/GmsCore/blob/32bc8954ff872d0e1a05ddfae81561b6dbecef69/play-services-core/src/main/java/org/microg/tools/selfcheck/RomSpoofSignatureChecks.java#L38-L78",
+    "https://github.com/microg/GmsCore/blob/32bc8954ff872d0e1a05ddfae81561b6dbecef69/play-services-core/src/main/java/org/microg/gms/gcm/McsService.java#L557-L643"
+  ]
+}

@@ -1604,6 +1604,12 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | --- | --- | --- | --- | --- |
 | **NullMoth NVIDIA Driver for macOS** | Use it when an OpenCore PC on macOS 15 has only a Turing-or-later GeForce card and keeping that card matters more than stability — accepting a two-day-old single-author kernel driver validated on one RTX 5060, SIP/AMFI/Secure Boot relaxed, and a noncommercial license. | PolyForm-Noncommercial-1.0.0 + LGPL-3.0-or-later + MIT | D (4/6) | [EN](categories/hackintosh/nvidia-macos-driver.md) · [中](categories/hackintosh/nvidia-macos-driver.zh.md) |
 
+### android-system-services
+
+| Project | Use when | License | Health | Page |
+|---|---|---|---|---|
+| **microG Services** | Existing apps need Play services on a compatible custom system, but you want a free client replacement and accept app-specific testing. | Apache-2.0 | A (6/6) | [EN](categories/android-system-services/microg-gmscore.md) · [中](categories/android-system-services/microg-gmscore.zh.md) |
+
 
 ### 3d-generation
 

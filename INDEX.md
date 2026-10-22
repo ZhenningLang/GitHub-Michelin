@@ -9,6 +9,7 @@
 
 | Category | Use when | Route |
 |---|---|---|
+| **android-system-services** | Replace or integrate Android system service interfaces for app compatibility, not UI automation. | [→](categories/android-system-services/INDEX.md) |
 | **legal-documents** | Reuse legal templates and prepare reviewable contract drafts, not legal advice. | [→](categories/legal-documents/INDEX.md) |
 | **travel-planning** | Query rail tickets, transfers and travel information through domain-specific adapters. | [→](categories/travel-planning/INDEX.md) |
 | **agent-tooling** | Infrastructure for AI coding agents — task/work tracking, persistent memory, agent state, and the human review/approval surfaces where the agent hands control back to you. | [→](categories/agent-tooling/INDEX.md) |
