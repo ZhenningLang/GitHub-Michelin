@@ -168,8 +168,8 @@ health:
 ### 3. 回填 PDF 页码并实测留白
 
 - **解决：** 改正文会改变章起始页，浏览器打印还可能产生内容过少的页或贴边内容。
-- **做法：** 每轮先重建 HTML，再用 Chromium 打印，通过 PDF 文本定位章标题，回写生成器的 `toc_row` 页码，最多四轮。随后用 Poppler 生成灰度图，本地解析器估算墨迹边界，检查留白不足、薄页、重复图号和占位文字。
-- **边界：** 目录回填要求调用写在单行内。四轮不收敛或检查发现问题，都只打印告警。几何检查跳过高覆盖率页面并排除页脚带，不能判定列间粘连或事实准确性。生成器作为 Python 执行，只能运行可信副本。
+- **做法：** 每轮先重建 HTML，再用 Chromium 打印，通过 PDF 文本定位章标题，回写生成器的 `toc_row` 页码，最多四轮。随后用 Poppler 生成灰度图，本地解析器估算墨迹边界，检查留白不足、薄页、重复的 `Figure` 编号和占位文字。
+- **边界：** 编号检查只识别 `Figure`，不覆盖本报告实际生成的 `Exhibit` 标签。目录回填要求调用写在单行内；四轮不收敛或发现质控问题，都只打印告警。几何检查跳过高覆盖率页面与页脚带，不能判定列间粘连或事实准确性。生成器执行 Python，只能运行可信副本。
 - **源码：** [渲染和目录回填](https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/render.py#L61-L119)、[几何和文本检查](https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/render.py#L122-L257)、[有界重建循环](https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/render.py#L261-L287)。
 
 ## 技术栈

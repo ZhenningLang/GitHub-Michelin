@@ -168,8 +168,8 @@ For the report-rebuild path, obtain the repository, install Python 3, Playwright
 ### 3. Reconcile PDF page numbers and measure margins
 
 - **Problem:** A content edit changes chapter pages, while browser printing can leave thin pages or push content against an edge.
-- **How:** The renderer rebuilds HTML every round, prints through Chromium, locates chapter headings in PDF text and patches `toc_row` page numbers in the builder, for up to four rounds. Poppler then produces grayscale pages; a local parser estimates ink bounds and flags insufficient margins, thin pages, duplicate figure numbers and placeholder text.
-- **Limits:** TOC patching requires single-line calls. Four-round non-convergence and detected QC issues only print warnings. Geometry skips high-coverage pages and excludes a footer band; it cannot judge column collisions or claim accuracy. The builder itself is executed as Python, so only run a trusted local copy.
+- **How:** The renderer rebuilds HTML every round, prints through Chromium, locates chapter headings in PDF text and patches `toc_row` page numbers in the builder, for up to four rounds. Poppler then produces grayscale pages; a local parser estimates ink bounds and flags insufficient margins, thin pages, repeated `Figure` numbers and placeholder text.
+- **Limits:** The number check recognizes `Figure`, not the `Exhibit` labels this report generates. TOC patching requires single-line calls; non-convergence after four rounds and detected QC issues only print warnings. Geometry skips high-coverage pages and a footer band, so it cannot judge column collisions or claim accuracy. The builder executes Python; only run a trusted local copy.
 - **Source:** [PDF rendering and TOC patching](https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/render.py#L61-L119), [geometry and text checks](https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/render.py#L122-L257), [bounded rebuild loop](https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/render.py#L261-L287).
 
 ## Tech stack
