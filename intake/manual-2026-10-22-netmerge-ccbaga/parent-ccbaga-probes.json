@@ -1,0 +1,122 @@
+{
+  "checked_at_utc": "2026-10-22T11:38:37.228055+00:00",
+  "repo": "liseami/CCBaga",
+  "source_sha": "bdfb90ceadfc5fae6772ffff597bddecb0b73cc3",
+  "scope": "Static public sources only. Keyword locations are evidence pointers, not an executed restore or security certification.",
+  "files": [
+    {
+      "source": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/NOTICE.md",
+      "response_sha256": "47396b8139994c626f26394aa1badda86ee6125d4c91012cb35221619ff9f2af",
+      "matches": [
+        {
+          "line": 9,
+          "text": "The top-level MIT license covers CCBaga's original project work. It does not replace third-party copyright notices or license terms."
+        },
+        {
+          "line": 19,
+          "text": "`vendor/cromma-ui` is a local copy of Cromma UI, including its Pika icon subset. The copied tree does not currently contain an independent upstream license notice. Confirm its redistribution terms and restore any required notices before publishing these components. The top-level MIT declaration is not evidence of permission from other copyright holders."
+        }
+      ]
+    },
+    {
+      "source": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/identities/archive.rs",
+      "response_sha256": "08c7c46fec9b33896c566db7e287fd7898a4ab95c296178f117c1c832ec36dbc",
+      "matches": [
+        {
+          "line": 142,
+          "text": ".any(|s| !identity::allowed(&self.home, s))"
+        }
+      ]
+    },
+    {
+      "source": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/identities/store.rs",
+      "response_sha256": "c3b12224671bf44b7f508556ac8a7f00fab5f62884cbaaea5530fb5a054d5cc0",
+      "matches": [
+        {
+          "line": 43,
+          "text": "if !maintenance && db.get(\"recovery\")?.is_some() {"
+        },
+        {
+          "line": 107,
+          "text": "if maintenance && store.db.get(\"recovery\")?.is_none() {"
+        },
+        {
+          "line": 344,
+          "text": "let phase = if phase == \"rollback\" {"
+        },
+        {
+          "line": 355,
+          "text": "if self.db.get(\"recovery\")?.is_some() {"
+        },
+        {
+          "line": 429,
+          "text": "if self.db.get(\"recovery\")?.is_some() {"
+        },
+        {
+          "line": 459,
+          "text": "if self.db.get(\"recovery\")?.is_some() {"
+        },
+        {
+          "line": 542,
+          "text": "return Err(\"fixture rollback\".into());"
+        },
+        {
+          "line": 580,
+          "text": "\"rollback\","
+        },
+        {
+          "line": 587,
+          "text": "reporter.log(\"rollback\", \"ok\", \"原身份选择已保留。\", 1, Some(1));"
+        },
+        {
+          "line": 590,
+          "text": "reporter.log(\"rollback\", \"running\", \"切换失败，正在恢复原身份。\", 0, None);"
+        },
+        {
+          "line": 592,
+          "text": "let rollback = (|| {"
+        },
+        {
+          "line": 593,
+          "text": "self.clear(&current, reporter, \"rollback\")?;"
+        }
+      ]
+    },
+    {
+      "source": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/cleaner_identity.rs",
+      "response_sha256": "72173ca64d3cb65d62faabe27f9b72f03d75c3a0b74dc1064246c1549e2c18b4",
+      "matches": [
+        {
+          "line": 191,
+          "text": "let all = definitions(root, &Policy::all());"
+        },
+        {
+          "line": 228,
+          "text": "known || special"
+        }
+      ]
+    },
+    {
+      "source": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/cleaner_transaction.rs",
+      "response_sha256": "549353f4a788fa9df6d669b49b1fd940d2e97f433eeb5450129d43d8fe0464f7",
+      "matches": [
+        {
+          "line": 71,
+          "text": "fs::remove_dir_all(path)"
+        },
+        {
+          "line": 73,
+          "text": "fs::remove_file(path)"
+        }
+      ]
+    }
+  ],
+  "unmerged_fix": {
+    "base_sha": "bdfb90ceadfc5fae6772ffff597bddecb0b73cc3",
+    "merged": false,
+    "merged_at": null,
+    "number": 50,
+    "state": "open"
+  },
+  "upstream_runtime_executed": false
+}

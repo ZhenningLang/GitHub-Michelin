@@ -1,0 +1,63 @@
+{
+  "checked_at_utc": "2026-10-22T11:48:49.949581+00:00",
+  "base": "496d546ad4e8d32682814a09cea849b984020738",
+  "content_head": "266243c4737c0fd3399f33da4bb53cf0603c9db4",
+  "scope": "Content, figures and routing only; no upstream runtime or browser-state certification.",
+  "commands": {
+    "make_test": {
+      "exit_code": 0,
+      "key_output": "Ran 483 tests in 30.763s; OK",
+      "skipped": 0
+    },
+    "make_gates": {
+      "exit_code": 0,
+      "key_output": "205 category nodes, 958 EN + 958 ZH pages, 0 errors, 1586 warnings.",
+      "reverse_index": "reports are current",
+      "overflow_warnings": 0
+    },
+    "new_page_scoped_quality": {
+      "exit_code": 0,
+      "pages": 4,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "key_output": "No deterministic findings."
+    }
+  },
+  "new_entries": [
+    {
+      "page": "categories/networking/net-merge.md",
+      "bilingual_frontmatter_identical": true,
+      "source_backed_techniques_per_language": 6,
+      "generated_svg_count": 6
+    },
+    {
+      "page": "categories/agent-tooling/local-identities/ccbaga.md",
+      "bilingual_frontmatter_identical": true,
+      "source_backed_techniques_per_language": 6,
+      "generated_svg_count": 6
+    }
+  ],
+  "astro_bilingual_files_byte_identical_to_base": true,
+  "readme_existing_lines_byte_preserved": true,
+  "readme_new_project_rows_per_language": 2,
+  "current_ledger_changed_rows": [
+    "liseami/CCBaga"
+  ],
+  "old_orchestration_index_byte_identical_to_base": true,
+  "existing_project_pages_moved": 0,
+  "new_figure_specs": 4,
+  "new_svg_assets": 12,
+  "parent_visual_review": "6 bilingual contact sheets viewed; no obvious clipping or node obstruction; not upstream UI acceptance.",
+  "existing_browser_tab_operations": 0,
+  "upstream_runtime_executions": 0,
+  "companion_status": "pass",
+  "companion": {
+    "result": "0 error(s), 0 warning(s)",
+    "profile": "research",
+    "source_md_sha256": "869db4c2c5187c9ca154c984326d577213f7ada8033421d9f621c664eb06beec",
+    "relative_links_resolve": 13,
+    "local_preview_opened": true,
+    "active_or_remote_assets": false
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "CCBaga does", "zh": "CCBaga 做的"},
+  "steps": [
+    {"lane": "you", "en": "After rights and recovery review, prepare A and B in a disposable desktop environment", "zh": "许可与恢复审查后，在临时桌面环境准备 A、B"},
+    {"lane": "you", "en": "Choose a saved or empty identity and what stays shared; save unfinished work", "zh": "选已存或空身份与共享范围，先保存未完成工作"},
+    {"lane": "you", "en": "Confirm archiving and switching, including recognized-client closure", "zh": "确认归档与切换，允许关闭已识别客户端"},
+    {"lane": "them", "en": "Stop recognized clients; verify the target and save/authenticate outgoing state", "zh": "停已识别客户端，验收目标并保存、验收当前状态", "component": {"en": "native store and encrypted archive", "zh": "原生存储层与加密归档"}},
+    {"lane": "them", "en": "Journal recovery state, replace selected files and restore target credentials", "zh": "记录恢复状态，替换所选文件并恢复目标凭据"},
+    {"lane": "them", "en": "Commit the identity/profile choice; reopen the linked browser or report the failure", "zh": "提交身份与资料选择，重开关联浏览器或报告失败"}
+  ],
+  "value": {"en": "Selected default Claude state moves without manual folder juggling; recovery remains conditional", "zh": "不再手动搬默认 Claude 状态；恢复仍有条件，不是保证"},
+  "sources": [
+    "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/README.md#claude-identities",
+    "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src/identities.tsx#L111-L136",
+    "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/identities/store.rs#L452-L737",
+    "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/browser/workspaces.rs#L221-L264"
+  ]
+}

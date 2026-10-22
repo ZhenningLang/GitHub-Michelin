@@ -1,0 +1,388 @@
+{
+  "repo": "liseami/CCBaga",
+  "source_sha": "bdfb90ceadfc5fae6772ffff597bddecb0b73cc3",
+  "checked_at_utc": "2026-10-22T11:20:40.169385Z",
+  "api_metadata": {
+    "full_name": "liseami/CCBaga",
+    "html_url": "https://github.com/liseami/CCBaga",
+    "created_at": "2026-10-11T03:47:06Z",
+    "updated_at": "2026-10-22T10:00:33Z",
+    "pushed_at": "2026-10-21T03:20:59Z",
+    "default_branch": "main",
+    "archived": false,
+    "fork": false,
+    "language": "Rust",
+    "stargazers_count": 2864,
+    "forks_count": 301,
+    "open_issues_count": 3
+  },
+  "api_fix_pr": {
+    "number": 50,
+    "state": "open",
+    "merged": false,
+    "merged_at": null,
+    "base_sha": "bdfb90ceadfc5fae6772ffff597bddecb0b73cc3"
+  },
+  "api_release_metadata": [
+    {
+      "tag_name": "v0.2.49",
+      "published_at": "2026-10-19T11:41:21Z",
+      "asset_count": 9
+    },
+    {
+      "tag_name": "v0.2.48",
+      "published_at": "2026-10-15T14:14:28Z",
+      "asset_count": 9
+    },
+    {
+      "tag_name": "v0.2.44",
+      "published_at": "2026-10-14T11:15:10Z",
+      "asset_count": 9
+    }
+  ],
+  "notes_zh": [
+    "按维护者本次“带明确警告收录”决定完成信息索引；不把许可 worthcheck 缺口改为已解决，也没有静默跳过。",
+    "完成双语 v2、六项源码技术、flow/mechanism 双语 JSON 与六张 SVG、upstream snapshot、机器 health 和双语路由。",
+    "新增重要发现：#49 报告 v0.2.49 身份往返失败；本次固定源码仍拒绝 debug/latest 链接，备份恢复白名单依赖现存路径。#50 未合并。",
+    "139 个非 vendor 代码文件，含测试共 25308 行；复制 vendor 代码 42 文件、2102 行。计数不等于逐行原创性证明。",
+    "机器健康度为 B（6/6），risk_license=A；正文与 README 明示根 MIT 仅原作，机器评分不能清除 Cromma UI/Pika 第三方缺口。",
+    "未 commit/push，未改父区、历史提议或状态台账，未操作浏览器；由主会话串行合并和记当前状态。"
+  ],
+  "risk_zh": [
+    "Cromma UI/Pika 再分发权和声明仍未补齐；不得把本页或根 MIT 当成整体授权。",
+    "正常归档切换会先验收并留恢复记录，但自动回滚和显式恢复仍可能失败；已知路径缺陷阻断日常采用。",
+    "主密钥 key.bin 与归档同处本地，依赖权限保护，不能隔离同用户或管理员；解包暂存为受限明文。",
+    "直接身份删除、残留清理、浏览器全清理没有新备份或废纸篓；部分失败可留下已删除数据。停止客户端会升级终止。",
+    "浏览器资料不在加密身份归档中；哈希检查、指纹和绿色测量不等于隐私、匿名、厂商许可、封号豁免或 DNS/WebRTC 无泄漏。",
+    "macOS 仅 Apple Silicon；Windows x64 安装器无 Authenticode；Windows DPAPI 机器绑定和跨本地用户名迁移可能仍需官方客户端重登。",
+    "可选网络技能另行安装并授权，会 root 改 VPS、运行外部 Xray 安装器；HTTP 订阅含秘密，优先 SSH 取回文件。"
+  ],
+  "sources_read": [
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/README.md",
+      "purpose": "全文：用途、双应用、支持平台、开发入口、更新、外连和授权边界。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/LICENSE",
+      "purpose": "全文：MIT 许可及 CCBaga contributors 权利人；仅原作范围。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/NOTICE.md",
+      "purpose": "全文：Cromma UI/Pika 缺口、浏览器和其他第三方声明。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/Cargo.toml",
+      "purpose": "全文：Rust/Tauri、SQLite、ring、压缩等依赖。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/SECURITY.md",
+      "purpose": "全文：平台与数据边界，已承认依赖公告；文档声明不当实测。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/docs/windows.md",
+      "purpose": "全文：x64、无 Authenticode、更新、DPAPI、系统设置和 WebView2 限制。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/docs/identity-storage.md",
+      "purpose": "全文：恢复日志、同用户密钥边界、浏览器不入加密归档、同系统迁移限制。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/identities/store.rs",
+      "purpose": "全文：key.bin、save/switch/rollback/recover/delete 的实际控制流与失败路径。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/identities/archive.rs",
+      "purpose": "全文：不可变代次、fsync、重新验收、动态路径验证、明文暂存和认证结尾。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/identities/codec.rs",
+      "purpose": "全文：AES-GCM、归档数据密钥、认证帧、截断与尾随数据拒绝。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/identities/private.rs",
+      "purpose": "全文：POSIX 私有权限、Windows 用户 DACL、链接和所有权检查。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/native/Identity.m",
+      "purpose": "全文：限定 macOS Claude Keychain 服务、凭据读取和恢复冲突。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/cleaner_identity.rs",
+      "purpose": "全文：默认目录、保留策略和动态 allowed 路径；对应 #49 的第二处缺陷。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/cleaner_residue.rs",
+      "purpose": "全文：残留白名单、窄凭据键、恢复阻断、一次性扫描 ID 和停止前置条件。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/cleaner_transaction.rs",
+      "purpose": "全文：直接删除不经废纸篓、逐项核验、执行首错即停和部分完成。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/browser/profile.rs",
+      "purpose": "全文：缓存/站点数据集合、完整资料 reset、预检、逐项删除和部分失败。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/browser/workspaces.rs",
+      "purpose": "全文：独立资料槽位、崩溃阻断、身份提交后重开失败单独报告。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/scripts/fetch-browser.py",
+      "purpose": "全文：三平台固定引擎地址、SHA-256、版本架构核验和发布暂存副本；未执行。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/browser/server.rs",
+      "purpose": "全文：随机令牌、loopback、资源边界和有界 report；未启动服务。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src/browser-verification.ts",
+      "purpose": "全文：绿色通过的具体比较项，未知和失败处理。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/network_links.rs",
+      "purpose": "定向行检索：固定资源入口和官方探测域名，不是任意 VPS 部署入口。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/skills/ccbaga-network/scripts/network.py",
+      "purpose": "定向源码核验：标准输入配置、私有文件、SSH 取回与 deploy --confirm。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/skills/ccbaga-network/scripts/setup-vps.sh",
+      "purpose": "定向源码核验：外部 Xray 安装器、root 服务设置和含秘密的 HTTP 订阅。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src/claude-residue-panel.tsx",
+      "purpose": "全文：显式勾选、不可撤销确认、停进程、执行后重扫和错误显示。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/cleaner.rs",
+      "purpose": "定向源码核验：识别进程、800ms 后升级终止、最多三轮和最终检查。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/package.json",
+      "purpose": "全文：前端依赖与无根安装生命周期钩子。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/CONTRIBUTING.md",
+      "purpose": "全文：官方发布所有者、贡献与私密漏洞报告入口。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/main.rs",
+      "purpose": "全文：Tauri 命令注册与启动生命周期。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/identities/mod.rs",
+      "purpose": "全文：前端身份命令、锁、恢复/删除入口。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/identities/database.rs",
+      "purpose": "第 245–324 行：pending/complete 的 SQLite 提交与恢复记录。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src/identities.tsx",
+      "purpose": "定向阅读：确认后停止进程、身份操作及不可逆删除确认。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/vendor/cromma-ui/package.json",
+      "purpose": "全文：私有本地 UI 包，未声明许可。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/browser-runtime/LICENSE.fingerprint-chromium",
+      "purpose": "全文：保留的 BSD-3-Clause 声明。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/assets/ai-icons/LICENSE.lobehub.txt",
+      "purpose": "全文：LobeHub MIT 声明。"
+    },
+    {
+      "url": "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/windows/LICENSE.unicode.txt",
+      "purpose": "全文：Unicode License V3 声明。"
+    },
+    {
+      "url": "https://api.github.com/repos/liseami/CCBaga",
+      "purpose": "仓库创建/推送、Owner、stars、fork/archived 元数据。"
+    },
+    {
+      "url": "https://api.github.com/repos/liseami/CCBaga/git/trees/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3?recursive=1",
+      "purpose": "284 blob 的固定树和 SHA 对照。"
+    },
+    {
+      "url": "https://api.github.com/repos/liseami/CCBaga/releases?per_page=10",
+      "purpose": "实际发版日期、产物数量。"
+    },
+    {
+      "url": "https://api.github.com/repos/liseami/CCBaga/contributors?per_page=100",
+      "purpose": "公开贡献者和计数。"
+    },
+    {
+      "url": "https://api.github.com/repos/liseami/CCBaga/issues?state=all&per_page=30",
+      "purpose": "近期问题 #49/#51 和 PR 记录。"
+    },
+    {
+      "url": "https://api.github.com/users/liseami/repos?per_page=100",
+      "purpose": "37 个公开仓库，核验是否有替代 canonical/successor。"
+    },
+    {
+      "url": "https://api.github.com/search/repositories?q=cromma-ui",
+      "purpose": "公开 UI 源搜索返回零结果，不能补证授权。"
+    },
+    {
+      "url": "https://api.github.com/repos/suyuan2022/suyuan-skill/git/trees/HEAD?recursive=1",
+      "purpose": "清理参考源 blob SHA 对比。"
+    },
+    {
+      "url": "https://api.github.com/repos/lobehub/lobe-icons/git/trees/c385b2b8d1f9e19aa86e628d4e23c91ee1111a47?recursive=1",
+      "purpose": "图标来源固定树 blob SHA 对比。"
+    },
+    {
+      "url": "https://api.github.com/repos/adryfish/fingerprint-chromium",
+      "purpose": "浏览器替代品元数据。"
+    },
+    {
+      "url": "https://api.github.com/repos/adryfish/fingerprint-chromium/git/trees/HEAD?recursive=1",
+      "purpose": "引擎树 blob SHA 对比。"
+    },
+    {
+      "url": "https://api.github.com/repos/adryfish/fingerprint-chromium/contents/README.md",
+      "purpose": "实际读取独立引擎文档、CLI、无技术支持和延迟源码政策。"
+    },
+    {
+      "url": "https://api.github.com/repos/adryfish/fingerprint-chromium/contents/LICENSE",
+      "purpose": "实际读取上游 BSD 许可全文。"
+    },
+    {
+      "url": "https://api.github.com/repos/liseami/CCBaga/pulls/50",
+      "purpose": "修复仍 open 且 merged=false，base SHA 与本次相同。"
+    }
+  ],
+  "dotfiles_zh": {
+    "fit": "low",
+    "what": "仅可参考先验收归档、持久恢复记录、明确不可逆删除的设计；不建议据本次信息索引自动安装应用或全局网络技能。",
+    "where": "只作后续设计参考；本次不接入或修改 ~/.dotfiles。"
+  },
+  "qa_decision": "no leftover Q&A；实际许可问题已归入警告、反选、许可事实与 Caveats，不填充额外问答。",
+  "status": "done",
+  "category_path": "categories/agent-tooling/local-identities/ccbaga.md",
+  "parent_visibility": {
+    "private": false,
+    "visibility": "public"
+  },
+  "maintainer_decision": {
+    "record": "../ccbaga-decision.md",
+    "selection": "带明确警告收录 (Recommended)",
+    "scope": "Information-only selection page; third-party UI permission remains unresolved; no approval for installation, copying or redistribution."
+  },
+  "worth_check": [
+    {
+      "check": "substance",
+      "exit_code": 0,
+      "evidence": {
+        "verdict": "pass",
+        "project_nonvendor_code_files": 139,
+        "project_nonvendor_code_lines_including_tests": 25308,
+        "nonvendor_rust_files": 54,
+        "reusable_entry": "src-tauri/src/main.rs registers the Tauri identity/browser/cleaner commands; src/identities.tsx supplies the UI",
+        "qualification": "Nonvendor project scope is counted, not a claim that every line has independent author provenance. Archive, recovery and native bridge implementations were opened as source."
+      }
+    },
+    {
+      "check": "provenance",
+      "exit_code": 0,
+      "evidence": {
+        "verdict": "pass_with_vendor_gap",
+        "total_blobs": 284,
+        "vendor_blobs": 52,
+        "vendored_code_files": 42,
+        "vendored_code_lines": 2102,
+        "project_code_lines": 25308,
+        "blob_identity_comparisons": {
+          "cleanup-upstream-tree": [],
+          "icons-upstream-tree": [
+            "assets/ai-icons/LICENSE.lobehub.txt"
+          ],
+          "fingerprint-tree": [
+            "browser-runtime/LICENSE.fingerprint-chromium"
+          ]
+        },
+        "cromma_public_search_count": 0,
+        "qualification": "No majority-copy pattern in the compared public sources; NOTICE identifies copied UI/Pika. No public Cromma source located, so its independent provenance/permission is not established."
+      }
+    },
+    {
+      "check": "license",
+      "exit_code": 0,
+      "evidence": {
+        "verdict": "maintainer_override_information_only",
+        "unresolved": true,
+        "root_holder": "Copyright (c) 2026 CCBaga contributors",
+        "root_license": "MIT, original project work only",
+        "copied_ui_license_files": 0,
+        "notice_evidence": "`vendor/cromma-ui` is a local copy of Cromma UI, including its Pika icon subset. The copied tree does not currently contain an independent upstream license notice. Confirm its redistribution terms and restore any required notices before publishing these components. The top-level MIT declaration is not evidence of permission from other copyright holders.",
+        "license_fulltexts_read": [
+          "LICENSE",
+          "browser-runtime/LICENSE.fingerprint-chromium",
+          "assets/ai-icons/LICENSE.lobehub.txt",
+          "src-tauri/windows/LICENSE.unicode.txt"
+        ],
+        "decision": "Current maintainer explicitly approved warning-only selection inclusion; this does not cure third-party permission or approve installation/copying/redistribution."
+      }
+    },
+    {
+      "check": "hazard",
+      "exit_code": 0,
+      "evidence": {
+        "verdict": "pass_purposeful_hazards_documented_not_runtime_safe",
+        "root_package_lifecycle_hooks": {},
+        "agent_hook_config_files": [],
+        "root_CLAUDE_md": "present; treated only as inert research data, not loaded as authority",
+        "purposeful_mutations": [
+          "confirmed identity archive/switch reads default Claude login state",
+          "confirmed direct deletion creates no backup",
+          "A launches a separate fingerprint browser",
+          "system settings need platform permissions",
+          "separately installed skill deploys root-level VPS changes with --confirm"
+        ],
+        "external_calls_reviewed": [
+          "fixed ipwho.is/ipapi.co exit queries",
+          "fixed official connectivity probes",
+          "GitHub update/engine downloads",
+          "separate SSH to user-supplied VPS and external Xray installer"
+        ],
+        "qualification": "No install or execution was performed. The narrow worth-check is not a whole-repository security certification or a no-egress guarantee; destructive and credential risks are in anti-selection and Caveats."
+      }
+    },
+    {
+      "check": "canonical",
+      "exit_code": 0,
+      "evidence": {
+        "verdict": "pass_no_better_canonical_identified",
+        "canonical": "https://github.com/liseami/CCBaga",
+        "fork": false,
+        "owner_public_repo_count_checked": 37,
+        "readme_release_authority": "Official versions published exclusively by liseami",
+        "qualification": "No successor/canonical relocation found in the owner list and README/CONTRIBUTING; unmerged PR #50 is not a successor or a completed fix."
+      }
+    }
+  ],
+  "verification_scope": "Public pinned-source review and atlas-only checks; no upstream client, credentials, identity switch, cleaner, browser or deployment was run.",
+  "parent_checked_at_utc": "2026-10-22T11:30:03.074067+00:00",
+  "parent_validation": {
+    "make_gates_exit": 0,
+    "pair_scoped_quality_exit": 0,
+    "bilingual_pages_and_specs_read": true,
+    "category_corrected_before_first_publication": true,
+    "existing_pages_moved": 0,
+    "shared_indices_serially_integrated": true
+  },
+  "worker_static_acceptance": {
+    "checks": 423,
+    "errors": 0,
+    "scope": "Static citation, tree, schema and document assertions only; not upstream runtime behavior."
+  },
+  "parent_sources_read": [
+    "NOTICE.md",
+    "src-tauri/src/cleaner_identity.rs",
+    "public issue 49 metadata",
+    "public PR 50 state"
+  ]
+}

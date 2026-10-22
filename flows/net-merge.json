@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "net-merge does", "zh": "net-merge 做的"},
+  "steps": [
+    {"lane": "you", "en": "Connect independent uplinks; install the reviewed release and authorize network access", "zh": "接入独立网络，安装已审查版本并授权网络权限"},
+    {"lane": "you", "en": "Start the desktop tray", "zh": "启动桌面托盘", "code": "net-merge tray"},
+    {"lane": "them", "en": "Discovers eligible adapters and probes each address family", "zh": "发现可用网卡，逐地址族探测", "component": {"en": "adapter discovery and probes", "zh": "网卡发现与探测"}},
+    {"lane": "you", "en": "Open a workload with multiple independent connections", "zh": "让应用开启多条独立连接"},
+    {"lane": "them", "en": "Relays captured flows through selected links; each flow stays on one link", "zh": "把捕获的流分走不同链路，每流固定一条", "component": {"en": "TUN stack and balancer", "zh": "虚拟网卡协议栈与分配器"}}
+  ],
+  "value": {"en": "Independent flows use several local internet links without a remote aggregation server", "zh": "独立连接用上多条本地网络，不用维护远端汇聚服务器"},
+  "sources": [
+    "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/README.md#install",
+    "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/README.md#how-it-helps",
+    "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/cmd/net-merge/main.go#L115-L177",
+    "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/engine/balancer.go#L132-L172"
+  ]
+}

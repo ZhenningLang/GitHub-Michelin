@@ -1,0 +1,59 @@
+{
+  "recorded_at_utc": "2026-10-22T11:42:03.263655+00:00",
+  "scope": "Three specified repository URLs, including user-appended Astro. No reading, scanning or closing existing browser tabs; the local report preview is a separate open action.",
+  "results": [
+    {
+      "repo": "rohit267/net-merge",
+      "state": "done",
+      "page": "categories/networking/net-merge.md",
+      "commit": "a1220cabf23e9f17dde587a8ca099906e799f3a4",
+      "new_candidate": true
+    },
+    {
+      "repo": "liseami/CCBaga",
+      "state": "done_information_only",
+      "page": "categories/agent-tooling/local-identities/ccbaga.md",
+      "commit": "d58922a8de3913956c34e0d87f0544dc0a227ce5",
+      "new_candidate": false,
+      "previous_state": "proposed",
+      "third_party_license_gap_resolved": false,
+      "decision_record": "ccbaga-decision.md"
+    },
+    {
+      "repo": "withastro/astro",
+      "state": "done_fresh",
+      "page": "categories/web-ui/frameworks/site-frameworks/astro.md",
+      "commit": "266243c4737c0fd3399f33da4bb53cf0603c9db4",
+      "new_candidate": true,
+      "new_atlas_page": false,
+      "last_verified": "2026-09-20",
+      "age_days": 32,
+      "threshold_days": 90,
+      "upstream_facts_reverified": false
+    }
+  ],
+  "prior_unique_candidates": 42,
+  "new_unique_candidates": 2,
+  "combined_unique_candidates": 44,
+  "prior_proposed": 5,
+  "remaining_proposed": 4,
+  "daily_ledger_note": "Only the existing CCBaga row changed. Its done state means the page was committed, not that a tab was closed in this URL task.",
+  "historical_reports_and_verification_rewritten": false,
+  "this_task": {
+    "requested_repositories": 3,
+    "added_pages": 2,
+    "fresh_existing": 1,
+    "synced_changed": 0,
+    "failed": 0
+  },
+  "cumulative": {
+    "added_pages": 27,
+    "fresh_existing": 12,
+    "proposed": 4,
+    "own_skipped": 1,
+    "unique_candidates": 44
+  },
+  "existing_browser_tab_operations": 0,
+  "local_report_preview_opened": true,
+  "report_rendered_at_utc": "2026-10-22T12:03:18.983583+00:00"
+}

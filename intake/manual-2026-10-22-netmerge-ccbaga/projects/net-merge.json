@@ -1,0 +1,316 @@
+{
+  "repo": "rohit267/net-merge",
+  "source_sha": "fe343c69b2020bed415e8ed669cee5a7f34d8918",
+  "checked_at_utc": "2026-10-22T11:05:54Z",
+  "api_metadata": {
+    "full_name": "rohit267/net-merge",
+    "owner_type": "User",
+    "created_at": "2026-10-12T19:28:45Z",
+    "pushed_at": "2026-10-21T17:41:11Z",
+    "default_branch": "main",
+    "default_branch_sha": "fe343c69b2020bed415e8ed669cee5a7f34d8918",
+    "archived": false,
+    "fork": false,
+    "language": "Go",
+    "detected_license": "MIT",
+    "stars": 1636,
+    "forks": 83,
+    "open_issues_including_prs": 0,
+    "latest_release": "v0.3.3",
+    "latest_release_published_at": "2026-10-20T05:29:09Z",
+    "contributors": {
+      "rohit267": 34,
+      "dhruv1220": 1,
+      "b0r1ssh": 1,
+      "lunar-me": 1,
+      "sidharthify": 1
+    },
+    "health": {
+      "overall": "C",
+      "scored_axes": 5,
+      "applicable_axes": 6,
+      "maintenance": "B",
+      "responsiveness": "?",
+      "responsiveness_reason": "no_window_signal",
+      "adoption": "D",
+      "longevity": "D",
+      "governance": "D",
+      "risk_license": "A"
+    }
+  },
+  "notes_zh": [
+    "完成 net-merge 双语 v2 选型页，六项源码机制、双语流程图／机制图／健康雷达，以及双语分类 INDEX 和 README 接线。未改父工作区，未 commit、push、动标签或派发其他 agent。",
+    "主要任务是本机多条网络的逐流负载分配，归 networking。该分类新增后有 12 个项目，未触发溢出。",
+    "TCP 每连接固定网卡；UDP 每会话套接字固定网卡，并在选完后立即释放活跃负载槽。不按 HTTP 请求、单包或已有连接重新分配，不叠加单连接带宽。",
+    "多网卡共用同一条饱和上游线路时不能消除瓶颈。没有远端汇聚服务器，也不提供统一出口 IP 或已有会话迁移。",
+    "探测确实逐接口、逐地址族绑定源地址并强制出口；只做公共 IP 的 TCP 443 建连，不验证 TLS／HTTP／DNS／UDP／门户。所有链路均失败时，调度器仍可能把新流交给失败层。",
+    "权重使用中转套接字按网卡与地址族计数的成功收发字节，不是整卡字节，也不是主动带宽测试。系统整卡统计另按接口索引读取，包含绕过中转的应用。",
+    "Windows 是 Wintun 加路由捕获，不是 WFP 驱动。Linux 是 TUN／netlink，macOS 是 utun／系统路由工具；三平台出站均使用源地址与接口绑定。IPv6 配置失败可能保留系统原路径。",
+    "自动发现通常跳过 VPN／虚拟接口；显式 -include 可覆盖筛选，不能据此宣称 VPN 共存兼容。默认 IPv6 auto 覆盖不足时拒绝捕获的 IPv6，依赖应用回退。",
+    "机器健康度 C（5/6），响应性因 no_window_signal 保留问号。根 MIT 许可轴是 A，但正文显著解释它不覆盖 Wintun DLL 的独立分发限制或高权限网络安全。",
+    "已打开 dae、Clash Verge Rev 和 wondershaper 既有页；直接比较采用前两者，并补 OpenMPTCProuter、mwan3 两个真实未收录替代品。已明确未在本次定向两项目范围收录，不新建替代品页。",
+    "Q&A 决定为 no leftover Q&A。用户定向技术问题已分别进入何时不用、技术要点、依赖和运维段落。"
+  ],
+  "risk_zh": [
+    "Windows 捕获时会关闭所用网卡的弱主机发送和 forwarding，暂停网络共享；正常停止会尝试恢复，崩溃后可能需下次启动或 cleanup。不能把恢复路由等同于保住旧连接。",
+    "macOS 会加接口专属默认路由；暂停保留 utun，创建／销毁虚拟网卡可影响 TetherKit。专属默认路由可能在崩溃后残留，部分清理错误被忽略。",
+    "Linux 需要 /dev/net/tun 与 root 或 CAP_NET_ADMIN；安装路径还授予 CAP_NET_RAW。macOS 安装器添加精确的免密 tray 与 cleanup sudoers 规则，不只是 tray。",
+    "Shell 安装器会改软件源／密钥、安装二进制、授权并可能启动托盘；压缩包分支没有在执行／安装前校验下载哈希。PowerShell 安装器下载并执行提权安装包。全部只读，未执行。",
+    "SOCKS5 模式无认证，默认只监听 127.0.0.1:1080，只有 TCP CONNECT，没有 UDP ASSOCIATE。不能公开绑定后当作安全代理。",
+    "Wintun DLL 随 Windows 发布包分发，使用独立 Prebuilt Binaries License。已读取其全文，不能把整个 Windows 包视为 MIT。",
+    "项目仅约十天，快速发版与星数不证明长期维护或生产可靠性。上游安全与速度声明均未当作本次复现。"
+  ],
+  "sources_read": [
+    {
+      "url": "https://api.github.com/repos/rohit267/net-merge",
+      "purpose": "公开仓库身份、创建时间、归档／分叉、语言、星数、默认分支和推送时间"
+    },
+    {
+      "url": "https://api.github.com/repos/rohit267/net-merge/commits/main",
+      "purpose": "自行固定当前默认分支 SHA"
+    },
+    {
+      "url": "https://api.github.com/repos/rohit267/net-merge/releases?per_page=5",
+      "purpose": "最新版本与发布节奏"
+    },
+    {
+      "url": "https://api.github.com/repos/rohit267/net-merge/contributors?per_page=100",
+      "purpose": "贡献集中度"
+    },
+    {
+      "url": "https://api.github.com/repos/rohit267/net-merge/issues?state=all&per_page=20",
+      "purpose": "Windows 共享／回环、macOS 路由、杀进程测试和安装器改动背景"
+    },
+    {
+      "url": "https://api.github.com/repos/rohit267/net-merge/issues/38/comments",
+      "purpose": "核对接口 bonding／逐请求表述；以实际逐套接字实现校正含混评论"
+    },
+    {
+      "url": "https://api.github.com/repos/rohit267/net-merge/git/trees/fe343c69b2020bed415e8ed669cee5a7f34d8918?recursive=1",
+      "purpose": "文件结构、worth check 与 blob 比较"
+    },
+    {
+      "url": "https://api.github.com/repos/xjasonlyu/tun2socks/git/trees/v2.7.0?recursive=1",
+      "purpose": "对直接复用依赖做精确 blob 来源对照"
+    },
+    {
+      "url": "https://api.github.com/users/rohit267",
+      "purpose": "许可版权人同公开作者名称核对"
+    },
+    {
+      "url": "https://api.github.com/users/rohit267/repos?per_page=100",
+      "purpose": "canonical／是否另有明显后继仓库的有限检查"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/README.md",
+      "purpose": "当前固定版本的使用路径、限制、平台要求，不把上游数字当复现"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/docs/DEVELOPING.md",
+      "purpose": "命令、架构、构建与测试范围"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/go.mod",
+      "purpose": "Go 1.27 与实际依赖版本"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/LICENSE",
+      "purpose": "根 MIT 许可全文"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/THIRD-PARTY-NOTICES.md",
+      "purpose": "第三方库与 DLL 的许可边界"
+    },
+    {
+      "url": "https://www.wintun.net/builds/wintun-0.14.1.zip",
+      "purpose": "仅读取归档内 LICENSE.txt 全文，不提取或运行 DLL"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/SECURITY.md",
+      "purpose": "支持版本、网络权限与非 VPN 说明"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/CONTRIBUTING.md",
+      "purpose": "治理、测试预置与维护入口"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/install.sh",
+      "purpose": "只读核查软件源、签名密钥、提权、setcap、自动启动和压缩包缺少哈希验证"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/install.ps1",
+      "purpose": "只读核查下载并执行 Windows 安装包"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/scripts/fetch-wintun.ps1",
+      "purpose": "固定 DLL 归档哈希与签名检查只是构建脚本路径，不冒充本次执行"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/cmd/net-merge/main.go",
+      "purpose": "CLI 接线、默认参数、重扫／采样、SOCKS 监听和 cleanup 权限"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/engine/sched.go",
+      "purpose": "逐地址族调度、失效层回退、吞吐权重和计数"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/engine/balancer.go",
+      "purpose": "源地址／出口绑定、建连前重试、不迁移旧连接、IPv6 策略"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/engine/probe.go",
+      "purpose": "逐接口与地址族 TCP 443 探测，不是业务健康检查"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/engine/flowconn.go",
+      "purpose": "TCP／UDP 字节归属，UDP 固定套接字并立即释放活跃计数"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/engine/socks5.go",
+      "purpose": "无认证，只有 CONNECT，拒绝 UDP ASSOCIATE"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/nics/nics.go",
+      "purpose": "虚拟网卡筛选与 include 覆盖"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/nics/info_linux.go",
+      "purpose": "sysfs 物理设备检查及全部路由表默认路由"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/nics/info_darwin.go",
+      "purpose": "enN／fethN 与接口专属默认路由发现"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/nics/info_windows.go",
+      "purpose": "网卡类型、网关和 IPv4／IPv6 接口索引"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/nics/egress_linux.go",
+      "purpose": "SO_BINDTOIFINDEX 与设备名回退"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/nics/egress_darwin.go",
+      "purpose": "IPv4／IPv6 接口绑定"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/nics/egress_windows.go",
+      "purpose": "Windows 单播接口选项和字节序"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/nics/counters_linux.go",
+      "purpose": "sysfs 整卡计数与接口索引"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/nics/counters_darwin.go",
+      "purpose": "macOS 64 位整卡计数"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/nics/counters_windows.go",
+      "purpose": "Windows 整卡计数"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/tun/tun.go",
+      "purpose": "TUN、用户态协议栈、IPv4／IPv6 捕获、暂停／退出及遗留清理"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/tun/forward.go",
+      "purpose": "IPv6 初始 SYN 与 UDP 拒绝路径"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/tun/tun_linux.go",
+      "purpose": "Linux netlink 配置、IPv6 尽力捕获和清理"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/tun/tun_darwin.go",
+      "purpose": "接口专属路由同步、保留 utun、崩溃后的专属路由清理"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/tun/tun_windows.go",
+      "purpose": "Wintun／netsh 路由、弱主机发送及转发状态保存和延后恢复"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/platform/install_darwin.go",
+      "purpose": "root-owned 文件链检查、精确 tray 与 cleanup 免密规则、visudo 检验"
+    },
+    {
+      "url": "https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/.github/workflows/ci.yml",
+      "purpose": "只读测试矩阵、Linux e2e 和平台冒烟范围，不冒充本次运行"
+    },
+    {
+      "url": "https://github.com/Ysurac/openmptcprouter/blob/develop/README.md",
+      "purpose": "外部替代品的远端 VPS、MPTCP 和 OpenWrt 成本；通过仓库 readme API 实际读取"
+    },
+    {
+      "url": "https://github.com/openwrt/packages/blob/master/net/mwan3/Makefile",
+      "purpose": "mwan3 包身份、连接跟踪及负载／故障切换用途"
+    },
+    {
+      "url": "https://github.com/openwrt/packages/blob/master/net/mwan3/files/etc/config/mwan3",
+      "purpose": "mwan3 地址族、权重、策略与粘性规则示例"
+    }
+  ],
+  "dotfiles_zh": {
+    "fit": "low",
+    "what": "可作为独立多网卡实验工具的备选说明，不建议自动安装、启动或接入默认网络初始化。",
+    "where": "只建议可选网络工具文档；不修改 dotfiles、不加 sudoers／setcap／自启配置。"
+  },
+  "qa_decision": "no leftover Q&A",
+  "status": "done",
+  "category_path": "categories/networking/net-merge.md",
+  "parent_visibility": {
+    "private": false,
+    "visibility": "public"
+  },
+  "verification_scope": "Static source and atlas content checks only; no upstream installation, networking changes, sudo, driver execution or bandwidth test.",
+  "parent_checked_at_utc": "2026-10-22T11:14:03.344963+00:00",
+  "parent_validation": {
+    "make_gates_exit": 0,
+    "pair_scoped_quality_exit": 0,
+    "bilingual_pages_read": true,
+    "flow_and_mechanism_specs_read": true,
+    "shared_indices_serially_integrated": true
+  },
+  "parent_sources_read": [
+    "internal/nics/egress_linux.go",
+    "internal/engine/probe.go",
+    "internal/engine/flowconn.go",
+    "internal/platform/install_darwin.go"
+  ],
+  "worth_check": [
+    {
+      "question": "reusable_substance",
+      "exit_code": 0,
+      "verdict": "pass",
+      "evidence": "42 production Go files, 4651 lines; 6 Go test files; cmd/net-merge/main.go is a real entrypoint. Not a prose-only/paper demo."
+    },
+    {
+      "question": "provenance",
+      "exit_code": 0,
+      "verdict": "pass",
+      "evidence": "Compared GitHub tree blob SHAs with directly reused xjasonlyu/tun2socks@v2.7.0: zero identical blobs; go.mod imports the dependency rather than embedding that source tree. This is a bounded exact-blob comparison, not a universal authorship audit.",
+      "supporting_command": "gh api 'repos/xjasonlyu/tun2socks/git/trees/v2.7.0?recursive=1'",
+      "supporting_exit_code": 0
+    },
+    {
+      "question": "license_truth",
+      "exit_code": 0,
+      "verdict": "pass",
+      "evidence": "Read full 21-line MIT LICENSE, Copyright (c) 2026 Rohit Mahto; public owner profile name matches. Read THIRD-PARTY-NOTICES.md and full Wintun 0.14.1 archive LICENSE.txt. Separate binary redistribution restrictions retained in the page.",
+      "supporting_command": "gh api users/rohit267 --jq '{login,name}'",
+      "supporting_exit_code": 0
+    },
+    {
+      "question": "live_hazard_without_purpose",
+      "exit_code": 0,
+      "verdict": "pass_with_documented_risks",
+      "evidence": "No .claude/.cursor/.opencode auto-load files. Read both installers, privilege paths, TCP probes, TUN and egress implementation. Install/network changes are live but documented and serve reusable networking functionality; no disqualifying purpose-free payload identified in reviewed paths. Static review is not a whole-project security certification."
+    },
+    {
+      "question": "better_canonical_repo",
+      "exit_code": 0,
+      "verdict": "pass",
+      "evidence": "GitHub API canonical full_name is rohit267/net-merge, fork=false. README download/install links point here and contain no moved/superseded notice. Inspected owner repository listing; no better canonical successor established within these sources."
+    }
+  ]
+}

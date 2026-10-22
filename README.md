@@ -61,6 +61,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **CCBaga** | Inspect local Claude identity snapshots and linked browser profiles; open restore defect, information-only inclusion, not installation approval. | MIT for original code only; vendored UI rights unresolved | B (6/6) | [EN](categories/agent-tooling/local-identities/ccbaga.md) · [中](categories/agent-tooling/local-identities/ccbaga.zh.md) |
 | **billion-context** | Keep an ongoing coding conversation usable through model-selected range summaries and stored-original recovery; accept a proxy and nonstandard attribution terms. | LicenseRef-MIT-Attribution | B (5/6) | [EN](categories/agent-tooling/work-state/billion-context.md) · [中](categories/agent-tooling/work-state/billion-context.zh.md) |
 | **Skills Hub** | Central skill library across tools, projects and git-synced devices; audit file ownership first. | MIT | B (6/6) | [EN](categories/agent-tooling/harness-extensions/skills-hub.md) · [中](categories/agent-tooling/harness-extensions/skills-hub.zh.md) |
 | **Headroom** | Your agent sends the same long JSON and logs on every turn; Headroom compresses model-bound payloads locally and keeps originals available through a retrieval tool. | Apache-2.0 | B (5/6) | [EN](categories/agent-tooling/work-state/headroom.md) · [中](categories/agent-tooling/work-state/headroom.zh.md) |
@@ -1213,6 +1214,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **net-merge** | Spread independent workstation TCP/UDP flows across local uplinks; no server, single-flow bonding or session migration. | MIT | C (5/6) | [EN](categories/networking/net-merge.md) · [中](categories/networking/net-merge.zh.md) |
 | **Agent Mesh** | Private cross-machine agent services with verified identities; pre-1.0 and a separate policy/credential lifecycle. | Apache-2.0 | B (6/6) | [EN](categories/networking/agentmesh.md) · [中](categories/networking/agentmesh.zh.md) |
 | **One IP** | Worker-backed egress, IP and browser diagnostics; depends on external data and does not certify AI access. | AGPL-3.0-only | C (3/6) | [EN](categories/networking/one-ip.md) · [中](categories/networking/one-ip.zh.md) |
 | **OpenFlux** | Your authorized tunnel needs several interchangeable carriers rather than one fixed network path; OpenFlux moves IPv4 packets through pluggable transports to an exit you operate. | GPL-3.0-or-later | B (6/6) | [EN](categories/networking/openflux.md) · [中](categories/networking/openflux.zh.md) |

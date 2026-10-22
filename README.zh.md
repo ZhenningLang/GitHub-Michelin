@@ -58,6 +58,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **CCBaga** | 研究本地 Claude 身份快照与关联浏览器资料；恢复缺陷未修复，仅作信息收录，不批准安装。 | MIT 仅覆盖原作代码；复制 UI 授权未明 | B（6/6） | [中](categories/agent-tooling/local-identities/ccbaga.zh.md) · [EN](categories/agent-tooling/local-identities/ccbaga.md) |
 | **billion-context** | 当前编码会话靠模型挑选区间写摘要，并能取回已存原文；需接受代理与非标准署名条款。 | LicenseRef-MIT-Attribution | B（5/6） | [中](categories/agent-tooling/work-state/billion-context.zh.md) · [EN](categories/agent-tooling/work-state/billion-context.md) |
 | **Skills Hub** | 跨工具、项目和 git 同步设备的中央技能库；先核对文件管理权。 | MIT | B（6/6） | [中](categories/agent-tooling/harness-extensions/skills-hub.zh.md) · [EN](categories/agent-tooling/harness-extensions/skills-hub.md) |
 | **Headroom** | agent 每轮都把长串 JSON 和日志发给模型。Headroom 在本机压缩请求，并保留可按需取回的原文。 | Apache-2.0 | B（5/6） | [EN](categories/agent-tooling/work-state/headroom.md) · [中](categories/agent-tooling/work-state/headroom.zh.md) |
@@ -1210,6 +1211,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **net-merge** | 让电脑的独立 TCP／UDP 流分走本地多出口；不用服务器，不做单流叠速或会话迁移。 | MIT | C（5/6） | [中](categories/networking/net-merge.zh.md) · [EN](categories/networking/net-merge.md) |
 | **Agent Mesh** | 认证身份后跨机调用私有 agent 服务；尚未到 1.0，需维护策略与凭据。 | Apache-2.0 | B（6/6） | [中](categories/networking/agentmesh.zh.md) · [EN](categories/networking/agentmesh.md) |
 | **One IP** | Worker 后端的出口、IP 与浏览器诊断；依赖外部数据，不认证 AI 账号可用性。 | AGPL-3.0-only | C（3/6） | [中](categories/networking/one-ip.zh.md) · [EN](categories/networking/one-ip.md) |
 | **OpenFlux** | 获授权的隧道实验需要切换多种承载通道。OpenFlux 把 IPv4 数据包送入可替换传输，再由你运营的出口转发。 | GPL-3.0-or-later | B（6/6） | [EN](categories/networking/openflux.md) · [中](categories/networking/openflux.zh.md) |

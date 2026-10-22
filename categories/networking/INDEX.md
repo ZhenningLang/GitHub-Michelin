@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **net-merge** | Spread a workstation's independent TCP/UDP flows across local internet links without a server; no single-flow bonding or session migration. | C (5/6) | [→](net-merge.md) |
 | **Agent Mesh** | Connect agent tools and models across NAT with verified identities and service-name grants; pre-1.0, not officially supported by Google. | B (6/6) | [→](agentmesh.md) |
 | **One IP** | Compare browser/terminal egress, reputation and service probes in one Worker-backed dashboard; third-party sources and AGPL remain. | C (3/6) | [→](one-ip.md) |
 | **OpenFlux** | Your authorized tunnel needs several interchangeable carriers rather than one fixed network path; OpenFlux moves IPv4 packets through pluggable transports to an exit you operate. | B (6/6) | [→](openflux.md) |
@@ -23,6 +24,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [net-merge](net-merge.md) | ✅ | C (5/6) | Local multi-uplink relay on three desktop OSes; privileged network changes and one link per flow, not a VPN or packet bond. |
 | [Agent Mesh](agentmesh.md) | ✅ | B (6/6) | Protocol-aware private service access, at the cost of control-plane, router and credential operations. |
 | [One IP](one-ip.md) | ✅ | C (3/6) | Broad diagnostic aggregation and a small terminal API, not independent IP intelligence or account eligibility proof. |
 | [OpenFlux](openflux.md) | ✅ | B (6/6) | Your authorized tunnel needs several interchangeable carriers rather than one fixed network path; OpenFlux moves IPv4 packets through pluggable transports to an exit you operate. |
