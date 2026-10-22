@@ -8,6 +8,7 @@
 
 | 子分类 | 何时进入 | 路由 |
 | --- | --- | --- |
+| **本地身份** | 需要获准客户端登录状态的快照与浏览器目录联动，而不是任务派发或修改供应商地址。 | [→](local-identities/INDEX.zh.md) |
 | **Work State** | agent 总在运行中途丢掉计划、待办或上下文，你需要那份状态落在磁盘上、可被读回时。 | [→](work-state/INDEX.zh.md) |
 | **Session History** | 你想检索、回放或结算已经跑过的会话，而且要跨多个 agent 时。 | [→](session-history/INDEX.zh.md) |
 | **Supervision Surfaces** | 人需要查看 agent 状态或产物、批准动作、引导会话或团队时；终端、浏览器与桌面界面均可。 | [→](supervision-surfaces/INDEX.zh.md) |
@@ -19,6 +20,7 @@
 
 | 选项 | 类型 | 一句话取舍 |
 | --- | --- | --- |
+| [本地身份](local-identities/INDEX.zh.md) | 子分类 | 会话前后管理客户端身份与文件恢复；有快照不等于获得服务权限，也不保证恢复成功。 |
 | [Work State](work-state/INDEX.zh.md) | 子分类 | beads、CCPM、Ralph、Context Mode、Planning with Files——任务、计划与上下文放在聊天窗口之外，agent 才接得上活。 |
 | [Session History](session-history/INDEX.zh.md) | 子分类 | AgentsView、Entire、dsh-context——捕获、检索并拆解跑过的会话；只读与回放，管不到下一步。 |
 | [Supervision Surfaces](supervision-surfaces/INDEX.zh.md) | 子分类 | Plannotator、CloudCLI、Agent Orchestrator、Hermes Workspace——人看的那块屏：批注闸门与驾驶舱，代价是多一个要在本机跑的服务。 |

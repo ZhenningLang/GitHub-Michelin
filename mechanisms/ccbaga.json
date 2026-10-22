@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "choice", "en": "Explicit identity and retention choice", "zh": "明确选择身份与留存范围", "kind": "input"},
+    {"id": "archive", "en": "Verify immutable encrypted archive", "zh": "验收不可变加密归档", "technique": [1, 2]},
+    {"id": "journal", "en": "SQLite recovery record before file replacement", "zh": "替换文件前记录 SQLite 恢复状态", "technique": [1]},
+    {"id": "recover", "en": "Failure attempts rollback; interruption needs recovery", "zh": "失败尝试回滚；中断需明确恢复", "kind": "output", "technique": [1]},
+    {"id": "profile", "en": "Commit identity and linked browser directory", "zh": "提交身份与关联浏览器目录", "technique": [4]},
+    {"id": "engine", "en": "Pinned engine hash and architecture checks", "zh": "固定引擎哈希与架构核验", "kind": "external", "technique": [4]},
+    {"id": "measure", "en": "Tokenized loopback measurement report", "zh": "带令牌的回环测量报告", "technique": [5]},
+    {"id": "exit", "en": "External public-IP lookup", "zh": "外部公网 IP 查询", "kind": "external", "technique": [5]},
+    {"id": "clean", "en": "Separate confirmed cleanup; no backup or undo", "zh": "独立确认清理；无新增备份与撤销", "kind": "output", "technique": [3]},
+    {"id": "skill", "en": "Separate network skill and deployment consent", "zh": "单独网络技能与部署授权", "technique": [6]},
+    {"id": "vps", "en": "Root VPS changes; private import fetched over SSH", "zh": "root 修改 VPS；经 SSH 取回私有导入文件", "kind": "external", "technique": [6]}
+  ],
+  "edges": [
+    {"from": "choice", "to": "archive"},
+    {"from": "archive", "to": "journal"},
+    {"from": "journal", "to": "profile", "en": "on success", "zh": "成功时"},
+    {"from": "journal", "to": "recover", "en": "failure or interruption", "zh": "失败或中断", "style": "dashed"},
+    {"from": "engine", "to": "profile"},
+    {"from": "profile", "to": "measure"},
+    {"from": "exit", "to": "measure"},
+    {"from": "choice", "to": "clean", "en": "separate irreversible action", "zh": "另一项不可逆操作", "style": "dashed"},
+    {"from": "choice", "to": "skill", "en": "optional separate install", "zh": "可选且另行安装", "style": "dashed"},
+    {"from": "skill", "to": "vps", "en": "explicit deployment approval", "zh": "明确批准部署", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/identities/store.rs",
+    "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/identities/codec.rs",
+    "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/cleaner_transaction.rs",
+    "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/browser/workspaces.rs",
+    "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/scripts/fetch-browser.py",
+    "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src/browser-verification.ts",
+    "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/skills/ccbaga-network/scripts/network.py"
+  ]
+}

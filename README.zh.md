@@ -58,6 +58,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **CCBaga** | 研究本地 Claude 身份快照与关联浏览器资料；恢复缺陷未修复，仅作信息收录，不批准安装。 | MIT 仅覆盖原作代码；复制 UI 授权未明 | B（6/6） | [中](categories/agent-tooling/local-identities/ccbaga.zh.md) · [EN](categories/agent-tooling/local-identities/ccbaga.md) |
 | **billion-context** | 当前编码会话靠模型挑选区间写摘要，并能取回已存原文；需接受代理与非标准署名条款。 | LicenseRef-MIT-Attribution | B（5/6） | [中](categories/agent-tooling/work-state/billion-context.zh.md) · [EN](categories/agent-tooling/work-state/billion-context.md) |
 | **Skills Hub** | 跨工具、项目和 git 同步设备的中央技能库；先核对文件管理权。 | MIT | B（6/6） | [中](categories/agent-tooling/harness-extensions/skills-hub.zh.md) · [EN](categories/agent-tooling/harness-extensions/skills-hub.md) |
 | **Headroom** | agent 每轮都把长串 JSON 和日志发给模型。Headroom 在本机压缩请求，并保留可按需取回的原文。 | Apache-2.0 | B（5/6） | [EN](categories/agent-tooling/work-state/headroom.md) · [中](categories/agent-tooling/work-state/headroom.zh.md) |

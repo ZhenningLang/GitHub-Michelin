@@ -8,6 +8,7 @@
 
 | Sub-category | Enter when | Route |
 | --- | --- | --- |
+| **Local Identities** | You need snapshots of authorized local client login state and linked browser directories, not task dispatch or provider-endpoint editing. | [→](local-identities/INDEX.md) |
 | **Work State** | The agent keeps losing the plan, the backlog or the context mid-run, and you need that state somewhere on disk it can read back. | [→](work-state/INDEX.md) |
 | **Session History** | You want to search, replay or cost-account for sessions that already happened, across several agents. | [→](session-history/INDEX.md) |
 | **Supervision Surfaces** | A human needs to inspect agent state or work, approve actions, or steer sessions and teams — through a terminal, browser or desktop surface. | [→](supervision-surfaces/INDEX.md) |
@@ -19,6 +20,7 @@
 
 | Option | Type | One-line tradeoff |
 | --- | --- | --- |
+| [Local Identities](local-identities/INDEX.md) | Sub-category | Client identity and file restoration before or between sessions; a snapshot does not grant service permissions or guarantee recovery. |
 | [Work State](work-state/INDEX.md) | Sub-category | beads, CCPM, Ralph, Context Mode, Planning with Files — the agent keeps working because its tasks, plan and context live outside the chat window. |
 | [Session History](session-history/INDEX.md) | Sub-category | AgentsView, Entire, dsh-context — capture, query and take apart what already ran; read-side and replay, with no say over the next step. |
 | [Supervision Surfaces](supervision-surfaces/INDEX.md) | Sub-category | Plannotator, CloudCLI, Agent Orchestrator, Hermes Workspace — the human's screen: annotation gates and cockpits, at the cost of another local service to run. |
