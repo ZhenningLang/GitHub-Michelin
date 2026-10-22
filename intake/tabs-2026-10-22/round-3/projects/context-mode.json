@@ -1,0 +1,25 @@
+{
+  "repo": "mksglu/context-mode",
+  "status": "done",
+  "mode": "fresh",
+  "category_path": "categories/agent-tooling/work-state/context-mode.md",
+  "checked_at_utc": "2026-10-22T08:20:23.609417+00:00",
+  "freshness": {
+    "last_verified": "2026-09-15",
+    "today_utc": "2026-10-22",
+    "age_days": 37,
+    "threshold_days": 90
+  },
+  "page_sha256": "b5c7cc716c69e7610ab8e89c7058e389480df0cfc4bb8d11ddaedc5d951a3367",
+  "no_page_diff_from_base": true,
+  "worker_worktree_clean": true,
+  "notes_zh": "fresh：原核验日为 2026-09-15，距 UTC 2026-10-22 为 37 天，未达 90 天刷新门槛；保留工作状态分类、原日期和全部文件。已读英文页：它在工具输出进入上下文前处理原文，并记录会话状态以供压缩后恢复；未联网、未强刷、未提交。",
+  "risk_zh": "据已有页，Elastic-2.0 属源码可用许可证，不是 OSI 开源；执行工具会运行任意代码，子进程不等于操作系统沙箱。各宿主的 hook 与压缩后恢复支持不同，Node/SQLite 也增加依赖；节省比例是上游自报，不能作为保证。本轮未重核上述上游事实。",
+  "dotfiles_zh": {
+    "fit": "high",
+    "what": "[推断：依据已有英文页及任务给出的 harness 范围，未核验当前 dotfiles 实现] 可借鉴三项机制：把大段工具输出留在模型上下文外，仅返回按需处理的结果；用本地事件记录配合全文检索找回会话状态；压缩前生成有优先级的短快照，恢复时注入。适合跨 Claude Code、kilo、opencode 的上下文治理，但不是长期记忆账本的替代品；吸收机制不等于直接复制 ELv2 代码。",
+    "where": "现有 hooks 的工具输出处理与压缩恢复、常驻 capsule 的上下文预算；与 assist-mem-session 会话记录互补。具体文件接入点未核验，本轮不读取或修改 dotfiles。"
+  },
+  "evidence_boundary": "Read the existing local EN page only. Parent checked visibility metadata. No upstream fact/source reread, runtime execution, health refresh or date bump.",
+  "qa_decision": "no leftover Q&A"
+}
