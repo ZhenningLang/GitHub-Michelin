@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第三轮 Chrome 项目收录完整报告</title>
+<style>
+:root { color-scheme: light; --bg: #f8fafc; --panel: #ffffff; --text: #111827; --muted: #64748b; --border: #dbe3ef; --accent: #1f4b99; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.55; }
+main { max-width: 960px; margin: 0 auto; padding: 32px 20px 48px; }
+header { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin-bottom: 18px; }
+section { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+h1, h2, h3, h4, h5, h6 { line-height: 1.2; margin: 1.4em 0 0.5em; }
+header h1 { margin-top: 0; }
+p { margin: 0.75em 0; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+ul { padding-left: 1.4rem; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #0f172a; color: #e5e7eb; padding: 14px; border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+td code, th code { overflow-wrap: anywhere; }
+th { background: #eef4ff; }
+.meta { color: var(--muted); font-size: 0.92rem; }
+.diagram-figure { margin: 1.2rem 0; padding: 12px; background: #ffffff; border: 1px solid var(--border); border-radius: 10px; overflow-x: auto; text-align: center; }
+.diagram-figure svg { height: auto; } /* 不设 max-width：宽图保持自然尺寸，figure 的 overflow-x 负责滚动 */
+table.state-transitions { margin-top: -0.4rem; font-size: 0.92rem; }
+table.state-transitions caption { caption-side: top; text-align: left; color: var(--muted); font-size: 0.82rem; padding: 0 0 6px; }
+table.state-transitions td.st-num { width: 2.2em; text-align: center; font-size: 1.1rem; color: var(--accent); }
+.image-figure { margin: 1.2rem 0; padding: 12px; background: #ffffff; border: 1px solid var(--border); border-radius: 10px; text-align: center; }
+.image-figure img { max-width: 100%; height: auto; border-radius: 6px; }
+.image-figure figcaption { color: var(--muted); font-size: 0.85rem; margin-top: 8px; }
+.badge { display: inline-block; background: #e0ecff; color: var(--accent); border-radius: 999px; padding: 2px 10px; font-size: 0.82rem; margin-right: 8px; }
+blockquote.alert { margin: 1rem 0; padding: 10px 14px; border-left: 4px solid var(--accent); background: #f2f6fd; border-radius: 0 8px 8px 0; }
+blockquote.alert p { margin: 0.3em 0; }
+blockquote.alert .alert-label { margin: 0 0 4px; font-weight: 600; font-size: 0.86rem; color: var(--accent); }
+blockquote.alert-tip { border-left-color: #047857; background: #eefaf4; }
+blockquote.alert-tip .alert-label { color: #047857; }
+blockquote.alert-warning { border-left-color: #b45309; background: #fdf6ec; }
+blockquote.alert-warning .alert-label { color: #b45309; }
+blockquote.alert-important { border-left-color: #7c3aed; background: #f6f2fd; }
+blockquote.alert-important .alert-label { color: #7c3aed; }
+blockquote.alert-caution { border-left-color: #b91c1c; background: #fdf2f2; }
+blockquote.alert-caution .alert-label { color: #b91c1c; }
+sup.regid { font-size: 0.66em; color: var(--muted); margin-left: 2px; white-space: nowrap; font-family: ui-monospace, monospace; }
+pre.wireframe { white-space: pre; overflow-x: auto; background: #fffdf5; color: #1f2937; border: 1px dashed #c8b98a; border-radius: 10px; padding: 14px 16px; line-height: 1.35; position: relative; }
+pre.wireframe::before { content: "页面示意（线框）"; display: block; color: #8a7a4a; font-size: 0.78rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin-bottom: 8px; }
+.layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 0 8px; max-width: 1220px; margin: 0 auto; }
+.layout main { margin: 0; min-width: 0; }
+.sidebar { position: sticky; top: 0; align-self: start; max-height: 100vh; overflow-y: auto; box-sizing: border-box; padding: 32px 0 32px 20px; font-size: 0.9rem; }
+.back-link { display: inline-block; background: var(--panel); border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; margin-bottom: 10px; font-weight: 600; }
+.toc-title { color: var(--muted); font-size: 0.8rem; margin: 8px 0 4px; }
+ul.toc { list-style: none; padding-left: 0; margin: 0; }
+ul.toc li { margin: 2px 0; }
+ul.toc a { display: block; padding: 4px 8px; border-radius: 6px; color: var(--text); overflow-wrap: anywhere; }
+ul.toc a:hover { background: #e8eefc; color: var(--accent); text-decoration: none; }
+h2[id], h3[id] { scroll-margin-top: 16px; }
+@media (max-width: 1100px) { .layout { display: block; } .sidebar { position: static; max-height: none; padding: 20px 20px 0; } }
+</style>
+</head>
+<body>
+<main>
+<header>
+<span class="badge">research</span>
+<h1>第三轮 Chrome 项目收录完整报告</h1>
+<div class="meta">Source: intake/tabs-2026-10-22/round-3/report/summary.md</div>
+<div class="meta">Generated: 2026-10-22T09:05:43+00:00</div>
+</header>
+<section>
+<h1>第三轮 Chrome 项目收录完整报告</h1>
+<p>原有五项资格提议仍待裁决；上游运行质量没有实测。 本轮新增八个双语项目，五个已有页判为 fresh；十三项均已逐项提交并关闭标签。自有私有仓库按范围跳过，六个保留仓库仍开着。</p>
+<p>最值得警惕的不是星数，而是“开放了哪一层”。本轮同时见到代码与权重分域许可、桌面与后端分域许可，以及有大量实现但缺关键接口的公开仓库。收录不等于安装推荐，更不等于端到端可用认证。</p>
+<h2 id="这轮和前两轮有什么不同">这轮和前两轮有什么不同</h2>
+<p>本轮起于 2026-10-22 UTC，从已合并的 <code>e2498732</code> 建独立工作区。重扫发现 13 个新候选，不再是上轮只有六个保留项的情形。 其中八项需要资格核验与新页面，五项已有选型页。五个已有页均在 90 天刷新门槛内，已按 fresh 路径保留原事实、健康度与核验日。 历史证据保留在<a href="../../report/summary.md">第二轮完整报告</a>与<a href="../../../tabs-2026-10-21/report/summary.md">第一轮报告</a>，不覆盖旧轮次的事实与取证结论，不把重复保留项当新增。分类拆分只修历史 Markdown 的链接目标，并刷新其 HTML。</p>
+<table><thead><tr><th>口径</th><th>第三轮增量</th><th>前两轮去重结果</th><th>三轮累计去重</th></tr></thead><tbody><tr><td>新建双语页</td><td>8</td><td>17</td><td>25</td></tr><tr><td>已有页 fresh，未刷新事实</td><td>5</td><td>6</td><td>11</td></tr><tr><td>sync 后改动事实</td><td>0</td><td>0</td><td>0</td></tr><tr><td>proposed</td><td>0 项新增；保留原 5 项</td><td>5</td><td>5</td></tr><tr><td>自有 skipped</td><td>0 项新增；保留原 1 项</td><td>1</td><td>1</td></tr><tr><td>failed</td><td>0</td><td>0</td><td>0</td></tr><tr><td>去重仓库</td><td>13 项新发现，加 6 项旧保留</td><td>29</td><td>42，而非重复相加的 54</td></tr></tbody></table>
+<p>本轮今日台账有十九行，三轮累计有四十二个去重仓库；二者不是同一口径。十三个新候选各有独立 worker，研究工作区隔离，主会话逐页审读、串行更新共享索引，再各自过门禁提交。 原有四项公开提议当前 SHA 全未变。两项非公开记录只重查可见性与检测许可；没有读取内部内容。</p>
+<h2 id="八个新增项目：选择依据与不用它的理由">八个新增项目：选择依据与不用它的理由</h2>
+<table><thead><tr><th>项目与本地页</th><th>解决什么问题，何时选</th><th>决定性限制</th></tr></thead><tbody><tr><td><a href="../../../../categories/agent-frameworks/agent-runtimes/agent-services/agnes-harness.zh.md">Agnes Harness</a></td><td>给客户复用业务工具和工作台，让网页、终端共享审批与会话。</td><td>源码构建的 pre-alpha，普通插件同进程运行；审批不等于沙箱。主分支快照不包含当天合入开发分支的修复。</td></tr><tr><td><a href="../../../../categories/investment-finance/deepseek-influence-report.zh.md">DeepSeek Report</a></td><td>拆解一份历史投研的证据账本、采集脚本与报告生成器。六个 Python 文件说明它不只是文章。</td><td>生成器引用错误目录；OpenRouter 采集器聚合 Qwen，不能直接续算 DeepSeek。许可只有 README 分域声明；不背书投资事实。</td></tr><tr><td><a href="../../../../categories/cad/text-to-cad.zh.md">text-to-cad</a></td><td>已有 agent 需要把尺寸要求变成可修改的 Python、STEP 实体和读回检查。</td><td>不是独立训练模型。脚本会执行，查看器无认证，遥测默认开启；尺寸与可制造性仍由工程验证负责。</td></tr><tr><td><a href="../../../../categories/video-production/creation-workflows/we-video.zh.md">We-Video</a></td><td>复用分步审稿、试听、视觉规划和成片验收工作台。</td><td>公开树缺关键任务 API 与个人输入；它有实质后端，但不是可直接部署的完整发行版。Remotion、模型费用和素材另审。</td></tr><tr><td><a href="../../../../categories/speech/kitten-tts.zh.md">KittenTTS</a></td><td>小型英文固定音色可选旧版 ONNX；参考声音克隆另选新版。</td><td>新版 17 亿参数，不继承旧版体积与 CPU 成本。代码 Apache 不覆盖新版权重的商用登记、收入融资门槛与署名义务。</td></tr><tr><td><a href="../../../../categories/dev-utilities/data-tools/ghidra.zh.md">Ghidra</a></td><td>有权分析原生程序，需人工追函数、引用并保留标注；也可无窗口批处理。</td><td>类 C 文本不是恢复出的原始源码。导入解析器也会被攻击，静态分析不是沙箱；稳定版与开发分支的 JDK 要求不同。</td></tr><tr><td><a href="../../../../categories/agent-tooling/work-state/billion-context.zh.md">billion-context</a></td><td>不换编码助手，用分层摘要管理当前长会话，并按需取回保留的原文。</td><td>十亿是累计流量，不是模型窗口；额外模型调用、代理与客户端冲突都有成本。实际许可附加产品署名，更新有两个独立通道。</td></tr><tr><td><a href="../../../../categories/video-production/creation-workflows/artcraft.zh.md">ArtCraft</a></td><td>先摆人物、机位和场景，再把参考图交云模型生成镜头。</td><td>截图会自动上传；宽松桌面代码不覆盖受限后端，也不授权排除素材。自带供应商 key 也不等于完全脱离 ArtCraft 服务。</td></tr></tbody></table>
+<h3 id="为什么仍收录三个容易误判的项目">为什么仍收录三个容易误判的项目</h3>
+<p><strong>DeepSeek Report 不是只有成稿。</strong> 完整树有六个 Python 文件、采集 JSON、图表与分页检查实现。它作为研究模式与代码档案有可复用实质；缺路径修复和完整许可文件被显著列出，没有把它包装成开箱即用服务或投资结论认证。</p>
+<p><strong>We-Video 不是纯前端，也不是完整产品。</strong> 主会话独立枚举固定提交：任务 API 只有创建、审批、附件三类 route 文件。页面把补接口列为采用前提，而不是把后端模块存在冒充浏览器流程接通。</p>
+<p><strong>ArtCraft 有实质原创客户端，但不能整包随意分发。</strong> 它的 NOTICE 明确不授权任天堂音效等第三方素材，历史改许可提交还列出来源未清的图片。页面仅按作者桌面代码的授权范围收录；不替除外资产、独立服务或模型供应商做权利清理。</p>
+<p>这三项没有达到“内容为空、主体是他人原样拷贝、冒用许可或只有无用途伤害载荷”的提议条件。风险写进反选与存疑，不凭名称或不成熟就排除；旧提议中的具体复制声明或提取授权问题也没有因此自动豁免。</p>
+<h3 id="最影响实际选择的三组边界">最影响实际选择的三组边界</h3>
+<ul><li><strong>同一包名不等于同一产品成本。</strong> KittenTTS 的微型英文模型和新版克隆是两套架构；text-to-cad 则完全依赖你已有的 agent 提供模型。不要按项目名推算显卡、语言与授权。</li><li><strong>本地界面不等于本地数据。</strong> ArtCraft 的普通生成和截图依赖云端；We-Video 把文本交模型与语音服务；text-to-cad 的遥测与版本检查各有控制。</li><li><strong>机器检查不等于效果验收。</strong> Ghidra 超时可能留下部分结果；DeepSeek Report 的质控只告警不失败；We-Video 的亮度检查不核事实，CAD 的摘要哈希也不证明尺寸正确。</li></ul>
+<h2 id="暂缓项目与仍开标签">暂缓项目与仍开标签</h2>
+<p>旧提议中的四个公开仓库，默认分支 SHA 都与第二轮相同。本轮只复核元数据和提交标识，复用固定版本的资格证据，没有重新执行全文或许可扫描。</p>
+<table><thead><tr><th>项目</th><th>继续保留的原因</th><th>需要什么裁决或补证</th></tr></thead><tbody><tr><td>breferrari/obsidian-mind</td><td>既有取证发现复制部分缺原作者 MIT 声明；目标提交未变。</td><td>补齐声明，或提供可核验的权利依据。</td></tr><tr><td>dzhng/skills</td><td>第二轮测试策略更新之后仍无新提交，插画子树的原作者声明缺口未变。</td><td>对复制素材补声明，不以根 MIT 替代第三方授权。</td></tr><tr><td>JimLiu/baoyu-design</td><td>固定来源记录包含闭源产品前端提取内容，既有材料未闭合再许可依据。</td><td>补可核验授权依据，或由维护者明确限定介绍范围。</td></tr><tr><td>liseami/CCBaga</td><td>既有 NOTICE 明示复制 UI 缺独立许可声明；目标提交未变。</td><td>补第三方许可与再分发依据。</td></tr><tr><td>一个非公开候选</td><td>GitHub 元数据仍为 private；仅查元数据，不读内部内容。</td><td>公开及许可由本人决定，不能把私有材料发布到公共索引。</td></tr><tr><td>一个自有私有仓库</td><td>自有项目不在本 skill 收录范围。</td><td>无需收录裁决；保留标签。</td></tr></tbody></table>
+<p>这些是待裁决状态，不是侵权判决。提交未变只约束对应 git 树，不证明站外授权、其他分支或未来状态没有变化。 本轮新产物继续匿名两条非公开身份；没有重写旧 Git 历史，也不声称清除了过去曾发布的标识。</p>
+<h2 id="已有页面：五项-fresh，不冒充重新调研">已有页面：五项 fresh，不冒充重新调研</h2>
+<p>下表用途与风险来自本轮实际打开的既有英文页，不是今天重新检查全部上游后的结论。只有公开性元数据由主会话当日核验。</p>
+<table><thead><tr><th>项目</th><th>适用任务与决定性边界</th><th>原核验日／距本轮日</th></tr></thead><tbody><tr><td><a href="../../../../categories/video-production/creation-workflows/huashu-art-motion.md">huashu-art-motion</a></td><td>已有 agent 需要艺术指导、Canvas 动画和成片测量；不是通用视频编辑器。代码 MIT 不涵盖全部肖像、演示媒体和字体权利；交付启发式不替代看片。</td><td>2026-10-18／4 天</td></tr><tr><td><a href="../../../../categories/speech/voicestudio.md">VoiceStudio</a></td><td>本地语音克隆、配音、听写一体化；不是轻量 TTS 组件。旧页区分 AGPL 应用与非商业默认模型，GPU、磁盘和声音授权须单独检查。</td><td>2026-10-01／21 天</td></tr><tr><td><a href="../../../../categories/video-production/render-engines/hyperframes.md">HyperFrames</a></td><td>HTML 动画批量渲染为视频；不生成写实素材，也不替你编排整条生产线。Node、Chrome、FFmpeg 是运行成本，跨机器字节稳定仍属旧页存疑项。</td><td>2026-09-15／37 天</td></tr><tr><td><a href="../../../../categories/frontend-animation/anime.md">Anime.js</a></td><td>跨框架编排 DOM、SVG 与对象动画；简单 CSS、React 声明式动画或完整 3D 引擎未必该选它。旧页提示 v3 到 v4 的真实迁移成本。</td><td>2026-09-28／24 天</td></tr><tr><td><a href="../../../../categories/agent-tooling/work-state/context-mode.md">Context Mode</a></td><td>大工具输出先处理、按需返回，并保存压缩后的会话状态；不是长期知识库。旧页明确 ELv2 属源码可用，子进程不是系统沙箱，节省比例是上游自报。</td><td>2026-09-15／37 天</td></tr></tbody></table>
+<p>每项均在门禁通过、单项目记录提交后才标为 done，并关闭对应标签。本轮没有用 fresh 状态抬高健康分或更新旧页日期。</p>
+<h2 id="个人-harness：只记候选，不自动接入">个人 harness：只记候选，不自动接入</h2>
+<p>机制适配判断不等于已证实存在缺陷，也不是收益测量。本轮不修改 dotfiles，不复制整包指令，不启动实验。</p>
+<table><thead><tr><th>优先级／适配</th><th>借鉴什么，以及不借鉴什么</th><th>映射与本地入口</th></tr></thead><tbody><tr><td>优先／medium</td><td>Agnes 把外部动作的意图、派发阶段和未知结果分开。确认未发送或满足只读／核对条件才有限重试，不用“重试成功”掩盖可能重复的写操作。内容摘要与能力摘要绑定信任，也是小机制候选；不搬整套运行时或自动信任内置助手。</td><td><code>dev-operational-task</code>、<code>dev-long-run</code>、<code>feishu-avatar</code> 的恢复合同；<a href="../../../../categories/agent-frameworks/agent-runtimes/agent-services/agnes-harness.md">本地页</a>。主会话读过恢复分类器和信任门，不代表已验证现有 harness 缺陷或实现收益。</td></tr><tr><td>后续／medium</td><td>billion-context 保留摘要覆盖范围与原文引用，取回内容时不改活跃块。会话身份和缓存亲和标识分开，值得比较；不照搬双更新器、TLS 解密或提供商 URL 改写。</td><td><code>assist-mem</code>、<code>assist-mem-session</code> 与上下文 capsule；<a href="../../../../categories/agent-tooling/work-state/billion-context.md">本地页</a>。运行期折叠不是长期记忆准入的替代品，额外调用收益未测。</td></tr><tr><td>后续／medium</td><td>Context Mode 的输出外置处理、事件检索和分级恢复快照。当前环境已有 Code Mode，不能仅凭“省上下文”就再叠一层；子进程也不提供系统权限隔离。</td><td>hooks、上下文 capsule、<code>assist-mem-session</code>；<a href="../../../../categories/agent-tooling/work-state/context-mode.md">本地页</a>。这是旧页机制复用，未重核当前上游或 dotfiles 接线。</td></tr></tbody></table>
+<p>其余十个新候选的 harness 适配为 low 或 none，不把领域工具硬说成核心护栏。DeepSeek Report 的证据账本、CAD 的读回成品、We-Video 的验收后改名和 ArtCraft 的远端已接单语义，都是领域参考，不据此自动增加全局组件。 旧提议中的选择审计、记忆作用域与归档恢复思想，延续<a href="../../report/summary.md#对个人-harness-的借鉴裁决">第二轮机制表</a>，不计作本轮新增收益。</p>
+<h2 id="横向对比选题池">横向对比选题池</h2>
+<p>数量按最终分类树实数计算，不计 proposed，不把模型宣传或历史重复候选算作新增覆盖。</p>
+<table><thead><tr><th>分类与项目数</th><th>最值得比较的问题</th></tr></thead><tbody><tr><td><a href="../../../../categories/agent-frameworks/agent-runtimes/agent-services/INDEX.md">Agent 服务</a>，12 项</td><td>为业务工具另建运行时，还是复用既有编码助手？审批、插件信任与副作用恢复各由谁负责？</td></tr><tr><td><a href="../../../../categories/agent-tooling/work-state/INDEX.md">工作状态</a>，10 项</td><td>过滤工具输出、会话折叠和跨会话记忆各省哪种成本？会不会为省 token 反而增加代理、模型调用和恢复歧义？</td></tr><tr><td><a href="../../../../categories/speech/INDEX.md">语音</a>，11 项</td><td>固定音色、零样本克隆和完整配音工作台，怎样分别核硬件、语言质量、代码与权重许可？</td></tr><tr><td><a href="../../../../categories/video-production/creation-workflows/INDEX.md">从零制作视频</a>，10 项</td><td>文字导演、代码动画、库存素材拼片与三维参考生成，谁控制构图、事实、身份一致性和生成费用？</td></tr><tr><td><a href="../../../../categories/video-production/editing-workflows/INDEX.md">已有素材剪辑</a>，4 项</td><td>转写稿剪辑、翻译配音、视频评委精剪与参考片变体，什么时候真需要 agent，而不只是自动化编辑？</td></tr><tr><td><a href="../../../../categories/investment-finance/INDEX.md">投研与金融</a>，10 项</td><td>历史研究成品、数据服务和自动交易是三层；哪些数字来自归档复算，哪些仍需回到外部来源？</td></tr><tr><td><a href="../../../../categories/dev-utilities/data-tools/INDEX.md">开发数据工具</a>，12 项</td><td>人工二进制工作台、命令行分析与 agent 桥接，应把证据、执行授权和解析隔离放在哪一层？</td></tr></tbody></table>
+<p>CAD 与渲染引擎当前各三项，未达四项门槛，不列入本轮四项以上池。前两轮的其余选题保留在<a href="../../../tabs-2026-10-21/report/summary.md#横向对比选题池">历史报告</a>。</p>
+<h2 id="分类与跨轮阅读入口">分类与跨轮阅读入口</h2>
+<p>视频父类实际增至十四个直接项目，触发 <code>MAX_FANOUT=12</code> 告警。本轮按“从要求构建内容”与“加工已有素材”拆成十项和四项，原渲染引擎子类保持不动。十四个项目的中英文配对共二十八个文件通过 <code>git mv</code> 搬迁。 机器逐文件比较证明：搬迁页除分类字段与相对链接外，正文、日期、健康块和生成文字均不变。前两轮报告只改链接目标并重新生成 HTML，未重述历史事实。当前台账已指向新位置，历史验证 JSON 仍保留其取证时路径。 这次搬迁修复内部路由，不提供旧叶路径的外部书签重定向。详细映射见<a href="../refactor.json">分类变更记录</a>，原<a href="../../../../categories/video-production/INDEX.md">视频父入口</a>保留。</p>
+<p>累计二十五个新增项目、十一个 fresh 的阅读入口分在两处：本报告覆盖本轮八项与五项；<a href="../../report/summary.md#已完成项目的完整用途索引">第二轮全量用途表</a>列出首轮十七项与六项。历史用途沿用其原核验日，不声称本轮重新检查了那些上游。</p>
+<h2 id="验证范围">验证范围</h2>
+<p>本轮验收对象是选型内容、索引接线、提交与标签操作，不是上游软件的产品认证。静态读源不能证明语音质量、CAD 可制造性、视频成片效果、模型效果或二进制分析准确率。 完成内容与分类集成后，本次复跑的关键输出如下。它们不是复用上一轮或 worker 自述的数字。</p>
+<pre data-lang="text"><code>make test: Ran 483 tests in 39.519s; OK; no skipped.
+make gates: 204 category nodes, 956 EN + 956 ZH pages, 0 errors, 1584 warnings.
+reverse_index check: reports are current, no full mislabels.
+scoped quality: 16 pages; high 0; medium 0; low 0; No deterministic findings.
+parent source probes: 8 public targets; all boundary assertions passed; runtime executions 0.
+cards: 48 SVGs parsed, screened for active/external assets, and rasterized.</code></pre>
+<p>八项新增各有中英文页、两份图定义和六张 SVG，共十六份图定义、四十八张图。主会话实际查看了十二张双语拼图，覆盖全部新流程、机制与健康卡，未见明显文字截断或节点遮挡；这是静态文档配图检查，不是手机端交互页面或上游 UI 验收。 八项独立来源抽样覆盖恢复分类、无认证查看器、新版权重许可、解析器安全公告、附加署名、错误数据路径、缺失接口和素材除外授权，具体命令结果与响应摘要见<a href="../parent-source-checks.json">主会话来源取证</a>。</p>
+<p>五项 fresh 的英文页与干净 worker 检查由各项目子任务执行，主会话独立检查页日期、90 天门槛、原始文件哈希和提交后关标签顺序。过程记录位于<a href="../projects/">本轮项目证据目录</a>。 恢复入口是今天的公开<a href="../../ledger.md">匿名台账</a>；真实身份操作游标留在本地，不随公开报告提交。中断后先重扫、核终态与已提交页，不盲目重做 done。</p>
+<table><thead><tr><th>交付物</th><th>文件存在</th><th>内容实质</th><th>入口接通与验收</th></tr></thead><tbody><tr><td>八项新增双语选型</td><td>当前页路径见<a href="../acceptance.json">真实操作验收</a></td><td>均有适用／反选、真实替代、固定源码技术与存疑账本；无未研究占位</td><td>分类、双语 README、反向索引全接通；十六页范围检查无问题。</td></tr><tr><td>五项 fresh</td><td>每项记录在<a href="../projects/">项目证据</a></td><td>真实计算 4／21／37／24／37 天，保留核验日期；不冒充重核上游</td><td>单项目提交后关对应标签，分类移动只改路由。</td></tr><tr><td>视频分类拆分</td><td>四个新双语分类索引与二十八个搬迁文件</td><td>十项从零制作、四项已有素材剪辑，规则清楚</td><td>原父入口保留；内部链接修复，零溢出；历史 HTML 与链接同步。</td></tr><tr><td>本轮完整报告</td><td>本文是事实源，同目录 <code>summary.html</code> 是阅读版</td><td>覆盖新项目、旧提议、去重、借鉴与未测边界</td><td>独立渲染及配对检查另留本轮发布证据；不以 HTML 代替 Markdown。</td></tr></tbody></table>
+<p>Inner-loop evidence：本次复跑的结构门禁、十六页范围质量扫描与 483 项工具单测，无 skipped。没有修改测试、判定器或门禁阈值。 Acceptance evidence：真实 Chrome 输入、十三项逐项提交与关闭、六项旧保留、匿名投影和双语索引接线。项目数和物理标签数分别统计，避免把重复打开的旧提议当作新仓库。 Holdout / unseen evidence：不做模型效果评测，以独立源码抽样、负向边界和历史页回归替代；不声称拥有运行时留出集。 Holdout 来源类别：真实捕获与源码抽样。 预期值来源：用户请求、收录契约与固定版本源码，不来自生成器自拟阈值。 本次改动相对冻结点的位置：从 <code>e2498732</code> 改内容生成侧，工具、schema、门禁、CI 与个人 harness 均不改。</p>
+<h3 id="剩余缺口与不顺手修的事项">剩余缺口与不顺手修的事项</h3>
+<ul><li><strong>运行质量未测。</strong> 未安装或执行上游、下载模型权重、登录账号、运行收费生成、恢复真实业务状态或分析二进制样本。许可原文与源码阅读不是完整权利清理、渗透测试或流量审计。</li><li><strong>机器雷达不是许可裁判。</strong> billion-context 的 npm MIT 元数据漏掉附加署名；ArtCraft 的 <code>relicense_36mo: false</code> 漏掉真实改许可提交；KittenTTS 的代码许可评分不覆盖权重条款。正文均显著揭示，未手工改分或扩到评分器修复。</li><li><strong>浏览器工具有未修的编码脆弱点。</strong> 关闭 billion-context 时，全进程清单的一次 UTF-8 解码失败使关闭命令中止。随后只读探针确认当前清单能解码，再执行原关闭命令成功；没有换工具定位 Chrome、放松进程选择规则或声称工具 bug 已修复。留作工具稳健性 backlog。</li><li><strong>历史条目没有借 fresh 强刷。</strong> 原有配图排版、旧比较许可口径和其他全仓告警不在本轮事实刷新范围。商用决策应以选定版本的许可原文为准，不能把旧页泛化比较或本轮雷达 A 当法律放行。</li></ul>
+<p>Boundary decisions：视频树按实测溢出拆为十项与四项，保留父路由，不提供旧叶路径外部重定向；历史报告只修链接并刷新派生 HTML。匿名规则与收录门槛不变，不修改仓库外个人配置。</p>
+<p>下一步：本轮按已获授权的 PR／CI 路径发布；旧五项等维护者裁决或补证，不靠重跑自动放行。</p>
+</section>
+</main>
+
+</body>
+</html>
