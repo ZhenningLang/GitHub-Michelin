@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "request", "en": "Game project + task", "zh": "游戏工程与任务", "kind": "input"},
+    {"id": "engine", "en": "One engine + installed version", "zh": "单个引擎与已安装版本", "technique": [1]},
+    {"id": "compose", "en": "Engine, discipline, genre, workflow selection", "zh": "选择引擎、专项、类型与工作流", "technique": [2]},
+    {"id": "read", "en": "Read selected bodies; references on demand", "zh": "读取所选正文；按需读参考", "technique": [2]},
+    {"id": "result", "en": "Guided code edits; developer verifies in engine", "zh": "按指引改代码；开发者在引擎验收", "kind": "output"},
+    {"id": "art", "en": "Art brief, manifest, approved visual target", "zh": "美术要求、素材清单与批准样稿", "technique": [3]},
+    {"id": "qa", "en": "Raster report + preview sheet + in-game inspection", "zh": "图片报告、联系表与游戏内检查", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "request", "to": "engine"},
+    {"from": "engine", "to": "compose"},
+    {"from": "compose", "to": "read"},
+    {"from": "read", "to": "result"},
+    {"from": "read", "to": "art", "en": "asset-production task", "zh": "素材生产任务", "style": "dashed"},
+    {"from": "art", "to": "qa"}
+  ],
+  "sources": [
+    "router/SKILL.md at 0a70cfc64672d512c5b5b6006b5dcb5cf90dbdbd",
+    "router/references/engine-detection.md at 0a70cfc64672d512c5b5b6006b5dcb5cf90dbdbd",
+    "skills/disciplines/create-game-assets/SKILL.md and scripts/*.py at 0a70cfc64672d512c5b5b6006b5dcb5cf90dbdbd"
+  ]
+}

@@ -13,6 +13,7 @@
 
 | Collection | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **awesome-gamedev-agent-skills** | Engine/version-aware game-dev recipes with a router across ten engines; guidance, not editor control. | B (4/5) | [→](awesome-gamedev-agent-skills.md) |
 | **SwiftUI Pro** | Focused API, data-flow and accessibility review for SwiftUI; advisory and SDK-version-sensitive. | B (4/5) | [→](swiftui-agent-skill.md) |
 | **Agent Skills (addyosmani)** | A curated pack of ~24 production-engineering skills (quality, security, web-perf, API, ship) installed into your coding agent and routed through ~8 SDLC slash commands. | A (4/5) | [→](addyosmani-agent-skills.md) |
 | **web-quality-skills** | A six-skill agent pack encoding Lighthouse / Core Web Vitals / WCAG / SEO best practices as on-demand instruction sets so a coding agent can audit and fix web-quality issues; advisory, not a measurement tool. | B (4/5) | [→](addyosmani-web-quality.md) |
@@ -30,6 +31,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [awesome-gamedev-agent-skills](awesome-gamedev-agent-skills.md) | ✅ | B (4/5) | Domain recipes for gameplay and assets without an editor bridge; model routing and engine verification remain your responsibility. |
 | [Scientific workflows](scientific-workflows/INDEX.md) | Sub-category | — | Scientific libraries, empirical methods and evidence-linked papers; software-development practice remains here. |
 | [SwiftUI Pro](swiftui-agent-skill.md) | ✅ | B (4/5) | Domain-specific references and file-level fixes; not a compiler, profiler or simulator operator. |
 | [Agent Skills (addyosmani)](addyosmani-agent-skills.md) | ✅ | A (4/5) | A curated pack of ~24 production-engineering skills (quality, security, web-perf, API, ship) installed into your coding agent and routed through ~8 SDLC slash commands. |

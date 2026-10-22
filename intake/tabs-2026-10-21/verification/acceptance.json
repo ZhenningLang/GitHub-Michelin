@@ -1,0 +1,552 @@
+{
+  "captured_at_utc": "2026-10-22T03:25:09.168664+00:00",
+  "ledger_rows": 29,
+  "added": 17,
+  "fresh_unchanged_facts": 6,
+  "proposed": 5,
+  "skipped": 1,
+  "failed": 0,
+  "nonterminal": 0,
+  "done_repository_tabs_open": 0,
+  "unmatched_repository_tabs": 0,
+  "open_repository_tab_states": {
+    "proposed": 5,
+    "skipped": 1
+  },
+  "bilingual_page_pairs": 17,
+  "flow_specs": 17,
+  "mechanism_specs": 17,
+  "parseable_generated_svg": 102,
+  "deliveries": [
+    {
+      "repo": "aicodeking/leanrea",
+      "page": "categories/agent-skills/security/leanrea.md",
+      "last_verified": "2026-10-21",
+      "assets": [
+        {
+          "path": "assets/flow/leanrea.svg",
+          "sha256": "c7ff7717f5f3e67995339aaf48fbc0a9fe6951ecbeb706c81b5b94854e3a76d1"
+        },
+        {
+          "path": "assets/flow/leanrea.zh.svg",
+          "sha256": "857d2a6d9fd39a29e40fb918ec7646c3517f720e9d49d28e4bf9b0ae7bad3fd8"
+        },
+        {
+          "path": "assets/mechanism/leanrea.svg",
+          "sha256": "ea57702f19e29c587c94d4d8b69ffec66dfff66434daa81b00efae5f40ea02a8"
+        },
+        {
+          "path": "assets/mechanism/leanrea.zh.svg",
+          "sha256": "69401d9c60a4fc215b897706f36922a00e7e263c53f1ff0d837011ef0302da12"
+        },
+        {
+          "path": "assets/health/leanrea.svg",
+          "sha256": "ebbb27b756a8b3160060b519b44bf4979e0966360ac4e4d79b9b016121c5404c"
+        },
+        {
+          "path": "assets/health/leanrea.zh.svg",
+          "sha256": "ff60ae2bbe40c5b6f4a3ce5d93016b971af43d30674c2d08e80d5503946ffd6d"
+        }
+      ]
+    },
+    {
+      "repo": "amontlabs/lcu",
+      "page": "categories/desktop-automation/lcu.md",
+      "last_verified": "2026-10-21",
+      "assets": [
+        {
+          "path": "assets/flow/lcu.svg",
+          "sha256": "219a131350302506815f9344b5479ec020283a9e096eb3e1cb862d4ad3c6b236"
+        },
+        {
+          "path": "assets/flow/lcu.zh.svg",
+          "sha256": "ae6dcd29cb3c7683babde51233f5551b81f729b53bf44e322d15eb5be9202557"
+        },
+        {
+          "path": "assets/mechanism/lcu.svg",
+          "sha256": "d14169663e34be00d7a5a7b571127619ed81a9a89cfc68f50a80808f32c04837"
+        },
+        {
+          "path": "assets/mechanism/lcu.zh.svg",
+          "sha256": "d5272c210f0f7dcab490d71a8cc6cfdfc3437e31adfe187fb0aa08c09a10af9e"
+        },
+        {
+          "path": "assets/health/lcu.svg",
+          "sha256": "167ab61cc767d17f695e3b8a3509c7c4f7ead2f0853ca6b5b307277d7cc4dc58"
+        },
+        {
+          "path": "assets/health/lcu.zh.svg",
+          "sha256": "055a3d1fb01c0dc842a3ed04108d338b0a5f9c80df354542c92cf618aa98b875"
+        }
+      ]
+    },
+    {
+      "repo": "Bennettxai/FounderOS",
+      "page": "categories/agent-tooling/supervision-surfaces/agent-cockpits/founderos.md",
+      "last_verified": "2026-10-21",
+      "assets": [
+        {
+          "path": "assets/flow/founderos.svg",
+          "sha256": "5073bf510c6d76f7c7b6529eadb83b561dff8b2e72d93afc4f02f17de003717b"
+        },
+        {
+          "path": "assets/flow/founderos.zh.svg",
+          "sha256": "c57b076e9c12eebcfe4f80a5d3d310ba2fc90d703b57bf941a0ca7165868e172"
+        },
+        {
+          "path": "assets/mechanism/founderos.svg",
+          "sha256": "a0ca848fa7bff13f936988943d60aa1f06066439480f75a160b8b7ce4531e907"
+        },
+        {
+          "path": "assets/mechanism/founderos.zh.svg",
+          "sha256": "70c79dc2cea2f3f088f49176496891fc98607227adc1b187062b64113734fba5"
+        },
+        {
+          "path": "assets/health/founderos.svg",
+          "sha256": "146a8e7335c4ff3d994dae41e7e1d4c3b0563ae36102c33cd20532409ffaa5bf"
+        },
+        {
+          "path": "assets/health/founderos.zh.svg",
+          "sha256": "f07bbf9863dd6a2cbf4649db2d6cd1a48f718c19e4d99441066e6767b96d9491"
+        }
+      ]
+    },
+    {
+      "repo": "emdash-cms/emdash",
+      "page": "categories/content-management/emdash.md",
+      "last_verified": "2026-10-21",
+      "assets": [
+        {
+          "path": "assets/flow/emdash.svg",
+          "sha256": "b52c48a623cb990d7a58a4ca91efb3b8c5c15addb4a7b0859fdd8e5e580590cf"
+        },
+        {
+          "path": "assets/flow/emdash.zh.svg",
+          "sha256": "350e052bde2187b1b4fedca82bb093f9f5536d4cb92807ab3152aa1c66cd4b1e"
+        },
+        {
+          "path": "assets/mechanism/emdash.svg",
+          "sha256": "bc72a5ebe612cd2e09f33d7e2c135dac9627521bbdb3363dd12eb7face7be5cd"
+        },
+        {
+          "path": "assets/mechanism/emdash.zh.svg",
+          "sha256": "0766e2312ed7031b4b92c4766add9101cba65f16378cd2366ff68a15f895f2a3"
+        },
+        {
+          "path": "assets/health/emdash.svg",
+          "sha256": "4e44b2aaf3451286af9352da8ea58ecc38cc5613395d6c58968710edceb1447c"
+        },
+        {
+          "path": "assets/health/emdash.zh.svg",
+          "sha256": "1c85536dcf92a700deb9afd4c1a5247d09efb2dd1ea0f5d7bf2c3e20c3cad4fc"
+        }
+      ]
+    },
+    {
+      "repo": "gamedev-skills/awesome-gamedev-agent-skills",
+      "page": "categories/agent-skills/engineering/awesome-gamedev-agent-skills.md",
+      "last_verified": "2026-10-21",
+      "assets": [
+        {
+          "path": "assets/flow/awesome-gamedev-agent-skills.svg",
+          "sha256": "e08f4dea4df4ab197d11845bfe88ffa95b7909a934cffb2792baa40ba2bf8606"
+        },
+        {
+          "path": "assets/flow/awesome-gamedev-agent-skills.zh.svg",
+          "sha256": "e3fa7f407f1f312883bbd2442b09419201e063eaa02a66473546e682de4fefc4"
+        },
+        {
+          "path": "assets/mechanism/awesome-gamedev-agent-skills.svg",
+          "sha256": "b052fdedb4535aeb8a701aaeb833c07ccdc0dc7d362b8ea5e72739705295120f"
+        },
+        {
+          "path": "assets/mechanism/awesome-gamedev-agent-skills.zh.svg",
+          "sha256": "5f8beee8f708addeece4ec1ffba2be0c677453d979c52df4110cc4e0d2b47512"
+        },
+        {
+          "path": "assets/health/awesome-gamedev-agent-skills.svg",
+          "sha256": "4aa7f15455ba5c4ad64d644de5570917f38e609ea19f31fab49e1f681e09a786"
+        },
+        {
+          "path": "assets/health/awesome-gamedev-agent-skills.zh.svg",
+          "sha256": "e6a3230a87b0c4e27a26932968232bb33123abb966760dd98f408d4e997f00ab"
+        }
+      ]
+    },
+    {
+      "repo": "IvanMurzak/Unity-MCP",
+      "page": "categories/game-dev/unity-mcp.md",
+      "last_verified": "2026-10-21",
+      "assets": [
+        {
+          "path": "assets/flow/unity-mcp.svg",
+          "sha256": "1469cd0993baec27dd27716a8c94b9243a02ea605eb765de75e2bc616ab7ddc2"
+        },
+        {
+          "path": "assets/flow/unity-mcp.zh.svg",
+          "sha256": "660fd6540bb8c5b3360611c8ab99842bc4b098efc9cf15a5c5d7793d8d404277"
+        },
+        {
+          "path": "assets/mechanism/unity-mcp.svg",
+          "sha256": "a7b488673fc348eb3721fc06b339ba147ebdbe188140120989561e46d06a627a"
+        },
+        {
+          "path": "assets/mechanism/unity-mcp.zh.svg",
+          "sha256": "715ea81b732b520ae8af3e52cd21b070cb633d9869bc04387a038fba14ecd682"
+        },
+        {
+          "path": "assets/health/unity-mcp.svg",
+          "sha256": "45de5437847a92e45e5cd691e50ef41b6c1a293c8367471b5992627353a6906b"
+        },
+        {
+          "path": "assets/health/unity-mcp.zh.svg",
+          "sha256": "cf8cebf483796fcd3c305b21c0115ed9b3467ffa9cc0b1eabe6111b75b708f8f"
+        }
+      ]
+    },
+    {
+      "repo": "kividbio/kividb",
+      "page": "categories/databases/database-engines/kividb.md",
+      "last_verified": "2026-10-21",
+      "assets": [
+        {
+          "path": "assets/flow/kividb.svg",
+          "sha256": "b67207ab2326748a73be035cead4a0c568d39f0b07247631e02cd6880cf2f6b6"
+        },
+        {
+          "path": "assets/flow/kividb.zh.svg",
+          "sha256": "42ab17dd4521390abd2eafee9c638f2c8a696485fc763670841ca4e970b46c9d"
+        },
+        {
+          "path": "assets/mechanism/kividb.svg",
+          "sha256": "84522ce6f199f011b08930ee99c4289c74bf8f47c9cfdfdb3bf3ec1478adec86"
+        },
+        {
+          "path": "assets/mechanism/kividb.zh.svg",
+          "sha256": "fc1ab5822e2eb991589610813e3f9ce3706e1fe254d1df80806d0afd9d75b806"
+        },
+        {
+          "path": "assets/health/kividb.svg",
+          "sha256": "55bb07f1a3bd983ffe83bbf5ca82294c4c0e72b74a2d200b49fb08d7889ae3e1"
+        },
+        {
+          "path": "assets/health/kividb.zh.svg",
+          "sha256": "05e529c6cce3c25ee8bd906a4c8d97c7d80d7fe3ab18b02b637ea4828cfe89f2"
+        }
+      ]
+    },
+    {
+      "repo": "microg/GmsCore",
+      "page": "categories/android-system-services/microg-gmscore.md",
+      "last_verified": "2026-10-21",
+      "assets": [
+        {
+          "path": "assets/flow/microg-gmscore.svg",
+          "sha256": "1d098662df6b29b04c4fe37db82fce9806a47d1c472cc1c8b9ee3c4679292e6d"
+        },
+        {
+          "path": "assets/flow/microg-gmscore.zh.svg",
+          "sha256": "99b5351ffa358a915a0112caf491ed0d03516c4868acd1e13616132c78ca0d29"
+        },
+        {
+          "path": "assets/mechanism/microg-gmscore.svg",
+          "sha256": "114a1f4586532a01cef0e7333d9cb2ff9901083e4040d6e9e501de62fe9c6ce6"
+        },
+        {
+          "path": "assets/mechanism/microg-gmscore.zh.svg",
+          "sha256": "b0bb793f4d10b2ad2bb55e3e2670d89efeb6e1edb972638f910fcf51fe703383"
+        },
+        {
+          "path": "assets/health/microg-gmscore.svg",
+          "sha256": "f132b534a88abd0d0fb5614bdf4f7fbb6aea474cbf0db2458dda6f175fb416f7"
+        },
+        {
+          "path": "assets/health/microg-gmscore.zh.svg",
+          "sha256": "d026c6a85044baa01ad62fcbb4d3c5329f4ae663c98144b7a315e1461cca815e"
+        }
+      ]
+    },
+    {
+      "repo": "public-clis/twitter-cli",
+      "page": "categories/social-media-management/twitter-cli.md",
+      "last_verified": "2026-10-21",
+      "assets": [
+        {
+          "path": "assets/flow/twitter-cli.svg",
+          "sha256": "794875aa8bb6256b359a1635f522a54a8537a8b731da3bf2d19c2a36c98d79f5"
+        },
+        {
+          "path": "assets/flow/twitter-cli.zh.svg",
+          "sha256": "f856f0a26ef0bdf3097433d05ccf33660fe6f8ad37ca41de4cfcac35c0112197"
+        },
+        {
+          "path": "assets/mechanism/twitter-cli.svg",
+          "sha256": "33c25598723bdfef8e3ed40ba5b40c229b5cc11892d0671bbba4cb1c36fe5e04"
+        },
+        {
+          "path": "assets/mechanism/twitter-cli.zh.svg",
+          "sha256": "7d7ce8378a88755584130600bcbd9f903d955369ab448d335852a450c4dc1b12"
+        },
+        {
+          "path": "assets/health/twitter-cli.svg",
+          "sha256": "83fab5eed787acf0e4381fc846623f8732fe7d8970f56bd5e46f3672a4cfb705"
+        },
+        {
+          "path": "assets/health/twitter-cli.zh.svg",
+          "sha256": "78cba21bba7b75ba8ad7016fef26ca7b800f2d87a8cd34b43ed84aeb48bb9008"
+        }
+      ]
+    },
+    {
+      "repo": "Renhuai123/ziwei-doushu",
+      "page": "categories/traditional-divination/ziwei-doushu.md",
+      "last_verified": "2026-10-21",
+      "assets": [
+        {
+          "path": "assets/flow/ziwei-doushu.svg",
+          "sha256": "e8bc4f6e604d8167329279141a71bbf5baf4295e9802872dd8b8bc996a4e4502"
+        },
+        {
+          "path": "assets/flow/ziwei-doushu.zh.svg",
+          "sha256": "929d3bbe3c8bf7fcbbc19fc1fe2b0442f04a84e591eca2a138ba97c98183bb27"
+        },
+        {
+          "path": "assets/mechanism/ziwei-doushu.svg",
+          "sha256": "6be9098b111ceacf3df7f440cc10cc575b681c4e66940c31884c69d7eda7912f"
+        },
+        {
+          "path": "assets/mechanism/ziwei-doushu.zh.svg",
+          "sha256": "e39043aabc1394e1a1052e3b59a05c05e692ec1920bb350c74168fd4423a1b9e"
+        },
+        {
+          "path": "assets/health/ziwei-doushu.svg",
+          "sha256": "cf534220243ba3b57b887839c197ac9c8c17b061558bf541e3865ebcfbd66f2e"
+        },
+        {
+          "path": "assets/health/ziwei-doushu.zh.svg",
+          "sha256": "6f35b6161d995a8132a35f8a9377fc9e2a2843fa862ef41b564d57f4a193933d"
+        }
+      ]
+    },
+    {
+      "repo": "scosman/Biscotti",
+      "page": "categories/meeting-intelligence/biscotti.md",
+      "last_verified": "2026-10-21",
+      "assets": [
+        {
+          "path": "assets/flow/biscotti.svg",
+          "sha256": "da31b9722c68ffcfbf104128402a9be94199cb3e5fba00d80f5d23c232e79fe1"
+        },
+        {
+          "path": "assets/flow/biscotti.zh.svg",
+          "sha256": "f2401ec07bbaeee2870f89f3a15bded5e67b2b4c5499a62866939a154660ece9"
+        },
+        {
+          "path": "assets/mechanism/biscotti.svg",
+          "sha256": "b6df1385b1cef61c50de49b114e13a0034cde7a9d4c8297a151f0e79dcf86f05"
+        },
+        {
+          "path": "assets/mechanism/biscotti.zh.svg",
+          "sha256": "aec80d712d2bef29d980c510bc61ad5080a32b21a35e77924e5c4e264a9baa49"
+        },
+        {
+          "path": "assets/health/biscotti.svg",
+          "sha256": "dbaee8398044852c35dee71392104c9ec8036cb62b57098ca23b8c930eb1b8f4"
+        },
+        {
+          "path": "assets/health/biscotti.zh.svg",
+          "sha256": "72ffb44d04eb3433af9ff387360d0fda1f8e6a67c942ad2ee2fa00b95c4ab9f0"
+        }
+      ]
+    },
+    {
+      "repo": "zai-org/ZCode",
+      "page": "categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/zcode.md",
+      "last_verified": "2026-10-21",
+      "assets": [
+        {
+          "path": "assets/flow/zcode.svg",
+          "sha256": "f64b32c52f32426a782ae307164a5e1524a8bde6759aa7b3d10b974c7a054b2a"
+        },
+        {
+          "path": "assets/flow/zcode.zh.svg",
+          "sha256": "5ac994a39a33826020d74c9102516a6da5f9cc4c0f29a60f31cd4f13b0e874cd"
+        },
+        {
+          "path": "assets/mechanism/zcode.svg",
+          "sha256": "570f846c8d5736144d86db55d5df407f519a1eaffcef0a1e6f3d4b14253e7850"
+        },
+        {
+          "path": "assets/mechanism/zcode.zh.svg",
+          "sha256": "07eac57158010b9e50363354680e3b37730485a712d2490791eec33c5e08eba8"
+        },
+        {
+          "path": "assets/health/zcode.svg",
+          "sha256": "276b259e2eb369b0ee6b38f00d7ef889b6dc0f28ffd3f377a333c60fe8da6e6e"
+        },
+        {
+          "path": "assets/health/zcode.zh.svg",
+          "sha256": "417c045357b6853be97edee73dcbe1a15059845675e8ace25f5aa523761752f9"
+        }
+      ]
+    },
+    {
+      "repo": "Zleap-AI/SAG",
+      "page": "categories/rag-retrieval/structured-retrieval/sag.md",
+      "last_verified": "2026-10-21",
+      "assets": [
+        {
+          "path": "assets/flow/sag.svg",
+          "sha256": "4bd599c2bfff1e34b2a7ce30b7260debc89015084c5e7892dab4176c6a1ed52e"
+        },
+        {
+          "path": "assets/flow/sag.zh.svg",
+          "sha256": "14399a3f5597b7a3ece8a7d3319301a1677855ad583fd793bc6950089481427e"
+        },
+        {
+          "path": "assets/mechanism/sag.svg",
+          "sha256": "2d654f2443b673d2ab95fd0ffb7ce64b9ae2d17ee9dc96cb19891979ca58e433"
+        },
+        {
+          "path": "assets/mechanism/sag.zh.svg",
+          "sha256": "e409c13b0bfa7ede9dcc15718b16bd53ce456e561acd84179b16ed011395e4f2"
+        },
+        {
+          "path": "assets/health/sag.svg",
+          "sha256": "980e57d5cf24700ec69e238afa2ba0e45e3dda2d449b9c3d1adc2cc030a5aa3f"
+        },
+        {
+          "path": "assets/health/sag.zh.svg",
+          "sha256": "bf53dcfa6264cb451ef67504c40841d4b37ba730b666bd7946e106d3ab165b22"
+        }
+      ]
+    },
+    {
+      "repo": "hanshuaikang/nezha",
+      "page": "categories/agent-tooling/supervision-surfaces/agent-cockpits/nezha.md",
+      "last_verified": "2026-10-22",
+      "assets": [
+        {
+          "path": "assets/flow/nezha.svg",
+          "sha256": "156781339e4e82f47ac0b94c0e2380f75c091ac02be803f7f292d335ce2e0266"
+        },
+        {
+          "path": "assets/flow/nezha.zh.svg",
+          "sha256": "a0863423b54e540abc385a9282e127ca31729756febbfb71d8dcd8d0929943ac"
+        },
+        {
+          "path": "assets/mechanism/nezha.svg",
+          "sha256": "1f33c880519cf3bc13e422de17e0624d31db4679d1a654f3513427011e387e4e"
+        },
+        {
+          "path": "assets/mechanism/nezha.zh.svg",
+          "sha256": "99c60333252f51d82d8ab0d016e78b5072c3ccdf1853f30df1acfcc1d3eb68a7"
+        },
+        {
+          "path": "assets/health/nezha.svg",
+          "sha256": "9580cace71a685a122794170c3cb73c5d5ef8655479a54ff96c5bbf1845cb6f8"
+        },
+        {
+          "path": "assets/health/nezha.zh.svg",
+          "sha256": "9be2ebb0da4092a04bf2ab717a0844510f71ac5d2c5968c28516b4c9febf9c57"
+        }
+      ]
+    },
+    {
+      "repo": "geekjourneyx/md2wechat-skill",
+      "page": "categories/social-media-management/md2wechat-skill.md",
+      "last_verified": "2026-10-22",
+      "assets": [
+        {
+          "path": "assets/flow/md2wechat-skill.svg",
+          "sha256": "11f8ba65efa1102045230cbdde8e1a0fe6ebdfb83058a45d40da3a1d77a3a24a"
+        },
+        {
+          "path": "assets/flow/md2wechat-skill.zh.svg",
+          "sha256": "94f150be59ec592d251439cdf362794e0773d6d33fc83195c9870c0e6be80e48"
+        },
+        {
+          "path": "assets/mechanism/md2wechat-skill.svg",
+          "sha256": "cb237a4ccd48e3bb6927b6fe880ccfc873bf35f1003443889ce1dc4ca17cc3eb"
+        },
+        {
+          "path": "assets/mechanism/md2wechat-skill.zh.svg",
+          "sha256": "356a6f2d91542994eff8147e6e6e5276f0e11b66dcb70d69d69df5cc0b06f0f0"
+        },
+        {
+          "path": "assets/health/md2wechat-skill.svg",
+          "sha256": "82aabe18de75f860fba81be1b151646019fe63b7b4970c211ac8bb7748a3390c"
+        },
+        {
+          "path": "assets/health/md2wechat-skill.zh.svg",
+          "sha256": "e049e4fe438e5be2046d45e41050f68e24161ec5a64cf42a64a2ed496fc5f26d"
+        }
+      ]
+    },
+    {
+      "repo": "SoMarkAI/OXR",
+      "page": "categories/document-parsing/oxr.md",
+      "last_verified": "2026-10-22",
+      "assets": [
+        {
+          "path": "assets/flow/oxr.svg",
+          "sha256": "e8a8450a3721aca4bb1116353cb893838763b2ea62024689f77b37fafdcb9528"
+        },
+        {
+          "path": "assets/flow/oxr.zh.svg",
+          "sha256": "8efd7abff908d6f2ef3259b9bfefb3a00cf4bfa186e2597130b8b60a15307956"
+        },
+        {
+          "path": "assets/mechanism/oxr.svg",
+          "sha256": "bbf4d4de2da8567cacaa0b8b02ca9c389efb33420a58cff1e4065dbcf749f558"
+        },
+        {
+          "path": "assets/mechanism/oxr.zh.svg",
+          "sha256": "8b3167fd9cbeb410c7ea82fbda518c46b21de20f3ade7a60c9aaa984c0f80ae0"
+        },
+        {
+          "path": "assets/health/oxr.svg",
+          "sha256": "490704622e9ff9c2f76af2fd5f39b6859708268a1bbd2d71dadf77c7c354e85b"
+        },
+        {
+          "path": "assets/health/oxr.zh.svg",
+          "sha256": "6166df6a66d12eb555b4c88ae298cfb8ec5d7a8306551c88e5c5a1fcce241240"
+        }
+      ]
+    },
+    {
+      "repo": "isjiamu/gzh-design-skill",
+      "page": "categories/agent-skills/ai-writing/content-production/gzh-design-skill.md",
+      "last_verified": "2026-10-22",
+      "assets": [
+        {
+          "path": "assets/flow/gzh-design-skill.svg",
+          "sha256": "973b89f34b8a0b0657d4a1e7de8c94a52f4138ffce9d9b25db52e4e059c380c9"
+        },
+        {
+          "path": "assets/flow/gzh-design-skill.zh.svg",
+          "sha256": "bf29c8644da665322c1f53f87e2e6840d367f482f350ad75b025b87203e24678"
+        },
+        {
+          "path": "assets/mechanism/gzh-design-skill.svg",
+          "sha256": "87f75e733b785b9663a202d0e03738df1d3267e9e886b008c0d1dd6bd670b208"
+        },
+        {
+          "path": "assets/mechanism/gzh-design-skill.zh.svg",
+          "sha256": "7ce6ba72aca513281b9e83af1f41443fd6ab169d5e7ef4c1be25c91f110cc8fa"
+        },
+        {
+          "path": "assets/health/gzh-design-skill.svg",
+          "sha256": "69ef3bfbc48b1590086c78fc0f755d96ff84107b7a0da6b69c13c2b3cafde501"
+        },
+        {
+          "path": "assets/health/gzh-design-skill.zh.svg",
+          "sha256": "4936466b0ce0b6e9c416e55e6f3c71eb906643c613d7f82d775e8abef5606621"
+        }
+      ]
+    }
+  ],
+  "known_gaps": [
+    "md2wechat two health-card images have disclosed template text overflow; no upstream runtime execution"
+  ]
+}

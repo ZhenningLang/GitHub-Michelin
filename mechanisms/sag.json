@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "doc", "en": "Document and input identity", "zh": "文档及输入身份", "kind": "input"},
+    {"id": "durable", "en": "Durable request; digest and cancellation", "zh": "持久请求、摘要和取消", "technique": [2]},
+    {"id": "index", "en": "Chunks, events and entity associations", "zh": "分块、事项及实体关联", "technique": [1]},
+    {"id": "query", "en": "Question and selected sources", "zh": "问题及所选信源", "kind": "input"},
+    {"id": "scope", "en": "Token check and request-local MCP scope", "zh": "令牌校验及请求局部 MCP 范围", "technique": [4]},
+    {"id": "expand", "en": "Precise event expansion and ranking", "zh": "精确事项扩展及排序", "technique": [1]},
+    {"id": "fallback", "en": "Optional non-JEV vector fallback", "zh": "可选的非 JEV 向量回退", "technique": [3]},
+    {"id": "chunks", "en": "Original chunks and actual-strategy stats", "zh": "原文分块及实际策略统计", "kind": "output", "technique": [3]},
+    {"id": "read", "en": "Cited answer or MCP evidence reads", "zh": "引用回答或 MCP 证据阅读", "kind": "output", "technique": [4]}
+  ],
+  "edges": [
+    {"from": "doc", "to": "durable"},
+    {"from": "durable", "to": "index"},
+    {"from": "query", "to": "scope", "en": "external MCP path", "zh": "外部 MCP 路径"},
+    {"from": "scope", "to": "expand"},
+    {"from": "index", "to": "expand"},
+    {"from": "expand", "to": "fallback", "en": "error, timeout or empty result", "zh": "出错、超时或没有结果", "style": "dashed"},
+    {"from": "expand", "to": "chunks"},
+    {"from": "fallback", "to": "chunks", "style": "dashed"},
+    {"from": "chunks", "to": "read"}
+  ],
+  "sources": [
+    "apps/api/sag_api/sag/incremental_processor.py:89–230 at d3c882e676a01f59b64b639880b2bfceaa504da6",
+    "apps/api/sag_api/sag/search_reader.py:145–393 at d3c882e676a01f59b64b639880b2bfceaa504da6",
+    "apps/api/sag_api/mcp/server.py and mount.py at d3c882e676a01f59b64b639880b2bfceaa504da6",
+    "zleap-sag 0.15.0 source distribution: modules/search/production.py:59–339"
+  ]
+}

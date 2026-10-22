@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "SAG does", "zh": "SAG 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone SAG and start the local application", "zh": "克隆 SAG 并启动本地应用", "code": "docker compose up -d --build"},
+    {"lane": "you", "en": "Create a local identity and configure generation and embedding models", "zh": "创建本地身份，配置生成与向量模型"},
+    {"lane": "you", "en": "Create a source and upload your documents", "zh": "创建信源并上传文档"},
+    {"lane": "them", "en": "Parse, index and extract knowledge in background jobs until Ready", "zh": "后台解析、索引和抽取知识，直到就绪", "component": {"en": "API + zleap-sag engine", "zh": "API 与 zleap-sag 引擎"}},
+    {"lane": "you", "en": "Select sources and ask a question in Precise mode", "zh": "选择信源，在精确模式提问"},
+    {"lane": "them", "en": "Expand and rank event candidates, then retrieve original chunks", "zh": "扩展并排序事项候选，再取回原文块", "component": {"en": "retrieval engine", "zh": "检索引擎"}},
+    {"lane": "them", "en": "Return a grounded answer with clickable source citations", "zh": "返回有依据的回答和可点开的原文引用", "component": {"en": "Agent chat", "zh": "Agent 问答"}}
+  ],
+  "value": {"en": "One uploaded corpus supports linked evidence search and cited answers without building a retrieval UI", "zh": "上传一次资料即可关联检索和引用问答，不必自建检索界面"},
+  "sources": [
+    "https://github.com/Zleap-AI/SAG/blob/d3c882e676a01f59b64b639880b2bfceaa504da6/README.md#quick-start-docker-self-hosted",
+    "https://github.com/Zleap-AI/SAG/blob/d3c882e676a01f59b64b639880b2bfceaa504da6/README.md#ask-with-citations",
+    "https://github.com/Zleap-AI/SAG/blob/d3c882e676a01f59b64b639880b2bfceaa504da6/apps/api/sag_api/sag/search_reader.py#L95-L114",
+    "zleap-sag 0.15.0 published source archive: src/zleap/sag/modules/search/production.py:239–339"
+  ]
+}

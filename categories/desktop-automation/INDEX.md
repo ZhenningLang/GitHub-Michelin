@@ -8,6 +8,7 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **Cua** | Use it when an agent must operate a whole computer — native desktop apps and OS dialogs, not just a web page — and the run should be isolated. | B (5/6) | [→](cua.md) |
+| **LCU** | Connect an existing coding harness to the installed ChatGPT app's desktop-control engine; requires the proprietary app and supported macOS/X11 Linux. | C (6/6) | [→](lcu.md) |
 | **PyAutoGUI** | Use it when a Python script must click and type into a GUI-only desktop app on Windows, macOS or Linux — but pixel/coordinate automation breaks silently on DPI, resolution or theme changes, needs a real display, and upstream has been quiet since 2023. | C (4/6) | [→](pyautogui.md) |
 | **Windows-MCP** | Use it when an agent in Claude/Codex/Gemini must click and type inside native Windows apps by control name (UI Automation tree), directly on your real session — no sandbox, PowerShell/registry tools on by default, telemetry on by default. | B (6/6) | [→](windows-mcp.md) |
 
@@ -16,6 +17,7 @@
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [Cua](cua.md) | ✅ | B (5/6) | Use it when an agent must operate a whole computer — native desktop apps and OS dialogs, not just a web page — and the run should be isolated. |
+| [LCU](lcu.md) | ✅ | C (6/6) | Reuses OpenAI's local engine through harness adapters, at the cost of private-runtime coupling and no VM provisioning. |
 | [PyAutoGUI](pyautogui.md) | ✅ | C (4/6) | Buys a dozen-line, cross-platform mouse/keyboard robot with no RPA platform to learn; costs brittleness, no headless mode, and no accessibility-tree awareness. |
 | [Windows-MCP](windows-mcp.md) | ✅ | B (6/6) | Buys one-line `uvx` setup and accessibility-tree element labels for any MCP agent; costs Windows-only reach, no isolation, and a young single-maintainer project. |
 | (alternatives named across the pages) | 未收录 | — | Substitutes referenced in each page's Comparison. |

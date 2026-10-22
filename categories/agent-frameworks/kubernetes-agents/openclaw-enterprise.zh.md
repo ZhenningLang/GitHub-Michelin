@@ -104,7 +104,7 @@ health:
 ## 何时不用
 
 - **你只有一个人或一个小团队、一个助手。** 文档专门强调 OCC 不能沿用核心网关“单操作者”的信任假设，这套机制正是为多操作者准备的；只有一个操作者时它纯属成本。直接跑 [OpenClaw](../agent-runtimes/personal-assistants/messaging-daemons/openclaw.zh.md)。
-- **你不跑 Kubernetes。** 能端到端部署 agent 的只有 Kubernetes 路径：Docker／Podman 的 Compose 配置只是控制面预览，官方文档明说它不能部署 Agent；SSH Compute 只能跑内嵌 OpenClaw，没有专用 Codex，也没有 OCC 托管的模型凭据。没有集群、只想协调几个 agent，用 [Paperclip](../../agent-tooling/supervision-surfaces/paperclip.zh.md)。
+- **你不跑 Kubernetes。** 能端到端部署 agent 的只有 Kubernetes 路径：Docker／Podman 的 Compose 配置只是控制面预览，官方文档明说它不能部署 Agent；SSH Compute 只能跑内嵌 OpenClaw，没有专用 Codex，也没有 OCC 托管的模型凭据。没有集群、只想协调几个 agent，用 [Paperclip](../../agent-tooling/supervision-surfaces/agent-cockpits/paperclip.zh.md)。
 - **你要把 agent 做成 Kubernetes 自定义资源、走 GitOps 评审。** OCC 的资源存在 PostgreSQL 里、挡在它自己的 API 和 IAM 后面，不在 etcd 里；`kubectl get` 看不到 Agent，Kubernetes RBAC 也替代不了它的授权。用 [kagent](kagent.zh.md)。
 - **你要自己写 agent 循环。** Harness 只能选 OpenClaw 或 Codex，没有给你写规划器的框架 API。用 [LangGraph](../agent-runtimes/agent-sdks/langgraph.zh.md)，再按需托管。
 - **你的会话大多是闲着的沙箱，账单花在密度上。** OCE 给每个 agent 版本开一个网关并一直运行，不会把空闲工作负载冻住再恢复。用跑在密度运行时上的 [AX](ax.zh.md)。
@@ -119,7 +119,7 @@ health:
 | [OpenClaw](../agent-runtimes/personal-assistants/messaging-daemons/openclaw.zh.md) | ✅ | 助手和它的凭据归一个操作者管，选原版 OpenClaw；多个团队的 OpenClaw agent 要在共享集群上各有身份、密钥和审计，选 OpenClaw Enterprise。 | OCE 在底下跑的就是 OpenClaw，不是替代它；多出来的是 IAM、版本和租户隔离，代价是 Kubernetes 集群、PostgreSQL 和一个还不成熟的控制面。 |
 | [kagent](kagent.zh.md) | ✅ | agent 要做成用 `kubectl` 和 GitOps 评审的 CRD、并在它的引擎上开发，选 kagent；agent 就是原版 OpenClaw／Codex、你要的是带细粒度 IAM 的控制台和 API，选 OCE。 | kagent 继承 Kubernetes RBAC 和 etcd；OCE 把状态放在 PostgreSQL、用自己的 IAM 和审计，Kubernetes 工具看不见。 |
 | [AX](ax.zh.md) | ✅ | 一大批短命、大多空闲的沙箱任务要声明和挂起，选 AX；数量较少、长期存在、有名字的 agent 需要按租户治理，选 OCE。 | AX 在 Agent Substrate 上优化密度、不带 agent；OCE 带 agent 运行时和治理，但每个网关一直开着。 |
-| [Paperclip](../../agent-tooling/supervision-surfaces/paperclip.zh.md) | ✅ | 独立创业者或小团队要一块能唤醒 agent、给它们封顶预算的任务板，选 Paperclip；组织要给 agent 做租户隔离、IAM 和可审计部署，选 OCE。 | Paperclip 轻、不需要 Kubernetes，但没有租户和 IAM 模型；OCE 有，但要求集群和运维能力。 |
+| [Paperclip](../../agent-tooling/supervision-surfaces/agent-cockpits/paperclip.zh.md) | ✅ | 独立创业者或小团队要一块能唤醒 agent、给它们封顶预算的任务板，选 Paperclip；组织要给 agent 做租户隔离、IAM 和可审计部署，选 OCE。 | Paperclip 轻、不需要 Kubernetes，但没有租户和 IAM 模型；OCE 有，但要求集群和运维能力。 |
 | NVIDIA NemoClaw | 未收录 | 重点是把 OpenClaw 类 agent 放进 OpenShell 沙箱、用托管推理让 agent 拿不到模型密钥，选 NemoClaw；重点是跨多个 agent 的多租户 IAM、版本和审计，选 OCE。本批次标签页收录未添加。 | NemoClaw 聚焦运行时沙箱和推理路径；OCE 自己的文档说，原版 OpenShell 目前给不了它专用路径所需的凭据和工作负载身份。 |
 
 ## 技术栈

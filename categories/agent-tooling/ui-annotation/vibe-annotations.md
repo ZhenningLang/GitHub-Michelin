@@ -120,7 +120,7 @@ Two components, mirroring the Pointa architecture it predates. The **Chrome exte
 | [Pointa](pointa.md) | ✅ | Choose Vibe for the post-fork feature set (watch mode, file sharing, AI-assisted annotations) and the installed base; choose Pointa when MIT is required or its backend-log capture is the dealmaker. | Continued development + community vs. license + server-log capture. |
 | [earmark](earmark.md) | ✅ | earmark serves the terminal-agent developer who wants greppable source truth and accepts a build plugin; Vibe serves the team that never wants to hear the word "plugin". Both young; Vibe measurably less so. | Code-locating precision vs. zero-code touch. |
 | [patch-mark](patch-mark.md) | ✅ | patch-mark wins where extension installs are banned (Firefox, managed Chrome) — two script lines work anywhere a custom element runs; Vibe wins where even that is too much, and brings real screenshot capture to the report. | Embed-anywhere vs. install-anywhere; untrusted-input discipline vs. Figma-UX familiarity. |
-| [Plannotator](../supervision-surfaces/plannotator.md) | ✅ | Orthogonal pair worth running together: Vibe captures "what's wrong on the page" from any teammate; Plannotator gates "what the agent is about to do" with your approval. | Sensor surface vs. approval gate. |
+| [Plannotator](../supervision-surfaces/human-review-gates/plannotator.md) | ✅ | Orthogonal pair worth running together: Vibe captures "what's wrong on the page" from any teammate; Plannotator gates "what the agent is about to do" with your approval. | Sensor surface vs. approval gate. |
 
 ## Tech stack
 

@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "hook", "en": "Project-hook declaration", "zh": "项目 Hook 声明", "kind": "input"},
+    {"id": "trust", "en": "Workspace identity and declaration digest", "zh": "工作区身份与声明摘要", "technique": [1]},
+    {"id": "dispatch", "en": "Recheck snapshot and security revision at dispatch", "zh": "派发时复核快照与安全版本", "technique": [1]},
+    {"id": "graph", "en": "Saved workflow graph", "zh": "已保存的工作流图", "kind": "input"},
+    {"id": "scheduler", "en": "Ready nodes within concurrency and error limits", "zh": "在并发与错误限制内调度就绪节点", "technique": [2]},
+    {"id": "artifacts", "en": "Node state, child sessions and response artifacts", "zh": "节点状态、子会话与回答产物", "kind": "output", "technique": [2]},
+    {"id": "memory", "en": "Memory model proposes calls from the main catalog", "zh": "记忆模型从主工具目录提出调用", "kind": "input", "technique": [3]},
+    {"id": "policy", "en": "Reject network and Agent; constrain mutations", "zh": "拒绝网络和 Agent，限制修改范围", "technique": [3]},
+    {"id": "md", "en": "Contained Markdown mutations or tool-error feedback", "zh": "目录内 Markdown 修改或工具错误反馈", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "hook", "to": "trust"},
+    {"from": "trust", "to": "dispatch", "en": "grant applies only to matching content", "zh": "授权只覆盖匹配内容"},
+    {"from": "graph", "to": "scheduler"},
+    {"from": "scheduler", "to": "artifacts"},
+    {"from": "artifacts", "to": "scheduler", "en": "resume", "zh": "恢复", "style": "dashed"},
+    {"from": "memory", "to": "policy"},
+    {"from": "policy", "to": "md"},
+    {"from": "md", "to": "memory", "en": "tool results enter the next turn", "zh": "工具结果进入下一轮"}
+  ],
+  "sources": [
+    "https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/apps/zcode-cli/packages/core/src/hooks/workspace-hook-runtime-admission.ts",
+    "https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/apps/zcode-cli/packages/core/src/workflow/scheduler.ts",
+    "https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/apps/zcode-cli/packages/core/src/memory/memory-agent-loop.ts"
+  ]
+}

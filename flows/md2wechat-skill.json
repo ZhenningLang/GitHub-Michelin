@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "md2wechat", "zh": "md2wechat"},
+  "steps": [
+    {"lane": "you", "en": "Install the pinned CLI and configure formatting API access", "zh": "安装固定版本，配置排版 API", "code": "npm install -g @geekjourneyx/md2wechat@3.8.0"},
+    {"lane": "you", "en": "Supply your Markdown article for local inspection", "zh": "提供 Markdown，先检查本地条件", "code": "md2wechat inspect article.md --json"},
+    {"lane": "them", "en": "Reports metadata, image checks and target-specific blockers", "zh": "报告元数据、图片检查和目标阻断项", "component": {"en": "inspect", "zh": "检查命令"}},
+    {"lane": "you", "en": "Request a reviewable HTML preview", "zh": "请求可审阅的 HTML 预览", "code": "md2wechat preview article.md --output preview.html"},
+    {"lane": "them", "en": "Calls the paid API and writes final HTML without uploading images", "zh": "调用付费 API，写入成品 HTML，不上传图片", "component": {"en": "API converter and preview", "zh": "API 转换与预览"}},
+    {"lane": "you", "en": "Review, configure WeChat access, re-inspect the draft target and authorize creation", "zh": "审稿，配置微信权限，复查草稿目标后授权创建", "code": "md2wechat convert article.md --draft --cover cover.jpg"},
+    {"lane": "them", "en": "Uploads article assets and cover, then creates an unpublished WeChat draft", "zh": "上传文章图片和封面，创建未发布微信草稿", "component": {"en": "publish service", "zh": "发布服务"}}
+  ],
+  "value": {"en": "A checked WeChat draft without manually assembling images and cover", "zh": "拿到检查过的微信排版草稿，不再手工拼装图片与封面"},
+  "sources": [
+    "https://github.com/geekjourneyx/md2wechat-skill/blob/a8e2900033e5c9ee152a629e108fe57228ba31e6/README.md#L80-L106",
+    "https://github.com/geekjourneyx/md2wechat-skill/blob/a8e2900033e5c9ee152a629e108fe57228ba31e6/skills/md2wechat/SKILL.md#L113-L123",
+    "https://github.com/geekjourneyx/md2wechat-skill/blob/a8e2900033e5c9ee152a629e108fe57228ba31e6/internal/publish/service.go#L110-L173"
+  ]
+}

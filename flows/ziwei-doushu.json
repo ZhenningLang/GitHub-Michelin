@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Ziwei Doushu", "zh": "Ziwei Doushu"},
+  "steps": [
+    {"lane": "you", "en": "Clone the repository, install dependencies and start the demo", "zh": "克隆仓库、安装依赖并启动演示", "code": "npm run dev"},
+    {"lane": "you", "en": "Open /chart and submit birth date, clock time and gender", "zh": "打开排盘页，提交出生日期、时间与性别", "code": "/chart"},
+    {"lane": "them", "en": "Convert the demo input and generate a chart locally", "zh": "转换演示输入，在本地生成命盘", "component": {"en": "BirthForm + chart engine", "zh": "出生表单与排盘引擎"}},
+    {"lane": "them", "en": "Draw the twelve compartments and selectable star details", "zh": "画出十二宫，提供可点选的星曜详情", "component": {"en": "ChartBoard + InsightPanel", "zh": "命盘与详情面板"}}
+  ],
+  "value": {"en": "Inspect a traditional chart without writing the engine or supplying an AI key", "zh": "不用重写排盘引擎或提供 AI 密钥，即可查看传统命盘"},
+  "sources": [
+    "https://github.com/Renhuai123/ziwei-doushu/blob/1059c347231c636bd86ddb78fd8ed430d5de8d2a/README.md#L258-L284",
+    "https://github.com/Renhuai123/ziwei-doushu/blob/1059c347231c636bd86ddb78fd8ed430d5de8d2a/app/chart/page.tsx#L26-L71",
+    "https://github.com/Renhuai123/ziwei-doushu/blob/1059c347231c636bd86ddb78fd8ed430d5de8d2a/components/BirthForm.tsx#L142-L149"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "library", "en": "Theme and shared components", "zh": "主题与通用组件", "kind": "input", "technique": [1]},
+    {"id": "source_check", "en": "Check source HTML blocks", "zh": "检查源头 HTML 块", "technique": [2]},
+    {"id": "article", "en": "Existing article", "zh": "已有文章", "kind": "input"},
+    {"id": "assemble", "en": "Agent follows recipe", "zh": "助手按配方装配", "technique": [1]},
+    {"id": "validate", "en": "Fragment rule checks", "zh": "正文规则检查", "technique": [2]},
+    {"id": "copy", "en": "Preview copies article HTML", "zh": "预览复制正文 HTML", "technique": [3]},
+    {"id": "wechat", "en": "Manual WeChat paste", "zh": "手动粘进微信", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "library", "to": "source_check", "en": "library maintenance", "zh": "维护组件库时"},
+    {"from": "source_check", "to": "assemble"},
+    {"from": "article", "to": "assemble"},
+    {"from": "assemble", "to": "validate"},
+    {"from": "validate", "to": "copy", "en": "host repairs findings", "zh": "宿主修复检查结果"},
+    {"from": "copy", "to": "wechat", "en": "user clicks and pastes", "zh": "用户点击并粘贴"}
+  ],
+  "sources": [
+    "https://github.com/isjiamu/gzh-design-skill/blob/750a50dffdc4abb5e853b98136dad13a57e64ce3/SKILL.md#L39-L98",
+    "https://github.com/isjiamu/gzh-design-skill/blob/750a50dffdc4abb5e853b98136dad13a57e64ce3/scripts/component_lint.py#L43-L63",
+    "https://github.com/isjiamu/gzh-design-skill/blob/750a50dffdc4abb5e853b98136dad13a57e64ce3/scripts/validate_gzh_html.py#L112-L186",
+    "https://github.com/isjiamu/gzh-design-skill/blob/750a50dffdc4abb5e853b98136dad13a57e64ce3/assets/preview-template.html#L39-L78"
+  ]
+}

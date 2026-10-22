@@ -8,12 +8,15 @@
 
 | 分类 | 何时进来 | 路由 |
 |---|---|---|
+| **android-system-services** | 替换或集成安卓系统服务接口，解决应用兼容问题，不是界面自动化。 | [→](categories/android-system-services/INDEX.zh.md) |
+| **traditional-divination** | 检查传统排盘规则与文化学习数据，不作科学预测。 | [→](categories/traditional-divination/INDEX.zh.md) |
 | **legal-documents** | 复用法律模板并准备可审阅合同初稿，不提供法律意见。 | [→](categories/legal-documents/INDEX.zh.md) |
 | **travel-planning** | 通过领域专用适配器查询铁路余票、中转与出行信息。 | [→](categories/travel-planning/INDEX.zh.md) |
 | **agent-tooling** | 为 AI 编码 agent 选「任务/工作追踪、持久记忆、agent 状态」，以及 agent 把控制权交还给你的人审/批准界面。 | [→](categories/agent-tooling/INDEX.zh.md) |
 | **sandboxing** | 隔离不可信代码与 agent 生成代码——虚拟机／内核级隔离运行时，以及建在其上的沙箱平台。 | [→](categories/sandboxing/INDEX.zh.md) |
 | **serverless** | 自己运维的 Kubernetes 原生 serverless／缩容到零服务层。 | [→](categories/serverless/INDEX.zh.md) |
 | **document-management** | 选「文档归档/OCR/打标签/全文检索」系统。 | [→](categories/document-management/INDEX.zh.md) |
+| **content-management** | 给网站编辑提供后台、内容模型、媒体和发布流程。 | [→](categories/content-management/INDEX.zh.md) |
 | **on-device-ml** | 选「在端侧/边缘设备（手机、笔记本、IoT）本地跑模型」的运行时。 | [→](categories/on-device-ml/INDEX.zh.md) |
 | **function-calling** | 选「把自然语言请求变成受 schema 约束的工具/函数调用」的模型与服务栈。 | [→](categories/function-calling/INDEX.zh.md) |
 | **web-automation** | 选「驱动/自动化 Web 界面」的工具——浏览器自动化，或页内自然语言 GUI agent。 | [→](categories/web-automation/INDEX.zh.md) |

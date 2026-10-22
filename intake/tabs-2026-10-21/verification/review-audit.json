@@ -1,0 +1,4250 @@
+{
+  "frozen_public_head": "249c4be0239f3d240cc165bffd02bae7d5e19b03",
+  "manifest_files": 320,
+  "effective_reviewed": 320,
+  "unreviewed": 0,
+  "groups": [
+    {
+      "group": "A",
+      "reviewed_head": "249c4be0239f3d240cc165bffd02bae7d5e19b03",
+      "worker_coverage": {
+        "total_files": 64,
+        "read_count": 64,
+        "reviewed": [
+          {
+            "path": "categories/social-media-management/md2wechat-skill.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/social-media-management/md2wechat-skill.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/meeting-intelligence/biscotti.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/meeting-intelligence/biscotti.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/rag-retrieval/structured-retrieval/sag.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/rag-retrieval/structured-retrieval/sag.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/game-dev/unity-mcp.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/game-dev/unity-mcp.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/databases/database-engines/kividb.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/databases/database-engines/kividb.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/founderos.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/founderos.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/desktop-automation/lcu.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/desktop-automation/lcu.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/nezha.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/nezha.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/social-media-management/twitter-cli.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/social-media-management/twitter-cli.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/android-system-services/microg-gmscore.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/android-system-services/microg-gmscore.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/traditional-divination/ziwei-doushu.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/traditional-divination/ziwei-doushu.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/zcode.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/zcode.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/content-management/emdash.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/content-management/emdash.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/document-parsing/oxr.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/document-parsing/oxr.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/agent-skills/engineering/awesome-gamedev-agent-skills.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/agent-skills/engineering/awesome-gamedev-agent-skills.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/agent-skills/security/leanrea.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/agent-skills/security/leanrea.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "mechanisms/biscotti.json",
+            "status": "A"
+          },
+          {
+            "path": "mechanisms/md2wechat-skill.json",
+            "status": "A"
+          },
+          {
+            "path": "mechanisms/founderos.json",
+            "status": "A"
+          },
+          {
+            "path": "mechanisms/sag.json",
+            "status": "A"
+          },
+          {
+            "path": "mechanisms/nezha.json",
+            "status": "A"
+          },
+          {
+            "path": "mechanisms/zcode.json",
+            "status": "A"
+          },
+          {
+            "path": "mechanisms/emdash.json",
+            "status": "A"
+          },
+          {
+            "path": "mechanisms/unity-mcp.json",
+            "status": "A"
+          },
+          {
+            "path": "mechanisms/kividb.json",
+            "status": "A"
+          },
+          {
+            "path": "mechanisms/microg-gmscore.json",
+            "status": "A"
+          },
+          {
+            "path": "mechanisms/twitter-cli.json",
+            "status": "A"
+          },
+          {
+            "path": "mechanisms/lcu.json",
+            "status": "A"
+          },
+          {
+            "path": "mechanisms/oxr.json",
+            "status": "A"
+          },
+          {
+            "path": "mechanisms/awesome-gamedev-agent-skills.json",
+            "status": "A"
+          },
+          {
+            "path": "mechanisms/ziwei-doushu.json",
+            "status": "A"
+          },
+          {
+            "path": "mechanisms/leanrea.json",
+            "status": "A"
+          },
+          {
+            "path": "flows/sag.json",
+            "status": "A"
+          },
+          {
+            "path": "flows/biscotti.json",
+            "status": "A"
+          },
+          {
+            "path": "flows/md2wechat-skill.json",
+            "status": "A"
+          },
+          {
+            "path": "flows/founderos.json",
+            "status": "A"
+          },
+          {
+            "path": "flows/kividb.json",
+            "status": "A"
+          },
+          {
+            "path": "flows/microg-gmscore.json",
+            "status": "A"
+          },
+          {
+            "path": "flows/nezha.json",
+            "status": "A"
+          },
+          {
+            "path": "flows/unity-mcp.json",
+            "status": "A"
+          },
+          {
+            "path": "flows/zcode.json",
+            "status": "A"
+          },
+          {
+            "path": "flows/awesome-gamedev-agent-skills.json",
+            "status": "A"
+          },
+          {
+            "path": "flows/leanrea.json",
+            "status": "A"
+          },
+          {
+            "path": "flows/oxr.json",
+            "status": "A"
+          },
+          {
+            "path": "flows/twitter-cli.json",
+            "status": "A"
+          },
+          {
+            "path": "flows/ziwei-doushu.json",
+            "status": "A"
+          },
+          {
+            "path": "flows/emdash.json",
+            "status": "A"
+          },
+          {
+            "path": "flows/lcu.json",
+            "status": "A"
+          }
+        ],
+        "skipped": [],
+        "percent": 100,
+        "context_exhausted": false
+      },
+      "parent_supplement": [],
+      "effective_read_count": 64,
+      "coverage_note": "worker coverage identity verified"
+    },
+    {
+      "group": "B",
+      "reviewed_head": "249c4be0239f3d240cc165bffd02bae7d5e19b03",
+      "worker_coverage": {
+        "total_files": 96,
+        "read_count": 96,
+        "reviewed": [
+          {
+            "path": "assets/health/awesome-gamedev-agent-skills.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/awesome-gamedev-agent-skills.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/emdash.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/emdash.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/founderos.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/founderos.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/kividb.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/kividb.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/lcu.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/lcu.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/leanrea.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/leanrea.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/md2wechat-skill.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/md2wechat-skill.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/microg-gmscore.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/microg-gmscore.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/nezha.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/nezha.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/sag.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/sag.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/twitter-cli.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/twitter-cli.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/unity-mcp.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/unity-mcp.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/zcode.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/zcode.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/ziwei-doushu.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/ziwei-doushu.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/biscotti.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/biscotti.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/oxr.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/health/oxr.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/md2wechat-skill.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/sag.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/md2wechat-skill.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/founderos.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/sag.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/awesome-gamedev-agent-skills.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/kividb.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/lcu.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/founderos.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/nezha.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/oxr.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/zcode.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/biscotti.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/unity-mcp.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/leanrea.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/awesome-gamedev-agent-skills.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/kividb.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/lcu.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/oxr.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/zcode.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/biscotti.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/unity-mcp.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/emdash.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/leanrea.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/microg-gmscore.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/nezha.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/twitter-cli.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/ziwei-doushu.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/twitter-cli.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/emdash.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/ziwei-doushu.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/flow/microg-gmscore.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/md2wechat-skill.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/md2wechat-skill.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/biscotti.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/biscotti.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/microg-gmscore.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/microg-gmscore.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/nezha.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/nezha.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/founderos.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/founderos.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/lcu.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/lcu.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/twitter-cli.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/twitter-cli.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/zcode.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/zcode.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/sag.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/sag.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/awesome-gamedev-agent-skills.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/awesome-gamedev-agent-skills.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/emdash.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/emdash.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/unity-mcp.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/unity-mcp.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/ziwei-doushu.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/ziwei-doushu.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/kividb.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/kividb.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/oxr.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/oxr.zh.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/leanrea.svg",
+            "status": "A"
+          },
+          {
+            "path": "assets/mechanism/leanrea.zh.svg",
+            "status": "A"
+          }
+        ],
+        "skipped": [],
+        "percent": 100,
+        "context_exhausted": false
+      },
+      "parent_supplement": [],
+      "effective_read_count": 96,
+      "coverage_note": "worker coverage identity verified"
+    },
+    {
+      "group": "C",
+      "reviewed_head": "249c4be0239f3d240cc165bffd02bae7d5e19b03",
+      "worker_coverage": {
+        "total_files": 112,
+        "read_count": 112,
+        "reviewed": [
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/aider.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/aider.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/freebuff.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/freebuff.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/letta-code.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/letta-code.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/codex.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/codex.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/prime-agent.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/prime-agent.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/gemini-cli.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/gemini-cli.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/agor.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/agor.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/hermes-workspace.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/hermes-workspace.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/dsh-tui.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/dsh-tui.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/human-review-gates/whiteboard.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/human-review-gates/whiteboard.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/pi.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/pi.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/pi-web.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/pi-web.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/human-review-gates/sphinx.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/human-review-gates/sphinx.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/oh-my-openagent.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/oh-my-openagent.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/opencode.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/opencode.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/claudecodeui.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/claudecodeui.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/human-review-gates/plannotator.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/human-review-gates/plannotator.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/open-interpreter.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/open-interpreter.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/t3code.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/t3code.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/ekko-studio.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/ekko-studio.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/paperclip.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/paperclip.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/agent-multiplexers/herdr.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/agent-multiplexers/herdr.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/openchamber.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/openchamber.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/openhands.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/openhands.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/swe-agent.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/swe-agent.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/openclaw.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/openclaw.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/maka.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/maka.zh.md",
+            "status": "R"
+          },
+          {
+            "path": "categories/agent-dev-methodology/study-and-experiments/claude-reviews-claude.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-dev-methodology/study-and-experiments/claude-reviews-claude.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/agent-runtimes/agent-services/open-dots.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/agent-runtimes/agent-services/open-dots.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/agent-multiplexers/cmux.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/agent-multiplexers/cmux.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/codex-plugin-cc.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/codex-plugin-cc.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/scion.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/scion.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-memory/app-memory/letta.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-memory/app-memory/letta.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/video-production/open-creator.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/video-production/open-creator.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/agent-runtimes/agent-sdks/harness-sdk.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/agent-runtimes/agent-sdks/harness-sdk.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/agent-runtimes/personal-assistants/openmausbot.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/agent-runtimes/personal-assistants/openmausbot.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/agent-runtimes/personal-assistants/rakazo.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/agent-runtimes/personal-assistants/rakazo.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/background-agents.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/background-agents.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/cc-switch.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-tooling/ui-annotation/agentation.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-tooling/ui-annotation/agentation.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-tooling/ui-annotation/patch-mark.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-tooling/ui-annotation/patch-mark.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/deep-research/openscience.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/deep-research/openscience.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/terminal-ui/tmux.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/terminal-ui/tmux.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/agent-multiplexers/tuios.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/agent-multiplexers/tuios.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/ide-agents/cline.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/ide-agents/cline.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/ide-agents/continue.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/ide-agents/continue.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/openresearch.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-memory/app-memory/langmem.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-memory/app-memory/langmem.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-memory/coding-agent-memory/claude-subconscious.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-memory/coding-agent-memory/claude-subconscious.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-tooling/session-history/dsh-context.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-tooling/session-history/dsh-context.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-tooling/ui-annotation/vibe-annotations.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-tooling/ui-annotation/vibe-annotations.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/ml-research/context-language-models.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/ml-research/context-language-models.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/terminal-ui/zellij.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/terminal-ui/zellij.zh.md",
+            "status": "M"
+          }
+        ],
+        "skipped": [],
+        "percent": 100.0,
+        "context_exhausted": false
+      },
+      "parent_supplement": [],
+      "effective_read_count": 112,
+      "coverage_note": "worker coverage identity verified"
+    },
+    {
+      "group": "D",
+      "reviewed_head": "249c4be0239f3d240cc165bffd02bae7d5e19b03",
+      "worker_coverage": {
+        "total_files": 48,
+        "read_count": 46,
+        "reviewed": [
+          {
+            "path": "intake/tabs-2026-10-21/report/summary.md",
+            "status": "A"
+          },
+          {
+            "path": "reports/repo-page-index.csv",
+            "status": "M"
+          },
+          {
+            "path": "intake/tabs-2026-10-21/proposals.md",
+            "status": "A"
+          },
+          {
+            "path": "reports/unindexed-project-mentions.csv",
+            "status": "M"
+          },
+          {
+            "path": "intake/tabs-2026-10-21/plan.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/INDEX.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/INDEX.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/INDEX.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/INDEX.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/INDEX.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/INDEX.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "intake/tabs-2026-10-21/ledger.md",
+            "status": "A"
+          },
+          {
+            "path": "intake/tabs-2026-10-21/existing-summary.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/human-review-gates/INDEX.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/agent-tooling/supervision-surfaces/human-review-gates/INDEX.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/INDEX.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/INDEX.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/INDEX.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/INDEX.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/android-system-services/INDEX.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/android-system-services/INDEX.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/content-management/INDEX.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/content-management/INDEX.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/traditional-divination/INDEX.md",
+            "status": "A"
+          },
+          {
+            "path": "categories/traditional-divination/INDEX.zh.md",
+            "status": "A"
+          },
+          {
+            "path": "reports/project-intake-backlog.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/game-dev/INDEX.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/game-dev/INDEX.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/social-media-management/INDEX.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/social-media-management/INDEX.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "INDEX.md",
+            "status": "M"
+          },
+          {
+            "path": "INDEX.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-skills/engineering/INDEX.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-skills/engineering/INDEX.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-skills/security/INDEX.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/agent-skills/security/INDEX.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/databases/database-engines/INDEX.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/databases/database-engines/INDEX.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/desktop-automation/INDEX.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/desktop-automation/INDEX.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/document-parsing/INDEX.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/document-parsing/INDEX.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/meeting-intelligence/INDEX.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/meeting-intelligence/INDEX.zh.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/rag-retrieval/structured-retrieval/INDEX.md",
+            "status": "M"
+          },
+          {
+            "path": "categories/rag-retrieval/structured-retrieval/INDEX.zh.md",
+            "status": "M"
+          }
+        ],
+        "skipped": [
+          {
+            "path": "README.md",
+            "status": "M",
+            "reason": "部分审阅，不能计作完整覆盖。Read 已连续读取 1–391 行；全文件定向 Grep 返回本批新增及迁移相关的 39 个完整表格行，已审查这些行。文件共 1630 行，392–1630 未完整读取；没有完成全文件解析。用户禁止 CLI，未运行本地解析器或 git diff，亦未取得冻结 base..head 的逐行 diff；须由主流程补读及对账。"
+          },
+          {
+            "path": "README.zh.md",
+            "status": "M",
+            "reason": "部分审阅，不能计作完整覆盖。Read 已连续读取 1–390 行；全文件定向 Grep 返回本批新增及迁移相关的 39 个完整表格行，已审查这些行。文件共 1611 行，391–1611 未完整读取；没有完成全文件解析。用户禁止 CLI，未运行本地解析器或 git diff，亦未取得冻结 base..head 的逐行 diff；须由主流程补读及对账。"
+          }
+        ],
+        "percent": 95.83333333333334,
+        "context_exhausted": false
+      },
+      "parent_supplement": [
+        {
+          "path": "README.md",
+          "status": "M"
+        },
+        {
+          "path": "README.zh.md",
+          "status": "M"
+        }
+      ],
+      "effective_read_count": 48,
+      "coverage_note": "D original 46/48 retained; parent fully parsed both READMEs and reviewed changed rows"
+    }
+  ],
+  "file_ledger": [
+    {
+      "path": "categories/social-media-management/md2wechat-skill.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/social-media-management/md2wechat-skill.zh.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/meeting-intelligence/biscotti.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/meeting-intelligence/biscotti.zh.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/rag-retrieval/structured-retrieval/sag.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/rag-retrieval/structured-retrieval/sag.zh.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/game-dev/unity-mcp.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/game-dev/unity-mcp.zh.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/databases/database-engines/kividb.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/databases/database-engines/kividb.zh.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/founderos.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/founderos.zh.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/desktop-automation/lcu.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/desktop-automation/lcu.zh.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/nezha.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/nezha.zh.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/social-media-management/twitter-cli.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/social-media-management/twitter-cli.zh.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/android-system-services/microg-gmscore.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/android-system-services/microg-gmscore.zh.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/traditional-divination/ziwei-doushu.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/traditional-divination/ziwei-doushu.zh.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/zcode.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/zcode.zh.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/content-management/emdash.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/content-management/emdash.zh.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/document-parsing/oxr.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/document-parsing/oxr.zh.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-skills/engineering/awesome-gamedev-agent-skills.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-skills/engineering/awesome-gamedev-agent-skills.zh.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-skills/security/leanrea.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-skills/security/leanrea.zh.md",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "mechanisms/biscotti.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "mechanisms/md2wechat-skill.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "mechanisms/founderos.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "mechanisms/sag.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "mechanisms/nezha.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "mechanisms/zcode.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "mechanisms/emdash.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "mechanisms/unity-mcp.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "mechanisms/kividb.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "mechanisms/microg-gmscore.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "mechanisms/twitter-cli.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "mechanisms/lcu.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "mechanisms/oxr.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "mechanisms/awesome-gamedev-agent-skills.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "mechanisms/ziwei-doushu.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "mechanisms/leanrea.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "flows/sag.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "flows/biscotti.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "flows/md2wechat-skill.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "flows/founderos.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "flows/kividb.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "flows/microg-gmscore.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "flows/nezha.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "flows/unity-mcp.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "flows/zcode.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "flows/awesome-gamedev-agent-skills.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "flows/leanrea.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "flows/oxr.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "flows/twitter-cli.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "flows/ziwei-doushu.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "flows/emdash.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "flows/lcu.json",
+      "status": "A",
+      "group": "A",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/awesome-gamedev-agent-skills.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/awesome-gamedev-agent-skills.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/emdash.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/emdash.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/founderos.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/founderos.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/kividb.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/kividb.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/lcu.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/lcu.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/leanrea.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/leanrea.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/md2wechat-skill.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/md2wechat-skill.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/microg-gmscore.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/microg-gmscore.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/nezha.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/nezha.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/sag.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/sag.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/twitter-cli.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/twitter-cli.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/unity-mcp.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/unity-mcp.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/zcode.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/zcode.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/ziwei-doushu.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/ziwei-doushu.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/biscotti.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/biscotti.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/oxr.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/health/oxr.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/md2wechat-skill.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/sag.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/md2wechat-skill.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/founderos.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/sag.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/awesome-gamedev-agent-skills.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/kividb.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/lcu.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/founderos.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/nezha.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/oxr.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/zcode.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/biscotti.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/unity-mcp.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/leanrea.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/awesome-gamedev-agent-skills.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/kividb.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/lcu.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/oxr.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/zcode.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/biscotti.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/unity-mcp.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/emdash.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/leanrea.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/microg-gmscore.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/nezha.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/twitter-cli.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/ziwei-doushu.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/twitter-cli.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/emdash.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/ziwei-doushu.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/flow/microg-gmscore.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/md2wechat-skill.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/md2wechat-skill.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/biscotti.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/biscotti.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/microg-gmscore.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/microg-gmscore.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/nezha.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/nezha.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/founderos.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/founderos.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/lcu.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/lcu.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/twitter-cli.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/twitter-cli.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/zcode.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/zcode.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/sag.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/sag.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/awesome-gamedev-agent-skills.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/awesome-gamedev-agent-skills.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/emdash.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/emdash.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/unity-mcp.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/unity-mcp.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/ziwei-doushu.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/ziwei-doushu.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/kividb.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/kividb.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/oxr.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/oxr.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/leanrea.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "assets/mechanism/leanrea.zh.svg",
+      "status": "A",
+      "group": "B",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/aider.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/aider.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/freebuff.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/freebuff.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/letta-code.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/letta-code.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/codex.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/codex.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/prime-agent.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/prime-agent.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/gemini-cli.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/gemini-cli.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/agor.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/agor.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/hermes-workspace.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/hermes-workspace.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/dsh-tui.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/dsh-tui.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/human-review-gates/whiteboard.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/human-review-gates/whiteboard.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/pi.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/pi.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/pi-web.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/pi-web.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/human-review-gates/sphinx.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/human-review-gates/sphinx.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/oh-my-openagent.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/oh-my-openagent.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/opencode.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/opencode.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/claudecodeui.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/claudecodeui.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/human-review-gates/plannotator.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/human-review-gates/plannotator.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/open-interpreter.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/open-interpreter.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/t3code.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/t3code.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/ekko-studio.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/ekko-studio.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/paperclip.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/paperclip.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/agent-multiplexers/herdr.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/agent-multiplexers/herdr.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/openchamber.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/openchamber.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/openhands.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/openhands.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/swe-agent.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/swe-agent.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/openclaw.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/openclaw.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/maka.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/maka.zh.md",
+      "status": "R",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-dev-methodology/study-and-experiments/claude-reviews-claude.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-dev-methodology/study-and-experiments/claude-reviews-claude.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/agent-runtimes/agent-services/open-dots.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/agent-runtimes/agent-services/open-dots.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/agent-multiplexers/cmux.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/agent-multiplexers/cmux.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/codex-plugin-cc.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/codex-plugin-cc.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/scion.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/scion.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-memory/app-memory/letta.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-memory/app-memory/letta.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/video-production/open-creator.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/video-production/open-creator.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/agent-runtimes/agent-sdks/harness-sdk.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/agent-runtimes/agent-sdks/harness-sdk.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/agent-runtimes/personal-assistants/openmausbot.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/agent-runtimes/personal-assistants/openmausbot.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/agent-runtimes/personal-assistants/rakazo.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/agent-runtimes/personal-assistants/rakazo.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/background-agents.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/background-agents.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/cc-switch.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/ui-annotation/agentation.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/ui-annotation/agentation.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/ui-annotation/patch-mark.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/ui-annotation/patch-mark.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/deep-research/openscience.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/deep-research/openscience.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/terminal-ui/tmux.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/terminal-ui/tmux.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/agent-multiplexers/tuios.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/agent-multiplexers/tuios.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/ide-agents/cline.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/ide-agents/cline.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/ide-agents/continue.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/ide-agents/continue.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/openresearch.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-memory/app-memory/langmem.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-memory/app-memory/langmem.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-memory/coding-agent-memory/claude-subconscious.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-memory/coding-agent-memory/claude-subconscious.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/session-history/dsh-context.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/session-history/dsh-context.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/ui-annotation/vibe-annotations.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/ui-annotation/vibe-annotations.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/ml-research/context-language-models.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/ml-research/context-language-models.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/terminal-ui/zellij.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/terminal-ui/zellij.zh.md",
+      "status": "M",
+      "group": "C",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "intake/tabs-2026-10-21/report/summary.md",
+      "status": "A",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "README.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "parent supplement: full-file parsing, routing/new facts and baseline preservation"
+    },
+    {
+      "path": "README.zh.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "parent supplement: full-file parsing, routing/new facts and baseline preservation"
+    },
+    {
+      "path": "reports/repo-page-index.csv",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "intake/tabs-2026-10-21/proposals.md",
+      "status": "A",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "reports/unindexed-project-mentions.csv",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "intake/tabs-2026-10-21/plan.md",
+      "status": "A",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/INDEX.md",
+      "status": "A",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/INDEX.zh.md",
+      "status": "A",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/INDEX.md",
+      "status": "A",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/agent-cockpits/INDEX.zh.md",
+      "status": "A",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/INDEX.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/INDEX.zh.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "intake/tabs-2026-10-21/ledger.md",
+      "status": "A",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "intake/tabs-2026-10-21/existing-summary.md",
+      "status": "A",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/human-review-gates/INDEX.md",
+      "status": "A",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-tooling/supervision-surfaces/human-review-gates/INDEX.zh.md",
+      "status": "A",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/INDEX.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/INDEX.zh.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/INDEX.md",
+      "status": "A",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/INDEX.zh.md",
+      "status": "A",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/android-system-services/INDEX.md",
+      "status": "A",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/android-system-services/INDEX.zh.md",
+      "status": "A",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/content-management/INDEX.md",
+      "status": "A",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/content-management/INDEX.zh.md",
+      "status": "A",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/traditional-divination/INDEX.md",
+      "status": "A",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/traditional-divination/INDEX.zh.md",
+      "status": "A",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "reports/project-intake-backlog.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/game-dev/INDEX.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/game-dev/INDEX.zh.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/social-media-management/INDEX.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/social-media-management/INDEX.zh.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "INDEX.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "INDEX.zh.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-skills/engineering/INDEX.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-skills/engineering/INDEX.zh.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-skills/security/INDEX.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/agent-skills/security/INDEX.zh.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/databases/database-engines/INDEX.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/databases/database-engines/INDEX.zh.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/desktop-automation/INDEX.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/desktop-automation/INDEX.zh.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/document-parsing/INDEX.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/document-parsing/INDEX.zh.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/meeting-intelligence/INDEX.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/meeting-intelligence/INDEX.zh.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/rag-retrieval/structured-retrieval/INDEX.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    },
+    {
+      "path": "categories/rag-retrieval/structured-retrieval/INDEX.zh.md",
+      "status": "M",
+      "group": "D",
+      "state": "reviewed",
+      "evidence": "worker full-file review"
+    }
+  ],
+  "findings": [
+    {
+      "priority": "P2",
+      "path": "assets/health/md2wechat-skill.svg",
+      "line": 93,
+      "title": "长许可封顶原因超出健康图的右栏",
+      "exact_diff_quote": "<text x=\"498\" y=\"252\" font-size=\"11\" letter-spacing=\"3\" fill=\"#E8C45A\" font-family=\"'Arial Black','Helvetica Neue',Arial,sans-serif\" font-weight=\"900\">OVERALL   source-available/no-license: NOASSERTION</text>",
+      "why": "该行从 x=498 起写在宽 820 的画布中，右栏只剩 322。标签和长 cap_reason 共用不换行文本，后面还有同高度的 AXES 标签。中文版第 93 行有同一根因。用户交接已确认两张 PNG 视觉 partial。本轮独立核对了完整 XML、坐标、长文本和冻结模板；没有冒称重新看过 PNG。影响仅限图中文字展示；许可字段、NOASSERTION 标志和正文未丢失，因此不升级阻断。",
+      "suggestion": "作为已知 P2 记录。后续改共享生成模板，让原因换行或独占说明区，再重生成两张图并检查 PNG。不要改自动评分、删许可事实，或手改 SVG 伪造结果。",
+      "confidence": 10
+    }
+  ],
+  "pass2_disposition": [
+    {
+      "finding": 1,
+      "status": "accepted-known-P2-backlog",
+      "reason": "Main inspected actual PNG; duplicate EN/ZH overflow root cause, no score or license-field data loss. No generated SVG hand edits or gate weakening."
+    }
+  ],
+  "parent_readme_audit": [
+    {
+      "path": "README.md",
+      "status": "M",
+      "source": "parent full-file machine parsing plus changed-row review",
+      "bytes": 377287,
+      "lines": 1630,
+      "sha256": "035cfed1064b729aab6c593b98552f6745954df15e3934a8144791421dda66e2",
+      "project_rows_checked": 947,
+      "canonical_pages_covered": 947,
+      "added_diff_lines": 54,
+      "frozen_head": "249c4be0239f3d240cc165bffd02bae7d5e19b03",
+      "baseline_license_drift": [
+        {
+          "line": 74,
+          "page": "categories/agent-tooling/work-state/token-optimizer.md",
+          "frontmatter_license": "PolyForm-Noncommercial-1.0.0",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 237,
+          "page": "categories/agent-frameworks/workflow-builders/harness2.md",
+          "frontmatter_license": "Apache-2.0 (core) + Custom Tencent (bundled WorkBuddy runner; EU limitation)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 282,
+          "page": "categories/agent-frameworks/agent-runtimes/agent-services/open-dots.md",
+          "frontmatter_license": "NONE (no LICENSE file in the current tree — all rights reserved; the repo description claims MIT)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 304,
+          "page": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/oh-my-openagent.md",
+          "frontmatter_license": "SUL-1.0 (source-available, non-OSI)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 382,
+          "page": "categories/rag-retrieval/code-intelligence/graphify.md",
+          "frontmatter_license": "Apache-2.0",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 467,
+          "page": "categories/dev-utilities/ops-infra/harness-open-source.md",
+          "frontmatter_license": "Apache-2.0 (root); PolyForm-Shield-1.0.0 and PolyForm-Free-Trial-1.0.0 (selected files)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 500,
+          "page": "categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/netwasm.md",
+          "frontmatter_license": "NOASSERTION (NetWasm Community License 1.0 on compiler tooling; MIT on CoreLib/runtime/templates)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 519,
+          "page": "categories/api-gateway/litellm.md",
+          "frontmatter_license": "MIT (core) + enterprise/ commercial carve-out",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 540,
+          "page": "categories/team-chat/mattermost.md",
+          "frontmatter_license": "AGPL-3.0 (source) / MIT (Mattermost-built binaries)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 542,
+          "page": "categories/team-chat/rocket-chat.md",
+          "frontmatter_license": "MIT (Community Edition) + separate EE license",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 610,
+          "page": "categories/agent-skills/engineering/scientific-workflows/nature-skills.md",
+          "frontmatter_license": "Apache-2.0 (root); MIT (nature-downloader)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 679,
+          "page": "categories/agent-skills/vendor-collections/product-vendors/remotion-skills.md",
+          "frontmatter_license": "Not declared (no LICENSE file in repo)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 708,
+          "page": "categories/agent-skills/personal-collections/knowledge-content/ljg-skills.md",
+          "frontmatter_license": "MIT",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 790,
+          "page": "categories/document-parsing/any2html.md",
+          "frontmatter_license": "NONE",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 852,
+          "page": "categories/media-processing/jasna.md",
+          "frontmatter_license": "AGPL-3.0-only (default; LTX Community and proprietary component exceptions)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 853,
+          "page": "categories/media-processing/image-processing/tendedero.md",
+          "frontmatter_license": "MIT (code; name and icon excluded)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 913,
+          "page": "categories/llm-chat-ui/lobehub.md",
+          "frontmatter_license": "NOASSERTION (LobeHub Community License; commercial derivative distribution restricted)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 941,
+          "page": "categories/typesetting/quarkdown.md",
+          "frontmatter_license": "GPL-3.0 (core) / AGPL-3.0 (CLI and LSP)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 983,
+          "page": "categories/llm-inference/serving-engines/modular.md",
+          "frontmatter_license": "Apache-2.0 WITH LLVM-exception",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 1252,
+          "page": "categories/reading-tools/just-read.md",
+          "frontmatter_license": "GPL-3.0-only",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 1271,
+          "page": "categories/speech/index-tts.md",
+          "frontmatter_license": "NOASSERTION (bilibili Model Use License Agreement — custom, scale-capped, covers code and weights)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 1412,
+          "page": "categories/investment-finance/awesome-deep-trading.md",
+          "frontmatter_license": "MIT",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 1416,
+          "page": "categories/investment-finance/backtrader.md",
+          "frontmatter_license": "GPL-3.0-or-later",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 1427,
+          "page": "categories/education-tutoring/deeptutor.md",
+          "frontmatter_license": "Apache-2.0",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 1532,
+          "page": "categories/learning-resources/gpu-perf-engineering-resources.md",
+          "frontmatter_license": "MIT (declared in README; no LICENSE file)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 1542,
+          "page": "categories/model-editing/erisforge.md",
+          "frontmatter_license": "MIT (declared in README/pyproject; no LICENSE file)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 1617,
+          "page": "categories/hackintosh/nvidia-macos-driver.md",
+          "frontmatter_license": "PolyForm-Noncommercial-1.0.0 (plugin/, kexts/, build/, package/; source-available, non-OSI) + LGPL-3.0-or-later (translator/) + MIT (nvk/ Mesa patch); GSP firmware and NVVM libraries are NVIDIA binaries",
+          "baseline_unchanged": true
+        }
+      ],
+      "baseline_health_drift": [
+        {
+          "line": 1081,
+          "page": "categories/web-ui/component-libraries/tanstack-select.md",
+          "expected": "C (4/6)",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1287,
+          "page": "categories/web-scraping/article-extraction/readability-js.md",
+          "expected": "B (6/6)",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1288,
+          "page": "categories/web-scraping/article-extraction/python-readability.md",
+          "expected": "A (3/6)",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1289,
+          "page": "categories/web-scraping/article-extraction/dragnet.md",
+          "expected": "D (4/6)",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1290,
+          "page": "categories/web-scraping/article-extraction/boilerpipe.md",
+          "expected": "\"?\" (2/6)",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1291,
+          "page": "categories/web-scraping/crawling-tools/fuck-login.md",
+          "expected": "E (5/6)",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1292,
+          "page": "categories/web-scraping/crawling-tools/gopup.md",
+          "expected": "E (4/6)",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1293,
+          "page": "categories/web-scraping/crawling-tools/praw.md",
+          "expected": "B (5/6)",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1294,
+          "page": "categories/web-scraping/crawling-tools/scrapyd.md",
+          "expected": "B (5/6)",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1295,
+          "page": "categories/web-scraping/crawling-tools/spiderkeeper.md",
+          "expected": "E (3/6)",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1333,
+          "page": "categories/terminal-ui/rich.md",
+          "expected": "B (6/6)",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1334,
+          "page": "categories/terminal-ui/textual.md",
+          "expected": "B (6/6)",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1335,
+          "page": "categories/terminal-ui/tmux.md",
+          "expected": "A (6/6)",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1336,
+          "page": "categories/terminal-ui/zellij.md",
+          "expected": "A (6/6)",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1337,
+          "page": "categories/terminal-ui/pebrel.md",
+          "expected": "C (5/6)",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        }
+      ],
+      "repository_projection_drifts": 0,
+      "repository_projection_malformed": 0
+    },
+    {
+      "path": "README.zh.md",
+      "status": "M",
+      "source": "parent full-file machine parsing plus changed-row review",
+      "bytes": 375564,
+      "lines": 1611,
+      "sha256": "83ba32fde3def3662e32432f7f5b5af79c2d02bc09c0d1335d0fce0a90521e75",
+      "project_rows_checked": 947,
+      "canonical_pages_covered": 947,
+      "added_diff_lines": 54,
+      "frozen_head": "249c4be0239f3d240cc165bffd02bae7d5e19b03",
+      "baseline_license_drift": [
+        {
+          "line": 71,
+          "page": "categories/agent-tooling/work-state/token-optimizer.md",
+          "frontmatter_license": "PolyForm-Noncommercial-1.0.0",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 234,
+          "page": "categories/agent-frameworks/workflow-builders/harness2.md",
+          "frontmatter_license": "Apache-2.0 (core) + Custom Tencent (bundled WorkBuddy runner; EU limitation)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 279,
+          "page": "categories/agent-frameworks/agent-runtimes/agent-services/open-dots.md",
+          "frontmatter_license": "NONE (no LICENSE file in the current tree — all rights reserved; the repo description claims MIT)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 290,
+          "page": "categories/agent-frameworks/coding-agents/orchestration-and-review/swarm-forge.md",
+          "frontmatter_license": "NONE (no LICENSE file — all rights reserved)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 301,
+          "page": "categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/oh-my-openagent.md",
+          "frontmatter_license": "SUL-1.0 (source-available, non-OSI)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 302,
+          "page": "categories/agent-frameworks/workflow-builders/agent-native.md",
+          "frontmatter_license": "MIT (declared in README; no LICENSE file)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 379,
+          "page": "categories/rag-retrieval/code-intelligence/graphify.md",
+          "frontmatter_license": "Apache-2.0",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 496,
+          "page": "categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/netwasm.md",
+          "frontmatter_license": "NOASSERTION (NetWasm Community License 1.0 on compiler tooling; MIT on CoreLib/runtime/templates)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 500,
+          "page": "categories/dev-utilities/ops-infra/harness-open-source.md",
+          "frontmatter_license": "Apache-2.0 (root); PolyForm-Shield-1.0.0 and PolyForm-Free-Trial-1.0.0 (selected files)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 516,
+          "page": "categories/api-gateway/litellm.md",
+          "frontmatter_license": "MIT (core) + enterprise/ commercial carve-out",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 537,
+          "page": "categories/team-chat/mattermost.md",
+          "frontmatter_license": "AGPL-3.0 (source) / MIT (Mattermost-built binaries)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 539,
+          "page": "categories/team-chat/rocket-chat.md",
+          "frontmatter_license": "MIT (Community Edition) + separate EE license",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 607,
+          "page": "categories/agent-skills/engineering/scientific-workflows/nature-skills.md",
+          "frontmatter_license": "Apache-2.0 (root); MIT (nature-downloader)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 661,
+          "page": "categories/agent-skills/prompt-engineering/prompts-chat.md",
+          "frontmatter_license": "MIT (code) + CC0 (prompt content)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 664,
+          "page": "categories/agent-skills/prompt-engineering/museai-skills.md",
+          "frontmatter_license": "NONE (no LICENSE file; README grants no rights over the archived Meta Muse files)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 676,
+          "page": "categories/agent-skills/vendor-collections/product-vendors/remotion-skills.md",
+          "frontmatter_license": "Not declared (no LICENSE file in repo)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 705,
+          "page": "categories/agent-skills/personal-collections/knowledge-content/ljg-skills.md",
+          "frontmatter_license": "MIT",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 787,
+          "page": "categories/document-parsing/any2html.md",
+          "frontmatter_license": "NONE",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 813,
+          "page": "categories/office-editors/handsontable.md",
+          "frontmatter_license": "Custom (free non-commercial + paid commercial)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 849,
+          "page": "categories/media-processing/jasna.md",
+          "frontmatter_license": "AGPL-3.0-only (default; LTX Community and proprietary component exceptions)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 850,
+          "page": "categories/media-processing/image-processing/tendedero.md",
+          "frontmatter_license": "MIT (code; name and icon excluded)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 874,
+          "page": "categories/media-processing/nle-automation/jianying-headless.md",
+          "frontmatter_license": "Personal Learning and Non-Commercial Use License (NOASSERTION, non-OSI)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 888,
+          "page": "categories/video-production/hypit.md",
+          "frontmatter_license": "Hypit Open Source License (modified Apache-2.0, non-OSI)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 903,
+          "page": "categories/video-production/render-engines/remotion.md",
+          "frontmatter_license": "Remotion License (source-available, non-OSI)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 910,
+          "page": "categories/llm-chat-ui/lobehub.md",
+          "frontmatter_license": "NOASSERTION (LobeHub Community License; commercial derivative distribution restricted)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 938,
+          "page": "categories/typesetting/quarkdown.md",
+          "frontmatter_license": "GPL-3.0 (core) / AGPL-3.0 (CLI and LSP)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 980,
+          "page": "categories/llm-inference/serving-engines/modular.md",
+          "frontmatter_license": "Apache-2.0 WITH LLVM-exception",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 1249,
+          "page": "categories/reading-tools/just-read.md",
+          "frontmatter_license": "GPL-3.0-only",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 1268,
+          "page": "categories/speech/index-tts.md",
+          "frontmatter_license": "NOASSERTION (bilibili Model Use License Agreement — custom, scale-capped, covers code and weights)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 1393,
+          "page": "categories/investment-finance/awesome-deep-trading.md",
+          "frontmatter_license": "MIT",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 1397,
+          "page": "categories/investment-finance/backtrader.md",
+          "frontmatter_license": "GPL-3.0-or-later",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 1408,
+          "page": "categories/education-tutoring/deeptutor.md",
+          "frontmatter_license": "Apache-2.0",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 1513,
+          "page": "categories/learning-resources/gpu-perf-engineering-resources.md",
+          "frontmatter_license": "MIT (declared in README; no LICENSE file)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 1523,
+          "page": "categories/model-editing/erisforge.md",
+          "frontmatter_license": "MIT (declared in README/pyproject; no LICENSE file)",
+          "baseline_unchanged": true
+        },
+        {
+          "line": 1598,
+          "page": "categories/hackintosh/nvidia-macos-driver.md",
+          "frontmatter_license": "PolyForm-Noncommercial-1.0.0 (plugin/, kexts/, build/, package/; source-available, non-OSI) + LGPL-3.0-or-later (translator/) + MIT (nvk/ Mesa patch); GSP firmware and NVVM libraries are NVIDIA binaries",
+          "baseline_unchanged": true
+        }
+      ],
+      "baseline_health_drift": [
+        {
+          "line": 1078,
+          "page": "categories/web-ui/component-libraries/tanstack-select.md",
+          "expected": "C（4/6）",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1284,
+          "page": "categories/web-scraping/article-extraction/readability-js.md",
+          "expected": "B（6/6）",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1285,
+          "page": "categories/web-scraping/article-extraction/python-readability.md",
+          "expected": "A（3/6）",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1286,
+          "page": "categories/web-scraping/article-extraction/dragnet.md",
+          "expected": "D（4/6）",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1287,
+          "page": "categories/web-scraping/article-extraction/boilerpipe.md",
+          "expected": "\"?\"（2/6）",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1288,
+          "page": "categories/web-scraping/crawling-tools/fuck-login.md",
+          "expected": "E（5/6）",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1289,
+          "page": "categories/web-scraping/crawling-tools/gopup.md",
+          "expected": "E（4/6）",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1290,
+          "page": "categories/web-scraping/crawling-tools/praw.md",
+          "expected": "B（5/6）",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1291,
+          "page": "categories/web-scraping/crawling-tools/scrapyd.md",
+          "expected": "B（5/6）",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1292,
+          "page": "categories/web-scraping/crawling-tools/spiderkeeper.md",
+          "expected": "E（3/6）",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1324,
+          "page": "categories/terminal-ui/rich.md",
+          "expected": "B（6/6）",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1325,
+          "page": "categories/terminal-ui/textual.md",
+          "expected": "B（6/6）",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1326,
+          "page": "categories/terminal-ui/tmux.md",
+          "expected": "A（6/6）",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1327,
+          "page": "categories/terminal-ui/zellij.md",
+          "expected": "A（6/6）",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        },
+        {
+          "line": 1328,
+          "page": "categories/terminal-ui/pebrel.md",
+          "expected": "C（5/6）",
+          "baseline_unchanged": true,
+          "note": "Legacy row outside a qualifying Health table; actual repository projection check above has zero drift."
+        }
+      ],
+      "repository_projection_drifts": 0,
+      "repository_projection_malformed": 0
+    }
+  ],
+  "limits": [
+    "Coverage is checked against the harness manifest; worker truthfulness remains a model-level residual risk.",
+    "Generated SVGs were fully parsed plus visible text reviewed, not all visually inspected.",
+    "Late project/publication delta requires a final integration review on its actual HEAD."
+  ]
+}

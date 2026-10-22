@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "task", "en": "Task and launch mode", "zh": "任务与启动模式", "kind": "input"},
+    {"id": "worktree", "en": "Optional branch and worktree", "zh": "可选分支与工作树", "technique": [1]},
+    {"id": "agent", "en": "Claude Code or Codex in a PTY", "zh": "伪终端中的 Claude Code 或 Codex"},
+    {"id": "bridge", "en": "Task-tagged hook JSON lines", "zh": "带任务标识的 hook JSON 行", "technique": [2]},
+    {"id": "watcher", "en": "Complete-line reads and live-handle guard", "zh": "完整行增量读取与存活句柄检查", "technique": [2]},
+    {"id": "board", "en": "Running, needs input, awaiting review", "zh": "运行中、待输入、待验收", "kind": "output", "technique": [2]},
+    {"id": "hub", "en": "Selected local skill directory", "zh": "选定的本地技能目录", "kind": "input"},
+    {"id": "check", "en": "Resolve source and detect destination conflicts", "zh": "解析源路径并探测目标冲突", "technique": [3]},
+    {"id": "link", "en": "Project skill symlink and install record", "zh": "项目技能软链接与安装记录", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "task", "to": "worktree", "en": "explicit worktree mode", "zh": "主动选工作树模式", "style": "dashed"},
+    {"from": "task", "to": "agent", "en": "local mode uses the project directory", "zh": "本地模式使用项目目录"},
+    {"from": "worktree", "to": "agent", "en": "separate working directory", "zh": "独立工作目录"},
+    {"from": "agent", "to": "bridge", "en": "when hook readiness passes", "zh": "hook 就绪时"},
+    {"from": "bridge", "to": "watcher"},
+    {"from": "watcher", "to": "board", "en": "map and deduplicate states", "zh": "映射并去重状态"},
+    {"from": "hub", "to": "check"},
+    {"from": "check", "to": "link", "en": "install after conflict decision", "zh": "处理冲突后安装"}
+  ],
+  "sources": [
+    "https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/git.rs#L1451-L1629",
+    "https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/nezha-hook.mjs#L9-L72",
+    "https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/event_watcher.rs#L127-L285",
+    "https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/skills.rs#L679-L784"
+  ]
+}

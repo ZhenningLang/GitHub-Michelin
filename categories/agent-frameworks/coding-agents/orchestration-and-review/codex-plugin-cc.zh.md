@@ -108,17 +108,17 @@ health:
 - **你没有 Codex 额度，或者需要非 OpenAI 的评审者。** 每条命令都走你的 Codex 登录（ChatGPT 订阅，含免费档，或 API key），计入 Codex 用量上限，代码和提示词都会发给 OpenAI。想要 Gemini、本地 Ollama 模型或多家同时给第二意见，改用 [Claude Octopus](claude-octopus.zh.md) 或 PAL MCP 服务器（未收录）。
 - **你要的是评审团，不是多一个评审者。** 这个插件只多接一家厂商，意见原样转述，不做模型间比较也不投票。如果你要的是把跨厂商的分歧当合并闸门，[Claude Octopus](claude-octopus.zh.md) 才是为此设计的。
 - **你需要整个团队都能看到的、每个 PR 都跑的评审。** 意见只落在某个开发者的 Claude 会话里，不是 PR 评论，也不在 CI 里跑。要按 PR 做全队可见的评审，用 [PR-Agent](../../../ai-code-review/pr-agent.zh.md)（只看安全问题则用 [Claude Code Security Review](../../../ai-code-review/claude-code-security-review.zh.md)）。
-- **你同时开很多个 Claude Code 会话，或者一开好几天。** 截至 2026-10，未关闭的 issue 里最多的是进程生命周期问题：app-server 中转进程从不退出（#543 报告了 272 个孤儿进程、约 2.2 GB 内存），结束一个 Claude 会话会杀掉其他会话共用的中转进程，它们的任务从此一直显示“running”（#540），后台 worker 没有卡死超时（#520）。要批量或无人值守地委派，直接在独立进程里用 `codex exec` 驱动 Codex（见 [Codex](../terminal-agents/codex.zh.md)），或者用 [oh-my-claudecode](oh-my-claudecode.zh.md) 的 tmux worker——每个任务起一个 Codex CLI，做完就退出。
+- **你同时开很多个 Claude Code 会话，或者一开好几天。** 截至 2026-10，未关闭的 issue 里最多的是进程生命周期问题：app-server 中转进程从不退出（#543 报告了 272 个孤儿进程、约 2.2 GB 内存），结束一个 Claude 会话会杀掉其他会话共用的中转进程，它们的任务从此一直显示“running”（#540），后台 worker 没有卡死超时（#520）。要批量或无人值守地委派，直接在独立进程里用 `codex exec` 驱动 Codex（见 [Codex](../terminal-agents/vendor-agents/codex.zh.md)），或者用 [oh-my-claudecode](oh-my-claudecode.zh.md) 的 tmux worker——每个任务起一个 Codex CLI，做完就退出。
 - **你在原生 Windows 上。** 仍未修复的报告包括：`/codex:transfer` 在 Windows 上必然失败（#618），每条命令都泄漏一个中转进程、导致工作区目录删不掉（#718），SessionStart 钩子不停往环境文件里追加内容，直到 Bash 撞上 8191 字符上限而失效（#528）。在 WSL 里用，或者在 Windows 上直接调 Codex CLI。
 - **你要求每次改文件都先经你批准。** `/codex:rescue` 默认是写模式（`workspace-write` 沙箱，审批策略 `never`），而且 rescue 子代理的描述要求 Claude 在卡住时*主动*调用它——所以 Claude 可能把一件你从没下过指令的写代码任务交给 Codex。如果改动必须先审，就只用只读的 `/codex:review`、`/codex:adversarial-review`，或明确说明只读，或者自己在 Codex 里按它的审批策略跑。
 - **你想要一个装上就不用管的自动评审闸门。** Stop 钩子闸门会在 Claude 每轮结束时跑一次 Codex 评审，发现问题就拦住结束；README 自己警告它“可能形成长时间运行的 Claude/Codex 循环，并很快耗光用量”，#548 还报告它因为不检查 `stop_hook_active`，会一直循环到 Claude Code 的 stop 钩子上限。改为手动跑 `/codex:review`。
-- **你需要这座桥跟上新的 Codex 模型。** 自 2026-07-08 以来没有合并过任何 PR，issue 却一直在来（#468：插件不支持 gpt-5.6 系列模型）。[Codex](../terminal-agents/codex.zh.md) CLI 本身几乎每天发版，要用最新模型就直接用它。
+- **你需要这座桥跟上新的 Codex 模型。** 自 2026-07-08 以来没有合并过任何 PR，issue 却一直在来（#468：插件不支持 gpt-5.6 系列模型）。[Codex](../terminal-agents/vendor-agents/codex.zh.md) CLI 本身几乎每天发版，要用最新模型就直接用它。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Codex](../terminal-agents/codex.zh.md) | 已收录 | 如果你愿意切窗口，或者需要并行、无人值守地跑，直接用 Codex CLI（`codex`、`codex review`、`codex exec`）；如果价值在于留在已经装着上下文的 Claude Code 会话里，选这个插件。 | 直接用能避开插件的中转进程和任务状态 bug，新功能也最先拿到，但上下文要你手工搬；插件只是包在同一个二进制和登录之上的薄层，更新也慢。 |
+| [Codex](../terminal-agents/vendor-agents/codex.zh.md) | 已收录 | 如果你愿意切窗口，或者需要并行、无人值守地跑，直接用 Codex CLI（`codex`、`codex review`、`codex exec`）；如果价值在于留在已经装着上下文的 Claude Code 会话里，选这个插件。 | 直接用能避开插件的中转进程和任务状态 bug，新功能也最先拿到，但上下文要你手工搬；插件只是包在同一个二进制和登录之上的薄层，更新也慢。 |
 | [Claude Octopus](claude-octopus.zh.md) | 已收录 | 想让多家厂商交叉检查同一个任务并把分歧摆出来，选 Claude Octopus；只要 OpenAI 给一个第二意见、并且想用厂商自己的集成，选这个插件。 | Octopus 换来的是广度（最多 12 家 provider、共识闸门、成套工作流），代价是安装并付费多个 CLI、依赖一个单人维护的大型代码面；这个插件只接一家、八条命令、归 OpenAI 所有。 |
 | [oh-my-claudecode](oh-my-claudecode.zh.md) | 已收录 | 如果要编排一整队 agent（分阶段流水线、可以包含 Codex 的 tmux worker），选 oh-my-claudecode；在普通会话里临时让 Codex 审一下或救个场，这个插件装起来更轻。 | OMC 把 Codex 当成一整套编排层里的一种 worker，而且变化很快；这个插件只做把活交给 Codex 这一件事，要学的少，但没有流水线。 |
 | PAL MCP Server（BeehiveInnovations/pal-mcp-server，原名 zen-mcp-server） | 未收录 | 如果你想让 Claude 通过 MCP 工具、用你自己的 API key 去问多家 provider 的模型，PAL 合适；如果你的 OpenAI 权益是 ChatGPT 订阅、并且要的是 Codex 自带的评审器，选这个插件。 | 不绑厂商、任何 MCP 宿主都能用，但按 API key 计费；截至 2026-10，它最后一次推送是 2025-12-15，GitHub 显示其许可证为 NOASSERTION。本批次未收录。 |

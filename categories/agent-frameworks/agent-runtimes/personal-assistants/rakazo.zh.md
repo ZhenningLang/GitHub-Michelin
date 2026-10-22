@@ -88,7 +88,7 @@ health:
 
 ## 怎么用起来
 
-Rakazo 是那个一直在线的部分：API、Graphile Worker 任务进程和 Postgres 保存每个 bot 的对话、记忆、定时任务和集成凭据，网页端、Electron 桌面端和 Expo 手机端都连同一个 API。bot 干活时，API/worker 进程里起一个 [Pi](../../coding-agents/terminal-agents/pi.zh.md) 会话——Pi 是一个 TypeScript 写的 agent 循环，调用你接入的任意模型——它不在沙箱里跑，而是通过一层叫 `SandboxProvider` 的接口去操作一台电脑。默认这台电脑是你主机上的一个 Docker 容器，里面有 Linux 桌面、每个 bot 各自的 Chrome 配置和终端；也可以换成 E2B、Daytona、CreateOS 或 Box。每次运行结束，Rakazo 把 bot 的工作区和浏览器配置拷回自己的 `DATA_DIR`，所以机器本身随时可以扔——就像一台每晚都备份了主目录的笔记本，坏了只需要重装。你负责提供主机、密钥、模型凭据和要接的集成（Composio / Pipedream / MCP / OpenAPI）；之后就是用大白话给 bot 派活，它来找你或你想接管它的屏幕时再出手。
+Rakazo 是那个一直在线的部分：API、Graphile Worker 任务进程和 Postgres 保存每个 bot 的对话、记忆、定时任务和集成凭据，网页端、Electron 桌面端和 Expo 手机端都连同一个 API。bot 干活时，API/worker 进程里起一个 [Pi](../../coding-agents/terminal-agents/independent-runtimes/pi.zh.md) 会话——Pi 是一个 TypeScript 写的 agent 循环，调用你接入的任意模型——它不在沙箱里跑，而是通过一层叫 `SandboxProvider` 的接口去操作一台电脑。默认这台电脑是你主机上的一个 Docker 容器，里面有 Linux 桌面、每个 bot 各自的 Chrome 配置和终端；也可以换成 E2B、Daytona、CreateOS 或 Box。每次运行结束，Rakazo 把 bot 的工作区和浏览器配置拷回自己的 `DATA_DIR`，所以机器本身随时可以扔——就像一台每晚都备份了主目录的笔记本，坏了只需要重装。你负责提供主机、密钥、模型凭据和要接的集成（Composio / Pipedream / MCP / OpenAPI）；之后就是用大白话给 bot 派活，它来找你或你想接管它的屏幕时再出手。
 
 ![rakazo — 主干用户故事](../../../../assets/flow/rakazo.zh.svg)
 
@@ -115,7 +115,7 @@ Rakazo 是那个一直在线的部分：API、Graphile Worker 任务进程和 Po
 - **你想让助手住在你的聊天软件里。** Rakazo 是一个独立应用；Slack、Telegram、WhatsApp 私聊可以找到 bot，但群聊只支持 iMessage，而且要走 Sendblue。聊天渠道覆盖面才是重点的话，用 [OpenClaw](messaging-daemons/openclaw.zh.md)。
 - **你需要锁定一个稳定版本。** 官方镜像默认是从 main 构建的 `edge` 标签；最后一个打了 tag 的版本是 2026-09-08 的 v0.1.6，而 main 每周有 37–282 个提交，部署文档也说在稳定版出来前不要假定有 `latest`。还开着的 #1104 就是桌面端内置界面和服务端 API 对不上。要升级稳定，先等等；只要成熟的自托管聊天界面、不需要电脑的话，用 [Open WebUI](../../../llm-chat-ui/open-webui.zh.md)。
 - **你只想和模型聊天。** 为了一个聊天窗口起 Postgres、worker、沙箱 supervisor 和桌面镜像太重了，用 [Open WebUI](../../../llm-chat-ui/open-webui.zh.md)。
-- **你在做自己的 agent 产品。** Rakazo 是一个成品应用仓库，还带着一份它会坚守的产品愿景（“定时任务就是定时的提示词，不会变成可视化工作流语言”），不是 SDK。agent 循环直接用 [Pi](../../coding-agents/terminal-agents/pi.zh.md)，或用 [LangChain](../../workflow-builders/langchain.zh.md) 这类框架。
+- **你在做自己的 agent 产品。** Rakazo 是一个成品应用仓库，还带着一份它会坚守的产品愿景（“定时任务就是定时的提示词，不会变成可视化工作流语言”），不是 SDK。agent 循环直接用 [Pi](../../coding-agents/terminal-agents/independent-runtimes/pi.zh.md)，或用 [LangChain](../../workflow-builders/langchain.zh.md) 这类框架。
 - **你想要一个从经验里自我改进的 agent。** 这里的记忆只是存和取，没有自动写技能的学习循环，用 [Hermes Agent](messaging-daemons/hermes-agent.zh.md)。
 
 ## 横向对比

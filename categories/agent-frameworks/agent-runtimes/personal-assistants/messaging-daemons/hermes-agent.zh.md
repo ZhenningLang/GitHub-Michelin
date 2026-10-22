@@ -111,7 +111,7 @@ Hermes 是一个用一条脚本安装的 Python 应用，它会自己准备 Pyth
 - **你需要确定、可重复的自动化。** 技能和记忆会随着它干活而变化，同一个请求下周可能走另一条路。固定流程请改用 [n8n](../../../../workflow-orchestration/n8n.zh.md) 或普通脚本，因为它们每次都严格照你写的执行。
 - **你要的是能嵌入的库，而不是应用。** Hermes 是一整个助手，有自己的 CLI、网关和状态目录；要把智能体循环放进你自己的 Python 服务，改用 [Pydantic AI](../../agent-sdks/pydantic-ai.zh.md) 或 [LangChain](../../../workflow-builders/langchain.zh.md)。
 - **你需要企业级治理。** 它有命令审批和私信配对，但没有 SSO、RBAC 或审计日志，记忆按单个 profile 隔离（“一个 Hermes 目录只配一个智能体”）。要做带权限控制的组织级智能体，改用 [Dify](../../../workflow-builders/dify.zh.md)。
-- **你的活主要是在代码仓库里写代码。** Hermes 能改文件、跑 shell，但 [OpenCode](../../../coding-agents/terminal-agents/opencode.zh.md) 这类专门的编码智能体在仓库级改动、diff 和审查循环上更强。
+- **你的活主要是在代码仓库里写代码。** Hermes 能改文件、跑 shell，但 [OpenCode](../../../coding-agents/terminal-agents/independent-runtimes/opencode.zh.md) 这类专门的编码智能体在仓库级改动、diff 和审查循环上更强。
 - **你需要精心设计的多智能体团队。** Hermes 会把并行工作委派给子智能体，但单位始终是一个助手；要显式的按角色分工的团队，改用 [CrewAI](../../agent-sdks/crewai.zh.md)。
 - **你用不了 Python 3.14，或受不了目标一直在动。** 项目现在只支持 Python 3.14（旧解释器只允许撑到完成自我更新），按日期编号的版本几天一发，未处理的 issue 和 PR 积压非常大；如果你需要稳定、变化慢的助手，就锁定版本、测试后再升级，或者选由基金会治理、发布有签名流程的 [OpenClaw](openclaw.zh.md)。
 
@@ -121,7 +121,7 @@ Hermes 是一个用一条脚本安装的 Python 应用，它会自己准备 Pyth
 | --- | --- | --- | --- |
 | [OpenClaw](openclaw.zh.md) | ✅ | 想让助手出现在最多的聊天渠道和设备上，还要配套 App 和团队模式，选 OpenClaw；更看重一个在服务器上积累技能和记忆的智能体，选 Hermes。 | 两者都用 Markdown 文件做记忆；OpenClaw 多的是更广的触达面和基金会治理，Hermes 多的是智能体自己写技能（由整理器清理）、更多终端后端，以及一个打包模型和工具的可选订阅（Nous Portal）。 |
 | [AutoGPT](../../../workflow-builders/autogpt.zh.md) | ✅ | 想在网页里用积木搭建并部署自主工作流智能体，选 AutoGPT；想要一个能对话、记得你的助手，选 Hermes。 | AutoGPT 是承载多个工作流智能体、带搭建界面的平台；Hermes 是一个单独的个人智能体，入口是聊天和终端。 |
-| [OpenCode](../../../coding-agents/terminal-agents/opencode.zh.md) | ✅ | 在代码仓库里写代码选 OpenCode；要一个常驻、还能跑 shell 任务和定时任务的通用助手选 Hermes。 | OpenCode 为改代码和紧凑的审查循环调优；Hermes 拿这份深度换来持续存在、消息触达和定时任务。 |
+| [OpenCode](../../../coding-agents/terminal-agents/independent-runtimes/opencode.zh.md) | ✅ | 在代码仓库里写代码选 OpenCode；要一个常驻、还能跑 shell 任务和定时任务的通用助手选 Hermes。 | OpenCode 为改代码和紧凑的审查循环调优；Hermes 拿这份深度换来持续存在、消息触达和定时任务。 |
 | [LangChain](../../../workflow-builders/langchain.zh.md) | ✅ | 你在做自己的智能体产品、想要组件，选 LangChain；想要今天装上就能用的成品助手，选 Hermes。 | LangChain 给你完全的控制，每一块都归你；Hermes 有主见、开箱即用，但行为由项目决定而不是由你决定。 |
 | [CrewAI](../../agent-sdks/crewai.zh.md) | ✅ | 要为一个业务流程编排一组按角色分工的智能体，选 CrewAI；要一个熟悉你环境的个人智能体，选 Hermes。 | CrewAI 是编排多智能体运行的框架；Hermes 是带记忆和技能的终端用户智能体，不是编排库。 |
 

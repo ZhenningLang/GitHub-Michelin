@@ -85,7 +85,7 @@ health:
 
 你同时在盯好几个编程 agent——Claude Code 在改 API 重构、Codex 在跑测试批次、opencode 在动前端——瓶颈不是跑它们而是*看住*它们：你要逐个窗口切过去，找那个卡在审批提示上的；SSH 一掉线，跑到一半的活就没了。你会想到 herdr，因为它掌管 agent 们住的终端（不包装、不替代 agent 本身），并补上了 tmux 和 zellij 没有的三件事：agent 感知的状态标记（`blocked` 意思是“这个 agent 此刻正在等人类回答”）；断开重连之外，服务器整机重启后受支持的 agent 还能接回自己的会话；以及一层自动化接口——`herdr agent start / prompt / wait / read`——让一个编排脚本或编排 agent 开出评审 pane、发提示、然后阻塞等待对方真正完成或卡住。
 
-这正是相对替代品的决定性取舍：对比 [tmux](../../../terminal-ui/tmux.zh.md) 和 [zellij](../../../terminal-ui/zellij.zh.md)，herdr 拿它们多年/十几年的成熟度，换一层*为 agent 互相驱动而设计*的 API；对比浏览器驾驶舱 [CloudCLI](../../../agent-tooling/supervision-surfaces/claudecodeui.zh.md) 或桌面应用 [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-orchestrator.zh.md)，herdr 留在终端里——没有 Electron、不跑 web 服务、单个 Rust 二进制——并把同样的控制权暴露给脚本而不是 GUI。它还能把保存过的 SSH 机器联合进一个统一的 agent 列表、各自独立重连，“三台机器 30 个窗口”塌缩成一个窗口。
+这正是相对替代品的决定性取舍：对比 [tmux](../../../terminal-ui/tmux.zh.md) 和 [zellij](../../../terminal-ui/zellij.zh.md)，herdr 拿它们多年/十几年的成熟度，换一层*为 agent 互相驱动而设计*的 API；对比浏览器驾驶舱 [CloudCLI](../../../agent-tooling/supervision-surfaces/agent-cockpits/claudecodeui.zh.md) 或桌面应用 [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.zh.md)，herdr 留在终端里——没有 Electron、不跑 web 服务、单个 Rust 二进制——并把同样的控制权暴露给脚本而不是 GUI。它还能把保存过的 SSH 机器联合进一个统一的 agent 列表、各自独立重连，“三台机器 30 个窗口”塌缩成一个窗口。
 
 ## 快问快答
 
@@ -119,8 +119,8 @@ herdr 是 tmux 血统的 client/server 终端多路复用器：后台 server 掌
 ## 何时不用
 
 - **你要的是能押十年的基建。** herdr 首个版本 v0.1.0 发布于 2026-03-27，现在 v0.9.1——6 个月大，文档自己把 live handoff 标为实验性。如果多路复用器是全团队不能折腾的底座，用 [tmux](../../../terminal-ui/tmux.zh.md)——约 20 年可以引用的行为——或者要人本位工作区就用 6 岁的 [zellij](../../../terminal-ui/zellij.zh.md)。herdr 的 agent 层收益，只有你接受 pre-1.0 API 动荡时才值。
-- **你的编排层已经 own 了调度。** 如果并行 worker 已经由你自己的控制面在 tmux pane 里脚本化管理（[oh-my-claudecode](../orchestration-and-review/oh-my-claudecode.zh.md) 那类流水线），或者你要的是把每个 agent 关进 worktree、把 CI/评审反馈路由回来的桌面应用（[Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-orchestrator.zh.md)），herdr 是第二套要学的控制面，不是补缺口的——它的甜点是“看住 agent、等 agent”这个痛点，不是任务路由。
-- **你要浏览器/手机驾驶舱。** herdr 的界面是真实终端里的 TUI（外加 SSH 远程附着）；如果诉求就是“在手机浏览器里开会话”，[CloudCLI](../../../agent-tooling/supervision-surfaces/claudecodeui.zh.md)、[Hermes Workspace](../../../agent-tooling/supervision-surfaces/hermes-workspace.zh.md) 提供 web 控制台，zellij 也自带鉴权 web client。herdr 不跑 web 服务。
+- **你的编排层已经 own 了调度。** 如果并行 worker 已经由你自己的控制面在 tmux pane 里脚本化管理（[oh-my-claudecode](../orchestration-and-review/oh-my-claudecode.zh.md) 那类流水线），或者你要的是把每个 agent 关进 worktree、把 CI/评审反馈路由回来的桌面应用（[Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.zh.md)），herdr 是第二套要学的控制面，不是补缺口的——它的甜点是“看住 agent、等 agent”这个痛点，不是任务路由。
+- **你要浏览器/手机驾驶舱。** herdr 的界面是真实终端里的 TUI（外加 SSH 远程附着）；如果诉求就是“在手机浏览器里开会话”，[CloudCLI](../../../agent-tooling/supervision-surfaces/agent-cockpits/claudecodeui.zh.md)、[Hermes Workspace](../../../agent-tooling/supervision-surfaces/agent-cockpits/hermes-workspace.zh.md) 提供 web 控制台，zellij 也自带鉴权 web client。herdr 不跑 web 服务。
 - **屏幕检测会被骗、也必须追版本。** 状态标记来自屏幕 manifest 和进程检测；某个 CLI agent 改版 TUI 后，herdr 的检测要等下一次 manifest/集成更新才跟上，期间 `unknown`（等待命令要显式声明才接受它）才是诚实答案。如果“错误地显示 idle”对你代价很大，纯 [tmux](../../../terminal-ui/tmux.zh.md) 加自己的核验，故障面更小。[推断]
 - **你跑的大多是普通终端。** shell、构建、日志这类不关心 agent 状态的负载，tmux/zellij 是无聊但完整的工具；herdr 的额外机器（集成、manifest、会话引用）在这里一分钱收益都不买。
 - **Windows 还是 beta 路线。** 文档把 Windows 支持挂在 “windows-beta” 页面下，CHANGELOG（2026-09）还标注 Git Bash 脱离问题未解决；Windows 是主力机的话，掂量。
@@ -132,8 +132,8 @@ herdr 是 tmux 血统的 client/server 终端多路复用器：后台 server 掌
 |---|---|---|---|
 | [tmux](../../../terminal-ui/tmux.zh.md) | ✅ | 你盯的是编程 agent、要 blocked/working 标记和面向 agent 的 wait/prompt API 时选 herdr；需要二十年稳定行为、C 级资源占用、以及全机器人人肌肉记忆时选 tmux。 | herdr：agent 状态层、会话恢复、多机联邦，代价是 6 个月大的 pre-1.0 代码。tmux：一件事做到老，但对 agent 一无所知。 |
 | [zellij](../../../terminal-ui/zellij.zh.md) | ✅ | 为 agent 层选 herdr；为人本位的易上手工作区（模式提示条、声明式布局、WASM 插件、内置 web client）、且不在乎 pane 里跑的是什么，选 zellij。 | zellij：6 岁、发布节奏稳、MIT、自带浏览器接入。herdr：更年轻，但能区分“agent 干完了”和“agent 在等你”。 |
-| [CloudCLI (Claude Code UI)](../../../agent-tooling/supervision-surfaces/claudecodeui.zh.md) | ✅ | 驾驶舱必须是浏览器/PWA、跑的是 Claude Code 系会话、又不想常驻 TUI，选 CloudCLI；驾驶舱*就是*终端、且 agent 需要程序化驱动 pane，选 herdr。 | CloudCLI：web/移动界面，AGPL-3.0-or-later。herdr：终端内，Apache-2.0，agent 互驱 API 更强。 |
-| [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-orchestrator.zh.md) | ✅ | 要桌面控制面把活扇给 N 个 worktree 隔离的 agent、并路由 CI/评审反馈，选 Agent Orchestrator；要 agent 待在你自己的终端流程里、彼此通过一个 socket API 互驱（UI 也吃这个 API），选 herdr。 | Orchestrator：主张任务派发、Electron 形态。herdr：你自己写的工作流下面的基础设施。 |
+| [CloudCLI (Claude Code UI)](../../../agent-tooling/supervision-surfaces/agent-cockpits/claudecodeui.zh.md) | ✅ | 驾驶舱必须是浏览器/PWA、跑的是 Claude Code 系会话、又不想常驻 TUI，选 CloudCLI；驾驶舱*就是*终端、且 agent 需要程序化驱动 pane，选 herdr。 | CloudCLI：web/移动界面，AGPL-3.0-or-later。herdr：终端内，Apache-2.0，agent 互驱 API 更强。 |
+| [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.zh.md) | ✅ | 要桌面控制面把活扇给 N 个 worktree 隔离的 agent、并路由 CI/评审反馈，选 Agent Orchestrator；要 agent 待在你自己的终端流程里、彼此通过一个 socket API 互驱（UI 也吃这个 API），选 herdr。 | Orchestrator：主张任务派发、Electron 形态。herdr：你自己写的工作流下面的基础设施。 |
 | GNU Screen | 未收录 | 只有在 tmux 都装不出来的老系统上才值得用 Screen；对这个负载，它在人体工学上落后 tmux、在 agent 层上根本没有概念。 | 真实仓库但功能上近乎冻结；有意不收录——tmux 维护得更好、覆盖同样场景。 |
 
 ## 技术栈

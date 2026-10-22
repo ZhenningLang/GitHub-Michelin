@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **KiviDB** | Trial multi-core Redis-protocol storage with built-in keyword/vector search; AGPL and a five-day public history require compatibility and recovery testing. | D (5/6) | [→](kividb.md) |
 | **DuckDB Object Storage** | Native DuckDB persistence on SlateDB-backed local or object storage; one writer. | C (6/6) | [→](duckdb-object-storage.md) |
 | **ClickHouse** | Use it when a self-hosted team needs sub-second SQL aggregates over hundreds of millions of append-mostly events served to many dashboard users — but not for transactional row updates, unbatched single-row inserts, or data one laptop process could handle with DuckDB. | A (5/6) | [→](clickhouse.md) |
 | **DuckDB** | Use it when one script, notebook or CI job needs fast SQL joins and aggregates over local or S3 Parquet/CSV files without running a server — but not when several processes must write the same database or the data exceeds one machine. | A (5/6) | [→](duckdb.md) |
@@ -20,6 +21,7 @@
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [DuckDB Object Storage](duckdb-object-storage.md) | ✅ | C (6/6) | Virtualizes native database files; no multi-writer locks and delayed remote read visibility. |
+| [KiviDB](kividb.md) | ✅ | D (5/6) | Bundles search with shared-memory multi-core storage; not a fully proven Redis drop-in or a disk-capacity replacement. |
 
 ## What belongs here
 

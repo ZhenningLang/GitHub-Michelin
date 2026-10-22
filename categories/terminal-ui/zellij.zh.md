@@ -116,7 +116,7 @@ tmux 什么都能干，但长得像 2007 年的东西，逼你先背一套前缀
 
 ## 何时不用
 
-- **你的负载是监管编程 agent。** 没有 pane 会被打 working/blocked/idle 标记——Zellij 不知道也不关心里面跑什么。要“哪个 agent 此刻在等我”，用 [herdr](../agent-frameworks/coding-agents/agent-multiplexers/herdr.zh.md)，或 [CloudCLI](../agent-tooling/supervision-surfaces/claudecodeui.zh.md) 这类驾驶舱。
+- **你的负载是监管编程 agent。** 没有 pane 会被打 working/blocked/idle 标记——Zellij 不知道也不关心里面跑什么。要“哪个 agent 此刻在等我”，用 [herdr](../agent-frameworks/coding-agents/agent-multiplexers/herdr.zh.md)，或 [CloudCLI](../agent-tooling/supervision-surfaces/agent-cockpits/claudecodeui.zh.md) 这类驾驶舱。
 - **你的服务器跑的是 tmux，你的肌肉记忆也是。** 全机群脚本、tpm 生态、`C-b` 如今已是社会基础设施；[tmux](tmux.zh.md) 的二十年稳定就是功能本身，Zellij 的另一套按键模型是纯成本。
 - **你要尽可能小的攻击面。** Zellij 是一个 Rust 二进制，但功能面大得多（web server、插件运行时、底下的一整套 WASM 机制）。如果机器的规矩是“这里永远不许 bind web 端口”，得编译掉（`zellij-no-web` 变体就是为此存在）——而 [tmux](tmux.zh.md) 是压根没有东西可关。
 - **你要 bug 有人秒回。** 查检时（2026-09-27，GitHub API）1,938 个 open issues，挂在一个 6 岁、个人主导治理的项目上，意味着分诊延迟；tmux 的筛选文化、herdr 作者的响应节奏是另一种取舍。“延迟”这个读法是 [推断]。

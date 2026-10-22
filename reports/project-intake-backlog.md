@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1365
+- Named-but-unindexed alternatives: 1381
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -48,7 +48,7 @@ shape and are deliberately excluded here.
 | [Cipher](https://github.com/campfirein/cipher) | `categories/agent-memory/coding-agent-memory/claude-subconscious.md` |
 | [Clash Nyanpasu](https://github.com/libnyanpasu/clash-nyanpasu) | `categories/dev-utilities/ops-infra/clash-verge-rev.md` |
 | [cloudflared](https://github.com/cloudflare/cloudflared) | `categories/networking/opentunnel.md` |
+| [CoderGamester/mcp-unity](https://github.com/CoderGamester/mcp-unity) | `categories/agent-skills/engineering/awesome-gamedev-agent-skills.md` |
+| [Coding-Solo/godot-mcp](https://github.com/Coding-Solo/godot-mcp) | `categories/agent-skills/engineering/awesome-gamedev-agent-skills.md` |
+| [CoplayDev/unity-mcp](https://github.com/CoplayDev/unity-mcp) | `categories/game-dev/unity-mcp.md` |
 | [CosyVoice](https://github.com/QwenAudio/CosyVoice) | `categories/speech/index-tts.md` |
-| [daed](https://github.com/daeuniverse/daed) | `categories/networking/dae.md` |
-| [darktable](https://github.com/darktable-org/darktable) | `categories/photo-editing/lightcraft.md` |
-| [Elixir](https://github.com/elixir-lang/elixir) | `categories/programming-languages/unison.md` |

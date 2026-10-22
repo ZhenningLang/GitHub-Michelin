@@ -116,7 +116,7 @@ Like tmux, Zellij is client/server: running `zellij` starts a detached session s
 
 ## When NOT to use
 
-- **Your workload is supervising coding agents.** No pane gets badged working/blocked/idle — Zellij doesn't know or care what runs inside. For "which agent is waiting for me right now" use [herdr](../agent-frameworks/coding-agents/agent-multiplexers/herdr.md), or a cockpit like [CloudCLI](../agent-tooling/supervision-surfaces/claudecodeui.md).
+- **Your workload is supervising coding agents.** No pane gets badged working/blocked/idle — Zellij doesn't know or care what runs inside. For "which agent is waiting for me right now" use [herdr](../agent-frameworks/coding-agents/agent-multiplexers/herdr.md), or a cockpit like [CloudCLI](../agent-tooling/supervision-surfaces/agent-cockpits/claudecodeui.md).
 - **Your servers run tmux and your muscle memory does too.** Fleet-wide scripts, tpm ecosystems, and `C-b` are social infrastructure at this point; [tmux](tmux.md)'s two-decade stability is the feature, and Zellij's different key model is pure cost.
 - **You need the smallest possible surface.** Zellij is one Rust binary but a much bigger feature surface (web server, plugin runtime, WASM toolchains under the hood). If the policy is "no web server may ever bind on this box", that has to be compiled out (`zellij-no-web` builds exist precisely for this) — versus [tmux](tmux.md), which simply has nothing to disable.
 - **You want instant answers on bugs.** 1,938 open issues at check time (2026-09-27, GitHub API) on a ~6-year-old project with an indie-owner governance shape means triage latency; tmux's screened-issues culture and herdr's author-response tempo are different trades. [推断] on the "latency" reading.

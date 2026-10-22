@@ -102,7 +102,7 @@ health:
 **它和 Pydantic AI、LangGraph 比特殊在哪？**
 它赌的是更好的默认值，不是更好的抽象。同形的是 OpenAI Agents SDK 和 smolagents 的 CodeAgent；LangGraph 是另一种工具（一张你自己维护的显式图），不是 `create_harness()` 这件事的替代品。
 
-**它和 [Pi](../../coding-agents/terminal-agents/pi.zh.md) 是一类东西吗？**
+**它和 [Pi](../../coding-agents/terminal-agents/independent-runtimes/pi.zh.md) 是一类东西吗？**
 同类，但重心相反。两个项目都自称 harness；Pi 的重心是成品的终端编码 agent，Strands harness 的重心是给你嵌进产品的库。Pi 能单独复用的库层是 `pi-agent-core`，跟 Strands 抢同一格的正是那一层，不是它的 CLI。
 
 **它这么年轻，要担心吗？**
@@ -137,7 +137,7 @@ health:
 - **合规面不允许模型自己写的查询离开你的环境。** 在 Bedrock Converse 这类模型上，web 搜索默认是关的；打开就走 Exa 这个第三方，模型写的每一条搜索 query 都会发给它。这时候要么换成有原生搜索的供应商，要么干脆去掉这个工具，别走 Bedrock 那条默认路——出网的开关在模型那边，不在你手上。
 - **你要在 Bedrock 上用 web 搜索，又不打算碰 IAM。** Bedrock Web Search 需要 `bedrock-websearch` 权限动作；没有它们，请求本身成功、每次搜索都失败，这是最难查的一种失败形态。这时用 [OpenAI Agents SDK](openai-agents-sdk.zh.md) 或别的不需要额外 IAM 的供应商，或者先把权限授好。
 - **你需要组装层也有 API 稳定性承诺。** SDK 过了 1.0，harness 没有，而且它唯一公开的兼容性说明只列举了 SDK“不会”当成破坏性变更的几类改动。如果“整栈的版本保证”是采购条件，选 [Microsoft Agent Framework](agent-framework.zh.md) 或 [LangGraph](langgraph.zh.md)。
-- **你要的是一个开箱即用的终端编码 agent。** `strands` CLI 是拿 harness agent 聊天，不是带键位设计 TUI 的编码 agent。这时候用 [Pi](../../coding-agents/terminal-agents/pi.zh.md) 或 [OpenCode](../../coding-agents/terminal-agents/opencode.zh.md)，因为在终端里结对编程就是它们的产品本身。
+- **你要的是一个开箱即用的终端编码 agent。** `strands` CLI 是拿 harness agent 聊天，不是带键位设计 TUI 的编码 agent。这时候用 [Pi](../../coding-agents/terminal-agents/independent-runtimes/pi.zh.md) 或 [OpenCode](../../coding-agents/terminal-agents/independent-runtimes/opencode.zh.md)，因为在终端里结对编程就是它们的产品本身。
 
 ## 横向对比
 

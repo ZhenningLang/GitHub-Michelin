@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "FounderOS does", "zh": "FounderOS 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install dependencies and start the local dashboard on Node 22", "zh": "用 Node 22 安装依赖并启动本地看板", "code": "npm run dev"},
+    {"lane": "them", "en": "Opens a fictional company in a separate demo store", "zh": "从独立演示存储打开虚构公司", "component": {"en": "demo company builder", "zh": "演示公司生成器"}},
+    {"lane": "you", "en": "Turn Filming mode off in Settings to start your real business", "zh": "在设置关闭演示模式，切换到真实业务"},
+    {"lane": "them", "en": "Switches to the initially blank real data directory", "zh": "切换到初始为空的真实数据目录", "component": {"en": "data directory resolver", "zh": "数据目录解析器"}},
+    {"lane": "you", "en": "Provide your Stripe account's secret key", "zh": "提供你自己的 Stripe 账户密钥", "code": "STRIPE_SECRET_KEY"},
+    {"lane": "them", "en": "Reads balances and recent charges into the finance view", "zh": "读取余额与近期交易，汇入财务界面", "component": {"en": "Stripe connector", "zh": "Stripe 连接器"}}
+  ],
+  "value": {"en": "Your actual payment data appears beside the business dashboard instead of fictional sample revenue", "zh": "经营看板显示真实收款，不再把虚构收入当作业务状态"},
+  "sources": [
+    "https://github.com/Bennettxai/FounderOS/blob/fb974bfcdf529cb6c8faeb1473d561d26e3d103a/README.md#L32-L55",
+    "https://github.com/Bennettxai/FounderOS/blob/fb974bfcdf529cb6c8faeb1473d561d26e3d103a/.env.example#L45-L50",
+    "https://github.com/Bennettxai/FounderOS/blob/fb974bfcdf529cb6c8faeb1473d561d26e3d103a/lib/connectors/payments.ts#L177-L199"
+  ]
+}

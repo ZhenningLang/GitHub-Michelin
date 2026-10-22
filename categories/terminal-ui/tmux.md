@@ -112,10 +112,10 @@ tmux is a client/server multiplexer written in C: when you run it, it starts a s
 
 ## When NOT to use
 
-- **You supervise coding agents and want to know which one is stuck.** tmux badges nothing — no working/blocked/idle; you poll with `capture-pane` or add glue yourself. For agent-aware supervision use [herdr](../agent-frameworks/coding-agents/agent-multiplexers/herdr.md) (at the cost of a 6-month-old pre-1.0 tool), or a cockpit like [CloudCLI](../agent-tooling/supervision-surfaces/claudecodeui.md).
+- **You supervise coding agents and want to know which one is stuck.** tmux badges nothing — no working/blocked/idle; you poll with `capture-pane` or add glue yourself. For agent-aware supervision use [herdr](../agent-frameworks/coding-agents/agent-multiplexers/herdr.md) (at the cost of a 6-month-old pre-1.0 tool), or a cockpit like [CloudCLI](../agent-tooling/supervision-surfaces/agent-cockpits/claudecodeui.md).
 - **You need onboarding to work.** New teammates will not remember `C-b %`. [zellij](zellij.md) ships visible mode hints, mouse-friendly defaults, layouts-as-config and a web client out of the box.
 - **You're on native Windows.** The README lists OpenBSD, FreeBSD, NetBSD, Linux, macOS and Solaris — Windows only via WSL/compat layers. If native Windows is the fleet, weigh the platform support stories of [herdr](../agent-frameworks/coding-agents/agent-multiplexers/herdr.md) (beta) or Windows Terminal + WSL tmux.
-- **You want browser/phone access built in.** tmux has no web server; [zellij](zellij.md) ships an authenticated web client, [CloudCLI](../agent-tooling/supervision-surfaces/claudecodeui.md) is a web app.
+- **You want browser/phone access built in.** tmux has no web server; [zellij](zellij.md) ships an authenticated web client, [CloudCLI](../agent-tooling/supervision-surfaces/agent-cockpits/claudecodeui.md) is a web app.
 - **You want modern conveniences without writing them.** Plugins (tpm is third-party), true multi-user spaces, floating/stacked panes: [zellij](zellij.md) includes these as first-class. tmux will do most of it via config — you pay in `.tmux.conf` maintenance.
 - **You need GUI-grade rendering** (fonts per pane, images, ligatures): that's terminal-emulator territory — [Alacritty](alacritty.md) deliberately delegates multiplexing *to* tmux, [Warp](warp.md) is a proprietary app — so tmux is only ever half the stack there.
 

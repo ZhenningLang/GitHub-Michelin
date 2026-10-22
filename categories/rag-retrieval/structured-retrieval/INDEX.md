@@ -9,6 +9,7 @@
 | --- | --- | --- | --- |
 | **FalkorDB** | Use it when GraphRAG needs vector similarity plus multi-hop graph traversal in one low-latency Redis-embedded engine. | D (5/6) | [→](falkordb.md) |
 | **PageIndex** | Use it when vector RAG returns similar-but-irrelevant chunks over a few long, structured documents needing auditable citations. | B (6/6) | [→](pageindex.md) |
+| **SAG** | Use it for a personal document workspace where event/entity links recover cross-document evidence; accept model-powered extraction and single-user boundaries. | B (6/6) | [→](sag.md) |
 | **HelixDB** | Use it when your RAG corpus is a genuine graph and you want vector search, BM25 and traversal in one Apache-2.0 engine backed by object storage — but its v3 engine was open-sourced in 2026-07 and self-hosted HA does not exist yet. | B (6/6) | [→](helix-db.md) |
 
 ## Comparison matrix
@@ -17,6 +18,7 @@
 | --- | --- | --- | --- |
 | [FalkorDB](falkordb.md) | ✅ | D (5/6) | Use it when GraphRAG needs vector similarity plus multi-hop graph traversal in one low-latency Redis-embedded engine. |
 | [PageIndex](pageindex.md) | ✅ | B (6/6) | Use it when vector RAG returns similar-but-irrelevant chunks over a few long, structured documents needing auditable citations. |
+| [SAG](sag.md) | ✅ | B (6/6) | Packaged SQLite/LanceDB knowledge workspace with event expansion, citations and MCP; not a tenant-isolated graph platform. |
 | [HelixDB](helix-db.md) | ✅ | B (6/6) | Use it when your RAG corpus is a genuine graph and you want vector search, BM25 and traversal in one Apache-2.0 engine backed by object storage — but its v3 engine was open-sourced in 2026-07 and self-hosted HA does not exist yet. |
 | Neo4j / LightRAG | 未收录 | — | Other graph / GraphRAG retrieval stacks named across the pages. |
 

@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "mic", "en": "Microphone", "zh": "麦克风", "kind": "input"},
+    {"id": "system", "en": "Global system audio", "zh": "全局系统音频", "kind": "input"},
+    {"id": "tracks", "en": "Separate local audio tracks", "zh": "分开保存的本地音轨", "technique": [1]},
+    {"id": "stt", "en": "WhisperKit words and timestamps", "zh": "WhisperKit 文字与时间戳", "technique": [2]},
+    {"id": "speaker", "en": "SpeakerKit turns and voice vectors", "zh": "SpeakerKit 说话人片段与声纹", "technique": [2]},
+    {"id": "history", "en": "Past voiceprints and calendar invitees", "zh": "历史声纹与日历受邀者", "kind": "input"},
+    {"id": "match", "en": "Weighted speaker evidence", "zh": "加权说话人证据", "technique": [3]},
+    {"id": "llm", "en": "Local conversation for names, summary and title", "zh": "本地对话生成姓名、摘要与标题", "technique": [3]},
+    {"id": "store", "en": "Saved meeting and search index", "zh": "会议存档与搜索索引", "kind": "output"},
+    {"id": "mcp", "en": "Optional loopback read-only MCP tools", "zh": "可选的回环地址只读 MCP 工具", "kind": "external", "technique": [4]}
+  ],
+  "edges": [
+    {"from": "mic", "to": "tracks"},
+    {"from": "system", "to": "tracks"},
+    {"from": "tracks", "to": "stt", "en": "after recording stops", "zh": "停止录制后"},
+    {"from": "stt", "to": "speaker", "en": "same merged audio", "zh": "同一份合并音频"},
+    {"from": "speaker", "to": "match"},
+    {"from": "history", "to": "match"},
+    {"from": "match", "to": "llm", "style": "dashed", "en": "AI enhancements enabled", "zh": "启用 AI 增强时"},
+    {"from": "stt", "to": "llm", "en": "transcript", "zh": "转写文本"},
+    {"from": "speaker", "to": "store", "en": "labeled transcript", "zh": "带标签的转写"},
+    {"from": "llm", "to": "store", "style": "dashed", "en": "generated enhancements", "zh": "生成的增强内容"},
+    {"from": "store", "to": "mcp", "style": "dashed", "en": "only when enabled", "zh": "仅启用时"}
+  ],
+  "sources": [
+    "https://github.com/scosman/Biscotti/blob/273e3ff10cab1b14314685da697bc5ac53eb19d1/Packages/AudioCapture/Sources/AudioCapture/LiveSystemCaptureEngine.swift#L249-L317",
+    "https://github.com/scosman/Biscotti/blob/273e3ff10cab1b14314685da697bc5ac53eb19d1/Packages/Transcription/Sources/Transcription/InProcessTranscriptionEngine.swift#L78-L109",
+    "https://github.com/scosman/Biscotti/blob/273e3ff10cab1b14314685da697bc5ac53eb19d1/Packages/BiscottiKit/Sources/VoiceprintMatching/VoiceprintMatcher.swift#L208-L405",
+    "https://github.com/scosman/Biscotti/blob/273e3ff10cab1b14314685da697bc5ac53eb19d1/Packages/BiscottiKit/Sources/Intelligence/MeetingAnalyzer.swift#L53-L219",
+    "https://github.com/scosman/Biscotti/blob/273e3ff10cab1b14314685da697bc5ac53eb19d1/App/ConnectingMCP.md#L7-L15"
+  ]
+}

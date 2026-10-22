@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Unity-MCP does", "zh": "Unity-MCP 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the plugin and open your Unity project on the local connection", "zh": "安装插件，用本地连接打开 Unity 项目", "component": {"en": "CLI and Unity Editor", "zh": "CLI 与 Unity 编辑器"}},
+    {"lane": "them", "en": "Loads the editor plugin and provisions its matching server", "zh": "加载编辑器插件，准备配套服务器", "component": {"en": "Unity plugin", "zh": "Unity 插件"}},
+    {"lane": "you", "en": "Configure your agent from the Unity window", "zh": "在 Unity 窗口配置助手连接", "code": "Window/AI Game Developer"},
+    {"lane": "you", "en": "Ask your agent to create three cubes in the scene", "zh": "让助手在场景中创建三个方块"},
+    {"lane": "them", "en": "Executes the agent's tool calls in Unity and returns their results", "zh": "在 Unity 执行助手的工具调用并返回结果", "component": {"en": "Server and editor plugin", "zh": "服务器与编辑器插件"}}
+  ],
+  "value": {"en": "Stop relaying scene edits and console results between your agent and Unity", "zh": "不用再替助手修改场景、搬运 Unity 返回结果"},
+  "sources": [
+    "https://github.com/IvanMurzak/Unity-MCP/blob/c89aec4da7bc1d328f9d6813077598d30dceddbc/README.md#quick-start",
+    "https://github.com/IvanMurzak/Unity-MCP/blob/c89aec4da7bc1d328f9d6813077598d30dceddbc/README.md#step-3-configure-ai-agent",
+    "https://github.com/IvanMurzak/Unity-MCP/blob/c89aec4da7bc1d328f9d6813077598d30dceddbc/cli/README.md#open",
+    "https://github.com/IvanMurzak/Unity-MCP/blob/c89aec4da7bc1d328f9d6813077598d30dceddbc/docs/mcp-server.md#topology"
+  ]
+}

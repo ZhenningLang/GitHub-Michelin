@@ -109,7 +109,7 @@ CC Switch 是一个 Tauri 桌面应用——Rust 写的后端加一个基于网�
 - **你在无界面服务器、SSH 会话或 CI 里工作。** CC Switch 是图形界面应用（Linux 需要 glibc 2.35+ 和 WebKitGTK 4.1）；纯终端机器上，README 自己推荐社区维护的 CC Switch CLI（未收录），或者改用 [Claude Code Router](../../../api-gateway/claude-code-router.zh.md)，它也提供 Node.js 的 CLI 用法。
 - **你需要给团队用的、受管控的模型网关。** CC Switch 是单用户桌面软件，没有 RBAC、预算和审计；改用 [LiteLLM](../../../api-gateway/litellm.zh.md) 做中心代理，它有虚拟 key、消费上限和日志。
 - **你打算用它的“账号”功能或赞助商中转站来薅订阅。** README 自己警告：在官方客户端之外使用 GitHub Copilot、ChatGPT 或 xAI 的订阅可能违反厂商条款；它还在顶部给以折扣价转售官方模型的第三方中转站打广告。如果服务条款合规或数据去向要紧，用官方 API key 直连或你们组织的网关（比如 [LiteLLM](../../../api-gateway/litellm.zh.md)），不要走中转站。
-- **你想干脆不再切换。** 如果真正的需求是“用很多模型”，换成一个不绑定模型的智能体，比如 [OpenCode](../terminal-agents/opencode.zh.md)，也许就没必要同时折腾几个 CLI 了。
+- **你想干脆不再切换。** 如果真正的需求是“用很多模型”，换成一个不绑定模型的智能体，比如 [OpenCode](../terminal-agents/independent-runtimes/opencode.zh.md)，也许就没必要同时折腾几个 CLI 了。
 - **你需要有厂商背书、维护者梯队厚的工具。** 绝大多数提交出自一个个人账号；如果这是硬伤，路由部分改用有公司支持的 [LiteLLM](../../../api-gateway/litellm.zh.md)，其余部分用各工具自己的配置。
 
 ## 横向对比
@@ -119,7 +119,7 @@ CC Switch 是一个 Tauri 桌面应用——Rust 写的后端加一个基于网�
 | [Claude Code Router](../../../api-gateway/claude-code-router.zh.md) | ✅ | Claude Code 是你的主力工具，想在它内部按任务做条件化的模型路由，而且要能脱离桌面用 CLI 跑，选 Claude Code Router；同时折腾好几个 CLI、想用一个图形界面管厂商、MCP、技能和提示词，选 CC Switch。 | Router 的单请求路由更细，有 CLI 形态；CC Switch 覆盖十个工具，管的不只是路由，但需要桌面环境。 |
 | [LiteLLM](../../../api-gateway/litellm.zh.md) | ✅ | 团队需要一个带虚拟 key、预算和日志的受管入口，选 LiteLLM；一个开发者在笔记本上切换厂商，选 CC Switch。 | LiteLLM 是要你部署和运维的服务器，有真正的访问控制；CC Switch 不用服务器，但没有多用户管控。 |
 | CC Switch CLI | 未收录 | 服务器和 SSH 会话里用社区版 CLI；有图形界面、想要托盘切换、会话浏览和用量图表，用桌面版。 | 和桌面版共用 `~/.cc-switch` 数据和 WebDAV 同步，但它是独立项目，支持的数据库版本有时落后于桌面版。 |
-| [OpenCode](../terminal-agents/opencode.zh.md) | ✅ | 能统一到一个不绑定模型的智能体、不再切换 CLI，选 OpenCode；必须让 Claude Code、Codex、Gemini CLI 并存使用，选 CC Switch。 | OpenCode 从根上消除了切换问题，代价是离开厂商自家的 CLI；CC Switch 保住你现有的工具，但多了一个要维护的应用。 |
+| [OpenCode](../terminal-agents/independent-runtimes/opencode.zh.md) | ✅ | 能统一到一个不绑定模型的智能体、不再切换 CLI，选 OpenCode；必须让 Claude Code、Codex、Gemini CLI 并存使用，选 CC Switch。 | OpenCode 从根上消除了切换问题，代价是离开厂商自家的 CLI；CC Switch 保住你现有的工具，但多了一个要维护的应用。 |
 
 ## 技术栈
 

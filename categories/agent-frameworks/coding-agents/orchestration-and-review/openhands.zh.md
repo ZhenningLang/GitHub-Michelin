@@ -89,7 +89,7 @@ health:
 
 你是每天都在用编码 agent 的开发者或小团队负责人，但每个 agent 都住在各自机器的各自终端里。你想把“把仓库 X 的依赖升一下”丢给柜子里那台常开的机器，用笔记本浏览器随时看进度；还想要一个每个工作日早上把新 GitHub issue 拆成任务、再把摘要发到 Slack 的任务——而不是自己用 `cron`、`ssh` 和三个命令行工具拼起来。你装上 `@openhands/agent-canvas`，把它接到一个或多个 *agent 后端*（跑在笔记本、Docker、虚拟机或 OpenHands Cloud 上的 Agent Server 进程），然后在一个界面里驱动它们。
 
-如果你需要远程后端和定时 / webhook 自动化，而不只是给已登录的命令行工具套一层本地图形界面，选它而不是 [T3 Code](../terminal-agents/t3code.zh.md)；如果你是一个人或小团队，想先在笔记本上跑起来，而不是搭一套全组织的沙箱控制平面，选它而不是 [Background Agents（Open-Inspect）](background-agents.zh.md)；如果自动化要触达 Slack、Linear 或你自己的服务器，而不是只活在 GitHub Actions 里，选它而不是 [gh-aw](gh-aw.zh.md)。决定性的取舍：一个 MIT 许可、自托管、不绑定具体 agent 的界面（它支持 ACP，即 Agent Client Protocol，第三方命令行 agent 可以直接接入），代价是用的是一个年轻的 beta 产品，而且它的 agent 服务在你部署的机器上有真实的 shell 权限。
+如果你需要远程后端和定时 / webhook 自动化，而不只是给已登录的命令行工具套一层本地图形界面，选它而不是 [T3 Code](../terminal-agents/independent-runtimes/t3code.zh.md)；如果你是一个人或小团队，想先在笔记本上跑起来，而不是搭一套全组织的沙箱控制平面，选它而不是 [Background Agents（Open-Inspect）](background-agents.zh.md)；如果自动化要触达 Slack、Linear 或你自己的服务器，而不是只活在 GitHub Actions 里，选它而不是 [gh-aw](gh-aw.zh.md)。决定性的取舍：一个 MIT 许可、自托管、不绑定具体 agent 的界面（它支持 ACP，即 Agent Client Protocol，第三方命令行 agent 可以直接接入），代价是用的是一个年轻的 beta 产品，而且它的 agent 服务在你部署的机器上有真实的 shell 权限。
 
 ## 怎么用起来
 
@@ -115,17 +115,17 @@ health:
 
 ## 何时不用
 
-- **你要的是经典的 OpenHands agent，作为 Python 应用或库来用。** 这个仓库在 2026-07-27 为迁移到 Agent Canvas 被清空重建；旧的 `openhands-ai` PyPI 包停在 1.11.0（2026-07）。要嵌入一个 agent，直接用 `OpenHands/software-agent-sdk`（未收录），或者用 [OpenCode](../terminal-agents/opencode.zh.md) / [Codex](../terminal-agents/codex.zh.md) 这类终端 agent——网上讲 `openhands-ai` 的教程和文章，描述的已经不是这个仓库里的代码。
-- **你现在就需要一个稳定、长期支持的控制平面。** README 徽章写着 **beta**，发版间隔只有几天（两周内从 v1.21 到 v1.25），Agent Canvas 的代码 2026 年 7 月底才搬进这个仓库。如果你只需要给现有命令行工具套个本地界面，[T3 Code](../terminal-agents/t3code.zh.md) 更小；如果你要全组织范围、带署名的后台 PR，去评估 [Background Agents（Open-Inspect）](background-agents.zh.md)。
+- **你要的是经典的 OpenHands agent，作为 Python 应用或库来用。** 这个仓库在 2026-07-27 为迁移到 Agent Canvas 被清空重建；旧的 `openhands-ai` PyPI 包停在 1.11.0（2026-07）。要嵌入一个 agent，直接用 `OpenHands/software-agent-sdk`（未收录），或者用 [OpenCode](../terminal-agents/independent-runtimes/opencode.zh.md) / [Codex](../terminal-agents/vendor-agents/codex.zh.md) 这类终端 agent——网上讲 `openhands-ai` 的教程和文章，描述的已经不是这个仓库里的代码。
+- **你现在就需要一个稳定、长期支持的控制平面。** README 徽章写着 **beta**，发版间隔只有几天（两周内从 v1.21 到 v1.25），Agent Canvas 的代码 2026 年 7 月底才搬进这个仓库。如果你只需要给现有命令行工具套个本地界面，[T3 Code](../terminal-agents/independent-runtimes/t3code.zh.md) 更小；如果你要全组织范围、带署名的后台 PR，去评估 [Background Agents（Open-Inspect）](background-agents.zh.md)。
 - **你不能让 agent 拿到一台真实机器的 shell。** “不带沙箱”的安装方式把 Agent Server 直接跑在你的主机上，README 明确警告 agent 会拥有完整的文件系统访问权。改用 Docker 沙箱方式（Option 2/3），或者把 agent 关在 CI 里用 [gh-aw](gh-aw.zh.md)，它的 agent 作业只读运行、外网被防火墙拦着。
 - **你打算不加固就直接暴露到公网。** 任何能连上 Agent Server 的人都能以 agent 身份执行命令；`SELF_HOSTING.md` 要求防火墙、`--public` 模式、强 `LOCAL_BACKEND_API_KEY` 和 TLS。运维不了这些，就只绑回环地址，或者用托管的 OpenHands Cloud（非仓库）。
-- **你永远只在一个终端里用一个 agent。** 这个控制台会在单个 [Codex](../terminal-agents/codex.zh.md) 或 [Gemini CLI](../terminal-agents/gemini-cli.zh.md) 会话已有的能力之上，再加 Node.js 24、`uv`、端口和一个网页界面。
+- **你永远只在一个终端里用一个 agent。** 这个控制台会在单个 [Codex](../terminal-agents/vendor-agents/codex.zh.md) 或 [Gemini CLI](../terminal-agents/vendor-agents/gemini-cli.zh.md) 会话已有的能力之上，再加 Node.js 24、`uv`、端口和一个网页界面。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [T3 Code](../terminal-agents/t3code.zh.md) | 已收录 | 如果你只想给已经登录好的 Codex/Claude/OpenCode 命令行套一个本地图形界面，选 T3 Code；如果还需要远程后端和定时或 webhook 自动化，选 OpenHands。 | T3 Code 更轻，始终只是一层薄包装；OpenHands 多了 Agent Server、Docker 沙箱和 Automation Server，代价是组件更多、beta 期变动大。 |
+| [T3 Code](../terminal-agents/independent-runtimes/t3code.zh.md) | 已收录 | 如果你只想给已经登录好的 Codex/Claude/OpenCode 命令行套一个本地图形界面，选 T3 Code；如果还需要远程后端和定时或 webhook 自动化，选 OpenHands。 | T3 Code 更轻，始终只是一层薄包装；OpenHands 多了 Agent Server、Docker 沙箱和 Automation Server，代价是组件更多、beta 期变动大。 |
 | [Background Agents（Open-Inspect）](background-agents.zh.md) | 已收录 | 一个受信任的组织要从 Slack/Linear/Sentry 拉起云端沙箱、跨多个仓库提带署名的 PR，选 Open-Inspect；一个人或小团队从笔记本起步，选 OpenHands。 | Open-Inspect 围绕组织级沙箱生命周期和集成来设计；OpenHands 从一台机器起步、靠加后端扩展，内置的组织级配套更少。 |
 | [gh-aw](gh-aw.zh.md) | 已收录 | 如果你的周期性 agent 杂活全是 GitHub 仓库里的事，并希望它们在 Actions 里被防火墙隔离，选 gh-aw；任务要触达 Slack、Linear 或你自己的主机时，选 OpenHands。 | gh-aw 继承 GitHub 的 runner、权限和审计记录，但只能在 GitHub 上；OpenHands 哪里都能跑，主机安全归你。 |
 | [OpenChamber](openchamber.zh.md) | 已收录 | 如果 OpenCode 是你唯一的 agent，想要跨设备会话和多模型对比 diff，选 OpenChamber；如果你混用 OpenHands、Claude Code、Codex 和 Gemini CLI，选 OpenHands。 | OpenChamber 在单一运行时的评审流程上做得更深；OpenHands 借助 ACP 覆盖更多 agent，但对每个 agent 的支持更浅。 |
