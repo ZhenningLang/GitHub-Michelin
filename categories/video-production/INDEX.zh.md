@@ -13,6 +13,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **We-Video** | 复用分步审稿、试听和视觉审核工作台及带检查的渲染器；先补齐任务接口与账号输入。 | C（4/6） | [→](we-video.zh.md) |
 | **Stickman Video Director** | 批准火柴人分镜后取得独立连续性提示词；生成与剪辑仍在外部完成。 | C（4/5） | [→](stickman-video-director.zh.md) |
 | **huashu-art-motion** | 助手按分镜规则构建艺术动画，用成片实测门禁交付。 | C（5/6） | [→](huashu-art-motion.zh.md) |
 | **shuohao-skills** | 短剧每生成一段，人物座位就换一次。这组技能先把小说变成人物、美术、剧本、站位和分镜记录，再交给制作环节。 | C（5/6） | [→](shuohao-skills.zh.md) |
@@ -31,6 +32,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [We-Video](we-video.zh.md) | ✅ | C（4/6） | 人工审核的文章转视频实现，不是现成发行版；缺失接口、自备提示词与渲染引擎独立许可都需自行处理。 |
 | [渲染引擎](render-engines/INDEX.zh.md) | 子分类 | — | 把 HTML、React 或 Rust/SVG 合成渲染成帧；单靠引擎不够时，再选下方的制作方法或创作应用。 |
 | [Stickman Video Director](stickman-video-director.zh.md) | ✅ | C（4/5） | 提示层导演与声音约束，不是渲染器，也不保证生成连续性。 |
 | [huashu-art-motion](huashu-art-motion.zh.md) | ✅ | C（5/6） | 绘画配方与本地 Canvas 渲染；中文指令为主，年轻单人项目。 |

@@ -887,6 +887,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **We-Video** | Reuse a staged narration review workbench and checked MP4 renderer; first repair missing job API handlers and supply account assets and prompts. | MIT | C (4/6) | [EN](categories/video-production/we-video.md) · [中](categories/video-production/we-video.zh.md) |
 | **Stickman Video Director** | Review a stick-figure proposal before generating continuity-locked clip prompts; render and edit externally. | MIT | C (4/5) | [EN](categories/video-production/stickman-video-director.md) · [中](categories/video-production/stickman-video-director.zh.md) |
 | **huashu-art-motion** | Art-directed Canvas animation with measured delivery gates. | MIT | C (5/6) | [EN](categories/video-production/huashu-art-motion.md) · [中](categories/video-production/huashu-art-motion.zh.md) |
 | **shuohao-skills** | Your generated drama keeps changing who sits where between shots; this collection turns a novel into shared character, art, script, staging and storyboard records before production. | Apache-2.0 | C (5/6) | [EN](categories/video-production/shuohao-skills.md) · [中](categories/video-production/shuohao-skills.zh.md) |

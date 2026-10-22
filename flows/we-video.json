@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "them": {"en": "We-Video", "zh": "We-Video"},
+  "steps": [
+    {"lane": "you", "en": "Supply account assets, prompts and keys; restore missing job routes, then start", "zh": "备齐账号素材、提示词与密钥，补齐接口再启动", "code": "npm run dev"},
+    {"lane": "you", "en": "Submit an article for narration", "zh": "提交文章，要求生成口播稿"},
+    {"lane": "them", "en": "Generate a draft and retain source text for review", "zh": "生成稿件并保存原文供审核"},
+    {"lane": "you", "en": "Correct and approve the draft, then select a voice", "zh": "修正并确认稿件，选择音色"},
+    {"lane": "them", "en": "Synthesize speech and collect word timing", "zh": "合成语音并取得词级时间"},
+    {"lane": "you", "en": "Review audio, prepare pictures and approve the visual plan", "zh": "试听，准备画面并确认视觉规划"},
+    {"lane": "them", "en": "Render and check the MP4 before marking it completed", "zh": "渲染并检查 MP4，再标记完成"}
+  ],
+  "value": {"en": "After integration repair, review each stage without assembling speech, captions and video by hand", "zh": "补齐接口后逐步审核，不必手工拼装配音、字幕和成片"},
+  "sources": [
+    "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/README.md",
+    "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/content/README.md",
+    "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/components/Workspace.tsx",
+    "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/lib/narration.ts",
+    "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/server/talk-worker.ts",
+    "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/server/render-job.ts"
+  ]
+}

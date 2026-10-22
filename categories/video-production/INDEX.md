@@ -13,6 +13,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **We-Video** | Reuse a narration/audio/visual review workbench and checked MP4 renderer; first complete missing job API handlers and account inputs. | C (4/6) | [→](we-video.md) |
 | **Stickman Video Director** | Approve a stick-figure storyboard and get standalone continuity prompts; generation and editing stay external. | C (4/5) | [→](stickman-video-director.md) |
 | **huashu-art-motion** | Agent-directed art animation with shot rules, Canvas scenes and measured film gates. | C (5/6) | [→](huashu-art-motion.md) |
 | **shuohao-skills** | Your generated drama keeps changing who sits where between shots; this collection turns a novel into shared character, art, script, staging and storyboard records before production. | C (5/6) | [→](shuohao-skills.md) |
@@ -31,6 +32,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [We-Video](we-video.md) | ✅ | C (4/6) | Human-reviewed article-to-video implementation, not a turnkey checkout: missing API handlers, private prompts and Remotion's separate license remain your responsibility. |
 | [Render engines](render-engines/INDEX.md) | Sub-category | — | HTML, React or Rust/SVG compositions to rendered frames; choose a production method or creator app below when the engine alone is not enough. |
 | [Stickman Video Director](stickman-video-director.md) | ✅ | C (4/5) | Prompt-only directing and voice locks, not a renderer or a guarantee of generated continuity. |
 | [huashu-art-motion](huashu-art-motion.md) | ✅ | C (5/6) | Art recipes and local Canvas rendering; mostly Chinese instructions, young single-author project. |

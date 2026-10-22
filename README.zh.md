@@ -884,6 +884,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **We-Video** | 复用分步口播审核工作台与带检查的渲染器；先补齐任务接口、自备账号素材和提示词。 | MIT | C（4/6） | [中](categories/video-production/we-video.zh.md) · [EN](categories/video-production/we-video.md) |
 | **Stickman Video Director** | 确认火柴人方案后取得带连续性约束的提示词；生成和剪辑由外部工具完成。 | MIT | C（4/5） | [中](categories/video-production/stickman-video-director.zh.md) · [EN](categories/video-production/stickman-video-director.md) |
 | **huashu-art-motion** | 需要美术指导、Canvas 动画和实测交付门禁时。 | MIT | C（5/6） | [中](categories/video-production/huashu-art-motion.zh.md) · [EN](categories/video-production/huashu-art-motion.md) |
 | **shuohao-skills** | 短剧每生成一段，人物座位就换一次。这组技能先把小说变成人物、美术、剧本、站位和分镜记录，再交给制作环节。 | Apache-2.0 | C（5/6） | [EN](categories/video-production/shuohao-skills.md) · [中](categories/video-production/shuohao-skills.zh.md) |

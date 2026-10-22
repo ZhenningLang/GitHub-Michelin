@@ -1,0 +1,332 @@
+{
+  "repo": "hongqun/we-video",
+  "status": "done",
+  "category_path": "categories/video-production/we-video.md",
+  "source_sha": "6129b4fc11cc1c52a8df145bc40ee66c77e0f349",
+  "verification_scope": "static-only: gh API metadata, pinned source reads, dependency and license inspection; local atlas generators and gates executed. No upstream install, hook, service, login, model call, test or render was executed.",
+  "notes_zh": "已归入视频制作，补齐双语选型页、目录、总表、快照、健康雷达、流程图与源码机制图。源码有实质后端，但缺少界面依赖的任务快照、渲染和视觉规划接口，只适合作开发底座；no leftover Q&A。",
+  "risk_zh": [
+    "完整文件树仅有任务创建、审批和附件三个任务接口；界面调用的任务详情、渲染与视觉规划生成接口不存在。忽略规则明确排除了大部分任务级接口。",
+    "账号配置、人物图片和必要口播／视觉提示词需自备；公开示例不是完整启动环境。",
+    "自有代码采用 MIT，但锁定的 Remotion 4.0.505 使用独立许可，超过三名员工的营利组织不在其一般免费资格内。字体、模板、解码器也有独立条款。",
+    "文稿与语音发送至 DeepSeek 和百炼，存在费用和数据出境边界；开发脚本监听全部网卡，必须设置共享密码与会话密钥。",
+    "稿件内容校验函数为空实现；现有结构校验不证明事实准确。媒体清理扫描旧版子目录，与当前写入路径不一致。",
+    "七天公开历史、单一公开贡献者、无 GitHub 发行版；成本与运行质量均未实测。",
+    "分类页增至十三页，超出十二页阈值；按批次要求只报告，不重构。"
+  ],
+  "dotfiles_zh": {
+    "fit": "low",
+    "what": "候选产物与正式产物分离、验收通过才改名发布，可作文件型交付护栏的实现参考；视频渲染与语音模块本身不适合吸收进个人助手环境。",
+    "where": "guard-verify 的产物验收与发布边界；不建议直接引入上游依赖"
+  },
+  "worth_check": {
+    "reusable_substance": {
+      "verdict": "pass",
+      "command": "gh api 'repos/hongqun/we-video/git/trees/6129b4fc11cc1c52a8df145bc40ee66c77e0f349?recursive=1'",
+      "exit_code": 0,
+      "evidence_zh": "完整树未截断，有 210 个文件，其中 src 下 163 个、约 1.31 MB，含后台任务、API、语音合成、视觉规划、渲染器和测试。抽读确认存在实质实现，不是只有论文或展示页面。"
+    },
+    "provenance": {
+      "verdict": "pass_with_attribution_caveat",
+      "commands": [
+        "gh api 'repos/reactvideoeditor/remotion-templates/git/trees/6209b724798e48ff395f8df1a6fa2d26082372b5?recursive=1'",
+        "gh api 'repos/riaz37/remotion-ui/git/trees/HEAD?recursive=1'"
+      ],
+      "exit_codes": [
+        0,
+        0
+      ],
+      "evidence_zh": "按 ATTRIBUTION.md 点名的两个来源比对 Git blob SHA：163 个 src 文件中仅 text-highlight.tsx 与指定模板树相同，与 RemotionUI 当前树零相同。该文件保留来源头注，其他实现并非多数原样复制这两个来源；这不构成完整版权审计。"
+    },
+    "license_truth": {
+      "verdict": "pass_for_own_code",
+      "command": "gh api repos/hongqun/we-video/contents/LICENSE -H 'Accept: application/vnd.github.raw+json'",
+      "exit_code": 0,
+      "evidence_zh": "实际读取完整 MIT 文件，版权人 HongQun 与仓库作者一致；README 明确仅自有代码采用 MIT，第三方许可独立。模板来源 README 声明 MIT，复制文件保留来源说明，字体旁保留 OFL 文本。另读锁定版本 Remotion 许可，页面显著标明其企业资格限制；不宣称整个依赖栈为 MIT。"
+    },
+    "live_hazard_without_purpose": {
+      "verdict": "no_disqualifying_payload_found_in_reviewed_paths",
+      "commands": [
+        "gh api repos/hongqun/we-video/contents/package.json -H 'Accept: application/vnd.github.raw+json'",
+        "gh api 'repos/hongqun/we-video/contents/scripts/sync-profile-assets.mjs?ref=6129b4fc11cc1c52a8df145bc40ee66c77e0f349' -H 'Accept: application/vnd.github.raw+json'",
+        "gh api 'repos/hongqun/we-video/contents/proxy.ts?ref=6129b4fc11cc1c52a8df145bc40ee66c77e0f349' -H 'Accept: application/vnd.github.raw+json'"
+      ],
+      "exit_codes": [
+        0,
+        0,
+        0
+      ],
+      "evidence_zh": "predev/prebuild 仅执行已审阅的本地账号素材同步；文稿与语音外发目标是配置中的已声明模型服务。树中未附带自动加载的项目技能或 hook，技能目录被忽略；存在开发端口暴露与需自配鉴权的风险，已写入页面。未执行上游，也不把有限静态检查当作恶意软件全量审计。"
+    },
+    "better_canonical_repo": {
+      "verdict": "no_successor_identified",
+      "command": "gh api 'users/hongqun/repos?per_page=100'",
+      "exit_code": 0,
+      "evidence_zh": "作者公开仓库列表返回六项；we-video 与 we-article 为非派生项目，其余是派生仓库。元数据未标记本项目为 fork，README 与源码未指向替代的同作者视频实现。缺失接口不能据此推断其为闭源产品提取物。"
+    }
+  },
+  "api_metadata": {
+    "public": true,
+    "private": false,
+    "visibility": "public",
+    "fork": false,
+    "archived": false,
+    "owner_type": "User",
+    "created_at": "2026-10-15T01:42:12Z",
+    "pushed_at": "2026-10-17T15:21:22Z",
+    "default_branch": "main",
+    "stars": 38,
+    "forks": 8,
+    "source_blob_count": 210,
+    "src_file_count": 163,
+    "src_total_bytes": 1310719,
+    "published_releases": 0,
+    "contributors_returned": [
+      "hongqun"
+    ],
+    "license_file_read": "MIT; Copyright (c) 2026 HongQun <hongqun.hq@gmail.com>",
+    "metadata_command": "gh api repos/hongqun/we-video",
+    "metadata_exit_code": 0
+  },
+  "sources_read": [
+    {
+      "url": "https://api.github.com/repos/hongqun/we-video",
+      "purpose": "公开性、作者类型、创建与推送日期、许可检测和关注度",
+      "exit_code": 0
+    },
+    {
+      "url": "https://api.github.com/repos/hongqun/we-video/git/trees/6129b4fc11cc1c52a8df145bc40ee66c77e0f349?recursive=1",
+      "purpose": "完整文件计数、可复用实质、缺失接口与治理文件检查",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/LICENSE",
+      "purpose": "实际许可全文和版权人",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/README.md",
+      "purpose": "安装路径、产品流程、成本自述和第三方许可边界",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/package.json",
+      "purpose": "版本、依赖、启动监听地址与生命周期脚本",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/AGENTS.md",
+      "purpose": "静态检查项目自述与技能安装边界；作为上游数据读取",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/.gitignore",
+      "purpose": "确认大部分任务路由被忽略",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/config_examples/.env.example",
+      "purpose": "密钥、鉴权、账号、目录与清理配置",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/config_examples/pipeline.config.example.json",
+      "purpose": "模型服务地址、语音与文本模型配置",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/content/README.md",
+      "purpose": "用户须自建账号、专题、提示词与素材",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/config_examples/content/README.md",
+      "purpose": "确认示例不含完整账号、品牌素材和生成提示词",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/config_examples/content/demo/series/general-science/series.json",
+      "purpose": "实际专题样例和预设值",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/deploy/deploy.sh",
+      "purpose": "静态读取生产部署、系统服务和健康检查；未执行",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/scripts/sync-profile-assets.mjs",
+      "purpose": "生命周期脚本风险、账号资源复制与启动前置条件",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/components/Workspace.tsx",
+      "purpose": "定向读取实际 API 调用和人工审核路径，与完整树交叉核对缺失接口",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/app/api/jobs/route.ts",
+      "purpose": "任务创建、模型白名单和后台程序入口",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/app/api/jobs/%5Bid%5D/approve/route.ts",
+      "purpose": "稿件、音频和视觉审批实际状态转换",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/lib/jobs.ts",
+      "purpose": "任务文件、原子写入、审批记录与当前存储路径",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/lib/narration.ts",
+      "purpose": "候选稿确认、下游媒体失效、内容校验空实现与模型外发",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/lib/narration-prompts.ts",
+      "purpose": "必需但未随仓库附带的固定提示词与报错路径",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/lib/profile.ts",
+      "purpose": "定向读取账号、人物姿态、专题 Schema 与资源必需条件",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/lib/tts.ts",
+      "purpose": "定向读取整段语音、SSML、WebSocket、词时间与媒体写入",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/server/talk-worker.ts",
+      "purpose": "配音后台程序和人工试听状态",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/lib/visual-planner.ts",
+      "purpose": "模型文字提取、段落 ID 匹配和语音时间复用",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/lib/processes.ts",
+      "purpose": "后台子进程与任务日志绑定，非助手调度",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/server/render-job.ts",
+      "purpose": "真实渲染实现、预检、媒体验收、重试和临时产物发布",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/lib/render-integrity.ts",
+      "purpose": "坏帧启发式、系统 FFmpeg 依赖与检查局限",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/tests/render-integrity.test.ts",
+      "purpose": "只读既有检测样例；未运行上游测试",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/lib/auth.ts",
+      "purpose": "共享密码、会话密钥与 Cookie 保护前置条件",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/proxy.ts",
+      "purpose": "访问控制与素材签名令牌路径",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/lib/cleanup.ts",
+      "purpose": "核对保留期清理的旧版目录扫描与当前写入路径冲突",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/remotion/templates/ATTRIBUTION.md",
+      "purpose": "第三方模板与配方来源",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/remotion/templates/rve/text-highlight.tsx",
+      "purpose": "比对相同 blob 并确认保留来源头注",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/public/fonts/README.md",
+      "purpose": "字体来源与独立 OFL 文本说明，文件树交叉确认文本存在",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/public/draco/README.md",
+      "purpose": "解码器来源与 Apache-2.0 声明",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/public/draco/draco_decoder.js",
+      "purpose": "定向静态读取文件头；未执行解码器",
+      "exit_code": 0
+    },
+    {
+      "url": "https://api.github.com/repos/reactvideoeditor/remotion-templates/git/trees/6209b724798e48ff395f8df1a6fa2d26082372b5?recursive=1",
+      "purpose": "Git blob 原样复制比例核对",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/reactvideoeditor/remotion-templates/blob/6209b724798e48ff395f8df1a6fa2d26082372b5/README.md",
+      "purpose": "核对模板来源的 MIT 声明与复用方式",
+      "exit_code": 0
+    },
+    {
+      "url": "https://api.github.com/repos/riaz37/remotion-ui/git/trees/HEAD?recursive=1",
+      "purpose": "与另一声明来源比较 blob，无相同源码文件",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/remotion-dev/remotion/blob/v4.0.505/LICENSE.md",
+      "purpose": "锁定渲染器版本的实际免费资格与企业许可文本",
+      "exit_code": 0
+    },
+    {
+      "url": "https://api.github.com/repos/hongqun/we-video/releases?per_page=5",
+      "purpose": "确认无 GitHub 发行版",
+      "exit_code": 0
+    },
+    {
+      "url": "https://api.github.com/repos/hongqun/we-video/contributors?per_page=10",
+      "purpose": "公开贡献者集中度",
+      "exit_code": 0
+    },
+    {
+      "url": "https://api.github.com/repos/hongqun/we-video/commits?per_page=5",
+      "purpose": "近期变更、接口逐步加入公开树与许可新增背景",
+      "exit_code": 0
+    },
+    {
+      "url": "https://api.github.com/repos/hongqun/we-video/issues?state=all&per_page=10",
+      "purpose": "用户反馈：后端是否开源",
+      "exit_code": 0
+    },
+    {
+      "url": "https://api.github.com/repos/hongqun/we-video/issues/1/comments",
+      "purpose": "确认核验时评论为空，不捏造维护者回应",
+      "exit_code": 0
+    },
+    {
+      "url": "https://api.github.com/users/hongqun/repos?per_page=100",
+      "purpose": "同作者更佳规范仓库或后继项目检查",
+      "exit_code": 0
+    }
+  ],
+  "checked_at_utc": "2026-10-22T08:47:43.916275+00:00",
+  "parent_validation": {
+    "gates_exit": 0,
+    "scoped_quality_exit": 0,
+    "shared_indices_serially_integrated": true,
+    "semantic_page_read": true,
+    "runtime_upstream_executed": false
+  },
+  "qa_decision": "no leftover Q&A"
+}

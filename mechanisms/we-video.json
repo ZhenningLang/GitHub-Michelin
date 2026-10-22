@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "source", "en": "Article and operator prompts", "zh": "文章与自备提示词", "kind": "input"},
+    {"id": "candidate", "en": "Candidate draft separate from accepted draft", "zh": "候选稿与正式稿分开", "technique": [1]},
+    {"id": "review", "en": "Acceptance clears old media", "zh": "确认后清除旧媒体", "technique": [1]},
+    {"id": "speech", "en": "Bailian speech and word timing", "zh": "百炼语音与词级时间", "kind": "external", "technique": [2]},
+    {"id": "plan", "en": "Match segment IDs; reuse audio times", "zh": "匹配段落标识，复用语音时间", "technique": [2]},
+    {"id": "render", "en": "Remotion temporary MP4", "zh": "渲染到临时 MP4", "technique": [3]},
+    {"id": "check", "en": "Check streams and short frame anomalies", "zh": "检查媒体流与短时异常帧", "technique": [3]},
+    {"id": "retry", "en": "One single-threaded retry", "zh": "单线程重渲染一次", "technique": [3]},
+    {"id": "publish", "en": "Rename accepted file; mark completed", "zh": "验收后改名并标记完成", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "source", "to": "candidate"},
+    {"from": "candidate", "to": "review", "en": "operator accepts", "zh": "人工确认"},
+    {"from": "review", "to": "speech"},
+    {"from": "speech", "to": "plan"},
+    {"from": "plan", "to": "render", "en": "after visual approval", "zh": "视觉确认后"},
+    {"from": "render", "to": "check"},
+    {"from": "check", "to": "retry", "en": "short anomaly detected", "zh": "检出短时异常", "style": "dashed"},
+    {"from": "retry", "to": "check", "style": "dashed"},
+    {"from": "check", "to": "publish", "en": "checks pass", "zh": "检查通过"}
+  ],
+  "sources": [
+    "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/lib/narration.ts",
+    "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/lib/tts.ts",
+    "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/lib/visual-planner.ts",
+    "https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/server/render-job.ts"
+  ]
+}
