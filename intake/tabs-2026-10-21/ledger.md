@@ -31,6 +31,6 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | Zleap-AI/SAG | add | done | categories/rag-retrieval/structured-retrieval/sag.md | 主会话内容复核；make gates 与双页 scoped quality 通过；commit 1abe04c9；no leftover Q&A | zleap-ai/sag |
 | hanshuaikang/nezha | add | done | categories/agent-tooling/supervision-surfaces/agent-cockpits/nezha.md | 主会话内容复核；make gates 与双页 scoped quality 通过；commit 05acfd8a；no leftover Q&A | hanshuaikang/nezha |
 | android/skills | sync | done | categories/agent-skills/vendor-collections/product-vendors/android-skills.md | fresh：原核验 2026-09-22，UTC 2026-10-22 时为 30 天；保留页面与日期；commit fb4cf43；no leftover Q&A | android/skills |
-| geekjourneyx/md2wechat-skill | add | done | categories/social-media-management/md2wechat-skill.md | commit a91affa8；门禁和复核通过；关闭标签受阻：DEFER: expected exactly one user Chrome process, found ['5651', '34846']；no leftover Q&A | geekjourneyx/md2wechat-skill |
+| geekjourneyx/md2wechat-skill | add | done | categories/social-media-management/md2wechat-skill.md | commit a91affa8；门禁及内容复核通过；Chrome 恢复唯一识别后，按原命令已关闭标签；两张健康卡模板溢出已披露为 P2；no leftover Q&A | geekjourneyx/md2wechat-skill |
 | SoMarkAI/OXR | add | done | categories/document-parsing/oxr.md | 主会话内容复核；make gates 与双页 scoped quality 通过；commit b8315f59；no leftover Q&A | somarkai/oxr |
-| isjiamu/gzh-design-skill | add | running |  | 最终重扫新增标签，交独立 subagent；核验用实际 UTC 日期；no leftover Q&A | isjiamu/gzh-design-skill |
+| isjiamu/gzh-design-skill | add | done | categories/agent-skills/ai-writing/content-production/gzh-design-skill.md | 主会话内容复核；make gates 与双页 scoped quality 通过；commit 46a8700d；no leftover Q&A | isjiamu/gzh-design-skill |

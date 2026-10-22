@@ -2,7 +2,6 @@
 
 五项资格问题待裁决；md2wechat 的健康卡有既有模板文字溢出。
 本批不安装上游，也不修改个人 harness。暂缓项目保留标签，不当成已收录。
-运行中又出现 `isjiamu/gzh-design-skill`，已分派独立调研；本页仍会补充该项结果。
 
 ## 先看结论
 
@@ -16,11 +15,11 @@
 
 | 状态 | 当前结果 |
 |---|---|
-| 新增 | 16 个项目已逐项提交，门禁通过，标签已全部关闭 |
+| 新增 | 17 个项目已逐项提交，门禁通过，标签已全部关闭 |
 | 已有页面 | 6 个 fresh，保留原页和核验日期，标签已关闭 |
 | 暂缓 | 5 个，具体证据见下文与待裁决记录 |
 | 自有项目 | 1 个，不收录、不关标签 |
-| 运行中新增标签 | `isjiamu/gzh-design-skill`，重扫后共 29 条；其余均已终结 |
+| 运行中新增标签 | 无；29 条台账全部终结，失败为零 |
 | 公开发布 | 仅发布脱敏分支，经 PR 与 CI 进入主干；远端状态以本批 PR 为准 |
 
 批次开始于 **2026-10-21 UTC**，运行中跨到次日；新增页使用各自实际核验日，不倒填批次日期。已有六页按 90 天门槛判定 fresh，不声称重新读过其上游。
@@ -41,6 +40,7 @@
 | [Biscotti](../../../categories/meeting-intelligence/biscotti.zh.md) | 想在 Mac 本地保存会议、分辨说话人并生成会后摘要。 | 不需要云推理账号，但限 Apple Silicon、macOS 15 及以上；不是会中行动 agent。PolyForm Perimeter 禁止竞争用途，MCP 开启后本机程序可读会议。 |
 | [twitter-cli](../../../categories/social-media-management/twitter-cli.zh.md) | 想把自己的 X 书签和信息流接给终端脚本。 | 无需另建开发者应用，但把会话 cookie 交给非官方 HTTP 客户端。搜索修复尚未合并，鉴权失败还能回读其他浏览器，不宜作为稳定业务数据源。 |
 | [md2wechat](../../../categories/social-media-management/md2wechat-skill.zh.md) | Markdown 成稿还要补封面、检查图片与元数据，再创建公众号草稿。 | 完整 Go CLI 加操作规程，不只是技能文本。主排版路径依赖付费服务并外发文章；公司营收相关工作与客户交付受许可限制，AI 模式只返回待执行提示词。其他平台仍由宿主浏览器完成。 |
+| [gzh-design-skill](../../../categories/agent-skills/ai-writing/content-production/gzh-design-skill.zh.md) | 已有文章要按主题组件排成公众号样式，再手动复制到编辑器。 | 六套主题与静态检查，不是确定性排版器，也没有自动发布。正文保真和手机／暗色显示仍需验收；有些检查只警告、退出仍为零。许可按 AGPL 原文，不按 README 的泛化禁收费说法。 |
 | [KiviDB](../../../categories/databases/database-engines/kividb.zh.md) | Redis 风格业务还需要同库关键词与向量检索。 | 内置搜索与多核实现减少一份存储，但 AGPL、短公开历史及兼容／恢复边界需要验证。当前只有每秒刷盘，确认写入不等于同步落盘。 |
 | [microG](../../../categories/android-system-services/microg-gmscore.zh.md) | 不带 Google 套件的安卓系统仍要运行已有应用。 | 替换设备上的服务实现，不替换 Google 后端。通常需要系统支持签名伪装；银行、完整性检查和推送兼容性要逐应用验收。 |
 | [GameDev Agent Skills](../../../categories/agent-skills/engineering/awesome-gamedev-agent-skills.zh.md) | 通用 agent 混用引擎版本，缺跳跃、存档和发布的领域知识。 | 它是按引擎与版本选取的技能目录，不是编辑器连接。文字路由不能证明游戏能运行，仍需引擎编译和场景测试。 |
@@ -83,6 +83,7 @@ Agent Orchestrator 的仓库字段与正文归属名称不一致，Android Skill
 | 优先，medium | LCU：在 macOS 拒绝控制承载 agent 的审批应用；给子 agent 独立轮次，避免子任务清理父任务。 | `computer-use` 授权边界与已有适配器的生命周期诊断。目前没有正式 OpenCode／kilo 适配器，不带入自动授权。 | [LCU](../../../categories/desktop-automation/lcu.md) |
 | 后续，medium | FounderOS：分开展示已完成产物和待批准请求，优先显示逾期或有人等待的事项。 | `dev-long-run` 状态台、`sidecar` 通知呈现。文件命名只是展示线索，不是授权门。 | [FounderOS](../../../categories/agent-tooling/supervision-surfaces/agent-cockpits/founderos.md) |
 | 后续，medium | GameDev Agent Skills：先查项目标记和锁文件，再选单引擎与专项技能，逐层读参考材料。 | `workflow-helper`、`think-context-map`。不把整个游戏目录常驻加载。 | [技能页](../../../categories/agent-skills/engineering/awesome-gamedev-agent-skills.md) |
+| 后续，medium | gzh-design：按文章类型选主题配方，分别验源组件和产物，把复制正文与预览外壳分开。 | `write-flow` 排版阶段、`fe-ui-lint-artifact`、`guard-verify`。检查器警告级别要与交付要求一致；不直接安装主题，也不让排版擅自改作者正文。 | [gzh-design-skill](../../../categories/agent-skills/ai-writing/content-production/gzh-design-skill.md) |
 | 已有，high | AgentsView：统一多个助手的会话日志，提供检索和分析入口。 | `agent-harness-improvement` 已将其作为取数源，不重复建设。 | [AgentsView](../../../categories/agent-tooling/session-history/agentsview.md) |
 | 后续，medium | Taste-Skill：把布局变化、动效与密度变成明确输入。 | `fe-ui-design` 的可选设计约束，不覆盖品牌系统；反重复沿用 `fe-ui-critique`。 | [Taste-Skill](../../../categories/agent-skills/design/ui-taste/taste-skill.md) |
 | 后续，medium | Agent Orchestrator：按分支归属回送 CI 与评审事件。 | `dev-long-run` 的事件归属；参考 `sidecar` 的裁决结构，但不扩大其单目标边界。 | [Agent Orchestrator](../../../categories/agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.md) |
@@ -106,23 +107,27 @@ Agent Orchestrator 的仓库字段与正文归属名称不一致，Android Skill
 - **游戏开发：** 选轻量引擎做完整小项目，还是连接 Unity 编辑器让 agent 直接改场景，验收责任如何划分？
 - **社媒管理：** 官方 API、浏览器桥和会话 cookie 客户端，在权限范围、账号风险和可恢复发布上如何取舍？
 - **文档解析：** 选混合格式／CPU 管线，还是拆开版面检测与识别的 GPU 服务，商用许可和长任务恢复要付出什么？
+- **内容生产技能：** 主题组件装配、文章创作和账号草稿工具各负责到哪一步，怎样防止“本地检查通过”冒充“正文保真且已发布”？
 
 ## 验证与剩余缺口
 
 - 本次复跑：每个新增项目合入后分别运行 `make gates` 和双页 scoped quality，均为退出码零；范围扫描均无 deterministic findings。
-- 基线工具测试：`Ran 483 tests in 11.976s`，`OK`，无 skipped。最终整合后仍需重跑。
+- 基线工具测试：`Ran 483 tests in 11.976s`，`OK`，无 skipped；最终公开树的重跑输出与完整验收对账记录在本批验证文件及 PR。
 - 人工内容复核：逐页读适用场景、何时不用、比较、源码技术和存疑账本，特别检查未合并 PR 不被写成已发布能力。
 - 复用 worker 证据：固定源码、许可原文、图卡渲染和目检。它们不是主会话的运行实测。
 - 未运行：上游安装、模型调用、桌面控制、登录态 X 操作、安卓真机、Unity 场景、数据库崩溃恢复或占卜数据生成。不能把静态收录当成产品认证。
 - 已知视觉缺口：md2wechat 的健康卡因通用模板把长许可封顶理由与覆盖率放在同一行，双语卡有文字溢出。分数、六轴和正文许可说明仍在；未手改自动评分或生成图，未扩到工具代码修复。该两图的视觉验收为 partial，不冒充全部配图无缺陷。
 
 Inner-loop evidence：结构门禁、范围质量扫描与工具测试。
-Acceptance evidence：真实 Chrome 标签逐项提交后关闭；页面、生成图、双语入口与反向索引接通；最终对账待补。
+Acceptance evidence：真实 Chrome 标签逐项提交后关闭；页面、生成图、双语入口与反向索引接通，最后重扫无新增候选。最终机器对账结果见本批验证文件。
 Holdout / unseen evidence：不适用模型效果实验，以源码限制、未合并修复和真实标签作为边界抽样。
 Holdout 来源类别：真实捕获及源码抽样。
 预期值来源：用户需求与 `tools/schema.md` 外部契约。
 本次改动相对冻结点的位置：只改内容生成侧，未改工具、判定器、门禁阈值或个人 harness。
 
 Boundary decisions：两处分类各拆成 3／10 项，保留原父入口。内部路由已修复，52 个旧叶页路径不提供外部书签重定向；工具、门禁阈值和个人 harness 未改。
+
+独立审查首轮覆盖 320 个文件。D 组原始记录为 46／48，主会话补充完整解析两份 README，并逐个核对全部项目路由、新项目许可和健康度投影；没有把未读覆盖改成子任务自报。唯一确认问题是已披露的健康卡排版 P2，最终新增项和发布增量另作集成复核。
+额外发现的 Ekko Studio 旧许可栏、TanStack Select 游离行健康度及既有页面口径差异，均保留基线事实，另列后续刷新，不借本批重写。
 
 下一步：维护者裁决五项资格问题；健康卡模板排版单列后续修复，不自动扩大本批开发范围。
