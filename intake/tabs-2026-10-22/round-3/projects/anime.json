@@ -1,0 +1,25 @@
+{
+  "repo": "juliangarnier/anime",
+  "status": "done",
+  "mode": "fresh",
+  "category_path": "categories/frontend-animation/anime.md",
+  "checked_at_utc": "2026-10-22T08:19:52.406008+00:00",
+  "freshness": {
+    "last_verified": "2026-09-28",
+    "today_utc": "2026-10-22",
+    "age_days": 24,
+    "threshold_days": 90
+  },
+  "page_sha256": "b78d98f3501890e61d9f1a547858cc7fecfa8fa6ddc421e4636498dc0aaa2866",
+  "no_page_diff_from_base": true,
+  "worker_worktree_clean": true,
+  "notes_zh": "fresh：原页核验日为2026-09-28，距2026-10-22为24天，未超过90天；未改文件、未抓上游、未强刷日期。依据现有英文页，Anime.js适合跨框架编排DOM、SVG和对象动画，归于前端动画；主要风险是单维护者、v3到v4迁移，以及需自行控制性能和减弱动画偏好。",
+  "risk_zh": "依据旧页：单维护者构成治理风险，v3到v4并非直接升级；纯CSS效果、React声明式动画或完整3D引擎需求不宜默认选它。旧页将部分模块、体积、浏览器支持和替代品比较列为存疑，本轮未重新核验，不将历史版本或比较断言为当前事实。",
+  "dotfiles_zh": {
+    "fit": "none",
+    "what": "本页介绍浏览器动画库，没有可直接吸收进个人agent harness的技能、钩子、记忆或路由机制。",
+    "where": "不适用"
+  },
+  "evidence_boundary": "Read the existing local EN page only. Parent checked visibility metadata. No upstream fact/source reread, runtime execution, health refresh or date bump.",
+  "qa_decision": "no leftover Q&A"
+}
