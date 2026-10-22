@@ -42,6 +42,12 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 完整索引，按分类分组。每个项目有一份英文页（`<slug>.md`）和一份中文页（`<slug>.zh.md`），点击直达。交互式浏览见 [INDEX.zh.md](INDEX.zh.md)；agent 从 [AGENTS.md](AGENTS.md) 开始。
 
+### traditional-divination
+
+| 项目 | 何时使用 | 许可 | 健康度 | 页面 |
+|---|---|---|---|---|
+| **Ziwei Doushu** | 检查流派排盘规则；不作科学预测，解读后端未完整开源。 | MIT | C（6/6） | [中](categories/traditional-divination/ziwei-doushu.zh.md) · [EN](categories/traditional-divination/ziwei-doushu.md) |
+
 ### legal-documents
 
 | 项目 | 何时使用 | 许可 | 健康度 | 页面 |

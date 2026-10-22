@@ -45,6 +45,12 @@ installer surface.
 
 The complete index, grouped by category. Each project has an English page (`<slug>.md`) and a Chinese sibling (`<slug>.zh.md`) — click straight through. Browse interactively from [INDEX.md](INDEX.md); agents start at [AGENTS.md](AGENTS.md).
 
+### traditional-divination
+
+| Project | Use when | License | Health | Page |
+|---|---|---|---|---|
+| **Ziwei Doushu** | Inspect school-specific charting rules; no scientific prediction or complete interpretation backend. | MIT | C (6/6) | [EN](categories/traditional-divination/ziwei-doushu.md) · [中](categories/traditional-divination/ziwei-doushu.zh.md) |
+
 ### legal-documents
 
 | Project | Use when | License | Health | Page |

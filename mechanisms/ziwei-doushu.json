@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "birth", "en": "Birth date and clock time", "zh": "出生日期与钟表时间", "kind": "input"},
+    {"id": "demo", "en": "Demo path: longitude-only conversion", "zh": "演示路径：只做经度校正", "technique": [3]},
+    {"id": "helper", "en": "Separate fuller time helper; not wired to demo", "zh": "独立完整时间辅助模块；未接演示", "technique": [3]},
+    {"id": "calendar", "en": "Validate date and index; resolve leap-month policy", "zh": "校验日期与索引；确定闰月口径", "technique": [1]},
+    {"id": "iztro", "en": "iztro solar or lunar chart", "zh": "iztro 公历或农历排盘", "kind": "external", "technique": [1]},
+    {"id": "tables", "en": "School brightness and auxiliary-star adjustments", "zh": "流派亮度表与辅星修正", "technique": [2]},
+    {"id": "result", "en": "Twelve-compartment chart; not a scientific prediction", "zh": "十二宫命盘；不是科学预测", "kind": "output", "technique": [2]}
+  ],
+  "edges": [
+    {"from": "birth", "to": "demo"},
+    {"from": "birth", "to": "helper", "en": "separate integration surface", "zh": "独立集成入口", "style": "dashed"},
+    {"from": "demo", "to": "calendar"},
+    {"from": "calendar", "to": "iztro"},
+    {"from": "iztro", "to": "tables"},
+    {"from": "tables", "to": "result"}
+  ],
+  "sources": [
+    "https://github.com/Renhuai123/ziwei-doushu/blob/1059c347231c636bd86ddb78fd8ed430d5de8d2a/components/BirthForm.tsx#L34-L40",
+    "https://github.com/Renhuai123/ziwei-doushu/blob/1059c347231c636bd86ddb78fd8ed430d5de8d2a/lib/ziwei/true-solar-time.ts#L73-L149",
+    "https://github.com/Renhuai123/ziwei-doushu/blob/1059c347231c636bd86ddb78fd8ed430d5de8d2a/lib/ziwei/algorithm.ts#L444-L639"
+  ]
+}
