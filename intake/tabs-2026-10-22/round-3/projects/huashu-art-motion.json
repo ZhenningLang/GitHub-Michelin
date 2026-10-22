@@ -1,0 +1,25 @@
+{
+  "repo": "alchaincyf/huashu-art-motion",
+  "status": "done",
+  "mode": "fresh",
+  "category_path": "categories/video-production/huashu-art-motion.md",
+  "checked_at_utc": "2026-10-22T08:14:09.907455+00:00",
+  "freshness": {
+    "last_verified": "2026-10-18",
+    "today_utc": "2026-10-22",
+    "age_days": 4,
+    "threshold_days": 90
+  },
+  "page_sha256": "cd960012c6ba3dd6f6def1024980eb789664ca6b6094786a540be5b3b18342ea",
+  "no_page_diff_from_base": true,
+  "worker_worktree_clean": true,
+  "notes_zh": "fresh：UTC 2026-10-22 距 last_verified 2026-10-18 为4天，不超过90天门槛。已读现有英文页：用于 coding agent 的旁白动画与艺术指导，结合 Canvas 逐帧渲染和成片交付检查；保留视频制作分类，不联网、不改文件、不重算健康度；no leftover Q&A。",
+  "risk_zh": "依据现有英文页：项目历史短且贡献集中；MIT不涵盖全部肖像与演示媒体，字体等另有许可；竖屏坐标仍有已记录问题。场景脚本会执行且 Chromium 关闭网页安全限制，只宜使用可信本地输入；交付检查是审美启发式，不替代人工看片。本轮未重验上游或实际渲染。",
+  "dotfiles_zh": {
+    "fit": "low",
+    "what": "可借鉴先测量成品、再交付并附机器证据的机制；完整性标记仅能检测改动，不能证明诚实，视觉阈值也不宜移植为通用质量门。现有英文页已描述这些机制，本轮未重查源码。",
+    "where": "guard-verify 的机器证据与交付门禁"
+  },
+  "evidence_boundary": "Read the existing local EN page only. Parent checked visibility metadata. No upstream fact/source reread, runtime execution, health refresh or date bump.",
+  "qa_decision": "no leftover Q&A"
+}
