@@ -97,6 +97,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [TorBot](https://github.com/DedSecInside/TorBot),categories/osint/robin.md,,no
 [TripoSR](https://github.com/VAST-AI-Research/TripoSR),categories/3d-generation/modly.md,,no
 [Tuist](https://github.com/tuist/tuist),categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/xtool.md,,no
+[Tweepy](https://github.com/tweepy/tweepy),categories/social-media-management/twitter-cli.md,,no
 [UnifiedPush Android connector](https://github.com/UnifiedPush/android-connector),categories/android-system-services/microg-gmscore.md,,no
 [v2rayA](https://github.com/v2rayA/v2rayA),categories/networking/dae.md,,no
 [v2rayN](https://github.com/2dust/v2rayN),categories/dev-utilities/ops-infra/clash-verge-rev.md,,no

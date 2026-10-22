@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "command", "en": "Feed command", "zh": "信息流命令", "kind": "input"},
+    {"id": "session", "en": "Environment cookies or browser extraction", "zh": "环境变量凭据或浏览器提取", "technique": [1]},
+    {"id": "transport", "en": "Chrome-like transport; optional transaction header", "zh": "类 Chrome 连接；事务头可能缺失", "technique": [2]},
+    {"id": "ids", "en": "Built-in IDs; refresh on 404 or 422", "zh": "内置标识；404 或 422 后刷新", "technique": [2]},
+    {"id": "x", "en": "X private GraphQL interface", "zh": "X 私有 GraphQL 接口", "kind": "external"},
+    {"id": "pages", "en": "Bounded pagination and ID deduplication", "zh": "有界分页与标识去重", "technique": [3]},
+    {"id": "output", "en": "JSON or YAML envelope; or structured error", "zh": "JSON 或 YAML 数据包装；或结构化错误", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "command", "to": "session"},
+    {"from": "session", "to": "transport"},
+    {"from": "transport", "to": "ids"},
+    {"from": "ids", "to": "x"},
+    {"from": "x", "to": "pages", "en": "successful responses", "zh": "成功响应"},
+    {"from": "pages", "to": "x", "en": "advancing cursor within bounds", "zh": "限额内继续游标", "style": "dashed"},
+    {"from": "pages", "to": "output"},
+    {"from": "x", "to": "output", "en": "request failure", "zh": "请求失败", "style": "dashed"}
+  ],
+  "sources": [
+    "twitter_cli/auth.py:589-634 at 7c634e0d396b1e7af9f63315b414925fe4f29ae7",
+    "twitter_cli/client.py:752-825,899-1172 at 7c634e0d396b1e7af9f63315b414925fe4f29ae7",
+    "twitter_cli/output.py:38-122 at 7c634e0d396b1e7af9f63315b414925fe4f29ae7"
+  ]
+}

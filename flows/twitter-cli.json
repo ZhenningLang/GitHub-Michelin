@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "twitter-cli does", "zh": "twitter-cli 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the isolated CLI", "zh": "安装隔离的命令行工具", "code": "uv tool install twitter-cli"},
+    {"lane": "you", "en": "Authorize account-session access from env vars or a supported browser", "zh": "授权读取环境变量或受支持浏览器的账号会话"},
+    {"lane": "you", "en": "Request your feed as structured data", "zh": "请求机器可读的信息流", "code": "twitter feed --json"},
+    {"lane": "them", "en": "Load the session and request X's private timeline interface", "zh": "加载会话，请求 X 私有时间线接口"},
+    {"lane": "them", "en": "Parse and deduplicate posts, then return JSON or an error", "zh": "解析帖子并去重，返回 JSON 或错误"}
+  ],
+  "value": {"en": "Feed posts reach your script without copying them out of browser tabs", "zh": "信息流直接交给脚本，不再从浏览器逐条复制"},
+  "sources": [
+    "https://github.com/public-clis/twitter-cli/blob/7c634e0d396b1e7af9f63315b414925fe4f29ae7/README.md#L55-L109",
+    "https://github.com/public-clis/twitter-cli/blob/7c634e0d396b1e7af9f63315b414925fe4f29ae7/twitter_cli/auth.py#L589-L634",
+    "https://github.com/public-clis/twitter-cli/blob/7c634e0d396b1e7af9f63315b414925fe4f29ae7/twitter_cli/client.py#L752-L825"
+  ]
+}
