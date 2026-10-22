@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Report scripts", "zh": "报告脚本"},
+  "steps": [
+    {"lane": "you", "en": "Prepare Python, browser and Poppler; correct the builder's data-directory reference", "zh": "准备运行环境，修正生成器的数据目录引用"},
+    {"lane": "you", "en": "Start the documented report rebuild from the repository root", "zh": "在仓库根目录启动文档中的重建命令", "code": "python3 render.py build.py 报告.html 报告.pdf"},
+    {"lane": "them", "en": "Assemble the report HTML with evidence IDs and inline SVG charts", "zh": "组装带证据编号和内联图表的报告网页", "component": {"en": "build.py and chart.py", "zh": "build.py 和 chart.py"}},
+    {"lane": "them", "en": "Print PDF and patch chapter page numbers, for up to four rounds", "zh": "打印 PDF 并回填章页码，最多四轮", "component": {"en": "render.py and Chromium", "zh": "render.py 和 Chromium"}},
+    {"lane": "them", "en": "Keep the PDF and print text/margin diagnostics for your review", "zh": "保留 PDF，打印文本及留白问题供你复核", "component": {"en": "Poppler and selfcheck", "zh": "Poppler 和自检函数"}}
+  ],
+  "value": {"en": "Reuse a case-specific report build and page diagnostics instead of hand-numbering its contents", "zh": "复用个案报告生成及页面诊断，不必手填目录页码"},
+  "sources": [
+    "https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/README.md#复跑",
+    "https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/build.py#L11-L13",
+    "https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/render.py#L61-L287"
+  ]
+}

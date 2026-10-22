@@ -1404,6 +1404,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | **HiThink Financial-API** | 一把 API Key 取同花顺官方 A 股数据（CLI、MCP、REST、Python，长历史落本地 DuckDB）——但 GitHub 仓库已于 2026-10 消失，客户端代码只剩冻结的 Gitee 镜像，npm CLI 和托管服务仍可用 | MIT | "?"（1/6） | [中](categories/investment-finance/financial-api.zh.md) · [EN](categories/investment-finance/financial-api.md) |
 | **AKShare** | 免 Key 的 Python 库，把中国市场的公开财经页面封装成一次调用返回 pandas DataFrame | MIT | A（6/6） | [中](categories/investment-finance/akshare.zh.md) · [EN](categories/investment-finance/akshare.md) |
 | **Tushare** | Python SDK 加托管 tushare.pro 服务，凭 token 与积分档取 A 股数据 | BSD-3-Clause | D（5/6） | [中](categories/investment-finance/tushare.zh.md) · [EN](categories/investment-finance/tushare.md) |
+| **DeepSeek Influence Report** | 拆解模型采用研究档案与 Python 报告流水线；重建路径需修，结论需独立核验 | MIT AND CC-BY-4.0 | D（4/6） | [中](categories/investment-finance/deepseek-influence-report.zh.md) · [EN](categories/investment-finance/deepseek-influence-report.md) |
 
 ### education-tutoring
 

@@ -1423,6 +1423,7 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | **HiThink Financial-API** | Official Tonghuashun A-share data over one API key (CLI, MCP, REST, Python, local DuckDB history) — but its GitHub repo vanished in 2026-10; the client code survives only as a frozen Gitee mirror, while the npm CLI and hosted service still work | MIT | "?" (1/6) | [EN](categories/investment-finance/financial-api.md) · [中](categories/investment-finance/financial-api.zh.md) |
 | **AKShare** | Keyless Python library wrapping public Chinese-market finance pages into one-call pandas DataFrames | MIT | A (6/6) | [EN](categories/investment-finance/akshare.md) · [中](categories/investment-finance/akshare.zh.md) |
 | **Tushare** | Python SDK + hosted tushare.pro service behind a token and points tiers | BSD-3-Clause | D (5/6) | [EN](categories/investment-finance/tushare.md) · [中](categories/investment-finance/tushare.zh.md) |
+| **DeepSeek Influence Report** | Inspect a model-adoption research archive and Python report pipeline; rebuild path needs repair, claims need independent checking | MIT AND CC-BY-4.0 | D (4/6) | [EN](categories/investment-finance/deepseek-influence-report.md) · [中](categories/investment-finance/deepseek-influence-report.zh.md) |
 
 ### education-tutoring
 
