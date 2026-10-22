@@ -1,0 +1,249 @@
+{
+  "repo": "KittenML/KittenTTS",
+  "status": "done",
+  "category_path": "categories/speech/kitten-tts.md",
+  "source_sha": "d737634c7b91ee1589820ed74ff203494454db24",
+  "verification_scope": "static only: GitHub API、固定提交源码、PyPI 元数据、Hugging Face 模型卡、许可和 JSON 清单。未安装上游包，未执行上游代码，未下载任何权重，未运行模型。六张 SVG 由本地工具生成；四张流程及机制图转 PNG 后目视核对，临时 PNG 已清理。",
+  "notes_zh": "已归入 speech，完成双语页、双语索引和 README、快照、健康雷达、流程图、机制图及反向索引。重点区分旧版英文 CPU 模型与新版克隆模型，并披露代码和权重许可差异；no leftover Q&A。",
+  "risk_zh": [
+    "代码为 Apache-2.0；KittenTTS 2 权重使用 Stellon Labs Community License，不是同一许可。商用须登记，关联方合计年收入或累计融资超过 100 万美元须另授权；分发声明、品牌显示和蒸馏限制也需核对。",
+    "旧版 ONNX 读音器固定 en-us，八个固定音色，不支持声音克隆。新版不能沿用旧版 25–80 MB 模型体积或 CPU 成本。",
+    "GitHub 宣传 20 种语言与 47 音色，详细指南描述十种语言，固定 HF 模型卡列 16 种命名语言，音色 JSON 实数为 115 项。清单只能证明素材存在，不能证明合成质量。",
+    "非英文须关闭英文规范化；自动参考转录强制英文，应给非英文录音提供 reference_text。分句器主要识别西文标点。",
+    "新版额外从 ResembleAI/chatterbox-turbo 下载解码权重；不给参考文字稿时还会加载 Whisper large-v3，与全部权重来自单一仓库的 README 说法不符。",
+    "CPU 实时、内存峰值和克隆质量均未运行验证；新版快速 CPU 推荐指向独立 beta C++ 后端，MLX 性能也不是纯 CPU 性能。",
+    "README 的 Python 最低版本落后于包清单；包清单和 PyPI 都要求 Python >=3.10。无参数构造器仍默认旧版 nano，页面要求显式模型 ID。",
+    "可选学生解码器通过 torch.load(..., weights_only=False) 读取文件，不应加载不可信权重。Mini-0.8 模型卡声明 Apache-2.0，但模型树没有独立 LICENSE 正文。",
+    "健康雷达为 B（5/6），响应轴按 model 类型记为未知；许可轴只读代码仓库元数据，不能用其 A 档覆盖新版权重限制。全库另有既存告警，未越界修复。"
+  ],
+  "dotfiles_zh": {
+    "fit": "none",
+    "what": "这是语音合成推理库，不提供可直接吸收的 skills、hooks、记忆账本、常驻上下文或模型路由机制。",
+    "where": "无直接对应机制"
+  },
+  "worth_check": {
+    "reusable_substance": {
+      "answer": "pass",
+      "command": "gh api 'repos/KittenML/KittenTTS/git/trees/d737634c7b91ee1589820ed74ff203494454db24?recursive=1' plus raw contents reads and line counts",
+      "exit_code": 0,
+      "evidence": "kittenml/ 有 33 个 Python 文件、516025 字节、12365 行；排除三个明确标识的第三方衍生模块后仍有 5821 行。包含可安装推理包、两代模型分发器、ONNX 路径、新版克隆和流式输出，不是仅论文演示。"
+    },
+    "provenance": {
+      "answer": "pass",
+      "command": "gh api 'repos/resemble-ai/chatterbox/git/trees/master?recursive=1' and compare git blob SHAs with KittenTTS package files; read s3gen.py/student_flow.py/speaker_embedding.py headers",
+      "exit_code": 0,
+      "evidence": "与 Chatterbox 当前树的整文件 blob 精确匹配为 0。s3gen 保留 Alibaba、Matcha-TTS、Resemble AI 及 Apache 来源说明；speaker_embedding 明示 pyannote/MIT 衍生，模型仓库实际附 CNRS MIT 文本。第三方衍生组件不是未声明的整仓复制；此检查不等于逐行著作权审计。"
+    },
+    "license_truth": {
+      "answer": "pass_with_disclosed_split",
+      "command": "gh api repos/KittenML/KittenTTS/contents/LICENSE -H 'Accept: application/vnd.github.raw+json'; read HF LICENSE.md and speaker/LICENSE",
+      "exit_code": 0,
+      "evidence": "根 LICENSE 为 Apache-2.0 正文，包作者为 KittenML；根文件没有填入特定权利人，保留标准附录占位符，而不是冒用其他项目署名。README 明确只覆盖代码。新版模型许可正文署 Stellon Labs，另含商用和分发限制；speaker/LICENSE 为 CNRS MIT。旧版 Mini 的 Apache 声明与缺独立许可正文已分别记录，未把根代码许可强加给权重。"
+    },
+    "live_hazard_without_purpose": {
+      "answer": "pass_with_documented_risk",
+      "command": "inspect recursive tree and raw setup.py, repo.py, get_model.py, speaker.py, vocoder.py",
+      "exit_code": 0,
+      "evidence": "树内没有 .claude/、.cursor/ 等项目 agent hooks，setup.py 为标准 setuptools 配置。所读加载路径用于下载模型和本地推理，未见借安装外传用户文件的路径；可选学生权重使用不安全 pickle 加载已突出披露。没有安装、执行或载入任何远端负载；这是静态重点检查，不是全面安全审计。"
+    },
+    "better_canonical_repo": {
+      "answer": "pass",
+      "command": "gh api repos/KittenML/KittenTTS; gh api repos/KittenML/kitten-tts-2-cpp; read pyproject.toml and README",
+      "exit_code": 0,
+      "evidence": "主仓库不是 fork，PyPI 包清单的 Homepage/Repository 都指回该仓库。官方 C++ 仓库是另一个 CPU 推理后端，不包含本页旧版 ONNX 加 Python 多后端的同等范围；没有发现替代本仓库的同范围后继入口。"
+    }
+  },
+  "api_metadata": {
+    "url": "https://api.github.com/repos/KittenML/KittenTTS",
+    "private": false,
+    "visibility": "public",
+    "fork": false,
+    "archived": false,
+    "owner_type": "Organization",
+    "language": "Python",
+    "created_at": "2025-08-05T03:30:24Z",
+    "pushed_at": "2026-10-21T23:57:48Z",
+    "stars": 16285,
+    "forks": 970,
+    "default_branch": "main",
+    "pypi_version": "0.9.6",
+    "pypi_uploaded_at": "2026-10-21T18:44:22.134974Z",
+    "latest_github_release": "0.8.1",
+    "latest_github_release_published_at": "2026-02-24T20:14:42Z"
+  },
+  "sources_read": [
+    {
+      "url": "https://api.github.com/repos/KittenML/KittenTTS",
+      "purpose": "公开性、归属、创建时间、活跃度、star/fork 和许可检测元数据"
+    },
+    {
+      "url": "https://api.github.com/repos/KittenML/KittenTTS/git/trees/d737634c7b91ee1589820ed74ff203494454db24?recursive=1",
+      "purpose": "范围、代码数量、测试、缺训练及治理文件、agent hooks 检查"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/README.md",
+      "purpose": "两代模型、安装、CPU 推荐、内存估计、许可分离及宣传口径"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/LICENSE",
+      "purpose": "实际代码许可正文及署名占位情况"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/pyproject.toml",
+      "purpose": "Python 下限、实际依赖、MLX/vLLM 额外依赖和包归属"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/setup.py",
+      "purpose": "安装行为、版本、Python 下限与过期 MIT classifier 差异"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/docs/architecture.md",
+      "purpose": "模型架构、权重压缩说明与内置第三方组件"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/docs/onnx-models.md",
+      "purpose": "旧版固定音色、无克隆、CPU 与缩减依赖方案"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/docs/voices-and-expression.md",
+      "purpose": "情绪控制 beta、非英文规范化边界与十语言旧口径"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/example.py",
+      "purpose": "新版真实调用例子"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/example_onnx_0.8.py",
+      "purpose": "流程卡逐字命令、旧版模型选择和 WAV 保存"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/kittenml/get_model.py",
+      "purpose": "模型类型分发、按需导入、文件筛选、无参数仍选旧版"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/kittenml/repo.py",
+      "purpose": "本地模型目录与 Hub 配置解析，没有 revision 参数"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/kittenml/kittentts_legacy/model.py",
+      "purpose": "旧版 API 和模型文件获取"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/kittenml/kittentts_legacy/onnx_model.py",
+      "purpose": "en-us 硬编码、CPU provider、音色数组与生成实现"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/kittenml/kittentts2/model.py",
+      "purpose": "CPU/MLX 设备选择、分块生成、完整块流式边界"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/kittenml/kittentts2/prompt.py",
+      "purpose": "参考文字和声音 token 双路提示构造"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/kittenml/kittentts2/speaker.py",
+      "purpose": "身份注入、按需 Whisper large-v3、强制英文转录"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/kittenml/kittentts2/vocoder.py",
+      "purpose": "额外 Chatterbox 权重来源和 weights_only=False 风险"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/kittenml/kittentts2/ternary.py",
+      "purpose": "五个三进制值每字节的实际压缩与还原机制"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/kittenml/kittentts2/weights.py",
+      "purpose": "Torch 还原密集张量与 emb4 加载路径"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/kittenml/kittentts2/text.py",
+      "purpose": "标签保护、英文规范化、分句字符、整块拼接"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/kittenml/kittentts2/s3gen.py",
+      "purpose": "读取文件头确认 Chatterbox/CosyVoice/Matcha 来源和 Apache 署名"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/kittenml/kittentts2/student_flow.py",
+      "purpose": "读取文件头确认学生解码器体积、保真度和速度取舍及来源"
+    },
+    {
+      "url": "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/kittenml/kittentts2/speaker_embedding.py",
+      "purpose": "读取文件头确认 pyannote/CNRS/MIT 来源"
+    },
+    {
+      "url": "https://api.github.com/repos/KittenML/KittenTTS/releases?per_page=5",
+      "purpose": "GitHub release 仍停留在 0.8.1 的日期证据"
+    },
+    {
+      "url": "https://api.github.com/repos/KittenML/KittenTTS/contributors?per_page=10",
+      "purpose": "贡献集中度及维护者数量"
+    },
+    {
+      "url": "https://api.github.com/repos/KittenML/KittenTTS/issues?state=all&per_page=8",
+      "purpose": "近期修复、预处理问题与 vLLM 语言质量边界，未把用户报告当实测"
+    },
+    {
+      "url": "https://api.github.com/repos/KittenML/KittenTTS/commits?per_page=5",
+      "purpose": "固定默认分支提交与最近更新日期"
+    },
+    {
+      "url": "https://huggingface.co/KittenML/kitten-tts-2/raw/main/LICENSE.md",
+      "purpose": "完整新版权重协议，商用登记、百万美元门槛、关联方、归属和蒸馏限制"
+    },
+    {
+      "url": "https://huggingface.co/KittenML/kitten-tts-2/raw/main/README.md",
+      "purpose": "模型卡最新音色、语言、权重格式、许可范围"
+    },
+    {
+      "url": "https://huggingface.co/api/models/KittenML/kitten-tts-2",
+      "purpose": "固定模型 SHA、公开与 ungated 状态及文件清单"
+    },
+    {
+      "url": "https://huggingface.co/KittenML/kitten-tts-2/raw/main/config.json",
+      "purpose": "默认 decoder、分块参数和不同运行时文件配置"
+    },
+    {
+      "url": "https://huggingface.co/KittenML/kitten-tts-2/raw/1f00fee525c7b2e30bbe9ca9ba67529734fce9c9/voices/voices.json",
+      "purpose": "机器计数 115 项音色并核验多语言参考名字"
+    },
+    {
+      "url": "https://huggingface.co/KittenML/kitten-tts-2/raw/1f00fee525c7b2e30bbe9ca9ba67529734fce9c9/speaker/LICENSE",
+      "purpose": "实际 CNRS MIT 许可正文"
+    },
+    {
+      "url": "https://huggingface.co/KittenML/kitten-tts-mini-0.8/raw/main/README.md",
+      "purpose": "旧版 Mini 权重 Apache 声明和 StyleTTS 2 致谢"
+    },
+    {
+      "url": "https://huggingface.co/api/models/KittenML/kitten-tts-mini-0.8",
+      "purpose": "旧版模型 SHA、文件清单及缺独立 LICENSE 的证据"
+    },
+    {
+      "url": "https://pypi.org/pypi/kittenml/json",
+      "purpose": "0.9.6 发布日期、Python >=3.10、真实依赖与包归属"
+    },
+    {
+      "url": "https://api.github.com/repos/resemble-ai/chatterbox/git/trees/master?recursive=1",
+      "purpose": "第三方整文件 blob 对照，精确匹配 0"
+    },
+    {
+      "url": "https://api.github.com/repos/KittenML/kitten-tts-2-cpp",
+      "purpose": "确认官方 C++ 后端是独立仓库而非本仓库跳转后继"
+    },
+    {
+      "url": "https://github.com/hexgrad/kokoro/blob/main/README.md",
+      "purpose": "实际读取替代品的 82M 固定音色与语言管线，避免仅凭记忆比较"
+    }
+  ],
+  "checked_at_utc": "2026-10-22T08:35:16.273572+00:00",
+  "parent_validation": {
+    "gates_exit": 0,
+    "scoped_quality_exit": 0,
+    "shared_indices_serially_integrated": true,
+    "semantic_page_read": true,
+    "runtime_upstream_executed": false
+  },
+  "qa_decision": "no leftover Q&A"
+}

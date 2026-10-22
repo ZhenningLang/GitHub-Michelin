@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "KittenTTS does", "zh": "KittenTTS 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the Python package", "zh": "安装 Python 包", "code": "pip install kittenml"},
+    {"lane": "you", "en": "Explicitly select the small English ONNX model", "zh": "显式选择小型英文 ONNX 模型", "code": "KittenTTS(\"KittenML/kitten-tts-mini-0.8\")"},
+    {"lane": "them", "en": "Fetch the model and voice arrays and initialize the inference graph", "zh": "获取模型与音色数组，初始化推理图"},
+    {"lane": "you", "en": "Provide English text and the Bruno voice", "zh": "提供英文文字和 Bruno 音色", "code": "m.generate(text, voice=\"Bruno\")"},
+    {"lane": "them", "en": "Convert English pronunciation into 24 kHz speech samples", "zh": "把英文读音转换成 24 kHz 语音采样"},
+    {"lane": "you", "en": "Save the speech as a WAV file", "zh": "将语音保存为 WAV 文件", "code": "sf.write(\"output.wav\", audio, 24000)"}
+  ],
+  "value": {"en": "Local English speech from a small model without operating a GPU service", "zh": "用小模型获得本地英文语音，不必维护显卡服务"},
+  "sources": [
+    "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/README.md#installation",
+    "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/example_onnx_0.8.py",
+    "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/kittenml/kittentts_legacy/model.py",
+    "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/kittenml/kittentts_legacy/onnx_model.py"
+  ]
+}

@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **KittenTTS** | You need tiny CPU English speech, or a separate larger cloning model; v2 weights carry commercial registration and revenue/funding limits. | B (5/6) | [→](kitten-tts.md) |
 | **yovoice** | You want to compare cloned narration takes and songs without maintaining a Python model stack; yovoice wraps local audio.cpp inference in a desktop workbench, CLI and MCP service. | B (6/6) | [→](yovoice.md) |
 | **SpeechBrain** | Use it when you need to train and adapt speech models (ASR, speaker ID, separation) on one coherent PyTorch recipe codebase — but it's research-and-training-first, so production serving and cross-version API stability are your job. | B (5/6) | [→](speechbrain.md) |
 | **Voicebox** | Use it when you want a self-hosted voice I/O studio — cloned-voice TTS, hotkey Whisper dictation, and MCP/REST agent speech in one MIT app — but it's a young single-maintainer project with a stalled release cadence and macOS-only auto-paste today. | B (6/6) | [→](voicebox.md) |
@@ -22,6 +23,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [KittenTTS](kitten-tts.md) | ✅ | B (5/6) | Legacy ONNX prioritizes CPU footprint; v2 adds cloning with a heavier stack and a custom weight license. |
 | [yovoice](yovoice.md) | ✅ | B (6/6) | You want to compare cloned narration takes and songs without maintaining a Python model stack; yovoice wraps local audio.cpp inference in a desktop workbench, CLI and MCP service. |
 | [SpeechBrain](speechbrain.md) | ✅ | B (5/6) | Use it when you need to train and adapt speech models (ASR, speaker ID, separation) on one coherent PyTorch recipe codebase — but it's research-and-training-first, so production serving and cross-version API stability are your job. |
 | [Voicebox](voicebox.md) | ✅ | B (6/6) | Use it when you want a self-hosted voice I/O studio — cloned-voice TTS, hotkey Whisper dictation, and MCP/REST agent speech in one MIT app — but it's a young single-maintainer project with a stalled release cadence and macOS-only auto-paste today. |

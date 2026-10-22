@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **KittenTTS** | 需要微型 CPU 英文语音，或独立的较大克隆模型；新版权重要商用登记，并受收入及融资门槛限制。 | B（5/6） | [→](kitten-tts.zh.md) |
 | **yovoice** | 你想比较克隆旁白和歌曲版本，却不想维护 Python 模型环境。yovoice 把本地 audio.cpp 推理接成桌面工作台、命令行和 MCP 服务。 | B（6/6） | [→](yovoice.zh.md) |
 | **SpeechBrain** | 当你需要在一套统一的 PyTorch recipe 代码库上训练和适配语音模型（ASR、说话人识别、语音分离）时用它——但它以研究和训练为先，生产部署和跨版本 API 稳定性得你自己负责。 | B（5/6） | [→](speechbrain.zh.md) |
 | **Voicebox** | 当你想要一个自托管的语音 I/O 工作室——克隆音色 TTS、热键 Whisper 听写、MCP/REST 让 agent 发声三合一，且是 MIT——时用它；但它是年轻的单人项目，发布节奏已停滞、自动粘贴目前仅 macOS。 | B（6/6） | [→](voicebox.zh.md) |
@@ -22,6 +23,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [KittenTTS](kitten-tts.zh.md) | ✅ | B（5/6） | 旧版 ONNX 优先减小 CPU 部署体积；新版增加克隆，也增加依赖和自定义权重许可。 |
 | [yovoice](yovoice.zh.md) | ✅ | B（6/6） | 你想比较克隆旁白和歌曲版本，却不想维护 Python 模型环境。yovoice 把本地 audio.cpp 推理接成桌面工作台、命令行和 MCP 服务。 |
 | [SpeechBrain](speechbrain.zh.md) | ✅ | B（5/6） | 当你需要在一套统一的 PyTorch recipe 代码库上训练和适配语音模型（ASR、说话人识别、语音分离）时用它——但它以研究和训练为先，生产部署和跨版本 API 稳定性得你自己负责。 |
 | [Voicebox](voicebox.zh.md) | ✅ | B（6/6） | 当你想要一个自托管的语音 I/O 工作室——克隆音色 TTS、热键 Whisper 听写、MCP/REST 让 agent 发声三合一，且是 MIT——时用它；但它是年轻的单人项目，发布节奏已停滞、自动粘贴目前仅 macOS。 |

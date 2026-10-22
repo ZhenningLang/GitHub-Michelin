@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "config", "en": "Model ID and config.json", "zh": "模型标识和 config.json", "kind": "input", "technique": [1]},
+    {"id": "legacy", "en": "Legacy English phonemes and fixed voice array", "zh": "旧版英文读音和固定音色数组", "technique": [1]},
+    {"id": "packed", "en": "Unpack v2 ternary weights into tensors", "zh": "将新版三值权重还原成张量", "technique": [3]},
+    {"id": "reference", "en": "Speaker vector plus reference text and audio tokens", "zh": "身份向量加参考文字与声音 token", "kind": "input", "technique": [2]},
+    {"id": "text", "en": "Protect expression tags and split text", "zh": "保护表演标签并分块文字", "technique": [4]},
+    {"id": "lm", "en": "V2 language model predicts sound tokens", "zh": "新版语言模型预测声音 token", "technique": [2]},
+    {"id": "decoder", "en": "Separately downloaded S3 decoder", "zh": "单独下载的 S3 解码器", "kind": "external", "technique": [2]},
+    {"id": "join", "en": "Join completed chunks or yield them raw", "zh": "拼接完整音频块或逐块原样返回", "technique": [4]},
+    {"id": "audio", "en": "24 kHz speech samples", "zh": "24 kHz 语音采样", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "config", "to": "legacy", "en": "ONNX1 or ONNX2", "zh": "ONNX1 或 ONNX2"},
+    {"from": "legacy", "to": "audio"},
+    {"from": "config", "to": "packed", "en": "KITTEN2", "zh": "KITTEN2"},
+    {"from": "packed", "to": "lm"},
+    {"from": "reference", "to": "lm"},
+    {"from": "text", "to": "lm"},
+    {"from": "lm", "to": "decoder"},
+    {"from": "decoder", "to": "join"},
+    {"from": "join", "to": "audio"}
+  ],
+  "sources": [
+    "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/kittenml/get_model.py",
+    "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/kittenml/kittentts2/model.py",
+    "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/kittenml/kittentts2/ternary.py",
+    "https://github.com/KittenML/KittenTTS/blob/d737634c7b91ee1589820ed74ff203494454db24/kittenml/kittentts2/text.py"
+  ]
+}
