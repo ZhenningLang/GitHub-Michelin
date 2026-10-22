@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "pages", "en": "Rendered document pages", "zh": "渲染后的文档页面", "kind": "input"},
+    {"id": "layout", "en": "Separate layout service returns typed boxes", "zh": "独立版面服务返回分类框", "technique": [1]},
+    {"id": "budget", "en": "Recognition and order share a request limit", "zh": "内容识别与排序共用请求上限", "technique": [2]},
+    {"id": "crops", "en": "Type-specific crop recognition and length recovery", "zh": "按类型裁图识别并有限恢复超长输出", "technique": [3]},
+    {"id": "order", "en": "Validate block IDs; repair or geometric fallback", "zh": "校验块编号；补位或退回几何顺序", "technique": [2]},
+    {"id": "assemble", "en": "Reorder and clean final blocks", "zh": "重排并清理最终内容块"},
+    {"id": "outputs", "en": "Markdown and coordinate-bearing JSON", "zh": "Markdown 与带坐标 JSON", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "pages", "to": "layout"},
+    {"from": "layout", "to": "budget"},
+    {"from": "budget", "to": "crops"},
+    {"from": "budget", "to": "order", "en": "unless detector supplies order", "zh": "检测器未提供顺序时"},
+    {"from": "crops", "to": "assemble"},
+    {"from": "order", "to": "assemble"},
+    {"from": "assemble", "to": "outputs"}
+  ],
+  "sources": [
+    "https://github.com/SoMarkAI/OXR/blob/62fbca8ef6c7c63b75b799fc8081f3eb6e667553/oxr/pipeline/orchestrator.py#L136-L270",
+    "https://github.com/SoMarkAI/OXR/blob/62fbca8ef6c7c63b75b799fc8081f3eb6e667553/oxr/pipeline/recognition.py#L70-L218",
+    "https://github.com/SoMarkAI/OXR/blob/62fbca8ef6c7c63b75b799fc8081f3eb6e667553/oxr/pipeline/reading_order.py#L47-L280"
+  ]
+}

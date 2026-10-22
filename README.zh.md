@@ -778,6 +778,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **OpenDataLoader PDF** | 导出有序 PDF 正文与来源区域 JSON，可选模型处理。 | Apache-2.0 | B（6/6） | [中](categories/document-parsing/opendataloader-pdf.zh.md) · [EN](categories/document-parsing/opendataloader-pdf.md) |
+| **OXR** | 科研 PDF／图片解析，独立版面检测，输出分类内容和坐标；需 GPU 部署，并受自定义商业许可限制。 | LicenseRef-OXR | C（3/6） | [中](categories/document-parsing/oxr.zh.md) · [EN](categories/document-parsing/oxr.md) |
 | **Docling** | 当你需要把杂乱的 PDF/DOCX/PPTX 解析成干净的结构化 Markdown/JSON 以喂给 RAG 时用它——是解析器，不是文档管理系统。 | MIT | A（5/6） | [中](categories/document-parsing/docling.zh.md) · [EN](categories/document-parsing/docling.md) |
 | **MarkItDown** | 当 agent 或 RAG 流水线要用一次轻量 Python 调用，把混杂的 Office 文件、HTML、EPUB 和简单 PDF 统一转成 Markdown 时用它——但扫描件或复杂版面 PDF 要用 Marker 或 Docling，它没有 OCR 和版面模型。 | MIT | B（6/6） | [中](categories/document-parsing/markitdown.zh.md) · [EN](categories/document-parsing/markitdown.md) |
 | **olmOCR** | 当你要把成千上万份带公式、表格、多栏版面的 PDF 按阅读顺序转成干净 Markdown、拿去做 LLM 语料时用它——但本地运行要 12 GB 以上显存的 NVIDIA GPU，且上游自 2026-03 起已无提交。 | Apache-2.0 | C（5/6） | [中](categories/document-parsing/olmocr.zh.md) · [EN](categories/document-parsing/olmocr.md) |

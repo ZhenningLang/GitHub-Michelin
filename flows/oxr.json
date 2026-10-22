@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "OXR does", "zh": "OXR 做的"},
+  "steps": [
+    {"lane": "you", "en": "Fetch code and models, then build and start the GPU container", "zh": "获取代码与模型，构建并启动 GPU 容器", "component": {"en": "Linux/NVIDIA host", "zh": "Linux/NVIDIA 主机"}},
+    {"lane": "them", "en": "Starts layout, recognition, and document parsing services", "zh": "启动版面、内容识别和文档解析服务", "component": {"en": "All-in-one launcher", "zh": "一体化启动器"}},
+    {"lane": "you", "en": "Upload a PDF or image and request Markdown plus JSON", "zh": "上传 PDF 或图片，请求 Markdown 和 JSON", "code": "http://localhost:8000/v1/parse/sync"},
+    {"lane": "them", "en": "Detects regions, recognizes content, and resolves reading order", "zh": "检测区域、识别内容并恢复阅读顺序", "component": {"en": "Document pipeline", "zh": "文档流水线"}},
+    {"lane": "them", "en": "Returns Markdown and typed JSON blocks with page coordinates", "zh": "返回 Markdown 和带页面坐标的分类 JSON 块", "component": {"en": "Parsing API", "zh": "解析 API"}}
+  ],
+  "value": {"en": "Scanned document content reaches your ingestion code without manually rebuilding tables and page order", "zh": "扫描文档内容进入入库代码，不再手工重建表格和页面顺序"},
+  "sources": [
+    "https://github.com/SoMarkAI/OXR/blob/62fbca8ef6c7c63b75b799fc8081f3eb6e667553/README.md#L166-L278",
+    "https://github.com/SoMarkAI/OXR/blob/62fbca8ef6c7c63b75b799fc8081f3eb6e667553/docker/allinone_entrypoint.py",
+    "https://github.com/SoMarkAI/OXR/blob/62fbca8ef6c7c63b75b799fc8081f3eb6e667553/oxr/pipeline/orchestrator.py"
+  ]
+}

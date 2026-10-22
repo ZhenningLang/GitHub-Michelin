@@ -8,6 +8,7 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **OpenDataLoader PDF** | Java PDF extraction with page coordinates, optional Docling triage and Tagged PDF output. | B (6/6) | [→](opendataloader-pdf.md) |
+| **OXR** | Parse scientific PDF/images with a replaceable layout detector and typed Markdown/JSON output; requires a GPU stack and custom commercial-license clearance. | C (3/6) | [→](oxr.md) |
 | **Docling** | Use it when you must parse messy PDF/DOCX/PPTX into clean structured Markdown/JSON for RAG ingestion — a parser, not a DMS. | A (5/6) | [→](docling.md) |
 | **MarkItDown** | Use it when an agent or RAG pipeline must turn mixed Office files, HTML, EPUB and simple PDFs into Markdown with one lightweight Python call — but scanned or complex-layout PDFs need Marker or Docling, since it has no OCR or layout model. | B (6/6) | [→](markitdown.md) |
 | **olmOCR** | Use it when you are turning thousands to millions of PDFs with equations, tables and multi-column layouts into clean reading-order Markdown for an LLM corpus — but local runs need a 12 GB+ NVIDIA GPU, and upstream has been quiet since 2026-03. | C (5/6) | [→](olmocr.md) |
@@ -25,6 +26,7 @@
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [OpenDataLoader PDF](opendataloader-pdf.md) | ✅ | B (6/6) | CPU Java baseline and optional model backend; PDF-only, PDF/UA export is enterprise. |
+| [OXR](oxr.md) | ✅ | C (3/6) | Separate layout detection plus OXR recognition/reading order; Linux/NVIDIA, executable model plugin, in-memory jobs, and commercial restrictions. |
 | [Docling](docling.md) | ✅ | A (5/6) | Rich-document parsing (layout + tables) to structured Markdown/JSON; heavier model deps than plain text extraction. |
 | [MarkItDown](markitdown.md) | ✅ | B (6/6) | Broad format coverage with no GPU or model download, at the cost of layout fidelity and optional features that send files to external LLMs or Azure. |
 | [olmOCR](olmocr.md) | ✅ | C (5/6) | Buys VLM-grade fidelity on equations and messy scans; costs GPU inference per page, versus cheaper CPU-only Docling or PyMuPDF when layout fidelity matters less. |
