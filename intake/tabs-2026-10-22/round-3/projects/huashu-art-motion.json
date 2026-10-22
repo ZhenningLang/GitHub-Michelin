@@ -2,7 +2,7 @@
   "repo": "alchaincyf/huashu-art-motion",
   "status": "done",
   "mode": "fresh",
-  "category_path": "categories/video-production/huashu-art-motion.md",
+  "category_path": "categories/video-production/creation-workflows/huashu-art-motion.md",
   "checked_at_utc": "2026-10-22T08:14:09.907455+00:00",
   "freshness": {
     "last_verified": "2026-10-18",
@@ -21,5 +21,7 @@
     "where": "guard-verify 的机器证据与交付门禁"
   },
   "evidence_boundary": "Read the existing local EN page only. Parent checked visibility metadata. No upstream fact/source reread, runtime execution, health refresh or date bump.",
-  "qa_decision": "no leftover Q&A"
+  "qa_decision": "no leftover Q&A",
+  "page_at_project_commit": "categories/video-production/huashu-art-motion.md",
+  "routing_only_refactor": true
 }

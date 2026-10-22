@@ -2,7 +2,7 @@
 name: shuohao-skills
 slug: shuohao-skills
 repo: https://github.com/eternityspring/shuohao-skills
-category: video-production
+category: creation-workflows
 tags: [short-drama, storyboard, staging, agent-skills]
 language: JavaScript
 license: Apache-2.0
@@ -75,7 +75,7 @@ health:
 
 短剧每生成一段，人物座位就换一次。这组技能先把小说变成人物、美术、剧本、站位和分镜记录，再交给制作环节。
 
-![shuohao-skills — 健康度雷达](../../assets/health/shuohao-skills.zh.svg)
+![shuohao-skills — 健康度雷达](../../../assets/health/shuohao-skills.zh.svg)
 
 ## 何时使用
 
@@ -85,7 +85,7 @@ health:
 
 - 要完整讲解视频而非短剧准备，选 [OpenMontage](open-montage.zh.md)。
 - 要真实界面截图组成的产品宣传片，选 [video-shotcraft](video-shotcraft.zh.md)。
-- 要确定性时间线渲染，选 [Remotion](render-engines/remotion.zh.md)，本项目不是渲染引擎。
+- 要确定性时间线渲染，选 [Remotion](../render-engines/remotion.zh.md)，本项目不是渲染引擎。
 - 要不改流程就生成全英文人物数据，应自建流程。英文报告界面不代表人物字段可写英文，部分校验明确拒绝英文。
 
 ## 横向对比
@@ -94,13 +94,13 @@ health:
 | --- | --- | --- | --- |
 | [OpenMontage](open-montage.zh.md) | ✅ | 要完整视频管线选 OpenMontage；要短剧人物和站位连续性选本组技能。 | 更广的生产自动化，对比专门且可审查的准备材料。 |
 | [video-shotcraft](video-shotcraft.zh.md) | ✅ | 产品镜头和真实截图选 video-shotcraft；小说拆场与人物一致性选本组技能。 | 产品素材，对比叙事与空间规划。 |
-| [Remotion](render-engines/remotion.zh.md) | ✅ | 要渲染代码时间线选 Remotion；要给外部生成器准备短剧材料选本组技能。 | 渲染运行时，对比提示词、数据契约和检查器；下游使用 Remotion 仍须另审许可。 |
+| [Remotion](../render-engines/remotion.zh.md) | ✅ | 要渲染代码时间线选 Remotion；要给外部生成器准备短剧材料选本组技能。 | 渲染运行时，对比提示词、数据契约和检查器；下游使用 Remotion 仍须另审许可。 |
 
 ## 快速上手
 
 先审阅固定版本，再只把需要的技能目录交给能读 `SKILL.md` 的 agent。安装器会给 Claude Code 或 Codex 建软链，之后拉取更新立即生效。你提供原著，agent 逐阶段生成 JSON 和报告；Node 18+ 标准库脚本负责预填、校验和 HTML 展示，创作判断与生成费用仍归你。站位阶段需要 `script.json`，可补美术与场景图，再在可拖动报告中修改并导出 JSON。开场走位句仍需抄入分镜，尚无自动导入。来源为[使用路径](https://github.com/eternityspring/shuohao-skills/blob/d28a9c539b40523d081794b25ff9113016bd98e0/skills/novel-staging/SKILL.md)。
 
-![shuohao-skills — 主干用户故事](../../assets/flow/shuohao-skills.zh.svg)
+![shuohao-skills — 主干用户故事](../../../assets/flow/shuohao-skills.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/shuohao-skills.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -119,7 +119,7 @@ health:
 
 ## 技术要点
 
-![shuohao-skills — 机制图](../../assets/mechanism/shuohao-skills.zh.svg)
+![shuohao-skills — 机制图](../../../assets/mechanism/shuohao-skills.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/shuohao-skills.json by tools/mechanism_card.py; do not edit) -->
 <details>

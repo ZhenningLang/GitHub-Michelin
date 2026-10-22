@@ -2,7 +2,7 @@
 name: huashu-art-motion
 slug: huashu-art-motion
 repo: https://github.com/alchaincyf/huashu-art-motion
-category: video-production
+category: creation-workflows
 tags: [agent-skills, animation, canvas, video, art-direction]
 language: JavaScript
 license: MIT
@@ -73,7 +73,7 @@ health:
 
 你让助手做口播动画，它却只交一串缓慢推近的静态卡片。这个技能提供分镜规则、画风配方和 Canvas 渲染器，并在交付前测量成片。
 
-![huashu-art-motion — 健康度雷达](../../assets/health/huashu-art-motion.zh.svg)
+![huashu-art-motion — 健康度雷达](../../../assets/health/huashu-art-motion.zh.svg)
 
 ## 何时使用
 
@@ -81,25 +81,25 @@ health:
 
 ## 何时不用
 
-- **只需要通用 HTML 视频引擎。** 选 [HyperFrames](render-engines/hyperframes.zh.md)；本项目把渲染代码、个人美术偏好和中文工作流绑在一起。
-- **已有 React 模板或需要成熟云渲染。** 评估 [Remotion](render-engines/remotion.zh.md)，同时检查其企业许可，不必迁移到较小的 Canvas 引擎。
-- **输入是待剪辑的实拍素材。** 选 [video-use](video-use.zh.md)；本项目核心是造场景，不是按转录挑选素材。
+- **只需要通用 HTML 视频引擎。** 选 [HyperFrames](../render-engines/hyperframes.zh.md)；本项目把渲染代码、个人美术偏好和中文工作流绑在一起。
+- **已有 React 模板或需要成熟云渲染。** 评估 [Remotion](../render-engines/remotion.zh.md)，同时检查其企业许可，不必迁移到较小的 Canvas 引擎。
+- **输入是待剪辑的实拍素材。** 选 [video-use](../editing-workflows/video-use.zh.md)；本项目核心是造场景，不是按转录挑选素材。
 - **要自由复用示范人物。** 给 HyperFrames 等引擎提供自有授权素材。MIT 不包含花叔形象与帧库，也不包含 Clawd 同人示范的 GIF 和成片；字体、笔顺数据另有许可。
-- **竖屏效果必须无需逐项验证。** 先用验证过的 [HyperFrames](render-engines/hyperframes.zh.md) 模板，或做最小样片。开放问题 #10、#11 报告转场和后期效果仍有横屏坐标假设。
+- **竖屏效果必须无需逐项验证。** 先用验证过的 [HyperFrames](../render-engines/hyperframes.zh.md) 模板，或做最小样片。开放问题 #10、#11 报告转场和后期效果仍有横屏坐标假设。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [HyperFrames](render-engines/hyperframes.zh.md) | ✅ | 通用 HTML 视频选 HyperFrames；需要绘画配方和明确分镜、交付规则时选本技能。 | 更广的引擎集成，或较紧凑但风格约束强的 Canvas 路线。 |
-| [Remotion](render-engines/remotion.zh.md) | ✅ | React 模板与云渲染选 Remotion；本地艺术片段且不想建 React 工程时选本技能。 | 成熟生态对比年轻技能，两者的引擎和素材许可都需单独核对。 |
-| [video-use](video-use.zh.md) | ✅ | 剪已有录像选 video-use；要从代码构建并驱动画面选本技能。 | 录像转录剪辑，或场景创作与画风控制。 |
+| [HyperFrames](../render-engines/hyperframes.zh.md) | ✅ | 通用 HTML 视频选 HyperFrames；需要绘画配方和明确分镜、交付规则时选本技能。 | 更广的引擎集成，或较紧凑但风格约束强的 Canvas 路线。 |
+| [Remotion](../render-engines/remotion.zh.md) | ✅ | React 模板与云渲染选 Remotion；本地艺术片段且不想建 React 工程时选本技能。 | 成熟生态对比年轻技能，两者的引擎和素材许可都需单独核对。 |
+| [video-use](../editing-workflows/video-use.zh.md) | ✅ | 剪已有录像选 video-use；要从代码构建并驱动画面选本技能。 | 录像转录剪辑，或场景创作与画风控制。 |
 
 ## 快速上手
 
 用 `npx skills add alchaincyf/huashu-art-motion` 安装技能，准备 uv、FFmpeg 和 Playwright Chromium。向助手提出动画需求，确认视觉方向，再提供口播和有权使用的素材。工作流编写镜头表，生成场景代码或 JSON 片段描述，逐帧渲染并编码。交付前运行质量检查和 `scripts/deliver.py`，复制成片并写入实测说明。你仍须判断美术质量、正常速度看完整片，并授权可选收费图像或语音服务；基础代码动画不要求这些账号。
 
-![huashu-art-motion — 主干用户故事](../../assets/flow/huashu-art-motion.zh.svg)
+![huashu-art-motion — 主干用户故事](../../../assets/flow/huashu-art-motion.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/huashu-art-motion.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -119,7 +119,7 @@ health:
 
 ## 技术要点
 
-![huashu-art-motion — 机制图](../../assets/mechanism/huashu-art-motion.zh.svg)
+![huashu-art-motion — 机制图](../../../assets/mechanism/huashu-art-motion.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/huashu-art-motion.json by tools/mechanism_card.py; do not edit) -->
 <details>

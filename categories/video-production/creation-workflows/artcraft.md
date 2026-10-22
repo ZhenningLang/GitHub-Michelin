@@ -2,7 +2,7 @@
 name: ArtCraft
 slug: artcraft
 repo: https://github.com/storytold/artcraft
-category: video-production
+category: creation-workflows
 tags: [ai-image, ai-video, scene-blocking, compositing, desktop, tauri, cloud-generation]
 language: Rust
 license: MIT OR Apache-2.0
@@ -80,7 +80,7 @@ health:
 
 You ask for the same character beside the same window, but each generated shot moves the camera and furniture. ArtCraft lets you place objects, pose characters and frame a 3D scene before sending a reference image to a cloud model.
 
-![ArtCraft — health radar](../../assets/health/artcraft.svg)
+![ArtCraft — health radar](../../../assets/health/artcraft.svg)
 
 ## When to use
 
@@ -90,7 +90,7 @@ Pick it over a node-based inference tool when arranging the picture matters more
 
 ## When NOT to use
 
-- **Your material must never leave the workstation.** Use [ComfyUI](../on-device-ml/local-image-generation/comfyui.md) with local weights and offline operation instead. ArtCraft's normal generation path calls its hosted API; scene captures auto-upload to the gallery. Even the fal image route resolves media tokens through ArtCraft and can record prompts there. Selecting another provider is not an offline mode.
+- **Your material must never leave the workstation.** Use [ComfyUI](../../on-device-ml/local-image-generation/comfyui.md) with local weights and offline operation instead. ArtCraft's normal generation path calls its hosted API; scene captures auto-upload to the gallery. Even the fal image route resolves media tokens through ArtCraft and can record prompts there. Selecting another provider is not an offline mode.
 - **You need an entirely permissive, commercially forkable service stack.** Use local ComfyUI for an owned generation pipeline, or Blender for deterministic 3D work. This repository's authored desktop code is MIT OR Apache-2.0, but the separate public [artcraft-services](https://github.com/storytold/artcraft-services) backend has a custom non-OSI license. It prohibits commercial software sales, competing products and removing paid-service/community links. The desktop grant does not relicense that backend.
 - **You plan to redistribute the clone or bundle its demo assets in a product.** Start with Blender and your own cleared assets, or remove/replace the excluded ArtCraft material before distribution. [NOTICE](https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/NOTICE) grants no rights to bundled Nintendo sounds, memes, certain skyboxes, one MMD motion file or Mixamo animation renders. Fonts, icons and the vendored HTTP plugin also retain their own licenses; trademarks are excluded.
 - **You need a reproducible inference graph or local checkpoint control.** Choose ComfyUI. ArtCraft exposes provider/model choices and visual references, while the hosted service controls generation and catalog availability. Its README marks some advertised models disabled or restricted.
@@ -101,7 +101,7 @@ Pick it over a node-based inference tool when arranging the picture matters more
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [ComfyUI](../on-device-ml/local-image-generation/comfyui.md) | ✅ | Choose ComfyUI when local models, saved inference graphs or offline client work decide; choose ArtCraft when posing and camera placement should lead a cloud-generation workflow. | ComfyUI needs model files, suitable hardware and node maintenance; ArtCraft avoids operating local inference but adds provider accounts, billing and service dependence. |
+| [ComfyUI](../../on-device-ml/local-image-generation/comfyui.md) | ✅ | Choose ComfyUI when local models, saved inference graphs or offline client work decide; choose ArtCraft when posing and camera placement should lead a cloud-generation workflow. | ComfyUI needs model files, suitable hardware and node maintenance; ArtCraft avoids operating local inference but adds provider accounts, billing and service dependence. |
 | [Blender](https://github.com/blender/blender) | not indexed | Choose Blender for exact scene geometry and deterministic rendering; choose ArtCraft to turn a visually staged reference into an AI-generated shot without assembling the integration yourself. | Blender owns a much broader 3D production pipeline but requires more production work and separate AI integration; not added in this tab batch. |
 | [Runway Creative](https://runwayml.com) | not a repo | Choose Runway Creative for a managed browser-based generation/editing workspace; choose ArtCraft when inspecting or modifying the desktop client and staging a 3D reference are decisive. | Runway Creative is a hosted commercial product, not its research repositories. ArtCraft exposes client source, but that does not make its cloud models local or its full backend permissively licensed. |
 
@@ -109,7 +109,7 @@ Pick it over a node-based inference tool when arranging the picture matters more
 
 Use the Windows/macOS releases, or follow the [desktop development guide](https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/_docs/dev_setup.md) for Rust, Node.js 20+ and Tauri 2 prerequisites. On macOS/Linux, `./script/artcraft/unix_dev.sh` starts the frontend and native desktop together; it installs frontend dependencies when Vite is absent, so review it before running. Sign in to ArtCraft and arrange your own assets, camera and character pose in the 3D stage; Capture creates a still and automatically uploads it to your gallery. Open that image's lightbox, choose an editing/generation destination, select an available model and supply the prompt; ArtCraft submits the remote job and presents the result for download. You supply cleared assets, credentials and the generation budget; the app supplies composition tools, references and job tracking, not free local inference. The separate Rust-only `artcraft-native` frontend currently documents image/video/audio creation, while its other tools are placeholders; it is not a replacement for this staging workflow.
 
-![artcraft — backbone user story](../../assets/flow/artcraft.svg)
+![artcraft — backbone user story](../../../assets/flow/artcraft.svg)
 
 <!-- flow-steps:begin (generated from flows/artcraft.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -129,7 +129,7 @@ Use the Windows/macOS releases, or follow the [desktop development guide](https:
 
 ## Key techniques
 
-![ArtCraft — mechanism diagram](../../assets/mechanism/artcraft.svg)
+![ArtCraft — mechanism diagram](../../../assets/mechanism/artcraft.svg)
 
 <!-- mechanism:begin (generated from mechanisms/artcraft.json by tools/mechanism_card.py; do not edit) -->
 <details>

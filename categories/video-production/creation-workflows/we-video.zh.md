@@ -2,7 +2,7 @@
 name: We-Video
 slug: we-video
 repo: https://github.com/hongqun/we-video
-category: video-production
+category: creation-workflows
 tags: [narrated-video, human-review, remotion, cosyvoice, deepseek, creator-workbench]
 language: TypeScript
 license: MIT
@@ -68,7 +68,7 @@ health:
 
 文章变讲解视频，要分别检查稿件、声音和画面。We-Video 提供分步审核工作台与带检查的 MP4 渲染器，但公开仓库缺少界面必需的部分接口。
 
-![We-Video — 健康度雷达](../../assets/health/we-video.zh.svg)
+![We-Video — 健康度雷达](../../../assets/health/we-video.zh.svg)
 
 ## 何时使用
 
@@ -79,23 +79,23 @@ health:
 ## 何时不用
 
 - **今天就要从新克隆启动完整工作台。** 库存素材短片先选 [MoneyPrinterTurbo](moneyprinter-turbo.zh.md)。核验提交缺少界面调用的任务快照、渲染与视觉规划生成接口，忽略规则排除了大部分任务级接口。证据见[文件树](https://github.com/hongqun/we-video/tree/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/app/api/jobs)、[界面调用](https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/components/Workspace.tsx#L505-L506)和[忽略规则](https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/.gitignore#L12-L23)。
-- **素材和口播必须离线。** 直接用 [Remotion](render-engines/remotion.zh.md) 合成本地素材与自备音轨。We-Video 的文档路径把文字交给 DeepSeek 与阿里百炼语音服务，密钥与调用费由你承担。
+- **素材和口播必须离线。** 直接用 [Remotion](../render-engines/remotion.zh.md) 合成本地素材与自备音轨。We-Video 的文档路径把文字交给 DeepSeek 与阿里百炼语音服务，密钥与调用费由你承担。
 - **要让编程助手调研并导演整部影片。** 选 [OpenMontage](open-montage.zh.md) 的助手驱动管线。We-Video 面向人工操作；可选的 Remotion 技能只是开发指南，不是运行时调度器。
-- **要求渲染引擎采用宽松开源许可。** 可考虑 Apache-2.0 的 [HyperFrames](render-engines/hyperframes.zh.md)，同时核查其依赖条款。We-Video 自有代码的 MIT 不覆盖 Remotion 4 的企业资格规则，也不覆盖第三方素材。[锁定版本的许可](https://github.com/remotion-dev/remotion/blob/v4.0.505/LICENSE.md)要求不符合免费资格的使用者购买企业许可，其中包括超过三名员工的营利组织。
+- **要求渲染引擎采用宽松开源许可。** 可考虑 Apache-2.0 的 [HyperFrames](../render-engines/hyperframes.zh.md)，同时核查其依赖条款。We-Video 自有代码的 MIT 不覆盖 Remotion 4 的企业资格规则，也不覆盖第三方素材。[锁定版本的许可](https://github.com/remotion-dev/remotion/blob/v4.0.505/LICENSE.md)要求不符合免费资格的使用者购买企业许可，其中包括超过三名员工的营利组织。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [MoneyPrinterTurbo](moneyprinter-turbo.zh.md) | ✅ | 操作员要直接从主题做库存素材短片，先选 MoneyPrinterTurbo；愿意开发分步审稿、试听和视觉审核，再复用 We-Video。 | 前者更接近现成工具，制作风格不同；后者有编辑审核界面，但缺失接口和账号初始化要自己补。 |
-| [Remotion](render-engines/remotion.zh.md) | ✅ | 已有稿件与素材，只缺代码合成，直接选 Remotion；要复用人工审核流程，再取 We-Video 的实现。 | 直接用引擎可绕开不完整工作台，却要自建写稿、语音与审批界面；两条路都受引擎许可约束。 |
+| [Remotion](../render-engines/remotion.zh.md) | ✅ | 已有稿件与素材，只缺代码合成，直接选 Remotion；要复用人工审核流程，再取 We-Video 的实现。 | 直接用引擎可绕开不完整工作台，却要自建写稿、语音与审批界面；两条路都受引擎许可约束。 |
 | [OpenMontage](open-montage.zh.md) | ✅ | 要编程助手调研、找素材并导演，选 OpenMontage；要人在浏览器逐步审核口播，才考虑补齐 We-Video。 | 前者提供助手编排，也带来自身许可和工具链要求；后者由本地程序执行，不靠助手会话，但接口尚需修补。 |
 
 ## 快速上手
 
 上游文档要求 Node.js 20 以上，运行 `npm ci`，复制环境变量和流水线配置示例，再用 `npm run dev` 启动 3100 端口；这不是完整的新克隆启动方案。你还要填写 `APP_PASSWORD`、`SESSION_SECRET` 与模型密钥，创建账号、标志、人物姿态图和专题提示词。示例只有专题配置，没有完整账号和生成所需的口播、视觉提示词。先补齐缺失的任务级接口，再期待浏览器流程接通；下图描述补齐后的预期流程，不代表本次实跑。接通后，你提供文章、确认稿件、试听配音并准备画面，程序再渲染 `output.mp4`；模型调用费、内容权利与服务器维护仍由你负责。
 
-![we-video — 主干用户故事](../../assets/flow/we-video.zh.svg)
+![we-video — 主干用户故事](../../../assets/flow/we-video.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/we-video.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -116,7 +116,7 @@ health:
 
 ## 技术要点
 
-![We-Video — 机制图](../../assets/mechanism/we-video.zh.svg)
+![We-Video — 机制图](../../../assets/mechanism/we-video.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/we-video.json by tools/mechanism_card.py; do not edit) -->
 <details>

@@ -2,7 +2,7 @@
 name: ArtCraft
 slug: artcraft
 repo: https://github.com/storytold/artcraft
-category: video-production
+category: creation-workflows
 tags: [ai-image, ai-video, scene-blocking, compositing, desktop, tauri, cloud-generation]
 language: Rust
 license: MIT OR Apache-2.0
@@ -80,7 +80,7 @@ health:
 
 你要同一个人物站在同一扇窗旁，生成结果却总换机位和家具。ArtCraft 让你先摆道具、调姿势、定镜头，再把画面交给云端模型生成。
 
-![ArtCraft — 健康度雷达](../../assets/health/artcraft.zh.svg)
+![ArtCraft — 健康度雷达](../../../assets/health/artcraft.zh.svg)
 
 ## 何时使用
 
@@ -90,7 +90,7 @@ health:
 
 ## 何时不用
 
-- **客户素材绝不能离开本机。** 改用加载本地权重并离线运行的 [ComfyUI](../on-device-ml/local-image-generation/comfyui.zh.md)。ArtCraft 的常规生成路径调用托管接口，场景截图会自动上传图库。即使用 fal 生成图片，也会通过 ArtCraft 解析素材标识，并可能记录提示词。换供应商不等于离线。
+- **客户素材绝不能离开本机。** 改用加载本地权重并离线运行的 [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md)。ArtCraft 的常规生成路径调用托管接口，场景截图会自动上传图库。即使用 fal 生成图片，也会通过 ArtCraft 解析素材标识，并可能记录提示词。换供应商不等于离线。
 - **你要整套服务都能按宽松许可商业分叉。** 自有生成管线可选本地 ComfyUI，确定性三维制作可选 Blender。本仓库作者的桌面代码采用 MIT OR Apache-2.0，但另一个公开的 [artcraft-services](https://github.com/storytold/artcraft-services) 后端采用自定义非 OSI 许可。它禁止商业销售软件、开发竞品和删除付费服务／社区链接。桌面许可不覆盖后端。
 - **你准备分发整个克隆，或把演示素材打进产品。** 可从 Blender 配自有授权素材开始，或先替换 ArtCraft 排除授权的文件。[NOTICE](https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/NOTICE) 不授予任天堂音效、表情图、部分天空盒、一个 MMD 动作文件及 Mixamo 动画渲染图的使用权。字体、图标和内置 HTTP 插件另有许可，商标也不在宽松授权内。
 - **你需要可重跑的推理图或本地模型控制。** 选 ComfyUI。ArtCraft 提供供应商、模型和视觉参考入口，生成过程和可用模型仍由云服务控制。README 已将部分宣传中的模型标为停用或受限。
@@ -101,7 +101,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [ComfyUI](../on-device-ml/local-image-generation/comfyui.zh.md) | ✅ | 本地模型、保存推理图或客户素材离线要求决定选型时选 ComfyUI；希望先摆姿势和机位，再交云模型出图时选 ArtCraft。 | ComfyUI 要准备模型、硬件并维护节点；ArtCraft 不用自运维推理，但增加云账号、费用与服务依赖。 |
+| [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md) | ✅ | 本地模型、保存推理图或客户素材离线要求决定选型时选 ComfyUI；希望先摆姿势和机位，再交云模型出图时选 ArtCraft。 | ComfyUI 要准备模型、硬件并维护节点；ArtCraft 不用自运维推理，但增加云账号、费用与服务依赖。 |
 | [Blender](https://github.com/blender/blender) | 未收录 | 需要精确场景几何和确定性渲染时选 Blender；希望摆好视觉参考后直接生成镜头，不自行拼接接口时选 ArtCraft。 | Blender 覆盖更完整的三维制作，但制作投入更大，AI 接入另做；本轮标签批次不新增。 |
 | [Runway Creative](https://runwayml.com) | 非仓库 | 要托管的网页生成／编辑工作台时选 Runway Creative；要检查或修改桌面源码，并以三维参考控制构图时选 ArtCraft。 | 此处比较的是商业托管产品，不是 Runway 的研究仓库。ArtCraft 开放客户端，不代表模型能本地运行，也不代表后端采用宽松许可。 |
 
@@ -109,7 +109,7 @@ health:
 
 可用 Windows／macOS 发布包，或按[桌面开发指南](https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/_docs/dev_setup.md)准备 Rust、Node.js 20+ 和 Tauri 2。macOS／Linux 用 `./script/artcraft/unix_dev.sh` 同时启动前端与原生桌面；缺少 Vite 时它会安装前端依赖，执行前应先检查。登录 ArtCraft 后，在三维场景中摆自有素材、相机和人物姿势；Capture 会截图并自动上传图库。在图片预览窗选择编辑或生成去向，选可用模型并输入提示词，应用提交远程任务并展示可下载的结果。你提供授权素材、凭据和预算，应用提供构图工具、参考图与任务追踪，不提供免费的本机推理。另一个纯 Rust 前端 `artcraft-native` 当前只明确交付图片／视频／音频生成，其余工具为占位，不能代替这里的场景工作流。
 
-![artcraft — 主干用户故事](../../assets/flow/artcraft.zh.svg)
+![artcraft — 主干用户故事](../../../assets/flow/artcraft.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/artcraft.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -129,7 +129,7 @@ health:
 
 ## 技术要点
 
-![ArtCraft — 机制图](../../assets/mechanism/artcraft.zh.svg)
+![ArtCraft — 机制图](../../../assets/mechanism/artcraft.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/artcraft.json by tools/mechanism_card.py; do not edit) -->
 <details>

@@ -86,7 +86,7 @@ health:
 
 你在 Apple 芯片的 Mac 上做短视频或口播，日常已经泡在 Claude Code、Codex 或 Cursor 里。想交出去的活很具体：“把句子之间的停顿删掉，加逐字字幕，嘉宾说话时切到二机位”。用脚本类工具，你得先用 Python 或 JSON 把剪法描述一遍，再打开图形界面修结果；用纯图形界面的剪辑器，agent 根本进不去。你选 Palmier Pro，是因为 agent 和你改的是**同一个开着的工程**：应用通过本机 MCP 端点暴露 52 个剪辑工具，界面操作和 agent 操作走同一套底层操作、进同一条撤销历史，你可以在时间线上看着它改，随时撤销和纠正。生成新素材（Seedance、Kling、Nano Banana Pro 等模型）也内置在编辑器里，按 Palmier 账号计费。
 
-和最接近的替代品比，决定性的取舍是：[Concat](concat.zh.md) 同样是带自动化接口的原生剪辑器，但它跨平台、完全离线、AGPL 授权，提供的是 JSON-RPC／gRPC 服务而不是 MCP 工具集；[video-use](../../video-production/video-use.zh.md) 让 agent 用 ffmpeg 把一堆原始素材直接剪成成片，中间没有剪辑器。当你想留在真正的时间线里审 agent 的每一步改动、手上是 macOS 26 加 Apple 芯片、并且接受“持续维护的是闭源二进制，开源部分是冻结快照”时，选 Palmier Pro。
+和最接近的替代品比，决定性的取舍是：[Concat](concat.zh.md) 同样是带自动化接口的原生剪辑器，但它跨平台、完全离线、AGPL 授权，提供的是 JSON-RPC／gRPC 服务而不是 MCP 工具集；[video-use](../../video-production/editing-workflows/video-use.zh.md) 让 agent 用 ffmpeg 把一堆原始素材直接剪成成片，中间没有剪辑器。当你想留在真正的时间线里审 agent 的每一步改动、手上是 macOS 26 加 Apple 芯片、并且接受“持续维护的是闭源二进制，开源部分是冻结快照”时，选 Palmier Pro。
 
 ## 怎么用起来
 
@@ -116,7 +116,7 @@ Palmier Pro 是一个 Swift 应用，建在苹果自家的媒体栈上（AVFound
 - **你要一个会持续修 bug 的开源剪辑器。** 只有 `last-gpl-source` 标签（2026-08-24，对应 v0.7.6）之前的源码是 GPL-3.0；v0.7.6 之后的版本是专有软件、不公开源码，仓库也在 2026-08-28 停止接受贡献。要当前版本仍然开源的剪辑器，选 [Concat](concat.zh.md) 或 Kdenlive（未收录），因为冻结的快照不会再从原作者那里得到安全和兼容性修复。
 - **你不在 macOS 26 加 Apple 芯片上。** README 和 `Package.swift` 都要求 macOS 26（Tahoe）与 M 系列芯片，项目开发规范还明确不为其他系统版本或架构加兼容。Windows、Linux 用 [Concat](concat.zh.md) 或 Kdenlive（未收录）；想在浏览器里剪，关注 [OpenCut](opencut.zh.md)。
 - **你要在服务器上无人值守地批量出片。** MCP 服务只在 Mac 上的图形应用开着时存在，一个应用实例对应它开着的工程；有工作室在 issue #302 里问无头运行和并行出片，得到的回复是“发邮件聊”。CI 里按模板渲染用 [Remotion](../../video-production/render-engines/remotion.zh.md)；Python 批量剪辑用 [MoviePy](../video-audio/editing-and-cutting/moviepy.zh.md)。
-- **你想生成素材却不想绑定厂商账号，或想用自己的模型密钥。** 生成片段调用的是 Palmier 的 Convex 后端（`generations:submit`），按 Palmier 额度扣费；后端代码不在仓库里，没有 Palmier 的 Clerk／Convex 配置自编出来的版本，会把账号后端标成配置缺失。想自己掌控生成链路，就直接调各家模型 API，或用 [OpenMontage](../../video-production/open-montage.zh.md) 这类流水线。
+- **你想生成素材却不想绑定厂商账号，或想用自己的模型密钥。** 生成片段调用的是 Palmier 的 Convex 后端（`generations:submit`），按 Palmier 额度扣费；后端代码不在仓库里，没有 Palmier 的 Clerk／Convex 配置自编出来的版本，会把账号后端标成配置缺失。想自己掌控生成链路，就直接调各家模型 API，或用 [OpenMontage](../../video-production/creation-workflows/open-montage.zh.md) 这类流水线。
 - **你不信任同一台 Mac 上的其他本地进程。** MCP 端点只绑定 `127.0.0.1` 并校验 `Origin` 头，但没有令牌；任何本地进程都能操控开着的工程，issue #302 也指出了这一点。在共用机器上别开着它，或改用 [Concat](concat.zh.md)——它的本地服务每次运行都生成随机令牌。
 - **你要做自己的剪辑器或无头剪辑服务。** fork 一个单厂商、已冻结的 Swift 应用，会把你绑在 macOS 26 和 GPL 义务上；要可复用的时间线引擎，用 [MLT](../video-audio/editing-and-cutting/mlt.zh.md)。
 - **你的团队用剪映／CapCut 剪。** Palmier Pro 导出的是 FCPXML 和 FCP7 XML，不是剪映草稿（导出剪映草稿的请求 issue #580 仍开着）。要让 agent 写剪映工程，用 [pyJianYingDraft](../nle-automation/pyjianyingdraft.zh.md) 或 [JianYing Editor Skill](../nle-automation/jianying-editor-skill.zh.md)。
@@ -127,7 +127,7 @@ Palmier Pro 是一个 Swift 应用，建在苹果自家的媒体栈上（AVFound
 |---|---|---|---|
 | [Concat](concat.zh.md) | ✅ | 如果你要在 Windows、Linux 或 macOS 上有一个 agent 能操控、完全离线、当前版本仍开源的原生剪辑器，选 Concat；只有在 macOS 26 上、又想要 MCP 剪辑工具加内置生成时，才选 Palmier Pro。 | Concat 换来跨平台、离线语音能力和带令牌的本地服务；代价是单人维护的 beta、AGPL 义务，也没有 MCP 工具集。 |
 | [OpenCut](opencut.zh.md) | ✅ | 更看重浏览器里的开源剪辑器、不急着要能用的 agent 集成时，关注 OpenCut；需要 agent 现在就改你的时间线，选 Palmier Pro。 | OpenCut 换来浏览器可达性和 MIT 开源代码；但当前仓库正在重写、没有可用版本，也没有 agent 工具接口。 |
-| [video-use](../../video-production/video-use.zh.md) | ✅ | 活儿是“把一文件夹原始素材剪成成片”、不需要在时间线里审时，选 video-use；想在剪辑器里看、撤销、微调 agent 的每一步，选 Palmier Pro。 | video-use 换来可移植（有 ffmpeg 的系统都能跑）且不需要图形界面；代价是没有交互式审片，转写还要 ElevenLabs Scribe 密钥。 |
+| [video-use](../../video-production/editing-workflows/video-use.zh.md) | ✅ | 活儿是“把一文件夹原始素材剪成成片”、不需要在时间线里审时，选 video-use；想在剪辑器里看、撤销、微调 agent 的每一步，选 Palmier Pro。 | video-use 换来可移植（有 ffmpeg 的系统都能跑）且不需要图形界面；代价是没有交互式审片，转写还要 ElevenLabs Scribe 密钥。 |
 | Kdenlive | 未收录 | 要一个长期存在、各平台都能用、完全开源的桌面剪辑器，选 Kdenlive；只有需要 MCP agent 剪辑和内置生成时才选 Palmier Pro。本轮标签页收录批次未添加。 | Kdenlive 换来十年级别的 KDE 项目、当前版本就是 GPL 源码；但它没有 MCP agent 接口，也没有内置 AI 生成。 |
 | Final Cut Pro | 非仓库 | 接付费客户的活、需要成熟且有厂商支持的 Mac 剪辑器，选 Final Cut Pro；Palmier Pro 用来让 agent 出粗剪，再经 FCPXML 交过去。 | Final Cut Pro 是苹果的闭源商业软件：稳定完整，但没有 MCP agent 接口、没有源码；Palmier Pro 的 FCPXML 导出让两者可以接力。 |
 

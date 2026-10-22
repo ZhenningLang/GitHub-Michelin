@@ -2,7 +2,7 @@
 name: Stickman Video Director
 slug: stickman-video-director
 repo: https://github.com/kaomei/stickman-video-director
-category: video-production
+category: creation-workflows
 tags: [agent-skills, video-prompts, storyboards, stick-figures, voice-continuity]
 language: Markdown
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 Six generated clips show six slightly different characters and narrators. This skill freezes a director-approved plan and repeats complete character and voice instructions in each standalone clip prompt.
 
-![Stickman Video Director — health radar](../../assets/health/stickman-video-director.svg)
+![Stickman Video Director — health radar](../../../assets/health/stickman-video-director.svg)
 
 ## When to use
 
@@ -78,7 +78,7 @@ You make a short educational or everyday-life video and want stick figures rathe
 ## When NOT to use
 
 - **You expect a finished MP4 from one invocation.** Choose [anything2explainer](anything2explainer.md) for an orchestrated code-rendered explainer; this skill stops at prompts and editing notes.
-- **Text must be exact and every frame reproducible.** Choose [HyperFrames](render-engines/hyperframes.md); generated footage is stochastic and this pack normally forbids visible words inside generated clips.
+- **Text must be exact and every frame reproducible.** Choose [HyperFrames](../render-engines/hyperframes.md); generated footage is stochastic and this pack normally forbids visible words inside generated clips.
 - **You already direct clips yourself and need a generation interface.** Use Google Flow directly. This repository adds planning instructions, not a video model or an API integration.
 - **Exact voice identity is mandatory.** Use a continuous external narration track in your editor; repeated voice text is a prompt-level consistency aid, not a guaranteed shared voice asset.
 
@@ -87,14 +87,14 @@ You make a short educational or everyday-life video and want stick figures rathe
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [anything2explainer](anything2explainer.md) | ✅ | Choose it for a whole code-rendered explainer pipeline; choose this pack for short generative stick-figure storyboards. | More production automation versus narrower prompt-only adoption; the alternative has noncommercial toolkit terms. |
-| [HyperFrames](render-engines/hyperframes.md) | ✅ | Choose HyperFrames for editable exact text and deterministic graphics; choose this pack for generative character scenes without writing animation code. | Browser-based rendering versus model variability and manual assembly. |
+| [HyperFrames](../render-engines/hyperframes.md) | ✅ | Choose HyperFrames for editable exact text and deterministic graphics; choose this pack for generative character scenes without writing animation code. | Browser-based rendering versus model variability and manual assembly. |
 | Google Flow | not a repo | Use Flow alone if you already own the directing method; add this skill when continuity and approval discipline are missing. | Hosted commercial generation service, not a repository; generation costs remain separate. |
 
 ## Quick start
 
 Copy `skills/directing-stickman-videos/` into your agent's skill directory, then supply a topic, aspect ratio, duration and style. Missing ratio or style must be confirmed before planning; unspecified duration defaults to 60 seconds. The agent writes a director's proposal and waits for your approval before emitting independent English clip prompts. Submit those prompts to your chosen generation service and assemble clips and subtitles in an editor yourself. The pack needs no model API or MCP setup of its own, but your assistant and video-generation service have separate access requirements and costs.
 
-![stickman-video-director — backbone user story](../../assets/flow/stickman-video-director.svg)
+![stickman-video-director — backbone user story](../../../assets/flow/stickman-video-director.svg)
 
 <!-- flow-steps:begin (generated from flows/stickman-video-director.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -113,7 +113,7 @@ Copy `skills/directing-stickman-videos/` into your agent's skill directory, then
 
 ## Key techniques
 
-![Stickman Video Director — mechanism diagram](../../assets/mechanism/stickman-video-director.svg)
+![Stickman Video Director — mechanism diagram](../../../assets/mechanism/stickman-video-director.svg)
 
 <!-- mechanism:begin (generated from mechanisms/stickman-video-director.json by tools/mechanism_card.py; do not edit) -->
 <details>

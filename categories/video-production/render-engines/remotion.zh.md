@@ -84,8 +84,8 @@ health:
 
 - **你的公司超过 3 人且不打算买许可证。** Remotion License 是 source-available 而非开源；请改用 [HyperFrames](hyperframes.zh.md)（Apache-2.0，无收入/规模阈值），因为免费档是按主体资格划线而非按功能划线，法务审查会卡这一点。
 - **你的团队不用 React 思考，或视频由 coding agent 执笔。** Remotion composition 需要 React/打包器项目；agent 和非 React 团队写纯 HTML 更可靠——这正是 [HyperFrames](hyperframes.zh.md) 的赌注。
-- **你需要生成式画面（写实人物/场景）或克隆爆款的管线。** Remotion 渲染你合成的东西，不生成像素、也不分解参考视频。克隆到变体的 workflow 用 [Hypit](../hypit.zh.md)；画面本身必须靠幻觉生成时用生成类 SaaS/模型（Runway、Seedance，未收录）。
-- **你想要整条制作被编排——调研、脚本、素材生成、审批闸门。** Remotion 是渲染引擎层；[OpenMontage](../open-montage.zh.md) 把这类引擎包进带治理的端到端管线。
+- **你需要生成式画面（写实人物/场景）或克隆爆款的管线。** Remotion 渲染你合成的东西，不生成像素、也不分解参考视频。克隆到变体的 workflow 用 [Hypit](../editing-workflows/hypit.zh.md)；画面本身必须靠幻觉生成时用生成类 SaaS/模型（Runway、Seedance，未收录）。
+- **你想要整条制作被编排——调研、脚本、素材生成、审批闸门。** Remotion 是渲染引擎层；[OpenMontage](../creation-workflows/open-montage.zh.md) 把这类引擎包进带治理的端到端管线。
 - **你要一次性的手工精修电影感剪辑。** 用 DaVinci Resolve / Premiere Pro（未收录）配人类剪辑师；程序化管线只有在视频被参数化、重复、反复重新生成时才回本。
 - **你要的是全托管渲染服务。** Remotion 没有托管渲染云——本地渲染跑在你机器上，Lambda 渲染跑在**你的** AWS 账号里，基础设施、IAM 和成本都归你。要按次调用、不想养基础设施，就用托管视频渲染 API 或生成类 SaaS（Runway，未收录）。
 
@@ -94,8 +94,8 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [HyperFrames](hyperframes.zh.md) | ✅ | 如果你要许可证自由（Apache-2.0）、无打包器、coding agent 能可靠编辑的 HTML 创作，选 HyperFrames；如果 React 生态深度、web player 组件和身经百战的 Lambda 分布式渲染更重要，选 Remotion，因为 Remotion 6 年的目录和云渲染成熟度正是 HyperFrames 还在长成的东西。 | Remotion：成熟云渲染 + 生态，3 人以上付费；HyperFrames：许可证自由 + 更简单创作，pre-1.0 且更年轻。 |
-| [Hypit](../hypit.zh.md) | ✅ | 如果入口是「克隆这条爆款、出 50 个变体」并需要生成画面和词级对齐，选 Hypit；如果你自己在 React 代码库里写 composition、要一个稳定的 6 年框架，选 Remotion，因为 Hypit 验证时仅 7 周龄、许可证受限且依赖付费生成 API。 | Hypit 带来克隆/生成/对齐闭环；Remotion 带来长期性、稳定性、零模型 API 开销——但没有生成管线。 |
-| [OpenMontage](../open-montage.zh.md) | ✅ | 如果你要 agent 驱动、带调研/脚本/审批闸门、产出解说类视频的管线，选 OpenMontage；如果你要在 React 代码库里对每一帧做引擎级直接控制，选 Remotion，因为 OpenMontage 编排的正是这一类引擎而非替代它们。 | OpenMontage 在上层加治理；Remotion 给裸引擎控制，管线纪律自己扛。 |
+| [Hypit](../editing-workflows/hypit.zh.md) | ✅ | 如果入口是「克隆这条爆款、出 50 个变体」并需要生成画面和词级对齐，选 Hypit；如果你自己在 React 代码库里写 composition、要一个稳定的 6 年框架，选 Remotion，因为 Hypit 验证时仅 7 周龄、许可证受限且依赖付费生成 API。 | Hypit 带来克隆/生成/对齐闭环；Remotion 带来长期性、稳定性、零模型 API 开销——但没有生成管线。 |
+| [OpenMontage](../creation-workflows/open-montage.zh.md) | ✅ | 如果你要 agent 驱动、带调研/脚本/审批闸门、产出解说类视频的管线，选 OpenMontage；如果你要在 React 代码库里对每一帧做引擎级直接控制，选 Remotion，因为 OpenMontage 编排的正是这一类引擎而非替代它们。 | OpenMontage 在上层加治理；Remotion 给裸引擎控制，管线纪律自己扛。 |
 | Runway / Pika（SaaS） | 未收录 | 如果你要零代码的写实生成画面，选生成类 SaaS；如果每个像素都必须确定性、数据驱动、可在 CI 重渲染，选 Remotion，因为 prompt 摇出来的片段保证不了你的文字、数据和品牌元素。 | SaaS：即得写实画面、按次计价、不可控；Remotion：完全可控、本地渲染免费、只出图形风格画面。 |
 | DaVinci Resolve / Premiere Pro | 未收录 | 如果人类剪辑师要对一条片子做帧级手工打磨，选专业 NLE；如果视频被参数化、由代码批量产出，选 Remotion，因为 NLE 撑不起上千条数据驱动变体。 | NLE：手工技艺、无自动化接口；Remotion：自动化原生、无手剪时间线 GUI。 |
 

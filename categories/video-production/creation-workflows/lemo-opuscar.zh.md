@@ -2,7 +2,7 @@
 name: Lemo-Opuscar
 slug: lemo-opuscar
 repo: https://github.com/lemomo-ai/lemo-opuscar
-category: video-production
+category: creation-workflows
 tags: [agent-skills, code-video, film-styles, canvas, narration]
 language: JavaScript
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 你想拍水彩故事或有证据的卫星短片，却不想逐帧手画，也不想赌视频模型能写对文字。Lemo-Opuscar 把风格指南和代码渲染工具交给编程助手，生成镜头、声音与成片。
 
-![Lemo-Opuscar — 健康度雷达](../../assets/health/lemo-opuscar.zh.svg)
+![Lemo-Opuscar — 健康度雷达](../../../assets/health/lemo-opuscar.zh.svg)
 
 ## 何时使用
 
@@ -77,8 +77,8 @@ health:
 
 ## 何时不用
 
-- **只缺渲染已有构图的引擎：** 选 [HyperFrames](render-engines/hyperframes.zh.md)；本包额外引入导演指令、风格选择、音频制作和独立共享库。
-- **要成熟 React 视频平台与云渲染：** 在许可允许时选 [Remotion](render-engines/remotion.zh.md)；Lemo-Opuscar 是年轻的浏览器逐帧工具，不是同级渲染服务。
+- **只缺渲染已有构图的引擎：** 选 [HyperFrames](../render-engines/hyperframes.zh.md)；本包额外引入导演指令、风格选择、音频制作和独立共享库。
+- **要成熟 React 视频平台与云渲染：** 在许可允许时选 [Remotion](../render-engines/remotion.zh.md)；Lemo-Opuscar 是年轻的浏览器逐帧工具，不是同级渲染服务。
 - **要严格固定风格的解说流程：** 可看 [anything2explainer](anything2explainer.zh.md)，但其非商业许可是约束。Lemo 的多风格与助手自由裁量，换来较低的导演过程重复性。
 - **要写实生成素材或剪已有片段：** 分别考虑 Runway 等视频生成服务，或 DaVinci Resolve 等编辑器；这些是闭源产品，不属于本包的代码绘片路线。
 - **不允许自动更新库和安装依赖：** 先审查并固定 setup 流程，不直接沿用默认技能。它会克隆或更新共享库，并按层安装依赖；单个技能文件不是完整安装。
@@ -87,15 +87,15 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [HyperFrames](render-engines/hyperframes.zh.md) | ✅ | 已有制片流程，只缺 HTML 渲染引擎，选 HyperFrames；需要复用美术指导和风格提示词，选 Lemo。 | Lemo 包含风格、配音配乐和复核约定；HyperFrames 是更通用的 Apache-2.0 引擎。 |
-| [Remotion](render-engines/remotion.zh.md) | ✅ | React 团队做参数化视频产品与云端渲染，选 Remotion；助手用浏览器绘制导演短片，选 Lemo。 | Remotion 引擎基础设施更深，并有商业许可要求；Lemo 更小、本地渲染且年轻得多。 |
+| [HyperFrames](../render-engines/hyperframes.zh.md) | ✅ | 已有制片流程，只缺 HTML 渲染引擎，选 HyperFrames；需要复用美术指导和风格提示词，选 Lemo。 | Lemo 包含风格、配音配乐和复核约定；HyperFrames 是更通用的 Apache-2.0 引擎。 |
+| [Remotion](../render-engines/remotion.zh.md) | ✅ | React 团队做参数化视频产品与云端渲染，选 Remotion；助手用浏览器绘制导演短片，选 Lemo。 | Remotion 引擎基础设施更深，并有商业许可要求；Lemo 更小、本地渲染且年轻得多。 |
 | [anything2explainer](anything2explainer.zh.md) | ✅ | 固定动态图形解说和明确审批点，选 anything2explainer；故事需要绘画、卡通或实证影像风格，选 Lemo。 | Lemo 的代码文档为 MIT，外观多样；对方流程更窄，但有非商业限制。 |
 
 ## 快速上手
 
 Claude Code 文档路线是添加 `lemomo-ai/lemo-opuscar` 市场，再安装 `lemo-opuscar@lemolab`；其他助手可复制技能目录。先审查 setup：首次使用会把共享库取到 `~/lemo-opuscar`，并按需安装工具层。你准备 Node 20 及以上、FFmpeg、Python 3.11 及以上或 uv，以及编程助手模型、题材、素材和授权。指定风格并决定是否先批准分镜后，助手读取导演、技术和风格指南，在起始目录创建影片工程并渲染 MP4。你仍需核事实、素材权利和最终音画；中文 edge-tts 旁白需要联网，即使画面本地渲染。
 
-![lemo-opuscar — 主干用户故事](../../assets/flow/lemo-opuscar.zh.svg)
+![lemo-opuscar — 主干用户故事](../../../assets/flow/lemo-opuscar.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/lemo-opuscar.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -113,7 +113,7 @@ Claude Code 文档路线是添加 `lemomo-ai/lemo-opuscar` 市场，再安装 `l
 
 ## 技术要点
 
-![Lemo-Opuscar — 机制图](../../assets/mechanism/lemo-opuscar.zh.svg)
+![Lemo-Opuscar — 机制图](../../../assets/mechanism/lemo-opuscar.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/lemo-opuscar.json by tools/mechanism_card.py; do not edit) -->
 <details>

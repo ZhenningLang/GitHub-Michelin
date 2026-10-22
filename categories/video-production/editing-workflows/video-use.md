@@ -2,7 +2,7 @@
 name: video-use
 slug: video-use
 repo: https://github.com/browser-use/video-use
-category: video-production
+category: editing-workflows
 tags: [agent-skill, claude-code, ffmpeg, transcription, video-editing, elevenlabs]
 language: Python
 license: MIT
@@ -68,13 +68,13 @@ health:
 
 You have a folder of raw takes full of umms and dead air, and you do not want to learn an NLE. video-use lets a coding agent read a packed transcript instead of watching the video, propose a cut, and write `edit/final.mp4` after you confirm.
 
-![video-use — health radar](../../assets/health/video-use.svg)
+![video-use — health radar](../../../assets/health/video-use.svg)
 
 ## When to use
 
 You shoot talking-head, tutorial, interview, or launch footage into a folder — five takes of the same sentence, filler words, two seconds of silence between them — and the next tool you would otherwise open is Premiere. You already run Claude Code or Codex. You symlink this repo into the agent's skills directory, drop an ElevenLabs API key in `.env` for word-level Scribe transcripts, and say "edit these into a launch video." The agent inventories with `ffprobe`, transcribes, packs every take into one `takes_packed.md`, asks you the strategy in plain English, and only then writes `edl.json` and runs `helpers/render.py`.
 
-Pick this over [Auto-Editor](../media-processing/video-audio/editing-and-cutting/auto-editor.md) when silence is not the whole job: you also want take-picking, color, burned-in captions, and overlay animations from a conversation. Pick it over [anything2explainer](anything2explainer.md) or [OpenMontage](open-montage.md) when the picture already exists on disk — this skill edits files you dropped, it does not generate the base footage. Pick it over [OpenCreator](open-creator.md) when you live in the terminal and do not want a Codex-login desktop.
+Pick this over [Auto-Editor](../../media-processing/video-audio/editing-and-cutting/auto-editor.md) when silence is not the whole job: you also want take-picking, color, burned-in captions, and overlay animations from a conversation. Pick it over [anything2explainer](../creation-workflows/anything2explainer.md) or [OpenMontage](../creation-workflows/open-montage.md) when the picture already exists on disk — this skill edits files you dropped, it does not generate the base footage. Pick it over [OpenCreator](open-creator.md) when you live in the terminal and do not want a Codex-login desktop.
 
 ## Q&A
 
@@ -88,7 +88,7 @@ No. Harness recordings are traces of a browser session. This skill cuts camera f
 
 The LLM never watches the video. One ElevenLabs Scribe call per source produces word-level timestamps, speaker labels, and events such as `(laughter)`; `pack_transcripts.py` turns that into a ~12 KB `takes_packed.md` the model can actually read. Visuals are on demand: `timeline_view.py` draws a filmstrip plus waveform PNG for a time range, used at decision points and again on the rendered output at every cut. What you do: install ffmpeg, pay for Scribe, confirm a 4–8 sentence strategy, give notes on the preview. What it does: cache transcripts, snap every cut to a word boundary, extract per segment, concat losslessly, put 30 ms audio fades on every join, burn subtitles last, and cap self-eval at three passes. Animation slots (HyperFrames, Remotion, Manim, or PIL) are optional and spawned in parallel; they are not the backbone. Outputs stay in `<videos_dir>/edit/` so the skill clone stays clean. Hard dependency: without `ELEVENLABS_API_KEY`, nothing transcribes.
 
-![video-use — backbone user story](../../assets/flow/video-use.svg)
+![video-use — backbone user story](../../../assets/flow/video-use.svg)
 
 <!-- flow-steps:begin (generated from flows/video-use.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -108,23 +108,23 @@ The LLM never watches the video. One ElevenLabs Scribe call per source produces 
 
 ## When NOT to use
 
-- **The only job is cut silence or still stretches, with no LLM.** Use [Auto-Editor](../media-processing/video-audio/editing-and-cutting/auto-editor.md). It labels by loudness or motion and can export a timeline into Premiere or Resolve; it does not phone a transcript API.
-- **There is no footage — you want an explainer drawn from a topic.** Use [anything2explainer](anything2explainer.md) (Remotion, governed pipeline, PolyForm noncommercial) or [OpenMontage](open-montage.md) (from-scratch film, AGPL). video-use will not invent the base picture.
+- **The only job is cut silence or still stretches, with no LLM.** Use [Auto-Editor](../../media-processing/video-audio/editing-and-cutting/auto-editor.md). It labels by loudness or motion and can export a timeline into Premiere or Resolve; it does not phone a transcript API.
+- **There is no footage — you want an explainer drawn from a topic.** Use [anything2explainer](../creation-workflows/anything2explainer.md) (Remotion, governed pipeline, PolyForm noncommercial) or [OpenMontage](../creation-workflows/open-montage.md) (from-scratch film, AGPL). video-use will not invent the base picture.
 - **You want a desktop for subtitling, dubbing, and recutting one existing video.** Use [OpenCreator](open-creator.md). It is a Codex-native app; this is a `SKILL.md` plus helper scripts.
 - **You cannot send audio to ElevenLabs, or you will not pay Scribe.** Transcription is hosted Scribe, word-level, cached per file. The skill tells the agent not to run Whisper locally. No key means no edit.
 - **You need frame-level manual control in a traditional NLE.** Use DaVinci Resolve or Premiere (not a repo). video-use will not give you a node graph; it gives you an EDL the agent wrote.
-- **You need the HTML-to-MP4 engine itself.** Use [HyperFrames](render-engines/hyperframes.md). video-use may `npx --yes hyperframes` inside one overlay slot; it does not replace that engine.
+- **You need the HTML-to-MP4 engine itself.** Use [HyperFrames](../render-engines/hyperframes.md). video-use may `npx --yes hyperframes` inside one overlay slot; it does not replace that engine.
 - **You are betting on Lindy.** 27k stars on a 22-commit, five-month-old skill-pack is a hype signal. The README still points always-on VPS editing at "Browser Use Box"; current Browser Use docs say Box and Bux are retired.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Auto-Editor](../media-processing/video-audio/editing-and-cutting/auto-editor.md) | ✅ | Choose Auto-Editor when the cut is "delete the quiet bits" with no model and no transcript bill; choose video-use when a coding agent should pick takes, grade, caption, and overlay from a conversation. | Auto-Editor is a deterministic CLI you can script; video-use spends Scribe credits and agent tokens, and it will not start until you approve a strategy. |
+| [Auto-Editor](../../media-processing/video-audio/editing-and-cutting/auto-editor.md) | ✅ | Choose Auto-Editor when the cut is "delete the quiet bits" with no model and no transcript bill; choose video-use when a coding agent should pick takes, grade, caption, and overlay from a conversation. | Auto-Editor is a deterministic CLI you can script; video-use spends Scribe credits and agent tokens, and it will not start until you approve a strategy. |
 | [OpenCreator](open-creator.md) | ✅ | Choose OpenCreator when you want a local desktop for subtitle/dub/portrait recut of *this* video; choose video-use when the input is a folder of raw takes and you already live in Claude Code or Codex. | OpenCreator is an app that requires a Codex login; video-use is a skill directory with no GUI. |
-| [anything2explainer](anything2explainer.md) | ✅ | Choose anything2explainer when there is no camera footage and the film should be drawn in Remotion from a topic; choose video-use when the files already exist and the pain is cutting them. | Explainer generates every frame (PolyForm noncommercial); video-use never generates the base picture, it edits what you dropped (MIT). |
-| [OpenMontage](open-montage.md) | ✅ | Choose OpenMontage when the agent should research, script, generate assets, and render a film from a prompt; choose video-use when the source of truth is camera takes. | OpenMontage is a from-scratch production pipeline under AGPL; video-use is an MIT editor that still needs a paid Scribe key. |
-| [HyperFrames](render-engines/hyperframes.md) | ✅ | Choose HyperFrames when you need the HTML-to-MP4 engine; choose video-use when HyperFrames is at most one overlay slot inside a larger edit of real footage. | video-use can scaffold a HyperFrames slot with `npx --yes hyperframes`; it does not replace lint/validate/render of the engine itself. |
+| [anything2explainer](../creation-workflows/anything2explainer.md) | ✅ | Choose anything2explainer when there is no camera footage and the film should be drawn in Remotion from a topic; choose video-use when the files already exist and the pain is cutting them. | Explainer generates every frame (PolyForm noncommercial); video-use never generates the base picture, it edits what you dropped (MIT). |
+| [OpenMontage](../creation-workflows/open-montage.md) | ✅ | Choose OpenMontage when the agent should research, script, generate assets, and render a film from a prompt; choose video-use when the source of truth is camera takes. | OpenMontage is a from-scratch production pipeline under AGPL; video-use is an MIT editor that still needs a paid Scribe key. |
+| [HyperFrames](../render-engines/hyperframes.md) | ✅ | Choose HyperFrames when you need the HTML-to-MP4 engine; choose video-use when HyperFrames is at most one overlay slot inside a larger edit of real footage. | video-use can scaffold a HyperFrames slot with `npx --yes hyperframes`; it does not replace lint/validate/render of the engine itself. |
 
 ## Health & viability
 

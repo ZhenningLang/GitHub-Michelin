@@ -2,7 +2,7 @@
 name: We-Video
 slug: we-video
 repo: https://github.com/hongqun/we-video
-category: video-production
+category: creation-workflows
 tags: [narrated-video, human-review, remotion, cosyvoice, deepseek, creator-workbench]
 language: TypeScript
 license: MIT
@@ -68,7 +68,7 @@ health:
 
 Turning one article into a branded explainer means checking the script, voice and pictures separately. We-Video supplies that review workbench and a checked MP4 renderer, but its public checkout omits several API handlers the interface needs.
 
-![We-Video — health radar](../../assets/health/we-video.svg)
+![We-Video — health radar](../../../assets/health/we-video.svg)
 
 ## When to use
 
@@ -79,23 +79,23 @@ Choose it as an implementation base when your team can complete the missing web-
 ## When NOT to use
 
 - **You need a working fresh-clone WebUI today.** Choose [MoneyPrinterTurbo](moneyprinter-turbo.md) for the stock-footage-short workflow instead. At the reviewed SHA, the UI calls job snapshot, render and visual-plan generation endpoints whose route files are absent; `.gitignore` excludes most per-job API routes. See the [tree](https://github.com/hongqun/we-video/tree/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/app/api/jobs), [UI calls](https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/components/Workspace.tsx#L505-L506) and [ignore rules](https://github.com/hongqun/we-video/blob/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/.gitignore#L12-L23).
-- **Your footage and narration must stay offline.** Use [Remotion](render-engines/remotion.md) directly with local assets and your own voice track. We-Video's documented narration path sends text to DeepSeek and Alibaba Bailian/CosyVoice; API keys and usage charges are your responsibility.
+- **Your footage and narration must stay offline.** Use [Remotion](../render-engines/remotion.md) directly with local assets and your own voice track. We-Video's documented narration path sends text to DeepSeek and Alibaba Bailian/CosyVoice; API keys and usage charges are your responsibility.
 - **You want an agent to research and direct an entire film.** Choose [OpenMontage](open-montage.md) for its agent-driven pipeline. We-Video is an operator-facing workbench; the README's optional Remotion skills are development guidance, not its orchestrator.
-- **You require a permissive open-source rendering engine.** Consider [HyperFrames](render-engines/hyperframes.md) under Apache-2.0 after reviewing its dependency terms. We-Video's own MIT license does not replace Remotion 4's company-size eligibility rules or third-party asset terms. The [pinned Remotion license](https://github.com/remotion-dev/remotion/blob/v4.0.505/LICENSE.md) requires a company license outside its free-license eligibility, including for-profit organizations above three employees.
+- **You require a permissive open-source rendering engine.** Consider [HyperFrames](../render-engines/hyperframes.md) under Apache-2.0 after reviewing its dependency terms. We-Video's own MIT license does not replace Remotion 4's company-size eligibility rules or third-party asset terms. The [pinned Remotion license](https://github.com/remotion-dev/remotion/blob/v4.0.505/LICENSE.md) requires a company license outside its free-license eligibility, including for-profit organizations above three employees.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [MoneyPrinterTurbo](moneyprinter-turbo.md) | ✅ | Pick MoneyPrinterTurbo when an operator needs topic-to-stock-footage shorts without repairing this checkout; pick We-Video as a development base for separate narration, audio and visual review. | MoneyPrinterTurbo offers a different, more appliance-like workflow; We-Video supplies editable review surfaces but leaves missing routes and account setup to you. |
-| [Remotion](render-engines/remotion.md) | ✅ | Pick Remotion directly when you already own narration and assets and need React-defined frames; pick We-Video's code when the review workflow itself is what you want to reuse. | Direct engine use avoids the incomplete workbench; it also leaves script generation, speech integration and approval screens for you to build. Remotion's license applies in either route. |
+| [Remotion](../render-engines/remotion.md) | ✅ | Pick Remotion directly when you already own narration and assets and need React-defined frames; pick We-Video's code when the review workflow itself is what you want to reuse. | Direct engine use avoids the incomplete workbench; it also leaves script generation, speech integration and approval screens for you to build. Remotion's license applies in either route. |
 | [OpenMontage](open-montage.md) | ✅ | Pick OpenMontage when a coding agent should research, source assets and direct production; pick We-Video's implementation when a human operator should review each narration stage in a browser. | OpenMontage adds agent orchestration and its own licensing and toolchain obligations; We-Video uses local application workers, not an agent session, but needs integration repair. |
 
 ## Quick start
 
 The README documents Node.js 20+, `npm ci`, copies of `config_examples/.env.example` and `config_examples/pipeline.config.example.json`, then `npm run dev` on port 3100; this is not a complete fresh-checkout recipe. You must also set `APP_PASSWORD` and `SESSION_SECRET`, supply model keys, and create an account, logo, presenter pose and series prompts under the configured content directory. The examples supply a series configuration, not a complete account or the required narration/visual prompts. Complete the missing per-job API handlers before expecting the browser workflow to work; the flow below describes that conditional workflow, not a reproduced run. After repair, you supply the article, approve the draft, listen to the generated speech, prepare and approve visuals, and let its renderer create `output.mp4`; cloud text and speech charges, content rights and server operation stay with you.
 
-![we-video — backbone user story](../../assets/flow/we-video.svg)
+![we-video — backbone user story](../../../assets/flow/we-video.svg)
 
 <!-- flow-steps:begin (generated from flows/we-video.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -116,7 +116,7 @@ The README documents Node.js 20+, `npm ci`, copies of `config_examples/.env.exam
 
 ## Key techniques
 
-![We-Video — mechanism diagram](../../assets/mechanism/we-video.svg)
+![We-Video — mechanism diagram](../../../assets/mechanism/we-video.svg)
 
 <!-- mechanism:begin (generated from mechanisms/we-video.json by tools/mechanism_card.py; do not edit) -->
 <details>

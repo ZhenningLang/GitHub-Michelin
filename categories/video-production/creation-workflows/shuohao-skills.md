@@ -2,7 +2,7 @@
 name: shuohao-skills
 slug: shuohao-skills
 repo: https://github.com/eternityspring/shuohao-skills
-category: video-production
+category: creation-workflows
 tags: [short-drama, storyboard, staging, agent-skills]
 language: JavaScript
 license: Apache-2.0
@@ -75,7 +75,7 @@ health:
 
 Your generated drama keeps changing who sits where between shots; this collection turns a novel into shared character, art, script, staging and storyboard records before production.
 
-![shuohao-skills — health radar](../../assets/health/shuohao-skills.svg)
+![shuohao-skills — health radar](../../../assets/health/shuohao-skills.svg)
 
 ## When to use
 
@@ -85,7 +85,7 @@ You are adapting a Chinese-first short drama and character identities, props and
 
 - Need a finished explanatory film rather than drama preparation? Choose [OpenMontage](open-montage.md).
 - Need a product promo from real UI captures? Choose [video-shotcraft](video-shotcraft.md), not a novel-adaptation workflow.
-- Need deterministic timeline rendering? Choose [Remotion](render-engines/remotion.md); this collection is not a rendering engine.
+- Need deterministic timeline rendering? Choose [Remotion](../render-engines/remotion.md); this collection is not a rendering engine.
 - Need fully English character data without adaptation? Use a custom workflow instead: the character validator explicitly rejects English in some authored fields, despite English report interfaces.
 
 ## Comparison
@@ -94,13 +94,13 @@ You are adapting a Chinese-first short drama and character identities, props and
 | --- | --- | --- | --- |
 | [OpenMontage](open-montage.md) | ✅ | Choose OpenMontage for a whole video pipeline; choose shuohao-skills for character and staging continuity in short drama. | Broader production automation versus specialized reviewable preparation. |
 | [video-shotcraft](video-shotcraft.md) | ✅ | Choose video-shotcraft for product footage and shot recipes; choose this collection when a novel must become scenes and consistent cast. | UI-grounded promo assets versus narrative and spatial planning. |
-| [Remotion](render-engines/remotion.md) | ✅ | Choose Remotion to render a coded timeline; choose these skills to prepare drama material for external generators. | A rendering runtime versus prompts, JSON contracts and validators; Remotion's separate license still matters if added downstream. |
+| [Remotion](../render-engines/remotion.md) | ✅ | Choose Remotion to render a coded timeline; choose these skills to prepare drama material for external generators. | A rendering runtime versus prompts, JSON contracts and validators; Remotion's separate license still matters if added downstream. |
 
 ## Quick start
 
 Review a pinned checkout and expose only the selected skill directory to an agent that reads `SKILL.md`; the provided installer symlinks into Claude Code or Codex and makes later pulls immediately active. Supply a source story and let the agent produce each stage's JSON and report. Node 18+ standard-library scripts seed records, validate them and render HTML, while creative decisions and generation costs remain yours. For staging, provide `script.json`, optionally art and scene images, then review the draggable report and export corrected JSON. Its blocking sentences must still be copied into the storyboard: automatic staging import is not implemented. See [usage](https://github.com/eternityspring/shuohao-skills/blob/d28a9c539b40523d081794b25ff9113016bd98e0/skills/novel-staging/SKILL.md).
 
-![shuohao-skills — backbone user story](../../assets/flow/shuohao-skills.svg)
+![shuohao-skills — backbone user story](../../../assets/flow/shuohao-skills.svg)
 
 <!-- flow-steps:begin (generated from flows/shuohao-skills.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -119,7 +119,7 @@ Review a pinned checkout and expose only the selected skill directory to an agen
 
 ## Key techniques
 
-![shuohao-skills — mechanism diagram](../../assets/mechanism/shuohao-skills.svg)
+![shuohao-skills — mechanism diagram](../../../assets/mechanism/shuohao-skills.svg)
 
 <!-- mechanism:begin (generated from mechanisms/shuohao-skills.json by tools/mechanism_card.py; do not edit) -->
 <details>

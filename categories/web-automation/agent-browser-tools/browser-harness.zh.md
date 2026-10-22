@@ -92,7 +92,7 @@ health:
 对。这里没有 `Agent(task=...).run()`。脑子留在 Claude Code / Codex；这个包是 CLI、长驻 daemon，以及一份告诉 agent 怎么说话的 `SKILL.md`。
 
 **会话录像和 video-use 是一回事吗？**
-不是。这里的录像是浏览器操作的截图和动作轨迹，默认关闭。[video-use](../../video-production/video-use.zh.md) 是另一份 skill，用来把摄像机素材剪成 `edit/final.mp4`。
+不是。这里的录像是浏览器操作的截图和动作轨迹，默认关闭。[video-use](../../video-production/editing-workflows/video-use.zh.md) 是另一份 skill，用来把摄像机素材剪成 `edit/final.mp4`。
 
 ## 怎么用起来
 

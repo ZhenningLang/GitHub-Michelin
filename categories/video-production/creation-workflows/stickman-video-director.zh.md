@@ -2,7 +2,7 @@
 name: Stickman Video Director
 slug: stickman-video-director
 repo: https://github.com/kaomei/stickman-video-director
-category: video-production
+category: creation-workflows
 tags: [agent-skills, video-prompts, storyboards, stick-figures, voice-continuity]
 language: Markdown
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 六段生成视频里，人物和旁白像换了六次。这个技能先让你确认导演方案，再把完整角色和声音约束放进每条独立片段提示词。
 
-![Stickman Video Director — 健康度雷达](../../assets/health/stickman-video-director.zh.svg)
+![Stickman Video Director — 健康度雷达](../../../assets/health/stickman-video-director.zh.svg)
 
 ## 何时使用
 
@@ -78,7 +78,7 @@ health:
 ## 何时不用
 
 - **期待一次调用就交付 MP4。** 选 [anything2explainer](anything2explainer.zh.md) 做代码渲染解说片；本技能只交提示词和剪辑建议。
-- **文字必须准确，逐帧可重现。** 选 [HyperFrames](render-engines/hyperframes.zh.md)；生成镜头有随机性，本技能通常还禁止片内出现文字。
+- **文字必须准确，逐帧可重现。** 选 [HyperFrames](../render-engines/hyperframes.zh.md)；生成镜头有随机性，本技能通常还禁止片内出现文字。
 - **已经会导演，只缺生成界面。** 直接用 Google Flow；本仓库增加规划指令，不提供视频模型或 API 集成。
 - **声音身份必须完全相同。** 在剪辑器中使用连续的外部旁白轨道；重复声音描述只是提示层辅助，不是共享声音资产的保证。
 
@@ -87,14 +87,14 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [anything2explainer](anything2explainer.zh.md) | ✅ | 完整代码渲染解说流水线选它；短篇生成式火柴人分镜选本技能。 | 自动化制作更多，但工具包有非商业条款；本技能更窄，只产提示词。 |
-| [HyperFrames](render-engines/hyperframes.zh.md) | ✅ | 可编辑准确文字和确定性图形选 HyperFrames；不写动画代码的生成角色场景选本技能。 | 浏览器渲染与模型波动、人工拼接之间取舍。 |
+| [HyperFrames](../render-engines/hyperframes.zh.md) | ✅ | 可编辑准确文字和确定性图形选 HyperFrames；不写动画代码的生成角色场景选本技能。 | 浏览器渲染与模型波动、人工拼接之间取舍。 |
 | Google Flow | 非仓库 | 已有导演方法时直接用 Flow；缺连续性和确认纪律时再加本技能。 | 托管商业生成服务，不是仓库；生成费用另算。 |
 
 ## 快速上手
 
 把 `skills/directing-stickman-videos/` 复制到 agent 的技能目录，再给主题、画幅、时长和风格。缺少画幅或风格时必须先确认，未给时长则默认 60 秒。agent 先写导演方案，等你批准后才输出独立英文片段提示词。你把提示词提交到生成服务，再自行剪辑拼接和加字幕。技能本身不需要 API 或 MCP 配置，但助手和视频服务各有账号要求及费用。
 
-![stickman-video-director — 主干用户故事](../../assets/flow/stickman-video-director.zh.svg)
+![stickman-video-director — 主干用户故事](../../../assets/flow/stickman-video-director.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/stickman-video-director.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -113,7 +113,7 @@ health:
 
 ## 技术要点
 
-![Stickman Video Director — 机制图](../../assets/mechanism/stickman-video-director.zh.svg)
+![Stickman Video Director — 机制图](../../../assets/mechanism/stickman-video-director.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/stickman-video-director.json by tools/mechanism_card.py; do not edit) -->
 <details>

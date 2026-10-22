@@ -2,7 +2,7 @@
 name: OpenMontage
 slug: open-montage
 repo: https://github.com/calesthio/OpenMontage
-category: video-production
+category: creation-workflows
 tags: [agentic-video, video-production, remotion, hyperframes, ffmpeg, ai-video, content-creation]
 language: Python
 license: AGPL-3.0
@@ -73,7 +73,7 @@ health:
 
 一个 agent 优先的视频制作系统：YAML 管线清单声明各阶段，Markdown 导演技能教 agent 怎么执行，Python 工具负责真正的生成、检索、成本核算与编码——仓库内有 13 份管线清单、157 份技能文档、约 167 个工具模块（2026-09-21 核对）。
 
-![OpenMontage — 健康雷达](../../assets/health/open-montage.zh.svg)
+![OpenMontage — 健康雷达](../../../assets/health/open-montage.zh.svg)
 
 ## 何时使用
 
@@ -83,7 +83,7 @@ health:
 
 它刻意**没有代码编排器**：你的编程助手就是编排器，仓库只提供它照着做的三层材料。第一层是 `pipeline_defs/` 下的 YAML 管线清单——每种体裁一份（动画解说、纪录片蒙太奇、切片工厂、本地化配音等），声明各阶段、每阶段可调用的工具、评审标准与成功门。第二层是 `skills/` 下的 Markdown 导演技能，讲清某个阶段**怎么做**。第三层是 Python 工具，负责实际工作——供应商选择、素材生成、库存检索、成本追踪、FFmpeg 编码——渲染后端是 Remotion 或 HyperFrames。你克隆一次、跑一遍 `make setup`，然后用自然语言提需求；agent 读清单、调工具、照着写死的标准自评、把状态存进本地 `projects/<name>/` 检查点，并在花钱之前停下来等你批准。留给你的：提供 API key（或接受零 key 的免费素材路径）、批准创意决策，以及挑一条匹配需求的管线。
 
-![open-montage — 主干用户故事](../../assets/flow/open-montage.zh.svg)
+![open-montage — 主干用户故事](../../../assets/flow/open-montage.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/open-montage.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -115,11 +115,11 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Open Design](../ai-design-generation/open-design.zh.md) | ✅ | 需要更轻量的 local-first 桌面路径来做快速 HTML→MP4 原型时，选 Open Design。 | Open Design 是桌面 studio，适合快速原型；OpenMontage 是完整管线系统，含研究、脚本和 12 条生产管线。 |
-| [Remotion](render-engines/remotion.zh.md) | ✅ | 只需要程序化 React 视频合成、不需要 Agent 编排时，直接选 Remotion。 | OpenMontage 将 Remotion 内嵌为两个渲染后端之一；若只需要程序化 React 视频合成，可直接用 Remotion。 |
+| [Open Design](../../ai-design-generation/open-design.zh.md) | ✅ | 需要更轻量的 local-first 桌面路径来做快速 HTML→MP4 原型时，选 Open Design。 | Open Design 是桌面 studio，适合快速原型；OpenMontage 是完整管线系统，含研究、脚本和 12 条生产管线。 |
+| [Remotion](../render-engines/remotion.zh.md) | ✅ | 只需要程序化 React 视频合成、不需要 Agent 编排时，直接选 Remotion。 | OpenMontage 将 Remotion 内嵌为两个渲染后端之一；若只需要程序化 React 视频合成，可直接用 Remotion。 |
 | HeyGen / Runway / Pika | 未收录 | 单个生成片段的速度比管线控制和开源扩展性更重要时，选闭源 SaaS。 | 单片段生成更快，但无管线定制、无 Agent 审批门、无开源扩展性，且需持续订阅费用。 |
-| [FFmpeg](../media-processing/video-audio/transcoding-and-pipelines/ffmpeg.zh.md) | ✅ | 需要底层媒体处理 CLI，而不是端到端生产管线时，选 FFmpeg。 | OpenMontage 依赖 FFmpeg 做编码与后期；FFmpeg 适合需要底层媒体操作而非端到端生产管线的场景。 |
-| [ComfyUI](../on-device-ml/local-image-generation/comfyui.zh.md) | ✅ | 自定义节点式扩散工作流和本地 GPU 推理比 Agent 化生产治理更重要时，选 ComfyUI。 | 在自定义扩散管线与本地 GPU 推理上更灵活，但缺乏 Agent 编排、研究、脚本撰写和预算治理。 |
+| [FFmpeg](../../media-processing/video-audio/transcoding-and-pipelines/ffmpeg.zh.md) | ✅ | 需要底层媒体处理 CLI，而不是端到端生产管线时，选 FFmpeg。 | OpenMontage 依赖 FFmpeg 做编码与后期；FFmpeg 适合需要底层媒体操作而非端到端生产管线的场景。 |
+| [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md) | ✅ | 自定义节点式扩散工作流和本地 GPU 推理比 Agent 化生产治理更重要时，选 ComfyUI。 | 在自定义扩散管线与本地 GPU 推理上更灵活，但缺乏 Agent 编排、研究、脚本撰写和预算治理。 |
 
 ## 技术栈
 

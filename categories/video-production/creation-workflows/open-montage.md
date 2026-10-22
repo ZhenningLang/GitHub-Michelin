@@ -2,7 +2,7 @@
 name: OpenMontage
 slug: open-montage
 repo: https://github.com/calesthio/OpenMontage
-category: video-production
+category: creation-workflows
 tags: [agentic-video, video-production, remotion, hyperframes, ffmpeg, ai-video, content-creation]
 language: Python
 license: AGPL-3.0
@@ -73,7 +73,7 @@ health:
 
 An agent-first video production system: YAML pipeline manifests declare the stages, Markdown director skills teach the agent how to run each one, and Python tools do the generation, retrieval, costing and encoding — 13 pipeline manifests, 157 skill documents and ~167 tool modules in-tree (checked 2026-09-21).
 
-![OpenMontage — health radar](../../assets/health/open-montage.svg)
+![OpenMontage — health radar](../../../assets/health/open-montage.svg)
 
 ## When to use
 
@@ -83,7 +83,7 @@ You're a content creator, educator, or solo developer who needs to produce short
 
 There is deliberately **no code orchestrator**: your coding assistant is the orchestrator, and the repository supplies the three things it reads to act like a production studio. Layer one is the YAML pipeline manifests under `pipeline_defs/` — one per genre (animated explainer, documentary montage, clip factory, localisation/dub, …) declaring the stages, the tools each stage may call, its review criteria and its success gates. Layer two is the Markdown director skills under `skills/` that explain *how* to execute a stage. Layer three is the Python tools that do the work — provider selection, generation, stock retrieval, cost tracking, FFmpeg encoding — with Remotion or HyperFrames as the render backend. You clone once, run `make setup`, and then ask for a video in words; the agent reads the manifest, calls the tools, self-reviews against the written criteria, checkpoints state into a local `projects/<name>/` folder, and stops for your approval before spending on APIs. What stays your job: supplying API keys (or accepting the free-stock/no-key path), approving the creative decisions, and picking the pipeline that matches the brief.
 
-![open-montage — backbone user story](../../assets/flow/open-montage.svg)
+![open-montage — backbone user story](../../../assets/flow/open-montage.svg)
 
 <!-- flow-steps:begin (generated from flows/open-montage.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -115,11 +115,11 @@ There is deliberately **no code orchestrator**: your coding assistant is the orc
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Open Design](../ai-design-generation/open-design.md) | ✅ | Pick Open Design when you need a lighter local-first desktop path for quick HTML-to-MP4 prototypes. | Open Design is a desktop studio for quick prototypes; OpenMontage is a full pipeline system with research, scripting, and 12 production pipelines. |
-| [Remotion](render-engines/remotion.md) | ✅ | Pick Remotion directly when programmatic React video composition is enough and agent orchestration is unnecessary. | OpenMontage embeds Remotion as one of two render backends; use Remotion directly if you only need programmatic React video composition. |
+| [Open Design](../../ai-design-generation/open-design.md) | ✅ | Pick Open Design when you need a lighter local-first desktop path for quick HTML-to-MP4 prototypes. | Open Design is a desktop studio for quick prototypes; OpenMontage is a full pipeline system with research, scripting, and 12 production pipelines. |
+| [Remotion](../render-engines/remotion.md) | ✅ | Pick Remotion directly when programmatic React video composition is enough and agent orchestration is unnecessary. | OpenMontage embeds Remotion as one of two render backends; use Remotion directly if you only need programmatic React video composition. |
 | HeyGen / Runway / Pika | 未收录 | Pick closed SaaS tools when speed for a single generated clip matters more than pipeline control and OSS extensibility. | Faster for a single clip, but no pipeline customization, no agent approval gates, no open-source extensibility, and ongoing subscription costs. |
-| [FFmpeg](../media-processing/video-audio/transcoding-and-pipelines/ffmpeg.md) | ✅ | Pick FFmpeg when you need low-level media manipulation rather than an end-to-end production pipeline. | OpenMontage depends on FFmpeg for encoding and post-production; FFmpeg is the right tool when you need low-level media manipulation, not an end-to-end production pipeline. |
-| [ComfyUI](../on-device-ml/local-image-generation/comfyui.md) | ✅ | Pick ComfyUI when bespoke node-based diffusion workflows and local GPU inference matter more than agentic production governance. | More flexible for bespoke diffusion pipelines and local GPU inference, but lacks agentic orchestration, research, scripting, and budget governance. |
+| [FFmpeg](../../media-processing/video-audio/transcoding-and-pipelines/ffmpeg.md) | ✅ | Pick FFmpeg when you need low-level media manipulation rather than an end-to-end production pipeline. | OpenMontage depends on FFmpeg for encoding and post-production; FFmpeg is the right tool when you need low-level media manipulation, not an end-to-end production pipeline. |
+| [ComfyUI](../../on-device-ml/local-image-generation/comfyui.md) | ✅ | Pick ComfyUI when bespoke node-based diffusion workflows and local GPU inference matter more than agentic production governance. | More flexible for bespoke diffusion pipelines and local GPU inference, but lacks agentic orchestration, research, scripting, and budget governance. |
 
 ## Tech stack
 

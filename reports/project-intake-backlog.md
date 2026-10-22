@@ -42,7 +42,7 @@ shape and are deliberately excluded here.
 | [BirdNET-Analyzer](https://github.com/birdnet-team/BirdNET-Analyzer) | `categories/on-device-ml/birdnet-go.md` |
 | [BirdNET-Pi (Nachtzuster fork)](https://github.com/Nachtzuster/BirdNET-Pi) | `categories/on-device-ml/birdnet-go.md` |
 | [Bitwarden server](https://github.com/bitwarden/server) | `categories/dev-utilities/ops-infra/vaultwarden.md` |
-| [Blender](https://github.com/blender/blender) | `categories/video-production/artcraft.md` |
+| [Blender](https://github.com/blender/blender) | `categories/video-production/creation-workflows/artcraft.md` |
 | [btop](https://github.com/aristocratos/btop) | `categories/observability/mac-performance-monitor.md` |
 | [build123d](https://github.com/gumyr/build123d) | `categories/cad/text-to-cad.md` |
 | [Cedar](https://github.com/cedar-policy/cedar) | `categories/agent-governance/agent-governance-toolkit.md` |

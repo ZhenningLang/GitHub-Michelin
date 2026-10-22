@@ -2,7 +2,7 @@
 name: video-use
 slug: video-use
 repo: https://github.com/browser-use/video-use
-category: video-production
+category: editing-workflows
 tags: [agent-skill, claude-code, ffmpeg, transcription, video-editing, elevenlabs]
 language: Python
 license: MIT
@@ -68,13 +68,13 @@ health:
 
 文件夹里一堆带嗯啊和冷场的素材，你又不想学剪辑软件。video-use 让 coding agent 去读一份打包好的逐字稿而不是逐帧看片，先问你方案，再写出 `edit/final.mp4`。
 
-![video-use — 健康度雷达](../../assets/health/video-use.zh.svg)
+![video-use — 健康度雷达](../../../assets/health/video-use.zh.svg)
 
 ## 何时使用
 
 你把口播、教程、访谈或发布会素材丢进一个文件夹——同一句五条、口头禅、中间空两秒——下一件本会打开的工具是 Premiere。你已经在跑 Claude Code 或 Codex。把这个仓库链进 agent 的 skills 目录，在 `.env` 里放一把 ElevenLabs 密钥做逐词 Scribe 转写，然后说 “edit these into a launch video”。agent 用 `ffprobe` 清点、转写、把所有 take 打进一份 `takes_packed.md`，用白话问你策略，这之后才写 `edl.json`、跑 `helpers/render.py`。
 
-静音不是全部工作、你还想靠对话来选 take、调色、烧字幕、叠动画时，选它而不是 [Auto-Editor](../media-processing/video-audio/editing-and-cutting/auto-editor.zh.md)。画面已经在磁盘上时，选它而不是 [anything2explainer](anything2explainer.zh.md) 或 [OpenMontage](open-montage.zh.md)——这份 skill 剪的是你丢进去的文件，不生成底片。你住在终端里、不想要一个必须 Codex 登录的桌面时，选它而不是 [OpenCreator](open-creator.zh.md)。
+静音不是全部工作、你还想靠对话来选 take、调色、烧字幕、叠动画时，选它而不是 [Auto-Editor](../../media-processing/video-audio/editing-and-cutting/auto-editor.zh.md)。画面已经在磁盘上时，选它而不是 [anything2explainer](../creation-workflows/anything2explainer.zh.md) 或 [OpenMontage](../creation-workflows/open-montage.zh.md)——这份 skill 剪的是你丢进去的文件，不生成底片。你住在终端里、不想要一个必须 Codex 登录的桌面时，选它而不是 [OpenCreator](open-creator.zh.md)。
 
 ## 快问快答
 
@@ -88,7 +88,7 @@ health:
 
 LLM 从不看视频。每个源文件一次 ElevenLabs Scribe 调用，得到逐词时间戳、说话人标签，以及 `(laughter)` 这类事件；`pack_transcripts.py` 把它收成大约 12 KB 的 `takes_packed.md`，模型才读得动。画面按需出现：`timeline_view.py` 给一段时间画出胶片条加波形 PNG，决策时用，渲完后每个切点再看一遍。你要做的是：装 ffmpeg、为 Scribe 付钱、确认一段 4 到 8 句的策略、给预览提意见。它代劳的是：缓存转写、把每个切点咬在词边界上、分段抽出、无损拼接、每个接头加 30 ms 音频淡化、字幕放在滤镜链最后，自检最多三轮。动画槽位（HyperFrames、Remotion、Manim 或 PIL）是可选项，并行拉起，不是主干。产出都在 `<videos_dir>/edit/`，skill 的克隆目录保持干净。硬依赖：没有 `ELEVENLABS_API_KEY`，什么都转写不了。
 
-![video-use — 主干用户故事](../../assets/flow/video-use.zh.svg)
+![video-use — 主干用户故事](../../../assets/flow/video-use.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/video-use.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -108,23 +108,23 @@ LLM 从不看视频。每个源文件一次 ElevenLabs Scribe 调用，得到逐
 
 ## 何时不用
 
-- **活只是切掉静音或静止段，不需要 LLM。** 用 [Auto-Editor](../media-processing/video-audio/editing-and-cutting/auto-editor.zh.md)。它按响度或运动打标，还能把时间轴导出给 Premiere 或 Resolve；它不会去打转写 API。
-- **没有素材——你要从一个主题画出讲解片。** 用 [anything2explainer](anything2explainer.zh.md)（Remotion、带治理的管线、PolyForm 非商用）或 [OpenMontage](open-montage.zh.md)（从零做片，AGPL）。video-use 不会发明底片。
+- **活只是切掉静音或静止段，不需要 LLM。** 用 [Auto-Editor](../../media-processing/video-audio/editing-and-cutting/auto-editor.zh.md)。它按响度或运动打标，还能把时间轴导出给 Premiere 或 Resolve；它不会去打转写 API。
+- **没有素材——你要从一个主题画出讲解片。** 用 [anything2explainer](../creation-workflows/anything2explainer.zh.md)（Remotion、带治理的管线、PolyForm 非商用）或 [OpenMontage](../creation-workflows/open-montage.zh.md)（从零做片，AGPL）。video-use 不会发明底片。
 - **你要一个桌面，给已经存在的那一条视频做字幕、配音、重切。** 用 [OpenCreator](open-creator.zh.md)。那是 Codex 原生应用；这是一份 `SKILL.md` 加帮手脚本。
 - **音频不能送给 ElevenLabs，或者你不想付 Scribe。** 转写是托管的 Scribe，逐词、按文件缓存。skill 明确不让 agent 在本地跑 Whisper。没密钥就剪不成。
 - **你要传统 NLE 里的帧级手动控制。** 用达芬奇或 Premiere（不是仓库）。video-use 不给你节点图，给你的是 agent 写的 EDL。
-- **你要的是 HTML 转 MP4 那台引擎本身。** 用 [HyperFrames](render-engines/hyperframes.zh.md)。video-use 可以在某个叠加槽里 `npx --yes hyperframes`；它替不了那台引擎。
+- **你要的是 HTML 转 MP4 那台引擎本身。** 用 [HyperFrames](../render-engines/hyperframes.zh.md)。video-use 可以在某个叠加槽里 `npx --yes hyperframes`；它替不了那台引擎。
 - **你在赌 Lindy。** 五个月大、22 次提交的 skill-pack 上挂着 2.7 万 star，这是炒作信号。README 仍把长期 VPS 剪辑指向 “Browser Use Box”；Browser Use 现在的文档写着 Box 和 Bux 已退役。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Auto-Editor](../media-processing/video-audio/editing-and-cutting/auto-editor.zh.md) | ✅ | 剪辑就是“把安静的地方删掉”、不要模型也不要转写账单时选 Auto-Editor；要 coding agent 靠对话来选 take、调色、字幕、叠加时选 video-use。 | Auto-Editor 是可脚本化的确定性 CLI；video-use 要花 Scribe 额度和 agent token，而且策略未经你点头它不动刀。 |
+| [Auto-Editor](../../media-processing/video-audio/editing-and-cutting/auto-editor.zh.md) | ✅ | 剪辑就是“把安静的地方删掉”、不要模型也不要转写账单时选 Auto-Editor；要 coding agent 靠对话来选 take、调色、字幕、叠加时选 video-use。 | Auto-Editor 是可脚本化的确定性 CLI；video-use 要花 Scribe 额度和 agent token，而且策略未经你点头它不动刀。 |
 | [OpenCreator](open-creator.zh.md) | ✅ | 要本机桌面给*这一条*视频做字幕／配音／竖屏重切时选 OpenCreator；输入是一文件夹素材、你已经住在 Claude Code 或 Codex 里时选 video-use。 | OpenCreator 是应用，必须 Codex 登录；video-use 是 skill 目录，没有 GUI。 |
-| [anything2explainer](anything2explainer.zh.md) | ✅ | 没有摄像机素材、片子该用 Remotion 从主题画出来时选 anything2explainer；文件已经在、痛点是剪它们时选 video-use。 | 讲解片生成每一帧（PolyForm 非商用）；video-use 从不生成底片，只剪你丢进去的东西（MIT）。 |
-| [OpenMontage](open-montage.zh.md) | ✅ | agent 该从一句提示去做研究、脚本、生成素材并渲成片时选 OpenMontage；真相来源是摄像机 take 时选 video-use。 | OpenMontage 是 AGPL 的从零制作管线；video-use 是 MIT 的剪辑器，但仍要一把付费的 Scribe 密钥。 |
-| [HyperFrames](render-engines/hyperframes.zh.md) | ✅ | 你要 HTML 转 MP4 那台引擎时选 HyperFrames；HyperFrames 最多只是真实素材剪辑里的一个叠加槽时选 video-use。 | video-use 可以用 `npx --yes hyperframes` 搭一个槽；它替不了引擎自己的 lint／validate／render。 |
+| [anything2explainer](../creation-workflows/anything2explainer.zh.md) | ✅ | 没有摄像机素材、片子该用 Remotion 从主题画出来时选 anything2explainer；文件已经在、痛点是剪它们时选 video-use。 | 讲解片生成每一帧（PolyForm 非商用）；video-use 从不生成底片，只剪你丢进去的东西（MIT）。 |
+| [OpenMontage](../creation-workflows/open-montage.zh.md) | ✅ | agent 该从一句提示去做研究、脚本、生成素材并渲成片时选 OpenMontage；真相来源是摄像机 take 时选 video-use。 | OpenMontage 是 AGPL 的从零制作管线；video-use 是 MIT 的剪辑器，但仍要一把付费的 Scribe 密钥。 |
+| [HyperFrames](../render-engines/hyperframes.zh.md) | ✅ | 你要 HTML 转 MP4 那台引擎时选 HyperFrames；HyperFrames 最多只是真实素材剪辑里的一个叠加槽时选 video-use。 | video-use 可以用 `npx --yes hyperframes` 搭一个槽；它替不了引擎自己的 lint／validate／render。 |
 
 ## 健康度与可持续性
 

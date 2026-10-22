@@ -19,7 +19,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [BirdNET-Analyzer](https://github.com/birdnet-team/BirdNET-Analyzer),categories/on-device-ml/birdnet-go.md,,no
 [BirdNET-Pi (Nachtzuster fork)](https://github.com/Nachtzuster/BirdNET-Pi),categories/on-device-ml/birdnet-go.md,,no
 [Bitwarden server](https://github.com/bitwarden/server),categories/dev-utilities/ops-infra/vaultwarden.md,,no
-[Blender](https://github.com/blender/blender),categories/video-production/artcraft.md,,no
+[Blender](https://github.com/blender/blender),categories/video-production/creation-workflows/artcraft.md,,no
 [btop](https://github.com/aristocratos/btop),categories/observability/mac-performance-monitor.md,,no
 [build123d](https://github.com/gumyr/build123d),categories/cad/text-to-cad.md,,no
 [Cedar](https://github.com/cedar-policy/cedar),categories/agent-governance/agent-governance-toolkit.md,,no
@@ -171,7 +171,7 @@ ad-hoc `if` checks,categories/auth/django-rules.md,,no
 AdalFlow (LightRAG),categories/agent-frameworks/workflow-builders/dspy.md,,no
 ADAS (Automated Design of Agentic Systems),categories/ml-research/research-automation/rrsi.md,,no
 AFFiNE (toeverything/AFFiNE),categories/team-chat/macro.md,,no
-After Effects,categories/video-production/video-shotcraft.md,,no
+After Effects,categories/video-production/creation-workflows/video-shotcraft.md,,no
 AG Grid,categories/office-editors/jspreadsheet.md,,no
 AG Grid (`ag-grid/ag-grid`),categories/web-ui/component-libraries/tanstack-table.md,,no
 AG2,categories/agent-frameworks/agent-runtimes/agent-sdks/autogen.md,,no
@@ -313,7 +313,7 @@ candle,categories/llm-inference/local-runtimes/airframe.md,,no
 Canva / 稿定设计,categories/agent-skills/visual-content/guizang-social-card.md,,no
 Cap (CapSoftware/Cap),categories/media-processing/video-editing/openscreen.md,,no
 CapCut (ByteDance),categories/media-processing/video-editing/INDEX.md,,no
-CapCut / 剪映 (app/SaaS),categories/video-production/moneyprinter-turbo.md,,no
+CapCut / 剪映 (app/SaaS),categories/video-production/creation-workflows/moneyprinter-turbo.md,,no
 capture-website-cli,categories/media-processing/image-processing/INDEX.md,,no
 CC Switch CLI,categories/agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md,,no
 ccusage (ccusage/ccusage),categories/agent-tooling/work-state/token-optimizer.md,,no
@@ -631,7 +631,7 @@ Helicone,categories/llm-eval/pezzo.md,,no
 herdr-annotate / Plannotator TUI (same maintainer's terminal and TUI variants),categories/agent-tooling/supervision-surfaces/human-review-gates/plannotator.md,,no
 Heroku 12-Factor App,categories/agent-dev-methodology/spec-driven-development/12-factor-agents.md,,no
 HexStrike AI,categories/pentest/pentest-swarm-ai.md,,no
-HeyGen / Runway / Pika,categories/video-production/open-montage.md,,no
+HeyGen / Runway / Pika,categories/video-production/creation-workflows/open-montage.md,,no
 HF TRL,categories/llm-training/art.md,,no
 highlight.js (`highlightjs/highlight.js`),categories/markdown-tools/tanstack-highlight.md,,no
 hls.js / other-language parsers,categories/media-processing/video-audio/transcoding-and-pipelines/m3u8.md,,no
@@ -1140,7 +1140,7 @@ RTK Query (`reduxjs/redux-toolkit`),categories/web-ui/data-fetching/tanstack-que
 rumdl,categories/markdown-tools/markdownlint.md,,no
 Runway / Pika (SaaS),categories/video-production/render-engines/hyperframes.md,,no
 Runway / Pika / HeyGen,categories/video-production/INDEX.md,,no
-Runway / Pika / HeyGen (SaaS),categories/video-production/hypit.md,,no
+Runway / Pika / HeyGen (SaaS),categories/video-production/editing-workflows/hypit.md,,no
 Rust + PyO3,categories/python-tooling/cython.md,,no
 rust-av/ssimulacra2,categories/media-processing/quality-metrics/ssimulacra2.md,,no
 RxDB (`pubkey/rxdb`),categories/web-ui/data-fetching/tanstack-db.md,,no
@@ -1326,7 +1326,7 @@ Vibe Kanban,categories/agent-tooling/supervision-surfaces/agent-cockpits/agent-o
 Vibe Kanban (BloopAI/vibe-kanban),categories/agent-tooling/supervision-surfaces/agent-cockpits/paperclip.md,,no
 VictoriaLogs,categories/observability/loki.md,,no
 VictoriaMetrics,categories/observability/prometheus.md,,no
-video-talkcraft,categories/video-production/seecut.md,,no
+video-talkcraft,categories/video-production/editing-workflows/seecut.md,,no
 virtua (`inokawa/virtua`),categories/web-ui/virtualization/tanstack-virtual.md,,no
 visx (`airbnb/visx`),categories/web-ui/charts/tanstack-charts.md,,no
 Vite / create-vite (`vitejs/vite`),categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-cli.md,,no

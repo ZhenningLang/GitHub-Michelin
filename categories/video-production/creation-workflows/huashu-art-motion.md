@@ -2,7 +2,7 @@
 name: huashu-art-motion
 slug: huashu-art-motion
 repo: https://github.com/alchaincyf/huashu-art-motion
-category: video-production
+category: creation-workflows
 tags: [agent-skills, animation, canvas, video, art-direction]
 language: JavaScript
 license: MIT
@@ -73,7 +73,7 @@ health:
 
 Your agent turns narration into a sequence of still cards with zooms instead of objects actually moving. This skill supplies shot-planning rules, art recipes and a Canvas renderer, then measures the finished film before delivery.
 
-![huashu-art-motion — health radar](../../assets/health/huashu-art-motion.svg)
+![huashu-art-motion — health radar](../../../assets/health/huashu-art-motion.svg)
 
 ## When to use
 
@@ -81,25 +81,25 @@ You already use a coding agent and need a narrated explainer or art-style animat
 
 ## When NOT to use
 
-- **You need a general HTML video engine rather than a prescribed workflow.** Pick [HyperFrames](render-engines/hyperframes.md); this package mixes rendering code with strong personal art-direction rules and a mostly Chinese skill.
-- **You already author reusable React compositions or need mature cloud rendering.** Evaluate [Remotion](render-engines/remotion.md), including its company-license terms, rather than moving to this smaller Canvas engine.
-- **Your inputs are existing takes to cut, not scenes to draw.** Pick [video-use](video-use.md); this project's core value is scene construction, not transcript-based take selection.
+- **You need a general HTML video engine rather than a prescribed workflow.** Pick [HyperFrames](../render-engines/hyperframes.md); this package mixes rendering code with strong personal art-direction rules and a mostly Chinese skill.
+- **You already author reusable React compositions or need mature cloud rendering.** Evaluate [Remotion](../render-engines/remotion.md), including its company-license terms, rather than moving to this smaller Canvas engine.
+- **Your inputs are existing takes to cut, not scenes to draw.** Pick [video-use](../editing-workflows/video-use.md); this project's core value is scene construction, not transcript-based take selection.
 - **You want freely reusable demo characters.** Supply your own cleared assets with HyperFrames or another engine. The MIT grant excludes Huashu's likeness/frame libraries and Clawd fan-demo GIFs/film; fonts and stroke-order data retain separate licenses.
-- **Portrait output must be reliable without testing each effect.** Use a validated [HyperFrames](render-engines/hyperframes.md) composition or test a minimal clip first. Open issues #10 and #11 report landscape-coordinate assumptions in transitions/post-processing.
+- **Portrait output must be reliable without testing each effect.** Use a validated [HyperFrames](../render-engines/hyperframes.md) composition or test a minimal clip first. Open issues #10 and #11 report landscape-coordinate assumptions in transitions/post-processing.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [HyperFrames](render-engines/hyperframes.md) | ✅ | Choose HyperFrames for general HTML compositions; choose huashu-art-motion for reusable painting recipes and opinionated storyboard/delivery checks. | Broader engine integrations versus a compact Canvas workflow with a strong visual prescription. |
-| [Remotion](render-engines/remotion.md) | ✅ | Choose Remotion for React templates and cloud rendering; choose this skill for local art-directed clips without adopting a React composition project. | Mature engine ecosystem versus a young skill, with separate licensing constraints on both engines/assets to review. |
-| [video-use](video-use.md) | ✅ | Choose video-use for cutting recorded takes; choose this skill when the scene must be constructed and animated in code. | Footage/transcript editing versus scene authoring and art-style control. |
+| [HyperFrames](../render-engines/hyperframes.md) | ✅ | Choose HyperFrames for general HTML compositions; choose huashu-art-motion for reusable painting recipes and opinionated storyboard/delivery checks. | Broader engine integrations versus a compact Canvas workflow with a strong visual prescription. |
+| [Remotion](../render-engines/remotion.md) | ✅ | Choose Remotion for React templates and cloud rendering; choose this skill for local art-directed clips without adopting a React composition project. | Mature engine ecosystem versus a young skill, with separate licensing constraints on both engines/assets to review. |
+| [video-use](../editing-workflows/video-use.md) | ✅ | Choose video-use for cutting recorded takes; choose this skill when the scene must be constructed and animated in code. | Footage/transcript editing versus scene authoring and art-style control. |
 
 ## Quick start
 
 Install the skill with `npx skills add alchaincyf/huashu-art-motion` and provide uv, FFmpeg and Playwright Chromium. Ask the agent for an animation, approve a visual direction, then supply your narration and cleared assets. The workflow writes a shot table, builds scene code or a JSON clip description, renders frames and encodes the film. It runs QA and `scripts/deliver.py` before copying the deliverable and writing measured delivery notes. You still approve visual quality, watch the film at normal speed and authorize any optional paid image/voice service; basic code animation does not need those accounts.
 
-![huashu-art-motion — backbone user story](../../assets/flow/huashu-art-motion.svg)
+![huashu-art-motion — backbone user story](../../../assets/flow/huashu-art-motion.svg)
 
 <!-- flow-steps:begin (generated from flows/huashu-art-motion.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -119,7 +119,7 @@ Install the skill with `npx skills add alchaincyf/huashu-art-motion` and provide
 
 ## Key techniques
 
-![huashu-art-motion — mechanism diagram](../../assets/mechanism/huashu-art-motion.svg)
+![huashu-art-motion — mechanism diagram](../../../assets/mechanism/huashu-art-motion.svg)
 
 <!-- mechanism:begin (generated from mechanisms/huashu-art-motion.json by tools/mechanism_card.py; do not edit) -->
 <details>

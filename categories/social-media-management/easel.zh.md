@@ -111,7 +111,7 @@ Easel 不自带 Agent 内核——它把 OpenClaw（开源 Agent 运行时，npm
 - **你的受众在 X、Instagram、YouTube 或海外 TikTok 上。** 支持的七个平台全是中文平台，没有任何海外平台适配；发全球平台用 Postiz（`gitroomhq/postiz-app`，未收录）这类自托管排期工具，或 Buffer／Hootsuite 一类商业服务（非仓库）。
 - **你只需要把做好的视频传上去。** 内容已经存在、痛点只是多平台分发时，social-auto-upload（`dreammis/social-auto-upload`，未收录）用浏览器自动化把视频传到抖音／小红书／B 站／YouTube，安装负担只有它的一小部分——不需要 Node 构建、网关和模型账单。
 - **你想要完全无人值守的全自动发布。** Easel 自己的 README 就警告小红书可能检测自动化操作，触发验证、限流或账号风控，并建议人工确认后发布。已审定内容的定时发布，用排期工具（Postiz，未收录）比让 Agent 开浏览器更稳。
-- **你没有 LLM API 预算。** 每一步创作都在调付费对话模型，视频／音乐／配音技能还要额外的服务商 Key。只要“主题变口播短视频”且边际成本趋零，用 [MoneyPrinterTurbo](../video-production/moneyprinter-turbo.zh.md)。
+- **你没有 LLM API 预算。** 每一步创作都在调付费对话模型，视频／音乐／配音技能还要额外的服务商 Key。只要“主题变口播短视频”且边际成本趋零，用 [MoneyPrinterTurbo](../video-production/creation-workflows/moneyprinter-turbo.zh.md)。
 - **你需要稳定的二次开发面。** 验证时项目只有一个月大，还在 v0.x，月内就在改写对话传输和工作区解析。锁版本用，别基于未发版的 `main` 做自动化。
 - **你以 Windows 为主力系统。** 有原生 PowerShell 安装器，但 Windows 全链路兼容是它自己路线图上的第一项未完成事项；目前把 Linux／macOS 当一等公民路径更稳。
 - **你只想在现有 agent 里出社媒卡片。** 把 [guizang-social-card-skill](../agent-skills/visual-content/guizang-social-card.zh.md) 这种单文件技能装进 Claude Code／OpenClaw 就够了；为一个功能跑起整个工作台不划算。
@@ -121,7 +121,7 @@ Easel 不自带 Agent 内核——它把 OpenClaw（开源 Agent 运行时，npm
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [OpenClaw](../agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/openclaw.zh.md) | ✅ | 要一个跨聊天频道的通用私人助理时直接用 OpenClaw；活儿就是中文社媒内容运营、想要现成技能加画像加发布闭环时选 Easel。 | Easel 补上了内容工作台，但绑死在它支持的平台集合上；OpenClaw 是随你塑造的运行时，出厂没有卡片／视频／发布技能。 |
-| [MoneyPrinterTurbo](../video-production/moneyprinter-turbo.zh.md) | ✅ | 只要“主题→口播库存素材短视频”且边际成本趋零时选 MoneyPrinterTurbo；链路必须延伸到真实发布和账号学习时选 Easel。 | 家电式部署、单条成本极低，但没有账号画像、没有平台发布、没有归因——视频到文件为止。 |
+| [MoneyPrinterTurbo](../video-production/creation-workflows/moneyprinter-turbo.zh.md) | ✅ | 只要“主题→口播库存素材短视频”且边际成本趋零时选 MoneyPrinterTurbo；链路必须延伸到真实发布和账号学习时选 Easel。 | 家电式部署、单条成本极低，但没有账号画像、没有平台发布、没有归因——视频到文件为止。 |
 | [guizang-social-card-skill](../agent-skills/visual-content/guizang-social-card.zh.md) | ✅ | 只要小红书规格卡片、且已有 coding agent 时装这一个技能就够；发现→发布→归因的完整链条才轮到 Easel。 | 一个 Markdown 技能、零基础设施；热点、发布和数据复盘仍然全靠手动。 |
 | social-auto-upload（dreammis） | 未收录 | 内容已做好、唯一痛点是自动发到多个中文平台时，这个 MIT 上传器更轻；内容还不存在、需要从选题做起时才用 Easel。 | 真实仓库（MIT，约 1.5 万星），本批次未收录；取舍是只管上传的定位对比 Easel 的创作闭环。 |
 | Postiz（gitroomhq/postiz-app） | 未收录 | 运营全球平台（X／Instagram／YouTube）账号、需要带团队界面的排期时选 Postiz；Easel 覆盖中文平台、带创作但没有团队角色。 | 真实仓库（AGPL-3.0，约 3.6 万星），本批次未收录；取舍是“只排期不创作＋海外平台”对比“Agent 加中文平台深度”。 |

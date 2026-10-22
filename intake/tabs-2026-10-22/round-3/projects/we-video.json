@@ -1,7 +1,7 @@
 {
   "repo": "hongqun/we-video",
   "status": "done",
-  "category_path": "categories/video-production/we-video.md",
+  "category_path": "categories/video-production/creation-workflows/we-video.md",
   "source_sha": "6129b4fc11cc1c52a8df145bc40ee66c77e0f349",
   "verification_scope": "static-only: gh API metadata, pinned source reads, dependency and license inspection; local atlas generators and gates executed. No upstream install, hook, service, login, model call, test or render was executed.",
   "notes_zh": "已归入视频制作，补齐双语选型页、目录、总表、快照、健康雷达、流程图与源码机制图。源码有实质后端，但缺少界面依赖的任务快照、渲染和视觉规划接口，只适合作开发底座；no leftover Q&A。",
@@ -328,5 +328,7 @@
     "semantic_page_read": true,
     "runtime_upstream_executed": false
   },
-  "qa_decision": "no leftover Q&A"
+  "qa_decision": "no leftover Q&A",
+  "page_at_project_commit": "categories/video-production/we-video.md",
+  "routing_only_refactor": true
 }

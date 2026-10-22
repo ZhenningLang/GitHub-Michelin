@@ -1,7 +1,7 @@
 {
   "repo": "storytold/artcraft",
   "status": "done",
-  "category_path": "categories/video-production/artcraft.md",
+  "category_path": "categories/video-production/creation-workflows/artcraft.md",
   "source_sha": "800217ed04d10fc12706c28e6e91ae2a6b286092",
   "verification_scope": "static：通过 gh api 枚举完整未截断目录树，读取 README、许可、NOTICE、清单、发布、问题、贡献者与关键实现；另查公开服务仓库的许可和部署依赖。没有逐文件审计所有源码；未安装、编译、登录、运行上游脚本、调用收费生成服务或读写 .pen。",
   "notes_zh": "归入 video-production：核心是用二维画布和三维机位／姿势引导云端镜头生成，不是本机推理引擎。已补双语页、INDEX／README、上下游快照、健康／流程／机制图和报告；no leftover Q&A。",
@@ -241,5 +241,7 @@
     "semantic_page_read": true,
     "runtime_upstream_executed": false
   },
-  "qa_decision": "no leftover Q&A"
+  "qa_decision": "no leftover Q&A",
+  "page_at_project_commit": "categories/video-production/artcraft.md",
+  "routing_only_refactor": true
 }
