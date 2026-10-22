@@ -51,6 +51,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Kokoro](https://github.com/hexgrad/kokoro),categories/speech/vibevoice.md,,no
 [Lada](https://codeberg.org/ladaapp/lada),categories/media-processing/jasna.md,,no
 [LEAN](https://github.com/QuantConnect/Lean),categories/investment-finance/backtrader.md,,no
+[LightRAG](https://github.com/HKUDS/LightRAG),categories/rag-retrieval/structured-retrieval/sag.md,,no
 [linkding](https://github.com/sissbruecker/linkding),categories/knowledge-base/hister.md,,no
 [localtunnel](https://github.com/localtunnel/localtunnel),categories/networking/opentunnel.md,,no
 [LTX-Video](https://github.com/Lightricks/LTX-Video),categories/ml-research/vision-and-multimodal/open-sora.md,,no
