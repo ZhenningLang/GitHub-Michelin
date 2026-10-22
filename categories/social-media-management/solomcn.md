@@ -79,7 +79,7 @@ Animation skills such as huashu-art-motion can supply a production craft; they d
 ## When NOT to use
 
 - **You need provider neutrality.** Evaluate [Easel](easel.md), with configurable model endpoints. SoloMCN's worker is Claude Code; an OpenAI image key does not replace it.
-- **You only need topic-to-video output.** Use [MoneyPrinterTurbo](../video-production/moneyprinter-turbo.md) rather than running channels, browser profiles and agent sessions.
+- **You only need topic-to-video output.** Use [MoneyPrinterTurbo](../video-production/creation-workflows/moneyprinter-turbo.md) rather than running channels, browser profiles and agent sessions.
 - **An existing agent only lacks Xiaohongshu tools.** Use [xiaohongshu-mcp](xiaohongshu-mcp.md); a complete series/video workspace is unnecessary.
 - **Tasks need isolated credentials and minimal tools.** Use separately sandboxed agents or a narrow publisher. Tool-enabled runs receive broad file/command/web tools and configured credentials; workflow approval is not a process sandbox.
 - **X ingestion must comply with platform terms.** Use an authorized API source or omit X ingestion. The README explicitly says cookie-pool searching violates X's terms and risks restrictions or bans. Publishing can stay manual.
@@ -90,7 +90,7 @@ Animation skills such as huashu-art-motion can supply a production craft; they d
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [Easel](easel.md) | ✅ | Pick Easel for an OpenClaw-based Chinese-platform workbench with configurable model endpoints; pick SoloMCN when your investment is in Claude Code and video craft. | Different runtimes/account models; SoloMCN also ships YouTube/X adapters, still requiring real-account verification. |
-| [MoneyPrinterTurbo](../video-production/moneyprinter-turbo.md) | ✅ | Pick MoneyPrinterTurbo for repeatable narrated shorts without an autonomous coding workplace; pick SoloMCN for research, custom craft and publishing handoff. | Simpler generation appliance versus greater agent capability and machine/account exposure. |
+| [MoneyPrinterTurbo](../video-production/creation-workflows/moneyprinter-turbo.md) | ✅ | Pick MoneyPrinterTurbo for repeatable narrated shorts without an autonomous coding workplace; pick SoloMCN for research, custom craft and publishing handoff. | Simpler generation appliance versus greater agent capability and machine/account exposure. |
 | [xiaohongshu-mcp](xiaohongshu-mcp.md) | ✅ | Pick xiaohongshu-mcp for one-platform tools in an existing agent; pick SoloMCN for channel state, series style and video production together. | Narrow integration versus complete local workbench; both inherit browser/platform change risk. |
 
 ## Quick start

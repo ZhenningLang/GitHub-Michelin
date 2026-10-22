@@ -92,7 +92,7 @@ Pick this over [browser-use](browser-use.md) when you do *not* want a second, in
 Yes. There is no `Agent(task=...).run()` here. The brain stays in Claude Code / Codex; this package is a CLI, a long-lived daemon, and a `SKILL.md` that tells the agent how to talk to them.
 
 **Is the session recorder the same project as video-use?**
-No. Recordings here are screenshots and action traces of the browser session, off by default. [video-use](../../video-production/video-use.md) is a separate skill that cuts camera footage into `edit/final.mp4`.
+No. Recordings here are screenshots and action traces of the browser session, off by default. [video-use](../../video-production/editing-workflows/video-use.md) is a separate skill that cuts camera footage into `edit/final.mp4`.
 
 ## How it works
 

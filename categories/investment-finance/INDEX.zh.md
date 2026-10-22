@@ -16,6 +16,7 @@
 | **HiThink Financial-API** | 一把 API Key 取同花顺官方 A 股数据（CLI、MCP、REST、Python，长历史落本地 DuckDB）——但 GitHub 仓库已于 2026-10 消失，客户端代码只剩冻结的 Gitee 镜像，npm CLI 和托管服务仍可用 | "?"（1/6） | [→](financial-api.zh.md) |
 | **AKShare** | 免 Key 的 Python 库，把中国市场的公开财经页面封装成一次调用返回 pandas DataFrame | A（6/6） | [→](akshare.zh.md) |
 | **Tushare** | Python SDK 加托管 tushare.pro 服务，凭 token 与积分档取 A 股数据 | D（5/6） | [→](tushare.zh.md) |
+| **DeepSeek Influence Report** | 拆解有历史数据和报告脚本的模型采用投研个案；先修重建路径，不把叙事当作独立核验结论 | D（4/6） | [→](deepseek-influence-report.zh.md) |
 
 
 ## 对比矩阵
@@ -31,6 +32,7 @@
 | [financial-api](financial-api.zh.md) | ✅ | "?"（1/6） | 同花顺官方 A 股数据客户端，共用一把 API Key；GitHub 仓库 2026-10 起已消失（Gitee 镜像停在 2026-09-22），npm CLI 与托管服务仍在 |
 | [akshare](akshare.zh.md) | ✅ | A（6/6） | 免费、免 Key 的 A 股/期货/宏观数据抓取库；接口随上游改版失效 |
 | [tushare](tushare.zh.md) | ✅ | D（5/6） | token 加积分档的托管 A 股数据，分钟/新闻/港美股另购；GitHub 仓库 2020 年起冻结 |
+| [DeepSeek Influence Report](deepseek-influence-report.zh.md) | ✅ | D（4/6） | 六个 Python 文件构成证据账本及报告生成示例；个案冻结、输入路径错误、质控只告警 |
 
 
 ## 什么该放这里

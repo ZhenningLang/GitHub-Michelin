@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **text-to-cad** | 给现有 agent 配本地 Python 转 STEP 建模、保存文件复查和查看器；不是训练好的 CAD 模型。 | B（6/6） | [→](text-to-cad.zh.md) |
 | **SolidCraft** | 用桌面草图或内置 MCP 试做可编辑零件；早期 Rust CAD，不代表成熟套件等价。 | C（5/6） | [→](solidcraft.zh.md) |
 | **FreeCAD** | 当你需要一套可编辑的参数化历史加真 B-rep 实体模型——画草图、加约束、Pad/Pocket，之后改一个尺寸让零件自行重建——文件在本地、带 Python API、不用买席位时用它。 | A（5/6） | [→](freecad.zh.md) |
 
@@ -15,6 +16,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [text-to-cad](text-to-cad.zh.md) | ✅ | B（6/6） | agent 技能、固定版本的 Python CAD 工具链与本地查看器；以源码编辑为主，默认遥测，仍需明确工程复查。 |
 | [SolidCraft](solidcraft.zh.md) | ✅ | C（5/6） | agent 与界面共用命令并限制文件范围，代价是几何栈年轻。 |
 | [FreeCAD](freecad.zh.md) | ✅ | A（5/6） | 开源参数化三维 CAD：带约束求解的草图、可重新尺寸驱动的特征历史、OCCT 实体内核、本地 `.FCStd` 文件与内建 Python API——代价是交互、装配/加工/有限元的成熟度和上游的 AI 贡献政策。 |
 | OpenSCAD · CadQuery · LibreCAD · Blender | 未收录 | — | 最接近的开源替代（代码优先的 CSG、跑在 OCCT 上的 Python CAD、二维制图、网格/美术管线）——已在 FreeCAD 的对比表里逐项权衡，尚未收录。 |

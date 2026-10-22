@@ -1,0 +1,248 @@
+{
+  "repo": "AgnesAI-Labs/agnes-harness",
+  "status": "done",
+  "category_path": "categories/agent-frameworks/agent-runtimes/agent-services/agnes-harness.md",
+  "source_sha": "98bc11572ba162bcdf6ce2b29612a44508faf951",
+  "verification_scope": "static: authenticated gh API metadata, pinned raw README/docs/manifests/source/license reads, upstream tree blob comparison, local atlas generators and gates. No upstream installation, hooks, model calls, device calls, or upstream runtime tests.",
+  "notes_zh": "归入可部署智能体运行时：核心是共享后台、业务插件和工作台，不是技能包。已完成双语页面、三类图卡、分类及 README 接线；no leftover Q&A。未提交、推送、操作标签或修改父工作区。",
+  "risk_zh": "仅 30 天、pre-alpha、没有 GitHub release，外部 PR 不开放。普通后端插件在受信宿主进程运行，审批不等于代码隔离；本地 Web 不是已验证的公网多用户服务，Windows 安全和实体设备停止语义需另验。仓库当天有推送，但本次 main 快照提交日期为 2026-10-13；499、502、503 的修复合入开发分支，不可误算到 main。",
+  "dotfiles_zh": {
+    "fit": "medium",
+    "what": "可借鉴外部动作的派发阶段与未知结果分类：只有确认未发送或安全只读才有限重试，结果未知的写操作不盲重放；另可参考把插件信任绑定到内容摘要与能力摘要。适合吸收小机制，不建议换用整个预览运行时。",
+    "where": "现有 dev-operational-task、dev-long-run 和 feishu-avatar 的恢复与重试合同；技能来源审核机制可作新增。这里只给建议，未改 dotfiles。"
+  },
+  "worth_check": {
+    "reusable_substance": {
+      "answer": "pass",
+      "command": "gh api 'repos/AgnesAI-Labs/agnes-harness/git/trees/98bc11572ba162bcdf6ce2b29612a44508faf951?recursive=1'; gh api pinned contents for Core, package-manager and hot-tool-plugin",
+      "exit_code": 0,
+      "evidence": "4080 blob files; 1375 packages/**/src TypeScript/TSX files. Core/src plus package-manager/src contain 164 .ts files, 1639505 bytes. Four inspected implementation modules contain 2074 physical lines in total: tools.ts 1603, tool-recovery.ts 118, integrity.ts 261, trust-gate.ts 92. These are nontrivial runtime/recovery/trust implementations, not only a paper demo."
+    },
+    "provenance": {
+      "answer": "pass",
+      "command": "gh api pinned Agnes recursive tree; gh api 'repos/deepseek-ai/deepseek-harness/git/trees/HEAD?recursive=1'; compare blob SHA sets in Python; read NOTICE and both VENDORED.md files",
+      "exit_code": 0,
+      "evidence": "Investigated declared DeepSeek/Cordis provenance rather than assuming originality. Only 11 of 4080 Agnes blob files match any of 16297 DeepSeek blob files exactly, including license files, three Cosmokit utility files and empty fixtures. Cordis/Cosmokit account for 31 files and retain MIT licenses plus provenance/change records. This does not prove all authorship, but the mostly-blob-identical failure condition is not present."
+    },
+    "license_truth": {
+      "answer": "pass",
+      "command": "gh api pinned contents LICENSE, NOTICE, docs/maintainers/provenance.md, packages/cordis/LICENSE, packages/cosmokit/LICENSE, packages/host/src/adapters/public-fetch/DEEPSEEK-LICENSE.txt, packages/base/extensions/computer-use/NOTICE",
+      "exit_code": 0,
+      "evidence": "Root is standard Apache-2.0 text; NOTICE and provenance explicitly apply it to project-authored code, not every third-party file. Shigma, DeepSeek and Nous Research MIT attribution/license texts remain present. Host declares Apache-2.0 AND MIT. Page retains these distribution exceptions instead of treating the root badge as universal relicensing."
+    },
+    "live_hazard_without_purpose": {
+      "answer": "pass_with_documented_risk",
+      "command": "gh api recursive tree and pinned package.json, pnpm-workspace.yaml, local-dev.yaml, docs/guide/security.md, docs/guide/packages.md, docs/reference/limitations.md, examples/packages/hot-tool-plugin/index.mjs",
+      "exit_code": 0,
+      "evidence": "Inspected root scripts, local profile, extension example and trust/security paths statically; root package has no install lifecycle script. The example has no imports/network/file access. Documented live privileged surfaces include in-process plugins, automatic bundled-helper activation, model-provider egress, shell/files and optional computer/device actions. They have reusable purpose and explicit trust documentation; no purposeless harmful payload was identified in the inspected paths. This is not a full security audit and nothing upstream was executed."
+    },
+    "better_canonical_repo": {
+      "answer": "pass",
+      "command": "gh api repos/AgnesAI-Labs/agnes-harness; gh api 'orgs/AgnesAI-Labs/repos?per_page=100'; read pinned README and installation guide; grep local categories for canonical URL",
+      "exit_code": 0,
+      "evidence": "Public non-fork repository; README/install name this exact source repository. Organization inventory includes separate reports and models, but no indicated successor carrying this runtime. Local canonical-URL search found no existing entry. No duplicate page was created."
+    }
+  },
+  "api_metadata": {
+    "command": "gh api repos/AgnesAI-Labs/agnes-harness",
+    "exit_code": 0,
+    "private": false,
+    "visibility": "public",
+    "fork": false,
+    "archived": false,
+    "owner_type": "Organization",
+    "created_at": "2026-09-22T17:18:54Z",
+    "pushed_at_initial": "2026-10-22T07:50:01Z",
+    "pushed_at_snapshot": "2026-10-22T08:15:55Z",
+    "default_branch": "main",
+    "default_branch_commit_date": "2026-10-13T12:18:44Z",
+    "stars_at_initial_read": 1101,
+    "language": "TypeScript",
+    "license_api": "Apache-2.0",
+    "releases_returned": 0,
+    "top_contributor_commits": 164
+  },
+  "sources_read": [
+    {
+      "url": "https://api.github.com/repos/AgnesAI-Labs/agnes-harness",
+      "purpose": "Public/private status, age, ownership, language, archive and push metadata"
+    },
+    {
+      "url": "https://api.github.com/repos/AgnesAI-Labs/agnes-harness/git/trees/98bc11572ba162bcdf6ce2b29612a44508faf951?recursive=1",
+      "purpose": "Source inventory, substance counts and blob provenance comparison"
+    },
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/git/trees/HEAD?recursive=1",
+      "purpose": "Compare suspected upstream blob SHA set; only 11 exact matches"
+    },
+    {
+      "url": "https://api.github.com/repos/AgnesAI-Labs/agnes-harness/releases?per_page=5",
+      "purpose": "Confirm no published GitHub release"
+    },
+    {
+      "url": "https://api.github.com/repos/AgnesAI-Labs/agnes-harness/contributors?per_page=10",
+      "purpose": "Contributor concentration and governance evidence"
+    },
+    {
+      "url": "https://api.github.com/repos/AgnesAI-Labs/agnes-harness/issues?state=all&per_page=6",
+      "purpose": "Read recent development reports and acknowledged test gaps"
+    },
+    {
+      "url": "https://api.github.com/repos/AgnesAI-Labs/agnes-harness/pulls/499",
+      "purpose": "Confirm merged repair targets feat/agh-plugin-core, not main"
+    },
+    {
+      "url": "https://api.github.com/repos/AgnesAI-Labs/agnes-harness/pulls/502",
+      "purpose": "Confirm native-packaging repair branch and merge status"
+    },
+    {
+      "url": "https://api.github.com/repos/AgnesAI-Labs/agnes-harness/pulls/503",
+      "purpose": "Confirm skill-scanning repair branch and merge status"
+    },
+    {
+      "url": "https://api.github.com/repos/AgnesAI-Labs/agnes-harness/commits/98bc11572ba162bcdf6ce2b29612a44508faf951",
+      "purpose": "Resolve pushed-at versus actual main commit date"
+    },
+    {
+      "url": "https://api.github.com/orgs/AgnesAI-Labs/repos?per_page=100",
+      "purpose": "Canonical repository/successor check"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/README.md",
+      "purpose": "Positioning, first run, implemented versus planned scope"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/LICENSE",
+      "purpose": "Read full actual Apache license"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/NOTICE",
+      "purpose": "Separate-license and adapted-code attribution boundaries"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/CONTRIBUTING.md",
+      "purpose": "Invited-internal-only PR policy"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/package.json",
+      "purpose": "Node/pnpm requirements and root scripts"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/pnpm-workspace.yaml",
+      "purpose": "Workspace and patched dependency layout"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/packages/cli/package.json",
+      "purpose": "Source-build CLI entry and dependency surface"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/packages/host/package.json",
+      "purpose": "Runtime dependencies and Apache-2.0 AND MIT declaration"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/packages/web/package.json",
+      "purpose": "React and Web build dependencies"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/packages/system-node/package.json",
+      "purpose": "Native process/runtime component requirements"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/docs/guide/install.md",
+      "purpose": "Verified source commands, platform requirements and trial-home behavior"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/docs/guide/quickstart.md",
+      "purpose": "Model setup, workspace confirmation and shared Web/CLI usage"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/docs/guide/packages.md",
+      "purpose": "Install/trust/enable handoff, hashes and default bundled helpers"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/docs/guide/security.md",
+      "purpose": "Approvals versus isolation, local Web and shell protection gap"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/docs/guide/sessions.md",
+      "purpose": "Recovery, history validation, export race and tail-truncation limits"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/docs/develop/backend.md",
+      "purpose": "Real developer integration and expected structured tool result"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/docs/develop/architecture.md",
+      "purpose": "Layer ownership, planned Jev versus actual Core, optional MHS"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/docs/reference/limitations.md",
+      "purpose": "Disqualifiers, unsupported Python, Windows and MCP OAuth limitations"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/docs/maintainers/provenance.md",
+      "purpose": "License boundaries and retained third-party source notices"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/packages/core/src/step/tools.ts",
+      "purpose": "Effect intent, approval and dispatch-state implementation"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/packages/core/src/step/tool-recovery.ts",
+      "purpose": "Full recovery decision classifier and bounded replay rules"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/packages/core/src/log/integrity.ts",
+      "purpose": "Full hash-chain and paged verification implementation"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/packages/package-manager/src/trust-gate.ts",
+      "purpose": "Full integrity, quarantine, API and capability-ceiling checks"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/examples/packages/hot-tool-plugin/index.mjs",
+      "purpose": "Real example registration, schema, effects and output"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/examples/packages/hot-tool-plugin/package.json",
+      "purpose": "Actual agnes.plugins entry and separate MIT declaration"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/packages/cordis/VENDORED.md",
+      "purpose": "Declared DeepSeek/Cordis lineage and modifications"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/packages/cosmokit/VENDORED.md",
+      "purpose": "Declared utility-library lineage and mechanical rewrites"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/packages/cordis/LICENSE",
+      "purpose": "Retained Shigma MIT copyright and terms"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/packages/cosmokit/LICENSE",
+      "purpose": "Retained utility MIT copyright and terms"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/packages/host/src/adapters/public-fetch/DEEPSEEK-LICENSE.txt",
+      "purpose": "Actual retained DeepSeek MIT terms"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/packages/base/extensions/computer-use/NOTICE",
+      "purpose": "Nous/Hermes source mapping, adaptation limits and full MIT terms"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/packages/host/templates/local-dev.yaml",
+      "purpose": "SQLite, file credentials, platform execution and workspace trust defaults"
+    }
+  ],
+  "checked_at_utc": "2026-10-22T08:32:51.445829+00:00",
+  "parent_validation": {
+    "gates_exit": 0,
+    "scoped_quality_exit": 0,
+    "shared_indices_serially_integrated": true,
+    "semantic_page_read": true,
+    "runtime_upstream_executed": false
+  },
+  "qa_decision": "no leftover Q&A"
+}

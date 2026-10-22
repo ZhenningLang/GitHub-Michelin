@@ -1,0 +1,195 @@
+{
+  "repo": "NationalSecurityAgency/ghidra",
+  "status": "done",
+  "category_path": "categories/dev-utilities/data-tools/ghidra.md",
+  "source_sha": "b8e9917e4c01959fe97ba94954731ed8cf2d201c",
+  "verification_scope": "static: public GitHub API metadata, README, source, manifests, releases, issues, license and security advisories only; no upstream install, build, binary launch, sample execution or attack validation. Local repository card generators, d2 and SVG rendering were executed for documentation validation.",
+  "notes_zh": "归入现有开发数据工具分类，与 REA 相邻：它是原生二进制分析引擎和人工工作台，不是 agent 编排层。双语页、三项技术要点、六张卡片和全部内容门禁已完成；同步修正 REA 双语对比中的未收录标记。no leftover Q&A。",
+  "risk_zh": "静态导入不等于安全沙箱，公开公告有导入拒绝服务及 Windows 分析器代码执行问题；所读公告列出 12.1.4 修补版。稳定版 JDK 21 与 master 的 JDK 25 要求不同；macOS 和 Linux ARM 需自建原生组件。未验证目标分析准确率、性能、原生构建或运行兼容，均已写入存疑账本。",
+  "dotfiles_zh": {
+    "fit": "none",
+    "what": "核心是处理器建模、反编译和二进制分析工作区，不直接提供个人 agent harness 所需的技能、钩子、记忆账本或模型路由；不建议常驻吸收。",
+    "where": "不适用"
+  },
+  "worth_check": [
+    {
+      "question": "Reusable substance",
+      "command": "gh api 'repos/NationalSecurityAgency/ghidra/git/trees/b8e9917e4c01959fe97ba94954731ed8cf2d201c?recursive=1'; gh api repos/NationalSecurityAgency/ghidra/readme",
+      "exit_code": 0,
+      "answer_zh": "完整树未截断，共 20621 个文件，其中 15828 个 Java 文件、2046 个测试路径；README 提供发行包、GUI、批处理和扩展路径。已读核心 Java/C++ 实现，不是论文演示或空文档。文件计数包含第三方部分，不冒充全部原创代码行数。"
+    },
+    {
+      "question": "Provenance",
+      "command": "gh api repos/NationalSecurityAgency/ghidra; gh api 'repos/NationalSecurityAgency/ghidra/contents/NOTICE?ref=b8e9917e4c01959fe97ba94954731ed8cf2d201c' -H 'Accept: application/vnd.github.raw+json'; read core source headers",
+      "exit_code": 0,
+      "answer_zh": "官方 NationalSecurityAgency 组织持有，fork=false、mirror_url=null；README 说明 NSA 研究部门创建维护，NOTICE 说明政府与外部贡献来源。所读核心文件有 IP: GHIDRA 和 Apache 头，第三方许可保存在 licenses 与模块声明；未发现需要追查的镜像冒充线索，未做全树版权审计。"
+    },
+    {
+      "question": "License truth",
+      "command": "gh api 'repos/NationalSecurityAgency/ghidra/contents/LICENSE?ref=b8e9917e4c01959fe97ba94954731ed8cf2d201c' -H 'Accept: application/vnd.github.raw+json'; gh api 'repos/NationalSecurityAgency/ghidra/contents/NOTICE?ref=b8e9917e4c01959fe97ba94954731ed8cf2d201c' -H 'Accept: application/vnd.github.raw+json'",
+      "exit_code": 0,
+      "answer_zh": "读到完整 Apache License 2.0 正文。NOTICE 明确说明政府雇员部分在美国的公共领域地位、其他司法区 Apache 许可、外部贡献、模块第三方许可及独立 GPL 辅助程序；未把根 Apache 标签写成全部依赖均用 Apache。"
+    },
+    {
+      "question": "Live hazard without purpose",
+      "command": "gh api 'repos/NationalSecurityAgency/ghidra/git/trees/b8e9917e4c01959fe97ba94954731ed8cf2d201c?recursive=1'; gh api 'repos/NationalSecurityAgency/ghidra/contents/Ghidra/RuntimeScripts/ghidraRun?ref=b8e9917e4c01959fe97ba94954731ed8cf2d201c' -H 'Accept: application/vnd.github.raw+json'; gh api 'repos/NationalSecurityAgency/ghidra/security-advisories?per_page=3'",
+      "exit_code": 0,
+      "answer_zh": "完整树中无 .claude、.cursor、.opencode 钩子文件；启动脚本把参数交给本地 support/launch.sh，未发现该入口含秘密外传载荷。存在真实导入和分析器漏洞风险，但项目有大量独立可复用分析实现，不属于无用途活载荷。未执行上游，以上不是全量安全审计。"
+    },
+    {
+      "question": "Better canonical repo",
+      "command": "gh api repos/NationalSecurityAgency/ghidra; gh api 'repos/NationalSecurityAgency/ghidra/releases?per_page=5'; read README canonical links",
+      "exit_code": 0,
+      "answer_zh": "API 返回目标即 NationalSecurityAgency/ghidra，非 fork、非归档；README 的源码、贡献和发行包均指向此仓库。12.1.4 于 2026-09-21 发布，master 于 2026-10-20 提交；未见继任或迁移仓库声明。"
+    }
+  ],
+  "api_metadata": {
+    "private": false,
+    "visibility": "public",
+    "fork": false,
+    "archived": false,
+    "owner_type": "Organization",
+    "created_at": "2019-03-01T03:27:48Z",
+    "pushed_at": "2026-10-20T12:16:20Z",
+    "default_branch": "master",
+    "stargazers_count": 92793,
+    "latest_release": "Ghidra_12.1.4_build",
+    "latest_release_published_at": "2026-09-21T17:38:59Z",
+    "tree_truncated": false,
+    "tree_blob_files": 20621,
+    "java_files": 15828,
+    "test_paths": 2046,
+    "agent_hook_paths": []
+  },
+  "sources_read": [
+    {
+      "url": "https://api.github.com/repos/NationalSecurityAgency/ghidra",
+      "purpose": "公开性、规范仓库、归属、年龄、维护和热度元数据"
+    },
+    {
+      "url": "https://api.github.com/repos/NationalSecurityAgency/ghidra/commits/master",
+      "purpose": "固定源码提交与提交日期"
+    },
+    {
+      "url": "https://api.github.com/repos/NationalSecurityAgency/ghidra/git/trees/b8e9917e4c01959fe97ba94954731ed8cf2d201c?recursive=1",
+      "purpose": "完整文件树、代码与测试计数、代理钩子路径检查"
+    },
+    {
+      "url": "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/README.md",
+      "purpose": "项目作用、规范入口、安装与开发分支要求"
+    },
+    {
+      "url": "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/LICENSE",
+      "purpose": "完整根许可正文"
+    },
+    {
+      "url": "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/NOTICE",
+      "purpose": "政府作品、外部贡献、第三方与 GPL 辅助程序许可"
+    },
+    {
+      "url": "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/DISCLAIMER.md",
+      "purpose": "上游免责声明与支持边界"
+    },
+    {
+      "url": "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/SECURITY.md",
+      "purpose": "私密漏洞报告、修补与公告流程"
+    },
+    {
+      "url": "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/CONTRIBUTING.md",
+      "purpose": "治理、合入权限、贡献许可和评审积压"
+    },
+    {
+      "url": "https://api.github.com/repos/NationalSecurityAgency/ghidra/releases?per_page=5",
+      "purpose": "稳定版号、时间和发布节奏"
+    },
+    {
+      "url": "https://api.github.com/repos/NationalSecurityAgency/ghidra/contributors?per_page=10",
+      "purpose": "多贡献者来源信号，不把贡献数当合入权限"
+    },
+    {
+      "url": "https://api.github.com/repos/NationalSecurityAgency/ghidra/issues?state=all&per_page=8&sort=updated",
+      "purpose": "近期扩展版本兼容、GUI 与分析错误报告，区别用户报告和复现事实"
+    },
+    {
+      "url": "https://api.github.com/repos/NationalSecurityAgency/ghidra/security-advisories?per_page=3",
+      "purpose": "读取三则公开漏洞摘要、受影响版本与 12.1.4 修补版本"
+    },
+    {
+      "url": "https://github.com/NationalSecurityAgency/ghidra/blob/Ghidra_12.1.4_build/GhidraDocs/GettingStarted.md",
+      "purpose": "稳定版 JDK 21、Python、原生平台要求与升级备份限制"
+    },
+    {
+      "url": "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/GhidraDocs/GettingStarted.md",
+      "purpose": "对照 master 的 12.2、JDK 25 与 Gradle 9.1.0+ 要求"
+    },
+    {
+      "url": "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/GhidraDocs/GhidraClass/Beginner/Introduction_to_Ghidra_Student_Guide.html",
+      "purpose": "新建项目、导入、自动分析、函数标注与输出联动的真实用户路径"
+    },
+    {
+      "url": "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/Ghidra/RuntimeScripts/ghidraRun",
+      "purpose": "静态检查启动入口与本地委托行为"
+    },
+    {
+      "url": "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/Ghidra/RuntimeScripts/support/analyzeHeadlessREADME.md",
+      "purpose": "导入与处理模式、前后脚本、只读和超时部分结果语义"
+    },
+    {
+      "url": "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/build.gradle",
+      "purpose": "构建清单、Java/Python、原生组件和测试任务"
+    },
+    {
+      "url": "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/gradle.properties",
+      "purpose": "构建 JVM 与 protobuf 配置"
+    },
+    {
+      "url": "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/Ghidra/Framework/SoftwareModeling/src/main/java/ghidra/app/plugin/processors/sleigh/SleighLanguage.java",
+      "purpose": "SLEIGH 规格初始化、指令原型缓存和语言边界"
+    },
+    {
+      "url": "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/Ghidra/Framework/SoftwareModeling/src/main/java/ghidra/app/plugin/processors/sleigh/SleighInstructionPrototype.java",
+      "purpose": "技术要点一：p-code 发射、相对地址处理与 UNIMPLEMENTED 回退"
+    },
+    {
+      "url": "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/Ghidra/Features/Decompiler/src/main/java/ghidra/app/decompiler/DecompInterface.java",
+      "purpose": "技术要点二：持久原生进程、状态恢复、超时请求与错误检查"
+    },
+    {
+      "url": "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/Ghidra/Features/Decompiler/src/decompile/cpp/sleigh_arch.cc",
+      "purpose": "C++ 原生规格加载、SLEIGH translator 复用和缺失规格失败"
+    },
+    {
+      "url": "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/Ghidra/Features/Base/src/main/java/ghidra/app/plugin/core/analysis/AutoAnalysisManager.java",
+      "purpose": "分析任务队列、共享线程池、任务计时与并发限制"
+    },
+    {
+      "url": "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/Ghidra/Features/Base/src/main/java/ghidra/app/util/headless/HeadlessAnalyzer.java",
+      "purpose": "技术要点三：前置脚本、分析、超时后续处理和后置脚本实现"
+    },
+    {
+      "url": "https://github.com/radareorg/radare2",
+      "purpose": "README 验证命令式接口、r2pipe 和作为直接二进制工具的取舍；未安装"
+    },
+    {
+      "url": "https://github.com/rizinorg/cutter",
+      "purpose": "README 验证 Rizin 后端和 Ghidra 反编译集成；未安装"
+    },
+    {
+      "url": "https://api.github.com/repos/rizinorg/cutter/contents/src/CMakeLists.txt",
+      "purpose": "Qt 界面依赖核验：第 544–547 行链接 Qt Core、Widgets、Gui；命令退出 0"
+    },
+    {
+      "url": "https://github.com/morluto/rea",
+      "purpose": "README 验证 agent MCP 与原生引擎分离；同时打开本地已收录英文选型页"
+    }
+  ],
+  "checked_at_utc": "2026-10-22T08:36:18.867155+00:00",
+  "parent_validation": {
+    "gates_exit": 0,
+    "scoped_quality_exit": 0,
+    "shared_indices_serially_integrated": true,
+    "semantic_page_read": true,
+    "runtime_upstream_executed": false
+  },
+  "qa_decision": "no leftover Q&A"
+}

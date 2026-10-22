@@ -1,0 +1,115 @@
+{
+  "checked_at_utc": "2026-10-22T09:01:49.895522+00:00",
+  "method": "Parent independently reread targeted public static sources; no upstream installation, binary execution, model invocation or credential access. Assertions check concrete boundaries, not whole-product quality.",
+  "checks": [
+    {
+      "repo": "AgnesAI-Labs/agnes-harness",
+      "source": "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/packages/core/src/step/tool-recovery.ts",
+      "response_sha256": "604c1253d340ed9d3242fa795a323be71cee8354dbc6ac1100cf5a849b8bc44b",
+      "exit_code": 0,
+      "claim_checked": "Unknown effects are not unconditional replay; durable retry budget has a power-loss limitation",
+      "observed_evidence": [
+        "policy binding gate",
+        "not-applied reconciliation required for idempotent replay",
+        "power loss caveat"
+      ],
+      "runtime_executed": false
+    },
+    {
+      "repo": "earthtojake/text-to-cad",
+      "source": "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/SECURITY.md",
+      "response_sha256": "d7bf85ca91cedbd34ca23ec82729d2884755a1efe5d67fc1f78626861e675d73",
+      "exit_code": 0,
+      "claim_checked": "Viewer is unauthenticated and loopback is its trust boundary",
+      "observed_evidence": [
+        "unauthenticated",
+        "loopback binding is the trust boundary"
+      ],
+      "runtime_executed": false
+    },
+    {
+      "repo": "KittenML/KittenTTS",
+      "source": "https://huggingface.co/KittenML/kitten-tts-2/raw/1f00fee525c7b2e30bbe9ca9ba67529734fce9c9/LICENSE.md",
+      "response_sha256": "3be75a42ccf71515b18094f116a2f271ac599334fed980ede7021b4636d01212",
+      "exit_code": 0,
+      "claim_checked": "V2 weight license is not code Apache and has separate commercial requirements",
+      "observed_evidence": [
+        "commercial registration",
+        "revenue/funding threshold including affiliates",
+        "Powered by KittenML attribution"
+      ],
+      "runtime_executed": false
+    },
+    {
+      "repo": "NationalSecurityAgency/ghidra",
+      "source": "https://api.github.com/repos/NationalSecurityAgency/ghidra/security-advisories?per_page=3",
+      "response_sha256": "3144406882dae6175e8149c23bf250f183d489ec6ba6368df1dc343f1ccafe64",
+      "exit_code": 0,
+      "claim_checked": "Static import is not a sandbox; published advisories name patched version 12.1.4",
+      "observed_evidence": [
+        {
+          "ghsa_id": "GHSA-c3pf-92jf-vq96",
+          "summary": "Arbitrary Code Execution via uncontrolled search path in the Swift Demangler analyzer (Windows)"
+        },
+        {
+          "ghsa_id": "GHSA-vxmq-6v38-hgf6",
+          "summary": "Denial of Service, Cyclic x64 chained unwind metadata causes StackOverflowError during PE import"
+        },
+        {
+          "ghsa_id": "GHSA-4w7g-wmg8-fgv5",
+          "summary": "Improper Array Index Validation in DB Unregistered Options parsing Leads to unreleased lock and Denial of Service"
+        }
+      ],
+      "runtime_executed": false
+    },
+    {
+      "repo": "ranxianglei/billion-context",
+      "source": "https://github.com/ranxianglei/billion-context/blob/94f75ccea1b2e509a29ca46e44768dcf9364940f/LICENSE",
+      "response_sha256": "f27574cd3f4b0b4877da2869953945d66d76a665e7ebb9320a5e87aa76f7ab58",
+      "exit_code": 0,
+      "claim_checked": "Actual grant has extra product attribution beyond plain MIT",
+      "observed_evidence": [
+        "Additional Term — Attribution on Product Surfaces",
+        "include a link to the project"
+      ],
+      "runtime_executed": false
+    },
+    {
+      "repo": "alchaincyf/deepseek-influence-report",
+      "source": "https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/build.py",
+      "response_sha256": "c5d74ec63fb91cd3bad50da27c6905daf8ce56cca392f914ed6b309e4b7df8cd",
+      "exit_code": 0,
+      "claim_checked": "Builder points to the wrong data directory",
+      "observed_evidence": [
+        "build.py refers to 数据/OR-deepseek周度份额-复算20260827.json"
+      ],
+      "runtime_executed": false
+    },
+    {
+      "repo": "hongqun/we-video",
+      "source": "https://github.com/hongqun/we-video/tree/6129b4fc11cc1c52a8df145bc40ee66c77e0f349/src/app/api/jobs",
+      "response_sha256": "d4032af01a02cd2bbb532d819ea7b0854c802b3dab83c57622c0a37434456b1c",
+      "exit_code": 0,
+      "claim_checked": "Public checkout has only three task route files, not the complete UI task API",
+      "observed_evidence": [
+        "src/app/api/jobs/[id]/approve/route.ts",
+        "src/app/api/jobs/[id]/artifacts/[...path]/route.ts",
+        "src/app/api/jobs/route.ts"
+      ],
+      "runtime_executed": false
+    },
+    {
+      "repo": "storytold/artcraft",
+      "source": "https://github.com/storytold/artcraft/blob/800217ed04d10fc12706c28e6e91ae2a6b286092/NOTICE",
+      "response_sha256": "f35bd05c87611fd20746f6c354cf4f2b2a415382421f8e021e438c472707f2ea",
+      "exit_code": 0,
+      "claim_checked": "Desktop license does not grant excluded media rights",
+      "observed_evidence": [
+        "Nintendo sounds",
+        "Mixamo renders",
+        "no rights to them are granted by this repository"
+      ],
+      "runtime_executed": false
+    }
+  ]
+}

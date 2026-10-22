@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "billion-context", "zh": "billion-context"},
+  "steps": [
+    {"lane": "you", "en": "Install the published package and start the local proxy", "zh": "安装发布包，启动本地代理", "code": "bili"},
+    {"lane": "you", "en": "Point the client base URL at the proxy with your intended upstream", "zh": "把客户端请求地址指向代理，保留目标上游"},
+    {"lane": "you", "en": "Continue the coding conversation through the routed client", "zh": "通过已接入的客户端继续编码会话"},
+    {"lane": "them", "en": "Offer context tools and apply accepted range summaries", "zh": "提供上下文工具，应用被接受的区间摘要"},
+    {"lane": "them", "en": "Forward the working conversation while keeping stored originals retrievable", "zh": "转发工作对话，并让已存原文保持可取回"}
+  ],
+  "value": {"en": "Selected history ranges become summaries instead of resending every original message", "zh": "选定历史区间用摘要代替，不必每轮重发全部原文"},
+  "sources": [
+    "https://github.com/ranxianglei/billion-context/blob/94f75ccea1b2e509a29ca46e44768dcf9364940f/README.md#option-3--url-change-bili-prefix",
+    "https://github.com/ranxianglei/billion-context/blob/94f75ccea1b2e509a29ca46e44768dcf9364940f/kernel/src/compress.ts#L1474-L1583",
+    "https://github.com/ranxianglei/billion-context/blob/94f75ccea1b2e509a29ca46e44768dcf9364940f/kernel/src/decompress.ts#L147-L224"
+  ]
+}

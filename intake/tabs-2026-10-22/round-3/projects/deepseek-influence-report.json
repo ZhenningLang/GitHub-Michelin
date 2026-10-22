@@ -1,0 +1,177 @@
+{
+  "repo": "alchaincyf/deepseek-influence-report",
+  "status": "done",
+  "category_path": "categories/investment-finance/deepseek-influence-report.md",
+  "source_sha": "0c849ab51e81b2e04d48e8c22af2a4c060e2c569",
+  "verification_scope": "static：通过 gh api 读取元数据、完整目录树、README、六个 Python 文件、证据 JSON、OpenRouter 归档和质控文档；对源码做 AST 语法解析，并以本地自写算术复算四周归档份额。runtime：未安装或执行上游代码，未读取本机密钥，未调用上游采集器或渲染其 PDF。只执行本索引既有生成器与门禁。",
+  "notes_zh": "按投资研究个案与证据采集／报告脚本归入 investment-finance，不因报告名称拒收。已生成双语页、六张 SVG、流程及机制 JSON，更新双语分类索引、README 和反向索引；no leftover Q&A。仅静态研究，不运行上游程序，不代表核实全部投资结论。",
+  "risk_zh": [
+    "build.py 第 13 行引用 数据/，提交目录实际为 data/；原样重建存在缺失输入路径。",
+    "OpenRouter 采集脚本固定窗口且聚合 qwen/，不是 DeepSeek 复算器；直接运行还会读取 ~/.claude/.env 中的密钥。",
+    "渲染器会执行本地生成器并改写目录页码；质控发现问题或四轮不收敛都只告警，不以退出码阻断。",
+    "README 声明 Python/CSS 为 MIT、报告为 CC BY 4.0，但没有独立 LICENSE 或完整 MIT 声明；健康度许可轴保留 ?，不冒充法律放行。",
+    "历史融资、排名与因果解读未逐条核验；已在页内明确只把它作为研究模式和历史档案使用。"
+  ],
+  "dotfiles_zh": {
+    "fit": "low",
+    "what": "可借鉴证据账本的口径、样本、来源、日期、置信层级，以及保留修订前审校记录的做法；现有取材和事实核验流程已覆盖大部分，不建议安装本仓库或导入其投资结论。",
+    "where": "write-source、guard-write-facts；报告页面诊断可供 readable-html-artifact 参考"
+  },
+  "worth_check": {
+    "decision": "include_with_explicit_limits",
+    "reusable_substance": {
+      "status": "pass",
+      "command": "gh api 'repos/alchaincyf/deepseek-influence-report/git/trees/0c849ab51e81b2e04d48e8c22af2a4c060e2c569?recursive=1'; gh api repos/alchaincyf/deepseek-influence-report/contents/<each-python-file>?ref=0c849ab51e81b2e04d48e8c22af2a4c060e2c569 -H 'Accept: application/vnd.github.raw+json'",
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evidence_zh": "完整目录树未截断，共 25 个文件：六个 Python、九个 JSON、一份 CSS、六份 Markdown、HTML/PDF 和 gitignore。Python 共 1,486 个物理行，含正文字符串，不冒充净代码行；六文件均 AST 解析成功。除成品文字外，确有分页采集、SVG 图表、目录页码回填和几何检查实现。原始档 4,386 行，周度汇总 86 条，证据表 34 条。"
+    },
+    "provenance": {
+      "status": "pass_limited_scope",
+      "command": "gh api 'repos/alchaincyf/huashu-skills/git/trees/master?recursive=1'；比较本项目六个 Python 与一个 CSS 的 Git blob SHA",
+      "exit_code": 0,
+      "compared_tree_sha": "004c808335f1fa228cd0a78061e5ece6bc505fbe",
+      "evidence_zh": "README 明确署名 alchaincyf，并注明使用同作者 huashu-report 技能；唯一提交作者与仓库所有者一致，提交消息注明 Claude 协作。七个 Python/CSS blob 均未命中被署名技能仓库的完整树。没有发现应据此提议的整包第三方复制证据；有限哈希比对不证明所有内容原创，也不核实外部数据真实性。"
+    },
+    "license_truth": {
+      "status": "pass_with_unresolved_license_completeness",
+      "commands": [
+        "gh api repos/alchaincyf/deepseek-influence-report/readme -H 'Accept: application/vnd.github.raw+json'",
+        "gh api repos/alchaincyf/deepseek-influence-report/license"
+      ],
+      "exit_codes": [
+        0,
+        1
+      ],
+      "evidence_zh": "README 的 License 段明确分别声明报告 CC BY 4.0、Python/CSS MIT，并署名作者；不是拿 GitHub 检测结果代替许可阅读。完整树没有 LICENSE，许可接口实测 HTTP 404，因此无法读取不存在的许可全文。未发现他人署名 MIT 文本被冒用或移除第三方授权的证据。页面只记录分域声明，并明确缺完整许可文件与数据再分发权的限制；健康度风险许可轴自动记为 license_declared_unverifiable。"
+    },
+    "live_hazard_without_purpose": {
+      "status": "pass_with_documented_operational_risks",
+      "command": "gh api 获取完整树及六个 Python 源文件，静态检查导入、网络端点、文件读写和子进程调用",
+      "exit_code": 0,
+      "evidence_zh": "目录无 .claude/、.cursor/、自动安装钩子或依赖安装脚本。采集请求指向公开数据站；OpenRouter 密钥只用于对应官方域名的 Authorization。渲染器会执行传入的本地生成器、写 PDF，并回写生成器页码，已明确只运行可信副本。没有发现无复用目的的恶意外传载荷；未执行任何上游代码验证安全性。"
+    },
+    "better_canonical_repo": {
+      "status": "no_superseding_repo_in_reviewed_sources",
+      "command": "gh api repos/alchaincyf/deepseek-influence-report/readme；gh api repos/alchaincyf/huashu-skills；gh api 'repos/alchaincyf/huashu-skills/git/trees/master?recursive=1'",
+      "exit_codes": [
+        0,
+        0,
+        0
+      ],
+      "evidence_zh": "报告 README 只将 huashu-skills 标为创作工具，并未指向报告继任仓库。该技能目录与报告的采集代码、历史 JSON 和成稿不是同一个交付物，七个代码／样式 blob 也不一致。已在何时不用中链接现有 huashu-skills 条目，供需要技能而非研究成品的人选择；未宣称全站穷尽所有可能继任项目。"
+    }
+  },
+  "api_metadata": {
+    "source_url": "https://api.github.com/repos/alchaincyf/deepseek-influence-report",
+    "private": false,
+    "visibility": "public",
+    "fork": false,
+    "archived": false,
+    "owner_type": "User",
+    "default_branch": "main",
+    "created_at": "2026-08-27T15:02:10Z",
+    "pushed_at": "2026-08-27T15:02:22Z",
+    "stars": 35,
+    "forks": 4,
+    "detected_license": null,
+    "commits_returned": 1,
+    "contributors_returned": 1,
+    "releases_returned": 0,
+    "issues_returned": 0
+  },
+  "sources_read": [
+    {
+      "url": "https://api.github.com/repos/alchaincyf/deepseek-influence-report",
+      "purpose": "公开性、所有者、创建和推送时间、stars、归档和许可检测元数据"
+    },
+    {
+      "url": "https://api.github.com/repos/alchaincyf/deepseek-influence-report/git/trees/0c849ab51e81b2e04d48e8c22af2a4c060e2c569?recursive=1",
+      "purpose": "完整文件计数、缺少 LICENSE／清单／钩子、输入目录差异"
+    },
+    {
+      "url": "https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/README.md",
+      "purpose": "用途、文档命令、许可分域与同作者技能署名"
+    },
+    {
+      "url": "https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/build.py",
+      "purpose": "输入路径错误、硬编码数据、证据编号与附录生成"
+    },
+    {
+      "url": "https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/chart.py",
+      "purpose": "本地内联 SVG 图表实现和无远程运行依赖"
+    },
+    {
+      "url": "https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/render.py",
+      "purpose": "Chromium 渲染、目录回填、几何检查、警告不影响退出码"
+    },
+    {
+      "url": "https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/data/采集-hf下载量.py",
+      "purpose": "七组织分页采集、下载口径和当前目录输出路径"
+    },
+    {
+      "url": "https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/data/采集-衍生与学术.py",
+      "purpose": "衍生／星数／引用采集、异常字符串与人工核对约束"
+    },
+    {
+      "url": "https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/data/采集-OR周度.py",
+      "purpose": "本地密钥读取、固定窗口和实际 Qwen 聚合对象"
+    },
+    {
+      "url": "https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/数据表.json",
+      "purpose": "34 条证据字段、来源与 verified 标记的实际含义"
+    },
+    {
+      "url": "https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/data/OR周度原始行级档-20260826.json",
+      "purpose": "4,386 行计数及四周份额本地复算"
+    },
+    {
+      "url": "https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/data/OR-deepseek周度份额-复算20260827.json",
+      "purpose": "86 周条目与 85 完整周范围，复算样本的对照"
+    },
+    {
+      "url": "https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/qc/质控-数据核查-20260827.md",
+      "purpose": "审校过程保留的数字、抽样与证据档案缺口，不拿 agent 自述当独立事实"
+    },
+    {
+      "url": "https://api.github.com/repos/alchaincyf/deepseek-influence-report/releases?per_page=5",
+      "purpose": "实测无 release"
+    },
+    {
+      "url": "https://api.github.com/repos/alchaincyf/deepseek-influence-report/issues?state=all&per_page=10",
+      "purpose": "实测无议题流量"
+    },
+    {
+      "url": "https://api.github.com/repos/alchaincyf/deepseek-influence-report/contributors?per_page=10",
+      "purpose": "实测只有作者一位贡献者"
+    },
+    {
+      "url": "https://api.github.com/repos/alchaincyf/deepseek-influence-report/commits?per_page=5",
+      "purpose": "实测单次根提交及协作署名"
+    },
+    {
+      "url": "https://api.github.com/repos/alchaincyf/deepseek-influence-report/license",
+      "purpose": "负证据：HTTP 404，不能声称读过许可全文"
+    },
+    {
+      "url": "https://api.github.com/repos/alchaincyf/huashu-skills/git/trees/master?recursive=1",
+      "purpose": "同作者创作工具的来源比对与更佳规范仓判断"
+    }
+  ],
+  "checked_at_utc": "2026-10-22T08:46:31.813547+00:00",
+  "parent_validation": {
+    "gates_exit": 0,
+    "scoped_quality_exit": 0,
+    "shared_indices_serially_integrated": true,
+    "semantic_page_read": true,
+    "runtime_upstream_executed": false
+  },
+  "qa_decision": "no leftover Q&A"
+}

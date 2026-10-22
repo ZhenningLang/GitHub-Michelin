@@ -97,7 +97,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [reverse-skill](../../agent-skills/security/reverse-skill.zh.md) | ✅ | agent 缺可运行的本地 CLI/MCP 和结构化观察账本时选 REA；缺跨安全领域的调查流程路由时选 reverse-skill。 | 可执行分析适配器与不可变记录，对比技能化调查流程和工具自举；后者见[路由入口](https://github.com/zhaoxuya520/reverse-skill/blob/7e2097fd90d25c2f976f6eba26d6c00aa88051df/skills/SKILL.md#L7-L19)。两者都不授予目标使用权。 |
-| Ghidra | 未收录 | 人工主导的原生检查选 Ghidra；需要让 agent 拿到带证据的结果时选 REA 接入它。 | 成熟分析工作台与工具编排层的区别；真实仓库，本次标签批次未收录。 |
+| [Ghidra](ghidra.zh.md) | ✅ | 人工主导的原生检查选 Ghidra；需要让 agent 拿到带证据的结果时选 REA 接入它。 | 成熟分析工作台与工具编排层的区别；REA 深入检查原生程序仍需另配引擎。 |
 | radare2 | 未收录 | 直接从命令行操纵二进制选 radare2；一个 agent 接口要覆盖原生和 Electron 目标时选 REA。 | 直接控制更精简，REA 的适配面和结果契约更广；真实仓库，本次标签批次未收录。 |
 | IDA Pro | 非仓库 | 商业分析环境决定工作流时选 IDA Pro；额外需要 agent 接口时才加入 REA。 | 商业产品，另行授权；REA 不附带反编译器及其许可。 |
 

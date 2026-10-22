@@ -16,6 +16,7 @@
 | **HiThink Financial-API** | Official Tonghuashun A-share data over one API key (CLI, MCP, REST, Python, local DuckDB history) — but its GitHub repo vanished in 2026-10; the client code survives only as a frozen Gitee mirror, while the npm CLI and hosted service still work | "?" (1/6) | [→](financial-api.md) |
 | **AKShare** | Keyless Python library wrapping public Chinese-market finance pages into one-call pandas DataFrames | A (6/6) | [→](akshare.md) |
 | **Tushare** | Python SDK + hosted tushare.pro service behind a token and points tiers | D (5/6) | [→](tushare.md) |
+| **DeepSeek Influence Report** | Inspect a model-adoption investment case with archived data and report scripts; repair its rebuild path and do not treat the narrative as independently verified | D (4/6) | [→](deepseek-influence-report.md) |
 
 
 ## Comparison matrix
@@ -31,6 +32,7 @@
 | [financial-api](financial-api.md) | ✅ | "?" (1/6) | Official Tonghuashun A-share data clients over one API key; GitHub repo gone since 2026-10 (Gitee mirror frozen at 2026-09-22), npm CLI and hosted service still up |
 | [akshare](akshare.md) | ✅ | A (6/6) | Free keyless scraping library for A-share/futures/macro data; interfaces break with upstream changes |
 | [tushare](tushare.md) | ✅ | D (5/6) | Token-gated hosted A-share data with points tiers and paid à-la-carte depth; the GitHub repo is frozen since 2020 |
+| [DeepSeek Influence Report](deepseek-influence-report.md) | ✅ | D (4/6) | Evidence-ledger and report-generation example with six Python files; frozen case, broken input path and warning-only QC |
 
 
 ## What belongs here

@@ -1,0 +1,25 @@
+{
+  "repo": "heygen-com/hyperframes",
+  "status": "done",
+  "mode": "fresh",
+  "category_path": "categories/video-production/render-engines/hyperframes.md",
+  "checked_at_utc": "2026-10-22T08:18:58.205725+00:00",
+  "freshness": {
+    "last_verified": "2026-09-15",
+    "today_utc": "2026-10-22",
+    "age_days": 37,
+    "threshold_days": 90
+  },
+  "page_sha256": "58984c0577635405b37c552e1a7614ad3cb28291a2c7e9e2c3995e9f3fb39853",
+  "no_page_diff_from_base": true,
+  "worker_worktree_clean": true,
+  "notes_zh": "fresh：last_verified 为 2026-09-15，截至 2026-10-22 共 37 天，未超过 90 天门槛；保留日期及全部仓库文件，未重核上游。现有英文页将其定位为 HTML/CSS 动画到视频的渲染框架，适合批量、参数化视频；不适合生成写实素材、单次精剪或无法运行 Node.js 22、FFmpeg、Chrome 的环境。",
+  "risk_zh": "现有页面记录其为 pre-1.0、年轻且高热度项目；跨机器字节稳定性、Windows 渲染和 Remotion 许可比较仍列为存疑。上述均为旧页记录，本次未重核，不应当作当前上游事实。",
+  "dotfiles_zh": {
+    "fit": "low",
+    "what": "现有英文页提到按生产任务拆分的 agent skills，可作为视频制作技能组织的参考；本次未读取上游技能，不能确认具体机制可直接复用，渲染引擎本身不属于个人 harness 核心能力。",
+    "where": "现有视频制作类 skills；仅作为后续参考，不修改 dotfiles"
+  },
+  "evidence_boundary": "Read the existing local EN page only. Parent checked visibility metadata. No upstream fact/source reread, runtime execution, health refresh or date bump.",
+  "qa_decision": "no leftover Q&A"
+}

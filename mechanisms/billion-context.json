@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "history", "en": "Client conversation and explicit session identity", "zh": "客户端对话与显式会话身份", "kind": "input", "technique": [3]},
+    {"id": "proxy", "en": "Proxy routing and bounded preflight", "zh": "代理路由与有界发送前压缩", "technique": [3]},
+    {"id": "fold", "en": "Model-written range summaries and protected-range checks", "zh": "模型编写区间摘要，内核检查保护范围", "technique": [1]},
+    {"id": "ledger", "en": "Active blocks with message coverage and child-block links", "zh": "带消息覆盖和子块关联的活跃摘要块", "technique": [1]},
+    {"id": "render", "en": "Anchored summaries plus recent messages reach the model", "zh": "锚定摘要与近期消息送入模型", "kind": "output", "technique": [1]},
+    {"id": "restore", "en": "Requested stored content returns without changing active blocks", "zh": "按需返回已存内容，不改变活跃块", "kind": "output", "technique": [2]}
+  ],
+  "edges": [
+    {"from": "history", "to": "proxy"},
+    {"from": "proxy", "to": "fold"},
+    {"from": "fold", "to": "ledger"},
+    {"from": "ledger", "to": "render"},
+    {"from": "ledger", "to": "restore", "en": "when a caller requests recovery", "zh": "调用方请求恢复时", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/ranxianglei/billion-context/blob/94f75ccea1b2e509a29ca46e44768dcf9364940f/src/session-id.ts",
+    "https://github.com/ranxianglei/billion-context/blob/94f75ccea1b2e509a29ca46e44768dcf9364940f/kernel/src/compress.ts",
+    "https://github.com/ranxianglei/billion-context/blob/94f75ccea1b2e509a29ca46e44768dcf9364940f/kernel/src/decompress.ts"
+  ]
+}

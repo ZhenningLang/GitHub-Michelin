@@ -1,0 +1,25 @@
+{
+  "repo": "debpalash/VoiceStudio",
+  "status": "done",
+  "mode": "fresh",
+  "category_path": "categories/speech/voicestudio.md",
+  "checked_at_utc": "2026-10-22T08:17:54.957263+00:00",
+  "freshness": {
+    "last_verified": "2026-10-01",
+    "today_utc": "2026-10-22",
+    "age_days": 21,
+    "threshold_days": 90
+  },
+  "page_sha256": "2433ea0a69f9b80f6a50ae8be792c76b60f71b5889305c88a41ce6cedf50234e",
+  "no_page_diff_from_base": true,
+  "worker_worktree_clean": true,
+  "notes_zh": "fresh：距上次核验21天，未超90天门槛；未抓上游、未重评健康度、未修改仓库或日期。已读英文页：这是本地语音克隆、配音、听写桌面应用，speech 归类合适；原页记录默认模型权重限非商业、应用为AGPL，且安装较重。",
+  "risk_zh": "以下均转述2026-10-01既有英文页，非本轮上游复核：默认OmniVoice权重为非商业许可，应用为AGPL；约10GB安装及GPU兼容门槛；后端启动故障、项目年轻且维护集中；Pro功能边界尚未确定。克隆声音必须取得许可。",
+  "dotfiles_zh": {
+    "fit": "low",
+    "what": "原页描述的本地MCP语音合成与转写，可作为个人agent的可选语音入口；这属于外接应用，不是可直接吸收的harness机制，且不建议为此引入整套重型语音依赖。",
+    "where": "可选MCP接入；本次不修改现有配置"
+  },
+  "evidence_boundary": "Read the existing local EN page only. Parent checked visibility metadata. No upstream fact/source reread, runtime execution, health refresh or date bump.",
+  "qa_decision": "no leftover Q&A"
+}

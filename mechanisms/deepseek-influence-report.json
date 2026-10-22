@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "apis", "en": "Public model and research APIs", "zh": "模型与学术公开接口", "kind": "external"},
+    {"id": "collect", "en": "Paginated collection with fixed targets", "zh": "固定对象的分页采集", "technique": [1]},
+    {"id": "snapshots", "en": "Collection JSONs; manual reconciliation", "zh": "采集 JSON；需人工协调", "kind": "output", "technique": [1]},
+    {"id": "weekly", "en": "Archived weekly JSON series", "zh": "已归档的周度 JSON 序列", "kind": "input"},
+    {"id": "ledger", "en": "34-entry evidence ledger", "zh": "34 条证据账本", "kind": "input", "technique": [2]},
+    {"id": "html", "en": "HTML: weekly chart and evidence appendix", "zh": "网页：周度图与证据附录", "technique": [2]},
+    {"id": "print", "en": "Chromium PDF rendering", "zh": "Chromium 打印 PDF", "technique": [3]},
+    {"id": "toc", "en": "Locate headings and patch builder page numbers", "zh": "定位章标题并回写生成器页码", "technique": [3]},
+    {"id": "qc", "en": "Poppler text and grayscale margin checks", "zh": "Poppler 文本与灰度留白检查", "technique": [3]},
+    {"id": "out", "en": "PDF plus warnings; human review remains", "zh": "PDF 加告警；仍须人工复核", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "apis", "to": "collect"},
+    {"from": "collect", "to": "snapshots"},
+    {"from": "weekly", "to": "html"},
+    {"from": "ledger", "to": "html"},
+    {"from": "html", "to": "print"},
+    {"from": "print", "to": "toc"},
+    {"from": "toc", "to": "html", "en": "rebuild when changed; at most four rounds", "zh": "页码变化时重建；最多四轮"},
+    {"from": "print", "to": "qc"},
+    {"from": "qc", "to": "out"}
+  ],
+  "sources": [
+    "https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/data/采集-hf下载量.py",
+    "https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/build.py",
+    "https://github.com/alchaincyf/deepseek-influence-report/blob/0c849ab51e81b2e04d48e8c22af2a4c060e2c569/render.py"
+  ]
+}

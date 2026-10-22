@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Ghidra does", "zh": "Ghidra 做的"},
+  "steps": [
+    {"lane": "you", "en": "Prepare the stable release and its JDK, then launch Ghidra", "zh": "准备稳定版及对应 JDK，再启动 Ghidra", "code": "./ghidraRun"},
+    {"lane": "you", "en": "Create a non-shared project and import an authorized binary", "zh": "新建非共享项目，导入有权分析的二进制"},
+    {"lane": "you", "en": "Confirm processor settings and approve auto-analysis in CodeBrowser", "zh": "确认处理器配置，在 CodeBrowser 同意自动分析"},
+    {"lane": "them", "en": "Disassemble flows, create functions and cross-references", "zh": "沿控制流反汇编，建立函数与交叉引用"},
+    {"lane": "you", "en": "Select a function and correct its names and types", "zh": "选择函数，修正名字与类型"},
+    {"lane": "them", "en": "Show linked instructions and updated C-like function text", "zh": "展示关联指令与更新后的类 C 函数文本"}
+  ],
+  "value": {"en": "Understand a native function without rebuilding its instruction and reference map by hand", "zh": "不必手工重建指令和引用关系，就能理解原生函数"},
+  "sources": [
+    "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/README.md#install",
+    "https://github.com/NationalSecurityAgency/ghidra/blob/Ghidra_12.1.4_build/GhidraDocs/GettingStarted.md",
+    "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/GhidraDocs/GhidraClass/Beginner/Introduction_to_Ghidra_Student_Guide.html#L358-L530",
+    "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/GhidraDocs/GhidraClass/Beginner/Introduction_to_Ghidra_Student_Guide.html#L1121-L1165"
+  ]
+}

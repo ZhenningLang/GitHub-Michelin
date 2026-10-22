@@ -1,0 +1,13 @@
+{
+  "checked_at_utc": "2026-10-22T08:22:52.613642+00:00",
+  "open_tab_states": {
+    "non-repository-tabs": 72,
+    "running": 8,
+    "proposed": 6,
+    "skipped": 1
+  },
+  "unique_repository_tabs": 14,
+  "unknown_count": 0,
+  "owner_pages_count": 0,
+  "done_tabs_open": 0
+}

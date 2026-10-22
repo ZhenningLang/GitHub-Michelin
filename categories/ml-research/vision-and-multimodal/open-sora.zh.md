@@ -105,7 +105,7 @@ Open-Sora 是一个扩散 Transformer：它从“潜空间”里的纯噪声出�
 - **你只有一张 24 GB 的消费级显卡。** README 自己在 H100／H800 上的测试显示：单卡生成 256×256 片段、即使开了 `--offload True`，峰值显存也要 52.5 GB；单卡 768×768 要 1656 秒、60.3 GB。桌面显卡请换更小或量化过的模型——LTX-Video、Wan2.2 的 5B 版本，或者用 [stable-diffusion.cpp](../../on-device-ml/local-image-generation/stable-diffusion-cpp.zh.md) 跑量化的 Wan 权重。
 - **你想要节点图或图形界面。** [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md) 的 README 列出的视频工作流支持 Wan 2.1／2.2、LTX-Video、HunyuanVideo 1.5、CogVideoX 和 Mochi——没有 Open-Sora，所以你得自己写 `torchrun` 脚本。
 - **你需要长镜头或高分辨率。** 生成长度上限是 `num_frames` 小于 129（约 5 秒），分辨率只有 256px 和 768px 两档。更长的镜头只能拼接，或者换一个为长输出设计的模型。
-- **你要的是成片——脚本、配音、剪辑——而不是一段素材。** Open-Sora 每条提示词输出一段无声 MP4。要由 agent 驱动端到端出片，用 [video-production](../../video-production/INDEX.zh.md) 里的流水线，比如 [OpenMontage](../../video-production/open-montage.zh.md)，它把这类生成器当作其中一步来调用。
+- **你要的是成片——脚本、配音、剪辑——而不是一段素材。** Open-Sora 每条提示词输出一段无声 MP4。要由 agent 驱动端到端出片，用 [video-production](../../video-production/INDEX.zh.md) 里的流水线，比如 [OpenMontage](../../video-production/creation-workflows/open-montage.zh.md)，它把这类生成器当作其中一步来调用。
 - **你把“20 万美元”读成了“复现很便宜”。** 报告按每 H200 GPU 小时 2 美元计价，折算约 10 万 H200 GPU 小时量级 [推断]，训练文档的批大小也是按 140 GB 的 H200、`--nproc_per_node 8` 调的。如果你只想在几张卡上改造一个模型，去微调一个更小的开源模型，而不是重跑这份配方。
 
 ## 横向对比

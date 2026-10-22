@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "binary", "en": "Authorized binary and processor context", "zh": "有权分析的二进制与处理器上下文", "kind": "input"},
+    {"id": "sleigh", "en": "SLEIGH instruction templates emit p-code", "zh": "SLEIGH 指令模板生成 p-code", "technique": [1]},
+    {"id": "program", "en": "Program functions, types and references", "zh": "程序函数、类型与引用"},
+    {"id": "native", "en": "Persistent native decompiler via Java interface", "zh": "Java 接口复用原生反编译进程", "technique": [2]},
+    {"id": "view", "en": "C-like text for analyst correction", "zh": "供分析员修正的类 C 文本", "kind": "output"},
+    {"id": "batch", "en": "Pre-scripts, analysis and post-scripts", "zh": "前置脚本、分析与后置脚本", "technique": [3]},
+    {"id": "partial", "en": "Timeout status and possibly partial results", "zh": "超时状态与可能不完整的结果", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "binary", "to": "sleigh"},
+    {"from": "sleigh", "to": "program"},
+    {"from": "program", "to": "native"},
+    {"from": "native", "to": "view"},
+    {"from": "view", "to": "program", "en": "human annotation", "zh": "人工标注"},
+    {"from": "binary", "to": "batch", "style": "dashed", "en": "headless path", "zh": "无窗口路径"},
+    {"from": "batch", "to": "program", "style": "dashed"},
+    {"from": "batch", "to": "partial", "style": "dashed", "en": "if analysis times out", "zh": "分析超时时"}
+  ],
+  "sources": [
+    "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/Ghidra/Framework/SoftwareModeling/src/main/java/ghidra/app/plugin/processors/sleigh/SleighInstructionPrototype.java#L1001-L1038",
+    "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/Ghidra/Features/Decompiler/src/main/java/ghidra/app/decompiler/DecompInterface.java#L40-L80",
+    "https://github.com/NationalSecurityAgency/ghidra/blob/b8e9917e4c01959fe97ba94954731ed8cf2d201c/Ghidra/Features/Base/src/main/java/ghidra/app/util/headless/HeadlessAnalyzer.java#L1007-L1145"
+  ]
+}

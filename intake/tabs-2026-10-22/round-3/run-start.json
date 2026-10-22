@@ -1,0 +1,102 @@
+{
+  "base_commit": "e2498732dc2ebc21a2c56c53db62cfc4b0ae7ee6",
+  "utc_date": "2026-10-22",
+  "initial_new_candidates": 13,
+  "initial_retained_candidates": 6,
+  "initial_current_unique_candidates": 19,
+  "scope": "Round 3 continues the daily ledger. Prior round evidence remains immutable. Do not sum repeated retained subsets as new projects.",
+  "queue": [
+    {
+      "repo": "AgnesAI-Labs/agnes-harness",
+      "action": "add",
+      "page_at_start": "",
+      "private": false
+    },
+    {
+      "repo": "alchaincyf/deepseek-influence-report",
+      "action": "add",
+      "page_at_start": "",
+      "private": false
+    },
+    {
+      "repo": "alchaincyf/huashu-art-motion",
+      "action": "sync",
+      "page_at_start": "categories/video-production/huashu-art-motion.md",
+      "private": false
+    },
+    {
+      "repo": "debpalash/VoiceStudio",
+      "action": "sync",
+      "page_at_start": "categories/speech/voicestudio.md",
+      "private": false
+    },
+    {
+      "repo": "earthtojake/text-to-cad",
+      "action": "add",
+      "page_at_start": "",
+      "private": false
+    },
+    {
+      "repo": "heygen-com/hyperframes",
+      "action": "sync",
+      "page_at_start": "categories/video-production/render-engines/hyperframes.md",
+      "private": false
+    },
+    {
+      "repo": "hongqun/we-video",
+      "action": "add",
+      "page_at_start": "",
+      "private": false
+    },
+    {
+      "repo": "juliangarnier/anime",
+      "action": "sync",
+      "page_at_start": "categories/frontend-animation/anime.md",
+      "private": false
+    },
+    {
+      "repo": "KittenML/KittenTTS",
+      "action": "add",
+      "page_at_start": "",
+      "private": false
+    },
+    {
+      "repo": "mksglu/context-mode",
+      "action": "sync",
+      "page_at_start": "categories/agent-tooling/work-state/context-mode.md",
+      "private": false
+    },
+    {
+      "repo": "NationalSecurityAgency/ghidra",
+      "action": "add",
+      "page_at_start": "",
+      "private": false
+    },
+    {
+      "repo": "ranxianglei/billion-context",
+      "action": "add",
+      "page_at_start": "",
+      "private": false
+    },
+    {
+      "repo": "storytold/artcraft",
+      "action": "add",
+      "page_at_start": "",
+      "private": false
+    }
+  ],
+  "nonpublic_metadata_only": [
+    {
+      "alias": "private-candidate-1",
+      "private": true,
+      "license_detected": null,
+      "internal_content_read": false
+    },
+    {
+      "alias": "own-private-repository",
+      "private": true,
+      "license_detected": null,
+      "internal_content_read": false
+    }
+  ]
+}

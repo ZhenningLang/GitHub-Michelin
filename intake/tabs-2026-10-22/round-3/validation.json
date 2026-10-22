@@ -1,0 +1,49 @@
+{
+  "content_tree_commit": "2d4be95abba6af0ba4b334c57597bf4095b708bc",
+  "commands": {
+    "gates": {
+      "sha256": "d96fa0cd132941f0cc2ebeb79f6feab9fca19402c63b98eaf3dda98abb765f66",
+      "key_output": "204 category nodes, 956 EN + 956 ZH pages, 0 errors, 1584 warnings.",
+      "reverse_index": "reports are current",
+      "overflow_warnings": 0
+    },
+    "tests": {
+      "sha256": "a6ea4bdd15993cde8f7c70524c7dbf11a2a0ead562acf11e983c30fc2be63001",
+      "key_output": "Ran 483 tests in 39.519s; OK",
+      "skipped": 0
+    },
+    "scoped": {
+      "sha256": "7489ff643824e4cd05bf72d2ca904d501b1ba7b1c6f04d554d24ab9c28ac7c74",
+      "key_output": "16 pages; high 0; medium 0; low 0; No deterministic findings."
+    }
+  },
+  "companions": [
+    {
+      "directory": "intake/tabs-2026-10-21/report",
+      "exit_code": 0,
+      "result": "0 error(s), 0 warning(s)"
+    },
+    {
+      "directory": "intake/tabs-2026-10-22/report",
+      "exit_code": 0,
+      "result": "0 error(s), 0 warning(s)"
+    },
+    {
+      "directory": "intake/tabs-2026-10-22/round-3/report",
+      "exit_code": 0,
+      "result": "0 error(s), 0 warning(s)"
+    }
+  ],
+  "report_relative_links_resolve": 35,
+  "new_generated_svgs": 48,
+  "figure_specs": 16,
+  "card_machine_checks": "XML parse, no script/external href, rsvg-convert rasterization",
+  "visual_inspection": "Parent viewed 12 bilingual contact sheets covering all 48 new SVGs; no obvious clipping or obscured nodes observed. Static-document check only.",
+  "source_md_sha256": "652bf6afdb5fb28a2c69d41f1c1a21938f033a951a1872cda3c426d5f8ea9522",
+  "project_commits": {
+    "add": 8,
+    "fresh_sync": 5
+  },
+  "upstream_runtime_execution": false,
+  "verification_scope": "Atlas content and navigation, not upstream product certification"
+}

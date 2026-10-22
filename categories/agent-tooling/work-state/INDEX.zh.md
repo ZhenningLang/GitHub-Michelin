@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **billion-context** | 当前编码会话需要模型挑选区间写摘要，并能取回已存原文；接受代理路由和附加署名条款。 | B（5/6） | [→](billion-context.zh.md) |
 | **Headroom** | agent 每轮都把长串 JSON 和日志发给模型。Headroom 在本机压缩请求，并保留可按需取回的原文。 | B（5/6） | [→](headroom.zh.md) |
 | **beads** | 当 AI agent 跨会话丢失任务状态、你想在仓库里要一张可版本化、感知依赖的任务图时用它。 | B（5/6） | [→](beads.zh.md) |
 | **CCPM** | 当一个功能大到单次 agent 会话装不下、你想要从 PRD 到 epic 再到 GitHub Issues 的成文规格，加上在 git worktree 里并行的多个 agent 时用它——但它强制依赖 GitHub Issues，且 2026-03 之后再无提交。 | C（4/5） | [→](ccpm.zh.md) |
@@ -21,6 +22,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [billion-context](billion-context.zh.md) | ✅ | B（5/6） | 分层区间摘要与原文恢复；模型调用、路由兼容和两条更新通道仍需自己管理。 |
 | [Headroom](headroom.zh.md) | ✅ | B（5/6） | agent 每轮都把长串 JSON 和日志发给模型。Headroom 在本机压缩请求，并保留可按需取回的原文。 |
 | [beads](beads.zh.md) | ✅ | B（5/6） | 仓库内可版本化、感知依赖的 issue 图——当 agent 自己读写这份待办时最合身。 |
 | [CCPM](ccpm.zh.md) | ✅ | C（4/5） | 换来成文的意图、合并安全的并行，以及以 GitHub Issues 为共享事实源；代价是五阶段仪式在小活上纯属负担，还锁死在 GitHub 上。 |

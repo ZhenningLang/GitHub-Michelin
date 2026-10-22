@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "text-to-cad does", "zh": "text-to-cad 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the skills and prepare uv", "zh": "安装技能并准备 uv", "code": "npx skills add earthtojake/text-to-cad#latest"},
+    {"lane": "you", "en": "Give your agent the part dimensions and intended use", "zh": "告诉 agent 零件尺寸和用途"},
+    {"lane": "them", "en": "Guide the agent to write and run a Python model", "zh": "指导 agent 写并运行 Python 模型", "component": {"en": "CAD skill", "zh": "CAD 技能"}},
+    {"lane": "them", "en": "Build the declared STEP solid on your computer", "zh": "在本机生成声明的 STEP 实体", "component": {"en": "cadgen", "zh": "cadgen"}},
+    {"lane": "them", "en": "Guide saved-file measurements and snapshot review, then show the model", "zh": "指导读回测量和截图复查，再展示模型", "component": {"en": "CAD skill and local viewer", "zh": "CAD 技能与本地查看器"}}
+  ],
+  "value": {"en": "A source-editable solid and reviewable CAD files, not just an image of the requested part", "zh": "得到可改源码的实体和可复查的 CAD 文件，而不只是一张零件图片"},
+  "sources": [
+    "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/README.md#other-agents",
+    "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/skills/cad/SKILL.md#L53-L105",
+    "https://github.com/earthtojake/text-to-cad/blob/2f793659fb7bab537e2f00836e06448fc4087cb2/skills/cad/SKILL.md#L174-L227"
+  ]
+}

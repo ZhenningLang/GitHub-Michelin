@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "Agnes Harness does", "zh": "Agnes Harness 做的"},
+  "steps": [
+    {"lane": "you", "en": "Build the local runtime and start the loopback workbench", "zh": "构建本地运行时，启动回环工作台", "code": "pnpm --filter @agnes/cli build:local"},
+    {"lane": "you", "en": "Configure a model account and confirm the workspace", "zh": "配置模型账户，确认工作目录"},
+    {"lane": "you", "en": "Install the example tool; review its hashes and enable it", "zh": "安装示例工具，审核摘要后启用", "code": "file:./examples/packages/hot-tool-plugin"},
+    {"lane": "them", "en": "Admits the reviewed plugin and registers its text-statistics tool", "zh": "准入审核过的插件，注册文字统计工具", "component": {"en": "Package manager and Host", "zh": "包管理器与 Host"}},
+    {"lane": "you", "en": "Ask the model to call demo_text_stats on hello world", "zh": "要求模型调用工具统计 hello world", "code": "demo_text_stats"},
+    {"lane": "them", "en": "Runs the selected tool and records structured counts in the shared session", "zh": "执行选中的工具，把结构统计结果记入共享会话", "component": {"en": "Core and shared session", "zh": "Core 与共享会话"}}
+  ],
+  "value": {"en": "Reuse an installed business tool with a shared, checkable execution record", "zh": "复用已安装业务工具，并保留共享且可检查的执行记录"},
+  "sources": [
+    "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/docs/guide/install.md",
+    "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/docs/guide/quickstart.md",
+    "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/docs/guide/packages.md",
+    "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/docs/develop/backend.md",
+    "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/examples/packages/hot-tool-plugin/index.mjs"
+  ]
+}

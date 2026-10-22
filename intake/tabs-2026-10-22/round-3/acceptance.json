@@ -1,0 +1,132 @@
+{
+  "captured_at_utc": "2026-10-22T09:04:11.761609+00:00",
+  "round3": {
+    "new_candidates": 13,
+    "added": 8,
+    "synced_fresh": 5,
+    "new_proposed": 0,
+    "failed": 0,
+    "new_skipped": 0,
+    "synced_changed": 0,
+    "retained_proposed": 5,
+    "retained_own_skipped": 1,
+    "nonterminal": 0
+  },
+  "daily_ledger": {
+    "proposed": 5,
+    "skipped": 1,
+    "done": 13
+  },
+  "browser_acceptance": {
+    "open_unique_repositories": 6,
+    "physical_repository_tabs_by_state": {
+      "proposed": 6,
+      "skipped": 1
+    },
+    "non_repository_tabs_observed": 72,
+    "non_repository_close_operations": 0,
+    "owner_pages": [],
+    "unknown_repositories": 0,
+    "done_tabs_open": 0,
+    "all_non_done_retained": true
+  },
+  "cross_round": {
+    "previous_unique": 29,
+    "new_unique": 13,
+    "combined_unique": 42,
+    "retained_rows_not_double_counted": true
+  },
+  "fresh_pages_retained_dates": {
+    "alchaincyf/huashu-art-motion": "2026-10-18",
+    "debpalash/VoiceStudio": "2026-10-01",
+    "heygen-com/hyperframes": "2026-09-15",
+    "juliangarnier/anime": "2026-09-28",
+    "mksglu/context-mode": "2026-09-15"
+  },
+  "project_results": [
+    {
+      "repo": "AgnesAI-Labs/agnes-harness",
+      "action": "add",
+      "status": "done",
+      "page": "categories/agent-frameworks/agent-runtimes/agent-services/agnes-harness.md"
+    },
+    {
+      "repo": "alchaincyf/deepseek-influence-report",
+      "action": "add",
+      "status": "done",
+      "page": "categories/investment-finance/deepseek-influence-report.md"
+    },
+    {
+      "repo": "alchaincyf/huashu-art-motion",
+      "action": "sync",
+      "status": "done",
+      "page": "categories/video-production/creation-workflows/huashu-art-motion.md"
+    },
+    {
+      "repo": "debpalash/VoiceStudio",
+      "action": "sync",
+      "status": "done",
+      "page": "categories/speech/voicestudio.md"
+    },
+    {
+      "repo": "earthtojake/text-to-cad",
+      "action": "add",
+      "status": "done",
+      "page": "categories/cad/text-to-cad.md"
+    },
+    {
+      "repo": "heygen-com/hyperframes",
+      "action": "sync",
+      "status": "done",
+      "page": "categories/video-production/render-engines/hyperframes.md"
+    },
+    {
+      "repo": "hongqun/we-video",
+      "action": "add",
+      "status": "done",
+      "page": "categories/video-production/creation-workflows/we-video.md"
+    },
+    {
+      "repo": "juliangarnier/anime",
+      "action": "sync",
+      "status": "done",
+      "page": "categories/frontend-animation/anime.md"
+    },
+    {
+      "repo": "KittenML/KittenTTS",
+      "action": "add",
+      "status": "done",
+      "page": "categories/speech/kitten-tts.md"
+    },
+    {
+      "repo": "mksglu/context-mode",
+      "action": "sync",
+      "status": "done",
+      "page": "categories/agent-tooling/work-state/context-mode.md"
+    },
+    {
+      "repo": "NationalSecurityAgency/ghidra",
+      "action": "add",
+      "status": "done",
+      "page": "categories/dev-utilities/data-tools/ghidra.md"
+    },
+    {
+      "repo": "ranxianglei/billion-context",
+      "action": "add",
+      "status": "done",
+      "page": "categories/agent-tooling/work-state/billion-context.md"
+    },
+    {
+      "repo": "storytold/artcraft",
+      "action": "add",
+      "status": "done",
+      "page": "categories/video-production/creation-workflows/artcraft.md"
+    }
+  ],
+  "privacy": {
+    "anonymous_nonpublic_records": 2,
+    "new_publication_checked": true,
+    "historical_git_identifiers_not_rewritten": true
+  },
+  "runtime_code_or_gate_changes": false
+}

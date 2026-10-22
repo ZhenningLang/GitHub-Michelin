@@ -58,6 +58,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **billion-context** | 当前编码会话靠模型挑选区间写摘要，并能取回已存原文；需接受代理与非标准署名条款。 | LicenseRef-MIT-Attribution | B（5/6） | [中](categories/agent-tooling/work-state/billion-context.zh.md) · [EN](categories/agent-tooling/work-state/billion-context.md) |
 | **Skills Hub** | 跨工具、项目和 git 同步设备的中央技能库；先核对文件管理权。 | MIT | B（6/6） | [中](categories/agent-tooling/harness-extensions/skills-hub.zh.md) · [EN](categories/agent-tooling/harness-extensions/skills-hub.md) |
 | **Headroom** | agent 每轮都把长串 JSON 和日志发给模型。Headroom 在本机压缩请求，并保留可按需取回的原文。 | Apache-2.0 | B（5/6） | [EN](categories/agent-tooling/work-state/headroom.md) · [中](categories/agent-tooling/work-state/headroom.zh.md) |
 | **beads** | 当 AI agent 跨会话丢失任务状态、你想在仓库里要一张可版本化、感知依赖的任务图时用它。 | MIT | B（5/6） | [中](categories/agent-tooling/work-state/beads.zh.md) · [EN](categories/agent-tooling/work-state/beads.md) |
@@ -273,6 +274,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **OpenAI Agents SDK** | 当产品已经跑在 OpenAI 模型上，想用几个原语就拿到工具循环、智能体交接和追踪时用它——但运行没有 Temporal 这类基础设施就扛不过崩溃，非 OpenAI 厂商只能走 beta 适配器。 | MIT | A（6/6） | [EN](categories/agent-frameworks/agent-runtimes/agent-sdks/openai-agents-sdk.md) · [中](categories/agent-frameworks/agent-runtimes/agent-sdks/openai-agents-sdk.zh.md) |
 | **Claude Commerce Agents** | 你要在一个卖东西的产品（零售、旅游、票务、电信）里做助手，想直接拿到购物/商家 agent 这一层（prompt、护栏、UI 回填、暂存审批）——当作一份读来 vendor 的蓝图，而不是装来用的依赖。 | Apache-2.0 | C（5/6） | [中](categories/agent-frameworks/agent-runtimes/agent-services/commerce-agents.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-services/commerce-agents.md) |
 | **eve** | 你的 agent 要为一个人或一个 webhook 等上好几天、要扛住重新部署，还要能在 Slack／Discord／Teams 上应答——并且是一个可部署的 TypeScript 服务。 | Apache-2.0 | A（6/6） | [中](categories/agent-frameworks/agent-runtimes/agent-services/eve.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-services/eve.md) |
+| **Agnes Harness** | 本地共享会话和经审核的业务工具、面板；仅源码早期预览版，普通插件同进程受信执行。 | Apache-2.0 | C（6/6） | [中](categories/agent-frameworks/agent-runtimes/agent-services/agnes-harness.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-services/agnes-harness.md) |
 | **Open Executive** | 小公司要把领导问题收成一个自托管高管声音——背后是专家 agent、公司文档和 Slack——而不是自己组装框架，也不是个人传呼机。 | Apache-2.0 | B（4/6） | [中](categories/agent-frameworks/agent-runtimes/agent-services/open-executive.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-services/open-executive.md) |
 | **OpenAgentCore** | 你的应用要通过 OpenAI Agents API，在自己的基础设施上按会话开沙箱驱动 Codex、Claude Code 或 MiniMax Code——但它只有十天大、还是不做兼容承诺的 v0.0.x，各 harness 功能不对齐，也没有按会话的网络隔离。 | MIT | C（5/6） | [中](categories/agent-frameworks/agent-runtimes/agent-services/openagentcore.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-services/openagentcore.md) |
 | **OpenBot** | 公司要受治理的 AI 同事——每个有自己的浏览器加 shell 容器、每个动作先过策略再留审计、任意 AG-UI agent 可接入——但它是 6 周大的 alpha 模板，缺了 CopilotKit 的 Intelligence 服务就起不来。 | MIT | B（6/6） | [中](categories/agent-frameworks/agent-runtimes/agent-services/openbot.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-services/openbot.md) |
@@ -459,6 +461,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **App Store Connect CLI** | 脚本化管理苹果发布文案、TestFlight 与审核；独立 Go 二进制，凭据和审批边界仍由你负责。 | MIT | B（6/6） | [中](categories/dev-utilities/app-store-connect-cli.zh.md) · [EN](categories/dev-utilities/app-store-connect-cli.md) |
 | **xtool** | 从 Linux、WSL 或 macOS 构建签名 SwiftPM iOS 应用；仍受苹果开发包与账号约束。 | MIT | B（6/6） | [中](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/xtool.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/xtool.md) |
 | **REA** | 通过 agent 用本地证据检查无源码应用；原生分析引擎需另配。 | MIT | B（5/6） | [中](categories/dev-utilities/data-tools/rea.zh.md) · [EN](categories/dev-utilities/data-tools/rea.md) |
+| **Ghidra** | 用关联指令、类 C 函数与持久标注理解有权分析的原生二进制；须准备 Java 与原生组件。 | Apache-2.0 | A（6/6） | [中](categories/dev-utilities/data-tools/ghidra.zh.md) · [EN](categories/dev-utilities/data-tools/ghidra.md) |
 | **DevToys** | 当你想把 JWT/Base64 解码、JSON 格式化、diff、哈希等约 30 个开发小工具收进一个离线桌面应用、不再把密钥粘进在线网站时用它——但所有 2.x 构建都是预发布版，更新稀疏且成批出现。 | MIT | B（5/6） | [中](categories/dev-utilities/data-tools/devtoys.zh.md) · [EN](categories/dev-utilities/data-tools/devtoys.md) |
 | **CyberChef** | 当你需要在浏览器里离线串联编解码、加解密、压缩和数据分析变换、且数据不能外发时用它。 | Apache-2.0 | A（6/6） | [中](categories/dev-utilities/data-tools/cyberchef.zh.md) · [EN](categories/dev-utilities/data-tools/cyberchef.md) |
 | **Cockpit** | 当你需要为少数几台 Linux 服务器用浏览器做 systemd 原生的图形化管理时用它。 | LGPL-2.1-or-later | B（5/6） | [中](categories/dev-utilities/ops-infra/cockpit.zh.md) · [EN](categories/dev-utilities/ops-infra/cockpit.md) |
@@ -881,19 +884,21 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
-| **Stickman Video Director** | 确认火柴人方案后取得带连续性约束的提示词；生成和剪辑由外部工具完成。 | MIT | C（4/5） | [中](categories/video-production/stickman-video-director.zh.md) · [EN](categories/video-production/stickman-video-director.md) |
-| **huashu-art-motion** | 需要美术指导、Canvas 动画和实测交付门禁时。 | MIT | C（5/6） | [中](categories/video-production/huashu-art-motion.zh.md) · [EN](categories/video-production/huashu-art-motion.md) |
-| **shuohao-skills** | 短剧每生成一段，人物座位就换一次。这组技能先把小说变成人物、美术、剧本、站位和分镜记录，再交给制作环节。 | Apache-2.0 | C（5/6） | [EN](categories/video-production/shuohao-skills.md) · [中](categories/video-production/shuohao-skills.zh.md) |
-| **OpenMontage** | 当你想让 AI 编程助手从一句自然语言描述出发，完成研究、脚本、素材生成、合成与渲染，产出完整视频（解说、预告片、动画、纪录片蒙太奇）时使用。 | AGPL-3.0 | B（5/6） | [中](categories/video-production/open-montage.zh.md) · [EN](categories/video-production/open-montage.md) |
-| **anything2explainer** | 当你想让 Claude Code / Codex skill 把一个主题做成带配音的 MG 科普讲解视频（中文或英文）时用它——9 阶段多 agent 流水线带人工确认点和量化 QC；固定黑底风格，PolyForm 非商用许可。 | PolyForm-Noncommercial-1.0.0 | C（3/5） | [中](categories/video-production/anything2explainer.zh.md) · [EN](categories/video-production/anything2explainer.md) |
-| **Hypit** | 当你想让 agent 把某条特定爆款视频克隆成可编辑、词锚定的 SVML workflow，并通过换脸/换词/换 B-roll 批量出变体时用它——agent 优先、非 OSI 许可证、非常年轻。 | Hypit Open Source License（modified Apache-2.0，非 OSI） | C（4/6） | [中](categories/video-production/hypit.zh.md) · [EN](categories/video-production/hypit.md) |
-| **MoneyPrinterTurbo** | 当你需要一台可自托管的 MIT 家电（WebUI + API），把主题变成近零边际成本的口播库存素材短视频时用它——不做爆款结构克隆，不需要 coding agent。 | MIT | B（6/6） | [中](categories/video-production/moneyprinter-turbo.zh.md) · [EN](categories/video-production/moneyprinter-turbo.md) |
-| **video-shotcraft** | 当 coding agent 应该用 150+ 张镜头配方卡、真实页面截图、2.5D 运镜和一支已验收的 Remotion 模板，把你的产品或网页做成电影感宣传片时用它——仅约 2 个月历史、无 tagged release，且产出 Remotion composition，受引擎「3 人以上需付费」的许可门槛约束。 | Apache-2.0 | B（5/6） | [中](categories/video-production/video-shotcraft.zh.md) · [EN](categories/video-production/video-shotcraft.md) |
-| **OpenCreator** | 当双语频道或本地化台要把*这一条*视频做字幕、配音、竖屏重切，同一项目里还要写稿和生成，并且已经有 Codex 登录时用它——不是从零做片的管线，也没有 Linux 桌面版。 | Apache-2.0 | B（6/6） | [中](categories/video-production/open-creator.zh.md) · [EN](categories/video-production/open-creator.md) |
-| **video-use** | 当 coding agent 该对着一文件夹素材、靠打包转写稿来剪——先确认方案再 ffmpeg——而不是生成底片时用它；硬依赖 ElevenLabs Scribe，22 次提交却有 2.7 万 star。 | MIT | B（4/5） | [中](categories/video-production/video-use.zh.md) · [EN](categories/video-production/video-use.md) |
-| **SeeCut** | 当 coding agent 该把真人/数字人口播 A-roll 精剪成高网感动效短视频时用它：画面铺真证据截图，每版都要过一个能看视频的 AI 评委（agy 调 Gemini），交付成片加可选的剪映分层草稿；PolyForm 非商用，验证时仅 4 天龄。 | PolyForm-Noncommercial-1.0.0 | D（4/6） | [中](categories/video-production/seecut.zh.md) · [EN](categories/video-production/seecut.md) |
+| **We-Video** | 复用分步口播审核工作台与带检查的渲染器；先补齐任务接口、自备账号素材和提示词。 | MIT | C（4/6） | [中](categories/video-production/creation-workflows/we-video.zh.md) · [EN](categories/video-production/creation-workflows/we-video.md) |
+| **Stickman Video Director** | 确认火柴人方案后取得带连续性约束的提示词；生成和剪辑由外部工具完成。 | MIT | C（4/5） | [中](categories/video-production/creation-workflows/stickman-video-director.zh.md) · [EN](categories/video-production/creation-workflows/stickman-video-director.md) |
+| **huashu-art-motion** | 需要美术指导、Canvas 动画和实测交付门禁时。 | MIT | C（5/6） | [中](categories/video-production/creation-workflows/huashu-art-motion.zh.md) · [EN](categories/video-production/creation-workflows/huashu-art-motion.md) |
+| **shuohao-skills** | 短剧每生成一段，人物座位就换一次。这组技能先把小说变成人物、美术、剧本、站位和分镜记录，再交给制作环节。 | Apache-2.0 | C（5/6） | [EN](categories/video-production/creation-workflows/shuohao-skills.md) · [中](categories/video-production/creation-workflows/shuohao-skills.zh.md) |
+| **OpenMontage** | 当你想让 AI 编程助手从一句自然语言描述出发，完成研究、脚本、素材生成、合成与渲染，产出完整视频（解说、预告片、动画、纪录片蒙太奇）时使用。 | AGPL-3.0 | B（5/6） | [中](categories/video-production/creation-workflows/open-montage.zh.md) · [EN](categories/video-production/creation-workflows/open-montage.md) |
+| **anything2explainer** | 当你想让 Claude Code / Codex skill 把一个主题做成带配音的 MG 科普讲解视频（中文或英文）时用它——9 阶段多 agent 流水线带人工确认点和量化 QC；固定黑底风格，PolyForm 非商用许可。 | PolyForm-Noncommercial-1.0.0 | C（3/5） | [中](categories/video-production/creation-workflows/anything2explainer.zh.md) · [EN](categories/video-production/creation-workflows/anything2explainer.md) |
+| **Hypit** | 当你想让 agent 把某条特定爆款视频克隆成可编辑、词锚定的 SVML workflow，并通过换脸/换词/换 B-roll 批量出变体时用它——agent 优先、非 OSI 许可证、非常年轻。 | Hypit Open Source License（modified Apache-2.0，非 OSI） | C（4/6） | [中](categories/video-production/editing-workflows/hypit.zh.md) · [EN](categories/video-production/editing-workflows/hypit.md) |
+| **MoneyPrinterTurbo** | 当你需要一台可自托管的 MIT 家电（WebUI + API），把主题变成近零边际成本的口播库存素材短视频时用它——不做爆款结构克隆，不需要 coding agent。 | MIT | B（6/6） | [中](categories/video-production/creation-workflows/moneyprinter-turbo.zh.md) · [EN](categories/video-production/creation-workflows/moneyprinter-turbo.md) |
+| **video-shotcraft** | 当 coding agent 应该用 150+ 张镜头配方卡、真实页面截图、2.5D 运镜和一支已验收的 Remotion 模板，把你的产品或网页做成电影感宣传片时用它——仅约 2 个月历史、无 tagged release，且产出 Remotion composition，受引擎「3 人以上需付费」的许可门槛约束。 | Apache-2.0 | B（5/6） | [中](categories/video-production/creation-workflows/video-shotcraft.zh.md) · [EN](categories/video-production/creation-workflows/video-shotcraft.md) |
+| **OpenCreator** | 当双语频道或本地化台要把*这一条*视频做字幕、配音、竖屏重切，同一项目里还要写稿和生成，并且已经有 Codex 登录时用它——不是从零做片的管线，也没有 Linux 桌面版。 | Apache-2.0 | B（6/6） | [中](categories/video-production/editing-workflows/open-creator.zh.md) · [EN](categories/video-production/editing-workflows/open-creator.md) |
+| **video-use** | 当 coding agent 该对着一文件夹素材、靠打包转写稿来剪——先确认方案再 ffmpeg——而不是生成底片时用它；硬依赖 ElevenLabs Scribe，22 次提交却有 2.7 万 star。 | MIT | B（4/5） | [中](categories/video-production/editing-workflows/video-use.zh.md) · [EN](categories/video-production/editing-workflows/video-use.md) |
+| **SeeCut** | 当 coding agent 该把真人/数字人口播 A-roll 精剪成高网感动效短视频时用它：画面铺真证据截图，每版都要过一个能看视频的 AI 评委（agy 调 Gemini），交付成片加可选的剪映分层草稿；PolyForm 非商用，验证时仅 4 天龄。 | PolyForm-Noncommercial-1.0.0 | D（4/6） | [中](categories/video-production/editing-workflows/seecut.zh.md) · [EN](categories/video-production/editing-workflows/seecut.md) |
 | **claude-video** | 让 Claude “看视频”的 `/watch` skill：下载视频、抽帧、转录，并把这些证据交给 Claude。 | MIT | C（6/6） | [中](categories/media-processing/video-audio/speech-and-subtitles/claude-video.zh.md) · [EN](categories/media-processing/video-audio/speech-and-subtitles/claude-video.md) |
-| **Lemo-Opuscar** | 让编程助手按风格导演短片，逐帧渲染、配音并检查阅读时间；代码 MIT，画廊媒体另用 CC BY。 | MIT | C（4/6） | [EN](categories/video-production/lemo-opuscar.md) · [中](categories/video-production/lemo-opuscar.zh.md) |
+| **Lemo-Opuscar** | 让编程助手按风格导演短片，逐帧渲染、配音并检查阅读时间；代码 MIT，画廊媒体另用 CC BY。 | MIT | C（4/6） | [EN](categories/video-production/creation-workflows/lemo-opuscar.md) · [中](categories/video-production/creation-workflows/lemo-opuscar.zh.md) |
+| **ArtCraft** | 先摆机位和人物姿势，再交云端生成图片／视频；桌面许可不覆盖受限后端和排除授权的演示素材。 | MIT OR Apache-2.0 | A（6/6） | [中](categories/video-production/creation-workflows/artcraft.zh.md) · [EN](categories/video-production/creation-workflows/artcraft.md) |
 
 
 #### video-production / render-engines
@@ -1258,6 +1263,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **KittenTTS** | 需要微型 CPU 英文语音，或独立的较大克隆模型；新版权重要商用登记，并受收入及融资门槛限制。 | Apache-2.0 代码；新版权重自定义许可 | B（5/6） | [中](categories/speech/kitten-tts.zh.md) · [EN](categories/speech/kitten-tts.md) |
 | **yovoice** | 你想比较克隆旁白和歌曲版本，却不想维护 Python 模型环境。yovoice 把本地 audio.cpp 推理接成桌面工作台、命令行和 MCP 服务。 | Apache-2.0 | B（6/6） | [EN](categories/speech/yovoice.md) · [中](categories/speech/yovoice.zh.md) |
 | **SpeechBrain** | 当你需要在一套统一的 PyTorch recipe 代码库上训练和适配语音模型（ASR、说话人识别、语音分离）时用它——但它以研究和训练为先，生产部署和跨版本 API 稳定性得你自己负责。 | Apache-2.0 | B（5/6） | [中](categories/speech/speechbrain.zh.md) · [EN](categories/speech/speechbrain.md) |
 | **Voicebox** | 当你想要一个自托管的语音 I/O 工作室——克隆音色 TTS、热键 Whisper 听写、MCP/REST 让 agent 发声三合一，且是 MIT——时用它；但它是年轻的单人项目，发布节奏已停滞、自动粘贴目前仅 macOS。 | MIT | B（6/6） | [中](categories/speech/voicebox.zh.md) · [EN](categories/speech/voicebox.md) |
@@ -1400,6 +1406,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | **HiThink Financial-API** | 一把 API Key 取同花顺官方 A 股数据（CLI、MCP、REST、Python，长历史落本地 DuckDB）——但 GitHub 仓库已于 2026-10 消失，客户端代码只剩冻结的 Gitee 镜像，npm CLI 和托管服务仍可用 | MIT | "?"（1/6） | [中](categories/investment-finance/financial-api.zh.md) · [EN](categories/investment-finance/financial-api.md) |
 | **AKShare** | 免 Key 的 Python 库，把中国市场的公开财经页面封装成一次调用返回 pandas DataFrame | MIT | A（6/6） | [中](categories/investment-finance/akshare.zh.md) · [EN](categories/investment-finance/akshare.md) |
 | **Tushare** | Python SDK 加托管 tushare.pro 服务，凭 token 与积分档取 A 股数据 | BSD-3-Clause | D（5/6） | [中](categories/investment-finance/tushare.zh.md) · [EN](categories/investment-finance/tushare.md) |
+| **DeepSeek Influence Report** | 拆解模型采用研究档案与 Python 报告流水线；重建路径需修，结论需独立核验 | MIT AND CC-BY-4.0 | D（4/6） | [中](categories/investment-finance/deepseek-influence-report.zh.md) · [EN](categories/investment-finance/deepseek-influence-report.md) |
 
 ### education-tutoring
 
@@ -1487,6 +1494,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **text-to-cad** | 给现有 agent 配本地 Python 转 STEP 建模、产物检查和查看器；默认遥测需明确选择。 | MIT | B（6/6） | [中](categories/cad/text-to-cad.zh.md) · [EN](categories/cad/text-to-cad.md) |
 | **SolidCraft** | 内置 MCP 的可编辑参数化零件；几何栈年轻，发布包未签名。 | MIT OR Apache-2.0 | C（5/6） | [中](categories/cad/solidcraft.zh.md) · [EN](categories/cad/solidcraft.md) |
 | **FreeCAD** | 当你需要一套可编辑的参数化历史加真 B-rep 实体模型——画草图、加约束、Pad/Pocket，之后改一个尺寸让零件自行重建——文件在本地、带 Python API、不用买席位时用它。 | LGPL-2.1-or-later | A（5/6） | [中](categories/cad/freecad.zh.md) · [EN](categories/cad/freecad.md) |
 

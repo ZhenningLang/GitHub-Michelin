@@ -79,7 +79,7 @@ huashu-art-motion 等动画技能可提供制作工艺，但不替代工作台�
 ## 何时不用
 
 - **需要模型厂商中立。** 评估可配置模型接口的 [Easel](easel.zh.md)。SoloMCN 执行者是 Claude Code，OpenAI 生图密钥不能替代它。
-- **只要从主题生成视频。** 用 [MoneyPrinterTurbo](../video-production/moneyprinter-turbo.zh.md)，不必管理频道、浏览器档案和助手会话。
+- **只要从主题生成视频。** 用 [MoneyPrinterTurbo](../video-production/creation-workflows/moneyprinter-turbo.zh.md)，不必管理频道、浏览器档案和助手会话。
 - **既有助手只缺小红书工具。** 用 [xiaohongshu-mcp](xiaohongshu-mcp.zh.md)，无需完整系列与视频工作空间。
 - **任务必须隔离凭据并最小化工具。** 使用独立沙箱助手或窄发布器。工具任务共享广泛文件、命令、网页工具和已配置凭据，流程审批不是进程沙箱。
 - **X 采集必须符合平台条款。** 使用授权 API 来源或关闭采集。README 明确承认 Cookie 账号池搜索违反 X 条款，会有受限、封号风险；发布可继续手动。
@@ -90,7 +90,7 @@ huashu-art-motion 等动画技能可提供制作工艺，但不替代工作台�
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Easel](easel.zh.md) | ✅ | 要 OpenClaw 与可配置模型接口的中文平台工作台选 Easel；主要投入 Claude Code 和视频工艺时选 SoloMCN。 | 运行时与账号模型不同；SoloMCN 另有 YouTube、X 适配，仍需实账号验证。 |
-| [MoneyPrinterTurbo](../video-production/moneyprinter-turbo.zh.md) | ✅ | 重复口播短片、不想运行自主编码空间时选前者；调研、自定义工艺和发布衔接选 SoloMCN。 | 简单生成设备，或以更大机器、账号暴露换取助手能力。 |
+| [MoneyPrinterTurbo](../video-production/creation-workflows/moneyprinter-turbo.zh.md) | ✅ | 重复口播短片、不想运行自主编码空间时选前者；调研、自定义工艺和发布衔接选 SoloMCN。 | 简单生成设备，或以更大机器、账号暴露换取助手能力。 |
 | [xiaohongshu-mcp](xiaohongshu-mcp.zh.md) | ✅ | 既有助手要单平台工具选前者；频道状态、系列风格和制作要集中管理时选 SoloMCN。 | 窄集成或完整工作台，两者都受浏览器和平台变化影响。 |
 
 ## 快速上手

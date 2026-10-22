@@ -1,0 +1,75 @@
+[
+  {
+    "repo": "breferrari/obsidian-mind",
+    "previous_sha": "fae7be467fc5e23bf9d51df7207d41f0c07e2754",
+    "current_sha": "fae7be467fc5e23bf9d51df7207d41f0c07e2754",
+    "unchanged": true,
+    "checked_at_utc": "2026-10-22T08:02:54.871649+00:00",
+    "status": "proposed",
+    "reused_evidence": "../verification.json",
+    "source_urls": [
+      "https://github.com/breferrari/obsidian-mind/commit/fae7be467fc5e23bf9d51df7207d41f0c07e2754",
+      "https://github.com/breferrari/obsidian-mind/blob/fae7be467fc5e23bf9d51df7207d41f0c07e2754/LICENSE#L1-L13",
+      "https://github.com/kepano/obsidian-skills/blob/3ccff5338ea700537839b21900aa5358a0402c98/LICENSE#L1-L13",
+      "https://github.com/breferrari/obsidian-mind/tree/fae7be467fc5e23bf9d51df7207d41f0c07e2754",
+      "https://github.com/kepano/obsidian-skills/tree/3ccff5338ea700537839b21900aa5358a0402c98",
+      "https://github.com/breferrari/obsidian-mind/blob/fae7be467fc5e23bf9d51df7207d41f0c07e2754/.claude/scripts/lib/memory-recall.ts#L216-L245",
+      "https://github.com/breferrari/obsidian-mind/blob/fae7be467fc5e23bf9d51df7207d41f0c07e2754/.claude/scripts/lib/session-start.ts#L130-L209"
+    ]
+  },
+  {
+    "repo": "dzhng/skills",
+    "previous_sha": "8e74252ad975acff3de6305299cf82c4b14cc026",
+    "current_sha": "8e74252ad975acff3de6305299cf82c4b14cc026",
+    "unchanged": true,
+    "checked_at_utc": "2026-10-22T08:03:00.536632+00:00",
+    "status": "proposed",
+    "reused_evidence": "../verification.json",
+    "source_urls": [
+      "https://github.com/dzhng/skills/commit/8e74252ad975acff3de6305299cf82c4b14cc026",
+      "https://github.com/dzhng/skills/compare/dc8f546c3adaa615ab86e8328449ae6efe23aca4...8e74252ad975acff3de6305299cf82c4b14cc026",
+      "https://github.com/dzhng/skills/blob/8e74252ad975acff3de6305299cf82c4b14cc026/LICENSE#L1-L13",
+      "https://github.com/helloianneo/ian-xiaohei-illustrations/blob/686575741a61e2c0be5e4c6d3615ebf6217dd322/LICENSE#L1-L13",
+      "https://github.com/dzhng/skills/tree/8e74252ad975acff3de6305299cf82c4b14cc026/skills/graphics/xiaohei-illustrations",
+      "https://github.com/dzhng/skills/blob/8e74252ad975acff3de6305299cf82c4b14cc026/README.md#L189-L205",
+      "https://github.com/dzhng/skills/commit/a424d1504b5e81090f1dc10a7f69b7bfe2d5a595",
+      "https://github.com/dzhng/skills/pull/11",
+      "https://github.com/dzhng/skills/blob/8e74252ad975acff3de6305299cf82c4b14cc026/skills/engineering/audit-choices/SKILL.md#L96-L136",
+      "https://github.com/dzhng/skills/blob/8e74252ad975acff3de6305299cf82c4b14cc026/skills/visual/screenshot-critique/scripts/receipts.mjs#L9-L19",
+      "https://github.com/dzhng/skills/blob/8e74252ad975acff3de6305299cf82c4b14cc026/skills/engineering/write-tests/SKILL.md#L10-L17"
+    ]
+  },
+  {
+    "repo": "JimLiu/baoyu-design",
+    "previous_sha": "6530033592bf7fa58bc1a5a2a2ad278da45213a9",
+    "current_sha": "6530033592bf7fa58bc1a5a2a2ad278da45213a9",
+    "unchanged": true,
+    "checked_at_utc": "2026-10-22T08:03:07.131133+00:00",
+    "status": "proposed",
+    "reused_evidence": "../verification.json",
+    "source_urls": [
+      "https://github.com/JimLiu/baoyu-design/commit/6530033592bf7fa58bc1a5a2a2ad278da45213a9",
+      "https://github.com/JimLiu/baoyu-design/blob/6530033592bf7fa58bc1a5a2a2ad278da45213a9/README.md#credits--license",
+      "https://github.com/JimLiu/baoyu-design/blob/6530033592bf7fa58bc1a5a2a2ad278da45213a9/LICENSE",
+      "https://github.com/JimLiu/baoyu-design/blob/6530033592bf7fa58bc1a5a2a2ad278da45213a9/skills/baoyu-design/references/upstream-sync/provenance.json",
+      "https://github.com/JimLiu/baoyu-design/blob/6530033592bf7fa58bc1a5a2a2ad278da45213a9/skills/baoyu-design/references/upstream-sync/apply-report.json"
+    ]
+  },
+  {
+    "repo": "liseami/CCBaga",
+    "previous_sha": "bdfb90ceadfc5fae6772ffff597bddecb0b73cc3",
+    "current_sha": "bdfb90ceadfc5fae6772ffff597bddecb0b73cc3",
+    "unchanged": true,
+    "checked_at_utc": "2026-10-22T08:03:11.532663+00:00",
+    "status": "proposed",
+    "reused_evidence": "../verification.json",
+    "source_urls": [
+      "https://github.com/liseami/CCBaga/commit/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3",
+      "https://github.com/liseami/CCBaga/tree/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3",
+      "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/NOTICE.md#vendored-interface",
+      "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/LICENSE",
+      "https://github.com/liseami/CCBaga/tree/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/vendor/cromma-ui",
+      "https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/src-tauri/src/identities/store.rs#L452-L630"
+    ]
+  }
+]
