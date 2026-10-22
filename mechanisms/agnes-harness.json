@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "pkg", "en": "Plugin source and declared capabilities", "zh": "插件源码与声明能力", "kind": "input"},
+    {"id": "trust", "en": "Integrity and trust gates", "zh": "完整性与信任关卡", "technique": [2]},
+    {"id": "tool", "en": "Reviewed in-process tool", "zh": "审核过的同进程工具"},
+    {"id": "approval", "en": "Policy and approval decision", "zh": "策略与审批决定"},
+    {"id": "effect", "en": "Persist intent and dispatch phase", "zh": "保存动作意图与派发阶段", "technique": [1]},
+    {"id": "external", "en": "External execution and result", "zh": "外部执行与结果", "kind": "external"},
+    {"id": "recovery", "en": "Classify retry or unknown outcome", "zh": "判断有限重试或未知结果", "technique": [1]},
+    {"id": "ledger", "en": "Session event hash chain", "zh": "会话事件摘要链", "technique": [3]},
+    {"id": "verify", "en": "Verify history before execution resumes", "zh": "恢复执行前校验历史", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "pkg", "to": "trust"},
+    {"from": "trust", "to": "tool"},
+    {"from": "tool", "to": "approval"},
+    {"from": "approval", "to": "effect"},
+    {"from": "effect", "to": "external"},
+    {"from": "external", "to": "ledger", "en": "record result and settlement", "zh": "记录结果与结算"},
+    {"from": "effect", "to": "recovery", "en": "after interruption", "zh": "中断后", "style": "dashed"},
+    {"from": "recovery", "to": "ledger", "en": "preserve uncertainty", "zh": "保留不确定结果"},
+    {"from": "ledger", "to": "verify"}
+  ],
+  "sources": [
+    "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/packages/package-manager/src/trust-gate.ts",
+    "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/packages/core/src/step/tool-recovery.ts",
+    "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/packages/core/src/step/tools.ts",
+    "https://github.com/AgnesAI-Labs/agnes-harness/blob/98bc11572ba162bcdf6ce2b29612a44508faf951/packages/core/src/log/integrity.ts"
+  ]
+}
