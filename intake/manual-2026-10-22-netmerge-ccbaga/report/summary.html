@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>net-merge、CCBaga 与 Astro 定向收录报告</title>
+<style>
+:root { color-scheme: light; --bg: #f8fafc; --panel: #ffffff; --text: #111827; --muted: #64748b; --border: #dbe3ef; --accent: #1f4b99; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.55; }
+main { max-width: 960px; margin: 0 auto; padding: 32px 20px 48px; }
+header { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin-bottom: 18px; }
+section { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+h1, h2, h3, h4, h5, h6 { line-height: 1.2; margin: 1.4em 0 0.5em; }
+header h1 { margin-top: 0; }
+p { margin: 0.75em 0; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+ul { padding-left: 1.4rem; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #0f172a; color: #e5e7eb; padding: 14px; border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+td code, th code { overflow-wrap: anywhere; }
+th { background: #eef4ff; }
+.meta { color: var(--muted); font-size: 0.92rem; }
+.diagram-figure { margin: 1.2rem 0; padding: 12px; background: #ffffff; border: 1px solid var(--border); border-radius: 10px; overflow-x: auto; text-align: center; }
+.diagram-figure svg { height: auto; } /* 不设 max-width：宽图保持自然尺寸，figure 的 overflow-x 负责滚动 */
+table.state-transitions { margin-top: -0.4rem; font-size: 0.92rem; }
+table.state-transitions caption { caption-side: top; text-align: left; color: var(--muted); font-size: 0.82rem; padding: 0 0 6px; }
+table.state-transitions td.st-num { width: 2.2em; text-align: center; font-size: 1.1rem; color: var(--accent); }
+.image-figure { margin: 1.2rem 0; padding: 12px; background: #ffffff; border: 1px solid var(--border); border-radius: 10px; text-align: center; }
+.image-figure img { max-width: 100%; height: auto; border-radius: 6px; }
+.image-figure figcaption { color: var(--muted); font-size: 0.85rem; margin-top: 8px; }
+.badge { display: inline-block; background: #e0ecff; color: var(--accent); border-radius: 999px; padding: 2px 10px; font-size: 0.82rem; margin-right: 8px; }
+blockquote.alert { margin: 1rem 0; padding: 10px 14px; border-left: 4px solid var(--accent); background: #f2f6fd; border-radius: 0 8px 8px 0; }
+blockquote.alert p { margin: 0.3em 0; }
+blockquote.alert .alert-label { margin: 0 0 4px; font-weight: 600; font-size: 0.86rem; color: var(--accent); }
+blockquote.alert-tip { border-left-color: #047857; background: #eefaf4; }
+blockquote.alert-tip .alert-label { color: #047857; }
+blockquote.alert-warning { border-left-color: #b45309; background: #fdf6ec; }
+blockquote.alert-warning .alert-label { color: #b45309; }
+blockquote.alert-important { border-left-color: #7c3aed; background: #f6f2fd; }
+blockquote.alert-important .alert-label { color: #7c3aed; }
+blockquote.alert-caution { border-left-color: #b91c1c; background: #fdf2f2; }
+blockquote.alert-caution .alert-label { color: #b91c1c; }
+sup.regid { font-size: 0.66em; color: var(--muted); margin-left: 2px; white-space: nowrap; font-family: ui-monospace, monospace; }
+pre.wireframe { white-space: pre; overflow-x: auto; background: #fffdf5; color: #1f2937; border: 1px dashed #c8b98a; border-radius: 10px; padding: 14px 16px; line-height: 1.35; position: relative; }
+pre.wireframe::before { content: "页面示意（线框）"; display: block; color: #8a7a4a; font-size: 0.78rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin-bottom: 8px; }
+.layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 0 8px; max-width: 1220px; margin: 0 auto; }
+.layout main { margin: 0; min-width: 0; }
+.sidebar { position: sticky; top: 0; align-self: start; max-height: 100vh; overflow-y: auto; box-sizing: border-box; padding: 32px 0 32px 20px; font-size: 0.9rem; }
+.back-link { display: inline-block; background: var(--panel); border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; margin-bottom: 10px; font-weight: 600; }
+.toc-title { color: var(--muted); font-size: 0.8rem; margin: 8px 0 4px; }
+ul.toc { list-style: none; padding-left: 0; margin: 0; }
+ul.toc li { margin: 2px 0; }
+ul.toc a { display: block; padding: 4px 8px; border-radius: 6px; color: var(--text); overflow-wrap: anywhere; }
+ul.toc a:hover { background: #e8eefc; color: var(--accent); text-decoration: none; }
+h2[id], h3[id] { scroll-margin-top: 16px; }
+@media (max-width: 1100px) { .layout { display: block; } .sidebar { position: static; max-height: none; padding: 20px 20px 0; } }
+</style>
+</head>
+<body>
+<main>
+<header>
+<span class="badge">research</span>
+<h1>net-merge、CCBaga 与 Astro 定向收录报告</h1>
+<div class="meta">Source: intake/manual-2026-10-22-netmerge-ccbaga/report/summary.md</div>
+<div class="meta">Generated: 2026-10-22T12:00:27+00:00</div>
+</header>
+<section>
+<h1>net-merge、CCBaga 与 Astro 定向收录报告</h1>
+<p>CCBaga 的第三方 UI 权利与身份恢复缺陷仍未解决；三项上游都没有运行实测。 本轮新建 net-merge、CCBaga 两对中英文页，Astro 已有页按 fresh 保留。收录是信息整理，不是安装推荐、安全认证或再分发批准。</p>
+<h2 id="本轮结果与范围">本轮结果与范围</h2>
+<table><thead><tr><th>项目</th><th>本轮处理</th><th>可读入口</th></tr></thead><tbody><tr><td>net-merge</td><td>新增，固定源码核验并逐项提交</td><td><a href="../../../categories/networking/net-merge.zh.md">中文</a> · <a href="../../../categories/networking/net-merge.md">English</a></td></tr><tr><td>CCBaga</td><td>按用户明确裁决带警告新增；许可未补证</td><td><a href="../../../categories/agent-tooling/local-identities/ccbaga.zh.md">中文</a> · <a href="../../../categories/agent-tooling/local-identities/ccbaga.md">English</a></td></tr><tr><td>Astro</td><td>已有页，32 天未超 90 天门槛；不重核、改日或重评分</td><td><a href="../../../categories/web-ui/frameworks/site-frameworks/astro.zh.md">中文</a> · <a href="../../../categories/web-ui/frameworks/site-frameworks/astro.md">English</a></td></tr></tbody></table>
+<p>本轮共三项：两项新增、一项 fresh，改事实的 sync 与失败均为零。Astro 是用户中途追加的仓库，不再读取其短链。 每项各有独立研究任务，共用索引由主会话串行集成。只处理指定 URL，不读取、扫描或关闭浏览器标签，不自动收录其他比较项目。</p>
+<p>CCBaga 已在前三轮候选中，net-merge 与 Astro 不在。因此本会话候选集合从四十二增至四十四，而不是四十五；这是候选去重口径，不是全库页数。历史三轮报告和验证记录仍按原观察时点理解，当前变化见<a href="../state.json">本轮状态</a>。</p>
+<h2 id="net-merge：用上闲置链路，但不把一条连接变快">net-merge：用上闲置链路，但不把一条连接变快</h2>
+<p>你在电脑上同时接 Wi-Fi 和手机移动数据，游戏更新或多文件下载却只使用其中一条。net-merge 在本机接住 TCP／UDP，把不同新连接交给不同网卡。它不需要远端汇聚服务器，代价是每条连接固定一条路径，没有统一出口 IP，也不迁移已经建立的会话。</p>
+<h3 id="什么时候值得考虑">什么时候值得考虑</h3>
+<p>应用会开多条独立连接，且两条链路确实有独立上游时，它能成为工作站多出口工具的候选。若 Wi-Fi 和网线最后都挤在同一条已饱和宽带上，多一张网卡不能消除共同瓶颈。 若目标是一条 TCP 下载或复用连接超过单链路速度，应研究带远端汇聚的多路径方案，而不是直接相加网络标称带宽。若目标是整个局域网的出口策略，应选路由器层方案；若目标是按域名或应用选择代理，应看规则代理工具。</p>
+<h3 id="源码改变了哪些-README-直觉">源码改变了哪些 README 直觉</h3>
+<ul><li><strong>分配对象是套接字，不是每个请求。</strong> TCP 建连前绑定源地址和网卡；UDP 会话也固定出口。UDP 选完后立即释放调度器的活跃负载槽，不能把这个指标当持续 UDP 会话数。</li><li><strong>探测成功只说明 TCP 可达。</strong> 探测按接口与地址族绑定到公共 IP 的 443 端口，不验证 TLS、HTTP、DNS、UDP 或门户认证。调度器会从已通退到未知，再退到失败层；不能承诺失败链路绝不接收新流。</li><li><strong>撤路由不等于恢复会话。</strong> 平台清理会尝试恢复状态，但 Windows 的部分共享／转发设置可能等后续启动或清理才恢复，macOS 专属默认路由也可能残留。安装器还涉及提权、软件源和免密控制规则，不能当普通无权限托盘程序。</li></ul>
+<p>流量权重来自已经中转的收发字节，整张网卡的系统字节是另一套统计。前者不是主动带宽测试，后者也不能证明流量经过本工具。IPv6 的默认策略与捕获失败还可能分别导致拒绝或绕行，不能把它当 VPN 断网保护。 本轮固定版本为 <a href="https://github.com/rohit267/net-merge/commit/fe343c69b2020bed415e8ed669cee5a7f34d8918"><code>fe343c69</code></a>。主会话独立读过<a href="https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/engine/probe.go">探测</a>、<a href="https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/engine/flowconn.go">TCP／UDP 字节与负载槽</a>和 <a href="https://github.com/rohit267/net-merge/blob/fe343c69b2020bed415e8ed669cee5a7f34d8918/internal/platform/install_darwin.go">macOS 安装权限</a>，没有安装或改网。</p>
+<p><strong>选择结论：</strong> 适合有多连接负载、能承担系统网络改动的试验性工作站。十天仓龄和上游自测速度不足以支持无人值守网关或“崩溃永不掉网”的保证。项目原作 MIT 不覆盖 Windows Wintun DLL 的独立预编译分发条件。</p>
+<h2 id="CCBaga：值得读恢复设计，不宜当日常账号的唯一退路">CCBaga：值得读恢复设计，不宜当日常账号的唯一退路</h2>
+<p>CCBaga 处理的是默认 Claude Code／Desktop 的本地登录与文件状态，另可关联独立浏览器资料。它和只改供应商地址的配置切换器不同：会读取并替换选定状态，关闭识别到的客户端，涉及真实凭据和不可逆清理。</p>
+<h3 id="为什么这次收录，许可却仍未解决">为什么这次收录，许可却仍未解决</h3>
+<p>主会话当日再次查询默认分支，仍为 <code>bdfb90ceadfc5fae6772ffff597bddecb0b73cc3</code>。 重新读取的 <a href="https://github.com/liseami/CCBaga/blob/bdfb90ceadfc5fae6772ffff597bddecb0b73cc3/NOTICE.md#vendored-interface">NOTICE</a>仍要求确认 <code>vendor/cromma-ui</code> 及其 Pika 子集的再分发条款，补齐必要声明；根 MIT 仅覆盖项目原作代码。 用户知悉该事实后明确选择“带明确警告收录”。这次继续的依据是<a href="../ccbaga-decision.md">维护者裁决</a>，不是上游补证，也不是重复执行自动解除门槛。它只改变信息索引状态，不代表批准安装、复制 UI、再分发或违反服务条款。</p>
+<p>其余四项旧 proposed 没有获得放行。旧提议记录保留历史理由，当前台账的 CCBaga 行另记本次已提交页和裁决，并明确本任务没有关闭任何标签。</p>
+<h3 id="这次新核的决定性问题">这次新核的决定性问题</h3>
+<p><a href="https://github.com/liseami/CCBaga/issues/49">问题 #49</a>报告正常生成路径导致身份保存／恢复失败。<a href="https://github.com/liseami/CCBaga/pull/50">修复 #50</a>在本次查询时仍 open、未合并，基点就是已读版本。 静态读取可见恢复白名单依赖当前路径定义；这和上游失败报告相符，但本轮没有用真实账号复现。不能把“代码有恢复日志”或“修复 PR 已提出”写成日常往返已经可靠。</p>
+<h3 id="三条不能混淆的边界">三条不能混淆的边界</h3>
+<ul><li><strong>加密不等于隔离同用户程序。</strong> 每份归档使用认证加密，主密钥仍存在本地，依赖文件权限；解包还会产生受限权限的明文暂存。浏览器资料不在这份加密归档里。</li><li><strong>有快照不等于每个按钮都能撤销。</strong> 普通切换先验收、留恢复记录并尝试回滚；直接身份删除、残留清理与浏览器全清理是另一条路径，不新增备份、不经废纸篓，中途失败可能已删掉部分内容。</li><li><strong>环境测量不等于匿名或登录被接受。</strong> 绿色结果比较有限的地区、语言、时区和设备等观测，不授予服务权限，也不证明 DNS／WebRTC 无泄漏、账号不会被关联或浏览器引擎安全。</li></ul>
+<p>可选网络部署技能还属于独立安装与授权范围，不是本地账号切换顺带获得的权限。本轮没有接触 SSH 凭据、运行清理或修改远端服务器。 <strong>选择结论：</strong> 目前只建议研究源码或使用可丢弃样本评估；日常账号应保留官方登录路径和独立备份。根许可、机器雷达及本索引均不能填补第三方 UI 权利和实际恢复验收。</p>
+<h2 id="Astro：已有内容站框架条目，本轮不伪造一次刷新">Astro：已有内容站框架条目，本轮不伪造一次刷新</h2>
+<p>Astro 页核验于 <strong>2026-09-20</strong>，至本轮 UTC 日期为三十二天，未超默认九十天门槛。主会话确认仓库仍公开，并读取既有双语页；没有访问今日上游源码、重新计算健康度、修改原日期或迁移页面结构。</p>
+<p>以下用途与限制来自旧页，不是今天重核的版本承诺：当博客、文档、产品或营销站以内容为主，只需少量交互时，Astro 的 HTML 优先与局部交互组件有价值。静态构建省去常驻应用服务；按需渲染则增加托管适配器和服务端运维。 若需求是现成的版本化文档预设，旧页偏向 Docusaurus；若必须共用既有 Next.js 应用运行时，旧页偏向 Next.js／Nextra。它不是生成 PDF、印刷文档或给个人 agent 增加常驻能力的工具。</p>
+<p>旧页版本、Node 下限和评分都保留其原时间边界。旧健康正文与 frontmatter 的采用包、响应样本口径存在差异，本轮没有校正；许可轴的问号也没有被擅自改成法律结论。没有把其他项目的依赖故障扩写成 Astro 的普遍已证实缺陷。 <strong>选择结论：</strong> 已有索引入口足够覆盖本次追加请求；采用新版本前再核实该版本要求，不把 fresh 等同于刚重新读过上游。</p>
+<h2 id="这些项目是否值得吸收到个人-harness">这些项目是否值得吸收到个人 harness</h2>
+<p>本轮没有足够证据支持 medium／high 的直接接入建议。三者都不是当前必须新增的全局组件，也没有收益实测。 net-merge 属独立高权限网络工具，不自动进入网络初始化；CCBaga 的先验收、持久恢复记录和不可逆删除提示可作设计参考，但不能照搬仍有缺陷的实现；Astro 只在另有内容站需求时才是技术候选。 这里只记录思想，不安装、不修改 dotfiles，也不开实验。把连通性探测当业务验收、把归档成功当恢复保证，都是本轮值得带走的反例。</p>
+<h2 id="分类、统计与验证证据">分类、统计与验证证据</h2>
+<p>CCBaga 初稿放入编排类，造成十三页告警。主会话按实际主要任务改归新建的<a href="../../../categories/agent-tooling/local-identities/INDEX.md">本地身份工具</a>，只调整这对未发布的新页与入口；既有编排类仍十二项，旧项目没有搬迁或事实刷新。 net-merge 进入 networking 后为十二项。Astro 双语页保持字节不变，不新增重复页；没有为比较替代品扩收仓库。</p>
+<p>完成两项新内容与分类集成后，主会话实际复跑：</p>
+<pre data-lang="text"><code>make test: Ran 483 tests in 30.763s; OK; no skipped.
+make gates: 205 category nodes, 958 EN + 958 ZH pages, 0 errors, 1586 warnings.
+reverse_index check: reports are current, no full mislabels.
+net-merge scoped quality: 2 pages; high 0, medium 0, low 0.
+CCBaga scoped quality: 2 pages; high 0, medium 0, low 0.</code></pre>
+<p>两对新页共十二张 SVG、四份流程／机制图源。十二图均解析并栅格化，主会话实际查看六张双语拼图，未见明显文字截断或节点遮挡；这只是静态文档配图检查，不是上游 UI、网络或账号验收。 实际命令与接线断言汇总见<a href="../validation.json">验证账本</a>，不以基线数字替代最终内容树结果。 各项目的固定源码、worth check 与范围记录见<a href="../projects/net-merge.json">net-merge 证据</a>、<a href="../projects/ccbaga.json">CCBaga 证据</a>、<a href="../projects/astro.json">Astro fresh 证据</a>。CCBaga 的 423 项 worker 检查是静态引用、树与文档断言，不是 423 次账号恢复测试；483 项测试也只属于本索引工具。</p>
+<table><thead><tr><th>交付物</th><th>文件与内容</th><th>实际接通</th></tr></thead><tbody><tr><td>两项新增</td><td>四个有源正文，十二项技术机制，许可／权限与失败边界完整</td><td>双语分类、README、图文与反向索引均接通。</td></tr><tr><td>Astro 已有页</td><td>两页真实读过，32／90 天门槛与原文件哈希已检查</td><td>保留既有入口、核验日、评分与内容。</td></tr><tr><td>当前裁决</td><td>用户对 CCBaga 的警告收录原话和边界已记录</td><td>当前匿名台账与本地游标只更新同一行，旧批次证据不倒改。</td></tr><tr><td>完整报告</td><td>本文是事实源，HTML 是派生阅读版</td><td>渲染、链接与独立审查以本轮发布记录为准。</td></tr></tbody></table>
+<p>Inner-loop evidence：主会话复跑的工具单测、全库门禁与新增页范围检查；没有修改测试、schema、评分器、CI 或门禁阈值。 Acceptance evidence：三个指定仓库均有真实入口；两项新增逐项目提交、Astro 日期与字节不变、用户裁决及当前状态相符。不扫描或关闭既有标签；报告阅读版会单独打开本地预览，不以关闭仓库标签作为本任务验收。 Holdout / unseen evidence：不做带宽或恢复效果实验，以固定源码失败分支、公开 issue／PR、许可原文与历史页回归替代；没有上游运行时留出集。 Holdout 来源类别：真实公开来源与源码抽样。 预期值来源：用户请求、CCBaga 明确裁决和仓库 schema 外部契约。 本次改动相对冻结点的位置：以已合并的 <code>496d546a</code> 为基点，只改内容及必需索引，不改运行时或判定侧。</p>
+<h2 id="未验证与下一步">未验证与下一步</h2>
+<p>没有安装网络驱动、改系统路由或 sudoers、读取个人凭据、切换身份、执行清理、启动指纹浏览器或部署 VPS。上游带宽、崩溃恢复、账号有效性、跨平台表现和完整权利清理均不算通过。 雷达是机器信号：net-merge 的根 MIT 不替代 Wintun 条款，CCBaga 的许可 A 不覆盖复制 UI；Astro 则沿用旧评分。未手改分数、图片或工具，不把已披露的机器局限伪装成已修复。</p>
+<p>Boundary decisions：只为本次新 CCBaga 页增加 local-identities 子类，纠正初稿主分类，不迁移旧页；CCBaga 在用户裁决后转为信息收录，第三方缺口仍在；本次不操作标签，也不放行其他旧提议。 公开发布仅走本轮单独授权的 PR／CI 路径，不沿用前一轮授权；最终审查、CI 与合并状态以本轮 PR 为准。</p>
+</section>
+</main>
+
+</body>
+</html>

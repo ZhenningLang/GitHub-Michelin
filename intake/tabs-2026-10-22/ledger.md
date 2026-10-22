@@ -8,7 +8,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | breferrari/obsidian-mind | propose | proposed |  | 默认分支 SHA 未变；本轮补读双方 MIT；同 blob 与旧全文扫描证据复用，不冒充复跑；原作者声明保留缺口待裁决；no leftover Q&A | breferrari/obsidian-mind |
 | dzhng/skills | propose | proposed |  | 默认分支新增一个测试策略提交；已读四文件差异，小黑子树 blob 映射未变、许可声明缺口未补；继续 proposed；no leftover Q&A | dzhng/skills |
 | JimLiu/baoyu-design | propose | proposed |  | 默认分支 SHA 与旧证据相同，提取内容再许可材料未在版本化文件中补齐；复用旧证据，不作侵权判决；no leftover Q&A | jimliu/baoyu-design |
-| liseami/CCBaga | propose | proposed |  | 默认分支 SHA 未变；本轮补读 NOTICE，复制 UI 的独立许可声明仍待补证；根 MIT 不替代第三方许可；no leftover Q&A | liseami/ccbaga |
+| liseami/CCBaga | add | done | categories/agent-tooling/local-identities/ccbaga.md | 定向收录；维护者确认带许可警告，缺口仍在；提交d58922a8；本任务不操作浏览器标签，不声称标签已关闭；no leftover Q&A | liseami/ccbaga |
 | private-candidate-1 | propose | proposed |  | 非公开候选；仅核元数据，不公开身份或内部内容；保留标签待裁决；no leftover Q&A |  |
 | own-private-repository | skip | skipped |  | 自有非公开项目；按范围跳过，不读内部内容；标签保留；no leftover Q&A |  |
 | AgnesAI-Labs/agnes-harness | add | done | categories/agent-frameworks/agent-runtimes/agent-services/agnes-harness.md | 第三轮已新增双语页与生成图；门禁及范围扫描通过；提交770df94f；仅静态研究；no leftover Q&A | agnesai-labs/agnes-harness |
