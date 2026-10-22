@@ -1,0 +1,173 @@
+{
+  "recorded_at_utc": "2026-10-22T03:40:03.809002+00:00",
+  "scope": "one primary pinned technique source per new project, not every citation",
+  "passed": 17,
+  "sources": [
+    {
+      "repo": "aicodeking/leanrea",
+      "page": "categories/agent-skills/security/leanrea.md",
+      "source": "https://github.com/aicodeking/leanrea/blob/09ba4aa0217f82cd880f855a60b877f59f39b22b/leanrea/SKILL.md",
+      "exit": 0,
+      "bytes": 8374,
+      "sha256": "53581bd7fb1fae4352ab43252e67b84667b68895a68e372b99d302b58d9c782d",
+      "error": "",
+      "source_capture": "earlier same-batch successful HTTP read"
+    },
+    {
+      "repo": "amontlabs/lcu",
+      "page": "categories/desktop-automation/lcu.md",
+      "source": "https://github.com/amontlabs/lcu/blob/99d0759a7610e38251037759a69fcdbef816a8c2/lcu/runtime.mjs",
+      "exit": 0,
+      "bytes": 32016,
+      "sha256": "79d4e489ebb85c4c26ded00ee3a5f5f82d484a0a07210042db0ad62cc63e4de4",
+      "error": "",
+      "source_capture": "earlier same-batch successful HTTP read"
+    },
+    {
+      "repo": "Bennettxai/FounderOS",
+      "page": "categories/agent-tooling/supervision-surfaces/agent-cockpits/founderos.md",
+      "source": "https://github.com/Bennettxai/FounderOS/blob/fb974bfcdf529cb6c8faeb1473d561d26e3d103a/lib/paths.ts",
+      "exit": 0,
+      "bytes": 3901,
+      "sha256": "7e2cee661071eaa59fd08f96a8106e0e64546f30bdfdeb89a391ac0c6d460872",
+      "error": "",
+      "source_capture": "earlier same-batch successful HTTP read"
+    },
+    {
+      "repo": "emdash-cms/emdash",
+      "page": "categories/content-management/emdash.md",
+      "source": "https://github.com/emdash-cms/emdash/blob/333abdeae27093db6ef9df9ecb8ae26eeea8dde6/packages/core/src/schema/registry.ts",
+      "exit": 0,
+      "bytes": 89484,
+      "sha256": "8620c1d44d7ac5f0a63bde6b68aa4f261d2d28cc8899ce758ed367b74643afc2",
+      "error": "",
+      "source_capture": "earlier same-batch successful HTTP read"
+    },
+    {
+      "repo": "gamedev-skills/awesome-gamedev-agent-skills",
+      "page": "categories/agent-skills/engineering/awesome-gamedev-agent-skills.md",
+      "source": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/0a70cfc64672d512c5b5b6006b5dcb5cf90dbdbd/router/SKILL.md",
+      "exit": 0,
+      "bytes": 15374,
+      "sha256": "548b9c354f4bc152607b4f00f575f40786d28be92d1f4354c8802437f958488e",
+      "error": "",
+      "source_capture": "earlier same-batch successful HTTP read"
+    },
+    {
+      "repo": "IvanMurzak/Unity-MCP",
+      "page": "categories/game-dev/unity-mcp.md",
+      "source": "https://github.com/IvanMurzak/Unity-MCP/blob/c89aec4da7bc1d328f9d6813077598d30dceddbc/Unity-MCP-Plugin/Packages/com.ivanmurzak.unity.mcp/Editor/Scripts/Utils/UnitySkillFileGenerator.cs",
+      "exit": 0,
+      "bytes": 4572,
+      "sha256": "64b165315116b9bc5d1fd450e7487deb4ae97ee753b463e30cc8342a485c274c",
+      "error": "",
+      "source_capture": "earlier same-batch successful HTTP read"
+    },
+    {
+      "repo": "kividbio/kividb",
+      "page": "categories/databases/database-engines/kividb.md",
+      "source": "https://github.com/kividbio/kividb/blob/5b7addee851c6f04a4c0728b466d363a6eec2118/src/store/mod.rs",
+      "exit": 0,
+      "bytes": 20046,
+      "sha256": "220d072dbc508f8b5c8e75395ab6fa7d57c6c0b61cfc8898a68be973c33d3914",
+      "error": "",
+      "source_capture": "earlier same-batch successful HTTP read"
+    },
+    {
+      "repo": "microg/GmsCore",
+      "page": "categories/android-system-services/microg-gmscore.md",
+      "source": "https://github.com/microg/GmsCore/blob/32bc8954ff872d0e1a05ddfae81561b6dbecef69/play-services-core/build.gradle",
+      "exit": 0,
+      "bytes": 8723,
+      "sha256": "0cb3240652f383fd12e67a8058449614a70b641db805564e25ba6fd01b96bd64",
+      "error": "",
+      "source_capture": "earlier same-batch successful HTTP read"
+    },
+    {
+      "repo": "public-clis/twitter-cli",
+      "page": "categories/social-media-management/twitter-cli.md",
+      "source": "https://github.com/public-clis/twitter-cli/blob/7c634e0d396b1e7af9f63315b414925fe4f29ae7/twitter_cli/auth.py",
+      "exit": 0,
+      "bytes": 24793,
+      "sha256": "98d08b0cb76ad308c974e62cac483e5c5bcc71662b32a54e3a081d571ea4f7b9",
+      "error": "",
+      "source_capture": "earlier same-batch successful HTTP read"
+    },
+    {
+      "repo": "Renhuai123/ziwei-doushu",
+      "page": "categories/traditional-divination/ziwei-doushu.md",
+      "source": "https://github.com/Renhuai123/ziwei-doushu/blob/1059c347231c636bd86ddb78fd8ed430d5de8d2a/lib/ziwei/algorithm.ts",
+      "exit": 0,
+      "bytes": 36104,
+      "sha256": "18a85a569c6ef942db8b02d2a0dca035bca0f13a369b0088aec1e3f513309d15",
+      "error": "",
+      "source_capture": "earlier same-batch successful HTTP read"
+    },
+    {
+      "repo": "scosman/Biscotti",
+      "page": "categories/meeting-intelligence/biscotti.md",
+      "source": "https://github.com/scosman/Biscotti/blob/273e3ff10cab1b14314685da697bc5ac53eb19d1/Packages/AudioCapture/Sources/AudioCapture/LiveSystemCaptureEngine.swift",
+      "exit": 0,
+      "bytes": 37763,
+      "sha256": "e1f16b255ececda577796872153ae9c1238a0c0193a3d20161001878c074754b",
+      "error": "",
+      "source_capture": "earlier same-batch successful HTTP read"
+    },
+    {
+      "repo": "zai-org/ZCode",
+      "page": "categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/zcode.md",
+      "source": "https://github.com/zai-org/ZCode/blob/3c5b227649371507ddc4eb46ac5133afe6db1cab/apps/zcode-cli/packages/core/src/hooks/workspace-hook-trust-evaluation.ts",
+      "exit": 0,
+      "bytes": 3631,
+      "sha256": "0fa39efa62f23df6542d771d01bcdf859ce2dd98314a779f71c3a655314d6f5f",
+      "error": "",
+      "source_capture": "earlier same-batch successful HTTP read"
+    },
+    {
+      "repo": "Zleap-AI/SAG",
+      "page": "categories/rag-retrieval/structured-retrieval/sag.md",
+      "source": "https://github.com/Zleap-AI/SAG/blob/d3c882e676a01f59b64b639880b2bfceaa504da6/apps/api/sag_api/sag/engine_manager.py",
+      "exit": 0,
+      "bytes": 49529,
+      "sha256": "ed66c20b7da870cfaa1443045a9aba3cb380536fc166af04a69ee01f2e620f1b",
+      "error": "",
+      "source_capture": "earlier same-batch successful HTTP read"
+    },
+    {
+      "repo": "hanshuaikang/nezha",
+      "page": "categories/agent-tooling/supervision-surfaces/agent-cockpits/nezha.md",
+      "source": "https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/git.rs",
+      "exit": 0,
+      "bytes": 67209,
+      "sha256": "b61dc1c67cac6bb044392c7e4597a2406ab74bc29e80cff5e9984240a9dcb955",
+      "source_capture": "additional same-batch successful HTTP read"
+    },
+    {
+      "repo": "geekjourneyx/md2wechat-skill",
+      "page": "categories/social-media-management/md2wechat-skill.md",
+      "source": "https://github.com/geekjourneyx/md2wechat-skill/blob/a8e2900033e5c9ee152a629e108fe57228ba31e6/internal/inspect/inspect.go",
+      "exit": 0,
+      "bytes": 23562,
+      "sha256": "d8d9110ff3b4a45e4e83d427ad4d9bc1fc6c2fa9ddb10be3e76b624729574f2a",
+      "source_capture": "additional same-batch successful HTTP read"
+    },
+    {
+      "repo": "SoMarkAI/OXR",
+      "page": "categories/document-parsing/oxr.md",
+      "source": "https://github.com/SoMarkAI/OXR/blob/62fbca8ef6c7c63b75b799fc8081f3eb6e667553/oxr/pipeline/layout.py",
+      "exit": 0,
+      "bytes": 3699,
+      "sha256": "1ea601fa67081a6ec28a6a598e74cc53382258f409f1f3591ec69b62308d9da1",
+      "source_capture": "additional same-batch successful HTTP read"
+    },
+    {
+      "repo": "isjiamu/gzh-design-skill",
+      "page": "categories/agent-skills/ai-writing/content-production/gzh-design-skill.md",
+      "source": "https://github.com/isjiamu/gzh-design-skill/blob/750a50dffdc4abb5e853b98136dad13a57e64ce3/references/theme-index.md",
+      "exit": 0,
+      "bytes": 3218,
+      "sha256": "b865d0abd50c346d11b643f749ef2b4292d907913a6c7ad899b74c59e2e2c0e8",
+      "source_capture": "additional same-batch successful HTTP read"
+    }
+  ]
+}

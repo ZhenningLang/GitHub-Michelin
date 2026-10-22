@@ -16,6 +16,7 @@
 ## 自动验证
 
 - 完整新增内容树的 `make test`：`Ran 483 tests in 34.158s`，`OK`，无 skipped。
+- 脱敏公开树再次执行 `make test`：`Ran 483 tests in 32.606s`，`OK`，无 skipped；`make gates` 同为 202 节点、948 对页面、0 errors。
 - 最后项目合入后的 `make gates`：`202 category nodes, 948 EN + 948 ZH pages, 0 errors, 1572 warnings.`，退出码零。
 - 每个新增项目的双语 scoped quality 均为 `No deterministic findings.`；不是把全仓存量报告项说成清零。
 - 反向索引为 `reports are current, no full mislabels`；两处 overflow 均已消除。
@@ -23,6 +24,8 @@
 - 验收脚本对真实数据输出：`29 terminal rows`、`17 bilingual pairs`、`34 specs`、`102 parseable SVGs`、`0 done tabs open`、`0 unmatched repository tabs`。
 
 台账和逐页／资产摘要见 `verification/acceptance.json`。原始取证缓存、私有候选身份、凭据与本机路径不随公开材料发布。
+每个新增项目抽查一条固定技术源码路径，17／17 读取成功；其中复用本批先前 13 次 HTTP 读取，另补 4 次。只证明这些源路径可达，不冒称每条引文都独立复核，详见 `verification/source-path-sample.json`。
+最终阅读版由隔离 worker 重渲染：`wrote intake/tabs-2026-10-21/report/summary.html headings=9 profile=research diagram=code`；`check_companion_set: 0 error(s), 0 warning(s)`；无本机路径、脚本或远端资产，`open` 退出码零。未做 HTML 浏览器截图目检。
 
 ## 审查与覆盖
 

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chrome 项目收录与选型总结</title>
+<style>
+:root { color-scheme: light; --bg: #f8fafc; --panel: #ffffff; --text: #111827; --muted: #64748b; --border: #dbe3ef; --accent: #1f4b99; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.55; }
+main { max-width: 960px; margin: 0 auto; padding: 32px 20px 48px; }
+header { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin-bottom: 18px; }
+section { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+h1, h2, h3, h4, h5, h6 { line-height: 1.2; margin: 1.4em 0 0.5em; }
+header h1 { margin-top: 0; }
+p { margin: 0.75em 0; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+ul { padding-left: 1.4rem; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #0f172a; color: #e5e7eb; padding: 14px; border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+td code, th code { overflow-wrap: anywhere; }
+th { background: #eef4ff; }
+.meta { color: var(--muted); font-size: 0.92rem; }
+.diagram-figure { margin: 1.2rem 0; padding: 12px; background: #ffffff; border: 1px solid var(--border); border-radius: 10px; overflow-x: auto; text-align: center; }
+.diagram-figure svg { height: auto; } /* 不设 max-width：宽图保持自然尺寸，figure 的 overflow-x 负责滚动 */
+table.state-transitions { margin-top: -0.4rem; font-size: 0.92rem; }
+table.state-transitions caption { caption-side: top; text-align: left; color: var(--muted); font-size: 0.82rem; padding: 0 0 6px; }
+table.state-transitions td.st-num { width: 2.2em; text-align: center; font-size: 1.1rem; color: var(--accent); }
+.image-figure { margin: 1.2rem 0; padding: 12px; background: #ffffff; border: 1px solid var(--border); border-radius: 10px; text-align: center; }
+.image-figure img { max-width: 100%; height: auto; border-radius: 6px; }
+.image-figure figcaption { color: var(--muted); font-size: 0.85rem; margin-top: 8px; }
+.badge { display: inline-block; background: #e0ecff; color: var(--accent); border-radius: 999px; padding: 2px 10px; font-size: 0.82rem; margin-right: 8px; }
+blockquote.alert { margin: 1rem 0; padding: 10px 14px; border-left: 4px solid var(--accent); background: #f2f6fd; border-radius: 0 8px 8px 0; }
+blockquote.alert p { margin: 0.3em 0; }
+blockquote.alert .alert-label { margin: 0 0 4px; font-weight: 600; font-size: 0.86rem; color: var(--accent); }
+blockquote.alert-tip { border-left-color: #047857; background: #eefaf4; }
+blockquote.alert-tip .alert-label { color: #047857; }
+blockquote.alert-warning { border-left-color: #b45309; background: #fdf6ec; }
+blockquote.alert-warning .alert-label { color: #b45309; }
+blockquote.alert-important { border-left-color: #7c3aed; background: #f6f2fd; }
+blockquote.alert-important .alert-label { color: #7c3aed; }
+blockquote.alert-caution { border-left-color: #b91c1c; background: #fdf2f2; }
+blockquote.alert-caution .alert-label { color: #b91c1c; }
+sup.regid { font-size: 0.66em; color: var(--muted); margin-left: 2px; white-space: nowrap; font-family: ui-monospace, monospace; }
+pre.wireframe { white-space: pre; overflow-x: auto; background: #fffdf5; color: #1f2937; border: 1px dashed #c8b98a; border-radius: 10px; padding: 14px 16px; line-height: 1.35; position: relative; }
+pre.wireframe::before { content: "页面示意（线框）"; display: block; color: #8a7a4a; font-size: 0.78rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin-bottom: 8px; }
+.layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 0 8px; max-width: 1220px; margin: 0 auto; }
+.layout main { margin: 0; min-width: 0; }
+.sidebar { position: sticky; top: 0; align-self: start; max-height: 100vh; overflow-y: auto; box-sizing: border-box; padding: 32px 0 32px 20px; font-size: 0.9rem; }
+.back-link { display: inline-block; background: var(--panel); border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; margin-bottom: 10px; font-weight: 600; }
+.toc-title { color: var(--muted); font-size: 0.8rem; margin: 8px 0 4px; }
+ul.toc { list-style: none; padding-left: 0; margin: 0; }
+ul.toc li { margin: 2px 0; }
+ul.toc a { display: block; padding: 4px 8px; border-radius: 6px; color: var(--text); overflow-wrap: anywhere; }
+ul.toc a:hover { background: #e8eefc; color: var(--accent); text-decoration: none; }
+h2[id], h3[id] { scroll-margin-top: 16px; }
+@media (max-width: 1100px) { .layout { display: block; } .sidebar { position: static; max-height: none; padding: 20px 20px 0; } }
+</style>
+</head>
+<body>
+<main>
+<header>
+<span class="badge">research</span>
+<h1>Chrome 项目收录与选型总结</h1>
+<div class="meta">Source: intake/tabs-2026-10-21/report/summary.md</div>
+<div class="meta">Generated: 2026-10-22T03:37:58+00:00</div>
+</header>
+<section>
+<h1>Chrome 项目收录与选型总结</h1>
+<p>五项资格问题待裁决；md2wechat 的健康卡有既有模板文字溢出。 本批不安装上游，也不修改个人 harness。暂缓项目保留标签，不当成已收录。</p>
+<h2 id="先看结论">先看结论</h2>
+<p>这批项目解决三类问题：让 agent 操作工具、把资料变成可用内容，以及替换现有基础组件。 不要把“技能指令”“真实工具权限”“完整应用”混为一谈。前者教模型怎么做，后两者才实际接触编辑器、桌面、数据库或账号。</p>
+<p>对个人 harness，值得优先研究的是 <strong>ZCode 的授权失效机制、LCU 的自审批防护，以及 FounderOS 的待人裁决队列</strong>。 这些只是机制候选，不代表整包接入更好。AgentsView 已是现有工作流的数据源，不需要再造一套。</p>
+<h2 id="收录进度">收录进度</h2>
+<table><thead><tr><th>状态</th><th>当前结果</th></tr></thead><tbody><tr><td>新增</td><td>17 个项目已逐项提交，门禁通过，标签已全部关闭</td></tr><tr><td>已有页面</td><td>6 个 fresh，保留原页和核验日期，标签已关闭</td></tr><tr><td>暂缓</td><td>5 个，具体证据见下文与待裁决记录</td></tr><tr><td>自有项目</td><td>1 个，不收录、不关标签</td></tr><tr><td>运行中新增标签</td><td>无；29 条台账全部终结，失败为零</td></tr><tr><td>公开发布</td><td>仅发布脱敏分支，经 PR 与 CI 进入主干；远端状态以本批 PR 为准</td></tr></tbody></table>
+<p>批次开始于 <strong>2026-10-21 UTC</strong>，运行中跨到次日；新增页使用各自实际核验日，不倒填批次日期。已有六页按 90 天门槛判定 fresh，不声称重新读过其上游。 健康度是自动信号汇总，不是产品质量或生产适用性的认证。</p>
+<h2 id="新增项目：什么时候选，什么时候避开">新增项目：什么时候选，什么时候避开</h2>
+<table><thead><tr><th>项目</th><th>真正解决的问题</th><th>决定性取舍与边界</th></tr></thead><tbody><tr><td><a href="../../../categories/desktop-automation/lcu.zh.md">LCU</a></td><td>现有编程 agent 卡在原生应用弹窗，无法完成导出等操作。</td><td>复用已装 ChatGPT 应用的电脑控制引擎，不必更换 agent；但依赖闭源运行时，Linux 没有逐应用授权，也不自带虚拟机。</td></tr><tr><td><a href="../../../categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/zcode.zh.md">ZCode</a></td><td>希望桌面、网页和 CLI 使用同一套 agent 与任务工作流。</td><td>它提供自己的运行时，不只是包一层现有 CLI；默认没有操作系统沙箱，开放构建的原生 Computer Use 不可用。</td></tr><tr><td><a href="../../../categories/agent-tooling/supervision-surfaces/agent-cockpits/founderos.zh.md">FounderOS</a></td><td>一个人经营业务，要在收件箱、收入和 agent 工作之间来回查。</td><td>它是可修改的业务监管界面，不是安装即运行的自治公司。真实 agent 看板依赖另设的 Paperclip；演示数据和已配置徽标不证明真实业务已接通。</td></tr><tr><td><a href="../../../categories/agent-tooling/supervision-surfaces/agent-cockpits/nezha.zh.md">Nezha</a></td><td>多个 Claude Code／Codex 任务看起来都安静，需要找出待审批和待验收的那个。</td><td>本地桌面工作台集成终端、会话、文件与 Git；默认是本地目录，工作树须主动选。启动会改 Codex 全局 hook，部分启动参数绕过审批或信任，不能把工作台当沙箱。</td></tr><tr><td><a href="../../../categories/agent-skills/security/leanrea.zh.md">leanrea</a></td><td>只想解释成品应用的一项功能，agent 却反复挑工具和读整包脚本。</td><td>短指令减少接线成本，但不提供分析引擎或证据账本。当前有危险清理、转义管道和缺失脚本，只适合授权范围内、有人监督的调查。</td></tr><tr><td><a href="../../../categories/rag-retrieval/structured-retrieval/sag.zh.md">SAG</a></td><td>相似段落检索答不出跨文档的事件与实体关系。</td><td>提供个人资料库、关联检索和引用读取；默认快速策略不走完整扩展路径，默认名字登录与全库 MCP 也不是租户隔离。</td></tr><tr><td><a href="../../../categories/content-management/emdash.zh.md">EmDash</a></td><td>Astro 网站编辑改一个标题也要提 PR 和重建。</td><td>在 Astro 内加编辑后台与数据库，不是兼容 PHP 插件的 WordPress 替代安装包。插件沙箱按平台不同，原生插件不受其隔离。</td></tr><tr><td><a href="../../../categories/document-parsing/oxr.zh.md">OXR</a></td><td>多栏 PDF 的文字、公式和表格解析混在一起，想独立替换区域检测器。</td><td>专门的 PDF／图片 GPU 服务，不是通用格式转换。源码可见许可含规模与托管竞争限制；占位 key 不等于鉴权，内存任务也不适合直接当持久批处理队列。</td></tr><tr><td><a href="../../../categories/meeting-intelligence/biscotti.zh.md">Biscotti</a></td><td>想在 Mac 本地保存会议、分辨说话人并生成会后摘要。</td><td>不需要云推理账号，但限 Apple Silicon、macOS 15 及以上；不是会中行动 agent。PolyForm Perimeter 禁止竞争用途，MCP 开启后本机程序可读会议。</td></tr><tr><td><a href="../../../categories/social-media-management/twitter-cli.zh.md">twitter-cli</a></td><td>想把自己的 X 书签和信息流接给终端脚本。</td><td>无需另建开发者应用，但把会话 cookie 交给非官方 HTTP 客户端。搜索修复尚未合并，鉴权失败还能回读其他浏览器，不宜作为稳定业务数据源。</td></tr><tr><td><a href="../../../categories/social-media-management/md2wechat-skill.zh.md">md2wechat</a></td><td>Markdown 成稿还要补封面、检查图片与元数据，再创建公众号草稿。</td><td>完整 Go CLI 加操作规程，不只是技能文本。主排版路径依赖付费服务并外发文章；公司营收相关工作与客户交付受许可限制，AI 模式只返回待执行提示词。其他平台仍由宿主浏览器完成。</td></tr><tr><td><a href="../../../categories/agent-skills/ai-writing/content-production/gzh-design-skill.zh.md">gzh-design-skill</a></td><td>已有文章要按主题组件排成公众号样式，再手动复制到编辑器。</td><td>六套主题与静态检查，不是确定性排版器，也没有自动发布。正文保真和手机／暗色显示仍需验收；有些检查只警告、退出仍为零。许可按 AGPL 原文，不按 README 的泛化禁收费说法。</td></tr><tr><td><a href="../../../categories/databases/database-engines/kividb.zh.md">KiviDB</a></td><td>Redis 风格业务还需要同库关键词与向量检索。</td><td>内置搜索与多核实现减少一份存储，但 AGPL、短公开历史及兼容／恢复边界需要验证。当前只有每秒刷盘，确认写入不等于同步落盘。</td></tr><tr><td><a href="../../../categories/android-system-services/microg-gmscore.zh.md">microG</a></td><td>不带 Google 套件的安卓系统仍要运行已有应用。</td><td>替换设备上的服务实现，不替换 Google 后端。通常需要系统支持签名伪装；银行、完整性检查和推送兼容性要逐应用验收。</td></tr><tr><td><a href="../../../categories/agent-skills/engineering/awesome-gamedev-agent-skills.zh.md">GameDev Agent Skills</a></td><td>通用 agent 混用引擎版本，缺跳跃、存档和发布的领域知识。</td><td>它是按引擎与版本选取的技能目录，不是编辑器连接。文字路由不能证明游戏能运行，仍需引擎编译和场景测试。</td></tr><tr><td><a href="../../../categories/game-dev/unity-mcp.zh.md">Unity-MCP</a></td><td>agent 写完 Unity 脚本，还要人手动挂组件、抄控制台错误。</td><td>真正连接编辑器并可执行 C#，不是仅给开发建议；权限面更大，也不是沙箱。根 Apache 许可不覆盖 Code-Exec 的 PolyForm Shield 例外。</td></tr><tr><td><a href="../../../categories/traditional-divination/ziwei-doushu.zh.md">紫微斗数</a></td><td>需要研究传统排盘约定与文化娱乐界面，而不是重写整套排盘规则。</td><td>可复用引擎与演示，不含完整商业站后端和解读生成器。时间边界、流派默认与引文权利需核对；排盘一致不证明预测有效。</td></tr></tbody></table>
+<h2 id="六个已有项目">六个已有项目</h2>
+<table><thead><tr><th>项目</th><th>一句话判断</th><th>原核验日</th></tr></thead><tbody><tr><td><a href="../../../categories/agent-tooling/session-history/agentsview.zh.md">AgentsView</a></td><td>跨编码助手找历史、查用量；不是生产 LLM 追踪平台。旧快照记载默认遥测，零外联需要单独确认。</td><td>2026-09-28</td></tr><tr><td><a href="../../../categories/agent-skills/design/ui-taste/taste-skill.zh.md">Taste-Skill</a></td><td>没有品牌系统时，用于减少生成 UI 的模板感；不要与现有品味规则整包叠加。</td><td>2026-09-27</td></tr><tr><td><a href="../../../categories/agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.zh.md">Agent Orchestrator</a></td><td>监管多个隔离分支并回送 CI／评审反馈；单代理和无头流水线通常不值得增加桌面栈。</td><td>2026-09-28</td></tr><tr><td><a href="../../../categories/cad/solidcraft.zh.md">SolidCraft</a></td><td>适合 agent 做可改尺寸的零件原型；不应独撑生产关键工程。</td><td>2026-10-18</td></tr><tr><td><a href="../../../categories/agent-skills/subagent-collections/wshobson-agents.zh.md">wshobson/agents</a></td><td>按领域取现成专家，不要把大目录整包叠在已有技能栈上。</td><td>2026-09-28</td></tr><tr><td><a href="../../../categories/agent-skills/vendor-collections/product-vendors/android-skills.zh.md">Android Skills</a></td><td>用平台官方流程补 Android 升级、构建和发布的特定知识，不替代通用开发流程或强制 CI 门禁。</td><td>2026-09-22</td></tr></tbody></table>
+<p>Agent Orchestrator 的仓库字段与正文归属名称不一致，Android Skills 的部分正文健康度口径也与 frontmatter 不一致，已记为后续刷新项；本批没有绕过 fresh 门槛顺手改事实。 其中 Agent Orchestrator 后因分类拆分搬迁路径，只改路由、相对链接及 category，未刷新事实和核验日期。</p>
+<h2 id="暂缓项目：不是永久拒收">暂缓项目：不是永久拒收</h2>
+<table><thead><tr><th>项目</th><th>已查到的具体问题</th><th>本轮处理</th></tr></thead><tbody><tr><td>一个非公开候选</td><td>未给出开源许可证，不适合直接发布到公开开源索引。</td><td>不披露名称、内部材料或实现细节，保留标签待裁决。</td></tr><tr><td>JimLiu/baoyu-design</td><td>自身来源记录承认提取 Claude Design 产品前端内容，提取内容的再许可未核清。</td><td>不把根 MIT 当作全部内容授权，也不作侵权判决。</td></tr><tr><td>liseami/CCBaga</td><td>上游 NOTICE 明示复制的 UI 子树缺独立许可声明，发布前须确认再分发条款。</td><td>不否定其原创身份归档实现，但不替第三方授权背书。</td></tr><tr><td>breferrari/obsidian-mind</td><td>十个文件与已署名上游 blob 一致，完整文本扫描未找到上游 MIT 版权声明。</td><td>按声明保留缺口待裁决，不称整个项目是复制品。</td></tr><tr><td>dzhng/skills</td><td>复制的小黑插画技能未保留原作者 MIT 版权及许可声明。</td><td>不否定工程技能核心；不直接安装或复制，先交维护者裁决。</td></tr></tbody></table>
+<p>公开证据与固定源码链接见<a href="../proposals.md">待裁决记录</a>。原始私有记录仅留本地，公开分支不得包含该历史。</p>
+<h2 id="可借鉴的-harness-机制">可借鉴的 harness 机制</h2>
+<p>以下均为建议，不是本次已实施功能，也不是已证实的现有缺陷。只列 medium／high，不为凑数量新增依赖。</p>
+<table><thead><tr><th>优先级与适配度</th><th>项目与机制</th><th>对应落点</th><th>本地阅读入口</th></tr></thead><tbody><tr><td>优先，medium</td><td>ZCode：把工作区身份与 Hook 声明摘要绑定；声明变化使旧授权失效，执行前再复核。</td><td>hooks 的工作区信任准入；记忆整理只读权限与写入边界。不能把修改限制误当保密沙箱。</td><td><a href="../../../categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/zcode.md">ZCode</a></td></tr><tr><td>优先，medium</td><td>LCU：在 macOS 拒绝控制承载 agent 的审批应用；给子 agent 独立轮次，避免子任务清理父任务。</td><td><code>computer-use</code> 授权边界与已有适配器的生命周期诊断。目前没有正式 OpenCode／kilo 适配器，不带入自动授权。</td><td><a href="../../../categories/desktop-automation/lcu.md">LCU</a></td></tr><tr><td>后续，medium</td><td>FounderOS：分开展示已完成产物和待批准请求，优先显示逾期或有人等待的事项。</td><td><code>dev-long-run</code> 状态台、<code>sidecar</code> 通知呈现。文件命名只是展示线索，不是授权门。</td><td><a href="../../../categories/agent-tooling/supervision-surfaces/agent-cockpits/founderos.md">FounderOS</a></td></tr><tr><td>后续，medium</td><td>GameDev Agent Skills：先查项目标记和锁文件，再选单引擎与专项技能，逐层读参考材料。</td><td><code>workflow-helper</code>、<code>think-context-map</code>。不把整个游戏目录常驻加载。</td><td><a href="../../../categories/agent-skills/engineering/awesome-gamedev-agent-skills.md">技能页</a></td></tr><tr><td>后续，medium</td><td>gzh-design：按文章类型选主题配方，分别验源组件和产物，把复制正文与预览外壳分开。</td><td><code>write-flow</code> 排版阶段、<code>fe-ui-lint-artifact</code>、<code>guard-verify</code>。检查器警告级别要与交付要求一致；不直接安装主题，也不让排版擅自改作者正文。</td><td><a href="../../../categories/agent-skills/ai-writing/content-production/gzh-design-skill.md">gzh-design-skill</a></td></tr><tr><td>已有，high</td><td>AgentsView：统一多个助手的会话日志，提供检索和分析入口。</td><td><code>agent-harness-improvement</code> 已将其作为取数源，不重复建设。</td><td><a href="../../../categories/agent-tooling/session-history/agentsview.md">AgentsView</a></td></tr><tr><td>后续，medium</td><td>Taste-Skill：把布局变化、动效与密度变成明确输入。</td><td><code>fe-ui-design</code> 的可选设计约束，不覆盖品牌系统；反重复沿用 <code>fe-ui-critique</code>。</td><td><a href="../../../categories/agent-skills/design/ui-taste/taste-skill.md">Taste-Skill</a></td></tr><tr><td>后续，medium</td><td>Agent Orchestrator：按分支归属回送 CI 与评审事件。</td><td><code>dev-long-run</code> 的事件归属；参考 <code>sidecar</code> 的裁决结构，但不扩大其单目标边界。</td><td><a href="../../../categories/agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.md">Agent Orchestrator</a></td></tr><tr><td>后续，medium</td><td>SolidCraft：分发工具前检查参数和文件范围。</td><td><code>guard-secure</code> 的信任边界核查；路径范围不是进程沙箱，硬链接仍要考虑。</td><td><a href="../../../categories/cad/solidcraft.md">SolidCraft</a></td></tr><tr><td>后续，medium</td><td>wshobson/agents：把外部插件来源、固定提交和审批链一起审。</td><td><code>agent-health</code> 的跨信任边界检查，不引入第二套技能总目录。</td><td><a href="../../../categories/agent-skills/subagent-collections/wshobson-agents.md">wshobson/agents</a></td></tr></tbody></table>
+<p>暂缓项目也有值得研究的思想，但没有发布选型页：dzhng 的选择审计账本、Obsidian Mind 的作用域与注入预算，以及 CCBaga 的归档验收和回滚标记，先留在<a href="../proposals.md">待裁决记录</a>，不直接复用实现。 其余项目评为 low／none：不是差，而是与个人 coding-agent harness 的目标距离较远，或现有机制已经覆盖。</p>
+<h2 id="横向对比选题池">横向对比选题池</h2>
+<p>以下分类连同子分类，当前均已有至少四个项目。问题是后续写作选题，不是本批追加开发任务。</p>
+<ul><li><strong>桌面自动化：</strong> 复用已装闭源引擎、调用独立桌面驱动，还是先买一层可丢弃虚拟机隔离？</li><li><strong>数据库引擎：</strong> 内置关键词／向量搜索省掉第二份数据，是否值得承担兼容、许可和恢复语义的迁移成本？</li><li><strong>agent 监管界面：</strong> 你缺的是待人处理队列、远程会话入口，还是自动回送 PR／CI 反馈的控制平面？</li><li><strong>工程技能：</strong> 如何把通用开发流程、领域知识和实际执行工具分开，避免“装得多”反而增加指令冲突？</li><li><strong>结构化检索：</strong> 长文档章节树、跨文档事件关联和持久知识图谱，分别在哪类问题上值得额外建索引？</li><li><strong>终端编码助手：</strong> 自带运行时、模型厂商第一方助手和现有 CLI 的监督层，究竟在哪一层替换最省迁移成本？</li><li><strong>UI 品味技能：</strong> 没有品牌规范时怎样形成设计方向，有了设计系统以后又该删掉哪些“品味推断”？</li><li><strong>游戏开发：</strong> 选轻量引擎做完整小项目，还是连接 Unity 编辑器让 agent 直接改场景，验收责任如何划分？</li><li><strong>社媒管理：</strong> 官方 API、浏览器桥和会话 cookie 客户端，在权限范围、账号风险和可恢复发布上如何取舍？</li><li><strong>文档解析：</strong> 选混合格式／CPU 管线，还是拆开版面检测与识别的 GPU 服务，商用许可和长任务恢复要付出什么？</li><li><strong>内容生产技能：</strong> 主题组件装配、文章创作和账号草稿工具各负责到哪一步，怎样防止“本地检查通过”冒充“正文保真且已发布”？</li></ul>
+<h2 id="验证与剩余缺口">验证与剩余缺口</h2>
+<ul><li>本次复跑：每个新增项目合入后分别运行 <code>make gates</code> 和双页 scoped quality，均为退出码零；范围扫描均无 deterministic findings。</li><li>基线工具测试：<code>Ran 483 tests in 11.976s</code>，<code>OK</code>，无 skipped；最终公开树的重跑输出与完整验收对账记录在本批验证文件及 PR。</li><li>人工内容复核：逐页读适用场景、何时不用、比较、源码技术和存疑账本，特别检查未合并 PR 不被写成已发布能力。</li><li>复用 worker 证据：固定源码、许可原文、图卡渲染和目检。它们不是主会话的运行实测。</li><li>未运行：上游安装、模型调用、桌面控制、登录态 X 操作、安卓真机、Unity 场景、数据库崩溃恢复或占卜数据生成。不能把静态收录当成产品认证。</li><li>已知视觉缺口：md2wechat 的健康卡因通用模板把长许可封顶理由与覆盖率放在同一行，双语卡有文字溢出。分数、六轴和正文许可说明仍在；未手改自动评分或生成图，未扩到工具代码修复。该两图的视觉验收为 partial，不冒充全部配图无缺陷。</li></ul>
+<p>Inner-loop evidence：结构门禁、范围质量扫描与工具测试。 Acceptance evidence：真实 Chrome 标签逐项提交后关闭；页面、生成图、双语入口与反向索引接通，最后重扫无新增候选。最终机器对账结果见本批验证文件。 Holdout / unseen evidence：不适用模型效果实验，以源码限制、未合并修复和真实标签作为边界抽样。 Holdout 来源类别：真实捕获及源码抽样。 预期值来源：用户需求与 <code>tools/schema.md</code> 外部契约。 本次改动相对冻结点的位置：只改内容生成侧，未改工具、判定器、门禁阈值或个人 harness。</p>
+<p>Boundary decisions：两处分类各拆成 3／10 项，保留原父入口。内部路由已修复，52 个旧叶页路径不提供外部书签重定向；工具、门禁阈值和个人 harness 未改。</p>
+<p>独立审查首轮覆盖 320 个文件。D 组原始记录为 46／48，主会话补充完整解析两份 README，并逐个核对全部项目路由、新项目许可和健康度投影；没有把未读覆盖改成子任务自报。唯一确认问题是已披露的健康卡排版 P2，最终新增项和发布增量另作集成复核。 额外发现的 Ekko Studio 旧许可栏、TanStack Select 游离行健康度及既有页面口径差异，均保留基线事实，另列后续刷新，不借本批重写。</p>
+<p>下一步：维护者裁决五项资格问题；健康卡模板排版单列后续修复，不自动扩大本批开发范围。</p>
+</section>
+</main>
+
+</body>
+</html>
