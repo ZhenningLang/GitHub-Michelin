@@ -2,7 +2,7 @@
 name: Whiteboard
 slug: whiteboard
 repo: https://github.com/devdotfast/whiteboard
-category: supervision-surfaces
+category: human-review-gates
 tags: [coding-agents, human-in-the-loop, code-review, design-review, canvas, diagrams, mcp, claude-code, codex, desktop-app, local-first]
 language: TypeScript
 license: MIT
@@ -73,7 +73,7 @@ health:
 
 Your coding agent just opened a forty-file branch, and the only thing you can review is a wall of unified diff — by the time you notice the new async path dropped a retry, the design that caused it is invisible. Whiteboard hands the canvas to the agent: it draws an interactive, RFC-style review — sequence diagrams, entity-relationship diagrams, quotes from its own trace — where clicking any element jumps to the exact line in your local checkout.
 
-![Whiteboard — health radar](../../../assets/health/whiteboard.svg)
+![Whiteboard — health radar](../../../../assets/health/whiteboard.svg)
 
 ## When to use
 
@@ -85,7 +85,7 @@ The deciding tradeoff against its substitutes is *who authors the review and wha
 
 The desktop app is a vendored Code — OSS fork (VS Code's editor shell without the Copilot baggage) hosting a local server; it owns review discovery, document state and the canvas, and installs a `whiteboard` CLI shim into `~/.local/bin`. You do three one-time things: install the app, run `whiteboard connect <agent>`, and paste the prompt it prints into your agent — that prompt registers the `whiteboard` MCP server, which serves the authoring instructions. From there the agent does the writing: following those instructions it registers your repository, creates a whiteboard pinned to the commits or PR you named, reads the diff with tools like `session_diff`, and lays down sections — what/why, requirements, design (one sequence/flow/ER diagram), implementation — incrementally, so you watch it draw in real time. The boundary is clean: **you install and ask; the agent authors; the app presents and links**. Reading pays off because elements are anchors, not pixels — a diagram node, a quote from the agent's own trace, a `code_peek` of a contract, each jumping to the exact lines (or `base` for old code), while the optional trace capture (via the FFF MCP) lets the agent query and link the decisions it made autonomously. The AST-aware diff engine underneath, diffr, is a Rust binary from the same org shipped alongside the app.
 
-![Whiteboard — backbone user story](../../../assets/flow/whiteboard.svg)
+![Whiteboard — backbone user story](../../../../assets/flow/whiteboard.svg)
 
 <!-- flow-steps:begin (generated from flows/whiteboard.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -105,12 +105,12 @@ The desktop app is a vendored Code — OSS fork (VS Code's editor shell without 
 
 ## When NOT to use
 
-- **You want to *edit* from the review surface.** The README's own list: "You cannot currently edit files in Whiteboard." It is a read-and-author-the-document tool; if your loop is fix-in-place, stay in your editor or use the [CloudCLI (Claude Code UI)](claudecodeui.md) cockpit to drive the agent that edits.
+- **You want to *edit* from the review surface.** The README's own list: "You cannot currently edit files in Whiteboard." It is a read-and-author-the-document tool; if your loop is fix-in-place, stay in your editor or use the [CloudCLI (Claude Code UI)](../agent-cockpits/claudecodeui.md) cockpit to drive the agent that edits.
 - **You need the gate before code exists.** Whiteboard reviews pinned commits or branches — after the agent wrote them. If the decision you want to block on is a plan, use [Plannotator](plannotator.md), whose hook stops the agent's turn until you approve; Whiteboard has no such interception.
-- **You want findings written automatically, without you reading.** If the requirement is an LLM posting line-level review comments on every PR in CI, use [PR-Agent](../../ai-code-review/pr-agent.md) or [Open Code Review](../../ai-code-review/open-code-review.md) — Whiteboard authors *a narrative for a human*, on demand, and produces nothing unless you ask your agent.
-- **Your work is headless — SSH boxes, CI, no desktop session.** The canvas is an Electron app for macOS/Windows/Linux; the CLI and server are headless but there is no way to *view* a whiteboard without the desktop. On a remote box, terminal-native review or [CloudCLI (Claude Code UI)](claudecodeui.md) fits better.
+- **You want findings written automatically, without you reading.** If the requirement is an LLM posting line-level review comments on every PR in CI, use [PR-Agent](../../../ai-code-review/pr-agent.md) or [Open Code Review](../../../ai-code-review/open-code-review.md) — Whiteboard authors *a narrative for a human*, on demand, and produces nothing unless you ask your agent.
+- **Your work is headless — SSH boxes, CI, no desktop session.** The canvas is an Electron app for macOS/Windows/Linux; the CLI and server are headless but there is no way to *view* a whiteboard without the desktop. On a remote box, terminal-native review or [CloudCLI (Claude Code UI)](../agent-cockpits/claudecodeui.md) fits better.
 - **You need live multi-person review today.** Share exists, but "updates made after a review is shared don't appear for others" (README Known limitations), and the hosted team product is only *planned*. For social review with notifications and audit trail, use GitHub/GitLab PR review plus a hosted reviewer (CodeRabbit, Greptile — hosted services, not repos).
-- **One review must span several repos.** "Working and browsing files across multiple repos in a single review isn't well supported" (README) — split reviews per repo or keep a cross-repo tool like [Sourcegraph](../../rag-retrieval/code-intelligence/sourcegraph.md) for that job.
+- **One review must span several repos.** "Working and browsing files across multiple repos in a single review isn't well supported" (README) — split reviews per repo or keep a cross-repo tool like [Sourcegraph](../../../rag-retrieval/code-intelligence/sourcegraph.md) for that job.
 - **You cannot accept default-on telemetry without verifying it off.** Anonymous PostHog telemetry ships enabled (docs/telemetry.md), with a setting and `DO_NOT_TRACK` to disable; crash dumps "can contain process memory, including open source text" and upload on next launch unless telemetry is off (docs/privacy.md). Under strict egress review, disable first, then install. [未验证] — read from docs; no traffic observed.
 - **You need a settled dependency.** v0.1.x, ~6 weeks old, ~daily releases and a fresh name (Review→Whiteboard) with legacy paths (`~/.dev/reviews`, `review` package names) still in the tree — expect churn in stored formats and CLI surface. [推断]
 
@@ -119,9 +119,9 @@ The desktop app is a vendored Code — OSS fork (VS Code's editor shell without 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [Plannotator](plannotator.md) | ✅ | Choose Plannotator when review means *gating the agent* — annotate the plan or diff and the turn blocks on your decision; choose Whiteboard when review means *reading an authored explanation* of a branch that already exists, with diagrams linked to code. | A hook inside the loop that stops the agent, versus a presentation layer that informs you — plannotator's artifact is your annotation; Whiteboard's is the agent's document. |
-| [PR-Agent](../../ai-code-review/pr-agent.md) | ✅ | Choose PR-Agent when the reviewer should be the machine, commenting line-level on the PR automatically in CI; choose Whiteboard when you drive the analysis yourself — you pick what the agent draws and read the design, not the findings. | Automated coverage of every diff at the cost of depth and noise you triage, versus human-directed narrative that exists only when you ask for it. |
-| [Excalidraw](../../diagramming/excalidraw.md) | ✅ | Choose Excalidraw when *you* draw the diagram and want mature hand-drawn multiplayer canvas (126k-star, MIT); choose Whiteboard when the agent draws the diagram and every node must click through to the exact line of the checkout under review. | Free-form, well-oiled, but content-less about your code — Whiteboard's canvas is evidence-linked by construction, and hand-editing is not on its feature list. |
-| [CloudCLI (Claude Code UI)](claudecodeui.md) | ✅ | Choose CloudCLI to *drive* agent sessions from a browser or phone (files, terminal, git); choose Whiteboard for the artifact-shaped review of a pinned change the agent authored inside your desktop. | A session cockpit versus a review canvas; both are local-first supervision surfaces aimed at different verbs — operating versus reading. |
+| [PR-Agent](../../../ai-code-review/pr-agent.md) | ✅ | Choose PR-Agent when the reviewer should be the machine, commenting line-level on the PR automatically in CI; choose Whiteboard when you drive the analysis yourself — you pick what the agent draws and read the design, not the findings. | Automated coverage of every diff at the cost of depth and noise you triage, versus human-directed narrative that exists only when you ask for it. |
+| [Excalidraw](../../../diagramming/excalidraw.md) | ✅ | Choose Excalidraw when *you* draw the diagram and want mature hand-drawn multiplayer canvas (126k-star, MIT); choose Whiteboard when the agent draws the diagram and every node must click through to the exact line of the checkout under review. | Free-form, well-oiled, but content-less about your code — Whiteboard's canvas is evidence-linked by construction, and hand-editing is not on its feature list. |
+| [CloudCLI (Claude Code UI)](../agent-cockpits/claudecodeui.md) | ✅ | Choose CloudCLI to *drive* agent sessions from a browser or phone (files, terminal, git); choose Whiteboard for the artifact-shaped review of a pinned change the agent authored inside your desktop. | A session cockpit versus a review canvas; both are local-first supervision surfaces aimed at different verbs — operating versus reading. |
 | CodeRabbit / Greptile (hosted PR review) | not a repo | Choose a hosted reviewer when the audience is your team with notifications, history and org audit; choose Whiteboard when the audience is one engineer at the machine that has the checkout. | Hosted collaboration is priced, closed and blind to your local agent traces; Whiteboard is MIT, local-first, but single-user shaped today. |
 
 ## Tech stack

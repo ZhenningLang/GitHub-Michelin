@@ -127,7 +127,7 @@ DeepSeek Harness 的会话开始“忘事”，或者账单突然翻倍，可对
 |---|---|---|---|
 | dsh 自带的上下文圆环和统计行（`deepseek-ai/deepseek-harness`） | 未收录 | 占用率和计费总数就能回答你的问题时，留在自带圆环；一旦要看是哪个类别、哪个元素、哪次事件让数字变了，再加 dsh-context。 | 零安装、不给宿主加活，但只有一个占用率数字，没有逐请求组成、事件日志和跨会话仪表盘。宿主仓库本批次未收录。 |
 | [AgentsView](agentsview.zh.md) | ✅ | 同时跑多个 agent、要在所有 agent 上搜对话和汇总成本时选 AgentsView；用的是 dsh、要打开单次请求的上下文时选 dsh-context。 | 在进程外运行、跨 agent（也读 `~/.dsh/sessions/`），但基于成品对话记录，看不到逐请求拼出的窗口、压缩事件和工具到插件的归属。 |
-| [dsh-TUI](../supervision-surfaces/dsh-tui.zh.md) | ✅ | 在终端用 dsh、有实时上下文进度条、TPS 和会话花费就够时选 dsh-TUI；在 Web 界面里要看进度条背后的拆解时选 dsh-context。 | 一整套终端前端（状态栏、回滚、会话管理）附带上下文仪表，对比一个只在 Web 端、专门展示内容的检查器。 |
+| [dsh-TUI](../supervision-surfaces/agent-cockpits/dsh-tui.zh.md) | ✅ | 在终端用 dsh、有实时上下文进度条、TPS 和会话花费就够时选 dsh-TUI；在 Web 界面里要看进度条背后的拆解时选 dsh-context。 | 一整套终端前端（状态栏、回滚、会话管理）附带上下文仪表，对比一个只在 Web 端、专门展示内容的检查器。 |
 | billion-context-dsh（`Tyan66666/billion-context-dsh`） | 未收录 | 目标是让模型自己剪枝、把小窗口撑下去时用 billion-context-dsh；要看窗口里有什么、剪枝有没有起作用时用 dsh-context。 | 一个作用于上下文（改变模型看到的内容），一个只观察（不改变模型看到的任何东西），两者可以并存。本批次未收录。 |
 
 ## 技术栈

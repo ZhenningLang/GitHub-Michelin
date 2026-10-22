@@ -2,7 +2,7 @@
 name: Ekko Studio
 slug: ekko-studio
 repo: https://github.com/EKKOLearnAI/ekko-studio
-category: supervision-surfaces
+category: agent-cockpits
 tags: [agent-web-ui, desktop-app, multi-agent, coding-agents, visual-workflows, group-chat, hermes-agent, self-hosted, source-available]
 language: TypeScript
 license: BUSL-1.1
@@ -79,7 +79,7 @@ health:
 
 同时用 Hermes Agent、Claude Code、Codex 再加一两个 agent，就是每个 agent 一个终端窗口、一份各自的历史，想让它们接力干同一件事只能手动复制粘贴。Ekko Studio 是一个本地服务（也有桌面版），替你安装并拉起这些 agent，把单聊、多 agent 群聊和拖拽式工作流放进同一个界面；代价是它只许非商业使用。
 
-![Ekko Studio — 健康度雷达](../../../assets/health/ekko-studio.zh.svg)
+![Ekko Studio — 健康度雷达](../../../../assets/health/ekko-studio.zh.svg)
 
 ## 何时使用
 
@@ -91,7 +91,7 @@ health:
 
 Ekko Studio 是一个 Koa 后端加 Vue 前端的 Web 服务，有三种装法：npm 命令行包、基于官方 `nousresearch/hermes-agent` 镜像构建的 Docker 镜像，或者自带 Python 与 Hermes 运行时的 Electron 桌面应用。它不重写任何 agent，而是**驱动**它们：对 Hermes，它启动一个 Python “桥接”进程——一个把 agent 常驻在内存里、通过本地 socket 接收运行请求的小助手；对 Claude Code、Codex、Pi、Grok、OpenCode 和 DeepSeek Harness，它替你安装厂商 CLI，再通过每种 agent 各自的适配器把 CLI 当子进程来跑；自研的 Ekko Agent 则直接跑在服务进程里。Studio 自己负责的是 agent **之间**的一切：单聊和群聊界面、工作流画布（agent 步骤用连线、条件、循环和人工审批关口串起来）、存在本地 SQLite 文件里的会话、文件浏览器、网页终端、语音，以及一个让 agent 能操控桌面浏览器标签页的 MCP 服务。你负责的是各 agent 的登录凭据，以及决定哪一步交给哪个 agent。可以把它想成总机而不是新手机：每通电话仍然打给你原本信任的那个 agent，只是你坐在同一张桌子前拨号。
 
-![ekko-studio — 主干用户故事](../../../assets/flow/ekko-studio.zh.svg)
+![ekko-studio — 主干用户故事](../../../../assets/flow/ekko-studio.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/ekko-studio.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -112,8 +112,8 @@ Ekko Studio 是一个 Koa 后端加 Vue 前端的 Web 服务，有三种装法�
 ## 何时不用
 
 - **任何商业用途。** LICENSE 是 BSL 1.1，附加使用授权只放行**非商业**用途；售卖、做成 SaaS 托管或嵌入商业产品，在变更日（2029-05-10，之后转为 Apache-2.0）之前都要向 EKKOLearnAI 另购授权。公司内部日常使用算不算“商业利益”，许可证没有写清 [推断]。工作场景下，只用 Hermes 选 [Hermes Workspace](hermes-workspace.zh.md)（MIT），用 Claude Code／Codex 选 [CloudCLI](claudecodeui.zh.md)（AGPL），要多 agent 桌面应用选 `iOfficeAI/AionUi`（Apache-2.0，未收录）。
-- **你看中的是它最初的许可证。** 仓库最初以 MIT 发布（2026-04-18 加入 LICENSE），2026-05-10 通过 #605 改成 BSL-1.1，距建仓仅一个月。那次提交之前的代码仍是 MIT，但之后的更新不是。如果许可证稳定性是决定因素，选没有改许可证记录的项目：聊天选 [Open WebUI](../../llm-chat-ui/open-webui.zh.md)，Hermes 控制台选 [Hermes Workspace](hermes-workspace.zh.md)。
-- **你只想和模型聊天。** 如果 agent 会话、终端和工作流都不是重点，[Open WebUI](../../llm-chat-ui/open-webui.zh.md) 或 [LibreChat](../../llm-chat-ui/librechat.zh.md) 是更成熟的多用户聊天平台，还带 RAG。Ekko Studio 的模型列表要经 Hermes profile 发现，天生以 agent 为中心。
+- **你看中的是它最初的许可证。** 仓库最初以 MIT 发布（2026-04-18 加入 LICENSE），2026-05-10 通过 #605 改成 BSL-1.1，距建仓仅一个月。那次提交之前的代码仍是 MIT，但之后的更新不是。如果许可证稳定性是决定因素，选没有改许可证记录的项目：聊天选 [Open WebUI](../../../llm-chat-ui/open-webui.zh.md)，Hermes 控制台选 [Hermes Workspace](hermes-workspace.zh.md)。
+- **你只想和模型聊天。** 如果 agent 会话、终端和工作流都不是重点，[Open WebUI](../../../llm-chat-ui/open-webui.zh.md) 或 [LibreChat](../../../llm-chat-ui/librechat.zh.md) 是更成熟的多用户聊天平台，还带 RAG。Ekko Studio 的模型列表要经 Hermes profile 发现，天生以 agent 为中心。
 - **你只跑一个 agent，只要一个轻量驾驶舱。** 只用 Claude Code／Codex／Cursor，[CloudCLI](claudecodeui.zh.md) 更小；只用 pi，[Pi Web](pi-web.zh.md) 直接读 pi 自己的会话文件。你用不上渠道、看板、语音、设备、ESP32 固件和 App 中继时，Ekko Studio 的这些面都是负担。
 - **你要每个 agent 隔离在自己的分支上、并自动收到 CI 反馈。** Ekko Studio 让多个 agent 共用一个工作区和一个文件浏览器。[Agent Orchestrator](agent-orchestrator.zh.md) 给每个编码 agent 一个 git worktree，并把 CI／评审／冲突反馈路由回去。
 - **别随手暴露到网络上。** 服务默认监听 `0.0.0.0`（`BIND_HOST`），初始账号是 `admin` / `123456`（登录后界面会提示改掉），而一个已登录会话就能碰到 PTY 终端、可编辑删除的文件浏览器和 agent 安装入口。放在回环地址或 VPN 后面，先改默认账号，并有意识地设置 `AUTH_TOKEN` 和 `CORS_ORIGINS`。
@@ -128,7 +128,7 @@ Ekko Studio 是一个 Koa 后端加 Vue 前端的 Web 服务，有三种装法�
 | [CloudCLI (Claude Code UI)](claudecodeui.zh.md) | ✅ | 要一个浏览器／手机驾驶舱来操作 Claude Code、Codex 或 Cursor CLI 会话，选 CloudCLI；工作里还有 Hermes 和多 agent 群聊或工作流时，选 Ekko Studio。 | CloudCLI：AGPL-3.0-or-later（按 copyleft 条款允许商用），专注读取和续接各 CLI 自己的会话。Ekko Studio：运行时更多、有编排，但许可证是非商业。 |
 | `iOfficeAI/AionUi` | 未收录 | 想要一个许可证宽松、覆盖 Claude Code、Codex、OpenCode、Hermes 等的多 agent 桌面“协作”应用，选 AionUi；需要 Hermes 控制面（profile、渠道、定时任务）和工作流画布时，选 Ekko Studio。 | Apache-2.0，约 33.2k star，最近推送 2026-09-09（GitHub API，2026-09-28 查询）；与 Ekko Studio 的功能对等性未核对。本批次 tab 收录未加入。 |
 | `nesquena/hermes-webui` | 未收录 | 只要一个更轻的、MIT 许可的 Hermes Agent Web／手机界面，选 hermes-webui；还想把编码 agent、群聊和工作流放在一起时，选 Ekko Studio。 | MIT，约 18.6k star，2026-09-28 有推送（GitHub API）。单运行时界面面小；Ekko Studio 的体积就是它广度的代价。本批次 tab 收录未加入。 |
-| [Open WebUI](../../llm-chat-ui/open-webui.zh.md) | ✅ | 任务是和模型聊天（含 RAG、本地模型、多用户），选 Open WebUI；任务是运行和协调带终端、文件的 **agent**，选 Ekko Studio。 | Open WebUI：多年历史、采用面极广，是模型聊天平台，没有 agent 会话或工作流画布。Ekko Studio：agent 工作台，更年轻，BSL。 |
+| [Open WebUI](../../../llm-chat-ui/open-webui.zh.md) | ✅ | 任务是和模型聊天（含 RAG、本地模型、多用户），选 Open WebUI；任务是运行和协调带终端、文件的 **agent**，选 Ekko Studio。 | Open WebUI：多年历史、采用面极广，是模型聊天平台，没有 agent 会话或工作流画布。Ekko Studio：agent 工作台，更年轻，BSL。 |
 
 ## 技术栈
 

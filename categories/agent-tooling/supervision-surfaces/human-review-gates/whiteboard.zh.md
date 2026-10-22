@@ -2,7 +2,7 @@
 name: Whiteboard
 slug: whiteboard
 repo: https://github.com/devdotfast/whiteboard
-category: supervision-surfaces
+category: human-review-gates
 tags: [coding-agents, human-in-the-loop, code-review, design-review, canvas, diagrams, mcp, claude-code, codex, desktop-app, local-first]
 language: TypeScript
 license: MIT
@@ -73,7 +73,7 @@ health:
 
 编码 agent 刚给你开出一个四十文件的分支，而你能审的只有一整面 unified diff——等你发现新异步路径把重试丢了，造成这件事的设计决策早就看不见了。Whiteboard 把画布交给 agent 自己：它画出一份可交互、RFC 风格的评审——时序图、实体关系图、来自它自身执行轨迹的引文——点任何一个元素就跳到本地 checkout 的确切代码行。
 
-![Whiteboard — 健康度雷达](../../../assets/health/whiteboard.zh.svg)
+![Whiteboard — 健康度雷达](../../../../assets/health/whiteboard.zh.svg)
 
 ## 何时使用
 
@@ -85,7 +85,7 @@ health:
 
 桌面版本体是一个内嵌的 Code — OSS fork（去掉 Copilot 累赘的 VS Code 编辑器外壳），里面跑着一个本地服务器：评审的发现、文档状态和画布都归它管，同时往 `~/.local/bin` 写一个 `whiteboard` CLI shim。你只需要做三件一次性的事：装好应用、运行 `whiteboard connect <agent>`、把它打印的那段提示词粘给你的 agent——这段提示词的作用是注册 `whiteboard` MCP 服务，由它下发编写规范。剩下的都是 agent 在写：按规范它先登记仓库、创建一个钉在你指定 commit 或 PR 上的 whiteboard，用 `session_diff` 这类工具读 diff，然后按 what/why、需求、设计（一图：时序/流程/ER）、实现的小节顺序增量落笔——你是看着它实时画出来的。边界很清楚：**你负责安装和提问，agent 负责撰写，应用负责呈现和回链**。读的时候回报在于元素都是锚点而非像素——图的节点、agent 自己轨迹里的引文、一段契约的 `code_peek`，点了都跳到确切行号（旧代码用 `base`）；可选的轨迹采集（经 FFF MCP）还让 agent 能查询并回链它自主做出的决定。底下的 AST 感知 diff 引擎 diffr 是同组织的 Rust 二进制，随应用一起打包分发。
 
-![Whiteboard — 主干用户故事](../../../assets/flow/whiteboard.zh.svg)
+![Whiteboard — 主干用户故事](../../../../assets/flow/whiteboard.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/whiteboard.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -105,12 +105,12 @@ health:
 
 ## 何时不用
 
-- **你想在评审界面里*改*文件。** README 自己列的第一条限制：“你现在无法在 Whiteboard 里编辑文件”（原文如此）。它是读与写文档的工具；如果你的循环是就地修改，请留在编辑器里，或用 [CloudCLI（Claude Code UI）](claudecodeui.zh.md) 这种驾驶舱去驱动会改代码的 agent。
+- **你想在评审界面里*改*文件。** README 自己列的第一条限制：“你现在无法在 Whiteboard 里编辑文件”（原文如此）。它是读与写文档的工具；如果你的循环是就地修改，请留在编辑器里，或用 [CloudCLI（Claude Code UI）](../agent-cockpits/claudecodeui.zh.md) 这种驾驶舱去驱动会改代码的 agent。
 - **你要在代码存在之前就设闸门。** Whiteboard 审的是钉住的 commit 或分支——agent 已经写完的东西。要拦的是一个计划，就用 [Plannotator](plannotator.zh.md)：它的 hook 会让 agent 停在原地等你批准；Whiteboard 没有这种拦截。
-- **你想要机器自动写 finding、不需要人来读。** 需求若是 CI 里每个 PR 都有 LLM 行级评论，用 [PR-Agent](../../ai-code-review/pr-agent.zh.md) 或 [Open Code Review](../../ai-code-review/open-code-review.zh.md)——Whiteboard 产出的是*给人看的叙事*，你不开口它什么都不画。
-- **你的工作环境没有桌面——SSH、CI、无图形会话。** 画布是 macOS/Windows/Linux 的 Electron 应用；CLI 和服务端能无头跑，但离开桌面应用你无法*看*任何一块 whiteboard。远程机器上，终端原生评审或 [CloudCLI（Claude Code UI）](claudecodeui.zh.md) 更合适。
+- **你想要机器自动写 finding、不需要人来读。** 需求若是 CI 里每个 PR 都有 LLM 行级评论，用 [PR-Agent](../../../ai-code-review/pr-agent.zh.md) 或 [Open Code Review](../../../ai-code-review/open-code-review.zh.md)——Whiteboard 产出的是*给人看的叙事*，你不开口它什么都不画。
+- **你的工作环境没有桌面——SSH、CI、无图形会话。** 画布是 macOS/Windows/Linux 的 Electron 应用；CLI 和服务端能无头跑，但离开桌面应用你无法*看*任何一块 whiteboard。远程机器上，终端原生评审或 [CloudCLI（Claude Code UI）](../agent-cockpits/claudecodeui.zh.md) 更合适。
 - **你今天就依赖多人实时评审。** 分享存在，但“分享之后评审里的更新不会同步给别人”（README 已知限制），面向团队的托管产品只是*计划中*。要带通知、历史与组织审计的社交评审，用 GitHub/GitLab PR review 加托管评审服务（CodeRabbit、Greptile——是服务，不是仓库）。
-- **一次评审必须横跨多个仓库。** “在单个评审里跨多仓库工作与浏览文件支持不佳”（README）——按仓库拆开评审，或把跨仓库检索的活交给 [Sourcegraph](../../rag-retrieval/code-intelligence/sourcegraph.zh.md)。
+- **一次评审必须横跨多个仓库。** “在单个评审里跨多仓库工作与浏览文件支持不佳”（README）——按仓库拆开评审，或把跨仓库检索的活交给 [Sourcegraph](../../../rag-retrieval/code-intelligence/sourcegraph.zh.md)。
 - **默认开启的遥测在你没确认关掉之前不可接受。** 匿名 PostHog 遥测出厂即开（docs/telemetry.md），可在设置或 `DO_NOT_TRACK` 关掉；崩溃转储“可能包含进程内存中的开源文本”，遥测未关时下次启动会上传（docs/privacy.md）。在严格的出网管控环境，先关遥测再安装。[未验证]——读自文档，未实际观测流量。
 - **你要一个已经定型的依赖。** v0.1.x、问世约 6 周、约每日发版，且刚经历改名（Review→Whiteboard）、`~/.dev/reviews` 与 `review` 包名等遗留路径仍在树里——存储格式和 CLI 表面都要预期震荡。[推断]
 
@@ -119,9 +119,9 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Plannotator](plannotator.zh.md) | ✅ | 评审意味着*拦住 agent*——批注计划或 diff、这一轮由你的决定阻塞时，选 Plannotator；评审意味着*读一份已存在分支的成文解释*、图全部回链到代码时，选 Whiteboard。 | 循环内的 hook 能停住 agent，而呈现层只负责让你看懂——Plannotator 的产物是你的批注，Whiteboard 的产物是 agent 的文档。 |
-| [PR-Agent](../../ai-code-review/pr-agent.zh.md) | ✅ | 评审者应该是机器、在 CI 里自动对 PR 逐行评论时选 PR-Agent；分析由你主导、你指定 agent 画什么、读的是设计而不是 finding 时选 Whiteboard。 | 每个 diff 都被自动覆盖，代价是深度与要你筛的噪音；vs 只在你要时才出现、由人定向的叙事。 |
-| [Excalidraw](../../diagramming/excalidraw.zh.md) | ✅ | 图由*你自己*画、要成熟的手绘多人画布（126k star、MIT）时选 Excalidraw；图由 agent 画、每个节点都必须点回正在评审的 checkout 时选 Whiteboard。 | 自由、打磨多年，但对你的代码一无所知——Whiteboard 的画布生来就带证据回链，而手写编辑不在它的功能单上。 |
-| [CloudCLI（Claude Code UI）](claudecodeui.zh.md) | ✅ | 要从浏览器或手机*驾驶* agent 会话（文件、终端、git）时选 CloudCLI；要对钉住的变更做一次 agent 亲笔的、桌面内的产物化评审时选 Whiteboard。 | 会话驾驶舱 vs 评审画布；同为本地优先的监管界面，动词不同——一个在操作，一个在阅读。 |
+| [PR-Agent](../../../ai-code-review/pr-agent.zh.md) | ✅ | 评审者应该是机器、在 CI 里自动对 PR 逐行评论时选 PR-Agent；分析由你主导、你指定 agent 画什么、读的是设计而不是 finding 时选 Whiteboard。 | 每个 diff 都被自动覆盖，代价是深度与要你筛的噪音；vs 只在你要时才出现、由人定向的叙事。 |
+| [Excalidraw](../../../diagramming/excalidraw.zh.md) | ✅ | 图由*你自己*画、要成熟的手绘多人画布（126k star、MIT）时选 Excalidraw；图由 agent 画、每个节点都必须点回正在评审的 checkout 时选 Whiteboard。 | 自由、打磨多年，但对你的代码一无所知——Whiteboard 的画布生来就带证据回链，而手写编辑不在它的功能单上。 |
+| [CloudCLI（Claude Code UI）](../agent-cockpits/claudecodeui.zh.md) | ✅ | 要从浏览器或手机*驾驶* agent 会话（文件、终端、git）时选 CloudCLI；要对钉住的变更做一次 agent 亲笔的、桌面内的产物化评审时选 Whiteboard。 | 会话驾驶舱 vs 评审画布；同为本地优先的监管界面，动词不同——一个在操作，一个在阅读。 |
 | CodeRabbit / Greptile（托管 PR 评审） | 非仓库 | 受众是你团队、要通知/历史/组织审计时选托管评审服务；受众只是手握 checkout 的那一个工程师时选 Whiteboard。 | 托管协作收费、闭源、看不见你本地的 agent 轨迹；Whiteboard 是 MIT、本地优先，但今天仍是单人形态。 |
 
 ## 技术栈

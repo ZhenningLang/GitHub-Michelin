@@ -110,7 +110,7 @@ The toolbar is one React component with zero runtime dependencies (React peer on
 - **You won't add a dependency to the app.** Anything that renders inside your app means editing app code. If the rule is "touch no project file", use a browser-extension tool like [Pointa](pointa.md) or [Vibe Annotations](vibe-annotations.md) instead — they lose fiber/source data but need zero integration.
 - **License purity is a gate.** PolyForm Shield is a source-*available* license that forbids others from productizing the tool itself; it is not OSI open source. If your org requires an OSI license, use MIT-covered [earmark](earmark.md) or [patch-mark](patch-mark.md).
 - **You need production-build source locations.** `_debugSource` and the stack-probe both depend on dev-mode code; in a stripped production build you get selectors and styles only. earmark's build-plugin stamping is the design that survives where metadata was compiled in on purpose.
-- **The review target is the agent's output, not your running app.** For annotating plans/diffs, see [Plannotator](../supervision-surfaces/plannotator.md).
+- **The review target is the agent's output, not your running app.** For annotating plans/diffs, see [Plannotator](../supervision-surfaces/human-review-gates/plannotator.md).
 
 ## Comparison
 
@@ -121,7 +121,7 @@ The toolbar is one React component with zero runtime dependencies (React peer on
 | [Vibe Annotations](vibe-annotations.md) | ✅ | Choose Agentation — it is the same shape (annotate localhost, MCP read-back) with an order of magnitude more adoption; Vibe earns its row only for its non-developer sharing paths (file sharing, watch mode). | Agentation: in-app precision, in-app obligation. Vibe: extension convenience, a similar PolyForm Shield, ~170 stars. |
 | [markupkit](markupkit.md) | ✅ | Pick Agentation for click-to-annotate; pick markupkit only for its freehand layer — circles, arrows, strikethroughs classified into shapes — and accept a dormant learning project. | Freehand expression vs. structured element capture; both are React components, only one has 5M downloads/month. |
 | [patch-mark](patch-mark.md) | ✅ | Choose Agentation inside a React app; choose patch-mark when you must annotate a third-party preview page (docs site, staging of anything) with two lines and no install step. | Zero-dep web component with an explicit untrusted-evidence threat model vs. fiber-deep capture. |
-| [Plannotator](../supervision-surfaces/plannotator.md) | ✅ | Complementary, not competing: Plannotator annotates what the agent wrote (plan/diff) and gates the turn; Agentation annotates what your app renders and feeds the next turn. | Run both when the human reviews artifacts *and* the UI. |
+| [Plannotator](../supervision-surfaces/human-review-gates/plannotator.md) | ✅ | Complementary, not competing: Plannotator annotates what the agent wrote (plan/diff) and gates the turn; Agentation annotates what your app renders and feeds the next turn. | Run both when the human reviews artifacts *and* the UI. |
 | Cursor / Antigravity built-in browser element pickers | not a repo | Use the IDE's built-in picker when you already live in that IDE and annotate only its own preview; choose Agentation when your agent is a terminal CLI or a different editor than the one rendering the page. | Zero install, but bound to the vendor's browser surface and closed-source app. |
 
 ## Tech stack

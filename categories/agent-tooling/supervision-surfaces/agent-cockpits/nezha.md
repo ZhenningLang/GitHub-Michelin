@@ -2,7 +2,7 @@
 name: Nezha
 slug: nezha
 repo: https://github.com/hanshuaikang/nezha
-category: supervision-surfaces
+category: agent-cockpits
 tags: [coding-agents, claude-code, codex, desktop-app, git-worktrees, agent-notifications, skill-management]
 language: TypeScript
 license: GPL-3.0
@@ -78,7 +78,7 @@ health:
 
 You keep switching between projects to find which coding agent needs permission, then open another tool to inspect its changes. Nezha puts Claude Code and Codex tasks, attention states, session history and Git diffs in one desktop window, with optional separate working directories for parallel tasks.
 
-![Nezha — health radar](../../../assets/health/nezha.svg)
+![Nezha — health radar](../../../../assets/health/nezha.svg)
 
 ## When to use
 
@@ -90,9 +90,9 @@ The deciding tradeoff is a narrower, local workspace instead of a broader orches
 
 - **Every parallel task must have a separate checkout without operator setup.** New tasks default to `local`, not worktree mode. Select the worktree option explicitly; otherwise use [Agent Orchestrator](agent-orchestrator.md) for its per-worker workspace model. A Git worktree separates files, not operating-system permissions.
 - **You need OpenCode, Kilo or other agents in the structured task lifecycle.** The reviewed launch and hook paths distinguish Claude Code and Codex; [Agent Orchestrator](agent-orchestrator.md) has the broader adapter surface. Merely running a command in a shell is not equivalent to integrated status and session parsing.
-- **You need phone access or agents to survive losing the desktop.** Use [CloudCLI](claudecodeui.md) for browser access on a trusted host, or server-side [tmux](../../terminal-ui/tmux.md) for process persistence. Nezha owns its task processes; its [Windows tray Quit path explicitly kills children](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/lib.rs#L200-L207). Closing a window can merely hide it, but restoring a saved conversation after an actual exit is not process persistence.
-- **Global agent settings must remain untouched.** Startup installs a bridge and appends a managed hooks block to `~/.codex/config.toml`; it also runs migration cleanup on Claude settings. Claude's current hooks use a separate settings file passed at launch. Keep your existing CLI plus [tmux](../../terminal-ui/tmux.md) if your configuration-change policy forbids this. See [startup](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/lib.rs#L272-L282) and [installation](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/hooks.rs#L515-L561).
-- **You need a security boundary around untrusted tasks.** Keep the agent's own restrictions or run an independently isolated environment; [tmux](../../terminal-ui/tmux.md) can host your chosen restricted CLI without imposing Nezha's launch flags. Nezha's `full_access` passes permission/sandbox bypass flags. Separately, its usable Codex hook path adds `--dangerously-bypass-hook-trust` even outside full-access mode. Neither the desktop nor its worktree is a sandbox. See [command construction](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/pty.rs#L476-L549) and [hook trust](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/pty.rs#L877-L888).
+- **You need phone access or agents to survive losing the desktop.** Use [CloudCLI](claudecodeui.md) for browser access on a trusted host, or server-side [tmux](../../../terminal-ui/tmux.md) for process persistence. Nezha owns its task processes; its [Windows tray Quit path explicitly kills children](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/lib.rs#L200-L207). Closing a window can merely hide it, but restoring a saved conversation after an actual exit is not process persistence.
+- **Global agent settings must remain untouched.** Startup installs a bridge and appends a managed hooks block to `~/.codex/config.toml`; it also runs migration cleanup on Claude settings. Claude's current hooks use a separate settings file passed at launch. Keep your existing CLI plus [tmux](../../../terminal-ui/tmux.md) if your configuration-change policy forbids this. See [startup](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/lib.rs#L272-L282) and [installation](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/hooks.rs#L515-L561).
+- **You need a security boundary around untrusted tasks.** Keep the agent's own restrictions or run an independently isolated environment; [tmux](../../../terminal-ui/tmux.md) can host your chosen restricted CLI without imposing Nezha's launch flags. Nezha's `full_access` passes permission/sandbox bypass flags. Separately, its usable Codex hook path adds `--dangerously-bypass-hook-trust` even outside full-access mode. Neither the desktop nor its worktree is a sandbox. See [command construction](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/pty.rs#L476-L549) and [hook trust](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/pty.rs#L877-L888).
 
 ## Comparison
 
@@ -100,14 +100,14 @@ The deciding tradeoff is a narrower, local workspace instead of a broader orches
 |---|---|---|---|
 | [Agent Orchestrator](agent-orchestrator.md) | ✅ | Choose AO when CI failures and review comments must return to heterogeneous workers automatically; choose Nezha when the operator drives a local Claude Code/Codex task and Git loop. | AO adds a daemon, broader adapters and feedback routing; Nezha uses a Tauri desktop and a narrower two-agent integration. |
 | [CloudCLI](claudecodeui.md) | ✅ | Choose CloudCLI when you must reach workstation sessions from a phone; choose Nezha when you want the task board and editor on that workstation itself. | A web server and remote-access security responsibilities versus an installed desktop; AGPL network terms versus GPL desktop distribution terms. |
-| [cmux](../../agent-frameworks/coding-agents/agent-multiplexers/cmux.md) | ✅ | Choose cmux on a Mac when scriptable terminal panes and an embedded browser matter most; choose Nezha for task records, code editing and Git worktree controls across the packaged desktop platforms. | A native Mac terminal with CLI/socket primitives versus a Tauri task workspace; neither replaces your acceptance process. |
-| [tmux](../../terminal-ui/tmux.md) | ✅ | Choose tmux on a remote server when shells must survive disconnects; choose Nezha for local agent-aware attention states and integrated diffs without scripting those views yourself. | tmux gives process persistence and a mature scriptable substrate; you build the agent-state, worktree and review interface. |
+| [cmux](../../../agent-frameworks/coding-agents/agent-multiplexers/cmux.md) | ✅ | Choose cmux on a Mac when scriptable terminal panes and an embedded browser matter most; choose Nezha for task records, code editing and Git worktree controls across the packaged desktop platforms. | A native Mac terminal with CLI/socket primitives versus a Tauri task workspace; neither replaces your acceptance process. |
+| [tmux](../../../terminal-ui/tmux.md) | ✅ | Choose tmux on a remote server when shells must survive disconnects; choose Nezha for local agent-aware attention states and integrated diffs without scripting those views yourself. | tmux gives process persistence and a mature scriptable substrate; you build the agent-state, worktree and review interface. |
 
 ## Quick start
 
 Install the appropriate package from [v0.5.0 releases](https://github.com/hanshuaikang/nezha/releases/tag/v0.5.0), after separately installing and authenticating Claude Code or Codex. The README says the macOS package is unsigned: verify provenance before deciding whether your policy permits opening it, rather than treating a quarantine bypass as routine setup. Open a repository, create a task, choose the agent and permission mode, and explicitly select worktree mode plus a base branch for parallel edits; a worktree is another directory on its own Git branch. Nezha starts the CLI, displays its terminal and attention state, and makes session history and diffs available; you approve actions, test the result and decide what to commit or merge. Model charges and CLI credentials remain your responsibility; startup's global-hook edits are part of the integration, not an optional consequence of running a task. Usage is traced through [the README](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/README_EN.md#L52-L103), [task selector](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src/components/NewTaskView.tsx#L110-L115) and [submit path](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src/App.tsx#L789-L850).
 
-![nezha — backbone user story](../../../assets/flow/nezha.svg)
+![nezha — backbone user story](../../../../assets/flow/nezha.svg)
 
 <!-- flow-steps:begin (generated from flows/nezha.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -126,7 +126,7 @@ Install the appropriate package from [v0.5.0 releases](https://github.com/hanshu
 
 ## Key techniques
 
-![Nezha — mechanism diagram](../../../assets/mechanism/nezha.svg)
+![Nezha — mechanism diagram](../../../../assets/mechanism/nezha.svg)
 
 <!-- mechanism:begin (generated from mechanisms/nezha.json by tools/mechanism_card.py; do not edit) -->
 <details>

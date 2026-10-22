@@ -89,11 +89,11 @@ health:
 
 你带一个小型工程团队，正在试多 agent 协作：一个查故障，一个写修复，另一个做评审。现在你得开几个终端，手动搬运调查结果，最后发现两个 worker 改了同一个目录。你想保留各自的 CLI 和模型，但需要统一通信、独立配置，并明确选择共享文件、独立工作树或独立克隆。
 
-如果缺的是这层协作运行环境，并希望以后从笔记本迁到远程容器主机，就考虑 Scion。相对桌面监督工具 [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-orchestrator.zh.md)，它提供托管 Hub（控制中心）和 Runtime Broker（负责启动 agent 的执行服务）。相对 [gh-aw](gh-aw.zh.md)，它支持 GitHub Actions 之外的持续交互协作。角色怎么分、产物怎么审、基础设施怎么维护，仍归你负责；它不强制提供从计划到合并的方法论。
+如果缺的是这层协作运行环境，并希望以后从笔记本迁到远程容器主机，就考虑 Scion。相对桌面监督工具 [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.zh.md)，它提供托管 Hub（控制中心）和 Runtime Broker（负责启动 agent 的执行服务）。相对 [gh-aw](gh-aw.zh.md)，它支持 GitHub Actions 之外的持续交互协作。角色怎么分、产物怎么审、基础设施怎么维护，仍归你负责；它不强制提供从计划到合并的方法论。
 
 ## 何时不用
 
-- **只想在自己的桌面监督分支和 PR 反馈。** 选 [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-orchestrator.zh.md)，直接用任务看板和 CI／评审反馈回路。Scion 即使在本机也多出容器镜像、Hub 和执行服务的维护。
+- **只想在自己的桌面监督分支和 PR 反馈。** 选 [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.zh.md)，直接用任务看板和 CI／评审反馈回路。Scion 即使在本机也多出容器镜像、Hub 和执行服务的维护。
 - **任务只是无人值守的 GitHub 杂活，而且写权限必须明确受限。** 选 [gh-aw](gh-aw.zh.md)，用编译后的 Actions 工作流、网络白名单和独立写入任务。Scion 的容器隔离不是同一种权限模型：Codex 配置包会跳过自身审批和内层沙箱，共享目录也仍可被多个 agent 写入。
 - **要的是浏览器对话控制台，加定时或 webhook 任务，不是协作团队。** 先看 [OpenHands](openhands.zh.md)。Scion 仍要求你设计团队指令、工作区共享方式和各 agent 的配置包，不会消掉这些设计工作。
 - **需要 Google 产品支持，或稳定的 1.0 接口。** README 明说它不是 Google 官方支持产品，且尚未到 1.0。需要有人运营的托管编码服务，可评估 GitHub Copilot coding agent；它是闭源托管产品，不是本索引收录的仓库。
@@ -103,7 +103,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-orchestrator.zh.md) | ✅ | 瓶颈是在一个桌面监督多个 PR，选 Agent Orchestrator；需要 agent 互通消息，并在本机或托管容器中运行，选 Scion。 | AO 打包了分支任务看板和 CI／评审反馈。Scion 增加运行环境与团队基础设施，但镜像、凭据和托管运维归你管。 |
+| [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.zh.md) | ✅ | 瓶颈是在一个桌面监督多个 PR，选 Agent Orchestrator；需要 agent 互通消息，并在本机或托管容器中运行，选 Scion。 | AO 打包了分支任务看板和 CI／评审反馈。Scion 增加运行环境与团队基础设施，但镜像、凭据和托管运维归你管。 |
 | [OpenHands](openhands.zh.md) | ✅ | 要浏览器对话控制台及定时／webhook 任务，选 OpenHands；团队工作区选择和 agent 之间协作才是核心，选 Scion。 | Agent Canvas 使用 Agent Server 后端和 ACP 接入。Scion 使用 Hub、执行服务和配置包，工作区选择更明确，但初始化配置也更多。 |
 | [gh-aw](gh-aw.zh.md) | ✅ | 要 GitHub 事件触发有限任务，并声明允许的写操作，选 gh-aw；要 Actions 之外持续交互的混合 agent 团队，选 Scion。 | gh-aw 借用 Actions 执行器，把 agent 输出与实际写入分开。Scion 把算力和会话控制留给你，但容器本身不等于这些权限限制。 |
 

@@ -2,7 +2,7 @@
 name: Ekko Studio
 slug: ekko-studio
 repo: https://github.com/EKKOLearnAI/ekko-studio
-category: supervision-surfaces
+category: agent-cockpits
 tags: [agent-web-ui, desktop-app, multi-agent, coding-agents, visual-workflows, group-chat, hermes-agent, self-hosted, source-available]
 language: TypeScript
 license: BUSL-1.1
@@ -79,7 +79,7 @@ health:
 
 Running Hermes Agent, Claude Code, Codex and one or two more agents means one terminal tab and one separate history per agent, and nothing that lets them work on the same task. Ekko Studio is a local server (plus desktop app) that installs and launches all of them behind one UI for chats, multi-agent group rooms and drag-and-drop workflows. It is source-available for non-commercial use only.
 
-![Ekko Studio — health radar](../../../assets/health/ekko-studio.svg)
+![Ekko Studio — health radar](../../../../assets/health/ekko-studio.svg)
 
 ## When to use
 
@@ -91,7 +91,7 @@ The deciding tradeoff against its closest peers is **breadth vs licence**. [Herm
 
 Ekko Studio is a Koa web server with a Vue front end, and it can be installed three ways: as an npm CLI, a Docker image built on the official `nousresearch/hermes-agent` image, or an Electron desktop app that bundles its own Python and Hermes runtime. It does not reimplement the agents. It *drives* them: for Hermes it starts a Python "bridge" process, a small helper that holds the agent in memory and takes run requests over a local socket; for Claude Code, Codex, Pi, Grok, OpenCode and DeepSeek Harness it installs the vendor CLI and runs it as a child process through a per-agent adapter. Its own in-house Ekko Agent runs inside the server. What Studio owns is everything *between* the agents: the chat and group-room UI, the workflow canvas (agent steps connected by edges, conditions, loops, and human approval gates), sessions in a local SQLite file, a file browser, a web terminal, voice, and an MCP server that lets agents drive a desktop browser tab. What you own is the agents' credentials and choosing which agent handles which step. Think of it as a switchboard, not a new phone: every call still goes through the agent you already trust, but you dial them all from one desk.
 
-![ekko-studio — backbone user story](../../../assets/flow/ekko-studio.svg)
+![ekko-studio — backbone user story](../../../../assets/flow/ekko-studio.svg)
 
 <!-- flow-steps:begin (generated from flows/ekko-studio.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -112,8 +112,8 @@ Ekko Studio is a Koa web server with a Vue front end, and it can be installed th
 ## When NOT to use
 
 - **Any commercial use.** The LICENSE is BSL 1.1 with an Additional Use Grant for *non-commercial* use only; selling it, hosting it as SaaS or embedding it in a commercial product needs a separate licence from EKKOLearnAI until the Change Date (2029-05-10, then Apache-2.0). Whether day-to-day internal use at a company counts as "commercial advantage" is not spelled out [推断]. For a work setup use [Hermes Workspace](hermes-workspace.md) (MIT) for Hermes, [CloudCLI](claudecodeui.md) (AGPL) for Claude Code/Codex, or `iOfficeAI/AionUi` (Apache-2.0, not indexed) for a multi-agent desktop app.
-- **You were counting on the licence it started with.** The repo shipped under MIT (LICENSE added 2026-04-18) and switched to BSL-1.1 on 2026-05-10 (commit #605), one month after creation. Code from before that commit stays MIT, but updates do not. If licence stability decides your pick, choose a project without a relicense on record, such as [Open WebUI](../../llm-chat-ui/open-webui.md) for chat or [Hermes Workspace](hermes-workspace.md) for Hermes.
-- **You only want to chat with models.** If agent sessions, terminals and workflows are not the point, [Open WebUI](../../llm-chat-ui/open-webui.md) or [LibreChat](../../llm-chat-ui/librechat.md) are more mature multi-user chat platforms with RAG. Ekko Studio's model list is discovered through Hermes profiles, so it is agent-first by design.
+- **You were counting on the licence it started with.** The repo shipped under MIT (LICENSE added 2026-04-18) and switched to BSL-1.1 on 2026-05-10 (commit #605), one month after creation. Code from before that commit stays MIT, but updates do not. If licence stability decides your pick, choose a project without a relicense on record, such as [Open WebUI](../../../llm-chat-ui/open-webui.md) for chat or [Hermes Workspace](hermes-workspace.md) for Hermes.
+- **You only want to chat with models.** If agent sessions, terminals and workflows are not the point, [Open WebUI](../../../llm-chat-ui/open-webui.md) or [LibreChat](../../../llm-chat-ui/librechat.md) are more mature multi-user chat platforms with RAG. Ekko Studio's model list is discovered through Hermes profiles, so it is agent-first by design.
 - **You run exactly one agent and want a thin cockpit.** For Claude Code/Codex/Cursor alone, [CloudCLI](claudecodeui.md) is smaller. For pi alone, [Pi Web](pi-web.md) reads pi's own session files. Ekko Studio's surface (channels, Kanban, voice, devices, ESP32 firmware, App relay) is overhead when you need none of it.
 - **You need each agent isolated on its own branch with CI feedback.** Ekko Studio shares one workspace and one file browser across agents. [Agent Orchestrator](agent-orchestrator.md) gives each coding agent a git worktree and routes CI/review/conflict feedback back to it.
 - **Do not expose it to a network casually.** The server binds `0.0.0.0` by default (`BIND_HOST`), the bootstrap login is `admin` / `123456` (the UI asks you to change it after login), and one authenticated session reaches a PTY terminal, a file browser with edit/delete, and agent installs. Keep it on loopback or behind a VPN, change the default login first, and set `AUTH_TOKEN`/`CORS_ORIGINS` deliberately.
@@ -128,7 +128,7 @@ Ekko Studio is a Koa web server with a Vue front end, and it can be installed th
 | [CloudCLI (Claude Code UI)](claudecodeui.md) | ✅ | Pick CloudCLI for a browser/mobile cockpit over Claude Code, Codex or Cursor CLI sessions. Pick Ekko Studio when Hermes and multi-agent group chat or workflows are part of the job. | CloudCLI: AGPL-3.0-or-later (commercial use allowed under copyleft terms), focused on reading and resuming each CLI's own sessions. Ekko Studio: broader runtime set and orchestration, non-commercial licence. |
 | `iOfficeAI/AionUi` | not indexed | Pick AionUi when you want a multi-agent desktop "cowork" app over Claude Code, Codex, OpenCode, Hermes and more under a permissive licence. Pick Ekko Studio when you need its Hermes control plane (profiles, channels, jobs) and the workflow canvas. | Apache-2.0, ~33.2k stars, last push 2026-09-09 (GitHub API, 2026-09-28); feature parity with Ekko Studio not checked. Not added in this tab-intake batch. |
 | `nesquena/hermes-webui` | not indexed | Pick hermes-webui for a lighter MIT web/phone UI over Hermes Agent alone. Pick Ekko Studio when you also want coding agents, group rooms and workflows in the same place. | MIT, ~18.6k stars, pushed 2026-09-28 (GitHub API). A single-runtime UI keeps the surface small; Ekko Studio's size is the cost of its breadth. Not added in this tab-intake batch. |
-| [Open WebUI](../../llm-chat-ui/open-webui.md) | ✅ | Pick Open WebUI when the job is chatting with models, including RAG, local models and many users. Pick Ekko Studio when the job is running and coordinating *agents* with terminals and files. | Open WebUI: years old, very wide adoption, model-chat platform with no agent-session or workflow-canvas surface. Ekko Studio: agent workspace, younger, BSL. |
+| [Open WebUI](../../../llm-chat-ui/open-webui.md) | ✅ | Pick Open WebUI when the job is chatting with models, including RAG, local models and many users. Pick Ekko Studio when the job is running and coordinating *agents* with terminals and files. | Open WebUI: years old, very wide adoption, model-chat platform with no agent-session or workflow-canvas surface. Ekko Studio: agent workspace, younger, BSL. |
 
 ## Tech stack
 

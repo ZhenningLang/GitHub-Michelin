@@ -120,7 +120,7 @@ health:
 | [Pointa](pointa.zh.md) | ✅ | 要分叉之后的功能面（watch、文件分享、AI 辅助批注）和存量用户，选 Vibe；MIT 是硬要求、或 `pointa dev` 的后端日志捕获才是胜负手，选 Pointa。 | 持续发展加社区，对 许可加日志捕获。 |
 | [earmark](earmark.zh.md) | ✅ | earmark 服务「要可 grep 的源码真相、肯加构建插件」的终端 agent 开发者；Vibe 服务「连『插件』这个词都不想听到」的团队。都年轻；Vibe 明显没那么年轻。 | 代码定位精度对 零代码接触。 |
 | [patch-mark](patch-mark.zh.md) | ✅ | 禁装扩展的地方（Firefox、管控 Chrome）patch-mark 赢——两行 script 在能跑 custom element 的任何页面都活；连这两行都多余时 Vibe 赢，而且报告里带真截图。 | 随处可嵌对随处可装；不可信输入的纪律对 Figma 式手感。 |
-| [Plannotator](../supervision-surfaces/plannotator.zh.md) | ✅ | 正交互补、值得同开：Vibe 从任何队友那里收「页面上哪里不对」；Plannotator 用你的批准卡住「agent 接下来要干什么」。 | 传感面 对 审批闸门。 |
+| [Plannotator](../supervision-surfaces/human-review-gates/plannotator.zh.md) | ✅ | 正交互补、值得同开：Vibe 从任何队友那里收「页面上哪里不对」；Plannotator 用你的批准卡住「agent 接下来要干什么」。 | 传感面 对 审批闸门。 |
 
 ## 技术栈
 

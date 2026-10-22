@@ -110,7 +110,7 @@ A custom element with shadow-DOM isolation and zero runtime dependencies (the Re
 - **You need screenshots or drawings.** The core captures text/selector/position, not pixels or freehand — that's [markupkit](markupkit.md) (strokes, PNG) or [Vibe Annotations](vibe-annotations.md) / [Pointa](pointa.md) (real screenshots via extension).
 - **Annotations must flow without anyone hosting a REST endpoint.** localStorage mode has no server for the MCP to read; the agent-sync story *requires* you to stand up the store adapter. Agentation's bundled `agentation-mcp` is one npx away by comparison.
 - **You expect a maintained dependency.** Two stars, single author, last push 2026-08-19 (~5 weeks before this writing) — healthier than earmark/markupkit but not a five-million-downloads/month project; see [Agentation](agentation.md) for the safe bet.
-- **You want the tool to close the loop (acknowledge, ask, resolve-lifecycle on pins).** patch-mark's MCP has read + resolve, not the full colored-pin state machine ([earmark](earmark.md)) or Plannotator-style turn gating ([Plannotator](../supervision-surfaces/plannotator.md)).
+- **You want the tool to close the loop (acknowledge, ask, resolve-lifecycle on pins).** patch-mark's MCP has read + resolve, not the full colored-pin state machine ([earmark](earmark.md)) or Plannotator-style turn gating ([Plannotator](../supervision-surfaces/human-review-gates/plannotator.md)).
 
 ## Comparison
 
@@ -120,7 +120,7 @@ A custom element with shadow-DOM isolation and zero runtime dependencies (the Re
 | [earmark](earmark.md) | ✅ | Both are MIT and framework-agnostic-ish; pick earmark when verified `file:line`/CSS-rule evidence justifies a build plugin and six-package supply chain, patch-mark when a single script tag on a foreign page is the whole requirement. | Evidence strength vs. integration weight. |
 | [markupkit](markupkit.md) | ✅ | Spatial, expressive feedback belongs to markupkit (strokes, layout diffs) though it's React-only and dormant; patch-mark keeps the click-and-comment loop portable to any page. | Expressiveness vs. portability. |
 | [Pointa](pointa.md) | ✅ | Choose Pointa when you refuse to edit the page at all — it's a Chrome extension; patch-mark edits *something* (two lines) but then works in any browser, not just Chromium, and ships a stricter MCP default. | Zero-touch + server-log capture vs. zero-dependency embed + read-only-by-default agent surface. |
-| [Plannotator](../supervision-surfaces/plannotator.md) | ✅ | Different loop position: Plannotator gates the agent's turn on your annotation of its artifacts; patch-mark feeds the agent evidence about a rendered page without gating. | Human-as-approval-gate vs. human-as-sensor. |
+| [Plannotator](../supervision-surfaces/human-review-gates/plannotator.md) | ✅ | Different loop position: Plannotator gates the agent's turn on your annotation of its artifacts; patch-mark feeds the agent evidence about a rendered page without gating. | Human-as-approval-gate vs. human-as-sensor. |
 
 ## Tech stack
 

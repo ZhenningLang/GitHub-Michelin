@@ -2,7 +2,7 @@
 name: FounderOS
 slug: founderos
 repo: https://github.com/Bennettxai/FounderOS
-category: supervision-surfaces
+category: agent-cockpits
 tags: [business-dashboard, solo-founder, agent-supervision, paperclip, sqlite, self-hosted]
 language: TypeScript
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 You check a payment balance, an unanswered client message and an agent's stalled task in three different places. FounderOS puts those views in one local business dashboard, but its first-run company is fictional and real agents still need their own backend.
 
-![FounderOS — health radar](../../../assets/health/founderos.svg)
+![FounderOS — health radar](../../../../assets/health/founderos.svg)
 
 ## When to use
 
@@ -80,8 +80,8 @@ Choose it over Paperclip alone when business context around the agent board matt
 ## When NOT to use
 
 - **You expect the twenty-two demo agents to start doing real work after installation.** Use [Paperclip](paperclip.md) with agents you have installed and configured. FounderOS's real `/agents` view reads a separate Paperclip board; its built-in runtime also contains status probes and explicit unimplemented jobs, not twenty-two turnkey employees.
-- **Your job is a repeatable cross-service action, not watching a business.** Use [n8n](../../workflow-orchestration/n8n.md) for a trigger, connector chain and execution history. FounderOS aggregates domain views; a connector badge does not establish that a workflow or every payment-provider client exists.
-- **Several people need distinct accounts and shared workspace permissions.** Evaluate [Macro](../../team-chat/macro.md), accepting its much heavier self-host stack. FounderOS documents one operator password, not per-person accounts or role separation.
+- **Your job is a repeatable cross-service action, not watching a business.** Use [n8n](../../../workflow-orchestration/n8n.md) for a trigger, connector chain and execution history. FounderOS aggregates domain views; a connector badge does not establish that a workflow or every payment-provider client exists.
+- **Several people need distinct accounts and shared workspace permissions.** Evaluate [Macro](../../../team-chat/macro.md), accepting its much heavier self-host stack. FounderOS documents one operator password, not per-person accounts or role separation.
 - **You need a quiet, stable deployment or must preserve the v2 stack.** Prefer your existing n8n workflows or Paperclip board while evaluating this revision. The repository changed from Next.js to Go/SvelteKit on October 10 and back to Next.js on October 20; v2 survives as a tag, not the current architecture.
 - **You require an inert, read-only dashboard around your host's credentials.** Use a narrow n8n integration with explicitly provisioned credentials instead. FounderOS resolves some keys from home-directory files, and the communication reply route can send to Slack or WhatsApp without consulting `GLADOS_WRITES`; the separate write switch is not a global read-only guarantee.
 
@@ -90,14 +90,14 @@ Choose it over Paperclip alone when business context around the agent board matt
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [Paperclip](paperclip.md) | ✅ | Choose Paperclip when agent scheduling, ticket ownership and budgets are the actual bottleneck; choose FounderOS when that board must sit beside income, inbox and content views. | Paperclip operates existing agents; FounderOS can consume that same board, so the two can be complementary rather than replacements. The broader dashboard adds connector and credential operations. |
-| [n8n](../../workflow-orchestration/n8n.md) | ✅ | Choose n8n when a business event must reliably call several APIs; choose FounderOS when one operator primarily needs to see and steer several business areas. | n8n gives an explicit automation canvas and per-node execution records under a fair-code license; FounderOS's root license is MIT and its UI is business-shaped, but integrations differ in completeness. |
-| [Macro](../../team-chat/macro.md) | ✅ | Choose Macro when coworkers must share linked mail, tasks and documents; choose FounderOS when a single operator wants a smaller local dashboard over existing tools. | Macro brings collaborative data and a substantially larger, AGPL service stack; FounderOS uses a local SQLite app and one password, not a team identity model. |
+| [n8n](../../../workflow-orchestration/n8n.md) | ✅ | Choose n8n when a business event must reliably call several APIs; choose FounderOS when one operator primarily needs to see and steer several business areas. | n8n gives an explicit automation canvas and per-node execution records under a fair-code license; FounderOS's root license is MIT and its UI is business-shaped, but integrations differ in completeness. |
+| [Macro](../../../team-chat/macro.md) | ✅ | Choose Macro when coworkers must share linked mail, tasks and documents; choose FounderOS when a single operator wants a smaller local dashboard over existing tools. | Macro brings collaborative data and a substantially larger, AGPL service stack; FounderOS uses a local SQLite app and one password, not a team identity model. |
 
 ## Quick start
 
 From a checked-out copy, use Node 22, run `npm install`, then `npm run dev` and open `http://localhost:4100`; Node 22 is also the CI version. The first screen uses a fictional company in `demo-data/`, not your business. In Settings, turn Filming mode off to use the initially blank `data/` store, then supply the credentials for the services you need; for example, `STRIPE_SECRET_KEY` lets the finance connector read balances and charges. FounderOS assembles the views; you own API access, provider charges, backups and any Paperclip board behind real agent work. Before remote access, set the operator password in Settings → Security and restart with an intentional bind address; use `npm run preview` for a built application rather than development compilation.
 
-![founderos — backbone user story](../../../assets/flow/founderos.svg)
+![founderos — backbone user story](../../../../assets/flow/founderos.svg)
 
 <!-- flow-steps:begin (generated from flows/founderos.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -117,7 +117,7 @@ From a checked-out copy, use Node 22, run `npm install`, then `npm run dev` and 
 
 ## Key techniques
 
-![FounderOS — mechanism diagram](../../../assets/mechanism/founderos.svg)
+![FounderOS — mechanism diagram](../../../../assets/mechanism/founderos.svg)
 
 <!-- mechanism:begin (generated from mechanisms/founderos.json by tools/mechanism_card.py; do not edit) -->
 <details>

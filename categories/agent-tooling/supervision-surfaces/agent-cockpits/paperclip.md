@@ -2,7 +2,7 @@
 name: Paperclip
 slug: paperclip
 repo: https://github.com/paperclipai/paperclip
-category: supervision-surfaces
+category: agent-cockpits
 tags: [multi-agent, agent-orchestration, control-plane, task-board, heartbeats, cost-budgets, approvals, org-chart, claude-code, codex, openclaw, self-hosted, postgres]
 language: TypeScript
 license: MIT
@@ -80,7 +80,7 @@ health:
 
 You have a dozen Claude Code and Codex sessions open, nobody remembers which tab owns which task, two of them just fixed the same bug, and one retry loop quietly burned your monthly token budget overnight. Paperclip puts those agents behind one self-hosted task board: each one wakes on a schedule, claims a single ticket, reports back, and is stopped automatically when its budget runs out.
 
-![Paperclip — health radar](../../../assets/health/paperclip.svg)
+![Paperclip — health radar](../../../../assets/health/paperclip.svg)
 
 ## When to use
 
@@ -92,7 +92,7 @@ You reach for Paperclip when the missing layer is the *organization* around agen
 
 Paperclip is a Node.js server with a React dashboard and a PostgreSQL database (an embedded one is created for you on first run). It does not contain an agent: an *adapter* launches something you already installed and logged into — your local `claude` or `codex` CLI, OpenCode, Cursor, Pi, a generic shell command, or an HTTP endpoint such as an OpenClaw gateway. Agents never run continuously; they run in *heartbeats* — short execution windows, like a shift worker clocking in, triggered by a timer, a new assignment or a manual ping. On each heartbeat Paperclip queues the wake-up, checks the budget, prepares the working directory (optionally an isolated git worktree), injects a short-lived API token plus its own "paperclip" skill (the instructions that teach the agent how to read and update tickets), and starts the CLI; the agent then checks out a ticket through Paperclip's REST API, works, comments and exits, while Paperclip records the logs, token cost and session ID so the next heartbeat resumes the same conversation. What you do is the management layer: define the company goal, hire the agents and pick their adapters, set budgets, and approve strategy, hires or finished work in the dashboard.
 
-![paperclip — backbone user story](../../../assets/flow/paperclip.svg)
+![paperclip — backbone user story](../../../../assets/flow/paperclip.svg)
 
 <!-- flow-steps:begin (generated from flows/paperclip.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -115,9 +115,9 @@ Paperclip is a Node.js server with a React dashboard and a PostgreSQL database (
 
 - **You run one agent, or one agent per repo.** Paperclip's own README says a single-agent user "probably" doesn't need it; the server, database, org chart and heartbeat scheduler are overhead for that case. Drive Claude Code or Codex directly, and if you only want to reach those sessions from a browser or phone, use [CloudCLI (Claude Code UI)](claudecodeui.md) instead.
 - **Your real job is reviewing parallel code branches.** The project describes itself as "not a code review tool" — there is no diff-review loop that feeds CI failures and PR comments back to the owning agent. For many coding agents on worktree branches with review/CI routing, use [Agent Orchestrator](agent-orchestrator.md).
-- **You want to program the agents' reasoning.** Paperclip is "not an agent framework": it schedules and governs external agent processes, it does not define tools, roles-as-code or multi-step reasoning inside one program. To build that logic in Python, use [CrewAI](../../agent-frameworks/agent-runtimes/agent-sdks/crewai.md).
+- **You want to program the agents' reasoning.** Paperclip is "not an agent framework": it schedules and governs external agent processes, it does not define tools, roles-as-code or multi-step reasoning inside one program. To build that logic in Python, use [CrewAI](../../../agent-frameworks/agent-runtimes/agent-sdks/crewai.md).
 - **You would expose it beyond a trusted network without a security review.** Twelve GitHub security advisories were published for this repo by 2026-09-28 — five rated critical, including unauthenticated RCE through the import path, cross-tenant agent-key minting, and (2026-07-22) a drive-by DNS-rebinding RCE against *local* instances. They are published as fixed advisories, but the density says the authenticated/public mode is young. Keep it on loopback or a tailnet; if external teammates must reach a board, a hosted tracker (Linear, Jira) that your agents write to through their own integrations is the lower-risk substitute. [推断]
-- **You need the budget to be the only thing between you and a surprise bill.** Budgets are enforced per heartbeat from the cost the adapter reports; issue #9539 describes an upgrade that broke an adapter's auth and let retries consume ~35.6M tokens before it was noticed. Put a hard spend limit at the provider or at a gateway such as [LiteLLM](../../api-gateway/litellm.md) as well, rather than trusting Paperclip's cap alone.
+- **You need the budget to be the only thing between you and a surprise bill.** Budgets are enforced per heartbeat from the cost the adapter reports; issue #9539 describes an upgrade that broke an adapter's auth and let retries consume ~35.6M tokens before it was noticed. Put a hard spend limit at the provider or at a gateway such as [LiteLLM](../../../api-gateway/litellm.md) as well, rather than trusting Paperclip's cap alone.
 - **Your hosts are Windows.** Issue #10012 (open since 2026-07-22) reports every local-CLI agent run failing on Windows because the runner generates bash-only wrappers. Run the server on macOS or Linux; for a Windows-native multi-agent desktop, Agent Orchestrator ships a Windows installer.
 - **You need a slow, stable upgrade path.** Releases are calendar-versioned roughly weekly (v2026.817 → v2026.916 in a month), and open bug reports cite config-save failures and secret bindings reset after upgrades. Pin a version with the installer's pinned-version option and read release notes before upgrading, or stay on a plain issue tracker until the schema settles.
 
@@ -128,7 +128,7 @@ Paperclip is a Node.js server with a React dashboard and a PostgreSQL database (
 | [Agent Orchestrator](agent-orchestrator.md) | ✅ | For many coding agents on real branches where the bottleneck is CI failures and review comments, pick Agent Orchestrator; pick Paperclip when the agents are a standing team with budgets, roles and recurring non-code work. | You gain the worktree-per-task desktop loop with automatic CI/PR feedback routing, but lose org charts, per-agent spend caps, routines and a multi-company server. |
 | Multica (multica-ai/multica) | not indexed | Closest head-on rival — a self-hostable board where coding agents pick up issues and report blockers; choose it if its board UX fits better, but only after reading its licence, because Paperclip's MIT is the looser bet. | Not added in this tab-intake batch. Its "Multica License" is Apache-2.0 plus conditions that forbid offering it as a hosted service to third parties or removing its branding without a commercial licence; internal use is allowed. |
 | Vibe Kanban (BloopAI/vibe-kanban) | not indexed | Treat it as a pattern source only: its README announces the project is sunsetting, so do not start a new deployment on it; Paperclip is the maintained choice for a board that dispatches agents. | Not added in this tab-intake batch. It focused on per-issue coding workspaces with inline diff comments and PR creation — closer to code review than to Paperclip's org and budget model. |
-| [CrewAI](../../agent-frameworks/agent-runtimes/agent-sdks/crewai.md) | ✅ | When the agents are yours to write — roles, tools and task flow defined in Python — pick CrewAI; pick Paperclip when the agents already exist as CLIs or services and you need to schedule, budget and supervise them. | You gain code-level control over each agent's reasoning, but you build scheduling, cost caps, a dashboard and approvals yourself. |
+| [CrewAI](../../../agent-frameworks/agent-runtimes/agent-sdks/crewai.md) | ✅ | When the agents are yours to write — roles, tools and task flow defined in Python — pick CrewAI; pick Paperclip when the agents already exist as CLIs or services and you need to schedule, budget and supervise them. | You gain code-level control over each agent's reasoning, but you build scheduling, cost caps, a dashboard and approvals yourself. |
 | Linear / Jira + agent integrations | not a repo | Hosted trackers, not repositories. Pick them when humans outnumber agents and you need mature permissions and outside access; pick Paperclip when the tracker itself must launch agents and enforce single-owner checkout and budgets. | You gain a hardened multi-user SaaS, but checkout locks, heartbeat scheduling and spend caps are not part of the tracker. Paperclip lists bring-your-own-ticket-system as a roadmap item. |
 
 ## Tech stack

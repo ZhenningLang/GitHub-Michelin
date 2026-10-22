@@ -2,7 +2,7 @@
 name: Sphinx
 slug: sphinx
 repo: https://github.com/parthh01/sphinx
-category: supervision-surfaces
+category: human-review-gates
 tags: [code-comprehension, human-in-the-loop, git-hooks, coding-agents, assessment]
 language: JavaScript
 license: MIT
@@ -75,7 +75,7 @@ health:
 
 agent 改完代码，你却说不清“写完数据后进程崩溃，重试会怎样”。Sphinx 暂停 Git 推送，让独立模型按已提交的代码出题，请你预测行为。
 
-![Sphinx — 健康度雷达](../../../assets/health/sphinx.zh.svg)
+![Sphinx — 健康度雷达](../../../../assets/health/sphinx.zh.svg)
 
 ## 何时使用
 
@@ -85,9 +85,9 @@ agent 改完代码，你却说不清“写完数据后进程崩溃，重试会�
 
 ## 何时不用
 
-- **你要找缺陷或建议补丁。** 选 [PR-Agent](../../ai-code-review/pr-agent.zh.md)。Sphinx 考的是你能否解释真实行为；理解某个缺陷不等于修复它。
+- **你要找缺陷或建议补丁。** 选 [PR-Agent](../../../ai-code-review/pr-agent.zh.md)。Sphinx 考的是你能否解释真实行为；理解某个缺陷不等于修复它。
 - **你要批注计划或代码差异。** 选 [Plannotator](plannotator.zh.md)。它把你的修改意见交给编程助手，不给你的答案打分。
-- **你需要先看懂大改动的全貌。** 选 [PR Lens](../../diagramming/pr-lens.zh.md) 生成结构图；问卷不是架构文档生成器。
+- **你需要先看懂大改动的全貌。** 选 [PR Lens](../../../diagramming/pr-lens.zh.md) 生成结构图；问卷不是架构文档生成器。
 - **你要不可绕过的发布授权。** 使用 Git 托管端的分支保护与强制评审。本地 hook、跳过按钮和 `sphinx yolo` 均可绕过；网页合并、CI 强制检查与部署不在 v0.1 覆盖内。
 - **你不能授权代码外发或全局 hook 修改。** 保留现有 Git 客户端中的人工评审。云端考官会收到源码与答案；除非显式选择仓库范围，安装会修改全局 `core.hooksPath`。
 - **错误考官可能耽误紧急工作。** 用 [Plannotator](plannotator.zh.md) 直接人工评审。上游评测保留了把充分答案误判为未通过的未解决样例，不能把通关当作可靠能力认证。
@@ -97,14 +97,14 @@ agent 改完代码，你却说不清“写完数据后进程崩溃，重试会�
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Plannotator](plannotator.zh.md) | ✅ | 要指出计划或差异中的具体错误，选 Plannotator；要在推送前验证自己的行为预测，选 Sphinx。 | 人工批注保留你的判断；Sphinx 增加考官、模型费用与判分不确定性。 |
-| [PR Lens](../../diagramming/pr-lens.zh.md) | ✅ | 大片差异需要结构导览时，选 PR Lens；读者必须解释故障或边界情境时，选 Sphinx。 | 自动结构图帮助阅读且不阻塞 Git；问卷增加个人检查点，却不产出长期架构地图。 |
-| [PR-Agent](../../ai-code-review/pr-agent.zh.md) | ✅ | 要在托管端拉取请求上自动找问题，选 PR-Agent；要脱离编程对话、本地由人作答，选 Sphinx。 | PR-Agent 跨托管平台发布描述与建议；Sphinx 在本地 Git 内等待，不替代代码评审。 |
+| [PR Lens](../../../diagramming/pr-lens.zh.md) | ✅ | 大片差异需要结构导览时，选 PR Lens；读者必须解释故障或边界情境时，选 Sphinx。 | 自动结构图帮助阅读且不阻塞 Git；问卷增加个人检查点，却不产出长期架构地图。 |
+| [PR-Agent](../../../ai-code-review/pr-agent.zh.md) | ✅ | 要在托管端拉取请求上自动找问题，选 PR-Agent；要脱离编程对话、本地由人作答，选 Sphinx。 | PR-Agent 跨托管平台发布描述与建议；Sphinx 在本地 Git 内等待，不替代代码评审。 |
 
 ## 快速上手
 
 用 `npm install -g sphinx-understand` 安装，再运行 `sphinx install`，选择考官账户与需要的客户端集成。默认会修改整台机器的 Git hooks，先检查现有 hook 归属；仓库覆盖了 hook 路径时，需要 `sphinx install --repo`。进入项目运行 `sphinx init`，在首次外发源码前编辑 `.sphinxignore`，再用 `sphinx doctor` 检查接线。启动新的编程客户端会话，并亲自完成信任确认。匹配策略的 `git push origin main` 会等待你在本地问卷或终端作答；通过后原 Git 操作继续，不重放推送。模型费用由你承担，或消耗已登录编程账户的额度；默认调用数无限制，建议设置 `sphinx config --max-model-calls 30`；本页仅核对了源码中的使用路径，没有执行这些命令。
 
-![sphinx — 主干用户故事](../../../assets/flow/sphinx.zh.svg)
+![sphinx — 主干用户故事](../../../../assets/flow/sphinx.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/sphinx.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -123,7 +123,7 @@ agent 改完代码，你却说不清“写完数据后进程崩溃，重试会�
 
 ## 技术要点
 
-![Sphinx — 机制图](../../../assets/mechanism/sphinx.zh.svg)
+![Sphinx — 机制图](../../../../assets/mechanism/sphinx.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/sphinx.json by tools/mechanism_card.py; do not edit) -->
 <details>

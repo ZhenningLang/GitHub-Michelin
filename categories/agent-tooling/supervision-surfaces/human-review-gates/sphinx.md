@@ -2,7 +2,7 @@
 name: Sphinx
 slug: sphinx
 repo: https://github.com/parthh01/sphinx
-category: supervision-surfaces
+category: human-review-gates
 tags: [code-comprehension, human-in-the-loop, git-hooks, coding-agents, assessment]
 language: JavaScript
 license: MIT
@@ -75,7 +75,7 @@ health:
 
 Your agent finishes a change, but you cannot explain what happens if its worker crashes after writing data. Sphinx holds the Git push while a separate model asks you to predict the committed code's behavior.
 
-![Sphinx — health radar](../../../assets/health/sphinx.svg)
+![Sphinx — health radar](../../../../assets/health/sphinx.svg)
 
 ## When to use
 
@@ -85,9 +85,9 @@ Choose it over an annotation surface when the missing step is demonstrating your
 
 ## When NOT to use
 
-- **You need bug findings or patch suggestions.** Choose [PR-Agent](../../ai-code-review/pr-agent.md); Sphinx tests your explanation of actual behavior, which can include understanding a bug without fixing it.
+- **You need bug findings or patch suggestions.** Choose [PR-Agent](../../../ai-code-review/pr-agent.md); Sphinx tests your explanation of actual behavior, which can include understanding a bug without fixing it.
 - **You need to annotate a plan or diff.** Choose [Plannotator](plannotator.md). It returns your comments to the coding agent instead of marking your answers.
-- **You need a map before reading a large change.** Choose [PR Lens](../../diagramming/pr-lens.md) for generated diagrams; Sphinx's questionnaire is not an architecture-document generator.
+- **You need a map before reading a large change.** Choose [PR Lens](../../../diagramming/pr-lens.md) for generated diagrams; Sphinx's questionnaire is not an architecture-document generator.
 - **You need enforceable release authorization.** Use server-side branch protection and required reviews on your Git host. Local hooks, Skip and `sphinx yolo` are bypassable; web merges, CI-required checks and deployments are outside v0.1's coverage.
 - **You cannot authorize code egress or global hook changes.** Keep a human review in your existing Git client instead. Cloud reviewer routes receive source and answers; installation changes global `core.hooksPath` unless repository scope is explicitly chosen.
 - **An incorrect examiner would block urgent work.** Prefer direct human review with [Plannotator](plannotator.md). The upstream evaluation retains unresolved sufficient-answer false negatives; passing is not a reliable competency certificate.
@@ -97,14 +97,14 @@ Choose it over an annotation surface when the missing step is demonstrating your
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [Plannotator](plannotator.md) | ✅ | Choose Plannotator when you must correct specific plan or diff lines; choose Sphinx when you want to test your own behavioral prediction before pushing. | Human-authored annotations preserve your judgment; Sphinx adds an examiner, model cost and grading uncertainty. |
-| [PR Lens](../../diagramming/pr-lens.md) | ✅ | Choose PR Lens when a sprawling diff needs an orientation diagram; choose Sphinx when the reader must explain a failure or boundary scenario. | A generated map helps you read without stopping Git; the questionnaire adds a personal checkpoint but not a durable architecture map. |
-| [PR-Agent](../../ai-code-review/pr-agent.md) | ✅ | Choose PR-Agent for automated findings on hosted pull requests; choose Sphinx for a local, human-answer checkpoint independent of the coding conversation. | PR-Agent posts descriptions and suggestions across Git hosts; Sphinx waits inside local Git and does not replace code review. |
+| [PR Lens](../../../diagramming/pr-lens.md) | ✅ | Choose PR Lens when a sprawling diff needs an orientation diagram; choose Sphinx when the reader must explain a failure or boundary scenario. | A generated map helps you read without stopping Git; the questionnaire adds a personal checkpoint but not a durable architecture map. |
+| [PR-Agent](../../../ai-code-review/pr-agent.md) | ✅ | Choose PR-Agent for automated findings on hosted pull requests; choose Sphinx for a local, human-answer checkpoint independent of the coding conversation. | PR-Agent posts descriptions and suggestions across Git hosts; Sphinx waits inside local Git and does not replace code review. |
 
 ## Quick start
 
 Install with `npm install -g sphinx-understand`, then run `sphinx install` and select a reviewer account plus any client integrations. This changes machine-wide Git hooks by default, so inspect your existing hook ownership first; a repository hook override needs `sphinx install --repo`. In your project run `sphinx init`, edit `.sphinxignore` before sharing any source, and use `sphinx doctor` to check the wiring. Start a fresh coding-client session and complete any client trust prompts yourself. A matching `git push origin main` waits while you answer in the local questionnaire or terminal; after a pass, the original Git operation continues without being replayed. You pay the reviewer provider or use your signed-in coding plan, and should set `sphinx config --max-model-calls 30` because the default call count is unlimited; these source-documented steps were not executed for this entry.
 
-![sphinx — backbone user story](../../../assets/flow/sphinx.svg)
+![sphinx — backbone user story](../../../../assets/flow/sphinx.svg)
 
 <!-- flow-steps:begin (generated from flows/sphinx.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -123,7 +123,7 @@ Install with `npm install -g sphinx-understand`, then run `sphinx install` and s
 
 ## Key techniques
 
-![Sphinx — mechanism diagram](../../../assets/mechanism/sphinx.svg)
+![Sphinx — mechanism diagram](../../../../assets/mechanism/sphinx.svg)
 
 <!-- mechanism:begin (generated from mechanisms/sphinx.json by tools/mechanism_card.py; do not edit) -->
 <details>

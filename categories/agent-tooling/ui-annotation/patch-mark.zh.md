@@ -110,7 +110,7 @@ health:
 - **要截图或手绘。** 核心捕获的是文本/选择器/位置，不是像素和笔画——那是 [markupkit](markupkit.zh.md)（笔画、PNG）或 [Vibe Annotations](vibe-annotations.zh.md)／[Pointa](pointa.zh.md)（扩展抓真截图）的活。
 - **反馈要在没人托管 REST 端点的情况下流动。** localStorage 模式没有可被 MCP 读的 server；agent 同步这条路*要求*你把 store 适配层搭起来。对比之下 Agentation 的随包 `agentation-mcp` 只差一句 npx。
 - **你期待一个有人维护的依赖。** 2 星、单人作者、最后推送 2026-08-19（写作时约五周前）——比 earmark/markupkit 健康些，但远不是月下载五百万的项目；求稳看 [Agentation](agentation.zh.md)。
-- **你要工具替你闭环（图钉上的 acknowledge、ask、resolve 全生命周期）。** patch-mark 的 MCP 只有读加 resolve，没有整支变色图钉状态机（[earmark](earmark.zh.md)），也没有 Plannotator 式的回合闸门（[Plannotator](../supervision-surfaces/plannotator.zh.md)）。
+- **你要工具替你闭环（图钉上的 acknowledge、ask、resolve 全生命周期）。** patch-mark 的 MCP 只有读加 resolve，没有整支变色图钉状态机（[earmark](earmark.zh.md)），也没有 Plannotator 式的回合闸门（[Plannotator](../supervision-surfaces/human-review-gates/plannotator.zh.md)）。
 
 ## 横向对比
 
@@ -120,7 +120,7 @@ health:
 | [earmark](earmark.zh.md) | ✅ | 同为 MIT、都算框架无关；精确 `file:line`/CSS 规则证据值得配一个构建插件和六包供应链时选 earmark；「在别人页面上就放一个 script 标签」是全部需求时选 patch-mark。 | 证据强度对集成重量。 |
 | [markupkit](markupkit.zh.md) | ✅ | 空间性、表现力反馈归 markupkit（笔画、layout diff），虽然它 React-only 且休眠；patch-mark 守住的是可移植到任何页面的点选留言循环。 | 表现力对可移植性。 |
 | [Pointa](pointa.zh.md) | ✅ | 一寸页面代码都不想碰就选 Pointa——它是 Chrome 扩展；patch-mark 终究要改*点东西*（两行），但换来不限 Chromium，以及更严的 MCP 默认面。 | 零接触加服务端日志捕获，对零依赖嵌入加只读默认的 agent 面。 |
-| [Plannotator](../supervision-surfaces/plannotator.zh.md) | ✅ | 环路位置不同：Plannotator 用你的批注卡住 agent 的回合；patch-mark 把渲染页面的证据递给 agent，不卡回合。 | 人当审批闸门，对 人当传感器。 |
+| [Plannotator](../supervision-surfaces/human-review-gates/plannotator.zh.md) | ✅ | 环路位置不同：Plannotator 用你的批注卡住 agent 的回合；patch-mark 把渲染页面的证据递给 agent，不卡回合。 | 人当审批闸门，对 人当传感器。 |
 
 ## 技术栈
 

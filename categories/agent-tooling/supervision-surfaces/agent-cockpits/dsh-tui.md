@@ -2,7 +2,7 @@
 name: dsh-TUI
 slug: dsh-tui
 repo: https://github.com/ccch1mneyyy/dsh-TUI
-category: supervision-surfaces
+category: agent-cockpits
 tags: [deepseek-harness, terminal, agent-frontend]
 language: TypeScript
 license: MIT
@@ -79,7 +79,7 @@ health:
 
 Your DeepSeek Harness session has tools, approvals and background work scattered across text; dsh-TUI projects that state into terminal cards, panels and a session browser.
 
-![dsh-TUI — health radar](../../../assets/health/dsh-tui.svg)
+![dsh-TUI — health radar](../../../../assets/health/dsh-tui.svg)
 
 ## When to use
 
@@ -87,24 +87,24 @@ You already use DeepSeek Harness and want visible tool status, session switching
 
 ## When NOT to use
 
-- Want one independent multi-provider agent rather than a DSH profile? Choose [OpenCode](../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/opencode.md).
-- Want a desktop surface for installed agents? Choose [T3 Code](../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/t3code.md) rather than a terminal renderer.
-- Need the vendor's exact sandbox behavior with less adapter drift? Use [Codex](../../agent-frameworks/coding-agents/terminal-agents/vendor-agents/codex.md) directly. dsh-TUI adds no sandbox; its Windows DSH profile defaults to full access with no approval.
+- Want one independent multi-provider agent rather than a DSH profile? Choose [OpenCode](../../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/opencode.md).
+- Want a desktop surface for installed agents? Choose [T3 Code](../../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/t3code.md) rather than a terminal renderer.
+- Need the vendor's exact sandbox behavior with less adapter drift? Use [Codex](../../../agent-frameworks/coding-agents/terminal-agents/vendor-agents/codex.md) directly. dsh-TUI adds no sandbox; its Windows DSH profile defaults to full access with no approval.
 - Need work to continue after closing the UI? Use a supervised runner instead; DSH background sessions stop with this process.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
-| [OpenCode](../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/opencode.md) | ✅ | Choose OpenCode for an independent agent and provider ecosystem; choose dsh-TUI for a DSH-native visual workflow. | New agent loop versus an adapter whose compatibility tracks DSH releases. |
-| [T3 Code](../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/t3code.md) | ✅ | Choose T3 Code for a local GUI over installed agents; choose dsh-TUI when terminal sessions are the workspace. | Desktop interaction versus terminal rendering and terminal-protocol constraints. |
-| [Codex](../../agent-frameworks/coding-agents/terminal-agents/vendor-agents/codex.md) | ✅ | Choose native Codex for its direct protocol and controls; choose dsh-TUI only when its shared terminal presentation earns the extra adapter. | Native feature timing versus an experimental backend with pinned app-server compatibility. |
+| [OpenCode](../../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/opencode.md) | ✅ | Choose OpenCode for an independent agent and provider ecosystem; choose dsh-TUI for a DSH-native visual workflow. | New agent loop versus an adapter whose compatibility tracks DSH releases. |
+| [T3 Code](../../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/t3code.md) | ✅ | Choose T3 Code for a local GUI over installed agents; choose dsh-TUI when terminal sessions are the workspace. | Desktop interaction versus terminal rendering and terminal-protocol constraints. |
+| [Codex](../../../agent-frameworks/coding-agents/terminal-agents/vendor-agents/codex.md) | ✅ | Choose native Codex for its direct protocol and controls; choose dsh-TUI only when its shared terminal presentation earns the extra adapter. | Native feature timing versus an experimental backend with pinned app-server compatibility. |
 
 ## Quick start
 
 Install `npm install -g @deepseek-ai/dsh @deepseek-harness-tui/dsh-tui`, then run `dsh-tui`. First launch initializes a profile using pnpm and asks for model credentials, workspace and display preferences. The frontend displays backend events and sends your actions back; the backend executes tools and persists sessions. You must inspect permissions and reporting settings before opening sensitive projects: DSH request reporting can include incremental session logs in requests to the configured provider URL. See the [reviewed guide](https://github.com/ccch1mneyyy/dsh-TUI/blob/73ff99fbed56563bf154d719effd09f9f9725349/README.md).
 
-![dsh-tui — backbone user story](../../../assets/flow/dsh-tui.svg)
+![dsh-tui — backbone user story](../../../../assets/flow/dsh-tui.svg)
 
 <!-- flow-steps:begin (generated from flows/dsh-tui.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -123,7 +123,7 @@ Install `npm install -g @deepseek-ai/dsh @deepseek-harness-tui/dsh-tui`, then ru
 
 ## Key techniques
 
-![dsh-TUI — mechanism diagram](../../../assets/mechanism/dsh-tui.svg)
+![dsh-TUI — mechanism diagram](../../../../assets/mechanism/dsh-tui.svg)
 
 <!-- mechanism:begin (generated from mechanisms/dsh-tui.json by tools/mechanism_card.py; do not edit) -->
 <details>

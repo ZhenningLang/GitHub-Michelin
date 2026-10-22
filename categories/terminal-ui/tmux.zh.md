@@ -112,10 +112,10 @@ tmux 是 C 写的 client/server 多路复用器：你敲下 `tmux`，它拉起�
 
 ## 何时不用
 
-- **你在盯编程 agent、想知道哪个卡住了。** tmux 不打任何标记——没有 working/blocked/idle；要么自己 `capture-pane` 轮询，要么自己搭胶水。要 agent 感知监管用 [herdr](../agent-frameworks/coding-agents/agent-multiplexers/herdr.zh.md)（代价是 6 个月大的 pre-1.0 工具），或者用 [CloudCLI](../agent-tooling/supervision-surfaces/claudecodeui.zh.md) 这类驾驶舱。
+- **你在盯编程 agent、想知道哪个卡住了。** tmux 不打任何标记——没有 working/blocked/idle；要么自己 `capture-pane` 轮询，要么自己搭胶水。要 agent 感知监管用 [herdr](../agent-frameworks/coding-agents/agent-multiplexers/herdr.zh.md)（代价是 6 个月大的 pre-1.0 工具），或者用 [CloudCLI](../agent-tooling/supervision-surfaces/agent-cockpits/claudecodeui.zh.md) 这类驾驶舱。
 - **你要新人当天上手。** 新同事记不住 `C-b %`。[zellij](zellij.zh.md) 开箱自带可见模式提示条、鼠标友好、布局即配置、web client。
 - **你在原生 Windows。** README 的平台列表是 OpenBSD、FreeBSD、NetBSD、Linux、macOS、Solaris——Windows 只能走 WSL/兼容层。机群以原生 Windows 为主，就去看 [herdr](../agent-frameworks/coding-agents/agent-multiplexers/herdr.zh.md) 的平台支持叙事（beta）或 Windows Terminal + WSL 里的 tmux。
-- **你要内置浏览器/手机接入。** tmux 没有 web server；[zellij](zellij.zh.md) 自带鉴权 web client，[CloudCLI](../agent-tooling/supervision-surfaces/claudecodeui.zh.md) 本身就是 web 应用。
+- **你要内置浏览器/手机接入。** tmux 没有 web server；[zellij](zellij.zh.md) 自带鉴权 web client，[CloudCLI](../agent-tooling/supervision-surfaces/agent-cockpits/claudecodeui.zh.md) 本身就是 web 应用。
 - **你想要现代便利但不想自己写出来。** 插件（tpm 是第三方）、真正的多人空间、浮动/堆叠 pane：[zellij](zellij.zh.md) 把这些当一等公民。tmux 大多能靠配置做到——你付出的代价是 `.tmux.conf` 的长期维护。
 - **你要 GUI 级渲染**（每 pane 字体、图片、连字）：那是终端模拟器的事——[Alacritty](alacritty.zh.md) 明确把复用*让给* tmux，[Warp](warp.zh.md) 是专有应用——tmux 在那里永远只是半个栈。
 

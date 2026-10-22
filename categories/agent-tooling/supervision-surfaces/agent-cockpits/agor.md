@@ -2,7 +2,7 @@
 name: Agor
 slug: agor
 repo: https://github.com/preset-io/agor
-category: supervision-surfaces
+category: agent-cockpits
 tags: [coding-agents, multiplayer, worktrees, orchestration, spatial-board]
 language: TypeScript
 license: BUSL-1.1
@@ -83,7 +83,7 @@ health:
 
 Several colleagues run coding agents, but each task disappears into a private terminal and someone else's branch. Agor puts branches and agent sessions on a shared live board with their own working directories and conversation history.
 
-![Agor — health radar](../../../assets/health/agor.svg)
+![Agor — health radar](../../../../assets/health/agor.svg)
 
 ## When to use
 
@@ -91,24 +91,24 @@ You lead a small team using different coding-agent CLIs and want colleagues to f
 
 ## When NOT to use
 
-- **You require unrestricted open-source licensing:** Agor is BSL, not OSI open source before its change date. Consider MIT [OpenHands](../../agent-frameworks/coding-agents/orchestration-and-review/openhands.md) for a browser control center; do not resell Agor's orchestration service without checking the additional grant.
-- **One local OpenCode operator:** choose [OpenChamber](../../agent-frameworks/coding-agents/orchestration-and-review/openchamber.md) for its focused review surface, or the CLI itself; shared boards, roles and a daemon are extra administration.
-- **Container collaboration is the central requirement:** evaluate [Scion](../../agent-frameworks/coding-agents/orchestration-and-review/scion.md), whose Hub/broker model makes runtime placement and workspace sharing explicit.
-- **You equate separate branches with hostile-tenant security:** use a reviewed execution substrate, not worktrees alone. The inspected Linux sandbox shares network access and has deliberate writable home areas; [gh-aw](../../agent-frameworks/coding-agents/orchestration-and-review/gh-aw.md) is a different option for bounded GitHub-only chores with restricted writes.
+- **You require unrestricted open-source licensing:** Agor is BSL, not OSI open source before its change date. Consider MIT [OpenHands](../../../agent-frameworks/coding-agents/orchestration-and-review/openhands.md) for a browser control center; do not resell Agor's orchestration service without checking the additional grant.
+- **One local OpenCode operator:** choose [OpenChamber](../../../agent-frameworks/coding-agents/orchestration-and-review/openchamber.md) for its focused review surface, or the CLI itself; shared boards, roles and a daemon are extra administration.
+- **Container collaboration is the central requirement:** evaluate [Scion](../../../agent-frameworks/coding-agents/orchestration-and-review/scion.md), whose Hub/broker model makes runtime placement and workspace sharing explicit.
+- **You equate separate branches with hostile-tenant security:** use a reviewed execution substrate, not worktrees alone. The inspected Linux sandbox shares network access and has deliberate writable home areas; [gh-aw](../../../agent-frameworks/coding-agents/orchestration-and-review/gh-aw.md) is a different option for bounded GitHub-only chores with restricted writes.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [OpenHands](../../agent-frameworks/coding-agents/orchestration-and-review/openhands.md) | ✅ | Choose OpenHands for a browser console across local/remote agent backends and automation; choose Agor when colleagues must share branch-centered spatial workflows. | Agor adds boards, zones, teammates and shared knowledge, but you operate a wider collaboration system under BSL. |
-| [OpenChamber](../../agent-frameworks/coding-agents/orchestration-and-review/openchamber.md) | ✅ | Choose OpenChamber for one operator committed to OpenCode and detailed diff review; choose Agor for team participation across different agent runtimes. | A focused OpenCode surface is smaller; Agor adds identity, shared state and runtime integration overhead. |
-| [Scion](../../agent-frameworks/coding-agents/orchestration-and-review/scion.md) | ✅ | Choose Scion to design collaborating mixed-harness teams on container hosts; choose Agor when live boards and human participation organize the work. | Scion foregrounds runtime brokers and workspace policies; Agor foregrounds branches, sessions and reusable zone triggers. |
+| [OpenHands](../../../agent-frameworks/coding-agents/orchestration-and-review/openhands.md) | ✅ | Choose OpenHands for a browser console across local/remote agent backends and automation; choose Agor when colleagues must share branch-centered spatial workflows. | Agor adds boards, zones, teammates and shared knowledge, but you operate a wider collaboration system under BSL. |
+| [OpenChamber](../../../agent-frameworks/coding-agents/orchestration-and-review/openchamber.md) | ✅ | Choose OpenChamber for one operator committed to OpenCode and detailed diff review; choose Agor for team participation across different agent runtimes. | A focused OpenCode surface is smaller; Agor adds identity, shared state and runtime integration overhead. |
+| [Scion](../../../agent-frameworks/coding-agents/orchestration-and-review/scion.md) | ✅ | Choose Scion to design collaborating mixed-harness teams on container hosts; choose Agor when live boards and human participation organize the work. | Scion foregrounds runtime brokers and workspace policies; Agor foregrounds branches, sessions and reusable zone triggers. |
 
 ## Quick start
 
 The README installs `agor-live` globally with npm, then runs `agor init`, `agor daemon start` and `agor open`. Node.js 22.12 or later and Git are required; the published package explicitly excludes native Windows. Initialization installs the agent tools you deliberately select, and the browser onboarding connects model credentials and creates a board. Add repository branches and start sessions; Agor maintains branch working directories, streams progress and exposes shared previews, while the underlying agents perform the edits. You pay model costs, grant repository access, configure execution security and review the resulting changes; a board is not an automatic merge approval.
 
-![agor — backbone user story](../../../assets/flow/agor.svg)
+![agor — backbone user story](../../../../assets/flow/agor.svg)
 
 <!-- flow-steps:begin (generated from flows/agor.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -126,7 +126,7 @@ The README installs `agor-live` globally with npm, then runs `agor init`, `agor 
 
 ## Key techniques
 
-![Agor — mechanism diagram](../../../assets/mechanism/agor.svg)
+![Agor — mechanism diagram](../../../../assets/mechanism/agor.svg)
 
 <!-- mechanism:begin (generated from mechanisms/agor.json by tools/mechanism_card.py; do not edit) -->
 <details>

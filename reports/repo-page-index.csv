@@ -16,7 +16,7 @@ https://github.com/Asymptote-Labs/agent-beacon,agent-beacon,coding-agent-memory,
 https://github.com/Ataraxy-Labs/weave,weave,concurrent-editing,categories/agent-tooling/concurrent-editing/weave.md
 https://github.com/AtomicBot-ai/atomic-agent,atomic-agent,personal-assistants,categories/agent-frameworks/agent-runtimes/personal-assistants/atomic-agent.md
 https://github.com/AutumnWhj/ChatGPT-wechat-bot,chatgpt-wechat-bot,wechat,categories/im-automation/wechat/chatgpt-wechat-bot.md
-https://github.com/Bennettxai/FounderOS,founderos,supervision-surfaces,categories/agent-tooling/supervision-surfaces/founderos.md
+https://github.com/Bennettxai/FounderOS,founderos,agent-cockpits,categories/agent-tooling/supervision-surfaces/agent-cockpits/founderos.md
 https://github.com/BerriAI/litellm,litellm,api-gateway,categories/api-gateway/litellm.md
 https://github.com/Blinue/Magpie,magpie,image-processing,categories/media-processing/image-processing/magpie.md
 https://github.com/Bogdanp/dramatiq,dramatiq,task-queue,categories/task-queue/dramatiq.md
@@ -46,7 +46,7 @@ https://github.com/DietrichGebert/ponytail,ponytail,engineering,categories/agent
 https://github.com/Dimillian/Skills,dimillian-skills,engineering-workflows,categories/agent-skills/personal-collections/engineering-workflows/dimillian-skills.md
 https://github.com/DormyMo/SpiderKeeper,spiderkeeper,crawling-tools,categories/web-scraping/crawling-tools/spiderkeeper.md
 https://github.com/Dragoon0x/markupkit,markupkit,ui-annotation,categories/agent-tooling/ui-annotation/markupkit.md
-https://github.com/EKKOLearnAI/ekko-studio,ekko-studio,supervision-surfaces,categories/agent-tooling/supervision-surfaces/ekko-studio.md
+https://github.com/EKKOLearnAI/ekko-studio,ekko-studio,agent-cockpits,categories/agent-tooling/supervision-surfaces/agent-cockpits/ekko-studio.md
 https://github.com/ERGO-Code/HiGHS,highs,optimization-solvers,categories/optimization-solvers/highs.md
 https://github.com/Edge0-AI/Edge0,edge0,local-runtimes,categories/llm-inference/local-runtimes/edge0.md
 https://github.com/Effect-TS/effect,effect,runtimes-and-compilers,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/effect.md
@@ -145,7 +145,7 @@ https://github.com/OpenHands/OpenHands,openhands,orchestration-and-review,catego
 https://github.com/OpenMinis/OpenMinis,openminis,personal-assistants,categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md
 https://github.com/OpenMinis/iCTRL,ictrl,mobile-automation,categories/mobile-automation/ictrl.md
 https://github.com/OpenPipe/ART,art,llm-training,categories/llm-training/art.md
-https://github.com/OrchestratorInc/agent-orchestrator,agent-orchestrator,supervision-surfaces,categories/agent-tooling/supervision-surfaces/agent-orchestrator.md
+https://github.com/OrchestratorInc/agent-orchestrator,agent-orchestrator,agent-cockpits,categories/agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.md
 https://github.com/OthmanAdi/planning-with-files,planning-with-files,work-state,categories/agent-tooling/work-state/planning-with-files.md
 https://github.com/Owl-Listener/designer-skills,designer-skills,ui-taste,categories/agent-skills/design/ui-taste/designer-skills.md
 https://github.com/PDFMathTranslate-next/PDFMathTranslate-next,pdfmathtranslate-next,pdf-translation,categories/pdf-tools/pdf-translation/pdfmathtranslate-next.md
@@ -254,7 +254,7 @@ https://github.com/addyosmani/web-quality-skills,addyosmani-web-quality,engineer
 https://github.com/adrai/flowchart.js,flowchart-js,diagramming,categories/diagramming/flowchart-js.md
 https://github.com/aeonfun/soul.md,soul-md,context-engineering,categories/agent-skills/context-engineering/soul-md.md
 https://github.com/affaan-m/ECC,ecc,coding-agent-harnesses,categories/agent-dev-methodology/coding-agent-harnesses/ecc.md
-https://github.com/agegr/pi-web,pi-web,supervision-surfaces,categories/agent-tooling/supervision-surfaces/pi-web.md
+https://github.com/agegr/pi-web,pi-web,agent-cockpits,categories/agent-tooling/supervision-surfaces/agent-cockpits/pi-web.md
 https://github.com/agent-substrate/substrate,substrate,sandboxing,categories/sandboxing/substrate.md
 https://github.com/agentscope-ai/agentscope,agentscope,agent-sdks,categories/agent-frameworks/agent-runtimes/agent-sdks/agentscope.md
 https://github.com/aicodeking/leanrea,leanrea,security,categories/agent-skills/security/leanrea.md
@@ -317,7 +317,7 @@ https://github.com/awslabs/agent-plugins,aws-agent-plugins,product-vendors,categ
 https://github.com/axiros/terminal_markdown_viewer,terminal-markdown-viewer,terminal-ui,categories/terminal-ui/terminal-markdown-viewer.md
 https://github.com/axolotl-ai-cloud/axolotl,axolotl,llm-training,categories/llm-training/axolotl.md
 https://github.com/ayghri/i-have-adhd,i-have-adhd,engineering,categories/agent-skills/engineering/i-have-adhd.md
-https://github.com/backnotprop/plannotator,plannotator,supervision-surfaces,categories/agent-tooling/supervision-surfaces/plannotator.md
+https://github.com/backnotprop/plannotator,plannotator,human-review-gates,categories/agent-tooling/supervision-surfaces/human-review-gates/plannotator.md
 https://github.com/baidu/Senta,senta,nlp-and-time-series,categories/ml-research/nlp-and-time-series/senta.md
 https://github.com/basecamp/hey-cli,hey-cli,harness-extensions,categories/agent-tooling/harness-extensions/hey-cli.md
 https://github.com/bdeansrowe/ltbl-experiment,ltbl-experiment,study-and-experiments,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md
@@ -350,7 +350,7 @@ https://github.com/cameroncooke/AXe,axe,mobile-automation,categories/mobile-auto
 https://github.com/campfirein/byterover-cli,byterover,coding-agent-memory,categories/agent-memory/coding-agent-memory/byterover.md
 https://github.com/cathrynlavery/diagram-design,diagram-design,visual-artifacts,categories/agent-skills/design/visual-artifacts/diagram-design.md
 https://github.com/cbailes/awesome-deep-trading,awesome-deep-trading,investment-finance,categories/investment-finance/awesome-deep-trading.md
-https://github.com/ccch1mneyyy/dsh-TUI,dsh-tui,supervision-surfaces,categories/agent-tooling/supervision-surfaces/dsh-tui.md
+https://github.com/ccch1mneyyy/dsh-TUI,dsh-tui,agent-cockpits,categories/agent-tooling/supervision-surfaces/agent-cockpits/dsh-tui.md
 https://github.com/celery/celery,celery,task-queue,categories/task-queue/celery.md
 https://github.com/celery/kombu,kombu,task-queue,categories/task-queue/kombu.md
 https://github.com/ceph/ceph,ceph,object-storage,categories/object-storage/ceph.md
@@ -401,7 +401,7 @@ https://github.com/derv82/wifit3,wifit3,pentest,categories/pentest/wifit3.md
 https://github.com/dessant/buster,buster,captcha,categories/captcha/buster.md
 https://github.com/deusyu/translate-book,translate-book,translation,categories/agent-skills/ai-writing/translation/translate-book.md
 https://github.com/deuxfleurs-org/garage,garage,object-storage,categories/object-storage/garage.md
-https://github.com/devdotfast/whiteboard,whiteboard,supervision-surfaces,categories/agent-tooling/supervision-surfaces/whiteboard.md
+https://github.com/devdotfast/whiteboard,whiteboard,human-review-gates,categories/agent-tooling/supervision-surfaces/human-review-gates/whiteboard.md
 https://github.com/dfunckt/django-rules,django-rules,auth,categories/auth/django-rules.md
 https://github.com/dmtrKovalenko/fframes,fframes,render-engines,categories/video-production/render-engines/fframes.md
 https://github.com/docker/docker-agent,docker-agent,agent-runtimes,categories/agent-frameworks/agent-runtimes/docker-agent.md
@@ -496,7 +496,7 @@ https://github.com/halloffamer11/USDAD,usdad,spec-driven-development,categories/
 https://github.com/handsomestWei/patent-disclosure-skill,patent-disclosure-skill,knowledge-content,categories/agent-skills/personal-collections/knowledge-content/patent-disclosure-skill.md
 https://github.com/handsontable/handsontable,handsontable,office-editors,categories/office-editors/handsontable.md
 https://github.com/hanfangyuan4396/dify-on-wechat,dify-on-wechat,wechat,categories/im-automation/wechat/dify-on-wechat.md
-https://github.com/hanshuaikang/nezha,nezha,supervision-surfaces,categories/agent-tooling/supervision-surfaces/nezha.md
+https://github.com/hanshuaikang/nezha,nezha,agent-cockpits,categories/agent-tooling/supervision-surfaces/agent-cockpits/nezha.md
 https://github.com/hardikpandya/stop-slop,stop-slop,de-ai-writing,categories/agent-skills/ai-writing/de-ai-writing/stop-slop.md
 https://github.com/harness/harness,harness-open-source,ops-infra,categories/dev-utilities/ops-infra/harness-open-source.md
 https://github.com/harry0703/MangoDisk,mangodisk,disk-cleanup,categories/disk-cleanup/mangodisk.md
@@ -728,17 +728,17 @@ https://github.com/openinterpreter/openinterpreter,open-interpreter,independent-
 https://github.com/openresty/lua-nginx-module,lua-nginx-module,nginx-modules,categories/nginx-modules/lua-nginx-module.md
 https://github.com/openresty/lua-resty-redis,lua-resty-redis,nginx-modules,categories/nginx-modules/lua-resty-redis.md
 https://github.com/opensandbox-group/OpenSandbox,opensandbox,sandboxing,categories/sandboxing/opensandbox.md
-https://github.com/outsourc-e/hermes-workspace,hermes-workspace,supervision-surfaces,categories/agent-tooling/supervision-surfaces/hermes-workspace.md
+https://github.com/outsourc-e/hermes-workspace,hermes-workspace,agent-cockpits,categories/agent-tooling/supervision-surfaces/agent-cockpits/hermes-workspace.md
 https://github.com/oven-sh/bun,bun,runtimes-and-compilers,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/bun.md
 https://github.com/p-e-w/heretic,heretic,model-editing,categories/model-editing/heretic.md
 https://github.com/p1neappleXpress/OpenFlux,openflux,networking,categories/networking/openflux.md
 https://github.com/pahaz/sshtunnel,sshtunnel,networking,categories/networking/sshtunnel.md
 https://github.com/palmier-io/palmier-pro,palmier-pro,video-editing,categories/media-processing/video-editing/palmier-pro.md
-https://github.com/paperclipai/paperclip,paperclip,supervision-surfaces,categories/agent-tooling/supervision-surfaces/paperclip.md
+https://github.com/paperclipai/paperclip,paperclip,agent-cockpits,categories/agent-tooling/supervision-surfaces/agent-cockpits/paperclip.md
 https://github.com/paperless-ngx/paperless-ngx,paperless-ngx,document-management,categories/document-management/paperless-ngx.md
 https://github.com/parallax/jsPDF,jspdf,pdf-generation,categories/pdf-tools/pdf-generation/jspdf.md
 https://github.com/paramiko/paramiko,paramiko,networking,categories/networking/paramiko.md
-https://github.com/parthh01/sphinx,sphinx,supervision-surfaces,categories/agent-tooling/supervision-surfaces/sphinx.md
+https://github.com/parthh01/sphinx,sphinx,human-review-gates,categories/agent-tooling/supervision-surfaces/human-review-gates/sphinx.md
 https://github.com/patchy631/ai-engineering-hub,ai-engineering-hub,learning-resources,categories/learning-resources/ai-engineering-hub.md
 https://github.com/pbakaus/impeccable,impeccable,ai-design-generation,categories/ai-design-generation/impeccable.md
 https://github.com/penpot/penpot,penpot,design-editors,categories/design-editors/penpot.md
@@ -751,7 +751,7 @@ https://github.com/pingdotgg/t3code,t3code,independent-runtimes,categories/agent
 https://github.com/pk910/PoWFaucet,powfaucet,blockchain-dev-infrastructure,categories/blockchain-dev-infrastructure/powfaucet.md
 https://github.com/plantuml/plantuml,plantuml,diagramming,categories/diagramming/plantuml.md
 https://github.com/praw-dev/praw,praw,crawling-tools,categories/web-scraping/crawling-tools/praw.md
-https://github.com/preset-io/agor,agor,supervision-surfaces,categories/agent-tooling/supervision-surfaces/agor.md
+https://github.com/preset-io/agor,agor,agent-cockpits,categories/agent-tooling/supervision-surfaces/agent-cockpits/agor.md
 https://github.com/prometheus/prometheus,prometheus,observability,categories/observability/prometheus.md
 https://github.com/promptfoo/promptfoo,promptfoo,llm-eval,categories/llm-eval/promptfoo.md
 https://github.com/provectus/kafka-ui,kafka-ui,kafka-tools,categories/kafka-tools/kafka-ui.md
@@ -812,7 +812,7 @@ https://github.com/shuding/nextra,nextra,site-frameworks,categories/web-ui/frame
 https://github.com/siddharthvaddem/openscreen,openscreen,video-editing,categories/media-processing/video-editing/openscreen.md
 https://github.com/simplifaisoul/osiris,osiris,geospatial,categories/geospatial/osiris.md
 https://github.com/sipeed/picoclaw,picoclaw,messaging-daemons,categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/picoclaw.md
-https://github.com/siteboon/claudecodeui,claudecodeui,supervision-surfaces,categories/agent-tooling/supervision-surfaces/claudecodeui.md
+https://github.com/siteboon/claudecodeui,claudecodeui,agent-cockpits,categories/agent-tooling/supervision-surfaces/agent-cockpits/claudecodeui.md
 https://github.com/siyuan-note/siyuan,siyuan,knowledge-base,categories/knowledge-base/siyuan.md
 https://github.com/skillsgate/skillsgate,skillsgate,harness-extensions,categories/agent-tooling/harness-extensions/skillsgate.md
 https://github.com/slavingia/skills,slavingia-skills,knowledge-content,categories/agent-skills/personal-collections/knowledge-content/slavingia-skills.md

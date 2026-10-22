@@ -2,7 +2,7 @@
 name: Pi Web
 slug: pi-web
 repo: https://github.com/agegr/pi-web
-category: supervision-surfaces
+category: agent-cockpits
 tags: [pi-coding-agent, agent-web-ui, session-cockpit, browser, local-first, self-hosted]
 language: TypeScript
 license: MIT
@@ -77,21 +77,21 @@ health:
 
 # Pi Web
 
-Your [pi](../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/pi.md) coding agent piles its sessions up as opaque JSONL files under `~/.pi/agent`, and every "which session set up that migration?" moment turns into terminal archaeology. Pi Web turns that directory into a browser workspace — it runs the same sessions, shares the same model logins and settings as the terminal pi, and adds point-and-click browsing, branching, file/diff inspection and model configuration.
+Your [pi](../../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/pi.md) coding agent piles its sessions up as opaque JSONL files under `~/.pi/agent`, and every "which session set up that migration?" moment turns into terminal archaeology. Pi Web turns that directory into a browser workspace — it runs the same sessions, shares the same model logins and settings as the terminal pi, and adds point-and-click browsing, branching, file/diff inspection and model configuration.
 
-![Pi Web — health radar](../../../assets/health/pi-web.svg)
+![Pi Web — health radar](../../../../assets/health/pi-web.svg)
 
 ## When to use
 
 You run pi as your coding agent, your project sessions live under `~/.pi/agent/sessions/<encoded-cwd>/<timestamp>_<uuid>.jsonl`, and you keep losing the overview: which session is still running, which one burned the context window, which one you meant to resume after lunch. Reach for Pi Web when you want that state as a browser workspace — sessions grouped by project with running state, context usage and cost; branching from an earlier message ("Edit from here") or forking an independent session; provider logins, API keys, model tests, plugin packages and skills configured in a Models panel; project files, git diffs and worktree switching without leaving the tab.
 
-The deciding tradeoff against its substitutes: Pi Web does not re-implement pi — it reads and writes pi's own on-disk state with pi's own engine, so browser and terminal stay two views of one desk (zero migration, zero re-login). Against [CloudCLI (Claude Code UI)](claudecodeui.md) the choice is simply which brain you run — CloudCLI fronts the Claude Code/Codex/Cursor CLI family, Pi Web fronts pi only; against [Hermes Workspace](hermes-workspace.md), whose enhanced panes are keyed to the Hermes gateway APIs, the same logic applies; against plain [pi](../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/pi.md) in the terminal, you are paying one extra local server process for the browser surface, and MIT licensing keeps it embeddable where CloudCLI's AGPL cannot go.
+The deciding tradeoff against its substitutes: Pi Web does not re-implement pi — it reads and writes pi's own on-disk state with pi's own engine, so browser and terminal stay two views of one desk (zero migration, zero re-login). Against [CloudCLI (Claude Code UI)](claudecodeui.md) the choice is simply which brain you run — CloudCLI fronts the Claude Code/Codex/Cursor CLI family, Pi Web fronts pi only; against [Hermes Workspace](hermes-workspace.md), whose enhanced panes are keyed to the Hermes gateway APIs, the same logic applies; against plain [pi](../../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/pi.md) in the terminal, you are paying one extra local server process for the browser surface, and MIT licensing keeps it embeddable where CloudCLI's AGPL cannot go.
 
 ## How it works
 
 One command — `npx @agegr/pi-web@latest` — starts a local Next.js server bound to `127.0.0.1:30141` and opens the browser. Pi Web does not re-implement the agent: it embeds the same engine packages the `pi` CLI is built from (`@earendil-works/pi-coding-agent`, exact-pinned in its manifest) and reads/writes pi's data directory `~/.pi/agent` — session JSONL files plus the model, settings and credential storage — so a session you resume in the browser is the same file the terminal shows, and a provider key added in the Models panel is immediately usable by both. The boundary: you run the command and sign in once; it does session discovery and grouping, runs agent turns through the embedded engine, carries real terminals into the page (xterm.js over node-pty), previews source/Markdown/images/PDF/DOCX, tracks git diffs, and switches worktrees from the sidebar. Think of it as a second window onto the same desk, not a copy of the desk. Loopback is the default; anything wider is opt-in and password-gated.
 
-![Pi Web — backbone user story](../../../assets/flow/pi-web.svg)
+![Pi Web — backbone user story](../../../../assets/flow/pi-web.svg)
 
 <!-- flow-steps:begin (generated from flows/pi-web.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -112,9 +112,9 @@ One command — `npx @agegr/pi-web@latest` — starts a local Next.js server bou
 ## When NOT to use
 
 - **Your coding agent is not pi.** Pi Web reads pi's session/config directory and embeds the pi engine; it cannot front Claude Code, Codex, Cursor CLI or hermes-agent. Use [CloudCLI (Claude Code UI)](claudecodeui.md) for the Claude-family CLIs, or [Hermes Workspace](hermes-workspace.md) for hermes-agent.
-- **The terminal is already enough.** pi's own TUI reads and writes the same sessions with no extra server process to run, update, or secure; if you never browse history or tweak models from a browser, [pi itself](../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/pi.md) is the lower-moving-parts answer.
+- **The terminal is already enough.** pi's own TUI reads and writes the same sessions with no extra server process to run, update, or secure; if you never browse history or tweak models from a browser, [pi itself](../../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/pi.md) is the lower-moving-parts answer.
 - **You want to put it on the internet.** The README's own warning: binding a non-loopback address "exposes an agent that can execute high-privilege actions", and its password auth does not encrypt the connection — plain-HTTP exposure is off the table. Keep it on `127.0.0.1`, a trusted LAN, or behind a VPN/HTTPS reverse proxy.
-- **You need a multi-user or team surface.** Auth is a single shared password (`PI_WEB_PASSWORD`; API clients use Basic Auth with username `pi`) — single-operator by design. For team chat platforms use [LibreChat](../../llm-chat-ui/librechat.md) or [Open WebUI](../../llm-chat-ui/open-webui.md); for supervising many agents in parallel, [Agent Orchestrator](agent-orchestrator.md).
+- **You need a multi-user or team surface.** Auth is a single shared password (`PI_WEB_PASSWORD`; API clients use Basic Auth with username `pi`) — single-operator by design. For team chat platforms use [LibreChat](../../../llm-chat-ui/librechat.md) or [Open WebUI](../../../llm-chat-ui/open-webui.md); for supervising many agents in parallel, [Agent Orchestrator](agent-orchestrator.md).
 - **Engine parity with the newest pi matters to you.** Pi Web pins `@earendil-works/pi-coding-agent` at one exact version (0.87.1 in v0.9.3) while pi itself releases continuously — between Pi Web releases, the browser's embedded engine can lag the pi CLI on the same machine. If parity matters more than the UI, use pi's TUI. [推断]
 - **You want a Lindy-backed dependency.** ~6 months old, pre-1.0, single-maintainer (agegr holds the large majority of commits), with 6.9k stars accumulated that fast — under this index's age × still-active prior that is a risk flag, not proof of durability. pi's own TUI, or the older [CloudCLI (Claude Code UI)](claudecodeui.md), is the lower-risk shape. [推断]
 
@@ -122,10 +122,10 @@ One command — `npx @agegr/pi-web@latest` — starts a local Next.js server bou
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Pi](../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/pi.md) | ✅ | If the terminal already does everything you need, stay with pi's own TUI; reach for Pi Web when browsing/resuming many sessions, file previews or web-based model config are worth one extra local server process. | Pi Web layers a UI over pi's own on-disk state (nothing re-implemented), at the cost of an exact-pinned engine version and a process to run and update. |
+| [Pi](../../../agent-frameworks/coding-agents/terminal-agents/independent-runtimes/pi.md) | ✅ | If the terminal already does everything you need, stay with pi's own TUI; reach for Pi Web when browsing/resuming many sessions, file previews or web-based model config are worth one extra local server process. | Pi Web layers a UI over pi's own on-disk state (nothing re-implemented), at the cost of an exact-pinned engine version and a process to run and update. |
 | [CloudCLI (Claude Code UI)](claudecodeui.md) | ✅ | When your agent brain is Claude Code / Codex / Cursor CLI, pick CloudCLI; when it's pi, pick Pi Web — each cockpit fronts one family's on-disk state and neither can read the other's sessions. | Same product shape (browser cockpit over a local coding agent). CloudCLI: AGPL, plugin ecosystem, vendor cloud, multi-CLI; Pi Web: MIT, single-agent, shares pi's exact session/config store. |
 | [Hermes Workspace](hermes-workspace.md) | ✅ | Choose Hermes Workspace only when the brain is Nous's hermes-agent — its enhanced panes are keyed to the Hermes gateway/dashboard APIs; Pi Web is keyed to pi's data directory instead. | Both are single-agent web consoles; Pi Web's substrate (pi) is younger but has far larger measured adoption, while Hermes Workspace adds tmux swarm dispatch. |
-| [Open WebUI](../../llm-chat-ui/open-webui.md) | ✅ | Choose Open WebUI when you want a model-chat platform (users, RAG, presets) and no coding-agent surface; choose Pi Web when the unit of work is a coding agent's session — files, diffs, worktrees — not a chat thread. | Open WebUI renders conversations with models; Pi Web renders an agent's workspace. The overlap is only the browser tab. |
+| [Open WebUI](../../../llm-chat-ui/open-webui.md) | ✅ | Choose Open WebUI when you want a model-chat platform (users, RAG, presets) and no coding-agent surface; choose Pi Web when the unit of work is a coding agent's session — files, diffs, worktrees — not a chat thread. | Open WebUI renders conversations with models; Pi Web renders an agent's workspace. The overlap is only the browser tab. |
 | [Agent Orchestrator](agent-orchestrator.md) | ✅ | Pick Agent Orchestrator when the job is supervising several parallel agents in isolated worktrees with CI/review feedback routing; pick Pi Web when it's one agent's sessions you want to browse, branch and steer. | Desktop multi-agent control plane vs a single-agent browser workspace; Pi Web adds session branching and model config, not parallelism. |
 
 ## Tech stack

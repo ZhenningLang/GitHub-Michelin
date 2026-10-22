@@ -2,7 +2,7 @@
 name: Paperclip
 slug: paperclip
 repo: https://github.com/paperclipai/paperclip
-category: supervision-surfaces
+category: agent-cockpits
 tags: [multi-agent, agent-orchestration, control-plane, task-board, heartbeats, cost-budgets, approvals, org-chart, claude-code, codex, openclaw, self-hosted, postgres]
 language: TypeScript
 license: MIT
@@ -80,7 +80,7 @@ health:
 
 你同时开着十几个 Claude Code 和 Codex 会话，谁也记不清哪个标签页在干哪件事，两个会话刚修了同一个 bug，还有一个重试循环一夜之间悄悄烧光了本月的 token 预算。Paperclip 把这些 agent 收进一个自托管的任务看板：每个 agent 按时醒来、只领一张工单、干完回报，预算用完就被自动叫停。
 
-![Paperclip — 健康度雷达](../../../assets/health/paperclip.zh.svg)
+![Paperclip — 健康度雷达](../../../../assets/health/paperclip.zh.svg)
 
 ## 何时使用
 
@@ -92,7 +92,7 @@ health:
 
 Paperclip 是一个 Node.js 服务，外加 React 看板和一个 PostgreSQL 数据库（首次运行会自动建一个内嵌库）。它本身不含 agent：由“适配器”去启动你已经装好并登录过的东西——本机的 `claude` 或 `codex` 命令行、OpenCode、Cursor、Pi、一条普通 shell 命令，或 OpenClaw 网关这类 HTTP 端点。agent 不常驻运行，而是按“心跳”干活——一段短暂的执行窗口，像轮班工人打卡上岗，由定时器、新分配的任务或手动点一下触发。每次心跳，Paperclip 先把唤醒请求排进队列、查预算、准备工作目录（可选隔离的 git worktree）、注入一个短时效的 API 令牌和它自带的“paperclip”技能（教 agent 怎么读写工单的说明书），再启动命令行；agent 随后通过 Paperclip 的 REST API 领取一张工单、干活、留评论、退出，Paperclip 记下日志、token 花费和会话 ID，下次心跳接着同一段对话继续。你做的是管理层的事：定公司目标、雇 agent 并选适配器、设预算，在看板上批准战略、招聘或交付的成果。
 
-![paperclip — 主干用户故事](../../../assets/flow/paperclip.zh.svg)
+![paperclip — 主干用户故事](../../../../assets/flow/paperclip.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/paperclip.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -115,9 +115,9 @@ Paperclip 是一个 Node.js 服务，外加 React 看板和一个 PostgreSQL 数
 
 - **你只跑一个 agent，或者一个仓库一个 agent。** Paperclip 自己的 README 就说单 agent 用户“大概”用不着它；服务、数据库、组织架构和心跳调度器对这种场景纯属负担。直接用 Claude Code 或 Codex；如果只是想从浏览器或手机够到这些会话，改用 [CloudCLI (Claude Code UI)](claudecodeui.zh.md)。
 - **你真正的工作是评审并行的代码分支。** 项目自称“不是代码评审工具”——没有把 CI 失败和 PR 评论回灌给对应 agent 的 diff 评审闭环。要让多个编码 agent 各占一个 worktree 分支、并自动路由评审和 CI 反馈，改用 [Agent Orchestrator](agent-orchestrator.zh.md)。
-- **你想用代码编排 agent 的推理过程。** Paperclip “不是 agent 框架”：它调度和管理外部 agent 进程，不在一个程序里定义工具、代码化角色或多步推理。想用 Python 写这套逻辑，改用 [CrewAI](../../agent-frameworks/agent-runtimes/agent-sdks/crewai.zh.md)。
+- **你想用代码编排 agent 的推理过程。** Paperclip “不是 agent 框架”：它调度和管理外部 agent 进程，不在一个程序里定义工具、代码化角色或多步推理。想用 Python 写这套逻辑，改用 [CrewAI](../../../agent-frameworks/agent-runtimes/agent-sdks/crewai.zh.md)。
 - **你打算不做安全评审就把它暴露到可信网络之外。** 截至 2026-09-28，本仓库已公开 12 条 GitHub 安全公告——5 条严重级，包括经导入路径的未鉴权远程代码执行、跨租户铸造 agent 密钥，以及（2026-07-22）针对“本地”实例的 DNS 重绑定路过式 RCE。它们都以已修复公告的形式发布，但这个密度说明鉴权/公网模式还很年轻。把它留在本机回环地址或 tailnet 里；如果必须让外部同事看到看板，改用托管工单系统（Linear、Jira），让 agent 通过各自的集成去写，风险更低。[推断]
-- **你指望预算是挡在你和意外账单之间的唯一防线。** 预算按每次心跳、依据适配器上报的花费来执行；issue #9539 描述了一次升级把某个适配器的鉴权弄坏，重试在被发现前烧掉约 3560 万 token。在模型供应商那边，或在 [LiteLLM](../../api-gateway/litellm.zh.md) 这类网关上再设一道硬性花费上限，不要只信 Paperclip 的限额。
+- **你指望预算是挡在你和意外账单之间的唯一防线。** 预算按每次心跳、依据适配器上报的花费来执行；issue #9539 描述了一次升级把某个适配器的鉴权弄坏，重试在被发现前烧掉约 3560 万 token。在模型供应商那边，或在 [LiteLLM](../../../api-gateway/litellm.zh.md) 这类网关上再设一道硬性花费上限，不要只信 Paperclip 的限额。
 - **你的主机是 Windows。** issue #10012（2026-07-22 提出，至今未关）报告 Windows 上所有本地命令行 agent 运行都失败，因为运行器只生成 bash 包装脚本。把服务端放在 macOS 或 Linux 上；要 Windows 原生的多 agent 桌面，Agent Orchestrator 提供 Windows 安装包。
 - **你需要慢而稳的升级节奏。** 版本按日历号大约每周一发（一个月内从 v2026.817 到 v2026.916），未关的 bug 报告里有升级后配置保存失败、密钥绑定被重置。用安装器的固定版本选项锁版本、升级前读发布说明；或者在数据结构稳定之前先用普通工单系统。
 
@@ -128,7 +128,7 @@ Paperclip 是一个 Node.js 服务，外加 React 看板和一个 PostgreSQL 数
 | [Agent Orchestrator](agent-orchestrator.zh.md) | ✅ | 多个编码 agent 跑在真实分支上、瓶颈是 CI 失败和评审意见时，选 Agent Orchestrator；agent 是一支有预算、有角色、还干非代码日常活的常驻团队时，选 Paperclip。 | 得到“一任务一 worktree”的桌面闭环和自动 CI／PR 反馈路由，失去组织架构、按 agent 的花费上限、例行任务和多公司服务端。 |
 | Multica（multica-ai/multica） | 未收录 | 最正面的竞品——可自托管的看板，编码 agent 从上面领 issue、报阻塞；看板体验更合你意可以选它，但先读许可证，Paperclip 的 MIT 更宽松。 | 本次标签页批量收录未添加。它的“Multica License”是 Apache-2.0 加附加条件：没有商业许可不得把它作为托管服务提供给第三方，也不得去掉品牌标识；组织内部使用允许。 |
 | Vibe Kanban（BloopAI/vibe-kanban） | 未收录 | 只当设计参考：它的 README 已宣布项目正在关停，不要新部署；要一个能派发 agent 的看板，Paperclip 是仍在维护的选择。 | 本次标签页批量收录未添加。它专注按 issue 开编码工作区、行内 diff 评论和建 PR——更接近代码评审，而不是 Paperclip 的组织与预算模型。 |
-| [CrewAI](../../agent-frameworks/agent-runtimes/agent-sdks/crewai.zh.md) | ✅ | agent 要你自己写——角色、工具和任务流都用 Python 定义——选 CrewAI；agent 已经以命令行或服务的形式存在、你要的是调度、预算和监管，选 Paperclip。 | 得到对每个 agent 推理过程的代码级控制，但调度、花费上限、看板和审批都要自己搭。 |
+| [CrewAI](../../../agent-frameworks/agent-runtimes/agent-sdks/crewai.zh.md) | ✅ | agent 要你自己写——角色、工具和任务流都用 Python 定义——选 CrewAI；agent 已经以命令行或服务的形式存在、你要的是调度、预算和监管，选 Paperclip。 | 得到对每个 agent 推理过程的代码级控制，但调度、花费上限、看板和审批都要自己搭。 |
 | Linear／Jira + agent 集成 | 非仓库 | 托管工单系统，不是仓库。人比 agent 多、需要成熟权限和对外访问时选它们；工单系统本身必须能启动 agent、强制单人领取和预算时选 Paperclip。 | 得到久经打磨的多用户 SaaS，但领取锁、心跳调度和花费上限都不是工单系统的一部分。Paperclip 把“自带工单系统”列在路线图上。 |
 
 ## 技术栈

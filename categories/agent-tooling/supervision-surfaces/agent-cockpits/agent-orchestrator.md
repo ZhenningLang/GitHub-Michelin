@@ -2,7 +2,7 @@
 name: Agent Orchestrator
 slug: agent-orchestrator
 repo: https://github.com/OrchestratorInc/agent-orchestrator
-category: supervision-surfaces
+category: agent-cockpits
 tags: [parallel-agents, agentic-ide, git-worktrees, feedback-loops, desktop-app, electron, go-daemon, agent-adapters, tmux, claude-code]
 language: Go
 license: Apache-2.0
@@ -84,7 +84,7 @@ health:
 
 You run several coding agents at once and you've become the message bus — copying CI failures and review comments back into the right terminal, holding four branches and worktrees apart in your head. Agent Orchestrator is a local desktop workspace that gives every task its own agent, branch and git worktree, follows PR/CI/review state for you, and routes whatever is blocked back to the worker that owns it.
 
-![agent-orchestrator — health radar](../../../assets/health/agent-orchestrator.svg)
+![agent-orchestrator — health radar](../../../../assets/health/agent-orchestrator.svg)
 
 ## When to use
 
@@ -96,7 +96,7 @@ So you install Agent Orchestrator (AO) as a desktop app. Its local Go daemon giv
 
 Agent Orchestrator separates supervision from execution. The desktop app starts a local Go daemon for you, and that daemon owns the state — worker sessions, branches, pull requests, CI results — in SQLite, broadcasting changes to the UI over a change-data-capture stream (CDC pushed via SSE, i.e. the database's diffs replayed to the screen live). Each agent session runs in a terminal (tmux on macOS/Linux, conpty on Windows) inside its own git worktree, so parallel tasks never share a checkout. Your side: add a repo, open a worker with **New task** (pick one of the 28 supported CLI agents and a model, in structured Chat or the agent's native terminal UI), then review and merge when the work is ready. Its side: per-task isolation, following PR/CI/review/merge-conflict facts, placing each card on the Kanban, and returning actionable failures to the agent that owns the branch — the copy-paste loop that used to be you. Optional layers: a project-orchestrator agent that plans repo-wide work and spawns workers, a per-worker isolated browser preview, and an opt-in LAN listener that lets a mobile app render the same sessions. AO never writes your code — agent quality and your merge decisions stay yours.
 
-![agent-orchestrator — backbone user story](../../../assets/flow/agent-orchestrator.svg)
+![agent-orchestrator — backbone user story](../../../../assets/flow/agent-orchestrator.svg)
 
 <!-- flow-steps:begin (generated from flows/agent-orchestrator.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -129,9 +129,9 @@ Agent Orchestrator separates supervision from execution. The desktop app starts 
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [CCPM](../work-state/ccpm.md) | ✅ | Choose CCPM when you need a spec-driven PRD → GitHub Issues → parallel-worktree workflow inside your existing harness. | Spec-driven: PRD → GitHub Issues → parallel git-worktree agents, driven from your existing harness as a skill-pack. CCPM is process + GitHub-native with no GUI; Agent Orchestrator is a desktop app + daemon that supervises live agents and auto-routes CI/review/conflict feedback. Different layers — you could plan with CCPM and run with this. |
-| [OpenSandbox](../../sandboxing/opensandbox.md) | ✅ | Choose OpenSandbox when you need the sandbox runtime for safely executing untrusted agent code at K8s scale. | A sandbox *runtime* for safely executing untrusted agent code at K8s scale (isolation, egress, vault). Orthogonal: OpenSandbox isolates *execution*; Agent Orchestrator orchestrates *agents* across worktrees. You might run agents under a sandbox and supervise them here. |
-| [Planning with Files](../work-state/planning-with-files.md) | ✅ | Choose Planning with Files when a lightweight markdown planning convention is enough. | Lightweight file-based planning pattern (plans live as markdown the agent reads/writes); no parallel supervision, no GUI, no feedback-loop routing. The minimal baseline this replaces for state-keeping. |
+| [CCPM](../../work-state/ccpm.md) | ✅ | Choose CCPM when you need a spec-driven PRD → GitHub Issues → parallel-worktree workflow inside your existing harness. | Spec-driven: PRD → GitHub Issues → parallel git-worktree agents, driven from your existing harness as a skill-pack. CCPM is process + GitHub-native with no GUI; Agent Orchestrator is a desktop app + daemon that supervises live agents and auto-routes CI/review/conflict feedback. Different layers — you could plan with CCPM and run with this. |
+| [OpenSandbox](../../../sandboxing/opensandbox.md) | ✅ | Choose OpenSandbox when you need the sandbox runtime for safely executing untrusted agent code at K8s scale. | A sandbox *runtime* for safely executing untrusted agent code at K8s scale (isolation, egress, vault). Orthogonal: OpenSandbox isolates *execution*; Agent Orchestrator orchestrates *agents* across worktrees. You might run agents under a sandbox and supervise them here. |
+| [Planning with Files](../../work-state/planning-with-files.md) | ✅ | Choose Planning with Files when a lightweight markdown planning convention is enough. | Lightweight file-based planning pattern (plans live as markdown the agent reads/writes); no parallel supervision, no GUI, no feedback-loop routing. The minimal baseline this replaces for state-keeping. |
 | Conductor / Crystal / Claude Squad | 未收录 | Choose Conductor, Crystal, or Claude Squad when you need other worktree-parallel Claude Code tools. | Other "run parallel Claude Code agents in git worktrees" tools (desktop or TUI). Directly comparable on the core idea; differ in agent breadth (Agent Orchestrator lists 28 adapters), feedback-loop automation, and maturity — shortlist and compare if you've narrowed to this niche. |
 | Vibe Kanban | 未收录 | Choose Vibe Kanban when you want a lighter board-first runner over several coding agents without AO's daemon-and-state layer. | Both supervise many agents through a board view; AO adds a local daemon that derives Kanban status from real PR/CI/review facts, a repo-level planning orchestrator, and 28 adapters — depth you trade for a heavier always-on workspace. Vibe Kanban's current feature state was not re-verified this pass. |
 | Plain tmux + `git worktree` scripts | 未收录 | Choose plain tmux plus git worktree scripts when zero dependencies and full scriptability matter most. | Zero-dependency and fully scriptable, but you hand-roll the worktree lifecycle, agent adapters, live state UI, and CI/review/conflict routing — exactly the glue Agent Orchestrator packages. |

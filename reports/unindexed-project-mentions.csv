@@ -133,10 +133,10 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 `farag2/Sophia-Script-for-Windows`,categories/disk-cleanup/win11debloat.md,,no
 `getdns` Python bindings,categories/networking/dnspython.md,,no
 `hesreallyhim/awesome-claude-code`,categories/agent-dev-methodology/study-and-experiments/claude-code-best-practice.md,,no
-`iOfficeAI/AionUi`,categories/agent-tooling/supervision-surfaces/ekko-studio.md,,no
+`iOfficeAI/AionUi`,categories/agent-tooling/supervision-surfaces/agent-cockpits/ekko-studio.md,,no
 `lich0821/wcfLink`,categories/im-automation/wechat/wechatferry.md,,no
 `MEMORY USAGE` / `MEMORY DOCTOR`,categories/databases/database-clients/rdr.md,,no
-`nesquena/hermes-webui`,categories/agent-tooling/supervision-surfaces/ekko-studio.md,,no
+`nesquena/hermes-webui`,categories/agent-tooling/supervision-surfaces/agent-cockpits/ekko-studio.md,,no
 `NetrisTV/ws-scrcpy`,categories/mobile-automation/tapflow.md,,no
 `ntdevlabs/tiny11builder`,categories/disk-cleanup/win11debloat.md,,no
 `OpenHands/software-agent-sdk`,categories/agent-frameworks/coding-agents/orchestration-and-review/openhands.md,,no
@@ -373,7 +373,7 @@ Composio,categories/api-gateway/monid.md,,no
 CompreFace (exadel-inc/CompreFace),categories/computer-vision/deepface.md,,no
 Computer-use agents (Anthropic computer use / OpenAI Operator),categories/web-automation/agent-browser-tools/page-agent.md,,no
 Conda / Mamba,categories/python-tooling/uv.md,,no
-Conductor / Crystal / Claude Squad,categories/agent-tooling/supervision-surfaces/agent-orchestrator.md,,no
+Conductor / Crystal / Claude Squad,categories/agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.md,,no
 Conduktor,categories/kafka-tools/kafka-ui.md,,no
 Confluent Control Center,categories/kafka-tools/kafka-ui.md,,no
 confluent-kafka-python,categories/kafka-tools/kafka-python.md,,no
@@ -624,7 +624,7 @@ Headless UI,categories/web-ui/component-libraries/radix-ui.md,,no
 Headless UI (`tailwindlabs/headlessui`),categories/web-ui/component-libraries/tanstack-select.md,,no
 Headscale,categories/networking/agentmesh.md,,no
 Helicone,categories/llm-eval/pezzo.md,,no
-herdr-annotate / Plannotator TUI (same maintainer's terminal and TUI variants),categories/agent-tooling/supervision-surfaces/plannotator.md,,no
+herdr-annotate / Plannotator TUI (same maintainer's terminal and TUI variants),categories/agent-tooling/supervision-surfaces/human-review-gates/plannotator.md,,no
 Heroku 12-Factor App,categories/agent-dev-methodology/spec-driven-development/12-factor-agents.md,,no
 HexStrike AI,categories/pentest/pentest-swarm-ai.md,,no
 HeyGen / Runway / Pika,categories/video-production/open-montage.md,,no
@@ -839,7 +839,7 @@ Mozilla fathom / custom ML,categories/web-scraping/article-extraction/dragnet.md
 Mozilla Readability (library),categories/reading-tools/just-read.md,,no
 MUI X Data Grid (`mui/mui-x`),categories/web-ui/component-libraries/tanstack-table.md,,no
 Multi-stage / hand-optimized Dockerfile,categories/dev-utilities/ops-infra/slim.md,,no
-Multica (multica-ai/multica),categories/agent-tooling/supervision-surfaces/paperclip.md,,no
+Multica (multica-ai/multica),categories/agent-tooling/supervision-surfaces/agent-cockpits/paperclip.md,,no
 mypyc,categories/python-tooling/cython.md,,no
 Nango,categories/api-gateway/monid.md,,no
 nano-banana / gpt-image prompt packs,categories/agent-skills/visual-content/ian-illustrations.md,,no
@@ -1002,7 +1002,7 @@ plain logging / `print`,categories/dev-utilities/data-tools/tqdm.md,,no
 Plain markdown `MEMORY.md` / `TODO.md`,categories/agent-tooling/work-state/beads.md,,no
 Plain pgvector + your own extraction,categories/agent-memory/app-memory/mem0.md,,no
 plain PyTorch (+ Triton),categories/llm-inference/serving-engines/modular.md,,no
-Plain tmux + `git worktree` scripts,categories/agent-tooling/supervision-surfaces/agent-orchestrator.md,,no
+Plain tmux + `git worktree` scripts,categories/agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.md,,no
 plain vector DB (pgvector / Chroma),categories/agent-memory/app-memory/memori.md,,no
 Platform retention (MWAA/Composer settings),categories/workflow-orchestration/airflow-maintenance-dags.md,,no
 Platypus,categories/ml-research/pymoo.md,,no
@@ -1318,8 +1318,8 @@ Vercel AI SDK,categories/agent-frameworks/workflow-builders/agent-native.md,,no
 Vercel AI SDK (`vercel/ai`),categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.md,,no
 vercel/pkg,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/scriptc.md,,no
 VGGT,categories/3d-reconstruction/lingbot-map.md,,no
-Vibe Kanban,categories/agent-tooling/supervision-surfaces/agent-orchestrator.md,,no
-Vibe Kanban (BloopAI/vibe-kanban),categories/agent-tooling/supervision-surfaces/paperclip.md,,no
+Vibe Kanban,categories/agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.md,,no
+Vibe Kanban (BloopAI/vibe-kanban),categories/agent-tooling/supervision-surfaces/agent-cockpits/paperclip.md,,no
 VictoriaLogs,categories/observability/loki.md,,no
 VictoriaMetrics,categories/observability/prometheus.md,,no
 video-talkcraft,categories/video-production/seecut.md,,no

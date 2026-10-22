@@ -2,7 +2,7 @@
 name: Agor
 slug: agor
 repo: https://github.com/preset-io/agor
-category: supervision-surfaces
+category: agent-cockpits
 tags: [coding-agents, multiplayer, worktrees, orchestration, spatial-board]
 language: TypeScript
 license: BUSL-1.1
@@ -83,7 +83,7 @@ health:
 
 几个同事都在跑编程助手，任务却藏在各自终端和分支里。Agor 把分支和会话放进共享实时看板，每项工作保留自己的目录与对话历史。
 
-![Agor — 健康度雷达](../../../assets/health/agor.zh.svg)
+![Agor — 健康度雷达](../../../../assets/health/agor.zh.svg)
 
 ## 何时使用
 
@@ -91,24 +91,24 @@ health:
 
 ## 何时不用
 
-- **必须使用无限制开源许可：** Agor 在转换日前是 BSL，不属于 OSI 开源。浏览器控制台可考虑 MIT 的 [OpenHands](../../agent-frameworks/coding-agents/orchestration-and-review/openhands.zh.md)；不要未审附加授权就转售 Agor 编排服务。
-- **只有一名本地 OpenCode 操作者：** 选 [OpenChamber](../../agent-frameworks/coding-agents/orchestration-and-review/openchamber.zh.md) 的专用审查界面，或直接用命令行；共享看板、角色和常驻服务是额外管理。
-- **核心是容器中的协作团队：** 看 [Scion](../../agent-frameworks/coding-agents/orchestration-and-review/scion.zh.md)，其 Hub 与运行代理明确描述运行位置和工作区共享。
-- **把独立分支当作恶意租户隔离：** 应审查执行基础设施，不能只靠 worktree。所读 Linux 沙箱共享网络，还刻意开放部分主目录写入；若只是受限 GitHub 杂务，可看 [gh-aw](../../agent-frameworks/coding-agents/orchestration-and-review/gh-aw.zh.md) 的另一种写权限模型。
+- **必须使用无限制开源许可：** Agor 在转换日前是 BSL，不属于 OSI 开源。浏览器控制台可考虑 MIT 的 [OpenHands](../../../agent-frameworks/coding-agents/orchestration-and-review/openhands.zh.md)；不要未审附加授权就转售 Agor 编排服务。
+- **只有一名本地 OpenCode 操作者：** 选 [OpenChamber](../../../agent-frameworks/coding-agents/orchestration-and-review/openchamber.zh.md) 的专用审查界面，或直接用命令行；共享看板、角色和常驻服务是额外管理。
+- **核心是容器中的协作团队：** 看 [Scion](../../../agent-frameworks/coding-agents/orchestration-and-review/scion.zh.md)，其 Hub 与运行代理明确描述运行位置和工作区共享。
+- **把独立分支当作恶意租户隔离：** 应审查执行基础设施，不能只靠 worktree。所读 Linux 沙箱共享网络，还刻意开放部分主目录写入；若只是受限 GitHub 杂务，可看 [gh-aw](../../../agent-frameworks/coding-agents/orchestration-and-review/gh-aw.zh.md) 的另一种写权限模型。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [OpenHands](../../agent-frameworks/coding-agents/orchestration-and-review/openhands.zh.md) | ✅ | 跨本地与远端运行环境的浏览器控制台，选 OpenHands；同事围绕分支共享空间化流程，选 Agor。 | Agor 增加看板、区域、队友和共享知识，但要运营更大的协作系统，并接受 BSL。 |
-| [OpenChamber](../../agent-frameworks/coding-agents/orchestration-and-review/openchamber.zh.md) | ✅ | 一名操作者固定用 OpenCode，并重视细致差异审查，选 OpenChamber；多人参与且混用运行时，选 Agor。 | 专用 OpenCode 界面更小；Agor 增加身份、共享状态和适配成本。 |
-| [Scion](../../agent-frameworks/coding-agents/orchestration-and-review/scion.zh.md) | ✅ | 要在容器主机设计混合助手团队，选 Scion；用实时看板和人工参与组织工作，选 Agor。 | Scion 重点是运行代理和工作区策略；Agor 重点是分支、会话和可复用区域触发。 |
+| [OpenHands](../../../agent-frameworks/coding-agents/orchestration-and-review/openhands.zh.md) | ✅ | 跨本地与远端运行环境的浏览器控制台，选 OpenHands；同事围绕分支共享空间化流程，选 Agor。 | Agor 增加看板、区域、队友和共享知识，但要运营更大的协作系统，并接受 BSL。 |
+| [OpenChamber](../../../agent-frameworks/coding-agents/orchestration-and-review/openchamber.zh.md) | ✅ | 一名操作者固定用 OpenCode，并重视细致差异审查，选 OpenChamber；多人参与且混用运行时，选 Agor。 | 专用 OpenCode 界面更小；Agor 增加身份、共享状态和适配成本。 |
+| [Scion](../../../agent-frameworks/coding-agents/orchestration-and-review/scion.zh.md) | ✅ | 要在容器主机设计混合助手团队，选 Scion；用实时看板和人工参与组织工作，选 Agor。 | Scion 重点是运行代理和工作区策略；Agor 重点是分支、会话和可复用区域触发。 |
 
 ## 快速上手
 
 README 通过 npm 全局安装 `agor-live`，再执行 `agor init`、`agor daemon start` 和 `agor open`。需要 Node.js 22.12 及以上与 Git；发布包明确排除原生 Windows。初始化会安装你主动选择的编程助手，网页向导连接模型凭据并建立看板。加入仓库分支并启动会话后，Agor 管理工作目录、传递进度和提供共享预览，底层助手负责改代码。你承担模型费用、仓库授权、安全配置与最终审查；看板不等于自动批准合并。
 
-![agor — 主干用户故事](../../../assets/flow/agor.zh.svg)
+![agor — 主干用户故事](../../../../assets/flow/agor.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/agor.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -126,7 +126,7 @@ README 通过 npm 全局安装 `agor-live`，再执行 `agor init`、`agor daemo
 
 ## 技术要点
 
-![Agor — 机制图](../../../assets/mechanism/agor.zh.svg)
+![Agor — 机制图](../../../../assets/mechanism/agor.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/agor.json by tools/mechanism_card.py; do not edit) -->
 <details>

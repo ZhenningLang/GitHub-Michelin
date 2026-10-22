@@ -110,7 +110,7 @@ health:
 - **不许往应用里加依赖。** 凡是渲染在你应用进程里的东西都要改应用代码。规则若是「一个项目文件都不碰」，改用浏览器扩展 [Pointa](pointa.zh.md) 或 [Vibe Annotations](vibe-annotations.zh.md)——放弃 fiber/源码数据，换零集成。
 - **许可纯度是硬门槛。** PolyForm Shield 是 source-available 许可，禁止他人把这个工具本身产品化，不是 OSI 开源。组织要求 OSI 许可时，用 MIT 的 [earmark](earmark.zh.md) 或 [patch-mark](patch-mark.zh.md)。
 - **要在生产构建里定位源码。** `_debugSource` 和堆栈探测都依赖 dev 代码；production 剥离后只剩选择器与样式。要「元数据是特意编进产物」的设计，看 earmark 的构建插件。
-- **审的是 agent 的产出而不是你的运行界面。** 批注计划/diff 请去 [Plannotator](../supervision-surfaces/plannotator.zh.md)。
+- **审的是 agent 的产出而不是你的运行界面。** 批注计划/diff 请去 [Plannotator](../supervision-surfaces/human-review-gates/plannotator.zh.md)。
 
 ## 横向对比
 
@@ -121,7 +121,7 @@ health:
 | [Vibe Annotations](vibe-annotations.zh.md) | ✅ | 一般选 Agentation——同一个形状（批注 localhost、MCP 回读）却有数量级更高的采用；Vibe 只在它的非开发者分享路径（文件分享、watch 模式）上赢一行。 | Agentation：应用内精度、应用内义务。Vibe：扩展便利、同款 PolyForm Shield、约 170 星。 |
 | [markupkit](markupkit.zh.md) | ✅ | 点选批注选 Agentation；只有当你需要那层手绘——圈、箭头、删除线被分类成形状——才选 markupkit，并接受一个自我声明的学习型停更项目。 | 手绘表达力对结构化元素捕获；同为 React 组件，只有一个月下载 500 万。 |
 | [patch-mark](patch-mark.zh.md) | ✅ | 在自己的 React 应用里选 Agentation；要批注第三方预览页（文档站、任意 staging）且只肯加两行、零安装步骤时选 patch-mark。 | 零依赖 web component 加明示的「不可信证据」威胁模型，对 fiber 深捕获。 |
-| [Plannotator](../supervision-surfaces/plannotator.zh.md) | ✅ | 互补而非竞争：Plannotator 批注 agent 写的东西（计划/diff）并卡住这一步；Agentation 批注你的应用渲染的东西、喂给下一步。 | 人既审产物又审 UI 时，两个一起上。 |
+| [Plannotator](../supervision-surfaces/human-review-gates/plannotator.zh.md) | ✅ | 互补而非竞争：Plannotator 批注 agent 写的东西（计划/diff）并卡住这一步；Agentation 批注你的应用渲染的东西、喂给下一步。 | 人既审产物又审 UI 时，两个一起上。 |
 | Cursor / Antigravity 内嵌浏览器的元素选择器 | 非仓库 | 你本来就住在那个 IDE、只批注它自己的预览页时，用 IDE 内建；agent 是终端 CLI、或渲染页面和编辑器不是一家时，选 Agentation。 | 零安装，但绑厂商的浏览器面与闭源应用。 |
 
 ## 技术栈

@@ -2,7 +2,7 @@
 name: Agent Orchestrator
 slug: agent-orchestrator
 repo: https://github.com/OrchestratorInc/agent-orchestrator
-category: supervision-surfaces
+category: agent-cockpits
 tags: [parallel-agents, agentic-ide, git-worktrees, feedback-loops, desktop-app, electron, go-daemon, agent-adapters, tmux, claude-code]
 language: Go
 license: Apache-2.0
@@ -84,7 +84,7 @@ health:
 
 你同时跑好几个编码 agent，自己成了消息总线——把 CI 失败和 review 评论复制粘贴回对应的终端，全凭脑子把几条分支和 worktree 互相隔开。Agent Orchestrator 是一个本地桌面工作台：给每个任务配上自己的 agent、分支和 git worktree，替你盯着 PR/CI/review 状态，再把卡住的活路由回拥有它的 worker。
 
-![agent-orchestrator — 健康度雷达](../../../assets/health/agent-orchestrator.zh.svg)
+![agent-orchestrator — 健康度雷达](../../../../assets/health/agent-orchestrator.zh.svg)
 
 ## 何时使用
 
@@ -96,7 +96,7 @@ health:
 
 Agent Orchestrator 把监管和执行分开。桌面应用替你启动一个本地 Go daemon，状态由 daemon 管——worker 会话、分支、PR、CI 结果——存在 SQLite 里，再通过变更数据捕获（CDC）经 SSE 把数据库的增量实时推给界面。每个 agent 会话跑在自己的 git worktree 里的终端（macOS/Linux 用 tmux，Windows 用 conpty），并行任务不共享一份 checkout。归你的部分：添加仓库，用 **New task** 开一个 worker（从 28 个受支持的 CLI agent 里挑一个、选模型，走结构化 Chat 或 agent 原生的终端界面），活儿好了再 review、合并。归它的部分：按任务隔离、跟住 PR/CI/review/冲突事实、把每张卡片放到看板该在的位置、把可执行的失败送回拥有该分支的 agent——那个原本靠你复制粘贴的反馈环。可选层：项目级 orchestrator agent 负责全仓库规划并派生 worker，每个 worker 带隔离的浏览器预览，手机端经 opt-in 局域网监听渲染同样的会话。AO 从不写你的代码——agent 的质量和合并的决定权始终在你手里。
 
-![agent-orchestrator — 主干用户故事](../../../assets/flow/agent-orchestrator.zh.svg)
+![agent-orchestrator — 主干用户故事](../../../../assets/flow/agent-orchestrator.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/agent-orchestrator.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -129,9 +129,9 @@ Agent Orchestrator 把监管和执行分开。桌面应用替你启动一个本�
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [CCPM](../work-state/ccpm.zh.md) | ✅ | 需要现有 harness 内的 PRD→GitHub Issues→并行 worktree 流程时，选 CCPM。 | 规格驱动：PRD → GitHub Issues → git worktree 并行 agent，作为 skill-pack 从你现有 harness 里驱动。CCPM 是流程 + GitHub 原生、无 GUI；Agent Orchestrator 是桌面应用 + daemon，监管活的 agent 并自动路由 CI/review/冲突反馈。处于不同层——你大可用 CCPM 规划、用它来跑。 |
-| [OpenSandbox](../../sandboxing/opensandbox.zh.md) | ✅ | 需要在 K8s 规模安全执行不可信 agent 代码的沙箱运行时时，选 OpenSandbox。 | 一个沙箱*运行时*，用于在 K8s 规模上安全执行不可信的 agent 代码（隔离、出口、保险库）。正交：OpenSandbox 隔离的是*执行*；Agent Orchestrator 编排的是跨 worktree 的*agent*。你可以把 agent 跑在沙箱下、再在这里监管它们。 |
-| [Planning with Files](../work-state/planning-with-files.zh.md) | ✅ | 轻量 markdown 规划约定已经够用时，选 Planning with Files。 | 轻量的基于文件的规划范式（计划以 agent 读写的 markdown 形式存在）；没有并行监管、没有 GUI、没有反馈环路由。它是这套东西在状态保持上所替代的最小基线。 |
+| [CCPM](../../work-state/ccpm.zh.md) | ✅ | 需要现有 harness 内的 PRD→GitHub Issues→并行 worktree 流程时，选 CCPM。 | 规格驱动：PRD → GitHub Issues → git worktree 并行 agent，作为 skill-pack 从你现有 harness 里驱动。CCPM 是流程 + GitHub 原生、无 GUI；Agent Orchestrator 是桌面应用 + daemon，监管活的 agent 并自动路由 CI/review/冲突反馈。处于不同层——你大可用 CCPM 规划、用它来跑。 |
+| [OpenSandbox](../../../sandboxing/opensandbox.zh.md) | ✅ | 需要在 K8s 规模安全执行不可信 agent 代码的沙箱运行时时，选 OpenSandbox。 | 一个沙箱*运行时*，用于在 K8s 规模上安全执行不可信的 agent 代码（隔离、出口、保险库）。正交：OpenSandbox 隔离的是*执行*；Agent Orchestrator 编排的是跨 worktree 的*agent*。你可以把 agent 跑在沙箱下、再在这里监管它们。 |
+| [Planning with Files](../../work-state/planning-with-files.zh.md) | ✅ | 轻量 markdown 规划约定已经够用时，选 Planning with Files。 | 轻量的基于文件的规划范式（计划以 agent 读写的 markdown 形式存在）；没有并行监管、没有 GUI、没有反馈环路由。它是这套东西在状态保持上所替代的最小基线。 |
 | Conductor / Crystal / Claude Squad | 未收录 | 需要其他 worktree 并行 Claude Code 工具时，选 Conductor、Crystal 或 Claude Squad。 | 其他“在 git worktree 里并行跑 Claude Code agent”的工具（桌面或 TUI）。在核心思路上可直接对比；差异在 agent 广度（Agent Orchestrator 列了 28 个适配器）、反馈环自动化和成熟度——若你已收窄到这个细分，列入候选直接比。 |
 | Vibe Kanban | 未收录 | 想要更轻的看板式多 agent 运行器、不想要 AO 的 daemon/状态层时，选 Vibe Kanban。 | 两者都用看板监管多个 agent；AO 多了从真实 PR/CI/review 事实推导看板状态的本地 daemon、仓库级规划 orchestrator 和 28 个适配器——用更重的常驻工作台换更深的集成。Vibe Kanban 当前功能状态本次未重读。 |
 | 纯 tmux + `git worktree` 脚本 | 未收录 | 零依赖和完全可脚本化最重要时，选纯 tmux 加 git worktree 脚本。 | 零依赖、完全可脚本化，但 worktree 生命周期、agent 适配器、实时状态 UI、CI/review/冲突路由都得你自己手搓——这正是 Agent Orchestrator 打包好的胶水。 |

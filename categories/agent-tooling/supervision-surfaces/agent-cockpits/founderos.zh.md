@@ -2,7 +2,7 @@
 name: FounderOS
 slug: founderos
 repo: https://github.com/Bennettxai/FounderOS
-category: supervision-surfaces
+category: agent-cockpits
 tags: [business-dashboard, solo-founder, agent-supervision, paperclip, sqlite, self-hosted]
 language: TypeScript
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 你要查一笔收款、一封待回客户邮件和一个卡住的 agent 任务，却得来回切三个界面。FounderOS 把这些信息放进本地经营看板；但首次启动的公司是虚构的，真实 agent 仍需另接执行后端。
 
-![FounderOS — 健康度雷达](../../../assets/health/founderos.zh.svg)
+![FounderOS — 健康度雷达](../../../../assets/health/founderos.zh.svg)
 
 ## 何时使用
 
@@ -80,8 +80,8 @@ health:
 ## 何时不用
 
 - **你期待安装后，演示中的二十二名 agent 就开始干真活。** 用 [Paperclip](paperclip.zh.md) 接你已安装和配置的 agent。FounderOS 的真实 `/agents` 页面读取独立的 Paperclip 看板；内建运行时也有状态探针和明确未实现的任务，不是二十二名现成雇员。
-- **你要的是跨服务的重复操作，不是查看经营状态。** 用 [n8n](../../workflow-orchestration/n8n.zh.md) 组合触发器、连接器和执行记录。FounderOS 汇总业务视图；连接器亮绿，不代表工作流或每家支付服务的客户端都已实现。
-- **多人需要各自账号与共享权限。** 评估 [Macro](../../team-chat/macro.zh.md)，并接受更重的自托管栈。FounderOS 文档只有一个操作者密码，没有按人划分的账号与角色。
+- **你要的是跨服务的重复操作，不是查看经营状态。** 用 [n8n](../../../workflow-orchestration/n8n.zh.md) 组合触发器、连接器和执行记录。FounderOS 汇总业务视图；连接器亮绿，不代表工作流或每家支付服务的客户端都已实现。
+- **多人需要各自账号与共享权限。** 评估 [Macro](../../../team-chat/macro.zh.md)，并接受更重的自托管栈。FounderOS 文档只有一个操作者密码，没有按人划分的账号与角色。
 - **你需要平稳升级，或必须保留 v2 技术栈。** 评估期间继续用现有 n8n 工作流或 Paperclip 看板。仓库在十月十日从 Next.js 换成 Go／SvelteKit，又在十月二十日换回 Next.js；v2 留在标签里，不是当前架构。
 - **你要求看板绝对只读，不能借用宿主已有凭据。** 用仅注入明确凭据的窄 n8n 集成。FounderOS 会从用户主目录文件回读部分密钥，沟通回复接口可向 Slack 或 WhatsApp 发送消息，而且不检查 `GLADOS_WRITES`；该开关不是全局只读保证。
 
@@ -90,14 +90,14 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Paperclip](paperclip.zh.md) | 已收录 | 瓶颈是 agent 调度、工单归属和预算时，选 Paperclip；需要把该看板与收入、收件箱和内容视图放在一起时，选 FounderOS。 | Paperclip 运营已有 agent；FounderOS 能读取同一个看板，两者可以叠用而非替换。更宽的界面也增加连接器与凭据运维。 |
-| [n8n](../../workflow-orchestration/n8n.zh.md) | 已收录 | 业务事件必须依次调用多个 API 时，选 n8n；一个人主要想查看和引导多个业务领域时，选 FounderOS。 | n8n 提供显式自动化画布与逐节点执行记录，但采用 fair-code 许可；FounderOS 根许可为 MIT，界面围绕经营组织，不过各集成的完成度不一致。 |
-| [Macro](../../team-chat/macro.zh.md) | 已收录 | 同事要共享互相链接的邮件、任务与文档时，选 Macro；单人想在已有工具上加一个较小的本地看板时，选 FounderOS。 | Macro 带来协作数据和明显更重的 AGPL 服务栈；FounderOS 是本地 SQLite 应用加单一密码，不提供团队身份模型。 |
+| [n8n](../../../workflow-orchestration/n8n.zh.md) | 已收录 | 业务事件必须依次调用多个 API 时，选 n8n；一个人主要想查看和引导多个业务领域时，选 FounderOS。 | n8n 提供显式自动化画布与逐节点执行记录，但采用 fair-code 许可；FounderOS 根许可为 MIT，界面围绕经营组织，不过各集成的完成度不一致。 |
+| [Macro](../../../team-chat/macro.zh.md) | 已收录 | 同事要共享互相链接的邮件、任务与文档时，选 Macro；单人想在已有工具上加一个较小的本地看板时，选 FounderOS。 | Macro 带来协作数据和明显更重的 AGPL 服务栈；FounderOS 是本地 SQLite 应用加单一密码，不提供团队身份模型。 |
 
 ## 快速上手
 
 在已取到的源码目录中使用 Node 22，执行 `npm install`，再运行 `npm run dev`，打开 `http://localhost:4100`；CI 也使用 Node 22。初始界面来自 `demo-data/` 里的虚构公司，不是你的业务。在 Settings 中关闭 Filming mode，切到初始为空的 `data/`，再为所需服务提供凭据；例如 `STRIPE_SECRET_KEY` 让财务连接器读取余额与交易。FounderOS 负责拼装界面；API 权限、服务费用、备份，以及真实 agent 背后的 Paperclip 看板由你负责。远程访问前，先在 Settings → Security 设置操作者密码，再按预期监听地址重启；要使用构建后的应用，运行 `npm run preview`，不要拿开发时的首次编译速度作判断。
 
-![founderos — 主干用户故事](../../../assets/flow/founderos.zh.svg)
+![founderos — 主干用户故事](../../../../assets/flow/founderos.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/founderos.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -117,7 +117,7 @@ health:
 
 ## 技术要点
 
-![FounderOS — 机制图](../../../assets/mechanism/founderos.zh.svg)
+![FounderOS — 机制图](../../../../assets/mechanism/founderos.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/founderos.json by tools/mechanism_card.py; do not edit) -->
 <details>

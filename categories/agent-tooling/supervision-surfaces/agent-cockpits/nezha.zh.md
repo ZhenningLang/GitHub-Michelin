@@ -2,7 +2,7 @@
 name: Nezha
 slug: nezha
 repo: https://github.com/hanshuaikang/nezha
-category: supervision-surfaces
+category: agent-cockpits
 tags: [coding-agents, claude-code, codex, desktop-app, git-worktrees, agent-notifications, skill-management]
 language: TypeScript
 license: GPL-3.0
@@ -78,7 +78,7 @@ health:
 
 你来回切换项目，才找到等审批的编程助手；看它改了什么，又得打开另一个工具。Nezha 把 Claude Code 和 Codex 的任务、待办状态、会话记录与 Git 差异放进同一个桌面窗口，也能为并行任务另建工作目录。
 
-![Nezha — 健康度雷达](../../../assets/health/nezha.zh.svg)
+![Nezha — 健康度雷达](../../../../assets/health/nezha.zh.svg)
 
 ## 何时使用
 
@@ -90,9 +90,9 @@ health:
 
 - **并行任务必须自动独立检出。** 新任务默认 `local`，不是工作树模式。你得主动选择工作树；想按 worker 自动分工作区，选 [Agent Orchestrator](agent-orchestrator.zh.md)。Git 工作树只分开文件，不隔离操作系统权限。
 - **任务管理必须接 OpenCode、Kilo 等助手。** 本次读取的启动和 hook 路径区分 Claude Code 与 Codex；需要更广适配器，选 [Agent Orchestrator](agent-orchestrator.zh.md)。在 shell 里运行命令，不等于状态和会话解析已接通。
-- **你要手机访问，或桌面断开后任务继续跑。** 浏览器接入可信主机选 [CloudCLI](claudecodeui.zh.md)，服务器进程保活选 [tmux](../../terminal-ui/tmux.zh.md)。Nezha 持有任务进程；[Windows 托盘退出路径明确终止子进程](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/lib.rs#L200-L207)。关窗口可能只是隐藏，但真正退出后恢复对话，不等于进程保活。
-- **全局助手配置不能被改。** 启动会安装桥接脚本，并向 `~/.codex/config.toml` 追加托管 hook 块，也会对 Claude 配置做旧版迁移清理。当前 Claude hook 改用启动时传入的独立配置文件。若配置变更政策不允许这些动作，保留现有命令行并用 [tmux](../../terminal-ui/tmux.zh.md)。证据见[启动路径](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/lib.rs#L272-L282)与[安装实现](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/hooks.rs#L515-L561)。
-- **你需要不可信任务的安全边界。** 保留助手自身限制，或另设隔离环境；[tmux](../../terminal-ui/tmux.zh.md) 可承载你选择的受限命令行，不强加 Nezha 的启动参数。`full_access` 会传跳过权限或沙箱的标志；另外，Codex hook 可用时，即使不是全权限模式，也会加 `--dangerously-bypass-hook-trust`。桌面和工作树都不是沙箱。证据见[命令构造](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/pty.rs#L476-L549)与[hook 信任处理](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/pty.rs#L877-L888)。
+- **你要手机访问，或桌面断开后任务继续跑。** 浏览器接入可信主机选 [CloudCLI](claudecodeui.zh.md)，服务器进程保活选 [tmux](../../../terminal-ui/tmux.zh.md)。Nezha 持有任务进程；[Windows 托盘退出路径明确终止子进程](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/lib.rs#L200-L207)。关窗口可能只是隐藏，但真正退出后恢复对话，不等于进程保活。
+- **全局助手配置不能被改。** 启动会安装桥接脚本，并向 `~/.codex/config.toml` 追加托管 hook 块，也会对 Claude 配置做旧版迁移清理。当前 Claude hook 改用启动时传入的独立配置文件。若配置变更政策不允许这些动作，保留现有命令行并用 [tmux](../../../terminal-ui/tmux.zh.md)。证据见[启动路径](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/lib.rs#L272-L282)与[安装实现](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/hooks.rs#L515-L561)。
+- **你需要不可信任务的安全边界。** 保留助手自身限制，或另设隔离环境；[tmux](../../../terminal-ui/tmux.zh.md) 可承载你选择的受限命令行，不强加 Nezha 的启动参数。`full_access` 会传跳过权限或沙箱的标志；另外，Codex hook 可用时，即使不是全权限模式，也会加 `--dangerously-bypass-hook-trust`。桌面和工作树都不是沙箱。证据见[命令构造](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/pty.rs#L476-L549)与[hook 信任处理](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src-tauri/src/pty.rs#L877-L888)。
 
 ## 横向对比
 
@@ -100,14 +100,14 @@ health:
 |---|---|---|---|
 | [Agent Orchestrator](agent-orchestrator.zh.md) | ✅ | 要把 CI 失败和评审意见自动送回不同助手，选 AO；由人驾驶本地 Claude Code／Codex 任务与 Git 流程，选 Nezha。 | AO 增加守护进程、更多适配器和反馈路由；Nezha 是 Tauri 桌面，聚焦两种助手。 |
 | [CloudCLI](claudecodeui.zh.md) | ✅ | 需要手机访问工作站会话，选 CloudCLI；任务看板和编辑器就放在工作站上，选 Nezha。 | Web 服务与远程访问安全责任，换本机桌面安装；网络服务的 AGPL 条款，换桌面分发的 GPL 条款。 |
-| [cmux](../../agent-frameworks/coding-agents/agent-multiplexers/cmux.zh.md) | ✅ | 在 Mac 上重视可编程终端窗格和内嵌浏览器，选 cmux；重视任务记录、代码编辑及跨桌面平台的工作树控件，选 Nezha。 | 原生 Mac 终端的命令行与 socket 原语，换 Tauri 任务工作台；两者都不替你验收。 |
-| [tmux](../../terminal-ui/tmux.zh.md) | ✅ | 远程服务器断线后 shell 必须存活，选 tmux；想在本地直接看助手状态和差异、不手写界面，选 Nezha。 | tmux 提供保活和成熟脚本接口；助手状态、工作树与评审界面要自己搭。 |
+| [cmux](../../../agent-frameworks/coding-agents/agent-multiplexers/cmux.zh.md) | ✅ | 在 Mac 上重视可编程终端窗格和内嵌浏览器，选 cmux；重视任务记录、代码编辑及跨桌面平台的工作树控件，选 Nezha。 | 原生 Mac 终端的命令行与 socket 原语，换 Tauri 任务工作台；两者都不替你验收。 |
+| [tmux](../../../terminal-ui/tmux.zh.md) | ✅ | 远程服务器断线后 shell 必须存活，选 tmux；想在本地直接看助手状态和差异、不手写界面，选 Nezha。 | tmux 提供保活和成熟脚本接口；助手状态、工作树与评审界面要自己搭。 |
 
 ## 快速上手
 
 先独立安装并登录 Claude Code 或 Codex，再从 [v0.5.0 发布页](https://github.com/hanshuaikang/nezha/releases/tag/v0.5.0)选择系统安装包。README 说明 macOS 包未签名；应先核来源，再决定政策是否允许打开，别把移除隔离标记当作例行安装步骤。打开仓库，新建任务，选择助手和权限模式；并行改动时主动选择工作树及基准分支，工作树就是另一个带独立 Git 分支的目录。Nezha 启动命令行，展示终端与待处理状态，并提供会话和差异视图；你负责批准动作、测试结果、决定提交与合并。模型费用和命令行凭据仍由你承担；启动时全局 hook 变更属于集成本身，不是运行任务后才出现的可选动作。用法依据是 [README](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/README_EN.md#L52-L103)、[任务选择器](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src/components/NewTaskView.tsx#L110-L115)与[提交路径](https://github.com/hanshuaikang/nezha/blob/49a1c642e05b1f65448d78d53e21b283e73dc444/src/App.tsx#L789-L850)。
 
-![nezha — 主干用户故事](../../../assets/flow/nezha.zh.svg)
+![nezha — 主干用户故事](../../../../assets/flow/nezha.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/nezha.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -126,7 +126,7 @@ health:
 
 ## 技术要点
 
-![Nezha — 机制图](../../../assets/mechanism/nezha.zh.svg)
+![Nezha — 机制图](../../../../assets/mechanism/nezha.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/nezha.json by tools/mechanism_card.py; do not edit) -->
 <details>
