@@ -40,7 +40,7 @@
 | **ml-research** | Small, self-contained ML research demos and reference implementations. | [→](categories/ml-research/INDEX.md) |
 | **agent-skills** | Curated collections of agent skills, prompts, subagent personas, and harness configs — split by domain. | [→](categories/agent-skills/INDEX.md) |
 | **observability** | Dashboards, alerting, and visualization over metrics/logs/traces from many datasources. | [→](categories/observability/INDEX.md) |
-| **data-visualization** | Self-hosted BI / data-exploration dashboards over SQL warehouses. | [→](categories/data-visualization/INDEX.md) |
+| **data-visualization** | Compile tabular data into charts, or run self-hosted BI / exploration dashboards over SQL warehouses. | [→](categories/data-visualization/INDEX.md) |
 | **ocr** | Optical character recognition engines — image/scan to text. | [→](categories/ocr/INDEX.md) |
 | **document-parsing** | Parse/convert documents (PDF/DOCX/…) into structured Markdown/JSON for gen-AI ingestion. | [→](categories/document-parsing/INDEX.md) |
 | **office-automation** | Programmatically create, read, and edit native Office documents (.docx/.xlsx/.pptx) — the authoring side, for scripts and agents. | [→](categories/office-automation/INDEX.md) |

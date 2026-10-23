@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "input", "en": "Rows, field meanings and chart mappings", "zh": "逐行数据、字段含义与图表映射", "kind": "input"},
+    {"id": "semantics", "en": "Shared field and channel semantics", "zh": "共用字段与通道语义", "technique": [1]},
+    {"id": "theme", "en": "Vega-Lite / Plotly theme presets and overrides", "zh": "Vega-Lite／Plotly 主题预设与覆盖", "technique": [3]},
+    {"id": "layout", "en": "Canvas budgets, overflow warnings and layout", "zh": "画布容量、溢出警告与排版", "technique": [2]},
+    {"id": "native", "en": "Backend template emits native specification", "zh": "后端模板输出原生规格", "kind": "output", "technique": [1]},
+    {"id": "validate", "en": "MCP resolves data and validates bounded input", "zh": "MCP 解析数据并校验有界输入", "technique": [4]},
+    {"id": "render", "en": "Local Vega-Lite, ECharts or Chart.js renderer", "zh": "本地 Vega-Lite、ECharts 或 Chart.js 渲染器", "technique": [4]},
+    {"id": "image", "en": "SVG or PNG; Chart.js is PNG only", "zh": "SVG 或 PNG；Chart.js 仅 PNG", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "input", "to": "semantics"},
+    {"from": "theme", "to": "layout"},
+    {"from": "semantics", "to": "layout"},
+    {"from": "layout", "to": "native"},
+    {"from": "input", "to": "validate", "en": "optional MCP path", "zh": "可选 MCP 路线", "style": "dashed"},
+    {"from": "validate", "to": "semantics", "en": "resolved rows", "zh": "解析后的数据行", "style": "dashed"},
+    {"from": "native", "to": "render", "en": "supported MCP backends only", "zh": "仅 MCP 支持的后端", "style": "dashed"},
+    {"from": "render", "to": "image"}
+  ],
+  "sources": ["https://github.com/microsoft/flint-chart/blob/a794557384adcc3293a77043f6b9aff1c33d152c/packages/flint-js/src/core/analyze.ts#L133-L168", "https://github.com/microsoft/flint-chart/blob/a794557384adcc3293a77043f6b9aff1c33d152c/packages/flint-js/src/core/plan.ts#L1214-L1255", "https://github.com/microsoft/flint-chart/blob/a794557384adcc3293a77043f6b9aff1c33d152c/packages/flint-js/src/core/theme/presets.ts#L64-L92", "https://github.com/microsoft/flint-chart/blob/a794557384adcc3293a77043f6b9aff1c33d152c/packages/flint-mcp/src/render/index.ts#L41-L118"]
+}

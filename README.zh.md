@@ -763,6 +763,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **Flint** | 将可复用的字段含义和图表映射编译成原生绘图规格；可选本地 MCP 导出，但有后端差异和溢出裁剪。 | MIT | B（6/6） | [中](categories/data-visualization/flint-chart.zh.md) · [EN](categories/data-visualization/flint-chart.md) |
 | **Rill** | 用 YAML／SQL 管理共同指标与探索看板，查询 DuckDB 或外部分析引擎。 | Apache-2.0 | A（6/6） | [中](categories/data-visualization/rill.zh.md) · [EN](categories/data-visualization/rill.md) |
 | **Apache Superset** | 当你想要在数据仓库之上自托管 SQL BI 看板与探索时用它——不是基础设施指标/可观测性。 | Apache-2.0 | A（6/6） | [中](categories/data-visualization/superset.zh.md) · [EN](categories/data-visualization/superset.md) |
 | **Evidence** | 当分析工程师想把报表写成 git 里的 Markdown 加 SQL 文件，能 diff、能评审、能交给编码 agent 改时用它——但业务人员没法点选出问题，自托管只有 Basic Auth，而且 2026 年的重写让代码库从头来过。 | MIT | B（6/6） | [EN](categories/data-visualization/evidence.md) · [中](categories/data-visualization/evidence.zh.md) |

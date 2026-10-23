@@ -39,7 +39,7 @@
 | **ml-research** | 小而自洽的 ML 研究 demo 与参考实现。 | [→](categories/ml-research/INDEX.zh.md) |
 | **agent-skills** | 成体系的 agent 技能、提示词、subagent 人设与 harness 配置合集——按用途领域拆分。 | [→](categories/agent-skills/INDEX.zh.md) |
 | **observability** | 在多数据源的指标/日志/追踪之上做看板、告警与可视化。 | [→](categories/observability/INDEX.zh.md) |
-| **data-visualization** | 在 SQL 数据仓库之上自托管的 BI / 数据探索看板。 | [→](categories/data-visualization/INDEX.zh.md) |
+| **data-visualization** | 把表格数据编译成图表，或在 SQL 仓库之上运行自托管 BI／数据探索看板。 | [→](categories/data-visualization/INDEX.zh.md) |
 | **ocr** | 光学字符识别引擎——图像/扫描件转文本。 | [→](categories/ocr/INDEX.zh.md) |
 | **document-parsing** | 把文档（PDF/DOCX/…）解析成结构化 Markdown/JSON，供 gen-AI 消费。 | [→](categories/document-parsing/INDEX.zh.md) |
 | **office-automation** | 程序化创建、读取、编辑原生 Office 文档（.docx/.xlsx/.pptx）——生成侧，面向脚本与 agent。 | [→](categories/office-automation/INDEX.zh.md) |
