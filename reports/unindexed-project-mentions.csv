@@ -497,7 +497,7 @@ eslint-plugin-react-hooks / react,categories/ai-code-review/react-doctor.md,,no
 ESPnet,categories/speech/speechbrain.md,,no
 Ethereum-Faucet,categories/blockchain-dev-infrastructure/INDEX.md,,no
 EVA-CLIP,categories/ml-research/vision-and-multimodal/clip.md,,no
-Exa / Tavily / SearXNG,categories/deep-research/agent-reach.md,,no
+Exa / Tavily / SearXNG,categories/deep-research/source-workflows/agent-reach.md,,no
 Excalibur.js,categories/game-dev/kaplay.md,,no
 exo,categories/llm-inference/local-runtimes/ds4.md,,no
 Fabric,categories/networking/paramiko.md,,no
@@ -809,7 +809,7 @@ mcp-scan (Invariant Labs),categories/llm-eval/ai-infra-guard.md,,no
 mdcat,categories/terminal-ui/terminal-markdown-viewer.md,,no
 mdl (Ruby),categories/markdown-tools/markdownlint.md,,no
 Mechanistic-interpretability circuit tooling (e.g. TransformerLens),categories/ml-research/llm-circuit-finder.md,,no
-MediaCrawler,categories/deep-research/last30days.md,,no
+MediaCrawler,categories/deep-research/source-workflows/last30days.md,,no
 MediaCrawler (NanmiCoder),categories/social-media-management/xiaohongshu-mcp.md,,no
 MediaPipe LLM Inference API (Google),categories/on-device-ml/litert-lm.md,,no
 MediaPipe LLM Inference Studio (Google),categories/on-device-ml/ai-edge-gallery.md,,no

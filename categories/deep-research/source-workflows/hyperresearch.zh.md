@@ -2,7 +2,7 @@
 name: Hyperresearch
 slug: hyperresearch
 repo: https://github.com/jordan-gibbs/hyperresearch
-category: deep-research
+category: source-workflows
 tags: [deep-research, claude-code, research-pipeline, citation-verification, knowledge-vault]
 language: Python
 license: MIT
@@ -73,7 +73,7 @@ health:
 
 一个 Claude Code 深度研究 harness：分档自适应的 16 步流水线，把一个 prompt 变成经过对抗式审计、引用逐条核验的报告，并把读过的每个来源存进持久可检索的 vault，供后续会话复用。
 
-![hyperresearch — 健康度雷达](../../assets/health/hyperresearch.zh.svg)
+![hyperresearch — 健康度雷达](../../../assets/health/hyperresearch.zh.svg)
 
 ## 何时使用
 
@@ -83,10 +83,10 @@ health:
 
 ## 何时不用
 
-- **日常工程选型问题。**「这个库还在维护吗 / A 和 B 哪个适合我的规模」要的是 10–20 个源加半小时，不是 16 步流水线——引用审计装置在这里纯属 overkill。用轻量手动流程（仓库元数据+issue 采样）或 [GPT Researcher](gpt-researcher.zh.md) 这类更便宜的通用 agent。
-- **不在 Claude Code 上。** 整条流水线靠 Claude Code 的 Skill/subagent 机制激活，没有独立 agent 运行时；README 明确说「想移植到 Codex 请提 PR」——即 Codex 支持今天不存在。要任意 LLM 或其它 harness，用 [GPT Researcher](gpt-researcher.zh.md)（框架）或 [Local Deep Research](local-deep-research.zh.md)（自托管）。
+- **日常工程选型问题。**「这个库还在维护吗 / A 和 B 哪个适合我的规模」要的是 10–20 个源加半小时，不是 16 步流水线——引用审计装置在这里纯属 overkill。用轻量手动流程（仓库元数据+issue 采样）或 [GPT Researcher](../gpt-researcher.zh.md) 这类更便宜的通用 agent。
+- **不在 Claude Code 上。** 整条流水线靠 Claude Code 的 Skill/subagent 机制激活，没有独立 agent 运行时；README 明确说「想移植到 Codex 请提 PR」——即 Codex 支持今天不存在。要任意 LLM 或其它 harness，用 [GPT Researcher](../gpt-researcher.zh.md)（框架）或 [Local Deep Research](../local-deep-research.zh.md)（自托管）。
 - **token 或时间预算紧张。** 即使 light 档也要约 30–40 分钟；full 档 1.5–2.5 小时、premier 档 3–5 小时、100–130+ 源，全部计入你的 Claude 用量（曾有 token 过度消耗的 bug，#83，已修，但设计本身就重）。要快速拿到带引用的答案，OpenAI / Gemini Deep Research 这类 SaaS（未收录）一键就有。
-- **查询必须完全留在自己的基础设施上。** 它抓的是活网页、跑在 Anthropic 模型上。要全本地推理、查询不出本机，用 [Local Deep Research](local-deep-research.zh.md)。
+- **查询必须完全留在自己的基础设施上。** 它抓的是活网页、跑在 Anthropic 模型上。要全本地推理、查询不出本机，用 [Local Deep Research](../local-deep-research.zh.md)。
 - **冲着「DeepResearch-Bench 领先」来的。** 这个宣称经不起对源：hyperresearch **不在官方榜单上**（2026-09-17 核查 muset-ai 官方 space 的 `data/` 与 `data_gpt55/` 两份 CSV 均无），且其 README 脚注自称「分层试点的 forward-looking projection」。在官方榜单出现提交记录前按营销处理。
 - **今天就需要稳定接口。** pre-1.0 且 churn 快——光 2026-09-11 一天就发了三个 release，open issue 里记载着 prompt 契约互相矛盾、配置常量写两处（#101/#102）。用就 pin 版本，升级后重读文档。
 
@@ -94,10 +94,10 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [GPT Researcher](gpt-researcher.zh.md) | ✅ | 需要 LLM 无关的研究框架嵌进自己的技术栈时选 GPT Researcher；已在 Claude Code 里且要最强的内置引用审计时选 Hyperresearch。 | GPT Researcher 提供商无关、可集成，但产出验证更轻；Hyperresearch 锁死 Claude Code，换来更重的对抗式链条。 |
-| [Local Deep Research](local-deep-research.zh.md) | ✅ | 查询或文档必须留在本机、用本地模型时选 Local Deep Research；报告严谨度比本地化更重要时选 Hyperresearch。 | Local Deep Research 用云端模型质量换隐私和零 API 依赖；Hyperresearch 烧 Anthropic token 换更深的 critic/引用核验流水线。 |
-| [Vane](vane.zh.md) | ✅ | 要一个自托管的 Perplexity 式带引用答案引擎、跑在自己 SearxNG 上回答日常问题时选 Vane；偶发的高风险报告才选 Hyperresearch，它不是日常查询工具。 | Vane 是常开答案服务、单次查询深度有限；Hyperresearch 是批量报告工厂，单次 0.5–8 小时。 |
-| [deep-research](deep-research.zh.md) | ✅ | 想 fork 一个约 500 行的最小参考实现、读懂 agent 循环时选它；要一套现成的、有治理的流水线而不是起点时选 Hyperresearch。 | 参考实现可读可改但浅；Hyperresearch 是生产形态但难改动得多。 |
+| [GPT Researcher](../gpt-researcher.zh.md) | ✅ | 需要 LLM 无关的研究框架嵌进自己的技术栈时选 GPT Researcher；已在 Claude Code 里且要最强的内置引用审计时选 Hyperresearch。 | GPT Researcher 提供商无关、可集成，但产出验证更轻；Hyperresearch 锁死 Claude Code，换来更重的对抗式链条。 |
+| [Local Deep Research](../local-deep-research.zh.md) | ✅ | 查询或文档必须留在本机、用本地模型时选 Local Deep Research；报告严谨度比本地化更重要时选 Hyperresearch。 | Local Deep Research 用云端模型质量换隐私和零 API 依赖；Hyperresearch 烧 Anthropic token 换更深的 critic/引用核验流水线。 |
+| [Vane](../vane.zh.md) | ✅ | 要一个自托管的 Perplexity 式带引用答案引擎、跑在自己 SearxNG 上回答日常问题时选 Vane；偶发的高风险报告才选 Hyperresearch，它不是日常查询工具。 | Vane 是常开答案服务、单次查询深度有限；Hyperresearch 是批量报告工厂，单次 0.5–8 小时。 |
+| [deep-research](../deep-research.zh.md) | ✅ | 想 fork 一个约 500 行的最小参考实现、读懂 agent 循环时选它；要一套现成的、有治理的流水线而不是起点时选 Hyperresearch。 | 参考实现可读可改但浅；Hyperresearch 是生产形态但难改动得多。 |
 | OpenAI / Gemini Deep Research（未收录） | ❌ | 要零配置、一键、单次价格可预期的带引用报告时选这些 SaaS；要来源 vault、可续跑的 run、以及审计轨迹留在自己磁盘上时选 Hyperresearch。 | SaaS 出第一份报告更快、由模型厂商亲自调优，但闭源、会话级、不可检视；Hyperresearch 更慢更费 token，但透明且复利。 |
 
 ## 技术栈

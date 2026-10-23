@@ -2,7 +2,7 @@
 name: imozuru
 slug: imozuru
 repo: https://github.com/MaryCache/imozuru
-category: deep-research
+category: source-workflows
 tags: [literature-search, primary-sources, claude-code, evidence-ledger, quotation-verification]
 language: Python
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 你搜到的解读总在引用别人的解读，却找不到支撑判断的原文。imozuru 沿引用和作者追索，保存资料，再按本地行号核对摘录，不替你先下结论。
 
-![imozuru — 健康度雷达](../../assets/health/imozuru.zh.svg)
+![imozuru — 健康度雷达](../../../assets/health/imozuru.zh.svg)
 
 ## 何时使用
 
@@ -79,8 +79,8 @@ health:
 
 ## 何时不用
 
-- **你要成稿结论或嵌入应用的研究接口。** 选 [GPT Researcher](gpt-researcher.zh.md)，它能写带引用的报告并提供 Python 接口；imozuru 默认停在摘录，只有另行要求才写总结。
-- **问题涉及机密或个人资料。** 不要通过该技能发出：搜索词会离开本机。考虑 [Local Deep Research](local-deep-research.zh.md)，并明确配置本地推理、审计检索外发；自托管不等于公开网页查询不会泄密。
+- **你要成稿结论或嵌入应用的研究接口。** 选 [GPT Researcher](../gpt-researcher.zh.md)，它能写带引用的报告并提供 Python 接口；imozuru 默认停在摘录，只有另行要求才写总结。
+- **问题涉及机密或个人资料。** 不要通过该技能发出：搜索词会离开本机。考虑 [Local Deep Research](../local-deep-research.zh.md)，并明确配置本地推理、审计检索外发；自托管不等于公开网页查询不会泄密。
 - **你要审查来源是否真正证明句子。** 选 [Hyperresearch](hyperresearch.zh.md) 的批评与引文检查流程。imozuru 只检查文字是否出现，不检查推论、译文或来源本身是否正确。
 - **本地服务不能暴露给不可信网址。** 不要把它当沙箱。所读默认分支会先检查 DNS 地址，但没有把连接锁定到检查过的地址；截至 2026-10-23，[修复 PR #13](https://github.com/MaryCache/imozuru/pull/13) 仍未关闭。改用独立限制网络的抓取代理，或人工批准的公开来源清单。不要为了消掉报错就启用 `IMOZURU_ALLOW_PRIVATE=1`。
 - **你必须读付费全文，或要经过英文请求验证的开箱流程。** 受限论文应走图书馆授权和人工阅读；该技能记录无法取得的来源，禁止绕过付费墙。英文报告生成优先看 GPT Researcher；上游只声称试过日文请求。
@@ -89,15 +89,15 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [GPT Researcher](gpt-researcher.zh.md) | ✅ | 要成稿简报或可调用研究引擎，选 GPT Researcher；要保留原文、自己下结论，选 imozuru。 | 应用部署与服务商配置换来接口和报告导出；imozuru 借用 Claude Code 和本地文件，但不替你综合结论。 |
+| [GPT Researcher](../gpt-researcher.zh.md) | ✅ | 要成稿简报或可调用研究引擎，选 GPT Researcher；要保留原文、自己下结论，选 imozuru。 | 应用部署与服务商配置换来接口和报告导出；imozuru 借用 Claude Code 和本地文件，但不替你综合结论。 |
 | [Hyperresearch](hyperresearch.zh.md) | ✅ | 高风险报告需要对抗式引文审查，选 Hyperresearch；需要可机械核对摘录文字的原文阅读路径，选 imozuru。 | 批评流程能质疑解释，但工作流更重；文字匹配较窄，不能证明摘录推出了主张。 |
-| [Local Deep Research](local-deep-research.zh.md) | ✅ | 模型托管和检索外发必须自己控制，选 Local Deep Research；已经接受 Claude Code 和公开搜索，选 imozuru。 | 本地推理和可配置检索需要维护应用栈；复制技能更轻，却不能消除查询外发。 |
+| [Local Deep Research](../local-deep-research.zh.md) | ✅ | 模型托管和检索外发必须自己控制，选 Local Deep Research；已经接受 Claude Code 和公开搜索，选 imozuru。 | 本地推理和可配置检索需要维护应用栈；复制技能更轻，却不能消除查询外发。 |
 
 ## 快速上手
 
 上游插件安装路径是先运行 `/plugin marketplace add MaryCache/imozuru`，再运行 `/plugin install imozuru@imozuru`；也可手动把 `skills/imozuru/` 复制进 Claude Code 的技能目录。给宿主一个公开研究问题，例如 README 中追索 Gaussian Splatting 论文与解读的请求。你提供问题、批准必要工具权限、承担模型和搜索费用，并阅读结果；技能指导代理绘制领域地图、保存来源，再写 `extracts.json`。脚本只依赖 Python 3.10+ 标准库，但 PDF 文字需要 `pdftotext`，扫描件还需要 `pdftoppm`、Tesseract 和语言数据，字幕需要 `yt-dlp`，HTML 可选用 `ax`。核对后的摘录输出为 `~/research/<topic>/report.html`，旁边保留 `map.md`、`log.md` 和 `sources/`；可选 watch 模式只在请求时拉 RSS，不会安装定时任务。本页只核对安装与使用说明，没有执行安装或端到端研究。
 
-![imozuru — 主干用户故事](../../assets/flow/imozuru.zh.svg)
+![imozuru — 主干用户故事](../../../assets/flow/imozuru.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/imozuru.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -116,7 +116,7 @@ health:
 
 ## 技术要点
 
-![imozuru — 机制图](../../assets/mechanism/imozuru.zh.svg)
+![imozuru — 机制图](../../../assets/mechanism/imozuru.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/imozuru.json by tools/mechanism_card.py; do not edit) -->
 <details>

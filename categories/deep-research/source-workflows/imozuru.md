@@ -2,7 +2,7 @@
 name: imozuru
 slug: imozuru
 repo: https://github.com/MaryCache/imozuru
-category: deep-research
+category: source-workflows
 tags: [literature-search, primary-sources, claude-code, evidence-ledger, quotation-verification]
 language: Python
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 You keep finding explainers that cite other explainers, but cannot locate the passage behind a claim. imozuru follows references and authors, saves source texts, and checks quoted passages against local line numbers instead of writing the conclusion for you.
 
-![imozuru — health radar](../../assets/health/imozuru.svg)
+![imozuru — health radar](../../../assets/health/imozuru.svg)
 
 ## When to use
 
@@ -79,8 +79,8 @@ Choose it over report-writing research agents when you want to read the evidence
 
 ## When NOT to use
 
-- **You need a written conclusion or an embedded research API.** Choose [GPT Researcher](gpt-researcher.md), which writes cited reports and exposes a Python integration surface; imozuru deliberately stops at extracts unless asked to summarize later.
-- **The question contains confidential or personal information.** Do not send it through this skill: its search terms leave the machine. Consider [Local Deep Research](local-deep-research.md) with local inference and an explicitly audited retrieval configuration; self-hosting alone does not make public-web queries private.
+- **You need a written conclusion or an embedded research API.** Choose [GPT Researcher](../gpt-researcher.md), which writes cited reports and exposes a Python integration surface; imozuru deliberately stops at extracts unless asked to summarize later.
+- **The question contains confidential or personal information.** Do not send it through this skill: its search terms leave the machine. Consider [Local Deep Research](../local-deep-research.md) with local inference and an explicitly audited retrieval configuration; self-hosting alone does not make public-web queries private.
 - **You require adversarial checking of whether each source proves the sentence.** Choose [Hyperresearch](hyperresearch.md) for its critic and citation-checking workflow. imozuru checks textual occurrence, not entailment, translation accuracy, or the truth of the source.
 - **You cannot expose local services to untrusted URLs.** Do not treat this as a sandbox. The reviewed default branch checks DNS results before connecting but explicitly does not pin the connection against DNS rebinding; [PR #13](https://github.com/MaryCache/imozuru/pull/13) remained open on 2026-10-23. Use a separately restricted fetch proxy or a manually approved public-source list instead. Never enable `IMOZURU_ALLOW_PRIVATE=1` merely to make an error disappear.
 - **You need paywalled full texts or an English-tested turnkey workflow.** Use your library's authorized access and manual reading for restricted papers; this skill reports unreachable sources and forbids paywall circumvention. For English report generation, prefer GPT Researcher; the upstream README says requests have only been tried in Japanese.
@@ -89,15 +89,15 @@ Choose it over report-writing research agents when you want to read the evidence
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [GPT Researcher](gpt-researcher.md) | ✅ | Choose GPT Researcher when the deliverable is a composed brief or a callable research engine; choose imozuru when you want original passages without an agent deciding the conclusion. | An application and provider configuration buy integration and report export; imozuru reuses Claude Code and local files but leaves synthesis to you. |
+| [GPT Researcher](../gpt-researcher.md) | ✅ | Choose GPT Researcher when the deliverable is a composed brief or a callable research engine; choose imozuru when you want original passages without an agent deciding the conclusion. | An application and provider configuration buy integration and report export; imozuru reuses Claude Code and local files but leaves synthesis to you. |
 | [Hyperresearch](hyperresearch.md) | ✅ | Choose Hyperresearch for a high-stakes report with adversarial citation review; choose imozuru for a source-reading trail whose quotation text is checked mechanically. | Critics can challenge interpretation, at the cost of a larger workflow; exact quotation matching is narrower and cannot establish that a claim follows. |
-| [Local Deep Research](local-deep-research.md) | ✅ | Choose Local Deep Research when controlling model hosting and retrieval configuration decides the choice; choose imozuru when you already accept Claude Code and public searches. | Local inference and configurable retrieval require an application stack; copying imozuru's skill is lighter but does not remove query egress. |
+| [Local Deep Research](../local-deep-research.md) | ✅ | Choose Local Deep Research when controlling model hosting and retrieval configuration decides the choice; choose imozuru when you already accept Claude Code and public searches. | Local inference and configurable retrieval require an application stack; copying imozuru's skill is lighter but does not remove query egress. |
 
 ## Quick start
 
 The upstream plugin route is `/plugin marketplace add MaryCache/imozuru`, then `/plugin install imozuru@imozuru`; manual installation copies `skills/imozuru/` into your Claude Code skills directory. Give Claude Code a public research question, for example the README's request to dig through Gaussian Splatting papers and explainers. You provide the question, approve any necessary tool access, pay for model/search usage, and read the result; the skill directs the agent to map the field, save sources, and write `extracts.json`. Its Python 3.10+ scripts use the standard library; PDF text needs `pdftotext`, scanned PDFs additionally need `pdftoppm` and Tesseract language data, captions need `yt-dlp`, and HTML optionally uses `ax`. The checked extracts become `~/research/<topic>/report.html` beside `map.md`, `log.md`, and `sources/`; optional watch mode fetches RSS only when requested, not through an installed scheduler. These are source-verified instructions, not an installation or end-to-end run performed for this entry.
 
-![imozuru — backbone user story](../../assets/flow/imozuru.svg)
+![imozuru — backbone user story](../../../assets/flow/imozuru.svg)
 
 <!-- flow-steps:begin (generated from flows/imozuru.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -116,7 +116,7 @@ The upstream plugin route is `/plugin marketplace add MaryCache/imozuru`, then `
 
 ## Key techniques
 
-![imozuru — mechanism diagram](../../assets/mechanism/imozuru.svg)
+![imozuru — mechanism diagram](../../../assets/mechanism/imozuru.svg)
 
 <!-- mechanism:begin (generated from mechanisms/imozuru.json by tools/mechanism_card.py; do not edit) -->
 <details>

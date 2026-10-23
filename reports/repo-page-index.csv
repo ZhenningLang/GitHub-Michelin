@@ -114,7 +114,7 @@ https://github.com/LianjiaTech/bella-domify,bella-domify,document-parsing,catego
 https://github.com/LibreChat-AI/LibreChat,librechat,llm-chat-ui,categories/llm-chat-ui/librechat.md
 https://github.com/MDX-Tom/gpt-instruct,gpt-instruct,study-and-experiments,categories/agent-dev-methodology/study-and-experiments/gpt-instruct.md
 https://github.com/MakazhanAlpamys/Soup,soup,llm-training,categories/llm-training/soup.md
-https://github.com/MaryCache/imozuru,imozuru,deep-research,categories/deep-research/imozuru.md
+https://github.com/MaryCache/imozuru,imozuru,source-workflows,categories/deep-research/source-workflows/imozuru.md
 https://github.com/MatthiasValvekens/pyHanko,pyhanko,pdf-transform-signing,categories/pdf-tools/pdf-transform-signing/pyhanko.md
 https://github.com/MeetKai/functionary,functionary,function-calling,categories/function-calling/functionary.md
 https://github.com/MemoriLabs/Memori,memori,app-memory,categories/agent-memory/app-memory/memori.md
@@ -156,7 +156,7 @@ https://github.com/Owl-Listener/designer-skills,designer-skills,ui-taste,categor
 https://github.com/PDFMathTranslate-next/PDFMathTranslate-next,pdfmathtranslate-next,pdf-translation,categories/pdf-tools/pdf-translation/pdfmathtranslate-next.md
 https://github.com/PDFMathTranslate/PDFMathTranslate,pdfmathtranslate,pdf-translation,categories/pdf-tools/pdf-translation/pdfmathtranslate.md
 https://github.com/PaddlePaddle/PaddleOCR,paddleocr,ocr,categories/ocr/paddleocr.md
-https://github.com/Panniantong/Agent-Reach,agent-reach,deep-research,categories/deep-research/agent-reach.md
+https://github.com/Panniantong/Agent-Reach,agent-reach,source-workflows,categories/deep-research/source-workflows/agent-reach.md
 https://github.com/PenglongHuang/chinese-novelist-skill,chinese-novelist-skill,fiction,categories/agent-skills/ai-writing/fiction/chinese-novelist-skill.md
 https://github.com/Piebald-AI/claude-code-system-prompts,claude-code-system-prompts,prompt-engineering,categories/agent-skills/prompt-engineering/claude-code-system-prompts.md
 https://github.com/PixlOne/logiops,logiops,peripherals,categories/peripherals/logiops.md
@@ -562,7 +562,7 @@ https://github.com/jmcnamara/XlsxWriter,xlsxwriter,office-automation,categories/
 https://github.com/jo-duchan/tapflow,tapflow,mobile-automation,categories/mobile-automation/tapflow.md
 https://github.com/jo-inc/camofox-browser,camofox-browser,agent-browser-tools,categories/web-automation/agent-browser-tools/camofox-browser.md
 https://github.com/joonspk-research/generative_agents,generative-agents,social-simulation,categories/social-simulation/generative-agents.md
-https://github.com/jordan-gibbs/hyperresearch,hyperresearch,deep-research,categories/deep-research/hyperresearch.md
+https://github.com/jordan-gibbs/hyperresearch,hyperresearch,source-workflows,categories/deep-research/source-workflows/hyperresearch.md
 https://github.com/jqlang/jq,jq,data-tools,categories/dev-utilities/data-tools/jq.md
 https://github.com/jspreadsheet/ce,jspreadsheet,office-editors,categories/office-editors/jspreadsheet.md
 https://github.com/jsvine/pdfplumber,pdfplumber,pdf-reading,categories/pdf-tools/pdf-reading/pdfplumber.md
@@ -694,7 +694,7 @@ https://github.com/mukul975/Anthropic-Cybersecurity-Skills,anthropic-cybersecuri
 https://github.com/multica-ai/andrej-karpathy-skills,karpathy-skills,engineering-workflows,categories/agent-skills/personal-collections/engineering-workflows/karpathy-skills.md
 https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering,context-engineering-skills,context-engineering,categories/agent-skills/context-engineering/context-engineering-skills.md
 https://github.com/musistudio/claude-code-router,claude-code-router,api-gateway,categories/api-gateway/claude-code-router.md
-https://github.com/mvanhorn/last30days-skill,last30days,deep-research,categories/deep-research/last30days.md
+https://github.com/mvanhorn/last30days-skill,last30days,source-workflows,categories/deep-research/source-workflows/last30days.md
 https://github.com/mxrch/GHunt,ghunt,osint,categories/osint/ghunt.md
 https://github.com/n8n-io/n8n,n8n,workflow-orchestration,categories/workflow-orchestration/n8n.md
 https://github.com/nahar-strativ/earmark,earmark,ui-annotation,categories/agent-tooling/ui-annotation/earmark.md

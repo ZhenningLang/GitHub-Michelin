@@ -23,7 +23,7 @@
 | **llm-training** | 微调或强化训练 LLM 与多步 agent。 | [→](categories/llm-training/INDEX.zh.md) |
 | **agent-frameworks** | 构建与运行多步 / 多智能体系统——agent 框架与 agent 操作系统。 | [→](categories/agent-frameworks/INDEX.zh.md) |
 | **agent-memory** | 面向 agent、与 LLM 无关的跨会话持久记忆基础设施。 | [→](categories/agent-memory/INDEX.zh.md) |
-| **deep-research** | 迭代式多源研究 agent：搜索、抓取、综合成报告。 | [→](categories/deep-research/INDEX.zh.md) |
+| **deep-research** | 研究引擎与科学工作台；平台访问、原文追溯与引文审查进来源工作流分支。 | [→](categories/deep-research/INDEX.zh.md) |
 | **ai-code-review** | LLM 辅助的代码评审：对 diff 或仓库产出行级问题。 | [→](categories/ai-code-review/INDEX.zh.md) |
 | **rag-retrieval** | 面向 RAG 的文档索引、代码智能图与图数据库。 | [→](categories/rag-retrieval/INDEX.zh.md) |
 | **llm-eval** | 对提示词、agent 与 RAG 做测试、基准与安全红队扫描。 | [→](categories/llm-eval/INDEX.zh.md) |

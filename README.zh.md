@@ -348,20 +348,22 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 ### deep-research
 
+研究引擎与科学工作台；来源访问和证据审查另见[来源工作流](categories/deep-research/source-workflows/INDEX.zh.md)。
+
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
-| **imozuru** | 在 Claude Code 中，把陌生领域的主张追到原文段落；交付核对过的摘录，而非综合报告。 | MIT | C（4/5） | [中](categories/deep-research/imozuru.zh.md) · [EN](categories/deep-research/imozuru.md) |
+| **imozuru** | 在 Claude Code 中，把陌生领域的主张追到原文段落；交付核对过的摘录，而非综合报告。 | MIT | C（4/5） | [中](categories/deep-research/source-workflows/imozuru.zh.md) · [EN](categories/deep-research/source-workflows/imozuru.md) |
 | **deep-research** | 当你想读懂并 fork 一个约 500 行的 TypeScript 深度研究循环（Firecrawl 搜索加广度／深度递归，产出带引用的报告）时用它——但它是单作者的 0.0.1 演示，错误处理极简，也没有成本上限。 | MIT | B（4/6） | [中](categories/deep-research/deep-research.zh.md) · [EN](categories/deep-research/deep-research.md) |
 | **Vane** | 想要一个自托管、注重隐私的「Perplexity 式」带引用应答引擎，接你自己的 SearxNG 和自选 LLM 时用它。 | MIT | B（5/6） | [中](categories/deep-research/vane.zh.md) · [EN](categories/deep-research/vane.md) |
 | **Local Deep Research** | 当你需要一个自托管、可纯本地运行的深度研究 agent、把敏感查询留在自己机器上时用它。 | MIT | B（5/6） | [中](categories/deep-research/local-deep-research.zh.md) · [EN](categories/deep-research/local-deep-research.md) |
-| **Agent-Reach** | 当你的 agent 需要免付费 API 地读取和搜索网页与社交平台内容时用它。 | MIT | B（5/6） | [中](categories/deep-research/agent-reach.zh.md) · [EN](categories/deep-research/agent-reach.md) |
+| **Agent-Reach** | 当你的 agent 需要免付费 API 地读取和搜索网页与社交平台内容时用它。 | MIT | B（5/6） | [中](categories/deep-research/source-workflows/agent-reach.zh.md) · [EN](categories/deep-research/source-workflows/agent-reach.md) |
 | **MiroThinker** | 当你想要一个可在自有 GPU 上研究改造的自托管开源深研 Agent 时用它——但它要 GPU 集群加付费外部 API，且不到一岁、毫无 Lindy 沉淀。 | Apache-2.0 | B（4/6） | [中](categories/deep-research/mirothinker.zh.md) · [EN](categories/deep-research/mirothinker.md) |
 | **GPT Researcher** | 当你要一个开箱即用的应用，把一个问题变成一份基于网页或你自己文件、处处带出处的多页报告时用它——但默认配置会把数据发给 OpenAI 和 Tavily，纯本地运行要自己改配置。 | Apache-2.0 | A（6/6） | [EN](categories/deep-research/gpt-researcher.md) · [中](categories/deep-research/gpt-researcher.zh.md) |
 | **Open Deep Research** | 当你在 LangGraph 上自建调研智能体、想要一份“主管加并行研究员”的可读蓝图和现成基准脚手架时用它——但仓库已于 2026 年归档，只适合学习或 fork，不适合当依赖运行。 | MIT | D（5/6） | [EN](categories/deep-research/open-deep-research.md) · [中](categories/deep-research/open-deep-research.zh.md) |
 | **STORM** | 当你要为一个陌生话题写一篇带编号引用、由多视角调研和大纲搭起来的维基风长文初稿时用它——但它自 2025-09 起没再合入任何改动，当作方法的参考实现看待。 | MIT | C（5/6） | [EN](categories/deep-research/storm.md) · [中](categories/deep-research/storm.zh.md) |
 | **node-DeepResearch** | 当用户问需要跳好几步的事实题、你想要一个自部署、兼容 OpenAI 接口、一直搜到能给出带出处短答案的服务时用它——但读网页离不开 Jina 的托管 API，它的代码执行工具也没有沙箱。 | Apache-2.0 | B（4/6） | [EN](categories/deep-research/node-deepresearch.md) · [中](categories/deep-research/node-deepresearch.zh.md) |
-| **Hyperresearch** | 当你在 Claude Code 里、需要一份引用逐条核验的高风险研究报告时用它——16 步对抗式流水线加持久来源 vault；时间与 token 开销都重，且只支持 Claude Code。 | MIT | B（5/6） | [中](categories/deep-research/hyperresearch.zh.md) · [EN](categories/deep-research/hyperresearch.md) |
-| **last30days** | 当你想让 agent 汇总最近 30 天 Reddit、X、YouTube、HN、Polymarket 上关于某个主题的讨论、并按互动量排好序时用它——但每次调用要加载约 258 KB 的 skill 提示词，且部分来源依赖抓取和浏览器登录 cookie。 | MIT | B（6/6） | [中](categories/deep-research/last30days.zh.md) · [EN](categories/deep-research/last30days.md) |
+| **Hyperresearch** | 当你在 Claude Code 里、需要一份引用逐条核验的高风险研究报告时用它——16 步对抗式流水线加持久来源 vault；时间与 token 开销都重，且只支持 Claude Code。 | MIT | B（5/6） | [中](categories/deep-research/source-workflows/hyperresearch.zh.md) · [EN](categories/deep-research/source-workflows/hyperresearch.md) |
+| **last30days** | 当你想让 agent 汇总最近 30 天 Reddit、X、YouTube、HN、Polymarket 上关于某个主题的讨论、并按互动量排好序时用它——但每次调用要加载约 258 KB 的 skill 提示词，且部分来源依赖抓取和浏览器登录 cookie。 | MIT | B（6/6） | [中](categories/deep-research/source-workflows/last30days.zh.md) · [EN](categories/deep-research/source-workflows/last30days.md) |
 | **OpenScience** | 当研究任务必须真的在自己的文件上跑代码时用它——文献与数据库检索、Python/R 内核、集群作业、每一步都留在可审计的轮次轨迹里。 | Apache-2.0 | B（6/6） | [中](categories/deep-research/openscience.zh.md) · [EN](categories/deep-research/openscience.md) |
 
 ### ai-code-review

@@ -126,7 +126,7 @@ Agent 几秒钟就能写好一篇小红书笔记，可小红书没有公开的�
 - **你只是要把做好的视频传到多个平台。** social-auto-upload（`dreammis/social-auto-upload`，未收录）一个 MIT 工具覆盖抖音、小红书、视频号、B 站、TikTok、YouTube 的上传；xiaohongshu-mcp 只管一个平台，但远不止上传。
 - **你要把它暴露到 localhost 之外，却不设 token。** 服务默认在所有网卡的 `:18060` 上监听，不设 `AUTH_TOKEN` 就没有鉴权；任何能连上这个端口的人都能以你的身份发帖、评论、删 cookie。要么设 token，要么放到防火墙或反向代理后面——做不到的话，宁可选 [OpenCLI](../web-automation/agent-browser-tools/opencli.zh.md) 这类绑在桌面上的工具。
 - **你用的是 Intel 版 macOS 或 Linux ARM64，或者你必须审计跑的每一个二进制。** 发布版二进制和内置浏览器只有 Apple Silicon 版 macOS、Windows x64、Linux x64 三种；浏览器是从作者 CDN 拉下来的不透明预编译 Chromium，校验文件也来自同一个 CDN，没有写明上游。这两点任何一个是硬约束，可以换成 Python 技能包 `autoclaw-cc/xiaohongshu-skills`（未收录，MIT），它驱动的是你自己装的 Chrome。
-- **你只需要只读地看小红书，而且还要看很多别的平台。** 如果 Agent 真正的活儿是横跨 Twitter、Reddit、YouTube、B 站做调研，[Agent-Reach](../deep-research/agent-reach.zh.md) 会按平台安装并路由合适的后端（xiaohongshu-mcp 就是它列出的一种），你不必一个平台一个平台地接。
+- **你只需要只读地看小红书，而且还要看很多别的平台。** 如果 Agent 真正的活儿是横跨 Twitter、Reddit、YouTube、B 站做调研，[Agent-Reach](../deep-research/source-workflows/agent-reach.zh.md) 会按平台安装并路由合适的后端（xiaohongshu-mcp 就是它列出的一种），你不必一个平台一个平台地接。
 
 ## 横向对比
 
@@ -134,7 +134,7 @@ Agent 几秒钟就能写好一篇小红书笔记，可小红书没有公开的�
 |---|---|---|---|
 | [OpenCLI](../web-automation/agent-browser-tools/opencli.zh.md) | ✅ | 想让 Agent 直接在你桌面上那个已登录的 Chrome 里操作小红书（以及另外 180 多个网站），选 OpenCLI；必须在服务器或 Docker 里无头运行、并对外提供标准 MCP／REST 接口时，选 xiaohongshu-mcp。 | OpenCLI 沿用你真实浏览器的身份，但需要一台桌面会话；xiaohongshu-mcp 能无人值守地跑，自带指纹浏览器，代价是多出一个可被识别的登录。 |
 | [Easel](easel.zh.md) | ✅ | 要的是完整内容闭环——热点、卡片和视频制作、多平台发布、数据归因——选 Easel；已经有一个会写的 Agent，只缺它在小红书上动手的能力，选 xiaohongshu-mcp。 | Easel 带来内容工具和七个中文平台，代价是本地一整套 Python／Node／OpenClaw 栈和 v0.x 的频繁变动；xiaohongshu-mcp 是一个二进制、一个平台。 |
-| [Agent-Reach](../deep-research/agent-reach.zh.md) | ✅ | Agent 主要是*读*小红书，同时还要读 Twitter、Reddit、YouTube、B 站时，装 Agent-Reach 让它挑后端；需要写操作（发帖、评论、点赞）或要完全掌控小红书这一路时，直接跑 xiaohongshu-mcp。 | Agent-Reach 多了跨平台的后端选择和健康检查，但以读为主；xiaohongshu-mcp 只管一个平台，读写工具齐全。 |
+| [Agent-Reach](../deep-research/source-workflows/agent-reach.zh.md) | ✅ | Agent 主要是*读*小红书，同时还要读 Twitter、Reddit、YouTube、B 站时，装 Agent-Reach 让它挑后端；需要写操作（发帖、评论、点赞）或要完全掌控小红书这一路时，直接跑 xiaohongshu-mcp。 | Agent-Reach 多了跨平台的后端选择和健康检查，但以读为主；xiaohongshu-mcp 只管一个平台，读写工具齐全。 |
 | MediaCrawler（NanmiCoder） | 未收录 | 要把小红书和其他中文平台的笔记、评论批量抓进文件或数据库做分析，用 MediaCrawler；要按 Agent 节奏逐次访问并且能发布，选 xiaohongshu-mcp。 | 真实仓库（约 66k star），本批次未收录；非商业学习许可证加批量爬取的形态，是用商业可用性和账号安全换数据量。 |
 | social-auto-upload（dreammis） | 未收录 | 内容已经做好、只要定时上传到多个国内外视频平台，选 social-auto-upload；Agent 还得在小红书上搜索、阅读、互动时，选 xiaohongshu-mcp。 | 真实仓库（MIT，约 15k star），本批次未收录；上传覆盖的平台更广，但没有搜索、评论，也没有 MCP 接口。 |
 
@@ -161,7 +161,7 @@ Agent 几秒钟就能写好一篇小红书笔记，可小红书没有公开的�
 - **维护（截至 2026-10-09）：** 活跃且节奏快——语义化版本从 v2.2.3（2026-07-27）发到 v2.5.5（2026-09-22），其中四个在 2026-09-22 当天发布；页面失效后几天内就有选择器修复。这个节奏不是锦上添花，而是生存条件：项目的命就系在能不能跟上小红书网页的改版。
 - **治理与巴士因子：** 个人仓库（owner 类型为 User）。前 15 名贡献者里 xpzouying 有 275 次提交，第二名 tanxxjun321 只有 32 次；`CODEOWNERS`、发版和浏览器 CDN 都在他手里——实际上是单人维护，外加一条不短的贡献者长尾（all-contributors 列了 31 人）。
 - **背书与 Lindy：** 2025-08-03 创建，约 14 个月。没有公司或基金会；赞赏按 `DONATIONS.md` 所说全部捐给慈善。作者另做了闭源的 X-MCP 浏览器插件，配一个托管的 token 服务，README 现在向非技术用户首推它——这说明开源服务端未必会一直是作者的主力。[推断]
-- **采用度：** 约 16.2k star、约 2.4k fork、Docker Hub 拉取 146k 次（2026-10-09）；被已收录的工具当作后端引用（[Agent-Reach](../deep-research/agent-reach.zh.md)），也被第三方 OpenClaw 技能包封装。需求是真的，但一个 14 个月大的仓库，star 数衡量的更多是关注度而不是耐久度。
+- **采用度：** 约 16.2k star、约 2.4k fork、Docker Hub 拉取 146k 次（2026-10-09）；被已收录的工具当作后端引用（[Agent-Reach](../deep-research/source-workflows/agent-reach.zh.md)），也被第三方 OpenClaw 技能包封装。需求是真的，但一个 14 个月大的仓库，star 数衡量的更多是关注度而不是耐久度。
 - **风险信号：** Apache-2.0，版权行与作者一致，没有改许可证的历史。结构性风险都在外部：平台规则与封号（用户有报告，维护者称测试账号正常），以及对一个从作者 CDN 下发、未公开上游的预编译指纹浏览器的供应链信任。
 
 ## 存疑（未验证）
