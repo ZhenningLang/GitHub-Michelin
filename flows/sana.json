@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "Sana pipeline does", "zh": "Sana 流水线做的"},
+  "steps": [
+    {"lane": "you", "en": "Prepare a CUDA Python environment with Diffusers", "zh": "准备 CUDA Python 和 Diffusers 环境"},
+    {"lane": "you", "en": "Select the 1.5 1.6B image checkpoint in BF16", "zh": "选择 1.5 的 1.6B 图像权重和 BF16 精度", "code": "SanaPipeline.from_pretrained"},
+    {"lane": "them", "en": "Download missing components and build the local pipeline", "zh": "下载缺失组件并构建本地生成流水线"},
+    {"lane": "you", "en": "Pass the cat prompt, 1024px size, 20 steps and seed 42", "zh": "输入猫的提示词、1024px、20 步和种子 42"},
+    {"lane": "them", "en": "Encode text, denoise and decode an image on your GPU", "zh": "在本机 GPU 编码文本、去噪并解码图像"},
+    {"lane": "you", "en": "Save the returned image to sana.png", "zh": "将返回图片保存到 sana.png", "code": "image[0].save(\"sana.png\")"}
+  ],
+  "value": {"en": "A local 1024px image from a reusable pipeline, without wiring each model stage yourself", "zh": "用可复用流水线得到本地 1024px 图片，不必自己串接各模型阶段"},
+  "sources": ["https://github.com/NVlabs/Sana/blob/36a3b01773c6299e6f0df77640b57b5f3dd3fa14/README.md#inference-with--diffusers", "https://github.com/NVlabs/Sana/blob/36a3b01773c6299e6f0df77640b57b5f3dd3fa14/docs/sana.md#using-diffusers-recommended", "https://huggingface.co/Efficient-Large-Model/SANA1.5_1.6B_1024px_diffusers/blob/b77948f2b4eed5c728e9b828ccff07f7427b43cc/model_index.json"]
+}

@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "prompt", "en": "Prompt and selected model family", "zh": "提示词与所选模型家族", "kind": "input"},
+    {"id": "gemma", "en": "Local Gemma decoder states", "zh": "本地 Gemma 解码网络状态", "technique": [3]},
+    {"id": "latent", "en": "Image noise grid; 32-fold spatial compression", "zh": "图像噪声网格；空间压缩 32 倍", "technique": [1]},
+    {"id": "linear", "en": "Image ReLU linear attention and text conditioning", "zh": "图像 ReLU 线性注意力与文本条件", "technique": [2]},
+    {"id": "decode", "en": "DC-AE image decoding", "zh": "DC-AE 图像解码", "technique": [1]},
+    {"id": "image", "en": "Generated image", "zh": "生成图片", "kind": "output"},
+    {"id": "video", "en": "Video 2.0: gated linear plus dense anchors", "zh": "Video 2.0：门控线性与密集锚点", "technique": [4]},
+    {"id": "depth", "en": "Shared block-level Attention Residuals", "zh": "共享的跨深度块注意力残差汇总", "technique": [4]},
+    {"id": "vae", "en": "Separate LTX 2.3 VAE and video output", "zh": "独立 LTX 2.3 VAE 与视频输出", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "prompt", "to": "gemma"},
+    {"from": "latent", "to": "linear"},
+    {"from": "gemma", "to": "linear", "en": "image path", "zh": "图像路径"},
+    {"from": "linear", "to": "decode"},
+    {"from": "decode", "to": "image"},
+    {"from": "gemma", "to": "video", "en": "different video checkpoint", "zh": "另一份视频权重"},
+    {"from": "video", "to": "depth"},
+    {"from": "depth", "to": "vae"}
+  ],
+  "sources": ["https://github.com/NVlabs/Sana/blob/36a3b01773c6299e6f0df77640b57b5f3dd3fa14/app/sana_pipeline.py", "https://github.com/NVlabs/Sana/blob/36a3b01773c6299e6f0df77640b57b5f3dd3fa14/diffusion/model/nets/sana_blocks.py#L225-L305", "https://github.com/NVlabs/Sana/blob/36a3b01773c6299e6f0df77640b57b5f3dd3fa14/diffusion/model/nets/sana_video2.py#L46-L125", "https://github.com/NVlabs/Sana/blob/36a3b01773c6299e6f0df77640b57b5f3dd3fa14/configs/sana_video2/SanaVideo2_5B_720p.yaml"]
+}
