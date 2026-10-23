@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **imozuru** | Trace unfamiliar-field claims back to original passages in Claude Code; get checked extracts rather than a synthesized report. | C (4/5) | [→](imozuru.md) |
 | **deep-research** | Use it when you want to read and fork a ~500-line TypeScript deep-research loop — Firecrawl search plus breadth/depth recursion into a cited report — but it is a single-author 0.0.1 demo with minimal error handling and no cost cap. | B (4/6) | [→](deep-research.md) |
 | **Vane** | Use it when you want a self-hosted, privacy-focused Perplexity-style cited answer engine over your own SearxNG and chosen LLM. | B (5/6) | [→](vane.md) |
 | **Local Deep Research** | Use it when you need a self-hosted, fully-local deep-research agent that keeps sensitive queries on your own machine. | B (5/6) | [→](local-deep-research.md) |
@@ -25,6 +26,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [imozuru](imozuru.md) | ✅ | C (4/5) | Original-source reading trail with quote matching; Japanese-first, ten days old, and not a network sandbox. |
 | [deep-research](deep-research.md) | ✅ | B (4/6) | Buys a whole research loop that fits in your head; costs hard dependence on Firecrawl and cloud LLMs, with no production hardening. |
 | [Vane](vane.md) | ✅ | B (5/6) | Use it when you want a self-hosted, privacy-focused Perplexity-style cited answer engine over your own SearxNG and chosen LLM. |
 | [Local Deep Research](local-deep-research.md) | ✅ | B (5/6) | Use it when you need a self-hosted, fully-local deep-research agent that keeps sensitive queries on your own machine. |

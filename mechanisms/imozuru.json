@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "question", "en": "Public question", "zh": "公开研究问题", "kind": "input"},
+    {"id": "map", "en": "Required claims and search map", "zh": "必要主张与搜索地图", "technique": [1]},
+    {"id": "graph", "en": "OpenAlex references and authors", "zh": "OpenAlex 引用与作者", "kind": "external", "technique": [4]},
+    {"id": "staging", "en": "Temporary download and text checks", "zh": "临时下载与文字检查", "technique": [2]},
+    {"id": "sources", "en": "Accepted local sources and line locations", "zh": "合格本地来源与行号", "kind": "output", "technique": [1, 2]},
+    {"id": "extracts", "en": "Agent-written extracts", "zh": "代理填写的摘录", "kind": "input"},
+    {"id": "verify", "en": "Confined paths and normalized quote matching", "zh": "限制路径并匹配归一化引文", "technique": [3]},
+    {"id": "report", "en": "Local HTML for human judgment", "zh": "供人判断的本地 HTML", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "question", "to": "map"},
+    {"from": "map", "to": "graph", "en": "paper leads", "zh": "论文线索"},
+    {"from": "graph", "to": "staging"},
+    {"from": "map", "to": "staging", "en": "web and caption leads", "zh": "网页与字幕线索"},
+    {"from": "staging", "to": "sources", "en": "only after checks pass", "zh": "检查通过才保存"},
+    {"from": "sources", "to": "map", "en": "coverage or another round", "zh": "检查覆盖或进入下一轮"},
+    {"from": "sources", "to": "verify"},
+    {"from": "extracts", "to": "verify"},
+    {"from": "verify", "to": "report", "en": "any mismatch blocks a new report", "zh": "任一不匹配即阻止新报告"}
+  ],
+  "sources": [
+    "skills/imozuru/SKILL.md:51-156 at ecb82c71b611872a0f49e783eda3bec987c80d91",
+    "skills/imozuru/scripts/fetch.py:695-863 at ecb82c71b611872a0f49e783eda3bec987c80d91",
+    "skills/imozuru/scripts/report.py:35-206 at ecb82c71b611872a0f49e783eda3bec987c80d91",
+    "skills/imozuru/scripts/chain.py:153-189 at ecb82c71b611872a0f49e783eda3bec987c80d91"
+  ]
+}

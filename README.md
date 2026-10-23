@@ -353,6 +353,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **imozuru** | Trace unfamiliar-field claims back to original passages in Claude Code; get checked extracts rather than a synthesized report. | MIT | C (4/5) | [EN](categories/deep-research/imozuru.md) · [中](categories/deep-research/imozuru.zh.md) |
 | **deep-research** | Use it when you want to read and fork a ~500-line TypeScript deep-research loop — Firecrawl search plus breadth/depth recursion into a cited report — but it is a single-author 0.0.1 demo with minimal error handling and no cost cap. | MIT | B (4/6) | [EN](categories/deep-research/deep-research.md) · [中](categories/deep-research/deep-research.zh.md) |
 | **Vane** | Use it when you want a self-hosted, privacy-focused Perplexity-style cited answer engine over your own SearxNG and chosen LLM. | MIT | B (5/6) | [EN](categories/deep-research/vane.md) · [中](categories/deep-research/vane.zh.md) |
 | **Local Deep Research** | Use it when you need a self-hosted, fully-local deep-research agent that keeps sensitive queries on your own machine. | MIT | B (5/6) | [EN](categories/deep-research/local-deep-research.md) · [中](categories/deep-research/local-deep-research.zh.md) |

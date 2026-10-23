@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **imozuru** | 在 Claude Code 中，把陌生领域的主张追到原文段落；交付核对过的摘录，而非综合报告。 | C（4/5） | [→](imozuru.zh.md) |
 | **deep-research** | 当你想读懂并 fork 一个约 500 行的 TypeScript 深度研究循环（Firecrawl 搜索加广度／深度递归，产出带引用的报告）时用它——但它是单作者的 0.0.1 演示，错误处理极简，也没有成本上限。 | B（4/6） | [→](deep-research.zh.md) |
 | **Vane** | 想要一个自托管、注重隐私的「Perplexity 式」带引用应答引擎，接你自己的 SearxNG 和自选 LLM 时用它。 | B（5/6） | [→](vane.zh.md) |
 | **Local Deep Research** | 当你需要一个自托管、可纯本地运行的深度研究 agent、把敏感查询留在自己机器上时用它。 | B（5/6） | [→](local-deep-research.zh.md) |
@@ -25,6 +26,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [imozuru](imozuru.zh.md) | ✅ | C（4/5） | 原文阅读路径加摘录匹配；日文优先、仅十天历史，也不是网络沙箱。 |
 | [deep-research](deep-research.zh.md) | ✅ | B（4/6） | 换来一个能整个装进脑子的研究循环；代价是硬依赖 Firecrawl 和云端 LLM，毫无生产级加固。 |
 | [Vane](vane.zh.md) | ✅ | B（5/6） | 想要一个自托管、注重隐私的「Perplexity 式」带引用应答引擎，接你自己的 SearxNG 和自选 LLM 时用它。 |
 | [Local Deep Research](local-deep-research.zh.md) | ✅ | B（5/6） | 当你需要一个自托管、可纯本地运行的深度研究 agent、把敏感查询留在自己机器上时用它。 |

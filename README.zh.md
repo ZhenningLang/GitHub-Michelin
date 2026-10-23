@@ -350,6 +350,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **imozuru** | 在 Claude Code 中，把陌生领域的主张追到原文段落；交付核对过的摘录，而非综合报告。 | MIT | C（4/5） | [中](categories/deep-research/imozuru.zh.md) · [EN](categories/deep-research/imozuru.md) |
 | **deep-research** | 当你想读懂并 fork 一个约 500 行的 TypeScript 深度研究循环（Firecrawl 搜索加广度／深度递归，产出带引用的报告）时用它——但它是单作者的 0.0.1 演示，错误处理极简，也没有成本上限。 | MIT | B（4/6） | [中](categories/deep-research/deep-research.zh.md) · [EN](categories/deep-research/deep-research.md) |
 | **Vane** | 想要一个自托管、注重隐私的「Perplexity 式」带引用应答引擎，接你自己的 SearxNG 和自选 LLM 时用它。 | MIT | B（5/6） | [中](categories/deep-research/vane.zh.md) · [EN](categories/deep-research/vane.md) |
 | **Local Deep Research** | 当你需要一个自托管、可纯本地运行的深度研究 agent、把敏感查询留在自己机器上时用它。 | MIT | B（5/6） | [中](categories/deep-research/local-deep-research.zh.md) · [EN](categories/deep-research/local-deep-research.md) |
