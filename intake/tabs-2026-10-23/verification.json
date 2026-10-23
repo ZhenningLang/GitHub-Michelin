@@ -1,22 +1,18 @@
 {
-  "status": "local intake and original aggregate verified; imozuru blocked; remote authorization pending",
+  "status": "verified local batch; six proposals retained; publication snapshot before push",
+  "snapshot_at_utc": "2026-10-23T12:37:12.789897+00:00",
   "counts": {
-    "added": 4,
+    "added": 5,
     "sync_changed": 0,
     "sync_fresh": 0,
     "proposed": 6,
-    "failed": 1,
+    "failed": 0,
     "skipped": 1
   },
   "machine_checks": {
-    "gates": "205 category nodes, 962 EN + 962 ZH pages, 0 errors, 1596 warnings.",
-    "scoped_quality": "8 pages; No deterministic findings.",
-    "tests": "Ran 483 tests in 21.603s; OK; no skipped"
-  },
-  "log_sha256": {
-    "gates": "2734abe17c32b72ac3784ad4afd07235613bf4f4746aaaa1b7c008a3b0dbb947",
-    "scoped": "2db2dc1a69d4a14d3d3546c60ff2ce9714e0218767d78d5d0c1e4a8353fa4f3f",
-    "tests": "c99b78d148358c506acd16afcec158f38e94d2ec199b73d90475e70b700da0f8"
+    "gates": "206 category nodes, 963 EN + 963 ZH pages, 0 errors, 1598 warnings.",
+    "scoped_quality": "10 new bilingual pages; No deterministic findings.",
+    "tests": "Ran 483 tests in 21.847s; OK; no skipped"
   },
   "page_snapshots": [
     {
@@ -24,6 +20,12 @@
       "page": "categories/learning-resources/torchcode.md",
       "sha256": "cdb9a256afb09c0c885086b81bb052a7217679f9304a42fb3a83a715a0dd5f97",
       "zh_sha256": "af8509cd7f51e2a8e4ee08d4daf75e36cd8fb42af9f38dcf4d05ec203da4fca6"
+    },
+    {
+      "repo": "MaryCache/imozuru",
+      "page": "categories/deep-research/source-workflows/imozuru.md",
+      "sha256": "47349ce73a4b30e33c42bd99cbb16ad1771bdbea2ffd52b46a5ce7439818699f",
+      "zh_sha256": "d920baa0b780a057a3a1efd53f4d87e5949fd0b8f20508c23c176ccbc9dafe3b"
     },
     {
       "repo": "microsoft/flint-chart",
@@ -44,51 +46,46 @@
       "zh_sha256": "a939545bce7fa510ae70e70b22563a899abdbb62746ada473b0e11c899356361"
     }
   ],
-  "tab_audit": "tabs-audit.json",
-  "Inner-loop evidence": "make gates, exact-pair quality scans, 483 tool tests rerun this batch",
-  "Acceptance evidence": "real Chrome ledger audit: 12 terminal rows; done tabs 0, retained repo tabs 8; independent source review for 4 new entries",
-  "Holdout / unseen evidence": "No model effect experiment; alternative evidence from independent source cross-check and actual retained/closed tabs",
-  "Holdout 来源类别": "真实捕获：公开固定源码、真实Chrome标签、实际工具输出",
-  "预期值来源": "需求原文、收录契约及上游固定版本",
-  "本次改动相对冻结点的位置": "only content generation and local report integration; no gate/schema/harness changes",
-  "Known gaps": [
-    "imozuru health scoring blocked; draft not integrated and tab retained",
-    "Push approval pending; no PR or merge",
-    "No upstream installation/runtime or measured model/harness benefits",
-    "Responsive Chromium widths are not physical-phone or cross-browser tests"
-  ],
-  "remote": {
-    "branch": "feat/intake-tabs-2026-10-23",
-    "pushed": false,
-    "pr": null,
-    "merged": false
+  "log_sha256": {
+    "gates": "57372cf776c3dd1ee0735fc6a152db9e6af5161bad8d8d534a5144f4ee0a1884",
+    "scoped": "6740591b3c21cb58c941a550b1c2a6627589eed8fd8a002fa8334d87e711ecb4",
+    "tests": "6d956c219cde279e35f46dd5eb67e7e060632e3cd2ce1e84cc7f3d852615d3f4"
   },
   "aggregate": {
     "total": 127,
-    "indexed": 119,
+    "indexed": 120,
     "old_profiles_preserved": 120,
-    "new_profiles": 7,
     "categories": 16,
-    "source_sha256": "89586621ed076e02e6f25f58dd169c9ab6dbc18a764cce9b2ec9d9f07f5d0c84",
-    "html_sha256": "67b71f62565ca71c30ab051a9aa2485b9ab4abbea6942a34ad4293cae28ee4b5",
+    "source_sha256": "a2f4f47f3bdb8c2f8c83293bece59ecbbf249871107e891bedb97f6f9a58a57c",
+    "html_sha256": "c1eb9135c83d58a03c86e95a51df1e239027ef74077e7290bc7e97bfe765b6bf",
     "local_links": 292,
-    "anchor_pairs": 148,
+    "anchors": 148,
     "companion": "0 error(s), 0 warning(s)"
   },
-  "content_review": {
-    "new_official_entries": 4,
-    "entry_round1_findings": 7,
-    "entry_final_findings": 0,
-    "aggregate_round1_findings": 8,
-    "aggregate_final_findings": 0
-  },
+  "tabs": "tabs-audit.json",
   "browser": {
     "desktop": "1280x900",
     "mobile": "390x844",
     "overflow": 0,
     "clipped": 0,
-    "native_anchor_and_keyboard": true,
-    "structure_impact": "same 16 classes; local profile insertions, not redesign",
-    "cleanup": "isolated browser and both localhost servers closed"
+    "native_anchors_and_keyboard": true,
+    "structure": "same 16 reading classes; profile additions only",
+    "cleanup": "isolated browser and both task-owned localhost servers closed"
+  },
+  "Inner-loop evidence": "gates/scoped quality/tool tests rerun at this snapshot",
+  "Acceptance evidence": "real Chrome terminal ledger, closed/retained tabs, source-linked pages, independent content review and actual Chromium rendering",
+  "Holdout / unseen evidence": "No model outcome experiment; independent source cross-check and real tab capture substitute for content and operational acceptance",
+  "Holdout 来源类别": "真实捕获：公开固定源码、真实Chrome标签、实际机器输出和截图",
+  "预期值来源": "需求原文、仓库收录契约及固定来源",
+  "本次改动相对冻结点的位置": "Content and source-workflow routing only; no runtime/gate/schema/personal-harness changes",
+  "Known gaps": [
+    "Six proposals remain unresolved; no rights clearance inferred",
+    "No upstream installation/runtime or measured model/harness benefits",
+    "Chromium responsive widths are not physical-phone or cross-browser tests"
+  ],
+  "remote": {
+    "branch": "feat/intake-tabs-2026-10-23",
+    "authorization": "explicitly granted in current session",
+    "snapshot_phase": "pre-push local verification; use GitHub for later live status"
   }
 }

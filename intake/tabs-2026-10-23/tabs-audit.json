@@ -2,11 +2,10 @@
   "status": "pass",
   "counts": {
     "proposed": 6,
-    "done": 4,
-    "failed": 1,
+    "done": 5,
     "skipped": 1
   },
-  "open_repo_tabs": 8,
+  "open_repo_tabs": 7,
   "done_tabs_remaining": 0,
   "rows": [
     {
@@ -41,9 +40,9 @@
     },
     {
       "repo": "MaryCache/imozuru",
-      "status": "failed",
-      "tab_count": 1,
-      "page": null
+      "status": "done",
+      "tab_count": 0,
+      "page": "categories/deep-research/source-workflows/imozuru.md"
     },
     {
       "repo": "microsoft/flint-chart",
@@ -83,5 +82,5 @@
     }
   ],
   "non_github_tabs": "not closed by this task",
-  "new_scan": "0 pending; every ledger row terminal"
+  "new_scan": "0 pending; every row terminal"
 }

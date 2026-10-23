@@ -64,16 +64,17 @@ h2[id], h3[id] { scroll-margin-top: 16px; }
 <span class="badge">research</span>
 <h1>10月23日标签收录与总报告整合</h1>
 <div class="meta">Source: intake/tabs-2026-10-23/report/summary.md</div>
-<div class="meta">Generated: 2026-10-23T11:23:58+00:00</div>
+<div class="meta">Generated: 2026-10-23T12:34:08+00:00</div>
 </header>
 <section>
-<p><strong>imozuru 尚未完成收录；六项暂缓，八个仓库标签保留。</strong> 四项已逐一提交，完成门禁后关闭对应标签。独立分支尚未推送，等待本次推送授权；没有把本地提交说成已合并。</p>
+<p><strong>六项暂缓，七个仓库标签保留。</strong> 五项已逐一提交，完成门禁后关闭对应标签。用户已批准标准评分和推送；远端状态以对应PR为准，本报告不把本地提交当作合并证据。</p>
 <h2 id="结果与待决项">结果与待决项</h2>
-<table><thead><tr><th>状态</th><th>本批数量</th><th>说明</th></tr></thead><tbody><tr><td>新增选型页</td><td>4</td><td>TorchCode、Flint、Sana、Harness-RSI，各一对双语页</td></tr><tr><td>刷新已有页</td><td>0</td><td>本次扫描没有已有条目需要刷新</td></tr><tr><td>暂缓</td><td>6</td><td>三个旧公开保留项、一个匿名非公开候选，加两个新候选</td></tr><tr><td>未完成</td><td>1</td><td>imozuru 的健康评分命令被本地护栏拦截</td></tr><tr><td>自有仓库跳过</td><td>1</td><td>不读内部内容，不关闭标签</td></tr><tr><td>扫描去重仓库</td><td>12</td><td>其中七项为本批新候选，五项为旧角色续记</td></tr></tbody></table>
+<table><thead><tr><th>状态</th><th>本批数量</th><th>说明</th></tr></thead><tbody><tr><td>新增选型页</td><td>5</td><td>TorchCode、Flint、Sana、Harness-RSI、imozuru，各一对双语页</td></tr><tr><td>刷新已有页</td><td>0</td><td>本次扫描没有已有条目需要刷新</td></tr><tr><td>暂缓</td><td>6</td><td>三个旧公开保留项、一个匿名非公开候选，加两个新候选</td></tr><tr><td>未完成</td><td>0</td><td>imozuru 已获标准评分授权并通过门禁</td></tr><tr><td>自有仓库跳过</td><td>1</td><td>不读内部内容，不关闭标签</td></tr><tr><td>扫描去重仓库</td><td>12</td><td>其中七项为本批新候选，五项为旧角色续记</td></tr></tbody></table>
 <p><strong>当前待决事项：</strong></p>
-<ul><li><strong>imozuru：</strong> 研究和草稿已有，但健康块及卡片缺失。worker 改变 <code>GH_CONFIG_DIR</code> 后运行评分被拦；没有换写法绕过。须明确批准标准评分路径后，才能补齐、验收、提交与关标签。见 <a href="../imozuru-blocker.md">阻塞记录</a>。这不是上游资格不合格。</li><li><strong>Open-Box：</strong> 固定版本明确声明专有非开源。公开部署脚本有价值，但不使整个产品开源。见 <a href="../open-box-proposal.md">许可裁决证据</a>。</li><li><strong>SenseNova-Skills：</strong> 12个风格文件与早期宝玉来源同blob；公开文本未见对应署名和适用通知。复制时授权链待核，不作侵权结论，也不否定其他内容。见 <a href="../sensenova-proposal.md">来源裁决证据</a>。</li></ul>
+<ul><li><strong>Open-Box：</strong> 固定版本明确声明专有非开源。公开部署脚本有价值，但不使整个产品开源。见 <a href="../open-box-proposal.md">许可裁决证据</a>。</li><li><strong>SenseNova-Skills：</strong> 12个风格文件与早期宝玉来源同blob；公开文本未见对应署名和适用通知。复制时授权链待核，不作侵权结论，也不否定其他内容。见 <a href="../sensenova-proposal.md">来源裁决证据</a>。</li></ul>
 <p>旧保留项 <code>obsidian-mind</code>、<code>dzhng/skills</code>、<code>baoyu-design</code> 的默认分支与前次相同。重读根许可不等于重新全量核验复制内容，也不清除旧疑点。匿名非公开候选仅查元数据。见 <a href="../retained-review.md">旧项复核</a>。所有这些标签均保留。</p>
-<h2 id="四项正式选型介绍">四项正式选型介绍</h2>
+<p>imozuru 原评分阻塞已解决。收到明确授权后，主会话使用标准评分入口补齐健康块和卡片，再复跑门禁、提交并关标签。没有替换护栏或手填分数，见 <a href="../imozuru-blocker.md">授权处理记录</a>。</p>
+<h2 id="五项正式选型介绍">五项正式选型介绍</h2>
 <h3 id="TorchCode：从空白实现机器学习组件">TorchCode：从空白实现机器学习组件</h3>
 <p>你看得懂注意力公式，却不能在空函数里实现它，可以用这套CPU练习。源码有41道题，PyPI 0.1.1包只有40道，缺OPD。你补函数，判题器在当前进程执行各题断言并给反馈。</p>
 <p>它是实现训练，不是GPU内核优化，也不是可靠的公开判题平台。默认练习本关闭认证和防跨站请求检查，网页API执行任意Python，没有沙箱或超时。某些题只验形状或梯度，不能以绿灯证明数学正确。启动还会覆盖原名练习本，应先另存答案。</p>
@@ -94,22 +95,28 @@ h2[id], h3[id] { scroll-margin-top: 16px; }
 <p>判定主要由模型辅助编码；构建器统计给定记录，不重新验证论文或给你的助手判分。95项方法中93项比较计入汇总；这些覆盖数不是质量排名。仓库不生成候选，没有安全否决、晋升、费用上限或回滚引擎。</p>
 <p>CC-BY-4.0要求署名并标明修改，链接论文另有权利。阅读无需模型或GPU，但网页外部字体和KaTeX使本地托管不等于全离线。完整论文源码和早期判卷文件未公开，替换PDF与记录源码的对应关系尚未确认。</p>
 <p><a href="../../../categories/learning-resources/harness-rsi.zh.md">完整选型页</a></p>
+<h3 id="imozuru：先给原文阅读路径">imozuru：先给原文阅读路径</h3>
+<p>你在陌生领域只搜到二手解读时，它让Claude Code先列必要主张，再沿引用和作者追索原文。输出研究地图、逐轮日志、来源和摘录页，不默认代替你下结论。</p>
+<p>引用脚本核对路径、行号及归一化文字；一条不匹配就不写新报告，但旧报告可能仍在。这个门只证明摘录出现，不证明它支持结论或译文正确。搜索词会外发，网址过滤也不是网络沙箱；所读源码的DNS重绑定修复仍未合入。</p>
+<p>MIT已核实。需Claude Code、模型和搜索预算、Python；PDF、OCR和字幕另配工具。停搜规则主要是提示词，不是强制调度引擎。没有运行上游，也未证明研究完整性收益。</p>
+<p><a href="../../../categories/deep-research/source-workflows/imozuru.zh.md">完整选型页</a></p>
 <h2 id="对个人harness的借鉴">对个人harness的借鉴</h2>
 <p>这些是局部机制判断，不是安装清单。个人系统仍只对照2026-10-18的历史基线；未重审今天的配置，不承诺收益，不修改dotfiles。</p>
-<table><thead><tr><th>优先级</th><th>机制与边界</th><th>对应落点</th><th>本地入口</th></tr></thead><tbody><tr><td>优先阅读，medium</td><td>Harness-RSI：把效果声明绑定具体比较，分开记录任务距离、选优独立与实际生效；筛选合并最终包后重新取证。不复制自动晋升权。</td><td>受控改进提案与 <code>guard-verify</code> 证据模板</td><td><a href="../../../categories/learning-resources/harness-rsi.md">选型页</a></td></tr><tr><td>待完成收录，medium研究线索</td><td>imozuru：主张到原文位置的账本，摘录不匹配就阻止新报告。匹配不等于语义正确，不照搬停搜阈值。</td><td><code>write-source</code> 与 <code>guard-write-facts</code></td><td><a href="../imozuru-blocker.md">阻塞和来源入口</a>，没有正式页</td></tr></tbody></table>
+<table><thead><tr><th>优先级</th><th>机制与边界</th><th>对应落点</th><th>本地入口</th></tr></thead><tbody><tr><td>优先阅读，medium</td><td>Harness-RSI：把效果声明绑定具体比较，分开记录任务距离、选优独立与实际生效；筛选合并最终包后重新取证。不复制自动晋升权。</td><td>受控改进提案与 <code>guard-verify</code> 证据模板</td><td><a href="../../../categories/learning-resources/harness-rsi.md">选型页</a></td></tr><tr><td>按需借鉴，medium</td><td>imozuru：主张到原文位置的账本，摘录不匹配就阻止新报告。匹配不等于语义正确，不照搬停搜阈值。</td><td><code>write-source</code> 与 <code>guard-write-facts</code></td><td><a href="../../../categories/deep-research/source-workflows/imozuru.md">正式页</a></td></tr></tbody></table>
 <p>TorchCode和Flint仅是低增量实现参考；Sana没有直接的全局harness接入点。SenseNova的声明编号与来源编号分账可读作反例，但孤儿引用仍可能返回success，不据此新增整套技能栈。Open-Box是网络产品，无新增接入建议。</p>
 <h2 id="总报告如何整合">总报告如何整合</h2>
-<p>原总报告保持同一入口，仍按16个大类阅读。新正式项目分别进入学习资源、数据分析、媒体生成及RSI比较；两个新暂缓项和一个未完成项明确放在范围受限候选类，不冒充已收录。</p>
-<p>历次去重全集为127个候选，其中119项有正式选型页，六项暂缓、一项收录未完成、一项自有跳过。原120项的项目事实正文不重做；新增七项只出现一次。新条目的源码核验、旧材料的历史日期、个人系统的旧基线分开记录，不把今日日期铺到旧项目上。</p>
+<p>原总报告保持同一入口，仍按16个大类阅读。新正式项目分别进入学习资源、数据分析、媒体生成、原文检索及RSI比较；两个新暂缓项留在范围受限候选类，不冒充已收录。</p>
+<p>历次去重全集为127个候选，其中120项有正式选型页，六项暂缓、一项自有跳过，没有未完成项。原120个候选的项目事实正文不重做；新增七项只出现一次。新条目的源码核验、旧材料的历史日期、个人系统的旧基线分开记录，不把今日日期铺到旧项目上。</p>
 <p>总报告中的Harness-RSI会和现有三种优化路线、Headroom提案工具比较，但明示它是研究资料。原先优先研究冻结实验、最终包重测和执行证据包的建议不被名字相似的新仓库替换。</p>
 <h2 id="横向对比选题池">横向对比选题池</h2>
 <p>按本批集成后实际目录计数，不计暂缓和失败草稿：</p>
-<ul><li><strong>学习资源，6项：</strong> 从空白实现、GPU性能练习和实验协议阅读，分别训练什么能力，怎样验收？</li><li><strong>数据可视化，5项：</strong> 语义图表编译与数据库看板，在哪一步交出查询、布局和权限控制？</li><li><strong>视觉与多模态研究，6项：</strong> 模型实现、训练框架和运行工作台的选择，怎样先按权重、输入和许可拆开？</li></ul>
+<ul><li><strong>学习资源，6项：</strong> 从空白实现、GPU性能练习和实验协议阅读，分别训练什么能力，怎样验收？</li><li><strong>数据可视化，5项：</strong> 语义图表编译与数据库看板，在哪一步交出查询、布局和权限控制？</li><li><strong>视觉与多模态研究，6项：</strong> 模型实现、训练框架和运行工作台的选择，怎样先按权重、输入和许可拆开？</li><li><strong>原文工作流，4项；父层研究引擎，9项：</strong> 平台读取、时效简报、原文摘录与对抗式引用核验，何时需要其中一段，而不是整套研究运行时？</li></ul>
+<p>新增后，深研目录触发原有12项上限。独立结构提交将4对原文工作流迁入子类，父层保留9项。全部1926页对照检查只允许分类字段与必要相对链接改变，资产和生成块不变。旧外部书签没有兼容页；历史台账的纯文本旧路径保持当时记录，当前路径见 <a href="../refactor-map.json">迁移映射</a>。</p>
 <h2 id="验证与发布边界">验证与发布边界</h2>
-<p>本批复跑：<code>205 category nodes, 962 EN + 962 ZH pages, 0 errors, 1596 warnings.</code>；反向索引为current；四个新增项目的八份双语页专项扫描为 <code>No deterministic findings.</code>；<code>Ran 483 tests in 21.603s / OK</code>。警告为全库现有及新增已说明的非阻断信号，不等于内容无风险。</p>
-<p>独立来源复审覆盖四项正式页。首轮发现五处事实／边界遗漏和两处可读性问题，已补回；第二轮零finding。原始扫描与台账验收为12个终态记录，四个done均无剩余标签，其余八个仓库标签保留，复扫没有新候选。</p>
+<p>本批复跑的门禁为 <code>0 errors</code>，反向索引为current；新增页专项扫描为 <code>No deterministic findings.</code>，工具单测483项通过。最终分类计数和真实输出保存在验证记录中。非阻断警告不等于内容无风险。</p>
+<p>来源复审曾发现五处事实／边界遗漏和两处可读性问题，均已补回，第二轮零finding。原始扫描与台账验收为12个终态记录，五个done均关闭对应标签，其余七个仓库标签保留；最终复扫结果见标签对账。</p>
 <p>这些证据只验本仓库内容和本次操作，不证明上游安装、模型效果、设备性能或权利完整。没有运行模型、上游脚本、安装器或个人会话采集，没有修改个人harness。</p>
-<p>远端状态：<strong>等待本次推送授权，未创建本批PR，未合并。</strong> 当前台账是续接状态；本地总报告的阅读与链接验证另在其原目录记录。完整批次结果见 <a href="../verification.json">验证记录</a>和 <a href="../tabs-audit.json">标签对账</a>。</p>
+<p>发布入口：<strong>功能分支→PR，不直推主干。</strong> 本地验收记录冻结在发布前，后续CI和合并以GitHub为准。当前台账是续接状态；本地总报告的阅读与链接验证另在其原目录记录。完整批次结果见 <a href="../verification.json">验证记录</a>和 <a href="../tabs-audit.json">标签对账</a>。</p>
 </section>
 </main>
 

@@ -10,7 +10,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | dzhng/skills | propose | proposed |  | 默认分支仍为 8e74252ad975；根 MIT 仅署本作者，复制插画子树声明缺口沿用前次固定树证据，未获新裁决；保留标签；no leftover Q&A | dzhng/skills |
 | JimLiu/baoyu-design | propose | proposed |  | 默认分支仍为 6530033592bf；重读根 MIT。闭源产品提取内容的再许可依据沿用旧证据仍待补，不作侵权结论；保留标签；no leftover Q&A | jimliu/baoyu-design |
 | liandu2024/Open-Box | propose | proposed |  | eabc31f0：LICENSE 明确自有代码及资产为非开源专有软件；公开部署脚本不使整个产品开源。转待裁决，不建页，保留标签；no leftover Q&A | liandu2024/open-box |
-| MaryCache/imozuru | add | failed |  | 源码研究与双语草稿已完成；健康评分因改变 GH_CONFIG_DIR 被护栏阻断，缺健康块和卡片；不集成草稿，不换写法重试；保留标签；no leftover Q&A | marycache/imozuru |
+| MaryCache/imozuru | add | done | categories/deep-research/source-workflows/imozuru.md | c191623；用户授权标准评分后补齐健康卡；主会话门禁与专项扫描通过；随后独立分类提交迁入source-workflows，非事实刷新；标签已关闭；no leftover Q&A | marycache/imozuru |
 | microsoft/flint-chart | add | done | categories/data-visualization/flint-chart.md | 79c9b16；主会话审读用途、四项机制、后端差异和外发边界；make gates与双页quality通过；no leftover Q&A | microsoft/flint-chart |
 | NVlabs/Sana | add | done | categories/ml-research/vision-and-multimodal/sana.md | 9b2b051；主会话审读变体、附属许可和运行边界；make gates及双页quality通过；未运行模型；no leftover Q&A | nvlabs/sana |
 | OpenSenseNova/SenseNova-Skills | propose | proposed |  | 78386511：12个风格文件与宝玉固定来源同blob，531个公开文本未见来源署名及适用通知；复制时授权链待核。不否定其他原创内容，未建页，保留标签；no leftover Q&A | opensensenova/sensenova-skills |

@@ -1,0 +1,57 @@
+{
+  "reason": "deep-research overflow 13 > existing MAX_FANOUT 12",
+  "commit": "60b2b95",
+  "before_parent": 13,
+  "after_parent": 9,
+  "after_child": 4,
+  "moves": [
+    {
+      "slug": "imozuru",
+      "en": {
+        "from": "categories/deep-research/imozuru.md",
+        "to": "categories/deep-research/source-workflows/imozuru.md"
+      },
+      "zh": {
+        "from": "categories/deep-research/imozuru.zh.md",
+        "to": "categories/deep-research/source-workflows/imozuru.zh.md"
+      }
+    },
+    {
+      "slug": "hyperresearch",
+      "en": {
+        "from": "categories/deep-research/hyperresearch.md",
+        "to": "categories/deep-research/source-workflows/hyperresearch.md"
+      },
+      "zh": {
+        "from": "categories/deep-research/hyperresearch.zh.md",
+        "to": "categories/deep-research/source-workflows/hyperresearch.zh.md"
+      }
+    },
+    {
+      "slug": "last30days",
+      "en": {
+        "from": "categories/deep-research/last30days.md",
+        "to": "categories/deep-research/source-workflows/last30days.md"
+      },
+      "zh": {
+        "from": "categories/deep-research/last30days.zh.md",
+        "to": "categories/deep-research/source-workflows/last30days.zh.md"
+      }
+    },
+    {
+      "slug": "agent-reach",
+      "en": {
+        "from": "categories/deep-research/agent-reach.md",
+        "to": "categories/deep-research/source-workflows/agent-reach.md"
+      },
+      "zh": {
+        "from": "categories/deep-research/agent-reach.zh.md",
+        "to": "categories/deep-research/source-workflows/agent-reach.zh.md"
+      }
+    }
+  ],
+  "facts": "Main replay checked 1926 project pages: only category and required relative links changed; assets/spec bytes preserved",
+  "generated_blocks": "byte-identical in worker full-corpus check",
+  "historical_plain_paths": "Dated plain-path records retained; active Markdown routing links repaired; old external bookmarks have no compatibility page",
+  "worker_invariant_sha256": "5807622af31cd0ac171c76d9b8920ee902a5ab01a052bfa157e1ab6aa3e9ccaf"
+}
