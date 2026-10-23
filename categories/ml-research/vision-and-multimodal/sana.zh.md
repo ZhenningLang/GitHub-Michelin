@@ -166,14 +166,14 @@ health:
 ### 3. 用解码式语言模型的状态作为文本条件
 
 - **解决：** 图像生成器需要细致表达用户文字，又不想依赖托管提示词改写接口。
-- **做法：** 构建器在本地加载 Gemma 的解码网络。图像流水线把配置中的指令示例放到提示词前，一次编码后，取首个词元和末尾指定长度的状态，作为去噪条件。
+- **做法：** 构建器在本地加载 Gemma 的解码网络。图像流水线把指令示例放到提示词前；分词器先截断超长输入，再编码，并取首个词元和末尾指定窗口的状态，作为去噪条件。不是完整编码任意长提示后才保留末尾。
 - **边界：** 指令示例用于抽取隐藏状态，不是另行生成一段改写，也不是 agent 循环。图像配置的条件窗口为 300 个词元；Gemma 仍是独立下载及许可依赖。
 - **源码：** [Gemma 构建器第 120–148 行](https://github.com/NVlabs/Sana/blob/36a3b01773c6299e6f0df77640b57b5f3dd3fa14/diffusion/model/builder.py#L120-L148)、[上下文与状态选择第 223–247 行](https://github.com/NVlabs/Sana/blob/36a3b01773c6299e6f0df77640b57b5f3dd3fa14/app/sana_pipeline.py#L223-L247)、[文本条件配置第 51–65 行](https://github.com/NVlabs/Sana/blob/36a3b01773c6299e6f0df77640b57b5f3dd3fa14/configs/sana_config/1024ms/Sana_1600M_img1024.yaml#L51-L65)。
 
 ### 4. 给 Video 2.0 加周期性密集锚点和跨层汇总
 
 - **解决：** 视频模型要跨多帧交换信息，又不想每层都做密集注意力。
-- **做法：** Video 2.0 将密集 softmax 锚点均匀放在四分之一的层，其余层用门控双向线性注意力。共享的 Attention Residual 投影对已完成深度块的表示加权；已发布 5B 配置每块有八层。
+- **做法：** Video 2.0 在四分之一的层让各位置直接互看，即密集 softmax 锚点；其余层先汇总信息，再用门控线性注意力双向交换。另一机制按权重汇总此前层块的表示，即共享的 Attention Residual；已发布 5B 配置每块八层。
 - **边界：** 密集锚点仍有逐对注意力成本。双向 Video 2.0 不是因果流式架构；四步预览还更换了权重和采样契约，不能将所有 Video 2.0 导出都当成四步模型。
 - **源码：** [锚点与跨层汇总第 46–125 行](https://github.com/NVlabs/Sana/blob/36a3b01773c6299e6f0df77640b57b5f3dd3fa14/diffusion/model/nets/sana_video2.py#L46-L125)、[门控注意力变体第 65–180 行](https://github.com/NVlabs/Sana/blob/36a3b01773c6299e6f0df77640b57b5f3dd3fa14/diffusion/model/nets/sana_video2_blocks.py#L65-L180)、[5B 配置第 25–42 行](https://github.com/NVlabs/Sana/blob/36a3b01773c6299e6f0df77640b57b5f3dd3fa14/configs/sana_video2/SanaVideo2_5B_720p.yaml#L25-L42)。
 
@@ -196,7 +196,10 @@ health:
 
 - **许可要分层看：** 根[代码许可证](https://github.com/NVlabs/Sana/blob/36a3b01773c6299e6f0df77640b57b5f3dd3fa14/LICENSE)是带 NVIDIA 版权的 Apache-2.0。本次核对的 [1.5 图像](https://huggingface.co/Efficient-Large-Model/SANA1.5_1.6B_1024px_diffusers/blob/b77948f2b4eed5c728e9b828ccff07f7427b43cc/LICENSE)、[Sprint](https://huggingface.co/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/blob/19683c58b7ea290e55cedd8950ae1d86ada7ef96/LICENSE)、[Video 2.0 50 步](https://huggingface.co/Efficient-Large-Model/SANA-Video_2.0_5B_720p/blob/f2d95fa06400f186fd1b077d12c69c8ac58aba48/LICENSE)与[四步](https://huggingface.co/Efficient-Large-Model/SANA-Video_2.0_5B_720p_4step/blob/54ff42899312497caabce145ad9d15e012721622/LICENSE)导出各带 Apache-2.0 文件。Gemma 编码器另受 [Gemma 条款](https://ai.google.dev/gemma/terms)约束；DC-AE 1.1 的[模型卡声明 MIT](https://huggingface.co/mit-han-lab/dc-ae-f32c32-sana-1.1-diffusers/blob/6f7b3f3b289a439a11ef4fb1034989fd4b9a4766/README.md)。它们不是一份总许可证。
 - Video 2.0 要你提供本地 `LTX-2.3-Diffusers` 自编码器目录。[LTX 2.3 模型卡](https://huggingface.co/Lightricks/LTX-2.3/blob/c1521179de480464f366a98a9d9b2acc4cc097b9/README.md)指向 [LTX-2 社区协议](https://github.com/Lightricks/LTX-2/blob/e98f6d927d83c92ef2be6aec76c8440b19306e39/LICENSE-2)；协议要求年收入至少一千万美元的实体取得付费商业许可，并附使用与分发限制。部署前要核对确切 VAE 文件。另一个 [int4 模型卡](https://huggingface.co/mit-han-lab/svdq-int4-sana-1600m/blob/03a45da0333879a503fcaa864b66dce8123364be/README.md)仍写 `nvidia-license`，它链接的 `LICENSE.txt` 在本次核验返回 404。
-- **网络边界：** `from_pretrained` 与 `hf://` 路径会从 Hugging Face 下载缺失模型；原生构建器把 Gemma 映射到 Efficient-Large-Model 镜像。已读原生推理路径在本机编码提示词，不调用托管生成接口。共享训练配置默认上报 W&B；启用时验证过程可上传图片和提示词，而 Video 2.0 5B 配置显式设置 `report_to: none`。Gradio 图像演示还下载 ShieldGemma，监听 `0.0.0.0`，只有传入 `--share` 才打开分享隧道。在线演示则直接在远端接收输入，不能混为本地推理。证据：[Hub 路径解析](https://github.com/NVlabs/Sana/blob/36a3b01773c6299e6f0df77640b57b5f3dd3fa14/sana/tools/hf_utils.py)、[训练上报](https://github.com/NVlabs/Sana/blob/36a3b01773c6299e6f0df77640b57b5f3dd3fa14/train_scripts/train.py#L199-L209)、[配置默认值](https://github.com/NVlabs/Sana/blob/36a3b01773c6299e6f0df77640b57b5f3dd3fa14/diffusion/utils/config.py)、[演示启动](https://github.com/NVlabs/Sana/blob/36a3b01773c6299e6f0df77640b57b5f3dd3fa14/app/app_sana.py#L168-L211)。
+- **许可补充：** LTX 协议还限制直接竞争或替代许可方商业产品的用途；未另获商业许可时禁止，该条不以千万美元营收为前提。低于营收门槛不等于普遍可商用。[用途限制第 377–381 行](https://github.com/Lightricks/LTX-2/blob/e98f6d927d83c92ef2be6aec76c8440b19306e39/LICENSE-2#L377-L381)。所审 int4 卡另已声明弃用，并指向 `nunchaku-tech/nunchaku-sana`；本次未核新分发，旧许可失效问题仍保留。
+- **模型下载与本地推理：** `from_pretrained` 与 `hf://` 会下载缺失组件；原生 Gemma 映射到 Efficient-Large-Model 镜像。已读推理路径在本机编码，不调用托管生成接口。见 [Hub 解析](https://github.com/NVlabs/Sana/blob/36a3b01773c6299e6f0df77640b57b5f3dd3fa14/sana/tools/hf_utils.py)。
+- **训练上报：** 共享配置默认上报 W&B，启用时验证过程可上传图片和提示词；Video 2.0 5B 显式设 `report_to: none`。见 [上报实现](https://github.com/NVlabs/Sana/blob/36a3b01773c6299e6f0df77640b57b5f3dd3fa14/train_scripts/train.py#L199-L209)与 [默认值](https://github.com/NVlabs/Sana/blob/36a3b01773c6299e6f0df77640b57b5f3dd3fa14/diffusion/utils/config.py)。
+- **演示服务：** Gradio 图像入口还下载 ShieldGemma，监听 `0.0.0.0`；只有 `--share` 才打开分享隧道。在线演示直接在远端接收输入，不是本地推理。见 [启动实现](https://github.com/NVlabs/Sana/blob/36a3b01773c6299e6f0df77640b57b5f3dd3fa14/app/app_sana.py#L168-L211)。
 
 ## 运维难度
 
@@ -214,6 +217,6 @@ health:
 
 - [未验证：未获安装或 GPU 执行授权] 未测试安装、画质、峰值显存、延迟或训练收敛。上文性能数字全部归于上游，不构成独立对比，也不能在变体间迁移。
 - [未验证：公开 HTTP 无法访问确切转换后 VAE 分发] 试探的 `Lightricks/LTX-2.3-Diffusers` 模型 API 返回 401。原生配置要求本地目录，公开 LTX 2.3 模型卡提供许可背景，但具体再分发 VAE 产物仍待核对。
-- [未验证：上游许可引用失效] int4 模型卡的 NVIDIA `LICENSE.txt` 链接返回 404，不能擅自替换为当前代码许可。DC-AE 的 MIT 声明核对到模型卡，其模型文件列表没有独立 LICENSE 文件。
+- [未验证：上游许可引用失效] 所审 int4 分发已声明弃用，指向 `nunchaku-tech/nunchaku-sana`；旧卡的 NVIDIA `LICENSE.txt` 链接返回 404，不能用当前代码许可替代。新分发未在本次核验。DC-AE 只核对到模型卡 MIT 声明，没有独立 LICENSE 文件。
 - [推断：只阅读指定路径，未做全程序网络审计] 引用的原生路径在本机编码和生成；依赖、可选演示、训练上报及后续代码可能另有网络行为。本页不承诺所有入口均离线。
 - [推断：两年活跃研究不等于稳定性研究] 林迪判断只权衡已见的年龄和维护，没有独立统计的存续概率。
