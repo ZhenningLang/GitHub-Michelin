@@ -89,7 +89,7 @@ health:
 
 ## 何时不用
 
-- **你要完整底层能力，或要求所有后端行为一致。** 直接用 Vega-Lite、ECharts 或 Plotly。各后端图表目录不同；正式主题只用于 Vega-Lite 和 Plotly，不用于 ECharts、Chart.js 或 Excel。MCP 静态渲染仅支持 Vega-Lite、ECharts 和 Chart.js，后者只能导出 PNG。
+- **你要完整底层能力，或要求所有后端行为一致。** 直接用 Vega-Lite、ECharts 或 Plotly。各后端图表目录不同；正式主题只用于 Vega-Lite 和 Plotly。Flint 的交互与更新只在 Vega-Lite 路线执行，其他后端会忽略这些配置并警告退为静态图。MCP 静态渲染仅支持 Vega-Lite、ECharts 和 Chart.js，后者只能导出 PNG。
 - **固定尺寸导出必须展示所有类别。** 改用明确分页的表格报表，或自行控制布局的 Vega-Lite。Flint 为保持可读性，可能裁掉类别及对应数据行。必须读取警告，不能把画出的部分当成全量。
 - **你要共享 SQL 探索、访问控制和业务看板。** 选 [Metabase](metabase.zh.md) 或 [Superset](superset.zh.md)。查询、联表、清洗、授权和发布仍由你在 Flint 外完成。
 - **敏感数据不得进入第三方服务。** 用本地库或本地 MCP 进程，不要选托管 MCP 地址。agent 自己调用的模型供应商仍是另一条数据边界。也别用可选 Image-Charts URL 后端；打开生成的链接，会把编码后的图表数据发到 `image-charts.com`。
@@ -177,9 +177,9 @@ health:
 ### 4. 把规格校验与本地渲染分开
 
 - **解决：** 看起来合理的生成规格，仍可能超出后端能力、尺寸上限，或误读服务端文件。
-- **做法：** MCP 工具先读取内联行或本地数据文件，校验有界输入，再在 Node 进程内渲染。Vega-Lite 经无头 Vega 视图输出 SVG，ECharts 用服务端 SVG，Chart.js 用原生画布。PNG 转换走本地原生库，不需要浏览器或必选云渲染器。
-- **边界：** 本地标准输入输出模式默认可读进程权限内被引用的 JSON、CSV、TSV，不是文件沙箱。`--disable-file-reference` 能关闭读取，HTTP 模式默认关闭；远程 `data.url` 会被拒绝。选择托管 MCP 仍会把内联数据交给该服务器。
-- **源码：** [本地数据解析](https://github.com/microsoft/flint-chart/blob/a794557384adcc3293a77043f6b9aff1c33d152c/packages/flint-mcp/src/render/data-source.ts#L43-L81)、[渲染分派](https://github.com/microsoft/flint-chart/blob/a794557384adcc3293a77043f6b9aff1c33d152c/packages/flint-mcp/src/render/index.ts#L41-L118)、[HTTP 文件默认值](https://github.com/microsoft/flint-chart/blob/a794557384adcc3293a77043f6b9aff1c33d152c/packages/flint-mcp/src/http.ts#L79-L91)。
+- **做法：** MCP 工具先读取数据并校验，再在 Node 进程内渲染。校验器默认最多接受十万行，输入画布各维最多 4000 像素；本地引用文件另限 10 MiB，只收 JSON、CSV、TSV。Vega-Lite 与 ECharts 输出 SVG，Chart.js 用原生画布；PNG 转换用本地库，无必选云渲染器。
+- **边界：** 输入上限不保证最终图片尺寸或总资源用量。本地标准输入输出模式可读进程权限内被引用的文件，不是文件沙箱。`--disable-file-reference` 能关闭读取，HTTP 模式默认关闭；远程 `data.url` 会被拒绝。选择托管 MCP 仍会把内联数据交给该服务器。
+- **源码：** [校验默认上限](https://github.com/microsoft/flint-chart/blob/a794557384adcc3293a77043f6b9aff1c33d152c/packages/flint-js/src/validate/index.ts#L53-L63)、[本地数据解析及文件上限](https://github.com/microsoft/flint-chart/blob/a794557384adcc3293a77043f6b9aff1c33d152c/packages/flint-mcp/src/render/data-source.ts#L9-L155)、[渲染分派](https://github.com/microsoft/flint-chart/blob/a794557384adcc3293a77043f6b9aff1c33d152c/packages/flint-mcp/src/render/index.ts#L41-L118)、[HTTP 文件默认值](https://github.com/microsoft/flint-chart/blob/a794557384adcc3293a77043f6b9aff1c33d152c/packages/flint-mcp/src/http.ts#L79-L91)。
 
 ## 技术栈
 
