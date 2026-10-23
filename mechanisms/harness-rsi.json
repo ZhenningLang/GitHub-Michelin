@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "reports", "en": "Primary literature reports", "zh": "原始文献报告", "kind": "input"},
+    {"id": "identity", "en": "One comparison identity per report", "zh": "每份报告绑定一项比较身份", "technique": [1]},
+    {"id": "rubric", "en": "LLM-assisted reading under four separate criteria", "zh": "模型辅助阅读；四项标准分开判定", "technique": [2,4]},
+    {"id": "records", "en": "Audit ledger and supplied evidence JSON", "zh": "审计账本与给定证据 JSON", "technique": [3]},
+    {"id": "count", "en": "Exclude unevaluated rows; count 93 comparisons", "zh": "排除无实证行；统计 93 项比较", "technique": [3]},
+    {"id": "site", "en": "Generated tables and searchable browser corpus", "zh": "生成表格与浏览器检索语料", "kind": "output"},
+    {"id": "snapshot", "en": "Snapshot and consistency checks; partial source recovery", "zh": "快照与一致性检查；源码恢复不完整", "technique": [4]},
+    {"id": "human", "en": "Reader verifies the source; no agent promotion loop", "zh": "读者复核原文；没有代理晋升循环", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "reports", "to": "identity"},
+    {"from": "identity", "to": "rubric"},
+    {"from": "rubric", "to": "records"},
+    {"from": "records", "to": "count", "en": "builder consumes JSON", "zh": "构建器消费 JSON"},
+    {"from": "count", "to": "site"},
+    {"from": "snapshot", "to": "site", "en": "checks representations, not paper truth", "zh": "检查表示，不证明论文事实"},
+    {"from": "site", "to": "human"}
+  ],
+  "sources": [
+    "docs/evidence-criteria.md:12-79 at 84108dcc15fe393a4bb406ec27228290775d1098",
+    "scripts/build_evidence.py:14-25,137-167 at 84108dcc15fe393a4bb406ec27228290775d1098",
+    "scripts/check_consistency.py:156-223 at 84108dcc15fe393a4bb406ec27228290775d1098"
+  ]
+}
