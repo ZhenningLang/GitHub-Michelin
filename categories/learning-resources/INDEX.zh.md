@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **TorchCode** | 用练习本判题练习 41 个 PyTorch 实现；需复核测试缺口、不安全托管默认值和许可文本缺失。 | C（3/6） | [→](torchcode.zh.md) |
 | **Triton Puzzles** | 用十二道 notebook 练习和访存轨迹，练习 Triton 掩码、分块与归约。 | C（5/6） | [→](triton-puzzles.zh.md) |
 | **AI Engineering Hub** | 当你需要某种 LLM 技术栈组合的可运行样例——本地模型 RAG 应用、带联网兜底的 CrewAI 团队、MCP 服务——好从里面抄胶水代码时用它；它是 MIT 许可的演示代码，没有测试、很多文件夹已过时，不能当依赖。 | A（5/6） | [→](ai-engineering-hub.zh.md) |
 | **AI Performance Engineering Resources** | 当你需要学或查 GPU／AI 性能工程，想要每个机制对应的权威原文、并且按依赖顺序排好——一次请求 → 一张卡 → 算子 → 引擎 → 分布式服务——而不是一堆博客时用它。 | C（3/5） | [→](gpu-perf-engineering-resources.zh.md) |
@@ -17,6 +18,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [TorchCode](torchcode.zh.md) | ✅ | C（3/6） | CPU 面试练习带逐例反馈；发布包缺 OPD，判题器既不是沙箱，也不是正确性证明。 |
 | [Triton Puzzles](triton-puzzles.zh.md) | ✅ | C（5/6） | 解释器优先的内核练习，带 PyTorch 参考检查；不是完整生产内核或 GPU 性能测试。 |
 | [AI Engineering Hub](ai-engineering-hub.zh.md) | ✅ | A（5/6） | 约 115 个自成一体的 Streamlit／notebook 演示，每个都把点了名的模型、框架、向量库和厂商 API 接在一起，MIT 许可——但没有测试和 CI，93 个文件夹一年没动，依赖不锁版本，内容偏向厂商、出自一个 newsletter 团队。 |
 | [AI Performance Engineering Resources](gpu-perf-engineering-resources.zh.md) | ✅ | C（3/5） | 一条排好序的 124 链接路径，覆盖论文、官方厂商文档与实现仓库，并用收录标准挡掉二手总结和没有来源的性能数字——代价是它本身不能跑，而且算子那半段偏 NVIDIA。 |

@@ -34,6 +34,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Cutter](https://github.com/rizinorg/cutter),categories/dev-utilities/data-tools/ghidra.md,,no
 [daed](https://github.com/daeuniverse/daed),categories/networking/dae.md,,no
 [darktable](https://github.com/darktable-org/darktable),categories/photo-editing/lightcraft.md,,no
+[Dive into Deep Learning](https://github.com/d2l-ai/d2l-en),categories/learning-resources/torchcode.md,,no
 [doocs/md](https://github.com/doocs/md),categories/agent-skills/ai-writing/content-production/gzh-design-skill.md,,no
 [Dragonfly](https://github.com/dragonflydb/dragonfly),categories/databases/database-engines/kividb.md,,no
 [Elixir](https://github.com/elixir-lang/elixir),categories/programming-languages/unison.md,,no
@@ -103,6 +104,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [spcfox/amnezia-wg-easy](https://github.com/spcfox/amnezia-wg-easy),categories/networking/amneziawg-installer.md,,no
 [Stats](https://github.com/exelban/stats),categories/observability/mac-performance-monitor.md,,no
 [Sunshine](https://github.com/LizardByte/Sunshine) + [Moonlight](https://github.com/moonlight-stream/moonlight-qt),categories/dev-utilities/ops-infra/rustdesk.md,,no
+[Tensor Puzzles](https://github.com/srush/Tensor-Puzzles),categories/learning-resources/torchcode.md,,no
 [Termux](https://github.com/termux/termux-app) + a CLI agent,categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md,,no
 [TigerVNC](https://github.com/TigerVNC/tigervnc),categories/dev-utilities/ops-infra/rustdesk.md,,no
 [tldraw](https://github.com/tldraw/tldraw),categories/diagramming/excalidraw.md,,no

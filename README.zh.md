@@ -1519,6 +1519,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **TorchCode** | 用空白练习本和判题练 PyTorch 算子；适合个人 CPU 学习，不做公开或权威评分。 | MIT（声明，缺文本） | C（3/6） | [中](categories/learning-resources/torchcode.zh.md) · [EN](categories/learning-resources/torchcode.md) |
 | **Triton Puzzles** | 十二道内核补全题，带 PyTorch 检查与访存轨迹；先学解释执行，不提供生产内核。 | Apache-2.0 | C（5/6） | [中](categories/learning-resources/triton-puzzles.zh.md) · [EN](categories/learning-resources/triton-puzzles.md) |
 | **AI Engineering Hub** | 当你需要某种 LLM 技术栈组合的可运行样例——本地模型 RAG 应用、带联网兜底的 CrewAI 团队、MCP 服务——好从里面抄胶水代码时用它；它是 MIT 许可的演示代码，没有测试、很多文件夹已过时，不能当依赖。 | MIT | A（5/6） | [中](categories/learning-resources/ai-engineering-hub.zh.md) · [EN](categories/learning-resources/ai-engineering-hub.md) |
 | **AI Performance Engineering Resources** | 当你需要学或查 GPU／AI 性能工程，想要每个机制对应的权威原文、并且按依赖顺序排好——一次请求 → 一张卡 → 算子 → 引擎 → 分布式服务——而不是一堆博客时用它。 | MIT（仅声明） | C（3/5） | [中](categories/learning-resources/gpu-perf-engineering-resources.zh.md) · [EN](categories/learning-resources/gpu-perf-engineering-resources.md) |

@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "template", "en": "Blank notebook and template backup", "zh": "空白练习本与模板备份", "kind": "input", "technique": [3]},
+    {"id": "user", "en": "Learner function in IPython namespace", "zh": "IPython 命名空间中的学习者函数", "kind": "input", "technique": [1]},
+    {"id": "tasks", "en": "Auto-import TASK dictionaries by module ID", "zh": "按模块题号自动导入 TASK 字典", "technique": [1]},
+    {"id": "checks", "en": "Execute task-specific assertions in the same process", "zh": "在同一进程执行各题断言", "technique": [2]},
+    {"id": "result", "en": "Per-case pass, error and elapsed time", "zh": "各案例的通过、错误与耗时", "kind": "output", "technique": [2]},
+    {"id": "progress", "en": "Local progress JSON separate from notebook reset", "zh": "本地进度 JSON 与练习本重置分离", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "template", "to": "user", "en": "learner implements", "zh": "学习者补完"},
+    {"from": "tasks", "to": "checks", "en": "function name and test code", "zh": "函数名与测试代码"},
+    {"from": "user", "to": "checks"},
+    {"from": "checks", "to": "result"},
+    {"from": "result", "to": "progress", "en": "notebook judge only", "zh": "仅练习本判题路径"}
+  ],
+  "sources": [
+    "https://github.com/duoan/TorchCode/blob/e3c8782a4be4f7cdb4de871ec739f66370968a77/torch_judge/engine.py",
+    "https://github.com/duoan/TorchCode/blob/e3c8782a4be4f7cdb4de871ec739f66370968a77/torch_judge/tasks/_registry.py",
+    "https://github.com/duoan/TorchCode/blob/e3c8782a4be4f7cdb4de871ec739f66370968a77/torch_judge/progress.py",
+    "https://github.com/duoan/TorchCode/blob/e3c8782a4be4f7cdb4de871ec739f66370968a77/entrypoint.sh"
+  ]
+}
