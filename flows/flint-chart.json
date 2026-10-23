@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "Flint does", "zh": "Flint 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install Flint and the browser Vega-Lite renderer stack", "zh": "安装 Flint 与浏览器 Vega-Lite 渲染依赖", "code": "npm install flint-chart"},
+    {"lane": "you", "en": "Supply rows, field meanings and x/y mappings for the monthly chart", "zh": "提供逐行数据、字段含义与月度图的横纵轴映射"},
+    {"lane": "you", "en": "Pass the complete input to the assembler", "zh": "把完整输入交给编译接口", "code": "assembleVegaLite(input)"},
+    {"lane": "them", "en": "Resolve semantics and layout into a native Vega-Lite specification", "zh": "推导字段含义与布局，输出绘图库原生规格"},
+    {"lane": "you", "en": "Render the generated specification with Vega-Embed to display the chart", "zh": "用 Vega-Embed 渲染生成规格，显示图表", "code": "embed('#chart', spec)"}
+  ],
+  "value": {"en": "Reuse field meanings instead of hand-writing axes and layout for each chart", "zh": "复用字段含义，不为每张图手写坐标与布局"},
+  "sources": ["https://github.com/microsoft/flint-chart/blob/a794557384adcc3293a77043f6b9aff1c33d152c/docs/tutorials/getting-started.md#L11-L26", "https://github.com/microsoft/flint-chart/blob/a794557384adcc3293a77043f6b9aff1c33d152c/docs/tutorials/getting-started.md#L123-L163"]
+}

@@ -348,19 +348,22 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 ### deep-research
 
+研究引擎与科学工作台；来源访问和证据审查另见[来源工作流](categories/deep-research/source-workflows/INDEX.zh.md)。
+
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **imozuru** | 在 Claude Code 中，把陌生领域的主张追到原文段落；交付核对过的摘录，而非综合报告。 | MIT | C（4/5） | [中](categories/deep-research/source-workflows/imozuru.zh.md) · [EN](categories/deep-research/source-workflows/imozuru.md) |
 | **deep-research** | 当你想读懂并 fork 一个约 500 行的 TypeScript 深度研究循环（Firecrawl 搜索加广度／深度递归，产出带引用的报告）时用它——但它是单作者的 0.0.1 演示，错误处理极简，也没有成本上限。 | MIT | B（4/6） | [中](categories/deep-research/deep-research.zh.md) · [EN](categories/deep-research/deep-research.md) |
 | **Vane** | 想要一个自托管、注重隐私的「Perplexity 式」带引用应答引擎，接你自己的 SearxNG 和自选 LLM 时用它。 | MIT | B（5/6） | [中](categories/deep-research/vane.zh.md) · [EN](categories/deep-research/vane.md) |
 | **Local Deep Research** | 当你需要一个自托管、可纯本地运行的深度研究 agent、把敏感查询留在自己机器上时用它。 | MIT | B（5/6） | [中](categories/deep-research/local-deep-research.zh.md) · [EN](categories/deep-research/local-deep-research.md) |
-| **Agent-Reach** | 当你的 agent 需要免付费 API 地读取和搜索网页与社交平台内容时用它。 | MIT | B（5/6） | [中](categories/deep-research/agent-reach.zh.md) · [EN](categories/deep-research/agent-reach.md) |
+| **Agent-Reach** | 当你的 agent 需要免付费 API 地读取和搜索网页与社交平台内容时用它。 | MIT | B（5/6） | [中](categories/deep-research/source-workflows/agent-reach.zh.md) · [EN](categories/deep-research/source-workflows/agent-reach.md) |
 | **MiroThinker** | 当你想要一个可在自有 GPU 上研究改造的自托管开源深研 Agent 时用它——但它要 GPU 集群加付费外部 API，且不到一岁、毫无 Lindy 沉淀。 | Apache-2.0 | B（4/6） | [中](categories/deep-research/mirothinker.zh.md) · [EN](categories/deep-research/mirothinker.md) |
 | **GPT Researcher** | 当你要一个开箱即用的应用，把一个问题变成一份基于网页或你自己文件、处处带出处的多页报告时用它——但默认配置会把数据发给 OpenAI 和 Tavily，纯本地运行要自己改配置。 | Apache-2.0 | A（6/6） | [EN](categories/deep-research/gpt-researcher.md) · [中](categories/deep-research/gpt-researcher.zh.md) |
 | **Open Deep Research** | 当你在 LangGraph 上自建调研智能体、想要一份“主管加并行研究员”的可读蓝图和现成基准脚手架时用它——但仓库已于 2026 年归档，只适合学习或 fork，不适合当依赖运行。 | MIT | D（5/6） | [EN](categories/deep-research/open-deep-research.md) · [中](categories/deep-research/open-deep-research.zh.md) |
 | **STORM** | 当你要为一个陌生话题写一篇带编号引用、由多视角调研和大纲搭起来的维基风长文初稿时用它——但它自 2025-09 起没再合入任何改动，当作方法的参考实现看待。 | MIT | C（5/6） | [EN](categories/deep-research/storm.md) · [中](categories/deep-research/storm.zh.md) |
 | **node-DeepResearch** | 当用户问需要跳好几步的事实题、你想要一个自部署、兼容 OpenAI 接口、一直搜到能给出带出处短答案的服务时用它——但读网页离不开 Jina 的托管 API，它的代码执行工具也没有沙箱。 | Apache-2.0 | B（4/6） | [EN](categories/deep-research/node-deepresearch.md) · [中](categories/deep-research/node-deepresearch.zh.md) |
-| **Hyperresearch** | 当你在 Claude Code 里、需要一份引用逐条核验的高风险研究报告时用它——16 步对抗式流水线加持久来源 vault；时间与 token 开销都重，且只支持 Claude Code。 | MIT | B（5/6） | [中](categories/deep-research/hyperresearch.zh.md) · [EN](categories/deep-research/hyperresearch.md) |
-| **last30days** | 当你想让 agent 汇总最近 30 天 Reddit、X、YouTube、HN、Polymarket 上关于某个主题的讨论、并按互动量排好序时用它——但每次调用要加载约 258 KB 的 skill 提示词，且部分来源依赖抓取和浏览器登录 cookie。 | MIT | B（6/6） | [中](categories/deep-research/last30days.zh.md) · [EN](categories/deep-research/last30days.md) |
+| **Hyperresearch** | 当你在 Claude Code 里、需要一份引用逐条核验的高风险研究报告时用它——16 步对抗式流水线加持久来源 vault；时间与 token 开销都重，且只支持 Claude Code。 | MIT | B（5/6） | [中](categories/deep-research/source-workflows/hyperresearch.zh.md) · [EN](categories/deep-research/source-workflows/hyperresearch.md) |
+| **last30days** | 当你想让 agent 汇总最近 30 天 Reddit、X、YouTube、HN、Polymarket 上关于某个主题的讨论、并按互动量排好序时用它——但每次调用要加载约 258 KB 的 skill 提示词，且部分来源依赖抓取和浏览器登录 cookie。 | MIT | B（6/6） | [中](categories/deep-research/source-workflows/last30days.zh.md) · [EN](categories/deep-research/source-workflows/last30days.md) |
 | **OpenScience** | 当研究任务必须真的在自己的文件上跑代码时用它——文献与数据库检索、Python/R 内核、集群作业、每一步都留在可审计的轮次轨迹里。 | Apache-2.0 | B（6/6） | [中](categories/deep-research/openscience.zh.md) · [EN](categories/deep-research/openscience.md) |
 
 ### ai-code-review
@@ -576,6 +579,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Senta (SKEP)** | 当你身处 PaddlePaddle 栈、要用发布的中英文 checkpoint 复现或扩展 SKEP 情感论文时用它——但它钉死在 Paddle 1.6.3 加 CUDA 10.1 上，自 2020 年起无提交，百度更新的 NLP 工作在 PaddleNLP。 | Apache-2.0 | D（4/6） | [中](categories/ml-research/nlp-and-time-series/senta.zh.md) · [EN](categories/ml-research/nlp-and-time-series/senta.md) |
 | **Depth Anything V2** | 当你要从单张图像得到稠密深度图（三维重建、虚化、AR 遮挡、可控生成）又不想训练模型时用它——但只有 Small 权重是 Apache-2.0，Base／Large／Giant 是禁止商用的 CC-BY-NC-4.0，且默认输出是相对深度而非米制。 | Apache-2.0 | C（4/6） | [中](categories/ml-research/vision-and-multimodal/depth-anything-v2.zh.md) · [EN](categories/ml-research/vision-and-multimodal/depth-anything-v2.md) |
 | **Open-Sora** | 当你要在数据中心 GPU 上按完整公开的配方（代码、数据流水线、成本报告）**训练**或研究视频扩散模型时用它——2025-03 起停更，权重栈牵入 FLUX.1-dev 非商用和腾讯混元许可证。 | Apache-2.0 | B（4/6） | [中](categories/ml-research/vision-and-multimodal/open-sora.zh.md) · [EN](categories/ml-research/vision-and-multimodal/open-sora.md) |
+| **Sana** | 要研究空间压缩 32 倍的紧凑图像模型，或独立的混合注意力 Video 2.0 家族时用；显存预算及 Gemma／LTX 许可因权重而异。 | Apache-2.0 | B（5/6） | [中](categories/ml-research/vision-and-multimodal/sana.zh.md) · [EN](categories/ml-research/vision-and-multimodal/sana.md) |
 | **pymoo** | 当需要 Python 演化式多目标优化（NSGA-II/III、MOEA/D）求 Pareto 前沿时用它——若问题是凸／线性／单目标，LP 或梯度求解器要快得多。 | Apache-2.0 | B（6/6） | [中](categories/ml-research/pymoo.zh.md) · [EN](categories/ml-research/pymoo.md) |
 | **The AI Scientist** | 当你想让「想法到论文」这整圈全自动跑完——想法生成、查新、实验代码、作图，最后编译出带 LLM 评审的 LaTeX 论文——时用它，但要接受一条绑死模板、自改许可证后冻结、且限制你发布其产出的流水线。 | NOASSERTION (The AI Scientist Source Code License) | D（4/6） | [中](categories/ml-research/research-automation/ai-scientist.zh.md) · [EN](categories/ml-research/research-automation/ai-scientist.md) |
 | **Agent Laboratory** | 当你想让一组扮演角色的 LLM agent 跑「文献回顾→计划→实验→报告」、每阶段由你确认，并且要 MIT 条款和可续跑 checkpoint 时用它，但它自 2025-03 起没有代码改动，还挂着一条无人回应的安全披露。 | MIT | C（3/6） | [中](categories/ml-research/research-automation/agent-laboratory.zh.md) · [EN](categories/ml-research/research-automation/agent-laboratory.md) |
@@ -763,6 +767,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **Flint** | 将可复用的字段含义和图表映射编译成原生绘图规格；可选本地 MCP 导出，但有后端差异和溢出裁剪。 | MIT | B（6/6） | [中](categories/data-visualization/flint-chart.zh.md) · [EN](categories/data-visualization/flint-chart.md) |
 | **Rill** | 用 YAML／SQL 管理共同指标与探索看板，查询 DuckDB 或外部分析引擎。 | Apache-2.0 | A（6/6） | [中](categories/data-visualization/rill.zh.md) · [EN](categories/data-visualization/rill.md) |
 | **Apache Superset** | 当你想要在数据仓库之上自托管 SQL BI 看板与探索时用它——不是基础设施指标/可观测性。 | Apache-2.0 | A（6/6） | [中](categories/data-visualization/superset.zh.md) · [EN](categories/data-visualization/superset.md) |
 | **Evidence** | 当分析工程师想把报表写成 git 里的 Markdown 加 SQL 文件，能 diff、能评审、能交给编码 agent 改时用它——但业务人员没法点选出问题，自托管只有 Basic Auth，而且 2026 年的重写让代码库从头来过。 | MIT | B（6/6） | [EN](categories/data-visualization/evidence.md) · [中](categories/data-visualization/evidence.zh.md) |
@@ -1519,7 +1524,9 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **TorchCode** | 用空白练习本和判题练 PyTorch 算子；适合个人 CPU 学习，不做公开或权威评分。 | MIT（声明，缺文本） | C（3/6） | [中](categories/learning-resources/torchcode.zh.md) · [EN](categories/learning-resources/torchcode.md) |
 | **Triton Puzzles** | 十二道内核补全题，带 PyTorch 检查与访存轨迹；先学解释执行，不提供生产内核。 | Apache-2.0 | C（5/6） | [中](categories/learning-resources/triton-puzzles.zh.md) · [EN](categories/learning-resources/triton-puzzles.md) |
+| **Harness-RSI** | 用具体比较的证据与静态检索站点，审查框架进化文献；不提供优化器或独立效果认证。 | CC-BY-4.0 | C（4/5） | [中](categories/learning-resources/harness-rsi.zh.md) · [EN](categories/learning-resources/harness-rsi.md) |
 | **AI Engineering Hub** | 当你需要某种 LLM 技术栈组合的可运行样例——本地模型 RAG 应用、带联网兜底的 CrewAI 团队、MCP 服务——好从里面抄胶水代码时用它；它是 MIT 许可的演示代码，没有测试、很多文件夹已过时，不能当依赖。 | MIT | A（5/6） | [中](categories/learning-resources/ai-engineering-hub.zh.md) · [EN](categories/learning-resources/ai-engineering-hub.md) |
 | **AI Performance Engineering Resources** | 当你需要学或查 GPU／AI 性能工程，想要每个机制对应的权威原文、并且按依赖顺序排好——一次请求 → 一张卡 → 算子 → 引擎 → 分布式服务——而不是一堆博客时用它。 | MIT（仅声明） | C（3/5） | [中](categories/learning-resources/gpu-perf-engineering-resources.zh.md) · [EN](categories/learning-resources/gpu-perf-engineering-resources.md) |
 | **HowToLiveLonger（程序员延寿指南）** | 当你想把饮食、饮品、睡眠、运动、体重这些日常习惯，按某项研究报告的全因死亡率变化排在同一页上、每个数字都能追到出处，好决定先改哪件事时用它；不要拿它决定吃药或吃补剂。 | Unlicense | C（3/5） | [中](categories/learning-resources/how-to-live-longer.zh.md) · [EN](categories/learning-resources/how-to-live-longer.md) |

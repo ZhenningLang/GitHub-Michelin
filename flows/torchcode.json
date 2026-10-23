@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "TorchCode does", "zh": "TorchCode 做的"},
+  "steps": [
+    {"lane": "you", "en": "Review local-only container settings, then build the notebook environment", "zh": "检查仅限本机的容器配置，再构建练习环境", "code": "make run-build"},
+    {"lane": "them", "en": "Populate blank exercises and reference solutions in JupyterLab", "zh": "在 JupyterLab 准备空白题目和参考答案", "component": {"en": "container entrypoint", "zh": "容器启动脚本"}},
+    {"lane": "you", "en": "Open the ReLU notebook and implement its empty function", "zh": "打开 ReLU 练习本，补完空函数", "code": "01_relu.ipynb"},
+    {"lane": "you", "en": "Run the supplied judge cell", "zh": "运行题目附带的判题单元", "code": "check(\"relu\")"},
+    {"lane": "them", "en": "Show per-case results and record notebook practice progress", "zh": "展示各案例结果，记录练习本学习进度", "component": {"en": "torch_judge", "zh": "torch_judge 判题器"}}
+  ],
+  "value": {"en": "Get immediate PyTorch implementation feedback without building the judge scaffolding yourself", "zh": "直接获得 PyTorch 实现的检查反馈，不必从零搭判题框架"},
+  "sources": [
+    "https://github.com/duoan/TorchCode/blob/e3c8782a4be4f7cdb4de871ec739f66370968a77/Makefile#L47-L53",
+    "https://github.com/duoan/TorchCode/blob/e3c8782a4be4f7cdb4de871ec739f66370968a77/entrypoint.sh#L4-L39",
+    "https://github.com/duoan/TorchCode/blob/e3c8782a4be4f7cdb4de871ec739f66370968a77/templates/01_relu.ipynb",
+    "https://github.com/duoan/TorchCode/blob/e3c8782a4be4f7cdb4de871ec739f66370968a77/torch_judge/engine.py#L37-L101"
+  ]
+}

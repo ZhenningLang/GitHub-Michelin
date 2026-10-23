@@ -118,7 +118,7 @@ health:
 |---|---|---|---|
 | [deep-research](deep-research.zh.md) | ✅ | 需要从代码里调用的极简 TypeScript 引擎/SDK 时，选 deep-research。 | 极简的 TypeScript 深度研究*引擎/SDK*，从代码里调用并调参（breadth/depth）；Vane 是完整的自托管 UI 产品，不是可嵌入的库。 |
 | [local-deep-research](local-deep-research.zh.md) | ✅ | 需要 Python、本地优先、可离线研究本地语料时，选 local-deep-research。 | Python，偏本地优先，能离线对本地语料做研究；Vane 始终经 SearxNG 触达实时网页，并以打磨过的 Web 应用形态交付。 |
-| [Agent-Reach](agent-reach.zh.md) | ✅ | 你其实需要 reach/触达式自动化而不是应答引擎时，选 Agent-Reach。 | 不同细分（agent reach / 触达式自动化）；不是 SearxNG 应答引擎。只有把两者混淆时才需对比。 |
+| [Agent-Reach](source-workflows/agent-reach.zh.md) | ✅ | 你其实需要 reach/触达式自动化而不是应答引擎时，选 Agent-Reach。 | 不同细分（agent reach / 触达式自动化）；不是 SearxNG 应答引擎。只有把两者混淆时才需对比。 |
 | Perplexica | 未收录 | 需要 Vane 的同作者直接前身时，选 Perplexica。 | Vane 的直接前身，同一作者，同样的 SearxNG+RAG 内核。选 Vane = 选被维护的续作。 |
 | [GPT Researcher](gpt-researcher.zh.md) | ✅ | 需要会写长报告的 Python 自治研究 agent 时，选 GPT Researcher。 | Python 自治研究 agent，产出长报告；更偏报告生成、少交互式带引用应答体验，无内建聊天产品。 |
 | Morphic | 未收录 | 需要在 Vane 血统之外要一个同形态自托管应答引擎时，可看 Morphic。 | 同细分的开源应答引擎仓库；但 2026-09-28 重核时在 GitHub 上找不到其正主仓库（见存疑账本），今天可验证的选项是 Vane。 |

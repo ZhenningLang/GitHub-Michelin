@@ -2,7 +2,7 @@
 name: Agent-Reach
 slug: agent-reach
 repo: https://github.com/Panniantong/Agent-Reach
-category: deep-research
+category: source-workflows
 tags: [web-scraping, social-search, cli, mcp, agent-tooling, twitter, reddit, youtube, bilibili, xiaohongshu, multi-backend, content-fetch]
 language: Python
 license: MIT
@@ -73,7 +73,7 @@ health:
 
 一个「接入 / 触达」层（而非研究 agent）：一个 CLI，替你装好并路由一整套上游工具，让你的 agent 能读取和搜索 Twitter/X、Reddit、YouTube、GitHub、B站、小红书、Facebook、Instagram、RSS 和开放网页——「零 API 费用」。
 
-![agent-reach — 健康度雷达](../../assets/health/agent-reach.zh.svg)
+![agent-reach — 健康度雷达](../../../assets/health/agent-reach.zh.svg)
 
 ## 何时使用
 
@@ -85,7 +85,7 @@ health:
 
 Agent-Reach 是安装器、甄选器和体检器——刻意**不做**包装层。你把项目 `docs/install.md` 的 URL 交给你的 Agent，它照着跑；此后真正的读取就是普通的上游命令，由 agent 自己调用（`curl https://r.jina.ai/<url>`、`yt-dlp`、`gh repo view`、`bili search` 等）。`agent-reach` 这个 CLI 本身只在两条命令里出场：`install`（给机器装环境——默认只读，只列出缺失项，等你明确批准 `--system` 才真正改动）和 `doctor`（逐通道做真实探测——不只是「命令存不存在」——告诉你当前走的是哪条后端、坏掉的那条怎么修）。底层机制是每个平台对应一个 `channels/*.py` 小文件，装着它的有序后端清单，所以「某条接入方式被封锁、我们换了下一条」只是把这个列表换个顺序，不是重写代码——上面那个自动回退的故事就是这么来的。仍然归你的部分：给需要登录的平台（Twitter/小红书/Reddit 等）从浏览器导出 cookie；cookie 自动化带来的封号风险（README 自己建议用小号）；以及——由于本项目从 GitHub 归档包安装、而不是包索引——你得信任 `pipx install <repo 归档 zip>` 拉进来的东西。
 
-![agent-reach — 主干用户故事](../../assets/flow/agent-reach.zh.svg)
+![agent-reach — 主干用户故事](../../../assets/flow/agent-reach.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/agent-reach.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -106,7 +106,7 @@ Agent-Reach 是安装器、甄选器和体检器——刻意**不做**包装层�
 
 ## 何时不用
 
-- **你真正想要的是 deep-research agent。** Agent-Reach 是「抓取 / 接入」层；它**不做**迭代式 search→read→verify→synthesize 循环，也不产出带引用的报告。要那条流水线，请用真正的研究 agent，比如 [deep-research](deep-research.zh.md) 或 [local-deep-research](local-deep-research.zh.md)——若两者都要，就让研究 agent 去消费 Agent-Reach 暴露出的源。
+- **你真正想要的是 deep-research agent。** Agent-Reach 是「抓取 / 接入」层；它**不做**迭代式 search→read→verify→synthesize 循环，也不产出带引用的报告。要那条流水线，请用真正的研究 agent，比如 [deep-research](../deep-research.zh.md) 或 [local-deep-research](../local-deep-research.zh.md)——若两者都要，就让研究 agent 去消费 Agent-Reach 暴露出的源。
 - **你需要合规、ToS 干净、账号安全、可规模化的接入。** Twitter/X、Reddit、Facebook、Instagram、小红书都要你自己登录态的 cookie；README 自己标注了非浏览器自动化的**封号风险**并建议用小号。这是用你的凭据做爬取——不是受官方背书的 API——ToS 与封号风险由你承担。
 - **你要的是浏览器「操作」而非「读取」。** 明确的范围声明是只读 / 只搜（「读内容 vs 操作网页」）：不做表单提交、登录后流程、过验证码。README 自己把「动手」场景指向它的赞助商 BrowserAct。
 - **你想要一个稳定、自包含的依赖。** 它编排了一大堆第三方 CLI / MCP server（yt-dlp、twitter-cli、bili-cli、rdt-cli、OpenCLI、mcporter、Exa），它们的行为、鉴权和反爬姿态一直在变——而且路由表本身也在快速变动（比如 Reddit 变成了「完全没有零配置路径」，9 月又新上了 Boss直聘 通道）。它的整个价值就是**管理**这种变动——但你也因此继承了一个又宽又脆的依赖面，版本之间频繁出问题。
@@ -116,10 +116,10 @@ Agent-Reach 是安装器、甄选器和体检器——刻意**不做**包装层�
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [deep-research](deep-research.zh.md) | ✅ | 交付物是带引用的研究报告时，选 deep-research——它跑的是 Agent-Reach 刻意不做的搜索→阅读→综合循环；Agent-Reach 只用来替它打开看不到的源。 | 真正的迭代式研究 *agent*（扇出搜索 → 阅读 → 递归深挖 → 出报告）；LLM 和搜索 key 要你自己接。是栈的不同层，不是替代关系——配对用。 |
-| [local-deep-research](local-deep-research.zh.md) | ✅ | 需要隐私优先、带综合和引用、本地 LLM 支持的研究助手时，选 local-deep-research；只有当你要引用的材料活在 Twitter/小红书帖子里时，才补一个 Agent-Reach。 | 隐私优先的本地研究助手，带综合 + 引用，支持本地 LLM。做的是 Agent-Reach 跳过的推理；配对用，而非二选一。 |
-| [Vane](vane.zh.md) | ✅ | 要一个单容器自托管、Perplexity 式的回答框时，选 Vane；它自带 SearxNG 覆盖网页搜索，答案活在 Vane 看不到的社交平台里时才轮到 Agent-Reach。 | 聚焦综合的研究 / 搜索 agent。同样是「负责思考」的对照——Agent-Reach 负责触达，不负责推理。 |
-| [Firecrawl](../web-scraping/crawling-tools/firecrawl.zh.md) | ✅ | 需要干净的网页转 markdown、且有真正的爬取 API 可以在其上构建时，选 Firecrawl；源是社交平台而非网页、又不愿按次付费时，选 Agent-Reach。 | 托管 / 开源的网页抓取转 markdown + 爬取 API；单源网页提取更干净、有真 API，但付费且仅限网页——没有 Twitter/Reddit/B站/小红书的社交触达。 |
+| [deep-research](../deep-research.zh.md) | ✅ | 交付物是带引用的研究报告时，选 deep-research——它跑的是 Agent-Reach 刻意不做的搜索→阅读→综合循环；Agent-Reach 只用来替它打开看不到的源。 | 真正的迭代式研究 *agent*（扇出搜索 → 阅读 → 递归深挖 → 出报告）；LLM 和搜索 key 要你自己接。是栈的不同层，不是替代关系——配对用。 |
+| [local-deep-research](../local-deep-research.zh.md) | ✅ | 需要隐私优先、带综合和引用、本地 LLM 支持的研究助手时，选 local-deep-research；只有当你要引用的材料活在 Twitter/小红书帖子里时，才补一个 Agent-Reach。 | 隐私优先的本地研究助手，带综合 + 引用，支持本地 LLM。做的是 Agent-Reach 跳过的推理；配对用，而非二选一。 |
+| [Vane](../vane.zh.md) | ✅ | 要一个单容器自托管、Perplexity 式的回答框时，选 Vane；它自带 SearxNG 覆盖网页搜索，答案活在 Vane 看不到的社交平台里时才轮到 Agent-Reach。 | 聚焦综合的研究 / 搜索 agent。同样是「负责思考」的对照——Agent-Reach 负责触达，不负责推理。 |
+| [Firecrawl](../../web-scraping/crawling-tools/firecrawl.zh.md) | ✅ | 需要干净的网页转 markdown、且有真正的爬取 API 可以在其上构建时，选 Firecrawl；源是社交平台而非网页、又不愿按次付费时，选 Agent-Reach。 | 托管 / 开源的网页抓取转 markdown + 爬取 API；单源网页提取更干净、有真 API，但付费且仅限网页——没有 Twitter/Reddit/B站/小红书的社交触达。 |
 | Exa / Tavily / SearXNG | 未收录 | 只需要一个搜索后端时，直接接它（Agent-Reach 本来就是这样把 Exa 经 MCP 包进来的）；这些给不了的是逐平台社交爬取栈。 | 搜索后端（语义 / agent 搜索 / 自托管元搜索）。Agent-Reach 实际就经 MCP 包了 Exa；它们给你搜索，但没有逐平台的社交爬取栈。 |
 
 ## 技术栈

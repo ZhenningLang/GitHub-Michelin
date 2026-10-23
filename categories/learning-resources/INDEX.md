@@ -7,6 +7,8 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **TorchCode** | Practise 41 PyTorch implementations with notebook checks; review test gaps, unsafe hosting defaults and missing license text. | C (3/6) | [→](torchcode.md) |
+| **Harness-RSI** | Audit published harness-evolution claims with comparison-specific evidence; not an executable optimizer. | C (4/5) | [→](harness-rsi.md) |
 | **Triton Puzzles** | Practise Triton masks, blocks and reductions with twelve notebook exercises and traced memory access. | C (5/6) | [→](triton-puzzles.md) |
 | **AI Engineering Hub** | Use it when you need a running example of a specific LLM stack combination — a local-model RAG app, a CrewAI crew with web fallback, an MCP server — to copy glue code from; it is MIT demo code with no tests and many stale folders, not something to depend on. | A (5/6) | [→](ai-engineering-hub.md) |
 | **AI Performance Engineering Resources** | Use it when you need to learn or reference GPU/AI performance engineering and want the canonical source per mechanism in dependency order — one request → one GPU → kernels → engines → distributed serving — instead of a pile of blog posts. | C (3/5) | [→](gpu-perf-engineering-resources.md) |
@@ -17,6 +19,8 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [TorchCode](torchcode.md) | ✅ | C (3/6) | CPU interview practice with per-case feedback; published package omits OPD and the judge is not a sandbox or correctness proof. |
+| [Harness-RSI](harness-rsi.md) | ✅ | C (4/5) | Structured literature judgments and a static explorer; annotation is primarily model-assisted, not an independent effect measurement. |
 | [Triton Puzzles](triton-puzzles.md) | ✅ | C (5/6) | Interpreter-first kernel exercises with PyTorch reference checks; not complete production kernels or GPU benchmarks. |
 | [AI Engineering Hub](ai-engineering-hub.md) | ✅ | A (5/6) | ~115 self-contained Streamlit/notebook demos, each wiring a named model, framework, vector store and vendor API together under MIT — but no tests or CI, 93 folders untouched for a year, unpinned deps, and vendor-centric content from a newsletter team. |
 | [AI Performance Engineering Resources](gpu-perf-engineering-resources.md) | ✅ | C (3/5) | An ordered 124-link path over papers, official vendor documentation and implementing repositories, with a source bar that keeps out summaries and unsourced performance numbers — but nothing here runs, and the path is NVIDIA-shaped for the kernel half. |

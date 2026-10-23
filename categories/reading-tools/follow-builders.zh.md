@@ -75,7 +75,7 @@ health:
 
 你是工程师或产品经理，想知道 Karpathy、swyx、Claude Code 团队和几位 AI 创始人这周说了什么、哪期播客值得花一小时——但你不想整天开着 X，手里没有 X API key（要付费档），也不想自己跑一套爬虫。现在你的“信息流”是算法在一堆抬杠回复之间塞给你的东西，一期重要的 Latent Space 往往是一周后从别人的转述里才知道。你把 Follow Builders 克隆进 Claude Code 或 OpenClaw 的 skills 目录，调用一次，回答四个问题（日报还是周报、几点、什么语言、Telegram／邮件／对话内），之后每期简报长这样：“Box CEO Aaron Levie 认为……”后面跟着那条推文的链接，可选英文、中文或逐段中英交替。
 
-为什么选它而不是替代品：决定性的取舍是**零配置，换来零控制**。抓取、X API 账单和转录服务都在作者那边，你读不需要任何 key；但信源名单（截至 2026-09-28 为 26 个 X 账号、6 个播客、2 个博客）由作者集中维护，skill 本身会让你的 agent 婉拒增删信源的请求。自托管流水线如 [Horizon](horizon.zh.md) 让你自己挑信源、定打分规则，代价是要管模型 key 和每日任务；按需调研 skill 如 [last30days](../deep-research/last30days.zh.md) 回答的是“大家最近怎么看某件事”，要你每次去问，而不是盯住一份固定名单。
+为什么选它而不是替代品：决定性的取舍是**零配置，换来零控制**。抓取、X API 账单和转录服务都在作者那边，你读不需要任何 key；但信源名单（截至 2026-09-28 为 26 个 X 账号、6 个播客、2 个博客）由作者集中维护，skill 本身会让你的 agent 婉拒增删信源的请求。自托管流水线如 [Horizon](horizon.zh.md) 让你自己挑信源、定打分规则，代价是要管模型 key 和每日任务；按需调研 skill 如 [last30days](../deep-research/source-workflows/last30days.zh.md) 回答的是“大家最近怎么看某件事”，要你每次去问，而不是盯住一份固定名单。
 
 ## 怎么用起来
 
@@ -107,7 +107,7 @@ health:
 - **你想在 Claude Code 上不借助 OpenClaw 定时收到改写好的简报。** skill 给非常驻 agent 的 crontab 做法绕过了模型，推送的是原始 JSON；修复它的 PR #86 截至 2026-09-28 仍未合并。[Horizon](horizon.zh.md) 在自己的定时任务里就把成稿简报写好。
 - **你需要 agent 收到的指令保持不变。** 除非你把 prompt 复制到 `~/.follow-builders/prompts/`，否则每次运行都会从上游 `main` 下载当前的 prompt 文件，你的 agent 照做——上游一改，你的 agent 行为就跟着变，你这边什么都没更新；引导流程还会让 agent 改写你的 crontab。要固定下来，就把全部 prompt 复制到本地或者 fork，或者用 prompt 随安装版本一起固定的自托管工具（[Horizon](horizon.zh.md)）。
 - **你要再分发或在代码上二次开发。** 仓库里没有 LICENSE 文件（GitHub 识别不到许可证），只有 README 最后一行写着“MIT”。如果 fork 或做产品需要许可证清楚，优先 [Horizon](horizon.zh.md)（MIT，有许可证文件），或先请作者补上文件。
-- **你有一个具体问题，而不是长期关注。** 想知道“这个月开发者怎么评价某工具”，用 [last30days](../deep-research/last30days.zh.md)，它按需在 Reddit、X、YouTube、HN 上搜。
+- **你有一个具体问题，而不是长期关注。** 想知道“这个月开发者怎么评价某工具”，用 [last30days](../deep-research/source-workflows/last30days.zh.md)，它按需在 Reddit、X、YouTube、HN 上搜。
 - **你想每一条都自己看。** 用 [FreshRSS](freshrss.zh.md) 或 [NetNewsWire](netnewswire.zh.md)——中间没有模型，不会有东西被摘要掉。
 
 ## 横向对比
@@ -115,7 +115,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Horizon](horizon.zh.md) | ✅ | 想自己决定信源、自己定义什么值得读，选 Horizon；一份固定的 AI 建造者名单正合你意、又不想运维流水线，选 Follow Builders。 | Horizon 要付出模型 key、定时任务和信源维护，换来控制权，以及跨 RSS／HN／Reddit／Telegram／X 的打分与去重；Follow Builders 读起来零成本，但信源和可用性都归作者。 |
-| [last30days](../deep-research/last30days.zh.md) | ✅ | 心里有具体话题、想按需看本月社区反应，选 last30days；想要来自具名人物的长期日报或周报，选 Follow Builders。 | last30days 每次查询覆盖多个平台、按互动量排序，但每次都得你去问；Follow Builders 定时推送，但只覆盖它那份固定名单。 |
+| [last30days](../deep-research/source-workflows/last30days.zh.md) | ✅ | 心里有具体话题、想按需看本月社区反应，选 last30days；想要来自具名人物的长期日报或周报，选 Follow Builders。 | last30days 每次查询覆盖多个平台、按互动量排序，但每次都得你去问；Follow Builders 定时推送，但只覆盖它那份固定名单。 |
 | [FreshRSS](freshrss.zh.md) | ✅ | 想看到自己订阅源的每一条、不让模型替你取舍，选 FreshRSS；比起完整更在意有人先写好摘要，选 Follow Builders。 | FreshRSS 是 12 年以上的自托管阅读器，不做摘要，不加桥接就读不到 X；Follow Builders 会摘要，但 prompt 没保留的内容你就看不到。 |
 | TrendRadar | 未收录 | 想广泛监控中外平台的热点和关键词、推送到微信／飞书／钉钉，选 TrendRadar；只要一份窄的 AI 建造者名单、又不想跑任何基础设施，选 Follow Builders。 | 真实仓库（sansan0/TrendRadar，GPL-3.0），本轮标签页收录批次未添加；它是要你自己配置的 Docker／Actions 监控，不是套了 skill 的托管 feed。 |
 | smol.ai AI News（newsletter） | 非仓库 | 想要别人写好的、覆盖面更广的 AI Twitter／Discord／Reddit 汇总，又不需要 agent 参与，选托管的 AI newsletter。 | 托管的 newsletter，不是仓库——按形态不在收录范围；本地改不了 prompt，也没有中文版，但同样什么都不用装。 |

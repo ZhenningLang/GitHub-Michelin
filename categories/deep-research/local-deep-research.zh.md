@@ -124,7 +124,7 @@ LDR 是一条由你自托管的研究流水线。你提出一个问题；它的�
 |---|---|---|---|
 | [deep-research](deep-research.zh.md) | ✅ | 需要可嵌入、端到端自己掌控的极简 TypeScript 脚本时，选 deep-research；当交付物是一个可部署的隐私产品（多用户、加密、UI、API）而非一份要自己不断重写的代码时，选 LDR。 | 极简 TypeScript 脚本，端到端自己嵌、自己掌控；LLM+搜索 key 你自己接。比 LDR 轻得多，但没有 UI、没有本地 LLM/隐私套件、没有学术源连接器或加密多用户存储。 |
 | [Vane](vane.zh.md) | ✅ | 要一个单容器、开箱即用的自托管回答框（2026 版镜像已内置 SearxNG，三档深度模式）时，选 Vane；当学术源连接器、按用户加密的多用户存储和基准测试框架是关键时，选 LDR。 | 另一个自托管研究/搜索 agent。跑起来更简单（一个镜像），但它的目标是带引用的快速解答，不是 LDR 的深度研究策略、按用户加密库和期刊质量过滤。 |
-| [Agent-Reach](agent-reach.zh.md) | ✅ | 交付物是 web/社交*触达*而非带引用报告时，选 Agent-Reach；它还能当 LDR 缺的那双「眼睛」去够 Twitter/小红书的源——配对用，不是二选一。 | 聚焦在面向 web 来源的 agent 触达/reach；相邻但交付物与 LDR 的带引用研究报告不同。 |
+| [Agent-Reach](source-workflows/agent-reach.zh.md) | ✅ | 交付物是 web/社交*触达*而非带引用报告时，选 Agent-Reach；它还能当 LDR 缺的那双「眼睛」去够 Twitter/小红书的源——配对用，不是二选一。 | 聚焦在面向 web 来源的 agent 触达/reach；相邻但交付物与 LDR 的带引用研究报告不同。 |
 | [GPT Researcher](gpt-researcher.zh.md) | ✅ | 需要一个流行的、带 Web UI 和报告导出的 Python 深度研究 agent、且不介意默认云端 LLM 优先时，选 GPT Researcher；当全本地 + 加密 + 学术连接器才是决定项时，选 LDR。 | 流行的 Python 深度研究 agent，带 Web UI 和报告导出；默认云端 LLM 优先。LDR 更彻底地押注全本地 + 加密 + 学术源连接器。 |
 | [MiroThinker](mirothinker.zh.md) | ✅ | 想要一套可自托管、可微调的开权重深度研究*模型*（BrowseComp/GAIA 调优，30B–235B）时，选 MiroThinker；当缺口在你已有本地模型外围的应用层——UI、加密、连接器——时，选 LDR。 | 框架 + 微调权重，GPU 和商业 API 依赖都很重；LDR 编排你已经在跑的任意模型，自身不带微调权重。 |
 | Perplexity / OpenAI Deep Research | 非仓库 | 当质量与零运维高于隐私/本地控制时，选托管研究 SaaS——那是唯一完全免硬件的路，也是你的查询必然出楼的路。 | 托管 SaaS，质量强、零运维——但你的查询和上下文会离开你的机器，与 LDR 的前提正相反。 |

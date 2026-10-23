@@ -24,7 +24,7 @@
 | **llm-training** | Fine-tune or reinforcement-train LLMs and multi-step agents. | [→](categories/llm-training/INDEX.md) |
 | **agent-frameworks** | Build and run multi-step or multi-agent systems — agent frameworks and agent operating systems. | [→](categories/agent-frameworks/INDEX.md) |
 | **agent-memory** | Persistent, LLM-agnostic memory an agent reads/writes across sessions. | [→](categories/agent-memory/INDEX.md) |
-| **deep-research** | Iterative multi-source research agents that search, scrape, and synthesize. | [→](categories/deep-research/INDEX.md) |
+| **deep-research** | Research engines and scientific workbenches; source-workflows for platform access, original passages, and citation auditing. | [→](categories/deep-research/INDEX.md) |
 | **ai-code-review** | LLM-assisted code review that produces line-level findings on a diff or repo. | [→](categories/ai-code-review/INDEX.md) |
 | **rag-retrieval** | Document indexing, code-intelligence graphs, and graph DBs for retrieval-augmented generation. | [→](categories/rag-retrieval/INDEX.md) |
 | **llm-eval** | Test, benchmark, and security-scan (red-team) prompts, agents, and RAG systems. | [→](categories/llm-eval/INDEX.md) |
@@ -40,7 +40,7 @@
 | **ml-research** | Small, self-contained ML research demos and reference implementations. | [→](categories/ml-research/INDEX.md) |
 | **agent-skills** | Curated collections of agent skills, prompts, subagent personas, and harness configs — split by domain. | [→](categories/agent-skills/INDEX.md) |
 | **observability** | Dashboards, alerting, and visualization over metrics/logs/traces from many datasources. | [→](categories/observability/INDEX.md) |
-| **data-visualization** | Self-hosted BI / data-exploration dashboards over SQL warehouses. | [→](categories/data-visualization/INDEX.md) |
+| **data-visualization** | Compile tabular data into charts, or run self-hosted BI / exploration dashboards over SQL warehouses. | [→](categories/data-visualization/INDEX.md) |
 | **ocr** | Optical character recognition engines — image/scan to text. | [→](categories/ocr/INDEX.md) |
 | **document-parsing** | Parse/convert documents (PDF/DOCX/…) into structured Markdown/JSON for gen-AI ingestion. | [→](categories/document-parsing/INDEX.md) |
 | **office-automation** | Programmatically create, read, and edit native Office documents (.docx/.xlsx/.pptx) — the authoring side, for scripts and agents. | [→](categories/office-automation/INDEX.md) |

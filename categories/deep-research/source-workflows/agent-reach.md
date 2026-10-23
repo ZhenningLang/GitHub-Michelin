@@ -2,7 +2,7 @@
 name: Agent-Reach
 slug: agent-reach
 repo: https://github.com/Panniantong/Agent-Reach
-category: deep-research
+category: source-workflows
 tags: [web-scraping, social-search, cli, mcp, agent-tooling, twitter, reddit, youtube, bilibili, xiaohongshu, multi-backend, content-fetch]
 language: Python
 license: MIT
@@ -73,7 +73,7 @@ health:
 
 An access/reach layer (not a research agent): a CLI that installs and routes a stack of upstream tools so your agent can read and search Twitter/X, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu, Facebook, Instagram, RSS and the open web — "zero API fees".
 
-![agent-reach — health radar](../../assets/health/agent-reach.svg)
+![agent-reach — health radar](../../../assets/health/agent-reach.svg)
 
 ## When to use
 
@@ -85,7 +85,7 @@ The part that earns its keep over a hand-rolled toolbox is **multi-backend routi
 
 Agent-Reach is an installer, selector and health-checker — deliberately **not** a wrapper. You hand your agent the URL of the project's `docs/install.md`; the agent runs it, and from then on the actual reads are plain upstream commands the agent calls itself (`curl https://r.jina.ai/<url>`, `yt-dlp`, `gh repo view`, `bili search` …). The `agent-reach` binary itself stays involved in only two commands: `install` (provision the machine — read-only by default, it lists missing dependencies and only changes anything after you approve `--system`) and `doctor` (probe every channel for real — not just "does the binary exist" — and tell you which backend is active and how to repair a broken one). Under the hood each platform is one small `channels/*.py` file holding its ordered backend list, so "an access method got blocked and we swapped it" is a reorder in that file, not a rewrite — that's the mechanism behind the auto-fallback story above. What stays yours: exporting browser cookies for the logged-in platforms (Twitter/XiaoHongShu/Reddit, etc.), the account-ban risk that comes with cookie automation (the README itself says use a throwaway account), and — since the project installs from a GitHub archive rather than a package index — trusting what `pipx install <repo-archive.zip>` pulls in.
 
-![agent-reach — backbone user story](../../assets/flow/agent-reach.svg)
+![agent-reach — backbone user story](../../../assets/flow/agent-reach.svg)
 
 <!-- flow-steps:begin (generated from flows/agent-reach.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -106,7 +106,7 @@ Agent-Reach is an installer, selector and health-checker — deliberately **not*
 
 ## When NOT to use
 
-- **You actually want a deep-research agent.** Agent-Reach is a *fetch/access* layer; it does no iterative search→read→verify→synthesize loop and writes no cited report. If you want that pipeline, use a real research agent like [deep-research](deep-research.md) or [local-deep-research](local-deep-research.md) — and point *it* at sources Agent-Reach exposes if you want both.
+- **You actually want a deep-research agent.** Agent-Reach is a *fetch/access* layer; it does no iterative search→read→verify→synthesize loop and writes no cited report. If you want that pipeline, use a real research agent like [deep-research](../deep-research.md) or [local-deep-research](../local-deep-research.md) — and point *it* at sources Agent-Reach exposes if you want both.
 - **You need legally/ToS-clean, account-safe access at scale.** Twitter/X, Reddit, Facebook, Instagram and XiaoHongShu require your own logged-in cookies; the README itself flags 封号风险 (account-suspension risk) for non-browser automation and recommends throwaway accounts. This is scraping with your credentials — not a sanctioned API — so terms-of-service and ban exposure are on you.
 - **You need browser *actions*, not reads.** The stated scope is read/search only ("读内容 vs 操作网页"): no form submission, post-login flows, or CAPTCHA solving. The README itself points "doing" workflows to its sponsor BrowserAct.
 - **You want a stable, self-contained dependency.** It orchestrates many third-party CLIs/MCP servers (yt-dlp, twitter-cli, bili-cli, rdt-cli, OpenCLI, mcporter, Exa) whose behavior, auth and anti-bot posture shift constantly — and the routing table itself has churned fast (e.g. Reddit went "no zero-config path at all", a Boss直聘 channel landed in September). The whole value prop is *managing* that churn — but you inherit a wide, fragile dependency surface and frequent breakage between releases.
@@ -116,10 +116,10 @@ Agent-Reach is an installer, selector and health-checker — deliberately **not*
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [deep-research](deep-research.md) | ✅ | When the deliverable is a cited research report, pick deep-research — it runs the search→read→synthesize loop Agent-Reach deliberately omits; keep Agent-Reach only to open sources it can't see. | A true iterative research *agent* (fan-out search → read → recursive deepening → report); you wire your own LLM + search keys. Different layer of the stack, not a substitute — pair them. |
-| [local-deep-research](local-deep-research.md) | ✅ | When you need privacy-first local synthesis with citations and local-LLM support, pick local-deep-research; add Agent-Reach only when the sources you must cite live in Twitter/XiaoHongShu threads. | Privacy-first local research assistant with synthesis + citations and local-LLM support. Does the reasoning Agent-Reach skips; pair them rather than choose. |
-| [Vane](vane.md) | ✅ | When you want a self-hosted Perplexity-style answer box in one container, pick Vane; it bundles SearxNG for web search, so reach for Agent-Reach instead when the answer lives in social platforms Vane can't see. | Research/search agent focused on synthesis. Same "does the thinking" contrast — Agent-Reach is reach, not reasoning. |
-| [Firecrawl](../web-scraping/crawling-tools/firecrawl.md) | ✅ | When you need clean web→markdown with a real crawl API you can build on, pick Firecrawl; pick Agent-Reach when your sources are social platforms, not web pages, and you won't pay per scrape. | Hosted/OSS web-scrape-to-markdown + crawl API; cleaner single-source web extraction and a real API, but paid and web-only — no Twitter/Reddit/Bilibili/XiaoHongShu social reach. |
+| [deep-research](../deep-research.md) | ✅ | When the deliverable is a cited research report, pick deep-research — it runs the search→read→synthesize loop Agent-Reach deliberately omits; keep Agent-Reach only to open sources it can't see. | A true iterative research *agent* (fan-out search → read → recursive deepening → report); you wire your own LLM + search keys. Different layer of the stack, not a substitute — pair them. |
+| [local-deep-research](../local-deep-research.md) | ✅ | When you need privacy-first local synthesis with citations and local-LLM support, pick local-deep-research; add Agent-Reach only when the sources you must cite live in Twitter/XiaoHongShu threads. | Privacy-first local research assistant with synthesis + citations and local-LLM support. Does the reasoning Agent-Reach skips; pair them rather than choose. |
+| [Vane](../vane.md) | ✅ | When you want a self-hosted Perplexity-style answer box in one container, pick Vane; it bundles SearxNG for web search, so reach for Agent-Reach instead when the answer lives in social platforms Vane can't see. | Research/search agent focused on synthesis. Same "does the thinking" contrast — Agent-Reach is reach, not reasoning. |
+| [Firecrawl](../../web-scraping/crawling-tools/firecrawl.md) | ✅ | When you need clean web→markdown with a real crawl API you can build on, pick Firecrawl; pick Agent-Reach when your sources are social platforms, not web pages, and you won't pay per scrape. | Hosted/OSS web-scrape-to-markdown + crawl API; cleaner single-source web extraction and a real API, but paid and web-only — no Twitter/Reddit/Bilibili/XiaoHongShu social reach. |
 | Exa / Tavily / SearXNG | 未收录 | When you need just one search backend, wire it directly (Agent-Reach already embeds Exa via MCP for exactly this); the per-platform social-scrape stack is what these don't give you. | Search backends (semantic / agent-search / self-hosted meta-search). Agent-Reach actually wraps Exa via MCP; these give you search but not the per-platform social-scrape stack. |
 
 ## Tech stack

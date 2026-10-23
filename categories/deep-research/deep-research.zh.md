@@ -103,7 +103,7 @@ health:
 
 - **你要一个开箱即用的产品或 UI。** 这是一个 CLI/脚本加一个极简 Express 端点，没有鉴权、历史记录或前端。想要托管式问答引擎请看 [Vane](vane.zh.md) 或某个 SaaS。
 - **你需要完全本地 / 私有 / 离线的研究。** 它硬依赖 Firecrawl API 做搜索+抓取，默认还要云端 LLM。要在隔网、加密、本地 LLM 上检索私有文档，用 [local-deep-research](local-deep-research.zh.md)。
-- **你想免 API 费读社交平台（Twitter/Reddit/YouTube/GitHub）。** 那是另一类访问问题，见 [Agent-Reach](agent-reach.zh.md)。
+- **你想免 API 费读社交平台（Twitter/Reddit/YouTube/GitHub）。** 那是另一类访问问题，见 [Agent-Reach](source-workflows/agent-reach.zh.md)。
 - **你需要生产级稳健性。** 没有 release tag，版本仍是 `0.0.1`，刻意只有约 500 行——错误处理极简，没有限流/重试/成本控制方案，基本没有测试覆盖。把它当参考/fork 底座，而不是一个被维护的依赖。
 - **你想避免逐次云端开销。** Firecrawl 额度 + 每个递归层的推理模型调用，在高 breadth/depth 下会迅速变贵，且没有内建预算上限。[推断]
 - **你在意弃坑/维护风险。** 它是单作者的 demo 仓库，活跃度呈阵发式，没有 release/changelog 节奏。别把业务关键管线直接架在它之上。
@@ -114,7 +114,7 @@ health:
 |---|---|---|---|
 | [Vane](vane.zh.md) | ✅ | 需要可用产品/UI 形态的 TypeScript 问答引擎时，选 Vane。 | 同为 TypeScript 的 AI 问答引擎，目标是做成可用的产品/UI;deep-research 是约 500 行、供你 fork 的裸 agent，而非可直接当服务跑。 |
 | [local-deep-research](local-deep-research.zh.md) | ✅ | 需要 Python、本地优先且加密的研究助手时，选 local-deep-research。 | Python，本地优先且加密，10+ 搜索后端（含本地文档），可完全跑在本地 LLM 上；deep-research 默认是云 LLM + Firecrawl，范围也小得多。 |
-| [Agent-Reach](agent-reach.zh.md) | ✅ | 需要读社交/网络平台而非综合研究时，选 Agent-Reach。 | Python CLI，专注「读」社交/网络平台（Twitter/Reddit/YouTube/GitHub）且号称「零 API 费」；不是做迭代式综合的研究 agent。 |
+| [Agent-Reach](source-workflows/agent-reach.zh.md) | ✅ | 需要读社交/网络平台而非综合研究时，选 Agent-Reach。 | Python CLI，专注「读」社交/网络平台（Twitter/Reddit/YouTube/GitHub）且号称「零 API 费」；不是做迭代式综合的研究 agent。 |
 | [GPT Researcher](gpt-researcher.zh.md) | ✅ | 需要功能面更大的 Python 研究 agent、报告类型和 Web UI 时，选 GPT Researcher。 | Python，功能面大得多（多检索器、多报告类型、Web UI）;deep-research 用全部这些广度换来一个可读的极简内核。 |
 | [Open Deep Research(LangChain / HF)](open-deep-research.zh.md) | ✅ | 框架背书、生态和工具链更重要时，选 Open Deep Research。 | 有框架背书的参考 agent，生态与工具链更大；比这个近乎单文件的实现更难读、更难改造。 |
 

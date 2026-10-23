@@ -103,7 +103,7 @@ A "deep research" agent is a loop: think up search queries, read what comes back
 
 - **You want a turnkey product or UI.** This is a CLI/script and a minimal Express endpoint, not an app with auth, history, or a frontend. If you want a hosted answer engine, look at [Vane](vane.md) or a SaaS.
 - **You need fully local / private / offline research.** It hard-depends on the Firecrawl API for search+scrape and a cloud LLM by default. For air-gapped, encrypted, local-LLM research over private docs, use [local-deep-research](local-deep-research.md).
-- **You want to read social platforms (Twitter/Reddit/YouTube/GitHub) without API fees.** That's a different access problem; see [Agent-Reach](agent-reach.md).
+- **You want to read social platforms (Twitter/Reddit/YouTube/GitHub) without API fees.** That's a different access problem; see [Agent-Reach](source-workflows/agent-reach.md).
 - **You need production hardening.** No release tags, version still `0.0.1`, ~500 LOC by design — minimal error handling, no rate-limit/retry/cost-control story, no test coverage to speak of. Treat it as a reference/fork base, not a maintained dependency.
 - **You want to avoid per-call cloud cost.** Firecrawl credits + a reasoning model per recursion level can get expensive fast at high breadth/depth; there's no built-in budget cap. [推断]
 - **Abandonment/maintenance risk matters.** It's a single-author demo repo; activity is bursty and there is no release/changelog cadence. Don't build a business-critical pipeline directly on top.
@@ -114,7 +114,7 @@ A "deep research" agent is a loop: think up search queries, read what comes back
 |---|---|---|---|
 | [Vane](vane.md) | ✅ | Choose Vane when you need a usable TypeScript answering product/UI. | TypeScript AI answering engine aimed at being a usable product/UI; deep-research is a bare ~500-LOC agent you fork, not run as a service. |
 | [local-deep-research](local-deep-research.md) | ✅ | Choose local-deep-research when you need a Python local-first encrypted research assistant. | Python, local-first & encrypted, 10+ search backends incl. local docs, runs fully on local LLMs; deep-research is cloud-LLM + Firecrawl by default and far smaller in scope. |
-| [Agent-Reach](agent-reach.md) | ✅ | Choose Agent-Reach when you need social/web platform reading rather than synthesis. | Python CLI focused on *reading* social/web platforms (Twitter/Reddit/YouTube/GitHub) with "zero API fees"; not an iterative-synthesis research agent. |
+| [Agent-Reach](source-workflows/agent-reach.md) | ✅ | Choose Agent-Reach when you need social/web platform reading rather than synthesis. | Python CLI focused on *reading* social/web platforms (Twitter/Reddit/YouTube/GitHub) with "zero API fees"; not an iterative-synthesis research agent. |
 | [GPT Researcher](gpt-researcher.md) | ✅ | Choose GPT Researcher when you need a larger Python feature surface with reports and UI. | Python, much larger feature surface (multiple retrievers, report types, web UI); deep-research trades all that breadth for a readable minimal core. |
 | [Open Deep Research (LangChain / HF)](open-deep-research.md) | ✅ | Choose Open Deep Research when framework-backed reference agents and ecosystem matter more. | Framework-backed reference agents with bigger ecosystems and tooling; heavier to read and adapt than this single-file-ish implementation. |
 

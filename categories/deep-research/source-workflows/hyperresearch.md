@@ -2,7 +2,7 @@
 name: Hyperresearch
 slug: hyperresearch
 repo: https://github.com/jordan-gibbs/hyperresearch
-category: deep-research
+category: source-workflows
 tags: [deep-research, claude-code, research-pipeline, citation-verification, knowledge-vault]
 language: Python
 license: MIT
@@ -73,7 +73,7 @@ health:
 
 A Claude Code deep-research harness: a tier-adaptive 16-step pipeline that turns one prompt into an adversarially-audited report with verified citations, and stores every source it reads in a persistent, searchable vault that future sessions reuse.
 
-![hyperresearch — health radar](../../assets/health/hyperresearch.svg)
+![hyperresearch — health radar](../../../assets/health/hyperresearch.svg)
 
 ## When to use
 
@@ -83,10 +83,10 @@ Pick this over the other deep-research options when the deciding factor is **ver
 
 ## When NOT to use
 
-- **Routine engineering selection questions.** "Is this library maintained / A vs B for my scale" needs 10–20 sources and half an hour, not a 16-step pipeline — the citation-audit apparatus is overkill. Use a light manual pass (repo metadata + issue sampling) or [GPT Researcher](gpt-researcher.md) for a cheaper generic agent.
-- **You're not on Claude Code.** The whole pipeline activates through Claude Code's Skill/subagent machinery; there is no standalone agent runtime, and the README explicitly invites a Codex port via PR — i.e. Codex support does not exist today. For any-LLM or other-harness research use [GPT Researcher](gpt-researcher.md) (framework) or [Local Deep Research](local-deep-research.md) (self-hosted) instead.
+- **Routine engineering selection questions.** "Is this library maintained / A vs B for my scale" needs 10–20 sources and half an hour, not a 16-step pipeline — the citation-audit apparatus is overkill. Use a light manual pass (repo metadata + issue sampling) or [GPT Researcher](../gpt-researcher.md) for a cheaper generic agent.
+- **You're not on Claude Code.** The whole pipeline activates through Claude Code's Skill/subagent machinery; there is no standalone agent runtime, and the README explicitly invites a Codex port via PR — i.e. Codex support does not exist today. For any-LLM or other-harness research use [GPT Researcher](../gpt-researcher.md) (framework) or [Local Deep Research](../local-deep-research.md) (self-hosted) instead.
 - **Tight token or time budget.** Even the `light` tier is ~30–40 minutes; `full` runs 1.5–2.5 h and `premier` gear 3–5 h with 100–130+ sources, all billed to your Claude usage (a past token-overconsumption bug, #83, was fixed but the design is inherently heavy). For a fast cited answer, a SaaS deep-research product (OpenAI / Gemini Deep Research, 未收录) is one click.
-- **Queries must stay fully on your own infrastructure.** It fetches the live web and runs on Anthropic models through Claude Code. For fully-local inference and queries that never leave your machine, use [Local Deep Research](local-deep-research.md).
+- **Queries must stay fully on your own infrastructure.** It fetches the live web and runs on Anthropic models through Claude Code. For fully-local inference and queries that never leave your machine, use [Local Deep Research](../local-deep-research.md).
 - **You're choosing it because it "leads DeepResearch-Bench."** That claim does not survive contact with the source: hyperresearch does **not appear on the official leaderboard** (both `data/` and `data_gpt55/` CSVs of the muset-ai HF space checked 2026-09-17), and its own README footnote calls it a "forward-looking projection from a stratified pilot." Treat it as marketing until an official submission appears.
 - **You need stable interfaces today.** Pre-1.0 with fast churn — three releases landed on 2026-09-11 alone, and open issues document contradictory prompt contracts and duplicated config constants (#101/#102). Pin a version and re-read the docs after upgrades.
 
@@ -94,10 +94,10 @@ Pick this over the other deep-research options when the deciding factor is **ver
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [GPT Researcher](gpt-researcher.md) | ✅ | Pick GPT Researcher when you need an LLM-agnostic research framework to embed in your own stack; pick Hyperresearch when you're already in Claude Code and want the strongest built-in citation auditing. | GPT Researcher is provider-agnostic and integrable but its output verification is lighter; Hyperresearch is Claude-Code-locked with a heavier adversarial chain. |
-| [Local Deep Research](local-deep-research.md) | ✅ | Pick Local Deep Research when queries or documents must stay on your own machine with local models; pick Hyperresearch when report rigor matters more than locality. | Local Deep Research trades cloud-model quality for privacy and zero API dependency; Hyperresearch spends Anthropic tokens for a deeper critic/cite-check pipeline. |
-| [Vane](vane.md) | ✅ | Pick Vane when you want a self-hosted Perplexity-style cited answer engine over your own SearxNG for everyday questions; pick Hyperresearch for occasional high-stakes reports, not daily lookup. | Vane is an always-on answer service with modest per-query depth; Hyperresearch is a batch report factory with 0.5–8 h runs. |
-| [deep-research](deep-research.md) | ✅ | Pick the ~500-LOC reference implementation when you want to fork and understand a minimal agent loop; pick Hyperresearch when you want a finished, governed pipeline instead of a starting point. | The reference repo is readable and hackable but shallow; Hyperresearch is production-shaped but much harder to modify safely. |
+| [GPT Researcher](../gpt-researcher.md) | ✅ | Pick GPT Researcher when you need an LLM-agnostic research framework to embed in your own stack; pick Hyperresearch when you're already in Claude Code and want the strongest built-in citation auditing. | GPT Researcher is provider-agnostic and integrable but its output verification is lighter; Hyperresearch is Claude-Code-locked with a heavier adversarial chain. |
+| [Local Deep Research](../local-deep-research.md) | ✅ | Pick Local Deep Research when queries or documents must stay on your own machine with local models; pick Hyperresearch when report rigor matters more than locality. | Local Deep Research trades cloud-model quality for privacy and zero API dependency; Hyperresearch spends Anthropic tokens for a deeper critic/cite-check pipeline. |
+| [Vane](../vane.md) | ✅ | Pick Vane when you want a self-hosted Perplexity-style cited answer engine over your own SearxNG for everyday questions; pick Hyperresearch for occasional high-stakes reports, not daily lookup. | Vane is an always-on answer service with modest per-query depth; Hyperresearch is a batch report factory with 0.5–8 h runs. |
+| [deep-research](../deep-research.md) | ✅ | Pick the ~500-LOC reference implementation when you want to fork and understand a minimal agent loop; pick Hyperresearch when you want a finished, governed pipeline instead of a starting point. | The reference repo is readable and hackable but shallow; Hyperresearch is production-shaped but much harder to modify safely. |
 | OpenAI / Gemini Deep Research (未收录) | ❌ | Pick the SaaS products when you want a one-click cited report with zero setup and predictable per-report pricing; pick Hyperresearch when you need the sources vault, resumable runs, and the audit trail on your own disk. | SaaS deep research is faster to first report and model-vendor-tuned, but closed, session-scoped, and non-inspectable; Hyperresearch is slower and token-hungry yet transparent and compounding. |
 
 ## Tech stack

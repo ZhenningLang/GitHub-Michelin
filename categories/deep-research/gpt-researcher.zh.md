@@ -115,7 +115,7 @@ health:
 - **你要的是一个带出处的快速回答，而不是报告。** 想要 Perplexity 式的“问一句、得到一段带来源的话”，[Vane](vane.zh.md) 更轻；GPT Researcher 的报告流水线每个问题要花更多调用和分钟数。
 - **你要的是多视角、类似维基百科的长篇条目。** [STORM](storm.zh.md) 先模拟不同视角之间的对话来生成大纲；更看重文章结构而不是速度时选它。
 - **你想要一份能读完、能 fork 的小代码库。** 这个仓库是完整产品（后端、两套前端、多智能体变体、MCP、Terraform）。想学会这个模式或自己搭，[deep-research](deep-research.zh.md) 只有约 500 行 TypeScript。
-- **你需要逐条核验报告里的论断，而不只是附上引用。** GPT Researcher 靠汇总大量来源、保留引用来减少错误，并不会把每条论断回到原文核对。对引用必须核实的高风险工作，[Hyperresearch](hyperresearch.zh.md) 有一条对抗式的引用核查流水线（只能在 Claude Code 里用）。
+- **你需要逐条核验报告里的论断，而不只是附上引用。** GPT Researcher 靠汇总大量来源、保留引用来减少错误，并不会把每条论断回到原文核对。对引用必须核实的高风险工作，[Hyperresearch](source-workflows/hyperresearch.zh.md) 有一条对抗式的引用核查流水线（只能在 Claude Code 里用）。
 - **你希望默认就不偏向任何搜索服务商。** 默认检索器是 Tavily，而项目作者本人就在做 Tavily；默认的“智能”过滤器也是第三方托管模型。两者都能换（`RETRIEVER=duckduckgo` 或 `searx`，`CONTEXT_FILTER=keyword`），但如果你介意别人替你选的默认值，就显式设置，或者改选 [Local Deep Research](local-deep-research.zh.md)。
 
 ## 横向对比

@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1387
+- Named-but-unindexed alternatives: 1393
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -33,6 +33,7 @@ shape and are deliberately excluded here.
 | [12306-skill](https://github.com/Joooook/12306-skill) | `categories/travel-planning/12306-mcp.md` |
 | [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client) | `categories/networking/amneziawg-installer.md` |
 | [angristan/wireguard-install](https://github.com/angristan/wireguard-install) | `categories/networking/amneziawg-installer.md` |
+| [Apache ECharts](https://github.com/apache/echarts) | `categories/data-visualization/flint-chart.md` |
 | [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox) | `categories/knowledge-base/hister.md` |
 | [Awesome Quant](https://github.com/wilsonfreitas/awesome-quant) | `categories/investment-finance/awesome-deep-trading.md` |
 | [Backtesting.py](https://github.com/kernc/backtesting.py) | `categories/investment-finance/backtrader.md` |
@@ -51,4 +52,3 @@ shape and are deliberately excluded here.
 | [Clash Nyanpasu](https://github.com/libnyanpasu/clash-nyanpasu) | `categories/dev-utilities/ops-infra/clash-verge-rev.md` |
 | [cloudflared](https://github.com/cloudflare/cloudflared) | `categories/networking/opentunnel.md` |
 | [CoderGamester/mcp-unity](https://github.com/CoderGamester/mcp-unity) | `categories/agent-skills/engineering/awesome-gamedev-agent-skills.md` |
-| [Coding-Solo/godot-mcp](https://github.com/Coding-Solo/godot-mcp) | `categories/agent-skills/engineering/awesome-gamedev-agent-skills.md` |

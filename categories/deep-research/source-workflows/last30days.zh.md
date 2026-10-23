@@ -2,7 +2,7 @@
 name: last30days
 slug: last30days
 repo: https://github.com/mvanhorn/last30days-skill
-category: deep-research
+category: source-workflows
 tags: [deep-research, social-listening, agent-skill, claude-code, reddit, twitter, youtube, hackernews, polymarket, recency, citations]
 language: Python
 license: MIT
@@ -77,7 +77,7 @@ health:
 
 你问 agent 大家怎么看某个产品、某个人或某条新闻，它递回来一篇去年的厂商博客和一份 2023 年的 LinkedIn 简介——真正的讨论在这周的 Reddit 评论、X 帖子和 YouTube 视频里，普通网页搜索几乎够不着。last30days 是一个 agent skill：并行搜这些社区来源最近 30 天的内容，按点赞、投票和预测市场里押上的真钱排序，再让你的 agent 写出一份带引用的简报。
 
-![last30days — 健康度雷达](../../assets/health/last30days.zh.svg)
+![last30days — 健康度雷达](../../../assets/health/last30days.zh.svg)
 
 ## 何时使用
 
@@ -89,7 +89,7 @@ health:
 
 项目由互相配合的两半组成。`SKILL.md` 是一份很长的指令契约，由你的 agent 读：它让 agent 跑首次安装向导，让 agent 充当**规划器**（把你的主题拆成搜索查询，并列出值得查的账号、子版块和仓库），并规定写最终简报时必须遵守的规则。Python 引擎（`scripts/last30days.py`，只用标准库）做 agent 靠自带工具做不了的机械活：并行调用各来源的 API、公开订阅源或抓取器，按相关度、新鲜度和互动量给每条内容打分，把不同搜索里抓到的同一条内容合并，再把几个平台上讲的同一件事归成一簇。最后由 agent 把引擎排好序的证据写成简报。它替你做的：找对社区、抓取、打分、去重、标注出处。你要做的：安装，回答安装向导的问题（包括是否允许它读你浏览器里的 X 登录），为想用的付费来源配好 API key，然后输入主题。像一位通宵读完所有论坛的通讯社编辑，早上递给你一页纸——只不过他排新闻的依据是多少读者有反应，而不是编辑部觉得什么重要。
 
-![last30days — 主干用户故事](../../assets/flow/last30days.zh.svg)
+![last30days — 主干用户故事](../../../assets/flow/last30days.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/last30days.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -109,12 +109,12 @@ health:
 
 ## 何时不用
 
-- **答案在论文、文档里，或者比一个月更早。** 整条流水线都限定在最近 30 天（`--as-of` 参数只能平移这个窗口，不能拉宽），并按社交互动排序，所以一篇 2023 年的设计论文或一篇被广泛引用的综述，会输给一个爆火的帖子。要基于文献的报告，用 [GPT Researcher](gpt-researcher.zh.md) 或 [STORM](storm.zh.md)；要在 Claude Code 里产出引用逐条核验的报告，用 [Hyperresearch](hyperresearch.zh.md)。
+- **答案在论文、文档里，或者比一个月更早。** 整条流水线都限定在最近 30 天（`--as-of` 参数只能平移这个窗口，不能拉宽），并按社交互动排序，所以一篇 2023 年的设计论文或一篇被广泛引用的综述，会输给一个爆火的帖子。要基于文献的报告，用 [GPT Researcher](../gpt-researcher.zh.md) 或 [STORM](../storm.zh.md)；要在 Claude Code 里产出引用逐条核验的报告，用 [Hyperresearch](hyperresearch.zh.md)。
 - **你的 agent 只需要读某一个平台，不需要排好序的简报。** 如果任务是在你自己的流程里“抓这个 YouTube 字幕”或“在 X 上搜这个账号”，last30days 的规划、打分和综合契约都是多余的开销。[Agent-Reach](agent-reach.zh.md) 给 agent 装上按平台划分的抓取工具，agent 直接调用，每个平台还有备用后端。
 - **上下文或 token 预算紧。** v3.25.0 的 `SKILL.md` 有 258,132 字节（2,424 行），而 skill 正文每次调用都会整份加载；issue #956 在文件还是 224 KB 时就测得每次约 5.6 万 token，之后文件又变大了。把它拆成按需加载的参考文件的提议，截至 2026-09-21 仍在等维护者拍板。用小上下文模型或按量计费的 API 时，改为在你自己的脚本里无界面地跑引擎（`python3 skills/last30days/scripts/last30days.py "topic" --emit=json`），或者用 [Agent-Reach](agent-reach.zh.md)，它的工具调用不带这么大的提示词。
 - **你受平台条款或雇主合规要求约束。** 免费路径会抓取 Reddit（RSS、新版 Reddit 的 HTML 页面，以及 arctic-shift 存档），用你自己浏览器的登录 cookie 加上随包附带的非官方 Bird 客户端读 X，并把 TikTok／Instagram／LinkedIn 交给商业抓取 API ScrapeCreators。README 和 CONFIGURATION 里都没有讨论平台条款或账号风险 [推断]。用工作账号时，钉死有授权的 X 路径（`X_BEARER_TOKEN` 加 `LAST30DAYS_X_BACKEND=xapi`，没有全量存档权限时只能覆盖约最近一周），关掉抓取类来源——或者改用有授权的舆情监测产品。
-- **这台机器上有不能冒险的凭据。** 安装流程可以解密浏览器 cookie（Chromium 系、Firefox、Safari），也会读 macOS 钥匙串或 `pass(1)` 里的条目。一份关于常驻凭据访问、cookie 解密和未披露的 LLM 数据共享的协调披露（#663，2026-06-23）在 2026-09-22 仍标着“hold-captain-security”；它点名的那个 SessionStart hook 已经不在代码树里了。在管控严格的机器上，拒绝 cookie 那一步，或者用 Claude Desktop 的 MCP 包（默认禁止读浏览器 cookie）——或者用 [Local Deep Research](local-deep-research.zh.md) 做只留在本机的研究。
-- **查询内容不能离开本机。** 每个主题都会发给 Reddit、X、YouTube、搜索后端、你启用的所有付费 API，以及宿主模型。要基于本地模型和你自己文档的私密研究，用 [Local Deep Research](local-deep-research.zh.md)。
+- **这台机器上有不能冒险的凭据。** 安装流程可以解密浏览器 cookie（Chromium 系、Firefox、Safari），也会读 macOS 钥匙串或 `pass(1)` 里的条目。一份关于常驻凭据访问、cookie 解密和未披露的 LLM 数据共享的协调披露（#663，2026-06-23）在 2026-09-22 仍标着“hold-captain-security”；它点名的那个 SessionStart hook 已经不在代码树里了。在管控严格的机器上，拒绝 cookie 那一步，或者用 Claude Desktop 的 MCP 包（默认禁止读浏览器 cookie）——或者用 [Local Deep Research](../local-deep-research.zh.md) 做只留在本机的研究。
+- **查询内容不能离开本机。** 每个主题都会发给 Reddit、X、YouTube、搜索后端、你启用的所有付费 API，以及宿主模型。要基于本地模型和你自己文档的私密研究，用 [Local Deep Research](../local-deep-research.zh.md)。
 - **你在 Windows 上。** Claude Desktop 的 `.mcpb` 包只出 macOS 和 Linux 版（README 写着“Windows support is deferred”），Windows 上用浏览器 cookie 登录 X 只支持 Firefox，未关闭的 issue #110 和 #823 报告了子进程超时清理失败、Node 孤儿进程吃光内存。用 WSL，或者用 [Agent-Reach](agent-reach.zh.md) 做平台抓取。
 - **你想在它的输出上搭产品。** 面向用户的契约是一份几乎每周都在改的散文提示词（八个月 46 个版本），上游平台一变来源就坏（Reddit JSON API 停用、yt-dlp 被反机器人拦截、#1020 里 Instagram 搜索一律返回空）。真要集成，就用有版本号的 `--emit=json` agent 输出格式，钉住一个版本，并设置 `LAST30DAYS_STRICT_EXIT=1`，让来源降级的运行以非零码退出，而不是悄悄返回一份残缺的简报。
 
@@ -123,7 +123,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Agent-Reach](agent-reach.zh.md) | ✅ | agent 需要在你自己设计的流程里直接访问网页和社交平台，选 Agent-Reach；想要别人替你做好的、跨平台排好序的“大家在说什么”简报，选 last30days。 | Agent-Reach：薄薄一层工具，每个平台有备用后端，没有大提示词，但不打分、不聚类、不综合。last30days：按互动加权融合并直接出简报，但每次调用要带约 258 KB 的 skill 提示词，输出契约也很强势。 |
-| [GPT Researcher](gpt-researcher.zh.md) | ✅ | 要一个不绑模型、可嵌入的 agent，从网页和文档写长报告，选 GPT Researcher；问题是“这个月社区什么反应”而不是既定知识，选 last30days。 | GPT Researcher：可以挂在 API 后面托管的框架，不限时间范围，但 Reddit 评论和 X 覆盖弱。last30days：社交和预测市场信号强，窗口 30 天，以 skill 形式跑在 agent 宿主里。 |
+| [GPT Researcher](../gpt-researcher.zh.md) | ✅ | 要一个不绑模型、可嵌入的 agent，从网页和文档写长报告，选 GPT Researcher；问题是“这个月社区什么反应”而不是既定知识，选 last30days。 | GPT Researcher：可以挂在 API 后面托管的框架，不限时间范围，但 Reddit 评论和 X 覆盖弱。last30days：社交和预测市场信号强，窗口 30 天，以 skill 形式跑在 agent 宿主里。 |
 | [Hyperresearch](hyperresearch.zh.md) | ✅ | 在 Claude Code 里，要一份引用必须逐条核验的高风险报告，选 Hyperresearch；要一次当天就能拿来行动的快速摸底，选 last30days。 | Hyperresearch：对抗式评审、引用核验、来源库，每轮 0.5–8 小时且 token 消耗大。last30days：每轮几分钟、社交信息深，但没有逐条引用审计。 |
 | MediaCrawler | 未收录 | 需要从小红书、抖音、快手、B 站、微博、贴吧、知乎批量拿原始帖子和评论自己分析，且用途非商业，选 MediaCrawler；面向英文平台、要一份综合好的简报，选 last30days。 | MediaCrawler（NanmiCoder，约 6.59 万星，2026-09-19 仍有推送）：基于 Playwright 的爬虫，能导出数据，但采用非商业学习许可证，也不排序、不综合。last30days 只能通过本地辅助服务覆盖小红书。本批次（tab-intake）未收录。 |
 | Grok DeepSearch／Perplexity | 非仓库 | 想零配置、也不需要 Reddit 评论和互动数，选托管的答案引擎；想要社区信号、本地存档的简报、并用自己的 key，选 last30days。 | 托管服务：一键可用、由厂商调优，但闭源，只能覆盖厂商谈下接入的平台（README 的例子：ChatGPT 能搜 Reddit，搜不了 X 和 TikTok），结果也不落到你的磁盘上。last30days：接入要你自己拼，但输出归你。它们是闭源服务，不在本索引收录范围内。 |

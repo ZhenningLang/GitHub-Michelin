@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Harness-RSI", "zh": "Harness-RSI"},
+  "steps": [
+    {"lane": "you", "en": "Open the reading guide with a concrete evaluation question", "zh": "带着具体评价问题打开阅读指南"},
+    {"lane": "them", "en": "Group methods by update target and expose searchable evidence", "zh": "按修改对象分类，并提供可搜索证据"},
+    {"lane": "you", "en": "Choose a method and open its primary comparison", "zh": "选择方法并打开其主要比较"},
+    {"lane": "them", "en": "Show four separate judgments with supporting passages and coverage", "zh": "分开展示四项判定、依据及覆盖范围"},
+    {"lane": "you", "en": "Check the primary report before using its claim in your protocol", "zh": "核对原报告，再将结论用于自己的评价协议"}
+  ],
+  "value": {"en": "A source-linked evaluation map, not an unverified self-improvement promise", "zh": "得到可追溯的评价地图，而非未经验证的自进化承诺"},
+  "sources": [
+    "https://github.com/zgcagi/Harness-RSI/blob/84108dcc15fe393a4bb406ec27228290775d1098/README.md#L23-L29",
+    "https://github.com/zgcagi/Harness-RSI/blob/84108dcc15fe393a4bb406ec27228290775d1098/site/app.js#L112-L192",
+    "https://github.com/zgcagi/Harness-RSI/blob/84108dcc15fe393a4bb406ec27228290775d1098/docs/evidence-criteria.md#L12-L79"
+  ]
+}

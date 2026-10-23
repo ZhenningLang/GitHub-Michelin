@@ -23,7 +23,7 @@
 | **llm-training** | 微调或强化训练 LLM 与多步 agent。 | [→](categories/llm-training/INDEX.zh.md) |
 | **agent-frameworks** | 构建与运行多步 / 多智能体系统——agent 框架与 agent 操作系统。 | [→](categories/agent-frameworks/INDEX.zh.md) |
 | **agent-memory** | 面向 agent、与 LLM 无关的跨会话持久记忆基础设施。 | [→](categories/agent-memory/INDEX.zh.md) |
-| **deep-research** | 迭代式多源研究 agent：搜索、抓取、综合成报告。 | [→](categories/deep-research/INDEX.zh.md) |
+| **deep-research** | 研究引擎与科学工作台；平台访问、原文追溯与引文审查进来源工作流分支。 | [→](categories/deep-research/INDEX.zh.md) |
 | **ai-code-review** | LLM 辅助的代码评审：对 diff 或仓库产出行级问题。 | [→](categories/ai-code-review/INDEX.zh.md) |
 | **rag-retrieval** | 面向 RAG 的文档索引、代码智能图与图数据库。 | [→](categories/rag-retrieval/INDEX.zh.md) |
 | **llm-eval** | 对提示词、agent 与 RAG 做测试、基准与安全红队扫描。 | [→](categories/llm-eval/INDEX.zh.md) |
@@ -39,7 +39,7 @@
 | **ml-research** | 小而自洽的 ML 研究 demo 与参考实现。 | [→](categories/ml-research/INDEX.zh.md) |
 | **agent-skills** | 成体系的 agent 技能、提示词、subagent 人设与 harness 配置合集——按用途领域拆分。 | [→](categories/agent-skills/INDEX.zh.md) |
 | **observability** | 在多数据源的指标/日志/追踪之上做看板、告警与可视化。 | [→](categories/observability/INDEX.zh.md) |
-| **data-visualization** | 在 SQL 数据仓库之上自托管的 BI / 数据探索看板。 | [→](categories/data-visualization/INDEX.zh.md) |
+| **data-visualization** | 把表格数据编译成图表，或在 SQL 仓库之上运行自托管 BI／数据探索看板。 | [→](categories/data-visualization/INDEX.zh.md) |
 | **ocr** | 光学字符识别引擎——图像/扫描件转文本。 | [→](categories/ocr/INDEX.zh.md) |
 | **document-parsing** | 把文档（PDF/DOCX/…）解析成结构化 Markdown/JSON，供 gen-AI 消费。 | [→](categories/document-parsing/INDEX.zh.md) |
 | **office-automation** | 程序化创建、读取、编辑原生 Office 文档（.docx/.xlsx/.pptx）——生成侧，面向脚本与 agent。 | [→](categories/office-automation/INDEX.zh.md) |

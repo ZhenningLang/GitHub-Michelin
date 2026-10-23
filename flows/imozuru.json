@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "imozuru", "zh": "imozuru"},
+  "steps": [
+    {"lane": "you", "en": "Install the Claude Code plugin and supply a public research question", "zh": "安装 Claude Code 插件，提出公开研究问题"},
+    {"lane": "them", "en": "Write required claims and map the field through two search approaches", "zh": "列出必要主张，用两种搜索路径绘制领域地图", "component": {"en": "skill prompt", "zh": "技能提示词"}},
+    {"lane": "them", "en": "Follow sources, save accepted texts, and attach claim locations", "zh": "追索来源，保存合格原文，为主张标注位置", "component": {"en": "agent and Python helpers", "zh": "代理与 Python 脚本"}},
+    {"lane": "them", "en": "Check extract text against saved lines and build a local reading page", "zh": "按已存行号核对摘录，生成本地阅读页", "component": {"en": "report.py", "zh": "report.py"}},
+    {"lane": "you", "en": "Read original passages and decide which claims the evidence supports", "zh": "阅读原文，判断证据支持哪些主张"}
+  ],
+  "value": {"en": "You get a traceable reading trail instead of an unexplained summary", "zh": "拿到可追溯的原文阅读路径，而非无从判断的总结"},
+  "sources": [
+    "https://github.com/MaryCache/imozuru/blob/ecb82c71b611872a0f49e783eda3bec987c80d91/README.en.md#L50-L120",
+    "https://github.com/MaryCache/imozuru/blob/ecb82c71b611872a0f49e783eda3bec987c80d91/skills/imozuru/SKILL.md#L51-L156"
+  ]
+}

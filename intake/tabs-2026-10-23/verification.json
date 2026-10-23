@@ -1,0 +1,91 @@
+{
+  "status": "verified local batch; six proposals retained; publication snapshot before push",
+  "snapshot_at_utc": "2026-10-23T12:37:12.789897+00:00",
+  "counts": {
+    "added": 5,
+    "sync_changed": 0,
+    "sync_fresh": 0,
+    "proposed": 6,
+    "failed": 0,
+    "skipped": 1
+  },
+  "machine_checks": {
+    "gates": "206 category nodes, 963 EN + 963 ZH pages, 0 errors, 1598 warnings.",
+    "scoped_quality": "10 new bilingual pages; No deterministic findings.",
+    "tests": "Ran 483 tests in 21.847s; OK; no skipped"
+  },
+  "page_snapshots": [
+    {
+      "repo": "duoan/TorchCode",
+      "page": "categories/learning-resources/torchcode.md",
+      "sha256": "cdb9a256afb09c0c885086b81bb052a7217679f9304a42fb3a83a715a0dd5f97",
+      "zh_sha256": "af8509cd7f51e2a8e4ee08d4daf75e36cd8fb42af9f38dcf4d05ec203da4fca6"
+    },
+    {
+      "repo": "MaryCache/imozuru",
+      "page": "categories/deep-research/source-workflows/imozuru.md",
+      "sha256": "47349ce73a4b30e33c42bd99cbb16ad1771bdbea2ffd52b46a5ce7439818699f",
+      "zh_sha256": "d920baa0b780a057a3a1efd53f4d87e5949fd0b8f20508c23c176ccbc9dafe3b"
+    },
+    {
+      "repo": "microsoft/flint-chart",
+      "page": "categories/data-visualization/flint-chart.md",
+      "sha256": "7e0e8f311e444f288bb510cd2a55a6dc6543614aa141a918bcd744c4dd7402cd",
+      "zh_sha256": "aeceb53ee44dd80eff0ee8f9e0869213b0a1e1991d288bd413a5058fc703974e"
+    },
+    {
+      "repo": "NVlabs/Sana",
+      "page": "categories/ml-research/vision-and-multimodal/sana.md",
+      "sha256": "c8772b7b496017fef5c8328c746c586e58a19d873d1abaf31309e82f035d9665",
+      "zh_sha256": "cc1433550d3fd88e759330fd56c1326062bf666e175d98735a701a8b7a9ffcb5"
+    },
+    {
+      "repo": "zgcagi/Harness-RSI",
+      "page": "categories/learning-resources/harness-rsi.md",
+      "sha256": "45d2e1bd987dcf0a0c7955d411fc440f91359ccd4742b931f2af1ee7666395ac",
+      "zh_sha256": "a939545bce7fa510ae70e70b22563a899abdbb62746ada473b0e11c899356361"
+    }
+  ],
+  "log_sha256": {
+    "gates": "57372cf776c3dd1ee0735fc6a152db9e6af5161bad8d8d534a5144f4ee0a1884",
+    "scoped": "6740591b3c21cb58c941a550b1c2a6627589eed8fd8a002fa8334d87e711ecb4",
+    "tests": "6d956c219cde279e35f46dd5eb67e7e060632e3cd2ce1e84cc7f3d852615d3f4"
+  },
+  "aggregate": {
+    "total": 127,
+    "indexed": 120,
+    "old_profiles_preserved": 120,
+    "categories": 16,
+    "source_sha256": "a2f4f47f3bdb8c2f8c83293bece59ecbbf249871107e891bedb97f6f9a58a57c",
+    "html_sha256": "c1eb9135c83d58a03c86e95a51df1e239027ef74077e7290bc7e97bfe765b6bf",
+    "local_links": 292,
+    "anchors": 148,
+    "companion": "0 error(s), 0 warning(s)"
+  },
+  "tabs": "tabs-audit.json",
+  "browser": {
+    "desktop": "1280x900",
+    "mobile": "390x844",
+    "overflow": 0,
+    "clipped": 0,
+    "native_anchors_and_keyboard": true,
+    "structure": "same 16 reading classes; profile additions only",
+    "cleanup": "isolated browser and both task-owned localhost servers closed"
+  },
+  "Inner-loop evidence": "gates/scoped quality/tool tests rerun at this snapshot",
+  "Acceptance evidence": "real Chrome terminal ledger, closed/retained tabs, source-linked pages, independent content review and actual Chromium rendering",
+  "Holdout / unseen evidence": "No model outcome experiment; independent source cross-check and real tab capture substitute for content and operational acceptance",
+  "Holdout 来源类别": "真实捕获：公开固定源码、真实Chrome标签、实际机器输出和截图",
+  "预期值来源": "需求原文、仓库收录契约及固定来源",
+  "本次改动相对冻结点的位置": "Content and source-workflow routing only; no runtime/gate/schema/personal-harness changes",
+  "Known gaps": [
+    "Six proposals remain unresolved; no rights clearance inferred",
+    "No upstream installation/runtime or measured model/harness benefits",
+    "Chromium responsive widths are not physical-phone or cross-browser tests"
+  ],
+  "remote": {
+    "branch": "feat/intake-tabs-2026-10-23",
+    "authorization": "explicitly granted in current session",
+    "snapshot_phase": "pre-push local verification; use GitHub for later live status"
+  }
+}

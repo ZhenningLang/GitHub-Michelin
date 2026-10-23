@@ -12,6 +12,7 @@
 | **PyTorch-GAN** | Use it when you want to read classic 2014–2018 GAN papers as one self-contained PyTorch script each (DCGAN, CycleGAN, WGAN-GP, pix2pix) — but the author calls it stale, nothing has landed since 2021, and diffusion has replaced GANs for real generation. | D (3/6) | [→](pytorch-gan.md) |
 | **Depth Anything V2** | Use it when you need a dense depth map from a single image — 3D, bokeh, AR occlusion, controllable generation — with off-the-shelf weights — but only Small is Apache-2.0 (Base/Large/Giant are non-commercial CC-BY-NC-4.0) and default output is relative, not metric. | C (4/6) | [→](depth-anything-v2.md) |
 | **Open-Sora** | Use it when you must *train* or study a video diffusion model from a fully published recipe (code, data pipeline, cost report) on datacenter GPUs — dormant since 2025-03, and its weight stack pulls in FLUX.1-dev non-commercial and Tencent Hunyuan licenses. | B (4/6) | [→](open-sora.md) |
+| **Sana** | Choose compact image-model research with 32-fold spatial compression, or study the separate hybrid-attention Video 2.0 family; GPU budgets and Gemma/LTX licenses vary by checkpoint. | B (5/6) | [→](sana.md) |
 
 ## Comparison matrix
 
@@ -22,6 +23,7 @@
 | [PyTorch-GAN](pytorch-gan.md) | ✅ | D (3/6) | Buys dozens of compact, side-by-side architectures to learn from; costs any library value — no package, no stable API, no modern GANs, and layer configs may differ from the papers. |
 | [Depth Anything V2](depth-anything-v2.md) | ✅ | C (4/6) | Buys strong monocular depth in a few lines of PyTorch; costs a frozen research release and license-gated quality — the larger, better checkpoints are off-limits for commercial products. |
 | [Open-Sora](open-sora.md) | ✅ | B (4/6) | Open 11B text/image-to-video model plus its full training recipe; research artifact, not a maintained product — dormant since 2025-03, ~50 GB VRAM per GPU, and the Apache-2.0 badge does not cover the FLUX.1-dev / Hunyuan VAE weights it loads. |
+| [Sana](sana.md) | ✅ | B (5/6) | Buys active image/video training and inference implementations; costs a CUDA environment and component-specific licenses, with no family-wide memory or latency guarantee. |
 
 ## What belongs here
 

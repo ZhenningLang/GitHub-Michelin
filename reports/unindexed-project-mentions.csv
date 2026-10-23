@@ -10,6 +10,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [12306-skill](https://github.com/Joooook/12306-skill),categories/travel-planning/12306-mcp.md,,no
 [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client),categories/networking/amneziawg-installer.md,,no
 [angristan/wireguard-install](https://github.com/angristan/wireguard-install),categories/networking/amneziawg-installer.md,,no
+[Apache ECharts](https://github.com/apache/echarts),categories/data-visualization/flint-chart.md,,no
 [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox),categories/knowledge-base/hister.md,,no
 [Awesome Quant](https://github.com/wilsonfreitas/awesome-quant),categories/investment-finance/awesome-deep-trading.md,,no
 [Backtesting.py](https://github.com/kernc/backtesting.py),categories/investment-finance/backtrader.md,,no
@@ -34,6 +35,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Cutter](https://github.com/rizinorg/cutter),categories/dev-utilities/data-tools/ghidra.md,,no
 [daed](https://github.com/daeuniverse/daed),categories/networking/dae.md,,no
 [darktable](https://github.com/darktable-org/darktable),categories/photo-editing/lightcraft.md,,no
+[Dive into Deep Learning](https://github.com/d2l-ai/d2l-en),categories/learning-resources/torchcode.md,,no
 [doocs/md](https://github.com/doocs/md),categories/agent-skills/ai-writing/content-production/gzh-design-skill.md,,no
 [Dragonfly](https://github.com/dragonflydb/dragonfly),categories/databases/database-engines/kividb.md,,no
 [Elixir](https://github.com/elixir-lang/elixir),categories/programming-languages/unison.md,,no
@@ -89,6 +91,8 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Passbolt](https://github.com/passbolt/passbolt_api),categories/dev-utilities/ops-infra/vaultwarden.md,,no
 [Patchright](https://github.com/Kaliiiiiiiiii-Vinyzu/patchright),categories/web-automation/agent-browser-tools/playwright-bot-bypass.md,,no
 [Payload](https://github.com/payloadcms/payload),categories/content-management/emdash.md,,no
+[PixArt-Σ](https://github.com/PixArt-alpha/PixArt-sigma),categories/ml-research/vision-and-multimodal/sana.md,,no
+[Plotly.js](https://github.com/plotly/plotly.js),categories/data-visualization/flint-chart.md,,no
 [PocketPal AI](https://github.com/a-ghorbani/pocketpal-ai),categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md,,no
 [Pyodide](https://github.com/pyodide/pyodide),categories/sandboxing/monty.md,,no
 [pyVideoTrans](https://github.com/jianchang512/pyvideotrans),categories/speech/voicestudio.md,,no
@@ -103,6 +107,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [spcfox/amnezia-wg-easy](https://github.com/spcfox/amnezia-wg-easy),categories/networking/amneziawg-installer.md,,no
 [Stats](https://github.com/exelban/stats),categories/observability/mac-performance-monitor.md,,no
 [Sunshine](https://github.com/LizardByte/Sunshine) + [Moonlight](https://github.com/moonlight-stream/moonlight-qt),categories/dev-utilities/ops-infra/rustdesk.md,,no
+[Tensor Puzzles](https://github.com/srush/Tensor-Puzzles),categories/learning-resources/torchcode.md,,no
 [Termux](https://github.com/termux/termux-app) + a CLI agent,categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md,,no
 [TigerVNC](https://github.com/TigerVNC/tigervnc),categories/dev-utilities/ops-infra/rustdesk.md,,no
 [tldraw](https://github.com/tldraw/tldraw),categories/diagramming/excalidraw.md,,no
@@ -114,6 +119,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [v2rayA](https://github.com/v2rayA/v2rayA),categories/networking/dae.md,,no
 [v2rayN](https://github.com/2dust/v2rayN),categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 [vectorbt](https://github.com/polakowo/vectorbt),categories/investment-finance/backtrader.md,,no
+[Vega-Lite](https://github.com/vega/vega-lite),categories/data-visualization/flint-chart.md,,no
 [Video2X](https://github.com/k4yt3x/video2x),categories/media-processing/jasna.md,,no
 [vLLM-Omni](https://github.com/vllm-project/vllm-omni),categories/llm-inference/serving-engines/sglang-omni.md,,no
 [Wan2.2](https://github.com/Wan-Video/Wan2.2),categories/ml-research/vision-and-multimodal/open-sora.md,,no
@@ -491,7 +497,7 @@ eslint-plugin-react-hooks / react,categories/ai-code-review/react-doctor.md,,no
 ESPnet,categories/speech/speechbrain.md,,no
 Ethereum-Faucet,categories/blockchain-dev-infrastructure/INDEX.md,,no
 EVA-CLIP,categories/ml-research/vision-and-multimodal/clip.md,,no
-Exa / Tavily / SearXNG,categories/deep-research/agent-reach.md,,no
+Exa / Tavily / SearXNG,categories/deep-research/source-workflows/agent-reach.md,,no
 Excalibur.js,categories/game-dev/kaplay.md,,no
 exo,categories/llm-inference/local-runtimes/ds4.md,,no
 Fabric,categories/networking/paramiko.md,,no
@@ -803,7 +809,7 @@ mcp-scan (Invariant Labs),categories/llm-eval/ai-infra-guard.md,,no
 mdcat,categories/terminal-ui/terminal-markdown-viewer.md,,no
 mdl (Ruby),categories/markdown-tools/markdownlint.md,,no
 Mechanistic-interpretability circuit tooling (e.g. TransformerLens),categories/ml-research/llm-circuit-finder.md,,no
-MediaCrawler,categories/deep-research/last30days.md,,no
+MediaCrawler,categories/deep-research/source-workflows/last30days.md,,no
 MediaCrawler (NanmiCoder),categories/social-media-management/xiaohongshu-mcp.md,,no
 MediaPipe LLM Inference API (Google),categories/on-device-ml/litert-lm.md,,no
 MediaPipe LLM Inference Studio (Google),categories/on-device-ml/ai-edge-gallery.md,,no
