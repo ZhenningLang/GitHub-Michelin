@@ -1,0 +1,87 @@
+{
+  "status": "pass",
+  "counts": {
+    "proposed": 6,
+    "done": 4,
+    "failed": 1,
+    "skipped": 1
+  },
+  "open_repo_tabs": 8,
+  "done_tabs_remaining": 0,
+  "rows": [
+    {
+      "repo": "breferrari/obsidian-mind",
+      "status": "proposed",
+      "tab_count": 1,
+      "page": null
+    },
+    {
+      "repo": "duoan/TorchCode",
+      "status": "done",
+      "tab_count": 0,
+      "page": "categories/learning-resources/torchcode.md"
+    },
+    {
+      "repo": "dzhng/skills",
+      "status": "proposed",
+      "tab_count": 1,
+      "page": null
+    },
+    {
+      "repo": "JimLiu/baoyu-design",
+      "status": "proposed",
+      "tab_count": 1,
+      "page": null
+    },
+    {
+      "repo": "liandu2024/Open-Box",
+      "status": "proposed",
+      "tab_count": 1,
+      "page": null
+    },
+    {
+      "repo": "MaryCache/imozuru",
+      "status": "failed",
+      "tab_count": 1,
+      "page": null
+    },
+    {
+      "repo": "microsoft/flint-chart",
+      "status": "done",
+      "tab_count": 0,
+      "page": "categories/data-visualization/flint-chart.md"
+    },
+    {
+      "repo": "NVlabs/Sana",
+      "status": "done",
+      "tab_count": 0,
+      "page": "categories/ml-research/vision-and-multimodal/sana.md"
+    },
+    {
+      "repo": "OpenSenseNova/SenseNova-Skills",
+      "status": "proposed",
+      "tab_count": 1,
+      "page": null
+    },
+    {
+      "repo": "private-candidate",
+      "status": "proposed",
+      "tab_count": 1,
+      "page": null
+    },
+    {
+      "repo": "zgcagi/Harness-RSI",
+      "status": "done",
+      "tab_count": 0,
+      "page": "categories/learning-resources/harness-rsi.md"
+    },
+    {
+      "repo": "own-repository",
+      "status": "skipped",
+      "tab_count": 1,
+      "page": null
+    }
+  ],
+  "non_github_tabs": "not closed by this task",
+  "new_scan": "0 pending; every ledger row terminal"
+}

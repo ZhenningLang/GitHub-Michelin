@@ -1,0 +1,94 @@
+{
+  "status": "local intake and original aggregate verified; imozuru blocked; remote authorization pending",
+  "counts": {
+    "added": 4,
+    "sync_changed": 0,
+    "sync_fresh": 0,
+    "proposed": 6,
+    "failed": 1,
+    "skipped": 1
+  },
+  "machine_checks": {
+    "gates": "205 category nodes, 962 EN + 962 ZH pages, 0 errors, 1596 warnings.",
+    "scoped_quality": "8 pages; No deterministic findings.",
+    "tests": "Ran 483 tests in 21.603s; OK; no skipped"
+  },
+  "log_sha256": {
+    "gates": "2734abe17c32b72ac3784ad4afd07235613bf4f4746aaaa1b7c008a3b0dbb947",
+    "scoped": "2db2dc1a69d4a14d3d3546c60ff2ce9714e0218767d78d5d0c1e4a8353fa4f3f",
+    "tests": "c99b78d148358c506acd16afcec158f38e94d2ec199b73d90475e70b700da0f8"
+  },
+  "page_snapshots": [
+    {
+      "repo": "duoan/TorchCode",
+      "page": "categories/learning-resources/torchcode.md",
+      "sha256": "cdb9a256afb09c0c885086b81bb052a7217679f9304a42fb3a83a715a0dd5f97",
+      "zh_sha256": "af8509cd7f51e2a8e4ee08d4daf75e36cd8fb42af9f38dcf4d05ec203da4fca6"
+    },
+    {
+      "repo": "microsoft/flint-chart",
+      "page": "categories/data-visualization/flint-chart.md",
+      "sha256": "7e0e8f311e444f288bb510cd2a55a6dc6543614aa141a918bcd744c4dd7402cd",
+      "zh_sha256": "aeceb53ee44dd80eff0ee8f9e0869213b0a1e1991d288bd413a5058fc703974e"
+    },
+    {
+      "repo": "NVlabs/Sana",
+      "page": "categories/ml-research/vision-and-multimodal/sana.md",
+      "sha256": "c8772b7b496017fef5c8328c746c586e58a19d873d1abaf31309e82f035d9665",
+      "zh_sha256": "cc1433550d3fd88e759330fd56c1326062bf666e175d98735a701a8b7a9ffcb5"
+    },
+    {
+      "repo": "zgcagi/Harness-RSI",
+      "page": "categories/learning-resources/harness-rsi.md",
+      "sha256": "45d2e1bd987dcf0a0c7955d411fc440f91359ccd4742b931f2af1ee7666395ac",
+      "zh_sha256": "a939545bce7fa510ae70e70b22563a899abdbb62746ada473b0e11c899356361"
+    }
+  ],
+  "tab_audit": "tabs-audit.json",
+  "Inner-loop evidence": "make gates, exact-pair quality scans, 483 tool tests rerun this batch",
+  "Acceptance evidence": "real Chrome ledger audit: 12 terminal rows; done tabs 0, retained repo tabs 8; independent source review for 4 new entries",
+  "Holdout / unseen evidence": "No model effect experiment; alternative evidence from independent source cross-check and actual retained/closed tabs",
+  "Holdout 来源类别": "真实捕获：公开固定源码、真实Chrome标签、实际工具输出",
+  "预期值来源": "需求原文、收录契约及上游固定版本",
+  "本次改动相对冻结点的位置": "only content generation and local report integration; no gate/schema/harness changes",
+  "Known gaps": [
+    "imozuru health scoring blocked; draft not integrated and tab retained",
+    "Push approval pending; no PR or merge",
+    "No upstream installation/runtime or measured model/harness benefits",
+    "Responsive Chromium widths are not physical-phone or cross-browser tests"
+  ],
+  "remote": {
+    "branch": "feat/intake-tabs-2026-10-23",
+    "pushed": false,
+    "pr": null,
+    "merged": false
+  },
+  "aggregate": {
+    "total": 127,
+    "indexed": 119,
+    "old_profiles_preserved": 120,
+    "new_profiles": 7,
+    "categories": 16,
+    "source_sha256": "89586621ed076e02e6f25f58dd169c9ab6dbc18a764cce9b2ec9d9f07f5d0c84",
+    "html_sha256": "67b71f62565ca71c30ab051a9aa2485b9ab4abbea6942a34ad4293cae28ee4b5",
+    "local_links": 292,
+    "anchor_pairs": 148,
+    "companion": "0 error(s), 0 warning(s)"
+  },
+  "content_review": {
+    "new_official_entries": 4,
+    "entry_round1_findings": 7,
+    "entry_final_findings": 0,
+    "aggregate_round1_findings": 8,
+    "aggregate_final_findings": 0
+  },
+  "browser": {
+    "desktop": "1280x900",
+    "mobile": "390x844",
+    "overflow": 0,
+    "clipped": 0,
+    "native_anchor_and_keyboard": true,
+    "structure_impact": "same 16 classes; local profile insertions, not redesign",
+    "cleanup": "isolated browser and both localhost servers closed"
+  }
+}
