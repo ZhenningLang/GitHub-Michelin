@@ -1,0 +1,72 @@
+{
+  "status": "verified local content and original aggregate; publication snapshot before push",
+  "scope": "four owner-approved warning-only public information entries, not rights clearance",
+  "counts": {
+    "added": 4,
+    "warning_only": 4,
+    "failed": 0
+  },
+  "machine_checks": {
+    "gates": "206 category nodes, 967 EN + 967 ZH pages, 0 errors, 1604 warnings.",
+    "exact_pair_quality": "8 pages; No deterministic findings.",
+    "tool_tests": "Ran 483 tests in 23.043s; OK; no skipped"
+  },
+  "source_review": {
+    "projects": 4,
+    "bilingual_pages": 8,
+    "remaining_findings": 0,
+    "limits": "Fixed source snapshots and actual implementation paths; not upstream execution or legal certification",
+    "aggregate_remaining_findings": 0,
+    "aggregate_initial_findings": 1
+  },
+  "owner_decision": "owner-decision.md",
+  "rights": "NOASSERTION remains on every new page; root MIT does not establish third-party permission",
+  "approved_actions": {
+    "warning_information_entries": true,
+    "main_report_validation_after_shell_denial": true,
+    "push_feat_warning_intake_2026_10_24": true
+  },
+  "Inner-loop evidence": "actual gates, eight-page scoped scan and 483 tool tests rerun in this batch",
+  "Acceptance evidence": "source-pinned bilingual pages; warning and routing contracts; four independent page commits and four successful matched tab closures",
+  "Holdout / unseen evidence": "No model effect experiment; source cross-check and actual closure outputs substitute for content and operational acceptance",
+  "Holdout 来源类别": "真实捕获：公开源码和本次真实CLI输出",
+  "预期值来源": "用户明确的信息收录决定与索引契约",
+  "本次改动相对冻结点的位置": "content and information status only; no schema, runtime, permission defaults or harness changes",
+  "Known gaps": [
+    "third-party rights and notifications remain unresolved",
+    "no upstream installation/execution or measured harness benefit",
+    "responsive Chromium viewports are not physical-mobile/cross-browser tests"
+  ],
+  "publication": "explicitly authorized feature-branch/PR workflow; this is a pre-push snapshot, consult GitHub for subsequent live state",
+  "snapshot_at_utc": "2026-10-24T13:16:10.176253+00:00",
+  "aggregate": {
+    "status": "pass",
+    "candidates": 127,
+    "indexed": 124,
+    "proposed": 2,
+    "own_skipped": 1,
+    "promoted_warning_entries": 4,
+    "unchanged_profiles": 123,
+    "categories": 16,
+    "local_links": 296,
+    "anchors": 148,
+    "source_sha256": "783b5a7e43affe21f6927c354515d6074bad5372d2155f4d612faa59fc704521",
+    "html_sha256": "46c1333411f1c7da9a9d4b4f3d72b6dadcb449aa5ca398158445a4a93cb0054a",
+    "companion": "0 error(s), 0 warning(s)",
+    "private_identity_in_report": false
+  },
+  "browser": {
+    "desktop": "1280x900",
+    "mobile": "390x844",
+    "overflow": 0,
+    "clipped": 0,
+    "four_warning_profiles": "visible, source and copyright boundaries retained",
+    "native_anchors_and_keyboard": true,
+    "cleanup": "isolated browser and task-owned localhost server closed"
+  },
+  "log_sha256": {
+    "gates": "a89210140ba07fed9be28ba7f31d2afdc6920c5068ff51b5cf71d9627b329da0",
+    "scoped": "c5f0b35f538dfbc24a737a5cd13ddf7cb3ffc55c29f3b58830cdf3a539d62dc0",
+    "tests": "0e7249095e18451aca53900a55fceb228a89e49e289a37500c4e726ef2ba38e7"
+  }
+}
