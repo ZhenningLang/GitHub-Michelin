@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "baoyu-design workflow", "zh": "baoyu-design 流程"},
+  "steps": [
+    {"lane": "you", "en": "After separate rights approval, provide a brief and approved design context", "zh": "另获权利批准后，提供需求与获准使用的设计上下文"},
+    {"lane": "them", "en": "Asks where to save and which design system to bind", "zh": "询问保存位置与要绑定的设计系统"},
+    {"lane": "you", "en": "Choose the project folder and a design system", "zh": "选择项目目录和设计系统"},
+    {"lane": "them", "en": "Copies the system into the project and records its binding", "zh": "把系统副本放进项目，并记录绑定", "component": {"en": "import-design-system.mjs", "zh": "import-design-system.mjs"}},
+    {"lane": "them", "en": "Writes HTML and presents a local browser preview for your review", "zh": "编写 HTML，提供本地浏览器预览供你检查"}
+  ],
+  "value": {"en": "A project-local HTML prototype carries its design context into later sessions", "zh": "HTML 原型随项目携带设计上下文，后续会话可继续读取"},
+  "sources": [
+    "https://github.com/JimLiu/baoyu-design/blob/6530033592bf7fa58bc1a5a2a2ad278da45213a9/README.md#use-it",
+    "https://github.com/JimLiu/baoyu-design/blob/6530033592bf7fa58bc1a5a2a2ad278da45213a9/README.md#design-systems",
+    "https://github.com/JimLiu/baoyu-design/blob/6530033592bf7fa58bc1a5a2a2ad278da45213a9/skills/baoyu-design/agents/import-design-system.mjs#L117-L211"
+  ]
+}

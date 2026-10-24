@@ -7,6 +7,7 @@
 
 | 合集 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **baoyu-design** | 仅作信息收录：项目本地设计系统绑定及 HTML／PPTX／视频流程；提取内容权利未清，不批准安装或再分发。 | B（4/5） | [→](baoyu-design.zh.md) |
 | **archify** | 面向架构、工作流、时序、数据流和生命周期图的 agent skill，输出自包含图表并带主题切换和导出控制。 | B（4/6） | [→](archify.zh.md) |
 | **drawio-skill** | 一个 agent skill：把自然语言、代码、IaC 和接口 schema 变成可编辑的 `.drawio`，并能在源改动后重新同步而不丢手工版式。 | B（4/5） | [→](drawio-skill.zh.md) |
 | **diagram-design** | 出可发表、套你品牌的图的 agent skill：先抓你网站的配色字体，再把 44 种编辑风格的图和图表画成单个 HTML+SVG 文件——代价是没有可编辑的源。 | B（4/5） | [→](diagram-design.zh.md) |
@@ -18,6 +19,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [baoyu-design](baoyu-design.zh.md) | ✅ | B（4/5） | 研究系统副本绑定与浏览器导出编排；根 MIT 不等于 Claude Design 提取内容已获授权。 |
 | [archify](archify.zh.md) | ✅ | B（4/6） | 最适合技术图表；需要 WYSIWYG 编辑时用人工图表编辑器。 |
 | [drawio-skill](drawio-skill.zh.md) | ✅ | B（4/5） | 交付物是可编辑、且要跟着真实源走的 `.drawio` 时最合适；图要保持纯文本用 Mermaid，不能装 draw.io 用 archify。 |
 | [diagram-design](diagram-design.zh.md) | ✅ | B（4/5） | 图要发表、必须匹配品牌时最合适；图放在 git 里常改用 Mermaid，之后还要有人改用 drawio-skill。 |

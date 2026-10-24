@@ -11,6 +11,7 @@
 | **antfu/skills** | Anthony Fu 个人精选、面向 Vue/Vite/Nuxt 栈的 agent skill 集合（其 ESLint/pnpm/Vitest/UnoCSS 偏好 + 生成与 vendored 的框架 skill），通过 skills CLI 安装。 | B（4/5） | [→](antfu-skills.zh.md) |
 | **claude-code-harness** | 一套个人化 Claude Code harness：以插件形式装入受治理的 plan → work → review → release 循环，并附带 Go 原生 doctor CLI 诊断插件缓存与 skill 漂移。 | B（5/6） | [→](claude-code-harness.zh.md) |
 | **Dimillian Skills** | 当你用 OpenAI Codex 做 iOS／macOS 开发、想要现成的 SwiftUI、Swift 并发、模拟器调试和 App Store 发布类 skill 时用它——但它是单作者、只面向 Codex 的快照，2026-03 之后没再更新，而它跟的 Apple beta 变得很快。 | C（4/5） | [→](dimillian-skills.zh.md) |
+| **dzhng/skills** | 用独立账本审查规格留白处的选择；工程模式有参考价值，但导入插画声明仍不完整，仅作带警告的信息收录。 | B（4/5） | [→](dzhng-skills.zh.md) |
 | **gstack** | Garry Tan 的私人 Claude Code harness：54 个 skill——约一半是角色人设（CEO、工程经理、设计师、QA、安全官、发布工程师），另一半是工具命令——外加一个 agent 真正驱动的浏览器，串成一条「规划 → 构建 → 评审 → 发布 → 复盘」冲刺流程。 | B（4/5） | [→](gstack.zh.md) |
 | **andrej-karpathy-skills** | 当你的 Claude Code 或 Cursor agent 爱过度设计、顺手改无关文件、没验证就说完成，而你想用一份约 65 行的 `CLAUDE.md` 基础层压住这些毛病时用它——但它只是建议性文字，且是第三方提炼，并非 Karpathy 本人所写。 | C（3/5） | [→](karpathy-skills.zh.md) |
 | **PUA** | 一个高能动性人设 skill 包，用职场 PUA/PIP 话术逼 coding agent 穷尽调试路径。 | C（4/6） | [→](pua.zh.md) |
@@ -26,6 +27,7 @@
 | [antfu/skills](antfu-skills.zh.md) | ✅ | B（4/5） | 当你的技术栈匹配 Anthony Fu 的 Vue/Vite/Nuxt 约定时最合适。 |
 | [claude-code-harness](claude-code-harness.zh.md) | ✅ | B（5/6） | 需要带 doctor 工具的受治理 Claude Code harness 时最合适。 |
 | [Dimillian Skills](dimillian-skills.zh.md) | ✅ | C（4/5） | 换来通用 skill 包少有的 Swift／SwiftUI 深度；代价是只能装进 Codex，且 skill 在作者两次更新之间就可能过时。 |
+| [dzhng/skills](dzhng-skills.zh.md) | ✅ | B（4/5） | 参考决策披露和规格重拆；模型账本不是执行证明，根 MIT 也不替复制的第三方材料核清权利。 |
 | [gstack](gstack.zh.md) | ✅ | B（4/5） | 想要某位操作者的整套冲刺闭环（角色技能加真浏览器驱动）而不是自己拼零件时最合适。 |
 | [andrej-karpathy-skills](karpathy-skills.zh.md) | ✅ | C（3/5） | 换来一份零配置、即插即用的小规则文件；代价是毫无强制力，并与你已有的全局 agent 规则高度重叠。 |
 | [PUA](pua.zh.md) | ✅ | C（4/6） | 适合刻意使用高压人设 prompt，而不是中性流程政策。 |

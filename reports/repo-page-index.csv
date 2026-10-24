@@ -96,6 +96,7 @@ https://github.com/IvanMurzak/Unity-MCP,unity-mcp,game-dev,categories/game-dev/u
 https://github.com/JCodesMore/ai-website-cloner-template,ai-website-cloner-template,design-to-code,categories/agent-skills/design/design-to-code/ai-website-cloner-template.md
 https://github.com/JaidedAI/EasyOCR,easyocr,ocr,categories/ocr/easyocr.md
 https://github.com/JetBrains/ideavim,ideavim,code-editors,categories/dev-utilities/editors-and-runtimes/code-editors/ideavim.md
+https://github.com/JimLiu/baoyu-design,baoyu-design,visual-artifacts,categories/agent-skills/design/visual-artifacts/baoyu-design.md
 https://github.com/JimLiu/baoyu-skills,baoyu-skills,content-production,categories/agent-skills/ai-writing/content-production/baoyu-skills.md
 https://github.com/JonB32/pure-agentic,pure-agentic,spec-driven-development,categories/agent-dev-methodology/spec-driven-development/pure-agentic.md
 https://github.com/Joooook/12306-mcp,12306-mcp,travel-planning,categories/travel-planning/12306-mcp.md
@@ -150,6 +151,7 @@ https://github.com/OpenHands/OpenHands,openhands,orchestration-and-review,catego
 https://github.com/OpenMinis/OpenMinis,openminis,personal-assistants,categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md
 https://github.com/OpenMinis/iCTRL,ictrl,mobile-automation,categories/mobile-automation/ictrl.md
 https://github.com/OpenPipe/ART,art,llm-training,categories/llm-training/art.md
+https://github.com/OpenSenseNova/SenseNova-Skills,sensenova-skills,agent-vendors,categories/agent-skills/vendor-collections/agent-vendors/sensenova-skills.md
 https://github.com/OrchestratorInc/agent-orchestrator,agent-orchestrator,agent-cockpits,categories/agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.md
 https://github.com/OthmanAdi/planning-with-files,planning-with-files,work-state,categories/agent-tooling/work-state/planning-with-files.md
 https://github.com/Owl-Listener/designer-skills,designer-skills,ui-taste,categories/agent-skills/design/ui-taste/designer-skills.md
@@ -339,6 +341,7 @@ https://github.com/bmad-code-org/BMAD-METHOD,bmad-method,spec-driven-development
 https://github.com/bowenliang123/dsh-context,dsh-context,session-history,categories/agent-tooling/session-history/dsh-context.md
 https://github.com/bpmn-io/bpmn-js,bpmn-js,diagramming,categories/diagramming/bpmn-js.md
 https://github.com/bradautomates/claude-video,claude-video,speech-and-subtitles,categories/media-processing/video-audio/speech-and-subtitles/claude-video.md
+https://github.com/breferrari/obsidian-mind,obsidian-mind,coding-agent-memory,categories/agent-memory/coding-agent-memory/obsidian-mind.md
 https://github.com/brightdata/skills,brightdata-skills,product-vendors,categories/agent-skills/vendor-collections/product-vendors/brightdata-skills.md
 https://github.com/browser-act/skills,browser-act-skills,engineering,categories/agent-skills/engineering/browser-act-skills.md
 https://github.com/browser-use/browser-harness,browser-harness,agent-browser-tools,categories/web-automation/agent-browser-tools/browser-harness.md
@@ -424,6 +427,7 @@ https://github.com/duckdb/duckdb,duckdb,database-engines,categories/databases/da
 https://github.com/duoan/TorchCode,torchcode,learning-resources,categories/learning-resources/torchcode.md
 https://github.com/dzhng/deep-research,deep-research,deep-research,categories/deep-research/deep-research.md
 https://github.com/dzhng/jevgrep,jevgrep,code-intelligence,categories/rag-retrieval/code-intelligence/jevgrep.md
+https://github.com/dzhng/skills,dzhng-skills,engineering-workflows,categories/agent-skills/personal-collections/engineering-workflows/dzhng-skills.md
 https://github.com/e2b-dev/E2B,e2b,sandboxing,categories/sandboxing/e2b.md
 https://github.com/earendil-works/pi,pi,independent-runtimes,categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/pi.md
 https://github.com/earthtojake/text-to-cad,text-to-cad,cad,categories/cad/text-to-cad.md

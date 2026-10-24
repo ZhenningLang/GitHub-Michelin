@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Obsidian Mind** | Study vault-first linked work notes with scoped recall and briefing budgets; information only while copied-skill notices remain unresolved. | B (6/6) | [→](obsidian-mind.md) |
 | **Claude Subconscious** | Use it when you want a background Letta agent to give Claude Code cross-session memory via hooks. | C (5/6) | [→](claude-subconscious.md) |
 | **claude-mem** | Use it when your coding agent loses context across sessions and you want local hook/MCP-captured memory compressed and injected back in. | B (6/6) | [→](claude-mem.md) |
 | **ByteRover CLI** | Use it only as a pattern reference or while migrating off `brv` — but the repo was archived in 2026 with known hang bugs unfixed, and its license is Elastic 2.0, not OSI; for maintained coding-agent memory use Engram or claude-mem. | D (6/6) | [→](byterover.md) |
@@ -22,6 +23,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Obsidian Mind](obsidian-mind.md) | ✅ | B (6/6) | Human-editable Obsidian record plus Node hooks and optional QMD; copied upstream MIT notice gap blocks direct installation or redistribution advice. |
 | [Claude Subconscious](claude-subconscious.md) | ✅ | C (5/6) | Background Letta agent whispering memory into Claude Code via hooks; an exploratory demo, not production. |
 | [claude-mem](claude-mem.md) | ✅ | B (6/6) | Hook/MCP memory wired into a coding agent's session lifecycle (not a model-agnostic app memory API); reported star count is unverified. |
 | [ByteRover CLI](byterover.md) | ✅ | D (6/6) | Buys a git-versioned, reviewable knowledge tree any agent can query; costs an archived, source-available codebase you would have to fork and own. |
