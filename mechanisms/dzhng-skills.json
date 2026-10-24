@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "spec", "en": "Original spec and implementation history", "zh": "原始规格与实现历史", "kind": "input"},
+    {"id": "audit", "en": "Trace choices not specified by the user", "zh": "追溯用户未指定的选择", "technique": [1]},
+    {"id": "ledger", "en": "Model-authored choices ledger;\nNot execution proof", "zh": "模型编写选择账本；\n不作执行证明", "kind": "output", "technique": [1]},
+    {"id": "reslice", "en": "Clustered choices trigger reslicing and handoff refresh", "zh": "选择聚集时重拆规格并更新接手提示", "technique": [2]},
+    {"id": "report", "en": "Visual critique report", "zh": "视觉评审报告", "kind": "input"},
+    {"id": "receipts", "en": "Attribute numbers;\nCheck real paths and stated hashes", "zh": "核数字文字归因；\n核真实路径及所声明哈希", "technique": [3]},
+    {"id": "limits", "en": "Findings;\nText does not authenticate execution", "zh": "输出缺支撑项；\n文字不认证真实执行", "kind": "output", "technique": [3]},
+    {"id": "experiment", "en": "Frozen evaluator, baseline and budget", "zh": "冻结评测器、基线和预算", "kind": "input", "technique": [4]},
+    {"id": "trial", "en": "Matched trials and regression checks", "zh": "匹配条件的试验与回归检查", "technique": [4]},
+    {"id": "map", "en": "Parameter-effect map and preserved candidate", "zh": "参数效果表与保留候选", "kind": "output", "technique": [4]}
+  ],
+  "edges": [
+    {"from": "spec", "to": "audit"},
+    {"from": "audit", "to": "ledger"},
+    {"from": "ledger", "to": "reslice", "en": "when one area stays foggy", "zh": "同一区域反复留白时", "style": "dashed"},
+    {"from": "reslice", "to": "spec"},
+    {"from": "report", "to": "receipts"},
+    {"from": "receipts", "to": "limits"},
+    {"from": "experiment", "to": "trial"},
+    {"from": "trial", "to": "map"}
+  ],
+  "sources": [
+    "https://github.com/dzhng/skills/blob/8e74252ad975acff3de6305299cf82c4b14cc026/skills/engineering/audit-choices/SKILL.md#L41-L136",
+    "https://github.com/dzhng/skills/blob/8e74252ad975acff3de6305299cf82c4b14cc026/skills/engineering/implement-spec/SKILL.md#L79-L132",
+    "https://github.com/dzhng/skills/blob/8e74252ad975acff3de6305299cf82c4b14cc026/skills/visual/screenshot-critique/scripts/receipts.mjs#L9-L19",
+    "https://github.com/dzhng/skills/blob/8e74252ad975acff3de6305299cf82c4b14cc026/skills/engineering/auto-research/SKILL.md#L21-L113"
+  ]
+}

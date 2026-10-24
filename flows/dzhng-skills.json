@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "dzhng/skills guides the agent", "zh": "dzhng/skills 引导 agent"},
+  "steps": [
+    {"lane": "you", "en": "Review provenance and expose only the selected audit skill to your host", "zh": "核来源后只向宿主提供选定的审计技能"},
+    {"lane": "you", "en": "Request an audit of a bounded change with its original spec and reports", "zh": "给出限定改动及原始规格、报告，请求审计", "code": "/audit-choices"},
+    {"lane": "them", "en": "Trace decisions made where the spec was silent", "zh": "追溯规格留白处由 agent 作出的选择", "component": {"en": "audit-choices prompt", "zh": "audit-choices 提示词"}},
+    {"lane": "them", "en": "Write gap, reach, verdict and confidence into a standalone choices ledger", "zh": "把留白、影响、裁决和信心写入独立选择账本", "component": {"en": "choices.md", "zh": "choices.md"}},
+    {"lane": "you", "en": "Review the least-confident choices first; separately authorize any implementation", "zh": "先审低信心选择；另行授权后续实现"}
+  ],
+  "value": {"en": "Review what the agent decided on your behalf, rather than infer it from a large diff", "zh": "直接审 agent 替你作出的决定，不必从大段差异猜"},
+  "sources": [
+    "https://github.com/dzhng/skills/blob/8e74252ad975acff3de6305299cf82c4b14cc026/README.md#L13-L34",
+    "https://github.com/dzhng/skills/blob/8e74252ad975acff3de6305299cf82c4b14cc026/README.md#L128-L131",
+    "https://github.com/dzhng/skills/blob/8e74252ad975acff3de6305299cf82c4b14cc026/skills/engineering/audit-choices/SKILL.md#L32-L113"
+  ]
+}
