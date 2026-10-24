@@ -14,6 +14,7 @@
 | **MiniMax Skills** | 当你想在 Claude Code、Cursor、Codex 或 OpenCode 里装一套厂商写的 skill，覆盖前端、移动端、shader 开发以及 MiniMax 的文档、音乐、视觉生成时用它——但它仍标 Beta，2026-04-18 之后再没推送。 | B（4/5） | [→](minimax-skills.zh.md) |
 | **Anthropic Knowledge Work Plugins** | 当你想要 Anthropic 官方面向知识工作（文档、沟通、研究）的开源插件集（用于 Claude）时用它——非常年轻。 | A（4/5） | [→](knowledge-work-plugins.zh.md) |
 | **HumanLayer Skills** | HumanLayer 官方的六个 skill——把改动画清楚（`show-me`）、PR 说明结构化（`visual-pr`）、重写 CLAUDE.md、收紧 React props，外加两个把重复性 agent 任务做成定时 GitHub Actions 循环的 skill，循环带 agent memory 文件与 `/iterate` 评论通道。 | B（4/5） | [→](humanlayer-skills.zh.md) |
+| **SenseNova-Skills** | 研究 OpenClaw／Hermes 的 CSV → 调研 → 演示稿流程；仅作信息收录，第三方风格授权待核。 | A（4/5） | [→](sensenova-skills.zh.md) |
 
 ## 对比矩阵
 
@@ -26,6 +27,7 @@
 | [MiniMax Skills](minimax-skills.zh.md) | ✅ | B（4/5） | 换来横跨开发与媒体生成、覆盖四种 harness 的厂商一手配方；代价是 16 个 skill 得整包装，绑定 MiniMax 的假设，上游还停滞着。 |
 | [Anthropic Knowledge Work Plugins](knowledge-work-plugins.zh.md) | ✅ | A（4/5） | 当你想要 Anthropic 官方面向知识工作（文档、沟通、研究）的开源插件集（用于 Claude）时用它——非常年轻。 |
 | [HumanLayer Skills](humanlayer-skills.zh.md) | ✅ | B（4/5） | 厂商出品的六个有主张的开发流程 skill，其中两个附带可运行的 CI 循环机制；仅面向 Claude 生态分发、没有可锁定的 release，循环模板默认使用宽松 agent 权限。 |
+| [SenseNova-Skills](sensenova-skills.zh.md) | ✅ | A（4/5） | 文件交接的办公流程与模型助手；根 MIT 不替同源第三方风格补权，运行和导出仍由宿主验收。 |
 
 ## 什么该放这里
 

@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "request", "kind": "input", "en": "Approved task and files", "zh": "获批任务与文件"},
+    {"id": "scene", "en": "Scene role delegates image worker", "zh": "场景角色委派图像 worker", "technique": [1]},
+    {"id": "api", "kind": "external", "en": "Shared base sends prompts and images to model API", "zh": "共用底座向模型 API 发送提示与图片", "technique": [1]},
+    {"id": "mode", "en": "Research mode chooses roles and file handoffs", "zh": "研究分档选择角色与文件交接", "technique": [2]},
+    {"id": "cite", "en": "Merge source URLs and repair claim references", "zh": "合并来源 URL，修复声明引用", "technique": [3]},
+    {"id": "report", "kind": "output", "en": "Report plus orphan and unresolved-reference lists", "zh": "报告及孤儿、未解引用列表", "technique": [3]},
+    {"id": "slides", "en": "Separate slide pages, portable fonts and fresh renders", "zh": "独立幻灯片页面、便携字体与新鲜渲染", "technique": [4]},
+    {"id": "export", "kind": "output", "en": "HTML player; PPTX export can skip or fail", "zh": "HTML 播放器；PPTX 导出可跳过或失败", "technique": [4]}
+  ],
+  "edges": [
+    {"from": "request", "to": "scene", "en": "image task", "zh": "图像任务"},
+    {"from": "scene", "to": "api"},
+    {"from": "request", "to": "mode", "en": "research task", "zh": "研究任务"},
+    {"from": "mode", "to": "cite", "en": "draft and evidence files", "zh": "正文与证据文件"},
+    {"from": "cite", "to": "report"},
+    {"from": "report", "to": "slides", "style": "dashed", "en": "when a deck is requested", "zh": "请求演示稿时"},
+    {"from": "api", "to": "slides", "style": "dashed", "en": "visuals", "zh": "配图"},
+    {"from": "slides", "to": "export"}
+  ],
+  "sources": [
+    "skills/sn-infographic/SKILL.md:72-86,239-255,336-411 @ 7838651111ef2dc3ac0293f08008730f1a022694",
+    "skills/sn-deep-research/SKILL.md:182-242,528-552 @ 7838651111ef2dc3ac0293f08008730f1a022694",
+    "skills/sn-prepare-citations/scripts/prepare_citations.py:67-230,484-532 @ 7838651111ef2dc3ac0293f08008730f1a022694",
+    "skills/sn-ppt-standard/scripts/deck.py:78-122; scripts/export_pptx/html_to_pptx.mjs:18-174 @ 7838651111ef2dc3ac0293f08008730f1a022694"
+  ]
+}

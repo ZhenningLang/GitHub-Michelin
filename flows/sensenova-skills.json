@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "SenseNova-Skills via host", "zh": "宿主执行 SenseNova-Skills"},
+  "steps": [
+    {"lane": "you", "en": "After rights approval, configure the host and supply a price CSV", "zh": "核权获批后，配置宿主并提供报价 CSV"},
+    {"lane": "them", "en": "Clean and analyze the CSV into a Markdown report", "zh": "清洗分析 CSV，输出 Markdown 报告", "component": {"en": "sn-da-excel-workflow", "zh": "sn-da-excel-workflow"}},
+    {"lane": "you", "en": "Ask for research into the causes behind the observed price changes", "zh": "追问数据所示价格变化的原因"},
+    {"lane": "them", "en": "Search and synthesize supporting evidence into an illustrated report", "zh": "检索并综合证据，生成配图报告", "component": {"en": "sn-deep-research", "zh": "sn-deep-research"}},
+    {"lane": "you", "en": "Request standard slides that reuse the report figures and conclusions", "zh": "要求标准模式幻灯片复用报告图片与结论"},
+    {"lane": "them", "en": "Route to slide production and export a PPTX when prerequisites succeed", "zh": "调度幻灯片制作，前提满足时导出 PPTX", "component": {"en": "sn-ppt-entry + sn-ppt-standard", "zh": "PPT 入口与标准模式"}}
+  ],
+  "value": {"en": "Data, researched causes and slides share saved artifacts instead of three disconnected drafts", "zh": "数据、原因研究与幻灯片共用落盘材料，不再各写各的"},
+  "sources": [
+    "https://github.com/OpenSenseNova/SenseNova-Skills/blob/7838651111ef2dc3ac0293f08008730f1a022694/INSTALL.md",
+    "https://github.com/OpenSenseNova/SenseNova-Skills/blob/7838651111ef2dc3ac0293f08008730f1a022694/examples/memory-price-end2end-analysis/README.md#L24-L73",
+    "https://github.com/OpenSenseNova/SenseNova-Skills/blob/7838651111ef2dc3ac0293f08008730f1a022694/skills/sn-ppt-standard/scripts/export_pptx/html_to_pptx.mjs#L81-L99"
+  ]
+}
