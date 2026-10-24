@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "kit", "en": "Approved design-system sources", "zh": "获准使用的设计系统源码", "kind": "input"},
+    {"id": "compile", "en": "Babel transform and dependency order", "zh": "Babel 转换与依赖排序", "technique": [1]},
+    {"id": "bundle", "en": "Component bundle, manifest, advisory lint", "zh": "组件包、清单、建议性检查配置", "kind": "output", "technique": [1]},
+    {"id": "bind", "en": "Copy resources and bind project metadata", "zh": "复制资源并绑定项目元数据", "technique": [2]},
+    {"id": "prompt", "en": "Token and component prompt for the next session", "zh": "供后续会话读取的变量与组件提示", "technique": [2]},
+    {"id": "html", "en": "Agent-authored HTML artifact", "zh": "agent 编写的 HTML 产物", "kind": "output"},
+    {"id": "browser", "en": "Chromium executes and captures the served page", "zh": "Chromium 执行并捕获通过 HTTP 提供的页面"},
+    {"id": "pptx", "en": "Editable objects or flattened PPTX", "zh": "可编辑对象或整页图片 PPTX", "kind": "output", "technique": [3]},
+    {"id": "video", "en": "Seek timeline and stream PNG frames to FFmpeg", "zh": "定位时间并向 FFmpeg 输送 PNG 帧", "technique": [4]},
+    {"id": "encoded", "en": "Video file and validation flags", "zh": "视频文件与校验标记", "kind": "output", "technique": [4]}
+  ],
+  "edges": [
+    {"from": "kit", "to": "compile"},
+    {"from": "compile", "to": "bundle"},
+    {"from": "bundle", "to": "bind"},
+    {"from": "bind", "to": "prompt"},
+    {"from": "prompt", "to": "html"},
+    {"from": "html", "to": "browser", "style": "dashed", "en": "optional export", "zh": "可选导出"},
+    {"from": "browser", "to": "pptx", "style": "dashed", "en": "slide-structured deck", "zh": "结构化幻灯片"},
+    {"from": "browser", "to": "video", "style": "dashed", "en": "compatible timeline bridge", "zh": "兼容的时间控制接口"},
+    {"from": "video", "to": "encoded"}
+  ],
+  "sources": [
+    "skills/baoyu-design/agents/compile-design-system.mjs:97-367 @6530033592bf7fa58bc1a5a2a2ad278da45213a9",
+    "skills/baoyu-design/agents/import-design-system.mjs:117-211 @6530033592bf7fa58bc1a5a2a2ad278da45213a9",
+    "skills/baoyu-design/agents/gen-pptx/src/orchestrator/run.ts:28-162 @6530033592bf7fa58bc1a5a2a2ad278da45213a9",
+    "skills/baoyu-design/agents/gen-video/src/orchestrator/run.ts:127-229 @6530033592bf7fa58bc1a5a2a2ad278da45213a9"
+  ]
+}
