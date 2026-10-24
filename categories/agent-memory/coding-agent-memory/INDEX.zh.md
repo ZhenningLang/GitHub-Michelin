@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Obsidian Mind** | 研究笔记库主导的关联工作记录、范围召回和简报预算；复制技能缺许可声明，当前仅信息收录。 | B（6/6） | [→](obsidian-mind.zh.md) |
 | **Claude Subconscious** | 当你想让一个后台 Letta agent 通过 hook 给 Claude Code 加上跨会话记忆时使用（仅 demo，非生产）。 | C（5/6） | [→](claude-subconscious.zh.md) |
 | **claude-mem** | 当你的编码 agent 跨会话丢失上下文、你想要本地 hook/MCP 捕获并压缩后再注入的记忆时用它（star 数存疑）。 | B（6/6） | [→](claude-mem.zh.md) |
 | **ByteRover CLI** | 只把它当设计参考，或在迁出 `brv` 时看它——但仓库已于 2026 年归档，已知的卡死缺陷不会再修，许可是 Elastic 2.0 而非 OSI；要仍在维护的编码 agent 记忆，改用 Engram 或 claude-mem。 | D（6/6） | [→](byterover.zh.md) |
@@ -22,6 +23,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Obsidian Mind](obsidian-mind.zh.md) | ✅ | B（6/6） | 人可编辑的 Obsidian 记录加 Node 脚本与可选 QMD；复制内容缺上游 MIT 声明，不建议直接安装或复制分发。 |
 | [Claude Subconscious](claude-subconscious.zh.md) | ✅ | C（5/6） | 后台 Letta agent 通过 hook 向 Claude Code 低语记忆；探索性 demo，不用于生产。 |
 | [claude-mem](claude-mem.zh.md) | ✅ | B（6/6） | 接进编码 agent 会话生命周期的 hook/MCP 记忆（非与模型无关的应用内记忆 API）；所报 star 数存疑。 |
 | [ByteRover CLI](byterover.zh.md) | ✅ | D（6/6） | 换来用 git 管版本、可评审、任何 agent 都能查的知识树；代价是代码已归档、只是源码可见，要用就得自己 fork 自己养。 |

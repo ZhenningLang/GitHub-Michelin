@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Obsidian Mind", "zh": "Obsidian Mind"},
+  "steps": [
+    {"lane": "you", "en": "After rights clearance, configure a vault and launch your agent", "zh": "权利核清后，配置笔记库并启动助手"},
+    {"lane": "them", "en": "Build a startup briefing from goals, active work and open tasks", "zh": "按目标、工作和待办生成简报", "component": {"en": "SessionStart scripts", "zh": "会话启动脚本"}},
+    {"lane": "you", "en": "Describe a meeting and the decision you need to retain", "zh": "描述会议及需要保留的决策", "code": "/om-dump"},
+    {"lane": "them", "en": "The instructed agent files the meeting as linked notes", "zh": "模型把会议内容写成关联笔记", "component": {"en": "agent + vault conventions", "zh": "模型与笔记库约定"}}
+  ],
+  "value": {"en": "Work context stays in human-readable linked notes instead of only in a chat", "zh": "工作背景留在可阅读的关联笔记里，不只留在聊天中"},
+  "sources": [
+    "https://github.com/breferrari/obsidian-mind/blob/fae7be467fc5e23bf9d51df7207d41f0c07e2754/README.md#L51-L75",
+    "https://github.com/breferrari/obsidian-mind/blob/fae7be467fc5e23bf9d51df7207d41f0c07e2754/README.md#L98-L123",
+    "https://github.com/breferrari/obsidian-mind/blob/fae7be467fc5e23bf9d51df7207d41f0c07e2754/README.md#L190-L210"
+  ]
+}

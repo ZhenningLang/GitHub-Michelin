@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "notes", "en": "Markdown memories and caller identity", "zh": "Markdown 记忆与调用方身份", "kind": "input"},
+    {"id": "scope", "en": "General, project or platform relevance filter", "zh": "通用、项目或平台相关性筛选", "technique": [1]},
+    {"id": "replace", "en": "Remove retired claims whose corrections are out of reach", "zh": "纠正不可达时移除退休旧说法", "technique": [3]},
+    {"id": "recall", "en": "Ranked lessons with exclusion reasons", "zh": "排序经验与排除原因", "kind": "output"},
+    {"id": "brief", "en": "Goals, work and task briefing sections", "zh": "目标、工作与待办简报章节", "kind": "input"},
+    {"id": "budget", "en": "Pointers first; raise important sections to fitting levels", "zh": "先退指针，再按优先级恢复可容纳层级", "technique": [2]},
+    {"id": "meter", "en": "Briefing plus named degradation meter; separate final fit", "zh": "简报与具名降级计量；最终长度另行适配", "kind": "output", "technique": [2]}
+  ],
+  "edges": [
+    {"from": "notes", "to": "scope"},
+    {"from": "scope", "to": "replace"},
+    {"from": "replace", "to": "recall"},
+    {"from": "brief", "to": "budget"},
+    {"from": "budget", "to": "meter"}
+  ],
+  "sources": [
+    "https://github.com/breferrari/obsidian-mind/blob/fae7be467fc5e23bf9d51df7207d41f0c07e2754/.claude/scripts/lib/memory-recall.ts#L216-L387",
+    "https://github.com/breferrari/obsidian-mind/blob/fae7be467fc5e23bf9d51df7207d41f0c07e2754/.claude/scripts/lib/session-start.ts#L130-L209"
+  ]
+}
