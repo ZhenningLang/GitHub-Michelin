@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Anima guides the agent", "zh": "Anima 指导 agent"},
+  "steps": [
+    {"lane": "you", "en": "Install the skill into Claude Code", "zh": "把技能安装到 Claude Code", "code": "npx skills add Garinmckayl/anima -g -a claude-code"},
+    {"lane": "you", "en": "Describe the biology, mechanism, audience and output", "zh": "提供生物主题、机制、受众和输出格式", "code": "/anima"},
+    {"lane": "them", "en": "Collect sources and declare biological scope before drawing", "zh": "先收集来源并声明生物学范围"},
+    {"lane": "them", "en": "Adapt the drawing kit into an interactive HTML figure with citations", "zh": "用绘图库制作带引用的交互 HTML 图"},
+    {"lane": "you", "en": "Open the figure, use its controls and review the scientific claims", "zh": "打开图形、操作控件并审查科学论断"}
+  ],
+  "value": {"en": "Readers can explore a biological mechanism instead of guessing from a static diagram", "zh": "读者能操作生物机制，不再只靠静态图猜变化"},
+  "sources": [
+    "https://github.com/Garinmckayl/anima/blob/f0249c4fdc94cc854abcff8bf34a087e37145714/README.md#L36-L74",
+    "https://github.com/Garinmckayl/anima/blob/f0249c4fdc94cc854abcff8bf34a087e37145714/SKILL.md#L44-L67",
+    "https://github.com/Garinmckayl/anima/blob/f0249c4fdc94cc854abcff8bf34a087e37145714/examples/neuron/build.mjs#L117-L204"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "topic", "en": "Biology topic and teaching goal", "zh": "生物主题与教学目标", "kind": "input"},
+    {"id": "sources", "en": "Agent gathers sources and states scope", "zh": "agent 收集来源并声明范围", "technique": [1]},
+    {"id": "geometry", "en": "Organic SVG shapes and depth-sorted branches", "zh": "有机 SVG 轮廓与深度排序分支", "technique": [2]},
+    {"id": "model", "en": "Shared illustrative state drives motion and readout", "zh": "共享示意状态驱动动画和读数", "technique": [3]},
+    {"id": "html", "en": "Interactive HTML with captions and citations", "zh": "带图注和引用的交互 HTML", "kind": "output"},
+    {"id": "audit", "en": "Declared geometry checks; separate browser review", "zh": "声明几何检查；独立浏览器审图", "technique": [4]},
+    {"id": "human", "en": "Human scientific review remains necessary", "zh": "仍需人工科学审查", "kind": "external"}
+  ],
+  "edges": [
+    {"from": "topic", "to": "sources"},
+    {"from": "sources", "to": "geometry"},
+    {"from": "sources", "to": "model"},
+    {"from": "geometry", "to": "html"},
+    {"from": "model", "to": "html"},
+    {"from": "geometry", "to": "audit", "en": "when geometry is supplied", "zh": "提供几何输入时", "style": "dashed"},
+    {"from": "html", "to": "audit", "en": "review requested by the skill", "zh": "技能要求审图", "style": "dashed"},
+    {"from": "audit", "to": "human"},
+    {"from": "html", "to": "human"}
+  ],
+  "sources": [
+    "https://github.com/Garinmckayl/anima/blob/f0249c4fdc94cc854abcff8bf34a087e37145714/SKILL.md#L44-L67",
+    "https://github.com/Garinmckayl/anima/blob/f0249c4fdc94cc854abcff8bf34a087e37145714/kit/blob.mjs#L27-L55",
+    "https://github.com/Garinmckayl/anima/blob/f0249c4fdc94cc854abcff8bf34a087e37145714/examples/neuron/build.mjs#L117-L204",
+    "https://github.com/Garinmckayl/anima/blob/f0249c4fdc94cc854abcff8bf34a087e37145714/kit/bio-audit.mjs#L52-L130"
+  ]
+}

@@ -601,6 +601,7 @@ Research engines and scientific workbenches; source access and evidence auditing
 | **book-to-skill** | Use it when your coding agent keeps needing a few technical books or a docs folder and you want each turned into a chapter-indexed skill instead of re-pasting the PDF — but it summarizes rather than quotes, and is only about five months old. | MIT | B (6/6) | [EN](categories/agent-skills/book-to-skill.md) · [中](categories/agent-skills/book-to-skill.zh.md) |
 | **distilly** | Use it when you want to distill one person's chat logs, documents, and interviews into an installable agent skill that answers in their judgment and voice. | MIT | B (4/5) | [EN](categories/agent-skills/distilly.md) · [中](categories/agent-skills/distilly.zh.md) |
 | **visual-explainer** | Turn source-backed diffs and plans into figure-led HTML with retained source and reader feedback; not an editable diagram model or fully offline default. | MIT | C (5/6) | [EN](categories/agent-skills/design/visual-artifacts/visual-explainer.md) · [中](categories/agent-skills/design/visual-artifacts/visual-explainer.zh.md) |
+| **Anima** | Turn a static biology lesson into a sourced interactive mechanism figure; scientific review remains yours. | MIT | C (4/5) | [EN](categories/agent-skills/design/visual-artifacts/anima.md) · [中](categories/agent-skills/design/visual-artifacts/anima.zh.md) |
 
 #### agent-skills / engineering
 
