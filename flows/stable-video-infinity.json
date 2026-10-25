@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "SVI does", "zh": "SVI 做的"},
+  "steps": [
+    {"lane": "you", "en": "Prepare isolated CUDA Python, reviewed weights and adapter", "zh": "准备隔离 CUDA 环境及已核权重和适配器"},
+    {"lane": "you", "en": "Set a licensed image, trusted prompts and bounded clip count", "zh": "指定有权使用的图、可信提示和片段上限"},
+    {"lane": "you", "en": "Run the matching main-branch SVI2.0 example", "zh": "调用主分支对应的 SVI2.0 示例", "code": "bash scripts/test/svi_2.0.sh"},
+    {"lane": "them", "en": "Load Wan2.1 I2V14B and the SVI adapter on the GPU", "zh": "在显卡载入 Wan2.1 I2V14B 和 SVI 适配器"},
+    {"lane": "them", "en": "Generate clips using each prompt and previous motion frames", "zh": "按逐段提示和前段运动帧接续生成"},
+    {"lane": "them", "en": "Join non-overlapping frames and save the cumulative MP4", "zh": "去掉重叠帧并保存累积 MP4"}
+  ],
+  "value": {"en": "A prompt-driven continuation video without manually wiring every cross-clip handoff", "zh": "获得逐段提示驱动的接续视频，不必手工连接每段条件"},
+  "sources": [
+    "https://github.com/vita-epfl/Stable-Video-Infinity/blob/557afca50d5766514c67ae39000b03e0dd66d6e5/README.md#L328-L379",
+    "https://github.com/vita-epfl/Stable-Video-Infinity/blob/557afca50d5766514c67ae39000b03e0dd66d6e5/README.md#L466-L490",
+    "https://github.com/vita-epfl/Stable-Video-Infinity/blob/557afca50d5766514c67ae39000b03e0dd66d6e5/scripts/test/svi_2.0.sh#L3-L13",
+    "https://github.com/vita-epfl/Stable-Video-Infinity/blob/557afca50d5766514c67ae39000b03e0dd66d6e5/test_svi.py#L315-L483"
+  ]
+}

@@ -49,6 +49,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [FlClash](https://github.com/chen08209/FlClash),categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 [fortuneexcel](https://github.com/corbe30/fortuneexcel),categories/office-editors/fortune-sheets.md,,no
 [Foundry Anvil](https://github.com/foundry-rs/foundry),categories/blockchain-dev-infrastructure/powfaucet.md,,no
+[FramePack](https://github.com/lllyasviel/FramePack),categories/ml-research/vision-and-multimodal/stable-video-infinity.md,,no
 [Frigate](https://github.com/blakeblackshear/frigate),categories/on-device-ml/cosmo-edge.md,,no
 [frp](https://github.com/fatedier/frp),categories/networking/opentunnel.md,,no
 [GHC / Haskell](https://github.com/ghc/ghc),categories/programming-languages/unison.md,,no
@@ -110,6 +111,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [rebrowser-patches](https://github.com/rebrowser/rebrowser-patches),categories/web-automation/agent-browser-tools/playwright-bot-bypass.md,,no
 [Redis](https://github.com/redis/redis),categories/databases/database-engines/kividb.md,,no
 [RetDec](https://github.com/avast/retdec),categories/dev-utilities/binary-analysis/reagent.md,,no
+[Self Forcing](https://github.com/guandeh17/Self-Forcing),categories/ml-research/vision-and-multimodal/stable-video-infinity.md,,no
 [Semgrep](https://github.com/semgrep/semgrep),categories/agent-governance/skillspector.md,,no
 [sing-box](https://github.com/SagerNet/sing-box),categories/networking/dae.md,,no
 [spcfox/amnezia-wg-easy](https://github.com/spcfox/amnezia-wg-easy),categories/networking/amneziawg-installer.md,,no
@@ -130,6 +132,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Vega-Lite](https://github.com/vega/vega-lite),categories/data-visualization/flint-chart.md,,no
 [Video2X](https://github.com/k4yt3x/video2x),categories/media-processing/jasna.md,,no
 [vLLM-Omni](https://github.com/vllm-project/vllm-omni),categories/llm-inference/serving-engines/sglang-omni.md,,no
+[Wan2.1](https://github.com/Wan-Video/Wan2.1),categories/ml-research/vision-and-multimodal/stable-video-infinity.md,,no
 [Wan2.2](https://github.com/Wan-Video/Wan2.2),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [wasmtime](https://github.com/bytecodealliance/wasmtime) (WASI CPython),categories/sandboxing/monty.md,,no
 [wg-easy](https://github.com/wg-easy/wg-easy),categories/networking/amneziawg-installer.md,,no
