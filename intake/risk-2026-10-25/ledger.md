@@ -6,4 +6,4 @@
 |:---|:---|:---|:---|:---|:---|
 | vita-epfl/Stable-Video-Infinity | add | done | categories/ml-research/vision-and-multimodal/stable-video-infinity.md | 维护者风险信息放行；双语页与修正后图卡已审；主会话门禁／专项通过；独立提交 bdb03c2；许可疑点不消除；no leftover Q&A | vita-epfl/stable-video-infinity |
 | Zagitta/gpu-unlock | add | done | categories/gpu-tooling/gpu-unlock.md | GPL源码与固件整包权利分开；双语页主会话已审，门禁／专项通过；独立提交 319e934；未执行解锁；no leftover Q&A | zagitta/gpu-unlock |
-| liandu2024/Open-Box | add | running |  | 专有非开源信息例外；不推定闭源实现和第三方权利 | liandu2024/open-box |
+| liandu2024/Open-Box | add | done | categories/dev-utilities/ops-infra/open-box.md | 专有非开源信息例外；双语页和公开机制已审；主会话门禁／专项通过；独立提交 c27d6bf；不等安装或再分发授权；no leftover Q&A | liandu2024/open-box |

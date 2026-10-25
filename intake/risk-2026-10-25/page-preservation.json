@@ -1,0 +1,17 @@
+{
+  "status": "pass",
+  "baseline_english_projects": 972,
+  "current_english_projects": 975,
+  "baseline_bilingual_files": 1944,
+  "current_bilingual_files": 1950,
+  "old_project_files_byte_identical": 1944,
+  "added_bilingual_files": [
+    "categories/dev-utilities/ops-infra/open-box.md",
+    "categories/dev-utilities/ops-infra/open-box.zh.md",
+    "categories/gpu-tooling/gpu-unlock.md",
+    "categories/gpu-tooling/gpu-unlock.zh.md",
+    "categories/ml-research/vision-and-multimodal/stable-video-infinity.md",
+    "categories/ml-research/vision-and-multimodal/stable-video-infinity.zh.md"
+  ],
+  "runtime_schema_ci_rules_changed": false
+}
