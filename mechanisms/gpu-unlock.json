@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "target", "en": "Explicit PCI target before driver bind", "zh": "驱动绑定前显式选择 PCI 目标", "kind": "input", "technique": [1]},
+    {"id": "assets", "en": "Pinned assets and separate license notices", "zh": "固定资源与独立许可告知", "kind": "external", "technique": [2]},
+    {"id": "guard", "en": "Check power, ownership, reset and VRAM layout", "zh": "检查电源、持有者、重置与显存布局", "technique": [1, 3]},
+    {"id": "fw", "en": "Firmware opens the selector privilege mask", "zh": "固件开放速度选择寄存器权限掩码", "technique": [3]},
+    {"id": "write", "en": "Restore stock signature; write and read selectors", "zh": "恢复原厂签名；写入并读回速度选择寄存器", "technique": [3]},
+    {"id": "reset", "en": "Function reset and driver-entry state checks", "zh": "功能重置与驱动接管状态检查", "technique": [3, 4]},
+    {"id": "handoff", "en": "Normal NVIDIA driver; no performance guarantee", "zh": "正常 NVIDIA 驱动；不保证性能提升", "kind": "output"},
+    {"id": "retain", "en": "If not quiescent, retain DMA and module until power-off", "zh": "未证明静止时保留 DMA 与模块直到断电", "kind": "output", "technique": [4]},
+    {"id": "resume", "en": "Resume defaults on; recheck powered-off cards", "zh": "唤醒处理默认启用；重查断电显卡", "technique": [4]}
+  ],
+  "edges": [
+    {"from": "target", "to": "guard"},
+    {"from": "assets", "to": "guard"},
+    {"from": "guard", "to": "fw"},
+    {"from": "fw", "to": "write"},
+    {"from": "write", "to": "reset"},
+    {"from": "reset", "to": "handoff", "en": "checks pass", "zh": "检查通过"},
+    {"from": "fw", "to": "retain", "en": "firmware started but containment fails", "zh": "固件已启动但隔离失败", "style": "dashed"},
+    {"from": "reset", "to": "retain", "en": "quiescence not proven", "zh": "未证明固件静止", "style": "dashed"},
+    {"from": "handoff", "to": "resume", "en": "after suspend", "zh": "挂起唤醒后", "style": "dashed"},
+    {"from": "resume", "to": "guard", "en": "eligible state only", "zh": "仅符合条件的状态", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/Zagitta/gpu-unlock/blob/af28cbbfd3d922a659227ecfb7369adfd924cf03/kernel/gpu_unlock/main.c",
+    "https://github.com/Zagitta/gpu-unlock/blob/af28cbbfd3d922a659227ecfb7369adfd924cf03/kernel/gpu_unlock/unlock_610.c",
+    "https://github.com/Zagitta/gpu-unlock/blob/af28cbbfd3d922a659227ecfb7369adfd924cf03/firmware/NOTICE.md"
+  ]
+}

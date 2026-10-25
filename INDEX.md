@@ -9,6 +9,7 @@
 
 | Category | Use when | Route |
 |---|---|---|
+| **gpu-tooling** | Review GPU hardware configuration, firmware and instruction-throughput experiments with explicit risk boundaries. | [→](categories/gpu-tooling/INDEX.md) |
 | **android-system-services** | Replace or integrate Android system service interfaces for app compatibility, not UI automation. | [→](categories/android-system-services/INDEX.md) |
 | **traditional-divination** | Inspect traditional charting rules and cultural-learning data, not scientific predictions. | [→](categories/traditional-divination/INDEX.md) |
 | **legal-documents** | Reuse legal templates and prepare reviewable contract drafts, not legal advice. | [→](categories/legal-documents/INDEX.md) |

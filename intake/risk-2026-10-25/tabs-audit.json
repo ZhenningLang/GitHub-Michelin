@@ -1,0 +1,18 @@
+{
+  "scope": "only three owner-named repositories; no other queue expansion",
+  "completed_repositories": [
+    "vita-epfl/Stable-Video-Infinity",
+    "Zagitta/gpu-unlock",
+    "liandu2024/Open-Box"
+  ],
+  "target_urls_before": 1,
+  "target_urls_remaining": 0,
+  "actual_closures": {
+    "vita-epfl/Stable-Video-Infinity": 1,
+    "Zagitta/gpu-unlock": 0,
+    "liandu2024/Open-Box": 0
+  },
+  "non_target_close_requests": 0,
+  "raw_non_target_urls_persisted": false,
+  "limits": "Does not assert that the rest of an interactive user browser stayed unchanged."
+}

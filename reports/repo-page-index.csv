@@ -251,6 +251,7 @@ https://github.com/Yeachan-Heo/oh-my-claudecode,oh-my-claudecode,orchestration-a
 https://github.com/Yuan1z0825/nature-skills,nature-skills,scientific-workflows,categories/agent-skills/engineering/scientific-workflows/nature-skills.md
 https://github.com/ZJU-REAL/Easel,easel,social-media-management,categories/social-media-management/easel.md
 https://github.com/ZachSaucier/Just-Read,just-read,reading-tools,categories/reading-tools/just-read.md
+https://github.com/Zagitta/gpu-unlock,gpu-unlock,gpu-tooling,categories/gpu-tooling/gpu-unlock.md
 https://github.com/Zesty0wl/mac-performance-monitor,mac-performance-monitor,observability,categories/observability/mac-performance-monitor.md
 https://github.com/Zleap-AI/SAG,sag,structured-retrieval,categories/rag-retrieval/structured-retrieval/sag.md
 https://github.com/Zulko/moviepy,moviepy,editing-and-cutting,categories/media-processing/video-audio/editing-and-cutting/moviepy.md
@@ -620,6 +621,7 @@ https://github.com/letta-ai/letta-code,letta-code,independent-runtimes,categorie
 https://github.com/lewislulu/html-ppt-skill,html-ppt-skill,slides-ppt,categories/agent-skills/slides-ppt/html-ppt-skill.md
 https://github.com/lexiforest/curl_cffi,curl-cffi,python-tooling,categories/python-tooling/curl-cffi.md
 https://github.com/lexmount/moli,moli,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/moli.md
+https://github.com/liandu2024/Open-Box,open-box,ops-infra,categories/dev-utilities/ops-infra/open-box.md
 https://github.com/lich0821/WeChatFerry,wechatferry,wechat,categories/im-automation/wechat/wechatferry.md
 https://github.com/lightningpixel/modly,modly,3d-generation,categories/3d-generation/modly.md
 https://github.com/lightpanda-io/browser,lightpanda,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/lightpanda.md
@@ -916,6 +918,7 @@ https://github.com/verl-project/verl,verl,llm-training,categories/llm-training/v
 https://github.com/vibrantlabsai/ragas,ragas,llm-eval,categories/llm-eval/ragas.md
 https://github.com/video-db/call.md,call-md,meeting-intelligence,categories/meeting-intelligence/call-md.md
 https://github.com/virgiliojr94/book-to-skill,book-to-skill,agent-skills,categories/agent-skills/book-to-skill.md
+https://github.com/vita-epfl/Stable-Video-Infinity,stable-video-infinity,vision-and-multimodal,categories/ml-research/vision-and-multimodal/stable-video-infinity.md
 https://github.com/vllm-project/semantic-router,vllm-semantic-router,api-gateway,categories/api-gateway/vllm-semantic-router.md
 https://github.com/vllm-project/vllm,vllm,serving-engines,categories/llm-inference/serving-engines/vllm.md
 https://github.com/volcengine/OpenViking,openviking,coding-agent-memory,categories/agent-memory/coding-agent-memory/openviking.md

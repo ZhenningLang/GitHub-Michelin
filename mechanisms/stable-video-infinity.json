@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "data", "en": "Training video and conditions", "zh": "训练视频和条件", "kind": "input"},
+    {"id": "inject", "en": "Inject sampled historical errors", "zh": "注入抽样历史误差", "technique": [1]},
+    {"id": "predict", "en": "Wan prediction and clean-target loss", "zh": "Wan 预测与干净目标损失", "technique": [1]},
+    {"id": "bank", "en": "CPU residual buckets by timestep", "zh": "按时间步存入 CPU 残差桶", "technique": [2]},
+    {"id": "adapter", "en": "Trained LoRA adapter", "zh": "训练后的 LoRA 适配器", "kind": "output"},
+    {"id": "input", "en": "Reference image and trusted prompt stream", "zh": "参考图和可信提示流", "kind": "input"},
+    {"id": "padding", "en": "Motion frames and reference padding", "zh": "运动帧与参考图填充", "technique": [3]},
+    {"id": "clip", "en": "Wan plus SVI generates one clip", "zh": "Wan 加 SVI 生成一段"},
+    {"id": "mp4", "en": "Accumulated frames and cumulative MP4", "zh": "累积帧与累积 MP4", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "data", "to": "inject"},
+    {"from": "bank", "to": "inject", "en": "sample for later steps", "zh": "抽样供后续训练"},
+    {"from": "inject", "to": "predict"},
+    {"from": "predict", "to": "bank", "en": "detach estimated residuals", "zh": "分离估算残差"},
+    {"from": "predict", "to": "adapter", "en": "training updates", "zh": "训练更新"},
+    {"from": "adapter", "to": "clip", "en": "load for inference", "zh": "推理载入"},
+    {"from": "input", "to": "padding"},
+    {"from": "padding", "to": "clip"},
+    {"from": "clip", "to": "padding", "en": "last motion frames for next clip", "zh": "末尾运动帧送下一段"},
+    {"from": "clip", "to": "mp4", "en": "remove overlap and rewrite output", "zh": "去重叠并重写输出"}
+  ],
+  "sources": [
+    "https://github.com/vita-epfl/Stable-Video-Infinity/blob/557afca50d5766514c67ae39000b03e0dd66d6e5/train_svi.py#L685-L938",
+    "https://github.com/vita-epfl/Stable-Video-Infinity/blob/557afca50d5766514c67ae39000b03e0dd66d6e5/train_svi.py#L1099-L1183",
+    "https://github.com/vita-epfl/Stable-Video-Infinity/blob/557afca50d5766514c67ae39000b03e0dd66d6e5/diffsynth/pipelines/svi_video.py#L291-L364",
+    "https://github.com/vita-epfl/Stable-Video-Infinity/blob/557afca50d5766514c67ae39000b03e0dd66d6e5/test_svi.py#L395-L483"
+  ]
+}

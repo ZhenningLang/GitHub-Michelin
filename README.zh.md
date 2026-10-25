@@ -42,6 +42,12 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 完整索引，按分类分组。每个项目有一份英文页（`<slug>.md`）和一份中文页（`<slug>.zh.md`），点击直达。交互式浏览见 [INDEX.zh.md](INDEX.zh.md)；agent 从 [AGENTS.md](AGENTS.md) 开始。
 
+### gpu-tooling
+
+| 项目 | 何时使用 | 许可 | 健康度 | 页面 |
+|---|---|---|---|---|
+| **gpu-unlock** | 研究 Ampere 驱动前解锁；特权固件写入和部分恢复，仅作信息收录。 | NOASSERTION；模块 GPL-2.0-only，固件独立条款 | C（5/6） | [中](categories/gpu-tooling/gpu-unlock.zh.md) · [EN](categories/gpu-tooling/gpu-unlock.md) |
+
 ### traditional-divination
 
 | 项目 | 何时使用 | 许可 | 健康度 | 页面 |
@@ -485,6 +491,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **IdeaVim** | 当你离不开 JetBrains IDE、又想要 Vim 的动作、模式和 `.ideavimrc` 时用它——但它只是 Vim 子集的模拟，重度用户会撞上还原度的缺口。 | MIT | A（4/6） | [中](categories/dev-utilities/editors-and-runtimes/code-editors/ideavim.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/code-editors/ideavim.md) |
 | **VS Code** | 当团队横跨多种语言和操作系统、想用一个编辑器，靠几乎所有工具都先支持的扩展生态拿到语言能力和远程、容器开发时用它——但官方构建带微软遥测和专有许可，换 VSCodium 又会失去微软专有扩展。 | MIT | A（5/6） | [中](categories/dev-utilities/editors-and-runtimes/code-editors/vscode.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/code-editors/vscode.md) |
 | **Clash Verge Rev** | 当你在桌面电脑上有一份 Clash 格式订阅，想用 TUN 模式让整台机器（包括终端工具）按规则分流时用它——但它只有桌面版，TUN 还需要装特权服务或提权运行。 | GPL-3.0 | B（6/6） | [中](categories/dev-utilities/ops-infra/clash-verge-rev.zh.md) · [EN](categories/dev-utilities/ops-infra/clash-verge-rev.md) |
+| **Open-Box** | 专有软件信息例外：集成路由面板、DNS／订阅与配对客户端；须接受高网络权限、自有程序闭源和部分恢复边界。 | LicenseRef-Open-Box-Proprietary | C（4/6） | [中](categories/dev-utilities/ops-infra/open-box.zh.md) · [EN](categories/dev-utilities/ops-infra/open-box.md) |
 | **RustDesk** | 当你要照看几台不在身边的机器，想要 TeamViewer 式“输 ID 就连”的跨 NAT 体验、撮合和中继服务器又放在自己手里时用它——但开源服务端没有管理后台、SSO 和审计日志，这些在付费的 Server Pro 里。 | AGPL-3.0 | A（6/6） | [中](categories/dev-utilities/ops-infra/rustdesk.zh.md) · [EN](categories/dev-utilities/ops-infra/rustdesk.md) |
 | **Tauri** | 当一个 Web 前端的桌面应用要做到安装包小、内存低，而不是像 Electron 那样捎带整份 Chromium 时用它——但各系统 webview 渲染不一致，Linux 需要 webkit2gtk 4.1，原生逻辑必须用 Rust 写。 | Apache-2.0 OR MIT | A（6/6） | [中](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/tauri.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/tauri.md) |
 | **Deno** | 当你新起一个 TypeScript 后端、命令行工具或脚本，默认拒绝文件、网络和环境变量访问以及内置 fmt、lint、test 比原样运行现有 Node 代码更重要时用它——但大型 Node 应用迁移和依赖原生插件的项目不合适。 | MIT | A（6/6） | [中](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/deno.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/deno.md) |
@@ -585,6 +592,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Depth Anything V2** | 当你要从单张图像得到稠密深度图（三维重建、虚化、AR 遮挡、可控生成）又不想训练模型时用它——但只有 Small 权重是 Apache-2.0，Base／Large／Giant 是禁止商用的 CC-BY-NC-4.0，且默认输出是相对深度而非米制。 | Apache-2.0 | C（4/6） | [中](categories/ml-research/vision-and-multimodal/depth-anything-v2.zh.md) · [EN](categories/ml-research/vision-and-multimodal/depth-anything-v2.md) |
 | **Open-Sora** | 当你要在数据中心 GPU 上按完整公开的配方（代码、数据流水线、成本报告）**训练**或研究视频扩散模型时用它——2025-03 起停更，权重栈牵入 FLUX.1-dev 非商用和腾讯混元许可证。 | Apache-2.0 | B（4/6） | [中](categories/ml-research/vision-and-multimodal/open-sora.zh.md) · [EN](categories/ml-research/vision-and-multimodal/open-sora.md) |
 | **Sana** | 要研究空间压缩 32 倍的紧凑图像模型，或独立的混合注意力 Video 2.0 家族时用；显存预算及 Gemma／LTX 许可因权重而异。 | Apache-2.0 | B（5/6） | [中](categories/ml-research/vision-and-multimodal/sana.zh.md) · [EN](categories/ml-research/vision-and-multimodal/sana.md) |
+| **SVI** | 研究 Wan2.1 的误差回收微调和参考图引导的分段接续；Apache 副本保留仍待核，提示文件可执行 Python。 | NOASSERTION | B（4/6） | [中](categories/ml-research/vision-and-multimodal/stable-video-infinity.zh.md) · [EN](categories/ml-research/vision-and-multimodal/stable-video-infinity.md) |
 | **pymoo** | 当需要 Python 演化式多目标优化（NSGA-II/III、MOEA/D）求 Pareto 前沿时用它——若问题是凸／线性／单目标，LP 或梯度求解器要快得多。 | Apache-2.0 | B（6/6） | [中](categories/ml-research/pymoo.zh.md) · [EN](categories/ml-research/pymoo.md) |
 | **The AI Scientist** | 当你想让「想法到论文」这整圈全自动跑完——想法生成、查新、实验代码、作图，最后编译出带 LLM 评审的 LaTeX 论文——时用它，但要接受一条绑死模板、自改许可证后冻结、且限制你发布其产出的流水线。 | NOASSERTION (The AI Scientist Source Code License) | D（4/6） | [中](categories/ml-research/research-automation/ai-scientist.zh.md) · [EN](categories/ml-research/research-automation/ai-scientist.md) |
 | **Agent Laboratory** | 当你想让一组扮演角色的 LLM agent 跑「文献回顾→计划→实验→报告」、每阶段由你确认，并且要 MIT 条款和可续跑 checkpoint 时用它，但它自 2025-03 起没有代码改动，还挂着一条无人回应的安全披露。 | MIT | C（3/6） | [中](categories/ml-research/research-automation/agent-laboratory.zh.md) · [EN](categories/ml-research/research-automation/agent-laboratory.md) |

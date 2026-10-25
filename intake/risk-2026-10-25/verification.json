@@ -1,0 +1,89 @@
+{
+  "status": "partial delivery: three information entries and current Markdown verified; HTML refresh blocked",
+  "snapshot_at_utc": "2026-10-25T12:30:50.929484+00:00",
+  "counts": {
+    "new_information_pages": 3,
+    "promoted_existing_candidates": 2,
+    "new_repository_identities": 1,
+    "failed_pages": 0,
+    "aggregate_candidates": 134,
+    "aggregate_indexed": 132,
+    "anonymous_proposed": 1,
+    "historical_own_skip": 1,
+    "reading_categories": 16,
+    "repository_bilingual_pairs": 975
+  },
+  "machine_checks": {
+    "gates": "208 category nodes, 975 EN + 975 ZH pages, 0 errors, 1624 warnings.",
+    "reverse_index": "reports current; zero full mislabels",
+    "scoped": "6 pages; No deterministic findings.",
+    "tools_tests": "Ran 483 tests in 13.478s; OK; no skipped"
+  },
+  "source_review": {
+    "bilingual_pages": 6,
+    "detailed_summaries": 3,
+    "remaining_findings": 0,
+    "default_branch_line_ranges_with_git_blobs": 60,
+    "separate_wan22_documentation_range": 1,
+    "verbatim_flow_command": 1,
+    "summary_boundary_finding": "One omission of pre-checksum dependency/module writes was corrected and re-reviewed; the authored full page already contained it."
+  },
+  "page_preservation": "page-preservation.json: all 1944 prior project-page files byte-identical; exactly six new files; tools/schema/CI unchanged",
+  "tabs_audit": "tabs-audit.json: one SVI target closed after commit; other two targets had zero matches; no target URLs remain",
+  "aggregate_markdown": {
+    "status": "pass_for_markdown_only",
+    "candidates": 134,
+    "indexed": 132,
+    "proposed": 1,
+    "historical_own_skip": 1,
+    "reading_categories": 16,
+    "promotions": 2,
+    "new_identities": 1,
+    "preserved_profiles": 131,
+    "older_warning_profiles_preserved": 4,
+    "new_warning_profiles": 3,
+    "local_file_targets": 158,
+    "internal_markdown_anchors": 155,
+    "external_html_fragments_not_rechecked": 0,
+    "source_sha256": "e74002c9e6ae49d778713e055bd3bc75bfdc4b27c1c5f4b7d6d368190b3b9495",
+    "html_render_pair_browser": "not run: host denied original preflight; explicit owner stop condition applies; not a pass"
+  },
+  "aggregate_status_only_delta": {
+    "status": "pass",
+    "current_markdown_sha256": "e74002c9e6ae49d778713e055bd3bc75bfdc4b27c1c5f4b7d6d368190b3b9495",
+    "independently_reviewed_content_sha256": "bfe1a67cabe21961c23733e6215eaf00256326b4d50e1aa0a9a2b67942aab3c9",
+    "changes_after_content_review": [
+      "explicit HTML-not-refreshed notice",
+      "version-specific Markdown verification link"
+    ],
+    "other_bytes_identical": true
+  },
+  "aggregate_html": {
+    "status": "not refreshed for this batch; renderer not run",
+    "preflight": "permission.rejected: Permission denied: shell",
+    "attempts": 3,
+    "explicit_authorization": "Initial denied isolated attempt; isolated exact retry after approval; same command in main session after separate explicit approval was also denied.",
+    "stop_condition": "User explicitly approved stopping at Markdown if main session was denied; no alternate command/tool/configuration bypass.",
+    "html_pair_check": "not run, not a pass",
+    "browser_acceptance": "not run, not a pass",
+    "last_observed_html_version": "v5, before this three-entry supplement; not current v6",
+    "isolated_render_exception": "User approved a one-step main-session exception; main preflight was denied, so no inline render actually ran."
+  },
+  "owner_decision": "owner-decision.md",
+  "publication": "Explicit push/PR/green-CI merge approval exists for feat/risk-intake-2026-10-25; this record is a pre-push snapshot, subsequent live state is the GitHub PR.",
+  "approved_branch": "feat/risk-intake-2026-10-25",
+  "Inner-loop evidence": "Main reran full structural/quality/reverse gates, exact six-page scan and 483 tool tests after the resumed session.",
+  "Acceptance evidence": "Three complete bilingual information entries, source-backed mechanisms/cards/routes and separate commits; scoped target-tab closure; current Markdown count, identity, 131-profile preservation and source-link checks. The requested HTML surface remains incomplete and is explicitly not accepted.",
+  "Holdout / unseen evidence": "No model-effect or hardware experiment. Independent fixed-source reviews, directed boundary branches, exact old-page byte proof and aggregate regression checks substitute for a holdout quality score; no speed, video quality, proxy privacy or recovery benefit claimed.",
+  "Holdout 来源类别": "真实捕获和抽样：固定公开代码／许可证／发行元数据、原报告快照、实际索引命令输出",
+  "预期值来源": "需求原文与外部契约：维护者三项明确要求、schema、完整页的边界、原报告身份与状态",
+  "本次改动相对冻结点的位置": "新增内容与一个新分类路由；未改工具、schema、CI或判定门。原133候选在本轮首次写入前冻结；harness仅对照2026-10-18历史基线。",
+  "Known gaps": [
+    "Original HTML has not been refreshed. No renderer, new HTML companion check, desktop/mobile or browser interaction acceptance was run for this batch after the host denial.",
+    "SVI Apache license-copy retention remains unresolved, limited cached-text coverage and unpinned HF cards retained; no model runtime or quality validation.",
+    "gpu-unlock GPL source is confirmed but complete firmware/derived-payload rights, exact hardware compatibility, performance, correctness and lossless recovery are not verified.",
+    "Open-Box remains proprietary with unavailable internals/helpers. Pre-checksum writes, Docker asset-name mismatch, mutable upgrade data and partial network recovery remain disclosed.",
+    "No upstream installation/execution, GPU or kernel operation, proxy traffic, service/network change, legal clearance or personal-harness modification."
+  ],
+  "close_decision": "Partial delivery under explicit owner stop condition; complete committed review and approved publication for verified content, leave HTML blocker visible."
+}
