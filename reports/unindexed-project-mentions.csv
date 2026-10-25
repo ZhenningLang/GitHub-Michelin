@@ -35,6 +35,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Cutter](https://github.com/rizinorg/cutter),categories/dev-utilities/data-tools/ghidra.md,,no
 [daed](https://github.com/daeuniverse/daed),categories/networking/dae.md,,no
 [darktable](https://github.com/darktable-org/darktable),categories/photo-editing/lightcraft.md,,no
+[Diffusers](https://github.com/huggingface/diffusers),categories/on-device-ml/local-image-generation/iris-c.md,,no
 [Dive into Deep Learning](https://github.com/d2l-ai/d2l-en),categories/learning-resources/torchcode.md,,no
 [doocs/md](https://github.com/doocs/md),categories/agent-skills/ai-writing/content-production/gzh-design-skill.md,,no
 [Dragonfly](https://github.com/dragonflydb/dragonfly),categories/databases/database-engines/kividb.md,,no

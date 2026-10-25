@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "input", "en": "Prompt and model directory", "zh": "提示词与模型目录", "kind": "input"},
+    {"id": "map", "en": "Read-only mapped safetensors", "zh": "只读映射 safetensors 文件", "technique": [1]},
+    {"id": "encode", "en": "Encode text, then release the encoder", "zh": "编码文字后释放编码器", "technique": [1]},
+    {"id": "refs", "en": "Optional FLUX reference tokens", "zh": "可选 FLUX 参考图输入", "technique": [3]},
+    {"id": "gpu", "en": "Denoise through the device backend", "zh": "通过设备后端执行去噪", "technique": [2]},
+    {"id": "cpu", "en": "CPU fallback on Z-Image device failure", "zh": "Z-Image 设备路径失败时回退 CPU", "technique": [2]},
+    {"id": "decode", "en": "Decode pixels and save PNG", "zh": "解码像素并保存 PNG", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "input", "to": "map"},
+    {"from": "map", "to": "encode"},
+    {"from": "encode", "to": "gpu"},
+    {"from": "input", "to": "refs", "style": "dashed"},
+    {"from": "refs", "to": "gpu", "style": "dashed"},
+    {"from": "gpu", "to": "cpu", "style": "dashed", "en": "allocation or execution failure", "zh": "分配或执行失败"},
+    {"from": "gpu", "to": "decode"},
+    {"from": "cpu", "to": "decode"}
+  ],
+  "sources": [
+    "https://github.com/antirez/iris.c/blob/ff97831282ecc6691710828604165da84b0616f5/iris.c#L586-L721",
+    "https://github.com/antirez/iris.c/blob/ff97831282ecc6691710828604165da84b0616f5/iris_safetensors.c#L208-L300",
+    "https://github.com/antirez/iris.c/blob/ff97831282ecc6691710828604165da84b0616f5/iris_transformer_zimage.c#L1848-L2118",
+    "https://github.com/antirez/iris.c/blob/ff97831282ecc6691710828604165da84b0616f5/iris.c#L1545-L1778"
+  ]
+}

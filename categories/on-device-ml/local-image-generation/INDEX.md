@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **iris.c** | Choose it for a direct C prompt-to-PNG pipeline for Klein/Z-Image models without Python inference; model storage, backend sizing and separate weight licenses remain yours. | C (5/6) | [→](iris-c.md) |
 | **Stable Diffusion WebUI** | Use it when you want a tabbed local web UI with full parameter control and the large A1111 extension catalog for SD 1.5/SDXL work on an NVIDIA GPU — but its core has had no commit since 2024-07, so newer model families need ComfyUI. | D (4/6) | [→](stable-diffusion-webui.md) |
 | **ComfyUI** | Use it when you generate images or video with open-weight models on your own GPU and need a reproducible node graph — ControlNet, LoRA, inpainting, upscaling — that reruns only what changed — but it has no login, quotas or tenant isolation. | B (5/6) | [→](comfyui.md) |
 | **stable-diffusion.cpp** | Use it when you must ship image/video diffusion inside your own app or onto mixed CPU/AMD/Mac/NVIDIA machines as one native binary without Python — but expect a fixed feature set, no semver, and a no-auth single-worker server. | A (6/6) | [→](stable-diffusion-cpp.md) |
@@ -15,6 +16,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [iris.c](iris-c.md) | ✅ | C (5/6) | Direct C implementation with Metal/CUDA/ROCm options; narrower model support than stable-diffusion.cpp, no GGUF path, and device failure can fall back to CPU. |
 | [Stable Diffusion WebUI](stable-diffusion-webui.md) | ✅ | D (4/6) | Buys the biggest extension ecosystem and tutorial base for classic SD workflows; costs a frozen core, AGPL-3.0 network copyleft, no multi-user isolation, and a Python/CUDA install you manage yourself. |
 | [ComfyUI](comfyui.md) | ✅ | B (5/6) | Full pipeline control, saved inside every output and quick to support new open models, paid for with a node-graph learning curve, a usable GPU, and a roadmap owned by the company selling Comfy Cloud. |
 | [stable-diffusion.cpp](stable-diffusion-cpp.md) | ✅ | A (6/6) | ggml-based C/C++ diffusion engine (SD, Flux, Qwen-Image, Wan…) with GGUF quantization and a C API; trades ComfyUI/WebUI workflow richness and extensions for a Python-free, embeddable binary. |

@@ -156,6 +156,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **ComfyUI** | 当你在自己的 GPU 上用开放权重模型生成图像或视频，需要一张可复现的节点图（ControlNet、LoRA、局部重绘、放大），并且只重算改动过的部分时用它——但它没有登录、配额和租户隔离。 | GPL-3.0 | B（5/6） | [中](categories/on-device-ml/local-image-generation/comfyui.zh.md) · [EN](categories/on-device-ml/local-image-generation/comfyui.md) |
 | **Needle** | 当需要一个小体积端侧模型离线完成英文工具调用、类型化抽取与嵌入时用它——29–121M 参数，但基座模型需要微调，拒绝类请求要自建守卫。 | Apache-2.0 | B（4/6） | [中](categories/on-device-ml/needle.zh.md) · [EN](categories/on-device-ml/needle.md) |
 | **stable-diffusion.cpp** | 当你要把图片/视频扩散生成做成一个不带 Python 的原生二进制，嵌进自己的应用或发到混杂的 CPU/AMD/Mac/NVIDIA 机器上时用它——但功能集固定、没有语义化版本，自带服务无鉴权且单线程排队。 | MIT | A（6/6） | [中](categories/on-device-ml/local-image-generation/stable-diffusion-cpp.zh.md) · [EN](categories/on-device-ml/local-image-generation/stable-diffusion-cpp.md) |
+| **iris.c** | 要用直接的 C 管线把 Klein／Z-Image 提示词变成 PNG，且不带 Python 推理环境时选它；模型存储、后端容量与权重许可仍由你负责。 | MIT | C（5/6） | [中](categories/on-device-ml/local-image-generation/iris-c.zh.md) · [EN](categories/on-device-ml/local-image-generation/iris-c.md) |
 | **BirdNET-Go** | 当你想在树莓派 4/5 或小主机上搭一个全天候的鸟类（及蝙蝠）声音监测站，带本地网页仪表盘、多路麦克风和 RTSP 音源、MQTT 与 Home Assistant 告警时用它——但代码和模型都禁止商用（CC BY-NC-SA），默认安装跟的是单人维护的每夜构建，批量文件分析要交给别的工具。 | CC-BY-NC-SA-4.0 | B（5/6） | [中](categories/on-device-ml/birdnet-go.zh.md) · [EN](categories/on-device-ml/birdnet-go.md) |
 
 
