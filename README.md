@@ -45,6 +45,12 @@ installer surface.
 
 The complete index, grouped by category. Each project has an English page (`<slug>.md`) and a Chinese sibling (`<slug>.zh.md`) — click straight through. Browse interactively from [INDEX.md](INDEX.md); agents start at [AGENTS.md](AGENTS.md).
 
+### gpu-tooling
+
+| Project | Use when | License | Health | Page |
+|---|---|---|---|---|
+| **gpu-unlock** | Review an Ampere pre-driver unlock; privileged firmware writes and partial recovery, information only. | NOASSERTION; module GPL-2.0-only, firmware separate | C (5/6) | [EN](categories/gpu-tooling/gpu-unlock.md) · [中](categories/gpu-tooling/gpu-unlock.zh.md) |
+
 ### traditional-divination
 
 | Project | Use when | License | Health | Page |

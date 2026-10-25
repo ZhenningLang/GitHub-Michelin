@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "gpu-unlock does", "zh": "gpu-unlock 做的"},
+  "steps": [
+    {"lane": "you", "en": "After separate approval, prepare native packages and an early boot image", "zh": "另行获批后准备原生包与早期启动镜像"},
+    {"lane": "you", "en": "Select a PCI target and arrange loading before NVIDIA", "zh": "显式选择 PCI 目标，安排在 NVIDIA 前加载"},
+    {"lane": "them", "en": "Checks the selected unbound card and loads pinned firmware", "zh": "检查选中的未绑定显卡，加载固定固件", "component": {"en": "gpu_unlock kernel module", "zh": "gpu_unlock 内核模块"}},
+    {"lane": "them", "en": "Attempts selector changes and reset, then yields to the normal driver", "zh": "尝试改写速度选择寄存器与重置，再交正常驱动"}
+  ],
+  "value": {"en": "An attempted boot-time unlock without patching the runtime driver; benefit and recovery remain unverified", "zh": "不修改运行时驱动的启动解锁尝试；收益与恢复仍待验证"},
+  "sources": [
+    "https://github.com/Zagitta/gpu-unlock/blob/af28cbbfd3d922a659227ecfb7369adfd924cf03/README.md#L60-L155",
+    "https://github.com/Zagitta/gpu-unlock/blob/af28cbbfd3d922a659227ecfb7369adfd924cf03/kernel/gpu_unlock/main.c#L181-L211",
+    "https://github.com/Zagitta/gpu-unlock/blob/af28cbbfd3d922a659227ecfb7369adfd924cf03/kernel/gpu_unlock/unlock_610.c#L1443-L1495"
+  ]
+}

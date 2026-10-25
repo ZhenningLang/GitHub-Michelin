@@ -42,6 +42,12 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 完整索引，按分类分组。每个项目有一份英文页（`<slug>.md`）和一份中文页（`<slug>.zh.md`），点击直达。交互式浏览见 [INDEX.zh.md](INDEX.zh.md)；agent 从 [AGENTS.md](AGENTS.md) 开始。
 
+### gpu-tooling
+
+| 项目 | 何时使用 | 许可 | 健康度 | 页面 |
+|---|---|---|---|---|
+| **gpu-unlock** | 研究 Ampere 驱动前解锁；特权固件写入和部分恢复，仅作信息收录。 | NOASSERTION；模块 GPL-2.0-only，固件独立条款 | C（5/6） | [中](categories/gpu-tooling/gpu-unlock.zh.md) · [EN](categories/gpu-tooling/gpu-unlock.md) |
+
 ### traditional-divination
 
 | 项目 | 何时使用 | 许可 | 健康度 | 页面 |

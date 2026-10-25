@@ -34,6 +34,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Coding-Solo/godot-mcp](https://github.com/Coding-Solo/godot-mcp),categories/agent-skills/engineering/awesome-gamedev-agent-skills.md,,no
 [CoplayDev/unity-mcp](https://github.com/CoplayDev/unity-mcp),categories/game-dev/unity-mcp.md,,no
 [CosyVoice](https://github.com/QwenAudio/CosyVoice),categories/speech/index-tts.md,,no
+[CUTLASS](https://github.com/NVIDIA/cutlass),categories/gpu-tooling/gpu-unlock.md,,no
 [Cutter](https://github.com/rizinorg/cutter),categories/dev-utilities/binary-analysis/ghidra.md,,no
 [daed](https://github.com/daeuniverse/daed),categories/networking/dae.md,,no
 [darktable](https://github.com/darktable-org/darktable),categories/photo-editing/lightcraft.md,,no
@@ -138,6 +139,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [wg-easy](https://github.com/wg-easy/wg-easy),categories/networking/amneziawg-installer.md,,no
 [WhisperX](https://github.com/m-bain/whisperX),categories/speech/vibevoice.md,,no
 [whoBIRD](https://github.com/woheller69/whoBIRD),categories/on-device-ml/birdnet-go.md,,no
+[WildFlash1st/cmp90hx-unlock](https://github.com/WildFlash1st/cmp90hx-unlock),categories/gpu-tooling/gpu-unlock.md,,no
 [WireGuard](https://github.com/WireGuard/wireguard-go),categories/networking/openflux.md,,no
 [wiresock/amneziawg-install](https://github.com/wiresock/amneziawg-install),categories/networking/amneziawg-installer.md,,no
 [Woodpecker](https://github.com/woodpecker-ci/woodpecker),categories/dev-utilities/ops-infra/harness-open-source.md,,no
