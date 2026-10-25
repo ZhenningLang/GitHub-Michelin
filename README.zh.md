@@ -609,6 +609,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **distilly** | 当你想把某个人的聊天记录、文档与访谈蒸馏成可安装的 agent 技能，让它用这个人的判断与语气回答时用它。 | MIT | B（4/5） | [中](categories/agent-skills/distilly.zh.md) · [EN](categories/agent-skills/distilly.md) |
 | **visual-explainer** | 把有来源的差异与方案变成图文 HTML，保留源码与反馈；不是可编辑图模型，默认也非完全离线。 | MIT | C（5/6） | [EN](categories/agent-skills/design/visual-artifacts/visual-explainer.md) · [中](categories/agent-skills/design/visual-artifacts/visual-explainer.zh.md) |
 | **Anima** | 把静态生物课变成带来源的交互机制图；科学审查仍由你负责。 | MIT | C（4/5） | [EN](categories/agent-skills/design/visual-artifacts/anima.md) · [中](categories/agent-skills/design/visual-artifacts/anima.zh.md) |
+| **AI Design Skills** | 规划落地页或源稿一致的展示动画；两份指导技能，不是录制器，也没有转化／保真实测保证。 | MIT | C（4/5） | [EN](categories/agent-skills/design/visual-artifacts/ai-design-skills.md) · [中](categories/agent-skills/design/visual-artifacts/ai-design-skills.zh.md) |
 
 #### agent-skills / engineering
 

@@ -612,6 +612,7 @@ Research engines and scientific workbenches; source access and evidence auditing
 | **distilly** | Use it when you want to distill one person's chat logs, documents, and interviews into an installable agent skill that answers in their judgment and voice. | MIT | B (4/5) | [EN](categories/agent-skills/distilly.md) · [中](categories/agent-skills/distilly.zh.md) |
 | **visual-explainer** | Turn source-backed diffs and plans into figure-led HTML with retained source and reader feedback; not an editable diagram model or fully offline default. | MIT | C (5/6) | [EN](categories/agent-skills/design/visual-artifacts/visual-explainer.md) · [中](categories/agent-skills/design/visual-artifacts/visual-explainer.zh.md) |
 | **Anima** | Turn a static biology lesson into a sourced interactive mechanism figure; scientific review remains yours. | MIT | C (4/5) | [EN](categories/agent-skills/design/visual-artifacts/anima.md) · [中](categories/agent-skills/design/visual-artifacts/anima.zh.md) |
+| **AI Design Skills** | Plan a landing or a source-matched animation showcase; two advisory skills, no bundled recorder or measured conversion/fidelity guarantee. | MIT | C (4/5) | [EN](categories/agent-skills/design/visual-artifacts/ai-design-skills.md) · [中](categories/agent-skills/design/visual-artifacts/ai-design-skills.zh.md) |
 
 #### agent-skills / engineering
 
