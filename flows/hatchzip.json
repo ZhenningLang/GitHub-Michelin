@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "HatchZip does", "zh": "HatchZip 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI without RAR support", "zh": "安装默认不含 RAR 的命令行工具", "code": "cargo install hatchzip"},
+    {"lane": "you", "en": "Supply a replaceable archive and request its space plan", "zh": "提供可重新获取的压缩包，查看空间计划", "code": "hatchzip check game.zip"},
+    {"lane": "them", "en": "Estimate peak free-space demand without changing the archive", "zh": "不修改原包，估算空闲空间峰值需求"},
+    {"lane": "you", "en": "Start extraction and approve progressive input removal", "zh": "开始解压，确认允许逐步删除输入", "code": "hatchzip extract game.zip"},
+    {"lane": "them", "en": "Write and flush output, record progress, then reclaim input bytes", "zh": "写出并刷盘，记录进度，再回收输入空间"},
+    {"lane": "them", "en": "Finish with extracted files and remove the consumed archive", "zh": "留下提取的文件，删除已消耗的原包"}
+  ],
+  "value": {"en": "Unpack on the same disk without keeping the entire input beside the entire output", "zh": "同盘解压，不必让完整输入和完整输出同时占盘"},
+  "sources": [
+    "https://github.com/xevrion/hatchzip/blob/dd4f52f6ae27f80760d293b82cd8468411a29cec/README.md#L118-L124",
+    "https://github.com/xevrion/hatchzip/blob/dd4f52f6ae27f80760d293b82cd8468411a29cec/README.md#L151-L175",
+    "https://github.com/xevrion/hatchzip/blob/dd4f52f6ae27f80760d293b82cd8468411a29cec/crates/cli/src/main.rs#L648-L668",
+    "https://github.com/xevrion/hatchzip/blob/dd4f52f6ae27f80760d293b82cd8468411a29cec/crates/core/src/engine.rs#L825-L865"
+  ]
+}

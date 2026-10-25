@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1398
+- Named-but-unindexed alternatives: 1401
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -31,6 +31,7 @@ shape and are deliberately excluded here.
 | @ngneat/falso | `categories/dev-utilities/data-tools/faker-js.md` |
 | @xstate/store (`statelyai/xstate`) | `categories/web-ui/state-management/tanstack-store.md` |
 | [12306-skill](https://github.com/Joooook/12306-skill) | `categories/travel-planning/12306-mcp.md` |
+| [7-Zip](https://github.com/ip7z/7zip) | `categories/dev-utilities/data-tools/hatchzip.md` |
 | [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client) | `categories/networking/amneziawg-installer.md` |
 | [Anatomy](https://github.com/wheresryan22/anatomy) | `categories/agent-skills/design/visual-artifacts/anima.md` |
 | [angristan/wireguard-install](https://github.com/angristan/wireguard-install) | `categories/networking/amneziawg-installer.md` |
@@ -51,4 +52,3 @@ shape and are deliberately excluded here.
 | [Cedarling (Janssen)](https://github.com/JanssenProject/jans) | `categories/agent-governance/agent-governance-toolkit.md` |
 | [Cipher](https://github.com/campfirein/cipher) | `categories/agent-memory/coding-agent-memory/claude-subconscious.md` |
 | [Clash Nyanpasu](https://github.com/libnyanpasu/clash-nyanpasu) | `categories/dev-utilities/ops-infra/clash-verge-rev.md` |
-| [cloudflared](https://github.com/cloudflare/cloudflared) | `categories/networking/opentunnel.md` |

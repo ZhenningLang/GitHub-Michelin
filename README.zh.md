@@ -465,6 +465,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **HatchZip** | 在快满磁盘上逐步消耗可重新获取的原包来解压；保留原包模式会放弃空间收益。 | 核心 MIT OR Apache-2.0；RAR 发布版另含 UnRAR 限制 | C（5/6） | [中](categories/dev-utilities/data-tools/hatchzip.zh.md) · [EN](categories/dev-utilities/data-tools/hatchzip.md) |
 | **App Store Connect CLI** | 脚本化管理苹果发布文案、TestFlight 与审核；独立 Go 二进制，凭据和审批边界仍由你负责。 | MIT | B（6/6） | [中](categories/dev-utilities/app-store-connect-cli.zh.md) · [EN](categories/dev-utilities/app-store-connect-cli.md) |
 | **xtool** | 从 Linux、WSL 或 macOS 构建签名 SwiftPM iOS 应用；仍受苹果开发包与账号约束。 | MIT | B（6/6） | [中](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/xtool.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/xtool.md) |
 | **REA** | 通过 agent 用本地证据检查无源码应用；原生分析引擎需另配。 | MIT | B（5/6） | [中](categories/dev-utilities/data-tools/rea.zh.md) · [EN](categories/dev-utilities/data-tools/rea.md) |
