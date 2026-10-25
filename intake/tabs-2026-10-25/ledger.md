@@ -5,7 +5,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 
 | 规范名 | 动作 | 结果 | 页面路径 | 备注 | 标签里的写法 |
 |:---|:---|:---|:---|:---|:---|
-| antirez/iris.c | add | running |  |  | antirez/iris.c |
+| antirez/iris.c | add | done | categories/on-device-ml/local-image-generation/iris-c.md | 固定源码与双语页已审，门禁及专项零错误；独立提交 f75d56b；no leftover Q&A | antirez/iris.c |
 | Dryxio/reagent | add | running |  |  | dryxio/reagent |
 | Garinmckayl/anima | add | running |  |  | garinmckayl/anima |
 | google-gemini/gemini-api-cli | add | running |  |  | google-gemini/gemini-api-cli |

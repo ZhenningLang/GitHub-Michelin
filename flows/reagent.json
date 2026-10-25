@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "ReAgent does", "zh": "ReAgent 做的"},
+  "steps": [
+    {"lane": "you", "en": "Prepare Python, Ghidra, the bridge and authorized program exports", "zh": "准备 Python、Ghidra、桥接器与授权程序导出", "code": "python3 -m pip install --upgrade \"auto-re-agent[ghidra-bridge]>=0.4.0\""},
+    {"lane": "you", "en": "Initialize the profile; configure provider, source paths and trusted candidate tests", "zh": "初始化配置，设置模型、源码路径与可信候选测试", "code": "re-agent init --profile generic-cpp"},
+    {"lane": "you", "en": "Select one function address and start reconstruction", "zh": "选一个函数地址，开始重建", "code": "re-agent reverse --address 0x401000"},
+    {"lane": "them", "en": "Collect Ghidra evidence and ask the reverser for candidate C/C++", "zh": "收集 Ghidra 证据，让生成器产出候选 C/C++"},
+    {"lane": "them", "en": "Review and validate the candidate; feed failures into bounded repairs", "zh": "评审并验证候选，把失败交回有界修复"},
+    {"lane": "them", "en": "Save generated code and separate acceptance diagnostics for your integration decision", "zh": "保存生成代码与分项验收诊断，供你决定是否集成"}
+  ],
+  "value": {"en": "Candidate implementations and failure evidence without manually relaying every review and test result", "zh": "拿到候选实现与失败证据，不用手工转送每轮评审和测试结果"},
+  "sources": [
+    "https://github.com/Dryxio/reagent/blob/d12cea338c61898b06a86fe8adb25275fa9d5615/README.md#L81-L215",
+    "https://github.com/Dryxio/reagent/blob/d12cea338c61898b06a86fe8adb25275fa9d5615/src/re_agent/agents/loop.py#L100-L205",
+    "https://github.com/Dryxio/reagent/blob/d12cea338c61898b06a86fe8adb25275fa9d5615/src/re_agent/orchestrator/single.py#L77-L93",
+    "https://github.com/Dryxio/reagent/blob/d12cea338c61898b06a86fe8adb25275fa9d5615/examples/gta_timer/README.md#L3-L34"
+  ]
+}

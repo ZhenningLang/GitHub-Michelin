@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "input", "en": "Authorized binary evidence and project source", "zh": "授权二进制证据与工程源码", "kind": "input"},
+    {"id": "context", "en": "Bounded evidence and read-operation map", "zh": "有界证据与只读操作映射", "technique": [1]},
+    {"id": "model", "en": "Reverser creates or repairs candidate C/C++", "zh": "生成器创建或修复候选 C/C++", "technique": [2]},
+    {"id": "check", "en": "Separate checker and structural mismatches", "zh": "独立检查会话与结构不匹配", "technique": [2]},
+    {"id": "overlay", "en": "Candidate overlay; optional full-project copy", "zh": "候选覆盖副本；可选完整工程复制", "technique": [3]},
+    {"id": "gates", "en": "Configured trusted commands and parity policy", "zh": "配置的可信命令与一致性策略", "technique": [3]},
+    {"id": "state", "en": "Input fingerprint, checkpoints and explicit gaps", "zh": "输入指纹、检查点与显式缺口", "technique": [4]},
+    {"id": "result", "en": "Code and per-gate findings; not equivalence proof", "zh": "代码与分门禁诊断；不是等价证明", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "input", "to": "context"},
+    {"from": "context", "to": "model"},
+    {"from": "model", "to": "check"},
+    {"from": "check", "to": "overlay"},
+    {"from": "overlay", "to": "gates"},
+    {"from": "gates", "to": "model", "en": "failures within call and round limits", "zh": "调用和轮次上限内反馈失败", "style": "dashed"},
+    {"from": "gates", "to": "state"},
+    {"from": "state", "to": "result"}
+  ],
+  "sources": [
+    "src/re_agent/agents/reverser.py:140-257 at d12cea338c61898b06a86fe8adb25275fa9d5615",
+    "src/re_agent/agents/loop.py:64-205 at d12cea338c61898b06a86fe8adb25275fa9d5615",
+    "src/re_agent/verification/candidate.py:33-242 at d12cea338c61898b06a86fe8adb25275fa9d5615",
+    "src/re_agent/core/identity.py:13-43 and core/session.py:39-92 at d12cea338c61898b06a86fe8adb25275fa9d5615"
+  ]
+}
