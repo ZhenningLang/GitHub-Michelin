@@ -1,0 +1,26 @@
+{
+  "stage": "after-five-project-commits-before-routing-refactor",
+  "completed_public_repositories": [
+    "antirez/iris.c",
+    "Dryxio/reagent",
+    "Garinmckayl/anima",
+    "google-gemini/gemini-api-cli",
+    "xevrion/hatchzip"
+  ],
+  "completed_tabs_remaining": 0,
+  "retained": {
+    "new_proposal": "vita-epfl/Stable-Video-Infinity",
+    "existing_proposal": "liandu2024/Open-Box",
+    "non_public_proposal": "identity withheld",
+    "own_skip": "identity withheld"
+  },
+  "observed_non_target_url_delta": {
+    "removed": 3,
+    "added": 0,
+    "cause": "not established; no attribution to user, agent or other processes"
+  },
+  "scope_evidence": "Only five done public repository closures were requested. The committed helper closes exact target URLs in descending index order; no commands targeting the missing non-GitHub URLs were issued. End-to-end unchanged-browser-state cannot be proven from URL snapshots.",
+  "raw_url_state": "kept only in ignored local evidence; no automatic restore of unrelated tabs",
+  "new_queue_entries_on_latest_scan": 0,
+  "upstream_execution": false
+}
