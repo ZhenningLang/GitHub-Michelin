@@ -114,7 +114,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [RetDec](https://github.com/avast/retdec),categories/dev-utilities/binary-analysis/reagent.md,,no
 [Self Forcing](https://github.com/guandeh17/Self-Forcing),categories/ml-research/vision-and-multimodal/stable-video-infinity.md,,no
 [Semgrep](https://github.com/semgrep/semgrep),categories/agent-governance/skillspector.md,,no
-[sing-box](https://github.com/SagerNet/sing-box),categories/networking/dae.md,,no
+[sing-box](https://github.com/SagerNet/sing-box),categories/dev-utilities/ops-infra/open-box.md,,no
 [spcfox/amnezia-wg-easy](https://github.com/spcfox/amnezia-wg-easy),categories/networking/amneziawg-installer.md,,no
 [Stats](https://github.com/exelban/stats),categories/observability/mac-performance-monitor.md,,no
 [Sunshine](https://github.com/LizardByte/Sunshine) + [Moonlight](https://github.com/moonlight-stream/moonlight-qt),categories/dev-utilities/ops-infra/rustdesk.md,,no

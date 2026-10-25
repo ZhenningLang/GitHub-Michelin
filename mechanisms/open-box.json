@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "release", "en": "Official release payload", "zh": "官方发行程序包", "kind": "input"},
+    {"id": "verify", "en": "Checksum and runtime preflight", "zh": "校验和及运行时预检", "technique": [1]},
+    {"id": "stage", "en": "Native: stage components; retain data and etc", "zh": "原生：暂存组件；保留 data 与 etc", "technique": [2]},
+    {"id": "old", "en": "Keep old components during swap", "zh": "替换期间保留旧组件", "technique": [2]},
+    {"id": "health", "en": "Panel health response", "zh": "面板健康响应", "technique": [2]},
+    {"id": "accept", "en": "Remove old files; attempt core redeploy", "zh": "删除旧文件；尝试重部署内核", "kind": "output", "technique": [2]},
+    {"id": "restore", "en": "Attempt component rollback; no data snapshot", "zh": "尝试组件回退；无数据快照", "kind": "output", "technique": [2]},
+    {"id": "mount", "en": "Container host mounts: etc and data", "zh": "容器宿主挂载：etc 与 data", "technique": [3]},
+    {"id": "supervise", "en": "Separate panel and core supervisors", "zh": "面板与内核独立监督", "technique": [3]},
+    {"id": "net", "en": "Packaged network helpers; source absent here", "zh": "随包网络辅助脚本；本树未公开", "kind": "external", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "release", "to": "verify"},
+    {"from": "verify", "to": "stage"},
+    {"from": "stage", "to": "old"},
+    {"from": "old", "to": "health"},
+    {"from": "health", "to": "accept", "en": "responds", "zh": "响应成功"},
+    {"from": "health", "to": "restore", "en": "fails", "zh": "检查失败", "style": "dashed"},
+    {"from": "release", "to": "mount", "style": "dashed"},
+    {"from": "mount", "to": "supervise"},
+    {"from": "supervise", "to": "net", "en": "pre-start and post-stop", "zh": "启动前及停止后"}
+  ],
+  "sources": [
+    "https://github.com/liandu2024/Open-Box/blob/32b288000a923260f35ea995d65b3b58bcfd087e/scripts/install.sh#L1003-L1179",
+    "https://github.com/liandu2024/Open-Box/blob/32b288000a923260f35ea995d65b3b58bcfd087e/scripts/update.sh#L1951-L2319",
+    "https://github.com/liandu2024/Open-Box/blob/32b288000a923260f35ea995d65b3b58bcfd087e/docker/bin/openbox-ctl#L41-L68",
+    "https://github.com/liandu2024/Open-Box/blob/32b288000a923260f35ea995d65b3b58bcfd087e/docker/compose.yaml#L1-L38"
+  ]
+}

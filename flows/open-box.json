@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Open-Box does", "zh": "Open-Box 做的"},
+  "steps": [
+    {"lane": "you", "en": "Authorize root deployment on supported Linux and review the official native installer", "zh": "授权受支持 Linux 的高权限部署，审阅官方安装器"},
+    {"lane": "them", "en": "Install the verified bundle and start the panel, leaving the unconfigured kernel stopped", "zh": "安装校验后的整包并启动面板，未配置内核保持停止", "component": {"en": "native installer", "zh": "原生安装器"}},
+    {"lane": "you", "en": "Set the LAN panel password; import your subscription and choose DNS and routing rules", "zh": "设置面板密码，导入订阅并配置域名解析与分流"},
+    {"lane": "you", "en": "Start the kernel in the panel; point one test device's gateway and DNS at this host", "zh": "在面板启动内核，让一台终端的网关与域名解析指向它"},
+    {"lane": "them", "en": "Apply the selected split-routing rules to that device's connections", "zh": "对该终端连接应用所选分流规则", "component": {"en": "distributed proxy service", "zh": "发行包中的代理服务"}}
+  ],
+  "value": {"en": "Manage gateway subscriptions, destination rules and DNS in one panel instead of hand-editing each config", "zh": "在一个面板管理网关订阅、目标规则和 DNS，不逐份手写配置"},
+  "sources": [
+    "https://github.com/liandu2024/Open-Box/blob/32b288000a923260f35ea995d65b3b58bcfd087e/README.md#L133-L167",
+    "https://github.com/liandu2024/Open-Box/blob/32b288000a923260f35ea995d65b3b58bcfd087e/scripts/install.sh#L1254-L1314",
+    "https://github.com/liandu2024/Open-Box/blob/32b288000a923260f35ea995d65b3b58bcfd087e/README.md#L65-L118"
+  ]
+}
