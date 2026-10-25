@@ -34,7 +34,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Coding-Solo/godot-mcp](https://github.com/Coding-Solo/godot-mcp),categories/agent-skills/engineering/awesome-gamedev-agent-skills.md,,no
 [CoplayDev/unity-mcp](https://github.com/CoplayDev/unity-mcp),categories/game-dev/unity-mcp.md,,no
 [CosyVoice](https://github.com/QwenAudio/CosyVoice),categories/speech/index-tts.md,,no
-[Cutter](https://github.com/rizinorg/cutter),categories/dev-utilities/data-tools/ghidra.md,,no
+[Cutter](https://github.com/rizinorg/cutter),categories/dev-utilities/binary-analysis/ghidra.md,,no
 [daed](https://github.com/daeuniverse/daed),categories/networking/dae.md,,no
 [darktable](https://github.com/darktable-org/darktable),categories/photo-editing/lightcraft.md,,no
 [Diffusers](https://github.com/huggingface/diffusers),categories/on-device-ml/local-image-generation/iris-c.md,,no
@@ -103,13 +103,13 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [PocketPal AI](https://github.com/a-ghorbani/pocketpal-ai),categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md,,no
 [Pyodide](https://github.com/pyodide/pyodide),categories/sandboxing/monty.md,,no
 [pyVideoTrans](https://github.com/jianchang512/pyvideotrans),categories/speech/voicestudio.md,,no
-[radare2](https://github.com/radareorg/radare2),categories/dev-utilities/data-tools/ghidra.md,,no
+[radare2](https://github.com/radareorg/radare2),categories/dev-utilities/binary-analysis/ghidra.md,,no
 [RAID](https://github.com/liamdugan/raid),categories/llm-eval/chatgpt-comparison-detection.md,,no
 [RawTherapee](https://github.com/RawTherapee/RawTherapee),categories/photo-editing/lightcraft.md,,no
 [react-iztro](https://github.com/SylarLong/react-iztro),categories/traditional-divination/ziwei-doushu.md,,no
 [rebrowser-patches](https://github.com/rebrowser/rebrowser-patches),categories/web-automation/agent-browser-tools/playwright-bot-bypass.md,,no
 [Redis](https://github.com/redis/redis),categories/databases/database-engines/kividb.md,,no
-[RetDec](https://github.com/avast/retdec),categories/dev-utilities/data-tools/reagent.md,,no
+[RetDec](https://github.com/avast/retdec),categories/dev-utilities/binary-analysis/reagent.md,,no
 [Semgrep](https://github.com/semgrep/semgrep),categories/agent-governance/skillspector.md,,no
 [sing-box](https://github.com/SagerNet/sing-box),categories/networking/dae.md,,no
 [spcfox/amnezia-wg-easy](https://github.com/spcfox/amnezia-wg-easy),categories/networking/amneziawg-installer.md,,no
@@ -1089,7 +1089,7 @@ Qwen Code,categories/agent-frameworks/coding-agents/terminal-agents/vendor-agent
 Qwen-VL / Qwen3.5 small line (Alibaba),categories/on-device-ml/minicpm-v.md,,no
 Qwen3.5 small models (QwenLM),categories/on-device-ml/minicpm.md,,no
 qwerty472123/wxappUnpacker (upstream),categories/im-automation/wechat/wxappunpacker.md,,no
-radare2,categories/dev-utilities/data-tools/rea.md,,no
+radare2,categories/dev-utilities/binary-analysis/rea.md,,no
 "RAG / vector memory stores (e.g. Mem0, Letta)",categories/agent-tooling/work-state/context-mode.md,,no
 RAG_Techniques (NirDiamant),categories/learning-resources/ai-engineering-hub.md,,no
 RAPTOR,categories/rag-retrieval/structured-retrieval/pageindex.md,,no

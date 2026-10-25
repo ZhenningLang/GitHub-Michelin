@@ -75,11 +75,11 @@ health:
 
 你维护一个应用集成，有权检查目标，却只有 Electron 归档或编译后的辅助程序。你问哪个消息启动了某项功能，agent 却反复列目录，或把整份压缩后的 JavaScript 读进上下文。缺的是一套短调查路线时，选 leanrea：先识别产物，查成本低的线索，再沿某个字符串或调用切出小段代码。
 
-它不像 [REA](../../dev-utilities/data-tools/rea.zh.md) 那样安装分析服务和可供 agent 调用的工具目录。可复用核心是一份 8374 字节的技能文件；命令仍由 agent 调用另装的工具执行。它更适合有人监督的短调查，不适合把机器强制的证据记录或案件管理当作硬要求的流程。
+它不像 [REA](../../dev-utilities/binary-analysis/rea.zh.md) 那样安装分析服务和可供 agent 调用的工具目录。可复用核心是一份 8374 字节的技能文件；命令仍由 agent 调用另装的工具执行。它更适合有人监督的短调查，不适合把机器强制的证据记录或案件管理当作硬要求的流程。
 
 ## 何时不用
 
-- **你要结构化、持久化的证据记录。** 选 [REA](../../dev-utilities/data-tools/rea.zh.md) 的分析适配器和证据账本。leanrea 只要求模型标注证据，没有账本运行时和结构校验。
+- **你要结构化、持久化的证据记录。** 选 [REA](../../dev-utilities/binary-analysis/rea.zh.md) 的分析适配器和证据账本。leanrea 只要求模型标注证据，没有账本运行时和结构校验。
 - **你要项目授权和案件跟踪。** 评估 [reverse-skill](reverse-skill.zh.md) 的授权检查和案件流程，别把 leanrea 的“先复制文件”当成权限检查。也要审查前者自己的自举和载荷风险。
 - **任务就是整理安卓应用的 HTTP API。** 选 [android-reverse-engineering](android-reverse-engineering.zh.md) 的 Kotlin 名称恢复和端点流水线。leanrea 的 APK 条目只给 jadx/apktool 短路线，不包含那套提取系统。
 - **你要无人值守地分析恶意产物。** 改用 REA 中经过审查的静态操作，并为两者都提供隔离环境。当前技能包含未加引号的递归清理路径；基准脚本预授权 Bash，却不创建操作系统沙箱。[问题 #3](https://github.com/aicodeking/leanrea/issues/3) 和 [PR #4](https://github.com/aicodeking/leanrea/pull/4) 仍开放，不要原样复制 Electron 起手命令。
@@ -89,7 +89,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [REA](../../dev-utilities/data-tools/rea.zh.md) | ✅ | 有人监督的短命令行调查选 leanrea；实际适配器和一致证据记录比短提示词更重要时，选 REA。 | 一份可编辑指令对比基于 Node 的分析层；leanrea 把命令安全和证据持久化交给操作者。 |
+| [REA](../../dev-utilities/binary-analysis/rea.zh.md) | ✅ | 有人监督的短命令行调查选 leanrea；实际适配器和一致证据记录比短提示词更重要时，选 REA。 | 一份可编辑指令对比基于 Node 的分析层；leanrea 把命令安全和证据持久化交给操作者。 |
 | [reverse-skill](reverse-skill.zh.md) | ✅ | 要授权记录和案件报告时选 reverse-skill；只问某项功能、无需案件流程时选 leanrea。 | 更多安全流程和治理对比更小的产物路由；前者也带自己的自举和载荷风险。 |
 | [android-reverse-engineering](android-reverse-engineering.zh.md) | ✅ | 混淆后的 Kotlin 名称挡住后端端点调查时，选安卓专用流水线；同次调查跨 Electron、原生代码和构建信息时，选 leanrea。 | 专用恢复脚本和 API 文档对比跨格式短指引；两者都不免除工具链和授权责任。 |
 

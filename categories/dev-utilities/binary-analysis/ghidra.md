@@ -2,7 +2,7 @@
 name: Ghidra
 slug: ghidra
 repo: https://github.com/NationalSecurityAgency/ghidra
-category: data-tools
+category: binary-analysis
 tags: [reverse-engineering, disassembler, decompiler, binary-analysis, sleigh, headless]
 language: Java
 license: Apache-2.0

@@ -2,7 +2,7 @@
 name: REA
 slug: rea
 repo: https://github.com/morluto/rea
-category: data-tools
+category: binary-analysis
 tags: [reverse-engineering, mcp, binary-analysis, electron, evidence]
 language: TypeScript
 license: MIT

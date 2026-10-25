@@ -8,6 +8,7 @@
 | Sub-category | Enter when | Route |
 | --- | --- | --- |
 | **Data Tools** | Offline transforms, compression, fake data, font tooling, progress bars, and search utilities. | [→](data-tools/INDEX.md) |
+| **Binary Analysis** | Inspect source-unavailable programs, collect reverse-engineering evidence, and rebuild candidate source. | [→](binary-analysis/INDEX.md) |
 | **Ops Infrastructure** | Server administration, metrics collection, TLS automation, image slimming, proxying, remote desktop, and password infrastructure. | [→](ops-infra/INDEX.md) |
 | **Editors & Runtimes** | Code editors, IDE extensions, app runtimes, and JS/TS toolchains. | [→](editors-and-runtimes/INDEX.md) |
 | **Package Manager GUIs** | Desktop front ends for command-line package managers — browse, install and upgrade without the terminal (Homebrew on macOS today). | [→](package-manager-gui/INDEX.md) |
@@ -28,6 +29,7 @@
 | Option | Type | One-line tradeoff |
 | --- | --- | --- |
 | [Data Tools](data-tools/INDEX.md) | Sub-category | Offline transforms, compression, fake data, font tooling, progress bars, and search utilities. |
+| [Binary Analysis](binary-analysis/INDEX.md) | Sub-category | Inspect source-unavailable programs, collect reverse-engineering evidence, and rebuild candidate source. |
 | [Ops Infrastructure](ops-infra/INDEX.md) | Sub-category | Server administration, metrics collection, TLS automation, image slimming, proxying, remote desktop, and password infrastructure. |
 | [Editors & Runtimes](editors-and-runtimes/INDEX.md) | Sub-category | Code editors, IDE extensions, app runtimes, and JS/TS toolchains. |
 | [Package Manager GUIs](package-manager-gui/INDEX.md) | Sub-category | Desktop front ends for command-line package managers — browse, install and upgrade without the terminal (Homebrew on macOS today). |
@@ -35,4 +37,4 @@
 
 ## What belongs here
 
-Navigate by utility class: data manipulation, operations infrastructure, editors/runtimes, or package-manager front ends.
+Navigate by utility class: data manipulation, binary analysis, operations infrastructure, editors/runtimes, or package-manager front ends.

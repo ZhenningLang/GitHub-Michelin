@@ -468,9 +468,9 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **HatchZip** | 在快满磁盘上逐步消耗可重新获取的原包来解压；保留原包模式会放弃空间收益。 | 核心 MIT OR Apache-2.0；RAR 发布版另含 UnRAR 限制 | C（5/6） | [中](categories/dev-utilities/data-tools/hatchzip.zh.md) · [EN](categories/dev-utilities/data-tools/hatchzip.md) |
 | **App Store Connect CLI** | 脚本化管理苹果发布文案、TestFlight 与审核；独立 Go 二进制，凭据和审批边界仍由你负责。 | MIT | B（6/6） | [中](categories/dev-utilities/app-store-connect-cli.zh.md) · [EN](categories/dev-utilities/app-store-connect-cli.md) |
 | **xtool** | 从 Linux、WSL 或 macOS 构建签名 SwiftPM iOS 应用；仍受苹果开发包与账号约束。 | MIT | B（6/6） | [中](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/xtool.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/xtool.md) |
-| **REA** | 通过 agent 用本地证据检查无源码应用；原生分析引擎需另配。 | MIT | B（5/6） | [中](categories/dev-utilities/data-tools/rea.zh.md) · [EN](categories/dev-utilities/data-tools/rea.md) |
-| **Ghidra** | 用关联指令、类 C 函数与持久标注理解有权分析的原生二进制；须准备 Java 与原生组件。 | Apache-2.0 | A（6/6） | [中](categories/dev-utilities/data-tools/ghidra.zh.md) · [EN](categories/dev-utilities/data-tools/ghidra.md) |
-| **ReAgent** | 从 Ghidra 证据重建授权 C/C++ 函数，结合模型评审与工程自备候选测试；不证明等价。 | MIT | C（5/6） | [中](categories/dev-utilities/data-tools/reagent.zh.md) · [EN](categories/dev-utilities/data-tools/reagent.md) |
+| **REA** | 通过 agent 用本地证据检查无源码应用；原生分析引擎需另配。 | MIT | B（5/6） | [中](categories/dev-utilities/binary-analysis/rea.zh.md) · [EN](categories/dev-utilities/binary-analysis/rea.md) |
+| **Ghidra** | 用关联指令、类 C 函数与持久标注理解有权分析的原生二进制；须准备 Java 与原生组件。 | Apache-2.0 | A（6/6） | [中](categories/dev-utilities/binary-analysis/ghidra.zh.md) · [EN](categories/dev-utilities/binary-analysis/ghidra.md) |
+| **ReAgent** | 从 Ghidra 证据重建授权 C/C++ 函数，结合模型评审与工程自备候选测试；不证明等价。 | MIT | C（5/6） | [中](categories/dev-utilities/binary-analysis/reagent.zh.md) · [EN](categories/dev-utilities/binary-analysis/reagent.md) |
 | **DevToys** | 当你想把 JWT/Base64 解码、JSON 格式化、diff、哈希等约 30 个开发小工具收进一个离线桌面应用、不再把密钥粘进在线网站时用它——但所有 2.x 构建都是预发布版，更新稀疏且成批出现。 | MIT | B（5/6） | [中](categories/dev-utilities/data-tools/devtoys.zh.md) · [EN](categories/dev-utilities/data-tools/devtoys.md) |
 | **CyberChef** | 当你需要在浏览器里离线串联编解码、加解密、压缩和数据分析变换、且数据不能外发时用它。 | Apache-2.0 | A（6/6） | [中](categories/dev-utilities/data-tools/cyberchef.zh.md) · [EN](categories/dev-utilities/data-tools/cyberchef.md) |
 | **Cockpit** | 当你需要为少数几台 Linux 服务器用浏览器做 systemd 原生的图形化管理时用它。 | LGPL-2.1-or-later | B（5/6） | [中](categories/dev-utilities/ops-infra/cockpit.zh.md) · [EN](categories/dev-utilities/ops-infra/cockpit.md) |

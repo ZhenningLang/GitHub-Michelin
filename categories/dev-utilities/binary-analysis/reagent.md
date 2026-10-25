@@ -2,7 +2,7 @@
 name: ReAgent
 slug: reagent
 repo: https://github.com/Dryxio/reagent
-category: data-tools
+category: binary-analysis
 tags: [reverse-engineering, ghidra, binary-analysis, source-reconstruction, llm, candidate-validation]
 language: Python
 license: MIT
