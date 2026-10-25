@@ -7,8 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **Ghidra** | Understand authorized native binaries through linked instructions, C-like functions and persistent annotations; raw firmware still needs processor context. | A (6/6) | [→](ghidra.md) |
-| **REA** | Inspect authorized source-unavailable apps through an agent, with local tools and evidence; native engines remain separate. | B (5/6) | [→](rea.md) |
+| **HatchZip** | Unpack a replaceable archive on a nearly full disk by progressively consuming input; peak savings depend on archive units and filesystem support. | C (5/6) | [→](hatchzip.md) |
 | **DevToys** | Use it when you want about 30 dev utilities (JWT/Base64 decoding, JSON formatting, diff, hashing) in one offline desktop app so secrets never reach online formatters — but every 2.x build is a prerelease and updates arrive in rare bursts. | B (5/6) | [→](devtoys.md) |
 | **CyberChef** | Use it when you need to chain encode/decode, crypto, compression and data-analysis transforms offline in your browser. | A (6/6) | [→](cyberchef.md) |
 | **OpenZL** | Use it when you must squeeze terabytes of one highly structured/numeric format better than generic zstd. | C (5/6) | [→](openzl.md) |
@@ -25,8 +24,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [Ghidra](ghidra.md) | ✅ | A (6/6) | Integrated native analysis and annotation workspace, at the cost of Java/native setup and human validation of inferred functions. |
-| [REA](rea.md) | ✅ | B (5/6) | Agent-facing evidence across native and Electron targets, at the cost of runtime and engine integration. |
+| [HatchZip](hatchzip.md) | ✅ | C (5/6) | Lower extraction disk peaks by destroying input after durable progress; solid blocks, snapshots and retained-input mode can remove the benefit. |
 | [DevToys](devtoys.md) | ✅ | B (5/6) | Local-only, clipboard-aware convenience in one window, at the cost of one-shot tools without recipe chaining and a slow, prerelease-only release line. |
 | [CyberChef](cyberchef.md) | ✅ | A (6/6) | Use it when you need to chain encode/decode, crypto, compression and data-analysis transforms offline in your browser. |
 | [OpenZL](openzl.md) | ✅ | C (5/6) | Use it when you must squeeze terabytes of one highly structured/numeric format better than generic zstd. |

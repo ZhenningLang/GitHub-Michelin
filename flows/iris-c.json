@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "iris.c does", "zh": "iris.c 做的"},
+  "steps": [
+    {"lane": "you", "en": "Build the backend for your machine", "zh": "按机器构建推理后端", "code": "make mps"},
+    {"lane": "you", "en": "Download the initial Klein 4B model directory", "zh": "下载初始 Klein 4B 模型目录", "code": "./download_model.sh 4b"},
+    {"lane": "you", "en": "Supply a prompt, model directory and output path", "zh": "提供提示词、模型目录与输出路径", "code": "./iris -d flux-klein-4b -p \"A woman wearing sunglasses\" -o output.png"},
+    {"lane": "them", "en": "Encode text, synthesize the image and decode its pixels", "zh": "编码文字、合成图像并解码像素", "component": {"en": "C inference pipeline", "zh": "C 推理管线"}},
+    {"lane": "them", "en": "Save the generated image as a PNG", "zh": "把生成图像保存为 PNG", "component": {"en": "iris CLI", "zh": "iris 命令行"}}
+  ],
+  "value": {"en": "A local Klein image without a Python inference runtime or node editor", "zh": "不用 Python 推理环境或节点编辑器，在本地生成 Klein 图片"},
+  "sources": [
+    "https://github.com/antirez/iris.c/blob/ff97831282ecc6691710828604165da84b0616f5/README.md#L23-L39",
+    "https://github.com/antirez/iris.c/blob/ff97831282ecc6691710828604165da84b0616f5/iris.c#L1141-L1263",
+    "https://github.com/antirez/iris.c/blob/ff97831282ecc6691710828604165da84b0616f5/main.c#L708-L721"
+  ]
+}

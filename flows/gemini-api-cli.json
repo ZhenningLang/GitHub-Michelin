@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Gemini API CLI does", "zh": "Gemini API CLI 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install a pinned binary and provide Gemini API credentials", "zh": "安装固定版本程序，提供 Gemini API 凭据"},
+    {"lane": "you", "en": "Request a mascot image in the project assets directory", "zh": "请求把吉祥物图片放到项目素材目录", "code": "gemini-api image \"A friendly robot mascot for a developer tool\" --out ./assets/"},
+    {"lane": "them", "en": "Send the image request to the hosted Gemini Interactions API", "zh": "把图片请求发给云端 Gemini Interactions API", "component": {"en": "CLI and hosted API", "zh": "命令行与云端 API"}},
+    {"lane": "them", "en": "Decode supported inline media, write a file and return its path", "zh": "解码受支持的内联媒体，写文件并返回路径", "component": {"en": "artifact output", "zh": "产物输出层"}}
+  ],
+  "value": {"en": "The existing assistant gets an image file without writing its own API and media-decoding glue", "zh": "现有助手拿到图片文件，不必另写 API 接线和媒体解码代码"},
+  "sources": [
+    "https://github.com/google-gemini/gemini-api-cli/blob/0707bcf0f48778e4f108d88522115bada9fed083/README.md#L8-L16",
+    "https://github.com/google-gemini/gemini-api-cli/blob/0707bcf0f48778e4f108d88522115bada9fed083/README.md#L61-L84",
+    "https://github.com/google-gemini/gemini-api-cli/blob/0707bcf0f48778e4f108d88522115bada9fed083/internal/cli/agent/intent_image.go#L128-L137",
+    "https://github.com/google-gemini/gemini-api-cli/blob/0707bcf0f48778e4f108d88522115bada9fed083/internal/output/artifact.go#L141-L205"
+  ]
+}

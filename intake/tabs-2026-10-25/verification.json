@@ -1,0 +1,94 @@
+{
+  "status": "verified local content and original aggregate; publication snapshot before push",
+  "checked_at_utc": "2026-10-25T03:09:51.611458+00:00",
+  "counts": {
+    "added": 5,
+    "synced_changed": 0,
+    "synced_fresh": 0,
+    "new_proposed": 1,
+    "retained_proposed": 2,
+    "own_skipped": 1,
+    "failed": 0
+  },
+  "aggregate_counts": {
+    "candidates": 133,
+    "indexed": 129,
+    "proposed": 3,
+    "historical_own_skip": 1,
+    "reading_categories": 16
+  },
+  "machine_checks": {
+    "gates": "207 category nodes, 972 EN + 972 ZH pages, 0 errors, 1614 warnings.",
+    "reverse_index": "reports current, zero full mislabels",
+    "exact_pair_quality": "14 pages; No deterministic findings.",
+    "tool_tests": "Ran 483 tests in 40.994s; OK; no skipped"
+  },
+  "source_review": {
+    "accepted_bilingual_pages": 10,
+    "detailed_summaries": 6,
+    "independent_remaining_findings": 0,
+    "pinned_blob_and_source_line_checks": true,
+    "upstream_executed": false,
+    "limits": "Directed source review, not full security audit, runtime benchmark or legal certification"
+  },
+  "routing": {
+    "new_category": "dev-utilities/binary-analysis",
+    "moved_pairs": 3,
+    "preservation": "1944/1944 pages, 972 identities; six category/link-only moves, two inbound-only edits, 1936 other project files byte-identical; dates/health unchanged"
+  },
+  "aggregate_static": {
+    "status": "pass",
+    "candidates": 133,
+    "indexed": 129,
+    "added": 5,
+    "proposed": 3,
+    "own_skipped": 1,
+    "preserved_profiles": 127,
+    "categories": 16,
+    "local_links": 309,
+    "anchors": 154,
+    "source_sha256": "ed1837eb11b4d05ead7f35967b7216026881da01a7864780af0d06a148b84753",
+    "html_sha256": "ba30bc036854c6b90022d5808ea142ac59bb578c816740bbe68310631b61b3dc",
+    "companion": "0 error(s), 0 warning(s)",
+    "private_identity_in_report": false
+  },
+  "browser": {
+    "desktop": "1280x900",
+    "mobile": "390x844",
+    "overflow": 0,
+    "clipped": 0,
+    "new_profile_native_anchors": 6,
+    "keyboard_navigation": true,
+    "four_prior_warning_blocks": "retained and visible",
+    "structure": "same 16 reading groups; incremental profiles only",
+    "cleanup": "isolated preview and task-owned loopback server closed"
+  },
+  "tabs_audit": "tabs-audit.json",
+  "proposal": "stable-video-infinity-proposal.md",
+  "scope": "Public source research only; no install, upstream execution, model experiment or personal-harness changes",
+  "approved_actions": {
+    "push_feature_branch": true,
+    "create_pr": true,
+    "merge_after_green_ci": true,
+    "branch": "feat/intake-tabs-2026-10-25"
+  },
+  "Inner-loop evidence": "This batch reran gates, exact 14-page scan and 483 tool tests; hashes bind the actual saved report and browser acceptance.",
+  "Acceptance evidence": "Five independently committed bilingual entries, matched tab closures, all retained roles present; original 127 profile blocks preserved, six new candidates integrated at the original reading entry, actual desktop/mobile anchors and screenshots checked.",
+  "Holdout / unseen evidence": "Not a model-effect experiment. Independent source reviewers, all new page/summary checks, boundary-source probes and full 1944-page transformation proof substitute for a holdout quality score. No personal success-rate or cost benefit claimed.",
+  "Holdout 来源类别": "真实捕获与抽样：固定公开源码、真实Chrome URL批次、真实本地浏览器渲染与历史回归快照",
+  "预期值来源": "需求原文与外部契约：intake-tabs、add-project、schema、原全量报告及既有维护者裁决",
+  "本次改动相对冻结点的位置": "内容生成侧与必要的分类路由；判定侧lint/quality/工具代码未改；原报告冻结于2026-10-25写入前，harness仅对照2026-10-18固定基线",
+  "Known gaps": [
+    "Stable Video Infinity remains proposed; majority provenance and Apache license-preservation questions need owner adjudication, not legal conclusions.",
+    "Only cached 17/319 SVI text files were searched for embedded license text; complete trees support filename/blob comparisons, not every possible distribution channel.",
+    "Three non-target URLs absent relative to initial snapshot; cause not established. No unrelated close/restore requested; whole-browser unchanged-state is not proven.",
+    "An optional Gemini CLI comparison-page read was denied by the host; not retried or used. Three other alternatives have actual independent sources.",
+    "No upstream install/runtime/quality/performance/crash/recovery/full-cleanup or legal-rights validation; Chromium viewport tests are not physical-device or cross-browser testing."
+  ],
+  "publication": "Explicit owner authorization granted for this exact feature branch; this is a pre-push snapshot. Later live state is the GitHub PR, not this historical snapshot.",
+  "log_sha256": {
+    "final-gates": "88d997bd5aa9ae8e35c5876fba52b6c7d2bde0c92fd4c1bdc1a2615ff4f2c382",
+    "final-scoped": "2a417cba89bb69c67e98c80aa7023400c604e7ff3a3cfe658a35f22b41be4ccb",
+    "final-tests": "8b8e51667724d8100d8a4af8f564346e1ef485e900bba878c5dac731870033b0"
+  }
+}

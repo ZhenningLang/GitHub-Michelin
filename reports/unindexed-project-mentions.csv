@@ -8,7 +8,9 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 @ngneat/falso,categories/dev-utilities/data-tools/faker-js.md,,no
 @xstate/store (`statelyai/xstate`),categories/web-ui/state-management/tanstack-store.md,,no
 [12306-skill](https://github.com/Joooook/12306-skill),categories/travel-planning/12306-mcp.md,,no
+[7-Zip](https://github.com/ip7z/7zip),categories/dev-utilities/data-tools/hatchzip.md,,no
 [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client),categories/networking/amneziawg-installer.md,,no
+[Anatomy](https://github.com/wheresryan22/anatomy),categories/agent-skills/design/visual-artifacts/anima.md,,no
 [angristan/wireguard-install](https://github.com/angristan/wireguard-install),categories/networking/amneziawg-installer.md,,no
 [Apache ECharts](https://github.com/apache/echarts),categories/data-visualization/flint-chart.md,,no
 [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox),categories/knowledge-base/hister.md,,no
@@ -32,9 +34,10 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Coding-Solo/godot-mcp](https://github.com/Coding-Solo/godot-mcp),categories/agent-skills/engineering/awesome-gamedev-agent-skills.md,,no
 [CoplayDev/unity-mcp](https://github.com/CoplayDev/unity-mcp),categories/game-dev/unity-mcp.md,,no
 [CosyVoice](https://github.com/QwenAudio/CosyVoice),categories/speech/index-tts.md,,no
-[Cutter](https://github.com/rizinorg/cutter),categories/dev-utilities/data-tools/ghidra.md,,no
+[Cutter](https://github.com/rizinorg/cutter),categories/dev-utilities/binary-analysis/ghidra.md,,no
 [daed](https://github.com/daeuniverse/daed),categories/networking/dae.md,,no
 [darktable](https://github.com/darktable-org/darktable),categories/photo-editing/lightcraft.md,,no
+[Diffusers](https://github.com/huggingface/diffusers),categories/on-device-ml/local-image-generation/iris-c.md,,no
 [Dive into Deep Learning](https://github.com/d2l-ai/d2l-en),categories/learning-resources/torchcode.md,,no
 [doocs/md](https://github.com/doocs/md),categories/agent-skills/ai-writing/content-production/gzh-design-skill.md,,no
 [Dragonfly](https://github.com/dragonflydb/dragonfly),categories/databases/database-engines/kividb.md,,no
@@ -50,6 +53,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [frp](https://github.com/fatedier/frp),categories/networking/opentunnel.md,,no
 [GHC / Haskell](https://github.com/ghc/ghc),categories/programming-languages/unison.md,,no
 [Gitea](https://github.com/go-gitea/gitea),categories/dev-utilities/ops-infra/harness-open-source.md,,no
+[Google Gen AI Python SDK](https://github.com/googleapis/python-genai),categories/agent-tooling/harness-extensions/gemini-api-cli.md,,no
 [google_workspace_mcp](https://github.com/taylorwilsdon/google_workspace_mcp),categories/agent-tooling/harness-extensions/hey-cli.md,,no
 [Hunyuan3D-2](https://github.com/Tencent-Hunyuan/Hunyuan3D-2),categories/3d-generation/modly.md,,no
 [HunyuanVideo](https://github.com/Tencent-Hunyuan/HunyuanVideo),categories/ml-research/vision-and-multimodal/open-sora.md,,no
@@ -58,8 +62,10 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Kokoro](https://github.com/hexgrad/kokoro),categories/speech/kitten-tts.md,,no
 [Lada](https://codeberg.org/ladaapp/lada),categories/media-processing/jasna.md,,no
 [LEAN](https://github.com/QuantConnect/Lean),categories/investment-finance/backtrader.md,,no
+[libarchive / bsdtar](https://github.com/libarchive/libarchive),categories/dev-utilities/data-tools/hatchzip.md,,no
 [LightRAG](https://github.com/HKUDS/LightRAG),categories/rag-retrieval/structured-retrieval/sag.md,,no
 [linkding](https://github.com/sissbruecker/linkding),categories/knowledge-base/hister.md,,no
+[LLM](https://github.com/simonw/llm),categories/agent-tooling/harness-extensions/gemini-api-cli.md,,no
 [localtunnel](https://github.com/localtunnel/localtunnel),categories/networking/opentunnel.md,,no
 [LTX-Video](https://github.com/Lightricks/LTX-Video),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [lunar-javascript](https://github.com/6tail/lunar-javascript),categories/traditional-divination/ziwei-doushu.md,,no
@@ -91,17 +97,19 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Passbolt](https://github.com/passbolt/passbolt_api),categories/dev-utilities/ops-infra/vaultwarden.md,,no
 [Patchright](https://github.com/Kaliiiiiiiiii-Vinyzu/patchright),categories/web-automation/agent-browser-tools/playwright-bot-bypass.md,,no
 [Payload](https://github.com/payloadcms/payload),categories/content-management/emdash.md,,no
+[PeaZip](https://github.com/peazip/PeaZip),categories/dev-utilities/data-tools/hatchzip.md,,no
 [PixArt-Σ](https://github.com/PixArt-alpha/PixArt-sigma),categories/ml-research/vision-and-multimodal/sana.md,,no
 [Plotly.js](https://github.com/plotly/plotly.js),categories/data-visualization/flint-chart.md,,no
 [PocketPal AI](https://github.com/a-ghorbani/pocketpal-ai),categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md,,no
 [Pyodide](https://github.com/pyodide/pyodide),categories/sandboxing/monty.md,,no
 [pyVideoTrans](https://github.com/jianchang512/pyvideotrans),categories/speech/voicestudio.md,,no
-[radare2](https://github.com/radareorg/radare2),categories/dev-utilities/data-tools/ghidra.md,,no
+[radare2](https://github.com/radareorg/radare2),categories/dev-utilities/binary-analysis/ghidra.md,,no
 [RAID](https://github.com/liamdugan/raid),categories/llm-eval/chatgpt-comparison-detection.md,,no
 [RawTherapee](https://github.com/RawTherapee/RawTherapee),categories/photo-editing/lightcraft.md,,no
 [react-iztro](https://github.com/SylarLong/react-iztro),categories/traditional-divination/ziwei-doushu.md,,no
 [rebrowser-patches](https://github.com/rebrowser/rebrowser-patches),categories/web-automation/agent-browser-tools/playwright-bot-bypass.md,,no
 [Redis](https://github.com/redis/redis),categories/databases/database-engines/kividb.md,,no
+[RetDec](https://github.com/avast/retdec),categories/dev-utilities/binary-analysis/reagent.md,,no
 [Semgrep](https://github.com/semgrep/semgrep),categories/agent-governance/skillspector.md,,no
 [sing-box](https://github.com/SagerNet/sing-box),categories/networking/dae.md,,no
 [spcfox/amnezia-wg-easy](https://github.com/spcfox/amnezia-wg-easy),categories/networking/amneziawg-installer.md,,no
@@ -1081,7 +1089,7 @@ Qwen Code,categories/agent-frameworks/coding-agents/terminal-agents/vendor-agent
 Qwen-VL / Qwen3.5 small line (Alibaba),categories/on-device-ml/minicpm-v.md,,no
 Qwen3.5 small models (QwenLM),categories/on-device-ml/minicpm.md,,no
 qwerty472123/wxappUnpacker (upstream),categories/im-automation/wechat/wxappunpacker.md,,no
-radare2,categories/dev-utilities/data-tools/rea.md,,no
+radare2,categories/dev-utilities/binary-analysis/rea.md,,no
 "RAG / vector memory stores (e.g. Mem0, Letta)",categories/agent-tooling/work-state/context-mode.md,,no
 RAG_Techniques (NirDiamant),categories/learning-resources/ai-engineering-hub.md,,no
 RAPTOR,categories/rag-retrieval/structured-retrieval/pageindex.md,,no

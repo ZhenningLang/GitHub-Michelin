@@ -75,11 +75,11 @@ Your agent spends several turns choosing tools just to explain one feature in a 
 
 You maintain an integration with an app you may inspect, but only have its Electron archive or a compiled helper. You ask which message starts a feature, and the agent repeatedly lists files or reads an entire compressed JavaScript bundle. Choose leanrea when the missing piece is a concise investigation recipe: identify the artifact, inventory cheap clues, then follow a specific string or call into a small code slice.
 
-Unlike [REA](../../dev-utilities/data-tools/rea.md), it installs no analysis service or agent-callable tool catalog. Its reusable component is one 8374-byte skill; the agent still executes independently installed tools. This fits a short, operator-supervised investigation better than a requirement for machine-enforced evidence records or case management.
+Unlike [REA](../../dev-utilities/binary-analysis/rea.md), it installs no analysis service or agent-callable tool catalog. Its reusable component is one 8374-byte skill; the agent still executes independently installed tools. This fits a short, operator-supervised investigation better than a requirement for machine-enforced evidence records or case management.
 
 ## When NOT to use
 
-- **You need structured, persistent evidence records.** Choose [REA](../../dev-utilities/data-tools/rea.md) for implemented analysis adapters and its evidence ledger. leanrea asks the model to label evidence but has no ledger runtime or schema enforcement.
+- **You need structured, persistent evidence records.** Choose [REA](../../dev-utilities/binary-analysis/rea.md) for implemented analysis adapters and its evidence ledger. leanrea asks the model to label evidence but has no ledger runtime or schema enforcement.
 - **You need engagement authorization and case tracking.** Evaluate [reverse-skill](reverse-skill.md), with its documented case guard and case workflow, instead of treating leanrea's copy-first rule as permission checking. Audit that pack's own bootstrap and payload risks too.
 - **Your task is specifically an Android HTTP API inventory.** Choose [android-reverse-engineering](android-reverse-engineering.md) for its Kotlin-name recovery and endpoint pipeline. leanrea's APK row is a short jadx/apktool recipe, not that extraction system.
 - **You expect safe unattended operation on hostile artifacts.** Use reviewed static operations in REA rather than leanrea's paste-and-run snippets, and provide an isolated environment either way. The reviewed skill has an unquoted recursive cleanup path; its benchmark preapproves Bash without creating an OS sandbox. [Issue #3](https://github.com/aicodeking/leanrea/issues/3) and [PR #4](https://github.com/aicodeking/leanrea/pull/4) remain open; do not copy the Electron first-move command unchanged.
@@ -89,7 +89,7 @@ Unlike [REA](../../dev-utilities/data-tools/rea.md), it installs no analysis ser
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [REA](../../dev-utilities/data-tools/rea.md) | ✅ | Choose leanrea for a brief supervised CLI investigation; choose REA when implemented adapters and consistent evidence records matter more than a small prompt footprint. | One editable instruction file versus a Node-based analysis layer; leanrea leaves command safety and evidence persistence to the operator. |
+| [REA](../../dev-utilities/binary-analysis/rea.md) | ✅ | Choose leanrea for a brief supervised CLI investigation; choose REA when implemented adapters and consistent evidence records matter more than a small prompt footprint. | One editable instruction file versus a Node-based analysis layer; leanrea leaves command safety and evidence persistence to the operator. |
 | [reverse-skill](reverse-skill.md) | ✅ | Choose reverse-skill for engagements requiring authorization records and case reporting; choose leanrea for an isolated feature question without that workflow machinery. | Broader security playbooks and governance versus a smaller artifact router; the broader pack also has its own bootstrap and payload hazards. |
 | [android-reverse-engineering](android-reverse-engineering.md) | ✅ | Choose the Android pipeline when obfuscated Kotlin names obscure backend endpoints; choose leanrea when the same investigation crosses Electron, native and build metadata. | Specialized recovery scripts and API output versus compact cross-format guidance; neither choice removes toolchain or authorization responsibilities. |
 

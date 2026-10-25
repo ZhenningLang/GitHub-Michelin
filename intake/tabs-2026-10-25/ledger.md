@@ -1,0 +1,16 @@
+# Tab intake ledger — 2026-10-25 (UTC)
+
+来源：用户本人 Chrome 的标签（按进程号定位，不碰自动化实例）。动作 add/sync/skip/propose；结果 pending/running/done/failed/skipped/proposed。
+propose = 读过之后判断不适合收录，标签保留，等用户定。
+
+| 规范名 | 动作 | 结果 | 页面路径 | 备注 | 标签里的写法 |
+|:---|:---|:---|:---|:---|:---|
+| antirez/iris.c | add | done | categories/on-device-ml/local-image-generation/iris-c.md | 固定源码与双语页已审，门禁及专项零错误；独立提交 f75d56b；no leftover Q&A | antirez/iris.c |
+| Dryxio/reagent | add | done | categories/dev-utilities/binary-analysis/reagent.md | 固定源码与双语页已审，门禁及专项通过；独立提交 3c8fc69；后以独立分类提交迁移，正文不变；no leftover Q&A | dryxio/reagent |
+| Garinmckayl/anima | add | done | categories/agent-skills/design/visual-artifacts/anima.md | 双语页及摘要独立来源复核零finding；主会话门禁及专项通过；独立提交 9c9aad4；no leftover Q&A | garinmckayl/anima |
+| google-gemini/gemini-api-cli | add | done | categories/agent-tooling/harness-extensions/gemini-api-cli.md | 双语页和关键源码已审；主会话门禁及专项通过；独立提交 c56e403；非必需对照页被拒后未重试或使用；no leftover Q&A | google-gemini/gemini-api-cli |
+| liandu2024/Open-Box | propose | proposed |  | 沿用专有许可暂缓决定；未获新收录裁决，保留标签 | liandu2024/open-box |
+| non-public-candidate | propose | proposed |  | 非公开候选，沿用历史暂缓；不读内部内容、不公开身份，保留标签 |  |
+| vita-epfl/Stable-Video-Infinity | propose | proposed |  | 固定main 557afca：191/319文件与DiffSynth v1.1.2同blob，未保留其Apache许可文件；有实质SVI代码；待维护者信息收录裁决，保留标签 | vita-epfl/stable-video-infinity |
+| xevrion/hatchzip | add | done | categories/dev-utilities/data-tools/hatchzip.md | 双语页和固定源码已审；主会话门禁及专项通过；独立提交 e6121aa；默认消耗输入及UnRAR边界保留；no leftover Q&A | xevrion/hatchzip |
+| own-repository | skip | skipped |  | 自有仓库在范围外，未读取内部内容，保留标签；真实身份仅本地记录 |  |

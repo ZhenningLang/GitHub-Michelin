@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "archive", "en": "Archive and output filesystem", "zh": "压缩包与输出文件系统", "kind": "input"},
+    {"id": "plan", "en": "Order units and replay peak space", "zh": "排列单元，回放空间峰值", "technique": [1]},
+    {"id": "mode", "en": "Journal binds input-retention mode", "zh": "日志绑定原包保留模式", "technique": [4]},
+    {"id": "write", "en": "Write output and flush it", "zh": "写输出并刷盘", "technique": [2]},
+    {"id": "journal", "en": "Atomically save committed progress", "zh": "原子保存已提交进度", "technique": [2]},
+    {"id": "cut", "en": "Truncate units or remove spent volumes", "zh": "截断单元或删除已消耗分卷", "technique": [1]},
+    {"id": "point", "en": "Save stream restart state before punching", "zh": "保存流重启状态后再打孔", "technique": [3]},
+    {"id": "output", "en": "Extracted files; original input consumed", "zh": "提取文件；原始输入已消耗", "kind": "output"},
+    {"id": "kept", "en": "Protected input; full output space required", "zh": "保护输入；需要全部输出空间", "kind": "output", "technique": [4]}
+  ],
+  "edges": [
+    {"from": "archive", "to": "plan"},
+    {"from": "plan", "to": "mode"},
+    {"from": "mode", "to": "write"},
+    {"from": "write", "to": "journal"},
+    {"from": "journal", "to": "cut", "en": "consume", "zh": "消耗"},
+    {"from": "cut", "to": "output"},
+    {"from": "write", "to": "point", "en": "resumable stream and hole support", "zh": "可续跑流且支持打孔", "style": "dashed"},
+    {"from": "point", "to": "journal", "en": "final unit commit", "zh": "最终提交单元", "style": "dashed"},
+    {"from": "journal", "to": "kept", "en": "keep", "zh": "保留", "style": "dashed"}
+  ],
+  "sources": [
+    "crates/core/src/engine.rs:184-217,433-469,825-865,1024-1068",
+    "crates/core/src/session.rs:292-304,356-424",
+    "crates/core/src/journal.rs:20-29,143-165",
+    "crates/core/src/restore.rs:76-95"
+  ]
+}

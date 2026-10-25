@@ -13,6 +13,7 @@
 | **diagram-design** | 出可发表、套你品牌的图的 agent skill：先抓你网站的配色字体，再把 44 种编辑风格的图和图表画成单个 HTML+SVG 文件——代价是没有可编辑的源。 | B（4/5） | [→](diagram-design.zh.md) |
 | **huashu-design** | 面向原型、slide deck、可编辑 PPTX、动画 / MP4 / GIF、信息图和视觉 artifact 生成的 HTML-native design skill。 | B（5/6） | [→](huashu-design.zh.md) |
 | **visual-explainer** | 把有来源的差异与方案变成图文 HTML，保留源码与反馈；不是可编辑图模型，默认也非完全离线。 | C（5/6） | [→](visual-explainer.zh.md) |
+| **Anima** | 把静态生物课变成带来源的交互机制图；科学审查仍由你负责。 | C（4/5） | [→](anima.zh.md) |
 
 
 ## 对比矩阵
@@ -25,6 +26,7 @@
 | [diagram-design](diagram-design.zh.md) | ✅ | B（4/5） | 图要发表、必须匹配品牌时最合适；图放在 git 里常改用 Mermaid，之后还要有人改用 drawio-skill。 |
 | [huashu-design](huashu-design.zh.md) | ✅ | B（5/6） | 最适合 agent 生成 HTML 视觉 artifact；实现交接看 Stitch，轻量 UI 审美指导看 Taste-Skill。 |
 | [visual-explainer](visual-explainer.zh.md) | ✅ | C（5/6） | 把有来源的差异与方案变成图文 HTML，保留源码与反馈；不是可编辑图模型，默认也非完全离线。 |
+| [Anima](anima.zh.md) | ✅ | C（4/5） | 适合交互式生物结构，不是可编辑架构图；几何检查不验证科学论断。 |
 
 
 ## 什么该放这里

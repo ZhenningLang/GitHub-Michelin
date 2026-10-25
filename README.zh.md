@@ -79,6 +79,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **HEY CLI** | 当你的邮件跑在 HEY 上、想把它同时交给终端和编程 agent 时用它——第一方 CLI/TUI、自带 agent skill 和 MCP 服务；但它绑定 37signals 的付费账号、问世仅七个月、且只会说 HEY 的 API。 | MIT | B（6/6） | [中](categories/agent-tooling/harness-extensions/hey-cli.zh.md) · [EN](categories/agent-tooling/harness-extensions/hey-cli.md) |
 | **SkillsGate** | 当你的 skill 散落在多个 agent 的隐藏目录里、想要一个桌面界面统一管理时用它——一份真身按 agent 建符号链接、接 skills.sh 目录、能 SSH 推送；但它单人维护、只支持全局安装，锁文件还和 `npx skills` 冲突。 | MIT | B（6/6） | [中](categories/agent-tooling/harness-extensions/skillsgate.zh.md) · [EN](categories/agent-tooling/harness-extensions/skillsgate.md) |
 | **TanStack Intent** | 当你维护一个 npm 库、想把给 agent 的说明（`SKILL.md`）打进包里、与已装版本对应并在过期时被标出来时用它——只支持 npm/JS，仍是 v0.x，且只负责送达引导、不保证 agent 照做。 | MIT | B（6/6） | [中](categories/agent-tooling/harness-extensions/tanstack-intent.zh.md) · [EN](categories/agent-tooling/harness-extensions/tanstack-intent.md) |
+| **Gemini API CLI** | 让现有助手通过命令行调用 Gemini 媒体和托管 agent；仍是 beta，宿主负责审批与验收。 | Apache-2.0 | C（5/6） | [中](categories/agent-tooling/harness-extensions/gemini-api-cli.zh.md) · [EN](categories/agent-tooling/harness-extensions/gemini-api-cli.md) |
 | **Hermes Workspace** | 当你跑的是 Nous 的 hermes-agent、想把它的状态当 Web 驾驶舱用——聊天、memory、skills、终端、tmux swarm 派发、手机经 PWA/Tailscale 可达——但它的增强面板锚定 Hermes gateway/dashboard API、且问世仅约 6 个月时用它。 | MIT | B（5/6） | [中](categories/agent-tooling/supervision-surfaces/agent-cockpits/hermes-workspace.zh.md) · [EN](categories/agent-tooling/supervision-surfaces/agent-cockpits/hermes-workspace.md) |
 | **Ekko Studio** | 当你同时跑 Hermes Agent **和** Claude Code／Codex 等编码 agent、想要一个本地控制台——单聊、@ 多 agent 的群聊房间、带审批关口的工作流画布、文件与终端——时用它——但它是 BSL-1.1（2029 年前禁止商用）、建仓一个月就从 MIT 改许可、约 5.5 个月大且基本一人编写。 | BUSL-1.1 | D（6/6） | [中](categories/agent-tooling/supervision-surfaces/agent-cockpits/ekko-studio.zh.md) · [EN](categories/agent-tooling/supervision-surfaces/agent-cockpits/ekko-studio.md) |
 | **CloudCLI (Claude Code UI)** | 当你的大脑是 Claude Code / Codex / Cursor CLI、想要这些会话的浏览器/移动驾驶舱（文件、终端、git）时用它——但它是 AGPL-3.0-or-later、单人操作形态。 | AGPL-3.0-or-later | B（6/6） | [中](categories/agent-tooling/supervision-surfaces/agent-cockpits/claudecodeui.zh.md) · [EN](categories/agent-tooling/supervision-surfaces/agent-cockpits/claudecodeui.md) |
@@ -156,6 +157,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **ComfyUI** | 当你在自己的 GPU 上用开放权重模型生成图像或视频，需要一张可复现的节点图（ControlNet、LoRA、局部重绘、放大），并且只重算改动过的部分时用它——但它没有登录、配额和租户隔离。 | GPL-3.0 | B（5/6） | [中](categories/on-device-ml/local-image-generation/comfyui.zh.md) · [EN](categories/on-device-ml/local-image-generation/comfyui.md) |
 | **Needle** | 当需要一个小体积端侧模型离线完成英文工具调用、类型化抽取与嵌入时用它——29–121M 参数，但基座模型需要微调，拒绝类请求要自建守卫。 | Apache-2.0 | B（4/6） | [中](categories/on-device-ml/needle.zh.md) · [EN](categories/on-device-ml/needle.md) |
 | **stable-diffusion.cpp** | 当你要把图片/视频扩散生成做成一个不带 Python 的原生二进制，嵌进自己的应用或发到混杂的 CPU/AMD/Mac/NVIDIA 机器上时用它——但功能集固定、没有语义化版本，自带服务无鉴权且单线程排队。 | MIT | A（6/6） | [中](categories/on-device-ml/local-image-generation/stable-diffusion-cpp.zh.md) · [EN](categories/on-device-ml/local-image-generation/stable-diffusion-cpp.md) |
+| **iris.c** | 要用直接的 C 管线把 Klein／Z-Image 提示词变成 PNG，且不带 Python 推理环境时选它；模型存储、后端容量与权重许可仍由你负责。 | MIT | C（5/6） | [中](categories/on-device-ml/local-image-generation/iris-c.zh.md) · [EN](categories/on-device-ml/local-image-generation/iris-c.md) |
 | **BirdNET-Go** | 当你想在树莓派 4/5 或小主机上搭一个全天候的鸟类（及蝙蝠）声音监测站，带本地网页仪表盘、多路麦克风和 RTSP 音源、MQTT 与 Home Assistant 告警时用它——但代码和模型都禁止商用（CC BY-NC-SA），默认安装跟的是单人维护的每夜构建，批量文件分析要交给别的工具。 | CC-BY-NC-SA-4.0 | B（5/6） | [中](categories/on-device-ml/birdnet-go.zh.md) · [EN](categories/on-device-ml/birdnet-go.md) |
 
 
@@ -463,10 +465,12 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **HatchZip** | 在快满磁盘上逐步消耗可重新获取的原包来解压；保留原包模式会放弃空间收益。 | 核心 MIT OR Apache-2.0；RAR 发布版另含 UnRAR 限制 | C（5/6） | [中](categories/dev-utilities/data-tools/hatchzip.zh.md) · [EN](categories/dev-utilities/data-tools/hatchzip.md) |
 | **App Store Connect CLI** | 脚本化管理苹果发布文案、TestFlight 与审核；独立 Go 二进制，凭据和审批边界仍由你负责。 | MIT | B（6/6） | [中](categories/dev-utilities/app-store-connect-cli.zh.md) · [EN](categories/dev-utilities/app-store-connect-cli.md) |
 | **xtool** | 从 Linux、WSL 或 macOS 构建签名 SwiftPM iOS 应用；仍受苹果开发包与账号约束。 | MIT | B（6/6） | [中](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/xtool.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/xtool.md) |
-| **REA** | 通过 agent 用本地证据检查无源码应用；原生分析引擎需另配。 | MIT | B（5/6） | [中](categories/dev-utilities/data-tools/rea.zh.md) · [EN](categories/dev-utilities/data-tools/rea.md) |
-| **Ghidra** | 用关联指令、类 C 函数与持久标注理解有权分析的原生二进制；须准备 Java 与原生组件。 | Apache-2.0 | A（6/6） | [中](categories/dev-utilities/data-tools/ghidra.zh.md) · [EN](categories/dev-utilities/data-tools/ghidra.md) |
+| **REA** | 通过 agent 用本地证据检查无源码应用；原生分析引擎需另配。 | MIT | B（5/6） | [中](categories/dev-utilities/binary-analysis/rea.zh.md) · [EN](categories/dev-utilities/binary-analysis/rea.md) |
+| **Ghidra** | 用关联指令、类 C 函数与持久标注理解有权分析的原生二进制；须准备 Java 与原生组件。 | Apache-2.0 | A（6/6） | [中](categories/dev-utilities/binary-analysis/ghidra.zh.md) · [EN](categories/dev-utilities/binary-analysis/ghidra.md) |
+| **ReAgent** | 从 Ghidra 证据重建授权 C/C++ 函数，结合模型评审与工程自备候选测试；不证明等价。 | MIT | C（5/6） | [中](categories/dev-utilities/binary-analysis/reagent.zh.md) · [EN](categories/dev-utilities/binary-analysis/reagent.md) |
 | **DevToys** | 当你想把 JWT/Base64 解码、JSON 格式化、diff、哈希等约 30 个开发小工具收进一个离线桌面应用、不再把密钥粘进在线网站时用它——但所有 2.x 构建都是预发布版，更新稀疏且成批出现。 | MIT | B（5/6） | [中](categories/dev-utilities/data-tools/devtoys.zh.md) · [EN](categories/dev-utilities/data-tools/devtoys.md) |
 | **CyberChef** | 当你需要在浏览器里离线串联编解码、加解密、压缩和数据分析变换、且数据不能外发时用它。 | Apache-2.0 | A（6/6） | [中](categories/dev-utilities/data-tools/cyberchef.zh.md) · [EN](categories/dev-utilities/data-tools/cyberchef.md) |
 | **Cockpit** | 当你需要为少数几台 Linux 服务器用浏览器做 systemd 原生的图形化管理时用它。 | LGPL-2.1-or-later | B（5/6） | [中](categories/dev-utilities/ops-infra/cockpit.zh.md) · [EN](categories/dev-utilities/ops-infra/cockpit.md) |
@@ -596,6 +600,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **book-to-skill** | 当编码智能体总要参考几本技术书或一个文档目录，你想把每本变成按章索引的技能、不再每次重贴 PDF 时用它——但它是概括而不是摘录原文，项目也才五个月左右。 | MIT | B（6/6） | [中](categories/agent-skills/book-to-skill.zh.md) · [EN](categories/agent-skills/book-to-skill.md) |
 | **distilly** | 当你想把某个人的聊天记录、文档与访谈蒸馏成可安装的 agent 技能，让它用这个人的判断与语气回答时用它。 | MIT | B（4/5） | [中](categories/agent-skills/distilly.zh.md) · [EN](categories/agent-skills/distilly.md) |
 | **visual-explainer** | 把有来源的差异与方案变成图文 HTML，保留源码与反馈；不是可编辑图模型，默认也非完全离线。 | MIT | C（5/6） | [EN](categories/agent-skills/design/visual-artifacts/visual-explainer.md) · [中](categories/agent-skills/design/visual-artifacts/visual-explainer.zh.md) |
+| **Anima** | 把静态生物课变成带来源的交互机制图；科学审查仍由你负责。 | MIT | C（4/5） | [EN](categories/agent-skills/design/visual-artifacts/anima.md) · [中](categories/agent-skills/design/visual-artifacts/anima.zh.md) |
 
 #### agent-skills / engineering
 

@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "host", "en": "Existing host assistant", "zh": "现有宿主助手", "kind": "input"},
+    {"id": "discovery", "en": "Usage and bundled request schema", "zh": "命令用法与内置请求结构", "technique": [1]},
+    {"id": "request", "en": "Resolve inputs and construct request", "zh": "解析输入并构造请求", "technique": [2]},
+    {"id": "preview", "en": "Redacted preview; synthetic response", "zh": "脱敏预览；合成响应", "kind": "output", "technique": [2]},
+    {"id": "api", "en": "Hosted Gemini API", "zh": "云端 Gemini API", "kind": "external"},
+    {"id": "framing", "en": "Complete response or streamed events", "zh": "完整响应或逐条事件", "technique": [3]},
+    {"id": "artifact", "en": "Inline media to checked local file", "zh": "内联媒体写为检查过的本地文件", "technique": [4]},
+    {"id": "result", "en": "Host receives data or artifact path", "zh": "宿主拿到数据或产物路径", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "host", "to": "discovery"},
+    {"from": "discovery", "to": "request"},
+    {"from": "request", "to": "preview", "en": "dry-run only", "zh": "仅预览模式", "style": "dashed"},
+    {"from": "request", "to": "api", "en": "separately authorized live invocation", "zh": "另行授权的真实调用"},
+    {"from": "api", "to": "framing"},
+    {"from": "framing", "to": "result", "en": "text or interaction data", "zh": "文字或交互数据"},
+    {"from": "framing", "to": "artifact", "en": "supported inline media", "zh": "受支持的内联媒体", "style": "dashed"},
+    {"from": "artifact", "to": "result"}
+  ],
+  "sources": [
+    "internal/usage/schema.go:131-163 at 0707bcf0f48778e4f108d88522115bada9fed083",
+    "internal/client/diagnostics.go:602-659 at 0707bcf0f48778e4f108d88522115bada9fed083",
+    "internal/cli/agent/intent_generate.go:113-220 at 0707bcf0f48778e4f108d88522115bada9fed083",
+    "internal/output/artifact.go:141-205 at 0707bcf0f48778e4f108d88522115bada9fed083"
+  ]
+}

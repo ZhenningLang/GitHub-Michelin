@@ -1,0 +1,80 @@
+{
+  "status": "pass",
+  "before_bilingual_files": 1944,
+  "after_bilingual_files": 1944,
+  "repo_identities": 972,
+  "moved_bilingual_files": 6,
+  "inbound_only_bilingual_files": 2,
+  "other_project_pages_byte_identical": 1936,
+  "dates_health_and_other_frontmatter_unchanged": true,
+  "mappings": [
+    {
+      "old": "categories/dev-utilities/data-tools/ghidra.md",
+      "new": "categories/dev-utilities/binary-analysis/ghidra.md"
+    },
+    {
+      "old": "categories/dev-utilities/data-tools/ghidra.zh.md",
+      "new": "categories/dev-utilities/binary-analysis/ghidra.zh.md"
+    },
+    {
+      "old": "categories/dev-utilities/data-tools/rea.md",
+      "new": "categories/dev-utilities/binary-analysis/rea.md"
+    },
+    {
+      "old": "categories/dev-utilities/data-tools/rea.zh.md",
+      "new": "categories/dev-utilities/binary-analysis/rea.zh.md"
+    },
+    {
+      "old": "categories/dev-utilities/data-tools/reagent.md",
+      "new": "categories/dev-utilities/binary-analysis/reagent.md"
+    },
+    {
+      "old": "categories/dev-utilities/data-tools/reagent.zh.md",
+      "new": "categories/dev-utilities/binary-analysis/reagent.zh.md"
+    }
+  ],
+  "changed": [
+    {
+      "old": "categories/agent-skills/security/leanrea.md",
+      "new": "categories/agent-skills/security/leanrea.md",
+      "only": "necessary inbound links"
+    },
+    {
+      "old": "categories/agent-skills/security/leanrea.zh.md",
+      "new": "categories/agent-skills/security/leanrea.zh.md",
+      "only": "necessary inbound links"
+    },
+    {
+      "old": "categories/dev-utilities/data-tools/ghidra.md",
+      "new": "categories/dev-utilities/binary-analysis/ghidra.md",
+      "only": "category and necessary relative links"
+    },
+    {
+      "old": "categories/dev-utilities/data-tools/ghidra.zh.md",
+      "new": "categories/dev-utilities/binary-analysis/ghidra.zh.md",
+      "only": "category and necessary relative links"
+    },
+    {
+      "old": "categories/dev-utilities/data-tools/rea.md",
+      "new": "categories/dev-utilities/binary-analysis/rea.md",
+      "only": "category and necessary relative links"
+    },
+    {
+      "old": "categories/dev-utilities/data-tools/rea.zh.md",
+      "new": "categories/dev-utilities/binary-analysis/rea.zh.md",
+      "only": "category and necessary relative links"
+    },
+    {
+      "old": "categories/dev-utilities/data-tools/reagent.md",
+      "new": "categories/dev-utilities/binary-analysis/reagent.md",
+      "only": "category and necessary relative links"
+    },
+    {
+      "old": "categories/dev-utilities/data-tools/reagent.zh.md",
+      "new": "categories/dev-utilities/binary-analysis/reagent.zh.md",
+      "only": "category and necessary relative links"
+    }
+  ],
+  "data_tools_pages_after_integration": 11,
+  "binary_analysis_pages": 3
+}
