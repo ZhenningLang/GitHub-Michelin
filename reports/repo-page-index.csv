@@ -490,6 +490,7 @@ https://github.com/globocom/m3u8,m3u8,transcoding-and-pipelines,categories/media
 https://github.com/go-mysql-org/go-mysql-elasticsearch,go-mysql-elasticsearch,data-sync,categories/databases/data-sync/go-mysql-elasticsearch.md
 https://github.com/google-ai-edge/LiteRT-LM,litert-lm,on-device-ml,categories/on-device-ml/litert-lm.md
 https://github.com/google-ai-edge/gallery,ai-edge-gallery,on-device-ml,categories/on-device-ml/ai-edge-gallery.md
+https://github.com/google-gemini/gemini-api-cli,gemini-api-cli,harness-extensions,categories/agent-tooling/harness-extensions/gemini-api-cli.md
 https://github.com/google-gemini/gemini-cli,gemini-cli,vendor-agents,categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/gemini-cli.md
 https://github.com/google-labs-code/stitch-skills,stitch-skills,design-to-code,categories/agent-skills/design/design-to-code/stitch-skills.md
 https://github.com/google-research/harness2,harness2,workflow-builders,categories/agent-frameworks/workflow-builders/harness2.md

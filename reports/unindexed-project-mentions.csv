@@ -52,6 +52,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [frp](https://github.com/fatedier/frp),categories/networking/opentunnel.md,,no
 [GHC / Haskell](https://github.com/ghc/ghc),categories/programming-languages/unison.md,,no
 [Gitea](https://github.com/go-gitea/gitea),categories/dev-utilities/ops-infra/harness-open-source.md,,no
+[Google Gen AI Python SDK](https://github.com/googleapis/python-genai),categories/agent-tooling/harness-extensions/gemini-api-cli.md,,no
 [google_workspace_mcp](https://github.com/taylorwilsdon/google_workspace_mcp),categories/agent-tooling/harness-extensions/hey-cli.md,,no
 [Hunyuan3D-2](https://github.com/Tencent-Hunyuan/Hunyuan3D-2),categories/3d-generation/modly.md,,no
 [HunyuanVideo](https://github.com/Tencent-Hunyuan/HunyuanVideo),categories/ml-research/vision-and-multimodal/open-sora.md,,no
@@ -62,6 +63,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [LEAN](https://github.com/QuantConnect/Lean),categories/investment-finance/backtrader.md,,no
 [LightRAG](https://github.com/HKUDS/LightRAG),categories/rag-retrieval/structured-retrieval/sag.md,,no
 [linkding](https://github.com/sissbruecker/linkding),categories/knowledge-base/hister.md,,no
+[LLM](https://github.com/simonw/llm),categories/agent-tooling/harness-extensions/gemini-api-cli.md,,no
 [localtunnel](https://github.com/localtunnel/localtunnel),categories/networking/opentunnel.md,,no
 [LTX-Video](https://github.com/Lightricks/LTX-Video),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [lunar-javascript](https://github.com/6tail/lunar-javascript),categories/traditional-divination/ziwei-doushu.md,,no
