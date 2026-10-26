@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "task", "en": "Task, repository and profile", "zh": "任务、仓库与助手档案", "kind": "input"},
+    {"id": "prepare", "en": "Validate and materialize worktrees", "zh": "检查并准备工作树", "technique": [1]},
+    {"id": "agent", "en": "Agent runs with executor permissions", "zh": "助手以执行器权限运行", "kind": "external"},
+    {"id": "events", "en": "Load state; dispatch event actions", "zh": "加载状态；派发事件动作", "technique": [2]},
+    {"id": "review", "en": "Conversation and diff; human gate", "zh": "对话与差异；人工关口", "kind": "output"},
+    {"id": "audit", "en": "Archive: audit identity and references", "zh": "归档：审计身份和共享引用", "technique": [3]},
+    {"id": "cleanup", "en": "Retain referenced work or reclaim owned checkout", "zh": "保留被引用环境，或回收自有检出目录", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "task", "to": "prepare"},
+    {"from": "prepare", "to": "agent"},
+    {"from": "agent", "to": "events"},
+    {"from": "events", "to": "review"},
+    {"from": "review", "to": "events", "en": "human follow-up", "zh": "人工追加指令", "style": "dashed"},
+    {"from": "review", "to": "audit", "en": "explicit archive action", "zh": "明确归档操作", "style": "dashed"},
+    {"from": "audit", "to": "cleanup"}
+  ],
+  "sources": [
+    "https://github.com/kdlbs/kandev/blob/b6263ea4c3165c86ec60e29e798475ad552ad6ce/apps/backend/internal/agent/runtime/lifecycle/env_preparer_worktree.go",
+    "https://github.com/kdlbs/kandev/blob/b6263ea4c3165c86ec60e29e798475ad552ad6ce/apps/backend/internal/workflow/engine/engine.go",
+    "https://github.com/kdlbs/kandev/blob/b6263ea4c3165c86ec60e29e798475ad552ad6ce/apps/backend/internal/worktree/manager_cleanup.go"
+  ]
+}

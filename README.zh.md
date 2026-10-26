@@ -105,6 +105,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **weave** | 并行 agent 或分支总在同一文件里互不相干的改动上卡住合并、想让 git 比函数和键而不是比行时用它——但它约 8 个月大、pre-1.0、单一核心作者，引擎判定仍在版本间变动。 | MIT OR Apache-2.0 | B（6/6） | [中](categories/agent-tooling/concurrent-editing/weave.zh.md) · [EN](categories/agent-tooling/concurrent-editing/weave.md) |
 | **dsh-TUI** | DeepSeek Harness 的工具、审批和后台任务散在文字里。dsh-TUI 把这些状态投影成终端卡片、面板和会话浏览器。 | MIT | B（5/6） | [EN](categories/agent-tooling/supervision-surfaces/agent-cockpits/dsh-tui.md) · [中](categories/agent-tooling/supervision-surfaces/agent-cockpits/dsh-tui.zh.md) |
 | **Agor** | 用实时分支看板协作混合编程助手；接受 BSL，并自行运营数据库与执行安全。 | BUSL-1.1 | D（6/6） | [EN](categories/agent-tooling/supervision-surfaces/agent-cockpits/agor.md) · [中](categories/agent-tooling/supervision-surfaces/agent-cockpits/agor.zh.md) |
+| **Kandev** | 用服务端浏览器工作台评审并行编程任务；须主动配置人工关口、执行权限和归档保留规则。 | AGPL-3.0-only | B（6/6） | [EN](categories/agent-tooling/supervision-surfaces/agent-cockpits/kandev.md) · [中](categories/agent-tooling/supervision-surfaces/agent-cockpits/kandev.zh.md) |
 ### sandboxing
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |

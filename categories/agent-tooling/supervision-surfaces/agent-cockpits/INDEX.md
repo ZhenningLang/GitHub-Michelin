@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Kandev** | Review parallel coding tasks in a server-first browser workbench with configurable workflow gates and executors; constrain the default listener and archive cleanup. | B (6/6) | [→](kandev.md) |
 | **Nezha** | Supervise local Claude Code/Codex tasks with terminal, session and Git views; select worktree mode explicitly and accept startup hook edits. | C (6/6) | [→](nezha.md) |
 | **FounderOS** | Put income, inbox and agent work on one local operator screen; real services and agent execution remain separate, and first-run data is fictional. | B (4/6) | [→](founderos.md) |
 | **dsh-TUI** | Your DeepSeek Harness session has tools, approvals and background work scattered across text; dsh-TUI projects that state into terminal cards, panels and a session browser. | B (5/6) | [→](dsh-tui.md) |
@@ -22,6 +23,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Kandev](kandev.md) | 已收录 | B (6/6) | Native server with task workflows, worktrees and remote execution; AGPL, optional authentication and destructive archive lifecycle require deliberate setup. |
 | [Nezha](nezha.md) | ✅ | C (6/6) | Tauri desktop for a two-agent task/Git loop; optional worktrees, global Codex hooks, no process persistence across app exit. |
 | [FounderOS](founderos.md) | ✅ | B (4/6) | Broad MIT business cockpit over SQLite and external services, not a turnkey autonomous company or multi-user workspace. |
 | [dsh-TUI](dsh-tui.md) | ✅ | B (5/6) | Your DeepSeek Harness session has tools, approvals and background work scattered across text; dsh-TUI projects that state into terminal cards, panels and a session browser. |

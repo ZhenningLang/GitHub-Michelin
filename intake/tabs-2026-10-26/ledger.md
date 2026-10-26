@@ -20,13 +20,16 @@
 
 ## Queue
 
+
+浏览器关闭阶段出现两个符合筛选的Chrome候选进程，现有helper按规则DEFER。本批未执行关闭，后续复扫和关闭状态未验证；仅继续初扫队列的源码研究与汇总，不手选PID或换应用名绕过。
+
 | 规范名 | 动作 | 结果 | 页面路径 | 备注 | 标签里的写法 |
 |:---|:---|:---|:---|:---|:---|
-| datawhalechina/diy-llm | add | pending |  |  | datawhalechina/diy-llm |
+| datawhalechina/diy-llm | add | running |  |  | datawhalechina/diy-llm |
 | ihhub/fheroes2 | add | running |  |  | ihhub/fheroes2 |
-| kdlbs/kandev | add | running |  |  | kdlbs/kandev |
+| kdlbs/kandev | add | done | categories/agent-tooling/supervision-surfaces/agent-cockpits/kandev.md | 固定SHA源码及资格五问通过，AGPL/默认监听与鉴权/破坏性归档边界已明示；标签关闭因Chrome歧义DEFER；no leftover Q&A | kdlbs/kandev |
 | kharmanskyi/open-steps | add | running |  |  | kharmanskyi/open-steps |
-| kunchenguid/no-mistakes | add | pending |  |  | kunchenguid/no-mistakes |
+| kunchenguid/no-mistakes | add | running |  |  | kunchenguid/no-mistakes |
 | llm-d/llm-d | sync | done | categories/llm-inference/serving-engines/llm-d.md | fresh_by_date；delta 26<=90，保留2026-09-30核验日与原页，未重核上游；no leftover Q&A | llm-d/llm-d |
-| XiaoLuoLYG/GOD | add | pending |  |  | xiaoluolyg/god |
+| XiaoLuoLYG/GOD | add | running |  |  | xiaoluolyg/god |
 | anonymous-own-1 | skip | skipped |  | 维护者自有仓库，按范围跳过；标签保留 |  |
