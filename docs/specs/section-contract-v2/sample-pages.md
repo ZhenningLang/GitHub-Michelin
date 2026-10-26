@@ -34,7 +34,7 @@ python3 /Users/zhenninglang/Projects/oss-atlas-wt-sections/.long-loop/20261013_s
 | 12 | `categories/media-processing/video-audio/speech-and-subtitles/claude-video.md` | media-processing | app | 2026-07-16 | 按原复核日期及路径排序，顶层分类最多两对。 |
 | 13 | `categories/agent-dev-methodology/spec-driven-development/pure-agentic.md` | agent-dev-methodology | framework | 2026-07-17 | 按原复核日期及路径排序，顶层分类最多两对。 |
 | 14 | `categories/agent-dev-methodology/spec-driven-development/spec-anchored-agentic-development.md` | agent-dev-methodology | skill-pack | 2026-07-17 | 按原复核日期及路径排序，顶层分类最多两对。 |
-| 15 | `categories/api-gateway/client-routing/funtool.md` | api-gateway | tool | 2026-07-17 | 按原复核日期及路径排序，顶层分类最多两对。 |
+| 15 | `categories/api-gateway/funtool.md` | api-gateway | tool | 2026-07-17 | 按原复核日期及路径排序，顶层分类最多两对。 |
 | 16 | `categories/blockchain-dev-infrastructure/powfaucet.md` | blockchain-dev-infrastructure | service | 2026-07-17 | 按原复核日期及路径排序，顶层分类最多两对。 |
 | 17 | `categories/captcha/buster.md` | captcha | tool | 2026-07-17 | 按原复核日期及路径排序，顶层分类最多两对。 |
 | 18 | `categories/captcha/nopecha-extension.md` | captcha | tool | 2026-07-17 | 按原复核日期及路径排序，顶层分类最多两对。 |
@@ -42,3 +42,5 @@ python3 /Users/zhenninglang/Projects/oss-atlas-wt-sections/.long-loop/20261013_s
 | 20 | `categories/im-automation/openilink-hub.md` | im-automation | app | 2026-07-17 | 按原复核日期及路径排序，顶层分类最多两对。 |
 
 类型计数：app＝5、tool＝8、skill-pack＝2、framework＝2、library＝2、service＝1。phase 02 取 1–5，03 取 6–10，04 取 11–15，05 取 16–20；每对按 sync-entry 全流程复核，逐对提交，健康度串行重算。第一段仅冻结清单，不改这 20 对页。
+
+2026-10-26路径迁移说明（不参与冻结抽样）：第15项保留固定基线中的旧路径；当前入口是[客户端路由分类下的Funtool](../../../categories/api-gateway/client-routing/funtool.md)。读取固定提交或复算清单时仍使用表内路径，不用现路径替换历史样本身份。
