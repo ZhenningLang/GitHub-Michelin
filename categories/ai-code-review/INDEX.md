@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **no-mistakes** | Gate committed work locally, repair and review in a separate worktree, then publish a PR and watch CI; explicit publication authority required. | B (6/6) | [→](no-mistakes.md) |
 | **Open Code Review** | Use it when you want precise, line-level LLM review comments on Git diffs in CI without PR noise. | B (5/6) | [→](open-code-review.md) |
 | **Claude Code Security Review** | Use it when you want Claude to read each trusted PR's diff for logic-level vulnerabilities and comment on the exact lines, in any language — but it is not hardened against prompt injection, so never run it on untrusted fork PRs. | B (4/6) | [→](claude-code-security-review.md) |
 | **React Doctor** | Use it when a coding agent writes React and you want deterministic, repeatable checks for React-specific anti-patterns. | B (5/6) | [→](react-doctor.md) |
@@ -19,6 +20,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [no-mistakes](no-mistakes.md) | Indexed | B (6/6) | Owns the repair-to-PR handoff through a local Git receiver; requires a daemon, broad agent access and publication credentials. |
 | [Open Code Review](open-code-review.md) | ✅ | B (5/6) | Use it when you want precise, line-level LLM review comments on Git diffs in CI without PR noise. |
 | [Claude Code Security Review](claude-code-security-review.md) | ✅ | B (4/6) | Buys context-aware findings that pattern-based SAST misses; costs per-run Claude API tokens, non-deterministic results, and an untagged action you can only pin to @main. |
 | [React Doctor](react-doctor.md) | ✅ | B (5/6) | Use it when a coding agent writes React and you want deterministic, repeatable checks for React-specific anti-patterns. |

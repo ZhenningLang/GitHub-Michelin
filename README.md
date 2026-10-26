@@ -383,6 +383,7 @@ Research engines and scientific workbenches; source access and evidence auditing
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **no-mistakes** | Gate committed work locally, repair and review in a separate worktree, then publish a PR and watch CI; explicit publication authority required. | MIT | B (6/6) | [EN](categories/ai-code-review/no-mistakes.md) · [中](categories/ai-code-review/no-mistakes.zh.md) |
 | **Open Code Review** | Use it when you want precise, line-level LLM review comments on Git diffs in CI without PR noise. | Apache-2.0 | B (5/6) | [EN](categories/ai-code-review/open-code-review.md) · [中](categories/ai-code-review/open-code-review.zh.md) |
 | **Claude Code Security Review** | Use it when you want Claude to read each trusted PR's diff for logic-level vulnerabilities and comment on the exact lines, in any language — but it is not hardened against prompt injection, so never run it on untrusted fork PRs. | MIT | B (4/6) | [EN](categories/ai-code-review/claude-code-security-review.md) · [中](categories/ai-code-review/claude-code-security-review.zh.md) |
 | **React Doctor** | Use it when a coding agent writes React and you want deterministic, repeatable checks for React-specific anti-patterns. | LicenseRef-Modified-MIT | B (5/6) | [EN](categories/ai-code-review/react-doctor.md) · [中](categories/ai-code-review/react-doctor.zh.md) |

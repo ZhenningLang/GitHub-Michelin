@@ -29,7 +29,7 @@
 | ihhub/fheroes2 | add | done | categories/games/fheroes2.md | 固定源码与资格五问通过，新games路由；GPL不覆盖外部资源，音色采样来源和旧存档限制明示；关闭因Chrome歧义DEFER；no leftover Q&A | ihhub/fheroes2 |
 | kdlbs/kandev | add | done | categories/agent-tooling/supervision-surfaces/agent-cockpits/kandev.md | 固定SHA源码及资格五问通过，AGPL/默认监听与鉴权/破坏性归档边界已明示；标签关闭因Chrome歧义DEFER；no leftover Q&A | kdlbs/kandev |
 | kharmanskyi/open-steps | add | running |  |  | kharmanskyi/open-steps |
-| kunchenguid/no-mistakes | add | running |  |  | kunchenguid/no-mistakes |
+| kunchenguid/no-mistakes | add | done | categories/ai-code-review/no-mistakes.md | 固定源码与资格五问通过；本地门禁可绕开，宽权限/用户技能软链覆盖/遥测/自动发布边界明示；关闭因Chrome歧义DEFER；no leftover Q&A | kunchenguid/no-mistakes |
 | llm-d/llm-d | sync | done | categories/llm-inference/serving-engines/llm-d.md | fresh_by_date；delta 26<=90，保留2026-09-30核验日与原页，未重核上游；no leftover Q&A | llm-d/llm-d |
 | XiaoLuoLYG/GOD | add | running |  |  | xiaoluolyg/god |
 | anonymous-own-1 | skip | skipped |  | 维护者自有仓库，按范围跳过；标签保留 |  |

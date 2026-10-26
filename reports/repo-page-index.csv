@@ -605,6 +605,7 @@ https://github.com/krillinai/OpenCreator,open-creator,editing-workflows,categori
 https://github.com/kubernetes-sigs/agent-sandbox,agent-sandbox,sandboxing,categories/sandboxing/agent-sandbox.md
 https://github.com/kubernetes-sigs/descheduler,descheduler,ops-infra,categories/dev-utilities/ops-infra/descheduler.md
 https://github.com/kunchenguid/backpass,backpass,coding-agent-memory,categories/agent-memory/coding-agent-memory/backpass.md
+https://github.com/kunchenguid/no-mistakes,no-mistakes,ai-code-review,categories/ai-code-review/no-mistakes.md
 https://github.com/langchain-ai/langchain,langchain,workflow-builders,categories/agent-frameworks/workflow-builders/langchain.md
 https://github.com/langchain-ai/langgraph,langgraph,agent-sdks,categories/agent-frameworks/agent-runtimes/agent-sdks/langgraph.md
 https://github.com/langchain-ai/langmem,langmem,app-memory,categories/agent-memory/app-memory/langmem.md

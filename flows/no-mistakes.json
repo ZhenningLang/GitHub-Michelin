@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "no-mistakes does", "zh": "no-mistakes 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install reviewed tooling and initialize a trusted repository", "zh": "安装审核过的工具并初始化可信仓库", "code": "no-mistakes init"},
+    {"lane": "them", "en": "Adds a local gate remote and starts the daemon", "zh": "添加本地门禁远端并启动后台进程", "component": {"en": "bare Git gate and daemon", "zh": "裸仓库门禁与后台进程"}},
+    {"lane": "you", "en": "Push committed work to the gate instead of origin", "zh": "把已提交改动推到门禁而非原远端", "code": "git push no-mistakes"},
+    {"lane": "them", "en": "Reviews, tests and fixes in a separate worktree; parks unresolved findings", "zh": "在独立工作区评审测试修复，暂停待裁决问题", "component": {"en": "pipeline executor", "zh": "流水线执行器"}},
+    {"lane": "you", "en": "Open the terminal UI and decide unresolved findings", "zh": "打开终端界面并裁决未解决问题", "code": "no-mistakes"},
+    {"lane": "them", "en": "Publishes the validated branch, opens the PR and monitors CI", "zh": "发布验证后的分支，创建 PR 并监控 CI", "component": {"en": "push, PR and CI steps", "zh": "推送、PR 与 CI 步骤"}}
+  ],
+  "value": {"en": "One tracked run replaces manual repair, approval and PR handoffs; you still decide the merge", "zh": "一次可追踪运行接管修复、审批和 PR 交接，合并仍由你决定"},
+  "sources": [
+    "https://github.com/kunchenguid/no-mistakes/blob/f0c91d3f4a7e382cf6946c44a61e757225e70ef9/README.md#L78-L108",
+    "https://github.com/kunchenguid/no-mistakes/blob/f0c91d3f4a7e382cf6946c44a61e757225e70ef9/docs/src/content/docs/concepts/gate-model.md#L30-L76"
+  ]
+}

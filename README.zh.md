@@ -380,6 +380,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **no-mistakes** | 本地接住已提交改动，在独立工作区评审修复，再发布 PR 并监控 CI；需明确授权发布。 | MIT | B（6/6） | [中](categories/ai-code-review/no-mistakes.zh.md) · [EN](categories/ai-code-review/no-mistakes.md) |
 | **Open Code Review** | 想在 CI 里对 Git diff 拿到精确行级 LLM review 评论、又不被噪声淹没时用它。 | Apache-2.0 | B（5/6） | [中](categories/ai-code-review/open-code-review.zh.md) · [EN](categories/ai-code-review/open-code-review.md) |
 | **Claude Code Security Review** | 当你想让 Claude 在每个可信 PR 上读 diff、找逻辑层面的漏洞并在具体行上评论、且不分语言时用它——但它没做 prompt injection 加固，绝不能用在不可信的 fork PR 上。 | MIT | B（4/6） | [中](categories/ai-code-review/claude-code-security-review.zh.md) · [EN](categories/ai-code-review/claude-code-security-review.md) |
 | **React Doctor** | 当 coding agent 在写 React、你想要对 React 特有反模式做确定性、可重复的检查时用它。 | LicenseRef-Modified-MIT | B（5/6） | [中](categories/ai-code-review/react-doctor.zh.md) · [EN](categories/ai-code-review/react-doctor.md) |
