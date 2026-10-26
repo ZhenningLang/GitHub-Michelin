@@ -25,7 +25,7 @@
 
 | 规范名 | 动作 | 结果 | 页面路径 | 备注 | 标签里的写法 |
 |:---|:---|:---|:---|:---|:---|
-| datawhalechina/diy-llm | add | running |  |  | datawhalechina/diy-llm |
+| datawhalechina/diy-llm | add | proposed |  | 有87个Python文件和10个notebook；作业2复制原课文件但无对应LICENSE，另一作业MIT覆盖范围未明，提请许可分区裁决，不作侵权或整仓mostly-copy定论；不建页，标签未触碰；no leftover Q&A | datawhalechina/diy-llm |
 | ihhub/fheroes2 | add | done | categories/games/fheroes2.md | 固定源码与资格五问通过，新games路由；GPL不覆盖外部资源，音色采样来源和旧存档限制明示；关闭因Chrome歧义DEFER；no leftover Q&A | ihhub/fheroes2 |
 | kdlbs/kandev | add | done | categories/agent-tooling/supervision-surfaces/agent-cockpits/kandev.md | 固定SHA源码及资格五问通过，AGPL/默认监听与鉴权/破坏性归档边界已明示；标签关闭因Chrome歧义DEFER；no leftover Q&A | kdlbs/kandev |
 | kharmanskyi/open-steps | add | running |  |  | kharmanskyi/open-steps |
