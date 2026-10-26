@@ -87,7 +87,7 @@ health:
 
 你每天用 Claude Code、Codex、Cursor 或 Gemini CLI 干好几个小时，回翻一次会话就会发现，智能体读进去的大半是 shell 噪音：`ls -la` 每行都带权限和时间戳，`cargo test` 两百行里一百九十八行是 `... ok`，`docker ps` 列出全部字段，`git log` 带着完整的提交正文。长会话很早就触发压缩，账单跟着噪音涨，而不是跟着干的活涨。当这些噪音来自 **shell 命令**、而你又不想改变自己和智能体的工作方式时，就该想到 RTK：跑一次 `rtk init -g`，重启智能体，此后 `git status` 在执行前会被悄悄改写成 `rtk git status`。
 
-你选它而不是手写 `| tail -20` 管道加 AGENTS.md 约定，是因为它为 100 多种命令各写了过滤器（测试只留失败并把通过项折成一个数，lint 按规则和文件分组，`git add/commit/push` 缩成一行），并且保留退出码，智能体的成败判断照常生效。你选它而不是 [Token Optimizer](token-optimizer.zh.md) 或 [caveman](../../agent-skills/engineering/caveman.zh.md)，是因为你要宽松许可（Apache-2.0）和一个只干一件事的 Rust 二进制——压缩 shell 输出——而不是一个还要改写文件读取、给压缩打检查点或改变智能体说话方式的插件。
+你选它而不是手写 `| tail -20` 管道加 AGENTS.md 约定，是因为它为 100 多种命令各写了过滤器（测试只留失败并把通过项折成一个数，lint 按规则和文件分组，`git add/commit/push` 缩成一行），并且保留退出码，智能体的成败判断照常生效。你选它而不是 [Token Optimizer](token-optimizer.zh.md) 或 [caveman](../../agent-skills/engineering/behavior-overlays/caveman.zh.md)，是因为你要宽松许可（Apache-2.0）和一个只干一件事的 Rust 二进制——压缩 shell 输出——而不是一个还要改写文件读取、给压缩打检查点或改变智能体说话方式的插件。
 
 ## 怎么用起来
 
@@ -113,7 +113,7 @@ RTK 是一层代理：智能体不再直接调 `git status`，而是调 `rtk git
 
 ## 何时不用
 
-- **如果上下文主要被读文件吃掉，而不是 shell 输出**——请用 [Token Optimizer](token-optimizer.zh.md) 或 [caveman](../../agent-skills/engineering/caveman.zh.md) 的 wrap 而不是 RTK，因为 RTK 的钩子只拦 Bash 调用；Claude Code 的 `Read`/`Grep`/`Glob` 会直接穿过，除非你要求智能体显式改用 `rtk read` / `rtk grep`。
+- **如果上下文主要被读文件吃掉，而不是 shell 输出**——请用 [Token Optimizer](token-optimizer.zh.md) 或 [caveman](../../agent-skills/engineering/behavior-overlays/caveman.zh.md) 的 wrap 而不是 RTK，因为 RTK 的钩子只拦 Bash 调用；Claude Code 的 `Read`/`Grep`/`Glob` 会直接穿过，除非你要求智能体显式改用 `rtk read` / `rtk grep`。
 - **如果浪费来自压缩丢失、对话历史或智能体自己的啰嗦**——请用 Token Optimizer（在压缩前后打检查点）或 caveman（让回复变短），因为 RTK 只削减一种输入来源。它自己的 README 也写明，“最多 90%”指的是 bash 输出的削减，算上提示词、历史和输出 token 后，落到总账单上会小得多。
 - **如果智能体事后必须能检索完整原始输出**（长日志、取证用的 diff、精确字节数）——请用 [Context Mode](context-mode.zh.md)，它把原始输出存进本地数据库并建索引；或者用 `exclude_commands` 把这些命令排除掉，因为 RTK 的过滤器按设计就会丢行，只在命令失败或被截断时才保留完整输出。
 - **如果你的智能体只能通过规则文件接入**（Windsurf、Cline/Roo Code、Kilo Code、Kimi）——请换有工具调用前钩子的智能体（Claude Code、Codex、Cursor、Gemini CLI、OpenCode），或接受只省一部分，因为没有钩子时改写靠模型自己记得加 `rtk`，它不会每次都记得。
@@ -125,7 +125,7 @@ RTK 是一层代理：智能体不再直接调 `git status`，而是调 `rtk git
 | --- | --- | --- | --- |
 | [Token Optimizer](token-optimizer.zh.md) | 已收录 | 如果压缩后能否续上、读文件的增量和按美元记账跟 shell 噪音一样重要，选 Token Optimizer；如果浪费主要是命令输出且许可必须宽松，选 RTK。 | Token Optimizer 覆盖更多浪费来源（Read、压缩、臃肿的 CLAUDE.md），但许可是 PolyForm Noncommercial；RTK 只管 Bash 输出，Apache-2.0，采用面大得多。 |
 | [Context Mode](context-mode.zh.md) | 已收录 | 如果原始输出需要保留且可检索，选 Context Mode 的沙箱加索引；如果只想让智能体已经在跑的命令输出变短，选 RTK。 | Context Mode 把完整数据挡在上下文外，但要让智能体改走 MCP 工具和脚本；RTK 不改变智能体行为，代价是过滤器削掉的内容就没了。 |
-| [caveman](../../agent-skills/engineering/caveman.zh.md) | 已收录 | 如果成本来自智能体自己的长篇回复和非 shell 的载荷，选 caveman；如果要确定性的、只针对 shell 的压缩和宽松许可，选 RTK。 | caveman 压缩智能体写出的内容，包一层后还能覆盖更多载荷类型并保留原件，但引擎是 BSL-1.1、CLI 遥测默认开启需手动关闭；RTK 范围更窄，Apache-2.0。 |
+| [caveman](../../agent-skills/engineering/behavior-overlays/caveman.zh.md) | 已收录 | 如果成本来自智能体自己的长篇回复和非 shell 的载荷，选 caveman；如果要确定性的、只针对 shell 的压缩和宽松许可，选 RTK。 | caveman 压缩智能体写出的内容，包一层后还能覆盖更多载荷类型并保留原件，但引擎是 BSL-1.1、CLI 遥测默认开启需手动关闭；RTK 范围更窄，Apache-2.0。 |
 | Claude Code 自带压缩（`/compact`） | 非仓库 | 会话很少撞上下文上限时，单靠它就够；如果命令输出塞满窗口导致压缩早早触发，再加 RTK。 | 自带压缩零安装，但闭源，而且是事后总结、会丢细节；RTK 从源头不让噪音进来。 |
 | 手写 `head` / `tail` / `grep` 管道 | 非仓库 | 单个项目里只有一两条吵闹命令时用它们；想在所有工具、所有智能体上统一精简时，选 RTK。 | 管道透明、零依赖，但要逐条命令写，而且末尾的 `tail` 会吞掉命令的退出码（除非开了 `pipefail`）；RTK 替你维护 100 多个过滤器，代价是命令路径上多一个二进制。 |
 

@@ -2,7 +2,7 @@
 name: Ponytail
 slug: ponytail
 repo: https://github.com/DietrichGebert/ponytail
-category: engineering
+category: behavior-overlays
 tags: [yagni, over-engineering, behavior-ruleset, agent-skill, multi-harness, token-cost]
 language: JavaScript
 license: MIT
@@ -76,7 +76,7 @@ health:
 
 你让编程 agent 加个日期选择器，它装一个库，或者手写 335 行日历；可仓库里本来就有 `Input` 组件，浏览器也自带 `type="date"`。Ponytail 把「你见过最懒的那位资深工程师」的条件反射装成一套常驻规则。动手前，agent 先列出这次改动必须波及的所有地方；再沿一架短阶梯取第一个可行的选项（不做、复用、标准库、已装依赖、一行）；每次回复结尾说清跳过了什么、没核实什么。校验、安全、错误处理永远不在可砍之列。
 
-![Ponytail — 健康度雷达](../../../assets/health/ponytail.zh.svg)
+![Ponytail — 健康度雷达](../../../../assets/health/ponytail.zh.svg)
 
 ## 何时使用
 
@@ -94,7 +94,7 @@ health:
 
 `/ponytail-debt` 把这些注释收成一本账。它改变 agent 写什么，不拦截 agent 能提交什么。
 
-![ponytail — 主干用户故事](../../../assets/flow/ponytail.zh.svg)
+![ponytail — 主干用户故事](../../../../assets/flow/ponytail.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/ponytail.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -117,11 +117,11 @@ health:
 
 ## 何时不用
 
-- **你要的是让 agent 走完整开发流程**（brainstorm → plan → TDD → verify），而不只是少写代码：用 [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) 或 [ECC](../../agent-dev-methodology/coding-agent-harnesses/ecc.zh.md)。Ponytail 不带流程、不带阶段、不带子 agent 流水线，只改「什么算写完」。
+- **你要的是让 agent 走完整开发流程**（brainstorm → plan → TDD → verify），而不只是少写代码：用 [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) 或 [ECC](../../../agent-dev-methodology/coding-agent-harnesses/ecc.zh.md)。Ponytail 不带流程、不带阶段、不带子 agent 流水线，只改「什么算写完」。
 - **痛点是 agent 说话啰嗦，不是代码量大**：搭配或改用 [caveman](caveman.zh.md)、[i-have-adhd](i-have-adhd.zh.md)。Ponytail 管的是造什么；作者 6 月的基准里，纯压话术的一路（caveman）只砍了 −20% LOC，功能任务上 token 和成本反而涨了。
 - **你会用 hook 插件打开不信任的仓库，或在很慢、很大的文件系统上工作**：设 `PONYTAIL_MAP=0`。5.0 的代码地图把仓库里的名字原样抄进隐藏的会话上下文：精心构造的导出列表或目录名，会被模型当成插件指令读进去；一个指向 `/dev/zero` 的已跟踪软链能让 hook 一直卡到超时（issue #1071）。在慢挂载盘上，地图可能在规则输出前就耗光 SessionStart 的 5 秒超时（#1079）。两者 2026-10-10 时都还 open。
 - **你的项目 shell 把 Node 钉在 15 以下**（monorepo 里的旧 `.nvmrc`）：5.1 的 hook 启动命令调用了 `replaceAll`，每次都报错，规则就悄无声息地不再送到模型（#1072，2026-10-10 仍 open）。修好之前改用拷 `AGENTS.md` 的方式。
-- **你需要确定性保证虚胖或不安全的代码出不去**：这是注入上下文的说服，遵从度取决于模型。`/ponytail-review` 是你手动调用、由模型执行的审查，不是合并闸门。要带证据的强制把关，在合并前面放一个行级 CI 审查器，如 [Open Code Review](../../ai-code-review/open-code-review.zh.md)。
+- **你需要确定性保证虚胖或不安全的代码出不去**：这是注入上下文的说服，遵从度取决于模型。`/ponytail-review` 是你手动调用、由模型执行的审查，不是合并闸门。要带证据的强制把关，在合并前面放一个行级 CI 审查器，如 [Open Code Review](../../../ai-code-review/open-code-review.zh.md)。
 - **你的宿主或模型不是 Claude Code + Opus**：v5 的数字只来自这一个组合。早先的 README 提醒过，爱权衡的推理模型会花更多 thinking token 逐级掂量阶梯（点名 GPT-5.5）[未验证：作者自述，未复现]。在意成本就先在自己的组合上量一遍，从 `lite` 开始。
 - **任务本来就很小**（在现成模板上做 CRUD）：作者的分任务表里，各路在不可再减的代码上收敛（例如 `reuse-money` 三路都是 9 行）。覆盖层在这里收益很小，却每轮都占上下文。
 
@@ -130,8 +130,8 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [caveman](caveman.zh.md) | ✅ | 别二选一，配对用：caveman 压 agent 说的话，Ponytail 压 agent 写的代码。只能先修一边就先修代码：两者共享的 6 月基准显示，单压话术砍不动代码，功能任务的 token（+7%）和成本（+3%）还涨了。 | 两个常驻覆盖层叠加，每轮都占上下文。caveman 的可选代理层是 BSL-1.1 source-available，Ponytail 通体 MIT。 |
-| [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) | ✅ | agent 的毛病出在流程（跳过计划、没验证就说做完）选 Superpowers；流程本来就对、毛病只在虚胖选 Ponytail，它减代码，不接管你干活的方式。 | Superpowers 装的是一整套方法论（命令、子 agent、worktree），要整体接受；Ponytail 装的是一条带开关和记分板的行为规则。 |
-| [ECC](../../agent-dev-methodology/coding-agent-harnesses/ecc.zh.md) | ✅ | 要一个自带 agents、hooks、memory、安全扫描的 Claude Code 全家桶平台，选 ECC；只想改掉现有工作流里过度工程这一个毛病、且强度可调，选 Ponytail。 | ECC 扩大安装面，集成由你负责；Ponytail 很小，但收益上限就是代码量和成本，没有可砍的地方就没有收益。 |
+| [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) | ✅ | agent 的毛病出在流程（跳过计划、没验证就说做完）选 Superpowers；流程本来就对、毛病只在虚胖选 Ponytail，它减代码，不接管你干活的方式。 | Superpowers 装的是一整套方法论（命令、子 agent、worktree），要整体接受；Ponytail 装的是一条带开关和记分板的行为规则。 |
+| [ECC](../../../agent-dev-methodology/coding-agent-harnesses/ecc.zh.md) | ✅ | 要一个自带 agents、hooks、memory、安全扫描的 Claude Code 全家桶平台，选 ECC；只想改掉现有工作流里过度工程这一个毛病、且强度可调，选 Ponytail。 | ECC 扩大安装面，集成由你负责；Ponytail 很小，但收益上限就是代码量和成本，没有可砍的地方就没有收益。 |
 | 在 AGENTS.md 里手写一句「写一行就行 / YAGNI」 | 非仓库 | 抄一句话零成本，而 v5 的 `AGENTS.md` 本身只有约 30 行，你完全可以自己贴。插件值得装，是因为代码地图、切档、子 agent 注入和 review/audit 命令。6 月基准里裸提示词发挥不稳、是唯一丢护栏的一路；v5 那轮没有设裸提示词对照组。 | 免安装、免 hook、隐藏上下文里没有仓库文本；换来的是插件的便利，但要求 PATH 上有 ≥15 的 `node`，规则有版本管理而不用手维护。 |
 
 ## 健康度与可持续性

@@ -43,7 +43,7 @@ https://github.com/Dammyjay93/interface-design,interface-design,ui-taste,categor
 https://github.com/DavidAnson/markdownlint,markdownlint,markdown-tools,categories/markdown-tools/markdownlint.md
 https://github.com/DepthAnything/Depth-Anything-V2,depth-anything-v2,vision-and-multimodal,categories/ml-research/vision-and-multimodal/depth-anything-v2.md
 https://github.com/DevToys-app/DevToys,devtoys,data-tools,categories/dev-utilities/data-tools/devtoys.md
-https://github.com/DietrichGebert/ponytail,ponytail,engineering,categories/agent-skills/engineering/ponytail.md
+https://github.com/DietrichGebert/ponytail,ponytail,behavior-overlays,categories/agent-skills/engineering/behavior-overlays/ponytail.md
 https://github.com/Dimillian/Skills,dimillian-skills,engineering-workflows,categories/agent-skills/personal-collections/engineering-workflows/dimillian-skills.md
 https://github.com/DormyMo/SpiderKeeper,spiderkeeper,crawling-tools,categories/web-scraping/crawling-tools/spiderkeeper.md
 https://github.com/Dragoon0x/markupkit,markupkit,ui-annotation,categories/agent-tooling/ui-annotation/markupkit.md
@@ -102,7 +102,7 @@ https://github.com/JimLiu/baoyu-design,baoyu-design,visual-artifacts,categories/
 https://github.com/JimLiu/baoyu-skills,baoyu-skills,content-production,categories/agent-skills/ai-writing/content-production/baoyu-skills.md
 https://github.com/JonB32/pure-agentic,pure-agentic,spec-driven-development,categories/agent-dev-methodology/spec-driven-development/pure-agentic.md
 https://github.com/Joooook/12306-mcp,12306-mcp,travel-planning,categories/travel-planning/12306-mcp.md
-https://github.com/JuliusBrussee/caveman,caveman,engineering,categories/agent-skills/engineering/caveman.md
+https://github.com/JuliusBrussee/caveman,caveman,behavior-overlays,categories/agent-skills/engineering/behavior-overlays/caveman.md
 https://github.com/K-Dense-AI/scientific-agent-skills,scientific-agent-skills,scientific-workflows,categories/agent-skills/engineering/scientific-workflows/scientific-agent-skills.md
 https://github.com/KKKKhazix/khazix-skills,khazix-skills,knowledge-content,categories/agent-skills/personal-collections/knowledge-content/khazix-skills.md
 https://github.com/Kilo-Org/kilocode,kilocode,ide-agents,categories/agent-frameworks/coding-agents/ide-agents/kilocode.md
@@ -330,7 +330,7 @@ https://github.com/aws/agent-toolkit-for-aws,agent-toolkit-for-aws,product-vendo
 https://github.com/awslabs/agent-plugins,aws-agent-plugins,product-vendors,categories/agent-skills/vendor-collections/product-vendors/aws-agent-plugins.md
 https://github.com/axiros/terminal_markdown_viewer,terminal-markdown-viewer,terminal-ui,categories/terminal-ui/terminal-markdown-viewer.md
 https://github.com/axolotl-ai-cloud/axolotl,axolotl,llm-training,categories/llm-training/axolotl.md
-https://github.com/ayghri/i-have-adhd,i-have-adhd,engineering,categories/agent-skills/engineering/i-have-adhd.md
+https://github.com/ayghri/i-have-adhd,i-have-adhd,behavior-overlays,categories/agent-skills/engineering/behavior-overlays/i-have-adhd.md
 https://github.com/backnotprop/plannotator,plannotator,human-review-gates,categories/agent-tooling/supervision-surfaces/human-review-gates/plannotator.md
 https://github.com/baidu/Senta,senta,nlp-and-time-series,categories/ml-research/nlp-and-time-series/senta.md
 https://github.com/basecamp/hey-cli,hey-cli,harness-extensions,categories/agent-tooling/harness-extensions/hey-cli.md

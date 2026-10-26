@@ -2,7 +2,7 @@
 name: Ponytail
 slug: ponytail
 repo: https://github.com/DietrichGebert/ponytail
-category: engineering
+category: behavior-overlays
 tags: [yagni, over-engineering, behavior-ruleset, agent-skill, multi-harness, token-cost]
 language: JavaScript
 license: MIT
@@ -76,7 +76,7 @@ health:
 
 You ask your coding agent for a date picker and it installs a library or hand-builds a 335-line calendar, when the repo already had an `Input` component and every browser ships `type="date"`. Ponytail installs the reflex of the laziest senior dev you've ever met as an always-on ruleset. Before writing, the agent lists everything the change must reach. It then takes the first rung of a short ladder that works (skip it, reuse it, stdlib, installed dependency, one line), and ends each reply with what it skipped or did not check. Validation, security and error handling are never on the chopping block.
 
-![Ponytail — health radar](../../../assets/health/ponytail.svg)
+![Ponytail — health radar](../../../../assets/health/ponytail.svg)
 
 ## When to use
 
@@ -94,7 +94,7 @@ The ruleset itself is prose, not enforcement. The agent first reads the code and
 
 `/ponytail-debt` harvests those comments into a ledger. It changes what the agent writes; it does not gate what the agent may ship.
 
-![ponytail — backbone user story](../../../assets/flow/ponytail.svg)
+![ponytail — backbone user story](../../../../assets/flow/ponytail.svg)
 
 <!-- flow-steps:begin (generated from flows/ponytail.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -117,11 +117,11 @@ The ruleset itself is prose, not enforcement. The agent first reads the code and
 
 ## When NOT to use
 
-- **You want the agent to follow a whole development process** (brainstorm → plan → TDD → verify), not just write less: use [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.md) or [ECC](../../agent-dev-methodology/coding-agent-harnesses/ecc.md) instead. Ponytail installs no workflow, no phases and no subagent pipeline; it only bends what counts as "done code".
+- **You want the agent to follow a whole development process** (brainstorm → plan → TDD → verify), not just write less: use [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.md) or [ECC](../../../agent-dev-methodology/coding-agent-harnesses/ecc.md) instead. Ponytail installs no workflow, no phases and no subagent pipeline; it only bends what counts as "done code".
 - **Your pain is the agent's verbosity, not its volume of code**: pair it with, or use, [caveman](caveman.md) or [i-have-adhd](i-have-adhd.md). Ponytail governs what gets built. In the author's June benchmark the terse-prose arm (caveman) cut only −20% LOC and *raised* tokens and cost on feature tasks.
 - **You open repos you don't trust, or work from slow or huge filesystems, with the hook plugin**: set `PONYTAIL_MAP=0`. The 5.0 codebase map copies names straight out of the opened repo into hidden session context. A crafted export list or folder name reaches the model as if it were plugin instructions, and a tracked symlink to `/dev/zero` hangs the hook until timeout (issue #1071). On a slow mount the map can blow the 5-second SessionStart timeout before any rules are emitted (#1079). Both were open on 2026-10-10.
 - **Your project shell pins Node below 15** (an old `.nvmrc` in a monorepo): the 5.1 hook launchers call `replaceAll` and fail on every run, so the rules silently stop reaching the model (#1072, open 2026-10-10). Use the `AGENTS.md` copy instead of the plugin until that is fixed.
-- **You need a deterministic guarantee that bloated or unsafe code won't ship**: this is context-injected persuasion, and compliance is model-dependent. `/ponytail-review` is a model-run review you call by hand, not a merge gate. For enforcement with evidence, put a line-level CI reviewer such as [Open Code Review](../../ai-code-review/open-code-review.md) in front of the merge.
+- **You need a deterministic guarantee that bloated or unsafe code won't ship**: this is context-injected persuasion, and compliance is model-dependent. `/ponytail-review` is a model-run review you call by hand, not a merge gate. For enforcement with evidence, put a line-level CI reviewer such as [Open Code Review](../../../ai-code-review/open-code-review.md) in front of the merge.
 - **Your host or model is not Claude Code + Opus**: the v5 numbers come from that one combination. An earlier README warned that a deliberative reasoning model can spend *more* thinking tokens weighing each rung (it named GPT-5.5) [未验证：作者自述，未复现]. If cost matters, measure on your own stack first, and start with `lite`.
 - **Your tasks are already minimal** (CRUD over an existing template): in the author's per-task table the arms converge on irreducible code (e.g. 9 / 9 / 9 lines on `reuse-money`). The overlay buys little there while occupying context every turn.
 
@@ -130,8 +130,8 @@ The ruleset itself is prose, not enforcement. The agent first reads the code and
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [caveman](caveman.md) | ✅ | Pair rather than pick: caveman shrinks what the agent says, Ponytail shrinks what it writes. If you can fix only one first, fix the code: their shared June benchmark shows terse prose alone cut little code and raised token spend (+7%) and cost (+3%) on feature tasks. | Stacking two always-on overlays costs context each turn. Caveman's optional proxy layer is BSL-1.1 source-available; Ponytail is MIT end to end. |
-| [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.md) | ✅ | When the agent's failure is process (skipped plans, unverified "done"), pick Superpowers. When the failure is bloat and your process already works, pick Ponytail, which trims code without taking over how you work. | Superpowers installs a full methodology (commands, subagents, worktrees) that you adopt wholesale. Ponytail installs one behavioral rule with an off-switch and a measured scoreboard. |
-| [ECC](../../agent-dev-methodology/coding-agent-harnesses/ecc.md) | ✅ | Pick ECC when you want a batteries-included Claude Code kit (agents, hooks, memory, security scan) as the platform. Pick Ponytail when you want to change exactly one failure mode of a working setup, over-engineering, with intensity you can dial. | ECC grows your installed surface and you own the integration. Ponytail stays small, but its benefit ceiling is code size and cost; per-task gains vanish where there is nothing to cut. |
+| [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.md) | ✅ | When the agent's failure is process (skipped plans, unverified "done"), pick Superpowers. When the failure is bloat and your process already works, pick Ponytail, which trims code without taking over how you work. | Superpowers installs a full methodology (commands, subagents, worktrees) that you adopt wholesale. Ponytail installs one behavioral rule with an off-switch and a measured scoreboard. |
+| [ECC](../../../agent-dev-methodology/coding-agent-harnesses/ecc.md) | ✅ | Pick ECC when you want a batteries-included Claude Code kit (agents, hooks, memory, security scan) as the platform. Pick Ponytail when you want to change exactly one failure mode of a working setup, over-engineering, with intensity you can dial. | ECC grows your installed surface and you own the integration. Ponytail stays small, but its benefit ceiling is code size and cost; per-task gains vanish where there is nothing to cut. |
 | A bare "write one-liners / YAGNI" line in your AGENTS.md | not a repo | Copying one sentence is free, and the v5 `AGENTS.md` is only ~30 lines you could paste yourself. The plugin earns its install with the codebase map, level switching, subagent injection and the review/audit commands. In the June benchmark the bare prompt was erratic and the only arm to drop a guard; the v5 run had no bare-prompt arm. | Zero install, zero hooks and no repo text in hidden context, vs plugin conveniences that need `node` ≥15 on PATH and a ruleset you get versioned instead of hand-maintained. |
 
 ## Health & viability
