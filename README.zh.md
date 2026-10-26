@@ -1478,6 +1478,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **GOD** | 暂停本地像素小镇、向居民提问、发出干预，再检查下一步记录；不是经验证的社会预测。 | Apache-2.0 | C（5/6） | [中](categories/social-simulation/god.zh.md) · [EN](categories/social-simulation/god.md) |
 | **MiroFish** | 打包好的「上传→模拟→报告」群体智能预测应用：喂一份文档，拿回预测报告和可交互的模拟世界。 | AGPL-3.0 | C（5/6） | [中](categories/social-simulation/mirofish.zh.md) · [EN](categories/social-simulation/mirofish.md) |
 | **OASIS** | CAMEL-AI 出品的 pip 可装社交媒体模拟框架（类 Twitter/Reddit，号称最高百万 agent），用代码研究信息传播与极化。 | Apache-2.0 | B（6/6） | [中](categories/social-simulation/oasis.zh.md) · [EN](categories/social-simulation/oasis.md) |
 | **AgentSociety** | 清华 FIB Lab 的 LLM 原生社会科学模拟平台：Ray 分布式、实验回放、DuckDB 追踪。 | Apache-2.0 | B（5/6） | [中](categories/social-simulation/agentsociety.zh.md) · [EN](categories/social-simulation/agentsociety.md) |

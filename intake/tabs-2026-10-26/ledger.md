@@ -31,5 +31,5 @@
 | kharmanskyi/open-steps | add | done | categories/agent-skills/engineering/open-steps.md | 固定源码、八项技能和钩子已核，报告请求不等于落盘，自动合并与共享状态边界明示；已先独立拆分行为覆盖类；关闭因Chrome歧义DEFER；no leftover Q&A | kharmanskyi/open-steps |
 | kunchenguid/no-mistakes | add | done | categories/ai-code-review/no-mistakes.md | 固定源码与资格五问通过；本地门禁可绕开，宽权限/用户技能软链覆盖/遥测/自动发布边界明示；关闭因Chrome歧义DEFER；no leftover Q&A | kunchenguid/no-mistakes |
 | llm-d/llm-d | sync | done | categories/llm-inference/serving-engines/llm-d.md | fresh_by_date；delta 26<=90，保留2026-09-30核验日与原页，未重核上游；no leftover Q&A | llm-d/llm-d |
-| XiaoLuoLYG/GOD | add | running |  |  | xiaoluolyg/god |
+| XiaoLuoLYG/GOD | add | done | categories/social-simulation/god.md | 固定源码及集成归属通过；社会模拟原型，干预生效/回放/真实恢复分开，本机Python执行/密钥/new-run删除和素材权利边界明示；关闭因Chrome歧义DEFER；no leftover Q&A | xiaoluolyg/god |
 | anonymous-own-1 | skip | skipped |  | 维护者自有仓库，按范围跳过；标签保留 |  |

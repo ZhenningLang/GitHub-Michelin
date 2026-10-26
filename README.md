@@ -1497,6 +1497,7 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **GOD** | Pause a local pixel town, question residents, intervene, and inspect the next recorded step; not validated social prediction. | Apache-2.0 | C (5/6) | [EN](categories/social-simulation/god.md) · [中](categories/social-simulation/god.zh.md) |
 | **MiroFish** | Packaged upload→simulate→report "swarm intelligence" prediction app: seed a document, get a prediction report and an interactive simulated world. | AGPL-3.0 | C (5/6) | [EN](categories/social-simulation/mirofish.md) · [中](categories/social-simulation/mirofish.zh.md) |
 | **OASIS** | CAMEL-AI's pip-installable social-media simulation framework (Twitter/Reddit-like, up to a claimed 1M agents) for code-first studies of information spread and polarization. | Apache-2.0 | B (6/6) | [EN](categories/social-simulation/oasis.md) · [中](categories/social-simulation/oasis.zh.md) |
 | **AgentSociety** | Tsinghua FIB-Lab's LLM-native social-science simulation platform with Ray distribution, experiment replay, and DuckDB tracing. | Apache-2.0 | B (5/6) | [EN](categories/social-simulation/agentsociety.md) · [中](categories/social-simulation/agentsociety.zh.md) |
