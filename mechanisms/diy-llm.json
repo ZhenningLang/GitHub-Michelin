@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "choose", "en": "Read a chapter; choose an independent exercise", "zh": "阅读章节；选择独立习题", "kind": "input"},
+    {"id": "text", "en": "Local text; paths and vocabulary settings", "zh": "本地文本；路径与词表设置", "kind": "input"},
+    {"id": "bpe", "en": "Stream chunks; NFKC and byte-level BPE", "zh": "流式分块；NFKC 与字节级 BPE", "technique": [1]},
+    {"id": "json", "en": "Export tokenizer.json", "zh": "导出 tokenizer.json", "kind": "output"},
+    {"id": "model", "en": "RMSNorm and SwiGLU; RoPE and causal attention", "zh": "RMSNorm 与 SwiGLU；RoPE 与因果注意力", "technique": [2]},
+    {"id": "scores", "en": "Next-token scores; no generation KV cache", "zh": "下一片段分数；生成没有历史键值缓存", "kind": "output"},
+    {"id": "tiles", "en": "Separate Triton exercise; running softmax state", "zh": "独立 Triton 习题；持续更新归一化状态", "technique": [3]},
+    {"id": "out", "en": "Forward outputs; fixed tiles and no backward here", "zh": "前向输出；固定分块且此处无反向实现", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "choose", "to": "text", "en": "tokenizer exercise", "zh": "分词器习题"},
+    {"from": "text", "to": "bpe"},
+    {"from": "bpe", "to": "json"},
+    {"from": "choose", "to": "model", "en": "model exercise", "zh": "模型习题"},
+    {"from": "model", "to": "scores"},
+    {"from": "choose", "to": "tiles", "en": "kernel exercise; not the model's automatic backend", "zh": "内核习题；不是模型自动使用的后端"},
+    {"from": "tiles", "to": "out"}
+  ],
+  "sources": [
+    "https://github.com/datawhalechina/diy-llm/blob/95a3b81d4b2686d33afc2d533b0f91d295ec9b78/coursework/assignment1-basics/CS336_Assignment1_BPE.ipynb",
+    "https://github.com/datawhalechina/diy-llm/blob/95a3b81d4b2686d33afc2d533b0f91d295ec9b78/coursework/assignment1-basics/model.py#L37-L196",
+    "https://github.com/datawhalechina/diy-llm/blob/95a3b81d4b2686d33afc2d533b0f91d295ec9b78/coursework/assignment2-systems/cs336_systems/flash_attention_triton.py#L40-L206"
+  ]
+}

@@ -28,11 +28,14 @@
 
 
 
-本轮本地验收：新增5对双语页、鲜度保留1项、暂缓1项、自有跳过1项。原汇总同路径更新为144候选／141有页，原137条正文逐字保留；324个文件目标、202个内部锚点无缺失。67份固定来源blob及行号、30张SVG、8份迁移／入链旧页与冻结抽样全文验收通过。make gates为0 errors／1630 warnings，工具回归483 tests OK；新页成对质量扫描全零。初次Chrome歧义保留历史；原脚本恢复读取后，六个已提交目标各关闭一个标签，六次复扫均无新增或待办，每次非目标均未变；现保留DIY-LLM与匿名自有标签各一个。README合并重复行已修正，两主清单各983个唯一目标，旧978行内容仅改必要路径。HTML仍旧版，新分支未推送。详见[机器验收记录](verification.json)，原总报告不是本分支公开产物。
+19:48追加前已完成的本地验收（保留历史）：新增5对双语页、鲜度保留1项、暂缓1项、自有跳过1项。原汇总同路径更新为144候选／141有页，原137条正文逐字保留；324个文件目标、202个内部锚点无缺失。67份固定来源blob及行号、30张SVG、8份迁移／入链旧页与冻结抽样全文验收通过。make gates为0 errors／1630 warnings，工具回归483 tests OK；新页成对质量扫描全零。初次Chrome歧义保留历史；原脚本恢复读取后，六个已提交目标各关闭一个标签，六次复扫均无新增或待办，每次非目标均未变；现保留DIY-LLM与匿名自有标签各一个。README合并重复行已修正，两主清单各983个唯一目标，旧978行内容仅改必要路径。HTML仍旧版，新分支未推送。详见[机器验收记录](verification.json)，原总报告不是本分支公开产物。
+
+
+2026-10-26追加裁决：维护者明确点名“额外再加一个这个：https://github.com/datawhalechina/diy-llm”，将同一候选转为带许可警告的信息条目，不增加候选身份。该裁决不解决CC BY-NC-SA、MIT及Apache代码分区，不代表商用、再分发或执行授权；不继承到其它仓库，也不包含远端发布。
 
 | 规范名 | 动作 | 结果 | 页面路径 | 备注 | 标签里的写法 |
 |:---|:---|:---|:---|:---|:---|
-| datawhalechina/diy-llm | add | proposed |  | 有87个Python文件和10个notebook；作业2复制原课文件但无对应LICENSE，另一作业MIT覆盖范围未明，提请许可分区裁决，不作侵权或整仓mostly-copy定论；不建页，标签未触碰；no leftover Q&A | datawhalechina/diy-llm |
+| datawhalechina/diy-llm | add | done | categories/llm-training/study-and-experiments/diy-llm.md | 维护者19:48点名转为许可分区未定信息条目；CC声明/MIT作业/Apache评分器分账，疑问未解决；固定源码与完整双语图卡已核；不执行训练，no leftover Q&A | datawhalechina/diy-llm |
 | ihhub/fheroes2 | add | done | categories/games/fheroes2.md | 固定源码与资格五问通过，新games路由；GPL不覆盖外部资源，音色采样来源和旧存档限制明示；曾因Chrome歧义暂停，现已关闭并核对；no leftover Q&A；已按独立提交核对标签匹配1→0 | ihhub/fheroes2 |
 | kdlbs/kandev | add | done | categories/agent-tooling/supervision-surfaces/agent-cockpits/kandev.md | 固定SHA源码及资格五问通过，AGPL/默认监听与鉴权/破坏性归档边界已明示；标签曾因Chrome歧义暂停，现已关闭并核对；no leftover Q&A；已按独立提交核对标签匹配1→0 | kdlbs/kandev |
 | kharmanskyi/open-steps | add | done | categories/agent-skills/engineering/open-steps.md | 固定源码、八项技能和钩子已核，报告请求不等于落盘，自动合并与共享状态边界明示；已先独立拆分行为覆盖类；曾因Chrome歧义暂停，现已关闭并核对；no leftover Q&A；已按独立提交核对标签匹配1→0 | kharmanskyi/open-steps |
