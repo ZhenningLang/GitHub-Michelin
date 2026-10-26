@@ -1230,6 +1230,12 @@ Enter [Client Routing](categories/api-gateway/client-routing/INDEX.md) for devel
 | **kaplay** | Use it when you want a jam-scale 2D web game in plain JS/TS with zero engine ceremony — but for a long-lived product or 3D, the stalled stable line and 2D-only scope say look elsewhere. | MIT | B (6/6) | [EN](categories/game-dev/kaplay.md) · [中](categories/game-dev/kaplay.zh.md) |
 | **pyxel** | Use it when you want a retro pixel-art game in Python with built-in sprite/sound editors and one-command web export — but for 3D, a modern look, store/console shipping, or a team-owned engine, its fixed specs and single maintainer say look elsewhere. | MIT | B (5/6) | [EN](categories/game-dev/pyxel.md) · [中](categories/game-dev/pyxel.zh.md) |
 
+### games
+
+| Project | Use when | License | Health | Page |
+|---|---|---|---|---|
+| **fheroes2** | Replay Heroes II with a maintained engine; resource rights and original saves remain separate constraints. | GPL-2.0-or-later | B (6/6) | [EN](categories/games/fheroes2.md) · [中](categories/games/fheroes2.zh.md) |
+
 ### kafka-tools
 
 | Project | Use when | License | Health | Page |

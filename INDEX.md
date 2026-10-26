@@ -67,6 +67,7 @@
 | **desktop-automation** | Programmatic desktop GUI automation (mouse/keyboard/screen). | [→](categories/desktop-automation/INDEX.md) |
 | **mobile-automation** | Programmatically drive iOS/Android simulators, emulators, and devices — input injection, UI automation, and E2E test frameworks. | [→](categories/mobile-automation/INDEX.md) |
 | **game-dev** | Game development libraries and engines. | [→](categories/game-dev/INDEX.md) |
+| **games** | Play complete games or recreate a specific game's engine; verify content rights separately. | [Route](categories/games/INDEX.md) |
 | **kafka-tools** | Apache Kafka clients and management UIs. | [→](categories/kafka-tools/INDEX.md) |
 | **networking** | Networking libraries — SSH, DNS, tunnels, RPC, and traffic shaping. | [→](categories/networking/INDEX.md) |
 | **nginx-modules** | NGINX / OpenResty extension modules (Lua, upload, etc.). | [→](categories/nginx-modules/INDEX.md) |

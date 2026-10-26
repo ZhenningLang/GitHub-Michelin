@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "assets", "en": "User-supplied original game archives", "zh": "用户提供的原版游戏资源包", "kind": "external"},
+    {"id": "reader", "en": "Filename index and expansion-first lookup", "zh": "文件名索引与扩展版优先读取", "technique": [1]},
+    {"id": "bytes", "en": "Resource bytes for game systems", "zh": "供游戏系统使用的资源字节", "kind": "output"},
+    {"id": "discovery", "en": "Newly revealed objects and resource budget", "zh": "新发现对象与资源预算", "kind": "input"},
+    {"id": "planner", "en": "Refresh targets and weight resource value", "zh": "刷新目标并加权资源价值", "technique": [2]},
+    {"id": "reconsider", "en": "Truncate moving path for reconsideration", "zh": "截断移动路径以便重新考虑", "kind": "output"},
+    {"id": "edit", "en": "Map editor action", "zh": "地图编辑操作", "kind": "input"},
+    {"id": "snapshots", "en": "Before and after map states with object IDs", "zh": "修改前后地图状态与对象编号", "technique": [3]},
+    {"id": "restore", "en": "Undo or redo reloads the editor state", "zh": "撤销或重做时重载编辑器状态", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "assets", "to": "reader"},
+    {"from": "reader", "to": "bytes"},
+    {"from": "discovery", "to": "planner"},
+    {"from": "planner", "to": "reconsider"},
+    {"from": "edit", "to": "snapshots"},
+    {"from": "snapshots", "to": "restore"}
+  ],
+  "sources": [
+    "https://github.com/ihhub/fheroes2/blob/4ec9886825b198b6d0ec7ffc15c6b11ee76e9165/src/engine/agg_file.cpp#L30-L85",
+    "https://github.com/ihhub/fheroes2/blob/4ec9886825b198b6d0ec7ffc15c6b11ee76e9165/src/fheroes2/agg/agg.cpp#L40-L115",
+    "https://github.com/ihhub/fheroes2/blob/4ec9886825b198b6d0ec7ffc15c6b11ee76e9165/src/fheroes2/ai/ai_planner.cpp#L47-L172",
+    "https://github.com/ihhub/fheroes2/blob/4ec9886825b198b6d0ec7ffc15c6b11ee76e9165/src/fheroes2/editor/history_manager.cpp#L48-L159"
+  ]
+}

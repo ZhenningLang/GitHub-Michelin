@@ -66,6 +66,7 @@
 | **desktop-automation** | 程序化桌面 GUI 自动化（鼠标/键盘/屏幕）。 | [→](categories/desktop-automation/INDEX.zh.md) |
 | **mobile-automation** | 程序化驱动 iOS／Android 模拟器与真机——输入注入、UI 自动化、端到端测试框架。 | [→](categories/mobile-automation/INDEX.zh.md) |
 | **game-dev** | 游戏开发库与引擎。 | [→](categories/game-dev/INDEX.zh.md) |
+| **games** | 选择完整游戏或特定游戏的重现引擎；单独核对内容权利。 | [路由](categories/games/INDEX.zh.md) |
 | **kafka-tools** | Apache Kafka 客户端与管理界面。 | [→](categories/kafka-tools/INDEX.zh.md) |
 | **networking** | 网络库——SSH、DNS、隧道、RPC 与流量整形。 | [→](categories/networking/INDEX.zh.md) |
 | **nginx-modules** | NGINX / OpenResty 扩展模块（Lua、上传等）。 | [→](categories/nginx-modules/INDEX.zh.md) |
