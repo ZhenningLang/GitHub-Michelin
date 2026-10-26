@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "brief", "en": "Offer, audience and approved evidence", "zh": "卖点、受众与真实证明材料", "kind": "input"},
+    {"id": "landing", "en": "Prompt: argument, sections and visual constants", "zh": "提示：论证、分节与视觉常量", "technique": [1]},
+    {"id": "page", "en": "Agent-authored landing page; human review", "zh": "agent编写落地页；人工审查", "kind": "output"},
+    {"id": "frame", "en": "Authorized frame and output context", "zh": "授权源稿与交付场景", "kind": "input"},
+    {"id": "layers", "en": "Prompt: layer bounds and fixed background", "zh": "提示：图层边界与固定背景", "technique": [2]},
+    {"id": "still", "en": "Still reference check before motion", "zh": "先核静帧，再做动态", "technique": [2]},
+    {"id": "clock", "en": "Host implements one clock and story tracks", "zh": "宿主实现单时钟与故事轨迹", "technique": [3]},
+    {"id": "frames", "en": "Host steps capture frames", "zh": "宿主逐步驱动录帧", "technique": [3]},
+    {"id": "checks", "en": "Separate overflow, seam, empty and rest checks", "zh": "分开核越界、接缝、空态与归位", "technique": [3]},
+    {"id": "media", "en": "Requested MP4 and GIF deliverables", "zh": "请求的MP4与GIF交付物", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "brief", "to": "landing"},
+    {"from": "landing", "to": "page"},
+    {"from": "frame", "to": "layers"},
+    {"from": "layers", "to": "still"},
+    {"from": "still", "to": "clock", "en": "after review", "zh": "审查后"},
+    {"from": "clock", "to": "frames"},
+    {"from": "frames", "to": "checks"},
+    {"from": "checks", "to": "media", "en": "host implements and verifies", "zh": "由宿主实现并验证"}
+  ],
+  "sources": [
+    "https://github.com/elayadesign/ai-design-skills/blob/38bbe5765600b9178b5395a823c9f6c8d2b8e730/skills/landing-page-design/SKILL.md",
+    "https://github.com/elayadesign/ai-design-skills/blob/38bbe5765600b9178b5395a823c9f6c8d2b8e730/skills/design-to-motion/SKILL.md"
+  ]
+}

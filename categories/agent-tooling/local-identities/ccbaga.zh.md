@@ -90,7 +90,7 @@ health:
 ## 何时不用
 
 - **现在就要可靠地往返切换日常账号。** 改用官方客户端的登录流程，并另做独立备份。#49 的未修复缺陷会拒绝正常生成的路径；有恢复日志不等于任何快照都能恢复。失败后保留保险库并停止，不靠删除文件强行切换。
-- **只是切模型供应商或地址。** 用 [CC Switch](../../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.zh.md)，需要命令行能力则看 [Magpie](../../api-gateway/magpie-model-router.zh.md)。CCBaga 会触及账号快照，状态变更面比修改连接配置大得多。
+- **只是切模型供应商或地址。** 用 [CC Switch](../../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.zh.md)，需要命令行能力则看 [Magpie](../../api-gateway/client-routing/magpie-model-router.zh.md)。CCBaga 会触及账号快照，状态变更面比修改连接配置大得多。
 - **要求每个再分发 UI 组件都有明确授权。** 选择另行审查的 CC Switch 等方案，或留在官方客户端。CCBaga 根 MIT 不能代替其他权利人的许可；复制或再分发 Cromma UI/Pika 前必须补证。
 - **需要保证撤销或安全擦除。** 先独立备份，或保留数据。直接删除当前身份、残留清理和浏览器全清理不新增备份，也不经过废纸篓。中途失败可能留下部分删除结果；它们不承诺磁盘安全擦除，也不删除服务端记录。
 - **需要匿名、新公网 IP 或绕过服务限制的授权。** 改用获准网络和官方客户端。更换指纹和绿色检测结果不授予权限，也不证明账号会被接受、DNS/WebRTC 无泄漏或不会被关联。
@@ -101,7 +101,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [CC Switch](../../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.zh.md) | 已收录 | 要桌面供应商、MCP 和配置切换面板时选 CC Switch；只有默认 Claude 登录状态快照与关联浏览器目录才是具体需求时，才评估 CCBaga。 | 换地址不必轮换整份身份状态；CCBaga 增加了凭据和文件恢复机制，也带来当前的恢复缺陷。 |
-| [Magpie](../../api-gateway/magpie-model-router.zh.md) | 已收录 | 多个 agent 要共享供应商目录，或需要无界面命令行时选 Magpie；CCBaga 管本地 Claude 状态留存，不是多 agent 模型网关。 | Magpie 引入请求路由及其订阅条款风险；CCBaga 则会关闭客户端并迁移选定本地状态。 |
+| [Magpie](../../api-gateway/client-routing/magpie-model-router.zh.md) | 已收录 | 多个 agent 要共享供应商目录，或需要无界面命令行时选 Magpie；CCBaga 管本地 Claude 状态留存，不是多 agent 模型网关。 | Magpie 引入请求路由及其订阅条款风险；CCBaga 则会关闭客户端并迁移选定本地状态。 |
 | [Fingerprint Chromium](https://github.com/adryfish/fingerprint-chromium) | 未收录 | 授权浏览器指纹实验不需要 Claude 凭据管理时选独立引擎；CCBaga 增加身份与资料目录联动及宿主测量页。 | 独立引擎要自行管理启动和资料目录，上游不提供技术支持。它是真实仓库，未在本次定向两项目范围收录；CCBaga 固定引擎 148，不自动跟随最新版。 |
 
 ## 快速上手

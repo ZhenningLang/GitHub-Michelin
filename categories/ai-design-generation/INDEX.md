@@ -15,6 +15,7 @@
 | **SdPaint** | Use it when you already run AUTOMATIC1111 with ControlNet and want each brushstroke turned into a generated image live — but it has no model of its own and has been stalled since 2024-04. | D (3/6) | [→](sdpaint.md) |
 | **screenshot-to-code** | Use it when you have only a screenshot and want a self-hosted, close visual replica as one HTML file with your real images cropped in — not production components, and with no fidelity metric. | B (5/6) | [→](screenshot-to-code.md) |
 | **Open Intelligent UI** | Build chat answers as interactive calculators, maps and diagrams; requires hosted Jev routing and ephemeral checkpoint storage replacement for production. | B (4/6) | [→](open-intelligent-ui.md) |
+| **OpenUI** | Thesys's MIT SDK streams chat answers as your registered React components; you own the model backend, storage and tool authorization. | B (6/6) | [→](openui.md) |
 
 ## Comparison matrix
 
@@ -32,6 +33,7 @@
 | [ian-xiaohei-illustrations](../agent-skills/visual-content/ian-illustrations.md) | ✅ | B (4/5) | Portable article-illustration skill; moved to agent-skills because it is selected as a skill. |
 | v0 / Lovable / tldraw make-real | 未收录 | — | Other agentic UI/design generators named across the pages. |
 | [Open Intelligent UI](open-intelligent-ui.md) | ✅ | B (4/6) | Build chat answers as interactive calculators, maps and diagrams; requires hosted Jev routing and ephemeral checkpoint storage replacement for production. |
+| [OpenUI](openui.md) | Indexed | B (6/6) | Thesys MIT SDK: compact streamed component calls and reactive queries instead of invented JSX; requires your backend and separate egress controls. |
 
 ## What belongs here
 

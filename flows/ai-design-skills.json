@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "AI Design Skills guides", "zh": "AI Design Skills 指导"},
+  "steps": [
+    {"lane": "you", "en": "Review and copy the selected skill into project scope with its notice", "zh": "审阅选定技能，连同许可通知放进项目"},
+    {"lane": "you", "en": "Supply an authorized static frame, context and requested deliverables", "zh": "提供有权使用的静态稿、场景和交付要求"},
+    {"lane": "them", "en": "Direct the agent to rebuild and compare the still before motion", "zh": "指导agent先复建并核对静帧", "component": {"en": "design-to-motion prompt", "zh": "design-to-motion 提示"}},
+    {"lane": "you", "en": "Review the live page before the first recording", "zh": "首次录制前审看实际页面"},
+    {"lane": "them", "en": "Describe the clock, story loops, frame checks and media export", "zh": "指导单时钟、故事循环、逐帧检查与媒体导出", "component": {"en": "host agent and tools", "zh": "宿主agent与工具"}}
+  ],
+  "value": {"en": "A source-aware showcase procedure instead of a generic screenshot entrance", "zh": "按源稿制作展示流程，而不只是让整张截图滑入"},
+  "sources": [
+    "https://github.com/elayadesign/ai-design-skills/blob/38bbe5765600b9178b5395a823c9f6c8d2b8e730/README.md#L20-L64",
+    "https://github.com/elayadesign/ai-design-skills/blob/38bbe5765600b9178b5395a823c9f6c8d2b8e730/skills/design-to-motion/SKILL.md#L58-L190",
+    "https://github.com/elayadesign/ai-design-skills/blob/38bbe5765600b9178b5395a823c9f6c8d2b8e730/skills/design-to-motion/SKILL.md#L234-L417"
+  ]
+}

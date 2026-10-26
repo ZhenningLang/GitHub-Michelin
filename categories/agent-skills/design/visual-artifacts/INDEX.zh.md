@@ -14,6 +14,7 @@
 | **huashu-design** | 面向原型、slide deck、可编辑 PPTX、动画 / MP4 / GIF、信息图和视觉 artifact 生成的 HTML-native design skill。 | B（5/6） | [→](huashu-design.zh.md) |
 | **visual-explainer** | 把有来源的差异与方案变成图文 HTML，保留源码与反馈；不是可编辑图模型，默认也非完全离线。 | C（5/6） | [→](visual-explainer.zh.md) |
 | **Anima** | 把静态生物课变成带来源的交互机制图；科学审查仍由你负责。 | C（4/5） | [→](anima.zh.md) |
+| **AI Design Skills** | 规划落地页或把授权静态稿制作成展示流程；只有提示与录制片段，不是完整运行器或保真保证。 | C（4/5） | [→](ai-design-skills.zh.md) |
 
 
 ## 对比矩阵
@@ -27,6 +28,7 @@
 | [huashu-design](huashu-design.zh.md) | ✅ | B（5/6） | 最适合 agent 生成 HTML 视觉 artifact；实现交接看 Stitch，轻量 UI 审美指导看 Taste-Skill。 |
 | [visual-explainer](visual-explainer.zh.md) | ✅ | C（5/6） | 把有来源的差异与方案变成图文 HTML，保留源码与反馈；不是可编辑图模型，默认也非完全离线。 |
 | [Anima](anima.zh.md) | ✅ | C（4/5） | 适合交互式生物结构，不是可编辑架构图；几何检查不验证科学论断。 |
+| [AI Design Skills](ai-design-skills.zh.md) | ✅ | C（4/5） | 区分源稿保真、展示／网站动效与确定性录制说明；实现与内容真实性仍由宿主负责。 |
 
 
 ## 什么该放这里

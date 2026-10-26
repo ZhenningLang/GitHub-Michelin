@@ -15,6 +15,7 @@
 | **SdPaint** | 当你已在跑带 ControlNet 的 AUTOMATIC1111、想让每一笔涂鸦实时变成生成图时用它——但它自身不带模型，且自 2024-04 起停滞。 | D（3/6） | [→](sdpaint.zh.md) |
 | **screenshot-to-code** | 手里只有一张截图、想自建部署拿到一个带原图素材的单文件 HTML 复刻页时用它——产出不是工程化组件，也没有还原度指标。 | B（5/6） | [→](screenshot-to-code.zh.md) |
 | **Open Intelligent UI** | 把聊天回答变成计算器、地图和交互图；依赖托管 Jev 路由，生产部署需替换临时检查点。 | B（4/6） | [→](open-intelligent-ui.zh.md) |
+| **OpenUI** | Thesys 的 MIT SDK 将聊天答案流式渲染为你注册的 React 组件；模型后端、存储和工具授权由你负责。 | B（6/6） | [→](openui.zh.md) |
 
 ## 对比矩阵
 
@@ -32,6 +33,7 @@
 | [ian-xiaohei-illustrations](../agent-skills/visual-content/ian-illustrations.zh.md) | ✅ | B（4/5） | 可移植的文章配图 skill；因为它作为 skill 被选择，已迁到 agent-skills。 |
 | v0 / Lovable / tldraw make-real | 未收录 | — | 各页对比里点到的其他 agent 化 UI/设计生成器。 |
 | [Open Intelligent UI](open-intelligent-ui.zh.md) | ✅ | B（4/6） | 把聊天回答变成计算器、地图和交互图；依赖托管 Jev 路由，生产部署需替换临时检查点。 |
+| [OpenUI](openui.zh.md) | 已收录 | B（6/6） | Thesys 的 MIT SDK：用紧凑组件调用流与响应式查询替代编造 JSX；后端自备，数据外发须单独控制。 |
 
 ## 什么该放这里
 

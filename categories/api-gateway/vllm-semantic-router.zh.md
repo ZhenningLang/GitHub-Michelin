@@ -120,7 +120,7 @@ health:
 - **延迟是你最紧的预算。** 每个被路由的请求都多一次 ExtProc 往返和一次编码器推理；项目自己的数据面性能史诗（#2992，仍开着）把“建立延迟、吞吐、流式、资源和故障基线”列为未完成。在你用自己的流量量出开销之前，先在 [Envoy](envoy.zh.md) 或网关里做静态模型映射。
 - **你需要一个经过验证的护栏或 PII 脱敏器。** 支持矩阵把越狱、幻觉和 PII 演示都标成“实验示例……不是经过验证的护栏”；学习型信号本质是概率判断，文档也说涉及授权的路由要用可信身份。把你评估过的护栏栈放在它后面，Router 的信号用来路由，别当唯一的安全防线。
 - **你需要跨升级稳定的配置契约。** 它还没到 1.0，大约每季度一个小版本，v0.3 重写过一次统一配置契约，支持矩阵还要求 CLI、chart、CRD、控制器和镜像必须取自同一个版本。锁定整套版本并预留升级测试，或者等 1.0。
-- **一个开发者想让编码智能体在多家供应商之间切换。** 用 [Claude Code Router](claude-code-router.zh.md)；一个带条件规则的本地代理就够了，用不着 Envoy 数据面。
+- **一个开发者想让编码智能体在多家供应商之间切换。** 用 [Claude Code Router](client-routing/claude-code-router.zh.md)；一个带条件规则的本地代理就够了，用不着 Envoy 数据面。
 
 ## 横向对比
 
@@ -130,7 +130,7 @@ health:
 | Agent Router（原 Envoy AI Gateway） | 未收录 | 如果你要一个 Kubernetes 原生的 AI 网关来管供应商凭据、协议转换和 token 限流，选 Agent Router；只有还需要逐请求的语义选模型时，再在上面加 Semantic Router——两者通过 ExtProc 集成，并在 Router 的 PR CI 里测试。 | Agent Router 是流量基础设施，没有内容分类器；Semantic Router 是决策层，不处理供应商凭据，所以生产栈往往两个都要。本批次未收录。 |
 | RouteLLM | 未收录 | 如果你只是在一个强模型和一个弱模型之间按学出来的成本阈值二选一，RouteLLM 的路由器是更小、更值得照抄的思路；要多模型策略、安全信号和有人维护的部署，选 Semantic Router，因为 RouteLLM 自 2024-08 起没有推送。 | RouteLLM 是带预训练路由器的 Python 库/服务，没有运维面；Semantic Router 是完整的 Go/Envoy 服务，自带分类器家族，也带来相应的运维成本。本批次未收录。 |
 | NVIDIA LLM Router（AI Blueprint） | 未收录 | 如果你在 NVIDIA 的 NIM/Triton 栈上，想要一个按任务或复杂度路由的参考蓝图，从 NVIDIA 的蓝图起步；如果要不绑厂商、支持 AMD ROCm、带 Kubernetes Operator 和更丰富决策语言的路由器，选 Semantic Router。 | 蓝图是绑 NVIDIA 组件的小型参考架构（约 350 星）；Semantic Router 社区和部署面大得多，要运维的东西也相应更多。本批次未收录。 |
-| [Claude Code Router](claude-code-router.zh.md) | ✅ | 如果是一个开发者想在桌面应用里按任务类型切换编码智能体的模型，选 Claude Code Router；如果是平台团队路由共享的生产流量，需要分类器、审计响应头和 Kubernetes 部署，选 Semantic Router。 | Claude Code Router 是单用户本地代理，规则简单；Semantic Router 是多服务栈，多出来的成本只有在共享、异构的流量上才划算。 |
+| [Claude Code Router](client-routing/claude-code-router.zh.md) | ✅ | 如果是一个开发者想在桌面应用里按任务类型切换编码智能体的模型，选 Claude Code Router；如果是平台团队路由共享的生产流量，需要分类器、审计响应头和 Kubernetes 部署，选 Semantic Router。 | Claude Code Router 是单用户本地代理，规则简单；Semantic Router 是多服务栈，多出来的成本只有在共享、异构的流量上才划算。 |
 
 ## 技术栈
 

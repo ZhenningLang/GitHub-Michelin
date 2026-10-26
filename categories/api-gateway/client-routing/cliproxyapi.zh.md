@@ -2,7 +2,7 @@
 name: CLIProxyAPI
 slug: cliproxyapi
 repo: https://github.com/router-for-me/CLIProxyAPI
-category: api-gateway
+category: client-routing
 tags: [cli-proxy, oauth, llm-gateway, codex, claude-code, gemini, go]
 language: Go
 license: MIT
@@ -81,18 +81,18 @@ health:
 
 把消费级 CLI 与 OAuth 登录态——ChatGPT Codex、Claude Code、Gemini/Antigravity、Grok 等——以及供应商 API key，包装成 OpenAI / Gemini / Claude / Codex 兼容的 HTTP API，供其他工具调用。
 
-![CLIProxyAPI — 健康度雷达](../../assets/health/cliproxyapi.zh.svg)
+![CLIProxyAPI — 健康度雷达](../../../assets/health/cliproxyapi.zh.svg)
 
 ## 何时使用
 
 你手上已经有若干模型产品的 CLI 或 OAuth 登录态，想从别的软件——某个 SDK、编辑器、另一个 agent——直接调用，而不为每个集成重写适配；你还想要一个带故障转移的账号池，而不是每个工具配一份凭据。这时选 CLIProxyAPI：它是单个 Go 二进制，同时会说多种 API 形状（OpenAI Chat/Responses、Gemini GenerateContent、Claude Messages、Codex 兼容），账号状态存在本地，所以部署是一个进程加一份配置，而不是一整套平台。
 
-决定性的取舍在于**复用什么资产**。当你的资产是 CLI/OAuth 访问权而非供应商 API key 时，选它而不是 [LiteLLM](litellm.zh.md)——LiteLLM 路由密钥并提供治理，CLIProxyAPI 路由账号；当你要覆盖多个 CLI 产品、多种协议形状，而不是在单个 coding agent 内做路由时，选它而不是 [Claude Code Router](claude-code-router.zh.md)；当你要一个原始 API 门面、而不是带会话与文件的 agent 任务执行时，选它而不是 [HarnessRouter](harnessrouter.zh.md)。复用的代价在法务与运维：这些凭据能否被代理，取决于各家的服务条款，本文不作裁决。[未验证]
+决定性的取舍在于**复用什么资产**。当你的资产是 CLI/OAuth 访问权而非供应商 API key 时，选它而不是 [LiteLLM](../litellm.zh.md)——LiteLLM 路由密钥并提供治理，CLIProxyAPI 路由账号；当你要覆盖多个 CLI 产品、多种协议形状，而不是在单个 coding agent 内做路由时，选它而不是 [Claude Code Router](claude-code-router.zh.md)；当你要一个原始 API 门面、而不是带会话与文件的 agent 任务执行时，选它而不是 [HarnessRouter](../harnessrouter.zh.md)。复用的代价在法务与运维：这些凭据能否被代理，取决于各家的服务条款，本文不作裁决。[未验证]
 
 ## 何时不用
 
 - **不能接受把消费级登录态再暴露为 API 的服务条款与封号风险。** 改用供应商官方 API（OpenAI、Anthropic、Google）或托管中间商；这个风险来自设计本身，不是 bug。[推断]
-- **需要租户、RBAC、预算与审计。** 改用 [LiteLLM](litellm.zh.md) 或 Portkey Gateway；CLIProxyAPI 是凭据池，不是治理层。
+- **需要租户、RBAC、预算与审计。** 改用 [LiteLLM](../litellm.zh.md) 或 Portkey Gateway；CLIProxyAPI 是凭据池，不是治理层。
 - **需要合同化的生产 SLA。** 改用官方托管 API、Azure OpenAI 或 Vertex AI；这是无支持合同的自托管社区项目。
 - **只需单一供应商且要求完整协议语义。** 用该厂商自己的 SDK；任何兼容层都会损失部分字段保真度。
 - **不愿让 OAuth refresh token 留在代理主机上。** 改用托管的密钥网关；CLIProxyAPI 会把账号 token 落盘。
@@ -103,9 +103,9 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [LiteLLM](litellm.zh.md) | 已收录 | 流量基于供应商 key、且需要预算/虚拟密钥/花费追踪时，选 LiteLLM；要复用的资产是 CLI/OAuth 登录态而非 API key 时，选 CLIProxyAPI。 | LiteLLM 是有数据库和商业功能边界的治理型网关；CLIProxyAPI 更轻，但没有多租户控制，并承担账号风险。 |
+| [LiteLLM](../litellm.zh.md) | 已收录 | 流量基于供应商 key、且需要预算/虚拟密钥/花费追踪时，选 LiteLLM；要复用的资产是 CLI/OAuth 登录态而非 API key 时，选 CLIProxyAPI。 | LiteLLM 是有数据库和商业功能边界的治理型网关；CLIProxyAPI 更轻，但没有多租户控制，并承担账号风险。 |
 | [Claude Code Router](claude-code-router.zh.md) | 已收录 | 单个开发者想用桌面 UI 让 coding agent 跨模型路由时，选 Router；目标是覆盖多账号、多协议的 API 门面时，选 CLIProxyAPI。 | Router 更窄、对单机更友好；CLIProxyAPI 暴露更多 API 形状与账号池，代价是更大的运维与合规面。 |
-| [HarnessRouter](harnessrouter.zh.md) | 已收录 | 产品需要跑 agent 任务（会话、文件、取消）时，选 HarnessRouter；CLIProxyAPI 只提供模型请求，执行留给调用方。 | HarnessRouter 接管整个任务生命周期与其运维职责；CLIProxyAPI 是纯请求链路代理，更好跑，但能做的事件少得多。 |
+| [HarnessRouter](../harnessrouter.zh.md) | 已收录 | 产品需要跑 agent 任务（会话、文件、取消）时，选 HarnessRouter；CLIProxyAPI 只提供模型请求，执行留给调用方。 | HarnessRouter 接管整个任务生命周期与其运维职责；CLIProxyAPI 是纯请求链路代理，更好跑，但能做的事件少得多。 |
 | One API | 未收录 | 想要围绕签发密钥与渠道构建的直白自托管网关时，选 One API；只有“复用消费级 CLI 登录态”本身是目的时，才选 CLIProxyAPI。 | One API 保持密钥模型、避开账号政策风险，但不会把 CLI 订阅变成 API。 |
 | OpenRouter | 未收录 | 宁可付费给托管中间商、也不自己跑代理并承担账号风险时，选 OpenRouter；流量必须留在自有主机上时，选 CLIProxyAPI。 | OpenRouter 把法务与运维负担接过去，代价是按 token 加价且链路多一个第三方；CLIProxyAPI 全留在本地，后果也留在本地。 |
 

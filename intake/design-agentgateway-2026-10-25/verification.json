@@ -1,0 +1,268 @@
+{
+  "status": "verified local content; HTML and remote publication not performed",
+  "entries": [
+    {
+      "repo": "elayadesign/ai-design-skills",
+      "reviewed_sha": "38bbe5765600b9178b5395a823c9f6c8d2b8e730",
+      "latest_observed_upstream_sha": "38bbe5765600b9178b5395a823c9f6c8d2b8e730",
+      "page": "categories/agent-skills/design/visual-artifacts/ai-design-skills.md",
+      "fixed_source_files_blob_verified": [
+        "LICENSE",
+        "README.md",
+        "skills/design-to-motion/SKILL.md",
+        "skills/landing-page-design/SKILL.md"
+      ],
+      "frontmatter_parity": true,
+      "flow_svg_byte_matches": 2,
+      "flow_text_matches": 2,
+      "mechanism_hash_and_text_matches": 2,
+      "health_svg_byte_matches": 2,
+      "svg_xml_valid": 6
+    },
+    {
+      "repo": "agentgateway/agentgateway",
+      "reviewed_sha": "cfa8d1b84996b0c4e3ce204a81a86bd64f257921",
+      "latest_observed_upstream_sha": "1785d189bbbd29bc87630030c3c3e1c91fda694e",
+      "page": "categories/api-gateway/agentgateway.md",
+      "fixed_source_files_blob_verified": [
+        "CHARTER.md",
+        "SECURITY.md",
+        "crates/agentgateway/src/config.rs",
+        "crates/agentgateway/src/http/authorization.rs",
+        "crates/agentgateway/src/mcp/README.md",
+        "crates/agentgateway/src/mcp/handler.rs",
+        "crates/agentgateway/src/mcp/mod.rs",
+        "crates/agentgateway/src/mcp/rbac.rs",
+        "crates/agentgateway/src/mcp/session.rs",
+        "crates/agentgateway/src/mcp/upstream/mod.rs",
+        "crates/agentgateway/src/mcp/upstream/stdio.rs",
+        "examples/mcp-basic/README.md",
+        "examples/mcp-basic/config.yaml",
+        "rust-toolchain.toml"
+      ],
+      "frontmatter_parity": true,
+      "flow_svg_byte_matches": 2,
+      "flow_text_matches": 2,
+      "mechanism_hash_and_text_matches": 2,
+      "health_svg_byte_matches": 2,
+      "svg_xml_valid": 6
+    },
+    {
+      "repo": "thesysdev/openui",
+      "reviewed_sha": "9d73d17d2bbac565672a85e78f6eb7740cb0d9ca",
+      "latest_observed_upstream_sha": "9d73d17d2bbac565672a85e78f6eb7740cb0d9ca",
+      "page": "categories/ai-design-generation/openui.md",
+      "fixed_source_files_blob_verified": [
+        "packages/lang-core/src/library.ts",
+        "packages/lang-core/src/parser/materialize.ts",
+        "packages/lang-core/src/parser/parser.ts",
+        "packages/lang-core/src/runtime/queryManager.ts",
+        "packages/lang-core/src/telemetry/install.ts",
+        "packages/lang-core/src/telemetry/shared.ts",
+        "packages/observability-cloud/src/events/stream.ts",
+        "packages/observability-cloud/src/index.ts",
+        "packages/react-lang/README.md",
+        "packages/react-lang/src/Renderer.tsx",
+        "packages/react-lang/src/hooks/useOpenUIState.ts",
+        "packages/react-lang/src/responseBundle.ts",
+        "packages/server/src/shared/fix.ts",
+        "templates/openui-self-hosted/src/app/api/chat/route.ts"
+      ],
+      "frontmatter_parity": true,
+      "flow_svg_byte_matches": 2,
+      "flow_text_matches": 2,
+      "mechanism_hash_and_text_matches": 2,
+      "health_svg_byte_matches": 2,
+      "svg_xml_valid": 6
+    }
+  ],
+  "original_report": {
+    "candidates": 137,
+    "indexed": 135,
+    "old_profiles_byte_identical": 134,
+    "old_objects_identical": 134,
+    "unique_identities": 137,
+    "markdown_sha256": "2a3697adab9be46e6ebf8d72e9432350e8594c7d0a76cdd28a8e44ce053db927",
+    "link_check": {
+      "local_file_targets": 302,
+      "internal_markdown_anchors": 195,
+      "missing": []
+    },
+    "html_sha256": "ba30bc036854c6b90022d5808ea142ac59bb578c816740bbe68310631b61b3dc",
+    "html_renderer_pair_browser": "not run; original host denial retained"
+  },
+  "old_page_migration": {
+    "base": "2b3eda25a14829982112b81ef4b8d6d5869a4216",
+    "moved_pages": 8,
+    "incoming_pages": 14,
+    "result": "PASS",
+    "allowed_changes": [
+      "category",
+      "resolved relative-link targets",
+      "Magpie two sibling navigation phrases: this→parent category"
+    ],
+    "pages": [
+      {
+        "old": "categories/agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md",
+        "new": "categories/agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md",
+        "sha256": "6da532c7dd16ce297611dd902ad136546b481948552de90e5e0e257fd0a40ccb"
+      },
+      {
+        "old": "categories/agent-frameworks/coding-agents/orchestration-and-review/cc-switch.zh.md",
+        "new": "categories/agent-frameworks/coding-agents/orchestration-and-review/cc-switch.zh.md",
+        "sha256": "86173dfbbf02acb34762c627041c40d0ba87b97aad3e8601a70b36020d21a2b2"
+      },
+      {
+        "old": "categories/agent-tooling/local-identities/ccbaga.md",
+        "new": "categories/agent-tooling/local-identities/ccbaga.md",
+        "sha256": "b73b9efb024225ff44edc2a8b9923fe522cd58b5cebef6194bcd2a635531d401"
+      },
+      {
+        "old": "categories/agent-tooling/local-identities/ccbaga.zh.md",
+        "new": "categories/agent-tooling/local-identities/ccbaga.zh.md",
+        "sha256": "1188f04f92e5b958b0521dc63436e8c6ec811fb39c829f51e4f1c80f42ae95f4"
+      },
+      {
+        "old": "categories/api-gateway/claude-code-router.md",
+        "new": "categories/api-gateway/client-routing/claude-code-router.md",
+        "sha256": "8561b3a53865fa5035fac87c0166c7c6f1da85c906e3018a32412291bb5679dc"
+      },
+      {
+        "old": "categories/api-gateway/claude-code-router.zh.md",
+        "new": "categories/api-gateway/client-routing/claude-code-router.zh.md",
+        "sha256": "047a1daedb4b1a46addc73649abff06ef0174f0ee3a4622599ee373953f3e0e3"
+      },
+      {
+        "old": "categories/api-gateway/cliproxyapi.md",
+        "new": "categories/api-gateway/client-routing/cliproxyapi.md",
+        "sha256": "d4a4f843dfb92de9d66460afa98e297e1f3b7c9db7b7fe7155820206c6a775a7"
+      },
+      {
+        "old": "categories/api-gateway/cliproxyapi.zh.md",
+        "new": "categories/api-gateway/client-routing/cliproxyapi.zh.md",
+        "sha256": "835dfdfabd8f235481e852a0dd4f1041146e314b0f1880d892b0050971a92406"
+      },
+      {
+        "old": "categories/api-gateway/funtool.md",
+        "new": "categories/api-gateway/client-routing/funtool.md",
+        "sha256": "5f0ad2129f137bd9d8476a0326d4788211ab87b71810aa3b5b18376862b97445"
+      },
+      {
+        "old": "categories/api-gateway/funtool.zh.md",
+        "new": "categories/api-gateway/client-routing/funtool.zh.md",
+        "sha256": "5cb8d2ef29a383530c67476e5743dbdc89aa8ef6682bdbe44b51326ded6b708b"
+      },
+      {
+        "old": "categories/api-gateway/harnessrouter.md",
+        "new": "categories/api-gateway/harnessrouter.md",
+        "sha256": "e44f324c0ea4a6f46c2ad0def7efe5756d63ae784da5cff60878f9d0a9eeeb8b"
+      },
+      {
+        "old": "categories/api-gateway/harnessrouter.zh.md",
+        "new": "categories/api-gateway/harnessrouter.zh.md",
+        "sha256": "418631c6171768a26d565a253d3b3dc900867fc5f0a2d6d3c83866e995138002"
+      },
+      {
+        "old": "categories/api-gateway/litellm.md",
+        "new": "categories/api-gateway/litellm.md",
+        "sha256": "222181b132cea5c7e35e9cf3f0a02107f2fd6f489980452c9150bd561b95a277"
+      },
+      {
+        "old": "categories/api-gateway/litellm.zh.md",
+        "new": "categories/api-gateway/litellm.zh.md",
+        "sha256": "92196a874b4df02aabd829df2e43e0812525cc85edb372bf5f6e3764d7ed6e39"
+      },
+      {
+        "old": "categories/api-gateway/magpie-model-router.md",
+        "new": "categories/api-gateway/client-routing/magpie-model-router.md",
+        "sha256": "907b259fd8f09f72433db1b01bebababd5dd8f6f8f60c32e8156b94eb7f12534"
+      },
+      {
+        "old": "categories/api-gateway/magpie-model-router.zh.md",
+        "new": "categories/api-gateway/client-routing/magpie-model-router.zh.md",
+        "sha256": "12d3fdaf516904c3c31d1547c45e0d9c2ca4374e55219ee7b9905d901725d57b"
+      },
+      {
+        "old": "categories/api-gateway/tokenhub.md",
+        "new": "categories/api-gateway/tokenhub.md",
+        "sha256": "5ab6a1eae22ac288fe7f1137d08be73ecb3fb77493ee7af5ee9665ecc60d5bcf"
+      },
+      {
+        "old": "categories/api-gateway/tokenhub.zh.md",
+        "new": "categories/api-gateway/tokenhub.zh.md",
+        "sha256": "3c19553bf22f6e000f4bccda87292d06c44a6823c4bf7e802af571573040ae65"
+      },
+      {
+        "old": "categories/api-gateway/vllm-semantic-router.md",
+        "new": "categories/api-gateway/vllm-semantic-router.md",
+        "sha256": "d0f15b1a12a10f8e774c001735467f094bc55ba147a01e7df6b5b2e52af6d3e5"
+      },
+      {
+        "old": "categories/api-gateway/vllm-semantic-router.zh.md",
+        "new": "categories/api-gateway/vllm-semantic-router.zh.md",
+        "sha256": "45558550594e6f928def89335b1f73d9670890a263566e40e4da9c4e9c2b70c1"
+      },
+      {
+        "old": "categories/llm-inference/local-runtimes/claude-code-local.md",
+        "new": "categories/llm-inference/local-runtimes/claude-code-local.md",
+        "sha256": "71b8ea83999e6cd02d39f01a39926f58dc8b36a1782a0247d0faa3edb041fbe7"
+      },
+      {
+        "old": "categories/llm-inference/local-runtimes/claude-code-local.zh.md",
+        "new": "categories/llm-inference/local-runtimes/claude-code-local.zh.md",
+        "sha256": "023d1bec8398fc9a27c19fa6247bafc3f7ff05bd30c5e535821951d22caba630"
+      }
+    ]
+  },
+  "evidence_layers": {
+    "inner_loop": "make gates, six-page scoped quality and make test: see current recorded command results",
+    "acceptance": "Real fixed-source blob hashes; bilingual/generated cards wired; old report and old page invariants; local links",
+    "holdout_unseen": "No model or effect tuning; complete historical regression and directed independent source review replace an unseen score",
+    "holdout_source_category": "real captured historical report/pages and fixed upstream source, not manufactured success cases",
+    "expected_value_source": "user continuation scope, original 134-candidate frozen report, AGENTS/schema contracts",
+    "change_relative_to_freeze": "content generation only; no linter/quality/parser/test/CI implementation or thresholds modified",
+    "known_gaps": [
+      "HTML not refreshed; pair/browser checks not run",
+      "Gateway CEL notice retention incomplete: host denied directed retrieval",
+      "No upstream installation/execution, performance/effect experiments, private-harness audit or remote publication"
+    ]
+  },
+  "commands": [
+    {
+      "command": "make gates",
+      "returncode": 0,
+      "source": "本次复跑",
+      "key_output": [
+        "209 category nodes, 978 EN + 978 ZH pages, 0 errors, 1626 warnings.",
+        "reverse_index check: reports are current, no full mislabels (0 partly-indexed rows tracked in reports/project-intake-backlog.md)"
+      ],
+      "output_sha256": "54f9458dcdaa1a0bcc0a57a780b7f0e010a214981d5795ae713184ffd49fec1c"
+    },
+    {
+      "command": "/Users/zhenninglang/.local/share/py-default/bin/python tools/quality_scan.py --scope categories/agent-skills/design/visual-artifacts/ai-design-skills.md --scope categories/agent-skills/design/visual-artifacts/ai-design-skills.zh.md --scope categories/api-gateway/agentgateway.md --scope categories/api-gateway/agentgateway.zh.md --scope categories/ai-design-generation/openui.md --scope categories/ai-design-generation/openui.zh.md --fail-on-any-scoped",
+      "returncode": 0,
+      "source": "本次复跑",
+      "key_output": [
+        "No deterministic findings."
+      ],
+      "output_sha256": "9983058321eb41a1cd287bafdc11dea2a4a32722ecb6a4005c80d296d5029ac7"
+    },
+    {
+      "command": "make test",
+      "returncode": 0,
+      "source": "本次复跑",
+      "key_output": [
+        "Ran 483 tests in 24.084s",
+        "OK"
+      ],
+      "output_sha256": "9c4c4f4e2fe2cbcb603416fb23962a51270b27a7302b8b895808c19d9772a4f2"
+    },
+    {
+      "command": "git diff --check",
+      "returncode": 0,
+      "source": "本次复跑",
+      "key_output": [],
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

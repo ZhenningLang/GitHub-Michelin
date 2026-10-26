@@ -2,7 +2,7 @@
 name: Claude Code Router
 slug: claude-code-router
 repo: https://github.com/musistudio/claude-code-router
-category: api-gateway
+category: client-routing
 tags: [claude-code, coding-agent, llm-router, model-routing, local-proxy]
 language: TypeScript
 license: MIT
@@ -83,19 +83,19 @@ health:
 
 一个本地控制面与代理：让 Claude Code 以及其他 coding agent 接到你想用的模型供应商，并在其上加条件路由、协议适配、重试与 fallback，配置走桌面端或 CLI 界面。
 
-![Claude Code Router — 健康度雷达](../../assets/health/claude-code-router.zh.svg)
+![Claude Code Router — 健康度雷达](../../../assets/health/claude-code-router.zh.svg)
 
 ## 何时使用
 
 你是开发者，想继续用 Claude Code 自己的工作流——斜杠命令、工具、会话——但不想被单一供应商锁死：日常改动用便宜模型，难推理时切强模型，能按任务或按规则切换，而不用换客户端。这时选 Claude Code Router，因为它就是为这个客户端做的：本地网关（默认 `127.0.0.1:3456`）理解 coding agent 协议，配置在桌面 UI 里写入 SQLite（`~/.claude-code-router/config.sqlite`），所以你不需要把一个通用网关当服务来运维。
 
-相对最近邻替代品，决定性的取舍是**作用层级**。当你只是在重定向某个开发者的 coding agent、不想为一个带数据库、虚拟密钥和预算的多租户网关背运维时，选它而不是 [LiteLLM](litellm.zh.md) 或 [CLIProxyAPI](cliproxyapi.zh.md)；当你要的是在现有客户端里做模型路由、而不是把 harness 执行当成产品 API 时，选它而不是 [HarnessRouter](harnessrouter.zh.md)；当你需要跨平台、配置驱动的路由、而不是某一家厂商的 Windows 代理路径时，选它而不是 [Funtool](funtool.zh.md)。
+相对最近邻替代品，决定性的取舍是**作用层级**。当你只是在重定向某个开发者的 coding agent、不想为一个带数据库、虚拟密钥和预算的多租户网关背运维时，选它而不是 [LiteLLM](../litellm.zh.md) 或 [CLIProxyAPI](cliproxyapi.zh.md)；当你要的是在现有客户端里做模型路由、而不是把 harness 执行当成产品 API 时，选它而不是 [HarnessRouter](../harnessrouter.zh.md)；当你需要跨平台、配置驱动的路由、而不是某一家厂商的 Windows 代理路径时，选它而不是 [Funtool](funtool.zh.md)。
 
 ## 何时不用
 
 - **一个供应商已够用。** 直接用 Anthropic 官方的 Claude Code；多一层代理等于为到达同一个模型而多出进程、端口、凭据和升级路径。
-- **你要给产品后端做 LLM 网关，要密钥、预算和按团队隔离。** 改用 [LiteLLM](litellm.zh.md) 或 Portkey Gateway；Router 是本地 agent 控制面，不是治理网关。
-- **你要把 agent 任务当服务跑（会话、文件、取消）给应用用。** 改用 [HarnessRouter](harnessrouter.zh.md)；Router 只重定向客户端的模型调用，不执行也不托管任务。
+- **你要给产品后端做 LLM 网关，要密钥、预算和按团队隔离。** 改用 [LiteLLM](../litellm.zh.md) 或 Portkey Gateway；Router 是本地 agent 控制面，不是治理网关。
+- **你要把 agent 任务当服务跑（会话、文件、取消）给应用用。** 改用 [HarnessRouter](../harnessrouter.zh.md)；Router 只重定向客户端的模型调用，不执行也不托管任务。
 - **你要把消费订阅或 OAuth 登录态再暴露给别的工具。** 改用供应商 API key；若接受该风险可用 [CLIProxyAPI](cliproxyapi.zh.md)，或改用托管网关；各供应商是否允许订阅转接，本文无法确认。[未验证]
 - **无法容忍协议转换损失。** 直接用供应商原生 API；开放 issue 报告跨协议路由时图片被静默丢弃，以及 fallback 链没有切换供应商。
 - **不想维护一个带 CA/MITM 路径和 SQLite 配置文件的本地代理。** 改用托管路由如 OpenRouter；本地部署既给你控制权，也正是你要维护的部分。
@@ -104,9 +104,9 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [LiteLLM](litellm.zh.md) | 已收录 | 一个网关要服务多个应用、要虚拟密钥/预算/花费追踪时，选 LiteLLM；任务只是单个开发者的 coding agent、不想要治理型服务的开销时，选 Router。 | LiteLLM 带来 PostgreSQL/Redis 与更重的功能面，但有真正的多用户治理；Router 保持本地与简单，也完全没有这些治理能力。 |
+| [LiteLLM](../litellm.zh.md) | 已收录 | 一个网关要服务多个应用、要虚拟密钥/预算/花费追踪时，选 LiteLLM；任务只是单个开发者的 coding agent、不想要治理型服务的开销时，选 Router。 | LiteLLM 带来 PostgreSQL/Redis 与更重的功能面，但有真正的多用户治理；Router 保持本地与简单，也完全没有这些治理能力。 |
 | [CLIProxyAPI](cliproxyapi.zh.md) | 已收录 | 想把多个 CLI/OAuth 账号复用成一个覆盖面广的多协议 API 时，选 CLIProxyAPI；想在 Claude Code 内部做配置驱动的模型路由时，选 Router。 | CLIProxyAPI 覆盖更多上游 CLI 产品与 API 形状；Router 更窄，但把路由决策留在 coding agent 工作流内部。 |
-| [HarnessRouter](harnessrouter.zh.md) | 已收录 | 产品要把整只 agent 任务放在 API 之后跑时，选 HarnessRouter；Router 只用于重定向你已经在跑的客户端。 | HarnessRouter 接管会话、文件与工作区，运维面大得多；Router 只在请求链路上。 |
+| [HarnessRouter](../harnessrouter.zh.md) | 已收录 | 产品要把整只 agent 任务放在 API 之后跑时，选 HarnessRouter；Router 只用于重定向你已经在跑的客户端。 | HarnessRouter 接管会话、文件与工作区，运维面大得多；Router 只在请求链路上。 |
 | [Funtool](funtool.zh.md) | 已收录 | 只需要“Windows + Claude Code + 指定厂商端点”这条路径、且接受预打包二进制时，选 Funtool；要跨平台、配置驱动的路由时，选 Router。 | Funtool 是窄而不透明的二进制；Router 是可审查的 TypeScript 且有 UI，代价是 Node/Electron 栈和更大的配置面。 |
 | OpenRouter | 未收录 | 不想在本地跑任何路由、接受托管中间商时，选 OpenRouter；provider 凭据与路由必须留在本机时，选 Router。 | OpenRouter 去掉本地运维，却在请求链路里多一个第三方和按 token 的加价；Router 凭据留在本地，但运维责任归你。 |
 

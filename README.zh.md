@@ -466,6 +466,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **SdPaint** | 当你已在跑带 ControlNet 的 AUTOMATIC1111、想让每一笔涂鸦实时变成生成图时用它——但它自身不带模型，且自 2024-04 起停滞。 | MIT | D（3/6） | [中](categories/ai-design-generation/sdpaint.zh.md) · [EN](categories/ai-design-generation/sdpaint.md) |
 | **screenshot-to-code** | 手里只有一张截图、想自建部署拿到一个带原图素材的单文件 HTML 复刻页时用它——产出不是工程化组件，也没有还原度指标。 | MIT | B（5/6） | [中](categories/ai-design-generation/screenshot-to-code.zh.md) · [EN](categories/ai-design-generation/screenshot-to-code.md) |
 | **Open Intelligent UI** | 把聊天回答变成计算器、地图和交互图；依赖托管 Jev 路由，生产部署需替换临时检查点。 | MIT | B（4/6） | [EN](categories/ai-design-generation/open-intelligent-ui.md) · [中](categories/ai-design-generation/open-intelligent-ui.zh.md) |
+| **OpenUI** | Thesys 的 MIT SDK 将聊天答案流式渲染为你注册的 React 组件；模型后端、存储和工具授权由你负责。 | MIT | B（6/6） | [中](categories/ai-design-generation/openui.zh.md) · [EN](categories/ai-design-generation/openui.md) |
 
 ### dev-utilities
 
@@ -530,17 +531,25 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **Kong Gateway** | 基于 OpenResty/Nginx 的 API 网关，插件层把一个反向代理变成可编程边界：既管 REST/微服务，也从 3.x 起管 LLM/MCP 流量。 | Apache-2.0 | B（6/6） | [中](categories/api-gateway/kong.zh.md) · [EN](categories/api-gateway/kong.md) |
-| **Funtool** | 只有“Windows＋Claude Code＋NVIDIA”这条精确代理路径命中任务时才用它——当前可执行文件不透明，也无法从公开源码重建。 | MIT | C（5/6） | [中](categories/api-gateway/funtool.zh.md) · [EN](categories/api-gateway/funtool.md) |
 | **HarnessRouter** | 把 Codex、Claude Code、Hermes 等 harness 统一跑在一个 OpenAI Responses 兼容 API 之后的自托管网关——但它仅约 6 周历史，UHP 标准由单一厂商维护。 | Apache-2.0 | B（5/6） | [中](categories/api-gateway/harnessrouter.zh.md) · [EN](categories/api-gateway/harnessrouter.md) |
 | **LiteLLM** | 覆盖 100 多家供应商的可部署 LLM 网关与 SDK，带虚拟密钥、预算、花费追踪与故障转移——但需要 PostgreSQL/Redis 运维，且有 `enterprise/` 商业边界。 | MIT（核心）+ enterprise/ 商业目录 | A（4/6） | [中](categories/api-gateway/litellm.zh.md) · [EN](categories/api-gateway/litellm.md) |
-| **Claude Code Router** | 本地控制面：从桌面/CLI 界面用条件规则与 fallback，让 Claude Code 等 coding agent 跨模型供应商路由。 | MIT | B（6/6） | [中](categories/api-gateway/claude-code-router.zh.md) · [EN](categories/api-gateway/claude-code-router.md) |
-| **CLIProxyAPI** | 把消费级 CLI/OAuth 登录态包装成 OpenAI/Gemini/Claude 兼容 API 供其他工具调用——代价是固化的服务条款/账号风险与主机上的 token 存储。 | MIT | B（5/6） | [中](categories/api-gateway/cliproxyapi.zh.md) · [EN](categories/api-gateway/cliproxyapi.md) |
 | **APISIX** | 当你要 ASF 治理、配置由 etcd 动态驱动、插件在进程内的网关时用它——etcd 控制面也得你自己运维。 | Apache-2.0 | A（6/6） | [中](categories/api-gateway/apisix.zh.md) · [EN](categories/api-gateway/apisix.md) |
 | **Envoy** | 当你要一个由 xDS 驱动的 L4/L7 数据面、且愿意自备控制面时用它——它比开箱即用的 API 网关更底层。 | Apache-2.0 | A（6/6） | [中](categories/api-gateway/envoy.zh.md) · [EN](categories/api-gateway/envoy.md) |
 | **TokenHub** | 治理优先的自托管 Go AI 网关：项目 key、配额、路由策略、审计和供应商账单核对——非常年轻（v0.9.x，建于 2026-06）且作者主导。 | Apache-2.0 | B（6/6） | [中](categories/api-gateway/tokenhub.zh.md) · [EN](categories/api-gateway/tokenhub.md) |
-| **Magpie (yetone)** | 给约 28 个 coding agent 用的菜单栏模型切换器，外加在 Anthropic 与 OpenAI 接口间翻译的本地网关，订阅登录也能当 provider——只有约一周历史，单人维护。 | MIT | C（5/6） | [中](categories/api-gateway/magpie-model-router.zh.md) · [EN](categories/api-gateway/magpie-model-router.md) |
 | **vLLM Semantic Router** | 挂在 Envoy ExtProc 上的决策层，用自带分类器算出的领域、难度、越狱、PII 信号，按 YAML 策略逐请求选模型；还没到 1.0（v0.4，建于 2025-08），密钥和限流仍要靠网关。 | Apache-2.0 | B（5/6） | [中](categories/api-gateway/vllm-semantic-router.zh.md) · [EN](categories/api-gateway/vllm-semantic-router.md) |
 | **Monid** | “工具版 OpenRouter”的开源连接器标准和引擎：约 700 个数据和媒体厂商端点写成声明式文件，自带按次用量计量——`discover` 路由、单一 key 和定价在闭源托管侧；仓库约六周大。 | MIT | B（6/6） | [中](categories/api-gateway/monid.zh.md) · [EN](categories/api-gateway/monid.md) |
+| **Agentgateway** | 多个助手需要一个 MCP 入口，统一配置联邦聚合与列出／调用策略时用它；这不等于沙箱，也不会自动让端点私有。 | Apache-2.0 | B（6/6） | [中](categories/api-gateway/agentgateway.zh.md) · [EN](categories/api-gateway/agentgateway.md) |
+
+#### api-gateway / client-routing
+
+开发者客户端模型路由、供应商切换与 CLI/OAuth 登录桥接进入[客户端路由](categories/api-gateway/client-routing/INDEX.zh.md)，共享服务治理留在父分类。
+
+| 项目 | 何时用 | 许可 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **Funtool** | 只有“Windows＋Claude Code＋NVIDIA”这条精确代理路径命中任务时才用它——当前可执行文件不透明，也无法从公开源码重建。 | MIT | C（5/6） | [中](categories/api-gateway/client-routing/funtool.zh.md) · [EN](categories/api-gateway/client-routing/funtool.md) |
+| **Claude Code Router** | 本地控制面：从桌面/CLI 界面用条件规则与 fallback，让 Claude Code 等 coding agent 跨模型供应商路由。 | MIT | B（6/6） | [中](categories/api-gateway/client-routing/claude-code-router.zh.md) · [EN](categories/api-gateway/client-routing/claude-code-router.md) |
+| **CLIProxyAPI** | 把消费级 CLI/OAuth 登录态包装成 OpenAI/Gemini/Claude 兼容 API 供其他工具调用——代价是固化的服务条款/账号风险与主机上的 token 存储。 | MIT | B（5/6） | [中](categories/api-gateway/client-routing/cliproxyapi.zh.md) · [EN](categories/api-gateway/client-routing/cliproxyapi.md) |
+| **Magpie (yetone)** | 给约 28 个 coding agent 用的菜单栏模型切换器，外加在 Anthropic 与 OpenAI 接口间翻译的本地网关，订阅登录也能当 provider——只有约一周历史，单人维护。 | MIT | C（5/6） | [中](categories/api-gateway/client-routing/magpie-model-router.zh.md) · [EN](categories/api-gateway/client-routing/magpie-model-router.md) |
 
 ### geospatial
 
@@ -609,6 +618,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **distilly** | 当你想把某个人的聊天记录、文档与访谈蒸馏成可安装的 agent 技能，让它用这个人的判断与语气回答时用它。 | MIT | B（4/5） | [中](categories/agent-skills/distilly.zh.md) · [EN](categories/agent-skills/distilly.md) |
 | **visual-explainer** | 把有来源的差异与方案变成图文 HTML，保留源码与反馈；不是可编辑图模型，默认也非完全离线。 | MIT | C（5/6） | [EN](categories/agent-skills/design/visual-artifacts/visual-explainer.md) · [中](categories/agent-skills/design/visual-artifacts/visual-explainer.zh.md) |
 | **Anima** | 把静态生物课变成带来源的交互机制图；科学审查仍由你负责。 | MIT | C（4/5） | [EN](categories/agent-skills/design/visual-artifacts/anima.md) · [中](categories/agent-skills/design/visual-artifacts/anima.zh.md) |
+| **AI Design Skills** | 规划落地页或源稿一致的展示动画；两份指导技能，不是录制器，也没有转化／保真实测保证。 | MIT | C（4/5） | [EN](categories/agent-skills/design/visual-artifacts/ai-design-skills.md) · [中](categories/agent-skills/design/visual-artifacts/ai-design-skills.zh.md) |
 
 #### agent-skills / engineering
 

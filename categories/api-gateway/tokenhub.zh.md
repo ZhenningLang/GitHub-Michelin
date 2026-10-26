@@ -113,8 +113,8 @@ TokenHub 是一个 Go 进程，装下了全部东西：管理 API、OpenAI／Ant
 
 - **你要多年的稳定履历。** 首个版本发布于 2026-07，目前是 v0.9.0，迁移只向前走，且版本之间出现过计量账本兼容性修复；如果网关必须是「无聊的基础设施」，选 [LiteLLM](litellm.zh.md)（2023 年起、每周发版）或 [Kong Gateway](kong.zh.md)（12 年以上）更稳妥。
 - **你想用自己写的可执行代码扩展网关。** 当前版本的外部插件包只有元数据与展示能力——`stdio-json-v1` 开发包是未来运行时契约，不是已可用的执行路径；今天要写插件请用 [Kong](kong.zh.md) 或 APISIX。
-- **你是单个开发者，只想给自己的编码 agent 换模型。** 控制台、项目、配额对单人全是负担，本地跑 [Claude Code Router](claude-code-router.zh.md) 就够。
-- **你想把消费级 OAuth 登录养成本人 API 池。** 那是 [CLIProxyAPI](cliproxyapi.zh.md) 的专属取舍；TokenHub 的治理模型围绕签发的项目 key 建立。（它的 Codex 订阅通道确实带有同类的平台条款风险——这个风险是通道类型固有的，启用它就落在你的企业网关上。）
+- **你是单个开发者，只想给自己的编码 agent 换模型。** 控制台、项目、配额对单人全是负担，本地跑 [Claude Code Router](client-routing/claude-code-router.zh.md) 就够。
+- **你想把消费级 OAuth 登录养成本人 API 池。** 那是 [CLIProxyAPI](client-routing/cliproxyapi.zh.md) 的专属取舍；TokenHub 的治理模型围绕签发的项目 key 建立。（它的 Codex 订阅通道确实带有同类的平台条款风险——这个风险是通道类型固有的，启用它就落在你的企业网关上。）
 - **你的协议覆盖必须今天就是全的。** Azure OpenAI 的 Responses（含流式）返回 `501 provider_capability_not_supported`；请求侧内容策略不检查工具参数和厂商响应。先拿供应商／协议矩阵对照你的需求。
 - **你只有一个应用、一个厂商。** 直接用厂商 SDK 更简单，没人看的治理层纯属负担。
 
@@ -125,7 +125,7 @@ TokenHub 是一个 Go 进程，装下了全部东西：管理 API、OpenAI／Ant
 | [LiteLLM](litellm.zh.md) | ✅ | 供应商广度、Python 生态和久经考验的多租户费用追踪更重要时，选 LiteLLM；账单核对、按角色分的 admin 工作台和 Go／SQLite 优先的私有部署才是硬需求时，选 TokenHub。 | LiteLLM 社区更大、集成面更广，但全功能要 PostgreSQL 加 Redis，部分功能关在商业 `enterprise/` 后面；TokenHub 全部 Apache-2.0、栈更轻，但只有三个月大，履历薄得多。 |
 | New API | 未收录 | 只想要一个带按 key 计费的轻量自建中转控制台（one-api 一系）时，New API 上手更快；企业治理——RBAC 工作台、OIDC 身份、审计、供应商账单核对——才是目的时，选 TokenHub。 | New API 是同一中文企业场景里流行的中转计费控制台，立起来更轻；TokenHub 用这份轻换治理深度（成本中心、账单核对、角色分离）。真实仓库，本批 tab-intake 未收录。 |
 | [Kong Gateway](kong.zh.md) | ✅ | 同一边界还要承载通用 HTTP／微服务流量、Kubernetes 入口和成熟插件生态时，选 Kong；流量就是模型 API 调用、token 治理本身是产品时，选 TokenHub。 | Kong 用插件给通用数据面网关补 LLM 语义，没有原生 token 记账和项目／账单归属；TokenHub 是 AI 原生治理，但不代理任意 HTTP API。 |
-| [CLIProxyAPI](cliproxyapi.zh.md) | ✅ | 复用的资产是消费级 CLI／OAuth 登录、且个人或小团队愿意承担账号风险时，选 CLIProxyAPI；要求对多团队签发项目 key 做治理时，选 TokenHub。 | 重叠只在订阅通道（TokenHub 的 Codex 订阅 Provider 带同类条款／账号风险）；TokenHub 聚焦 key、配额、归属和审计，不做登录复用。 |
+| [CLIProxyAPI](client-routing/cliproxyapi.zh.md) | ✅ | 复用的资产是消费级 CLI／OAuth 登录、且个人或小团队愿意承担账号风险时，选 CLIProxyAPI；要求对多团队签发项目 key 做治理时，选 TokenHub。 | 重叠只在订阅通道（TokenHub 的 Codex 订阅 Provider 带同类条款／账号风险）；TokenHub 聚焦 key、配额、归属和审计，不做登录复用。 |
 | Portkey Gateway | 未收录 | guardrails 与可观测是头号需求、且 JS 优先的网关合你栈时，评估 Portkey；账单核对和管理控制台式治理更重要时，选 TokenHub。 | Portkey 是 LLM 原生网关，open-core 姿态不同；TokenHub 全 Apache-2.0、成本归属与 RBAC 优先，但年轻得多。真实仓库，本批 tab-intake 未收录。 |
 
 ## 技术栈

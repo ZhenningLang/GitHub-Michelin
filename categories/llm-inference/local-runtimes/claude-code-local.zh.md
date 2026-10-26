@@ -85,7 +85,7 @@ Claude Code 弹出“你已达到用量上限”，要等好几个小时才恢�
 
 你是一名用 32 GB 以上 Apple Silicon Mac 的开发者，日常就泡在 Claude Code 里，而且总遇到两件事之一：干到一半额度用完，重置要等好几个小时；或者你处理的是保密协议、法律、医疗材料，压根不能贴给云端模型。把 Claude Code 随便指向一个本地服务器走不远——多数本地服务器讲的是 OpenAI 格式，而本地模型吐出的工具调用常常是 `<function=Bash><parameter=command>…` 这种半截片段，Claude Code 不认它是一次工具调用，于是智能体嘴上说“我来做”，手上什么也不做。你选 claude-code-local，是因为它的服务器直接讲 Anthropic Messages 接口，而且大部分代码都花在这道缝上：解析 Gemma 4、Qwen、Llama 各自的工具调用写法，修补写坏的工具 JSON，模型明显想调工具却没写对时重试，并在轮次之间保留提示词缓存，让 Claude Code 那段很长的系统提示不必每轮重读。
 
-和替代品比，决定性的取舍是：[Ollama](ollama.zh.md) 也提供 Anthropic 接口、并且跨操作系统，但它是通用的模型管理器——没有这个仓库针对各模型的工具调用修补，也没有按内存挑模型、在桌面放好 Claude Code 启动器的安装脚本。想在很多云端与本地供应商之间混用，选 [claude-code-router](../../api-gateway/claude-code-router.zh.md)；本项目是更窄的一条路：只限 Mac、完全离线、“同一个 Claude Code，换成本地大脑”，外加一个 `keep going` 命令，能把当前文件夹里最近一次 Claude 对话接到本地模型（或 OpenRouter 免费模型）上继续。
+和替代品比，决定性的取舍是：[Ollama](ollama.zh.md) 也提供 Anthropic 接口、并且跨操作系统，但它是通用的模型管理器——没有这个仓库针对各模型的工具调用修补，也没有按内存挑模型、在桌面放好 Claude Code 启动器的安装脚本。想在很多云端与本地供应商之间混用，选 [claude-code-router](../../api-gateway/client-routing/claude-code-router.zh.md)；本项目是更窄的一条路：只限 Mac、完全离线、“同一个 Claude Code，换成本地大脑”，外加一个 `keep going` 命令，能把当前文件夹里最近一次 Claude 对话接到本地模型（或 OpenRouter 免费模型）上继续。
 
 ## 怎么用起来
 
@@ -114,7 +114,7 @@ Claude Code 弹出“你已达到用量上限”，要等好几个小时才恢�
 
 - **你用的不是 Apple Silicon Mac** → 用 [Ollama](ollama.zh.md)，它在 macOS、Linux、Windows 上都提供 Anthropic Messages 接口。`install.sh` 遇到非 Darwin／arm64 直接退出，维护者也以“只支持 Mac……Windows 上根本没有 MLX”关闭了 Windows 需求（#53，2026-08），建议在 llama.cpp 或 vLLM 上自己搭同样的东西。
 - **多人或多个会话要共用这台服务器** → 用 [Ollama](ollama.zh.md) 或 [vLLM](../serving-engines/vllm.zh.md) 这类服务引擎。`server.py` 是单线程的 `http.server.HTTPServer`，只绑 `127.0.0.1`，生成过程挂在一把全局锁后面，提示词缓存也只有一份全局的。#46（2026-08）实测这份缓存会污染**互不相关**的会话（长期不重启的服务器上 10 个任务只完成 1 个，每次新起服务器则 6 个全过；维护者还看到它把第一个会话的答案原样复读）；#47 已修，但设计仍是一次一个用户、一段对话。
-- **你期待 Claude Code 保持云端 Claude 的水平** → 保留云端 Claude，用 [claude-code-router](../../api-gateway/claude-code-router.zh.md) 或作者自己的 `claude-failover`（未收录）加一个本地兜底。README 自己的模型表写着最小档模型“声称运行了一个它根本没写出来的文件”，排行榜分数也来自另一个精简测试框架，“不是在 Claude Code 里测的”。
+- **你期待 Claude Code 保持云端 Claude 的水平** → 保留云端 Claude，用 [claude-code-router](../../api-gateway/client-routing/claude-code-router.zh.md) 或作者自己的 `claude-failover`（未收录）加一个本地兜底。README 自己的模型表写着最小档模型“声称运行了一个它根本没写出来的文件”，排行榜分数也来自另一个精简测试框架，“不是在 Claude Code 里测的”。
 - **你看中的是 README 里的速度数字** → Qwen 3.8 每秒 20–29 token 那组数，是在作者的 Agent-12 测试框架里配合 DFlash 2 投机解码草稿模型跑出来的；`server.py` 里没有草稿模型，也没有投机解码（2026-09-28 核对）。如果你要的就是投机解码带来的解码速度，去看 [MTPLX](mtplx.zh.md)。
 - **别的客户端需要 OpenAI 兼容接口** → 用 [mlx-lm](../../on-device-ml/apple-local-inference/mlx-mlx-lm.zh.md) 自带的服务器或 [omlx](omlx.zh.md)。本服务器只暴露 Anthropic 形状的路由。
 - **长的、带工具的轮次也要实时流式输出** → 要知道只有不带工具的请求才实时流式；带工具的请求（也就是几乎每一轮 Claude Code）会先整段生成、解析完，再当作流回放，所以长回答在完成前看起来像卡住了。另一堵墙是预填充（先把整段提示读一遍）：#28 在 64 GB M1 Max 上测到，Claude Code 约 5.6k token 的工具描述让每轮光预填充就要约 60 秒，后来才做了裁剪。想要短而能吃满缓存的轮次，仓库自带的原生引擎（不用 Claude Code）就是为此存在的。
@@ -125,7 +125,7 @@ Claude Code 弹出“你已达到用量上限”，要等好几个小时才恢�
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
 | [Ollama](ollama.zh.md) | ✅ | 想在任意操作系统上让 Claude Code 用本地模型，或者本来就在用 Ollama，就把 Claude Code 指向 Ollama 的 Anthropic 接口；只有在 Apple Silicon Mac 上、想省掉逐模型调工具调用的功夫时，才选 claude-code-local。 | Ollama：跨平台、模型目录、多客户端服务、维护团队大；claude-code-local：MLX 原生、专为 Claude Code 做的解析与启动器、一个人维护。 |
-| [claude-code-router](../../api-gateway/claude-code-router.zh.md) | ✅ | 要让 Claude Code 按任务在多家供应商（云端和本地）之间路由，选 claude-code-router；目标是一台完全离线、不开任何供应商账号的 Mac，选 claude-code-local。 | 路由器：供应商覆盖广，但得有个后端给它路由；claude-code-local：自带推理，但同一时间只能跑一个本地模型。 |
+| [claude-code-router](../../api-gateway/client-routing/claude-code-router.zh.md) | ✅ | 要让 Claude Code 按任务在多家供应商（云端和本地）之间路由，选 claude-code-router；目标是一台完全离线、不开任何供应商账号的 Mac，选 claude-code-local。 | 路由器：供应商覆盖广，但得有个后端给它路由；claude-code-local：自带推理，但同一时间只能跑一个本地模型。 |
 | [mlx-lm](../../on-device-ml/apple-local-inference/mlx-mlx-lm.zh.md) | ✅ | 想用苹果维护的通用库跑 MLX 模型、要 OpenAI 风格服务器，直接用 mlx-lm；claude-code-local 是叠在它上面的一层薄薄的单人代码，只有客户端是 Claude Code 时才有意义。 | mlx-lm：上游背书、接口宽、没有 Claude Code 适配；claude-code-local：Anthropic 接口、工具调用修补、启动器，但不锁版本地继承 mlx-lm 的每次改动。 |
 | [MTPLX](mtplx.zh.md) | ✅ | 想要一个带 Anthropic 接口、并靠投机解码让 Qwen 解码更快的 Mac MLX 服务器，选 MTPLX；想要更轻的安装、以及覆盖 Gemma、Qwen、Hermes 的 Claude Code 专用工具调用处理，选 claude-code-local。 | MTPLX：速度和一个桌面应用，但安装更重、带署名 NOTICE；claude-code-local：普通 MIT 脚本栈，没有投机解码。 |
 | claude-code-proxy（1rgs/claude-code-proxy） | 未收录 | 模型已经挂在 OpenAI 兼容服务器后面、只需要给 Claude Code 做格式翻译时选它；claude-code-local 则用 MLX 上的原生 Anthropic 服务取代这层翻译。本批标签页收录未添加。 | 代理：不挑后端，但多一跳，且 GitHub 上没有声明许可证（API，2026-09-28）；claude-code-local：没有中间跳，只限 Mac。 |

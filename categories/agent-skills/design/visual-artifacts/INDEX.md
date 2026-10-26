@@ -14,6 +14,7 @@
 | **huashu-design** | HTML-native design skill for prototypes, slide decks, editable PPTX, animation/MP4/GIF, infographics, and visual artifact generation. | B (5/6) | [→](huashu-design.md) |
 | **visual-explainer** | Turn source-backed diffs and plans into figure-led HTML with retained source and reader feedback; not an editable diagram model or fully offline default. | C (5/6) | [→](visual-explainer.md) |
 | **Anima** | Turn a static biology lesson into a sourced interactive mechanism figure; scientific review remains yours. | C (4/5) | [→](anima.md) |
+| **AI Design Skills** | Plan a landing or turn an authorized static frame into a showcase workflow; prompts and capture snippets, not a bundled runner or fidelity guarantee. | C (4/5) | [→](ai-design-skills.md) |
 
 
 ## Comparison matrix
@@ -27,6 +28,7 @@
 | [huashu-design](huashu-design.md) | ✅ | B (5/6) | Best for agent-generated HTML artifacts; choose Stitch for implementation handoff or Taste-Skill for lightweight UI taste guidance. |
 | [visual-explainer](visual-explainer.md) | ✅ | C (5/6) | Turn source-backed diffs and plans into figure-led HTML with retained source and reader feedback; not an editable diagram model or fully offline default. |
 | [Anima](anima.md) | ✅ | C (4/5) | Choose for interactive biological structures, not editable architecture; geometry audits do not validate scientific claims. |
+| [AI Design Skills](ai-design-skills.md) | ✅ | C (4/5) | Separate source-frame fidelity, showcase/website motion and deterministic capture instructions; host implementation and truthful content remain yours. |
 
 
 ## What belongs here

@@ -2,7 +2,7 @@
 name: CLIProxyAPI
 slug: cliproxyapi
 repo: https://github.com/router-for-me/CLIProxyAPI
-category: api-gateway
+category: client-routing
 tags: [cli-proxy, oauth, llm-gateway, codex, claude-code, gemini, go]
 language: Go
 license: MIT
@@ -81,18 +81,18 @@ health:
 
 Wraps consumer CLI and OAuth logins — ChatGPT Codex, Claude Code, Gemini/Antigravity, Grok and others — plus provider API keys into OpenAI-, Gemini-, Claude- and Codex-compatible HTTP APIs, so other tools can call them.
 
-![CLIProxyAPI — health radar](../../assets/health/cliproxyapi.svg)
+![CLIProxyAPI — health radar](../../../assets/health/cliproxyapi.svg)
 
 ## When to use
 
 You already hold CLI or OAuth logins for several model products and want to use them from other software — an SDK, an editor, another agent — without rewriting each integration, and you want a pool of accounts with failover instead of one credential per tool. You reach for CLIProxyAPI because it is a single Go binary that speaks several API shapes at once (OpenAI Chat/Responses, Gemini GenerateContent, Claude Messages, Codex-compatible) and stores its account state locally, so deployment is one process and one config file rather than a platform.
 
-The deciding tradeoff is *what it reuses*. Choose it over [LiteLLM](litellm.md) when your asset is CLI/OAuth access rather than provider API keys — LiteLLM routes keys and adds governance, CLIProxyAPI routes accounts; choose it over [Claude Code Router](claude-code-router.md) when you need many CLI products and multiple protocol shapes rather than routing inside one coding agent; choose it over [HarnessRouter](harnessrouter.md) when you want a raw API façade, not agent task execution with sessions and files. The cost of that reuse is legal and operational: whether proxying these credentials is permitted is a vendor-terms question this page does not settle. [未验证]
+The deciding tradeoff is *what it reuses*. Choose it over [LiteLLM](../litellm.md) when your asset is CLI/OAuth access rather than provider API keys — LiteLLM routes keys and adds governance, CLIProxyAPI routes accounts; choose it over [Claude Code Router](claude-code-router.md) when you need many CLI products and multiple protocol shapes rather than routing inside one coding agent; choose it over [HarnessRouter](../harnessrouter.md) when you want a raw API façade, not agent task execution with sessions and files. The cost of that reuse is legal and operational: whether proxying these credentials is permitted is a vendor-terms question this page does not settle. [未验证]
 
 ## When NOT to use
 
 - **You cannot accept the terms-of-service and account-ban risk of re-exposing consumer logins as an API.** Use the official provider APIs (OpenAI, Anthropic, Google) or a hosted broker; the risk here is inherent to the design, not a bug. [推断]
-- **You need tenants, RBAC, budgets and audit.** Use [LiteLLM](litellm.md) or Portkey Gateway; CLIProxyAPI is a credential pool, not a governance layer.
+- **You need tenants, RBAC, budgets and audit.** Use [LiteLLM](../litellm.md) or Portkey Gateway; CLIProxyAPI is a credential pool, not a governance layer.
 - **You need a contractual production SLA.** Use official hosted APIs, Azure OpenAI or Vertex AI; this is a self-hosted community project with no support contract.
 - **You only need one provider with complete protocol semantics.** Use that vendor's own SDK; every compatibility layer loses some field-level fidelity.
 - **You will not let OAuth refresh tokens rest on the proxy host.** Use a managed key gateway; CLIProxyAPI persists account tokens to disk.
@@ -103,9 +103,9 @@ The deciding tradeoff is *what it reuses*. Choose it over [LiteLLM](litellm.md) 
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [LiteLLM](litellm.md) | ✅ | When the traffic is provider-key based and needs budgets, virtual keys and spend tracking, choose LiteLLM; choose CLIProxyAPI when the asset you are reusing is CLI/OAuth logins rather than API keys. | LiteLLM is a governed gateway with databases and a commercial feature boundary; CLIProxyAPI is a lighter binary but offers no multi-tenant controls and carries account-risk. |
+| [LiteLLM](../litellm.md) | ✅ | When the traffic is provider-key based and needs budgets, virtual keys and spend tracking, choose LiteLLM; choose CLIProxyAPI when the asset you are reusing is CLI/OAuth logins rather than API keys. | LiteLLM is a governed gateway with databases and a commercial feature boundary; CLIProxyAPI is a lighter binary but offers no multi-tenant controls and carries account-risk. |
 | [Claude Code Router](claude-code-router.md) | ✅ | When one developer wants to route a coding agent across models with a desktop UI, choose Router; choose CLIProxyAPI when the goal is a broad multi-account, multi-protocol API façade. | Router is narrower and friendlier for a single workstation; CLIProxyAPI exposes more API shapes and account pooling at the cost of a larger operational and legal surface. |
-| [HarnessRouter](harnessrouter.md) | ✅ | When your product needs to run agent tasks (sessions, files, cancellation), choose HarnessRouter; CLIProxyAPI only serves model requests and leaves execution to the caller. | HarnessRouter owns the whole task lifecycle and its operational duties; CLIProxyAPI is a pure request-path proxy, smaller to run but capable of far less. |
+| [HarnessRouter](../harnessrouter.md) | ✅ | When your product needs to run agent tasks (sessions, files, cancellation), choose HarnessRouter; CLIProxyAPI only serves model requests and leaves execution to the caller. | HarnessRouter owns the whole task lifecycle and its operational duties; CLIProxyAPI is a pure request-path proxy, smaller to run but capable of far less. |
 | One API | not indexed | When you want a straightforward self-hosted gateway built around issued keys and channels, choose One API; choose CLIProxyAPI specifically when reusing consumer CLI logins is the point. | One API keeps the key-based model and avoids account-policy exposure, but does not turn CLI subscriptions into an API. |
 | OpenRouter | not indexed | When you would rather pay a hosted broker than run the proxy and carry the account risk, choose OpenRouter; choose CLIProxyAPI when traffic must stay on your own host. | OpenRouter takes the legal/ops burden off you and adds per-token margin plus a third party in the path; CLIProxyAPI keeps everything local, including the consequences. |
 

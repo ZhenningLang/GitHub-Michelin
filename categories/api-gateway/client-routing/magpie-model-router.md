@@ -2,7 +2,7 @@
 name: Magpie (yetone)
 slug: magpie-model-router
 repo: https://github.com/yetone/magpie
-category: api-gateway
+category: client-routing
 tags: [coding-agents, model-switcher, llm-gateway, claude-code, codex, oauth, desktop, go]
 language: Go
 license: MIT
@@ -77,19 +77,19 @@ health:
 
 Every coding agent keeps its model in a different file and format — Claude Code in `settings.json`, Codex in `config.toml`, OpenCode in `opencode.jsonc` — so trying DeepSeek or Kimi in one of them means hand-editing that file and often standing up a proxy that speaks the agent's API. magpie is one menu-bar app that changes just that one key in each file and runs a local gateway that translates between the Anthropic and OpenAI APIs for all of them.
 
-![Magpie (yetone) — health radar](../../assets/health/magpie-model-router.svg)
+![Magpie (yetone) — health radar](../../../assets/health/magpie-model-router.svg)
 
 ## When to use
 
 You work in three or four coding agents a day — Claude Code, Codex, OpenCode, Pi — and you hold keys for DeepSeek, Kimi and GLM plus a ChatGPT and a Claude subscription. Today, putting Codex on a DeepSeek model means writing a `[model_providers.*]` table into `~/.codex/config.toml`, putting Claude Code on Kimi means an `ANTHROPIC_BASE_URL` / `ANTHROPIC_AUTH_TOKEN` pair in the `env` block of `~/.claude/settings.json`, and each agent needs a vendor that speaks its wire protocol. You reach for magpie when you want one screen (menu bar, window, `magpie tui`, or plain CLI) that lists every installed agent and its current model, lets you click a value to change it, and makes every provider — including the subscriptions you are already signed in to — appear in every agent's picker as `provider/model` behind one local endpoint.
 
-The deciding tradeoff is *breadth on one workstation vs. maturity*. Choose it over [CC Switch](../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md) when you want more agents (the README lists 28 config targets), comment-preserving single-key edits, subscription logins exposed as providers, and a small Go binary with a headless CLI/Docker mode — and accept that it is about a week old against CC Switch's year of use. Choose it over [Claude Code Router](claude-code-router.md) when the problem is many agents, not rule-based routing inside Claude Code; over [CLIProxyAPI](cliproxyapi.md) when you want a desktop model switcher rather than a server-side account pool; over [LiteLLM](litellm.md) when it is your laptop, not a team with budgets and virtual keys.
+The deciding tradeoff is *breadth on one workstation vs. maturity*. Choose it over [CC Switch](../../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md) when you want more agents (the README lists 28 config targets), comment-preserving single-key edits, subscription logins exposed as providers, and a small Go binary with a headless CLI/Docker mode — and accept that it is about a week old against CC Switch's year of use. Choose it over [Claude Code Router](claude-code-router.md) when the problem is many agents, not rule-based routing inside Claude Code; over [CLIProxyAPI](cliproxyapi.md) when you want a desktop model switcher rather than a server-side account pool; over [LiteLLM](../litellm.md) when it is your laptop, not a team with budgets and virtual keys.
 
 ## How it works
 
 magpie does two separate jobs from one binary. The first is a config editor: it knows where each supported agent keeps its settings and, when you pick a model, rewrites only that key — comments, ordering and indentation survive, and the write is atomic (it swaps the whole file in one step, so a crash never leaves half a file). The second is a gateway — a small local server on `127.0.0.1:3425` that agents talk to instead of the vendor: it accepts OpenAI chat completions, OpenAI Responses, Anthropic Messages and Gemini requests, and either passes them straight through or translates them into whatever the vendor speaks, streaming and tool calls included — think of an interpreter who sits in the room so each agent can keep speaking its own language. What you do is add providers (a preset needs only a key) and pick models; what magpie does is fetch each vendor's real model list, write the agent's config to point at the gateway, and restore the previous values when you switch back to a native model. Signed-in agents (Claude Code, Codex/ChatGPT, Copilot, Devin and others) also become providers; for Claude subscriptions magpie drives the real local `claude` binary rather than calling the API itself. Routing groups (`group/<id>`) let one pick spread over several models or accounts, ordered by fallback, rotation, least use, or which subscription's quota renews soonest.
 
-![magpie-model-router — backbone user story](../../assets/flow/magpie-model-router.svg)
+![magpie-model-router — backbone user story](../../../assets/flow/magpie-model-router.svg)
 
 <!-- flow-steps:begin (generated from flows/magpie-model-router.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -109,9 +109,9 @@ magpie does two separate jobs from one binary. The first is a config editor: it 
 
 ## When NOT to use
 
-- **You need a shared gateway for a team, with per-user keys, budgets and audit.** Use [LiteLLM](litellm.md) (or TokenHub in this category); magpie's gateway is single-user — on loopback it accepts any key, and LAN sharing adds only one shared key.
+- **You need a shared gateway for a team, with per-user keys, budgets and audit.** Use [LiteLLM](../litellm.md) (or TokenHub in the parent category); magpie's gateway is single-user — on loopback it accepts any key, and LAN sharing adds only one shared key.
 - **You cannot accept the terms-of-service or account-suspension risk of using a consumer subscription from other agents.** Stay on vendor API keys (magpie still works with keys only) or the vendor's own client; magpie's README itself warns that Google may suspend an Antigravity account used outside Antigravity, and routing a Claude subscription to Pi or OpenCode depends on driving the real `claude` binary to stay out of Anthropic's third-party classifier. [推断]
-- **You want a tool with a track record.** Use [CC Switch](../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md), which covers the same desktop "switch providers + local format-converting routing + failover" shape and has been public since 2025-08; magpie's first commit is 2026-09-22 and it ships a new build several times a day.
+- **You want a tool with a track record.** Use [CC Switch](../../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md), which covers the same desktop "switch providers + local format-converting routing + failover" shape and has been public since 2025-08; magpie's first commit is 2026-09-22 and it ships a new build several times a day.
 - **You need content-based routing rules inside Claude Code (background vs. long-context vs. reasoning requests).** Use [Claude Code Router](claude-code-router.md); magpie's routing groups decide by order, rotation, usage and quota window, not by what the request is.
 - **You want one account pool served to many machines or tools as a remote API.** Use [CLIProxyAPI](cliproxyapi.md); magpie's Docker/`magpie serve` mode exists, but subscription sign-ins cannot be completed inside a container and the design centers on one person's desktop.
 - **You need exact protocol semantics for one vendor.** Call that vendor directly; every translation layer loses fields — for example Claude Code's server-side auto-mode `safeguards` only work on Anthropic's own API, and a Codex routing-group session once started at ~216K input tokens until v0.1.447 (issues #250, #258).
@@ -121,10 +121,10 @@ magpie does two separate jobs from one binary. The first is a config editor: it 
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [CC Switch](../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md) | ✅ | When you want the proven desktop manager for switching coding-agent providers with local routing and failover, pick CC Switch; pick magpie when you need more agents, subscription logins as providers, surgical config edits or a CLI/headless mode. | CC Switch brings a year of releases and ~139k stars on a Rust/Tauri app; magpie is a far smaller Go binary with wider agent coverage, but is days old and single-maintainer. |
+| [CC Switch](../../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md) | ✅ | When you want the proven desktop manager for switching coding-agent providers with local routing and failover, pick CC Switch; pick magpie when you need more agents, subscription logins as providers, surgical config edits or a CLI/headless mode. | CC Switch brings a year of releases and ~139k stars on a Rust/Tauri app; magpie is a far smaller Go binary with wider agent coverage, but is days old and single-maintainer. |
 | [Claude Code Router](claude-code-router.md) | ✅ | When you mainly live in Claude Code and want requests routed by type (background, long context, reasoning), pick Claude Code Router; pick magpie when the pain is keeping many different agents on the right models. | Router gives finer per-request rules for one client; magpie gives one catalog and one picker across ~28 agents but only order/rotate/usage/quota-based groups. |
 | [CLIProxyAPI](cliproxyapi.md) | ✅ | When you want consumer CLI/OAuth accounts exposed as a server API to many callers, pick CLIProxyAPI; pick magpie when you want those accounts inside your own agents on one machine with a GUI. | CLIProxyAPI is a headless multi-protocol account pool with a larger contributor base; magpie adds per-agent config writing and a menu-bar UI, and both carry the same subscription-reuse account risk. |
-| [LiteLLM](litellm.md) | ✅ | When a team needs one OpenAI-compatible endpoint with virtual keys, budgets and spend tracking, pick LiteLLM; pick magpie when it is one developer's workstation and the goal is switching agents, not governing spend. | LiteLLM costs PostgreSQL/Redis operations and has a commercial `enterprise/` boundary; magpie needs no database but has no tenant, key-issuance or budget model. |
+| [LiteLLM](../litellm.md) | ✅ | When a team needs one OpenAI-compatible endpoint with virtual keys, budgets and spend tracking, pick LiteLLM; pick magpie when it is one developer's workstation and the goal is switching agents, not governing spend. | LiteLLM costs PostgreSQL/Redis operations and has a commercial `enterprise/` boundary; magpie needs no database but has no tenant, key-issuance or budget model. |
 
 ## Tech stack
 

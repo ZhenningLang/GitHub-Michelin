@@ -267,6 +267,7 @@ https://github.com/aeonfun/soul.md,soul-md,context-engineering,categories/agent-
 https://github.com/affaan-m/ECC,ecc,coding-agent-harnesses,categories/agent-dev-methodology/coding-agent-harnesses/ecc.md
 https://github.com/agegr/pi-web,pi-web,agent-cockpits,categories/agent-tooling/supervision-surfaces/agent-cockpits/pi-web.md
 https://github.com/agent-substrate/substrate,substrate,sandboxing,categories/sandboxing/substrate.md
+https://github.com/agentgateway/agentgateway,agentgateway,api-gateway,categories/api-gateway/agentgateway.md
 https://github.com/agentscope-ai/agentscope,agentscope,agent-sdks,categories/agent-frameworks/agent-runtimes/agent-sdks/agentscope.md
 https://github.com/aicodeking/leanrea,leanrea,security,categories/agent-skills/security/leanrea.md
 https://github.com/aiming-lab/SimpleMem,simplemem,app-memory,categories/agent-memory/app-memory/simplemem.md
@@ -372,7 +373,7 @@ https://github.com/certbot/certbot,certbot,ops-infra,categories/dev-utilities/op
 https://github.com/chakra-ui/chakra-ui,chakra-ui,component-libraries,categories/web-ui/component-libraries/chakra-ui.md
 https://github.com/chenfei-wu/TaskMatrix,taskmatrix,vision-and-multimodal,categories/ml-research/vision-and-multimodal/taskmatrix.md
 https://github.com/cisco-ai-defense/mcp-scanner,mcp-scanner,agent-governance,categories/agent-governance/mcp-scanner.md
-https://github.com/cixingguangming55555/wechat-bot,funtool,api-gateway,categories/api-gateway/funtool.md
+https://github.com/cixingguangming55555/wechat-bot,funtool,client-routing,categories/api-gateway/client-routing/funtool.md
 https://github.com/clash-verge-rev/clash-verge-rev,clash-verge-rev,ops-infra,categories/dev-utilities/ops-infra/clash-verge-rev.md
 https://github.com/cline/cline,cline,ide-agents,categories/agent-frameworks/coding-agents/ide-agents/cline.md
 https://github.com/cloudflare/computer,cloudflare-computer,sandboxing,categories/sandboxing/cloudflare-computer.md
@@ -436,6 +437,7 @@ https://github.com/e2b-dev/E2B,e2b,sandboxing,categories/sandboxing/e2b.md
 https://github.com/earendil-works/pi,pi,independent-runtimes,categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/pi.md
 https://github.com/earthtojake/text-to-cad,text-to-cad,cad,categories/cad/text-to-cad.md
 https://github.com/elastic/elasticsearch-dsl-py,elasticsearch-dsl-py,database-clients,categories/databases/database-clients/elasticsearch-dsl-py.md
+https://github.com/elayadesign/ai-design-skills,ai-design-skills,visual-artifacts,categories/agent-skills/design/visual-artifacts/ai-design-skills.md
 https://github.com/elie222/rakazo,rakazo,personal-assistants,categories/agent-frameworks/agent-runtimes/personal-assistants/rakazo.md
 https://github.com/elliottwaves-20/agent-guard,agent-guard,agent-governance,categories/agent-governance/agent-guard.md
 https://github.com/elrumordelaluz/reactour,reactour,product-tours,categories/web-ui/product-tours/reactour.md
@@ -703,7 +705,7 @@ https://github.com/mui/material-ui,material-ui,component-libraries,categories/we
 https://github.com/mukul975/Anthropic-Cybersecurity-Skills,anthropic-cybersecurity-skills,security,categories/agent-skills/security/anthropic-cybersecurity-skills.md
 https://github.com/multica-ai/andrej-karpathy-skills,karpathy-skills,engineering-workflows,categories/agent-skills/personal-collections/engineering-workflows/karpathy-skills.md
 https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering,context-engineering-skills,context-engineering,categories/agent-skills/context-engineering/context-engineering-skills.md
-https://github.com/musistudio/claude-code-router,claude-code-router,api-gateway,categories/api-gateway/claude-code-router.md
+https://github.com/musistudio/claude-code-router,claude-code-router,client-routing,categories/api-gateway/client-routing/claude-code-router.md
 https://github.com/mvanhorn/last30days-skill,last30days,source-workflows,categories/deep-research/source-workflows/last30days.md
 https://github.com/mxrch/GHunt,ghunt,osint,categories/osint/ghunt.md
 https://github.com/n8n-io/n8n,n8n,workflow-orchestration,categories/workflow-orchestration/n8n.md
@@ -809,7 +811,7 @@ https://github.com/rilldata/rill,rill,data-visualization,categories/data-visuali
 https://github.com/rjs/shaping-skills,shaping-skills,engineering-workflows,categories/agent-skills/personal-collections/engineering-workflows/shaping-skills.md
 https://github.com/rohit267/net-merge,net-merge,networking,categories/networking/net-merge.md
 https://github.com/rorkai/App-Store-Connect-CLI,app-store-connect-cli,dev-utilities,categories/dev-utilities/app-store-connect-cli.md
-https://github.com/router-for-me/CLIProxyAPI,cliproxyapi,api-gateway,categories/api-gateway/cliproxyapi.md
+https://github.com/router-for-me/CLIProxyAPI,cliproxyapi,client-routing,categories/api-gateway/client-routing/cliproxyapi.md
 https://github.com/rq/rq,rq,task-queue,categories/task-queue/rq.md
 https://github.com/rthalley/dnspython,dnspython,networking,categories/networking/dnspython.md
 https://github.com/rtk-ai/rtk,rtk,work-state,categories/agent-tooling/work-state/rtk.md
@@ -879,6 +881,7 @@ https://github.com/teamclairvoyant/airflow-maintenance-dags,airflow-maintenance-
 https://github.com/temporalio/temporal,temporal,workflow-orchestration,categories/workflow-orchestration/temporal.md
 https://github.com/tesseract-ocr/tesseract,tesseract,ocr,categories/ocr/tesseract.md
 https://github.com/thedotmack/claude-mem,claude-mem,coding-agent-memory,categories/agent-memory/coding-agent-memory/claude-mem.md
+https://github.com/thesysdev/openui,openui,ai-design-generation,categories/ai-design-generation/openui.md
 https://github.com/threerocks/hand-drawn-styles,hand-drawn-styles,visual-content,categories/agent-skills/visual-content/hand-drawn-styles.md
 https://github.com/tiagozip/cap,capjs,captcha,categories/captcha/capjs.md
 https://github.com/tigerless-labs/autoharness,autoharness,coding-agent-memory,categories/agent-memory/coding-agent-memory/autoharness.md
@@ -951,7 +954,7 @@ https://github.com/xtool-org/xtool,xtool,runtimes-and-compilers,categories/dev-u
 https://github.com/xueqiu/rdr,rdr,database-clients,categories/databases/database-clients/rdr.md
 https://github.com/xuxueli/xxl-job,xxl-job,task-queue,categories/task-queue/xxl-job.md
 https://github.com/yang0/handraw-style,handraw-style,visual-content,categories/agent-skills/visual-content/handraw-style.md
-https://github.com/yetone/magpie,magpie-model-router,api-gateway,categories/api-gateway/magpie-model-router.md
+https://github.com/yetone/magpie,magpie-model-router,client-routing,categories/api-gateway/client-routing/magpie-model-router.md
 https://github.com/yihong0618/bilingual_book_maker,bilingual-book-maker,reading-tools,categories/reading-tools/bilingual-book-maker.md
 https://github.com/ymybxx/SoloMCN,solomcn,social-media-management,categories/social-media-management/solomcn.md
 https://github.com/youfou/wxpy,wxpy,wechat,categories/im-automation/wechat/wxpy.md
