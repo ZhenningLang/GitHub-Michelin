@@ -2,7 +2,7 @@
 name: Funtool
 slug: funtool
 repo: https://github.com/cixingguangming55555/wechat-bot
-category: api-gateway
+category: client-routing
 tags: [claude-code, nvidia, llm-proxy, windows, binary-only]
 language: JavaScript
 license: MIT
@@ -75,7 +75,7 @@ health:
 
 You followed a WeChat-bot repository looking for code, but that tool is offline; Funtool now lists NVIDIA model-proxy EXEs and separate setup articles, without the current proxy source.
 
-![Funtool — health radar](../../assets/health/funtool.svg)
+![Funtool — health radar](../../../assets/health/funtool.svg)
 
 ## When to use
 
@@ -85,10 +85,10 @@ The WeChat tool is explicitly offline. This review obtained the repository READM
 
 ## When NOT to use
 
-- **You must inspect credential handling, dependencies or rebuilds.** Use [LiteLLM](litellm.md) or [Claude Code Router](claude-code-router.md); the current NVIDIA proxy EXEs are closed-source distributions in this tree, not reviewable implementations. Historical WeChat JS does not close that gap.
+- **You must inspect credential handling, dependencies or rebuilds.** Use [LiteLLM](../litellm.md) or [Claude Code Router](claude-code-router.md); the current NVIDIA proxy EXEs are closed-source distributions in this tree, not reviewable implementations. Historical WeChat JS does not close that gap.
 - **You need a verified install/configuration path now.** Choose Claude Code Router's published configuration workflow; Funtool's repository supplies download links, not current ports, arguments or Claude configuration, and its external article bodies were not obtained here.
 - **You need a shared gateway with budgets and access control.** Use LiteLLM; Funtool's README does not establish those controls or an operated team service.
-- **You only need a desktop provider/configuration switcher.** Use [CC Switch](../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md); choose its direct mode when you do not need an extra proxy. Funtool distributes an opaque request-path program instead.
+- **You only need a desktop provider/configuration switcher.** Use [CC Switch](../../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md); choose its direct mode when you do not need an extra proxy. Funtool distributes an opaque request-path program instead.
 - **You need a broader maintainer/support bench.** Evaluate LiteLLM's vendor-backed gateway, including its commercial boundaries; this repository's measured active-author concentration is one person, and you cannot maintain the current binary from the published source.
 - **You want the old WeChat bot.** Do not adopt the retained JS as a supported product: README marks that tool offline. For the model-routing task this page now covers, use Claude Code Router rather than repurposing old message-client examples.
 
@@ -96,15 +96,15 @@ The WeChat tool is explicitly offline. This review obtained the repository READM
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [LiteLLM](litellm.md) | ✅ | Choose LiteLLM for a source-reviewable team gateway with budgets; consider Funtool only for locating its exact NVIDIA executable after resolving instructions and binary trust. | LiteLLM adds Python/server operations and an enterprise feature boundary; Funtool gives file links without current implementation or comparable governance evidence. |
+| [LiteLLM](../litellm.md) | ✅ | Choose LiteLLM for a source-reviewable team gateway with budgets; consider Funtool only for locating its exact NVIDIA executable after resolving instructions and binary trust. | LiteLLM adds Python/server operations and an enterprise feature boundary; Funtool gives file links without current implementation or comparable governance evidence. |
 | [Claude Code Router](claude-code-router.md) | ✅ | Choose Router for inspectable, configuration-driven coding-agent routing; consider Funtool only if the listed prebuilt NVIDIA route is the deciding constraint. | Router adds a Node/Electron and configuration surface; Funtool offers EXEs whose operation cannot be rebuilt or confirmed from this tree alone. |
-| [CC Switch](../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md) | ✅ | Choose CC Switch for visual provider switching, especially direct configuration without a proxy; consider Funtool only when evaluating the listed proxy artifacts themselves. | CC Switch has inspectable desktop code and optional routing mode; Funtool has a narrower distribution list with unavailable setup article bodies in this review. |
+| [CC Switch](../../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md) | ✅ | Choose CC Switch for visual provider switching, especially direct configuration without a proxy; consider Funtool only when evaluating the listed proxy artifacts themselves. | CC Switch has inspectable desktop code and optional routing mode; Funtool has a narrower distribution list with unavailable setup article bodies in this review. |
 
 ## Quick start
 
 Open the pinned [README.md:12–31](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/README.md#L12-L31) and first note that the WeChat tool is offline. Select one listed model route: Kimi K2.5 points to `funtool/claude-nvidia-proxy-kimi25.exe`, while the other four headings point to the same `funtool/claude-nvidia-proxy.exe` path. Follow the corresponding file link to its GitHub download entry and retain the matching external-documentation URL; this is an acquisition/selection path, not a verified launch recipe. The repository supplies those entries, while you must obtain readable instructions and verify artifact provenance, authorization and credential handling before running anything. The linked WeChat article bodies were not obtained, so this page supplies no current port, command-line arguments, configuration or promised output. README calls the upstream models free, but quotas, account eligibility and continuing cost were not verified; no EXE, login or model call was executed in this review.
 
-![funtool — backbone user story](../../assets/flow/funtool.svg)
+![funtool — backbone user story](../../../assets/flow/funtool.svg)
 
 <!-- flow-steps:begin (generated from flows/funtool.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -121,7 +121,7 @@ Open the pinned [README.md:12–31](https://github.com/cixingguangming55555/wech
 
 ## Key techniques
 
-![Funtool — mechanism diagram](../../assets/mechanism/funtool.svg)
+![Funtool — mechanism diagram](../../../assets/mechanism/funtool.svg)
 
 <!-- mechanism:begin (generated from mechanisms/funtool.json by tools/mechanism_card.py; do not edit) -->
 <details>

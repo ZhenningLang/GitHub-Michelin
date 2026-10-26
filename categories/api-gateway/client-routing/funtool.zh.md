@@ -2,7 +2,7 @@
 name: Funtool
 slug: funtool
 repo: https://github.com/cixingguangming55555/wechat-bot
-category: api-gateway
+category: client-routing
 tags: [claude-code, nvidia, llm-proxy, windows, binary-only]
 language: JavaScript
 license: MIT
@@ -75,7 +75,7 @@ health:
 
 你沿微信机器人仓库找代码，旧工具却已下线；Funtool 现在列出 NVIDIA 模型代理 EXE 和独立说明链接，没有当前代理源码。
 
-![Funtool — 健康度雷达](../../assets/health/funtool.zh.svg)
+![Funtool — 健康度雷达](../../../assets/health/funtool.zh.svg)
 
 ## 何时使用
 
@@ -85,10 +85,10 @@ health:
 
 ## 何时不用
 
-- **必须检查凭据处理、依赖或自行重建。** 用 [LiteLLM](litellm.zh.md) 或 [Claude Code Router](claude-code-router.zh.md)；当前 NVIDIA 代理 EXE 在此树中是闭源分发，不是可评审实现。历史微信 JS 不能补上这个缺口。
+- **必须检查凭据处理、依赖或自行重建。** 用 [LiteLLM](../litellm.zh.md) 或 [Claude Code Router](claude-code-router.zh.md)；当前 NVIDIA 代理 EXE 在此树中是闭源分发，不是可评审实现。历史微信 JS 不能补上这个缺口。
 - **现在就要已核实的安装与配置路径。** 用 Claude Code Router 公开的配置流程；Funtool 仓库只有下载链接，没有当前端口、参数或 Claude 配置，本次也未取得外部文章正文。
 - **要共享网关、预算与访问控制。** 用 LiteLLM；Funtool 的 README 没有证明这些控制或团队服务已经可用。
-- **只要桌面供应商与配置切换。** 用 [CC Switch](../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.zh.md)；不需要代理时选其直连模式。Funtool 分发的则是请求链路中的不透明程序。
+- **只要桌面供应商与配置切换。** 用 [CC Switch](../../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.zh.md)；不需要代理时选其直连模式。Funtool 分发的则是请求链路中的不透明程序。
 - **要求更广的维护与支持队伍。** 评估 LiteLLM 的厂商支持及商业功能边界；本仓库测得活跃作者集中于一人，当前二进制也无法用公开源码维护。
 - **要旧微信机器人。** 不把留存 JS 当受支持产品，README 已注明工具下线。若要做本页现在覆盖的模型路由，用 Claude Code Router，不挪用旧消息客户端例子。
 
@@ -96,15 +96,15 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [LiteLLM](litellm.zh.md) | 已收录 | 要有源码可审、带预算的团队网关时选 LiteLLM；解决说明与二进制信任后，仅为找到那份特定 NVIDIA 程序才考虑 Funtool。 | LiteLLM 增加 Python 与服务器运维，还有企业功能边界；Funtool 给文件入口，没有当前实现或可比的治理证据。 |
+| [LiteLLM](../litellm.zh.md) | 已收录 | 要有源码可审、带预算的团队网关时选 LiteLLM；解决说明与二进制信任后，仅为找到那份特定 NVIDIA 程序才考虑 Funtool。 | LiteLLM 增加 Python 与服务器运维，还有企业功能边界；Funtool 给文件入口，没有当前实现或可比的治理证据。 |
 | [Claude Code Router](claude-code-router.zh.md) | 已收录 | 要可检查、配置驱动的编程 agent 路由时选 Router；列出的预构建 NVIDIA 路线是决定约束时才考虑 Funtool。 | Router 增加 Node/Electron 与配置面；Funtool 提供的 EXE 无法仅凭源码树重建或确认运行方式。 |
-| [CC Switch](../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.zh.md) | 已收录 | 要可视化切换供应商，尤其无需代理的直连配置时选 CC Switch；要评估列出的代理产物本身才考虑 Funtool。 | CC Switch 有可检查的桌面源码和可选路由模式；Funtool 分发清单更窄，本次未取得配套文章正文。 |
+| [CC Switch](../../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.zh.md) | 已收录 | 要可视化切换供应商，尤其无需代理的直连配置时选 CC Switch；要评估列出的代理产物本身才考虑 Funtool。 | CC Switch 有可检查的桌面源码和可选路由模式；Funtool 分发清单更窄，本次未取得配套文章正文。 |
 
 ## 快速上手
 
 打开固定版本 [README.md:12–31](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/README.md#L12-L31)，先看清微信工具已下线。选一条模型路线：Kimi K2.5 指向 `funtool/claude-nvidia-proxy-kimi25.exe`，其余四个标题都指向同一 `funtool/claude-nvidia-proxy.exe`。沿对应文件链接找到 GitHub 下载入口，保留配套外部说明 URL；这是获取与选择路径，不是已核实的启动教程。仓库提供这些入口，你负责取得可读说明，并在运行前核产物来源、授权和凭据处理。本次未取得公众号正文，因此不提供当前端口、命令参数、配置或承诺输出。README 称上游模型免费，但账号资格、额度与持续费用未核；本次没有执行 EXE、登录或调用模型。
 
-![funtool — 主干用户故事](../../assets/flow/funtool.zh.svg)
+![funtool — 主干用户故事](../../../assets/flow/funtool.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/funtool.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -121,7 +121,7 @@ health:
 
 ## 技术要点
 
-![Funtool — 机制图](../../assets/mechanism/funtool.zh.svg)
+![Funtool — 机制图](../../../assets/mechanism/funtool.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/funtool.json by tools/mechanism_card.py; do not edit) -->
 <details>

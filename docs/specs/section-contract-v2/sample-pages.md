@@ -34,7 +34,7 @@ python3 /Users/zhenninglang/Projects/oss-atlas-wt-sections/.long-loop/20261013_s
 | 12 | `categories/media-processing/video-audio/speech-and-subtitles/claude-video.md` | media-processing | app | 2026-07-16 | 按原复核日期及路径排序，顶层分类最多两对。 |
 | 13 | `categories/agent-dev-methodology/spec-driven-development/pure-agentic.md` | agent-dev-methodology | framework | 2026-07-17 | 按原复核日期及路径排序，顶层分类最多两对。 |
 | 14 | `categories/agent-dev-methodology/spec-driven-development/spec-anchored-agentic-development.md` | agent-dev-methodology | skill-pack | 2026-07-17 | 按原复核日期及路径排序，顶层分类最多两对。 |
-| 15 | `categories/api-gateway/funtool.md` | api-gateway | tool | 2026-07-17 | 按原复核日期及路径排序，顶层分类最多两对。 |
+| 15 | `categories/api-gateway/client-routing/funtool.md` | api-gateway | tool | 2026-07-17 | 按原复核日期及路径排序，顶层分类最多两对。 |
 | 16 | `categories/blockchain-dev-infrastructure/powfaucet.md` | blockchain-dev-infrastructure | service | 2026-07-17 | 按原复核日期及路径排序，顶层分类最多两对。 |
 | 17 | `categories/captcha/buster.md` | captcha | tool | 2026-07-17 | 按原复核日期及路径排序，顶层分类最多两对。 |
 | 18 | `categories/captcha/nopecha-extension.md` | captcha | tool | 2026-07-17 | 按原复核日期及路径排序，顶层分类最多两对。 |

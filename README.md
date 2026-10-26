@@ -469,6 +469,7 @@ Research engines and scientific workbenches; source access and evidence auditing
 | **SdPaint** | Use it when you already run AUTOMATIC1111 with ControlNet and want each brushstroke turned into a generated image live — but it has no model of its own and has been stalled since 2024-04. | MIT | D (3/6) | [EN](categories/ai-design-generation/sdpaint.md) · [中](categories/ai-design-generation/sdpaint.zh.md) |
 | **screenshot-to-code** | Use it when you have only a screenshot and want a self-hosted, close visual replica as one HTML file with your real images cropped in — not production components, and with no fidelity metric. | MIT | B (5/6) | [EN](categories/ai-design-generation/screenshot-to-code.md) · [中](categories/ai-design-generation/screenshot-to-code.zh.md) |
 | **Open Intelligent UI** | Build chat answers as interactive calculators, maps and diagrams; requires hosted Jev routing and ephemeral checkpoint storage replacement for production. | MIT | B (4/6) | [EN](categories/ai-design-generation/open-intelligent-ui.md) · [中](categories/ai-design-generation/open-intelligent-ui.zh.md) |
+| **OpenUI** | Thesys's MIT SDK streams chat answers as your registered React components; you own the model backend, storage and tool authorization. | MIT | B (6/6) | [EN](categories/ai-design-generation/openui.md) · [中](categories/ai-design-generation/openui.zh.md) |
 
 ### dev-utilities
 
@@ -533,17 +534,25 @@ Research engines and scientific workbenches; source access and evidence auditing
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **Kong Gateway** | OpenResty/Nginx API gateway whose plugin layer makes one reverse-proxy a programmable edge for REST/microservice traffic and, since 3.x, LLM/MCP traffic. | Apache-2.0 | B (6/6) | [EN](categories/api-gateway/kong.md) · [中](categories/api-gateway/kong.zh.md) |
-| **Funtool** | Use it only for the exact Windows + Claude Code + NVIDIA proxy path — the current executable is opaque and cannot be rebuilt from the published source. | MIT | C (5/6) | [EN](categories/api-gateway/funtool.md) · [中](categories/api-gateway/funtool.zh.md) |
 | **HarnessRouter** | A self-hosted gateway that runs Codex, Claude Code, Hermes and other harnesses behind one OpenAI Responses-compatible API — but it is about six weeks old and the UHP standard is single-vendor. | Apache-2.0 | B (5/6) | [EN](categories/api-gateway/harnessrouter.md) · [中](categories/api-gateway/harnessrouter.zh.md) |
 | **LiteLLM** | A deployable LLM gateway and SDK over 100+ providers with virtual keys, budgets, spend tracking and failover — but PostgreSQL/Redis ops and a commercial `enterprise/` boundary. | MIT (core) + enterprise/ carve-out | A (4/6) | [EN](categories/api-gateway/litellm.md) · [中](categories/api-gateway/litellm.zh.md) |
-| **Claude Code Router** | A local control plane that routes Claude Code and other coding agents across model providers with conditional rules and fallback, from a desktop/CLI UI. | MIT | B (6/6) | [EN](categories/api-gateway/claude-code-router.md) · [中](categories/api-gateway/claude-code-router.zh.md) |
-| **CLIProxyAPI** | Wraps consumer CLI/OAuth logins as OpenAI/Gemini/Claude-compatible APIs for other tools — at the cost of inherent ToS/account risk and tokens stored on the host. | MIT | B (5/6) | [EN](categories/api-gateway/cliproxyapi.md) · [中](categories/api-gateway/cliproxyapi.zh.md) |
 | **APISIX** | Use it when you want an ASF-governed gateway with etcd-backed live configuration and in-process plugins — you also operate the etcd control plane. | Apache-2.0 | A (6/6) | [EN](categories/api-gateway/apisix.md) · [中](categories/api-gateway/apisix.zh.md) |
 | **Envoy** | Use it when you need an xDS-driven L4/L7 data plane and will supply your own control plane — it is lower-level than a turnkey API gateway. | Apache-2.0 | A (6/6) | [EN](categories/api-gateway/envoy.md) · [中](categories/api-gateway/envoy.zh.md) |
 | **TokenHub** | Governance-first self-hosted AI gateway in Go: project keys, quotas, routing policy, audit and provider-bill reconciliation — very young (v0.9.x, created 2026-06) and author-dominated. | Apache-2.0 | B (6/6) | [EN](categories/api-gateway/tokenhub.md) · [中](categories/api-gateway/tokenhub.zh.md) |
-| **Magpie (yetone)** | A menu-bar model switcher for ~28 coding agents plus a local gateway translating between Anthropic and OpenAI APIs, with subscription logins as providers — about a week old and single-maintainer. | MIT | C (5/6) | [EN](categories/api-gateway/magpie-model-router.md) · [中](categories/api-gateway/magpie-model-router.zh.md) |
 | **vLLM Semantic Router** | Envoy ExtProc decision layer that picks the model per request from its content — domain, difficulty, jailbreak, PII signals from its own classifiers — by YAML policy; pre-1.0 (v0.4, created 2025-08) and needs a gateway for keys and rate limits. | Apache-2.0 | B (5/6) | [EN](categories/api-gateway/vllm-semantic-router.md) · [中](categories/api-gateway/vllm-semantic-router.zh.md) |
 | **Monid** | Open connector standard and engine for an "OpenRouter for agent tools": ~700 data and media vendor endpoints as declarative files with per-call usage metering — the `discover` routing, single key and pricing are hosted and closed; about six weeks old. | MIT | B (6/6) | [EN](categories/api-gateway/monid.md) · [中](categories/api-gateway/monid.zh.md) |
+| **Agentgateway** | Several assistants need one MCP endpoint with configured federation and list/call policy; this is not a sandbox or automatic endpoint privacy. | Apache-2.0 | B (6/6) | [EN](categories/api-gateway/agentgateway.md) · [中](categories/api-gateway/agentgateway.zh.md) |
+
+#### api-gateway / client-routing
+
+Enter [Client Routing](categories/api-gateway/client-routing/INDEX.md) for developer-client model routing, provider switching and CLI/OAuth login bridges, not shared service governance.
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **Funtool** | Use it only for the exact Windows + Claude Code + NVIDIA proxy path — the current executable is opaque and cannot be rebuilt from the published source. | MIT | C (5/6) | [EN](categories/api-gateway/client-routing/funtool.md) · [中](categories/api-gateway/client-routing/funtool.zh.md) |
+| **Claude Code Router** | A local control plane that routes Claude Code and other coding agents across model providers with conditional rules and fallback, from a desktop/CLI UI. | MIT | B (6/6) | [EN](categories/api-gateway/client-routing/claude-code-router.md) · [中](categories/api-gateway/client-routing/claude-code-router.zh.md) |
+| **CLIProxyAPI** | Wraps consumer CLI/OAuth logins as OpenAI/Gemini/Claude-compatible APIs for other tools — at the cost of inherent ToS/account risk and tokens stored on the host. | MIT | B (5/6) | [EN](categories/api-gateway/client-routing/cliproxyapi.md) · [中](categories/api-gateway/client-routing/cliproxyapi.zh.md) |
+| **Magpie (yetone)** | A menu-bar model switcher for ~28 coding agents plus a local gateway translating between Anthropic and OpenAI APIs, with subscription logins as providers — about a week old and single-maintainer. | MIT | C (5/6) | [EN](categories/api-gateway/client-routing/magpie-model-router.md) · [中](categories/api-gateway/client-routing/magpie-model-router.zh.md) |
 
 ### geospatial
 

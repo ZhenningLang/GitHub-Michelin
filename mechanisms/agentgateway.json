@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "request", "en": "Client request and operator configuration", "zh": "客户端请求与操作者配置", "kind": "input"},
+    {"id": "authn", "en": "Configured authentication; not implicit", "zh": "显式配置认证；并非自动开启", "technique": [2]},
+    {"id": "targets", "en": "Select participating upstream targets", "zh": "选择参与的上游目标", "technique": [1]},
+    {"id": "upstreams", "en": "HTTP or operator-selected stdio program", "zh": "HTTP或操作者指定的stdio程序", "kind": "external", "technique": [1, 3]},
+    {"id": "list", "en": "Filter/name tools; private zero-TTL list", "zh": "过滤／命名工具；私有零TTL列表", "technique": [1, 3]},
+    {"id": "call", "en": "Resolve call; run configured guardrails", "zh": "解析调用；运行已配guardrail", "technique": [2]},
+    {"id": "rules", "en": "Evaluate resource rules before forwarding", "zh": "转发前计算资源规则", "technique": [2]},
+    {"id": "result", "en": "Tool result or explicit denial/error", "zh": "工具结果或明确拒绝／错误", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "request", "to": "authn"},
+    {"from": "authn", "to": "targets"},
+    {"from": "targets", "to": "upstreams"},
+    {"from": "upstreams", "to": "list", "en": "list path", "zh": "列表路径"},
+    {"from": "authn", "to": "call", "en": "tool call path", "zh": "工具调用路径"},
+    {"from": "call", "to": "rules"},
+    {"from": "rules", "to": "upstreams", "en": "if permitted", "zh": "获准时"},
+    {"from": "rules", "to": "result", "en": "denied", "zh": "拒绝"},
+    {"from": "upstreams", "to": "result", "en": "call response", "zh": "调用响应"}
+  ],
+  "sources": [
+    "https://github.com/agentgateway/agentgateway/blob/cfa8d1b84996b0c4e3ce204a81a86bd64f257921/crates/agentgateway/src/mcp/router.rs#L124-L163",
+    "https://github.com/agentgateway/agentgateway/blob/cfa8d1b84996b0c4e3ce204a81a86bd64f257921/crates/agentgateway/src/mcp/upstream/mod.rs#L459-L579",
+    "https://github.com/agentgateway/agentgateway/blob/cfa8d1b84996b0c4e3ce204a81a86bd64f257921/crates/agentgateway/src/mcp/handler.rs#L802-L848",
+    "https://github.com/agentgateway/agentgateway/blob/cfa8d1b84996b0c4e3ce204a81a86bd64f257921/crates/agentgateway/src/mcp/session.rs#L284-L317",
+    "https://github.com/agentgateway/agentgateway/blob/cfa8d1b84996b0c4e3ce204a81a86bd64f257921/crates/agentgateway/src/mcp/session.rs#L620-L661"
+  ]
+}

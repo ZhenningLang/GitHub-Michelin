@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "library", "en": "Trusted components and Zod schemas", "zh": "可信组件与 Zod 约束", "kind": "input", "technique": [1]},
+    {"id": "prompt", "en": "Library-derived prompt and schema", "zh": "由组件库派生的提示词与约束", "technique": [1]},
+    {"id": "model", "en": "Your backend and chosen model", "zh": "你的后端与所选模型", "kind": "external"},
+    {"id": "parser", "en": "Cache complete statements; close unfinished tail", "zh": "缓存完整语句；闭合未完成尾部", "technique": [2]},
+    {"id": "render", "en": "Registered renderers and local state", "zh": "已注册渲染器与本地状态", "kind": "output", "technique": [1, 3]},
+    {"id": "queries", "en": "After generation settles; query cache and mutation actions", "zh": "生成结束后；查询缓存与修改动作", "technique": [3]},
+    {"id": "tools", "en": "Host tool handlers; server authorization required", "zh": "宿主工具处理函数；须服务端鉴权", "kind": "external", "technique": [3]},
+    {"id": "install", "en": "Package installation; telemetry unless disabled", "zh": "包安装；默认遥测可关闭", "kind": "input", "technique": [4]},
+    {"id": "telemetry", "en": "PostHog installation metadata", "zh": "PostHog 安装元数据", "kind": "external", "technique": [4]},
+    {"id": "cloud", "en": "Optional Thesys capture or Autofix; additional data egress", "zh": "可选 Thesys 采集或修复；增加数据外发", "kind": "external", "technique": [4]}
+  ],
+  "edges": [
+    {"from": "library", "to": "prompt"},
+    {"from": "prompt", "to": "model"},
+    {"from": "model", "to": "parser", "en": "OpenUI Lang stream", "zh": "OpenUI Lang 文本流"},
+    {"from": "parser", "to": "render"},
+    {"from": "render", "to": "queries", "en": "declarations and state changes", "zh": "声明与状态变化"},
+    {"from": "queries", "to": "tools"},
+    {"from": "tools", "to": "render", "en": "data or structured errors", "zh": "数据或结构化错误"},
+    {"from": "install", "to": "telemetry", "en": "unless install opt-out is set", "zh": "未设置安装关闭开关时"},
+    {"from": "render", "to": "cloud", "en": "if cloud capture is initialized", "zh": "初始化云观测时", "style": "dashed"},
+    {"from": "model", "to": "cloud", "en": "if backend Autofix is integrated", "zh": "后端接入 Autofix 时", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/thesysdev/openui/blob/9d73d17d2bbac565672a85e78f6eb7740cb0d9ca/packages/lang-core/src/library.ts",
+    "https://github.com/thesysdev/openui/blob/9d73d17d2bbac565672a85e78f6eb7740cb0d9ca/packages/lang-core/src/parser/parser.ts",
+    "https://github.com/thesysdev/openui/blob/9d73d17d2bbac565672a85e78f6eb7740cb0d9ca/packages/react-lang/src/hooks/useOpenUIState.ts",
+    "https://github.com/thesysdev/openui/blob/9d73d17d2bbac565672a85e78f6eb7740cb0d9ca/packages/lang-core/src/telemetry/install.ts",
+    "https://github.com/thesysdev/openui/blob/9d73d17d2bbac565672a85e78f6eb7740cb0d9ca/packages/server/src/shared/fix.ts"
+  ]
+}

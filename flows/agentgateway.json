@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Agentgateway does", "zh": "Agentgateway 做的"},
+  "steps": [
+    {"lane": "you", "en": "Review the pinned example and prepare the Rust/tool-server environment", "zh": "审阅固定示例，准备Rust与工具服务器环境"},
+    {"lane": "you", "en": "Start the local gateway with the documented example configuration", "zh": "按文档示例配置启动本地网关", "code": "cargo run -- -f examples/mcp-basic/config.yaml"},
+    {"lane": "them", "en": "Accept MCP traffic and initialize the configured target", "zh": "接收MCP流量并初始化所配目标", "component": {"en": "MCP data plane", "zh": "MCP数据面"}},
+    {"lane": "you", "en": "Connect an authorized client and list or call a tool", "zh": "让获准客户端连接并列出或调用工具"},
+    {"lane": "them", "en": "Apply configured policy and relay tool messages and results", "zh": "应用已配策略，转发工具消息及结果"}
+  ],
+  "value": {"en": "One MCP-facing entry point; identity policy and tool isolation remain explicit work", "zh": "提供一个MCP入口；身份策略与工具隔离仍须明确配置"},
+  "sources": [
+    "https://github.com/agentgateway/agentgateway/blob/cfa8d1b84996b0c4e3ce204a81a86bd64f257921/examples/mcp-basic/README.md#L5-L69",
+    "https://github.com/agentgateway/agentgateway/blob/cfa8d1b84996b0c4e3ce204a81a86bd64f257921/examples/mcp-basic/config.yaml#L1-L19",
+    "https://github.com/agentgateway/agentgateway/blob/cfa8d1b84996b0c4e3ce204a81a86bd64f257921/crates/agentgateway/src/mcp/session.rs#L620-L661"
+  ]
+}

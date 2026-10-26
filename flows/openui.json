@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenUI does", "zh": "OpenUI 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the renderer and define components with property schemas", "zh": "安装渲染器，定义组件及属性约束", "code": "npm install @openuidev/react-lang @openuidev/react-ui"},
+    {"lane": "you", "en": "Group the allowed components into a library", "zh": "将允许使用的组件组成库", "code": "createLibrary"},
+    {"lane": "them", "en": "Derives model instructions from the component library", "zh": "从组件库生成模型指令", "code": "library.prompt()", "component": {"en": "component library", "zh": "组件库"}},
+    {"lane": "you", "en": "Call your model on the server and pass its text stream to Renderer", "zh": "服务端调用模型，把文本流交给渲染器", "code": "Renderer"},
+    {"lane": "them", "en": "Parses arriving statements and renders your registered components", "zh": "逐步解析返回语句，渲染已注册组件", "component": {"en": "streaming parser and renderer", "zh": "流式解析器与渲染器"}}
+  ],
+  "value": {"en": "Interactive answers use your existing UI components instead of invented JSX imports", "zh": "交互答案复用现有组件，不再依赖模型编造的 JSX 导入"},
+  "sources": [
+    "https://github.com/thesysdev/openui/blob/9d73d17d2bbac565672a85e78f6eb7740cb0d9ca/README.md#L112-L117",
+    "https://github.com/thesysdev/openui/blob/9d73d17d2bbac565672a85e78f6eb7740cb0d9ca/packages/react-lang/README.md#L60-L124",
+    "https://github.com/thesysdev/openui/blob/9d73d17d2bbac565672a85e78f6eb7740cb0d9ca/templates/openui-self-hosted/src/agent.ts#L24-L40"
+  ]
+}

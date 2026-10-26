@@ -3,41 +3,41 @@
 > 分类节点。路由、保护、限流并治理服务与 LLM 流量的 API / AI 网关。
 > ← 返回[分类路由](../../INDEX.zh.md) · English: [INDEX.md](INDEX.md)
 
+## 子分类
+
+| 子分类 | 何时进入 | 路由 |
+| --- | --- | --- |
+| **客户端路由** | 单个开发者需要编码客户端模型路由、供应商切换或 CLI/OAuth 登录桥接，而非共享服务治理。 | [→](client-routing/INDEX.zh.md) |
+
 ## 本分类项目
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **Kong Gateway** | 基于 OpenResty/Nginx 的 API 网关，插件层把一个反向代理变成可编程边界：既管 REST/微服务，也从 3.x 起管 LLM/MCP 流量。 | B（6/6） | [→](kong.zh.md) |
-| **Funtool** | 只有精确命中“Windows + Claude Code + NVIDIA”代理路径，而且预打包工具比可审计性更重要时才用它；当前版本只提供二进制，无法从已发布源码重建。 | C（5/6） | [→](funtool.zh.md) |
 | **HarnessRouter** | 产品后端需要把 Codex、Claude Code、Hermes 等 harness 统一跑在一个 OpenAI Responses 兼容 API 之后时用它——但它仅约 6 周历史、UHP 标准由单一厂商维护、社区版会话共用同一容器。 | B（5/6） | [→](harnessrouter.zh.md) |
 | **LiteLLM** | 多个应用或团队需要一个 OpenAI 兼容端点，带虚拟密钥、预算、花费追踪与故障转移时用它——但完整功能面并非全部 MIT（`enterprise/` 为商业许可）。 | A（4/6） | [→](litellm.zh.md) |
-| **Claude Code Router** | 开发者想从本地桌面/CLI 控制面，用条件规则与 fallback 让 Claude Code 等 coding agent 跨模型供应商路由时用它。 | B（6/6） | [→](claude-code-router.zh.md) |
-| **CLIProxyAPI** | 想把消费级 CLI/OAuth 登录态复用成 OpenAI/Gemini/Claude 兼容 API 时用它——但这种复用本身带有服务条款与封号风险。 | B（5/6） | [→](cliproxyapi.zh.md) |
 | **APISIX** | 当你要 ASF 治理、配置由 etcd 动态驱动、插件在进程内的网关时用它——etcd 控制面也得你自己运维。 | A（6/6） | [→](apisix.zh.md) |
 | **Envoy** | 当你要一个由 xDS 驱动的 L4/L7 数据面、且愿意自备控制面时用它——它比开箱即用的 API 网关更底层。 | A（6/6） | [→](envoy.zh.md) |
 | **TokenHub** | 当模型访问要变成受治理的基础设施——项目 key、配额、路由策略、审计和供应商账单核对装进一个自托管 Go 网关时用它；但它只有约三个月大，还在 v0.9.0。 | B（6/6） | [→](tokenhub.zh.md) |
-| **Magpie (yetone)** | 一个开发者想在菜单栏里把每个 coding agent（Claude Code、Codex、OpenCode 等约 28 个）切到任意厂商的模型时用它——只改单个配置键，再加一个本地协议翻译网关；但它只有约一周历史、单人维护，复用订阅有封号风险。 | C（5/6） | [→](magpie-model-router.zh.md) |
 | **vLLM Semantic Router** | 当平台团队同时服务多个模型，想按请求内容（领域、难度、越狱、PII）用 YAML 策略在 Envoy 后面逐请求选模型时用它；但它还没到 1.0，密钥和限流仍要靠一个网关。 | B（5/6） | [→](vllm-semantic-router.zh.md) |
 | **Monid** | 当 agent 要调很多付费数据和媒体 API（搜索、爬虫、信息补全、视频），你希望每家厂商都写成同一份声明式契约、由一个引擎统一校验、调用和计量时用它；但 `discover` 路由、单一 key 和定价都在闭源托管侧，仓库也只有约六周大。 | B（6/6） | [→](monid.zh.md) |
+| **Agentgateway** | 多个助手需要一个 MCP 入口，统一配置联邦聚合与列出／调用策略时用它；这不等于沙箱，也不会自动让端点私有。 | B（6/6） | [→](agentgateway.zh.md) |
 
 ## 对比矩阵
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [Kong Gateway](kong.zh.md) | ✅ | B（6/6） | 基于 OpenResty/Nginx 的 API 网关，插件层把一个反向代理变成可编程边界：既管 REST/微服务，也从 3.x 起管 LLM/MCP 流量。 |
-| [Funtool](funtool.zh.md) | ✅ | C（5/6） | 面向 Claude Code 与 NVIDIA 模型的窄 Windows 代理，当前实现只分发不透明二进制，没有可审计源码。 |
 | [HarnessRouter](harnessrouter.zh.md) | ✅ | B（5/6） | 用一个 OpenAI Responses 兼容 API 覆盖多种 agent harness，代价是约 6 周大的代码库、单一厂商协议、以及共用容器的会话隔离。 |
 | [LiteLLM](litellm.zh.md) | ✅ | A（4/6） | provider 覆盖面与成本/治理能力最强的 LLM 网关，代价是 PostgreSQL + Redis 运维和 `enterprise/` 商业边界。 |
-| [Claude Code Router](claude-code-router.zh.md) | ✅ | B（6/6） | 面向 coding agent 的本地、配置驱动模型路由，带桌面 UI；单人维护项目，且是持有供应商凭据的本地代理。 |
-| [CLIProxyAPI](cliproxyapi.zh.md) | ✅ | B（5/6） | 把消费级 CLI/OAuth 账号变成覆盖多协议的 API；运行轻，但带有固化的服务条款/账号风险，且在主机上保存 token。 |
 | [APISIX](apisix.zh.md) | ✅ | A（6/6） | ASF 顶级项目，基于 NGINX/OpenResty，配置由 etcd 动态驱动，进程内插件面很广；控制面是你必须自己运维的硬依赖。 |
 | [Envoy](envoy.zh.md) | ✅ | A（6/6） | CNCF 毕业的 L4/L7 数据面，由 xDS 驱动；控制面与 API 管理策略层都由你自己带。 |
 | [TokenHub](tokenhub.zh.md) | ✅ | B（6/6） | 治理优先的自托管 AI 网关（Go/SQLite）：项目 key、配额、路由、审计和供应商账单核对；非常年轻（v0.9.x）且作者主导。 |
-| [Magpie (yetone)](magpie-model-router.zh.md) | ✅ | C（5/6） | 给约 28 个 coding agent 用的桌面模型切换器，加一个在 Anthropic/OpenAI 协议间翻译的本地网关，订阅登录可当 provider；只有几天历史、单人维护、会自动更新。 |
 | [vLLM Semantic Router](vllm-semantic-router.zh.md) | ✅ | B（5/6） | 以 Envoy ExtProc 决策层的形式按内容选模型，自带分类器模型；代价是多一跳和一套多服务栈，凭据、限流和副本调度仍归其他层。 |
 | [Monid](monid.zh.md) | ✅ | B（6/6） | “工具版 OpenRouter”背后的开源连接器标准和引擎：约 700 个厂商端点写成声明式文件，自带按次计量；路由、单一 key 和大部分目录留在闭源托管平台。 |
+| [Agentgateway](agentgateway.zh.md) | 已收录 | B（6/6） | 面向 MCP 的联邦聚合与显式列出／调用策略，不提供操作系统隔离；身份、TLS、策略配置和上游信任仍由你负责。 |
 | Tyk / KrakenD / New API | 未收录 | — | 各页点到的其他自托管网关。 |
 
 ## 什么该放这里
 
-挡在服务或 LLM 前面、做路由/鉴权/限流/可观测的 **API / AI 网关**。不含 agent 框架（见 `agent-frameworks`）。
+挡在服务、LLM 或 MCP 服务器前面、做路由／鉴权／限流／可观测的 **API / AI 网关**。开发者客户端路由与登录桥接放入[客户端路由](client-routing/INDEX.zh.md)，共享服务治理留在本层。不含 agent 框架（见 `agent-frameworks`）。

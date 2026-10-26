@@ -2,7 +2,7 @@
 name: Claude Code Router
 slug: claude-code-router
 repo: https://github.com/musistudio/claude-code-router
-category: api-gateway
+category: client-routing
 tags: [claude-code, coding-agent, llm-router, model-routing, local-proxy]
 language: TypeScript
 license: MIT
@@ -83,19 +83,19 @@ health:
 
 A local control plane and proxy that points Claude Code — and other coding agents — at whichever model provider you choose, adding conditional routing, protocol adaption, retries and fallback behind a desktop-or-CLI UI.
 
-![Claude Code Router — health radar](../../assets/health/claude-code-router.svg)
+![Claude Code Router — health radar](../../../assets/health/claude-code-router.svg)
 
 ## When to use
 
 You're a developer who wants to keep using Claude Code's own workflow — slash commands, tools, sessions — but not be locked to one provider: you want the cheap model for routine edits and a strong model for hard reasoning, switchable per task or per rule, without changing clients. You reach for Claude Code Router because it is purpose-built for that client: it runs a local gateway (default `127.0.0.1:3456`) that understands the coding-agent protocol and stores its configuration in a desktop UI (SQLite at `~/.claude-code-router/config.sqlite`), so you are not operating a general gateway as a service.
 
-The deciding tradeoff against the nearest substitutes is *scope of the layer*. Choose it over [LiteLLM](litellm.md) or [CLIProxyAPI](cliproxyapi.md) when you are redirecting one developer's coding agent and do not want to run a multi-tenant gateway with databases, virtual keys and budgets; choose it over [HarnessRouter](harnessrouter.md) when you only need model routing inside an existing client, not harness execution as a product API; choose it over [Funtool](funtool.md) when you need cross-platform, configuration-driven routing rather than one vendor's Windows proxy path.
+The deciding tradeoff against the nearest substitutes is *scope of the layer*. Choose it over [LiteLLM](../litellm.md) or [CLIProxyAPI](cliproxyapi.md) when you are redirecting one developer's coding agent and do not want to run a multi-tenant gateway with databases, virtual keys and budgets; choose it over [HarnessRouter](../harnessrouter.md) when you only need model routing inside an existing client, not harness execution as a product API; choose it over [Funtool](funtool.md) when you need cross-platform, configuration-driven routing rather than one vendor's Windows proxy path.
 
 ## When NOT to use
 
 - **One provider already meets your needs.** Use Anthropic's own Claude Code directly; a proxy adds a process, a port, credentials and an upgrade path to reach the same model.
-- **You need an LLM gateway for product backends, with keys, budgets and per-team isolation.** Use [LiteLLM](litellm.md) or Portkey Gateway; Router is a local agent control plane, not a governance gateway.
-- **You need to run agent tasks as a service (sessions, files, cancellation) for your app.** Use [HarnessRouter](harnessrouter.md); Router redirects a client's model calls and does not execute or host tasks.
+- **You need an LLM gateway for product backends, with keys, budgets and per-team isolation.** Use [LiteLLM](../litellm.md) or Portkey Gateway; Router is a local agent control plane, not a governance gateway.
+- **You need to run agent tasks as a service (sessions, files, cancellation) for your app.** Use [HarnessRouter](../harnessrouter.md); Router redirects a client's model calls and does not execute or host tasks.
 - **You are re-exposing consumer subscription or OAuth logins to other tools.** Use provider API keys, [CLIProxyAPI](cliproxyapi.md) if you accept that risk, or a hosted gateway; whether subscription proxying is permitted by each vendor is not established here. [未验证]
 - **You cannot tolerate protocol-conversion loss.** Use the provider's native API; open issues report images silently dropped on cross-protocol routes and fallback chains that fail to switch provider.
 - **You do not want a local proxy with a CA/MITM path and a SQLite config file.** Use a hosted router such as OpenRouter; the local setup is what gives you control and what you must maintain.
@@ -104,9 +104,9 @@ The deciding tradeoff against the nearest substitutes is *scope of the layer*. C
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [LiteLLM](litellm.md) | ✅ | When one gateway must serve many applications with virtual keys, budgets and spend tracking, choose LiteLLM; choose Router when the job is one developer's coding agent and the overhead of a governed server is not wanted. | LiteLLM brings PostgreSQL/Redis and a heavier feature surface but real multi-user controls; Router stays local and simple, and offers none of that governance. |
+| [LiteLLM](../litellm.md) | ✅ | When one gateway must serve many applications with virtual keys, budgets and spend tracking, choose LiteLLM; choose Router when the job is one developer's coding agent and the overhead of a governed server is not wanted. | LiteLLM brings PostgreSQL/Redis and a heavier feature surface but real multi-user controls; Router stays local and simple, and offers none of that governance. |
 | [CLIProxyAPI](cliproxyapi.md) | ✅ | When you want to reuse several CLI/OAuth accounts as a broad multi-protocol API, choose CLIProxyAPI; choose Router when you want configuration-driven model routing inside Claude Code itself. | CLIProxyAPI covers more upstream CLI products and API shapes; Router is narrower but keeps the routing decision inside the coding-agent workflow. |
-| [HarnessRouter](harnessrouter.md) | ✅ | When your product must run whole agent tasks behind an API, choose HarnessRouter; Router is for redirecting a client you already run. | HarnessRouter owns sessions, files and workspaces and therefore has far more operational surface; Router is a request path only. |
+| [HarnessRouter](../harnessrouter.md) | ✅ | When your product must run whole agent tasks behind an API, choose HarnessRouter; Router is for redirecting a client you already run. | HarnessRouter owns sessions, files and workspaces and therefore has far more operational surface; Router is a request path only. |
 | [Funtool](funtool.md) | ✅ | When the exact Windows + Claude Code + vendor-endpoint path is all you need and a prebuilt binary is acceptable, choose Funtool; choose Router for cross-platform, configuration-driven routing. | Funtool is a narrow opaque binary; Router is inspectable TypeScript with a UI, at the cost of a Node/Electron stack and a larger config surface. |
 | OpenRouter | not indexed | When you would rather not run any local router and accept a hosted broker, choose OpenRouter; choose Router when provider credentials and routing must stay on your machine. | OpenRouter removes local ops and adds a third party in the request path plus per-token margin; Router keeps credentials local but makes you the operator. |
 

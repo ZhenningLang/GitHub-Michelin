@@ -934,7 +934,7 @@ Obsidian / editor Markdown plugins,categories/markdown-tools/markdown-here.md,,n
 Official WeChat (no plugin),categories/im-automation/wechat/wechatplugin-macos.md,,no
 Okular,categories/pdf-tools/pdf-transform-signing/pdfcraft.md,,no
 Ollama,categories/on-device-ml/ai-edge-gallery.md,,no
-One API,categories/api-gateway/cliproxyapi.md,,no
+One API,categories/api-gateway/client-routing/cliproxyapi.md,,no
 One-off summary prompt,categories/agent-skills/context-engineering/cangjie-skill.md,,no
 ONLYOFFICE Desktop Editors (`ONLYOFFICE/DesktopEditors`),categories/office-editors/deckcraft.md,,no
 ONNX Runtime (+ GenAI / Mobile),categories/on-device-ml/litert-lm.md,,no
@@ -955,7 +955,7 @@ openpyxl,categories/office-automation/INDEX.md,,no
 OpenResty (bundle),categories/nginx-modules/lua-nginx-module.md,,no
 OpenRLHF,categories/llm-training/miles.md,,no
 OpenRLHF (OpenRLHF/OpenRLHF),categories/llm-training/trl.md,,no
-OpenRouter,categories/api-gateway/claude-code-router.md,,no
+OpenRouter,categories/api-gateway/client-routing/claude-code-router.md,,no
 OpenSCAD,categories/cad/freecad.md,,no
 OpenSCAD · CadQuery · LibreCAD · Blender,categories/cad/INDEX.md,,no
 OpenSearch SQL plugin,categories/databases/database-clients/elasticsearch-sql.md,,no

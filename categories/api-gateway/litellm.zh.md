@@ -78,7 +78,7 @@ health:
 
 你是平台工程师，多个应用或团队各自拿自己的 key 直连模型供应商；你需要一个端点、按团队的虚拟密钥与预算、花费可见性，以及供应商劣化时的故障转移——又不想把这种耦合推进每个应用。这时选 LiteLLM，因为它就是为 LLM 流量做的：按模型路由、token 计费、预算与 guardrails 都是一等配置，你不必把模型语义硬塞进通用网关插件。
 
-决定性的取舍是**用途与治理**。当 LLM 语义（模型映射、token 成本、预算执行）比 HTTP 层插件或 K8s Ingress 更重要时，选它而不是 [Kong Gateway](kong.zh.md)；当流量是服务多个产品的供应商 API key，而不是某个开发者的 coding agent 客户端或消费级登录池时，选它而不是 [Claude Code Router](claude-code-router.zh.md) 与 [CLIProxyAPI](cliproxyapi.zh.md)；当密钥与流量必须留在自有基础设施时，选它而不是 OpenRouter 这类托管中间商。治理的代价是完整功能面并非全部 MIT：`enterprise/` 采用商业许可。[未验证] 你需要的具体功能是否落在该边界内——定了再上，先查企业功能矩阵。
+决定性的取舍是**用途与治理**。当 LLM 语义（模型映射、token 成本、预算执行）比 HTTP 层插件或 K8s Ingress 更重要时，选它而不是 [Kong Gateway](kong.zh.md)；当流量是服务多个产品的供应商 API key，而不是某个开发者的 coding agent 客户端或消费级登录池时，选它而不是 [Claude Code Router](client-routing/claude-code-router.zh.md) 与 [CLIProxyAPI](client-routing/cliproxyapi.zh.md)；当密钥与流量必须留在自有基础设施时，选它而不是 OpenRouter 这类托管中间商。治理的代价是完整功能面并非全部 MIT：`enterprise/` 采用商业许可。[未验证] 你需要的具体功能是否落在该边界内——定了再上，先查企业功能矩阵。
 
 ## 何时不用
 
@@ -87,7 +87,7 @@ health:
 - **要求整个功能面都在宽松许可下、没有商业目录。** 改用 Apache-2.0 网关如 [Kong Gateway](kong.zh.md)；LiteLLM 的 SSO、SCIM、审计日志与细粒度 RBAC 是企业许可。
 - **需要 K8s 原生流量策略与插件生态。** 用 Kong 或基于 Envoy 的 AI 网关；LiteLLM 是应用层代理，不是数据面网关。
 - **无法容忍跨协议语义损失或快速升级节奏。** 直接调供应商或改用托管中间商；兼容层会在 OpenAI、Anthropic、Gemini 形状之间丢字段或错位。
-- **要的是单个开发者 coding agent 的路由，而不是共享网关。** 改用 [Claude Code Router](claude-code-router.zh.md)；那件事不需要预算、密钥与数据库。
+- **要的是单个开发者 coding agent 的路由，而不是共享网关。** 改用 [Claude Code Router](client-routing/claude-code-router.zh.md)；那件事不需要预算、密钥与数据库。
 
 ## 横向对比
 
@@ -95,8 +95,8 @@ health:
 |---|---|---|---|
 | Portkey Gateway | 未收录 | 想要一个完全开源、把 guardrails/可观测做成一等能力的 LLM 网关时，评估 Portkey Gateway；当 LiteLLM 的供应商广度、成本追踪与社区规模更重要、且不要求许可完全宽松时，选 LiteLLM。 | Portkey 是同类 LLM 网关，open-core 姿态不同；LiteLLM 生态与集成更多，但企业目录边界与“持有凭据的代理”的 CVE 历史是实打实的成本。 |
 | [Kong Gateway](kong.zh.md) | 已收录 | 需要一个既能处理 LLM/MCP 流量、又有 K8s Ingress 与插件生态的 HTTP/API 网关时，选 Kong；当 LLM 特有的成本、预算与模型语义才是真正需求时，选 LiteLLM。 | Kong 是成熟数据面网关，配置模型更陡，且没有原生 token 计费；LiteLLM 做 LLM 路由更简单，但属应用层，不是通用流量网关。 |
-| [Claude Code Router](claude-code-router.zh.md) | 已收录 | 开发者想在本机让 coding agent 跨模型路由时，选 Router；流量属于产品、需要密钥/预算/花费记录时，选 LiteLLM。 | Router 是本地单用户工具，没有多租户控制；LiteLLM 加上数据库与治理，也必须当服务运维。 |
-| [CLIProxyAPI](cliproxyapi.zh.md) | 已收录 | 要被复用的资产是消费级 CLI/OAuth 登录态时，选 CLIProxyAPI；资产是供应商 API key、需求是治理时，选 LiteLLM。 | CLIProxyAPI 把订阅变成 API 并承担账号政策风险；LiteLLM 走签发的 key、留在厂商条款内，代价是真实的基础设施。 |
+| [Claude Code Router](client-routing/claude-code-router.zh.md) | 已收录 | 开发者想在本机让 coding agent 跨模型路由时，选 Router；流量属于产品、需要密钥/预算/花费记录时，选 LiteLLM。 | Router 是本地单用户工具，没有多租户控制；LiteLLM 加上数据库与治理，也必须当服务运维。 |
+| [CLIProxyAPI](client-routing/cliproxyapi.zh.md) | 已收录 | 要被复用的资产是消费级 CLI/OAuth 登录态时，选 CLIProxyAPI；资产是供应商 API key、需求是治理时，选 LiteLLM。 | CLIProxyAPI 把订阅变成 API 并承担账号政策风险；LiteLLM 走签发的 key、留在厂商条款内，代价是真实的基础设施。 |
 | OpenRouter | 未收录 | 不想运维网关、接受托管中间商及其按 token 加价时，选 OpenRouter；凭据与花费数据必须留在自有基础设施时，选 LiteLLM。 | OpenRouter 去掉运维和数据库，链路里多一个第三方与加价；LiteLLM 保留控制权，换来 PostgreSQL、Redis 与升级工作。 |
 
 ## 技术栈
