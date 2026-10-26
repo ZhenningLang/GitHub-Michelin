@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "work", "en": "Repository work and existing check results", "zh": "仓库工作与已有检查结果", "kind": "input"},
+    {"id": "fingerprint", "en": "Shared HEAD and dirty-diff fingerprint", "zh": "共用 HEAD 与脏差异指纹", "technique": [2]},
+    {"id": "request", "en": "Record report request; return exit 2", "zh": "记录报告请求，返回退出码 2", "technique": [2]},
+    {"id": "report", "en": "Model writes verdict and technical detail", "zh": "模型撰写裁决与技术细节", "kind": "output", "technique": [1]},
+    {"id": "handover", "en": "Next start injects capped latest report", "zh": "下次启动注入限行旧报告", "technique": [1]},
+    {"id": "census", "en": "Git dates and tracked name references", "zh": "Git 日期与受管理文本的名称引用", "technique": [3]},
+    {"id": "map", "en": "Dated product map; tickets only after consent", "zh": "带日期产品图；同意后才建工单", "kind": "output", "technique": [3]},
+    {"id": "logs", "en": "Evaluation tool-call streams", "zh": "评测工具调用日志", "kind": "input"},
+    {"id": "score", "en": "Count routing attempts separately from loaded quality arms", "zh": "路由尝试与加载后的质量对照分别计数", "kind": "output", "technique": [4]}
+  ],
+  "edges": [
+    {"from": "work", "to": "fingerprint"},
+    {"from": "fingerprint", "to": "request", "en": "threshold and cooldown", "zh": "门槛与冷却期"},
+    {"from": "request", "to": "report", "en": "instruction, not file validation", "zh": "指令，不验证文件"},
+    {"from": "work", "to": "report", "en": "reuse proof, do not rerun tests", "zh": "复用证据，不重跑测试"},
+    {"from": "report", "to": "handover"},
+    {"from": "work", "to": "census"},
+    {"from": "census", "to": "map"},
+    {"from": "report", "to": "map", "en": "reported progress stays separate", "zh": "报告进度与测量分开"},
+    {"from": "logs", "to": "score", "en": "denials and missing loads remain visible", "zh": "保留拒绝调用与未加载缺口"}
+  ],
+  "sources": [
+    "https://github.com/kharmanskyi/open-steps/blob/4fa744ba8ea06ccf128a39853824c46ac391dd00/hooks/fingerprint.sh",
+    "https://github.com/kharmanskyi/open-steps/blob/4fa744ba8ea06ccf128a39853824c46ac391dd00/skills/os-done-or-not/SKILL.md",
+    "https://github.com/kharmanskyi/open-steps/blob/4fa744ba8ea06ccf128a39853824c46ac391dd00/skills/os-big-picture/scripts/census.sh",
+    "https://github.com/kharmanskyi/open-steps/blob/4fa744ba8ea06ccf128a39853824c46ac391dd00/evals/score.py"
+  ]
+}

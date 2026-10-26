@@ -14,6 +14,7 @@
 
 | 合集 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Open Steps** | 面向产品侧使用者的直白完成裁决与持久交接；先协调自动合并政策。 | B（4/5） | [→](open-steps.zh.md) |
 | **awesome-gamedev-agent-skills** | 按引擎与版本路由十种引擎的游戏配方；提供指引，不控制编辑器。 | B（4/5） | [→](awesome-gamedev-agent-skills.zh.md) |
 | **SwiftUI Pro** | 专项检查 SwiftUI 的 API、数据流和无障碍；仅为建议，依赖 SDK 版本。 | B（4/5） | [→](swiftui-agent-skill.zh.md) |
 | **Agent Skills (addyosmani)** | 约 24 个生产级工程技能包（质量/安全/web 性能/API/发布），装进 coding agent 并通过约 8 个 SDLC 斜杠命令路由。 | A（4/5） | [→](addyosmani-agent-skills.zh.md) |
@@ -29,6 +30,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Open Steps](open-steps.zh.md) | 已收录 | B（4/5） | 不只精简表达，还保存报告并核对声明；钩子请求报告，但不验证完成。 |
 | [awesome-gamedev-agent-skills](awesome-gamedev-agent-skills.zh.md) | ✅ | B（4/5） | 不接编辑器即可补玩法与素材领域配方；模型路由和引擎验收仍需自行负责。 |
 | [科研工作流](scientific-workflows/INDEX.zh.md) | 子分类 | — | 科学库、实证方法与带证据的论文；软件开发实践留在本节点。 |
 | [SwiftUI Pro](swiftui-agent-skill.zh.md) | ✅ | B（4/5） | 专项参考与文件级修法；不是编译器、性能分析器或模拟器操作工具。 |

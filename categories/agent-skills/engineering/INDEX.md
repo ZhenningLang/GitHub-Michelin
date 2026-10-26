@@ -14,6 +14,7 @@
 
 | Collection | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Open Steps** | Plain-language completion verdicts and saved handovers for product-side agent users; reconcile its automatic-merge policy first. | B (4/5) | [→](open-steps.md) |
 | **awesome-gamedev-agent-skills** | Engine/version-aware game-dev recipes with a router across ten engines; guidance, not editor control. | B (4/5) | [→](awesome-gamedev-agent-skills.md) |
 | **SwiftUI Pro** | Focused API, data-flow and accessibility review for SwiftUI; advisory and SDK-version-sensitive. | B (4/5) | [→](swiftui-agent-skill.md) |
 | **Agent Skills (addyosmani)** | A curated pack of ~24 production-engineering skills (quality, security, web-perf, API, ship) installed into your coding agent and routed through ~8 SDLC slash commands. | A (4/5) | [→](addyosmani-agent-skills.md) |
@@ -29,6 +30,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Open Steps](open-steps.md) | ✅ | B (4/5) | Adds report persistence and claim checking rather than just brevity; hooks request reports but do not verify completion. |
 | [awesome-gamedev-agent-skills](awesome-gamedev-agent-skills.md) | ✅ | B (4/5) | Domain recipes for gameplay and assets without an editor bridge; model routing and engine verification remain your responsibility. |
 | [Scientific workflows](scientific-workflows/INDEX.md) | Sub-category | — | Scientific libraries, empirical methods and evidence-linked papers; software-development practice remains here. |
 | [SwiftUI Pro](swiftui-agent-skill.md) | ✅ | B (4/5) | Domain-specific references and file-level fixes; not a compiler, profiler or simulator operator. |
