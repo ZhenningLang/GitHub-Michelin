@@ -33,9 +33,12 @@
 
 2026-10-26追加裁决：维护者明确点名“额外再加一个这个：https://github.com/datawhalechina/diy-llm”，将同一候选转为带许可警告的信息条目，不增加候选身份。该裁决不解决CC BY-NC-SA、MIT及Apache代码分区，不代表商用、再分发或执行授权；不继承到其它仓库，也不包含远端发布。
 
+
+19:48点名追加验收：DIY-LLM已按单仓信息裁决收录，许可分区问题没有解决。本批累计新增6页、鲜度保留1项、自有跳过1项；旧提案与追加前验收仍保留。原汇总144候选不变、有页141→142，另外143条对象及原始正文逐字不变；326个文件目标和202个内部锚点无缺失。16个来源blob、行号、流程字面值、六图事实及两主清单各984个唯一目标通过；工具回归483 tests OK、门禁0 errors／1630 warnings。提交后本项目匹配标签0→0，非目标不变。见[本次转正验收](promotion-diy-llm.json)；[原批次验收](verification.json)是转正前的历史记录。HTML与共享工具未改，新分支未推送。
+
 | 规范名 | 动作 | 结果 | 页面路径 | 备注 | 标签里的写法 |
 |:---|:---|:---|:---|:---|:---|
-| datawhalechina/diy-llm | add | done | categories/llm-training/study-and-experiments/diy-llm.md | 维护者19:48点名转为许可分区未定信息条目；CC声明/MIT作业/Apache评分器分账，疑问未解决；固定源码与完整双语图卡已核；不执行训练，no leftover Q&A | datawhalechina/diy-llm |
+| datawhalechina/diy-llm | add | done | categories/llm-training/study-and-experiments/diy-llm.md | 维护者19:48点名转为信息条目；CC/MIT/Apache代码与讲义分账，作业2范围仍未明；独立源码及许可语义复核通过；提交后标签匹配0→0，其它不动；不执行上游；no leftover Q&A | datawhalechina/diy-llm |
 | ihhub/fheroes2 | add | done | categories/games/fheroes2.md | 固定源码与资格五问通过，新games路由；GPL不覆盖外部资源，音色采样来源和旧存档限制明示；曾因Chrome歧义暂停，现已关闭并核对；no leftover Q&A；已按独立提交核对标签匹配1→0 | ihhub/fheroes2 |
 | kdlbs/kandev | add | done | categories/agent-tooling/supervision-surfaces/agent-cockpits/kandev.md | 固定SHA源码及资格五问通过，AGPL/默认监听与鉴权/破坏性归档边界已明示；标签曾因Chrome歧义暂停，现已关闭并核对；no leftover Q&A；已按独立提交核对标签匹配1→0 | kdlbs/kandev |
 | kharmanskyi/open-steps | add | done | categories/agent-skills/engineering/open-steps.md | 固定源码、八项技能和钩子已核，报告请求不等于落盘，自动合并与共享状态边界明示；已先独立拆分行为覆盖类；曾因Chrome歧义暂停，现已关闭并核对；no leftover Q&A；已按独立提交核对标签匹配1→0 | kharmanskyi/open-steps |
