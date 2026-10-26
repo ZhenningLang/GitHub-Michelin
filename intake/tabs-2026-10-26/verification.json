@@ -1,5 +1,5 @@
 {
-  "status": "local content and original Markdown verified; full intake remains blocked by Chrome ambiguity",
+  "status": "local content, original Markdown and committed-only tab closure verified; remote publication needs authorization",
   "counts": {
     "initial_rows": 8,
     "new_pages": 5,
@@ -673,9 +673,9 @@
     "decision": "Owner decision needed on coursework license partition; no infringement or whole-repository copying conclusion"
   },
   "report": {
-    "source_sha256": "f1ba008f3d9604b8873620f1e495bf55c26d99ac3bab68bf8169ba27d195fe14",
+    "source_sha256": "0d9b3a2229e2bbcbf3a5dc28351041d05046c9a9238ab3caa56cf1920c468085",
     "links": {
-      "local_file_targets": 316,
+      "local_file_targets": 324,
       "internal_markdown_anchors": 202,
       "missing": []
     },
@@ -739,10 +739,92 @@
     "note": "Demo HTTP errors in unittest output are fixture diagnostics, not new intake failures."
   },
   "tab_close": {
-    "status": "DEFER: two eligible Chrome processes",
-    "closed_by_this_batch": 0,
-    "post_deferral_rescan": false,
-    "current_open_count": "unknown"
+    "status": "initial DEFER resolved by successful unmodified canonical scan; no manual PID or app-name fallback",
+    "final_audit": {
+      "status": "all done repository tabs absent after committed-only closure",
+      "done_targets_verified": 6,
+      "target_matches_before_close": 6,
+      "remaining": {
+        "datawhalechina/diy-llm": 1,
+        "anonymous-own-1": 1
+      },
+      "non_target_unchanged_each_operation": true,
+      "post_close_scan_count": 6,
+      "pending": []
+    },
+    "operations": [
+      {
+        "repo": "llm-d/llm-d",
+        "checkpoint_commit": "b279aa24b1acd19feedd1fcf5420cd11552f881e",
+        "operation_head": "0362c88438b4fb00ccb037be615ed9aa11a5ceef",
+        "target_before": 1,
+        "target_after": 0,
+        "non_target_unchanged": true,
+        "non_target_removed": 0,
+        "non_target_added": 0,
+        "helper_output": "closed https://github.com/llm-d/llm-d\n1 tab(s) matched"
+      },
+      {
+        "repo": "kdlbs/kandev",
+        "checkpoint_commit": "ba69fcf17a0abc56d5cda7a1b75d8fa3d1f38893",
+        "operation_head": "0362c88438b4fb00ccb037be615ed9aa11a5ceef",
+        "target_before": 1,
+        "target_after": 0,
+        "non_target_unchanged": true,
+        "non_target_removed": 0,
+        "non_target_added": 0,
+        "helper_output": "closed https://github.com/kdlbs/kandev\n1 tab(s) matched"
+      },
+      {
+        "repo": "ihhub/fheroes2",
+        "checkpoint_commit": "ec41055a622e350fbce91e2134124ceeeac2f2d2",
+        "operation_head": "0362c88438b4fb00ccb037be615ed9aa11a5ceef",
+        "target_before": 1,
+        "target_after": 0,
+        "non_target_unchanged": true,
+        "non_target_removed": 0,
+        "non_target_added": 0,
+        "helper_output": "closed https://github.com/ihhub/fheroes2\n1 tab(s) matched"
+      },
+      {
+        "repo": "kunchenguid/no-mistakes",
+        "checkpoint_commit": "4a5f616dd8e491ad8adcc3cdd9a0d9451cb2d69f",
+        "operation_head": "0362c88438b4fb00ccb037be615ed9aa11a5ceef",
+        "target_before": 1,
+        "target_after": 0,
+        "non_target_unchanged": true,
+        "non_target_removed": 0,
+        "non_target_added": 0,
+        "helper_output": "closed https://github.com/kunchenguid/no-mistakes\n1 tab(s) matched"
+      },
+      {
+        "repo": "kharmanskyi/open-steps",
+        "checkpoint_commit": "950acc9f271859413273e16d39b48dda9cde4bbb",
+        "operation_head": "0362c88438b4fb00ccb037be615ed9aa11a5ceef",
+        "target_before": 1,
+        "target_after": 0,
+        "non_target_unchanged": true,
+        "non_target_removed": 0,
+        "non_target_added": 0,
+        "helper_output": "closed https://github.com/kharmanskyi/open-steps\n1 tab(s) matched"
+      },
+      {
+        "repo": "XiaoLuoLYG/GOD",
+        "checkpoint_commit": "982295eefd0ca04fadd26269d2a1de79683192e8",
+        "operation_head": "0362c88438b4fb00ccb037be615ed9aa11a5ceef",
+        "target_before": 1,
+        "target_after": 0,
+        "non_target_unchanged": true,
+        "non_target_removed": 0,
+        "non_target_added": 0,
+        "helper_output": "closed https://github.com/XiaoLuoLYG/GOD\n1 tab(s) matched"
+      }
+    ]
+  },
+  "readme_unique_mapping": {
+    "rows_each": 983,
+    "unique_targets_each": 983,
+    "old_rows_preserved": 978
   },
   "html": "unchanged original hash; renderer/pair/browser not run; original denial retained",
   "publication": {
@@ -757,7 +839,6 @@
     "expected_value_source": "需求原文、AGENTS/schema and frozen original137, not self-generated success cases",
     "change_relative_to_freeze": "content generation only; tools/CI/schema/thresholds unchanged",
     "known_gaps": [
-      "tab close and incremental scan deferred",
       "DIY-LLM license partition needs decision",
       "HTML not refreshed",
       "remote publication not authorized",

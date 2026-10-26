@@ -21,18 +21,22 @@
 ## Queue
 
 
-浏览器关闭阶段出现两个符合筛选的Chrome候选进程，现有helper按规则DEFER。本批未执行关闭，后续复扫和关闭状态未验证；仅继续初扫队列的源码研究与汇总，不手选PID或换应用名绕过。
+初次关闭因两个Chrome候选暂停；本地内容提交后，原脚本最终只读复核成功，恢复按规范身份关闭。未手选PID或换入口，初始拒绝记录保留在本地。
 
 
-本轮本地验收：新增5对双语页、鲜度保留1项、暂缓1项、自有跳过1项。原汇总同路径更新为144候选／141有页，原137条正文逐字保留；316个文件目标、202个内部锚点无缺失。67份固定来源blob及行号、30张SVG、8份迁移／入链旧页与冻结抽样全文验收通过。make gates为0 errors／1630 warnings，工具回归483 tests OK；新页成对质量扫描全零。标签关闭和增量复扫仍DEFER，本批关闭数为0、当前打开数未重新观察；HTML仍旧版，新分支未推送。详见[机器验收记录](verification.json)，原总报告不是本分支公开产物。
+
+
+
+
+本轮本地验收：新增5对双语页、鲜度保留1项、暂缓1项、自有跳过1项。原汇总同路径更新为144候选／141有页，原137条正文逐字保留；324个文件目标、202个内部锚点无缺失。67份固定来源blob及行号、30张SVG、8份迁移／入链旧页与冻结抽样全文验收通过。make gates为0 errors／1630 warnings，工具回归483 tests OK；新页成对质量扫描全零。初次Chrome歧义保留历史；原脚本恢复读取后，六个已提交目标各关闭一个标签，六次复扫均无新增或待办，每次非目标均未变；现保留DIY-LLM与匿名自有标签各一个。README合并重复行已修正，两主清单各983个唯一目标，旧978行内容仅改必要路径。HTML仍旧版，新分支未推送。详见[机器验收记录](verification.json)，原总报告不是本分支公开产物。
 
 | 规范名 | 动作 | 结果 | 页面路径 | 备注 | 标签里的写法 |
 |:---|:---|:---|:---|:---|:---|
 | datawhalechina/diy-llm | add | proposed |  | 有87个Python文件和10个notebook；作业2复制原课文件但无对应LICENSE，另一作业MIT覆盖范围未明，提请许可分区裁决，不作侵权或整仓mostly-copy定论；不建页，标签未触碰；no leftover Q&A | datawhalechina/diy-llm |
-| ihhub/fheroes2 | add | done | categories/games/fheroes2.md | 固定源码与资格五问通过，新games路由；GPL不覆盖外部资源，音色采样来源和旧存档限制明示；关闭因Chrome歧义DEFER；no leftover Q&A | ihhub/fheroes2 |
-| kdlbs/kandev | add | done | categories/agent-tooling/supervision-surfaces/agent-cockpits/kandev.md | 固定SHA源码及资格五问通过，AGPL/默认监听与鉴权/破坏性归档边界已明示；标签关闭因Chrome歧义DEFER；no leftover Q&A | kdlbs/kandev |
-| kharmanskyi/open-steps | add | done | categories/agent-skills/engineering/open-steps.md | 固定源码、八项技能和钩子已核，报告请求不等于落盘，自动合并与共享状态边界明示；已先独立拆分行为覆盖类；关闭因Chrome歧义DEFER；no leftover Q&A | kharmanskyi/open-steps |
-| kunchenguid/no-mistakes | add | done | categories/ai-code-review/no-mistakes.md | 固定源码与资格五问通过；本地门禁可绕开，宽权限/用户技能软链覆盖/遥测/自动发布边界明示；关闭因Chrome歧义DEFER；no leftover Q&A | kunchenguid/no-mistakes |
-| llm-d/llm-d | sync | done | categories/llm-inference/serving-engines/llm-d.md | fresh_by_date；delta 26<=90，保留2026-09-30核验日与原页，未重核上游；no leftover Q&A | llm-d/llm-d |
-| XiaoLuoLYG/GOD | add | done | categories/social-simulation/god.md | 固定源码及集成归属通过；社会模拟原型，干预生效/回放/真实恢复分开，本机Python执行/密钥/new-run删除和素材权利边界明示；关闭因Chrome歧义DEFER；no leftover Q&A | xiaoluolyg/god |
+| ihhub/fheroes2 | add | done | categories/games/fheroes2.md | 固定源码与资格五问通过，新games路由；GPL不覆盖外部资源，音色采样来源和旧存档限制明示；曾因Chrome歧义暂停，现已关闭并核对；no leftover Q&A；已按独立提交核对标签匹配1→0 | ihhub/fheroes2 |
+| kdlbs/kandev | add | done | categories/agent-tooling/supervision-surfaces/agent-cockpits/kandev.md | 固定SHA源码及资格五问通过，AGPL/默认监听与鉴权/破坏性归档边界已明示；标签曾因Chrome歧义暂停，现已关闭并核对；no leftover Q&A；已按独立提交核对标签匹配1→0 | kdlbs/kandev |
+| kharmanskyi/open-steps | add | done | categories/agent-skills/engineering/open-steps.md | 固定源码、八项技能和钩子已核，报告请求不等于落盘，自动合并与共享状态边界明示；已先独立拆分行为覆盖类；曾因Chrome歧义暂停，现已关闭并核对；no leftover Q&A；已按独立提交核对标签匹配1→0 | kharmanskyi/open-steps |
+| kunchenguid/no-mistakes | add | done | categories/ai-code-review/no-mistakes.md | 固定源码与资格五问通过；本地门禁可绕开，宽权限/用户技能软链覆盖/遥测/自动发布边界明示；曾因Chrome歧义暂停，现已关闭并核对；no leftover Q&A；已按独立提交核对标签匹配1→0 | kunchenguid/no-mistakes |
+| llm-d/llm-d | sync | done | categories/llm-inference/serving-engines/llm-d.md | fresh_by_date；delta 26<=90，保留2026-09-30核验日与原页，未重核上游；no leftover Q&A；已按独立提交核对标签匹配1→0 | llm-d/llm-d |
+| XiaoLuoLYG/GOD | add | done | categories/social-simulation/god.md | 固定源码及集成归属通过；社会模拟原型，干预生效/回放/真实恢复分开，本机Python执行/密钥/new-run删除和素材权利边界明示；曾因Chrome歧义暂停，现已关闭并核对；no leftover Q&A；已按独立提交核对标签匹配1→0 | xiaoluolyg/god |
 | anonymous-own-1 | skip | skipped |  | 维护者自有仓库，按范围跳过；标签保留 |  |
