@@ -23,10 +23,10 @@
 | 规范名 | 动作 | 结果 | 页面路径 | 备注 | 标签里的写法 |
 |:---|:---|:---|:---|:---|:---|
 | datawhalechina/diy-llm | add | pending |  |  | datawhalechina/diy-llm |
-| ihhub/fheroes2 | add | pending |  |  | ihhub/fheroes2 |
-| kdlbs/kandev | add | pending |  |  | kdlbs/kandev |
-| kharmanskyi/open-steps | add | pending |  |  | kharmanskyi/open-steps |
+| ihhub/fheroes2 | add | running |  |  | ihhub/fheroes2 |
+| kdlbs/kandev | add | running |  |  | kdlbs/kandev |
+| kharmanskyi/open-steps | add | running |  |  | kharmanskyi/open-steps |
 | kunchenguid/no-mistakes | add | pending |  |  | kunchenguid/no-mistakes |
-| llm-d/llm-d | sync | pending | categories/llm-inference/serving-engines/llm-d.md |  | llm-d/llm-d |
+| llm-d/llm-d | sync | done | categories/llm-inference/serving-engines/llm-d.md | fresh_by_date；delta 26<=90，保留2026-09-30核验日与原页，未重核上游；no leftover Q&A | llm-d/llm-d |
 | XiaoLuoLYG/GOD | add | pending |  |  | xiaoluolyg/god |
 | anonymous-own-1 | skip | skipped |  | 维护者自有仓库，按范围跳过；标签保留 |  |
