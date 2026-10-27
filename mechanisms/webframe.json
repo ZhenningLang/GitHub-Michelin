@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "page", "en": "Your HTML page or URL", "zh": "你的 HTML 页面或 URL", "kind": "input"},
+    {"id": "native", "en": "System webview; private Xvfb if Linux has no display", "zh": "系统网页视图；Linux 无显示时启动私有 Xvfb", "technique": [3]},
+    {"id": "hooks", "en": "Initialize page console, error and close hooks", "zh": "初始化页面控制台、错误和关闭钩子", "technique": [1]},
+    {"id": "queue", "en": "Serialize batches over the Go bridge", "zh": "通过 Go 消息桥逐批保序发送", "technique": [1]},
+    {"id": "output", "en": "CLI stdout, stderr and page-controlled exit", "zh": "命令行标准输出、标准错误与页面控制退出", "kind": "output"},
+    {"id": "stdin", "en": "Optional stdin JavaScript", "zh": "可选标准输入 JavaScript", "kind": "input"},
+    {"id": "eval", "en": "Request ID; global eval; await promise; reload fails pending callbacks", "zh": "请求 ID；全局求值；等待异步结果；重载时结束旧回调", "technique": [2]}
+  ],
+  "edges": [
+    {"from": "page", "to": "native"},
+    {"from": "native", "to": "hooks"},
+    {"from": "hooks", "to": "queue"},
+    {"from": "queue", "to": "output"},
+    {"from": "stdin", "to": "eval", "style": "dashed"},
+    {"from": "eval", "to": "queue", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/tractordev/webframe/blob/03155e2ba67cb9f2825cca84c7c21134ed47add3/webframe.go#L75-L164",
+    "https://github.com/tractordev/webframe/blob/03155e2ba67cb9f2825cca84c7c21134ed47add3/hooks.js#L5-L31",
+    "https://github.com/tractordev/webframe/blob/03155e2ba67cb9f2825cca84c7c21134ed47add3/hooks.js#L137-L149",
+    "https://github.com/tractordev/webframe/blob/03155e2ba67cb9f2825cca84c7c21134ed47add3/cmd/webframe/display_linux.go#L13-L47"
+  ]
+}

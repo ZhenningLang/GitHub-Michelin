@@ -8,6 +8,7 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **xtool** | Build and sign SwiftPM iOS apps from Linux, WSL or macOS; Apple SDK and account constraints still apply. | B (6/6) | [→](xtool.md) |
+| **webframe** | Run a browser-only page as a terminal program using the OS webview; bring engine-specific tests, timeouts and profile cleanup. | C (5/6) | [→](webframe.md) |
 | **Deno** | Use it when starting a new TypeScript backend, CLI or script where deny-by-default file, network and env access plus built-in fmt, lint and test matter more than running an existing Node codebase unchanged — but large Node migrations and native addons fit poorly. | A (6/6) | [→](deno.md) |
 | **Bun** | Use it when a Node.js TypeScript project wants one fast binary to run .ts files, install packages, bundle and test — but Node API coverage is incomplete, v1.4 just rewrote the codebase from Zig to Rust, and there is no permission sandbox. | A (5/6) | [→](bun.md) |
 | **Tauri** | Use it when a web-frontend desktop app must ship a small installer and low memory instead of bundling Chromium like Electron — but rendering differs across OS webviews, Linux needs webkit2gtk 4.1, and native logic must be written in Rust. | A (6/6) | [→](tauri.md) |
@@ -20,6 +21,7 @@
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [xtool](xtool.md) | ✅ | B (6/6) | Build and sign SwiftPM iOS apps from Linux, WSL or macOS; Apple SDK and account constraints still apply. |
+| [webframe](webframe.md) | ✅ | C (5/6) | Hidden native page runtime with terminal streams, not a test runner; system-engine differences and persistent page data remain. |
 | [Deno](deno.md) | ✅ | A (6/6) | A sandboxed runtime and complete toolchain in one binary, at the cost of new conventions (permission flags, deno.json, JSR) and only partial compatibility with Node's node_modules layout. |
 | [Bun](bun.md) | ✅ | A (5/6) | Fewer tools and shorter waits with the same package.json, at the cost of runtime compatibility gaps and a company-owned roadmap (Oven, now part of Anthropic). |
 | [Tauri](tauri.md) | ✅ | A (6/6) | Small binaries and a capability-based permission model, at the cost of per-platform rendering differences and a Rust toolchain the team must adopt. |

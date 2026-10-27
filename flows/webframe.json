@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "webframe", "zh": "webframe"},
+  "steps": [
+    {"lane": "you", "en": "Prepare the binary and the platform's native webview requirements", "zh": "准备二进制及平台原生网页引擎依赖"},
+    {"lane": "you", "en": "Write a page that logs its result and closes when done", "zh": "编写输出结果后主动关闭的页面", "code": "window.close();"},
+    {"lane": "you", "en": "Launch webframe with your page's file path", "zh": "把页面路径交给 webframe 启动"},
+    {"lane": "them", "en": "Run the page in a hidden system webview and forward console output", "zh": "在隐藏系统网页视图中执行并转发控制台输出"},
+    {"lane": "them", "en": "Terminate the event loop on page close and return to the shell", "zh": "收到页面关闭消息后结束循环，返回终端"}
+  ],
+  "value": {"en": "A browser-only page behaves like a terminal program without a browser automation suite", "zh": "仅浏览器可运行的页面变成终端程序，无需浏览器自动化套件"},
+  "sources": [
+    "https://github.com/tractordev/webframe/blob/03155e2ba67cb9f2825cca84c7c21134ed47add3/README.md#L29-L56",
+    "https://github.com/tractordev/webframe/blob/03155e2ba67cb9f2825cca84c7c21134ed47add3/examples/hello.html#L1-L6",
+    "https://github.com/tractordev/webframe/blob/03155e2ba67cb9f2825cca84c7c21134ed47add3/cmd/webframe/main.go#L117-L168",
+    "https://github.com/tractordev/webframe/blob/03155e2ba67cb9f2825cca84c7c21134ed47add3/webframe.go#L199-L209"
+  ]
+}
