@@ -93,7 +93,7 @@ PDF 两栏文字混在一起，检索答案又无法指回原页区域。OpenDat
 
 - **资料主要是 Office、HTML 或邮件。** 轻量转换选 [MarkItDown](markitdown.zh.md)，丰富多格式结构选 [Docling](docling.zh.md)；本项目只接收 PDF。
 - **不能部署 Java。** 选 [Docling](docling.zh.md) 等 Python 原生管线。Python 包是 Java 命令行包装，不是免 JVM 实现。
-- **扫描件要识字，却只想装基础包。** 可评估 [Marker](marker.zh.md) 并审查权重条款，或启用本项目混合扩展和服务。Java 快速路径不是宣传中的模型识字路径。
+- **扫描件要识字，却只想装基础包。** 可评估 [Marker](model-backed-pdf/marker.zh.md) 并审查权重条款，或启用本项目混合扩展和服务。Java 快速路径不是宣传中的模型识字路径。
 - **免费自动标签必须等于 PDF/UA 合规导出。** 两者不能等同。采用独立验证的修复流程，或预算项目企业扩展；PDF/UA 导出和可视化修复台不属于免费核心。
 - **期待解析后 PDF 指令就可信。** 对包括 [Docling](docling.zh.md) 在内的解析器都保留沙箱和指令、数据隔离。隐藏文字过滤不能排除可见恶意指令。
 
@@ -103,7 +103,7 @@ PDF 两栏文字混在一起，检索答案又无法指回原页区域。OpenDat
 |---|---|---|---|
 | [Docling](docling.zh.md) | ✅ | 统一多格式模型管线选 Docling；Java PDF 基线、坐标导出和标签 PDF 输出选本项目。 | 混合模式本身就使用 Docling，两者部分可组合，不是完全独立的竞争模型。 |
 | [MarkItDown](markitdown.zh.md) | ✅ | 轻量多格式 Markdown 转换选 MarkItDown；PDF 几何和阅读顺序是硬条件时选本项目。 | 免强制 JVM，或用较重运行时换取 PDF 专用结构。 |
-| [Marker](marker.zh.md) | ✅ | 已有 PDF 识字模型体系可选 Marker；需要 Java 快速路径和独立启用的 Docling 后端时选本项目。 | 两者都需语料测试，应比较部署与权重条款，不照抄厂商排名。 |
+| [Marker](model-backed-pdf/marker.zh.md) | ✅ | 已有 PDF 识字模型体系可选 Marker；需要 Java 快速路径和独立启用的 Docling 后端时选本项目。 | 两者都需语料测试，应比较部署与权重条款，不照抄厂商排名。 |
 
 ## 快速上手
 

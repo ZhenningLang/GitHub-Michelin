@@ -2,7 +2,7 @@
 name: olmOCR
 slug: olmocr
 repo: https://github.com/allenai/olmocr
-category: document-parsing
+category: model-backed-pdf
 tags: [pdf, document-parsing, vlm, markdown, llm-datasets, ocr]
 language: Python
 license: Apache-2.0
@@ -79,7 +79,7 @@ health:
 
 你的 PDF 抽文本流程把公式抽成乱码、表格抽成一行行粘连的字、双栏论文的句子左右栏交错拼在一起——拿来检索还能凑合，拿来做训练语料就是毒药。olmOCR 让一个视觉模型逐页“看”渲染出来的页面，按阅读顺序重新打成 Markdown，在你自己的 GPU 上批量处理成千上万份 PDF。
 
-![olmOCR — 健康度雷达](../../assets/health/olmocr.zh.svg)
+![olmOCR — 健康度雷达](../../../assets/health/olmocr.zh.svg)
 
 ## 何时使用
 
@@ -89,7 +89,7 @@ health:
 
 olmOCR 是围绕一个视觉语言模型（VLM——看一张图、写出关于它的文字的模型）搭起来的批处理流水线，模型是 olmOCR-2-7B，由 Qwen2.5-VL-7B 微调而来。**整条传送带它替你跑**：在本机起一个 vLLM 服务（把模型常驻在 GPU 上、把请求攒批处理的推理引擎），把你的 PDF 按页分组放进工作区目录里的任务队列，逐页渲染成图片，让模型按自然阅读顺序转写——公式写成 LaTeX、表格重建、页眉页脚去掉——失败的页自动重试，最后写出 Dolma JSONL（AI2 的语料格式），加上 `--markdown` 时每个 PDF 再出一份 Markdown。**你要提供的是 GPU（README 要求较新的 NVIDIA 卡、显存 12 GB 以上）、一个干净的 Python 3.11 环境和 PDF 本身**——或者不用本地 GPU，用 `--server` 指向别人跑着的 vLLM / OpenAI 兼容接口。工作区也可以是一个 S3 前缀，多台机器可以接入同一个队列，它就是这样扩到百万页规模的。
 
-![olmocr — 主干用户故事](../../assets/flow/olmocr.zh.svg)
+![olmocr — 主干用户故事](../../../assets/flow/olmocr.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/olmocr.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -108,11 +108,11 @@ olmOCR 是围绕一个视觉语言模型（VLM——看一张图、写出关于�
 
 ## 何时不用
 
-- **没有 GPU，且页面不能离开你的机器。**本地推理需要较新的 NVIDIA GPU（显存至少 12 GB）和约 30 GB 磁盘（README）。没有 GPU 时，轻量的 `pip install olmocr` 可以用 `--server` 把页面发给远端 vLLM 服务或托管厂商，但文档就离开了你的机器，还要按 token 付费。要纯 CPU、完全本地的转换，请改用 [Docling](docling.zh.md) 或 [MarkItDown](markitdown.zh.md)，代价是公式和脏扫描件处理得更差。
-- **上游自 2026-03 起安静。**最后一次提交是 2026-03-25，最后一个版本 v0.4.27（2026-03-12），此前 2025 年几乎每周发版；如果你需要按自己的节奏拿到修复（新 vLLM/CUDA 版本），要预留自己锁版本、打补丁的人力，或者改选 [Docling](docling.zh.md)——它托管在 LF AI & Data 之下，维护者不止一人。
+- **没有 GPU，且页面不能离开你的机器。**本地推理需要较新的 NVIDIA GPU（显存至少 12 GB）和约 30 GB 磁盘（README）。没有 GPU 时，轻量的 `pip install olmocr` 可以用 `--server` 把页面发给远端 vLLM 服务或托管厂商，但文档就离开了你的机器，还要按 token 付费。要纯 CPU、完全本地的转换，请改用 [Docling](../docling.zh.md) 或 [MarkItDown](../markitdown.zh.md)，代价是公式和脏扫描件处理得更差。
+- **上游自 2026-03 起安静。**最后一次提交是 2026-03-25，最后一个版本 v0.4.27（2026-03-12），此前 2025 年几乎每周发版；如果你需要按自己的节奏拿到修复（新 vLLM/CUDA 版本），要预留自己锁版本、打补丁的人力，或者改选 [Docling](../docling.zh.md)——它托管在 LF AI & Data 之下，维护者不止一人。
 - **大规模成本敏感场景。**如果你需要高批量处理且对版面保真度要求不高，请改用 PyMuPDF 或 Tesseract，而不是 olmOCR，因为纯规则式或传统 OCR 提取仍比 VLM 推理更便宜，尽管 README 声称每百万页不到 200 美元。
-- **简单、干净的纯文本 PDF。**如果你的 PDF 已是结构良好的数字文本，不含公式、表格或多栏布局，请改用 [MarkItDown](markitdown.zh.md) 或 PyMuPDF，而不是 olmOCR，因为更轻量的工具会更快、更便宜。
-- **实时或流式解析。**如果你需要低延迟、按需文档转换，请改用 [Docling](docling.zh.md) 或 [MarkItDown](markitdown.zh.md)，而不是 olmOCR，因为 VLM 推理流水线面向数据集批处理设计，非实时流式。
+- **简单、干净的纯文本 PDF。**如果你的 PDF 已是结构良好的数字文本，不含公式、表格或多栏布局，请改用 [MarkItDown](../markitdown.zh.md) 或 PyMuPDF，而不是 olmOCR，因为更轻量的工具会更快、更便宜。
+- **实时或流式解析。**如果你需要低延迟、按需文档转换，请改用 [Docling](../docling.zh.md) 或 [MarkItDown](../markitdown.zh.md)，而不是 olmOCR，因为 VLM 推理流水线面向数据集批处理设计，非实时流式。
 - **专有或敏感文档未经审计。**如果你的文档要求严格的数据驻留或不接受神经网络模型处理，请改用自托管 Docling 或本地 Tesseract，而不是 olmOCR，因为将文档送入 VLM 流水线意味着由神经网络模型处理，你必须在使用前验证离线部署路径。
 - **文档编辑或往返转换。**如果你需要编辑、修改或回写原始 PDF 格式，请改用 Adobe Acrobat 或专用 PDF 编辑器，而不是 olmOCR，因为这是单向 PDF 转 Markdown 转换，无回写能力。
 - **面向人类出版的版面完美复现。**如果你需要像素级或印刷级复现复杂视觉版面，请改用 Adobe Acrobat 或专业排版工具，而不是 olmOCR，因为输出针对机器可读的 Markdown（训练数据、RAG）优化，可能简化视觉版面。
@@ -121,12 +121,12 @@ olmOCR 是围绕一个视觉语言模型（VLM——看一张图、写出关于�
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Docling](docling.zh.md) | ✅ | 处理混合的办公文档/PDF、跑在 CPU 上或放进 RAG 入库服务，选 Docling；要从扫描件和公式密集的 PDF 构建训练语料、手里又有 GPU，选 olmOCR。 | Docling 在本地用版面模型加启发式，不需要大 GPU，输出更丰富的结构化 JSON；olmOCR 用单个 VLM 一遍读完，对脏页面更稳，但要花 GPU 时间。 |
-| [MarkItDown](markitdown.zh.md) | ✅ | 要把原生数字版 Office 文件和干净 PDF 快速转成 LLM 上下文，选 MarkItDown；只有扫描件、公式或多栏版面让它失手时才换 olmOCR。 | MarkItDown 一个 pip 包、完全不用模型；但它看不见扫描页，也不能从像素里重建表格。 |
+| [Docling](../docling.zh.md) | ✅ | 处理混合的办公文档/PDF、跑在 CPU 上或放进 RAG 入库服务，选 Docling；要从扫描件和公式密集的 PDF 构建训练语料、手里又有 GPU，选 olmOCR。 | Docling 在本地用版面模型加启发式，不需要大 GPU，输出更丰富的结构化 JSON；olmOCR 用单个 VLM 一遍读完，对脏页面更稳，但要花 GPU 时间。 |
+| [MarkItDown](../markitdown.zh.md) | ✅ | 要把原生数字版 Office 文件和干净 PDF 快速转成 LLM 上下文，选 MarkItDown；只有扫描件、公式或多栏版面让它失手时才换 olmOCR。 | MarkItDown 一个 pip 包、完全不用模型；但它看不见扫描页，也不能从像素里重建表格。 |
 | [Marker](marker.zh.md) | ✅ | PDF 大多是原生数字版时选 Marker：它读文本层，只把坏页送给 OCR 模型；要每页都过视觉模型，或要用 S3 队列跑语料级批处理时，选 olmOCR。 | Marker 只在需要时 OCR，省 GPU 时间，还带 `--use_llm` 修复环节；olmOCR 对每页一视同仁，处理扫描件更简单，但每页都要过一遍 GPU。 |
 | LlamaParse | 未收录 | 团队没有 GPU、又允许上传文档时，选 LlamaParse；文档必须留在自己硬件上，或量大到按量计费吃不消时，选 olmOCR。 | 解析在 LlamaIndex 的托管服务上跑，凭 API key 调用：零基础设施，但按量计费，数据离开你的网络。 |
-| [Tesseract](../ocr/tesseract.zh.md) / OCRmyPDF | 部分已收录 | 只想给扫描件加一层便宜的可搜索文本，选 Tesseract 或 OCRmyPDF（未收录）；阅读顺序、表格和公式必须保住时，选 olmOCR。 | 传统 OCR 在 CPU 上跑，成本只是零头，但输出的是没有版面语义的平铺文本行。 |
-| [PyMuPDF](../pdf-tools/pdf-reading/pymupdf.zh.md) | ✅ | 原生数字版 PDF、自带文本层本来就对时，选 PyMuPDF；文本层缺失或错乱时，选 olmOCR。 | PyMuPDF 不用模型，毫秒级抽出内嵌文本，但修不了坏掉或缺失的文本层。 |
+| [Tesseract](../../ocr/tesseract.zh.md) / OCRmyPDF | 部分已收录 | 只想给扫描件加一层便宜的可搜索文本，选 Tesseract 或 OCRmyPDF（未收录）；阅读顺序、表格和公式必须保住时，选 olmOCR。 | 传统 OCR 在 CPU 上跑，成本只是零头，但输出的是没有版面语义的平铺文本行。 |
+| [PyMuPDF](../../pdf-tools/pdf-reading/pymupdf.zh.md) | ✅ | 原生数字版 PDF、自带文本层本来就对时，选 PyMuPDF；文本层缺失或错乱时，选 olmOCR。 | PyMuPDF 不用模型，毫秒级抽出内嵌文本，但修不了坏掉或缺失的文本层。 |
 
 ## 技术栈
 

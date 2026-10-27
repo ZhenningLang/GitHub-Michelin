@@ -825,11 +825,11 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **OpenDataLoader PDF** | 导出有序 PDF 正文与来源区域 JSON，可选模型处理。 | Apache-2.0 | B（6/6） | [中](categories/document-parsing/opendataloader-pdf.zh.md) · [EN](categories/document-parsing/opendataloader-pdf.md) |
-| **OXR** | 科研 PDF／图片解析，独立版面检测，输出分类内容和坐标；需 GPU 部署，并受自定义商业许可限制。 | LicenseRef-OXR | C（3/6） | [中](categories/document-parsing/oxr.zh.md) · [EN](categories/document-parsing/oxr.md) |
+| **OXR** | 科研 PDF／图片解析，独立版面检测，输出分类内容和坐标；需 GPU 部署，并受自定义商业许可限制。 | LicenseRef-OXR | C（3/6） | [中](categories/document-parsing/model-backed-pdf/oxr.zh.md) · [EN](categories/document-parsing/model-backed-pdf/oxr.md) |
 | **Docling** | 当你需要把杂乱的 PDF/DOCX/PPTX 解析成干净的结构化 Markdown/JSON 以喂给 RAG 时用它——是解析器，不是文档管理系统。 | MIT | A（5/6） | [中](categories/document-parsing/docling.zh.md) · [EN](categories/document-parsing/docling.md) |
 | **MarkItDown** | 当 agent 或 RAG 流水线要用一次轻量 Python 调用，把混杂的 Office 文件、HTML、EPUB 和简单 PDF 统一转成 Markdown 时用它——但扫描件或复杂版面 PDF 要用 Marker 或 Docling，它没有 OCR 和版面模型。 | MIT | B（6/6） | [中](categories/document-parsing/markitdown.zh.md) · [EN](categories/document-parsing/markitdown.md) |
-| **olmOCR** | 当你要把成千上万份带公式、表格、多栏版面的 PDF 按阅读顺序转成干净 Markdown、拿去做 LLM 语料时用它——但本地运行要 12 GB 以上显存的 NVIDIA GPU，且上游自 2026-03 起已无提交。 | Apache-2.0 | C（5/6） | [中](categories/document-parsing/olmocr.zh.md) · [EN](categories/document-parsing/olmocr.md) |
-| **Marker** | 当你要在自己的机器上把几千份 PDF（论文、教材、扫描件）转成带真表格、LaTeX 公式、按需 OCR 的 Markdown 时用它——但模型权重只对融资或营收低于 500 万美元的主体免费。 | Apache-2.0 | B（6/6） | [EN](categories/document-parsing/marker.md) · [中](categories/document-parsing/marker.zh.md) |
+| **olmOCR** | 当你要把成千上万份带公式、表格、多栏版面的 PDF 按阅读顺序转成干净 Markdown、拿去做 LLM 语料时用它——但本地运行要 12 GB 以上显存的 NVIDIA GPU，且上游自 2026-03 起已无提交。 | Apache-2.0 | C（5/6） | [中](categories/document-parsing/model-backed-pdf/olmocr.zh.md) · [EN](categories/document-parsing/model-backed-pdf/olmocr.md) |
+| **Marker** | 当你要在自己的机器上把几千份 PDF（论文、教材、扫描件）转成带真表格、LaTeX 公式、按需 OCR 的 Markdown 时用它——但模型权重只对融资或营收低于 500 万美元的主体免费。 | Apache-2.0 | B（6/6） | [EN](categories/document-parsing/model-backed-pdf/marker.md) · [中](categories/document-parsing/model-backed-pdf/marker.zh.md) |
 | **unstructured** | 当 RAG 流水线面对混杂的 PDF、邮件和 Office 文件，需要带页码元数据的类型化元素和按章节分块，而不只是一个 Markdown 字符串时用它——但开源版的 PDF 表格准确率不如 Docling 和 Marker，且默认开启统计回传。 | Apache-2.0 | A（6/6） | [EN](categories/document-parsing/unstructured.md) · [中](categories/document-parsing/unstructured.zh.md) |
 | **any2html** | Use it when you need any2html in the document-parsing area. | NOASSERTION | D（4/5） | [中](categories/document-parsing/any2html.zh.md) · [EN](categories/document-parsing/any2html.md) |
 | **Dedoc** | 当混合 PDF 与 Office 归档必须转成带表格和附件的逻辑树时用它——本地解析面广，但 Linux 与系统包依赖很重。 | Apache-2.0 | B（5/6） | [中](categories/document-parsing/dedoc.zh.md) · [EN](categories/document-parsing/dedoc.md) |

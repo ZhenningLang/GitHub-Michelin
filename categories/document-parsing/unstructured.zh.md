@@ -128,7 +128,7 @@ unstructured 是一个 Python 库。**你要做的**：按文件类型装上可�
 |---|---|---|---|
 | [Docling](docling.zh.md) | 已收录 | PDF/Office 的版面、表格和阅读顺序必须准确、要本地模型且不要遥测时，选 Docling；需要覆盖多得多的输入类型、统一的元素模型和按章节分块时，选 unstructured。 | Docling 的版面模型给出更丰富的文档结构；unstructured 一个 `partition()` 就覆盖邮件、EPUB、RTF、ODT 等，但开源版的 PDF 表格更弱。 |
 | [MarkItDown](markitdown.zh.md) | 已收录 | 每个文件一个 Markdown 字符串就够、而且不想装系统依赖时，选 MarkItDown；检索需要带类型的元素、元数据和分块时，选 unstructured。 | MarkItDown 小而且不带模型；unstructured 更重（spaCy、numba、系统工具），但返回的是能过滤、能分块的结构。 |
-| [Marker](marker.zh.md) | 已收录 | 语料以 PDF 为主、能跑 GPU 或 llama.cpp OCR 服务时，选 Marker；语料格式混杂、PDF 只是其中一种来源时，选 unstructured。 | Marker 在自家基准上的 PDF 准确率和吞吐高得多，但模型权重有营收门槛；unstructured 是纯 Apache-2.0，OCR 基于 Tesseract。 |
+| [Marker](model-backed-pdf/marker.zh.md) | 已收录 | 语料以 PDF 为主、能跑 GPU 或 llama.cpp OCR 服务时，选 Marker；语料格式混杂、PDF 只是其中一种来源时，选 unstructured。 | Marker 在自家基准上的 PDF 准确率和吞吐高得多，但模型权重有营收门槛；unstructured 是纯 Apache-2.0，OCR 基于 Tesseract。 |
 | [Dedoc](dedoc.zh.md) | 已收录 | 需要从本地部署的服务里拿到带附件和批注的文档逻辑树时，选 Dedoc；要给 RAG 分块器喂扁平元素列表时，选 unstructured。 | Dedoc 能还原更深的层级，但作为较重的 Linux 服务运行；unstructured 是可直接 import 的库，生态更大。 |
 | Unstructured Transform API | 非仓库 | 表格和文字准确率值得把文档送到托管服务时，选付费 API；文档要留在内部时，选开源库。 | 同一家公司的托管 SaaS，不是仓库：按厂商的数字表格准确率约高一倍，代价是按页计费、数据离开你的网络。 |
 

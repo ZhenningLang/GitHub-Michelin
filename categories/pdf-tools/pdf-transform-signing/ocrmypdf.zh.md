@@ -113,9 +113,9 @@ OCRmyPDF 是一条围绕外部引擎搭起来的 Python 流水线：先把 PDF �
 
 ## 何时不用
 
-- **你要的是文本或 Markdown，而不是可搜索的 PDF。** OCRmyPDF 的产物是带隐藏文字层的 PDF，不会还原表格、标题和阅读顺序。给大模型或 RAG 入库用，请改用 [Docling](../../document-parsing/docling.zh.md) 或 [Marker](../../document-parsing/marker.zh.md)。
+- **你要的是文本或 Markdown，而不是可搜索的 PDF。** OCRmyPDF 的产物是带隐藏文字层的 PDF，不会还原表格、标题和阅读顺序。给大模型或 RAG 入库用，请改用 [Docling](../../document-parsing/docling.zh.md) 或 [Marker](../../document-parsing/model-backed-pdf/marker.zh.md)。
 - **PDF 本来就是电子版（已经有文字层）。** 没有东西可识别；默认模式下 OCRmyPDF 遇到已有文字的页会报错退出。只想抽文字用 [pdfplumber](../pdf-reading/pdfplumber.zh.md) 或 [PyMuPDF](../pdf-reading/pymupdf.zh.md)；想重组文件结构用 [qpdf](qpdf.zh.md)。
-- **手写体、质量很差的照片或复杂的非拉丁版式。** 默认引擎 Tesseract 对手写和手机拍照很弱。改用深度学习引擎如 [PaddleOCR](../../ocr/paddleocr.zh.md)（社区有 OCRmyPDF-PaddleOCR 插件，强烈建议配 GPU），或 [olmOCR](../../document-parsing/olmocr.zh.md) 这类视觉模型流水线。
+- **手写体、质量很差的照片或复杂的非拉丁版式。** 默认引擎 Tesseract 对手写和手机拍照很弱。改用深度学习引擎如 [PaddleOCR](../../ocr/paddleocr.zh.md)（社区有 OCRmyPDF-PaddleOCR 插件，强烈建议配 GPU），或 [olmOCR](../../document-parsing/model-backed-pdf/olmocr.zh.md) 这类视觉模型流水线。
 - **你需要带用户、标签和全文检索的文档库。** OCRmyPDF 只是一个命令行步骤；请用 [paperless-ngx](../../document-management/paperless-ngx.zh.md)，它内嵌 OCRmyPDF，并补上入库、存储和搜索界面。
 - **你装不了原生二进制（serverless、锁死的主机）。** Tesseract（以及部分 PDF/A 路径下的 Ghostscript）必须在 pip 之外单独安装。改用官方 Docker 镜像，或调用托管 OCR API（非仓库）。
 - **你要分发打包好的产品，且在意许可证。** OCRmyPDF 本身是 MPL-2.0，但 PDF/A 一旦回落到 Ghostscript，那个引擎是 AGPL-3.0（Artifex 另售商业许可）。用 `--pdfa-backend internal` 或 `--output-type pdf` 把 Ghostscript 排除在外，或者直接用 [Tesseract](../../ocr/tesseract.zh.md) 自己拼 PDF。

@@ -2,7 +2,7 @@
 name: OXR
 slug: oxr
 repo: https://github.com/SoMarkAI/OXR
-category: document-parsing
+category: model-backed-pdf
 tags: [document-parsing, ocr, layout-analysis, reading-order, tables, formulas, self-hosted]
 language: Python
 license: LicenseRef-OXR
@@ -65,7 +65,7 @@ health:
 
 扫描化学论文转成文字后，表格散了，公式坏了，两栏内容串到一起。OXR 先单独找出版面区域，再识别内容和阅读顺序，输出 Markdown 与带坐标的 JSON。
 
-![OXR — 健康度雷达](../../assets/health/oxr.zh.svg)
+![OXR — 健康度雷达](../../../assets/health/oxr.zh.svg)
 
 ## 何时使用
 
@@ -75,18 +75,18 @@ health:
 
 ## 何时不用
 
-- **你需要不受门槛限制的商用，或要做竞争性托管解析 API。** 优先考虑 [Docling](docling.zh.md) 或 [PaddleOCR](../ocr/paddleocr.zh.md)，并另查所选模型的许可。[OXR 许可](https://github.com/SoMarkAI/OXR/blob/62fbca8ef6c7c63b75b799fc8081f3eb6e667553/LICENSE#L9-L46)规定，合并口径累计融资或年收入超过 200 万美元，就要另取商业许可。竞争性文档／OCR 托管 API 无论规模都须事先取得书面授权，对外在线服务还须显著署名。这是源码可见许可，不是原样的 Apache-2.0。
-- **你只有 CPU，或要直接处理 Office 文件。** 混合 Office/PDF 入库选 [Docling](docling.zh.md)。OXR 的本地文档要求 Linux、支持 BF16 的 NVIDIA GPU、兼容 CUDA 13 的驱动；低并发起步标为 24 GB 显存，长文档或更高并发推荐至少 48 GB。
+- **你需要不受门槛限制的商用，或要做竞争性托管解析 API。** 优先考虑 [Docling](../docling.zh.md) 或 [PaddleOCR](../../ocr/paddleocr.zh.md)，并另查所选模型的许可。[OXR 许可](https://github.com/SoMarkAI/OXR/blob/62fbca8ef6c7c63b75b799fc8081f3eb6e667553/LICENSE#L9-L46)规定，合并口径累计融资或年收入超过 200 万美元，就要另取商业许可。竞争性文档／OCR 托管 API 无论规模都须事先取得书面授权，对外在线服务还须显著署名。这是源码可见许可，不是原样的 Apache-2.0。
+- **你只有 CPU，或要直接处理 Office 文件。** 混合 Office/PDF 入库选 [Docling](../docling.zh.md)。OXR 的本地文档要求 Linux、支持 BF16 的 NVIDIA GPU、兼容 CUDA 13 的驱动；低并发起步标为 24 GB 显存，长文档或更高并发推荐至少 48 GB。
 - **你需要持久化、多进程共享的批处理队列。** 大规模语料工作流可看 [olmOCR](olmocr.zh.md)，同时考虑其已记录的维护停滞。OXR 异步任务放在进程内存中，重启会丢状态，多个 API worker 也不共享任务。生产任务需另配持久化调度层。
-- **你要逐词坐标，不是区域坐标。** 评估 [PaddleOCR](../ocr/paddleocr.zh.md) 及其识别粒度选项。OXR 输出的是版面块坐标；[issue #4](https://github.com/SoMarkAI/OXR/issues/4) 仍在请求逐词框，核验时尚无回复。
-- **你想买托管生产保障。** 有支持承诺的托管解析服务是另一种采购，不要拿 OXR 免费演示 API 替代。README 明说不保证生产稳定性。若数据要留在本地，且不想依赖演示服务，优先自托管 [Docling](docling.zh.md)。
+- **你要逐词坐标，不是区域坐标。** 评估 [PaddleOCR](../../ocr/paddleocr.zh.md) 及其识别粒度选项。OXR 输出的是版面块坐标；[issue #4](https://github.com/SoMarkAI/OXR/issues/4) 仍在请求逐词框，核验时尚无回复。
+- **你想买托管生产保障。** 有支持承诺的托管解析服务是另一种采购，不要拿 OXR 免费演示 API 替代。README 明说不保证生产稳定性。若数据要留在本地，且不想依赖演示服务，优先自托管 [Docling](../docling.zh.md)。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Docling](docling.zh.md) | ✅ | 混合 Office/PDF 或 CPU 部署选 Docling；只有独立替换区域检测器值得一套专用 GPU 服务时，才选 OXR。 | Docling 的文档模型与格式更广；OXR 聚焦 PDF／图片识别，并显式拆出版面服务边界。 |
-| [PaddleOCR](../ocr/paddleocr.zh.md) | ✅ | 文本检测、多语言 OCR 和多种文档流水线选 PaddleOCR；要聚焦检测器加识别器，并显式处理阅读顺序，才考虑 OXR。 | PaddleOCR 的模型与后端选择更多；OXR 拓扑较集中，但增加自定义许可和单独安装的 vLLM 插件。 |
+| [Docling](../docling.zh.md) | ✅ | 混合 Office/PDF 或 CPU 部署选 Docling；只有独立替换区域检测器值得一套专用 GPU 服务时，才选 OXR。 | Docling 的文档模型与格式更广；OXR 聚焦 PDF／图片识别，并显式拆出版面服务边界。 |
+| [PaddleOCR](../../ocr/paddleocr.zh.md) | ✅ | 文本检测、多语言 OCR 和多种文档流水线选 PaddleOCR；要聚焦检测器加识别器，并显式处理阅读顺序，才考虑 OXR。 | PaddleOCR 的模型与后端选择更多；OXR 拓扑较集中，但增加自定义许可和单独安装的 vLLM 插件。 |
 | [olmOCR](olmocr.zh.md) | ✅ | 工作目录／S3 语料任务选 olmOCR；要 HTTP 返回分类区域和坐标，且能自建持久化任务层时选 OXR。 | olmOCR 自带语料编排，但索引记录其上游自 2026 年 3 月起安静；OXR 最近活跃，却还没有长期运维履历。 |
 
 ## 快速上手
@@ -95,7 +95,7 @@ health:
 
 用法来源：[README 本地部署与请求示例](https://github.com/SoMarkAI/OXR/blob/62fbca8ef6c7c63b75b799fc8081f3eb6e667553/README.md#L166-L278)。
 
-![oxr — 主干用户故事](../../assets/flow/oxr.zh.svg)
+![oxr — 主干用户故事](../../../assets/flow/oxr.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/oxr.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -114,7 +114,7 @@ health:
 
 ## 技术要点
 
-![OXR — 机制图](../../assets/mechanism/oxr.zh.svg)
+![OXR — 机制图](../../../assets/mechanism/oxr.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/oxr.json by tools/mechanism_card.py; do not edit) -->
 <details>

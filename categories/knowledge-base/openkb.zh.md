@@ -116,8 +116,8 @@ health:
 ## 何时不用
 
 - **你的语料又大又杂，而不是又长又有结构。** OpenKB 的检索是「对编译后维基做目录驱动导航」，且当前发布版**没有任何全文搜索工具**——召回上界取决于编译阶段往 `wiki/index.md` 和各页 `brief:` 里写了什么。如果你要的是在一个庞大异构堆里做语义搜索，应该在 RAG 应用下面用 [FAISS](../rag-retrieval/vector-search/faiss.zh.md) / [Milvus](../rag-retrieval/vector-search/milvus.zh.md)，或者用 [Khoj](../knowledge-base/khoj.zh.md)，完全跳过编译这一步。
-- **你只需要对单份文档做一次问答。** OpenKB 按文档付出的 LLM 编译成本，买的是你根本收不到的「积累」——只读一次却付了建维基的钱。直接用 [PageIndex](../rag-retrieval/structured-retrieval/pageindex.zh.md)（同一个底层检索器，MIT，引入更轻）；如果难点只在文件转换，用 [docling](../document-parsing/docling.zh.md) 或 [marker](../document-parsing/marker.zh.md)。
-- **你需要在不上托管服务的前提下对扫描版 PDF 做 OCR。** 扫描件 OCR 被列为 PageIndex Cloud 的能力，也就是付费托管层；本地路径假定文本可直接提取。如果你的语料是扫描件且必须留在本地，解析阶段改用 [olmocr](../document-parsing/olmocr.zh.md) 或 [MinerU](../document-parsing/mineru-skill.zh.md)。
+- **你只需要对单份文档做一次问答。** OpenKB 按文档付出的 LLM 编译成本，买的是你根本收不到的「积累」——只读一次却付了建维基的钱。直接用 [PageIndex](../rag-retrieval/structured-retrieval/pageindex.zh.md)（同一个底层检索器，MIT，引入更轻）；如果难点只在文件转换，用 [docling](../document-parsing/docling.zh.md) 或 [marker](../document-parsing/model-backed-pdf/marker.zh.md)。
+- **你需要在不上托管服务的前提下对扫描版 PDF 做 OCR。** 扫描件 OCR 被列为 PageIndex Cloud 的能力，也就是付费托管层；本地路径假定文本可直接提取。如果你的语料是扫描件且必须留在本地，解析阶段改用 [olmocr](../document-parsing/model-backed-pdf/olmocr.zh.md) 或 [MinerU](../document-parsing/mineru-skill.zh.md)。
 - **你想要一个由你自己撰写笔记的图形界面。** OpenKB 的维基是生成出来的，不是写作面——流程是批量编译，不是写文章。要人主导编辑、带图谱视图和插件生态，用 [SiYuan](../knowledge-base/siyuan.zh.md)、[Logseq](../knowledge-base/logseq.zh.md) 或 [LLM Wiki](../knowledge-base/llm-wiki.zh.md)。
 - **你需要多用户与权限控制。** 它是一个单用户本地工具，写的是一个文件目录；自带的 Web UI 默认明确关闭鉴权，除非你设 `OPENKB_API_TOKEN`。要共享且有权限的团队空间，用托管维基产品（Notion、Confluence——没有可收录的仓库）。
 - **你需要一份稳定的契约来做二次开发。** 它是一个 5.5 个月大的 v0.x alpha，依赖是精确钉死的（`pageindex==0.3.0.dev3`、`litellm==1.87.2`），而公开合并节奏在 2026-07 停了。在它的内部结构上做产品，等于跟着一个会动的 alpha 跑。如果你要的是稳定的文档转换层，用 [markitdown](../document-parsing/markitdown.zh.md)，自己做管道。

@@ -2,7 +2,7 @@
 name: olmOCR
 slug: olmocr
 repo: https://github.com/allenai/olmocr
-category: document-parsing
+category: model-backed-pdf
 tags: [pdf, document-parsing, vlm, markdown, llm-datasets, ocr]
 language: Python
 license: Apache-2.0
@@ -79,7 +79,7 @@ health:
 
 Your PDF-to-text step turns equations into gibberish, tables into run-on lines, and two-column papers into sentences spliced across columns — tolerable for search, poison for a training corpus. olmOCR has a vision model look at each rendered page and re-type it as Markdown in reading order, as a batch job over thousands to millions of PDFs on your own GPUs.
 
-![olmOCR — health radar](../../assets/health/olmocr.svg)
+![olmOCR — health radar](../../../assets/health/olmocr.svg)
 
 ## When to use
 
@@ -89,7 +89,7 @@ You're a machine learning researcher or data engineer preparing a large-scale co
 
 olmOCR is a batch pipeline wrapped around one vision-language model (VLM — a model that looks at an image and writes text about it): olmOCR-2-7B, a fine-tune of Qwen2.5-VL-7B. **It runs the whole conveyor belt for you**: it starts a local vLLM server (an inference engine that keeps the model loaded on the GPU and batches requests), splits your PDFs into page groups on a work queue inside the workspace folder, renders each page to an image, has the model transcribe it in natural reading order — equations as LaTeX, tables rebuilt, headers and footers dropped — retries pages that fail, and writes Dolma JSONL (AI2's corpus format) plus, with `--markdown`, one Markdown file per PDF. **You provide the GPU (a recent NVIDIA card with 12 GB+ of memory, per the README), a clean Python 3.11 environment and the PDFs** — or skip the local GPU and point `--server` at a vLLM / OpenAI-compatible endpoint someone else runs. The workspace can also be an S3 prefix, so more machines can join the same queue; that is how it scales to millions of pages.
 
-![olmocr — backbone user story](../../assets/flow/olmocr.svg)
+![olmocr — backbone user story](../../../assets/flow/olmocr.svg)
 
 <!-- flow-steps:begin (generated from flows/olmocr.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -108,11 +108,11 @@ olmOCR is a batch pipeline wrapped around one vision-language model (VLM — a m
 
 ## When NOT to use
 
-- **No GPU, and pages may not leave your machine.** Local inference needs a recent NVIDIA GPU with at least 12 GB of memory and ~30 GB of disk (README). Without one, the lightweight `pip install olmocr` can send pages to a remote vLLM server or a hosted provider via `--server`, but then documents leave your box and you pay per token. For CPU-only, fully local conversion use [Docling](docling.md) or [MarkItDown](markitdown.md) instead, accepting weaker handling of equations and messy scans.
-- **Quiet upstream since 2026-03.** The last commit was 2026-03-25 and the last release v0.4.27 (2026-03-12) after a near-weekly 2025 cadence; if you need fixes on your timeline (new vLLM/CUDA versions), budget for pinning and patching yourself, or prefer [Docling](docling.md), which is hosted under LF AI & Data with more than one maintainer.
+- **No GPU, and pages may not leave your machine.** Local inference needs a recent NVIDIA GPU with at least 12 GB of memory and ~30 GB of disk (README). Without one, the lightweight `pip install olmocr` can send pages to a remote vLLM server or a hosted provider via `--server`, but then documents leave your box and you pay per token. For CPU-only, fully local conversion use [Docling](../docling.md) or [MarkItDown](../markitdown.md) instead, accepting weaker handling of equations and messy scans.
+- **Quiet upstream since 2026-03.** The last commit was 2026-03-25 and the last release v0.4.27 (2026-03-12) after a near-weekly 2025 cadence; if you need fixes on your timeline (new vLLM/CUDA versions), budget for pinning and patching yourself, or prefer [Docling](../docling.md), which is hosted under LF AI & Data with more than one maintainer.
 - **Cost-sensitive at massive scale.** If you need high-volume batch processing where layout fidelity is not critical, use PyMuPDF or Tesseract instead of olmOCR, because pure rule-based or traditional OCR extraction is still cheaper than VLM inference even though the README claims less than $200 USD per million pages.
-- **Simple, clean text PDFs.** If your PDFs are already well-structured digital text with no equations, tables, or multi-column layouts, use [MarkItDown](markitdown.md) or PyMuPDF instead of olmOCR, because lighter tools will be faster and cheaper for basic extraction.
-- **Real-time or streaming parsing.** If you need low-latency, on-demand document conversion, use [Docling](docling.md) or [MarkItDown](markitdown.md) instead of olmOCR, because the VLM inference pipeline is designed for batch dataset preparation, not real-time streaming.
+- **Simple, clean text PDFs.** If your PDFs are already well-structured digital text with no equations, tables, or multi-column layouts, use [MarkItDown](../markitdown.md) or PyMuPDF instead of olmOCR, because lighter tools will be faster and cheaper for basic extraction.
+- **Real-time or streaming parsing.** If you need low-latency, on-demand document conversion, use [Docling](../docling.md) or [MarkItDown](../markitdown.md) instead of olmOCR, because the VLM inference pipeline is designed for batch dataset preparation, not real-time streaming.
 - **Proprietary or sensitive documents without audit.** If your documents require strict data residency or no neural model processing, use self-hosted Docling or on-premise Tesseract instead of olmOCR, because sending documents through a VLM pipeline means they are processed by a neural model and you must verify the offline deployment path before use.
 - **Document editing or round-tripping.** If you need to edit, modify, or write back to the original PDF format, use Adobe Acrobat or a dedicated PDF editor instead of olmOCR, because this is one-way PDF-to-Markdown conversion with no write-back capability.
 - **Layout-perfect reproduction for human publishing.** If you need pixel-perfect or print-quality reproduction of complex visual layouts, use Adobe Acrobat or professional typesetting tools instead of olmOCR, because the output is optimized for machine-readable Markdown (training data, RAG) and may simplify visual layouts.
@@ -121,12 +121,12 @@ olmOCR is a batch pipeline wrapped around one vision-language model (VLM — a m
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Docling](docling.md) | ✅ | For mixed office/PDF documents on CPU or in a RAG ingestion service, pick Docling; pick olmOCR when you are building a training corpus from scans and equation-heavy PDFs and have GPUs. | Docling runs layout models plus heuristics locally without a big GPU and emits richer structured JSON; olmOCR's single VLM pass reads messy pages more robustly but costs GPU hours. |
-| [MarkItDown](markitdown.md) | ✅ | For quick conversion of born-digital Office files and clean PDFs into LLM context, pick MarkItDown; pick olmOCR only when scans, equations or multi-column layouts break it. | MarkItDown is a pip-install with no model at all; it cannot see a scanned page or rebuild a table from pixels. |
+| [Docling](../docling.md) | ✅ | For mixed office/PDF documents on CPU or in a RAG ingestion service, pick Docling; pick olmOCR when you are building a training corpus from scans and equation-heavy PDFs and have GPUs. | Docling runs layout models plus heuristics locally without a big GPU and emits richer structured JSON; olmOCR's single VLM pass reads messy pages more robustly but costs GPU hours. |
+| [MarkItDown](../markitdown.md) | ✅ | For quick conversion of born-digital Office files and clean PDFs into LLM context, pick MarkItDown; pick olmOCR only when scans, equations or multi-column layouts break it. | MarkItDown is a pip-install with no model at all; it cannot see a scanned page or rebuild a table from pixels. |
 | [Marker](marker.md) | ✅ | For mostly born-digital PDF collections, pick Marker: it reads the text layer and sends only bad pages to its OCR model; pick olmOCR when every page should go through a vision model or you want S3-queued corpus runs. | Marker's selective OCR saves GPU time and adds a `--use_llm` repair pass; olmOCR treats every page the same way, which is simpler on scans but costs a GPU pass per page. |
 | LlamaParse | 未收录 | For teams with no GPUs that are allowed to upload documents, pick LlamaParse; pick olmOCR when documents must stay on your own hardware or volume makes usage fees add up. | Parsing runs on LlamaIndex's hosted service behind an API key: zero infrastructure, but usage-based pricing and data leaves your network. |
-| [Tesseract](../ocr/tesseract.md) / OCRmyPDF | 部分已收录 | For a cheap searchable text layer on scans, pick Tesseract or OCRmyPDF (not indexed); pick olmOCR when reading order, tables and equations must survive. | Classic OCR runs on CPU at a fraction of the cost, but outputs flat text lines with no layout semantics. |
-| [PyMuPDF](../pdf-tools/pdf-reading/pymupdf.md) | ✅ | For born-digital PDFs where the embedded text layer is already right, pick PyMuPDF; pick olmOCR when the text layer is missing or scrambled. | PyMuPDF extracts embedded text in milliseconds with no model, but cannot fix a bad or absent text layer. |
+| [Tesseract](../../ocr/tesseract.md) / OCRmyPDF | 部分已收录 | For a cheap searchable text layer on scans, pick Tesseract or OCRmyPDF (not indexed); pick olmOCR when reading order, tables and equations must survive. | Classic OCR runs on CPU at a fraction of the cost, but outputs flat text lines with no layout semantics. |
+| [PyMuPDF](../../pdf-tools/pdf-reading/pymupdf.md) | ✅ | For born-digital PDFs where the embedded text layer is already right, pick PyMuPDF; pick olmOCR when the text layer is missing or scrambled. | PyMuPDF extracts embedded text in milliseconds with no model, but cannot fix a bad or absent text layer. |
 
 ## Tech stack
 

@@ -122,7 +122,7 @@ MarkItDown 是一个 Python 库加一个 `markitdown` 命令行。**你要做的
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Docling](docling.zh.md) | 已收录 | PDF 和 Office 文件的版面、阅读顺序、表格和本地 OCR 都必须正确时，选 Docling；想要轻量、不带模型的转换器、能接受更扁平的输出时，选 MarkItDown。 | Docling 带版面/表格模型、安装更重，换来好得多的结构；MarkItDown 几秒装好、可选依赖都是纯 Python，但没有版面模型，也没有内置 OCR。 |
-| [Marker](marker.zh.md) | 已收录 | 输入以 PDF 为主、表格分栏公式都得保住时，选 Marker；输入主要是 Office/HTML 文件时，选 MarkItDown。 | Marker 要 PyTorch 加一个本地 OCR 推理服务，模型权重还有营收门槛；MarkItDown 是 MIT、不带模型，但遇到难啃的 PDF 弱得多。 |
+| [Marker](model-backed-pdf/marker.zh.md) | 已收录 | 输入以 PDF 为主、表格分栏公式都得保住时，选 Marker；输入主要是 Office/HTML 文件时，选 MarkItDown。 | Marker 要 PyTorch 加一个本地 OCR 推理服务，模型权重还有营收门槛；MarkItDown 是 MIT、不带模型，但遇到难啃的 PDF 弱得多。 |
 | [unstructured](unstructured.zh.md) | 已收录 | 需要带类型的文档元素、分块策略、以及通往托管 ETL 平台的路时，选 unstructured；只要进程内的库给出一个 Markdown 字符串时，选 MarkItDown。 | unstructured 返回带元数据的元素列表，完整功能要装很多系统依赖；MarkItDown 只返回 Markdown，体积小。 |
 | [anydoc](anydoc.zh.md) | 已收录 | 需要老式 `.doc`/`.ppt`、要在 Rust、Node 或浏览器里毫秒级转换时，选 anydoc；需要 Outlook、YouTube、音频、大模型图片描述这类 Python 生态的扩展时，选 MarkItDown。 | anydoc 是单作者维护的年轻 0.x Rust 项目，没有 OCR；MarkItDown 是微软维护的 Python 库，有插件体系，但每种格式走各自的 Python 库，更慢。 |
 | textract | 未收录 | 只在维护一条已经依赖其纯文本输出的老流水线时选 textract；新的大模型文档接入选 MarkItDown，它把标题、列表、表格保留成 Markdown。 | textract（MarkItDown 的 README 点名的最接近的同类）从多种格式抽纯文本；MarkItDown 把结构保留为 Markdown。 |

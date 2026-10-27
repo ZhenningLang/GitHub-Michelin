@@ -84,7 +84,7 @@ health:
 ## 何时不用
 
 - **输入主要是彩色照片、透视变形的手机拍照或手写体。** 请改用 PaddleOCR 或托管 Vision 服务；Dedoc README 明确把扫描文档示例限定为黑白文档，本次研究也没有对更困难的输入做实测。
-- **扫描表格没有显式边框，或存在复杂视觉版式。** 请改用 [Docling](docling.zh.md)、[Marker](marker.zh.md) 或 [olmOCR](olmocr.zh.md)；Dedoc 文档描述的扫描表格识别对象是有明确边界的表格。
+- **扫描表格没有显式边框，或存在复杂视觉版式。** 请改用 [Docling](docling.zh.md)、[Marker](model-backed-pdf/marker.zh.md) 或 [olmOCR](model-backed-pdf/olmocr.zh.md)；Dedoc 文档描述的扫描表格识别对象是有明确边界的表格。
 - **只需要轻量的 Office 转 Markdown。** 请改用 [MarkItDown](markitdown.zh.md)；它不需要 Dedoc 的 OCR、科学计算、格式转换工具和服务依赖。
 - **只需要图片转纯文本 OCR。** 请直接使用 [Tesseract](../ocr/tesseract.zh.md) 或 PaddleOCR；Dedoc 在 OCR 之外还加入 reader、结构构造、附件、注解和 API 层。
 - **需要的是可搜索的归档或文档管理应用。** 请改用 [paperless-ngx](../document-management/paperless-ngx.zh.md)；Dedoc 负责解析，不提供面向终端用户的归档、标签、保留策略或全文搜索工作流。
@@ -97,8 +97,8 @@ health:
 | [Docling](docling.zh.md) | ✅ | 需要现代本地 RAG 解析器、统一文档模型和更强的版面感知 Markdown/JSON 时选 Docling；需要自定义逻辑结构抽取器、注解、附件，以及传统 OCR/PDF 栈更适合语料时选 Dedoc。 | Docling 使用模型驱动的版面与表格处理；Dedoc 提供广泛的 reader/structure-extractor 架构，但运行约束更旧也更多。 |
 | [Unstructured](unstructured.zh.md) | ✅ | 连接器、partition、enrichment 和生产摄取工作流是主需求时选 Unstructured；解析和逻辑树恢复是主任务时选 Dedoc。 | Unstructured 是更广的文档 ETL 表面；Dedoc 更集中于内容、结构、表格、元数据和附件。 |
 | [MarkItDown](markitdown.zh.md) | ✅ | 需要低摩擦地把常见文件转成 Markdown 时选 MarkItDown；下游需要结构层级与详细注解时选 Dedoc。 | MarkItDown 更轻、更容易嵌入；Dedoc 结构更深，但依赖和运维成本明显更高。 |
-| [Marker](marker.zh.md) | ✅ | 目标窄到高保真 PDF 转 Markdown，且能接受模型较重的本地栈时选 Marker；需要更广的非 PDF 格式和可编程文档类型抽取器时选 Dedoc。 | Marker 聚焦 PDF 且由模型驱动；Dedoc 覆盖 Office、压缩包、邮件、图片和文本，但对困难扫描件和无边框表格有明确限制。 |
-| [olmOCR](olmocr.zh.md) | ✅ | 需要用 GPU 线性化视觉复杂 PDF，供模型训练或 RAG 语料使用时选 olmOCR；需要偏 CPU 的多格式解析和应用级逻辑树时选 Dedoc。 | olmOCR 用较大的 GPU/模型成本换复杂视觉理解；Dedoc 则承担系统依赖和规则配置复杂度。 |
+| [Marker](model-backed-pdf/marker.zh.md) | ✅ | 目标窄到高保真 PDF 转 Markdown，且能接受模型较重的本地栈时选 Marker；需要更广的非 PDF 格式和可编程文档类型抽取器时选 Dedoc。 | Marker 聚焦 PDF 且由模型驱动；Dedoc 覆盖 Office、压缩包、邮件、图片和文本，但对困难扫描件和无边框表格有明确限制。 |
+| [olmOCR](model-backed-pdf/olmocr.zh.md) | ✅ | 需要用 GPU 线性化视觉复杂 PDF，供模型训练或 RAG 语料使用时选 olmOCR；需要偏 CPU 的多格式解析和应用级逻辑树时选 Dedoc。 | olmOCR 用较大的 GPU/模型成本换复杂视觉理解；Dedoc 则承担系统依赖和规则配置复杂度。 |
 
 ## 技术栈
 

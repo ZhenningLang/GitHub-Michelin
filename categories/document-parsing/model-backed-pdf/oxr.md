@@ -2,7 +2,7 @@
 name: OXR
 slug: oxr
 repo: https://github.com/SoMarkAI/OXR
-category: document-parsing
+category: model-backed-pdf
 tags: [document-parsing, ocr, layout-analysis, reading-order, tables, formulas, self-hosted]
 language: Python
 license: LicenseRef-OXR
@@ -65,7 +65,7 @@ health:
 
 Your scanned chemistry paper loses table cells, equations, and column order during text extraction. OXR detects page regions separately, then recognizes their contents and reading order into Markdown and coordinate-bearing JSON.
 
-![OXR — health radar](../../assets/health/oxr.svg)
+![OXR — health radar](../../../assets/health/oxr.svg)
 
 ## When to use
 
@@ -75,18 +75,18 @@ The adoption gate is permission and infrastructure, not the README's leaderboard
 
 ## When NOT to use
 
-- **You need unrestricted commercial use or a competing hosted parser.** Prefer [Docling](docling.md) or [PaddleOCR](../ocr/paddleocr.md), after checking the selected model licenses. The [OXR license](https://github.com/SoMarkAI/OXR/blob/62fbca8ef6c7c63b75b799fc8081f3eb6e667553/LICENSE#L9-L46) requires a separate license if consolidated funding or annual revenue exceeds USD 2 million. A competing hosted document/OCR API needs written authorization regardless of size, and third-party online services must display attribution. This is source-available licensing, not unmodified Apache-2.0.
-- **You have only a CPU or need Office formats directly.** Choose [Docling](docling.md) for mixed Office/PDF ingestion. OXR's documented local stack requires Linux, a BF16-capable NVIDIA GPU, a CUDA-13-compatible driver, and 24 GB GPU memory for initial low-concurrency trials; the recommendation rises to at least 48 GB for longer documents or higher concurrency.
+- **You need unrestricted commercial use or a competing hosted parser.** Prefer [Docling](../docling.md) or [PaddleOCR](../../ocr/paddleocr.md), after checking the selected model licenses. The [OXR license](https://github.com/SoMarkAI/OXR/blob/62fbca8ef6c7c63b75b799fc8081f3eb6e667553/LICENSE#L9-L46) requires a separate license if consolidated funding or annual revenue exceeds USD 2 million. A competing hosted document/OCR API needs written authorization regardless of size, and third-party online services must display attribution. This is source-available licensing, not unmodified Apache-2.0.
+- **You have only a CPU or need Office formats directly.** Choose [Docling](../docling.md) for mixed Office/PDF ingestion. OXR's documented local stack requires Linux, a BF16-capable NVIDIA GPU, a CUDA-13-compatible driver, and 24 GB GPU memory for initial low-concurrency trials; the recommendation rises to at least 48 GB for longer documents or higher concurrency.
 - **You need a durable multi-worker batch queue.** Consider [olmOCR](olmocr.md) for corpus-oriented workspace/S3 processing, while accounting for its documented maintenance lull. OXR's async task store is process-local memory; a restart loses task state, and several API workers do not share it. Build durable scheduling outside OXR before relying on it for production jobs.
-- **You need word-level boxes rather than region boxes.** Evaluate [PaddleOCR](../ocr/paddleocr.md) and its recognition-granularity options. OXR emits layout-block coordinates; [issue #4](https://github.com/SoMarkAI/OXR/issues/4) requests word-level boxes and had no response at verification time.
-- **You want a managed production guarantee.** A supported hosted parser is a different purchase; do not substitute OXR's free demo API. Its README explicitly disclaims production stability. Prefer self-hosted [Docling](docling.md) when keeping document data local and avoiding that demo dependency matters most.
+- **You need word-level boxes rather than region boxes.** Evaluate [PaddleOCR](../../ocr/paddleocr.md) and its recognition-granularity options. OXR emits layout-block coordinates; [issue #4](https://github.com/SoMarkAI/OXR/issues/4) requests word-level boxes and had no response at verification time.
+- **You want a managed production guarantee.** A supported hosted parser is a different purchase; do not substitute OXR's free demo API. Its README explicitly disclaims production stability. Prefer self-hosted [Docling](../docling.md) when keeping document data local and avoiding that demo dependency matters most.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Docling](docling.md) | ✅ | Pick Docling for mixed Office/PDF inputs or CPU deployment; pick OXR when independently replacing the region detector is worth a specialized GPU service stack. | Docling offers a broader document model and format surface; OXR concentrates on PDF/image recognition and exposes a distinct layout-service boundary. |
-| [PaddleOCR](../ocr/paddleocr.md) | ✅ | Pick PaddleOCR for text spotting, multilingual OCR, and a choice of document pipelines; pick OXR for a focused detector-plus-recognizer architecture with explicit reading-order handling. | PaddleOCR brings a larger model/backend matrix; OXR narrows the topology but adds a custom license and a separately installed vLLM plugin. |
+| [Docling](../docling.md) | ✅ | Pick Docling for mixed Office/PDF inputs or CPU deployment; pick OXR when independently replacing the region detector is worth a specialized GPU service stack. | Docling offers a broader document model and format surface; OXR concentrates on PDF/image recognition and exposes a distinct layout-service boundary. |
+| [PaddleOCR](../../ocr/paddleocr.md) | ✅ | Pick PaddleOCR for text spotting, multilingual OCR, and a choice of document pipelines; pick OXR for a focused detector-plus-recognizer architecture with explicit reading-order handling. | PaddleOCR brings a larger model/backend matrix; OXR narrows the topology but adds a custom license and a separately installed vLLM plugin. |
 | [olmOCR](olmocr.md) | ✅ | Pick olmOCR for workspace/S3 corpus jobs; pick OXR for an HTTP parser returning typed regions and coordinates, provided you supply durable job handling. | olmOCR has corpus-oriented orchestration but the indexed upstream has been quiet since March 2026; OXR is newly active and lacks that operational track record. |
 
 ## Quick start
@@ -95,7 +95,7 @@ Fetch the code and complete OXR-1.0 model directory, then use the README's Docke
 
 Usage source: [README local deployment and request example](https://github.com/SoMarkAI/OXR/blob/62fbca8ef6c7c63b75b799fc8081f3eb6e667553/README.md#L166-L278).
 
-![oxr — backbone user story](../../assets/flow/oxr.svg)
+![oxr — backbone user story](../../../assets/flow/oxr.svg)
 
 <!-- flow-steps:begin (generated from flows/oxr.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -114,7 +114,7 @@ Usage source: [README local deployment and request example](https://github.com/S
 
 ## Key techniques
 
-![OXR — mechanism diagram](../../assets/mechanism/oxr.svg)
+![OXR — mechanism diagram](../../../assets/mechanism/oxr.svg)
 
 <!-- mechanism:begin (generated from mechanisms/oxr.json by tools/mechanism_card.py; do not edit) -->
 <details>

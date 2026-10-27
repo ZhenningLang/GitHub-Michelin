@@ -2,7 +2,7 @@
 name: Marker
 slug: marker
 repo: https://github.com/datalab-to/marker
-category: document-parsing
+category: model-backed-pdf
 tags: [document-parsing, pdf, pdf-to-markdown, ocr, layout-analysis, rag-ingestion]
 language: Python
 license: Apache-2.0
@@ -80,7 +80,7 @@ health:
 
 You copy text out of a PDF paper and get broken lines, page numbers in mid-sentence, tables flattened into word soup and equations turned into garbage. Marker reads the PDF's own text where it is clean, OCRs only the pages and blocks that are not, and writes Markdown (or JSON/HTML/chunks) with real tables, LaTeX math and extracted images — locally, on a GPU or a plain CPU.
 
-![Marker — health radar](../../assets/health/marker.svg)
+![Marker — health radar](../../../assets/health/marker.svg)
 
 ## When to use
 
@@ -92,7 +92,7 @@ Marker fits when **PDF quality is the main job and throughput matters**: since v
 
 Marker is a Python package and CLI. **You** install it, make sure an inference backend is available (Docker + NVIDIA toolkit for vLLM on a GPU, or the `llama-server` binary from llama.cpp on CPU/Apple Silicon), and point `marker_single` at a file or `marker` at a folder. **Marker** does the rest: it extracts the PDF text layer with `pdftext`, finds the page layout (columns, tables, headers, figures) with a small layout model, and starts a local Surya inference server on first use — Surya is Datalab's OCR vision-language model, i.e. a model that reads page images and outputs text — sending it only scanned or garbled pages, equations and low-confidence tables. Then it strips running headers/footers, rebuilds tables and writes the output. A `--mode` switch picks the tradeoff (`balanced` on GPU, `fast` on CPU), `--disable_ocr` never touches the model, and `--use_llm` adds a pass through Gemini, Claude, an OpenAI-compatible endpoint or Ollama to merge cross-page tables and fix forms.
 
-![marker — backbone user story](../../assets/flow/marker.svg)
+![marker — backbone user story](../../../assets/flow/marker.svg)
 
 <!-- flow-steps:begin (generated from flows/marker.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -123,9 +123,9 @@ Marker is a Python package and CLI. **You** install it, make sure an inference b
 
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
-| [Docling](docling.md) | ✅ | Choose Docling when you need a permissively licensed, foundation-governed parser across PDF, Office, HTML and images; choose Marker when PDF accuracy and pages/second are what you are measured on. | Docling is MIT with no model-weight revenue cap and a broader input range; Marker reports higher olmOCR-bench scores and throughput but ships weights under OpenRAIL-M with a $5M threshold. |
+| [Docling](../docling.md) | ✅ | Choose Docling when you need a permissively licensed, foundation-governed parser across PDF, Office, HTML and images; choose Marker when PDF accuracy and pages/second are what you are measured on. | Docling is MIT with no model-weight revenue cap and a broader input range; Marker reports higher olmOCR-bench scores and throughput but ships weights under OpenRAIL-M with a $5M threshold. |
 | [olmOCR](olmocr.md) | ✅ | Choose olmOCR when every page is a hard scan and you can afford a 7B VLM pass on a GPU; choose Marker when most pages are born-digital and you want the text layer used directly. | olmOCR OCRs every page with a large vision model (slow, robust); Marker OCRs only what is broken (fast, slightly lower on hard pages). |
-| [MarkItDown](markitdown.md) | ✅ | Choose MarkItDown when inputs are mixed office files and you need a light dependency with no models; choose Marker when PDFs with tables, columns or equations must come out right. | MarkItDown is pure conversion with no layout model and no OCR by default; Marker brings PyTorch, a layout model and an OCR server for much better PDF structure. |
+| [MarkItDown](../markitdown.md) | ✅ | Choose MarkItDown when inputs are mixed office files and you need a light dependency with no models; choose Marker when PDFs with tables, columns or equations must come out right. | MarkItDown is pure conversion with no layout model and no OCR by default; Marker brings PyTorch, a layout model and an OCR server for much better PDF structure. |
 | MinerU | 未收录 | Choose MinerU when you want the most-starred self-hosted parser with its own VLM backend and Chinese-document focus; choose Marker when pipeline throughput on mostly digital PDFs decides it. | Both are local model pipelines and both carry commercial thresholds (MinerU: Apache-2.0 plus additional commercial-license terms; Marker: OpenRAIL-M weights); Marker's README reports ~5× MinerU's pipeline throughput — the vendor's own number. |
 | Chandra | 未收录 | Choose Chandra (Datalab's document VLM, or its hosted API) when maximum accuracy matters more than cost; choose Marker for cheap, local, high-volume conversion. | Same vendor; Chandra scores higher (85.8 on olmOCR-bench) but is a heavy VLM or a paid API, while Marker runs selective OCR on commodity hardware. |
 

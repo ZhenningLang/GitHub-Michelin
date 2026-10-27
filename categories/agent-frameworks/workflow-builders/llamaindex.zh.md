@@ -115,7 +115,7 @@ health:
 ## 何时不用
 
 - **你要押注这个框架未来好几年的路线图。** README 现在写明公司的“主要精力已转向 LlamaParse”（它的托管文档解析产品），开源框架只是“仍作为开放工具包提供”。如果编排层的长期投入对你很重要，请优先考虑 [LangGraph](../agent-runtimes/agent-sdks/langgraph.zh.md) 或 LangChain，因为它们是背后厂商的主力开源产品，而不是副业。
-- **你的文档很难解析（扫描件、复杂表格、表单）。** 检索效果取决于抽出来的文字质量，而 README 把难解析的文档引向 LlamaParse，一个收费的托管服务。想把解析留在自己机器上，就在 LlamaIndex 前面放 [Docling](../../document-parsing/docling.zh.md) 或 [Marker](../../document-parsing/marker.zh.md)，不要依赖它的默认 reader，因为它们会在本地还原版面和表格。
+- **你的文档很难解析（扫描件、复杂表格、表单）。** 检索效果取决于抽出来的文字质量，而 README 把难解析的文档引向 LlamaParse，一个收费的托管服务。想把解析留在自己机器上，就在 LlamaIndex 前面放 [Docling](../../document-parsing/docling.zh.md) 或 [Marker](../../document-parsing/model-backed-pdf/marker.zh.md)，不要依赖它的默认 reader，因为它们会在本地还原版面和表格。
 - **你的应用主要是 agent 控制流，而不是检索。** 如果难点在分支、重试、人工审批和持久状态，请改用 LangGraph，因为它的图运行时就是围绕这些状态设计的，而 LlamaIndex 的长处在数据这一侧。
 - **你想要尽量小的依赖面。** 光 `llama-index-core` 就会拉进 SQLAlchemy、NLTK、tiktoken、NumPy、networkx、Pillow 和 aiohttp，还内置一份 NLTK/tiktoken 缓存。如果只是做一次相似度查找，请直接调用 [FAISS](../../rag-retrieval/vector-search/faiss.zh.md) 或 [Milvus](../../rag-retrieval/vector-search/milvus.zh.md) 这类向量库，因为这样能省掉整个框架和它的升级矩阵。
 - **你需要稳定的 1.0 API 承诺。** 项目快满四年仍是 `0.14.x`，各集成包对核心包的版本约束很紧，每次核心发版都跟着动（2026 年 10 月的提交大多是各模型提供方依赖范围的调整）。如果升级必须平淡无事，就把所有 `llama-index-*` 包一起锁版本，或者把检索留在自己的代码里。

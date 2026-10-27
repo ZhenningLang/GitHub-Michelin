@@ -2,7 +2,7 @@
 name: Marker
 slug: marker
 repo: https://github.com/datalab-to/marker
-category: document-parsing
+category: model-backed-pdf
 tags: [document-parsing, pdf, pdf-to-markdown, ocr, layout-analysis, rag-ingestion]
 language: Python
 license: Apache-2.0
@@ -80,7 +80,7 @@ health:
 
 从 PDF 论文里复制一段文字，得到的是断成碎片的行、夹在句子中间的页码、被拍扁成一串词的表格和变成乱码的公式。Marker 在 PDF 自带文字干净的地方直接用，只把坏掉的页面和区块送去识别，最后写出带真表格、LaTeX 公式和图片的 Markdown（或 JSON/HTML/分块）——在本地跑，GPU 或普通 CPU 都行。
 
-![Marker — 健康度雷达](../../assets/health/marker.zh.svg)
+![Marker — 健康度雷达](../../../assets/health/marker.zh.svg)
 
 ## 何时使用
 
@@ -92,7 +92,7 @@ health:
 
 Marker 是一个 Python 包加命令行工具。**你要做的**：安装它，准备好推理后端（GPU 机器上装 Docker 和 NVIDIA 容器工具包跑 vLLM，CPU 或 Apple Silicon 上装 llama.cpp 的 `llama-server`），然后用 `marker_single` 转单个文件或用 `marker` 转整个目录。**Marker 替你做的**：先用 `pdftext` 抽出 PDF 文字层，用一个小型版面模型找出分栏、表格、页眉和插图的位置；第一次用时在本地拉起一个 Surya 推理服务——Surya 是 Datalab 的 OCR 视觉语言模型，也就是看页面图片、输出文字的模型——只把扫描页、乱码页、公式和没把握的表格交给它。然后去掉页眉页脚、重建表格、写出结果。`--mode` 选取舍（GPU 默认 `balanced`，CPU 默认 `fast`），`--disable_ocr` 完全不碰模型，`--use_llm` 再过一遍 Gemini、Claude、OpenAI 兼容接口或 Ollama，用来合并跨页表格、修正表单。
 
-![marker — 主干用户故事](../../assets/flow/marker.zh.svg)
+![marker — 主干用户故事](../../../assets/flow/marker.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/marker.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -123,9 +123,9 @@ Marker 是一个 Python 包加命令行工具。**你要做的**：安装它，�
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| [Docling](docling.zh.md) | 已收录 | 需要宽松许可、基金会治理、覆盖 PDF/Office/HTML/图片的解析器，选 Docling；考核指标是 PDF 准确率和每秒页数，选 Marker。 | Docling 是 MIT，模型权重没有营收门槛，输入格式更广；Marker 在 olmOCR-bench 上分数和吞吐更高，但权重是带 500 万美元门槛的 OpenRAIL-M。 |
+| [Docling](../docling.zh.md) | 已收录 | 需要宽松许可、基金会治理、覆盖 PDF/Office/HTML/图片的解析器，选 Docling；考核指标是 PDF 准确率和每秒页数，选 Marker。 | Docling 是 MIT，模型权重没有营收门槛，输入格式更广；Marker 在 olmOCR-bench 上分数和吞吐更高，但权重是带 500 万美元门槛的 OpenRAIL-M。 |
 | [olmOCR](olmocr.zh.md) | 已收录 | 每一页都是难啃的扫描件、而且能负担 GPU 上 7B 视觉模型逐页处理，选 olmOCR；大部分是原生数字 PDF、想直接用文字层，选 Marker。 | olmOCR 每页都用大视觉模型识别（慢但稳）；Marker 只识别坏掉的部分（快，难页上略低）。 |
-| [MarkItDown](markitdown.zh.md) | 已收录 | 输入是混杂的办公文件、只要一个不带模型的轻依赖，选 MarkItDown；带表格、分栏或公式的 PDF 必须转对，选 Marker。 | MarkItDown 是纯格式转换，默认没有版面模型也没有 OCR；Marker 带上 PyTorch、版面模型和 OCR 服务，换来好得多的 PDF 结构。 |
+| [MarkItDown](../markitdown.zh.md) | 已收录 | 输入是混杂的办公文件、只要一个不带模型的轻依赖，选 MarkItDown；带表格、分栏或公式的 PDF 必须转对，选 Marker。 | MarkItDown 是纯格式转换，默认没有版面模型也没有 OCR；Marker 带上 PyTorch、版面模型和 OCR 服务，换来好得多的 PDF 结构。 |
 | MinerU | 未收录 | 想要星数最多、自带视觉模型后端、偏重中文文档的自托管解析器，选 MinerU；以原生数字 PDF 为主、吞吐量决定成败，选 Marker。 | 两者都是本地模型流水线，也都有商用门槛（MinerU 是 Apache-2.0 加附加商业许可条款，Marker 是 OpenRAIL-M 权重）；Marker 的 README 称吞吐约为 MinerU 流水线的 5 倍——这是厂商自己的数字。 |
 | Chandra | 未收录 | 准确率比成本更重要时，选 Chandra（Datalab 的文档视觉模型或其托管 API）；要便宜、本地、大批量转换，选 Marker。 | 同一家厂商；Chandra 分数更高（olmOCR-bench 85.8），但它是重型视觉模型或付费 API，Marker 在普通硬件上做按需 OCR。 |
 

@@ -115,7 +115,7 @@ MuPDF 是 Artifex（Ghostscript 背后的公司）写的一个精简 C 库，用
 
 - **你发布闭源软件或做 SaaS，又不打算买许可。** PyMuPDF 是 AGPL-3.0 或 Artifex 商业许可二选一——AGPL 的网络条款连托管服务也覆盖。提取用 [pdfplumber](pdfplumber.zh.md)（MIT），拆分/合并/表单用 pypdf（BSD，未收录），接受速度慢一些；或者把商业许可的钱列进预算。
 - **你要处理 Word、Excel 或 PowerPoint。** 那是付费扩展 PyMuPDF Pro（没有许可证密钥时只能读前 3 页，且有时限）。开源的 Office 文档入库用 [Docling](../../document-parsing/docling.zh.md)，或者先用 LibreOffice 转成 PDF。
-- **你要的是文档的含义，而不是字形：跨栏的阅读顺序、标题、图表、扫描页。** PyMuPDF 给的是精确的底层输出；[Docling](../../document-parsing/docling.zh.md) 或 [Marker](../../document-parsing/marker.zh.md) 这类基于模型的解析器替你判断结构、对扫描件更友好，代价是安装更重。
+- **你要的是文档的含义，而不是字形：跨栏的阅读顺序、标题、图表、扫描页。** PyMuPDF 给的是精确的底层输出；[Docling](../../document-parsing/docling.zh.md) 或 [Marker](../../document-parsing/model-backed-pdf/marker.zh.md) 这类基于模型的解析器替你判断结构、对扫描件更友好，代价是安装更重。
 - **代码跑在浏览器或 Node 里。** 它是 C 引擎的 Python 绑定；JavaScript 里读和渲染用 [PDF.js](pdfjs.zh.md)，改 PDF 用 [pdf-lib](../pdf-generation/pdf-lib.zh.md)。
 - **你需要具备法律效力的数字签名（PAdES、时间戳、验签）。** 用 [pyHanko](../pdf-transform-signing/pyhanko.zh.md)；签名和验签不在 PyMuPDF 文档列出的功能里。
 - **你的平台没有预编译 wheel。** wheel 覆盖 Windows、macOS（x86_64/arm64）以及主流 manylinux/musllinux 目标，Python 3.10–3.14；其他平台要用 C/C++ 工具链从源码编译 MuPDF。
