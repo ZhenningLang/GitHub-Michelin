@@ -7,6 +7,7 @@
 
 | Collection | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **fun-isometric** | Ask an agent to draw and rig editable canvas stickers with reusable motion keys; includes render checks, not a general animation platform. | C (4/5) | [→](fun-isometric.md) |
 | **Guizang Social Card Skill** | Use it when a coding agent needs art-directed Xiaohongshu carousels or WeChat cover pairs as single-file HTML rendered to PNG. | D (3/5) | [→](guizang-social-card.md) |
 | **ian-xiaohei-illustrations** | Use it when you need consistent hand-drawn 16:9 Chinese article illustrations with a fixed IP. | B (4/5) | [→](ian-illustrations.md) |
 | **handraw-style** | Use it when you want numbered hand-drawn styles, layouts and theme colors (279/122/36) assembled into bilingual image-AI prompts by an installed agent skill. | C (4/5) | [→](handraw-style.md) |
@@ -17,6 +18,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [fun-isometric](fun-isometric.md) | ✅ | C (4/5) | A constrained animated-sticker kit with local rendering; one day old, with browser downloads and license-notice preservation to review. |
 | [Guizang Social Card Skill](guizang-social-card.md) | ✅ | D (3/5) | Platform-sized social cards and covers as HTML-to-PNG artifacts; young and AGPL. |
 | [ian-xiaohei-illustrations](ian-illustrations.md) | ✅ | B (4/5) | Consistent hand-drawn article illustrations with a fixed character/IP; not editable deck/card templates. |
 | [Guizang PPT Skill](../slides-ppt/guizang-ppt.md) | ✅ | C (4/5) | Choose it when the artifact is a full deck rather than standalone cards or article images. |

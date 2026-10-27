@@ -7,6 +7,7 @@
 
 | 集合 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **fun-isometric** | 让助手用复用动作帧绘制、绑定可修改的画布贴纸；附渲染检查，不是通用动画平台。 | C（4/5） | [→](fun-isometric.zh.md) |
 | **Guizang Social Card Skill** | 当你在 Claude Code/Codex 里想让 agent 用锁定的编辑风/瑞士风生成小红书图文或公众号封面对（单文件 HTML 渲染成 PNG）时使用。 | D（3/5） | [→](guizang-social-card.zh.md) |
 | **ian-xiaohei-illustrations** | 当你要为中文文章批量生成风格一致、带小黑 IP 的手绘 16:9 正文配图时用它。 | B（4/5） | [→](ian-illustrations.zh.md) |
 | **handraw-style** | 当你想把编号化的手绘画风、版面图型与主题色（279/122/36）交给装好的 agent skill 拼成中英双语生图提示词时用它。 | C（4/5） | [→](handraw-style.zh.md) |
@@ -17,6 +18,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [fun-isometric](fun-isometric.zh.md) | 已收录 | C（4/5） | 外观受限的动态贴纸组件，支持本地渲染；仅一天历史，须审查浏览器下载与许可正文保留。 |
 | [Guizang Social Card Skill](guizang-social-card.zh.md) | ✅ | D（3/5） | 把社交卡片和封面做成 HTML 到 PNG 产物；很年轻且 AGPL。 |
 | [ian-xiaohei-illustrations](ian-illustrations.zh.md) | ✅ | B（4/5） | 固定角色 / IP 的手绘文章配图；不是可编辑 deck 或卡片模板。 |
 | [Guizang PPT Skill](../slides-ppt/guizang-ppt.zh.md) | ✅ | C（4/5） | 当产物是完整 deck、不是独立卡片或文章配图时选它。 |

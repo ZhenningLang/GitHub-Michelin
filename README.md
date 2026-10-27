@@ -619,6 +619,7 @@ Enter [Client Routing](categories/api-gateway/client-routing/INDEX.md) for devel
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **fun-isometric** | Ask an agent to draw and rig editable canvas stickers with reusable motion keys; includes render checks, not a general animation platform. | MIT | C (4/5) | [EN](categories/agent-skills/visual-content/fun-isometric.md) · [中](categories/agent-skills/visual-content/fun-isometric.zh.md) |
 | **Interfaces Skills** | Evidence-led interface reviews across six disciplines, with change-caused regressions and unreviewed domains explicit. | MIT | B (4/5) | [EN](categories/agent-skills/design/ui-taste/jakubkrehel-skills.md) · [中](categories/agent-skills/design/ui-taste/jakubkrehel-skills.zh.md) |
 | **Plain Writing Skill** | Literal English style rules and context-repair rewrites for agent replies. | MIT | B (4/5) | [EN](categories/agent-skills/ai-writing/de-ai-writing/plain-writing-skill.md) · [中](categories/agent-skills/ai-writing/de-ai-writing/plain-writing-skill.zh.md) |
 | **SwiftUI Pro** | Focused SwiftUI API and accessibility review guidance; validate against your real SDK. | MIT | B (4/5) | [EN](categories/agent-skills/engineering/swiftui-agent-skill.md) · [中](categories/agent-skills/engineering/swiftui-agent-skill.zh.md) |
