@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "Wails does", "zh": "Wails 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install stable v3 and create the JavaScript starter", "zh": "安装稳定 v3，创建 JavaScript 模板", "code": "wails3 init -n myfirstapp -t vanilla-js"},
+    {"lane": "them", "en": "Generate a frontend and register a Go greeting service", "zh": "生成前端并注册 Go 问候服务", "component": {"en": "starter template", "zh": "应用模板"}},
+    {"lane": "you", "en": "Implement the Go method and call it from the page", "zh": "实现 Go 方法，在页面调用它", "code": "GreetService.Greet(name)"},
+    {"lane": "you", "en": "Build and open the development application", "zh": "构建并打开开发应用", "code": "wails3 dev"},
+    {"lane": "them", "en": "Generate bindings and load the UI in the platform webview", "zh": "生成绑定，在平台网页视图加载界面"},
+    {"lane": "them", "en": "Invoke the registered Go method and return its result to the page", "zh": "调用已注册 Go 方法，把结果返回页面"}
+  ],
+  "value": {"en": "Your web form operates the Go application without a separately deployed website", "zh": "网页表单直接操作 Go 应用，不必另部署网站"},
+  "sources": [
+    "https://github.com/wailsapp/wails/blob/3b1e7926996da34d3fde3d2bd5da0ceb38adb035/README.md#L91-L100",
+    "https://github.com/wailsapp/wails/blob/3b1e7926996da34d3fde3d2bd5da0ceb38adb035/docs/mpress/content/getting-started/your-first-app.md#L15-L132",
+    "https://github.com/wailsapp/wails/blob/3b1e7926996da34d3fde3d2bd5da0ceb38adb035/v3/internal/templates/_common/main.go.tmpl#L37-L68",
+    "https://github.com/wailsapp/wails/blob/3b1e7926996da34d3fde3d2bd5da0ceb38adb035/v3/internal/templates/vanilla-js/frontend/src/main.js.tmpl#L44-L54",
+    "https://github.com/wailsapp/wails/blob/3b1e7926996da34d3fde3d2bd5da0ceb38adb035/v3/pkg/application/messageprocessor_call.go#L113-L152"
+  ]
+}

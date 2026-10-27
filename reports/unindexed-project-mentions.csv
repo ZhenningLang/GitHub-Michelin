@@ -555,6 +555,7 @@ FunctionGemma (Google),categories/function-calling/functionary.md,,no
 FunctionGemma (Google) / cloud tool APIs,categories/function-calling/INDEX.md,,no
 Fusion 360 · Onshape · SolidWorks,categories/cad/INDEX.md,,no
 fx,categories/dev-utilities/data-tools/jq.md,,no
+Fyne,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/wails.md,,no
 GDAL/OGR,categories/geospatial/qgis.md,,no
 Gemma (google-deepmind/gemma),categories/on-device-ml/minicpm.md,,no
 Generic LLM business-coaching prompts,categories/agent-skills/personal-collections/knowledge-content/dbskill.md,,no
@@ -1364,7 +1365,6 @@ VSCodeVim,categories/dev-utilities/editors-and-runtimes/code-editors/ideavim.md,
 VSCodium,categories/dev-utilities/editors-and-runtimes/code-editors/vscode.md,,no
 Vue DevTools (`vuejs/devtools`),categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-devtools.md,,no
 VueUse (`vueuse/vueuse`),categories/web-ui/scheduling/tanstack-pacer.md,,no
-Wails,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/tauri.md,,no
 Warpgate (`warp-tech/warpgate`),categories/dev-utilities/ops-infra/jumpserver.md,,no
 Weaviate,categories/rag-retrieval/vector-search/INDEX.md,,no
 Web Animations API (WAAPI),categories/frontend-animation/anime.md,,no

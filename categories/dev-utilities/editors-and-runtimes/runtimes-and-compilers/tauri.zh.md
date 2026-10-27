@@ -130,7 +130,7 @@ Tauri 把应用拆成两半。前端就是普通的 Web 代码，用你现有的
 | --- | --- | --- | --- |
 | Electron | 未收录 | 各平台一致的 Chromium 渲染和 JavaScript/Node 后端比应用体积更重要时选 Electron；安装包大小、内存和按权限划定的桥接更重要时选 Tauri。 | Electron 省掉了逐个系统测试 webview 的麻烦，整套技术栈都是 JavaScript，但每个应用都要自带并运行一份 Chromium 和 Node。 |
 | Flutter | 未收录 | 移动端优先、需要跨平台像素级自定义界面时选 Flutter；团队技能和组件库都在 Web 上时选 Tauri。 | Flutter 每个像素都自己画，所以处处一致，但界面要用 Dart 重写，也放弃了 Web 生态。 |
-| Wails | 未收录 | 团队写 Go、想要同样的系统 webview 路线时选 Wails；想用 Rust、要移动端目标和更大的插件生态时选 Tauri。 | Wails 和 Tauri 一样用系统 webview，后端换成 Go，因此同样要承担跨 webview 测试的负担，且只面向桌面。 |
+| [Wails](wails.zh.md) | 已收录 | 团队写 Go、想要同样的系统 webview 路线时选 Wails；想用 Rust、要移动端目标和更大的插件生态时选 Tauri。 | Wails 和 Tauri 一样用系统 webview，后端换成 Go，因此同样要承担跨 webview 测试的负担，且只面向桌面。 |
 | Neutralinojs | 未收录 | 想要一个极小、完全没有编译型后端的桌面外壳时选 Neutralinojs；需要有类型的原生后端、更新器和移动端目标时选 Tauri。 | Neutralinojs 通过一个预编译二进制通信，免掉了 Rust 或 Go 工具链，但原生 API 面和生态都小得多。 |
 
 ## 技术栈
