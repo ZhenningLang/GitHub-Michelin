@@ -736,6 +736,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **tstack** | 九项 PR 交付技能，串起 Sol 评审、CI 值守与合并或交接分流；模型路由和权限策略由你提供。 | MIT | C（4/5） | [中](categories/agent-skills/personal-collections/engineering-workflows/tstack.zh.md) · [EN](categories/agent-skills/personal-collections/engineering-workflows/tstack.md) |
 | **agent-scripts** | 一位维护者用来在 Codex 与 Claude Code 之间共享一份 `AGENTS.MD` 和约 70 个 skill 的权威仓库，靠软链同步脚本分发；更像参考布局而非可移植的 skill 包（不少 skill 默认作者自己的机器）。 | MIT | B（4/5） | [中](categories/agent-skills/personal-collections/engineering-workflows/agent-scripts.zh.md) · [EN](categories/agent-skills/personal-collections/engineering-workflows/agent-scripts.md) |
 | **antfu/skills** | Anthony Fu 个人精选、面向 Vue/Vite/Nuxt 栈的 agent skill 集合（其 ESLint/pnpm/Vitest/UnoCSS 偏好 + 生成与 vendored 的框架 skill），通过 skills CLI 安装。 | MIT | B（4/5） | [中](categories/agent-skills/personal-collections/engineering-workflows/antfu-skills.zh.md) · [EN](categories/agent-skills/personal-collections/engineering-workflows/antfu-skills.md) |
 | **claude-code-harness** | 一套个人化的 Claude Code harness：以插件形式装入受治理的 plan → work → review → release 循环（spec 优先契约、TDD 门控执行、独立 review），并附带 Go 原生 doctor CLI 诊断插件缓存与 skill 漂移。 | MIT | B（5/6） | [中](categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.zh.md) · [EN](categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.md) |

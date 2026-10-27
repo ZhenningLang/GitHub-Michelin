@@ -16,7 +16,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | nightly-labs/openbot | propose | proposed |  | 当前固定d71a4eb9明确为PolyForm Noncommercial源码可见版本，商业用途需另获许可；非缺失或伪造许可，旧Apache不覆盖新版本。准入留维护者裁决，标签保留；no leftover Q&A | nightly-labs/openbot |
 | open-webui/open-webui | sync | done | categories/llm-chat-ui/open-webui.md | Fresh delta=19<=90；沿用2026-10-08原核验日期，未重读上游、未改双语页；no leftover Q&A | open-webui/open-webui |
 | shcherbak-ai/contextgem | add | running |  |  | shcherbak-ai/contextgem |
-| t3dotgg/tstack | add | running |  |  | t3dotgg/tstack |
+| t3dotgg/tstack | add | done | categories/agent-skills/personal-collections/engineering-workflows/tstack.md | 固定92e38e2c；16blob真实根树认证、42引用与2命令核验；独立审稿补测试授权范围，机器人finished不是批准、full-stop不是只读；no leftover Q&A | t3dotgg/tstack |
 | tractordev/webframe | add | running |  |  | tractordev/webframe |
 | unclebob/ub-mode | propose | proposed |  | 固定57a8bdd2完整树仅两文件，无明确复用许可；README承认规则来源但授权链未核清。技能有复用实质，非因纯提示或年轻拒收，标签保留；no leftover Q&A | unclebob/ub-mode |
 | Vxtzq/CrowdGPT | add | running |  |  | vxtzq/crowdgpt |

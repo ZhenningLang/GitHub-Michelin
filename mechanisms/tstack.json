@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "goal", "en": "Change goal and host permissions", "zh": "改动目标与宿主权限", "kind": "input"},
+    {"id": "review", "en": "Prompt: Sol rounds and finding ledger", "zh": "提示词：Sol 轮次与问题账本", "technique": [1]},
+    {"id": "pr", "en": "Agent files or updates the PR", "zh": "助手创建或更新 PR"},
+    {"id": "github", "en": "GitHub checks and review events", "zh": "GitHub 检查与评审事件", "kind": "external"},
+    {"id": "state", "en": "Python fallback: lock and event cursor", "zh": "Python 后备：锁与事件游标", "technique": [2]},
+    {"id": "gate", "en": "Head checks and selected bot status", "zh": "当前提交检查与指定机器人状态", "technique": [3]},
+    {"id": "handoff", "en": "Agent rechecks policy and hands off", "zh": "助手另查策略后交接", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "goal", "to": "review"},
+    {"from": "review", "to": "pr", "en": "approved behavior diff", "zh": "获认可的行为差异"},
+    {"from": "pr", "to": "github"},
+    {"from": "github", "to": "state"},
+    {"from": "state", "to": "gate"},
+    {"from": "gate", "to": "handoff", "en": "observation is not merge authority", "zh": "观察结果不等于合并许可"}
+  ],
+  "sources": [
+    "https://github.com/t3dotgg/tstack/blob/92e38e2cf677a84a142e8df296861c588542135c/skills/sol-loop/SKILL.md#L15-L108",
+    "https://github.com/t3dotgg/tstack/blob/92e38e2cf677a84a142e8df296861c588542135c/skills/babysit-pr/scripts/pr-wait#L207-L290",
+    "https://github.com/t3dotgg/tstack/blob/92e38e2cf677a84a142e8df296861c588542135c/skills/babysit-pr/scripts/pr-wait#L344-L517",
+    "https://github.com/t3dotgg/tstack/blob/92e38e2cf677a84a142e8df296861c588542135c/skills/full-stop/SKILL.md#L29-L47"
+  ]
+}
