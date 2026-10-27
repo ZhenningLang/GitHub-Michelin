@@ -10,7 +10,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | browseros-ai/BrowserOS | add | done | categories/web-automation/agent-browser-tools/browseros.md | 固定6967b953；44源码blob树认证、52引用与3命令核验；独立审稿修正Rust最低支持版本，许可分区及浏览器权限边界保留；no leftover Q&A | browseros-ai/browseros |
 | designfuchen/word-atlas | add | done | categories/education-tutoring/word-atlas.md | 固定99c00767；23份blob固定树认证，22处引用和1命令原样核验；MIT代码与CC BY内容分开，备份缓存及导出破坏性边界保留；no leftover Q&A | designfuchen/word-atlas |
 | google/elephant-goldfish-model | add | done | categories/agent-dev-methodology/spec-driven-development/elephant-goldfish-model.md | 固定b3a35956；18份blob固定树认证，52引用和4命令原样核验；独立内容审无问题，设计批准不等于实施授权；no leftover Q&A | google/elephant-goldfish-model |
-| Infini-AI-Lab/hermit | add | running |  |  | infini-ai-lab/hermit |
+| Infini-AI-Lab/hermit | add | done | categories/agent-frameworks/workflow-builders/hermit.md | 固定6957141d；49源码blob树认证、22引用与1命令核验；独立审稿修正可用轨迹条件，结构检查不保证涨分，MWM旧源权属仍存疑；no leftover Q&A | infini-ai-lab/hermit |
 | kelvinkn17/skills | add | done | categories/agent-skills/visual-content/fun-isometric.md | 固定7c8a7526；13blob树认证、26处引用及3命令核验；独立内容审无问题，ZIP缺根MIT及单日历史已披露；no leftover Q&A | kelvinkn17/skills |
 | microsoft/pylance-release | propose | proposed |  | README:5明确Pylance主体闭源，本仓为文档与反馈，另含协议及测试样例；CC-BY-4.0不等于扩展开源。官方指向microsoft/pyright；暂不扩收，标签保留。固定f03a84d9，no leftover Q&A | microsoft/pylance-release |
 | nightly-labs/openbot | propose | proposed |  | 当前固定d71a4eb9明确为PolyForm Noncommercial源码可见版本，商业用途需另获许可；非缺失或伪造许可，旧Apache不覆盖新版本。准入留维护者裁决，标签保留；no leftover Q&A | nightly-labs/openbot |

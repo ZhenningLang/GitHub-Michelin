@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Hermit", "zh": "Hermit"},
+  "steps": [
+    {"lane": "you", "en": "Prepare Python 3.11+, Git and the source checkout", "zh": "准备 Python 3.11+、Git 与源码环境"},
+    {"lane": "you", "en": "Check the trusted offline task and measure its no-adapter baseline", "zh": "检查可信离线任务，测无适配器基线"},
+    {"lane": "you", "en": "Train the included scripted adapter learner", "zh": "启动内置脚本适配器学习器", "code": "hermit train --config docs/_examples/first_training/run.yaml"},
+    {"lane": "them", "en": "Collect feedback, edit the output rule and version the adapter", "zh": "收集反馈，修改输出规则并保存版本"},
+    {"lane": "you", "en": "Evaluate root and final separately, then request a fresh Codex workspace", "zh": "分别评测起始和最终版，再生成新 Codex 工作区"},
+    {"lane": "them", "en": "Write the learned instruction into workspace files; do not launch the host", "zh": "把学到的指令写入工作区文件，不启动宿主"}
+  ],
+  "value": {"en": "An inspectable feedback-to-adapter-to-host cycle, without changing model weights", "zh": "得到可检查的反馈、适配器、宿主交接链，不改模型权重"},
+  "sources": [
+    "https://github.com/Infini-AI-Lab/hermit/blob/6957141db1bda07877e0b989bea375eaf9b7cec2/docs/get-started/quickstart.md#L3-L75",
+    "https://github.com/Infini-AI-Lab/hermit/blob/6957141db1bda07877e0b989bea375eaf9b7cec2/docs/_examples/first_training/run.yaml#L1-L27",
+    "https://github.com/Infini-AI-Lab/hermit/blob/6957141db1bda07877e0b989bea375eaf9b7cec2/docs/_examples/first_training/learner/evolver.py#L6-L16"
+  ]
+}

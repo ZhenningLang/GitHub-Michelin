@@ -241,6 +241,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **PenguinHarness** | 固定模型和评测集，给运行框架改动分版本、评分；涨分仍需新任务验证。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/workflow-builders/penguin-harness.zh.md) · [EN](categories/agent-frameworks/workflow-builders/penguin-harness.md) |
+| **Hermit** | 跨演化方法训练并保存外部 agent 适配文件版本；不改权重，也不自动保证涨分。 | Apache-2.0 | C（6/6） | [中](categories/agent-frameworks/workflow-builders/hermit.zh.md) · [EN](categories/agent-frameworks/workflow-builders/hermit.md) |
 | **JiuwenSwarm** | 带聊天渠道与审批的团队工作台；分布式模式需要额外基础设施。 | Apache-2.0 | B（5/6） | [中](categories/agent-frameworks/agent-runtimes/agent-services/jiuwenswarm.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-services/jiuwenswarm.md) |
 | **Atomic Agent** | 压缩工具提示词驱动本地工作站；仍是预览版本，分析外发默认开启。 | MIT | B（6/6） | [中](categories/agent-frameworks/agent-runtimes/personal-assistants/atomic-agent.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/personal-assistants/atomic-agent.md) |
 | **Docker Agent** | 你要的 agent 应该是一个可分享的 YAML（模型、工具、队友），由 `docker agent run` 在本地像跑镜像一样执行时选它；循环必须嵌在你代码里时不选。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/agent-runtimes/docker-agent.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/docker-agent.md) |

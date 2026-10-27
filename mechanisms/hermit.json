@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "input", "en": "Tasks, judge and fixed acting agent", "zh": "任务、评分器与固定执行 agent", "kind": "input"},
+    {"id": "rollout", "en": "Run tasks; feedback and available pipeline traces", "zh": "执行任务；反馈与流水线可用轨迹", "technique": [2]},
+    {"id": "evolve", "en": "Evolver edits the external adapter", "zh": "演化器修改外部适配文件"},
+    {"id": "check", "en": "Check declared paths and formats; repair invalid edits", "zh": "检查声明路径与格式；修复无效编辑", "technique": [1]},
+    {"id": "record", "en": "Git adapter versions; completed-step state and usage", "zh": "Git 适配版本；完整步骤状态与用量", "technique": [2]},
+    {"id": "eval", "en": "Separate fixed-protocol evaluation; no automatic improvement guarantee", "zh": "单独固定协议评测；不自动保证提升"},
+    {"id": "host", "en": "Generate host files or a compatible plugin", "zh": "生成宿主文件或兼容插件", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "input", "to": "rollout"},
+    {"from": "rollout", "to": "evolve"},
+    {"from": "evolve", "to": "check"},
+    {"from": "check", "to": "record"},
+    {"from": "record", "to": "rollout", "en": "next batch", "zh": "下一批任务"},
+    {"from": "record", "to": "eval"},
+    {"from": "eval", "to": "host"}
+  ],
+  "sources": [
+    "https://github.com/Infini-AI-Lab/hermit/blob/6957141db1bda07877e0b989bea375eaf9b7cec2/docs/framework/adapter-lifecycle.md#L79-L145",
+    "https://github.com/Infini-AI-Lab/hermit/blob/6957141db1bda07877e0b989bea375eaf9b7cec2/hermit/spec.py#L47-L244",
+    "https://github.com/Infini-AI-Lab/hermit/blob/6957141db1bda07877e0b989bea375eaf9b7cec2/hermit/trainer/trainer.py#L445-L577",
+    "https://github.com/Infini-AI-Lab/hermit/blob/6957141db1bda07877e0b989bea375eaf9b7cec2/docs/guides/evaluation.md#L3-L58",
+    "https://github.com/Infini-AI-Lab/hermit/blob/6957141db1bda07877e0b989bea375eaf9b7cec2/hermit/hosts/codex.py#L26-L84"
+  ]
+}
