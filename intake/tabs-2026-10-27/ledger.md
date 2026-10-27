@@ -8,7 +8,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | alchaincyf/huashu-design | sync | done | categories/agent-skills/design/visual-artifacts/huashu-design.md | 固定4fc7bfdb完整源码重核并迁移v2；8份新旧来源blob经固定API树认证，第三方提示词权利仍存疑；no leftover Q&A | alchaincyf/huashu-design |
 | anthropics/sandbox-runtime | add | done | categories/sandboxing/sandbox-runtime.md | 固定98a4016d；11份源码blob树认证，32处引用与2命令原样核验；默认允许读取及平台降级已披露，综合A非安全认证；no leftover Q&A | anthropics/sandbox-runtime |
 | browseros-ai/BrowserOS | add | running |  |  | browseros-ai/browseros |
-| designfuchen/word-atlas | add | running |  |  | designfuchen/word-atlas |
+| designfuchen/word-atlas | add | done | categories/education-tutoring/word-atlas.md | 固定99c00767；23份blob固定树认证，22处引用和1命令原样核验；MIT代码与CC BY内容分开，备份缓存及导出破坏性边界保留；no leftover Q&A | designfuchen/word-atlas |
 | google/elephant-goldfish-model | add | running |  |  | google/elephant-goldfish-model |
 | Infini-AI-Lab/hermit | add | running |  |  | infini-ai-lab/hermit |
 | kelvinkn17/skills | add | running |  |  | kelvinkn17/skills |

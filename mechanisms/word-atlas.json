@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "corpus", "en": "Static corpus and media", "zh": "静态词库与媒体", "kind": "input"},
+    {"id": "chunk", "en": "Compact index; on-demand entry chunks", "zh": "紧凑索引；按需加载词条块", "technique": [1]},
+    {"id": "quiz", "en": "Due reviews; groups of five new words", "zh": "到期复习；每五个新词一组", "technique": [2]},
+    {"id": "answer", "en": "First answer grades FSRS; retries are practice only", "zh": "首次作答更新记忆；重试只练习", "technique": [2]},
+    {"id": "progress", "en": "Local progress; manual replacement backups", "zh": "本地进度；手工替换式备份", "kind": "output", "technique": [3]},
+    {"id": "cache", "en": "On-demand media cache; Range requests bypass it", "zh": "按需媒体缓存；跳过 Range 请求", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "corpus", "to": "chunk"},
+    {"from": "chunk", "to": "quiz"},
+    {"from": "quiz", "to": "answer"},
+    {"from": "answer", "to": "progress"},
+    {"from": "progress", "to": "quiz", "en": "next study plan", "zh": "后续学习计划"},
+    {"from": "corpus", "to": "cache", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/designfuchen/word-atlas/blob/99c007673d38f02c418d8e4cd2e9ec90b5d40be5/src/atlas/data.ts#L19-L86",
+    "https://github.com/designfuchen/word-atlas/blob/99c007673d38f02c418d8e4cd2e9ec90b5d40be5/src/store/session.ts#L86-L149",
+    "https://github.com/designfuchen/word-atlas/blob/99c007673d38f02c418d8e4cd2e9ec90b5d40be5/src/store/store.ts#L203-L315",
+    "https://github.com/designfuchen/word-atlas/blob/99c007673d38f02c418d8e4cd2e9ec90b5d40be5/public/sw.js#L1-L53"
+  ]
+}
