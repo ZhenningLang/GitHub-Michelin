@@ -824,6 +824,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **ContextGem** | 抽取具名条款和有类型的领域值，附来源对象引用；含义验收与持久任务另由应用负责。 | Apache-2.0 | C（5/6） | [中](categories/document-parsing/contextgem.zh.md) · [EN](categories/document-parsing/contextgem.md) |
 | **OpenDataLoader PDF** | 导出有序 PDF 正文与来源区域 JSON，可选模型处理。 | Apache-2.0 | B（6/6） | [中](categories/document-parsing/opendataloader-pdf.zh.md) · [EN](categories/document-parsing/opendataloader-pdf.md) |
 | **OXR** | 科研 PDF／图片解析，独立版面检测，输出分类内容和坐标；需 GPU 部署，并受自定义商业许可限制。 | LicenseRef-OXR | C（3/6） | [中](categories/document-parsing/model-backed-pdf/oxr.zh.md) · [EN](categories/document-parsing/model-backed-pdf/oxr.md) |
 | **Docling** | 当你需要把杂乱的 PDF/DOCX/PPTX 解析成干净的结构化 Markdown/JSON 以喂给 RAG 时用它——是解析器，不是文档管理系统。 | MIT | A（5/6） | [中](categories/document-parsing/docling.zh.md) · [EN](categories/document-parsing/docling.md) |

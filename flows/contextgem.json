@@ -1,0 +1,19 @@
+{
+  "schema":1,
+  "them":{"en":"ContextGem","zh":"ContextGem"},
+  "steps":[
+    {"lane":"you","en":"Install in a compatible Python environment; pin the reviewed version for deployment","zh":"装入兼容的 Python 环境；部署时锁定研究版本","code":"uv add contextgem             # or: pip install -U contextgem"},
+    {"lane":"you","en":"Create a text Document and declare payment aspects and sentence-referenced anomaly concepts","zh":"创建文本，声明付款条款与带句子引用的异常"},
+    {"lane":"you","en":"Configure an approved model endpoint, credentials and request limits","zh":"配置获准模型端点、凭据与请求限制"},
+    {"lane":"you","en":"Start extraction on the document","zh":"对文档发起抽取","code":"doc = llm.extract_all(doc)"},
+    {"lane":"them","en":"Build model requests, validate answers and reconnect source references; report unresolved failures","zh":"构造模型请求，校验答案并关联来源；报告未解决失败","component":{"en":"DocumentLLM + extraction engine","zh":"文档模型与抽取引擎"}},
+    {"lane":"you","en":"Read the extracted items and inspect their supporting source objects","zh":"读取抽取结果，并检查其来源对象","code":"anomalies = doc.get_concept_by_name(\"Anomalies\").extracted_items"},
+    {"lane":"you","en":"Validate meaning on your corpus; persist results and failed-job state in your application","zh":"用自己的语料验证含义；在应用中保存结果和失败任务状态"}
+  ],
+  "value":{"en":"Typed document findings with inspectable source locations, without rebuilding prompt and reference plumbing","zh":"拿到有类型且可检查来源位置的文档结果，不必重复搭提示词与引用关联逻辑"},
+  "sources":[
+    "https://github.com/shcherbak-ai/contextgem/blob/90974fbb78f71a48274a67018721b00b0070568f/README.md#L96-L157",
+    "https://github.com/shcherbak-ai/contextgem/blob/90974fbb78f71a48274a67018721b00b0070568f/docs/source/before_you_build.rst#L9-L14",
+    "https://github.com/shcherbak-ai/contextgem/blob/90974fbb78f71a48274a67018721b00b0070568f/docs/source/serialization.rst#L20-L65"
+  ]
+}

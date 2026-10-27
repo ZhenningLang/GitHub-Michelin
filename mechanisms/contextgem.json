@@ -1,0 +1,30 @@
+{
+  "schema":1,
+  "direction":"down",
+  "nodes":[
+    {"id":"source","en":"Document paragraphs and application metadata","zh":"文档段落与应用元数据","kind":"input","technique":[2]},
+    {"id":"schema","en":"Named aspects and typed concepts","zh":"具名 aspect 与类型 concept","kind":"input","technique":[1]},
+    {"id":"prompt","en":"Jinja request with types and source IDs","zh":"带类型和来源编号的 Jinja 请求","technique":[1,2]},
+    {"id":"model","en":"Configured model; bounded retries and fallbacks","zh":"配置的模型；有界重试与回退","technique":[1,3]},
+    {"id":"validation","en":"Check value types and referenced IDs","zh":"检查数值类型与引用编号","technique":[1,2]},
+    {"id":"mapping","en":"Resolve references to original objects","zh":"把引用解析为原始对象","technique":[2]},
+    {"id":"items","en":"Typed items with inspectable sources","zh":"有类型且可查来源的结果","kind":"output"},
+    {"id":"save","en":"Explicit save; app owns durable job state","zh":"显式保存；持久任务状态归应用管理","kind":"output","technique":[3]}
+  ],
+  "edges":[
+    {"from":"source","to":"prompt"},
+    {"from":"schema","to":"prompt"},
+    {"from":"prompt","to":"model","en":"content crosses configured endpoint boundary","zh":"内容跨越所配置端点的边界"},
+    {"from":"model","to":"validation","en":"errors remain failures or warnings","zh":"失败仍作为异常或警告报告"},
+    {"from":"validation","to":"mapping"},
+    {"from":"mapping","to":"items"},
+    {"from":"items","to":"save","en":"model configs omit credentials and usage","zh":"模型配置排除凭据与用量"}
+  ],
+  "sources":[
+    "https://github.com/shcherbak-ai/contextgem/blob/90974fbb78f71a48274a67018721b00b0070568f/contextgem/internal/base/concepts.py#L478-L556",
+    "https://github.com/shcherbak-ai/contextgem/blob/90974fbb78f71a48274a67018721b00b0070568f/contextgem/internal/base/llms.py#L1725-L1805",
+    "https://github.com/shcherbak-ai/contextgem/blob/90974fbb78f71a48274a67018721b00b0070568f/contextgem/internal/base/models.py#L2896-L3044",
+    "https://github.com/shcherbak-ai/contextgem/blob/90974fbb78f71a48274a67018721b00b0070568f/contextgem/internal/base/models.py#L3361-L3438",
+    "https://github.com/shcherbak-ai/contextgem/blob/90974fbb78f71a48274a67018721b00b0070568f/docs/source/serialization.rst#L20-L65"
+  ]
+}

@@ -827,6 +827,7 @@ Enter [Client Routing](categories/api-gateway/client-routing/INDEX.md) for devel
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **ContextGem** | Extract named clauses and typed domain values with source-object references; validate meaning and own durable jobs separately. | Apache-2.0 | C (5/6) | [EN](categories/document-parsing/contextgem.md) · [中](categories/document-parsing/contextgem.zh.md) |
 | **OpenDataLoader PDF** | Ordered PDF text and source-region JSON with optional model processing. | Apache-2.0 | B (6/6) | [EN](categories/document-parsing/opendataloader-pdf.md) · [中](categories/document-parsing/opendataloader-pdf.zh.md) |
 | **OXR** | Scientific PDF/image parsing with separate layout detection, typed content, and coordinates; GPU deployment and custom commercial restrictions. | LicenseRef-OXR | C (3/6) | [EN](categories/document-parsing/model-backed-pdf/oxr.md) · [中](categories/document-parsing/model-backed-pdf/oxr.zh.md) |
 | **Docling** | Use it when you must parse messy PDF/DOCX/PPTX into clean structured Markdown/JSON for RAG ingestion — a parser, not a DMS. | MIT | A (5/6) | [EN](categories/document-parsing/docling.md) · [中](categories/document-parsing/docling.zh.md) |
