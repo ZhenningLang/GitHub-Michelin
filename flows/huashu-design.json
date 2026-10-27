@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Huashu Design", "zh": "Huashu Design"},
+  "steps": [
+    {"lane": "you", "en": "Install the complete skill pack in a compatible agent", "zh": "将完整技能包装入兼容的 agent", "code": "npx skills add alchaincyf/huashu-design"},
+    {"lane": "you", "en": "Describe the artifact and provide brand assets or references", "zh": "描述产物，提供品牌素材或参考"},
+    {"lane": "them", "en": "Explore six thumbnails and show three actual design directions", "zh": "探索六格缩略图，展示三个真实方向", "component": {"en": "SKILL.md + references", "zh": "主技能与参考手册"}},
+    {"lane": "you", "en": "Choose a direction and supply corrections", "zh": "选定方向，补充修改意见"},
+    {"lane": "them", "en": "Finish the HTML artifact and perform the documented checks before delivery", "zh": "完成 HTML 产物，按文档检查后交付", "component": {"en": "task manuals + local helpers", "zh": "模块手册与本地辅助工具"}}
+  ],
+  "value": {"en": "An inspectable HTML artifact following a direction you selected", "zh": "拿到按你选定方向制作、可直接检查的 HTML 产物"},
+  "sources": [
+    "https://github.com/alchaincyf/huashu-design/blob/4fc7bfdbd5ec3fa2d43ce7a6433de60976a5e4b1/README.en.md#L116-L143",
+    "https://github.com/alchaincyf/huashu-design/blob/4fc7bfdbd5ec3fa2d43ce7a6433de60976a5e4b1/SKILL.md#L66-L79",
+    "https://github.com/alchaincyf/huashu-design/blob/4fc7bfdbd5ec3fa2d43ce7a6433de60976a5e4b1/SKILL.md#L102-L116",
+    "https://github.com/alchaincyf/huashu-design/blob/4fc7bfdbd5ec3fa2d43ce7a6433de60976a5e4b1/SKILL.md#L162-L197"
+  ]
+}
