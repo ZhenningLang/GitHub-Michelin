@@ -13,6 +13,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **CrowdGPT** | Contribute local training rounds to a shared model through a central coordinator; inspect the client, but do not mistake it for a complete self-hosted service. | C (6/6) | [→](crowdgpt.md) |
 | **LlamaFactory** | Zero-code unified fine-tuning framework for 100+ LLMs/VLMs with a Gradio web UI (LlamaBoard), covering LoRA/QLoRA/full tuning and the full SFT→RLHF stack. | B (6/6) | [→](llamafactory.md) |
 | **Unsloth** | Triton-kernel-accelerated single-GPU LoRA/QLoRA/RL fine-tuning that trains 500+ open LLMs ~2x faster with large VRAM savings. | B (5/6) | [→](unsloth.md) |
 | **ART (Agent Reinforcement Trainer)** | Train multi-step LLM agents on real tasks with GRPO reinforcement learning via a client-server loop, using RULER (LLM-as-judge) for zero-label reward generation. | C (5/6) | [→](art.md) |
@@ -30,6 +31,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [CrowdGPT](crowdgpt.md) | ✅ | C (6/6) | Volunteer contribution UI/CLI rather than a general trainer; central service trust, moving updates and GPLv3/MIT documentation drift need review. |
 | [LlamaFactory](llamafactory.md) | ✅ | B (6/6) | Zero-code unified fine-tuning framework for 100+ LLMs/VLMs with a Gradio web UI (LlamaBoard), covering LoRA/QLoRA/full tuning and the full SFT→RLHF stack. |
 | [Unsloth](unsloth.md) | ✅ | B (5/6) | Triton-kernel-accelerated single-GPU LoRA/QLoRA/RL fine-tuning that trains 500+ open LLMs ~2x faster with large VRAM savings. |
 | [ART (Agent Reinforcement Trainer)](art.md) | ✅ | C (5/6) | Train multi-step LLM agents on real tasks with GRPO reinforcement learning via a client-server loop, using RULER (LLM-as-judge) for zero-label reward generation. |

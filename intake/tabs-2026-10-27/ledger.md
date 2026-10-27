@@ -19,7 +19,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | t3dotgg/tstack | add | done | categories/agent-skills/personal-collections/engineering-workflows/tstack.md | 固定92e38e2c；16blob真实根树认证、42引用与2命令核验；独立审稿补测试授权范围，机器人finished不是批准、full-stop不是只读；no leftover Q&A | t3dotgg/tstack |
 | tractordev/webframe | add | done | categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/webframe.md | 固定03155e2b；29本体+7依赖blob两提交真实根树认证；独立审稿修复版本化go install与replace冲突，未执行构建，系统引擎及持久数据边界保留；no leftover Q&A | tractordev/webframe |
 | unclebob/ub-mode | propose | proposed |  | 固定57a8bdd2完整树仅两文件，无明确复用许可；README承认规则来源但授权链未核清。技能有复用实质，非因纯提示或年轻拒收，标签保留；no leftover Q&A | unclebob/ub-mode |
-| Vxtzq/CrowdGPT | add | running |  |  | vxtzq/crowdgpt |
+| Vxtzq/CrowdGPT | add | done | categories/llm-training/crowdgpt.md | 固定02774d98；11blob真实根树认证、26引用与2字面量；独立审稿反例已修，同组仅尽力、本地进度非远端ETA，GPL评分桶保持现合同；no leftover Q&A | vxtzq/crowdgpt |
 | wailsapp/wails | add | done | categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/wails.md | 固定3b1e7926；34blob真实根树认证、61引用与3字面量；独立审稿无问题，另核v3.0.0真实发布及31相同/3差异，Tauri旧判断和日期未重核；no leftover Q&A | wailsapp/wails |
 | anonymous-own-1 | skip | skipped |  | 自有仓库，按范围跳过；标签保留 |  |
 | blendi-remade/dioramas | add | done | categories/frontend-animation/dioramas.md | 固定868539fb；29blob真实根树认证、42引用与1字面量；独立审稿无问题，Three.js网站框架非skill，代码MIT/素材CC BY分开，unknown两轴保留；no leftover Q&A | blendi-remade/dioramas |

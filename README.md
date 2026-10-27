@@ -223,6 +223,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **CrowdGPT** | Contribute local training rounds to a shared model through a central coordinator; inspect the client, but do not mistake it for a complete self-hosted service. | GPL-3.0 | C (6/6) | [EN](categories/llm-training/crowdgpt.md) · [中](categories/llm-training/crowdgpt.zh.md) |
 | **LlamaFactory** | Zero-code unified fine-tuning framework for 100+ LLMs/VLMs with a Gradio web UI (LlamaBoard), covering LoRA/QLoRA/full tuning and the full SFT→RLHF stack. | Apache-2.0 | B (6/6) | [EN](categories/llm-training/llamafactory.md) · [中](categories/llm-training/llamafactory.zh.md) |
 | **Unsloth** | Triton-kernel-accelerated single-GPU LoRA/QLoRA/RL fine-tuning that trains 500+ open LLMs ~2x faster with large VRAM savings. | Apache-2.0 | B (5/6) | [EN](categories/llm-training/unsloth.md) · [中](categories/llm-training/unsloth.zh.md) |
 | **ART (Agent Reinforcement Trainer)** | Use it when a Python CLI needs pure-Python figlet-style ASCII text banners with no system binaries — but it's text-to-art only (not image-to-ASCII) and won't match figlet's exact fonts. | Apache-2.0 | C (5/6) | [EN](categories/llm-training/art.md) · [中](categories/llm-training/art.zh.md) |

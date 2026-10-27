@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "coordinator", "en": "External central coordinator", "zh": "外部中央协调器", "kind": "external"},
+    {"id": "task", "en": "Task, starting weights and cohort targets", "zh": "任务、起始权重和同组目标", "kind": "input", "technique": [2]},
+    {"id": "data", "en": "HTTP range slices; uint32 tokens and prefetch", "zh": "范围请求片段；uint32 词元及预取", "technique": [1]},
+    {"id": "local", "en": "Local training; try cohort targets, report actuals", "zh": "本地训练；尽力匹配同组目标并报告实际值", "technique": [2]},
+    {"id": "delta", "en": "bf16 weight difference plus JSON, gzipped", "zh": "bf16 权重差分加 JSON，再压缩", "technique": [3]},
+    {"id": "upload", "en": "Direct or hashed chunk upload; size backoff", "zh": "直接或带哈希分块上传；缩小块重试", "technique": [3]},
+    {"id": "status", "en": "Submission log, not proof of global improvement", "zh": "提交日志，不是全局改善证明", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "coordinator", "to": "task"},
+    {"from": "task", "to": "data"},
+    {"from": "data", "to": "local"},
+    {"from": "task", "to": "local", "en": "cross-check policy", "zh": "同组核验规则"},
+    {"from": "local", "to": "delta"},
+    {"from": "delta", "to": "upload"},
+    {"from": "upload", "to": "coordinator", "en": "candidate update", "zh": "候选更新", "style": "dashed"},
+    {"from": "upload", "to": "status"}
+  ],
+  "sources": ["client.py:1078-1186", "client.py:1823-1845", "client.py:1923-1953", "client.py:1968-2003", "client.py:1643-1698", "client.py:1770-1801", "client.py:2184-2242", "client.py:2244-2287"]
+}

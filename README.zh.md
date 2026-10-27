@@ -220,6 +220,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **CrowdGPT** | 通过中央协调器给共享模型贡献本地训练轮次；可审查客户端，但不是完整的自托管服务。 | GPL-3.0 | C（6/6） | [中](categories/llm-training/crowdgpt.zh.md) · [EN](categories/llm-training/crowdgpt.md) |
 | **LlamaFactory** | 面向 100+ LLM/VLM 的零代码统一微调框架，自带 Gradio Web UI(LlamaBoard)，覆盖 LoRA/QLoRA/全量微调及 SFT→RLHF 全链路。 | Apache-2.0 | B（6/6） | [中](categories/llm-training/llamafactory.zh.md) · [EN](categories/llm-training/llamafactory.md) |
 | **Unsloth** | 基于自定义 Triton kernel 的单卡 LoRA/QLoRA/RL 微调工具，号称在 500+ 开源 LLM 上约 2x 提速并大幅省显存。 | Apache-2.0 | B（5/6） | [中](categories/llm-training/unsloth.zh.md) · [EN](categories/llm-training/unsloth.md) |
 | **ART (Agent Reinforcement Trainer)** | 当 Python 命令行需要纯 Python 的 figlet 风格 ASCII 文字横幅、且不依赖系统二进制时用它——但它只做文字转艺术字（不做图片转 ASCII），也不与 figlet 字体完全一致。 | Apache-2.0 | C（5/6） | [中](categories/llm-training/art.zh.md) · [EN](categories/llm-training/art.md) |
