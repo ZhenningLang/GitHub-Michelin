@@ -113,6 +113,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **Anthropic Sandbox Runtime** | Restrict local agent or MCP subprocesses with native file rules and filtered egress, without a VM image; reads need explicit policy and Windows remains alpha. | Apache-2.0 | A (6/6) | [EN](categories/sandboxing/sandbox-runtime.md) · [中](categories/sandboxing/sandbox-runtime.zh.md) |
 | **gVisor** | Use it when untrusted containers must be isolated from the host kernel without running a VM — it needs no KVM and keeps your container workflow. | Apache-2.0 | A (6/6) | [EN](categories/sandboxing/gvisor.md) · [中](categories/sandboxing/gvisor.zh.md) |
 | **Kata Containers** | Use it when every pod should get a real guest kernel in a lightweight VM, while Kubernetes keeps its normal RuntimeClass workflow. | Apache-2.0 | A (6/6) | [EN](categories/sandboxing/kata-containers.md) · [中](categories/sandboxing/kata-containers.zh.md) |
 | **Firecracker** | Use it when you are building the sandbox layer yourself and want a minimal KVM microVM primitive with a control API — not a container runtime. | Apache-2.0 | A (6/6) | [EN](categories/sandboxing/firecracker.md) · [中](categories/sandboxing/firecracker.zh.md) |

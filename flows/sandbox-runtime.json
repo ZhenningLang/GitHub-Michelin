@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "Sandbox Runtime", "zh": "Sandbox Runtime"},
+  "steps": [
+    {"lane": "you", "en": "Add the package and native prerequisites to your local application", "zh": "给本地应用加入包与原生依赖"},
+    {"lane": "you", "en": "Define file and domain rules, then initialize the runtime", "zh": "定义文件和域名规则，再初始化运行时", "code": "SandboxManager.initialize(config)"},
+    {"lane": "them", "en": "Starts host-side filtering proxies and prepares the session", "zh": "启动宿主过滤代理，准备会话"},
+    {"lane": "you", "en": "Wrap your command, then spawn the returned shell string", "zh": "包装命令，再执行返回的命令字符串", "code": "spawn(sandboxedCommand, { shell: true, stdio: 'inherit' })"},
+    {"lane": "them", "en": "Applies native file rules and mediates network destinations", "zh": "应用原生文件规则，检查网络目标"},
+    {"lane": "them", "en": "The child runs with restrictions and returns output and an exit code", "zh": "子进程在限制下运行，返回输出和退出码"}
+  ],
+  "value": {"en": "Existing local tools run under your policy without preparing a guest image", "zh": "现有本地工具按你的规则运行，不必准备客体镜像"},
+  "sources": ["https://github.com/anthropics/sandbox-runtime/blob/98a4016d27609ed34dd1fb43d23ed6efb6eeeb77/README.md#L261-L300", "https://github.com/anthropics/sandbox-runtime/blob/98a4016d27609ed34dd1fb43d23ed6efb6eeeb77/README.md#L103-L130"]
+}

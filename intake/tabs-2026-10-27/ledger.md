@@ -6,7 +6,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | 规范名 | 动作 | 结果 | 页面路径 | 备注 | 标签里的写法 |
 |:---|:---|:---|:---|:---|:---|
 | alchaincyf/huashu-design | sync | done | categories/agent-skills/design/visual-artifacts/huashu-design.md | 固定4fc7bfdb完整源码重核并迁移v2；8份新旧来源blob经固定API树认证，第三方提示词权利仍存疑；no leftover Q&A | alchaincyf/huashu-design |
-| anthropics/sandbox-runtime | add | running |  |  | anthropics/sandbox-runtime |
+| anthropics/sandbox-runtime | add | done | categories/sandboxing/sandbox-runtime.md | 固定98a4016d；11份源码blob树认证，32处引用与2命令原样核验；默认允许读取及平台降级已披露，综合A非安全认证；no leftover Q&A | anthropics/sandbox-runtime |
 | browseros-ai/BrowserOS | add | running |  |  | browseros-ai/browseros |
 | designfuchen/word-atlas | add | running |  |  | designfuchen/word-atlas |
 | google/elephant-goldfish-model | add | running |  |  | google/elephant-goldfish-model |

@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "policy", "en": "Host-owned file and domain policy", "zh": "宿主控制的文件与域名规则", "kind": "input"},
+    {"id": "native", "en": "Native process boundary; platform-specific", "zh": "原生进程边界；各平台不同", "technique": [1]},
+    {"id": "child", "en": "Wrapped child process", "zh": "被包装的子进程", "kind": "input"},
+    {"id": "proxy", "en": "Proxy checks domain before direct dial", "zh": "代理在直连前检查域名", "technique": [2]},
+    {"id": "dns", "en": "Resolve once; dial a permitted address", "zh": "解析一次；连接获准地址", "technique": [2]},
+    {"id": "dest", "en": "Permitted destination", "zh": "获准目标", "kind": "external"},
+    {"id": "store", "en": "Sanitized violation tail; last 100 events", "zh": "净化后的违规尾部；最后一百条", "technique": [3]},
+    {"id": "caller", "en": "Caller gets output and diagnostic hints", "zh": "调用者取得输出与诊断提示", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "policy", "to": "native"},
+    {"from": "native", "to": "child", "en": "confines file operations", "zh": "限制文件操作"},
+    {"from": "child", "to": "proxy", "en": "network path", "zh": "网络通道"},
+    {"from": "policy", "to": "proxy"},
+    {"from": "proxy", "to": "dns"},
+    {"from": "dns", "to": "dest"},
+    {"from": "proxy", "to": "store", "en": "observed denials", "zh": "观察到的拒绝"},
+    {"from": "store", "to": "caller"},
+    {"from": "child", "to": "caller"}
+  ],
+  "sources": ["src/sandbox/macos-sandbox-utils.ts:1047-1365", "src/sandbox/linux-sandbox-utils.ts:3500-3824", "src/sandbox/resolved-address-guard.ts:199-308", "src/sandbox/sandbox-violation-store.ts:8-74"]
+}

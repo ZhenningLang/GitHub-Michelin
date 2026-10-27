@@ -110,6 +110,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **Anthropic Sandbox Runtime** | 用原生文件规则和出口过滤限制本地助手或 MCP 子进程，无需客体镜像；须显式保护读取，Windows 仍处测试阶段。 | Apache-2.0 | A（6/6） | [中](categories/sandboxing/sandbox-runtime.zh.md) · [EN](categories/sandboxing/sandbox-runtime.md) |
 | **gVisor** | 不可信容器必须与宿主内核隔离、又不想跑虚拟机时用它——不需要 KVM，且容器工作流不变。 | Apache-2.0 | A（6/6） | [中](categories/sandboxing/gvisor.zh.md) · [EN](categories/sandboxing/gvisor.md) |
 | **Kata Containers** | 想让每个 pod 在轻量虚拟机里拿到真内核、同时 Kubernetes 保持常规 RuntimeClass 工作流时用它。 | Apache-2.0 | A（6/6） | [中](categories/sandboxing/kata-containers.zh.md) · [EN](categories/sandboxing/kata-containers.md) |
 | **Firecracker** | 你在自建沙箱层、想要一个带控制 API 的极简 KVM microVM 原语（而不是容器运行时）时用它。 | Apache-2.0 | A（6/6） | [中](categories/sandboxing/firecracker.zh.md) · [EN](categories/sandboxing/firecracker.md) |
