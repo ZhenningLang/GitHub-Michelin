@@ -1,0 +1,159 @@
+{
+  "schema": 1,
+  "batch_utc": "2026-10-27",
+  "base": "cbb756b24af8996c82a9ca5121304c5fc2330c3e",
+  "verified_content_commit": "97e0fe48957f376e83dfe66dc152dbd139750559",
+  "terminal_rows": {
+    "done": 14,
+    "proposed": 3,
+    "skipped": 1
+  },
+  "new_page_pairs": 12,
+  "full_sync_pairs": 1,
+  "retained_fresh_pairs": 1,
+  "qa_decision": "no leftover Q&A",
+  "tabs": {
+    "closed_matches": 14,
+    "done_targets_verified": 14,
+    "non_target_unchanged_each_operation": true,
+    "remaining": {
+      "microsoft/pylance-release": 1,
+      "nightly-labs/openbot": 1,
+      "unclebob/ub-mode": 1,
+      "anonymous-own-1": 1
+    },
+    "evidence_sha256": "28ddca1440ac9374405c2a1614f3a65817b13d568ad4c5cc2b9ec3d54291a55e"
+  },
+  "catalogue": {
+    "nodes": 213,
+    "english_pages": 996,
+    "chinese_pages": 996,
+    "inherited_page_identities_retained": 1968,
+    "explicit_full_sync_exception": "alchaincyf/huashu-design",
+    "other_reference_exception": "Tauri EN/ZH only project link and indexing-status cells",
+    "routing_move_files": 12,
+    "preservation_sha256": "b1192006c361ca0b357694786186986b302472c7305374eb4adfaac8f6e770dc"
+  },
+  "verification": {
+    "gates": "213 category nodes, 996 EN + 996 ZH pages, 0 errors, 1648 warnings.",
+    "unit_tests": "Ran 483 tests in 30.320s; OK",
+    "unit_fixture_note": "HTTP 502 is mocked by tools/test_repo_moves.py, not upstream execution",
+    "diagram_acceptance": "13 bilingual pairs, 78 XML SVG; generated text, health score geometry and visually reviewed worker bytes match",
+    "gates_log_sha256": "2d7c642be683499067ef5ce7a7c00aeb125d2541207f9f3f5478e4b425d0e93a",
+    "tests_log_sha256": "877286aa6b02f820f74eac3f6ea8406379af27bf4a174ce46b7cd79c670f71a6",
+    "artifacts_sha256": "b5289d05f23c0608328a1db69ccae644063804dd1bc9ea01d03a393776938ef0"
+  },
+  "original_report": {
+    "entry": "existing local report.md; ignored local artifact, not a new entry point",
+    "version": "v10",
+    "candidates": 161,
+    "formal_pages": 156,
+    "reading_groups": 16,
+    "new_canonical_candidates": 17,
+    "old_objects_byte_preserved": 144,
+    "old_h3_profiles_byte_preserved": 144,
+    "new_topic_categories": 12,
+    "local_file_targets": 495,
+    "internal_markdown_anchors": 220,
+    "local_file_fragments": 17,
+    "report_sha256": "3a27bc1862a99b8413af4a792aa08331bf51bd78e522f6fcb858817a1327771c",
+    "html_sha256": "ba30bc036854c6b90022d5808ea142ac59bb578c816740bbe68310631b61b3dc",
+    "html_refreshed": false,
+    "sidecar_sha256": {
+      "objects-v10.json": "0d88d5c723c7569dd15152915146c922c2ac865f2b8510f291632f2cb5c18deb",
+      "groups-v10.json": "26b28f43e0b0d883674de6cd9585451f0fd3afed644e41faf82d945d1103fd56",
+      "sources-v10.json": "70bbf1fdcb9c27126b0773cd468bf19b6c2bce9cb65910f7a8db53c2fb5c9f85",
+      "verification-v10.json": "218e9cecf01a68507e38a64a29b49d79a937a1923858dffa8b2c8e9d8b679c46",
+      "publication-v10.json": "4e27e52656b1e83bae054f10e3efd51eeb11dc2bf8596f3ae36915605e4bc9fa"
+    }
+  },
+  "proposed": {
+    "microsoft/pylance-release": "Closed Pylance product; public docs/feedback and protocol/test artifacts, not empty or a product open-source license",
+    "nightly-labs/openbot": "Current PolyForm Noncommercial is genuine source-available licensing; old Apache does not cover current whole tree",
+    "unclebob/ub-mode": "Reusable prompt content, but no explicit reuse license and attribution permission chain not established"
+  },
+  "boundary_decisions": [
+    "Two pure route splits: stealth-session-tools and model-backed-pdf; old page URLs change, no redirects, no fact/date/score changes",
+    "Tauri only indexing-reference cells; inherited judgments not reverified",
+    "GPL health strong/network bucket retained per existing rubric and passing unit test; not an assertion of AGPL obligations",
+    "Heterogeneous v9 objects and historical license warnings preserved, including earlier information-only exceptions"
+  ],
+  "scope_not_executed": [
+    "upstream applications, installs, training, model/data downloads and performance/security experiments",
+    "current private harness configuration audit or benefit measurement",
+    "HTML precheck, render, pairing or browser acceptance",
+    "branch push, new PR, remote CI, merge"
+  ],
+  "evidence_layers": {
+    "Inner-loop evidence": {
+      "result": "pass",
+      "source": "本次复跑",
+      "evidence": "make gates: 0 errors; make test: 483 tests OK; exact newly authored pairs have no deterministic findings"
+    },
+    "Integration evidence": {
+      "result": "pass",
+      "source": "本次复跑",
+      "evidence": "actual 17-record CLI dry-run/apply/check; 14 checkpoint commits bind 28 accepted page blobs"
+    },
+    "Acceptance evidence": {
+      "result": "pass",
+      "source": "本次复跑",
+      "evidence": "original entry now 161 candidates / 156 formal pages; old 144 item and H3 bytes retained; 14 target tabs closed with non-target sets unchanged"
+    },
+    "Regression evidence": {
+      "result": "pass",
+      "source": "本次复跑",
+      "evidence": "1968 original page identities retained with declared full-sync/routing/indexing exceptions; frozen sample, unrelated judgment and original non-Huashu diagrams unchanged"
+    },
+    "Holdout / unseen evidence": {
+      "result": "not applicable as an unseen predictive benchmark",
+      "source": "本次复跑",
+      "evidence": "fixed public commit/blob captures, frozen v9 corpus and real tab receipts provide actual-data regression; scoped hostile-input and transaction fixtures are synthetic and are not OSS performance evidence"
+    },
+    "Holdout 来源类别": [
+      "真实捕获",
+      "自造（拒绝/中断/回滚邻居，不作产品事实）"
+    ],
+    "预期值来源": [
+      "需求原文（仅原入口、旧144保真、匿名、关闭范围）",
+      "外部契约（固定Git树/源码、实际Git提交、既有schema与工具门禁）"
+    ],
+    "本次改动相对冻结点的位置": "生成侧：相对cbb756b2和冻结v9追加本轮内容；不修改生产schema/CI/质量阈值。一次性合并器的判定代码经独立review和71测试修正，真实冻结144对象/简介从未改动。",
+    "Known gaps": [
+      "three admission proposals remain unresolved by design",
+      "upstream/runtime/safety/performance not exercised",
+      "static Markdown anchor checks are not browser click acceptance",
+      "HTML retained unchanged and branch not published"
+    ]
+  },
+  "deliverables": [
+    {
+      "name": "selection corpus intake",
+      "exists": "intake/tabs-2026-10-27/ledger.md:8-25; twelve new bilingual pairs and one full sync",
+      "substantive": "fixed-source research, source-backed mechanisms and negative selection scenarios; independent content reviews and 78 diagrams",
+      "wired": "category INDEX mirrors and README masters both list 996 unique project targets",
+      "status": "verified for content scope"
+    },
+    {
+      "name": "browser close loop",
+      "exists": "public ledger and normalized committed checkpoints",
+      "substantive": "14 real target closures, no collateral target removal; three proposals plus anonymous owner stay open",
+      "wired": "canonical queue scan ends 0 new / 0 pending; original process-selection helper retained",
+      "status": "verified"
+    },
+    {
+      "name": "original full report",
+      "exists": "same report.md and five v10 sidecars",
+      "substantive": "17 source-bound nine-slot additions; 144 old objects and profiles retained",
+      "wired": "16 reading groups, 12 new topic pools, 495 file targets and 220 internal anchors checked",
+      "status": "verified local Markdown only"
+    }
+  ],
+  "publication": {
+    "branch": "feat/intake-tabs-2026-10-27",
+    "pushed": false,
+    "pr": null,
+    "merged": false,
+    "next_command_requires_authorization": "git push -u origin feat/intake-tabs-2026-10-27"
+  }
+}
