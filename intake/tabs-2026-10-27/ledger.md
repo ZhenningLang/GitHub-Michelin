@@ -22,4 +22,4 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | Vxtzq/CrowdGPT | add | running |  |  | vxtzq/crowdgpt |
 | wailsapp/wails | add | done | categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/wails.md | 固定3b1e7926；34blob真实根树认证、61引用与3字面量；独立审稿无问题，另核v3.0.0真实发布及31相同/3差异，Tauri旧判断和日期未重核；no leftover Q&A | wailsapp/wails |
 | anonymous-own-1 | skip | skipped |  | 自有仓库，按范围跳过；标签保留 |  |
-| blendi-remade/dioramas | add | running |  |  | blendi-remade/dioramas |
+| blendi-remade/dioramas | add | done | categories/frontend-animation/dioramas.md | 固定868539fb；29blob真实根树认证、42引用与1字面量；独立审稿无问题，Three.js网站框架非skill，代码MIT/素材CC BY分开，unknown两轴保留；no leftover Q&A | blendi-remade/dioramas |

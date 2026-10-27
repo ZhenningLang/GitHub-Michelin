@@ -288,6 +288,7 @@ AWS MCP servers (`awslabs/mcp`),categories/agent-skills/vendor-collections/produ
 AWS official MCP servers (standalone),categories/agent-skills/vendor-collections/product-vendors/aws-agent-plugins.md,,no
 AWS S3 / Cloudflare R2,categories/object-storage/ceph.md,,no
 Azure Skills (`microsoft/azure-skills`),categories/agent-skills/vendor-collections/product-vendors/agent-toolkit-for-aws.md,,no
+Babylon.js,categories/frontend-animation/dioramas.md,,no
 BackstopJS,categories/design-tokens/dembrandt.md,,no
 baostock,categories/web-scraping/crawling-tools/gopup.md,,no
 Base UI,categories/web-ui/component-libraries/radix-ui.md,,no
@@ -1118,6 +1119,7 @@ React Hook Form (`react-hook-form/react-hook-form`),categories/web-ui/forms/tans
 React Router,categories/web-ui/frameworks/app-frameworks/tanstack-router.md,,no
 "React Router (framework mode, formerly Remix)",categories/web-ui/frameworks/app-frameworks/nextjs.md,,no
 React Scan (`aidenybai/react-scan`),categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-devtools.md,,no
+React Three Fiber,categories/frontend-animation/dioramas.md,,no
 react-big-calendar (`bigcalendar/react-big-calendar`),categories/web-ui/component-libraries/tanstack-time.md,,no
 react-data-grid (`adodev/react-data-grid`),categories/web-ui/component-libraries/tanstack-table.md,,no
 react-hotkeys-hook (`JohannesKlauss/react-hotkeys-hook`),categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md,,no
@@ -1292,6 +1294,7 @@ Thanos / Grafana Mimir,categories/observability/prometheus.md,,no
 The Silver Searcher (ag),categories/dev-utilities/data-tools/ripgrep.md,,no
 Third-party / community knowledge-work packs,categories/agent-skills/vendor-collections/agent-vendors/knowledge-work-plugins.md,,no
 Third-party Claude Code marketplaces / community plugin lists,categories/agent-skills/vendor-collections/agent-vendors/claude-plugins-official.md,,no
+Three.js,categories/frontend-animation/dioramas.md,,no
 thriftpy2,categories/networking/thriftpy.md,,no
 throttle-debounce (`niksy/throttle-debounce`),categories/web-ui/scheduling/tanstack-pacer.md,,no
 TIC-80,categories/game-dev/pyxel.md,,no

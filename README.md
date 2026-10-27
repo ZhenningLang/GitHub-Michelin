@@ -537,6 +537,7 @@ Research engines and scientific workbenches; source access and evidence auditing
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **Anime.js** | Dependency-free JS animation engine: CSS, SVG, DOM attrs and JS objects through one animate() API, with timeline, stagger, spring easings, and scroll-linked playback. | MIT | B (5/6) | [EN](categories/frontend-animation/anime.md) · [中](categories/frontend-animation/anime.zh.md) |
+| **Dioramas** | Adapt a complete scroll-driven 3D landing page instead of assembling its renderer and loaders; twenty editable scenes, with GPU/download costs and separate generated-asset rights. | MIT | C (4/6) | [EN](categories/frontend-animation/dioramas.md) · [中](categories/frontend-animation/dioramas.zh.md) |
 
 ### api-gateway
 

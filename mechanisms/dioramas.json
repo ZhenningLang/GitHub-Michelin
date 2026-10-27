@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "page", "en": "Example page and model references", "zh": "示例页面与模型引用", "kind": "input"},
+    {"id": "load", "en": "Meshopt loading; promise cache; weighted progress", "zh": "Meshopt 加载；任务缓存；加权进度", "technique": [2]},
+    {"id": "engine", "en": "HDR effects before tone mapping; shared frame callbacks", "zh": "高动态范围效果先于色调映射；共享逐帧回调", "technique": [1]},
+    {"id": "site", "en": "Interactive 3D page", "zh": "交互三维页面", "kind": "output"},
+    {"id": "job", "en": "Optional job JSON and authorized references", "zh": "可选任务 JSON 与已授权参考图", "kind": "input"},
+    {"id": "fal", "en": "Paid fal image and mesh requests", "zh": "付费 fal 图片与模型请求", "kind": "external", "technique": [3]},
+    {"id": "manifest", "en": "Serialized manifest; mesh request IDs saved before polling", "zh": "串行台账；轮询前保存模型请求编号", "technique": [3]},
+    {"id": "opt", "en": "Geometry packing and WebP textures", "zh": "几何压缩与 WebP 纹理", "technique": [2]}
+  ],
+  "edges": [
+    {"from": "page", "to": "load"},
+    {"from": "load", "to": "engine"},
+    {"from": "engine", "to": "site"},
+    {"from": "job", "to": "fal", "style": "dashed"},
+    {"from": "fal", "to": "manifest", "en": "mesh branch", "zh": "模型分支", "style": "dashed"},
+    {"from": "manifest", "to": "opt", "en": "after result download", "zh": "下载结果后", "style": "dashed"},
+    {"from": "opt", "to": "load", "en": "replacement GLB", "zh": "替代 GLB", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/blendi-remade/dioramas/blob/868539fb5b64a843071a2247d5d8bacb706a07b1/src/core/engine.js#L57-L139",
+    "https://github.com/blendi-remade/dioramas/blob/868539fb5b64a843071a2247d5d8bacb706a07b1/src/core/assets.js#L12-L46",
+    "https://github.com/blendi-remade/dioramas/blob/868539fb5b64a843071a2247d5d8bacb706a07b1/scripts/gen.mjs#L69-L129",
+    "https://github.com/blendi-remade/dioramas/blob/868539fb5b64a843071a2247d5d8bacb706a07b1/scripts/optimize.mjs#L11-L32"
+  ]
+}

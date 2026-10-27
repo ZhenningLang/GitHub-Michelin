@@ -8,14 +8,16 @@
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **Anime.js** | 零依赖的 JS 动画引擎：统一 animate() API 驱动 CSS、SVG、DOM 属性和 JS 对象，内置时间线、错峰、弹簧缓动和滚动联动。 | B（5/6） | [→](anime.zh.md) |
+| **Dioramas** | 改写完整的滚动联动三维落地页，不必重搭渲染器和加载器；二十个可编辑场景，但需承担 GPU、下载成本及独立素材许可。 | C（4/6） | [→](dioramas.zh.md) |
 
 ## 对比矩阵
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [Anime.js](anime.zh.md) | ✅ | B（5/6） | 零依赖的 JS 动画引擎：统一 animate() API 驱动 CSS、SVG、DOM 属性和 JS 对象，内置时间线、错峰、弹簧缓动和滚动联动。 |
+| [Dioramas](dioramas.zh.md) | ✅ | C（4/6） | 需要完整可编辑 Three.js 网站时选它，不用于纯 DOM 动画；继承视觉栈和大模型素材，fal 生成则是可选付费路径。 |
 | GSAP / Motion (Framer Motion) / Theatre.js | 未收录 | — | 页面里点到的其他 Web 动画库。 |
 
 ## 什么该放这里
 
-**给 Web UI 做动画**的库——JS 运动引擎、时间线/补间系统。不含 agent 驱动的设计生成（见 `ai-design-generation`）。
+**给 Web UI 做动画**的库——JS 运动引擎、时间线/补间系统，以及交互式三维网站源码框架。不含 agent 驱动的设计生成（见 `ai-design-generation`）。

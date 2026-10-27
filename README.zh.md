@@ -534,6 +534,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **Anime.js** | 零依赖的 JS 动画引擎：统一 animate() API 驱动 CSS、SVG、DOM 属性和 JS 对象，内置时间线、错峰、弹簧缓动和滚动联动。 | MIT | B（5/6） | [中](categories/frontend-animation/anime.zh.md) · [EN](categories/frontend-animation/anime.md) |
+| **Dioramas** | 改写完整的滚动联动三维落地页，不必重搭渲染器和加载器；二十个可编辑场景，但需承担 GPU、下载成本及独立素材许可。 | MIT | C（4/6） | [中](categories/frontend-animation/dioramas.zh.md) · [EN](categories/frontend-animation/dioramas.md) |
 
 ### api-gateway
 
