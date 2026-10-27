@@ -2,7 +2,7 @@
 name: invisible_playwright_mcp
 slug: invisible-playwright-mcp
 repo: https://github.com/feder-cr/invisible_playwright_mcp
-category: agent-browser-tools
+category: stealth-session-tools
 tags: [mcp-server, anti-detect, stealth-browser, firefox, playwright, browser-agent, anti-bot, fingerprint, python, byo-agent]
 language: Python
 license: MIT
@@ -73,19 +73,19 @@ health:
 
 你用 Playwright MCP 给 Claude Code 或 Codex 接上浏览器，结果第一个真实网站就甩出 Cloudflare 的“请验证你是真人”页面或一格一格的验证码，任务在第一步就断了。invisible_playwright_mcp 把底下的浏览器换成一个在 C++ 源码层打过补丁、看上去像普通人在用的 Firefox，再用同一类 MCP 工具交给你的助手。
 
-![invisible_playwright_mcp — 健康度雷达](../../../assets/health/invisible-playwright-mcp.zh.svg)
+![invisible_playwright_mcp — 健康度雷达](../../../../assets/health/invisible-playwright-mcp.zh.svg)
 
 ## 何时使用
 
-你在用一个编程助手（Claude Code、Codex、Gemini CLI、Cursor），想让它替你干些浏览器上的杂活：在航司网站上逐日比五个日期的票价、从网店读价格、在没有 API 的网站上填表。用原版 [Playwright MCP](../playwright-family/playwright-mcp.zh.md) 时，agent 落在 `Just a moment...` 或 reCAPTCHA 九宫格上，然后回报“无法继续”。当**被识别成机器人才是失败原因**、而不是缺浏览器工具时，就该想到它：它的引擎是一个 Firefox，指纹（navigator、屏幕、WebGL、canvas、字体、音频、WebRTC、时区）由一个整数种子在浏览器内部决定，点击沿着有弧度、有人类节奏的指针轨迹移动——页面里没有注入的 JavaScript 补丁可供检测器发现。
+你在用一个编程助手（Claude Code、Codex、Gemini CLI、Cursor），想让它替你干些浏览器上的杂活：在航司网站上逐日比五个日期的票价、从网店读价格、在没有 API 的网站上填表。用原版 [Playwright MCP](../../playwright-family/playwright-mcp.zh.md) 时，agent 落在 `Just a moment...` 或 reCAPTCHA 九宫格上，然后回报“无法继续”。当**被识别成机器人才是失败原因**、而不是缺浏览器工具时，就该想到它：它的引擎是一个 Firefox，指纹（navigator、屏幕、WebGL、canvas、字体、音频、WebRTC、时区）由一个整数种子在浏览器内部决定，点击沿着有弧度、有人类节奏的指针轨迹移动——页面里没有注入的 JavaScript 补丁可供检测器发现。
 
-和邻居相比的决定性取舍：[Playwright MCP](../playwright-family/playwright-mcp.zh.md) 与 [Chrome DevTools MCP](chrome-devtools-mcp.zh.md) 背后有大厂、跨浏览器或 DevTools 能力深，但完全不试图隐藏自动化；[Camoufox](../browser-driver-frameworks/camoufox.zh.md) 是更老、更大的反检测 Firefox，但它是你写代码调用的库，不是助手能直接插上的 MCP 服务器。本项目把隐身引擎直接包装**成** MCP 服务器外加一个可选的聊天界面，工具名照搬 Playwright MCP，原有提示词可以沿用——代价是一个年轻的、单人维护的技术栈，而且只支持 Windows 和 Linux。
+和邻居相比的决定性取舍：[Playwright MCP](../../playwright-family/playwright-mcp.zh.md) 与 [Chrome DevTools MCP](../chrome-devtools-mcp.zh.md) 背后有大厂、跨浏览器或 DevTools 能力深，但完全不试图隐藏自动化；[Camoufox](../../browser-driver-frameworks/camoufox.zh.md) 是更老、更大的反检测 Firefox，但它是你写代码调用的库，不是助手能直接插上的 MCP 服务器。本项目把隐身引擎直接包装**成** MCP 服务器外加一个可选的聊天界面，工具名照搬 Playwright MCP，原有提示词可以沿用——代价是一个年轻的、单人维护的技术栈，而且只支持 Windows 和 Linux。
 
 ## 怎么用起来
 
 它是同一作者的三件套：本仓库（MCP 服务器、双栏网页界面及其 agent 循环）、`invisible-playwright` 封装层（把 Playwright 的 Python API 指向打过补丁的引擎），以及 `invisible_core`（把种子变成一套自洽的指纹，并按代理出口 IP 推出时区和语言）。你的助手用 `uvx invisible-playwright-mcp` 拉起服务器；首次启动时，服务器从 GitHub release 下载钉死版本的引擎（约 250 MB，校验哈希）。之后模型调用和 Playwright MCP 同名的工具——`browser_open`、`browser_navigate`、`browser_snapshot`、`browser_click`、`browser_type`、`browser_read_text`——每个浏览器只操作**一个**页面：没有标签页工具，另有一个与主身份不共享 cookie 的 `support` 浏览器，用来办临时邮箱这类旁支任务。打个比方，它换的是车而不是司机：去哪儿仍由你的助手决定，只是车门上不再喷着“测试车辆”。它替你做的：指纹、像人的输入、与代理一致的地理信息，以及在会话之间记住“你是谁”（种子、出口、配置目录）。留给你的：模型和它的费用；如果你自己的 IP 就是破绽，还得自备代理；想保留登录态要给 `--profile-dir`；以及判断目标网站的条款到底允不允许自动化。独立使用路径（`uvx invisible-playwright-mcp ui --openrouter-key …`）在本地聊天页面后面跑同一个服务器，模型提供方只有 OpenRouter 一家。
 
-![invisible-playwright-mcp — 主干用户故事](../../../assets/flow/invisible-playwright-mcp.zh.svg)
+![invisible-playwright-mcp — 主干用户故事](../../../../assets/flow/invisible-playwright-mcp.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/invisible-playwright-mcp.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -104,24 +104,24 @@ health:
 
 ## 何时不用
 
-- **你用的是 macOS。** 引擎只发布 Windows x86_64 与 Linux x86_64/arm64 版本（包的 classifiers 和 MCPB 清单只列 `win32`/`linux`），Mac 用户要到第一次调用浏览器才发现。改用 [Playwright MCP](../playwright-family/playwright-mcp.zh.md) 或 [Chrome DevTools MCP](chrome-devtools-mcp.zh.md)，或者把它放进 Linux 虚拟机 / 容器里跑。
-- **目标站点根本不防机器人。** 自家应用、内网或普通公开页面上，隐身毫无收益，却要付出一个 250 MB 的定制引擎和一条单人维护的依赖链。改用 [Playwright MCP](../playwright-family/playwright-mcp.zh.md)（微软维护，支持 Chromium/Firefox/WebKit）。
-- **你需要 Chrome、多标签页、tracing、HAR 或 CDP。** 它只有 Firefox，按设计每个浏览器只驱动一个页面，封装层对 tracing、HAR、CDP 和 API request context 直接拒绝。要 DevTools 级别的检查用 [Chrome DevTools MCP](chrome-devtools-mcp.zh.md)；要用代码驱动一个隐身的 **Chromium**，用 [nodriver](../browser-driver-frameworks/nodriver.zh.md) 或 Patchright。
-- **你想写代码而不是写提示词。** MCP 服务器是提示词入口。脚本化的抓取流水线请直接用同门库 `invisible-playwright`，或更成熟的 [Camoufox](../browser-driver-frameworks/camoufox.zh.md)，两者都提供 Playwright 的 API。
-- **你需要稳定的安装坐标。** 一周之内（2026-09-22/23），仓库改名，PyPI 上的 `aihawk` 被删、`invisible-playwright-mcp` 重新注册，环境变量和数据目录改名，还在 MCP 注册表上发布了**第二个**条目。锁定版本；如果坐标变动会弄坏你的整批机器，优先 [Playwright MCP](../playwright-family/playwright-mcp.zh.md)。
-- **你不能接受启动时的外发计数请求。** 每次启动浏览器都会从引擎仓库的 GitHub release 拉一个小文件，作者以此统计启动次数（README 有写，地址由 `invisible_core` 设定）。不带任何标识，但 GitHub 能看到你的 IP。如果“除目标站点外零外联”是硬规定，用 [Playwright MCP](../playwright-family/playwright-mcp.zh.md) 或关掉遥测的 [Chrome DevTools MCP](chrome-devtools-mcp.zh.md)。
-- **你要的是托管的、可扩容的浏览器集群。** 它是本地进程，HTTP 传输和界面都没有鉴权。要很多并发的远程会话，看云浏览器服务（非仓库）或自托管编排器 [PinchTab](pinchtab.zh.md)。
+- **你用的是 macOS。** 引擎只发布 Windows x86_64 与 Linux x86_64/arm64 版本（包的 classifiers 和 MCPB 清单只列 `win32`/`linux`），Mac 用户要到第一次调用浏览器才发现。改用 [Playwright MCP](../../playwright-family/playwright-mcp.zh.md) 或 [Chrome DevTools MCP](../chrome-devtools-mcp.zh.md)，或者把它放进 Linux 虚拟机 / 容器里跑。
+- **目标站点根本不防机器人。** 自家应用、内网或普通公开页面上，隐身毫无收益，却要付出一个 250 MB 的定制引擎和一条单人维护的依赖链。改用 [Playwright MCP](../../playwright-family/playwright-mcp.zh.md)（微软维护，支持 Chromium/Firefox/WebKit）。
+- **你需要 Chrome、多标签页、tracing、HAR 或 CDP。** 它只有 Firefox，按设计每个浏览器只驱动一个页面，封装层对 tracing、HAR、CDP 和 API request context 直接拒绝。要 DevTools 级别的检查用 [Chrome DevTools MCP](../chrome-devtools-mcp.zh.md)；要用代码驱动一个隐身的 **Chromium**，用 [nodriver](../../browser-driver-frameworks/nodriver.zh.md) 或 Patchright。
+- **你想写代码而不是写提示词。** MCP 服务器是提示词入口。脚本化的抓取流水线请直接用同门库 `invisible-playwright`，或更成熟的 [Camoufox](../../browser-driver-frameworks/camoufox.zh.md)，两者都提供 Playwright 的 API。
+- **你需要稳定的安装坐标。** 一周之内（2026-09-22/23），仓库改名，PyPI 上的 `aihawk` 被删、`invisible-playwright-mcp` 重新注册，环境变量和数据目录改名，还在 MCP 注册表上发布了**第二个**条目。锁定版本；如果坐标变动会弄坏你的整批机器，优先 [Playwright MCP](../../playwright-family/playwright-mcp.zh.md)。
+- **你不能接受启动时的外发计数请求。** 每次启动浏览器都会从引擎仓库的 GitHub release 拉一个小文件，作者以此统计启动次数（README 有写，地址由 `invisible_core` 设定）。不带任何标识，但 GitHub 能看到你的 IP。如果“除目标站点外零外联”是硬规定，用 [Playwright MCP](../../playwright-family/playwright-mcp.zh.md) 或关掉遥测的 [Chrome DevTools MCP](../chrome-devtools-mcp.zh.md)。
+- **你要的是托管的、可扩容的浏览器集群。** 它是本地进程，HTTP 传输和界面都没有鉴权。要很多并发的远程会话，看云浏览器服务（非仓库）或自托管编排器 [PinchTab](../pinchtab.zh.md)。
 - **规避检测本身就是你要在法律上担责的行为。** README 只要求你遵守站点条款和频率限制；绕过机器人防护可能违反站点条款。不管选哪个工具，这份风险都在你身上。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Playwright MCP](../playwright-family/playwright-mcp.zh.md) | ✅ | 站点不拦自动化、或者你在 macOS 上，选 Playwright MCP；只有当验证码和机器人墙才是卡住 agent 的原因时，才选 invisible_playwright_mcp。 | 微软背书、三种引擎、全平台、用户基数大，但原版浏览器会被反机器人服务标记；本项目在隐身 Firefox 上照搬它的工具名，放弃了标签页、macOS 和机构背书。 |
-| [Chrome DevTools MCP](chrome-devtools-mcp.zh.md) | ✅ | agent 要测量和调试页面（trace、网络、堆）时选 Chrome DevTools MCP；agent 要越过站点的机器人检测时选 invisible_playwright_mcp。 | 谷歌背书、DevTools 能力深、只支持 Chrome、不为隐藏而设计；本项目没有任何检查能力，但有补丁指纹和拟人输入。 |
-| [browser-use](browser-use.zh.md) | ✅ | 想要一个成熟的、面向代码的 Python agent 框架并接多家模型时选 browser-use；想让现有 MCP 助手直接驱动隐身浏览器、不自己写 agent 时选 invisible_playwright_mcp。 | 社区和框架面更大、基于 Chromium，但反机器人不是它的核心；本项目是更窄的插件，价值全在引擎，独立界面只接 OpenRouter。 |
-| [Camoufox](../browser-driver-frameworks/camoufox.zh.md) | ✅ | 做脚本化反检测抓取、看重更长的历史和指纹数据库时选 Camoufox；消费方是 MCP 助手而不是你的代码时选 invisible_playwright_mcp。 | 两者都在 C++ 层改 Firefox；Camoufox 带指纹数据库，提供 Playwright API 的库（MPL-2.0，约 1.2 万星），本项目从种子推导指纹并包装成 MCP 工具。 |
-| [nodriver](../browser-driver-frameworks/nodriver.zh.md) | ✅ | 需要用 Python 代码驱动一个不被识别的 **Chromium** 时选 nodriver；需要以 MCP 工具形式交付、基于 Firefox 的隐身时选 invisible_playwright_mcp。 | nodriver 在 Chrome 里避开 WebDriver/CDP 的破绽，是代码库（AGPL-3.0）；本项目只有 Firefox、靠提示词驱动，自 2026-09-02 起为 MIT。 |
+| [Playwright MCP](../../playwright-family/playwright-mcp.zh.md) | ✅ | 站点不拦自动化、或者你在 macOS 上，选 Playwright MCP；只有当验证码和机器人墙才是卡住 agent 的原因时，才选 invisible_playwright_mcp。 | 微软背书、三种引擎、全平台、用户基数大，但原版浏览器会被反机器人服务标记；本项目在隐身 Firefox 上照搬它的工具名，放弃了标签页、macOS 和机构背书。 |
+| [Chrome DevTools MCP](../chrome-devtools-mcp.zh.md) | ✅ | agent 要测量和调试页面（trace、网络、堆）时选 Chrome DevTools MCP；agent 要越过站点的机器人检测时选 invisible_playwright_mcp。 | 谷歌背书、DevTools 能力深、只支持 Chrome、不为隐藏而设计；本项目没有任何检查能力，但有补丁指纹和拟人输入。 |
+| [browser-use](../browser-use.zh.md) | ✅ | 想要一个成熟的、面向代码的 Python agent 框架并接多家模型时选 browser-use；想让现有 MCP 助手直接驱动隐身浏览器、不自己写 agent 时选 invisible_playwright_mcp。 | 社区和框架面更大、基于 Chromium，但反机器人不是它的核心；本项目是更窄的插件，价值全在引擎，独立界面只接 OpenRouter。 |
+| [Camoufox](../../browser-driver-frameworks/camoufox.zh.md) | ✅ | 做脚本化反检测抓取、看重更长的历史和指纹数据库时选 Camoufox；消费方是 MCP 助手而不是你的代码时选 invisible_playwright_mcp。 | 两者都在 C++ 层改 Firefox；Camoufox 带指纹数据库，提供 Playwright API 的库（MPL-2.0，约 1.2 万星），本项目从种子推导指纹并包装成 MCP 工具。 |
+| [nodriver](../../browser-driver-frameworks/nodriver.zh.md) | ✅ | 需要用 Python 代码驱动一个不被识别的 **Chromium** 时选 nodriver；需要以 MCP 工具形式交付、基于 Firefox 的隐身时选 invisible_playwright_mcp。 | nodriver 在 Chrome 里避开 WebDriver/CDP 的破绽，是代码库（AGPL-3.0）；本项目只有 Firefox、靠提示词驱动，自 2026-09-02 起为 MIT。 |
 
 ## 技术栈
 

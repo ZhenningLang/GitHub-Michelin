@@ -99,7 +99,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [OpenSSF Scorecard](https://github.com/ossf/scorecard),categories/agent-governance/skillspector.md,,no
 [Operit](https://github.com/AAswordman/Operit),categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md,,no
 [Passbolt](https://github.com/passbolt/passbolt_api),categories/dev-utilities/ops-infra/vaultwarden.md,,no
-[Patchright](https://github.com/Kaliiiiiiiiii-Vinyzu/patchright),categories/web-automation/agent-browser-tools/playwright-bot-bypass.md,,no
+[Patchright](https://github.com/Kaliiiiiiiiii-Vinyzu/patchright),categories/web-automation/agent-browser-tools/stealth-session-tools/playwright-bot-bypass.md,,no
 [Payload](https://github.com/payloadcms/payload),categories/content-management/emdash.md,,no
 [PeaZip](https://github.com/peazip/PeaZip),categories/dev-utilities/data-tools/hatchzip.md,,no
 [PixArt-Σ](https://github.com/PixArt-alpha/PixArt-sigma),categories/ml-research/vision-and-multimodal/sana.md,,no
@@ -112,7 +112,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [RAID](https://github.com/liamdugan/raid),categories/llm-eval/chatgpt-comparison-detection.md,,no
 [RawTherapee](https://github.com/RawTherapee/RawTherapee),categories/photo-editing/lightcraft.md,,no
 [react-iztro](https://github.com/SylarLong/react-iztro),categories/traditional-divination/ziwei-doushu.md,,no
-[rebrowser-patches](https://github.com/rebrowser/rebrowser-patches),categories/web-automation/agent-browser-tools/playwright-bot-bypass.md,,no
+[rebrowser-patches](https://github.com/rebrowser/rebrowser-patches),categories/web-automation/agent-browser-tools/stealth-session-tools/playwright-bot-bypass.md,,no
 [Redis](https://github.com/redis/redis),categories/databases/database-engines/kividb.md,,no
 [RetDec](https://github.com/avast/retdec),categories/dev-utilities/binary-analysis/reagent.md,,no
 [Self Forcing](https://github.com/guandeh17/Self-Forcing),categories/ml-research/vision-and-multimodal/stable-video-infinity.md,,no

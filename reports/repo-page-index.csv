@@ -468,7 +468,7 @@ https://github.com/farion1231/cc-switch,cc-switch,orchestration-and-review,categ
 https://github.com/fastclaw-ai/fastclaw,fastclaw,agent-services,categories/agent-frameworks/agent-runtimes/agent-services/fastclaw.md
 https://github.com/fdintino/nginx-upload-module,nginx-upload-module,nginx-modules,categories/nginx-modules/nginx-upload-module.md
 https://github.com/featherless-ai/simple-jev,simple-jev,decision-models,categories/decision-models/simple-jev.md
-https://github.com/feder-cr/invisible_playwright_mcp,invisible-playwright-mcp,agent-browser-tools,categories/web-automation/agent-browser-tools/invisible-playwright-mcp.md
+https://github.com/feder-cr/invisible_playwright_mcp,invisible-playwright-mcp,stealth-session-tools,categories/web-automation/agent-browser-tools/stealth-session-tools/invisible-playwright-mcp.md
 https://github.com/firecracker-microvm/firecracker,firecracker,sandboxing,categories/sandboxing/firecracker.md
 https://github.com/firecrawl/anydoc,anydoc,document-parsing,categories/document-parsing/anydoc.md
 https://github.com/firecrawl/firecrawl,firecrawl,crawling-tools,categories/web-scraping/crawling-tools/firecrawl.md
@@ -514,7 +514,7 @@ https://github.com/gopherdata/gophernotes,gophernotes,python-tooling,categories/
 https://github.com/gpu-mode/Triton-Puzzles,triton-puzzles,learning-resources,categories/learning-resources/triton-puzzles.md
 https://github.com/grafana/grafana,grafana,observability,categories/observability/grafana.md
 https://github.com/grafana/loki,loki,observability,categories/observability/loki.md
-https://github.com/greekr4/playwright-bot-bypass,playwright-bot-bypass,agent-browser-tools,categories/web-automation/agent-browser-tools/playwright-bot-bypass.md
+https://github.com/greekr4/playwright-bot-bypass,playwright-bot-bypass,stealth-session-tools,categories/web-automation/agent-browser-tools/stealth-session-tools/playwright-bot-bypass.md
 https://github.com/gristlabs/grist-core,grist,office-editors,categories/office-editors/grist.md
 https://github.com/gsd-build/get-shit-done,get-shit-done,spec-driven-development,categories/agent-dev-methodology/spec-driven-development/get-shit-done.md
 https://github.com/h4ckf0r0day/obscura,obscura,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/obscura.md
@@ -577,7 +577,7 @@ https://github.com/jina-ai/node-DeepResearch,node-deepresearch,deep-research,cat
 https://github.com/jingyaogong/minimind,minimind,study-and-experiments,categories/llm-training/study-and-experiments/minimind.md
 https://github.com/jmcnamara/XlsxWriter,xlsxwriter,office-automation,categories/office-automation/xlsxwriter.md
 https://github.com/jo-duchan/tapflow,tapflow,mobile-automation,categories/mobile-automation/tapflow.md
-https://github.com/jo-inc/camofox-browser,camofox-browser,agent-browser-tools,categories/web-automation/agent-browser-tools/camofox-browser.md
+https://github.com/jo-inc/camofox-browser,camofox-browser,stealth-session-tools,categories/web-automation/agent-browser-tools/stealth-session-tools/camofox-browser.md
 https://github.com/joonspk-research/generative_agents,generative-agents,social-simulation,categories/social-simulation/generative-agents.md
 https://github.com/jordan-gibbs/hyperresearch,hyperresearch,source-workflows,categories/deep-research/source-workflows/hyperresearch.md
 https://github.com/jqlang/jq,jq,data-tools,categories/dev-utilities/data-tools/jq.md
