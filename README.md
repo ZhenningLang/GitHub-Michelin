@@ -191,6 +191,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **BrowserOS** | Give an existing assistant a separate logged-in browser with task tabs and local replay; neo is distinct from the bundled assistant browser. | AGPL-3.0 | B (6/6) | [EN](categories/web-automation/agent-browser-tools/browseros.md) · [中](categories/web-automation/agent-browser-tools/browseros.zh.md) |
 | **page-agent** | Use it when you want to control a web UI with natural language in-page via direct DOM read/write, no backend. | MIT | B (6/6) | [EN](categories/web-automation/agent-browser-tools/page-agent.md) · [中](categories/web-automation/agent-browser-tools/page-agent.zh.md) |
 | **Chrome DevTools MCP** | Use it when an agent needs to drive and DevTools-inspect real Chrome — traces, network, console, heap. | Apache-2.0 | A (6/6) | [EN](categories/web-automation/agent-browser-tools/chrome-devtools-mcp.md) · [中](categories/web-automation/agent-browser-tools/chrome-devtools-mcp.zh.md) |
 | **Agent Browser** | Use it when an agent must shell-drive a real Chrome over CDP with stable element refs instead of CSS selectors. | Apache-2.0 | B (5/6) | [EN](categories/web-automation/agent-browser-tools/agent-browser.md) · [中](categories/web-automation/agent-browser-tools/agent-browser.zh.md) |

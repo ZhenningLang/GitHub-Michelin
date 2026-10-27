@@ -11,6 +11,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **BrowserOS** | Give an existing assistant a separate logged-in Chromium browser with task tabs and local replay; distinguish neo from the bundled assistant browser. | B (6/6) | [→](browseros.md) |
 | **Agent Browser** | Use it when an agent must shell-drive a real Chrome over CDP with stable element refs instead of CSS selectors. | B (5/6) | [→](agent-browser.md) |
 | **Browser Harness** | Use it when a coding agent must drive the Chrome you are already logged into over CDP, writing missing helpers into a local workspace — Alpha, default-on telemetry, no inner agent loop. | A (6/6) | [→](browser-harness.md) |
 | **browser-use** | Use it when your own Python code must act on websites you don't control by handing an LLM agent a one-sentence task instead of per-site selectors — but every step is a paid, nondeterministic LLM round-trip; stable high-volume flows belong in Playwright. | A (6/6) | [→](browser-use.md) |
@@ -25,6 +26,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [BrowserOS](browseros.md) | Indexed | B (6/6) | Neo supplies account-bound browser tools and local replay to your agent; you maintain a whole browser and sensitive profile, not an isolated test context. |
 | [Agent Browser](agent-browser.md) | ✅ | B (5/6) | Use it when an agent must shell-drive a real Chrome over CDP with stable element refs instead of CSS selectors. |
 | [Browser Harness](browser-harness.md) | ✅ | A (6/6) | Coding agent attaches to your live Chrome over CDP and writes missing helpers locally; no inner LLM loop, telemetry on until you opt out, still 0.1.x Alpha. |
 | [browser-use](browser-use.md) | ✅ | A (6/6) | Survives site redesigns without selector maintenance, at the cost of per-token spend, slower nondeterministic runs, a young 0.x API, and stealth and captcha handling kept in the paid cloud. |

@@ -11,6 +11,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **BrowserOS** | 给已有助手提供独立的已登录 Chromium、任务页签与本地回放；需区分 neo 和内置助手版浏览器。 | B（6/6） | [→](browseros.zh.md) |
 | **Agent Browser** | 当 agent 需要靠 shell 命令通过 CDP 驱动真实 Chrome、用稳定元素引用而非 CSS 选择器操作网页时使用。 | B（5/6） | [→](agent-browser.zh.md) |
 | **Browser Harness** | 当 coding agent 必须经 CDP 驱动你已经登录的 Chrome、并把缺的帮手写进本地 workspace 时用它——仍是 Alpha、遥测默认开、没有内层 agent 循环。 | A（6/6） | [→](browser-harness.zh.md) |
 | **browser-use** | 当你要在自己的 Python 代码里操作管不了的网站，想把一句话任务交给大模型 agent、而不是给每个站写死选择器时用它——但每一步都是按 token 计费、路径不确定的模型往返；稳定的高频流程还是写 Playwright 脚本。 | A（6/6） | [→](browser-use.zh.md) |
@@ -25,6 +26,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [BrowserOS](browseros.zh.md) | 已收录 | B（6/6） | Neo 向已有助手提供账号浏览器工具与本地回放；代价是维护整个浏览器和敏感配置档，不是隔离测试上下文。 |
 | [Agent Browser](agent-browser.zh.md) | ✅ | B（5/6） | 当 agent 需要靠 shell 命令通过 CDP 驱动真实 Chrome、用稳定元素引用而非 CSS 选择器操作网页时使用。 |
 | [Browser Harness](browser-harness.zh.md) | ✅ | A（6/6） | coding agent 经 CDP 附着你正在用的 Chrome，缺帮手就写进本地；没有内层 LLM 循环，遥测关掉之前一直开，仍是 0.1.x Alpha。 |
 | [browser-use](browser-use.zh.md) | ✅ | A（6/6） | 网站改版不用改选择器，代价是按 token 付费、更慢且不确定的执行、年轻的 0.x API，隐身和验证码处理还留在付费云上。 |

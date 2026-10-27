@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "agent", "en": "Your existing assistant", "zh": "已有助手", "kind": "external"},
+    {"id": "mcp", "en": "Neo MCP server", "zh": "Neo MCP 服务端"},
+    {"id": "ownership", "en": "Conversation and tab ownership", "zh": "对话与页签归属", "technique": [2]},
+    {"id": "browser", "en": "Signed-in Chromium pages", "zh": "已登录的 Chromium 页面"},
+    {"id": "snapshot", "en": "Accessibility tree with element refs", "zh": "带元素引用的无障碍树", "technique": [1]},
+    {"id": "record", "en": "Local events and ownership windows", "zh": "本地事件与归属时间窗", "technique": [3]},
+    {"id": "replay", "en": "Session timeline and page replay", "zh": "会话时间线与页面回放", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "agent", "to": "mcp", "en": "tool calls", "zh": "工具调用"},
+    {"from": "mcp", "to": "ownership"},
+    {"from": "ownership", "to": "browser", "en": "track task tabs", "zh": "跟踪任务页签"},
+    {"from": "browser", "to": "snapshot"},
+    {"from": "snapshot", "to": "agent", "en": "next decision", "zh": "下一步决策"},
+    {"from": "browser", "to": "record"},
+    {"from": "record", "to": "replay", "en": "filter by session claims", "zh": "按会话认领过滤"}
+  ],
+  "sources": [
+    "https://github.com/browseros-ai/BrowserOS/blob/6967b953f4c92c50382f9661109b4cf21c26a553/packages/browseros-agent/crates/browseros-mcp/src/tools/snapshot.rs#L16-L102",
+    "https://github.com/browseros-ai/BrowserOS/blob/6967b953f4c92c50382f9661109b4cf21c26a553/packages/browseros-agent/apps/claw-server/src/services/sessions/tab_ownership.rs#L51-L219",
+    "https://github.com/browseros-ai/BrowserOS/blob/6967b953f4c92c50382f9661109b4cf21c26a553/packages/browseros-agent/apps/claw-server/src/services/replay/builder.rs#L57-L158"
+  ]
+}

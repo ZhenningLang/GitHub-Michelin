@@ -188,6 +188,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **BrowserOS** | 给已有助手提供独立的已登录浏览器、任务页签与本地回放；neo 与内置助手版需分清。 | AGPL-3.0 | B（6/6） | [中](categories/web-automation/agent-browser-tools/browseros.zh.md) · [EN](categories/web-automation/agent-browser-tools/browseros.md) |
 | **page-agent** | 想在页内用自然语言、通过直接读写 DOM 控制 Web 界面、且无需后端时用它。 | MIT | B（6/6） | [中](categories/web-automation/agent-browser-tools/page-agent.zh.md) · [EN](categories/web-automation/agent-browser-tools/page-agent.md) |
 | **Chrome DevTools MCP** | 当 agent 需要驱动并用 DevTools 检查真实 Chrome（性能 trace、网络、控制台、堆内存）时使用。 | Apache-2.0 | A（6/6） | [中](categories/web-automation/agent-browser-tools/chrome-devtools-mcp.zh.md) · [EN](categories/web-automation/agent-browser-tools/chrome-devtools-mcp.md) |
 | **Agent Browser** | 当 agent 需要靠 shell 命令通过 CDP 驱动真实 Chrome、用稳定元素引用而非 CSS 选择器操作网页时使用。 | Apache-2.0 | B（5/6） | [中](categories/web-automation/agent-browser-tools/agent-browser.zh.md) · [EN](categories/web-automation/agent-browser-tools/agent-browser.md) |
