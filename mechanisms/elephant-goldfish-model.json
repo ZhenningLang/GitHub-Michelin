@@ -1,0 +1,33 @@
+{
+  "schema":1,
+  "direction":"down",
+  "nodes":[
+    {"id":"author","en":"Elephant retains design conversation","zh":"大象保留设计对话","kind":"input","technique":[1]},
+    {"id":"draft","en":"Human-approved sections become a draft","zh":"人工批准章节形成草稿","technique":[3]},
+    {"id":"scope","en":"Resolve feature and implementation scopes","zh":"定位功能与实施范围","technique":[2]},
+    {"id":"fish","en":"New Goldfish contexts read explicit sources","zh":"新金鱼上下文读取明确来源","technique":[1]},
+    {"id":"stages","en":"Five stages ordered; lenses parallel within a stage","zh":"五阶段有序；阶段内视角并行","technique":[2]},
+    {"id":"report","en":"Normalize and deduplicate findings in files","zh":"问题归一去重后写文件","technique":[2]},
+    {"id":"resolve","en":"Contest with evidence; escalate private knowledge","zh":"用证据反驳；私有知识升级","technique":[3]},
+    {"id":"approval","en":"Human chooses edits and whether to continue","zh":"人工选择修改及是否继续","technique":[3]},
+    {"id":"output","en":"Approved design; code and tests remain separate","zh":"已批准设计；实现与测试另做","kind":"output"}
+  ],
+  "edges":[
+    {"from":"author","to":"draft"},
+    {"from":"draft","to":"scope"},
+    {"from":"scope","to":"fish","en":"target, persona, standard, reading list only","zh":"仅传目标、角色、标准和阅读清单"},
+    {"from":"fish","to":"stages"},
+    {"from":"stages","to":"report"},
+    {"from":"report","to":"resolve"},
+    {"from":"resolve","to":"approval"},
+    {"from":"approval","to":"output","en":"after owner approval","zh":"owner 批准后"}
+  ],
+  "sources":[
+    "https://github.com/google/elephant-goldfish-model/blob/b3a35956759bf7f024af2ff061b2e0b44b438e4c/.claude-plugin/agents/comprehension.md#L1-L17",
+    "https://github.com/google/elephant-goldfish-model/blob/b3a35956759bf7f024af2ff061b2e0b44b438e4c/skills/egm_review/SKILL.md#L161-L205",
+    "https://github.com/google/elephant-goldfish-model/blob/b3a35956759bf7f024af2ff061b2e0b44b438e4c/skills/egm_review/SKILL.md#L261-L292",
+    "https://github.com/google/elephant-goldfish-model/blob/b3a35956759bf7f024af2ff061b2e0b44b438e4c/docs/claude.md#L36-L44",
+    "https://github.com/google/elephant-goldfish-model/blob/b3a35956759bf7f024af2ff061b2e0b44b438e4c/skills/egm_resolve/SKILL.md#L54-L82",
+    "https://github.com/google/elephant-goldfish-model/blob/b3a35956759bf7f024af2ff061b2e0b44b438e4c/skills/egm_resolve/SKILL.md#L110-L144"
+  ]
+}

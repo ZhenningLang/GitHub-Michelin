@@ -451,6 +451,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **BMAD Method** | 当你要的是角色驱动的端到端 agent 方法（analyst、PM、架构、UX、开发、复核），而不是薄薄的 spec 管线时用它——并把飞快的涨星曲线当成未经验证。 | MIT | B（4/6） | [中](categories/agent-dev-methodology/spec-driven-development/bmad-method.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/bmad-method.md) |
 | **Improve** | 当你想让昂贵模型只读审计仓库、再为便宜执行模型写出可交接的自包含计划时用它——它从不亲自实现。 | MIT | B（4/5） | [中](categories/agent-dev-methodology/spec-driven-development/improve.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/improve.md) |
 | **Agent OS** | 当你要把项目 standards 装进去并选择性注入、在实现前先塑形计划时用它——发布线自 v3.0.0（2026-01）后一直很安静。 | MIT | B（4/5） | [中](categories/agent-dev-methodology/spec-driven-development/agent-os.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/agent-os.md) |
+| **Elephant-Goldfish Model (EGM)** | 写代码前，让新上下文审查者挑战书面设计；由人选架构并批准文档修改。 | Apache-2.0 | C（5/6） | [中](categories/agent-dev-methodology/spec-driven-development/elephant-goldfish-model.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/elephant-goldfish-model.md) |
 
 ### ai-design-generation
 
