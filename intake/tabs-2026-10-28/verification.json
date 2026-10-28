@@ -1,10 +1,23 @@
 {
   "schema": 1,
   "date_utc": "2026-10-28",
-  "status": "local intake verified; original summary update blocked",
+  "status": "eleven local entries verified with one tab-observation gap; original summary update blocked",
   "base": "2ffed1f4dcb3b50d12404ca141f8ab088f86dcdb",
-  "content_head": "f88acb4a0ee1260219cf7a0068b1e207346a4686",
+  "content_head": "9b206691632054a580a03759619db486fe1712d1",
+  "initial_content_head": "f88acb4a0ee1260219cf7a0068b1e207346a4686",
   "intake": {
+    "done": 11,
+    "proposed": 0,
+    "anonymous_own_skipped": 1,
+    "final_rescan_new": 0,
+    "final_rescan_pending": 0,
+    "closed_targets": 11,
+    "live_non_own_repository_tabs": 0,
+    "live_own_repository_tabs": 1,
+    "own_inventory_preserved_at_each_promotion_close": true,
+    "non_target_observation_gap": "One additional non-repository URL inventory entry disappeared during the ub-mode closure window. The close command matched and reported only ub-mode; the cause of the additional change is unknown. Other ten closure windows recorded zero non-target differences."
+  },
+  "initial_intake": {
     "done": 6,
     "proposed": 5,
     "anonymous_own_skipped": 1,
@@ -17,7 +30,7 @@
     "proposed_tabs_preserved": true,
     "own_tabs_preserved": true
   },
-  "source_reviews": [
+  "initial_source_reviews": [
     {"repo": "averygan/reclip", "commit": "2b29491", "upstream_sha": "1d161d15a4fe93d9b3371377f0a421dc3e965b10", "findings": []},
     {"repo": "HKUDS/AutoSwarm", "commit": "f189b51", "upstream_sha": "5325b6d98dad7a9a12811c0b5fa0817ffbbc71f9", "findings": []},
     {"repo": "Vibha-Ramprakash/claude-video-effects", "commit": "00f68e1", "upstream_sha": "99c9a3393ee14d39bea155a05c73dc069f02f16f", "findings": []},
@@ -25,7 +38,7 @@
     {"repo": "Leonxlnx/earshot", "commit": "108590b", "upstream_sha": "591fa3e028032e6dce56620a20e932e35667e8d8", "findings": []},
     {"repo": "echo-loop/Echo-Loop", "commit": "a883206", "upstream_sha": "2a8716b2b31481c6a41049f1b4e46e55390abeaf", "findings": []}
   ],
-  "review_evidence": {
+  "initial_review_evidence": {
     "source": "Reused independent read-only source reviews; root reran committed-byte and final route-preservation checks",
     "reviewed_product_blobs": 24,
     "source_scope_limit": "Source reviewers read key implementations and authenticated their stated sets; not a claim that every upstream file was semantically reviewed",
@@ -34,7 +47,7 @@
     "artifacts": {"path_identities": 48, "findings": [], "scope_sha256": "befd2049ce38b5cf5d6b5db88e2ec247b82097947609e4573be4fed68fc025c4"},
     "visual": "Reused six research-worker PNG reviews; independent asset review verified current SVG byte identity, XML and labels but did not rerender or repeat visual acceptance"
   },
-  "verification": {
+  "initial_verification": {
     "inner_loop_source": "root rerun",
     "make_gates": {"exit_code": 0, "summary": "215 category nodes, 1002 EN + 1002 ZH pages, 0 errors, 1662 warnings.", "reports": "reports are current", "new_category_overflows": 0},
     "make_test": {"exit_code": 0, "summary": "Ran 483 tests in 25.146s; OK", "skipped": 0, "mock_error_note": "The printed acme/demo HTTP 502 is an intentional unittest mock in tools/test_repo_moves.py:100-113, not a live upstream failure"},
@@ -45,6 +58,29 @@
     "holdout_source_category": "真实捕获：冻结 Git 基线、固定上游源码与真实标签集合",
     "expected_value_source": "需求原文与 tools/schema.md 外部契约",
     "freeze_position": "Content generation and routing changed after the base commit; tools, schemas, tests, CI and gate thresholds did not change"
+  },
+  "promotion": {
+    "authorization_record": "promotion-remaining-five.json",
+    "base": "7deb11d9b2054b92824a3aff664b11ba76f9d278",
+    "source_reviews": [
+      {"repo": "superdesigndev/treg", "commit": "c2b55fc", "upstream_sha": "2e1388ab6ba0bc1d8decb6c8791c57339aa92a00", "findings": []},
+      {"repo": "unclebob/ub-mode", "commit": "76e6b27", "upstream_sha": "57a8bdd28e45ed41900ace0bafa2ff76dd9ed70f", "findings": []},
+      {"repo": "microsoft/pylance-release", "commit": "56f3e9e", "upstream_sha": "f03a84d93009b8a8398658c365f72b46afbb2482", "findings": []},
+      {"repo": "feigeCode/navop", "commit": "5be9b63", "upstream_sha": "2db7763a92eab1188139fba6753be767f06010cc", "findings": []},
+      {"repo": "nightly-labs/openbot", "commit": "9b20669", "upstream_sha": "9dd3bfa2a599620ed8b7dd691f3a4c0d5f7582d5", "findings": [], "fixed": "Both mirrors now disclose automatic approval answering is enabled by default; on-request does not imply human confirmation. Root-byte independent re-review passed."}
+    ],
+    "review_source": "Independent read-only semantic/source reviews reused; root reran final committed-byte binding, gates and pair-quality checks",
+    "reviewed_product_blobs": 20,
+    "artifacts": {"reviewed_files": 40, "scope_sha256": "10c47c00c3c53a8bc2116038c64bf55ca82127f4f9bbadea93d25a20955d3969", "findings": [], "visual": "Worker visual receipts reused; current SVG bytes and complete JSON/XML/labels checked independently, not rerendered or independently re-viewed"},
+    "make_gates": {"exit_code": 0, "summary": "215 category nodes, 1007 EN + 1007 ZH pages, 0 errors, 1676 warnings.", "reports": "reports are current"},
+    "make_test": {"exit_code": 0, "summary": "Ran 483 tests in 18.986s; OK", "skipped": 0, "mock_error_note": "The acme/demo HTTP 502 is the intentional unittest mock already documented in initial_verification"},
+    "exact_pair_quality": "Root reran all five pairs with --fail-on-any-scoped; no deterministic findings",
+    "acceptance": {"source": "root rerun", "old_leaf_pages_byte_identical": 2004, "protected_old_blobs_identical": 7848, "old_reverse_index_rows_unchanged": 1002, "new_repo_rows": 5, "reverse_index_after": 1007, "target_closures": "5 targets 1->0", "own_repository_inventory": "1->1 at each closure", "live_non_own_repo_tabs": 0},
+    "observation_gap": {"repo": "unclebob/ub-mode", "non_repository_url_entries_removed": 1, "cause": "unknown", "command_evidence": "Only the target URL was matched and reported closed", "claim_not_made": "All non-target tab inventories stayed unchanged"},
+    "holdout_source_category": "真实捕获：冻结 Git 基线、固定上游源码和真实浏览器标签快照",
+    "expected_value_source": "用户批准的五项介绍范围与现有 schema 合同",
+    "freeze_position": "生成侧增加五项介绍；不改变原页面、生产工具、schema、测试、CI或门禁阈值",
+    "qa_decision": "no leftover Q&A"
   },
   "original_summary": {
     "status": "not updated",
@@ -58,14 +94,16 @@
   },
   "boundary_decisions": [
     "New capability routes native-cli-bridges and harness-evolution replace two overflowing leaf categories; no page facts, health values or verification dates were changed",
-    "Navop and Treg remain proposals because additional license restrictions need a maintainer decision; no prior DIY-LLM exception was extended",
+    "The initial five proposals were later explicitly approved as informational entries. License restrictions, missing reuse rights and closed product source remain disclosures, not ungranted software-use permissions; the new decision is recorded in promotion-remaining-five.json",
     "Historical HTML and ledger/verification snapshots retain their old bytes; Markdown incoming navigation was updated",
     "Own-repository identity is anonymous in the public ledger; recovery checkpoint remains local and ignored"
   ],
   "known_gaps": [
     "Original summary update is blocked; the intake corpus is not a substitute for that report",
     "Upstream install/runtime, media quality, learning outcomes, exploit reproduction and comprehensive third-party rights audits were not performed",
-    "The 1662 structural warnings and report-only quality backlog remain; zero errors is not semantic or security certification",
+    "The initial phase recorded 1662 structural warnings; the report-only quality backlog remains, and zero errors is not semantic or security certification",
+    "The final promotion run has 1676 structural warnings; prior warning counts above belong only to the explicitly labeled initial phase",
+    "One extra non-repository URL inventory entry disappeared during the ub-mode audit window; no attribution is possible from the captured URL inventories",
     "Existing Octopus model-count inconsistency and historical non-target dead links were recorded, not repaired",
     "No push, PR or remote-main update was authorized for this new batch; no remote CI was run"
   ],
