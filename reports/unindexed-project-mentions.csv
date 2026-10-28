@@ -759,6 +759,7 @@ LibreOffice Impress (`LibreOffice/core`),categories/office-editors/deckcraft.md,
 libreoffice-convert (`elwerene/libreoffice-convert`),categories/office-automation/dsh-libreoffice-kit.md,,no
 LibrePhotos,categories/document-management/immich.md,,no
 LibreTube (`libre-tube/LibreTube`),categories/streaming-clients/pipepipe.md,,no
+librosa,categories/media-processing/quality-metrics/earshot.md,,no
 libSQL (`tursodatabase/libsql`),categories/databases/database-engines/turso.md,,no
 libssh2 / ssh2-python,categories/networking/paramiko.md,,no
 libvips,categories/media-processing/image-processing/imagemagick.md,,no

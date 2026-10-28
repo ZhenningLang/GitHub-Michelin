@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "audio", "en": "Input sound or film", "zh": "输入声音或影片", "kind": "input"},
+    {"id": "decode", "en": "Decode audio and measure signal", "zh": "解码音频并测量信号"},
+    {"id": "tags", "en": "Calibrated CLAP scores and AST tags", "zh": "校准 CLAP 分数与 AST 标签", "technique": [1]},
+    {"id": "profile", "en": "Profile ranges and weighted misses", "zh": "画像范围与加权偏差", "technique": [2]},
+    {"id": "evidence", "en": "Descriptions and timestamped fixes", "zh": "描述与带时间戳的修改建议", "kind": "output"},
+    {"id": "recipe", "en": "Recipe parameters and references", "zh": "配方参数与参考声音", "kind": "input"},
+    {"id": "screen", "en": "Model-free screening then critic scoring", "zh": "先无模型预筛，再由评价器评分", "technique": [3]},
+    {"id": "mutate", "en": "Mutate elites and re-render on new seeds", "zh": "修改优胜参数，以新种子重渲染", "technique": [3]},
+    {"id": "sounds", "en": "Candidate sounds for human listening", "zh": "供人工试听的候选声音", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "audio", "to": "decode"},
+    {"from": "decode", "to": "tags"},
+    {"from": "decode", "to": "profile"},
+    {"from": "tags", "to": "evidence"},
+    {"from": "profile", "to": "evidence"},
+    {"from": "recipe", "to": "screen"},
+    {"from": "screen", "to": "mutate"},
+    {"from": "mutate", "to": "screen", "en": "within search budget", "zh": "搜索预算内"},
+    {"from": "mutate", "to": "sounds"}
+  ],
+  "sources": [
+    "https://github.com/Leonxlnx/earshot/blob/591fa3e028032e6dce56620a20e932e35667e8d8/earshot/describe.py#L161-L239",
+    "https://github.com/Leonxlnx/earshot/blob/591fa3e028032e6dce56620a20e932e35667e8d8/earshot/critique.py#L47-L144",
+    "https://github.com/Leonxlnx/earshot/blob/591fa3e028032e6dce56620a20e932e35667e8d8/earshot/forge/search.py#L504-L665"
+  ]
+}

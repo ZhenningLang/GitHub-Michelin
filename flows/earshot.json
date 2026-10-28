@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "earshot", "zh": "earshot"},
+  "steps": [
+    {"lane": "you", "en": "Install the Python package and FFmpeg; provision the local model cache", "zh": "安装 Python 包和 FFmpeg，准备本地模型缓存"},
+    {"lane": "you", "en": "Ask for a description of your effect file", "zh": "请求描述自己的音效文件", "code": "earshot describe enter.ogg"},
+    {"lane": "them", "en": "Decode the sound and compute measurements plus calibrated sound tags", "zh": "解码声音，计算测量值与校准声音标签"},
+    {"lane": "them", "en": "Return a readable description, competing readings and measurements", "zh": "返回可读描述、其他可能解释和测量值"}
+  ],
+  "value": {"en": "Your agent gets sound evidence instead of guessing from filenames", "zh": "agent 获得声音证据，不再只凭文件名猜测"},
+  "sources": [
+    "https://github.com/Leonxlnx/earshot/blob/591fa3e028032e6dce56620a20e932e35667e8d8/README.md#L35-L38",
+    "https://github.com/Leonxlnx/earshot/blob/591fa3e028032e6dce56620a20e932e35667e8d8/README.md#L297-L330",
+    "https://github.com/Leonxlnx/earshot/blob/591fa3e028032e6dce56620a20e932e35667e8d8/earshot/describe.py#L161-L239"
+  ]
+}
