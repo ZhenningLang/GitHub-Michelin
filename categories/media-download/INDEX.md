@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **ReClip** | Save a few clips with a local yt-dlp quality picker; no built-in authentication or durable queue. | B (4/6) | [→](reclip.md) |
 | **youtube-dl** | Use it when a script or legacy pipeline already pins youtube-dl to pull media through its ~1000 site extractors with templated filenames — but the last tagged release is 2021.12.17 and master is quiet since 2025-11, so default to the yt-dlp fork for YouTube. | B (6/6) | [→](youtube-dl.md) |
 | **you-get** | Use it when you want a tiny Python CLI to grab video/audio from YouTube and many Chinese sites (Bilibili/Youku) — lighter than yt-dlp. | D (3/6) | [→](you-get.md) |
 | **cobalt** | Use it when you want a self-hosted page where anyone on your network pastes a social-media link and gets the video or audio, ad- and tracker-free — but the API is AGPL-3.0, the web UI is non-commercial CC-BY-NC-SA, and it is no scriptable CLI. | C (5/6) | [→](cobalt.md) |
@@ -21,6 +22,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [ReClip](reclip.md) | Yes | B (4/6) | A small Flask UI over yt-dlp; access control, download expiry and restart recovery remain yours. |
 | [youtube-dl](youtube-dl.md) | ✅ | B (6/6) | Buys an Unlicense CLI with an option set everyone knows; costs freshness — pip still installs a 2021 build, so site breakage outlasts yt-dlp's fixes. |
 | [you-get](you-get.md) | ✅ | D (3/6) | Use it when you want a tiny Python CLI to grab video/audio from YouTube and many Chinese sites (Bilibili/Youku) — lighter than yt-dlp. |
 | [cobalt](cobalt.md) | ✅ | C (5/6) | Buys a friendly browser front end with no CLI to install per machine; costs network-copyleft obligations, a non-commercial UI, and a commit pause since 2026-04 — pipelines want yt-dlp. |

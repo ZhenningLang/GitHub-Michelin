@@ -885,6 +885,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **ReClip** | 用本地 yt-dlp 清晰度选择器保存少量片段；没有内置认证和持久队列。 | MIT | B（4/6） | [中](categories/media-download/reclip.zh.md) · [EN](categories/media-download/reclip.md) |
 | **youtube-dl** | 当脚本或老流水线已经钉着 youtube-dl、要靠它约 1000 个站点 extractor 按模板文件名拉取媒体时用它——但最后一个打 tag 的发布还是 2021.12.17，master 自 2025-11 起也无提交，涉及 YouTube 请默认用 yt-dlp 分叉。 | Unlicense | B（6/6） | [中](categories/media-download/youtube-dl.zh.md) · [EN](categories/media-download/youtube-dl.md) |
 | **you-get** | 当你想要一个极简 Python CLI 从 YouTube 和大量中文站点（B 站/优酷）抓取音视频时用它——比 yt-dlp 更轻。 | MIT | D（3/6） | [中](categories/media-download/you-get.zh.md) · [EN](categories/media-download/you-get.md) |
 | **cobalt** | 当你想自托管一个页面、让网络里任何人粘个社交平台链接就拿到视频或音频、没有广告和追踪器时用它——但 API 是 AGPL-3.0，Web 前端是禁止商用的 CC-BY-NC-SA，它也不是可脚本化的 CLI。 | AGPL-3.0 (API) + CC-BY-NC-SA-4.0 (web frontend) | C（5/6） | [中](categories/media-download/cobalt.zh.md) · [EN](categories/media-download/cobalt.md) |

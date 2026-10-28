@@ -888,6 +888,7 @@ Enter [Client Routing](categories/api-gateway/client-routing/INDEX.md) for devel
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **ReClip** | Save a few clips with a local yt-dlp quality picker; no built-in authentication or durable queue. | MIT | B (4/6) | [EN](categories/media-download/reclip.md) · [中](categories/media-download/reclip.zh.md) |
 | **youtube-dl** | Use it when a script or legacy pipeline already pins youtube-dl to pull media through its ~1000 site extractors with templated filenames — but the last tagged release is 2021.12.17 and master is quiet since 2025-11, so default to the yt-dlp fork for YouTube. | Unlicense | B (6/6) | [EN](categories/media-download/youtube-dl.md) · [中](categories/media-download/youtube-dl.zh.md) |
 | **you-get** | Use it when you want a tiny Python CLI to grab video/audio from YouTube and many Chinese sites (Bilibili/Youku) — lighter than yt-dlp. | MIT | D (3/6) | [EN](categories/media-download/you-get.md) · [中](categories/media-download/you-get.zh.md) |
 | **cobalt** | Use it when you want a self-hosted page where anyone on your network pastes a social-media link and gets the video or audio, ad- and tracker-free — but the API is AGPL-3.0, the web UI is non-commercial CC-BY-NC-SA, and it is no scriptable CLI. | AGPL-3.0 (API) + CC-BY-NC-SA-4.0 (web frontend) | C (5/6) | [EN](categories/media-download/cobalt.md) · [中](categories/media-download/cobalt.zh.md) |
