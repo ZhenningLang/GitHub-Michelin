@@ -106,6 +106,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **dsh-TUI** | DeepSeek Harness 的工具、审批和后台任务散在文字里。dsh-TUI 把这些状态投影成终端卡片、面板和会话浏览器。 | MIT | B（5/6） | [EN](categories/agent-tooling/supervision-surfaces/agent-cockpits/dsh-tui.md) · [中](categories/agent-tooling/supervision-surfaces/agent-cockpits/dsh-tui.zh.md) |
 | **Agor** | 用实时分支看板协作混合编程助手；接受 BSL，并自行运营数据库与执行安全。 | BUSL-1.1 | D（6/6） | [EN](categories/agent-tooling/supervision-surfaces/agent-cockpits/agor.md) · [中](categories/agent-tooling/supervision-surfaces/agent-cockpits/agor.zh.md) |
 | **Kandev** | 用服务端浏览器工作台评审并行编程任务；须主动配置人工关口、执行权限和归档保留规则。 | AGPL-3.0-only | B（6/6） | [EN](categories/agent-tooling/supervision-surfaces/agent-cockpits/kandev.md) · [中](categories/agent-tooling/supervision-surfaces/agent-cockpits/kandev.zh.md) |
+| **OpenBot (Nightly Labs)** | 在一个桌面管理长期助手、排队消息与文件交接；源码可用非商业许可，默认允许全盘访问。 | PolyForm-Noncommercial-1.0.0 | B（4/6） | [EN](categories/agent-tooling/supervision-surfaces/agent-cockpits/nightly-openbot.md) · [中](categories/agent-tooling/supervision-surfaces/agent-cockpits/nightly-openbot.zh.md) |
 ### sandboxing
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |

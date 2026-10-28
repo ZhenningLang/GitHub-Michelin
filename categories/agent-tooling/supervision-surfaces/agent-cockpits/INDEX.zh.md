@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **OpenBot (Nightly Labs)** | 在一个桌面里管理长期多供应商助手、文件交接和排队消息；源码可用非商业许可，默认允许全盘访问。 | B（4/6） | [→](nightly-openbot.zh.md) |
 | **Kandev** | 用服务端浏览器工作台评审并行编程任务，配置流程关口和执行器；须收窄默认监听并核对归档清理。 | B（6/6） | [→](kandev.zh.md) |
 | **Nezha** | 在本地用终端、会话与 Git 视图监管 Claude Code／Codex；须主动选工作树，并接受启动时的 hook 改动。 | C（6/6） | [→](nezha.zh.md) |
 | **FounderOS** | 在本地单人界面汇总收入、收件箱与 agent 工作；真实服务和执行后端另接，首次启动的数据是虚构的。 | B（4/6） | [→](founderos.zh.md) |
@@ -23,6 +24,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [OpenBot (Nightly Labs)](nightly-openbot.zh.md) | 已收录 | B（4/6） | 聚焦长期助手收件箱与浏览器、文件上下文，而非分支评审；PolyForm 非商业许可，不是 MIT，也不提供默认宿主隔离。 |
 | [Kandev](kandev.zh.md) | 已收录 | B（6/6） | 原生服务器整合任务流程、工作树与远程执行；AGPL、可选身份验证及破坏性归档生命周期须主动配置。 |
 | [Nezha](nezha.zh.md) | ✅ | C（6/6） | 聚焦两种助手任务与 Git 流程的 Tauri 桌面；工作树可选，会改 Codex 全局 hook，退出应用不保活。 |
 | [FounderOS](founderos.zh.md) | ✅ | B（4/6） | SQLite 与外部服务上的 MIT 经营操控界面，不是开箱即用的自治公司，也不是多人工作区。 |

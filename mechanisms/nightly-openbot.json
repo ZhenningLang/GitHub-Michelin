@@ -1,0 +1,25 @@
+{
+  "schema":1,
+  "direction":"down",
+  "nodes":[
+    {"id":"request","en":"User or agent message","zh":"用户或助手消息","kind":"input"},
+    {"id":"queue","en":"Delivery lane and start guards","zh":"投递通道与启动检查","technique":[1]},
+    {"id":"provider","en":"Provider session and tools","zh":"供应商会话与工具"},
+    {"id":"approval","en":"Reach setting and approval grant","zh":"访问范围与审批授权","technique":[3]},
+    {"id":"oauth","en":"Eligible HTTP tools via OAuth proxy","zh":"适用 HTTP 工具经登录代理","technique":[4]},
+    {"id":"external","en":"External tool service","zh":"外部工具服务","kind":"external"},
+    {"id":"store","en":"SQLite changes before publication","zh":"发布前写入 SQLite 变更","technique":[2]},
+    {"id":"view","en":"Reply and bounded conversation cache","zh":"回复与有限会话缓存","kind":"output","technique":[2]}
+  ],
+  "edges":[
+    {"from":"request","to":"queue"},
+    {"from":"queue","to":"provider"},
+    {"from":"provider","to":"approval","en":"when approval is requested","zh":"产生审批请求时"},
+    {"from":"approval","to":"provider","en":"human or eligible automatic answer","zh":"人工或适用的自动回答"},
+    {"from":"provider","to":"oauth","style":"dashed","en":"eligible signed-in HTTP MCP","zh":"适用的已登录 HTTP MCP"},
+    {"from":"oauth","to":"external","style":"dashed"},
+    {"from":"provider","to":"store","en":"conversation updates","zh":"会话更新"},
+    {"from":"store","to":"view"}
+  ],
+  "sources":["src/backend/agent/drain-scheduler.ts:490-905","src/backend/agent/conversation-runtime.ts:644-730","src/backend/agent/attention-registry.ts:692-800","src/backend/mcp-oauth-proxy.ts:165-367"]
+}
