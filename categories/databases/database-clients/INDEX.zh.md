@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Navop** | 在同一原生桌面工作区查 SQL、开 SSH 终端和操作远程文件，也能按需开放实时工具给 agent；附加许可限制再分发和竞争产品。 | C（5/6） | [→](navop.zh.md) |
 | **DBeaver** | 当你要在 Postgres、SQL Server、Oracle、ClickHouse、SQLite 之间来回切，想用一个免费桌面客户端给它们统一配上编辑器、数据表格和 ER 图时用它——但 NoSQL 驱动只在 Pro 版，它也是个偏重的单用户 Eclipse 应用。 | A（6/6） | [→](dbeaver.zh.md) |
 | **elasticsearch-dsl-py** | 只在阅读或迁移锁定 elasticsearch-dsl 8.17 及更老版本的遗留代码时用它——但它已归档；新代码请装 `elasticsearch>=8.18` 并改用 `elasticsearch.dsl`。 | C（5/6） | [→](elasticsearch-dsl-py.zh.md) |
 | **elasticsearch-sql** | 用 SQL 而非原生 JSON Query DSL 查询 Elasticsearch——一个社区插件（兼库），把 SQL 解析并翻译成 ES 查询／聚合，发布版与你所跑的 ES 大版本对齐。 | C（5/6） | [→](elasticsearch-sql.zh.md) |

@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Navop** | Keep SQL queries, SSH terminals and remote files in one native desktop workspace, with optional live tools for agents; source-available supplementary terms restrict redistribution and competing products. | C (5/6) | [→](navop.md) |
 | **DBeaver** | Use it when you hop between Postgres, SQL Server, Oracle, ClickHouse and SQLite and want one free desktop client with the same editor, data grid and ER diagrams for all — but NoSQL drivers are Pro-only, and it is a heavy single-user Eclipse app. | A (6/6) | [→](dbeaver.md) |
 | **elasticsearch-dsl-py** | Use it only to read or migrate legacy code pinned to elasticsearch-dsl 8.17 or older — but it is archived; for new code install `elasticsearch>=8.18` and import `elasticsearch.dsl` instead. | C (5/6) | [→](elasticsearch-dsl-py.md) |
 | **elasticsearch-sql** | Query Elasticsearch with SQL instead of its native JSON Query DSL — a community plugin (and library) that parses SQL and translates it into ES queries/aggregations, with version-matched releases tracking the ES major you run. | C (5/6) | [→](elasticsearch-sql.md) |

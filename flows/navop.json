@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Navop", "zh": "Navop"},
+  "steps": [
+    {"lane": "you", "en": "Install the desktop package for your OS", "zh": "安装对应系统的桌面包"},
+    {"lane": "you", "en": "Create a database connection with its address, credentials and any SSH jump host", "zh": "填写数据库地址、凭据和所需跳板机"},
+    {"lane": "them", "en": "Connect to the database and show its objects in the workspace", "zh": "连接数据库，在工作区展示对象"},
+    {"lane": "you", "en": "Open the SQL editor and run a query", "zh": "打开 SQL 编辑器并执行查询"},
+    {"lane": "them", "en": "Show query results in the data grid beside your other operations tabs", "zh": "在其他操作标签旁展示查询结果表格"}
+  ],
+  "value": {"en": "Inspect database results in the same desktop workspace as server terminals and remote files", "zh": "在服务器终端和远程文件所在的桌面工作区查看数据库结果"},
+  "sources": [
+    "https://github.com/feigeCode/navop/blob/2db7763a92eab1188139fba6753be767f06010cc/README.md#L55-L76",
+    "https://github.com/feigeCode/navop/blob/2db7763a92eab1188139fba6753be767f06010cc/README.md#L132-L164",
+    "https://github.com/feigeCode/navop/blob/2db7763a92eab1188139fba6753be767f06010cc/crates/db/src/ssh_tunnel.rs#L41-L60"
+  ]
+}
