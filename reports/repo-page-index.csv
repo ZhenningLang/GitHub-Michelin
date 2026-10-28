@@ -77,6 +77,7 @@ https://github.com/GoogleChrome/modern-web-guidance-src,modern-web-guidance,prod
 https://github.com/GoogleCloudPlatform/scion,scion,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/scion.md
 https://github.com/Graphify-Labs/graphify,graphify,code-intelligence,categories/rag-retrieval/code-intelligence/graphify.md
 https://github.com/GuanYixuan/pyJianYingDraft,pyjianyingdraft,nle-automation,categories/media-processing/nle-automation/pyjianyingdraft.md
+https://github.com/HKUDS/AutoSwarm,autoswarm,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/autoswarm.md
 https://github.com/HKUDS/CLI-Anything,cli-anything,harness-extensions,categories/agent-tooling/harness-extensions/cli-anything.md
 https://github.com/HKUDS/DeepTutor,deeptutor,education-tutoring,categories/education-tutoring/deeptutor.md
 https://github.com/HTS-Sleeping-Place/skills-scanner,skills-scanner,agent-governance,categories/agent-governance/skills-scanner.md

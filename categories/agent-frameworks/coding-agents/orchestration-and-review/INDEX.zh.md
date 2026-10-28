@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **AutoSwarm** | 从当前对话委派给已安装的原生 agent CLI，保留凭据和会话；工作区隔离与验收自行安排。 | B（6/6） | [→](autoswarm.zh.md) |
 | **CC Switch** | 当你在 Claude Code、Codex、Gemini CLI、OpenCode 等几个编码 CLI 之间来回换厂商，想用一个桌面应用替你改写它们的配置、MCP 服务器和技能时用它——但它是单用户图形应用，无界面服务器上用不了，也当不了团队网关。 | B（5/6） | [→](cc-switch.zh.md) |
 | **Claude Octopus** | 一个 Claude Code 插件：把单个任务扇出给至多约 8 个其他 AI 模型（Codex、Gemini、Perplexity、Ollama、OpenRouter 等），用它们之间的分歧作为盲点 / 共识闸门，全部由 `/octo:*` 斜杠命令驱动。 | C（6/6） | [→](claude-octopus.zh.md) |
 | **oh-my-claudecode** | 架在 Anthropic Claude Code CLI 之上的多智能体编排层：把一队专职 agent 按阶段串成流水线（plan → prd → exec → verify → fix），为每个子任务路由到更便宜或更强的模型，并在 tmux 下跑并行 worker——以 Claude Code 插件形式安装，或通过 `oh-my-claude-sisyphus` npm 包安装。 | B（6/6） | [→](oh-my-claudecode.zh.md) |
@@ -24,6 +25,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [AutoSwarm](autoswarm.zh.md) | 已收录 | B（6/6） | 轻量原生调用与权限转接；不提供任务看板、工作树分配或自动验收。 |
 | [Scion](scion.zh.md) | ✅ | B（6/6） | 用容器运行混合 agent 团队，并明确选择工作区共享方式；镜像、凭据和本机或托管控制中心归你维护。 |
 
 ## 什么该放这里

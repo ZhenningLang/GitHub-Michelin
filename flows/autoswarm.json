@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "AutoSwarm", "zh": "AutoSwarm"},
+  "steps": [
+    {"lane": "you", "en": "Install the package and set up the current host", "zh": "安装软件包并配置当前宿主", "code": "autoswarm setup --host codex"},
+    {"lane": "them", "en": "Copies the Skill runtime and installs host integration", "zh": "复制技能运行时并安装宿主集成"},
+    {"lane": "you", "en": "Verify the chosen child in the actual project", "zh": "在真实项目验证选定的子 agent", "code": "autoswarm doctor --agent codex --probe --cwd /path/to/project"},
+    {"lane": "you", "en": "Give the host a task using AutoSwarm", "zh": "把要用 AutoSwarm 处理的任务交给宿主"},
+    {"lane": "them", "en": "Runs native child calls and returns events and results", "zh": "执行原生子调用并交回事件与结果"},
+    {"lane": "you", "en": "Handle permissions and verify the delivered artifacts", "zh": "处理权限请求并验收交回的产物"}
+  ],
+  "value": {"en": "Delegate across installed agents without manually moving each native conversation", "zh": "跨已安装的 agent 委派任务，不再手动搬运每段原生对话"},
+  "sources": [
+    "https://github.com/HKUDS/AutoSwarm/blob/5325b6d98dad7a9a12811c0b5fa0817ffbbc71f9/README.md#L133-L175",
+    "https://github.com/HKUDS/AutoSwarm/blob/5325b6d98dad7a9a12811c0b5fa0817ffbbc71f9/src/autoswarm/assets/skill-template.md#L28-L44"
+  ]
+}

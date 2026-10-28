@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **AutoSwarm** | Delegate from the current conversation to installed native agent CLIs; keep credentials and sessions, but supply workspace isolation and acceptance yourself. | B (6/6) | [→](autoswarm.md) |
 | **CC Switch** | Use it when you juggle several AI coding CLIs (Claude Code, Codex, Gemini CLI, OpenCode) across providers and want one desktop app to rewrite their configs, MCP servers and skills — but it is a single-user GUI, useless headless or as a team gateway. | B (5/6) | [→](cc-switch.md) |
 | **Claude Octopus** | A Claude Code plugin that fans a single task out to up to ~8 other AI models (Codex, Gemini, Perplexity, Ollama, OpenRouter, etc.) and uses their disagreement as a blindspot/consensus gate, all driven by `/octo:*` slash commands. | C (6/6) | [→](claude-octopus.md) |
 | **oh-my-claudecode** | A multi-agent orchestration layer for Anthropic's Claude Code CLI: it stages teams of specialized agents (plan → prd → exec → verify → fix), routes each subtask to a cheaper or stronger model, and runs parallel workers under tmux — installed as a Claude Code plugin or via the `oh-my-claude-sisyphus` npm package. | B (6/6) | [→](oh-my-claudecode.md) |
@@ -24,6 +25,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [AutoSwarm](autoswarm.md) | Indexed | B (6/6) | Lightweight native-call and approval bridge; no task board, worktree allocator or automatic acceptance. |
 | [Scion](scion.md) | ✅ | B (6/6) | Containerized mixed-harness teams with explicit workspace sharing; you operate images, credentials and the local or hosted Hub. |
 
 ## What belongs here
