@@ -546,6 +546,7 @@ Research engines and scientific workbenches; source access and evidence auditing
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **Treg** | Share team API credentials and discover priced tool operations through one token; self-hosting does not supply vendor accounts. | Apache-2.0 with hosted/embedded-service restrictions | B (4/6) | [EN](categories/api-gateway/treg.md) · [中](categories/api-gateway/treg.zh.md) |
 | **Kong Gateway** | OpenResty/Nginx API gateway whose plugin layer makes one reverse-proxy a programmable edge for REST/microservice traffic and, since 3.x, LLM/MCP traffic. | Apache-2.0 | B (6/6) | [EN](categories/api-gateway/kong.md) · [中](categories/api-gateway/kong.zh.md) |
 | **HarnessRouter** | A self-hosted gateway that runs Codex, Claude Code, Hermes and other harnesses behind one OpenAI Responses-compatible API — but it is about six weeks old and the UHP standard is single-vendor. | Apache-2.0 | B (5/6) | [EN](categories/api-gateway/harnessrouter.md) · [中](categories/api-gateway/harnessrouter.zh.md) |
 | **LiteLLM** | A deployable LLM gateway and SDK over 100+ providers with virtual keys, budgets, spend tracking and failover — but PostgreSQL/Redis ops and a commercial `enterprise/` boundary. | MIT (core) + enterprise/ carve-out | A (4/6) | [EN](categories/api-gateway/litellm.md) · [中](categories/api-gateway/litellm.zh.md) |

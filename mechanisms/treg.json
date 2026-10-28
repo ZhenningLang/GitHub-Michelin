@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "request", "en": "Authenticated tool request", "zh": "带身份的工具请求", "kind": "input"},
+    {"id": "route", "en": "Optional capability plan and child attempts", "zh": "可选能力计划与子调用尝试", "technique": [2]},
+    {"id": "resolve", "en": "Resolve tool, credential tier and access", "zh": "解析工具、凭据层和权限"},
+    {"id": "refresh", "en": "Refresh OAuth outside the read transaction", "zh": "在读取事务外刷新 OAuth", "technique": [3]},
+    {"id": "inject", "en": "Decrypt bindings and strip control headers", "zh": "解密绑定并剥离控制头", "technique": [1]},
+    {"id": "vendor", "en": "Selected supplier API", "zh": "选定供应商 API", "kind": "external"},
+    {"id": "settle", "en": "Settle result and disclose routed attempts", "zh": "结算结果并披露路由尝试", "technique": [2]},
+    {"id": "result", "en": "Caller result and cost", "zh": "调用结果与费用", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "request", "to": "resolve", "en": "direct operation", "zh": "直连操作"},
+    {"from": "request", "to": "route", "en": "routed capability", "zh": "能力路由", "style": "dashed"},
+    {"from": "route", "to": "resolve", "en": "each child uses the ordinary call path", "zh": "各子调用复用普通调用链"},
+    {"from": "resolve", "to": "refresh", "en": "refreshable OAuth when stale", "zh": "可刷新 OAuth 已过期时", "style": "dashed"},
+    {"from": "refresh", "to": "inject"},
+    {"from": "resolve", "to": "inject", "en": "credential ready", "zh": "凭据已就绪"},
+    {"from": "inject", "to": "vendor"},
+    {"from": "vendor", "to": "settle"},
+    {"from": "settle", "to": "route", "en": "eligible fallback within limits", "zh": "限额内符合条件的回退", "style": "dashed"},
+    {"from": "settle", "to": "result"}
+  ],
+  "sources": [
+    "https://github.com/superdesigndev/treg/blob/ece225100e8d479fdcd8ac1eb44480c9283c458d/src/treg/infra/upstream/relay.py#L138-L257",
+    "https://github.com/superdesigndev/treg/blob/ece225100e8d479fdcd8ac1eb44480c9283c458d/src/treg/application/call/route.py#L432-L557",
+    "https://github.com/superdesigndev/treg/blob/ece225100e8d479fdcd8ac1eb44480c9283c458d/src/treg/domain/connections/refresh.py#L145-L195"
+  ]
+}
