@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "input", "en": "Workspace and selected interpreter", "zh": "工作区与选定解释器", "kind": "input"},
+    {"id": "config", "en": "Resolve configuration precedence", "zh": "确定配置优先级", "technique": [1]},
+    {"id": "scope", "en": "Discovery, indexing and diagnostic scope", "zh": "文件发现、索引与诊断范围", "technique": [2]},
+    {"id": "pylance", "en": "Private Pylance engine; documented behavior only", "zh": "私有 Pylance 引擎；仅依据行为文档", "kind": "external"},
+    {"id": "pyright", "en": "Optional pinned Pyright diagnostics", "zh": "可选的固定版本 Pyright 诊断", "kind": "external", "technique": [3]},
+    {"id": "editor", "en": "Editor assistance and diagnostics", "zh": "编辑辅助与诊断", "kind": "output"},
+    {"id": "recovery", "en": "Crash restart limits and trace evidence", "zh": "崩溃重启限制与日志取证", "technique": [4]},
+    {"id": "report", "en": "Minimal reproduction for vendor feedback", "zh": "向厂商反馈的最小复现", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "input", "to": "config"},
+    {"from": "config", "to": "scope"},
+    {"from": "scope", "to": "pylance"},
+    {"from": "pylance", "to": "editor", "en": "editor features", "zh": "编辑功能"},
+    {"from": "config", "to": "pyright", "en": "separate engine", "zh": "独立引擎", "style": "dashed"},
+    {"from": "pyright", "to": "editor", "en": "replaces diagnostics", "zh": "替换诊断", "style": "dashed"},
+    {"from": "pylance", "to": "recovery", "en": "on failure", "zh": "故障时", "style": "dashed"},
+    {"from": "recovery", "to": "report"}
+  ],
+  "sources": [
+    "https://github.com/microsoft/pylance-release/blob/f03a84d93009b8a8398658c365f72b46afbb2482/docs/howto/settings-troubleshooting.md#L23-L71",
+    "https://github.com/microsoft/pylance-release/blob/f03a84d93009b8a8398658c365f72b46afbb2482/docs/settings/python_analysis_languageServerMode.md#L29-L94",
+    "https://github.com/microsoft/pylance-release/blob/f03a84d93009b8a8398658c365f72b46afbb2482/USING_WITH_PYRIGHT.md#L18-L30",
+    "https://github.com/microsoft/pylance-release/blob/f03a84d93009b8a8398658c365f72b46afbb2482/README.md#L784-L792",
+    "https://github.com/microsoft/pylance-release/blob/f03a84d93009b8a8398658c365f72b46afbb2482/TROUBLESHOOTING.md#L152-L166"
+  ]
+}

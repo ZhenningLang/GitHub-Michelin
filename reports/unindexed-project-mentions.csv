@@ -18,6 +18,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Awesome Quant](https://github.com/wilsonfreitas/awesome-quant),categories/investment-finance/awesome-deep-trading.md,,no
 [Backtesting.py](https://github.com/kernc/backtesting.py),categories/investment-finance/backtrader.md,,no
 [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk),categories/agent-tooling/harness-extensions/hey-cli.md,,no
+[basedpyright](https://github.com/DetachHead/basedpyright),categories/dev-utilities/editors-and-runtimes/code-editors/pylance-release.md,,no
 [Binoculars](https://github.com/ahans30/Binoculars),categories/llm-eval/chatgpt-comparison-detection.md,,no
 [birda](https://github.com/tphakala/birda),categories/on-device-ml/birdnet-go.md,,no
 [BirdNET-Analyzer](https://github.com/birdnet-team/BirdNET-Analyzer),categories/on-device-ml/birdnet-go.md,,no
@@ -61,6 +62,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Hunyuan3D-2](https://github.com/Tencent-Hunyuan/Hunyuan3D-2),categories/3d-generation/modly.md,,no
 [HunyuanVideo](https://github.com/Tencent-Hunyuan/HunyuanVideo),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [iztro](https://github.com/SylarLong/iztro),categories/traditional-divination/ziwei-doushu.md,,no
+[Jedi](https://github.com/davidhalter/jedi),categories/dev-utilities/editors-and-runtimes/code-editors/pylance-release.md,,no
 [KeePassXC](https://github.com/keepassxreboot/keepassxc),categories/dev-utilities/ops-infra/vaultwarden.md,,no
 [Kokoro](https://github.com/hexgrad/kokoro),categories/speech/kitten-tts.md,,no
 [Lada](https://codeberg.org/ladaapp/lada),categories/media-processing/jasna.md,,no
@@ -106,6 +108,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Plotly.js](https://github.com/plotly/plotly.js),categories/data-visualization/flint-chart.md,,no
 [PocketPal AI](https://github.com/a-ghorbani/pocketpal-ai),categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md,,no
 [Pyodide](https://github.com/pyodide/pyodide),categories/sandboxing/monty.md,,no
+[Pyright](https://github.com/microsoft/pyright),categories/dev-utilities/editors-and-runtimes/code-editors/pylance-release.md,,no
 [pyVideoTrans](https://github.com/jianchang512/pyvideotrans),categories/speech/voicestudio.md,,no
 [Qwerty Learner](https://github.com/RealKai42/qwerty-learner),categories/education-tutoring/word-atlas.md,,no
 [radare2](https://github.com/radareorg/radare2),categories/dev-utilities/binary-analysis/ghidra.md,,no
