@@ -80,7 +80,7 @@
 | [leanrea](../../../categories/agent-skills/security/leanrea.zh.md) | 授权范围内解释成品应用的一项功能。 | 短指令不是分析引擎；危险命令与缺失脚本不适合无人值守。 |
 | [SAG](../../../categories/rag-retrieval/structured-retrieval/sag.zh.md) | 相似段落检索不足以连接跨文档事件。 | 默认快速策略不走完整扩展；单用户边界不是租户隔离。 |
 | [EmDash](../../../categories/content-management/emdash.zh.md) | Astro 网站需要数据库驱动的编辑后台。 | 不继承 PHP 插件；原生插件与沙箱插件权限不同。 |
-| [OXR](../../../categories/document-parsing/oxr.zh.md) | 科研 PDF／图片需要拆开版面检测与识别。 | GPU 与商业许可门槛；内存任务不是持久队列，占位 key 不是鉴权。 |
+| [OXR](../../../categories/document-parsing/model-backed-pdf/oxr.zh.md) | 科研 PDF／图片需要拆开版面检测与识别。 | GPU 与商业许可门槛；内存任务不是持久队列，占位 key 不是鉴权。 |
 | [Biscotti](../../../categories/meeting-intelligence/biscotti.zh.md) | Mac 本地会议录制、会后转写与摘要。 | Apple Silicon、macOS 15 以上；非竞争许可，MCP 开放本机读取。 |
 | [twitter-cli](../../../categories/social-media-management/twitter-cli.zh.md) | 把个人 X 书签与信息流交给脚本。 | 非官方会话客户端，兼容性与账号风险不能由延迟／指纹选项消除。 |
 | [md2wechat](../../../categories/social-media-management/md2wechat-skill.zh.md) | 检查 Markdown、预览排版、明确创建公众号草稿。 | 主排版依赖付费服务且受商用限制；AI 模式只交接提示词。 |

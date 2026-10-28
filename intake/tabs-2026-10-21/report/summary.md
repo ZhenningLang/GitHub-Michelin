@@ -36,7 +36,7 @@
 | [leanrea](../../../categories/agent-skills/security/leanrea.zh.md) | 只想解释成品应用的一项功能，agent 却反复挑工具和读整包脚本。 | 短指令减少接线成本，但不提供分析引擎或证据账本。当前有危险清理、转义管道和缺失脚本，只适合授权范围内、有人监督的调查。 |
 | [SAG](../../../categories/rag-retrieval/structured-retrieval/sag.zh.md) | 相似段落检索答不出跨文档的事件与实体关系。 | 提供个人资料库、关联检索和引用读取；默认快速策略不走完整扩展路径，默认名字登录与全库 MCP 也不是租户隔离。 |
 | [EmDash](../../../categories/content-management/emdash.zh.md) | Astro 网站编辑改一个标题也要提 PR 和重建。 | 在 Astro 内加编辑后台与数据库，不是兼容 PHP 插件的 WordPress 替代安装包。插件沙箱按平台不同，原生插件不受其隔离。 |
-| [OXR](../../../categories/document-parsing/oxr.zh.md) | 多栏 PDF 的文字、公式和表格解析混在一起，想独立替换区域检测器。 | 专门的 PDF／图片 GPU 服务，不是通用格式转换。源码可见许可含规模与托管竞争限制；占位 key 不等于鉴权，内存任务也不适合直接当持久批处理队列。 |
+| [OXR](../../../categories/document-parsing/model-backed-pdf/oxr.zh.md) | 多栏 PDF 的文字、公式和表格解析混在一起，想独立替换区域检测器。 | 专门的 PDF／图片 GPU 服务，不是通用格式转换。源码可见许可含规模与托管竞争限制；占位 key 不等于鉴权，内存任务也不适合直接当持久批处理队列。 |
 | [Biscotti](../../../categories/meeting-intelligence/biscotti.zh.md) | 想在 Mac 本地保存会议、分辨说话人并生成会后摘要。 | 不需要云推理账号，但限 Apple Silicon、macOS 15 及以上；不是会中行动 agent。PolyForm Perimeter 禁止竞争用途，MCP 开启后本机程序可读会议。 |
 | [twitter-cli](../../../categories/social-media-management/twitter-cli.zh.md) | 想把自己的 X 书签和信息流接给终端脚本。 | 无需另建开发者应用，但把会话 cookie 交给非官方 HTTP 客户端。搜索修复尚未合并，鉴权失败还能回读其他浏览器，不宜作为稳定业务数据源。 |
 | [md2wechat](../../../categories/social-media-management/md2wechat-skill.zh.md) | Markdown 成稿还要补封面、检查图片与元数据，再创建公众号草稿。 | 完整 Go CLI 加操作规程，不只是技能文本。主排版路径依赖付费服务并外发文章；公司营收相关工作与客户交付受许可限制，AI 模式只返回待执行提示词。其他平台仍由宿主浏览器完成。 |
