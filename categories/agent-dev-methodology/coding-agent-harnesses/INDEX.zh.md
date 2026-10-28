@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **ub-mode** | 阅读测试先行与独立质量工具配对的短工程清单；没有可执行门禁，也未声明许可。 | D（4/5） | [→](ub-mode.zh.md) |
 | **Claude Code Templates** | 当你想在一个大目录里逛逛、单点自选地安装现成的 Claude Code agent、命令、hook、MCP 和 skill，而不是自己从头写时，用它。 | B（6/6） | [→](claude-code-templates.zh.md) |
 | **Compound Engineering** | 当你想要一套即插即用的 brainstorm→plan→work→review→compound 循环、并把经验跨会话沉淀复用时，就用它。 | B（4/5） | [→](compound-engineering.zh.md) |
 | **ECC** | 当你想要一套有人维护、开箱即全的 Claude Code 底座（skill、agent、hook、memory 加安全扫描）时用它。 | B（6/6） | [→](ecc.zh.md) |
@@ -18,6 +19,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [ub-mode](ub-mode.zh.md) | 已收录 | D（4/5） | 一份提示词而非插件运行时；须审查推送、清理指令和未核清的复用权限。 |
 | [Claude Code Templates](claude-code-templates.zh.md) | ✅ | B（6/6） | 当你想在一个大目录里逛逛、单点自选地安装现成的 Claude Code agent、命令、hook、MCP 和 skill，而不是自己从头写时，用它。 |
 | [Compound Engineering](compound-engineering.zh.md) | ✅ | B（4/5） | 当你想要一套即插即用的 brainstorm→plan→work→review→compound 循环、并把经验跨会话沉淀复用时，就用它。 |
 | [ECC](ecc.zh.md) | ✅ | B（6/6） | 当你想要一套有人维护、开箱即全的 Claude Code 底座（skill、agent、hook、memory 加安全扫描）时用它。 |

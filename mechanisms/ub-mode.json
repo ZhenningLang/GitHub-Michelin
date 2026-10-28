@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "input", "kind": "input", "en": "Change request in a host agent", "zh": "宿主 agent 中的修改请求"},
+    {"id": "work", "en": "Prompt: test-first working change", "zh": "提示词：测试先行，实现可用", "technique": [1]},
+    {"id": "right", "en": "Prompt: root causes and behavior-preserving refactoring", "zh": "提示词：根因修复与行为不变的重构", "technique": [1]},
+    {"id": "tools", "kind": "external", "en": "Separate quality tools; no bundled runner", "zh": "独立质量工具；本仓没有运行器", "technique": [2]},
+    {"id": "practice", "kind": "output", "en": "Requested action log and summary; no approval gate", "zh": "要求操作日志与摘要；没有审批门禁", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "input", "to": "work"},
+    {"from": "work", "to": "right"},
+    {"from": "right", "to": "tools", "en": "agent must arrange execution", "zh": "须由 agent 安排执行"},
+    {"from": "tools", "to": "practice", "en": "record actual results", "zh": "记录实际结果"}
+  ],
+  "sources": [
+    "https://github.com/unclebob/ub-mode/blob/57a8bdd28e45ed41900ace0bafa2ff76dd9ed70f/SKILL.md#L16-L152",
+    "https://github.com/unclebob/ub-mode/blob/57a8bdd28e45ed41900ace0bafa2ff76dd9ed70f/README.md#L9-L20"
+  ]
+}
