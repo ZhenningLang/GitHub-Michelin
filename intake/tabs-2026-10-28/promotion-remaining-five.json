@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "date_utc": "2026-10-28",
+  "scope": [
+    "feigeCode/navop",
+    "superdesigndev/treg",
+    "nightly-labs/openbot",
+    "microsoft/pylance-release",
+    "unclebob/ub-mode"
+  ],
+  "decision": "Promote the five previously proposed repositories into researched introduction and selection entries, with their actual licensing and source-availability boundaries intact.",
+  "user_direction": [
+    "我做项目介绍和汇总，为什么要考虑这些。。。",
+    "好，那就按照这个去推进"
+  ],
+  "boundaries": [
+    "Introduction is not execution, copying permission, redistribution approval, a commercial-use grant or a security endorsement",
+    "Describe license restrictions, unavailable product source and uncertain reuse rights accurately; do not relabel them as permissive open source",
+    "Keep the maintainer's own repositories out of scope and leave their tabs untouched",
+    "No upstream execution, dependency installation, model/data downloads, private harness changes or historical HTML operations",
+    "Retain prior research and proposal receipts as history; do not falsify their earlier state",
+    "Only close each target after its complete page passes gates and has its own local commit",
+    "This decision does not grant push, PR, merge, cleanup or remote-publication authorization"
+  ],
+  "verification_required": [
+    "Complete source-backed bilingual pages under the current schema",
+    "Real licensing and source-availability disclosures in both language mirrors",
+    "Generated flow, mechanism and health artifacts with authenticated source evidence",
+    "Per-repository gates and exact-pair quality checks",
+    "Independent semantic review and committed-byte binding",
+    "Target-only tab closure verification and preserved own/non-target tabs",
+    "Final old-content regression and full-batch verification"
+  ],
+  "preserved_baseline": "34cd97da9709dbaaa4975122f91579566ab18da9",
+  "rollback": "Keep the baseline and all prior commits; any correction or rollback is a separate reviewed commit, never a reset or deletion of prior work",
+  "original_summary_status": "The original ignored v10 report is still unavailable. This promotion does not claim it was restored, updated or replaced."
+}

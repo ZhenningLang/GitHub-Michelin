@@ -13,6 +13,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Treg** | 用一个令牌共享团队 API 凭据、发现有价格的工具操作；允许内部自托管，第三方托管与嵌入服务需书面许可。 | B（4/6） | [→](treg.zh.md) |
 | **Kong Gateway** | 基于 OpenResty/Nginx 的 API 网关，插件层把一个反向代理变成可编程边界：既管 REST/微服务，也从 3.x 起管 LLM/MCP 流量。 | B（6/6） | [→](kong.zh.md) |
 | **HarnessRouter** | 产品后端需要把 Codex、Claude Code、Hermes 等 harness 统一跑在一个 OpenAI Responses 兼容 API 之后时用它——但它仅约 6 周历史、UHP 标准由单一厂商维护、社区版会话共用同一容器。 | B（5/6） | [→](harnessrouter.zh.md) |
 | **LiteLLM** | 多个应用或团队需要一个 OpenAI 兼容端点，带虚拟密钥、预算、花费追踪与故障转移时用它——但完整功能面并非全部 MIT（`enterprise/` 为商业许可）。 | A（4/6） | [→](litellm.zh.md) |
@@ -27,6 +28,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Treg](treg.zh.md) | 已收录 | B（4/6） | 带目录和能力路由的凭据注入注册表；供应商账号、密钥备份、费用与定制服务许可仍需单独管理。 |
 | [Kong Gateway](kong.zh.md) | ✅ | B（6/6） | 基于 OpenResty/Nginx 的 API 网关，插件层把一个反向代理变成可编程边界：既管 REST/微服务，也从 3.x 起管 LLM/MCP 流量。 |
 | [HarnessRouter](harnessrouter.zh.md) | ✅ | B（5/6） | 用一个 OpenAI Responses 兼容 API 覆盖多种 agent harness，代价是约 6 周大的代码库、单一厂商协议、以及共用容器的会话隔离。 |
 | [LiteLLM](litellm.zh.md) | ✅ | A（4/6） | provider 覆盖面与成本/治理能力最强的 LLM 网关，代价是 PostgreSQL + Redis 运维和 `enterprise/` 商业边界。 |

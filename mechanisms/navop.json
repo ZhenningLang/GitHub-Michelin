@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "request", "kind": "input", "en": "External PostgreSQL tool call", "zh": "外部 PostgreSQL 工具调用"},
+    {"id": "token", "en": "Loopback listener checks token", "zh": "本机回环监听校验 token", "technique": [3]},
+    {"id": "registry", "en": "Dispatch through enabled tool registry", "zh": "由已启用工具注册表分发", "technique": [2]},
+    {"id": "guard", "en": "Check the connection policy before execution", "zh": "执行前检查连接访问策略", "technique": [2]},
+    {"id": "handler", "en": "Run database tool handler if allowed", "zh": "获准后执行数据库工具处理器"},
+    {"id": "target", "en": "Resolve direct, SSH or proxy endpoint", "zh": "解析直连、SSH 或代理端点", "technique": [1]},
+    {"id": "database", "kind": "external", "en": "PostgreSQL enforces its own grants", "zh": "PostgreSQL 执行自身账户权限"},
+    {"id": "result", "kind": "output", "en": "Return tool result to the client", "zh": "向客户端返回工具结果"}
+  ],
+  "edges": [
+    {"from": "request", "to": "token"},
+    {"from": "token", "to": "registry", "en": "valid token", "zh": "token 有效"},
+    {"from": "registry", "to": "guard"},
+    {"from": "guard", "to": "handler", "en": "permitted connection", "zh": "连接策略允许"},
+    {"from": "handler", "to": "target"},
+    {"from": "target", "to": "database"},
+    {"from": "database", "to": "result"}
+  ],
+  "sources": [
+    "https://github.com/feigeCode/navop/blob/2db7763a92eab1188139fba6753be767f06010cc/crates/public_mcp/src/server.rs#L101-L126",
+    "https://github.com/feigeCode/navop/blob/2db7763a92eab1188139fba6753be767f06010cc/main/src/public_mcp_runtime/tool_registry.rs#L124-L157",
+    "https://github.com/feigeCode/navop/blob/2db7763a92eab1188139fba6753be767f06010cc/crates/tool_runtime/src/registry.rs#L196-L215",
+    "https://github.com/feigeCode/navop/blob/2db7763a92eab1188139fba6753be767f06010cc/crates/db/src/ssh_tunnel.rs#L41-L60",
+    "https://github.com/feigeCode/navop/blob/2db7763a92eab1188139fba6753be767f06010cc/crates/navop_runtime/src/database_tools.rs#L221-L234",
+    "https://github.com/feigeCode/navop/blob/2db7763a92eab1188139fba6753be767f06010cc/crates/db/src/postgresql/connection.rs#L961-L986"
+  ]
+}

@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1413
+- Named-but-unindexed alternatives: 1418
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -35,12 +35,13 @@ shape and are deliberately excluded here.
 | [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client) | `categories/networking/amneziawg-installer.md` |
 | [Anatomy](https://github.com/wheresryan22/anatomy) | `categories/agent-skills/design/visual-artifacts/anima.md` |
 | [angristan/wireguard-install](https://github.com/angristan/wireguard-install) | `categories/networking/amneziawg-installer.md` |
-| [Anki](https://github.com/ankitects/anki) | `categories/education-tutoring/word-atlas.md` |
+| [Anki](https://github.com/ankitects/anki) | `categories/education-tutoring/echo-loop.md` |
 | [Apache ECharts](https://github.com/apache/echarts) | `categories/data-visualization/flint-chart.md` |
 | [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox) | `categories/knowledge-base/hister.md` |
 | [Awesome Quant](https://github.com/wilsonfreitas/awesome-quant) | `categories/investment-finance/awesome-deep-trading.md` |
 | [Backtesting.py](https://github.com/kernc/backtesting.py) | `categories/investment-finance/backtrader.md` |
 | [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
+| [basedpyright](https://github.com/DetachHead/basedpyright) | `categories/dev-utilities/editors-and-runtimes/code-editors/pylance-release.md` |
 | [Binoculars](https://github.com/ahans30/Binoculars) | `categories/llm-eval/chatgpt-comparison-detection.md` |
 | [birda](https://github.com/tphakala/birda) | `categories/on-device-ml/birdnet-go.md` |
 | [BirdNET-Analyzer](https://github.com/birdnet-team/BirdNET-Analyzer) | `categories/on-device-ml/birdnet-go.md` |
@@ -51,4 +52,3 @@ shape and are deliberately excluded here.
 | [build123d](https://github.com/gumyr/build123d) | `categories/cad/text-to-cad.md` |
 | [Cedar](https://github.com/cedar-policy/cedar) | `categories/agent-governance/agent-governance-toolkit.md` |
 | [Cedarling (Janssen)](https://github.com/JanssenProject/jans) | `categories/agent-governance/agent-governance-toolkit.md` |
-| [Cipher](https://github.com/campfirein/cipher) | `categories/agent-memory/coding-agent-memory/claude-subconscious.md` |

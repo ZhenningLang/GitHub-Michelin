@@ -13,6 +13,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Treg** | Share team API credentials and discover priced tool operations through one token; internal self-hosting is allowed, but third-party hosted and embedded services need permission. | B (4/6) | [→](treg.md) |
 | **Kong Gateway** | OpenResty/Nginx API gateway whose plugin layer makes one reverse-proxy a programmable edge for REST/microservice traffic and, since 3.x, LLM/MCP traffic. | B (6/6) | [→](kong.md) |
 | **HarnessRouter** | Use it when a product backend must run Codex, Claude Code, Hermes and other harnesses behind one OpenAI Responses-compatible API — but it is about six weeks old, the UHP standard is single-vendor, and CE sessions share one container. | B (5/6) | [→](harnessrouter.md) |
 | **LiteLLM** | Use it when several apps or teams need one OpenAI-compatible endpoint with virtual keys, budgets, spend tracking and failover — but the full feature set is not all MIT (`enterprise/` is commercial). | A (4/6) | [→](litellm.md) |
@@ -27,6 +28,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Treg](treg.md) | Yes | B (4/6) | A credential-injecting registry with catalog and capability routing; supplier accounts, key backups, spending and the custom service license remain explicit boundaries. |
 | [Kong Gateway](kong.md) | ✅ | B (6/6) | OpenResty/Nginx API gateway whose plugin layer makes one reverse-proxy a programmable edge for REST/microservice traffic and, since 3.x, LLM/MCP traffic. |
 | [HarnessRouter](harnessrouter.md) | ✅ | B (5/6) | One OpenAI Responses-compatible API over many agent harnesses, paid for with a ~6-week-old codebase, a single-vendor protocol, and container-shared session isolation. |
 | [LiteLLM](litellm.md) | ✅ | A (4/6) | The LLM gateway with the richest provider and cost/governance surface, at the price of PostgreSQL + Redis ops and a commercial `enterprise/` boundary. |

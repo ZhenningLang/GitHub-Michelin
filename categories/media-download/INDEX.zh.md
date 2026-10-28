@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **ReClip** | 用本地 yt-dlp 清晰度选择器保存少量片段；没有内置认证和持久队列。 | B（4/6） | [→](reclip.zh.md) |
 | **youtube-dl** | 当脚本或老流水线已经钉着 youtube-dl、要靠它约 1000 个站点 extractor 按模板文件名拉取媒体时用它——但最后一个打 tag 的发布还是 2021.12.17，master 自 2025-11 起也无提交，涉及 YouTube 请默认用 yt-dlp 分叉。 | B（6/6） | [→](youtube-dl.zh.md) |
 | **you-get** | 当你想要一个极简 Python CLI 从 YouTube 和大量中文站点（B 站/优酷）抓取音视频时用它——比 yt-dlp 更轻。 | D（3/6） | [→](you-get.zh.md) |
 | **cobalt** | 当你想自托管一个页面、让网络里任何人粘个社交平台链接就拿到视频或音频、没有广告和追踪器时用它——但 API 是 AGPL-3.0，Web 前端是禁止商用的 CC-BY-NC-SA，它也不是可脚本化的 CLI。 | C（5/6） | [→](cobalt.zh.md) |
@@ -21,6 +22,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [ReClip](reclip.zh.md) | 已收录 | B（4/6） | 小型 Flask 页面封装 yt-dlp；访问控制、文件过期和重启恢复由你承担。 |
 | [youtube-dl](youtube-dl.zh.md) | ✅ | B（6/6） | 换来一个 Unlicense 许可、选项大家都熟的 CLI；代价是时效——pip 装到的仍是 2021 年的版本，站点一改就比 yt-dlp 修得慢。 |
 | [you-get](you-get.zh.md) | ✅ | D（3/6） | 当你想要一个极简 Python CLI 从 YouTube 和大量中文站点（B 站/优酷）抓取音视频时用它——比 yt-dlp 更轻。 |
 | [cobalt](cobalt.zh.md) | ✅ | C（5/6） | 换来一个友好的浏览器前端，不用每台机器装 CLI；代价是网络 copyleft 义务、不可商用的前端，以及 2026-04 以来的提交停顿——做流水线请用 yt-dlp。 |

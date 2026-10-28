@@ -79,7 +79,7 @@ health:
 
 ## 何时不用
 
-- **需要自动生成并评测框架候选。** 版本化实验工作区看 [PenguinHarness](../agent-frameworks/workflow-builders/penguin-harness.zh.md)，当前任务上的配置搜索看 [Harness²](../agent-frameworks/workflow-builders/harness2.zh.md)。本仓库没有编辑器、执行沙箱、晋升门或回滚引擎。
+- **需要自动生成并评测框架候选。** 版本化实验工作区看 [PenguinHarness](../agent-frameworks/workflow-builders/harness-evolution/penguin-harness.zh.md)，当前任务上的配置搜索看 [Harness²](../agent-frameworks/workflow-builders/harness-evolution/harness2.zh.md)。本仓库没有编辑器、执行沙箱、晋升门或回滚引擎。
 - **需要持续集成判断修改能否发布。** 用 [promptfoo](../llm-eval/promptfoo.zh.md) 接独立冻结的测试。这里的脚本统计给定的文献判定，不评分你的代理产物，不强制安全失败，也不重测筛选后的最终补丁包。
 - **需要可工作的多代理平台。** 选 [JiuwenSwarm](../agent-frameworks/agent-runtimes/agent-services/jiuwenswarm.zh.md)。阅读学习机制论文，不能替代团队执行、工具审批或部署控制。
 - **需要从私密会话提炼规则。** [Headroom](../agent-tooling/work-state/headroom.zh.md) 另有模型分析入口，需要明确授权外发和费用，并另验行为效果。本项目读公开文献，不读取你的历史，也不写代理配置。
@@ -89,8 +89,8 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [PenguinHarness](../agent-frameworks/workflow-builders/penguin-harness.zh.md) | ✅ | 要提出并评分版本化框架修改，选 PenguinHarness；想先审核评价设计，再付费搜索，读 Harness-RSI。 | 集成运行时和快照，对比公开证据地图；固定搜索题集本身不证明未见任务收益。 |
-| [Harness²](../agent-frameworks/workflow-builders/harness2.zh.md) | ✅ | 要在同题上提案、试跑并组合配置，选 Harness²；要区分接纳依据与独立报告证据，读 Harness-RSI。 | 重复模型执行和更宽配置面，对比只读方法论；Harness² 从最终候选中选，不与原始基线竞争。 |
+| [PenguinHarness](../agent-frameworks/workflow-builders/harness-evolution/penguin-harness.zh.md) | ✅ | 要提出并评分版本化框架修改，选 PenguinHarness；想先审核评价设计，再付费搜索，读 Harness-RSI。 | 集成运行时和快照，对比公开证据地图；固定搜索题集本身不证明未见任务收益。 |
+| [Harness²](../agent-frameworks/workflow-builders/harness-evolution/harness2.zh.md) | ✅ | 要在同题上提案、试跑并组合配置，选 Harness²；要区分接纳依据与独立报告证据，读 Harness-RSI。 | 重复模型执行和更宽配置面，对比只读方法论；Harness² 从最终候选中选，不与原始基线竞争。 |
 | [JiuwenSwarm](../agent-frameworks/agent-runtimes/agent-services/jiuwenswarm.zh.md) | ✅ | 要队长执行并汇集团队工作，选 JiuwenSwarm；要审查学习声明究竟证明了什么，读 Harness-RSI。 | 可运行应用和权限控制，对比文献记录；已收录的单框架配置候选留出数为零，不是泛化证明。 |
 | [Headroom](../agent-tooling/work-state/headroom.zh.md) | ✅ | 要压缩模型输入或经明确授权分析历史，选 Headroom；不读个人会话、只审公开来源，读 Harness-RSI。 | 本地代理和可选付费模型分析，对比静态语料；Headroom 的学习规则预览既非外发门，也非行为验证器。 |
 

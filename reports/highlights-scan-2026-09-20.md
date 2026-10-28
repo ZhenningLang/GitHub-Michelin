@@ -147,7 +147,7 @@ GENERIC_TEMPLATES = ["Use this page for its stated niche", "当前页用于它�
 | openhuman | personal-assistants | `local_only` 在 Rust 核心是构造期拒绝 | `agent-runtimes/personal-assistants/openhuman.md:81` "`local_only` is a construction-time refusal in the Rust core" |
 | swarm-forge | coding-agents | commit 既作隔离边界又作角色交接 | `coding-agents/orchestration-and-review/swarm-forge.md:87` "commit-as-handoff inside a configurable role pipeline" |
 | background-agents | coding-agents | 请求方离线后沙箱继续执行 | `coding-agents/orchestration-and-review/background-agents.md:79` "isolated cloud sandboxes after the requester leaves the page" |
-| claude-octopus | coding-agents | 跨模型分歧升级为合并门禁 | `coding-agents/orchestration-and-review/claude-octopus.md:71` "uses their disagreement as a blindspot/consensus gate" |
+| claude-octopus | coding-agents | 跨模型分歧升级为合并门禁 | `coding-agents/orchestration-and-review/native-cli-bridges/claude-octopus.md:71` "uses their disagreement as a blindspot/consensus gate" |
 | ai-website-cloner-template | design | 网站逆向重建的执行流水线 | `agent-skills/design/ai-website-cloner-template.md:73` "asset extraction, component specs, parallel builders, assembly, and visual QA" |
 | ui-ux-pro-max | design | 本地 CSV 检索驱动设计决策（非纯提示词） | `agent-skills/design/ui-ux-pro-max.md:76` "a bundled Python `search.py` over CSV databases" |
 | addyosmani-web-quality | engineering | 确定性静态 HTML 检查脚本 | `agent-skills/engineering/addyosmani-web-quality.md:76` "a read-only `analyze.sh` helper that greps HTML" |

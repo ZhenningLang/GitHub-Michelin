@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Pylance does", "zh": "Pylance 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the Python extension in official VS Code", "zh": "在官方 VS Code 安装 Python 扩展"},
+    {"lane": "them", "en": "Arrives as the Python extension's optional dependency", "zh": "作为 Python 扩展的可选依赖安装"},
+    {"lane": "you", "en": "Select the project's Python environment", "zh": "选择项目的 Python 环境", "code": "Python: Select Interpreter"},
+    {"lane": "you", "en": "Open a Python source file", "zh": "打开 Python 源文件", "code": ".py"},
+    {"lane": "them", "en": "Activates editor completion, navigation and diagnostics", "zh": "激活补全、跳转与诊断"}
+  ],
+  "value": {"en": "Get Python editor assistance for the selected project environment", "zh": "获得面向所选项目环境的 Python 编辑辅助"},
+  "sources": [
+    "https://github.com/microsoft/pylance-release/blob/f03a84d93009b8a8398658c365f72b46afbb2482/README.md#L11-L16",
+    "https://github.com/microsoft/pylance-release/blob/f03a84d93009b8a8398658c365f72b46afbb2482/FAQ.md#L103-L112",
+    "https://github.com/microsoft/pylance-release/blob/f03a84d93009b8a8398658c365f72b46afbb2482/README.md#L23-L35"
+  ]
+}

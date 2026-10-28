@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "spec", "en": "Frozen tasks, profiles and budgets", "zh": "冻结任务、配置与预算", "kind": "input"},
+    {"id": "journal", "en": "Persist decision and operation reservations", "zh": "持久化决策与操作预留", "technique": [1]},
+    {"id": "run", "en": "Provider executes or inspects an existing submission", "zh": "提供方执行或查询已有提交"},
+    {"id": "evidence", "en": "Validate evidence slots and attempt counts", "zh": "校验证据槽位与试跑次数"},
+    {"id": "projection", "en": "Fill missing channels from original artifacts only", "zh": "仅从原产物补齐缺失通道", "technique": [3]},
+    {"id": "gate", "en": "Seed gain gate; holdout gate unless research mode", "zh": "训练增益闸门；非研究模式另做留出终验", "technique": [2]},
+    {"id": "champion", "en": "Commit accepted champion", "zh": "提交通过验收的保留版本", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "spec", "to": "journal"},
+    {"from": "journal", "to": "run"},
+    {"from": "run", "to": "evidence"},
+    {"from": "evidence", "to": "projection", "style": "dashed", "en": "missing metric", "zh": "指标缺失"},
+    {"from": "projection", "to": "evidence", "style": "dashed", "en": "immutable outcome", "zh": "结果不可改写"},
+    {"from": "evidence", "to": "journal", "en": "next search decision", "zh": "下一搜索决策"},
+    {"from": "evidence", "to": "gate", "en": "candidate nominated", "zh": "候选获提名"},
+    {"from": "gate", "to": "champion", "en": "accepted only", "zh": "仅通过时"}
+  ],
+  "sources": ["https://github.com/rsi-gear/gear/blob/8fc520549a7a26af1122fac27ca6d9e20b75ab20/src/runtime/runner.ts", "https://github.com/rsi-gear/gear/blob/8fc520549a7a26af1122fac27ca6d9e20b75ab20/src/runtime/evidence-projection.ts"]
+}

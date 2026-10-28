@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "request", "en": "Clip, effect and timing", "zh": "视频、效果与时间", "kind": "input"},
+    {"id": "plan", "en": "Agent writes ordered JSON plan", "zh": "agent 写有序 JSON 计划", "technique": [1]},
+    {"id": "track", "en": "Low-resolution tracking pass", "zh": "低分辨率跟踪一遍", "technique": [3]},
+    {"id": "mask", "en": "Person masks and one smoothed face track", "zh": "人物遮罩与单脸平滑轨迹", "technique": [2]},
+    {"id": "preview", "en": "Selected PNGs for agent inspection", "zh": "指定 PNG 交 agent 检查", "technique": [1]},
+    {"id": "compose", "en": "Second pass applies active effects in order", "zh": "第二遍按顺序应用生效效果", "technique": [3]},
+    {"id": "export", "en": "FFmpeg encodes H.264 and AAC", "zh": "FFmpeg 编码 H.264 与 AAC", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "request", "to": "plan"},
+    {"from": "plan", "to": "track"},
+    {"from": "track", "to": "mask"},
+    {"from": "mask", "to": "preview", "en": "preview invocation", "zh": "预览调用"},
+    {"from": "preview", "to": "plan", "en": "revise if needed", "zh": "按需修改", "style": "dashed"},
+    {"from": "mask", "to": "compose", "en": "export invocation repeats tracking", "zh": "导出调用会重跑跟踪"},
+    {"from": "compose", "to": "export"}
+  ],
+  "sources": [
+    "https://github.com/Vibha-Ramprakash/claude-video-effects/blob/99c9a3393ee14d39bea155a05c73dc069f02f16f/SKILL.md#L27-L37",
+    "https://github.com/Vibha-Ramprakash/claude-video-effects/blob/99c9a3393ee14d39bea155a05c73dc069f02f16f/scripts/fx.py#L2093-L2241"
+  ]
+}

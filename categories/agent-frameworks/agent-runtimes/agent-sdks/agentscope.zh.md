@@ -133,7 +133,7 @@ AgentScope 把一个 agent 应用拆成 SDK 循环和服务层两层，两层都
 | [DSPy](../../workflow-builders/dspy.zh.md) | ✅ | 需要声明式 prompt/流水线*优化*，而不是多智能体服务运行时时，选 DSPy。 | 声明式的 prompt/流水线*优化*（编译 + 调优程序）；不是多智能体服务运行时。用它提质量，而不是用它编排/服务 agent。 |
 | [openfang](../agent-services/openfang.zh.md) | ✅ | 想要另一个已收录、运行时更像 OS 的 agent 框架时，选 openfang。 | 本索引内的同类 agent 框架；设计取向不同——选型前对比 scope/成熟度。[未验证] |
 | [Symphony](../agent-services/symphony.zh.md) | ✅ | 需要聚焦自治 coding agent 运行调度的同类框架时，选 Symphony。 | 本索引内的同类多智能体框架；“编排多个 agent”目标有重叠，工效学不同。[未验证] |
-| [claude-octopus](../../coding-agents/orchestration-and-review/claude-octopus.zh.md) | ✅ | 需要围绕 Claude 式多智能体工作流的同类项目时，选 claude-octopus。 | 本索引内的同类项目，围绕 Claude 式多智能体工作流；模型聚焦比 AgentScope 的多 provider 服务更窄。 |
+| [claude-octopus](../../coding-agents/orchestration-and-review/native-cli-bridges/claude-octopus.zh.md) | ✅ | 需要围绕 Claude 式多智能体工作流的同类项目时，选 claude-octopus。 | 本索引内的同类项目，围绕 Claude 式多智能体工作流；模型聚焦比 AgentScope 的多 provider 服务更窄。 |
 | [LangGraph](langgraph.zh.md) | ✅ | 需要生态庞大、控制流显式的图/状态机式编排时，选 LangGraph。 | 图/状态机式编排，生态庞大、控制流显式；比 AgentScope“信任模型”的循环更重、更有主张。 |
 | [AutoGen](autogen.zh.md) | ✅ | 需要成熟的对话驱动多智能体框架时，选 AutoGen。 | 成熟的对话驱动多智能体框架；多智能体 scope 可比，抽象不同、社区盘子更大。 |
 | [CrewAI](crewai.zh.md) | ✅ | 角色/crew 式 agent 编排和强 DX 比 AgentScope 的服务栈更重要时，选 CrewAI。 | 角色/crew 式 agent 编排，DX 很好；不像 AgentScope 那样强调 service/权限/沙箱/可观测这整套栈。 |

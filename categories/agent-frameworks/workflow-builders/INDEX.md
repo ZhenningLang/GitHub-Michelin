@@ -3,14 +3,17 @@
 > Category node. Prompt optimizers and visual/code-first platforms for building LLM workflows and agentic applications.
 > ← back to [agent-frameworks](../INDEX.md) · root: [category route](../../../INDEX.md) · 中文：[INDEX.zh.md](INDEX.zh.md)
 
+## Sub-categories
+
+| Category | Enter when |
+| --- | --- |
+| [Harness evolution](harness-evolution/INDEX.md) | Evolve an agent harness or external resources rather than train model weights. |
+
 ## Projects in this category
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **PenguinHarness** | Version and evaluate harness changes with a fixed model and benchmark; training-score gains still need unseen-task checks. | B (6/6) | [→](penguin-harness.md) |
-| **Hermit** | Compare evolution methods over external agent adapters; version feedback and state without changing model weights, but validate improvement separately. | C (6/6) | [→](hermit.md) |
 | **DSPy** | You have eval data and a metric and want optimizers to compile prompts instead of hand-tuning them. | A (6/6) | [→](dspy.md) |
-| **Harness²** | Adapt a frozen-model agent's whole harness on the current task without ground-truth feedback; repeated probes cost extra, and finals-only adoption can regress. | C (5/6) | [→](harness2.md) |
 | **SkillOpt** | Use it when you must optimize an agent's natural-language skill doc for a frozen LLM against a scorable benchmark — but without a reliable eval to gate edits the method has no signal, and it's a brand-new v0.1.0. | B (6/6) | [→](skillopt.md) |
 | **AutoGPT** | Use it when a recurring multi-app chore (Gmail, CRM lookup, LLM draft, Slack post) should become a scheduled agent built on a canvas or from a plain-English description — but the platform is PolyForm Shield, not OSI open source, and self-hosting is heavy. | B (5/6) | [→](autogpt.md) |
 | **Dify** | Use it when a team needs several LLM apps — a docs Q&A bot, a ticket-triage workflow — built on a canvas over knowledge bases, each with a web UI and API on publish — but its license forbids unapproved multi-tenant hosting and logo removal. | B (5/6) | [→](dify.md) |
@@ -25,10 +28,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [PenguinHarness](penguin-harness.md) | ✅ | B (6/6) | Version and evaluate harness changes with a fixed model and benchmark; training-score gains still need unseen-task checks. |
-| [Hermit](hermit.md) | ✅ | C (6/6) | Common adapter-training lifecycle and host export; structure checks are not performance gates, and sandbox support is platform-dependent. |
 | [DSPy](dspy.md) | ✅ | A (6/6) | You have eval data and a metric and want optimizers to compile prompts instead of hand-tuning them. |
-| [Harness²](harness2.md) | ✅ | C (5/6) | Recursive task-time harness editing and per-domain experience; no baseline-in-pool guarantee, and executor isolation is your responsibility. |
 | [SkillOpt](skillopt.md) | ✅ | B (6/6) | Use it when you must optimize an agent's natural-language skill doc for a frozen LLM against a scorable benchmark — but without a reliable eval to gate edits the method has no signal, and it's a brand-new v0.1.0. |
 | [AutoGPT](autogpt.md) | ✅ | B (5/6) | Buys LLM-native automation with schedules, webhooks and app blocks in one platform; costs a competition-restricted license plus CLA, a still-beta version line, and Postgres, Redis, RabbitMQ and more to host. |
 | [Dify](dify.md) | ✅ | B (5/6) | Buys one self-hosted workspace for RAG apps, workflows and their APIs; costs a custom Apache-plus-conditions license the vendor may tighten, with SSO and RBAC held back for paid Enterprise. |

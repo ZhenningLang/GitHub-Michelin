@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Echo Loop", "zh": "Echo Loop"},
+  "steps": [
+    {"lane":"you","en":"Configure the environment, resolve packages and build the native app","zh":"配置环境、解析依赖并构建原生应用","code":"dart run build_runner build"},
+    {"lane":"you","en":"Import your recording and matching subtitles","zh":"导入自带录音及配对字幕"},
+    {"lane":"them","en":"Present the recording's next guided practice stage","zh":"呈现这段录音的下一项引导练习"},
+    {"lane":"you","en":"Listen, repeat and retell the passage","zh":"听懂、跟读并复述材料"},
+    {"lane":"them","en":"Save stage and sentence progress; schedule the next audio review","zh":"保存阶段与句子进度，安排下次音频复习"}
+  ],
+  "value":{"en":"Practice your own audio without manually tracking exercise order and review times","zh":"用自带音频练听说，不再手工记录练习顺序和复习时间"},
+  "sources":[
+    "https://github.com/echo-loop/Echo-Loop/blob/2a8716b2b31481c6a41049f1b4e46e55390abeaf/README.md#L367-L393",
+    "https://github.com/echo-loop/Echo-Loop/blob/2a8716b2b31481c6a41049f1b4e46e55390abeaf/README.md#L254-L259",
+    "https://github.com/echo-loop/Echo-Loop/blob/2a8716b2b31481c6a41049f1b4e46e55390abeaf/lib/models/learning_plan.dart#L58-L82",
+    "https://github.com/echo-loop/Echo-Loop/blob/2a8716b2b31481c6a41049f1b4e46e55390abeaf/lib/models/learning_progress.dart#L202-L250"
+  ]
+}

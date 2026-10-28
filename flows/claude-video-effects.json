@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Effects skill", "zh": "效果技能"},
+  "steps": [
+    {"lane": "you", "en": "Install the skill and provide Python plus FFmpeg", "zh": "安装技能，准备 Python 和 FFmpeg", "component": {"en": "Claude Code skill", "zh": "Claude Code 技能"}},
+    {"lane": "you", "en": "Provide your clip and request orbit at seconds 3 to 6", "zh": "提供视频，请求第 3 到第 6 秒环绕", "code": "/effects orbit from 3 to 6 seconds"},
+    {"lane": "them", "en": "Write the timing plan and inspect rendered sample frames", "zh": "写时间计划，检查渲染的示例帧", "component": {"en": "SKILL.md and fx.py", "zh": "SKILL.md 与 fx.py"}},
+    {"lane": "them", "en": "Track the face, mask the person and export the effects MP4", "zh": "跟踪人脸，用人物遮罩合成并导出 MP4", "component": {"en": "fx.py and FFmpeg", "zh": "fx.py 与 FFmpeg"}},
+    {"lane": "you", "en": "Watch and approve the finished effect pass", "zh": "观看并批准完成的效果视频"}
+  ],
+  "value": {"en": "A face-relative effect pass without hand-keyframing every moving card", "zh": "不用逐张卡片手调关键帧，得到跟脸的效果视频"},
+  "sources": [
+    "https://github.com/Vibha-Ramprakash/claude-video-effects/blob/99c9a3393ee14d39bea155a05c73dc069f02f16f/README.md#L9-L38",
+    "https://github.com/Vibha-Ramprakash/claude-video-effects/blob/99c9a3393ee14d39bea155a05c73dc069f02f16f/SKILL.md#L12-L39"
+  ]
+}

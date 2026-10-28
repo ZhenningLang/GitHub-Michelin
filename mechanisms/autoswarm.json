@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "parent", "en": "Parent assigns task and workspace", "zh": "主 agent 指定任务和工作区", "kind": "input"},
+    {"id": "record", "en": "Validate CLI and persist call", "zh": "验证 CLI 并保存调用记录", "technique": [1]},
+    {"id": "runner", "en": "Runner owns native conversation", "zh": "执行器持有原生会话", "technique": [1]},
+    {"id": "request", "en": "Persist native question or approval", "zh": "保存原生问题或权限请求", "technique": [2]},
+    {"id": "decision", "en": "Parent or user supplies scoped decision", "zh": "主 agent 或用户提供限定范围的决定", "technique": [2]},
+    {"id": "result", "en": "Persist final result before delivery", "zh": "先保存最终结果再投递", "kind": "output", "technique": [1]},
+    {"id": "verify", "en": "Parent collects and verifies artifacts", "zh": "主 agent 收取并验收产物", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "parent", "to": "record"},
+    {"from": "record", "to": "runner"},
+    {"from": "runner", "to": "request", "en": "intermediate event", "zh": "中途事件"},
+    {"from": "request", "to": "decision"},
+    {"from": "decision", "to": "runner", "en": "native response", "zh": "原生答复"},
+    {"from": "runner", "to": "result", "en": "final outcome", "zh": "最终状态"},
+    {"from": "result", "to": "verify", "en": "wait or bound callback", "zh": "等待收取或绑定回调"}
+  ],
+  "sources": [
+    "https://github.com/HKUDS/AutoSwarm/blob/5325b6d98dad7a9a12811c0b5fa0817ffbbc71f9/src/autoswarm/engine.py",
+    "https://github.com/HKUDS/AutoSwarm/blob/5325b6d98dad7a9a12811c0b5fa0817ffbbc71f9/src/autoswarm/runner.py",
+    "https://github.com/HKUDS/AutoSwarm/blob/5325b6d98dad7a9a12811c0b5fa0817ffbbc71f9/src/autoswarm/approvals.py"
+  ]
+}

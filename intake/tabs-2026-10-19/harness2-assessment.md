@@ -7,7 +7,7 @@
 ## 范围与证据版本
 
 - 复核日期：2026-10-19。上游固定提交：`1cfe254e8d25b15f37048c3730134686abe60335`。下文所有上游链接均钉住该提交。
-- 完整读取：[实际英文选型页](../../categories/agent-frameworks/workflow-builders/harness2.md)、[现有 harness 基线](../tabs-2026-10-18/harness-baseline.md)、[现有自进化汇总](../tabs-2026-10-18/harness-report/summary.md)。汇总实际位于批次子目录。
+- 完整读取：[实际英文选型页](../../categories/agent-frameworks/workflow-builders/harness-evolution/harness2.md)、[现有 harness 基线](../tabs-2026-10-18/harness-baseline.md)、[现有自进化汇总](../tabs-2026-10-18/harness-report/summary.md)。汇总实际位于批次子目录。
 - 对照现有系统时，沿用基线报告的提交 `e3d05e0cc992e4cccb9ba711ada0164632be1d5a`。这是报告级对照，不是对当前安装状态的重新审计。
 
 本次没有安装、导入或执行上游代码。没有运行模型、评测或上游测试。没有读取私人配置、凭证、记忆正文或会话。

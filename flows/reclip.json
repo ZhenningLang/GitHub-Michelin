@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "ReClip", "zh": "ReClip"},
+  "steps": [
+    {"lane": "you", "en": "Install the prerequisites, clone and launch locally", "zh": "安装前置依赖，克隆并本地启动", "code": "./reclip.sh"},
+    {"lane": "you", "en": "Paste links, select MP4 or MP3, and click Fetch", "zh": "粘贴链接，选 MP4 或 MP3，点击 Fetch"},
+    {"lane": "them", "en": "Fetch titles, thumbnails and resolution choices", "zh": "获取标题、缩略图和清晰度选项"},
+    {"lane": "you", "en": "Choose a resolution and click Download", "zh": "选择清晰度并点击 Download"},
+    {"lane": "them", "en": "Download and merge or extract audio, then deliver the file to the browser", "zh": "下载并合并或提取音频，再把文件交给浏览器"}
+  ],
+  "value": {"en": "Save clips through a visual picker without writing downloader flags for each URL", "zh": "通过可视选择保存片段，无需为每条链接编写下载参数"},
+  "sources": [
+    "https://github.com/averygan/reclip/blob/1d161d15a4fe93d9b3371377f0a421dc3e965b10/README.md#L22-L45",
+    "https://github.com/averygan/reclip/blob/1d161d15a4fe93d9b3371377f0a421dc3e965b10/templates/index.html#L622-L689",
+    "https://github.com/averygan/reclip/blob/1d161d15a4fe93d9b3371377f0a421dc3e965b10/app.py#L32-L89"
+  ]
+}

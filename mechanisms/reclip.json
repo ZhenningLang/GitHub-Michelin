@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "urls", "kind": "input", "en": "Pasted links", "zh": "粘贴的链接"},
+    {"id": "expand", "en": "Deduplicate and expand playlist links", "zh": "去重并展开列表链接", "technique": [3]},
+    {"id": "formats", "en": "Keep the highest bitrate at each height", "zh": "每个高度保留最高码率", "technique": [1]},
+    {"id": "pick", "en": "User selects quality and starts download", "zh": "用户选清晰度并开始下载"},
+    {"id": "job", "en": "In-memory job and background yt-dlp thread", "zh": "内存任务与后台 yt-dlp 线程", "technique": [2]},
+    {"id": "file", "kind": "output", "en": "Poll status and save the finished file", "zh": "轮询状态并保存成品文件", "technique": [2]}
+  ],
+  "edges": [
+    {"from": "urls", "to": "expand"},
+    {"from": "expand", "to": "formats"},
+    {"from": "formats", "to": "pick"},
+    {"from": "pick", "to": "job"},
+    {"from": "job", "to": "file"}
+  ],
+  "sources": [
+    "https://github.com/averygan/reclip/blob/1d161d15a4fe93d9b3371377f0a421dc3e965b10/app.py",
+    "https://github.com/averygan/reclip/blob/1d161d15a4fe93d9b3371377f0a421dc3e965b10/templates/index.html"
+  ]
+}

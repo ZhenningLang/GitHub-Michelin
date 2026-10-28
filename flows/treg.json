@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "Treg", "zh": "Treg"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI and authorize your registry account", "zh": "安装 CLI 并授权注册表账号", "code": "treg login"},
+    {"lane": "you", "en": "Search the catalog for the task", "zh": "按任务搜索工具目录", "code": "treg catalog search \"find a work email\""},
+    {"lane": "them", "en": "Return candidate vendor operations", "zh": "返回候选供应商操作"},
+    {"lane": "you", "en": "Inspect the selected operation's inputs and price", "zh": "查看所选操作的输入与价格", "code": "treg catalog get hunter.people.email.find"},
+    {"lane": "you", "en": "Provide the domain and person's name, then call", "zh": "提供域名和姓名并调用"},
+    {"lane": "them", "en": "Select credentials, relay the request and return the answer with cost", "zh": "选择凭据、转发请求并返回结果和费用"}
+  ],
+  "value": {"en": "Use a priced vendor operation through one registry token instead of wiring another provider client", "zh": "用一个注册表令牌调用有价格的供应商操作，不再另接一套客户端"},
+  "sources": ["https://github.com/superdesigndev/treg/blob/ece225100e8d479fdcd8ac1eb44480c9283c458d/README.md#L53-L70", "https://github.com/superdesigndev/treg/blob/ece225100e8d479fdcd8ac1eb44480c9283c458d/README.md#L139-L176"]
+}

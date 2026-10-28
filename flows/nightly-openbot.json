@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenBot", "zh": "OpenBot"},
+  "steps": [
+    {"lane":"you","en":"Install the release, review access and connect your model provider","zh":"安装发行包，审查访问范围并连接模型供应商"},
+    {"lane":"you","en":"Create an agent with instructions and send a bounded request with a file","zh":"创建助手并填写指令，发送带文件的明确请求"},
+    {"lane":"them","en":"Start or resume the agent session in its persistent workspace","zh":"在长期工作区中启动或恢复助手会话"},
+    {"lane":"you","en":"Leave the next request in the inbox while the agent is busy","zh":"助手忙时，把下一项请求留在收件箱"},
+    {"lane":"them","en":"Queue follow-ups and return replies with managed attachments","zh":"排队处理后续消息，返回回复与托管附件"}
+  ],
+  "value":{"en":"Keep ongoing assistants and their handoffs together instead of copying between windows","zh":"长期助手及交接留在一处，不再在多个窗口间搬消息"},
+  "sources":["https://github.com/nightly-labs/openbot/blob/9dd3bfa2a599620ed8b7dd691f3a4c0d5f7582d5/README.md#L19-L36","https://github.com/nightly-labs/openbot/blob/9dd3bfa2a599620ed8b7dd691f3a4c0d5f7582d5/README.md#L38-L211","https://github.com/nightly-labs/openbot/blob/9dd3bfa2a599620ed8b7dd691f3a4c0d5f7582d5/src/backend/agent/drain-scheduler.ts#L490-L626"]
+}

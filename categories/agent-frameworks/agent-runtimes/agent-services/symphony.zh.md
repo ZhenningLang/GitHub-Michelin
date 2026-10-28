@@ -116,7 +116,7 @@ Symphony 以单个长驻服务运行在一台可信机器上，配置集中在�
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [openfang](openfang.zh.md) | ✅ | 当「工作队列本身就是接口」是你要的——issue 进、隔离的 Codex 运行出、带证据的 PR——选 Symphony；当你想要一个自托管的「智能体 OS」、让排好日程的自治 agent 通过聊天渠道汇报时，选 OpenFang。 | Symphony 是窄的「跟踪器→工作区→Codex」编排器（预览阶段、状态仅在内存）；OpenFang 是通用的多 provider 运行时，自带调度器、约 40 个渠道适配器与 WASM 工具沙箱。 |
-| [claude-octopus](../../coding-agents/orchestration-and-review/claude-octopus.zh.md) | ✅ | 需要并行运行多个 Claude Code agent 时，选 claude-octopus。 | 并行编排多个 Claude Code agent；Symphony 以 Codex 为中心、由跟踪器（Linear）驱动，所以选择往往取决于你已经标准化了哪个 agent CLI。 |
+| [claude-octopus](../../coding-agents/orchestration-and-review/native-cli-bridges/claude-octopus.zh.md) | ✅ | 需要并行运行多个 Claude Code agent 时，选 claude-octopus。 | 并行编排多个 Claude Code agent；Symphony 以 Codex 为中心、由跟踪器（Linear）驱动，所以选择往往取决于你已经标准化了哪个 agent CLI。 |
 | [AgentScope](../agent-sdks/agentscope.zh.md) | ✅ | 需要构建 agent 应用的通用多 agent 运行时/框架时，选 AgentScope。 | 用于构建 agent 应用的通用多 agent 运行时/框架；Symphony 更窄——是「队列→工作区→agent 运行」的编排器，不是用来组合 agent 的框架。 |
 | [DSPy](../../workflow-builders/dspy.zh.md) | ✅ | 需要编程/优化 LLM 流水线，而不是调度整次实现运行时，选 DSPy。 | 编排/优化 LLM 流水线；是正交问题——DSPy 构建 agent 的推理，Symphony 调度并隔离整次实现运行。 |
 | Devin / Cognition（托管） | 未收录 | 可接受托管自治工程师 SaaS 时，选 Devin/Cognition。 | 托管「自治工程师」SaaS，卖点类似「管理工作」；闭源、不能自托管、不能 fork。Symphony 开源可自托管，但处于预览阶段。 |

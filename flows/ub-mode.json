@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "ub-mode instructions", "zh": "ub-mode 规则"},
+  "steps": [
+    {"lane": "you", "en": "Review permission and the skill before any adoption", "zh": "采用前审查权限与技能正文"},
+    {"lane": "you", "en": "If authorized, place the skill in your host and invoke it", "zh": "获授权后放入宿主技能目录并调用", "code": "/ub-mode"},
+    {"lane": "them", "en": "Requests a test-first change, then structural improvement", "zh": "要求先测试再修改，然后改善结构"},
+    {"lane": "you", "en": "Supply tests and separate quality tools; retain push and deletion approval", "zh": "提供测试及独立质量工具，保留推送与删除审批"},
+    {"lane": "them", "en": "Requests quality checks and an action log for the final report", "zh": "要求质量检查，并将操作日志纳入报告"}
+  ],
+  "value": {"en": "One reference ties test-first changes to explicit checks; enforcement remains yours", "zh": "一份参考串起测试先行与明确检查；强制执行仍由你负责"},
+  "sources": [
+    "https://github.com/unclebob/ub-mode/blob/57a8bdd28e45ed41900ace0bafa2ff76dd9ed70f/README.md#L18-L20",
+    "https://github.com/unclebob/ub-mode/blob/57a8bdd28e45ed41900ace0bafa2ff76dd9ed70f/SKILL.md#L29-L34",
+    "https://github.com/unclebob/ub-mode/blob/57a8bdd28e45ed41900ace0bafa2ff76dd9ed70f/SKILL.md#L108-L152",
+    "https://github.com/unclebob/ub-mode/issues/2"
+  ]
+}

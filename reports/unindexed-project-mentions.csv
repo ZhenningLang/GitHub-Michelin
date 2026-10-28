@@ -12,12 +12,13 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client),categories/networking/amneziawg-installer.md,,no
 [Anatomy](https://github.com/wheresryan22/anatomy),categories/agent-skills/design/visual-artifacts/anima.md,,no
 [angristan/wireguard-install](https://github.com/angristan/wireguard-install),categories/networking/amneziawg-installer.md,,no
-[Anki](https://github.com/ankitects/anki),categories/education-tutoring/word-atlas.md,,no
+[Anki](https://github.com/ankitects/anki),categories/education-tutoring/echo-loop.md,,no
 [Apache ECharts](https://github.com/apache/echarts),categories/data-visualization/flint-chart.md,,no
 [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox),categories/knowledge-base/hister.md,,no
 [Awesome Quant](https://github.com/wilsonfreitas/awesome-quant),categories/investment-finance/awesome-deep-trading.md,,no
 [Backtesting.py](https://github.com/kernc/backtesting.py),categories/investment-finance/backtrader.md,,no
 [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk),categories/agent-tooling/harness-extensions/hey-cli.md,,no
+[basedpyright](https://github.com/DetachHead/basedpyright),categories/dev-utilities/editors-and-runtimes/code-editors/pylance-release.md,,no
 [Binoculars](https://github.com/ahans30/Binoculars),categories/llm-eval/chatgpt-comparison-detection.md,,no
 [birda](https://github.com/tphakala/birda),categories/on-device-ml/birdnet-go.md,,no
 [BirdNET-Analyzer](https://github.com/birdnet-team/BirdNET-Analyzer),categories/on-device-ml/birdnet-go.md,,no
@@ -43,6 +44,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Dive into Deep Learning](https://github.com/d2l-ai/d2l-en),categories/learning-resources/torchcode.md,,no
 [doocs/md](https://github.com/doocs/md),categories/agent-skills/ai-writing/content-production/gzh-design-skill.md,,no
 [Dragonfly](https://github.com/dragonflydb/dragonfly),categories/databases/database-engines/kividb.md,,no
+[electerm](https://github.com/electerm/electerm),categories/databases/database-clients/navop.md,,no
 [Elixir](https://github.com/elixir-lang/elixir),categories/programming-languages/unison.md,,no
 [Fast-DetectGPT](https://github.com/baoguangsheng/fast-detect-gpt),categories/llm-eval/chatgpt-comparison-detection.md,,no
 [FaucETH](https://github.com/komputing/FaucETH),categories/blockchain-dev-infrastructure/powfaucet.md,,no
@@ -61,6 +63,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Hunyuan3D-2](https://github.com/Tencent-Hunyuan/Hunyuan3D-2),categories/3d-generation/modly.md,,no
 [HunyuanVideo](https://github.com/Tencent-Hunyuan/HunyuanVideo),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [iztro](https://github.com/SylarLong/iztro),categories/traditional-divination/ziwei-doushu.md,,no
+[Jedi](https://github.com/davidhalter/jedi),categories/dev-utilities/editors-and-runtimes/code-editors/pylance-release.md,,no
 [KeePassXC](https://github.com/keepassxreboot/keepassxc),categories/dev-utilities/ops-infra/vaultwarden.md,,no
 [Kokoro](https://github.com/hexgrad/kokoro),categories/speech/kitten-tts.md,,no
 [Lada](https://codeberg.org/ladaapp/lada),categories/media-processing/jasna.md,,no
@@ -106,6 +109,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Plotly.js](https://github.com/plotly/plotly.js),categories/data-visualization/flint-chart.md,,no
 [PocketPal AI](https://github.com/a-ghorbani/pocketpal-ai),categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md,,no
 [Pyodide](https://github.com/pyodide/pyodide),categories/sandboxing/monty.md,,no
+[Pyright](https://github.com/microsoft/pyright),categories/dev-utilities/editors-and-runtimes/code-editors/pylance-release.md,,no
 [pyVideoTrans](https://github.com/jianchang512/pyvideotrans),categories/speech/voicestudio.md,,no
 [Qwerty Learner](https://github.com/RealKai42/qwerty-learner),categories/education-tutoring/word-atlas.md,,no
 [radare2](https://github.com/radareorg/radare2),categories/dev-utilities/binary-analysis/ghidra.md,,no
@@ -425,7 +429,7 @@ create-t3-app (`t3-oss/create-t3-app`),categories/dev-utilities/editors-and-runt
 create-vite (`vitejs/vite`),categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-alt-cli.md,,no
 CreepJS,categories/networking/one-ip.md,,no
 CRNN + CTC implementations,categories/captcha/pytorch-captcha-recognition.md,,no
-crystal / claude-squad,categories/agent-frameworks/coding-agents/orchestration-and-review/claude-octopus.md,,no
+crystal / claude-squad,categories/agent-frameworks/coding-agents/orchestration-and-review/native-cli-bridges/claude-octopus.md,,no
 CSS `@keyframes` / transitions,categories/frontend-animation/anime.md,,no
 Custom creator toolkit,categories/agent-skills/ai-writing/content-production/huashu-skills.md,,no
 Custom DataForSEO scripts,categories/agent-skills/ai-writing/marketing-seo/open-seo.md,,no
@@ -759,6 +763,7 @@ LibreOffice Impress (`LibreOffice/core`),categories/office-editors/deckcraft.md,
 libreoffice-convert (`elwerene/libreoffice-convert`),categories/office-automation/dsh-libreoffice-kit.md,,no
 LibrePhotos,categories/document-management/immich.md,,no
 LibreTube (`libre-tube/LibreTube`),categories/streaming-clients/pipepipe.md,,no
+librosa,categories/media-processing/quality-metrics/earshot.md,,no
 libSQL (`tursodatabase/libsql`),categories/databases/database-engines/turso.md,,no
 libssh2 / ssh2-python,categories/networking/paramiko.md,,no
 libvips,categories/media-processing/image-processing/imagemagick.md,,no
@@ -985,7 +990,7 @@ PaddleNLP / ERNIE,categories/ml-research/nlp-and-time-series/senta.md,,no
 "Paid proxy providers (Bright Data, Oxylabs, …)",categories/proxy-pool/haipproxy.md,,no
 Paid proxy services (Bright Data / Decodo),categories/proxy-pool/proxy-pool.md,,no
 paid residential proxies,categories/proxy-pool/INDEX.md,,no
-"PAL MCP Server (BeehiveInnovations/pal-mcp-server, formerly zen-mcp-server)",categories/agent-frameworks/coding-agents/orchestration-and-review/codex-plugin-cc.md,,no
+"PAL MCP Server (BeehiveInnovations/pal-mcp-server, formerly zen-mcp-server)",categories/agent-frameworks/coding-agents/orchestration-and-review/native-cli-bridges/codex-plugin-cc.md,,no
 pandas,categories/databases/database-engines/duckdb.md,,no
 pandas-datareader,categories/web-scraping/crawling-tools/gopup.md,,no
 pandoc + pager,categories/terminal-ui/terminal-markdown-viewer.md,,no
