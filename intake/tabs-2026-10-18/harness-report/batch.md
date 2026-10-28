@@ -52,7 +52,7 @@ Chrome 实际验收：仍开着 7 个不同 GitHub 仓库，分别是 6 个 prop
 | 优先级／适配 | 项目与本地选型页 | 可借鉴什么 | 映射现有入口 | 不直接照搬什么 |
 |---|---|---|---|---|
 | 优先／高 | [JiuwenSwarm](../../../categories/agent-frameworks/agent-runtimes/agent-services/jiuwenswarm.zh.md) | 对最终筛选产物重测，并保护已知成功任务。 | `agent-harness-improvement`、现有行为评测工具 | 单 harness 内部留出为零；启用经验演化后的队员自动保存。 |
-| 优先／高 | [Penguin Harness](../../../categories/agent-frameworks/workflow-builders/penguin-harness.zh.md) | 固定实验配置、版本快照、单假设改动与逐题轨迹。 | 同一改进链的候选包与验证产物 | 默认与 OPRO 协议不能混用；汇总分不应由模型填写后直接信任。 |
+| 优先／高 | [Penguin Harness](../../../categories/agent-frameworks/workflow-builders/harness-evolution/penguin-harness.zh.md) | 固定实验配置、版本快照、单假设改动与逐题轨迹。 | 同一改进链的候选包与验证产物 | 默认与 OPRO 协议不能混用；汇总分不应由模型填写后直接信任。 |
 | 其次／中 | [Headroom](../../../categories/agent-tooling/work-state/headroom.zh.md) | 失败循环探测，以及压缩后保留原文回取。 | 会话判卷、上下文压缩 | 默认失败学习预览仍可能外发和计费；不启用直接写全局规则。 |
 | 其次／中 | [Hy-Memory](../../../categories/agent-memory/app-memory/hy-memory.zh.md) | 事实、经验与精确代码 diff 分账，保留修订关系。 | `assist-mem`、`assist-learn`、`compact-memory` | 不引入整套图存储；不把批次关联或默认关闭的 schema 证据门当真实性保证。 |
 | 其次／中 | [Atomic Agent](../../../categories/agent-frameworks/agent-runtimes/personal-assistants/atomic-agent.zh.md) | 将姓名来源约束和不同记忆变更类型，转为现有记忆门禁的反例样本。 | 记忆写入及整理验证 | 使用或复述得到正票，不等于记忆正确；有限文字核对不是身份认证。 |

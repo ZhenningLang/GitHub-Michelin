@@ -2,7 +2,7 @@
 name: Harness²
 slug: harness2
 repo: https://github.com/google-research/harness2
-category: workflow-builders
+category: harness-evolution
 tags: [agent, harness-optimization, recursive-improvement, frozen-models, benchmark, opencode, codex]
 language: Python
 license: Apache-2.0 (core) + Custom Tencent (bundled WorkBuddy runner; EU limitation)
@@ -75,7 +75,7 @@ health:
 
 agent 遇到新任务，昨天调好的提示词和工具就不合用了。Harness² 在同一任务上试跑多份配置，再根据执行差异合成新配置，并为后续任务保存经验；它不修改模型权重。
 
-![Harness² — 健康度雷达](../../../assets/health/harness2.zh.svg)
+![Harness² — 健康度雷达](../../../../assets/health/harness2.zh.svg)
 
 ## 何时使用
 
@@ -85,25 +85,25 @@ agent 遇到新任务，昨天调好的提示词和工具就不合用了。Harne
 
 ## 何时不用
 
-- **每次采纳都必须胜过基线。** 要对技能修改做验证集门禁，选 [SkillOpt](skillopt.zh.md)；要给人工审核的修改加回归门禁，选 [promptfoo](../../llm-eval/promptfoo.zh.md)。Harness² 只在合成后的候选中选优，原始基线产物不参与。`k=1` 时，只要唯一终稿有交付就直接采纳，不是因为得分提高。见[选优源码](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/harness2/core/selection.py#L93-L111)。
-- **上线时只想读一份静态指令，不能继续花钱搜索。** 能接受离线优化时，优先选 [SkillOpt](skillopt.zh.md)，部署生成的文档。Harness² 每种递归模式安排 `4k` 次任务执行，其中包含 `k` 次基线执行，另有 `3k` 个改进阶段；选优和反思还可能增加调用。`k` 不是美元预算上限。见[执行计数](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/harness2/core/recursion.py#L15-L19)。
-- **agent 会共用工作机的凭据，或不受限地联网。** 不要在这台机器跑优化器；保持生产配置不变，先用 [promptfoo](../../llm-eval/promptfoo.zh.md) 做受控回归测试。Codex 明确绕过审批和沙箱，发行版也不限制执行器网络。作者记录过一次验证运行：agent 自行下载了公开评分细则。主机隔离和出网过滤由你负责，不是项目自带能力。见[实验警告](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/docs/EXPERIMENTS.md#web-access)。
-- **只是用带标注样本优化应用提示词。** 选 [DSPy](dspy.zh.md)，按你的指标优化 Python 管线。Harness² 还要维护基准仓库、命令行执行器、重复试跑和经验库；小型抽取、分类应用没必要承担这些。
+- **每次采纳都必须胜过基线。** 要对技能修改做验证集门禁，选 [SkillOpt](../skillopt.zh.md)；要给人工审核的修改加回归门禁，选 [promptfoo](../../../llm-eval/promptfoo.zh.md)。Harness² 只在合成后的候选中选优，原始基线产物不参与。`k=1` 时，只要唯一终稿有交付就直接采纳，不是因为得分提高。见[选优源码](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/harness2/core/selection.py#L93-L111)。
+- **上线时只想读一份静态指令，不能继续花钱搜索。** 能接受离线优化时，优先选 [SkillOpt](../skillopt.zh.md)，部署生成的文档。Harness² 每种递归模式安排 `4k` 次任务执行，其中包含 `k` 次基线执行，另有 `3k` 个改进阶段；选优和反思还可能增加调用。`k` 不是美元预算上限。见[执行计数](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/harness2/core/recursion.py#L15-L19)。
+- **agent 会共用工作机的凭据，或不受限地联网。** 不要在这台机器跑优化器；保持生产配置不变，先用 [promptfoo](../../../llm-eval/promptfoo.zh.md) 做受控回归测试。Codex 明确绕过审批和沙箱，发行版也不限制执行器网络。作者记录过一次验证运行：agent 自行下载了公开评分细则。主机隔离和出网过滤由你负责，不是项目自带能力。见[实验警告](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/docs/EXPERIMENTS.md#web-access)。
+- **只是用带标注样本优化应用提示词。** 选 [DSPy](../dspy.zh.md)，按你的指标优化 Python 管线。Harness² 还要维护基准仓库、命令行执行器、重复试跑和经验库；小型抽取、分类应用没必要承担这些。
 - **要在欧盟境内运行 WorkBuddy。** 法律任务实验可改用内置 LAB 路径，并另核数据许可。仓库自带的 WorkBuddy 运行器采用腾讯自定义许可，其额外地域条款写明“不面向欧盟使用”。核心代码的 Apache 许可不取消这项条件。见[随仓库发布的许可第 3–16 行](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/third_party/wb_runner/LICENSE#L3-L16)。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| [SkillOpt](skillopt.zh.md) | ✅ | 要用留出评分把关一份可部署技能文档，选 SkillOpt；要在任务进行时无标准答案地调整整套配置，选 Harness²。 | 静态文档免去部署时搜索；Harness² 能改更多组件，但每个任务都要付试跑成本，也没有同等采纳保证。 |
-| [DSPy](dspy.zh.md) | ✅ | 应用是有样本、有指标的 Python 大模型管线，选 DSPy；研究现有命令行 agent 的配置改进，选 Harness²。 | DSPy 优化程序和模块；Harness² 保持模型与执行底座不变，搜索提示词、技能、脚本等配置文件。 |
-| [promptfoo](../../llm-eval/promptfoo.zh.md) | ✅ | 要在持续集成中决定提示词修改能否发布，选 promptfoo；实验需要自动生成并试跑修改，选 Harness²。 | 回归断言提供外部门禁，不负责递归改配置；Harness² 的改进仍要单独评测，才能考虑采纳到生产。 |
+| [SkillOpt](../skillopt.zh.md) | ✅ | 要用留出评分把关一份可部署技能文档，选 SkillOpt；要在任务进行时无标准答案地调整整套配置，选 Harness²。 | 静态文档免去部署时搜索；Harness² 能改更多组件，但每个任务都要付试跑成本，也没有同等采纳保证。 |
+| [DSPy](../dspy.zh.md) | ✅ | 应用是有样本、有指标的 Python 大模型管线，选 DSPy；研究现有命令行 agent 的配置改进，选 Harness²。 | DSPy 优化程序和模块；Harness² 保持模型与执行底座不变，搜索提示词、技能、脚本等配置文件。 |
+| [promptfoo](../../../llm-eval/promptfoo.zh.md) | ✅ | 要在持续集成中决定提示词修改能否发布，选 promptfoo；实验需要自动生成并试跑修改，选 Harness²。 | 回归断言提供外部门禁，不负责递归改配置；Harness² 的改进仍要单独评测，才能考虑采纳到生产。 |
 
 ## 快速上手
 
 克隆源码，按 [Linux／Python 安装指南](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/docs/SETUP.md) 创建 Python 3.12 环境，再执行 `uv pip install -e '.[render]'`。配置 Vertex AI 项目及执行、改进、评分三个角色的模型名称，再用 `gcloud auth application-default login` 登录；三个角色分别负责做任务、改配置和评结果。README 的 `cp .env.example .env` 在核实版本中不可用，因为仓库缺少该文件；请在 shell 中设置文档列出的变量，或参照[配置读取代码](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/harness2/config.py#L35-L102) 自建 `.env`。运行 `harness2-setup lab` 安装 LAB，再用 `harness2-check --bench lab` 检查，随后在隔离且已阻断基准答案访问的主机上执行图中的单领域、单任务命令。项目生成交付物、采纳的配置和反思记录；你再运行参数一致的评分与报表命令取得分数，并承担模型接口及机器成本。
 
-![harness2 — 主干用户故事](../../../assets/flow/harness2.zh.svg)
+![harness2 — 主干用户故事](../../../../assets/flow/harness2.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/harness2.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -133,7 +133,7 @@ harness2-report --bench lab --k 1 --mode parallel
 
 ## 技术要点
 
-![Harness² — 机制图](../../../assets/mechanism/harness2.zh.svg)
+![Harness² — 机制图](../../../../assets/mechanism/harness2.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/harness2.json by tools/mechanism_card.py; do not edit) -->
 <details>

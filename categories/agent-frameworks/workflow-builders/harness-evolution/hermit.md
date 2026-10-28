@@ -2,7 +2,7 @@
 name: Hermit
 slug: hermit
 repo: https://github.com/Infini-AI-Lab/hermit
-category: workflow-builders
+category: harness-evolution
 tags: [harness-evolution, frozen-models, prompt-optimization, adapters, evaluation]
 language: Python
 license: Apache-2.0
@@ -79,7 +79,7 @@ health:
 
 You keep changing an agent's instructions and tools, but cannot connect an edit to its task feedback or reproduce the previous version. Hermit trains and versions an external adapter while leaving the original model weights and host harness unchanged.
 
-![Hermit health radar](../../../assets/health/hermit.svg)
+![Hermit health radar](../../../../assets/health/hermit.svg)
 
 ## When to use
 
@@ -89,25 +89,25 @@ Choose it over using SkillOpt alone when the experiment needs several evolution 
 
 ## When NOT to use
 
-- **Every accepted change must improve a held-out score.** Prefer [SkillOpt](skillopt.md) for its validation-gated document workflow, or build an explicit evaluation gate. Hermit's Trainer checks file structure and deployability, not improvement; `final` defaults to the selected current adapter, not a universal best-scoring checkpoint. A structurally valid edit can regress.
-- **You only need to compile a typed Python model pipeline.** Prefer [DSPy](dspy.md). Hermit adds on-disk templates, Git histories, working copies and task/learner interfaces to preserve an existing host; these are extra machinery for a small extraction or classification pipeline.
+- **Every accepted change must improve a held-out score.** Prefer [SkillOpt](../skillopt.md) for its validation-gated document workflow, or build an explicit evaluation gate. Hermit's Trainer checks file structure and deployability, not improvement; `final` defaults to the selected current adapter, not a universal best-scoring checkpoint. A structurally valid edit can regress.
+- **You only need to compile a typed Python model pipeline.** Prefer [DSPy](../dspy.md). Hermit adds on-disk templates, Git histories, working copies and task/learner interfaces to preserve an existing host; these are extra machinery for a small extraction or classification pipeline.
 - **You want the original task-time Harness² benchmark protocol.** Start with [Harness²](harness2.md). Hermit integrates that method into its own task and adapter lifecycle; its OfficeQA route uses a specific Codex integration, and benchmark/host differences still need protocol review.
-- **You cannot isolate executable adapters from secrets or judge answers.** Keep configuration manually reviewed and use [SkillOpt](skillopt.md) only for a scoped text experiment in an isolated environment. Hermit executes task code, template checks and tools; its sandbox covers configured programs, not arbitrary in-process Python. Linux bubblewrap needs permitted namespaces, restricted proxy networking is best effort, and disabled sandbox examples are trusted teaching code, not a safe way to run strangers' adapters.
-- **You need a mature production contract or an all-host lossless plugin.** Prefer a smaller [DSPy](dspy.md) integration where its program model fits. Hermit is an early 0.x framework; workspace deployment and plugin conversion have different capabilities. In particular, nonempty context is refused for Codex/Pi native conversion unless deliberately omitted; a successful export does not install a host or its tool dependencies.
+- **You cannot isolate executable adapters from secrets or judge answers.** Keep configuration manually reviewed and use [SkillOpt](../skillopt.md) only for a scoped text experiment in an isolated environment. Hermit executes task code, template checks and tools; its sandbox covers configured programs, not arbitrary in-process Python. Linux bubblewrap needs permitted namespaces, restricted proxy networking is best effort, and disabled sandbox examples are trusted teaching code, not a safe way to run strangers' adapters.
+- **You need a mature production contract or an all-host lossless plugin.** Prefer a smaller [DSPy](../dspy.md) integration where its program model fits. Hermit is an early 0.x framework; workspace deployment and plugin conversion have different capabilities. In particular, nonempty context is refused for Codex/Pi native conversion unless deliberately omitted; a successful export does not install a host or its tool dependencies.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [SkillOpt](skillopt.md) | ✅ | Choose SkillOpt when one deployable skill document and validation-gated edits are enough; choose Hermit when comparing methods and managing a wider adapter package on the same task interface. | Hermit reuses SkillOpt as an optional learner but adds template checks, Git step records and host export; that common shell does not give every other method SkillOpt's performance gate. |
-| [DSPy](dspy.md) | ✅ | Choose DSPy for typed Python model programs optimized against a metric; choose Hermit to preserve an existing agent host and evolve external files it consumes. | DSPy owns the program abstraction and generated prompts; Hermit leaves task execution with your pipeline and makes adapter artifacts and learner state explicit. |
+| [SkillOpt](../skillopt.md) | ✅ | Choose SkillOpt when one deployable skill document and validation-gated edits are enough; choose Hermit when comparing methods and managing a wider adapter package on the same task interface. | Hermit reuses SkillOpt as an optional learner but adds template checks, Git step records and host export; that common shell does not give every other method SkillOpt's performance gate. |
+| [DSPy](../dspy.md) | ✅ | Choose DSPy for typed Python model programs optimized against a metric; choose Hermit to preserve an existing agent host and evolve external files it consumes. | DSPy owns the program abstraction and generated prompts; Hermit leaves task execution with your pipeline and makes adapter artifacts and learner state explicit. |
 | [Harness²](harness2.md) | ✅ | Choose upstream Harness² to study its original task-time recursion and benchmark runners; choose Hermit to place that method beside other learners under one experiment lifecycle. | Hermit pins and calls the upstream package and records its own integration differences; shared bookkeeping is not evidence of protocol equivalence or better scores. |
 
 ## Quick start
 
 Prepare Python 3.11+ and Git, clone the source and follow its virtual-environment setup with `python -m pip install -e .`; the checkout contains examples absent from the package-only install. The documented offline walkthrough uses `hermit check --config docs/_examples/first_training/run.yaml`, a no-adapter evaluation, then the training command below. Its scripted learner reads feedback and writes an uppercase-output rule; evaluate `root` and `final` separately before generating a Codex workspace with the README's `hermit deploy` example. Hermit writes adapter history, results and host files; you start the host separately and supply real tasks, a judge, model access, cost limits and independent evaluation for real workloads. The toy example needs no GPU, model account or download, but its constructed score change is not a real-model benchmark, and no upstream command was executed for this page.
 
-![hermit backbone user story](../../../assets/flow/hermit.svg)
+![hermit backbone user story](../../../../assets/flow/hermit.svg)
 
 <!-- flow-steps:begin (generated from flows/hermit.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -127,7 +127,7 @@ Prepare Python 3.11+ and Git, clone the source and follow its virtual-environmen
 
 ## Key techniques
 
-![Hermit — mechanism diagram](../../../assets/mechanism/hermit.svg)
+![Hermit — mechanism diagram](../../../../assets/mechanism/hermit.svg)
 
 <!-- mechanism:begin (generated from mechanisms/hermit.json by tools/mechanism_card.py; do not edit) -->
 <details>

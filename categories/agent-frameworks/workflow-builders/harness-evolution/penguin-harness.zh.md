@@ -2,7 +2,7 @@
 name: PenguinHarness
 slug: penguin-harness
 repo: https://github.com/Prism-Shadow/penguin-harness
-category: workflow-builders
+category: harness-evolution
 tags: [agent-evolution, prompt-optimization, benchmarks, snapshots]
 language: TypeScript
 license: Apache-2.0
@@ -83,7 +83,7 @@ health:
 
 代理改了自己的指令，你却不知道是否变好。PenguinHarness 固定评测任务，给每版运行框架评分，并保留有成绩的参考版本。
 
-![PenguinHarness — 健康度雷达](../../../assets/health/penguin-harness.zh.svg)
+![PenguinHarness — 健康度雷达](../../../../assets/health/penguin-harness.zh.svg)
 
 ## 何时使用
 
@@ -91,24 +91,24 @@ health:
 
 ## 何时不用
 
-- 要优化具有类型化输入输出的 Python 流水线，选 [DSPy](dspy.zh.md)。PenguinHarness 会带入整套代理运行时和项目目录。
-- 要交付单份技能文件，并用独立验证集决定接纳，先看 [SkillOpt](skillopt.zh.md)。Penguin 默认工具包按固定评测集上的严格涨分接纳，不证明新任务也会变好。
-- 只要持续集成中的回归矩阵，不需要自动改指令，选 [promptfoo](../../llm-eval/promptfoo.zh.md)。优化会增加模型调用和可变状态。
-- 要训练模型权重，选 [Unsloth](../../llm-training/unsloth.zh.md) 等训练框架。这里改的是运行框架，不是权重。
+- 要优化具有类型化输入输出的 Python 流水线，选 [DSPy](../dspy.zh.md)。PenguinHarness 会带入整套代理运行时和项目目录。
+- 要交付单份技能文件，并用独立验证集决定接纳，先看 [SkillOpt](../skillopt.zh.md)。Penguin 默认工具包按固定评测集上的严格涨分接纳，不证明新任务也会变好。
+- 只要持续集成中的回归矩阵，不需要自动改指令，选 [promptfoo](../../../llm-eval/promptfoo.zh.md)。优化会增加模型调用和可变状态。
+- 要训练模型权重，选 [Unsloth](../../../llm-training/unsloth.zh.md) 等训练框架。这里改的是运行框架，不是权重。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [DSPy](dspy.zh.md) | ✅ | 优化 Python 程序选 DSPy；要交互式代理工作区和版本评测选 PenguinHarness。 | 嵌入式编程模型更轻；本项目整合命令行、服务端和网页。 |
-| [SkillOpt](skillopt.zh.md) | ✅ | 交付可移植技能文件，且独立验证集决定接纳时，选 SkillOpt。 | 优化产物更窄；Penguin 可修改更多运行框架组件。 |
-| [promptfoo](../../llm-eval/promptfoo.zh.md) | ✅ | 持续集成只需发现退化，不需提出改动时，选 promptfoo。 | 提供显式断言和模型矩阵，不带自动候选编辑器。 |
+| [DSPy](../dspy.zh.md) | ✅ | 优化 Python 程序选 DSPy；要交互式代理工作区和版本评测选 PenguinHarness。 | 嵌入式编程模型更轻；本项目整合命令行、服务端和网页。 |
+| [SkillOpt](../skillopt.zh.md) | ✅ | 交付可移植技能文件，且独立验证集决定接纳时，选 SkillOpt。 | 优化产物更窄；Penguin 可修改更多运行框架组件。 |
+| [promptfoo](../../../llm-eval/promptfoo.zh.md) | ✅ | 持续集成只需发现退化，不需提出改动时，选 promptfoo。 | 提供显式断言和模型矩阵，不带自动候选编辑器。 |
 
 ## 快速上手
 
 在 Node 24 以上运行 `npm install -g @prismshadow/penguin-cli`，再运行 `penguin web`。打开本地地址，设置密码，并在模型页配置服务商。选择现有代理，以及已有正式基线的已发布评测集，再指定目标分数、重复次数和轮数上限。工具包负责提出候选、评测、恢复或保留版本；你负责可信用例、模型凭据和实验预算。内置 Harbor 评测还需要 Docker。
 
-![penguin-harness — 主干用户故事](../../../assets/flow/penguin-harness.zh.svg)
+![penguin-harness — 主干用户故事](../../../../assets/flow/penguin-harness.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/penguin-harness.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -127,7 +127,7 @@ health:
 
 ## 技术要点
 
-![PenguinHarness — 机制图](../../../assets/mechanism/penguin-harness.zh.svg)
+![PenguinHarness — 机制图](../../../../assets/mechanism/penguin-harness.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/penguin-harness.json by tools/mechanism_card.py; do not edit) -->
 <details>

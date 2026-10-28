@@ -2,7 +2,7 @@
 name: PenguinHarness
 slug: penguin-harness
 repo: https://github.com/Prism-Shadow/penguin-harness
-category: workflow-builders
+category: harness-evolution
 tags: [agent-evolution, prompt-optimization, benchmarks, snapshots]
 language: TypeScript
 license: Apache-2.0
@@ -83,7 +83,7 @@ health:
 
 Your agent rewrites its instructions, but you cannot tell whether the new version helped. PenguinHarness evaluates versioned harness changes against a frozen benchmark and retains a scored reference.
 
-![PenguinHarness — health radar](../../../assets/health/penguin-harness.svg)
+![PenguinHarness — health radar](../../../../assets/health/penguin-harness.svg)
 
 ## When to use
 
@@ -91,24 +91,24 @@ You maintain an agent that repeatedly fails the same document or coding tasks. Y
 
 ## When NOT to use
 
-- For a Python pipeline compiled from typed inputs and outputs, choose [DSPy](dspy.md). PenguinHarness brings an entire agent runtime and project layout.
-- For one deployable skill document with a separate validation gate, examine [SkillOpt](skillopt.md). The default Penguin toolkit accepts a strictly higher score on its frozen benchmark; that is not evidence of unseen-task improvement.
-- For a CI regression matrix without an autonomous editor, use [promptfoo](../../llm-eval/promptfoo.md). Optimization adds model calls and a mutable target state.
-- For model-weight training, use a training framework such as [Unsloth](../../llm-training/unsloth.md). Here self-improvement changes the harness, not the model weights.
+- For a Python pipeline compiled from typed inputs and outputs, choose [DSPy](../dspy.md). PenguinHarness brings an entire agent runtime and project layout.
+- For one deployable skill document with a separate validation gate, examine [SkillOpt](../skillopt.md). The default Penguin toolkit accepts a strictly higher score on its frozen benchmark; that is not evidence of unseen-task improvement.
+- For a CI regression matrix without an autonomous editor, use [promptfoo](../../../llm-eval/promptfoo.md). Optimization adds model calls and a mutable target state.
+- For model-weight training, use a training framework such as [Unsloth](../../../llm-training/unsloth.md). Here self-improvement changes the harness, not the model weights.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [DSPy](dspy.md) | ✅ | Choose DSPy for Python program optimization; choose PenguinHarness for an interactive agent workspace with versioned evaluations. | A smaller embedded programming model versus an integrated CLI, server and UI. |
-| [SkillOpt](skillopt.md) | ✅ | Choose SkillOpt when a portable skill file and held-out validation decide acceptance. | Narrower optimization artifact; Penguin can revise a broader harness surface. |
-| [promptfoo](../../llm-eval/promptfoo.md) | ✅ | Choose promptfoo when CI must detect regressions rather than propose changes. | Explicit assertions and provider matrices without an autonomous candidate editor. |
+| [DSPy](../dspy.md) | ✅ | Choose DSPy for Python program optimization; choose PenguinHarness for an interactive agent workspace with versioned evaluations. | A smaller embedded programming model versus an integrated CLI, server and UI. |
+| [SkillOpt](../skillopt.md) | ✅ | Choose SkillOpt when a portable skill file and held-out validation decide acceptance. | Narrower optimization artifact; Penguin can revise a broader harness surface. |
+| [promptfoo](../../../llm-eval/promptfoo.md) | ✅ | Choose promptfoo when CI must detect regressions rather than propose changes. | Explicit assertions and provider matrices without an autonomous candidate editor. |
 
 ## Quick start
 
 Install the CLI with `npm install -g @prismshadow/penguin-cli` on Node 24 or newer, then run `penguin web`. Open the local address, set a password and configure a model provider on the Models page. Select an existing agent and a published benchmark with a formal baseline, then request optimization with a target score, run count and round limit. The toolkit proposes, evaluates and restores or retains versions; you supply trustworthy cases, provider credentials and the experiment budget. Built-in Harbor benchmarks additionally require Docker.
 
-![penguin-harness — backbone user story](../../../assets/flow/penguin-harness.svg)
+![penguin-harness — backbone user story](../../../../assets/flow/penguin-harness.svg)
 
 <!-- flow-steps:begin (generated from flows/penguin-harness.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -127,7 +127,7 @@ Install the CLI with `npm install -g @prismshadow/penguin-cli` on Node 24 or new
 
 ## Key techniques
 
-![PenguinHarness — mechanism diagram](../../../assets/mechanism/penguin-harness.svg)
+![PenguinHarness — mechanism diagram](../../../../assets/mechanism/penguin-harness.svg)
 
 <!-- mechanism:begin (generated from mechanisms/penguin-harness.json by tools/mechanism_card.py; do not edit) -->
 <details>

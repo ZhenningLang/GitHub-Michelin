@@ -2,7 +2,7 @@
 name: Harness²
 slug: harness2
 repo: https://github.com/google-research/harness2
-category: workflow-builders
+category: harness-evolution
 tags: [agent, harness-optimization, recursive-improvement, frozen-models, benchmark, opencode, codex]
 language: Python
 license: Apache-2.0 (core) + Custom Tencent (bundled WorkBuddy runner; EU limitation)
@@ -75,7 +75,7 @@ health:
 
 Your agent meets a new task, and yesterday's prompts and tools no longer fit. Harness² reruns that task with edited agent configurations, combines evidence from those trials, and saves lessons for later tasks without changing model weights.
 
-![Harness² — health radar](../../../assets/health/harness2.svg)
+![Harness² — health radar](../../../../assets/health/harness2.svg)
 
 ## When to use
 
@@ -85,25 +85,25 @@ Choose it over SkillOpt when the experiment must adapt a whole agent configurati
 
 ## When NOT to use
 
-- **Every adopted edit must beat the baseline.** Use [SkillOpt](skillopt.md) for validation-gated skill edits, or a [promptfoo](../../llm-eval/promptfoo.md) regression gate around manually reviewed changes. Harness² selects only from composed finals; baseline outputs are excluded. At `k=1`, it adopts the single delivered final without a selector session, not because a score improved. See [selection logic](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/harness2/core/selection.py#L93-L111).
-- **You need a cheap, static instruction file at deployment.** Prefer [SkillOpt](skillopt.md) when you can pay for offline optimization and deploy the resulting document. Each Harness² recursion mode schedules `4k` task executions, including `k` references, plus `3k` improvement stages; selection and reflection can add calls. `k` is not a dollar cap. See [recursion accounting](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/harness2/core/recursion.py#L15-L19).
-- **The agent would share your workstation's secrets or unrestricted internet.** Keep production configuration unchanged and use [promptfoo](../../llm-eval/promptfoo.md) for controlled regression testing instead of running this optimizer on that host. Codex explicitly bypasses approvals and sandboxing; the release does not restrict executor networking. The authors report a validation rollout downloading its public grading rubric. Host isolation and outbound filtering are your work, not features supplied here. See [experiment warning](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/docs/EXPERIMENTS.md#web-access).
-- **You want ordinary application prompt optimization with labeled examples.** Pick [DSPy](dspy.md) to compile a Python pipeline against your metric. Harness² adds benchmark checkouts, CLI executors, repeated task runs, and experience libraries that a small extraction/classification app need not operate.
+- **Every adopted edit must beat the baseline.** Use [SkillOpt](../skillopt.md) for validation-gated skill edits, or a [promptfoo](../../../llm-eval/promptfoo.md) regression gate around manually reviewed changes. Harness² selects only from composed finals; baseline outputs are excluded. At `k=1`, it adopts the single delivered final without a selector session, not because a score improved. See [selection logic](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/harness2/core/selection.py#L93-L111).
+- **You need a cheap, static instruction file at deployment.** Prefer [SkillOpt](../skillopt.md) when you can pay for offline optimization and deploy the resulting document. Each Harness² recursion mode schedules `4k` task executions, including `k` references, plus `3k` improvement stages; selection and reflection can add calls. `k` is not a dollar cap. See [recursion accounting](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/harness2/core/recursion.py#L15-L19).
+- **The agent would share your workstation's secrets or unrestricted internet.** Keep production configuration unchanged and use [promptfoo](../../../llm-eval/promptfoo.md) for controlled regression testing instead of running this optimizer on that host. Codex explicitly bypasses approvals and sandboxing; the release does not restrict executor networking. The authors report a validation rollout downloading its public grading rubric. Host isolation and outbound filtering are your work, not features supplied here. See [experiment warning](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/docs/EXPERIMENTS.md#web-access).
+- **You want ordinary application prompt optimization with labeled examples.** Pick [DSPy](../dspy.md) to compile a Python pipeline against your metric. Harness² adds benchmark checkouts, CLI executors, repeated task runs, and experience libraries that a small extraction/classification app need not operate.
 - **You need to run WorkBuddy in the European Union.** Use the built-in LAB route instead for legal-task experiments, subject to its own data terms. The bundled WorkBuddy runner has a custom Tencent license with an additional territorial limitation: “IS NOT INTENDED FOR USE WITHIN THE EUROPEAN UNION.” The core's Apache license does not remove that condition. See the [bundled license, lines 3–16](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/third_party/wb_runner/LICENSE#L3-L16).
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
-| [SkillOpt](skillopt.md) | ✅ | Pick SkillOpt when a held-out score must gate a deployable skill document; pick Harness² for task-time adaptation across the wider harness without ground-truth feedback. | A static text artifact avoids extra deployment-time search; Harness² can edit more components but pays for probes on each task and lacks that acceptance guarantee. |
-| [DSPy](dspy.md) | ✅ | Pick DSPy when your application is a Python model pipeline with examples and a metric; pick Harness² to study edits to an existing CLI agent's configuration. | DSPy provides program/module optimization; Harness² preserves the model and execution substrate while searching prompts, skills, scripts, and other harness files. |
-| [promptfoo](../../llm-eval/promptfoo.md) | ✅ | Pick promptfoo when the decision is whether a prompt change may ship in CI; pick Harness² when the experiment must generate and probe the changes itself. | Regression assertions provide an external gate, not recursive harness editing; Harness²'s adaptation still needs separate evaluation before production adoption. |
+| [SkillOpt](../skillopt.md) | ✅ | Pick SkillOpt when a held-out score must gate a deployable skill document; pick Harness² for task-time adaptation across the wider harness without ground-truth feedback. | A static text artifact avoids extra deployment-time search; Harness² can edit more components but pays for probes on each task and lacks that acceptance guarantee. |
+| [DSPy](../dspy.md) | ✅ | Pick DSPy when your application is a Python model pipeline with examples and a metric; pick Harness² to study edits to an existing CLI agent's configuration. | DSPy provides program/module optimization; Harness² preserves the model and execution substrate while searching prompts, skills, scripts, and other harness files. |
+| [promptfoo](../../../llm-eval/promptfoo.md) | ✅ | Pick promptfoo when the decision is whether a prompt change may ship in CI; pick Harness² when the experiment must generate and probe the changes itself. | Regression assertions provide an external gate, not recursive harness editing; Harness²'s adaptation still needs separate evaluation before production adoption. |
 
 ## Quick start
 
 Clone the source and follow the [Linux/Python setup guide](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/docs/SETUP.md); install the editable package with `uv pip install -e '.[render]'` in a Python 3.12 environment. Set your Vertex AI project and executor, improver, and judge model IDs, then authenticate with `gcloud auth application-default login`; these are the models that perform tasks, edit configurations, and grade results. The README's `cp .env.example .env` is not usable at the reviewed commit because that file is absent: supply the documented variables in your shell or create `.env` yourself, using the [configuration reader](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/harness2/config.py#L35-L102) as the source of names. Install LAB with `harness2-setup lab`, check it with `harness2-check --bench lab`, then run the one-domain, one-task command below on an isolated host with benchmark-answer access blocked. Harness² produces deliverables, adopted configurations, and reflection notes; run the matching judge and report commands to obtain scores, and pay the model/API and machine costs yourself.
 
-![harness2 — backbone user story](../../../assets/flow/harness2.svg)
+![harness2 — backbone user story](../../../../assets/flow/harness2.svg)
 
 <!-- flow-steps:begin (generated from flows/harness2.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -133,7 +133,7 @@ harness2-report --bench lab --k 1 --mode parallel
 
 ## Key techniques
 
-![Harness² — mechanism diagram](../../../assets/mechanism/harness2.svg)
+![Harness² — mechanism diagram](../../../../assets/mechanism/harness2.svg)
 
 <!-- mechanism:begin (generated from mechanisms/harness2.json by tools/mechanism_card.py; do not edit) -->
 <details>

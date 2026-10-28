@@ -92,7 +92,7 @@ https://github.com/Hopding/pdf-lib,pdf-lib,pdf-generation,categories/pdf-tools/p
 https://github.com/HughYau/qiushi-skill,qiushi-skill,engineering-workflows,categories/agent-skills/personal-collections/engineering-workflows/qiushi-skill.md
 https://github.com/HunxByts/GhostTrack,ghosttrack,osint,categories/osint/ghosttrack.md
 https://github.com/ImageMagick/ImageMagick,imagemagick,image-processing,categories/media-processing/image-processing/imagemagick.md
-https://github.com/Infini-AI-Lab/hermit,hermit,workflow-builders,categories/agent-frameworks/workflow-builders/hermit.md
+https://github.com/Infini-AI-Lab/hermit,hermit,harness-evolution,categories/agent-frameworks/workflow-builders/harness-evolution/hermit.md
 https://github.com/InfinityLoop1308/PipePipe,pipepipe,streaming-clients,categories/streaming-clients/pipepipe.md
 https://github.com/InternLM/lmdeploy,lmdeploy,serving-engines,categories/llm-inference/serving-engines/lmdeploy.md
 https://github.com/ItzCrazyKns/Vane,vane,deep-research,categories/deep-research/vane.md
@@ -171,7 +171,7 @@ https://github.com/PleasePrompto/notebooklm-skill,notebooklm-skill,context-engin
 https://github.com/PowerJob/PowerJob,powerjob,task-queue,categories/task-queue/powerjob.md
 https://github.com/PrefectHQ/prefect,prefect,workflow-orchestration,categories/workflow-orchestration/prefect.md
 https://github.com/PrimeIntellect-ai/prime-agent,prime-agent,independent-runtimes,categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/prime-agent.md
-https://github.com/Prism-Shadow/penguin-harness,penguin-harness,workflow-builders,categories/agent-frameworks/workflow-builders/penguin-harness.md
+https://github.com/Prism-Shadow/penguin-harness,penguin-harness,harness-evolution,categories/agent-frameworks/workflow-builders/harness-evolution/penguin-harness.md
 https://github.com/PyAV-Org/PyAV,pyav,transcoding-and-pipelines,categories/media-processing/video-audio/transcoding-and-pipelines/pyav.md
 https://github.com/RVC-Boss/GPT-SoVITS,gpt-sovits,speech,categories/speech/gpt-sovits.md
 https://github.com/RameshAditya/asciify,asciify,terminal-ui,categories/terminal-ui/asciify.md
@@ -509,7 +509,7 @@ https://github.com/google-ai-edge/gallery,ai-edge-gallery,on-device-ml,categorie
 https://github.com/google-gemini/gemini-api-cli,gemini-api-cli,harness-extensions,categories/agent-tooling/harness-extensions/gemini-api-cli.md
 https://github.com/google-gemini/gemini-cli,gemini-cli,vendor-agents,categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/gemini-cli.md
 https://github.com/google-labs-code/stitch-skills,stitch-skills,design-to-code,categories/agent-skills/design/design-to-code/stitch-skills.md
-https://github.com/google-research/harness2,harness2,workflow-builders,categories/agent-frameworks/workflow-builders/harness2.md
+https://github.com/google-research/harness2,harness2,harness-evolution,categories/agent-frameworks/workflow-builders/harness-evolution/harness2.md
 https://github.com/google-research/rrsi,rrsi,research-automation,categories/ml-research/research-automation/rrsi.md
 https://github.com/google-research/timesfm,timesfm,on-device-ml,categories/on-device-ml/timesfm.md
 https://github.com/google/agentmesh,agentmesh,networking,categories/networking/agentmesh.md
@@ -832,7 +832,7 @@ https://github.com/rohit267/net-merge,net-merge,networking,categories/networking
 https://github.com/rorkai/App-Store-Connect-CLI,app-store-connect-cli,dev-utilities,categories/dev-utilities/app-store-connect-cli.md
 https://github.com/router-for-me/CLIProxyAPI,cliproxyapi,client-routing,categories/api-gateway/client-routing/cliproxyapi.md
 https://github.com/rq/rq,rq,task-queue,categories/task-queue/rq.md
-https://github.com/rsi-gear/gear,gear,workflow-builders,categories/agent-frameworks/workflow-builders/gear.md
+https://github.com/rsi-gear/gear,gear,harness-evolution,categories/agent-frameworks/workflow-builders/harness-evolution/gear.md
 https://github.com/rthalley/dnspython,dnspython,networking,categories/networking/dnspython.md
 https://github.com/rtk-ai/rtk,rtk,work-state,categories/agent-tooling/work-state/rtk.md
 https://github.com/ruilisi/fortune-sheet,fortune-sheets,office-editors,categories/office-editors/fortune-sheets.md

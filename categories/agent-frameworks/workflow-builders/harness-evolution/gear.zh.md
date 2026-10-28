@@ -2,7 +2,7 @@
 name: Gear
 slug: gear
 repo: https://github.com/rsi-gear/gear
-category: workflow-builders
+category: harness-evolution
 tags: [harness-optimization, evaluation, recursive-improvement, holdout, candidate-search]
 language: TypeScript
 license: MIT
@@ -68,7 +68,7 @@ health:
 
 你改了代理的工具和指令，却说不清哪次改动真正涨分。Gear 固定候选版本做评测，只在配置的证据门槛通过后保留胜者。
 
-![Gear 健康度雷达](../../../assets/health/gear.zh.svg)
+![Gear 健康度雷达](../../../../assets/health/gear.zh.svg)
 
 ## 何时使用
 
@@ -78,8 +78,8 @@ health:
 
 ## 何时不用
 
-- **只需发布前回归检查。** 用 [promptfoo](../../llm-eval/promptfoo.zh.md) 检查人工评审的改动。Gear 多了自动编辑、重复任务执行与模型费用，不只是持续集成断言。
-- **只做小型 Python 抽取流水线。** 选 [DSPy](dspy.zh.md)。Gear 分离提案与执行配置，还要管理候选资源与评测运行时，负担更重。
+- **只需发布前回归检查。** 用 [promptfoo](../../../llm-eval/promptfoo.zh.md) 检查人工评审的改动。Gear 多了自动编辑、重复任务执行与模型费用，不只是持续集成断言。
+- **只做小型 Python 抽取流水线。** 选 [DSPy](../dspy.zh.md)。Gear 分离提案与执行配置，还要管理候选资源与评测运行时，负担更重。
 - **想用统一宿主导出接口比较多种适配层学习方法。** 考虑 [Hermit](hermit.zh.md)。Gear 当前的原生目标资源契约面向 DSH 和 Pi；安装宿主技能不等于原生目标适配。
 - **指望模型训练与任务生成已全自动完成。** 模型程序优化先用 DSPy 已支持的路径。Gear 自述模型训练仍属实验，联合闭环与自动生成练习任务尚未完成。
 - **无法隔离可执行工具与宿主秘密。** 保持生产文件人工评审，用受控的 promptfoo 用例集。Gear 在外层沙箱内绕过 Codex 自身审批与沙箱，任务代理依赖 Harbor 容器；不要把这些执行参数搬到普通工作站。
@@ -88,15 +88,15 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [DSPy](dspy.zh.md) | ✅ | 优化带类型的 Python 模型流水线选 DSPy；演化固定版本的工具与指令资源包选 Gear。 | DSPy 接管程序和提示词抽象；Gear 增加目标适配器、执行身份与持久化候选证据生命周期。 |
+| [DSPy](../dspy.zh.md) | ✅ | 优化带类型的 Python 模型流水线选 DSPy；演化固定版本的工具与指令资源包选 Gear。 | DSPy 接管程序和提示词抽象；Gear 增加目标适配器、执行身份与持久化候选证据生命周期。 |
 | [Hermit](hermit.zh.md) | ✅ | 比较外部适配层学习器并导出宿主文件选 Hermit；要运行时强制冻结预算与最终证据闸门选 Gear。 | Hermit 的结构检查不统一保证涨分；Gear 要求可比的训练侧增益，并在留出模式下做独立终验。 |
-| [promptfoo](../../llm-eval/promptfoo.zh.md) | ✅ | 人来改、持续集成判断退化时选 promptfoo；实验本身需要提出候选时选 Gear。 | 回归矩阵更轻；搜索增加评测费用、可改范围管理与恢复状态。 |
+| [promptfoo](../../../llm-eval/promptfoo.zh.md) | ✅ | 人来改、持续集成判断退化时选 promptfoo；实验本身需要提出候选时选 Gear。 | 回归矩阵更轻；搜索增加评测费用、可改范围管理与恢复状态。 |
 
 ## 快速上手
 
 [上手文档](https://github.com/rsi-gear/gear/blob/8fc520549a7a26af1122fac27ca6d9e20b75ab20/docs/guide/en/quickstart.md#L3-L69)要求兼容的 Node、Python 与平台隔离工具；README 的 DSH 示例使用 `npm install --global rsi-gear@latest agent-hitch@latest @deepseek-ai/dsh@latest`。准备 Hitch 和 Docker，执行 `gear setup --python python3.12`，再用下图命令创建评测项目。替换示例任务与评分规则，分别创建任务执行端和改动提案端配置，只传凭据引用，不传秘密值。先做单任务试跑，再预览 `gear refine --rounds 1 --dry-run`，最后启动一轮真实优化。Gear 负责评测、记录候选和执行配置的晋升闸门；你负责代表性任务划分、评分正确性、模型访问、隔离与推理费用。本次只核实命令出处，没有执行上游。
 
-![gear 主干用户故事](../../../assets/flow/gear.zh.svg)
+![gear 主干用户故事](../../../../assets/flow/gear.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/gear.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -115,7 +115,7 @@ health:
 
 ## 技术要点
 
-![Gear — 机制图](../../../assets/mechanism/gear.zh.svg)
+![Gear — 机制图](../../../../assets/mechanism/gear.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/gear.json by tools/mechanism_card.py; do not edit) -->
 <details>

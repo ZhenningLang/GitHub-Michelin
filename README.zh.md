@@ -241,14 +241,14 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
-| **PenguinHarness** | 固定模型和评测集，给运行框架改动分版本、评分；涨分仍需新任务验证。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/workflow-builders/penguin-harness.zh.md) · [EN](categories/agent-frameworks/workflow-builders/penguin-harness.md) |
-| **Hermit** | 跨演化方法训练并保存外部 agent 适配文件版本；不改权重，也不自动保证涨分。 | Apache-2.0 | C（6/6） | [中](categories/agent-frameworks/workflow-builders/hermit.zh.md) · [EN](categories/agent-frameworks/workflow-builders/hermit.md) |
-| **Gear** | 固定资源版本做演化，持久化评测并按配置验收；研究模式不含独立验证。 | MIT | B（4/6） | [中](categories/agent-frameworks/workflow-builders/gear.zh.md) · [EN](categories/agent-frameworks/workflow-builders/gear.md) |
+| **PenguinHarness** | 固定模型和评测集，给运行框架改动分版本、评分；涨分仍需新任务验证。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/workflow-builders/harness-evolution/penguin-harness.zh.md) · [EN](categories/agent-frameworks/workflow-builders/harness-evolution/penguin-harness.md) |
+| **Hermit** | 跨演化方法训练并保存外部 agent 适配文件版本；不改权重，也不自动保证涨分。 | Apache-2.0 | C（6/6） | [中](categories/agent-frameworks/workflow-builders/harness-evolution/hermit.zh.md) · [EN](categories/agent-frameworks/workflow-builders/harness-evolution/hermit.md) |
+| **Gear** | 固定资源版本做演化，持久化评测并按配置验收；研究模式不含独立验证。 | MIT | B（4/6） | [中](categories/agent-frameworks/workflow-builders/harness-evolution/gear.zh.md) · [EN](categories/agent-frameworks/workflow-builders/harness-evolution/gear.md) |
 | **JiuwenSwarm** | 带聊天渠道与审批的团队工作台；分布式模式需要额外基础设施。 | Apache-2.0 | B（5/6） | [中](categories/agent-frameworks/agent-runtimes/agent-services/jiuwenswarm.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-services/jiuwenswarm.md) |
 | **Atomic Agent** | 压缩工具提示词驱动本地工作站；仍是预览版本，分析外发默认开启。 | MIT | B（6/6） | [中](categories/agent-frameworks/agent-runtimes/personal-assistants/atomic-agent.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/personal-assistants/atomic-agent.md) |
 | **Docker Agent** | 你要的 agent 应该是一个可分享的 YAML（模型、工具、队友），由 `docker agent run` 在本地像跑镜像一样执行时选它；循环必须嵌在你代码里时不选。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/agent-runtimes/docker-agent.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/docker-agent.md) |
 | **DSPy** | 你有评测数据和指标、想让优化器编译提示词而非手工调时。 | MIT | A（6/6） | [中](categories/agent-frameworks/workflow-builders/dspy.zh.md) · [EN](categories/agent-frameworks/workflow-builders/dspy.md) |
-| **Harness²** | 每个新任务都能无标准答案地调整整套 agent 配置；代价是重复试跑与自行隔离执行环境。 | 核心 Apache-2.0；自带 WorkBuddy 运行器为腾讯自定义许可（欧盟限制） | C（5/6） | [中](categories/agent-frameworks/workflow-builders/harness2.zh.md) · [EN](categories/agent-frameworks/workflow-builders/harness2.md) |
+| **Harness²** | 每个新任务都能无标准答案地调整整套 agent 配置；代价是重复试跑与自行隔离执行环境。 | 核心 Apache-2.0；自带 WorkBuddy 运行器为腾讯自定义许可（欧盟限制） | C（5/6） | [中](categories/agent-frameworks/workflow-builders/harness-evolution/harness2.zh.md) · [EN](categories/agent-frameworks/workflow-builders/harness-evolution/harness2.md) |
 | **AgentScope** | 要把多智能体 LLM 应用作为生产服务交付，需要沙箱工具、权限闸门、tracing 和人工介入时。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/agent-runtimes/agent-sdks/agentscope.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-sdks/agentscope.md) |
 | **OpenFang** | 想用单个自托管 Rust 二进制、让自治智能体按计划 7×24 无人值守干活时。 | Apache-2.0 OR MIT | C（5/6） | [中](categories/agent-frameworks/agent-runtimes/agent-services/openfang.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-services/openfang.md) |
 | **Symphony** | 你的 Linear 待办和 Codex agent 需要一个自托管编排器、按 issue 跑隔离自治实现运行时。 | Apache-2.0 | C（5/6） | [中](categories/agent-frameworks/agent-runtimes/agent-services/symphony.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-services/symphony.md) |

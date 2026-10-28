@@ -2,7 +2,7 @@
 name: Gear
 slug: gear
 repo: https://github.com/rsi-gear/gear
-category: workflow-builders
+category: harness-evolution
 tags: [harness-optimization, evaluation, recursive-improvement, holdout, candidate-search]
 language: TypeScript
 license: MIT
@@ -68,7 +68,7 @@ health:
 
 You change an agent's tools and instructions, but cannot tell which edit earned a better score. Gear evaluates sealed candidate versions and keeps a winner only after the configured evidence gate.
 
-![Gear health radar](../../../assets/health/gear.svg)
+![Gear health radar](../../../../assets/health/gear.svg)
 
 ## When to use
 
@@ -78,8 +78,8 @@ Choose it over DSPy when the editable object is an existing agent's resource bun
 
 ## When NOT to use
 
-- **You only need a release regression check.** Use [promptfoo](../../llm-eval/promptfoo.md) with reviewed changes. Gear adds an autonomous editor, repeated task execution and model spending, not just assertions in CI.
-- **You want a small typed Python extraction pipeline.** Use [DSPy](dspy.md). Gear's separate Meta and Target profiles, candidate resources and evaluation runtime are extra machinery for that problem.
+- **You only need a release regression check.** Use [promptfoo](../../../llm-eval/promptfoo.md) with reviewed changes. Gear adds an autonomous editor, repeated task execution and model spending, not just assertions in CI.
+- **You want a small typed Python extraction pipeline.** Use [DSPy](../dspy.md). Gear's separate Meta and Target profiles, candidate resources and evaluation runtime are extra machinery for that problem.
 - **You want to compare many adapter-learning methods under one host-export interface.** Consider [Hermit](hermit.md). Gear's current native target resource contracts are DSH and Pi; host skill installation is a different surface from native target adaptation.
 - **You expect automatic model training or task invention to be finished.** Start with DSPy's supported optimization path for a model program. Gear's README explicitly calls model training experimental and the full joint loop and automatic seed-task generation unfinished.
 - **You cannot isolate executable candidate tools from host secrets.** Keep production files manually reviewed and run a controlled promptfoo suite. Gear's Codex worker bypasses Codex's own approval/sandbox layer inside an outer sandbox; task agents rely on the Harbor container. Do not transplant those execution flags to an ordinary workstation.
@@ -88,15 +88,15 @@ Choose it over DSPy when the editable object is an existing agent's resource bun
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [DSPy](dspy.md) | ✅ | Pick DSPy for a typed Python model pipeline; pick Gear to evolve a sealed bundle of agent tools and instructions. | DSPy owns program and prompt abstractions; Gear adds target adapters, execution identities and a durable candidate/evidence lifecycle. |
+| [DSPy](../dspy.md) | ✅ | Pick DSPy for a typed Python model pipeline; pick Gear to evolve a sealed bundle of agent tools and instructions. | DSPy owns program and prompt abstractions; Gear adds target adapters, execution identities and a durable candidate/evidence lifecycle. |
 | [Hermit](hermit.md) | ✅ | Pick Hermit to compare multiple external adapter learners and export host files; pick Gear when the runtime must enforce frozen budgets and a final evidence gate. | Hermit's structure checks are not a universal score gate; Gear requires comparable seed gains and, in holdout mode, independent final checks. |
-| [promptfoo](../../llm-eval/promptfoo.md) | ✅ | Pick promptfoo when a human supplies changes and CI decides whether they regress; pick Gear when the experiment itself must propose candidates. | A regression matrix is simpler to operate; search adds evaluation cost, mutation boundaries and recovery state. |
+| [promptfoo](../../../llm-eval/promptfoo.md) | ✅ | Pick promptfoo when a human supplies changes and CI decides whether they regress; pick Gear when the experiment itself must propose candidates. | A regression matrix is simpler to operate; search adds evaluation cost, mutation boundaries and recovery state. |
 
 ## Quick start
 
 The [quick start](https://github.com/rsi-gear/gear/blob/8fc520549a7a26af1122fac27ca6d9e20b75ab20/docs/guide/en/quickstart.md#L3-L69) requires compatible Node, Python and platform isolation tools; the README offers `npm install --global rsi-gear@latest agent-hitch@latest @deepseek-ai/dsh@latest` for its DSH example. Prepare Hitch and Docker, run `gear setup --python python3.12`, and initialize the benchmark with the command below. Replace demonstration tasks and scoring rules, create separate Target and Meta profiles, and pass credential references rather than secret values. Run a seed smoke evaluation, preview `gear refine --rounds 1 --dry-run`, then start one real round. Gear evaluates and records candidates and applies the configured promotion gate; you own representative task splits, correct scoring, provider access, isolation and all inference charges. These commands were verified in source, not executed during intake.
 
-![gear backbone user story](../../../assets/flow/gear.svg)
+![gear backbone user story](../../../../assets/flow/gear.svg)
 
 <!-- flow-steps:begin (generated from flows/gear.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -115,7 +115,7 @@ The [quick start](https://github.com/rsi-gear/gear/blob/8fc520549a7a26af1122fac2
 
 ## Key techniques
 
-![Gear — mechanism diagram](../../../assets/mechanism/gear.svg)
+![Gear — mechanism diagram](../../../../assets/mechanism/gear.svg)
 
 <!-- mechanism:begin (generated from mechanisms/gear.json by tools/mechanism_card.py; do not edit) -->
 <details>

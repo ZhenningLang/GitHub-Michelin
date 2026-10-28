@@ -55,7 +55,7 @@
 | 高 | 配置差异、执行分歧、交付物与决策组成同一证据包 | `agent-harness-improvement` 的暂存与验证产物 | finals-only 选择和单 final 直收，不当成生产晋升门 |
 | 中 | 保留“无效果／有害／混杂”的逐改动归因 | `assist-learn`、记忆候选说明 | 模型置信度或非空 evidence 不替代独立验收 |
 
-页面：[Harness²](../../../categories/agent-frameworks/workflow-builders/harness2.zh.md)。完整补充与固定源码行链：[harness2-assessment.md](../harness2-assessment.md)。已有页面按 fresh 不改日期；补充研究单独列出，未伪称重写选型页。
+页面：[Harness²](../../../categories/agent-frameworks/workflow-builders/harness-evolution/harness2.zh.md)。完整补充与固定源码行链：[harness2-assessment.md](../harness2-assessment.md)。已有页面按 fresh 不改日期；补充研究单独列出，未伪称重写选型页。
 
 ### 原有优先项继续保留
 
