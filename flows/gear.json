@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "Gear", "zh": "Gear"},
+  "steps": [
+    {"lane": "you", "en": "Prepare runtime, model profiles and isolation tools", "zh": "准备运行环境、模型配置与隔离工具"},
+    {"lane": "you", "en": "Create a benchmark and replace demonstration tasks and scoring", "zh": "创建评测项目，替换示例任务与评分", "code": "gear init my-benchmark --target dsh"},
+    {"lane": "you", "en": "Check a seed trial and start one optimization round", "zh": "检查单任务试跑，再启动一轮优化", "code": "gear refine --rounds 1"},
+    {"lane": "them", "en": "Propose candidate resource edits and evaluate sealed versions", "zh": "提出资源改动，评测固定候选版本"},
+    {"lane": "them", "en": "Apply the configured acceptance gate and retain an accepted champion", "zh": "执行配置的验收闸门，保留获准版本"}
+  ],
+  "value": {"en": "An edit is tied to comparable task evidence, not a remembered impression", "zh": "用可比任务证据判断改动，不靠记忆中的印象"},
+  "sources": ["https://github.com/rsi-gear/gear/blob/8fc520549a7a26af1122fac27ca6d9e20b75ab20/docs/guide/en/quickstart.md#L23-L69", "https://github.com/rsi-gear/gear/blob/8fc520549a7a26af1122fac27ca6d9e20b75ab20/src/runtime/runner.ts#L565-L619"]
+}

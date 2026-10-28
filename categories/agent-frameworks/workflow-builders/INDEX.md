@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Gear** | Evolve sealed agent resources with durable evaluations and a configured acceptance gate; research mode is not independent validation. | B (4/6) | [→](gear.md) |
 | **PenguinHarness** | Version and evaluate harness changes with a fixed model and benchmark; training-score gains still need unseen-task checks. | B (6/6) | [→](penguin-harness.md) |
 | **Hermit** | Compare evolution methods over external agent adapters; version feedback and state without changing model weights, but validate improvement separately. | C (6/6) | [→](hermit.md) |
 | **DSPy** | You have eval data and a metric and want optimizers to compile prompts instead of hand-tuning them. | A (6/6) | [→](dspy.md) |
@@ -25,6 +26,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Gear](gear.md) | ✅ | B (4/6) | Runtime-enforced candidate evidence and budgets; requires native target adapters, credible scorers and isolated execution. |
 | [PenguinHarness](penguin-harness.md) | ✅ | B (6/6) | Version and evaluate harness changes with a fixed model and benchmark; training-score gains still need unseen-task checks. |
 | [Hermit](hermit.md) | ✅ | C (6/6) | Common adapter-training lifecycle and host export; structure checks are not performance gates, and sandbox support is platform-dependent. |
 | [DSPy](dspy.md) | ✅ | A (6/6) | You have eval data and a metric and want optimizers to compile prompts instead of hand-tuning them. |
