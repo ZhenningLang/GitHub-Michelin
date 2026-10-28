@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Open Steps guides the agent", "zh": "Open Steps 指导助手"},
+  "steps": [
+    {"lane": "you", "en": "Install the Claude Code plugin and add its routing block", "zh": "安装 Claude Code 插件并加入路由块", "code": "claude plugin install open-steps@open-steps"},
+    {"lane": "them", "en": "Inject routing and the last report; record the session baseline", "zh": "注入路由与旧报告，记录会话基线", "component": {"en": "session-start.sh", "zh": "session-start.sh"}},
+    {"lane": "you", "en": "Give the agent a task that changes the repository", "zh": "给助手一项会修改仓库的任务"},
+    {"lane": "them", "en": "When changes meet the threshold, request a completion report", "zh": "变化达到门槛时，请求完成报告", "component": {"en": "stop-report.sh", "zh": "stop-report.sh"}},
+    {"lane": "them", "en": "Guide the agent to save a plain verdict and technical handover", "zh": "指导助手保存直白裁决与技术交接", "component": {"en": "os-done-or-not", "zh": "os-done-or-not"}}
+  ],
+  "value": {"en": "You get the outcome, bad news and remaining action without decoding a technical log", "zh": "不用翻译技术日志，就能看清结果、坏消息与剩余动作"},
+  "sources": [
+    "https://github.com/kharmanskyi/open-steps/blob/4fa744ba8ea06ccf128a39853824c46ac391dd00/README.md#L175-L207",
+    "https://github.com/kharmanskyi/open-steps/blob/4fa744ba8ea06ccf128a39853824c46ac391dd00/hooks/session-start.sh#L24-L68",
+    "https://github.com/kharmanskyi/open-steps/blob/4fa744ba8ea06ccf128a39853824c46ac391dd00/hooks/stop-report.sh#L22-L64",
+    "https://github.com/kharmanskyi/open-steps/blob/4fa744ba8ea06ccf128a39853824c46ac391dd00/skills/os-done-or-not/SKILL.md#L44-L115"
+  ]
+}

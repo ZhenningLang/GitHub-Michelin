@@ -3,10 +3,15 @@
 > 分类节点。面向 agent 的浏览器 / computer-use 接口——MCP server、CLI+SKILLs、页内 agent，以及已登录会话桥接。
 > ← 返回[web-automation](../INDEX.zh.md) · root: [分类路由](../../../INDEX.zh.md) · English: [INDEX.md](INDEX.md)
 
+## 子分类
+
+- [stealth-session-tools](stealth-session-tools/INDEX.zh.md)：浏览器指纹或机器人检测拦住 agent 会话时进入；通用控制、检查和已有登录态桥接仍在下方。
+
 ## 本分类项目
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **BrowserOS** | 给已有助手提供独立的已登录 Chromium、任务页签与本地回放；需区分 neo 和内置助手版浏览器。 | B（6/6） | [→](browseros.zh.md) |
 | **Agent Browser** | 当 agent 需要靠 shell 命令通过 CDP 驱动真实 Chrome、用稳定元素引用而非 CSS 选择器操作网页时使用。 | B（5/6） | [→](agent-browser.zh.md) |
 | **Browser Harness** | 当 coding agent 必须经 CDP 驱动你已经登录的 Chrome、并把缺的帮手写进本地 workspace 时用它——仍是 Alpha、遥测默认开、没有内层 agent 循环。 | A（6/6） | [→](browser-harness.zh.md) |
 | **browser-use** | 当你要在自己的 Python 代码里操作管不了的网站，想把一句话任务交给大模型 agent、而不是给每个站写死选择器时用它——但每一步都是按 token 计费、路径不确定的模型往返；稳定的高频流程还是写 Playwright 脚本。 | A（6/6） | [→](browser-use.zh.md) |
@@ -16,14 +21,12 @@
 | **page-agent** | 想在页内用自然语言、通过直接读写 DOM 控制 Web 界面、且无需后端时用它。 | B（6/6） | [→](page-agent.zh.md) |
 | **Jev Ultrafast** | 当每步延迟是硬约束、且能接受托管判定 API 时用它——一次请求同时给出每一步的操作与目标元素。 | C（6/6） | [→](jev-ultrafast.zh.md) |
 | **PinchTab** | 当 agent 需要一个常驻本地的浏览器服务、经 CLI/HTTP/MCP 编排多个相互隔离的 Chrome 实例与配置档、且要默认全关的能力闸门加提示注入扫描时用它——pre-1.0，实际单维护者。 | B（6/6） | [→](pinchtab.zh.md) |
-| **invisible_playwright_mcp** | 当 MCP 助手总被验证码和机器人墙拦住时用它——它驱动一个 C++ 层打过补丁、指纹由种子推导的隐身 Firefox；只支持 Windows/Linux，单人维护，星数继承自改名前的投简历机器人仓库。 | B（5/6） | [→](invisible-playwright-mcp.zh.md) |
-| **playwright-bot-bypass** | 当编码 agent 写的脚本在你自己的桌面机上被判成机器人时用它——一个 skill 加一个工厂函数，经 rebrowser-playwright 驱动你带窗口的真 Chrome；必须有显示器，对 IP、行为和验证码类拦截无效，核心依赖自 2025-05 起未发版。 | C（5/6） | [→](playwright-bot-bypass.zh.md) |
-| **camofox-browser** | 当一个多用户、常驻的 agent 总被弹验证码时用它——在 Camoufox 反检测 Firefox 之上的常驻 REST/MCP/OpenClaw 服务，带按用户隔离的会话和按编号操作的快照；路由默认敞开、遥测默认开启，提交集中在一人，项目才八个月。 | B（6/6） | [→](camofox-browser.zh.md) |
 
 ## 对比矩阵
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [BrowserOS](browseros.zh.md) | 已收录 | B（6/6） | Neo 向已有助手提供账号浏览器工具与本地回放；代价是维护整个浏览器和敏感配置档，不是隔离测试上下文。 |
 | [Agent Browser](agent-browser.zh.md) | ✅ | B（5/6） | 当 agent 需要靠 shell 命令通过 CDP 驱动真实 Chrome、用稳定元素引用而非 CSS 选择器操作网页时使用。 |
 | [Browser Harness](browser-harness.zh.md) | ✅ | A（6/6） | coding agent 经 CDP 附着你正在用的 Chrome，缺帮手就写进本地；没有内层 LLM 循环，遥测关掉之前一直开，仍是 0.1.x Alpha。 |
 | [browser-use](browser-use.zh.md) | ✅ | A（6/6） | 网站改版不用改选择器，代价是按 token 付费、更慢且不确定的执行、年轻的 0.x API，隐身和验证码处理还留在付费云上。 |
@@ -33,10 +36,7 @@
 | [page-agent](page-agent.zh.md) | ✅ | B（6/6） | 想在页内用自然语言、通过直接读写 DOM 控制 Web 界面、且无需后端时用它。 |
 | [Jev Ultrafast](jev-ultrafast.zh.md) | ✅ | C（6/6） | 当每步延迟是硬约束、且能接受托管判定 API 时用它——一次请求同时给出每一步的操作与目标元素。 |
 | [PinchTab](pinchtab.zh.md) | ✅ | B（6/6） | 一个常驻 Go 服务让 agent 经 CLI/HTTP/MCP 管多个隔离 Chrome 实例与具名配置档，动作和快照折进一次往返，外加默认全关的能力闸门与 IDPI 内容扫描；年轻、pre-1.0、实际单维护者。 |
-| [invisible_playwright_mcp](invisible-playwright-mcp.zh.md) | ✅ | B（5/6） | 当 MCP 助手总被验证码和机器人墙拦住时用它——它驱动一个 C++ 层打过补丁、指纹由种子推导的隐身 Firefox；只支持 Windows/Linux，单人维护，星数继承自改名前的投简历机器人仓库。 |
-| [playwright-bot-bypass](playwright-bot-bypass.zh.md) | ✅ | C（5/6） | 一个 agent skill 加约 180 行的工厂函数，架在带窗口的真 Chrome 和 rebrowser-playwright 上：指纹破绽不是伪造掉而是不存在，macOS 也能用；只适合桌面机，数据为作者自测，单人维护，核心依赖停滞。 |
-| [camofox-browser](camofox-browser.zh.md) | ✅ | B（6/6） | 一个共享的 Node 服务，把 Camoufox 反检测 Firefox 放到 REST、OpenClaw 和 MCP 工具后面，带按用户隔离的会话、cookie 导入和代理轮换；反检测能力全部继承自上游 Camoufox，不配置的话路由无鉴权、遥测开启，内存泄漏报告反复出现。 |
 
 ## 什么该放这里
 
-为 agent 回路而非固定测试代码而建的接口：协议 server 与 CLI、视觉/自然语言 agent，以及桥进真实登录态浏览器的方案。
+为 agent 回路而非固定测试代码而建的接口：协议 server 与 CLI、视觉/自然语言 agent，以及桥进真实登录态浏览器的方案。通用控制与检查项目留在本节点；只有规避浏览器检测是决定性能力、而非可选附加功能时，才进入 [stealth-session-tools](stealth-session-tools/INDEX.zh.md)。代码优先的浏览器引擎仍在 [browser-driver-frameworks](../browser-driver-frameworks/INDEX.zh.md)。

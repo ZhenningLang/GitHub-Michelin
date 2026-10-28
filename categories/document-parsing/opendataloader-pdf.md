@@ -93,7 +93,7 @@ You build a PDF ingestion job and need both readable text and page coordinates f
 
 - **Your corpus is mostly Office, HTML or email.** Choose [MarkItDown](markitdown.md) for lightweight conversion or [Docling](docling.md) for richer multi-format structures; this project accepts PDFs, not a general Office corpus.
 - **You cannot ship Java.** Choose [Docling](docling.md) or another Python-native pipeline. The Python package is a wrapper around the Java CLI, not a JVM-free implementation.
-- **Scans need OCR but you want only the base package.** Use [Marker](marker.md), after reviewing its weight terms, or enable this project's hybrid extra/server. The fast Java path is not the advertised model-backed OCR path.
+- **Scans need OCR but you want only the base package.** Use [Marker](model-backed-pdf/marker.md), after reviewing its weight terms, or enable this project's hybrid extra/server. The fast Java path is not the advertised model-backed OCR path.
 - **Free auto-tagging must equal certified PDF/UA export.** Do not equate them. Use a separately validated remediation workflow or budget the project's enterprise add-on; PDF/UA export and the accessibility studio are outside the free core.
 - **You expect parsing to make PDF instructions trustworthy.** Keep a sandbox and instruction/data separation around any parser, including [Docling](docling.md). Hidden-text filtering cannot rule out visible malicious instructions.
 
@@ -103,7 +103,7 @@ You build a PDF ingestion job and need both readable text and page coordinates f
 |---|---|---|---|
 | [Docling](docling.md) | ✅ | Pick Docling directly for a unified multi-format model pipeline; pick OpenDataLoader for a Java PDF baseline, coordinate exports and Tagged PDF output. | OpenDataLoader's hybrid mode itself uses Docling, so these are partly composable rather than competing independent models. |
 | [MarkItDown](markitdown.md) | ✅ | Pick MarkItDown for light mixed-format Markdown conversion; pick OpenDataLoader when PDF geometry and reading order are selection requirements. | No mandatory JVM versus PDF-specific structure and a heavier runtime. |
-| [Marker](marker.md) | ✅ | Pick Marker for an existing PDF/OCR workflow with its model stack; pick OpenDataLoader for a Java fast path and a separately enabled Docling backend. | Both need corpus tests; compare deployment and model-weight terms rather than vendor headline rankings. |
+| [Marker](model-backed-pdf/marker.md) | ✅ | Pick Marker for an existing PDF/OCR workflow with its model stack; pick OpenDataLoader for a Java fast path and a separately enabled Docling backend. | Both need corpus tests; compare deployment and model-weight terms rather than vendor headline rankings. |
 
 ## Quick start
 

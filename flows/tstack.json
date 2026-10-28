@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "tstack-guided agent does", "zh": "按 tstack 行事的助手做的"},
+  "steps": [
+    {"lane": "you", "en": "Copy the skill pack into your configured agent and supply GitHub and model access", "zh": "把技能装入已有助手，提供 GitHub 与模型接入", "code": "cp -R tstack/skills/* ~/.claude/skills/"},
+    {"lane": "you", "en": "Give the change goal and request a PR handoff without merging", "zh": "说明改动目标，要求就绪交接但不合并", "code": "full stop"},
+    {"lane": "them", "en": "Implements and proves the change, then resolves the Sol review findings", "zh": "实现并验证改动，再处理 Sol 评审意见"},
+    {"lane": "them", "en": "Files the PR and follows checks, review bots and branch freshness", "zh": "创建 PR，跟进检查、评审机器人与分支更新"},
+    {"lane": "them", "en": "Leaves the ready PR open and reports evidence and remaining risks", "zh": "保留就绪 PR，交付证据与剩余风险"}
+  ],
+  "value": {"en": "A reviewed PR handoff, rather than a PR link that leaves you to chase the remaining work", "zh": "拿到经过评审的 PR 交接，而非仍需你追完后续工作的链接"},
+  "sources": [
+    "https://github.com/t3dotgg/tstack/blob/92e38e2cf677a84a142e8df296861c588542135c/README.md#L10-L18",
+    "https://github.com/t3dotgg/tstack/blob/92e38e2cf677a84a142e8df296861c588542135c/README.md#L29-L43",
+    "https://github.com/t3dotgg/tstack/blob/92e38e2cf677a84a142e8df296861c588542135c/skills/full-stop/SKILL.md#L8-L47",
+    "https://github.com/t3dotgg/tstack/blob/92e38e2cf677a84a142e8df296861c588542135c/skills/full-send/SKILL.md#L43-L77"
+  ]
+}

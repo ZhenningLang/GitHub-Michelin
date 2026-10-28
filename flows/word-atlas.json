@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Word Atlas", "zh": "词光"},
+  "steps": [
+    {"lane": "you", "en": "Prepare Node 20+, clone and start the app", "zh": "准备 Node 20+，克隆并启动应用", "code": "npm run dev"},
+    {"lane": "you", "en": "Set a starting level and daily new-word target", "zh": "设置起点难度和每日新词数"},
+    {"lane": "them", "en": "Present due reviews, then illustrated new words and recall questions", "zh": "先复习到期词，再展示新词插画和回忆题"},
+    {"lane": "you", "en": "Answer by meaning, listening or spelling", "zh": "通过选义、听音或拼写作答"},
+    {"lane": "them", "en": "Use the first answer to schedule reviews and save progress locally", "zh": "用首次作答安排复习，将进度保存在本机"}
+  ],
+  "value": {"en": "Study an assembled illustrated corpus without building decks or running a model", "zh": "直接学习现成插画词库，无需自建牌组或运行模型"},
+  "sources": [
+    "https://github.com/designfuchen/word-atlas/blob/99c007673d38f02c418d8e4cd2e9ec90b5d40be5/README.md#L103-L125",
+    "https://github.com/designfuchen/word-atlas/blob/99c007673d38f02c418d8e4cd2e9ec90b5d40be5/docs/learning-model.md#L3-L26",
+    "https://github.com/designfuchen/word-atlas/blob/99c007673d38f02c418d8e4cd2e9ec90b5d40be5/src/store/session.ts#L86-L149",
+    "https://github.com/designfuchen/word-atlas/blob/99c007673d38f02c418d8e4cd2e9ec90b5d40be5/src/store/store.ts#L203-L237"
+  ]
+}

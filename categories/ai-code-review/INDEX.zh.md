@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **no-mistakes** | 本地接住已提交改动，在独立工作区评审修复，再发布 PR 并监控 CI；需明确授权发布。 | B（6/6） | [→](no-mistakes.zh.md) |
 | **Open Code Review** | 想在 CI 里对 Git diff 拿到精确行级 LLM review 评论、又不被噪声淹没时用它。 | B（5/6） | [→](open-code-review.zh.md) |
 | **Claude Code Security Review** | 当你想让 Claude 在每个可信 PR 上读 diff、找逻辑层面的漏洞并在具体行上评论、且不分语言时用它——但它没做 prompt injection 加固，绝不能用在不可信的 fork PR 上。 | B（4/6） | [→](claude-code-security-review.zh.md) |
 | **React Doctor** | 当 coding agent 在写 React、你想要对 React 特有反模式做确定性、可重复的检查时用它。 | B（5/6） | [→](react-doctor.zh.md) |
@@ -19,6 +20,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [no-mistakes](no-mistakes.zh.md) | 已收录 | B（6/6） | 用本地 Git 接收端接管修复到 PR 的交接；代价是后台进程、宽 agent 权限与发布凭据。 |
 | [Open Code Review](open-code-review.zh.md) | ✅ | B（5/6） | 想在 CI 里对 Git diff 拿到精确行级 LLM review 评论、又不被噪声淹没时用它。 |
 | [Claude Code Security Review](claude-code-security-review.zh.md) | ✅ | B（4/6） | 换来基于模式的 SAST 会漏掉的上下文感知 finding；代价是每次运行按 token 计费、结果不确定，且 action 没有版本，只能钉 `@main`。 |
 | [React Doctor](react-doctor.zh.md) | ✅ | B（5/6） | 当 coding agent 在写 React、你想要对 React 特有反模式做确定性、可重复的检查时用它。 |

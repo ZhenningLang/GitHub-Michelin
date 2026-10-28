@@ -3,16 +3,18 @@
 > Category node. Parse/convert documents (PDF/DOCX/…) into structured Markdown/JSON for gen-AI ingestion.
 > ← back to [category route](../../INDEX.md) · 中文：[INDEX.zh.md](INDEX.zh.md)
 
+## Sub-categories
+
+- [Model-backed PDF parsing](model-backed-pdf/INDEX.md) — PDF/image-focused layout, OCR and page-recognition pipelines, including selective or full-page model processing.
+
 ## Projects in this category
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **ContextGem** | Extract named clauses and typed domain values with optional source-object references; you own model access, evaluation and durable jobs. | C (5/6) | [→](contextgem.md) |
 | **OpenDataLoader PDF** | Java PDF extraction with page coordinates, optional Docling triage and Tagged PDF output. | B (6/6) | [→](opendataloader-pdf.md) |
-| **OXR** | Parse scientific PDF/images with a replaceable layout detector and typed Markdown/JSON output; requires a GPU stack and custom commercial-license clearance. | C (3/6) | [→](oxr.md) |
 | **Docling** | Use it when you must parse messy PDF/DOCX/PPTX into clean structured Markdown/JSON for RAG ingestion — a parser, not a DMS. | A (5/6) | [→](docling.md) |
 | **MarkItDown** | Use it when an agent or RAG pipeline must turn mixed Office files, HTML, EPUB and simple PDFs into Markdown with one lightweight Python call — but scanned or complex-layout PDFs need Marker or Docling, since it has no OCR or layout model. | B (6/6) | [→](markitdown.md) |
-| **olmOCR** | Use it when you are turning thousands to millions of PDFs with equations, tables and multi-column layouts into clean reading-order Markdown for an LLM corpus — but local runs need a 12 GB+ NVIDIA GPU, and upstream has been quiet since 2026-03. | C (5/6) | [→](olmocr.md) |
-| **Marker** | Use it when converting thousands of PDFs (papers, textbooks, scans) into Markdown with real tables, LaTeX math and selective OCR on your own hardware — but the model weights are free only below a $5M funding or revenue threshold. | B (6/6) | [→](marker.md) |
 | **unstructured** | Use it when a RAG pipeline over mixed PDFs, emails and Office files needs typed elements with page metadata and section-aware chunking rather than one Markdown string — but its open-source PDF table accuracy trails Docling and Marker, and analytics pings are on by default. | A (6/6) | [→](unstructured.md) |
 | **any2html** | Use it when you need any2html in this category. | D (4/5) | [→](any2html.md) |
 | **Dedoc** | Use it when an on-premises Python pipeline needs multi-format documents recovered as logical trees with tables, annotations, and attachments; expect a heavy Linux/system-package stack and limits on difficult scans. | B (5/6) | [→](dedoc.md) |
@@ -25,11 +27,10 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [ContextGem](contextgem.md) | Indexed | C (5/6) | Semantic schema extraction after conversion, not OCR or retrieval; checked types and reference IDs do not prove answer correctness. |
 | [OpenDataLoader PDF](opendataloader-pdf.md) | ✅ | B (6/6) | CPU Java baseline and optional model backend; PDF-only, PDF/UA export is enterprise. |
-| [OXR](oxr.md) | ✅ | C (3/6) | Separate layout detection plus OXR recognition/reading order; Linux/NVIDIA, executable model plugin, in-memory jobs, and commercial restrictions. |
 | [Docling](docling.md) | ✅ | A (5/6) | Rich-document parsing (layout + tables) to structured Markdown/JSON; heavier model deps than plain text extraction. |
 | [MarkItDown](markitdown.md) | ✅ | B (6/6) | Broad format coverage with no GPU or model download, at the cost of layout fidelity and optional features that send files to external LLMs or Azure. |
-| [olmOCR](olmocr.md) | ✅ | C (5/6) | Buys VLM-grade fidelity on equations and messy scans; costs GPU inference per page, versus cheaper CPU-only Docling or PyMuPDF when layout fidelity matters less. |
 | [PageIndex](../rag-retrieval/structured-retrieval/pageindex.md) | ✅ | B (6/6) | Builds a retrieval index over long structured docs — downstream of parsing, not a parser. |
 | [any2html](any2html.md) | ✅ | D (4/5) | Use it when you need any2html in this category. |
 | [Dedoc](dedoc.md) | ✅ | B (5/6) | Multi-format logical-tree parsing with tables, annotations, and attachments; deeper than lightweight Markdown conversion, but heavier on Linux dependencies and limited on difficult scans. |
@@ -42,3 +43,5 @@
 ## What belongs here
 
 Libraries whose primary job is **parsing/converting documents into structured representations** for gen-AI/RAG. Not retrieval/indexing itself (see `rag-retrieval`), not document archiving/search (see `document-management`), not raw OCR (see `ocr`).
+
+Keep mixed-format conversion, broader document trees and cloud-facing agent wrappers at this node. Descend into [model-backed PDF parsing](model-backed-pdf/INDEX.md) when the primary route is PDF/image layout and recognition with models; having any optional model path does not by itself require moving a broader converter there.

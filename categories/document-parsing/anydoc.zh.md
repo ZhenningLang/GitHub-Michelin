@@ -90,7 +90,7 @@ health:
 
 你负责一个 RAG 或 agent 产品里的文档入库环节。用户手上有什么就传什么：2003 年的 `.doc` 合同、带演讲者备注的 `.pptx` 销售材料、表头有合并单元格的 `.xlsx` 报价单、从政府网站下载的 `.odt`。现在你的 worker 对一半文件调 `soffice --headless --convert-to`，另一半走某个 Python 转换器；每个文件一秒左右，容器镜像里塞着整套办公软件，而且同样是表格，走哪条路径输出就长什么样——一条路转义了竖线，另一条没有。
 
-当**格式覆盖面、速度和体积**比版面理解更重要时，你会想到 anydoc。它不借助任何外部程序，就能读老的二进制 Office 格式（`.doc`、`.ppt`、`.xls`）以及 OOXML、OpenDocument、RTF、EPUB、CSV 和带文字层的 PDF；它看文件字节而不是扩展名来判断格式，并让所有格式走同一个 Markdown 输出器，所以 docx 和 odt 的表格转义行为完全一样。需要老二进制格式、又想要跨格式统一输出时，选它而不是 [MarkItDown](markitdown.zh.md)；文档是原生电子版、你不想打包模型或 GPU 时，选它而不是 [Docling](docling.zh.md) 或 [Marker](marker.zh.md)；文件堆里有老二进制 Office 文件、OpenDocument 表格或演示文稿、PDF 这些 Pandoc 读不了的格式时，选它而不是 [Pandoc](../markdown-tools/pandoc.zh.md)。
+当**格式覆盖面、速度和体积**比版面理解更重要时，你会想到 anydoc。它不借助任何外部程序，就能读老的二进制 Office 格式（`.doc`、`.ppt`、`.xls`）以及 OOXML、OpenDocument、RTF、EPUB、CSV 和带文字层的 PDF；它看文件字节而不是扩展名来判断格式，并让所有格式走同一个 Markdown 输出器，所以 docx 和 odt 的表格转义行为完全一样。需要老二进制格式、又想要跨格式统一输出时，选它而不是 [MarkItDown](markitdown.zh.md)；文档是原生电子版、你不想打包模型或 GPU 时，选它而不是 [Docling](docling.zh.md) 或 [Marker](model-backed-pdf/marker.zh.md)；文件堆里有老二进制 Office 文件、OpenDocument 表格或演示文稿、PDF 这些 Pandoc 读不了的格式时，选它而不是 [Pandoc](../markdown-tools/pandoc.zh.md)。
 
 ## 怎么用起来
 
@@ -116,9 +116,9 @@ health:
 
 ## 何时不用
 
-- **输入里有扫描件或拍照页。** 改用 [Marker](marker.zh.md)、[olmOCR](olmocr.zh.md) 或 [Docling](docling.zh.md)，因为 anydoc 完全不做 OCR。v0.2.4 里只要有一页是纯图片，整个 PDF 就以 `NeedsOcr` 失败、一个字都不返回，连有文字的页也丢了（issue #144）；还有用户报告同一个检查把 v0.2.3 能转的部分原生电子版 PDF 也拒了（issue #162：某语料里 30 份中有 13 份）。截至 2026-09-29 两个问题都未关闭。
-- **文档不能离开内网，而其中有扫描件。** 改用能本地 OCR 的解析器，比如 [Docling](docling.zh.md) 或 [Marker](marker.zh.md)，因为 anydoc 内置的唯一 OCR 路径是 `ocr="hosted"`，会把整份文档（不只是扫描页）上传到 `api.firecrawl.dev` 的 Firecrawl Parse。Rust 库本身不发任何网络请求；本地 OCR 接口目前只是功能请求（#146、#157）。
-- **需要忠实还原 PDF 表格或多栏版面。** 改用 [Docling](docling.zh.md) 或 [Marker](marker.zh.md)，因为 anydoc 的 PDF 路径绕过了自己的文档模型，完全依赖 `pdf-inspector` 的启发式规则；多栏表格被压成一坨是未修复的 bug（#173）。
+- **输入里有扫描件或拍照页。** 改用 [Marker](model-backed-pdf/marker.zh.md)、[olmOCR](model-backed-pdf/olmocr.zh.md) 或 [Docling](docling.zh.md)，因为 anydoc 完全不做 OCR。v0.2.4 里只要有一页是纯图片，整个 PDF 就以 `NeedsOcr` 失败、一个字都不返回，连有文字的页也丢了（issue #144）；还有用户报告同一个检查把 v0.2.3 能转的部分原生电子版 PDF 也拒了（issue #162：某语料里 30 份中有 13 份）。截至 2026-09-29 两个问题都未关闭。
+- **文档不能离开内网，而其中有扫描件。** 改用能本地 OCR 的解析器，比如 [Docling](docling.zh.md) 或 [Marker](model-backed-pdf/marker.zh.md)，因为 anydoc 内置的唯一 OCR 路径是 `ocr="hosted"`，会把整份文档（不只是扫描页）上传到 `api.firecrawl.dev` 的 Firecrawl Parse。Rust 库本身不发任何网络请求；本地 OCR 接口目前只是功能请求（#146、#157）。
+- **需要忠实还原 PDF 表格或多栏版面。** 改用 [Docling](docling.zh.md) 或 [Marker](model-backed-pdf/marker.zh.md)，因为 anydoc 的 PDF 路径绕过了自己的文档模型，完全依赖 `pdf-inspector` 的启发式规则；多栏表格被压成一坨是未修复的 bug（#173）。
 - **有价值的信息在 Word 页眉页脚里——信头、发票号、页面印章。** 用 `python-docx` 直接读这些部件，或看看 [Unstructured](unstructured.zh.md)，因为 anydoc 的 docx 解析只加载正文、样式、编号、脚注和尾注，不读 `header*.xml` / `footer*.xml`（issue #132 关闭时没有对应代码改动；截至 2026-09-29 `src/formats/docx` 里没有页眉页脚处理）。
 - **目标格式不是 Markdown，或需要转回 Office。** 改用 [Pandoc](../markdown-tools/pandoc.zh.md)，因为 anydoc 是单向的：多种输入，只有一种输出。
 - **输入是图片、音频、HTML 网页或邮件。** 改用 [MarkItDown](markitdown.zh.md)，因为 anydoc 只接受办公文档、电子书、CSV 和 PDF；HTML、MHTML 和 `.eml` 支持目前只是未合并的社区 PR（#147、#149、#164）。
@@ -133,7 +133,7 @@ health:
 | [Docling](docling.zh.md) | ✅ | 扫描页、阅读顺序或复杂 PDF 表格决定了 RAG 回答质量时选 Docling；文档是原生电子版、更在乎吞吐量或镜像体积时选 anydoc。 | Docling 在本地跑版面和表格模型，能处理扫描件；anydoc 是纯 Rust、不带模型、每个文件几毫秒，但没有版面理解，也没有本地 OCR。 |
 | [Pandoc](../markdown-tools/pandoc.zh.md) | ✅ | 现代格式的文档要转成多种目标（LaTeX、HTML、docx）或来回转换时选 Pandoc；输入里有 `.doc`/`.ppt`/`.xls`、`.ods`/`.odp` 或 PDF，而且只要 Markdown 时选 anydoc。 | Pandoc 是近 20 年的通用转换器，输出格式几十种，能读 docx/pptx/xlsx/odt/rtf/epub，但读不了老二进制 Office、ODS/ODP 和 PDF；anydoc 能读这些，却只能输出 Markdown。 |
 | [Unstructured](unstructured.zh.md) | ✅ | 需要按类型切分元素、切块、连接器和企业版路径时选 Unstructured；只想在现有管线里塞一个快速、无依赖的转换器时选 anydoc。 | Unstructured 是完整 ETL 栈，Python 与系统依赖更重；anydoc 是单个原生库，不需要系统包，但没有切块和增强。 |
-| [Marker](marker.zh.md) | ✅ | PDF（含扫描件、公式、学术版式）是主要输入、能接受 GPU 或较慢的 CPU 运行时选 Marker；PDF 只是办公文件里的少数、必须毫秒级转完时选 anydoc。 | Marker 用深度学习模型并能 OCR；anydoc 覆盖多得多的非 PDF 格式且不带模型，但它的 PDF 路径只是启发式文字抽取。 |
+| [Marker](model-backed-pdf/marker.zh.md) | ✅ | PDF（含扫描件、公式、学术版式）是主要输入、能接受 GPU 或较慢的 CPU 运行时选 Marker；PDF 只是办公文件里的少数、必须毫秒级转完时选 anydoc。 | Marker 用深度学习模型并能 OCR；anydoc 覆盖多得多的非 PDF 格式且不带模型，但它的 PDF 路径只是启发式文字抽取。 |
 
 ## 技术栈
 

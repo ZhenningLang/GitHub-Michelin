@@ -13,6 +13,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **CrowdGPT** | 通过中央协调器给共享模型贡献本地训练轮次；可审查客户端，但不是完整的自托管服务。 | C（6/6） | [→](crowdgpt.zh.md) |
 | **LlamaFactory** | 面向 100+ LLM/VLM 的零代码统一微调框架，自带 Gradio Web UI(LlamaBoard)，覆盖 LoRA/QLoRA/全量微调及 SFT→RLHF 全链路。 | B（6/6） | [→](llamafactory.zh.md) |
 | **Unsloth** | 基于自定义 Triton kernel 的单卡 LoRA/QLoRA/RL 微调工具，号称在 500+ 开源 LLM 上约 2x 提速并大幅省显存。 | B（5/6） | [→](unsloth.zh.md) |
 | **ART (Agent Reinforcement Trainer)** | 通过客户端-服务端循环用 GRPO 强化学习训练多步 LLM agent，并用 RULER（LLM 充当裁判）实现零标注奖励生成。 | C（5/6） | [→](art.zh.md) |
@@ -30,6 +31,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [CrowdGPT](crowdgpt.zh.md) | 已收录 | C（6/6） | 志愿贡献的界面和命令行，不是通用训练器；须审查中央服务信任、变化的更新及 GPLv3／MIT 文档漂移。 |
 | [LlamaFactory](llamafactory.zh.md) | ✅ | B（6/6） | 面向 100+ LLM/VLM 的零代码统一微调框架，自带 Gradio Web UI(LlamaBoard)，覆盖 LoRA/QLoRA/全量微调及 SFT→RLHF 全链路。 |
 | [Unsloth](unsloth.zh.md) | ✅ | B（5/6） | 基于自定义 Triton kernel 的单卡 LoRA/QLoRA/RL 微调工具，号称在 500+ 开源 LLM 上约 2x 提速并大幅省显存。 |
 | [ART (Agent Reinforcement Trainer)](art.zh.md) | ✅ | C（5/6） | 通过客户端-服务端循环用 GRPO 强化学习训练多步 LLM agent，并用 RULER（LLM 充当裁判）实现零标注奖励生成。 |

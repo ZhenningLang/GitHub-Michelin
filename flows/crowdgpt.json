@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "CrowdGPT client", "zh": "CrowdGPT 客户端"},
+  "steps": [
+    {"lane": "you", "en": "Review pinned source and install hardware-matched dependencies in isolation", "zh": "审查固定源码，在隔离环境安装匹配硬件的依赖", "code": "pip install -r requirements.txt"},
+    {"lane": "you", "en": "Launch, choose coordinator, identity and backend budget, then start training", "zh": "启动并选择协调器、身份、后端及内存预算，再开始训练", "code": "python client.py"},
+    {"lane": "them", "en": "Waits for a round and requests task metadata from the central coordinator", "zh": "等待轮次，向中央协调器申请任务元数据"},
+    {"lane": "them", "en": "Downloads assigned model weights and token slices", "zh": "下载任务指定的模型权重和词元片段"},
+    {"lane": "them", "en": "Trains locally; displays or logs loss, steps and remaining time locally", "zh": "执行本地训练，在本地显示或记录损失、步数和剩余时间"},
+    {"lane": "them", "en": "Attempts to upload the compressed delta and final metadata, then logs the result", "zh": "尝试上传压缩差分和最终元数据，再记录提交结果"}
+  ],
+  "value": {"en": "Contribute local compute to a shared experiment without operating a training cluster", "zh": "无需自营训练集群，也能给共享实验贡献本机计算"},
+  "sources": ["README.md:65-85", "client.py:1849-1921", "client.py:2164-2174", "client.py:2216-2242", "client.py:2355-2367", "client.py:2394-2425", "client.py:2519-2534"]
+}

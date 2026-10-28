@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Diy-LLM notebook does", "zh": "Diy-LLM 笔记本做的"},
+  "steps": [
+    {"lane": "you", "en": "Open the assignment1 BPE notebook and prepare its environment and local text", "zh": "打开作业1的 BPE 笔记本，准备环境与本地文本"},
+    {"lane": "you", "en": "Correct the input paths and set the vocabulary size before running the training cell", "zh": "纠正输入路径，设置词表大小，再运行训练单元", "code": "vocab_size=50257"},
+    {"lane": "them", "en": "Stream normalized byte-level text into the BPE trainer", "zh": "将规范化的字节级文本流送入 BPE 训练器", "component": {"en": "tokenizers BpeTrainer", "zh": "tokenizers BpeTrainer"}},
+    {"lane": "them", "en": "Save the learned tokenizer as tokenizer.json in the chosen output directory", "zh": "将学得的分词器保存为输出目录中的 tokenizer.json"}
+  ],
+  "value": {"en": "A tokenizer built from your local text through one inspectable exercise, not a whole-course runner", "zh": "通过一份可读作业从本地文本构建分词器，不是自动跑完整门课程"},
+  "sources": [
+    "https://github.com/datawhalechina/diy-llm/blob/95a3b81d4b2686d33afc2d533b0f91d295ec9b78/README.md#L85-L98",
+    "https://github.com/datawhalechina/diy-llm/blob/95a3b81d4b2686d33afc2d533b0f91d295ec9b78/coursework/assignment1-basics/README.md#L5-L17",
+    "https://github.com/datawhalechina/diy-llm/blob/95a3b81d4b2686d33afc2d533b0f91d295ec9b78/coursework/assignment1-basics/CS336_Assignment1_BPE.ipynb"
+  ]
+}

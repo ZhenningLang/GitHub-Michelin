@@ -130,7 +130,7 @@ Tauri splits an app into two halves. The frontend is ordinary web code built by 
 | --- | --- | --- | --- |
 | Electron | 未收录 | Choose Electron when identical Chromium rendering everywhere and a JavaScript/Node backend outweigh app size; choose Tauri when installer size, memory and a permission-scoped bridge matter more. | Electron removes per-OS webview testing and keeps the whole stack in JavaScript, but every app ships and runs its own Chromium and Node. |
 | Flutter | 未收录 | Choose Flutter for mobile-first apps that need pixel-controlled custom UI across platforms; choose Tauri when the team's skills and component library are on the web. | Flutter draws every pixel itself so it looks the same everywhere, but you rewrite the UI in Dart and give up the web ecosystem. |
-| Wails | 未收录 | Choose Wails when your team writes Go and wants the same system-webview approach; choose Tauri when you want Rust, mobile targets and a larger plugin ecosystem. | Wails uses OS webviews just like Tauri with a Go backend, so it shares the cross-webview testing burden while targeting desktop only. |
+| [Wails](wails.md) | indexed | Choose Wails when your team writes Go and wants the same system-webview approach; choose Tauri when you want Rust, mobile targets and a larger plugin ecosystem. | Wails uses OS webviews just like Tauri with a Go backend, so it shares the cross-webview testing burden while targeting desktop only. |
 | Neutralinojs | 未收录 | Choose Neutralinojs for a very small desktop wrapper with no compiled backend at all; choose Tauri when you need a typed native backend, an updater and mobile targets. | Neutralinojs avoids a Rust or Go toolchain by talking to a prebuilt binary, but its native API surface and ecosystem are much smaller. |
 
 ## Tech stack

@@ -12,6 +12,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client),categories/networking/amneziawg-installer.md,,no
 [Anatomy](https://github.com/wheresryan22/anatomy),categories/agent-skills/design/visual-artifacts/anima.md,,no
 [angristan/wireguard-install](https://github.com/angristan/wireguard-install),categories/networking/amneziawg-installer.md,,no
+[Anki](https://github.com/ankitects/anki),categories/education-tutoring/word-atlas.md,,no
 [Apache ECharts](https://github.com/apache/echarts),categories/data-visualization/flint-chart.md,,no
 [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox),categories/knowledge-base/hister.md,,no
 [Awesome Quant](https://github.com/wilsonfreitas/awesome-quant),categories/investment-finance/awesome-deep-trading.md,,no
@@ -76,6 +77,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Meetily](https://github.com/Zackriya-Solutions/meeting-minutes),categories/meeting-intelligence/biscotti.md,,no
 [MeshCentral](https://github.com/Ylianst/MeshCentral),categories/dev-utilities/ops-infra/rustdesk.md,,no
 [mihomo](https://github.com/MetaCubeX/mihomo),categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
+[Mnemosyne](https://github.com/mnemosyne-proj/mnemosyne),categories/education-tutoring/word-atlas.md,,no
 [mwan3](https://github.com/openwrt/packages/tree/master/net/mwan3),categories/networking/net-merge.md,,no
 [neomutt](https://github.com/neomutt/neomutt),categories/agent-tooling/harness-extensions/hey-cli.md,,no
 [Nethereum.Faucet](https://github.com/Nethereum/Nethereum.Faucet),categories/blockchain-dev-infrastructure/powfaucet.md,,no
@@ -97,7 +99,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [OpenSSF Scorecard](https://github.com/ossf/scorecard),categories/agent-governance/skillspector.md,,no
 [Operit](https://github.com/AAswordman/Operit),categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md,,no
 [Passbolt](https://github.com/passbolt/passbolt_api),categories/dev-utilities/ops-infra/vaultwarden.md,,no
-[Patchright](https://github.com/Kaliiiiiiiiii-Vinyzu/patchright),categories/web-automation/agent-browser-tools/playwright-bot-bypass.md,,no
+[Patchright](https://github.com/Kaliiiiiiiiii-Vinyzu/patchright),categories/web-automation/agent-browser-tools/stealth-session-tools/playwright-bot-bypass.md,,no
 [Payload](https://github.com/payloadcms/payload),categories/content-management/emdash.md,,no
 [PeaZip](https://github.com/peazip/PeaZip),categories/dev-utilities/data-tools/hatchzip.md,,no
 [PixArt-Σ](https://github.com/PixArt-alpha/PixArt-sigma),categories/ml-research/vision-and-multimodal/sana.md,,no
@@ -105,11 +107,12 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [PocketPal AI](https://github.com/a-ghorbani/pocketpal-ai),categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md,,no
 [Pyodide](https://github.com/pyodide/pyodide),categories/sandboxing/monty.md,,no
 [pyVideoTrans](https://github.com/jianchang512/pyvideotrans),categories/speech/voicestudio.md,,no
+[Qwerty Learner](https://github.com/RealKai42/qwerty-learner),categories/education-tutoring/word-atlas.md,,no
 [radare2](https://github.com/radareorg/radare2),categories/dev-utilities/binary-analysis/ghidra.md,,no
 [RAID](https://github.com/liamdugan/raid),categories/llm-eval/chatgpt-comparison-detection.md,,no
 [RawTherapee](https://github.com/RawTherapee/RawTherapee),categories/photo-editing/lightcraft.md,,no
 [react-iztro](https://github.com/SylarLong/react-iztro),categories/traditional-divination/ziwei-doushu.md,,no
-[rebrowser-patches](https://github.com/rebrowser/rebrowser-patches),categories/web-automation/agent-browser-tools/playwright-bot-bypass.md,,no
+[rebrowser-patches](https://github.com/rebrowser/rebrowser-patches),categories/web-automation/agent-browser-tools/stealth-session-tools/playwright-bot-bypass.md,,no
 [Redis](https://github.com/redis/redis),categories/databases/database-engines/kividb.md,,no
 [RetDec](https://github.com/avast/retdec),categories/dev-utilities/binary-analysis/reagent.md,,no
 [Self Forcing](https://github.com/guandeh17/Self-Forcing),categories/ml-research/vision-and-multimodal/stable-video-infinity.md,,no
@@ -120,6 +123,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Sunshine](https://github.com/LizardByte/Sunshine) + [Moonlight](https://github.com/moonlight-stream/moonlight-qt),categories/dev-utilities/ops-infra/rustdesk.md,,no
 [Tensor Puzzles](https://github.com/srush/Tensor-Puzzles),categories/learning-resources/torchcode.md,,no
 [Termux](https://github.com/termux/termux-app) + a CLI agent,categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md,,no
+[The Battle for Wesnoth](https://github.com/wesnoth/wesnoth),categories/games/fheroes2.md,,no
 [TigerVNC](https://github.com/TigerVNC/tigervnc),categories/dev-utilities/ops-infra/rustdesk.md,,no
 [tldraw](https://github.com/tldraw/tldraw),categories/diagramming/excalidraw.md,,no
 [TorBot](https://github.com/DedSecInside/TorBot),categories/osint/robin.md,,no
@@ -129,6 +133,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [UnifiedPush Android connector](https://github.com/UnifiedPush/android-connector),categories/android-system-services/microg-gmscore.md,,no
 [v2rayA](https://github.com/v2rayA/v2rayA),categories/networking/dae.md,,no
 [v2rayN](https://github.com/2dust/v2rayN),categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
+[VCMI](https://github.com/vcmi/vcmi),categories/games/fheroes2.md,,no
 [vectorbt](https://github.com/polakowo/vectorbt),categories/investment-finance/backtrader.md,,no
 [Vega-Lite](https://github.com/vega/vega-lite),categories/data-visualization/flint-chart.md,,no
 [Video2X](https://github.com/k4yt3x/video2x),categories/media-processing/jasna.md,,no
@@ -283,6 +288,7 @@ AWS MCP servers (`awslabs/mcp`),categories/agent-skills/vendor-collections/produ
 AWS official MCP servers (standalone),categories/agent-skills/vendor-collections/product-vendors/aws-agent-plugins.md,,no
 AWS S3 / Cloudflare R2,categories/object-storage/ceph.md,,no
 Azure Skills (`microsoft/azure-skills`),categories/agent-skills/vendor-collections/product-vendors/agent-toolkit-for-aws.md,,no
+Babylon.js,categories/frontend-animation/dioramas.md,,no
 BackstopJS,categories/design-tokens/dembrandt.md,,no
 baostock,categories/web-scraping/crawling-tools/gopup.md,,no
 Base UI,categories/web-ui/component-libraries/radix-ui.md,,no
@@ -345,7 +351,7 @@ Cerbos,categories/auth/casbin.md,,no
 cffi / ctypes,categories/python-tooling/cython.md,,no
 chafa,categories/terminal-ui/asciify.md,,no
 Chance.js,categories/dev-utilities/data-tools/faker-js.md,,no
-Chandra,categories/document-parsing/marker.md,,no
+Chandra,categories/document-parsing/model-backed-pdf/marker.md,,no
 Changesets (`changesets/changesets`),categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-config.md,,no
 Character role-play prompt,categories/agent-skills/context-engineering/soul-md.md,,no
 Character.AI and other hosted persona bots,categories/agent-skills/distilly.md,,no
@@ -525,7 +531,6 @@ Fiddler,categories/debugging-proxy/whistle.md,,no
 figlet / toilet (CLI),categories/terminal-ui/art.md,,no
 Figma + plugins,categories/agent-skills/visual-content/guizang-social-card.md,,no
 Figma / Penpot,categories/ai-design-generation/open-design.md,,no
-Figma / visual design tool,categories/agent-skills/design/visual-artifacts/huashu-design.md,,no
 Filebrowser,categories/document-management/copyparty.md,,no
 Final Form (`final-form/final-form`),categories/web-ui/forms/tanstack-form.md,,no
 Fine-tuning / LoRA stacks,categories/ml-research/llm-circuit-finder.md,,no
@@ -551,6 +556,7 @@ FunctionGemma (Google),categories/function-calling/functionary.md,,no
 FunctionGemma (Google) / cloud tool APIs,categories/function-calling/INDEX.md,,no
 Fusion 360 · Onshape · SolidWorks,categories/cad/INDEX.md,,no
 fx,categories/dev-utilities/data-tools/jq.md,,no
+Fyne,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/wails.md,,no
 GDAL/OGR,categories/geospatial/qgis.md,,no
 Gemma (google-deepmind/gemma),categories/on-device-ml/minicpm.md,,no
 Generic LLM business-coaching prompts,categories/agent-skills/personal-collections/knowledge-content/dbskill.md,,no
@@ -841,7 +847,7 @@ Microsoft Presidio,categories/healthcare-ai/openmed.md,,no
 Microsoft T-MAC,categories/on-device-ml/bitnet.md,,no
 microsoft/UFO,categories/desktop-automation/windows-mcp.md,,no
 MiDaS / DPT (Intel ISL),categories/ml-research/vision-and-multimodal/depth-anything-v2.md,,no
-MinerU,categories/document-parsing/marker.md,,no
+MinerU,categories/document-parsing/model-backed-pdf/marker.md,,no
 mini-swe-agent,categories/agent-frameworks/coding-agents/orchestration-and-review/swe-agent.md,,no
 Miniflux,categories/reading-tools/freshrss.md,,no
 MinIO,categories/document-management/copyparty.md,,no
@@ -1113,6 +1119,7 @@ React Hook Form (`react-hook-form/react-hook-form`),categories/web-ui/forms/tans
 React Router,categories/web-ui/frameworks/app-frameworks/tanstack-router.md,,no
 "React Router (framework mode, formerly Remix)",categories/web-ui/frameworks/app-frameworks/nextjs.md,,no
 React Scan (`aidenybai/react-scan`),categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-devtools.md,,no
+React Three Fiber,categories/frontend-animation/dioramas.md,,no
 react-big-calendar (`bigcalendar/react-big-calendar`),categories/web-ui/component-libraries/tanstack-time.md,,no
 react-data-grid (`adodev/react-data-grid`),categories/web-ui/component-libraries/tanstack-table.md,,no
 react-hotkeys-hook (`JohannesKlauss/react-hotkeys-hook`),categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md,,no
@@ -1287,6 +1294,7 @@ Thanos / Grafana Mimir,categories/observability/prometheus.md,,no
 The Silver Searcher (ag),categories/dev-utilities/data-tools/ripgrep.md,,no
 Third-party / community knowledge-work packs,categories/agent-skills/vendor-collections/agent-vendors/knowledge-work-plugins.md,,no
 Third-party Claude Code marketplaces / community plugin lists,categories/agent-skills/vendor-collections/agent-vendors/claude-plugins-official.md,,no
+Three.js,categories/frontend-animation/dioramas.md,,no
 thriftpy2,categories/networking/thriftpy.md,,no
 throttle-debounce (`niksy/throttle-debounce`),categories/web-ui/scheduling/tanstack-pacer.md,,no
 TIC-80,categories/game-dev/pyxel.md,,no
@@ -1360,7 +1368,6 @@ VSCodeVim,categories/dev-utilities/editors-and-runtimes/code-editors/ideavim.md,
 VSCodium,categories/dev-utilities/editors-and-runtimes/code-editors/vscode.md,,no
 Vue DevTools (`vuejs/devtools`),categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-devtools.md,,no
 VueUse (`vueuse/vueuse`),categories/web-ui/scheduling/tanstack-pacer.md,,no
-Wails,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/tauri.md,,no
 Warpgate (`warp-tech/warpgate`),categories/dev-utilities/ops-infra/jumpserver.md,,no
 Weaviate,categories/rag-retrieval/vector-search/INDEX.md,,no
 Web Animations API (WAAPI),categories/frontend-animation/anime.md,,no

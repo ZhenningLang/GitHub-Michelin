@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "Kandev does", "zh": "Kandev 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the native bundle and start it on loopback", "zh": "安装原生包，并绑定回环地址启动", "code": "KANDEV_SERVER_HOST=127.0.0.1 kandev"},
+    {"lane": "you", "en": "Add a repository; choose an agent profile, Worktree executor and bounded task", "zh": "添加仓库，选择助手、工作树执行器和有界任务"},
+    {"lane": "them", "en": "Prepare a separate checkout and start the selected agent", "zh": "准备独立检出目录，启动所选助手", "component": {"en": "worktree preparer", "zh": "工作树准备器"}},
+    {"lane": "them", "en": "Collect the conversation and Git changes in the task workbench", "zh": "在任务工作台汇总对话和 Git 改动"},
+    {"lane": "you", "en": "Review the patch and tests before advancing the human-gated step", "zh": "检查补丁与测试，再推进人工关口"},
+    {"lane": "them", "en": "Keep task progress and review context together for the next handoff", "zh": "把任务进度和评审上下文留在同一处"}
+  ],
+  "value": {"en": "Parallel coding work reaches one review surface instead of scattered terminal tabs", "zh": "并行编程工作汇入同一评审界面，不再散落终端标签页"},
+  "sources": [
+    "https://github.com/kdlbs/kandev/blob/b6263ea4c3165c86ec60e29e798475ad552ad6ce/README.md#L143-L150",
+    "https://github.com/kdlbs/kandev/blob/b6263ea4c3165c86ec60e29e798475ad552ad6ce/docs/public/security.md#L28-L32",
+    "https://github.com/kdlbs/kandev/blob/b6263ea4c3165c86ec60e29e798475ad552ad6ce/docs/public/tasks-and-workflows.md#L199-L282",
+    "https://github.com/kdlbs/kandev/blob/b6263ea4c3165c86ec60e29e798475ad552ad6ce/docs/public/security.md#L157-L171",
+    "https://github.com/kdlbs/kandev/blob/b6263ea4c3165c86ec60e29e798475ad552ad6ce/apps/backend/internal/agent/runtime/lifecycle/env_preparer_worktree.go#L58-L177"
+  ]
+}

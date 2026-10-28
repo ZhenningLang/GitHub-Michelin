@@ -117,7 +117,7 @@ Pandoc 像一个中间带“世界语”的翻译：*读取器*（reader）把�
 ## 何时不用
 
 - **你要把格式丰富的文档逐像素地转过去。** 上游 README 明说，从比 Pandoc Markdown 表达力更强的格式转换“可能有损”——复杂表格、页边距、页面版式过不了 AST。要高保真的 Office ↔ PDF 转换，用 LibreOffice 无头模式（未收录）。
-- **你要从扫描件或版式复杂的 PDF 里抽文字。** Pandoc 能“写” PDF，不能“读” PDF。要带版面分析和 OCR 的 PDF → Markdown，用 [Docling](../document-parsing/docling.zh.md) 或 [Marker](../document-parsing/marker.zh.md)。
+- **你要从扫描件或版式复杂的 PDF 里抽文字。** Pandoc 能“写” PDF，不能“读” PDF。要带版面分析和 OCR 的 PDF → Markdown，用 [Docling](../document-parsing/docling.zh.md) 或 [Marker](../document-parsing/model-backed-pdf/marker.zh.md)。
 - **你只是要在 Node 或浏览器应用里把 Markdown 渲染成 HTML。** 为此去调用一个约 35–40 MB 的原生二进制太重了；用 [marked](marked.zh.md)、[markdown-it](markdown-it.zh.md)，或者还要在 JavaScript 里 lint、改树时用 [remark](remark.zh.md)。
 - **你要拿它处理不可信的用户上传，又不做加固。** 手册的安全说明警告：`include` 指令（LaTeX、Org、RST、Typst）、内嵌图片、HTML 的 `iframe` 抓取都可能泄露本地文件或造成 SSRF（CVE-2025-51591），而 `--pdf-engine` 带来的风险 `--sandbox` 也挡不住。要么用 `pandoc server` 或 WASM 版本、对 HTML 输出做清洗、给每次运行加超时，要么换一个更窄的转换器。
 - **你想把它的 Haskell 库链接进闭源产品。** Pandoc 是 GPL-2.0 及以上；作为独立进程调用 CLI 是常见的绕法，但把库嵌进来会让你的二进制成为 GPL 衍生作品。要宽松许可、进程内的 Markdown 转换器，用 [markdown-it](markdown-it.zh.md) 或 [goldmark](goldmark.zh.md)。

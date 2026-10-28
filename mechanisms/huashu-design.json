@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id":"brief","en":"Brief and real assets","zh":"任务与真实素材","kind":"input"},
+    {"id":"recall","en":"Recall local taste and recent looks","zh":"召回本地口味与近期外观","technique":[3]},
+    {"id":"directions","en":"Six candidates to three drafts","zh":"六个候选收敛为三个初稿","technique":[1]},
+    {"id":"approval","en":"Human selects; record approval","zh":"人工选择；记录批准","technique":[1]},
+    {"id":"html","en":"Finish HTML artifact","zh":"完成 HTML 产物","kind":"output"},
+    {"id":"facts","en":"Rendered facts and coarse fingerprint","zh":"渲染事实与粗粒度指纹","technique":[2]},
+    {"id":"memory","en":"Local look ledger and scoped experience","zh":"本地外观账与限定范围经验","technique":[2,3],"kind":"output"}
+  ],
+  "edges": [
+    {"from":"brief","to":"recall"},
+    {"from":"recall","to":"directions"},
+    {"from":"directions","to":"approval"},
+    {"from":"approval","to":"html"},
+    {"from":"html","to":"facts","en":"requires local dependencies","zh":"需要本地依赖"},
+    {"from":"facts","to":"memory","en":"record for future projects","zh":"记录供后续项目使用"}
+  ],
+  "sources": [
+    "https://github.com/alchaincyf/huashu-design/blob/4fc7bfdbd5ec3fa2d43ce7a6433de60976a5e4b1/SKILL.md#L102-L145",
+    "https://github.com/alchaincyf/huashu-design/blob/4fc7bfdbd5ec3fa2d43ce7a6433de60976a5e4b1/scripts/design_lint.py#L203-L284",
+    "https://github.com/alchaincyf/huashu-design/blob/4fc7bfdbd5ec3fa2d43ce7a6433de60976a5e4b1/scripts/design_lint.py#L392-L497",
+    "https://github.com/alchaincyf/huashu-design/blob/4fc7bfdbd5ec3fa2d43ce7a6433de60976a5e4b1/scripts/learn.py#L78-L128"
+  ]
+}

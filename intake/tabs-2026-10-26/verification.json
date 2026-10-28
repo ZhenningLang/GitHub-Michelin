@@ -1,0 +1,848 @@
+{
+  "status": "local content, original Markdown and committed-only tab closure verified; remote publication needs authorization",
+  "counts": {
+    "initial_rows": 8,
+    "new_pages": 5,
+    "fresh_unchanged": 1,
+    "proposed": 1,
+    "own_skipped": 1,
+    "candidates": 144,
+    "indexed": 141,
+    "historical_profiles_preserved": 137
+  },
+  "entries": [
+    {
+      "repo": "ihhub/fheroes2",
+      "page": "categories/games/fheroes2.md",
+      "reviewed_sha": "4ec9886825b198b6d0ec7ffc15c6b11ee76e9165",
+      "frontmatter_parity": true,
+      "svg_xml_valid": 6,
+      "flow_svg_byte_matches": 2,
+      "health_svg_byte_matches": 2,
+      "mechanism_hash_and_text_matches": 2,
+      "source_files_blob_verified": {
+        "CMakeLists.txt": {
+          "blob": "6fdfceca5488105c154c9ba9d995b8bb0ab0c3ca",
+          "bytes": 7193,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w1/.agent-state/fheroes2/CMakeLists.txt"
+        },
+        "LICENSE": {
+          "blob": "d159169d1050894d3ea3b98e1c965c4058208fe1",
+          "bytes": 18092,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w1/.agent-state/fheroes2/LICENSE"
+        },
+        "README.md": {
+          "blob": "800f6e3371ce6626e3ba40a0de75462b8a62ea93",
+          "bytes": 4718,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w1/.agent-state/fheroes2/README.md"
+        },
+        "docs/FAQ.md": {
+          "blob": "b4119ef88f6a15279cb334a7ce1bcf20e4772ce7",
+          "bytes": 6853,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w1/.agent-state/fheroes2/docs__FAQ.md"
+        },
+        "docs/INSTALL.md": {
+          "blob": "8bf8897a11d396bfaad10b2e243cc150e200eb52",
+          "bytes": 17529,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w1/.agent-state/fheroes2/docs__INSTALL.md"
+        },
+        "docs/README_cmake.md": {
+          "blob": "a8acab189585df26c9e517efb96584ede0c6b0b2",
+          "bytes": 2129,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w1/.agent-state/fheroes2/docs__README_cmake.md"
+        },
+        "files/soundfonts/GeneralUser-GS-LICENSE.txt": {
+          "blob": "59e1b89ec7c7decd963fc88d41de2661b39cf181",
+          "bytes": 2227,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w1/.agent-state/fheroes2/files__soundfonts__GeneralUser-GS-LICENSE.txt"
+        },
+        "src/engine/agg_file.cpp": {
+          "blob": "c1fa9a257ecc6d764705c71c8746a0aee43a8697",
+          "bytes": 4251,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w1/.agent-state/fheroes2/src__engine__agg_file.cpp"
+        },
+        "src/fheroes2/agg/agg.cpp": {
+          "blob": "20ef4e9a5720a66deed377f125c5661851c21732",
+          "bytes": 4390,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w1/.agent-state/fheroes2/src__fheroes2__agg__agg.cpp"
+        },
+        "src/fheroes2/ai/ai_planner.cpp": {
+          "blob": "40f32e47fa5e9d73cc8341dd5619891e0fbd81e6",
+          "bytes": 7408,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w1/.agent-state/fheroes2/src__fheroes2__ai__ai_planner.cpp"
+        },
+        "src/fheroes2/editor/history_manager.cpp": {
+          "blob": "aa7b326c887d6e1f5a772591c723e5cbc3c37c60",
+          "bytes": 7646,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w1/.agent-state/fheroes2/src__fheroes2__editor__history_manager.cpp"
+        }
+      }
+    },
+    {
+      "repo": "kdlbs/kandev",
+      "page": "categories/agent-tooling/supervision-surfaces/agent-cockpits/kandev.md",
+      "reviewed_sha": "b6263ea4c3165c86ec60e29e798475ad552ad6ce",
+      "frontmatter_parity": true,
+      "svg_xml_valid": 6,
+      "flow_svg_byte_matches": 2,
+      "health_svg_byte_matches": 2,
+      "mechanism_hash_and_text_matches": 2,
+      "source_files_blob_verified": {
+        ".claude/settings.json": {
+          "blob": "472ae7b5590cabe651d46fb60eae8eef0b7b298a",
+          "bytes": 868,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w2/.agent-state/sources/claude-settings.json"
+        },
+        "CONTRIBUTING.md": {
+          "blob": "94244b77b258231564269318011453623a93e572",
+          "bytes": 3523,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w2/.agent-state/sources/CONTRIBUTING.md"
+        },
+        "LICENSE": {
+          "blob": "be3f7b28e564e7dd05eaf59d64adba1a4065ac0e",
+          "bytes": 34523,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w2/.agent-state/sources/LICENSE"
+        },
+        "README.md": {
+          "blob": "999135d66860bc3e1330bc6bfa3032e4fa5a2c53",
+          "bytes": 18506,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w2/.agent-state/sources/README.md"
+        },
+        "apps/backend/go.mod": {
+          "blob": "30dc96197f59c3e1b71a50a84efe7287831cc91e",
+          "bytes": 6776,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w2/.agent-state/sources/go.mod"
+        },
+        "apps/backend/internal/agent/runtime/lifecycle/env_preparer_worktree.go": {
+          "blob": "e1e83d55c47531d1b65003955080d2f1fcef93f0",
+          "bytes": 30077,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w2/.agent-state/sources/env-preparer-worktree.go"
+        },
+        "apps/backend/internal/auth/httpmw/middleware.go": {
+          "blob": "51da0877f49337748dd43b81199e579d8ebd6d17",
+          "bytes": 17635,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w2/.agent-state/sources/auth-middleware.go"
+        },
+        "apps/backend/internal/workflow/engine/engine.go": {
+          "blob": "c024d1585093adcfd9c4f98e9b30d3ef80ec28c8",
+          "bytes": 20199,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w2/.agent-state/sources/workflow-engine.go"
+        },
+        "apps/backend/internal/worktree/manager_cleanup.go": {
+          "blob": "8caeea8b15a9f55c66a45e603715f3982833fd67",
+          "bytes": 32753,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w2/.agent-state/sources/manager_cleanup.go"
+        },
+        "apps/cli/package.json": {
+          "blob": "cc7c7d57f4cee1e3481fd07ba2daec4442a89a37",
+          "bytes": 1003,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w2/.agent-state/sources/cli-package.json"
+        },
+        "apps/web/package.json": {
+          "blob": "0e148d5cbde20fb009ad4608df8d0e11457c6889",
+          "bytes": 7676,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w2/.agent-state/sources/web-package.json"
+        },
+        "docs/public/security.md": {
+          "blob": "ece58e25e01d8994c311ff7b9980ff0576d509c3",
+          "bytes": 23586,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w2/.agent-state/sources/security.md"
+        },
+        "docs/public/tasks-and-workflows.md": {
+          "blob": "a226d081d90403bcfb3448c1b76a6c51849ad64e",
+          "bytes": 93543,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w2/.agent-state/sources/tasks-and-workflows.md"
+        },
+        "scripts/bootstrap-dev-env": {
+          "blob": "c08e9af6d510ab8aa0d1b70f6c4e6c5eb34888f7",
+          "bytes": 6403,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w2/.agent-state/sources/bootstrap-dev-env"
+        }
+      }
+    },
+    {
+      "repo": "kunchenguid/no-mistakes",
+      "page": "categories/ai-code-review/no-mistakes.md",
+      "reviewed_sha": "f0c91d3f4a7e382cf6946c44a61e757225e70ef9",
+      "frontmatter_parity": true,
+      "svg_xml_valid": 6,
+      "flow_svg_byte_matches": 2,
+      "health_svg_byte_matches": 2,
+      "mechanism_hash_and_text_matches": 2,
+      "source_files_blob_verified": {
+        "LICENSE": {
+          "blob": "5043b3a58af9c1ee101d4f7dec2d527d7ba0b2a4",
+          "bytes": 1065,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w4/.agent-state/source/kunchenguid-no-mistakes-f0c91d3/LICENSE"
+        },
+        "README.md": {
+          "blob": "e168044fc6465df9712f235a938c773c2763c845",
+          "bytes": 8161,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w4/.agent-state/source/kunchenguid-no-mistakes-f0c91d3/README.md"
+        },
+        "docs/install.sh": {
+          "blob": "0e2fa6cf4f2335b0b3ad03a3df3191144c2b8eb5",
+          "bytes": 2646,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w4/.agent-state/source/kunchenguid-no-mistakes-f0c91d3/docs/install.sh"
+        },
+        "docs/src/content/docs/concepts/gate-model.md": {
+          "blob": "a6a42e5766a2ce91bcb2bea2e84bd7171ace25b9",
+          "bytes": 26241,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w4/.agent-state/source/kunchenguid-no-mistakes-f0c91d3/docs/src/content/docs/concepts/gate-model.md"
+        },
+        "docs/src/content/docs/reference/environment.md": {
+          "blob": "2226af2e6510b4e6034fa9158c98c01fe5865c34",
+          "bytes": 26815,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w4/.agent-state/source/kunchenguid-no-mistakes-f0c91d3/docs/src/content/docs/reference/environment.md"
+        },
+        "docs/src/content/docs/start-here/installation.md": {
+          "blob": "50c5071214c30130c355fed9219f254e0a9862c1",
+          "bytes": 8052,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w4/.agent-state/source/kunchenguid-no-mistakes-f0c91d3/docs/src/content/docs/start-here/installation.md"
+        },
+        "go.mod": {
+          "blob": "c96d29aa0cf901b6338fd0632e49c52d607bc868",
+          "bytes": 1932,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w4/.agent-state/source/kunchenguid-no-mistakes-f0c91d3/go.mod"
+        },
+        "internal/gate/gate.go": {
+          "blob": "54a14527d7868088bec9b3aefcf2fb685f06723b",
+          "bytes": 17221,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w4/.agent-state/source/kunchenguid-no-mistakes-f0c91d3/internal/gate/gate.go"
+        },
+        "internal/pipeline/executor.go": {
+          "blob": "a55903c3969f02a81065e114cfd83b57b2b425c7",
+          "bytes": 119315,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w4/.agent-state/source/kunchenguid-no-mistakes-f0c91d3/internal/pipeline/executor.go"
+        },
+        "internal/pipeline/pipeline.go": {
+          "blob": "2985b8301fbb5e379acf7f9a18d25c76477681d4",
+          "bytes": 14499,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w4/.agent-state/source/kunchenguid-no-mistakes-f0c91d3/internal/pipeline/pipeline.go"
+        },
+        "internal/pipeline/steps/ci_fix.go": {
+          "blob": "c62898635754f16c4964c055590d90b11bb2cb02",
+          "bytes": 47392,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w4/.agent-state/source/kunchenguid-no-mistakes-f0c91d3/internal/pipeline/steps/ci_fix.go"
+        },
+        "internal/pipeline/steps/forcepush.go": {
+          "blob": "92ef00cf7b27f856b638a108e46ddd7fd80461ef",
+          "bytes": 8198,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w4/.agent-state/source/kunchenguid-no-mistakes-f0c91d3/internal/pipeline/steps/forcepush.go"
+        },
+        "internal/pipeline/steps/push.go": {
+          "blob": "680ebc71f2c855cf17987c4895bc89bba4dfce53",
+          "bytes": 20511,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w4/.agent-state/source/kunchenguid-no-mistakes-f0c91d3/internal/pipeline/steps/push.go"
+        },
+        "internal/skill/install.go": {
+          "blob": "ae79950171ac49cb1143c18a05c04af67db641df",
+          "bytes": 4414,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w4/.agent-state/source/kunchenguid-no-mistakes-f0c91d3/internal/skill/install.go"
+        }
+      }
+    },
+    {
+      "repo": "kharmanskyi/open-steps",
+      "page": "categories/agent-skills/engineering/open-steps.md",
+      "reviewed_sha": "4fa744ba8ea06ccf128a39853824c46ac391dd00",
+      "frontmatter_parity": true,
+      "svg_xml_valid": 6,
+      "flow_svg_byte_matches": 2,
+      "health_svg_byte_matches": 2,
+      "mechanism_hash_and_text_matches": 2,
+      "source_files_blob_verified": {
+        "CONTRIBUTING.md": {
+          "blob": "38fa7c34e3a719e23ca7b8c588f9e39efb6b4aa5",
+          "bytes": 6133,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w3/.agent-state/source/kharmanskyi-open-steps-4fa744b/CONTRIBUTING.md"
+        },
+        "LICENSE": {
+          "blob": "0debf0cc948075b224722509141d116ca1ad22c4",
+          "bytes": 1074,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w3/.agent-state/source/kharmanskyi-open-steps-4fa744b/LICENSE"
+        },
+        "README.md": {
+          "blob": "ea081d9050145deadf8201d86e6bd36e659f0456",
+          "bytes": 20384,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w3/.agent-state/source/kharmanskyi-open-steps-4fa744b/README.md"
+        },
+        "evals/README.md": {
+          "blob": "62a9db79e2b0f5e7f6c877425f923dd26c0a7125",
+          "bytes": 35394,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w3/.agent-state/source/kharmanskyi-open-steps-4fa744b/evals/README.md"
+        },
+        "evals/score.py": {
+          "blob": "6d297007a5aeb04e096d61749efcdb1b76852452",
+          "bytes": 34718,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w3/.agent-state/source/kharmanskyi-open-steps-4fa744b/evals/score.py"
+        },
+        "hooks/adapter.sh": {
+          "blob": "0b3cde253dcc2888bf16596489405ff89eae86ce",
+          "bytes": 6533,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w3/.agent-state/source/kharmanskyi-open-steps-4fa744b/hooks/adapter.sh"
+        },
+        "hooks/fingerprint.sh": {
+          "blob": "5216bbe013d65f8a76f2b1c55b11c86afee5bcab",
+          "bytes": 4673,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w3/.agent-state/source/kharmanskyi-open-steps-4fa744b/hooks/fingerprint.sh"
+        },
+        "hooks/session-start.sh": {
+          "blob": "90577b7d9b4c4c187515de4c085ba100a00e1bbb",
+          "bytes": 2741,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w3/.agent-state/source/kharmanskyi-open-steps-4fa744b/hooks/session-start.sh"
+        },
+        "hooks/stop-report.sh": {
+          "blob": "726c4314d27b3c079773440d0bf654e5a37991d1",
+          "bytes": 2235,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w3/.agent-state/source/kharmanskyi-open-steps-4fa744b/hooks/stop-report.sh"
+        },
+        "skills/os-big-picture/SKILL.md": {
+          "blob": "f467c54e6eef423e3f248d4602b4267f70ddb82f",
+          "bytes": 7616,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w3/.agent-state/source/kharmanskyi-open-steps-4fa744b/skills/os-big-picture/SKILL.md"
+        },
+        "skills/os-big-picture/scripts/census.sh": {
+          "blob": "11d1b3013e885ebb4c0b61f8a79eb7c47e08a59f",
+          "bytes": 4024,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w3/.agent-state/source/kharmanskyi-open-steps-4fa744b/skills/os-big-picture/scripts/census.sh"
+        },
+        "skills/os-done-or-not/SKILL.md": {
+          "blob": "604af34ab2cfb4dc920d3bc31a7bd43ea756fdd9",
+          "bytes": 7270,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w3/.agent-state/source/kharmanskyi-open-steps-4fa744b/skills/os-done-or-not/SKILL.md"
+        }
+      }
+    },
+    {
+      "repo": "xiaoluolyg/god",
+      "page": "categories/social-simulation/god.md",
+      "reviewed_sha": "753f0679758765d002f9dd9581ee37239b4be908",
+      "frontmatter_parity": true,
+      "svg_xml_valid": 6,
+      "flow_svg_byte_matches": 2,
+      "health_svg_byte_matches": 2,
+      "mechanism_hash_and_text_matches": 2,
+      "source_files_blob_verified": {
+        "LICENSE": {
+          "blob": "84c222d7d62ed0704c01776273d70c62ce86e219",
+          "bytes": 11349,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w7/.agent-state/sources/XiaoLuoLYG--GOD/files/LICENSE"
+        },
+        "QUICKSTART.md": {
+          "blob": "b98813424eaf13f12e69902a4d1c4d3356db1418",
+          "bytes": 3937,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w7/.agent-state/sources/XiaoLuoLYG--GOD/files/QUICKSTART.md"
+        },
+        "README.md": {
+          "blob": "fdbdd6f2d2ddc305d74b442f99123beeea966297",
+          "bytes": 24589,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w7/.agent-state/sources/XiaoLuoLYG--GOD/files/README.md"
+        },
+        "SECURITY.md": {
+          "blob": "b3952105f63632f020915cbac568dbcadf6bf809",
+          "bytes": 1897,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w7/.agent-state/sources/XiaoLuoLYG--GOD/files/SECURITY.md"
+        },
+        "agentsociety/custom/agents/jiuwenclaw_agent.py": {
+          "blob": "b2cf06bbccd5b33765a685a36d9b704893ed19d8",
+          "bytes": 78952,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w7/.agent-state/sources/XiaoLuoLYG--GOD/files/agentsociety/custom/agents/jiuwenclaw_agent.py"
+        },
+        "agentsociety/custom/maps/the_ville/ATTRIBUTION.md": {
+          "blob": "f7eedc55ca90ad399060d49b5c7a5be8533c842b",
+          "bytes": 374,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w7/.agent-state/sources/XiaoLuoLYG--GOD/files/agentsociety/custom/maps/the_ville/ATTRIBUTION.md"
+        },
+        "agentsociety/frontend/package.json": {
+          "blob": "a8dc29902f93416b841506f28dd04501747f6f02",
+          "bytes": 1684,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w7/.agent-state/sources/XiaoLuoLYG--GOD/files/agentsociety/frontend/package.json"
+        },
+        "agentsociety/packages/agentsociety2/agentsociety2/agent/skills/__init__.py": {
+          "blob": "28bfced4991d21868d783eba7eddb6411467d5aa",
+          "bytes": 28265,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w7/.agent-state/sources/XiaoLuoLYG--GOD/files/agentsociety/packages/agentsociety2/agentsociety2/agent/skills/__init__.py"
+        },
+        "agentsociety/packages/agentsociety2/agentsociety2/backend/routers/live_experiments.py": {
+          "blob": "625de549e5ca5797febced26e4492c20690aaab8",
+          "bytes": 55102,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w7/.agent-state/sources/XiaoLuoLYG--GOD/files/agentsociety/packages/agentsociety2/agentsociety2/backend/routers/live_experiments.py"
+        },
+        "agentsociety/packages/agentsociety2/agentsociety2/backend/services/custom/scanner.py": {
+          "blob": "ed6b5c6a24d64db5974c4462cecc145226c7e2e4",
+          "bytes": 10980,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w7/.agent-state/sources/XiaoLuoLYG--GOD/files/agentsociety/packages/agentsociety2/agentsociety2/backend/services/custom/scanner.py"
+        },
+        "agentsociety/packages/agentsociety2/agentsociety2/backend/services/experiment_packs.py": {
+          "blob": "b6c72a8c2c27e7e451ecd129694a82b006d84f4c",
+          "bytes": 14854,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w7/.agent-state/sources/XiaoLuoLYG--GOD/files/agentsociety/packages/agentsociety2/agentsociety2/backend/services/experiment_packs.py"
+        },
+        "agentsociety/packages/agentsociety2/agentsociety2/backend/services/package_imports.py": {
+          "blob": "2f15b8562b26d9e6b0f44a338d2482f27baf0473",
+          "bytes": 8932,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w7/.agent-state/sources/XiaoLuoLYG--GOD/files/agentsociety/packages/agentsociety2/agentsociety2/backend/services/package_imports.py"
+        },
+        "agentsociety/packages/agentsociety2/agentsociety2/backend/services/public_replay_export.py": {
+          "blob": "42595d9b2e56b3dbdb1117c5b98778b6dc99b197",
+          "bytes": 47524,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w7/.agent-state/sources/XiaoLuoLYG--GOD/files/agentsociety/packages/agentsociety2/agentsociety2/backend/services/public_replay_export.py"
+        },
+        "agentsociety/packages/agentsociety2/pyproject.toml": {
+          "blob": "501f7c8b199cc251833a76cb9e430aeda19f9ef2",
+          "bytes": 4576,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w7/.agent-state/sources/XiaoLuoLYG--GOD/files/agentsociety/packages/agentsociety2/pyproject.toml"
+        },
+        "jiuwenclaw/pyproject.toml": {
+          "blob": "0643ab6544f6aba19fc6f5b1a0bad1e0e081199f",
+          "bytes": 3122,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w7/.agent-state/sources/XiaoLuoLYG--GOD/files/jiuwenclaw/pyproject.toml"
+        },
+        "scripts/god.sh": {
+          "blob": "fbce47e5354fbe0df0b7d03478e34dcb09416ab7",
+          "bytes": 42370,
+          "cache": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w7/.agent-state/sources/XiaoLuoLYG--GOD/files/scripts/god.sh"
+        }
+      }
+    }
+  ],
+  "fresh": {
+    "repo": "llm-d/llm-d",
+    "classification": "fresh_by_date",
+    "today_utc": "2026-10-26",
+    "last_verified_retained": "2026-09-30",
+    "delta_days": 26,
+    "threshold_days": 90,
+    "fact_reread_upstream": false,
+    "date_bumped": false,
+    "structure_migrated": false,
+    "pages": [
+      {
+        "path": "categories/llm-inference/serving-engines/llm-d.md",
+        "sha256": "6652380fc6692d440719089a0411e1a3b8436047eaae1f9d5dd6417b9f0d7119"
+      },
+      {
+        "path": "categories/llm-inference/serving-engines/llm-d.zh.md",
+        "sha256": "7acf607325cea3b7b560379a0a8ac07fafa97b5f14112110791e937549cc0a93"
+      }
+    ],
+    "qa_decision": "no leftover Q&A"
+  },
+  "per_repo_gates": [
+    {
+      "repo": "llm-d/llm-d",
+      "page": "categories/llm-inference/serving-engines/llm-d.md",
+      "commands": [
+        {
+          "command": "make gates",
+          "returncode": 0,
+          "key_output": [
+            "209 category nodes, 978 EN + 978 ZH pages, 0 errors, 1626 warnings.",
+            "reverse_index check: reports are current, no full mislabels (0 partly-indexed rows tracked in reports/project-intake-backlog.md)"
+          ],
+          "log_sha256": "ea39a918013b691977f83c05bc219cb59b7f10029ded63e3f3d6f1d98e854fee"
+        },
+        {
+          "command": "python3 tools/quality_scan.py --scope categories/llm-inference/serving-engines/llm-d.md --scope categories/llm-inference/serving-engines/llm-d.zh.md --fail-on-any-scoped",
+          "returncode": 0,
+          "key_output": [
+            "No deterministic findings."
+          ],
+          "log_sha256": "8ed42f0c14728851ebc560690f7523c89a4c9b5f98d1bb4aab6c27929807c929"
+        },
+        {
+          "command": "git diff --check",
+          "returncode": 0,
+          "key_output": [],
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "repo": "ihhub/fheroes2",
+      "page": "categories/games/fheroes2.md",
+      "commands": [
+        {
+          "command": "make gates",
+          "returncode": 0,
+          "key_output": [
+            "210 category nodes, 980 EN + 980 ZH pages, 0 errors, 1626 warnings.",
+            "reverse_index check: reports are current, no full mislabels (0 partly-indexed rows tracked in reports/project-intake-backlog.md)"
+          ],
+          "log_sha256": "d5afaab16702625eba8b416f7f9454a6dfccdd489917c77c2df78dd0960e5e5a"
+        },
+        {
+          "command": "python3 tools/quality_scan.py --scope categories/games/fheroes2.md --scope categories/games/fheroes2.zh.md --fail-on-any-scoped",
+          "returncode": 0,
+          "key_output": [
+            "No deterministic findings."
+          ],
+          "log_sha256": "5e24f5d48217d5e9c3ffda1ccbfa9ba95a9ed82586b12e14e1c28aa0f2b4de02"
+        },
+        {
+          "command": "git diff --check",
+          "returncode": 0,
+          "key_output": [],
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "repo": "kdlbs/kandev",
+      "page": "categories/agent-tooling/supervision-surfaces/agent-cockpits/kandev.md",
+      "commands": [
+        {
+          "command": "make gates",
+          "returncode": 0,
+          "key_output": [
+            "209 category nodes, 979 EN + 979 ZH pages, 0 errors, 1626 warnings.",
+            "reverse_index check: reports are current, no full mislabels (0 partly-indexed rows tracked in reports/project-intake-backlog.md)"
+          ],
+          "log_sha256": "67240532605cd1ebb3a44f22f0c9c251e693377a074f79aba74e16a38ee9f5f5"
+        },
+        {
+          "command": "python3 tools/quality_scan.py --scope categories/agent-tooling/supervision-surfaces/agent-cockpits/kandev.md --scope categories/agent-tooling/supervision-surfaces/agent-cockpits/kandev.zh.md --fail-on-any-scoped",
+          "returncode": 0,
+          "key_output": [
+            "No deterministic findings."
+          ],
+          "log_sha256": "088a63de208846ed10a2950ada0ad838f7208c722d25727af726af728218fc56"
+        },
+        {
+          "command": "git diff --check",
+          "returncode": 0,
+          "key_output": [],
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "repo": "kharmanskyi/open-steps",
+      "page": "categories/agent-skills/engineering/open-steps.md",
+      "commands": [
+        {
+          "command": "make gates",
+          "returncode": 0,
+          "key_output": [
+            "211 category nodes, 982 EN + 982 ZH pages, 0 errors, 1628 warnings.",
+            "reverse_index check: reports are current, no full mislabels (0 partly-indexed rows tracked in reports/project-intake-backlog.md)"
+          ],
+          "log_sha256": "796bf14761c3329e2975515eee721ab7028eef936c873c1c2a947b529cc73115"
+        },
+        {
+          "command": "python3 tools/quality_scan.py --scope categories/agent-skills/engineering/open-steps.md --scope categories/agent-skills/engineering/open-steps.zh.md --fail-on-any-scoped",
+          "returncode": 0,
+          "key_output": [
+            "No deterministic findings."
+          ],
+          "log_sha256": "fb7007a6c86b7d9f42d2e76c4cfa721e747a466b3b72220495fee9084c9b592b"
+        },
+        {
+          "command": "git diff --check",
+          "returncode": 0,
+          "key_output": [],
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "repo": "kunchenguid/no-mistakes",
+      "page": "categories/ai-code-review/no-mistakes.md",
+      "commands": [
+        {
+          "command": "make gates",
+          "returncode": 0,
+          "key_output": [
+            "210 category nodes, 981 EN + 981 ZH pages, 0 errors, 1626 warnings.",
+            "reverse_index check: reports are current, no full mislabels (0 partly-indexed rows tracked in reports/project-intake-backlog.md)"
+          ],
+          "log_sha256": "5cb9a223b44affbf213262c6e1667e73c4bb8b414d564da5bef5d54466c6ea42"
+        },
+        {
+          "command": "python3 tools/quality_scan.py --scope categories/ai-code-review/no-mistakes.md --scope categories/ai-code-review/no-mistakes.zh.md --fail-on-any-scoped",
+          "returncode": 0,
+          "key_output": [
+            "No deterministic findings."
+          ],
+          "log_sha256": "623f5f0c495b91703f867682448054ed0841644c1ac84f59fa5e00bb48c22b5c"
+        },
+        {
+          "command": "git diff --check",
+          "returncode": 0,
+          "key_output": [],
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "repo": "XiaoLuoLYG/GOD",
+      "page": "categories/social-simulation/god.md",
+      "commands": [
+        {
+          "command": "make gates",
+          "returncode": 0,
+          "key_output": [
+            "211 category nodes, 983 EN + 983 ZH pages, 0 errors, 1630 warnings.",
+            "reverse_index check: reports are current, no full mislabels (0 partly-indexed rows tracked in reports/project-intake-backlog.md)"
+          ],
+          "log_sha256": "3250cec12cc8ee8b2cf5575ae9945fa33cdaa3bf51a069ab0e732e6d5844d40b"
+        },
+        {
+          "command": "python3 tools/quality_scan.py --scope categories/social-simulation/god.md --scope categories/social-simulation/god.zh.md --fail-on-any-scoped",
+          "returncode": 0,
+          "key_output": [
+            "No deterministic findings."
+          ],
+          "log_sha256": "b063574900053941b6df4e33d5e9ace045ee9153b5923ace40d1fd47d6b8b9ca"
+        },
+        {
+          "command": "git diff --check",
+          "returncode": 0,
+          "key_output": [],
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "repo": "datawhalechina/diy-llm",
+      "page": null,
+      "commands": [
+        {
+          "command": "make gates",
+          "returncode": 0,
+          "key_output": [
+            "210 category nodes, 980 EN + 980 ZH pages, 0 errors, 1626 warnings.",
+            "reverse_index check: reports are current, no full mislabels (0 partly-indexed rows tracked in reports/project-intake-backlog.md)"
+          ],
+          "log_sha256": "d5afaab16702625eba8b416f7f9454a6dfccdd489917c77c2df78dd0960e5e5a"
+        },
+        {
+          "command": "git diff --check",
+          "returncode": 0,
+          "key_output": [],
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    }
+  ],
+  "proposal": {
+    "repo": "datawhalechina/diy-llm",
+    "reviewed_sha": "95a3b81d4b2686d33afc2d533b0f91d295ec9b78",
+    "formal_page_created": false,
+    "inventory": {
+      "reviewed_sha": "95a3b81d4b2686d33afc2d533b0f91d295ec9b78",
+      "truncated": false,
+      "files": 1090,
+      "python_files": 87,
+      "notebook_files": 10,
+      "coursework_python_files": 75,
+      "coursework_notebooks": 8,
+      "auto_agent_paths": [],
+      "license_files": [
+        {
+          "path": "coursework/assignment4-data/LICENSE",
+          "sha": "49d9c744c8de093674f7b12bb5f532fdc08f00a2"
+        }
+      ]
+    },
+    "provenance": {
+      "unique_nonempty_blob_matches": 28,
+      "matched_python_paths": [
+        "coursework/assignment2-systems/cs336_systems/__init__.py",
+        "coursework/assignment2-systems/src/cs336_basics/data.py",
+        "coursework/assignment2-systems/src/cs336_basics/nn_utils.py",
+        "coursework/assignment2-systems/tests/common.py",
+        "coursework/assignment2-systems/tests/conftest.py",
+        "coursework/assignment2-systems/tests/test_attention.py",
+        "coursework/assignment4-data/cs336-basics/cs336_basics/data.py",
+        "coursework/assignment4-data/cs336-basics/cs336_basics/ddp_utils.py",
+        "coursework/assignment4-data/cs336-basics/cs336_basics/model.py",
+        "coursework/assignment4-data/cs336-basics/cs336_basics/optimizer.py",
+        "coursework/assignment4-data/tests/common.py",
+        "coursework/assignment4-data/tests/test_deduplication.py",
+        "coursework/assignment4-data/tests/test_extract.py",
+        "coursework/assignment4-data/tests/test_langid.py",
+        "coursework/assignment4-data/tests/test_pii.py",
+        "coursework/assignment4-data/tests/test_quality.py",
+        "coursework/assignment4-data/tests/test_toxicity.py",
+        "coursework/assignment5-alignment/cs336_alignment/drgrpo_grader.py"
+      ],
+      "note": "Only explicit suspected course sources were compared; not a whole-repo originality audit."
+    },
+    "decision": "Owner decision needed on coursework license partition; no infringement or whole-repository copying conclusion"
+  },
+  "report": {
+    "source_sha256": "0d9b3a2229e2bbcbf3a5dc28351041d05046c9a9238ab3caa56cf1920c468085",
+    "links": {
+      "local_file_targets": 324,
+      "internal_markdown_anchors": 202,
+      "missing": []
+    },
+    "version": 8
+  },
+  "legacy_route_proof": {
+    "base": "ba69fcf17a0abc56d5cda7a1b75d8fa3d1f38893",
+    "proofs": [
+      {
+        "old": "categories/agent-skills/engineering/caveman.md",
+        "new": "categories/agent-skills/engineering/behavior-overlays/caveman.md",
+        "normalized_equal": true
+      },
+      {
+        "old": "categories/agent-skills/engineering/caveman.zh.md",
+        "new": "categories/agent-skills/engineering/behavior-overlays/caveman.zh.md",
+        "normalized_equal": true
+      },
+      {
+        "old": "categories/agent-skills/engineering/i-have-adhd.md",
+        "new": "categories/agent-skills/engineering/behavior-overlays/i-have-adhd.md",
+        "normalized_equal": true
+      },
+      {
+        "old": "categories/agent-skills/engineering/i-have-adhd.zh.md",
+        "new": "categories/agent-skills/engineering/behavior-overlays/i-have-adhd.zh.md",
+        "normalized_equal": true
+      },
+      {
+        "old": "categories/agent-skills/engineering/ponytail.md",
+        "new": "categories/agent-skills/engineering/behavior-overlays/ponytail.md",
+        "normalized_equal": true
+      },
+      {
+        "old": "categories/agent-skills/engineering/ponytail.zh.md",
+        "new": "categories/agent-skills/engineering/behavior-overlays/ponytail.zh.md",
+        "normalized_equal": true
+      },
+      {
+        "old": "categories/agent-tooling/work-state/rtk.md",
+        "new": "categories/agent-tooling/work-state/rtk.md",
+        "normalized_equal": true
+      },
+      {
+        "old": "categories/agent-tooling/work-state/rtk.zh.md",
+        "new": "categories/agent-tooling/work-state/rtk.zh.md",
+        "normalized_equal": true
+      }
+    ],
+    "frozen_sample_document_byte_identical": true,
+    "source": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w6/.agent-state/refactor-result.json"
+  },
+  "frozen_sample_document_byte_identical": true,
+  "tests": {
+    "command": "make test",
+    "key_output": [
+      "Ran 483 tests in 20.793s",
+      "OK"
+    ],
+    "source": "本次复跑; tracked background_process bgp_1778e4e31001rda5PBEkxCnW27",
+    "note": "Demo HTTP errors in unittest output are fixture diagnostics, not new intake failures."
+  },
+  "tab_close": {
+    "status": "initial DEFER resolved by successful unmodified canonical scan; no manual PID or app-name fallback",
+    "final_audit": {
+      "status": "all done repository tabs absent after committed-only closure",
+      "done_targets_verified": 6,
+      "target_matches_before_close": 6,
+      "remaining": {
+        "datawhalechina/diy-llm": 1,
+        "anonymous-own-1": 1
+      },
+      "non_target_unchanged_each_operation": true,
+      "post_close_scan_count": 6,
+      "pending": []
+    },
+    "operations": [
+      {
+        "repo": "llm-d/llm-d",
+        "checkpoint_commit": "b279aa24b1acd19feedd1fcf5420cd11552f881e",
+        "operation_head": "0362c88438b4fb00ccb037be615ed9aa11a5ceef",
+        "target_before": 1,
+        "target_after": 0,
+        "non_target_unchanged": true,
+        "non_target_removed": 0,
+        "non_target_added": 0,
+        "helper_output": "closed https://github.com/llm-d/llm-d\n1 tab(s) matched"
+      },
+      {
+        "repo": "kdlbs/kandev",
+        "checkpoint_commit": "ba69fcf17a0abc56d5cda7a1b75d8fa3d1f38893",
+        "operation_head": "0362c88438b4fb00ccb037be615ed9aa11a5ceef",
+        "target_before": 1,
+        "target_after": 0,
+        "non_target_unchanged": true,
+        "non_target_removed": 0,
+        "non_target_added": 0,
+        "helper_output": "closed https://github.com/kdlbs/kandev\n1 tab(s) matched"
+      },
+      {
+        "repo": "ihhub/fheroes2",
+        "checkpoint_commit": "ec41055a622e350fbce91e2134124ceeeac2f2d2",
+        "operation_head": "0362c88438b4fb00ccb037be615ed9aa11a5ceef",
+        "target_before": 1,
+        "target_after": 0,
+        "non_target_unchanged": true,
+        "non_target_removed": 0,
+        "non_target_added": 0,
+        "helper_output": "closed https://github.com/ihhub/fheroes2\n1 tab(s) matched"
+      },
+      {
+        "repo": "kunchenguid/no-mistakes",
+        "checkpoint_commit": "4a5f616dd8e491ad8adcc3cdd9a0d9451cb2d69f",
+        "operation_head": "0362c88438b4fb00ccb037be615ed9aa11a5ceef",
+        "target_before": 1,
+        "target_after": 0,
+        "non_target_unchanged": true,
+        "non_target_removed": 0,
+        "non_target_added": 0,
+        "helper_output": "closed https://github.com/kunchenguid/no-mistakes\n1 tab(s) matched"
+      },
+      {
+        "repo": "kharmanskyi/open-steps",
+        "checkpoint_commit": "950acc9f271859413273e16d39b48dda9cde4bbb",
+        "operation_head": "0362c88438b4fb00ccb037be615ed9aa11a5ceef",
+        "target_before": 1,
+        "target_after": 0,
+        "non_target_unchanged": true,
+        "non_target_removed": 0,
+        "non_target_added": 0,
+        "helper_output": "closed https://github.com/kharmanskyi/open-steps\n1 tab(s) matched"
+      },
+      {
+        "repo": "XiaoLuoLYG/GOD",
+        "checkpoint_commit": "982295eefd0ca04fadd26269d2a1de79683192e8",
+        "operation_head": "0362c88438b4fb00ccb037be615ed9aa11a5ceef",
+        "target_before": 1,
+        "target_after": 0,
+        "non_target_unchanged": true,
+        "non_target_removed": 0,
+        "non_target_added": 0,
+        "helper_output": "closed https://github.com/XiaoLuoLYG/GOD\n1 tab(s) matched"
+      }
+    ]
+  },
+  "readme_unique_mapping": {
+    "rows_each": 983,
+    "unique_targets_each": 983,
+    "old_rows_preserved": 978
+  },
+  "html": "unchanged original hash; renderer/pair/browser not run; original denial retained",
+  "publication": {
+    "status": "not pushed; exact new-branch push needs owner authorization",
+    "branch": "feat/intake-tabs-2026-10-26"
+  },
+  "evidence_layers": {
+    "inner_loop": "real per-repo gates, scoped quality, and 483 tool tests",
+    "acceptance": "fixed Git blob bytes and source line ranges; 30 SVGs; real old-page/report invariants; live routing",
+    "holdout_unseen": "No model/effect experiment; fixed-source boundaries and complete historical regressions substitute",
+    "holdout_source_category": "真实捕获：GitHub fixed-source bytes, initial queue and historical Git/Markdown snapshots",
+    "expected_value_source": "需求原文、AGENTS/schema and frozen original137, not self-generated success cases",
+    "change_relative_to_freeze": "content generation only; tools/CI/schema/thresholds unchanged",
+    "known_gaps": [
+      "DIY-LLM license partition needs decision",
+      "HTML not refreshed",
+      "remote publication not authorized",
+      "no upstream execution, effect benchmark or complete rights audit"
+    ]
+  }
+}

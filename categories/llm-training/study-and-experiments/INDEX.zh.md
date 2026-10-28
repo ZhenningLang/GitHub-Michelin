@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Diy-LLM** | 对照中文 CS336 讲解学习分词、模型、数据与系统作业；不是统一训练器，作业2许可范围仍未解决。 | D（6/6） | [→](diy-llm.zh.md) |
 | **MiniMind** | 当你想用约 3.2k 行手写 PyTorch 把 64M LLM 端到端训一遍（分词器、预训练、SFT、LoRA、MoE、DPO/GRPO 与 Tool Call RL），且接受产出是教学产物而不是可用模型时用它。 | A（5/6） | [→](minimind.zh.md) |
 | **nanoGPT** | 当你要最经典的极简 GPT-2 训练参考（约 670 行可读代码、支持 MPS/CPU、checkpoint 与 OpenAI 的 GPT-2 权重互通），且接受它只到预训练、并已被上游宣布由 nanochat 取代时用它。 | C（4/6） | [→](nanogpt.zh.md) |
 | **Train LLM From Scratch** | 当你想看 SFT、奖励模型、DPO/ORPO/KTO、PPO、GRPO 每个对齐阶段都用纯 PyTorch 手写在同一个英文小 GPT 上、并用同一张 GSM8K 表打分，且接受脚本只能上 GPU、路径写死 `/ephemeral`、最后得不到可用模型时用它。 | A（4/6） | [→](train-llm-from-scratch.zh.md) |
@@ -15,6 +16,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Diy-LLM](diy-llm.zh.md) | 已收录 | D（6/6） | 中文课程覆盖更广，系统和数据习题可独立阅读；不自动串课程，许可混合且作业2范围未明。 |
 | [MiniMind](minimind.zh.md) | ✅ | A（5/6） | 预训练→SFT→RL 整条链路手写且便宜到真的能跑一遍；但 64M 且中文优先意味着产不出可用模型，两次破坏性重构也意味着必须锁 commit。 |
 | [nanoGPT](nanogpt.zh.md) | ✅ | C（4/6） | 读它来从「所有实现都被拿来对照的那份参考」学 GPT 训练，并能加载真实 GPT-2 权重；但它已废弃、单人维护、只有 DDP，且没有 SFT 与 RL。 |
 | [Train LLM From Scratch](train-llm-from-scratch.zh.md) | ✅ | A（4/6） | 从零实现的对齐菜单最全（奖励模型 + PPO、DPO、GRPO），全程不 import `transformers`/`trl`；但只有一位断续活跃的维护者，没有 release 也没有代码 CI，路径是按作者云主机写的。 |

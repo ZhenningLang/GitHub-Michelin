@@ -105,10 +105,12 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **weave** | 并行 agent 或分支总在同一文件里互不相干的改动上卡住合并、想让 git 比函数和键而不是比行时用它——但它约 8 个月大、pre-1.0、单一核心作者，引擎判定仍在版本间变动。 | MIT OR Apache-2.0 | B（6/6） | [中](categories/agent-tooling/concurrent-editing/weave.zh.md) · [EN](categories/agent-tooling/concurrent-editing/weave.md) |
 | **dsh-TUI** | DeepSeek Harness 的工具、审批和后台任务散在文字里。dsh-TUI 把这些状态投影成终端卡片、面板和会话浏览器。 | MIT | B（5/6） | [EN](categories/agent-tooling/supervision-surfaces/agent-cockpits/dsh-tui.md) · [中](categories/agent-tooling/supervision-surfaces/agent-cockpits/dsh-tui.zh.md) |
 | **Agor** | 用实时分支看板协作混合编程助手；接受 BSL，并自行运营数据库与执行安全。 | BUSL-1.1 | D（6/6） | [EN](categories/agent-tooling/supervision-surfaces/agent-cockpits/agor.md) · [中](categories/agent-tooling/supervision-surfaces/agent-cockpits/agor.zh.md) |
+| **Kandev** | 用服务端浏览器工作台评审并行编程任务；须主动配置人工关口、执行权限和归档保留规则。 | AGPL-3.0-only | B（6/6） | [EN](categories/agent-tooling/supervision-surfaces/agent-cockpits/kandev.md) · [中](categories/agent-tooling/supervision-surfaces/agent-cockpits/kandev.zh.md) |
 ### sandboxing
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **Anthropic Sandbox Runtime** | 用原生文件规则和出口过滤限制本地助手或 MCP 子进程，无需客体镜像；须显式保护读取，Windows 仍处测试阶段。 | Apache-2.0 | A（6/6） | [中](categories/sandboxing/sandbox-runtime.zh.md) · [EN](categories/sandboxing/sandbox-runtime.md) |
 | **gVisor** | 不可信容器必须与宿主内核隔离、又不想跑虚拟机时用它——不需要 KVM，且容器工作流不变。 | Apache-2.0 | A（6/6） | [中](categories/sandboxing/gvisor.zh.md) · [EN](categories/sandboxing/gvisor.md) |
 | **Kata Containers** | 想让每个 pod 在轻量虚拟机里拿到真内核、同时 Kubernetes 保持常规 RuntimeClass 工作流时用它。 | Apache-2.0 | A（6/6） | [中](categories/sandboxing/kata-containers.zh.md) · [EN](categories/sandboxing/kata-containers.md) |
 | **Firecracker** | 你在自建沙箱层、想要一个带控制 API 的极简 KVM microVM 原语（而不是容器运行时）时用它。 | Apache-2.0 | A（6/6） | [中](categories/sandboxing/firecracker.zh.md) · [EN](categories/sandboxing/firecracker.md) |
@@ -186,6 +188,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **BrowserOS** | 给已有助手提供独立的已登录浏览器、任务页签与本地回放；neo 与内置助手版需分清。 | AGPL-3.0 | B（6/6） | [中](categories/web-automation/agent-browser-tools/browseros.zh.md) · [EN](categories/web-automation/agent-browser-tools/browseros.md) |
 | **page-agent** | 想在页内用自然语言、通过直接读写 DOM 控制 Web 界面、且无需后端时用它。 | MIT | B（6/6） | [中](categories/web-automation/agent-browser-tools/page-agent.zh.md) · [EN](categories/web-automation/agent-browser-tools/page-agent.md) |
 | **Chrome DevTools MCP** | 当 agent 需要驱动并用 DevTools 检查真实 Chrome（性能 trace、网络、控制台、堆内存）时使用。 | Apache-2.0 | A（6/6） | [中](categories/web-automation/agent-browser-tools/chrome-devtools-mcp.zh.md) · [EN](categories/web-automation/agent-browser-tools/chrome-devtools-mcp.md) |
 | **Agent Browser** | 当 agent 需要靠 shell 命令通过 CDP 驱动真实 Chrome、用稳定元素引用而非 CSS 选择器操作网页时使用。 | Apache-2.0 | B（5/6） | [中](categories/web-automation/agent-browser-tools/agent-browser.zh.md) · [EN](categories/web-automation/agent-browser-tools/agent-browser.md) |
@@ -209,14 +212,15 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Puppeteer** | 当 Node.js 任务本来就绑定 Chrome（服务端渲染 PDF、定时截图、预渲染单页应用、脚本化登录下载），并且你想用 Chrome 团队维护的参考 CDP 客户端时用它——但它不支持 Safari/WebKit，也没有测试运行器，这两样要用 Playwright。 | Apache-2.0 | A（6/6） | [EN](categories/web-automation/browser-driver-frameworks/puppeteer.md) · [中](categories/web-automation/browser-driver-frameworks/puppeteer.zh.md) |
 | **Jev Ultrafast** | 当每步延迟是硬约束、且能接受托管判定 API 时用它——一次请求同时给出每一步的操作与目标元素。 | MIT | C（6/6） | [中](categories/web-automation/agent-browser-tools/jev-ultrafast.zh.md) · [EN](categories/web-automation/agent-browser-tools/jev-ultrafast.md) |
 | **PinchTab** | 当 agent 需要一个常驻本地的浏览器服务、经 CLI/HTTP/MCP 编排多个相互隔离的 Chrome 实例与配置档、且要默认全关的能力闸门加提示注入扫描时用它——pre-1.0，实际单维护者。 | MIT | B（6/6） | [中](categories/web-automation/agent-browser-tools/pinchtab.zh.md) · [EN](categories/web-automation/agent-browser-tools/pinchtab.md) |
-| **invisible_playwright_mcp** | 当 MCP 助手总被验证码和机器人墙拦住时用它——它驱动一个 C++ 层打过补丁、指纹由种子推导的隐身 Firefox；只支持 Windows/Linux，单人维护，星数继承自改名前的投简历机器人仓库。 | MIT | B（5/6） | [中](categories/web-automation/agent-browser-tools/invisible-playwright-mcp.zh.md) · [EN](categories/web-automation/agent-browser-tools/invisible-playwright-mcp.md) |
-| **playwright-bot-bypass** | 当编码 agent 写的脚本在你自己的桌面机上被判成机器人时用它——一个 skill 加一个工厂函数，经 rebrowser-playwright 驱动你带窗口的真 Chrome；必须有显示器，对 IP、行为和验证码类拦截无效，核心依赖自 2025-05 起未发版。 | MIT | C（5/6） | [中](categories/web-automation/agent-browser-tools/playwright-bot-bypass.zh.md) · [EN](categories/web-automation/agent-browser-tools/playwright-bot-bypass.md) |
-| **camofox-browser** | 当一个多用户、常驻的 agent 总被弹验证码时用它——在 Camoufox 反检测 Firefox 之上的常驻 REST/MCP/OpenClaw 服务，带按用户隔离的会话和按编号操作的快照；路由默认敞开、遥测默认开启，提交集中在一人，项目才八个月。 | MIT | B（6/6） | [中](categories/web-automation/agent-browser-tools/camofox-browser.zh.md) · [EN](categories/web-automation/agent-browser-tools/camofox-browser.md) |
+| **invisible_playwright_mcp** | 当 MCP 助手总被验证码和机器人墙拦住时用它——它驱动一个 C++ 层打过补丁、指纹由种子推导的隐身 Firefox；只支持 Windows/Linux，单人维护，星数继承自改名前的投简历机器人仓库。 | MIT | B（5/6） | [中](categories/web-automation/agent-browser-tools/stealth-session-tools/invisible-playwright-mcp.zh.md) · [EN](categories/web-automation/agent-browser-tools/stealth-session-tools/invisible-playwright-mcp.md) |
+| **playwright-bot-bypass** | 当编码 agent 写的脚本在你自己的桌面机上被判成机器人时用它——一个 skill 加一个工厂函数，经 rebrowser-playwright 驱动你带窗口的真 Chrome；必须有显示器，对 IP、行为和验证码类拦截无效，核心依赖自 2025-05 起未发版。 | MIT | C（5/6） | [中](categories/web-automation/agent-browser-tools/stealth-session-tools/playwright-bot-bypass.zh.md) · [EN](categories/web-automation/agent-browser-tools/stealth-session-tools/playwright-bot-bypass.md) |
+| **camofox-browser** | 当一个多用户、常驻的 agent 总被弹验证码时用它——在 Camoufox 反检测 Firefox 之上的常驻 REST/MCP/OpenClaw 服务，带按用户隔离的会话和按编号操作的快照；路由默认敞开、遥测默认开启，提交集中在一人，项目才八个月。 | MIT | B（6/6） | [中](categories/web-automation/agent-browser-tools/stealth-session-tools/camofox-browser.zh.md) · [EN](categories/web-automation/agent-browser-tools/stealth-session-tools/camofox-browser.md) |
 
 ### llm-training
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **CrowdGPT** | 通过中央协调器给共享模型贡献本地训练轮次；可审查客户端，但不是完整的自托管服务。 | GPL-3.0 | C（6/6） | [中](categories/llm-training/crowdgpt.zh.md) · [EN](categories/llm-training/crowdgpt.md) |
 | **LlamaFactory** | 面向 100+ LLM/VLM 的零代码统一微调框架，自带 Gradio Web UI(LlamaBoard)，覆盖 LoRA/QLoRA/全量微调及 SFT→RLHF 全链路。 | Apache-2.0 | B（6/6） | [中](categories/llm-training/llamafactory.zh.md) · [EN](categories/llm-training/llamafactory.md) |
 | **Unsloth** | 基于自定义 Triton kernel 的单卡 LoRA/QLoRA/RL 微调工具，号称在 500+ 开源 LLM 上约 2x 提速并大幅省显存。 | Apache-2.0 | B（5/6） | [中](categories/llm-training/unsloth.zh.md) · [EN](categories/llm-training/unsloth.md) |
 | **ART (Agent Reinforcement Trainer)** | 当 Python 命令行需要纯 Python 的 figlet 风格 ASCII 文字横幅、且不依赖系统二进制时用它——但它只做文字转艺术字（不做图片转 ASCII），也不与 figlet 字体完全一致。 | Apache-2.0 | C（5/6） | [中](categories/llm-training/art.zh.md) · [EN](categories/llm-training/art.md) |
@@ -228,6 +232,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **verl** | 当你要在 GPU 集群上对 7B 到 235B 的模型跑 PPO、GRPO 或 DAPO，且每一步都是生成耗时压过训练时用它——但只做 SFT/DPO 或只有一张消费级显卡时，它的搭建成本远高于 TRL 或 Unsloth。 | Apache-2.0 | B（6/6） | [EN](categories/llm-training/verl.md) · [中](categories/llm-training/verl.zh.md) |
 | **Soup** | 当一份 YAML 要把微调从 JSONL 一路带到可服务、可导出的模型，而底座装不进你的显卡时用它——当配置契约必须跨版本稳定、或模型本就装得下且要追求速度时不用。 | Apache-2.0 | B（6/6） | [中](categories/llm-training/soup.zh.md) · [EN](categories/llm-training/soup.md) |
 | **Miles** | 当你在多节点 GPU 上用 SGLang 生成、Megatron 训练去做大 MoE 模型的强化学习，并需要训推两侧保持一致时用它——单卡、只做 SFT、推理栈是 vLLM 或要求 API 稳定时不用。 | Apache-2.0 | B（5/6） | [中](categories/llm-training/miles.zh.md) · [EN](categories/llm-training/miles.md) |
+| **Diy-LLM** | 对照中文 CS336 讲解学习分词、模型与系统参考作业；不是生产 SDK，也不自动串完整门课。 | 混合许可；作业2范围未明 | D（6/6） | [中](categories/llm-training/study-and-experiments/diy-llm.zh.md) · [EN](categories/llm-training/study-and-experiments/diy-llm.md) |
 | **MiniMind** | 用约 3.2k 行手写 PyTorch 把 64M LLM 端到端训一遍（分词器、预训练、SFT、LoRA、MoE、DPO/GRPO、Tool Call 与 Agentic RL），一下午能读完；它是课程，产出的模型是教学产物而非可用模型。 | Apache-2.0 | A（5/6） | [中](categories/llm-training/study-and-experiments/minimind.zh.md) · [EN](categories/llm-training/study-and-experiments/minimind.md) |
 | **nanoGPT** | 最经典的极简 GPT 训练参考——约 670 行可读代码、支持 MPS/CPU、checkpoint 与 OpenAI 的 GPT-2 互通；但它只到预训练，没有 SFT 与 RL，且 README 自己已宣布被 nanochat 取代。 | MIT | C（4/6） | [中](categories/llm-training/study-and-experiments/nanogpt.zh.md) · [EN](categories/llm-training/study-and-experiments/nanogpt.md) |
 | **Train LLM From Scratch** | 在同一个英文小 GPT 上用纯 PyTorch 手写预训练、SFT、奖励模型、DPO/ORPO/KTO、PPO 和 GRPO，并用同一张 GSM8K 表对比——只能上 GPU 的教程仓库，不发布权重、没有 release，路径按作者机器写死。 | MIT | A（4/6） | [中](categories/llm-training/study-and-experiments/train-llm-from-scratch.zh.md) · [EN](categories/llm-training/study-and-experiments/train-llm-from-scratch.md) |
@@ -237,6 +242,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **PenguinHarness** | 固定模型和评测集，给运行框架改动分版本、评分；涨分仍需新任务验证。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/workflow-builders/penguin-harness.zh.md) · [EN](categories/agent-frameworks/workflow-builders/penguin-harness.md) |
+| **Hermit** | 跨演化方法训练并保存外部 agent 适配文件版本；不改权重，也不自动保证涨分。 | Apache-2.0 | C（6/6） | [中](categories/agent-frameworks/workflow-builders/hermit.zh.md) · [EN](categories/agent-frameworks/workflow-builders/hermit.md) |
 | **JiuwenSwarm** | 带聊天渠道与审批的团队工作台；分布式模式需要额外基础设施。 | Apache-2.0 | B（5/6） | [中](categories/agent-frameworks/agent-runtimes/agent-services/jiuwenswarm.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-services/jiuwenswarm.md) |
 | **Atomic Agent** | 压缩工具提示词驱动本地工作站；仍是预览版本，分析外发默认开启。 | MIT | B（6/6） | [中](categories/agent-frameworks/agent-runtimes/personal-assistants/atomic-agent.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/personal-assistants/atomic-agent.md) |
 | **Docker Agent** | 你要的 agent 应该是一个可分享的 YAML（模型、工具、队友），由 `docker agent run` 在本地像跑镜像一样执行时选它；循环必须嵌在你代码里时不选。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/agent-runtimes/docker-agent.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/docker-agent.md) |
@@ -379,6 +385,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **no-mistakes** | 本地接住已提交改动，在独立工作区评审修复，再发布 PR 并监控 CI；需明确授权发布。 | MIT | B（6/6） | [中](categories/ai-code-review/no-mistakes.zh.md) · [EN](categories/ai-code-review/no-mistakes.md) |
 | **Open Code Review** | 想在 CI 里对 Git diff 拿到精确行级 LLM review 评论、又不被噪声淹没时用它。 | Apache-2.0 | B（5/6） | [中](categories/ai-code-review/open-code-review.zh.md) · [EN](categories/ai-code-review/open-code-review.md) |
 | **Claude Code Security Review** | 当你想让 Claude 在每个可信 PR 上读 diff、找逻辑层面的漏洞并在具体行上评论、且不分语言时用它——但它没做 prompt injection 加固，绝不能用在不可信的 fork PR 上。 | MIT | B（4/6） | [中](categories/ai-code-review/claude-code-security-review.zh.md) · [EN](categories/ai-code-review/claude-code-security-review.md) |
 | **React Doctor** | 当 coding agent 在写 React、你想要对 React 特有反模式做确定性、可重复的检查时用它。 | LicenseRef-Modified-MIT | B（5/6） | [中](categories/ai-code-review/react-doctor.zh.md) · [EN](categories/ai-code-review/react-doctor.md) |
@@ -447,6 +454,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **BMAD Method** | 当你要的是角色驱动的端到端 agent 方法（analyst、PM、架构、UX、开发、复核），而不是薄薄的 spec 管线时用它——并把飞快的涨星曲线当成未经验证。 | MIT | B（4/6） | [中](categories/agent-dev-methodology/spec-driven-development/bmad-method.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/bmad-method.md) |
 | **Improve** | 当你想让昂贵模型只读审计仓库、再为便宜执行模型写出可交接的自包含计划时用它——它从不亲自实现。 | MIT | B（4/5） | [中](categories/agent-dev-methodology/spec-driven-development/improve.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/improve.md) |
 | **Agent OS** | 当你要把项目 standards 装进去并选择性注入、在实现前先塑形计划时用它——发布线自 v3.0.0（2026-01）后一直很安静。 | MIT | B（4/5） | [中](categories/agent-dev-methodology/spec-driven-development/agent-os.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/agent-os.md) |
+| **Elephant-Goldfish Model (EGM)** | 写代码前，让新上下文审查者挑战书面设计；由人选架构并批准文档修改。 | Apache-2.0 | C（5/6） | [中](categories/agent-dev-methodology/spec-driven-development/elephant-goldfish-model.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/elephant-goldfish-model.md) |
 
 ### ai-design-generation
 
@@ -475,6 +483,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **HatchZip** | 在快满磁盘上逐步消耗可重新获取的原包来解压；保留原包模式会放弃空间收益。 | 核心 MIT OR Apache-2.0；RAR 发布版另含 UnRAR 限制 | C（5/6） | [中](categories/dev-utilities/data-tools/hatchzip.zh.md) · [EN](categories/dev-utilities/data-tools/hatchzip.md) |
 | **App Store Connect CLI** | 脚本化管理苹果发布文案、TestFlight 与审核；独立 Go 二进制，凭据和审批边界仍由你负责。 | MIT | B（6/6） | [中](categories/dev-utilities/app-store-connect-cli.zh.md) · [EN](categories/dev-utilities/app-store-connect-cli.md) |
 | **xtool** | 从 Linux、WSL 或 macOS 构建签名 SwiftPM iOS 应用；仍受苹果开发包与账号约束。 | MIT | B（6/6） | [中](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/xtool.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/xtool.md) |
+| **webframe** | 用系统网页视图运行页面并接终端流；仍有引擎差异和持久数据，不是测试套件。 | MIT | C（5/6） | [中](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/webframe.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/webframe.md) |
 | **REA** | 通过 agent 用本地证据检查无源码应用；原生分析引擎需另配。 | MIT | B（5/6） | [中](categories/dev-utilities/binary-analysis/rea.zh.md) · [EN](categories/dev-utilities/binary-analysis/rea.md) |
 | **Ghidra** | 用关联指令、类 C 函数与持久标注理解有权分析的原生二进制；须准备 Java 与原生组件。 | Apache-2.0 | A（6/6） | [中](categories/dev-utilities/binary-analysis/ghidra.zh.md) · [EN](categories/dev-utilities/binary-analysis/ghidra.md) |
 | **ReAgent** | 从 Ghidra 证据重建授权 C/C++ 函数，结合模型评审与工程自备候选测试；不证明等价。 | MIT | C（5/6） | [中](categories/dev-utilities/binary-analysis/reagent.zh.md) · [EN](categories/dev-utilities/binary-analysis/reagent.md) |
@@ -495,6 +504,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Open-Box** | 专有软件信息例外：集成路由面板、DNS／订阅与配对客户端；须接受高网络权限、自有程序闭源和部分恢复边界。 | LicenseRef-Open-Box-Proprietary | C（4/6） | [中](categories/dev-utilities/ops-infra/open-box.zh.md) · [EN](categories/dev-utilities/ops-infra/open-box.md) |
 | **RustDesk** | 当你要照看几台不在身边的机器，想要 TeamViewer 式“输 ID 就连”的跨 NAT 体验、撮合和中继服务器又放在自己手里时用它——但开源服务端没有管理后台、SSO 和审计日志，这些在付费的 Server Pro 里。 | AGPL-3.0 | A（6/6） | [中](categories/dev-utilities/ops-infra/rustdesk.zh.md) · [EN](categories/dev-utilities/ops-infra/rustdesk.md) |
 | **Tauri** | 当一个 Web 前端的桌面应用要做到安装包小、内存低，而不是像 Electron 那样捎带整份 Chromium 时用它——但各系统 webview 渲染不一致，Linux 需要 webkit2gtk 4.1，原生逻辑必须用 Rust 写。 | Apache-2.0 OR MIT | A（6/6） | [中](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/tauri.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/tauri.md) |
+| **Wails** | 给 Go 业务逻辑套上桌面网页界面；通信权限与各平台渲染测试仍由应用负责。 | MIT | B（6/6） | [中](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/wails.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/wails.md) |
 | **Deno** | 当你新起一个 TypeScript 后端、命令行工具或脚本，默认拒绝文件、网络和环境变量访问以及内置 fmt、lint、test 比原样运行现有 Node 代码更重要时用它——但大型 Node 应用迁移和依赖原生插件的项目不合适。 | MIT | A（6/6） | [中](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/deno.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/deno.md) |
 | **Vaultwarden** | 当你想让家人或小团队继续用 Bitwarden 官方应用、但把密码库放在自己的一台小服务器上时用它——但客户端一更新你就得及时升级服务端，而且没有厂商支持、SAML/SCIM 或内置故障切换。 | AGPL-3.0 | B（6/6） | [中](categories/dev-utilities/ops-infra/vaultwarden.zh.md) · [EN](categories/dev-utilities/ops-infra/vaultwarden.md) |
 | **Zed** | 当编辑器延迟比扩展数量更重要、你想要一个用 GPU 渲染的原生编辑器，并内置语言服务器、调试器、AI 代理和多人协作时用它——但 VS Code 扩展跑不了，机器必须有可用的显卡驱动，多人协作还要登录 Zed 的服务。 | GPL-3.0-or-later AND Apache-2.0 (per README; GitHub reports NOASSERTION) | A（4/6） | [中](categories/dev-utilities/editors-and-runtimes/code-editors/zed.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/code-editors/zed.md) |
@@ -525,6 +535,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **Anime.js** | 零依赖的 JS 动画引擎：统一 animate() API 驱动 CSS、SVG、DOM 属性和 JS 对象，内置时间线、错峰、弹簧缓动和滚动联动。 | MIT | B（5/6） | [中](categories/frontend-animation/anime.zh.md) · [EN](categories/frontend-animation/anime.md) |
+| **Dioramas** | 改写完整的滚动联动三维落地页，不必重搭渲染器和加载器；二十个可编辑场景，但需承担 GPU、下载成本及独立素材许可。 | MIT | C（4/6） | [中](categories/frontend-animation/dioramas.zh.md) · [EN](categories/frontend-animation/dioramas.md) |
 
 ### api-gateway
 
@@ -610,6 +621,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **fun-isometric** | 让助手用复用动作帧绘制、绑定可修改的画布贴纸；附渲染检查，不是通用动画平台。 | MIT | C（4/5） | [中](categories/agent-skills/visual-content/fun-isometric.zh.md) · [EN](categories/agent-skills/visual-content/fun-isometric.md) |
 | **Interfaces Skills** | 六领域循证界面评审，明确区分本次退化和未审查领域。 | MIT | B（4/5） | [中](categories/agent-skills/design/ui-taste/jakubkrehel-skills.zh.md) · [EN](categories/agent-skills/design/ui-taste/jakubkrehel-skills.md) |
 | **Plain Writing Skill** | 用平实英文规则改写 agent 回复，并补齐读者背景。 | MIT | B（4/5） | [中](categories/agent-skills/ai-writing/de-ai-writing/plain-writing-skill.zh.md) · [EN](categories/agent-skills/ai-writing/de-ai-writing/plain-writing-skill.md) |
 | **SwiftUI Pro** | SwiftUI API 与无障碍专项审查指令；须对照真实 SDK 验证。 | MIT | B（4/5） | [中](categories/agent-skills/engineering/swiftui-agent-skill.zh.md) · [EN](categories/agent-skills/engineering/swiftui-agent-skill.md) |
@@ -728,6 +740,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **tstack** | 九项 PR 交付技能，串起 Sol 评审、CI 值守与合并或交接分流；模型路由和权限策略由你提供。 | MIT | C（4/5） | [中](categories/agent-skills/personal-collections/engineering-workflows/tstack.zh.md) · [EN](categories/agent-skills/personal-collections/engineering-workflows/tstack.md) |
 | **agent-scripts** | 一位维护者用来在 Codex 与 Claude Code 之间共享一份 `AGENTS.MD` 和约 70 个 skill 的权威仓库，靠软链同步脚本分发；更像参考布局而非可移植的 skill 包（不少 skill 默认作者自己的机器）。 | MIT | B（4/5） | [中](categories/agent-skills/personal-collections/engineering-workflows/agent-scripts.zh.md) · [EN](categories/agent-skills/personal-collections/engineering-workflows/agent-scripts.md) |
 | **antfu/skills** | Anthony Fu 个人精选、面向 Vue/Vite/Nuxt 栈的 agent skill 集合（其 ESLint/pnpm/Vitest/UnoCSS 偏好 + 生成与 vendored 的框架 skill），通过 skills CLI 安装。 | MIT | B（4/5） | [中](categories/agent-skills/personal-collections/engineering-workflows/antfu-skills.zh.md) · [EN](categories/agent-skills/personal-collections/engineering-workflows/antfu-skills.md) |
 | **claude-code-harness** | 一套个人化的 Claude Code harness：以插件形式装入受治理的 plan → work → review → release 循环（spec 优先契约、TDD 门控执行、独立 review），并附带 Go 原生 doctor CLI 诊断插件缓存与 skill 漂移。 | MIT | B（5/6） | [中](categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.zh.md) · [EN](categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.md) |
@@ -762,14 +775,15 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **archify** | Any agent Skill: generate beautiful architecture diagrams with dark/light theme toggle and PNG/JPEG/WebP/SVG export | MIT | B（4/6） | [中](categories/agent-skills/design/visual-artifacts/archify.zh.md) · [EN](categories/agent-skills/design/visual-artifacts/archify.md) |
 | **mattpocock/skills** | Matt Pocock 的工程 skill 包，面向 Claude Code 和 skills.sh，覆盖 grilling、domain docs、TDD、bug 诊断、架构、review、tickets 和实现流程。 | MIT | B（4/5） | [中](categories/agent-skills/engineering/mattpocock-skills.zh.md) · [EN](categories/agent-skills/engineering/mattpocock-skills.md) |
 | **BrowserAct Skills** | 面向 BrowserAct 的 agent 浏览器自动化技能包：索引式浏览器控制、stealth/private session、远程人工接管，以及 Skill Forge 抓取工作流。 | MIT | B（4/5） | [中](categories/agent-skills/engineering/browser-act-skills.zh.md) · [EN](categories/agent-skills/engineering/browser-act-skills.md) |
-| **caveman** | 简短表达技能加可选本地代理：压缩 coding agent 说出来的话，wrap 之后也压缩它读进去的东西，代码、命令和报错原样保留。 | NOASSERTION (MIT + BSL-1.1) | D（6/6） | [中](categories/agent-skills/engineering/caveman.zh.md) · [EN](categories/agent-skills/engineering/caveman.md) |
-| **i-have-adhd** | 一份 10 条规则的回复风格技能：让 coding agent 每轮先说动作、把步骤编号、复述进度，并删掉铺垫与收尾；一套规则覆盖约 15 种 agent harness。 | MIT | A（4/5） | [中](categories/agent-skills/engineering/i-have-adhd.zh.md) · [EN](categories/agent-skills/engineering/i-have-adhd.md) |
-| **Ponytail** | 常驻的「最懒资深工程师」规则集：coding agent 先列出改动要波及的地方、先复用再写，交回最小但完整的 diff；带生命周期 hook、代码地图、六个 skill 和约 20 种 harness 适配。 | MIT | B（5/6） | [中](categories/agent-skills/engineering/ponytail.zh.md) · [EN](categories/agent-skills/engineering/ponytail.md) |
+| **caveman** | 简短表达技能加可选本地代理：压缩 coding agent 说出来的话，wrap 之后也压缩它读进去的东西，代码、命令和报错原样保留。 | NOASSERTION (MIT + BSL-1.1) | D（6/6） | [中](categories/agent-skills/engineering/behavior-overlays/caveman.zh.md) · [EN](categories/agent-skills/engineering/behavior-overlays/caveman.md) |
+| **i-have-adhd** | 一份 10 条规则的回复风格技能：让 coding agent 每轮先说动作、把步骤编号、复述进度，并删掉铺垫与收尾；一套规则覆盖约 15 种 agent harness。 | MIT | A（4/5） | [中](categories/agent-skills/engineering/behavior-overlays/i-have-adhd.zh.md) · [EN](categories/agent-skills/engineering/behavior-overlays/i-have-adhd.md) |
+| **Ponytail** | 常驻的「最懒资深工程师」规则集：coding agent 先列出改动要波及的地方、先复用再写，交回最小但完整的 diff；带生命周期 hook、代码地图、六个 skill 和约 20 种 harness 适配。 | MIT | B（5/6） | [中](categories/agent-skills/engineering/behavior-overlays/ponytail.zh.md) · [EN](categories/agent-skills/engineering/behavior-overlays/ponytail.md) |
+| **Open Steps** | 直白完成裁决、持久化交接与声明核对；先协调自动合并政策。 | MIT | B（4/5） | [中](categories/agent-skills/engineering/open-steps.zh.md) · [EN](categories/agent-skills/engineering/open-steps.md) |
 | **new-term-radar** | AI 新产品进入关键词面板时，你可能已错过首批讨论。这个工具比较来源快照，每日整理带证据的关键词候选。 | MIT | C（5/6） | [EN](categories/agent-skills/ai-writing/marketing-seo/new-term-radar.md) · [中](categories/agent-skills/ai-writing/marketing-seo/new-term-radar.zh.md) |
 | **open-seo** | Open source alternative to Semrush and Ahrefs | MIT | B（5/6） | [中](categories/agent-skills/ai-writing/marketing-seo/open-seo.zh.md) · [EN](categories/agent-skills/ai-writing/marketing-seo/open-seo.md) |
 | **ai-website-cloner-template** | Clone any website with one command using AI coding agents | MIT | B（4/5） | [中](categories/agent-skills/design/design-to-code/ai-website-cloner-template.zh.md) · [EN](categories/agent-skills/design/design-to-code/ai-website-cloner-template.md) |
 | **baoyu-design** | 仅作信息收录：项目本地设计系统与浏览器导出；提取内容权利未清，不批准安装或再分发。 | NOASSERTION | B（4/5） | [中](categories/agent-skills/design/visual-artifacts/baoyu-design.zh.md) · [EN](categories/agent-skills/design/visual-artifacts/baoyu-design.md) |
-| **huashu-design** | Huashu Design · HTML-native design skill for Claude Code · Claude Code 里 HTML 原生的设计 skill · 高保真原型 / 幻灯片 / 动画 + 20 设计哲学 + 5 维评审 + MP4 导出 · Agent-agnostic | MIT | B（5/6） | [中](categories/agent-skills/design/visual-artifacts/huashu-design.zh.md) · [EN](categories/agent-skills/design/visual-artifacts/huashu-design.md) |
+| **huashu-design** | 六个候选收敛为三个真实初稿，人选后交付 HTML 原型、幻灯片与动效，并保留本地外观记忆。 | MIT | B（5/6） | [中](categories/agent-skills/design/visual-artifacts/huashu-design.zh.md) · [EN](categories/agent-skills/design/visual-artifacts/huashu-design.md) |
 | **ppt-master** | AI generates a real, editable PowerPoint from any document — native shapes & animations, editable charts & tables you can change the data on, speaker notes voiced as audio narration, and the option to follow your own .pptx template, not slide images · by Hugo He | MIT | B（5/6） | [中](categories/agent-skills/slides-ppt/ppt-master.zh.md) · [EN](categories/agent-skills/slides-ppt/ppt-master.md) |
 | **frontend-slides** | 用 coding agent 的前端能力创建网页演示文稿。 | MIT | B（4/5） | [中](categories/agent-skills/slides-ppt/frontend-slides.zh.md) · [EN](categories/agent-skills/slides-ppt/frontend-slides.md) |
 | **html-ppt-skill** | HTML PPT Studio——AgentSkill，内置 36 个主题、15 个 full-deck templates、31 个布局、47 个动画和 presenter mode，用于构建专业静态 HTML 演示文稿。 | MIT | C（4/5） | [中](categories/agent-skills/slides-ppt/html-ppt-skill.zh.md) · [EN](categories/agent-skills/slides-ppt/html-ppt-skill.md) |
@@ -814,12 +828,13 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **ContextGem** | 抽取具名条款和有类型的领域值，附来源对象引用；含义验收与持久任务另由应用负责。 | Apache-2.0 | C（5/6） | [中](categories/document-parsing/contextgem.zh.md) · [EN](categories/document-parsing/contextgem.md) |
 | **OpenDataLoader PDF** | 导出有序 PDF 正文与来源区域 JSON，可选模型处理。 | Apache-2.0 | B（6/6） | [中](categories/document-parsing/opendataloader-pdf.zh.md) · [EN](categories/document-parsing/opendataloader-pdf.md) |
-| **OXR** | 科研 PDF／图片解析，独立版面检测，输出分类内容和坐标；需 GPU 部署，并受自定义商业许可限制。 | LicenseRef-OXR | C（3/6） | [中](categories/document-parsing/oxr.zh.md) · [EN](categories/document-parsing/oxr.md) |
+| **OXR** | 科研 PDF／图片解析，独立版面检测，输出分类内容和坐标；需 GPU 部署，并受自定义商业许可限制。 | LicenseRef-OXR | C（3/6） | [中](categories/document-parsing/model-backed-pdf/oxr.zh.md) · [EN](categories/document-parsing/model-backed-pdf/oxr.md) |
 | **Docling** | 当你需要把杂乱的 PDF/DOCX/PPTX 解析成干净的结构化 Markdown/JSON 以喂给 RAG 时用它——是解析器，不是文档管理系统。 | MIT | A（5/6） | [中](categories/document-parsing/docling.zh.md) · [EN](categories/document-parsing/docling.md) |
 | **MarkItDown** | 当 agent 或 RAG 流水线要用一次轻量 Python 调用，把混杂的 Office 文件、HTML、EPUB 和简单 PDF 统一转成 Markdown 时用它——但扫描件或复杂版面 PDF 要用 Marker 或 Docling，它没有 OCR 和版面模型。 | MIT | B（6/6） | [中](categories/document-parsing/markitdown.zh.md) · [EN](categories/document-parsing/markitdown.md) |
-| **olmOCR** | 当你要把成千上万份带公式、表格、多栏版面的 PDF 按阅读顺序转成干净 Markdown、拿去做 LLM 语料时用它——但本地运行要 12 GB 以上显存的 NVIDIA GPU，且上游自 2026-03 起已无提交。 | Apache-2.0 | C（5/6） | [中](categories/document-parsing/olmocr.zh.md) · [EN](categories/document-parsing/olmocr.md) |
-| **Marker** | 当你要在自己的机器上把几千份 PDF（论文、教材、扫描件）转成带真表格、LaTeX 公式、按需 OCR 的 Markdown 时用它——但模型权重只对融资或营收低于 500 万美元的主体免费。 | Apache-2.0 | B（6/6） | [EN](categories/document-parsing/marker.md) · [中](categories/document-parsing/marker.zh.md) |
+| **olmOCR** | 当你要把成千上万份带公式、表格、多栏版面的 PDF 按阅读顺序转成干净 Markdown、拿去做 LLM 语料时用它——但本地运行要 12 GB 以上显存的 NVIDIA GPU，且上游自 2026-03 起已无提交。 | Apache-2.0 | C（5/6） | [中](categories/document-parsing/model-backed-pdf/olmocr.zh.md) · [EN](categories/document-parsing/model-backed-pdf/olmocr.md) |
+| **Marker** | 当你要在自己的机器上把几千份 PDF（论文、教材、扫描件）转成带真表格、LaTeX 公式、按需 OCR 的 Markdown 时用它——但模型权重只对融资或营收低于 500 万美元的主体免费。 | Apache-2.0 | B（6/6） | [EN](categories/document-parsing/model-backed-pdf/marker.md) · [中](categories/document-parsing/model-backed-pdf/marker.zh.md) |
 | **unstructured** | 当 RAG 流水线面对混杂的 PDF、邮件和 Office 文件，需要带页码元数据的类型化元素和按章节分块，而不只是一个 Markdown 字符串时用它——但开源版的 PDF 表格准确率不如 Docling 和 Marker，且默认开启统计回传。 | Apache-2.0 | A（6/6） | [EN](categories/document-parsing/unstructured.md) · [中](categories/document-parsing/unstructured.zh.md) |
 | **any2html** | Use it when you need any2html in the document-parsing area. | NOASSERTION | D（4/5） | [中](categories/document-parsing/any2html.zh.md) · [EN](categories/document-parsing/any2html.md) |
 | **Dedoc** | 当混合 PDF 与 Office 归档必须转成带表格和附件的逻辑树时用它——本地解析面广，但 Linux 与系统包依赖很重。 | Apache-2.0 | B（5/6） | [中](categories/document-parsing/dedoc.zh.md) · [EN](categories/document-parsing/dedoc.md) |
@@ -1226,6 +1241,12 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **kaplay** | 想用纯 JS/TS 零仪式感地做一个 Jam 规模的 2D 网页游戏时用它——但要做长生命周期产品或 3D，停滞的稳定线和纯 2D 定位说明该另寻它路。 | MIT | B（6/6） | [中](categories/game-dev/kaplay.zh.md) · [EN](categories/game-dev/kaplay.md) |
 | **pyxel** | 想用 Python 做复古像素风小游戏、要自带精灵／音乐编辑器和一条命令导出网页时用它——但做 3D、现代画风、上商店或主机，或需要团队接手引擎时，固定规格和单人维护说明该另寻它路。 | MIT | B（5/6） | [中](categories/game-dev/pyxel.zh.md) · [EN](categories/game-dev/pyxel.md) |
 
+### games
+
+| 项目 | 何时使用 | 许可 | 健康度 | 页面 |
+|---|---|---|---|---|
+| **fheroes2** | 用持续维护的引擎重玩二代；资源权利和原版存档仍是独立限制。 | GPL-2.0-or-later | B（6/6） | [中](categories/games/fheroes2.zh.md) · [EN](categories/games/fheroes2.md) |
+
 ### kafka-tools
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
@@ -1449,6 +1470,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | **Marble Skill Taxonomy** | 平铺的课程清单不能告诉辅导应用先教什么。这份数据把小学微知识点连成先修图，并附掌握证据与课程标准编号。 | (ODbL-1.0 AND CC-BY-SA-4.0) | D（5/6） | [EN](categories/education-tutoring/os-taxonomy.md) · [中](categories/education-tutoring/os-taxonomy.zh.md) |
 | **DeepTutor** | DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/. | NOASSERTION | B（4/6） | [中](categories/education-tutoring/deeptutor.zh.md) · [EN](categories/education-tutoring/deeptutor.md) |
 | **edulab** | 用同源符号解答和绘图数据制作单题交互课件，或走独立检查的旁白视频路线。 | Apache-2.0 | B（4/5） | [EN](categories/education-tutoring/edulab.md) · [中](categories/education-tutoring/edulab.zh.md) |
+| **Word Atlas** | 中英雅思插画背词与可复用数据；本地进度、手工备份，离线与导出有已知风险。 | MIT AND CC-BY-4.0 | D（3/6） | [EN](categories/education-tutoring/word-atlas.md) · [中](categories/education-tutoring/word-atlas.zh.md) |
 
 ### agent-governance
 
@@ -1466,6 +1488,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **GOD** | 暂停本地像素小镇、向居民提问、发出干预，再检查下一步记录；不是经验证的社会预测。 | Apache-2.0 | C（5/6） | [中](categories/social-simulation/god.zh.md) · [EN](categories/social-simulation/god.md) |
 | **MiroFish** | 打包好的「上传→模拟→报告」群体智能预测应用：喂一份文档，拿回预测报告和可交互的模拟世界。 | AGPL-3.0 | C（5/6） | [中](categories/social-simulation/mirofish.zh.md) · [EN](categories/social-simulation/mirofish.md) |
 | **OASIS** | CAMEL-AI 出品的 pip 可装社交媒体模拟框架（类 Twitter/Reddit，号称最高百万 agent），用代码研究信息传播与极化。 | Apache-2.0 | B（6/6） | [中](categories/social-simulation/oasis.zh.md) · [EN](categories/social-simulation/oasis.md) |
 | **AgentSociety** | 清华 FIB Lab 的 LLM 原生社会科学模拟平台：Ray 分布式、实验回放、DuckDB 追踪。 | Apache-2.0 | B（5/6） | [中](categories/social-simulation/agentsociety.zh.md) · [EN](categories/social-simulation/agentsociety.md) |

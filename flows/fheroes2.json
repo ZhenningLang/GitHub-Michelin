@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "fheroes2 does", "zh": "fheroes2 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the macOS package", "zh": "安装 macOS 软件包", "code": "brew install fheroes2"},
+    {"lane": "you", "en": "Copy lawfully obtained game folders to the documented location, then launch the installed game", "zh": "复制合法取得的游戏资源到文档位置，再启动游戏", "code": "~/.fheroes2"},
+    {"lane": "them", "en": "Open base resources and available expansion data", "zh": "打开基础资源及已有的扩展版数据"},
+    {"lane": "you", "en": "Choose a scenario from the game menu", "zh": "在游戏菜单里选择关卡"},
+    {"lane": "them", "en": "Run Heroes II gameplay with replacement interface and opponent logic", "zh": "用重写的界面和电脑对手逻辑运行二代玩法"}
+  ],
+  "value": {"en": "Replay your Heroes II content with a maintained engine instead of the original executable", "zh": "用持续维护的引擎重玩二代内容，不再依赖原版程序"},
+  "sources": [
+    "https://github.com/ihhub/fheroes2/blob/4ec9886825b198b6d0ec7ffc15c6b11ee76e9165/docs/INSTALL.md#L82-L90 (verbatim code: brew install fheroes2)",
+    "https://github.com/ihhub/fheroes2/blob/4ec9886825b198b6d0ec7ffc15c6b11ee76e9165/docs/INSTALL.md#L131-L153 (verbatim code: ~/.fheroes2)",
+    "https://github.com/ihhub/fheroes2/blob/4ec9886825b198b6d0ec7ffc15c6b11ee76e9165/src/fheroes2/agg/agg.cpp#L62-L115",
+    "https://github.com/ihhub/fheroes2/blob/4ec9886825b198b6d0ec7ffc15c6b11ee76e9165/README.md#L3-L9",
+    "https://github.com/ihhub/fheroes2/blob/4ec9886825b198b6d0ec7ffc15c6b11ee76e9165/src/fheroes2/game/game_mainmenu.cpp#L150-L200"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "BrowserOS neo does", "zh": "BrowserOS neo 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install neo and sign into only the accounts the agent may use", "zh": "安装 neo，仅登录授权助手使用的账号", "code": "brew install --cask browseros-neo"},
+    {"lane": "you", "en": "Connect your existing assistant to the endpoint shown in the MCP panel", "zh": "把已有助手连接到 MCP 面板显示的地址", "code": "http://127.0.0.1:9200/mcp"},
+    {"lane": "them", "en": "Makes this persistent browser available as tools to the assistant", "zh": "向助手提供常驻浏览器工具"},
+    {"lane": "you", "en": "Ask the assistant to summarize unread mail", "zh": "让助手总结未读邮件", "code": "Summarize my important unread emails from the last two days."},
+    {"lane": "them", "en": "Executes the assistant's browser actions using the signed-in accounts", "zh": "使用已登录账号执行助手的浏览器动作"},
+    {"lane": "them", "en": "Keeps the session timeline and page replay on local disk", "zh": "把会话时间线和页面回放保存在本地"}
+  ],
+  "value": {"en": "Use existing account access without another sign-in flow, and inspect what the agent did", "zh": "不用重做登录流程，也能检查助手操作过什么"},
+  "sources": [
+    "https://github.com/browseros-ai/BrowserOS/blob/6967b953f4c92c50382f9661109b4cf21c26a553/README.md#L31-L56",
+    "https://github.com/browseros-ai/BrowserOS/blob/6967b953f4c92c50382f9661109b4cf21c26a553/docs/neo/mcp/manual.mdx#L7-L15",
+    "https://github.com/browseros-ai/BrowserOS/blob/6967b953f4c92c50382f9661109b4cf21c26a553/docs/neo/how-it-works.mdx#L39-L79"
+  ]
+}

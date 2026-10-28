@@ -1,0 +1,22 @@
+{
+  "schema":1,
+  "them":{"en":"EGM","zh":"EGM"},
+  "steps":[
+    {"lane":"you","en":"Install the complete Antigravity plugin and open a new session","zh":"在 Antigravity 安装完整插件，开启新会话","code":"agy plugin install https://github.com/google/elephant-goldfish-model"},
+    {"lane":"you","en":"Describe a feature with real design decisions","zh":"描述一个需要架构取舍的功能","code":"/egm-brainstorm Add webhook delivery to this project."},
+    {"lane":"them","en":"Challenge the idea with fresh reviewers and save concepts_brief.md","zh":"用全新审查者挑战概念，保存概念简报","component":{"en":"brainstorm + reviewer personas","zh":"构思技能与金鱼角色"}},
+    {"lane":"you","en":"Choose architectural tradeoffs and approve the direction","zh":"选择架构取舍，批准设计方向"},
+    {"lane":"you","en":"Start drafting and review each section as it is written","zh":"启动起草，逐节审阅并批准","code":"/egm-draft"},
+    {"lane":"them","en":"Build design_draft.md from the brief and approved sections","zh":"依据简报与已批准章节构造设计草稿","component":{"en":"draft + design template","zh":"起草技能与设计模板"}},
+    {"lane":"you","en":"Review the actual returned draft path","zh":"审查实际返回的草稿路径","code":"/egm-review design_draft.md"},
+    {"lane":"them","en":"Run five ordered review stages and save findings and proposed text repairs","zh":"依次执行五阶段审查，保存问题与文本修复建议","component":{"en":"review + loop + resolve","zh":"审查、审查循环与裁决技能"}},
+    {"lane":"you","en":"Approve needed edits and the design; authorize implementation and real tests separately","zh":"批准所需修改与设计；另行授权实现及真实测试"}
+  ],
+  "value":{"en":"A written design and review trail that do not rely on the author's chat history","zh":"拿到不依赖作者聊天背景的设计文件与审查记录"},
+  "sources":[
+    "https://github.com/google/elephant-goldfish-model/blob/b3a35956759bf7f024af2ff061b2e0b44b438e4c/README.md#L22-L80",
+    "https://github.com/google/elephant-goldfish-model/blob/b3a35956759bf7f024af2ff061b2e0b44b438e4c/skills/egm_draft/SKILL.md#L63-L139",
+    "https://github.com/google/elephant-goldfish-model/blob/b3a35956759bf7f024af2ff061b2e0b44b438e4c/skills/egm_review/SKILL.md#L261-L292",
+    "https://github.com/google/elephant-goldfish-model/blob/b3a35956759bf7f024af2ff061b2e0b44b438e4c/resources/execution_instructions.md#L3-L20"
+  ]
+}

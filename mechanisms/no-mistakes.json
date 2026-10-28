@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "push", "en": "Explicit push to local gate", "zh": "明确推送到本地门禁", "kind": "input", "technique": [1]},
+    {"id": "receiver", "en": "Bare receiver hooks notify daemon", "zh": "裸仓库接收钩子通知后台进程", "technique": [1]},
+    {"id": "worktree", "en": "Detached worktree runs fixed stages", "zh": "分离工作区运行固定步骤", "technique": [1]},
+    {"id": "findings", "en": "Persist outstanding findings and repair rounds", "zh": "持久化未解决问题与修复轮次", "technique": [2]},
+    {"id": "decision", "en": "Bounded automatic repair or operator decision", "zh": "有限自动修复或操作者裁决", "technique": [2]},
+    {"id": "authority", "en": "Durable reviewed head and continuity check", "zh": "持久化已评审提交与历史连续性检查", "technique": [3]},
+    {"id": "remote", "en": "Remote head check and explicit rewrite lease", "zh": "远端提交检查与明确重写租约", "technique": [3]},
+    {"id": "pr", "en": "Published branch and PR; CI monitoring", "zh": "已发布分支与 PR；持续监控 CI", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "push", "to": "receiver"},
+    {"from": "receiver", "to": "worktree"},
+    {"from": "worktree", "to": "findings"},
+    {"from": "findings", "to": "decision"},
+    {"from": "decision", "to": "worktree", "en": "fix and recheck", "zh": "修复并重查"},
+    {"from": "decision", "to": "authority", "en": "gate completes", "zh": "门禁完成"},
+    {"from": "authority", "to": "remote"},
+    {"from": "remote", "to": "pr"},
+    {"from": "pr", "to": "authority", "en": "CI repair", "zh": "CI 修复", "style": "dashed"},
+    {"from": "authority", "to": "worktree", "en": "unproven repair returns to review", "zh": "未证明的修复返回评审", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/kunchenguid/no-mistakes/blob/f0c91d3f4a7e382cf6946c44a61e757225e70ef9/internal/gate/gate.go",
+    "https://github.com/kunchenguid/no-mistakes/blob/f0c91d3f4a7e382cf6946c44a61e757225e70ef9/internal/pipeline/executor.go",
+    "https://github.com/kunchenguid/no-mistakes/blob/f0c91d3f4a7e382cf6946c44a61e757225e70ef9/internal/pipeline/steps/push.go",
+    "https://github.com/kunchenguid/no-mistakes/blob/f0c91d3f4a7e382cf6946c44a61e757225e70ef9/internal/pipeline/steps/ci_fix.go"
+  ]
+}

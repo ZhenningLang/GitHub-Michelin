@@ -110,9 +110,9 @@ pdfplumber 底层用 `pdfminer.six` 把每一页解析成基本对象——字�
 
 ## 何时不用
 
-- **PDF 是扫描件（文字其实是图片）。** pdfplumber 没有 OCR，README 也说它最适合机器生成的 PDF。先用 [OCRmyPDF](../pdf-transform-signing/ocrmypdf.zh.md) 加一层文字，或者改用带版面模型的解析器，如 [Docling](../../document-parsing/docling.zh.md) 或 [Marker](../../document-parsing/marker.zh.md)。
+- **PDF 是扫描件（文字其实是图片）。** pdfplumber 没有 OCR，README 也说它最适合机器生成的 PDF。先用 [OCRmyPDF](../pdf-transform-signing/ocrmypdf.zh.md) 加一层文字，或者改用带版面模型的解析器，如 [Docling](../../document-parsing/docling.zh.md) 或 [Marker](../../document-parsing/model-backed-pdf/marker.zh.md)。
 - **吞吐量要紧：成千上万份 PDF，或者很长的 PDF。** 它建在纯 Python 的 `pdfminer.six` 上，它自己的 README 都说 PyMuPDF “快得多”。批量提取或渲染页面用 [PyMuPDF](pymupdf.zh.md)——前提是你能接受它的 AGPL。
-- **你要的是给 LLM / RAG 用的 Markdown，不是坐标。** pdfplumber 只给原材料，阅读顺序、标题、多栏排版都得你自己处理。[Docling](../../document-parsing/docling.zh.md)、[Marker](../../document-parsing/marker.zh.md) 或 [Unstructured](../../document-parsing/unstructured.zh.md) 直接产出结构化文档。
+- **你要的是给 LLM / RAG 用的 Markdown，不是坐标。** pdfplumber 只给原材料，阅读顺序、标题、多栏排版都得你自己处理。[Docling](../../document-parsing/docling.zh.md)、[Marker](../../document-parsing/model-backed-pdf/marker.zh.md) 或 [Unstructured](../../document-parsing/unstructured.zh.md) 直接产出结构化文档。
 - **你要创建、编辑、合并或签名 PDF。** 它只读。修改用 [PyMuPDF](pymupdf.zh.md) 或 [qpdf](../pdf-transform-signing/qpdf.zh.md)，签名用 [pyHanko](../pdf-transform-signing/pyhanko.zh.md)。
 - **你只要表格，而 pdfplumber 的找表算法搞不定。** 它的 README 自己就指出 Camelot 和 tabula-py（均未收录）对某些表格可能更合适；在写一大堆自定义参数之前先试试它们。
 - **你需要有厂商背书的依赖。** 它基本上是一个人的项目（见健康度）；如果这触碰你的合规底线，PyMuPDF 背后有公司。

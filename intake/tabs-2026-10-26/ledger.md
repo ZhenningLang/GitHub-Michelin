@@ -1,0 +1,48 @@
+# Tab intake ledger — 2026-10-26 (UTC)
+
+来源：维护者明确要求再次执行`/intake-tabs`，只读取本人Chrome的GitHub仓库标签，按PID排除自动化实例。原全量汇总仍在既定本地忽略路径；本轮不另建替代总报告。
+
+## Boundary facts
+
+- 浏览器授权仅覆盖GitHub仓库标签的识别，以及完整收录、门禁通过并提交后的匹配标签关闭。非GitHub标签、本人仓库、组织入口和暂缓项保留；不读取登录凭据或浏览器存储，不安装执行上游。
+- 原报告是汇总权威；先冻结实际当前版本和哈希，再增量整合。本轮不删除历史候选、不倒写旧核验日、不移除许可告警；原HTML拒绝继续有效，不重试渲染、配对或浏览器验收。
+- 新页以固定公开源码为事实源；未知许可、同源和危险载荷按资格五问调查，灰区保留为proposed。未经公开性核验的元数据不得直接提交；非公开及自有身份在公开记录中匿名，不读非公开实现。
+- 新增页和必要索引／生成资产在本轮功能分支；逐项目门禁和独立提交，类别溢出另做纯路由提交。主checkout不写入、不切分支、不提交或同步；新分支远端推送另取精确授权。
+
+## Operational Contract
+
+- 方向：公开固定来源→双语页→机器生成图卡和索引，只增量更新，不传播上游删除。已核本批结果→原本地汇总，按身份去重并保留旧正文；用户当前报告不被旧快照覆盖。
+- 恢复：本台账是检查点，done不重做；每个提交和匹配标签关闭各记机器证据。原汇总在第一次修改前有冻结副本，逐项核哈希；失败不把未研究内容记为已完成。
+- 效率：先测队列规模，研究最多三个隔离worker并行，主会话串行接索引、门禁、提交和标签操作；外部查询有界超时，不无限重试。
+- 观测：每轮记录pending、running、done、failed、proposed和skipped数量；逐项报告完成点，项目间复扫，新增标签加入队列。只在现有本地忽略状态目录保留原始浏览器及元数据证据。
+- 数据验收：核身份唯一、预期新增／更新数、旧项目保真、来源blob、双语与图卡、当前Markdown文件／锚点；独立来源复核及真实历史回归替代虚构留出分数。lint或测试绿不等于上游效果通过。
+- 回退：页面与路由由独立提交定点revert；原报告按冻结版本恢复本轮写入，保留旧历史和其它工作区。标签仅关闭已提交项目，保留关闭前规范身份和计数用于核对；不得误关后靠猜测恢复用户状态。
+
+## Queue
+
+
+初次关闭因两个Chrome候选暂停；本地内容提交后，原脚本最终只读复核成功，恢复按规范身份关闭。未手选PID或换入口，初始拒绝记录保留在本地。
+
+
+
+
+
+
+19:48追加前已完成的本地验收（保留历史）：新增5对双语页、鲜度保留1项、暂缓1项、自有跳过1项。原汇总同路径更新为144候选／141有页，原137条正文逐字保留；324个文件目标、202个内部锚点无缺失。67份固定来源blob及行号、30张SVG、8份迁移／入链旧页与冻结抽样全文验收通过。make gates为0 errors／1630 warnings，工具回归483 tests OK；新页成对质量扫描全零。初次Chrome歧义保留历史；原脚本恢复读取后，六个已提交目标各关闭一个标签，六次复扫均无新增或待办，每次非目标均未变；现保留DIY-LLM与匿名自有标签各一个。README合并重复行已修正，两主清单各983个唯一目标，旧978行内容仅改必要路径。HTML仍旧版，新分支未推送。详见[机器验收记录](verification.json)，原总报告不是本分支公开产物。
+
+
+2026-10-26追加裁决：维护者明确点名“额外再加一个这个：https://github.com/datawhalechina/diy-llm”，将同一候选转为带许可警告的信息条目，不增加候选身份。该裁决不解决CC BY-NC-SA、MIT及Apache代码分区，不代表商用、再分发或执行授权；不继承到其它仓库，也不包含远端发布。
+
+
+19:48点名追加验收：DIY-LLM已按单仓信息裁决收录，许可分区问题没有解决。本批累计新增6页、鲜度保留1项、自有跳过1项；旧提案与追加前验收仍保留。原汇总144候选不变、有页141→142，另外143条对象及原始正文逐字不变；326个文件目标和202个内部锚点无缺失。16个来源blob、行号、流程字面值、六图事实及两主清单各984个唯一目标通过；工具回归483 tests OK、门禁0 errors／1630 warnings。提交后本项目匹配标签0→0，非目标不变。见[本次转正验收](promotion-diy-llm.json)；[原批次验收](verification.json)是转正前的历史记录。HTML与共享工具未改，新分支未推送。
+
+| 规范名 | 动作 | 结果 | 页面路径 | 备注 | 标签里的写法 |
+|:---|:---|:---|:---|:---|:---|
+| datawhalechina/diy-llm | add | done | categories/llm-training/study-and-experiments/diy-llm.md | 维护者19:48点名转为信息条目；CC/MIT/Apache代码与讲义分账，作业2范围仍未明；独立源码及许可语义复核通过；提交后标签匹配0→0，其它不动；不执行上游；no leftover Q&A | datawhalechina/diy-llm |
+| ihhub/fheroes2 | add | done | categories/games/fheroes2.md | 固定源码与资格五问通过，新games路由；GPL不覆盖外部资源，音色采样来源和旧存档限制明示；曾因Chrome歧义暂停，现已关闭并核对；no leftover Q&A；已按独立提交核对标签匹配1→0 | ihhub/fheroes2 |
+| kdlbs/kandev | add | done | categories/agent-tooling/supervision-surfaces/agent-cockpits/kandev.md | 固定SHA源码及资格五问通过，AGPL/默认监听与鉴权/破坏性归档边界已明示；标签曾因Chrome歧义暂停，现已关闭并核对；no leftover Q&A；已按独立提交核对标签匹配1→0 | kdlbs/kandev |
+| kharmanskyi/open-steps | add | done | categories/agent-skills/engineering/open-steps.md | 固定源码、八项技能和钩子已核，报告请求不等于落盘，自动合并与共享状态边界明示；已先独立拆分行为覆盖类；曾因Chrome歧义暂停，现已关闭并核对；no leftover Q&A；已按独立提交核对标签匹配1→0 | kharmanskyi/open-steps |
+| kunchenguid/no-mistakes | add | done | categories/ai-code-review/no-mistakes.md | 固定源码与资格五问通过；本地门禁可绕开，宽权限/用户技能软链覆盖/遥测/自动发布边界明示；曾因Chrome歧义暂停，现已关闭并核对；no leftover Q&A；已按独立提交核对标签匹配1→0 | kunchenguid/no-mistakes |
+| llm-d/llm-d | sync | done | categories/llm-inference/serving-engines/llm-d.md | fresh_by_date；delta 26<=90，保留2026-09-30核验日与原页，未重核上游；no leftover Q&A；已按独立提交核对标签匹配1→0 | llm-d/llm-d |
+| XiaoLuoLYG/GOD | add | done | categories/social-simulation/god.md | 固定源码及集成归属通过；社会模拟原型，干预生效/回放/真实恢复分开，本机Python执行/密钥/new-run删除和素材权利边界明示；曾因Chrome歧义暂停，现已关闭并核对；no leftover Q&A；已按独立提交核对标签匹配1→0 | xiaoluolyg/god |
+| anonymous-own-1 | skip | skipped |  | 维护者自有仓库，按范围跳过；标签保留 |  |

@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "service", "en": "Registered Go service", "zh": "已注册 Go 服务", "kind": "input", "technique": [1]},
+    {"id": "binding", "en": "Exported methods and generated wrappers", "zh": "导出方法与生成的包装代码", "technique": [1]},
+    {"id": "page", "en": "Frontend page in platform webview", "zh": "平台网页视图中的前端页面", "kind": "input"},
+    {"id": "request", "en": "Call ID, JSON arguments and cancellable promise", "zh": "调用标识、JSON 参数与可取消异步结果", "technique": [2]},
+    {"id": "dispatch", "en": "Resolve method, decode and invoke Go", "zh": "查找方法、解码并调用 Go", "technique": [2]},
+    {"id": "result", "en": "Return value or structured error", "zh": "返回值或结构化错误", "kind": "output"},
+    {"id": "assets", "en": "Embed built frontend assets", "zh": "嵌入构建后的前端资源", "technique": [3]},
+    {"id": "adapter", "en": "Webview request to Go HTTP handler", "zh": "网页视图请求转为 Go HTTP 处理", "technique": [3]},
+    {"id": "policy", "en": "Application validates inputs and permissions", "zh": "应用校验输入并检查权限", "kind": "external"}
+  ],
+  "edges": [
+    {"from": "service", "to": "binding"},
+    {"from": "binding", "to": "request"},
+    {"from": "page", "to": "request"},
+    {"from": "request", "to": "dispatch", "en": "default runtime transport", "zh": "默认运行时传输"},
+    {"from": "dispatch", "to": "policy", "en": "your service code", "zh": "你编写的服务代码"},
+    {"from": "policy", "to": "result"},
+    {"from": "result", "to": "page"},
+    {"from": "assets", "to": "adapter"},
+    {"from": "adapter", "to": "page", "en": "serve local UI resources", "zh": "提供本地界面资源"}
+  ],
+  "sources": [
+    "https://github.com/wailsapp/wails/blob/3b1e7926996da34d3fde3d2bd5da0ceb38adb035/v3/pkg/application/bindings.go#L133-L293",
+    "https://github.com/wailsapp/wails/blob/3b1e7926996da34d3fde3d2bd5da0ceb38adb035/v3/internal/runtime/desktop/@wailsio/runtime/src/calls.ts#L69-L116",
+    "https://github.com/wailsapp/wails/blob/3b1e7926996da34d3fde3d2bd5da0ceb38adb035/v3/pkg/application/messageprocessor_call.go#L113-L152",
+    "https://github.com/wailsapp/wails/blob/3b1e7926996da34d3fde3d2bd5da0ceb38adb035/v3/internal/templates/_common/main.go.tmpl#L12-L68",
+    "https://github.com/wailsapp/wails/blob/3b1e7926996da34d3fde3d2bd5da0ceb38adb035/v3/internal/assetserver/assetserver_webview.go#L72-L218",
+    "https://github.com/wailsapp/wails/blob/3b1e7926996da34d3fde3d2bd5da0ceb38adb035/docs/mpress/content/guides/security.md#L200-L219"
+  ]
+}

@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Anthropic Sandbox Runtime** | 用原生文件规则和出口过滤限制本地助手或 MCP 子进程，无需客体镜像；须显式保护读取，Windows 仍处测试阶段。 | A（6/6） | [→](sandbox-runtime.zh.md) |
 | **gVisor** | 不可信容器必须与宿主内核隔离、又不想跑虚拟机时用它——不需要 KVM，且容器工作流不变。 | A（6/6） | [→](gvisor.zh.md) |
 | **Kata Containers** | 想让每个 pod 在轻量虚拟机里拿到真内核、同时 Kubernetes 保持常规 RuntimeClass 工作流时用它。 | A（6/6） | [→](kata-containers.zh.md) |
 | **Firecracker** | 你在自建沙箱层、想要一个带控制 API 的极简 KVM microVM 原语（而不是容器运行时）时用它。 | A（6/6） | [→](firecracker.zh.md) |
@@ -23,6 +24,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Anthropic Sandbox Runtime](sandbox-runtime.zh.md) | 已收录 | A（6/6） | 本地命令行及 TypeScript 进程限制，而非机群；平台语义有别，不提供客体内核边界。 |
 | [gVisor](gvisor.zh.md) | ✅ | A（6/6） | 不用 KVM 的隔离（用户态内核、过滤后的系统调用面）——比虚拟机更容易落地，但语义与吞吐和真内核不同。 |
 | [Kata Containers](kata-containers.zh.md) | ✅ | A（6/6） | 每沙箱一个真内核（轻量虚拟机）加一套做完的 Kubernetes 集成——代价是每个节点都要硬件虚拟化，且多一个 hypervisor 要运维。 |
 | [Firecracker](firecracker.zh.md) | ✅ | A（6/6） | 现有攻击面最小的 microVM 原语，而它之上的一切（镜像、调度、快照、多租户）都要你自己建。 |

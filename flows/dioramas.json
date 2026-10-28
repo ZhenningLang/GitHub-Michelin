@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Dioramas", "zh": "Dioramas"},
+  "steps": [
+    {"lane": "you", "en": "Clone, install dependencies and start the development server", "zh": "克隆、安装依赖并启动开发服务", "code": "npm install", "component": {"en": "Node and Vite", "zh": "Node 与 Vite"}},
+    {"lane": "you", "en": "Adapt an example's HTML, JavaScript, copy and model references", "zh": "改写示例页面、脚本、文案和模型引用"},
+    {"lane": "you", "en": "Open that example and interact with its page", "zh": "打开该示例并操作页面"},
+    {"lane": "them", "en": "Loads models with shared decoding, caching and progress", "zh": "统一解码、缓存模型并报告加载进度", "component": {"en": "Assets", "zh": "Assets"}},
+    {"lane": "them", "en": "Renders the adapted scene while its input and scroll callbacks update it", "zh": "渲染改写的场景，并由输入和滚动回调更新", "component": {"en": "Engine and example code", "zh": "Engine 与示例代码"}}
+  ],
+  "value": {"en": "An editable 3D website without rebuilding its render stack and loaders", "zh": "得到可编辑三维网站，不必重搭渲染栈与加载器"},
+  "sources": [
+    "https://github.com/blendi-remade/dioramas/blob/868539fb5b64a843071a2247d5d8bacb706a07b1/README.md#L77-L93",
+    "https://github.com/blendi-remade/dioramas/blob/868539fb5b64a843071a2247d5d8bacb706a07b1/examples/reliquary/main.js#L1-L65",
+    "https://github.com/blendi-remade/dioramas/blob/868539fb5b64a843071a2247d5d8bacb706a07b1/src/core/assets.js#L12-L46",
+    "https://github.com/blendi-remade/dioramas/blob/868539fb5b64a843071a2247d5d8bacb706a07b1/src/core/engine.js#L116-L139"
+  ]
+}

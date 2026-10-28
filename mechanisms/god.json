@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "operator", "en": "Operator command", "zh": "操作者命令", "kind": "input"},
+    {"id": "dispatch", "en": "Locked live dispatch", "zh": "持锁处理实时命令", "technique": [1]},
+    {"id": "pending", "en": "Resident pending instructions", "zh": "居民待处理指令", "technique": [1]},
+    {"id": "env", "en": "Town environment", "zh": "小镇环境"},
+    {"id": "skill", "en": "Next turn selects and executes a skill", "zh": "下一轮选择并执行技能", "technique": [2]},
+    {"id": "effects", "en": "Validate each effect before applying it", "zh": "逐项校验并应用效果", "technique": [2]},
+    {"id": "store", "en": "SQLite frames and command records", "zh": "SQLite 逐步状态与命令记录", "kind": "output"},
+    {"id": "replay", "en": "Static replay with profiles and commands", "zh": "带档案与命令的静态回放", "kind": "output", "technique": [3]},
+    {"id": "config", "en": "Experiment setup and map dependencies", "zh": "实验配置与地图依赖", "kind": "input"},
+    {"id": "pack", "en": "ExperimentPack excludes local run state", "zh": "实验包排除本机运行状态", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "operator", "to": "dispatch"},
+    {"from": "dispatch", "to": "pending", "en": "ordinary targeted instruction", "zh": "普通定向指令"},
+    {"from": "dispatch", "to": "env", "en": "recognized movement or public event", "zh": "识别出的移动或公共事件"},
+    {"from": "pending", "to": "skill", "en": "when the next step runs", "zh": "推进下一步时"},
+    {"from": "env", "to": "skill", "en": "observation", "zh": "环境观察"},
+    {"from": "skill", "to": "effects"},
+    {"from": "effects", "to": "env"},
+    {"from": "env", "to": "store", "en": "step snapshots", "zh": "逐步快照"},
+    {"from": "dispatch", "to": "store", "en": "command log", "zh": "命令日志"},
+    {"from": "store", "to": "replay", "en": "separate public exporter", "zh": "独立公开导出器"},
+    {"from": "config", "to": "pack", "en": "filter runtime files and local identifiers", "zh": "过滤运行文件与本机标识"}
+  ],
+  "sources": [
+    "https://github.com/XiaoLuoLYG/GOD/blob/753f0679758765d002f9dd9581ee37239b4be908/agentsociety/packages/agentsociety2/agentsociety2/backend/routers/live_experiments.py",
+    "https://github.com/XiaoLuoLYG/GOD/blob/753f0679758765d002f9dd9581ee37239b4be908/agentsociety/custom/agents/jiuwenclaw_agent.py",
+    "https://github.com/XiaoLuoLYG/GOD/blob/753f0679758765d002f9dd9581ee37239b4be908/agentsociety/packages/agentsociety2/agentsociety2/backend/services/experiment_packs.py",
+    "https://github.com/XiaoLuoLYG/GOD/blob/753f0679758765d002f9dd9581ee37239b4be908/agentsociety/packages/agentsociety2/agentsociety2/backend/services/public_replay_export.py"
+  ]
+}

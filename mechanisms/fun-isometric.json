@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "brief", "en": "Object, verb, palette and facing", "zh": "物件、动作、配色和朝向", "kind": "input"},
+    {"id": "agent", "en": "Agent follows drawing and rigging instructions", "zh": "助手按指令绘图并绑定部件", "technique": [1]},
+    {"id": "icon", "en": "Icon module: layers, pivots and motion tracks", "zh": "图标模块：图层、转轴和动作轨迹", "kind": "output", "technique": [1]},
+    {"id": "checks", "en": "CLI: structure, clipping and seam checks", "zh": "命令行：结构、触边和接缝检查", "technique": [3]},
+    {"id": "eye", "en": "Contact sheets and human visual review", "zh": "拼帧图及人工目视", "technique": [3]},
+    {"id": "embed", "en": "Developer embeds approved icon", "zh": "开发者接入已批准图标", "kind": "input"},
+    {"id": "clock", "en": "Shared clock; visibility and pose checks", "zh": "共用时钟；检查可见性与姿态", "technique": [2]},
+    {"id": "canvas", "en": "Canvas playback or reduced-motion still", "zh": "画布播放或减少动态效果的静止帧", "kind": "output", "technique": [2]}
+  ],
+  "edges": [
+    {"from": "brief", "to": "agent"},
+    {"from": "agent", "to": "icon"},
+    {"from": "icon", "to": "checks"},
+    {"from": "checks", "to": "eye"},
+    {"from": "eye", "to": "agent", "en": "revise if needed", "zh": "按需修改", "style": "dashed"},
+    {"from": "eye", "to": "embed"},
+    {"from": "embed", "to": "clock"},
+    {"from": "clock", "to": "canvas"}
+  ],
+  "sources": ["skills/fun-isometric/SKILL.md:54-74", "skills/fun-isometric/kit/fun.ts:90-201", "skills/fun-isometric/kit/fun.ts:674-739", "skills/fun-isometric/bin/fi.mjs:83-155", "skills/fun-isometric/bin/fi.mjs:216-232"]
+}

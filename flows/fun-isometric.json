@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "fun-isometric", "zh": "fun-isometric"},
+  "steps": [
+    {"lane": "you", "en": "Install into your chosen agent and start a new session", "zh": "装入所选助手，再开新会话", "code": "npx skills add kelvinkn17/skills@fun-isometric"},
+    {"lane": "you", "en": "Ask for an object and its action, with optional colors and facing", "zh": "描述物件及动作，可指定配色和朝向", "code": "/fun-isometric a pen scribbling on a square pad"},
+    {"lane": "them", "en": "Guides the agent to draw layers and rig them with motion presets", "zh": "指导助手分层绘图，绑定动作预设", "component": {"en": "skill + drawing and motion kit", "zh": "技能及绘图动作组件"}},
+    {"lane": "them", "en": "Guides checks and contact-sheet review before handing over icon code", "zh": "指导检查和拼帧预览，再交付图标代码", "component": {"en": "fi + human appearance checklist", "zh": "fi 及人工外观清单"}},
+    {"lane": "you", "en": "Approve the look and embed an icon in your application", "zh": "批准外观，把图标嵌入应用", "code": "<Sticker icon={coins} loop={false} replayOnHover />"},
+    {"lane": "them", "en": "Plays the layered drawing on canvas with your palette and motion settings", "zh": "按你的配色和动作设置，在画布播放分层图形", "component": {"en": "local canvas runtime", "zh": "本地画布运行时"}}
+  ],
+  "value": {"en": "Get an editable animated sticker, not a still image or a hand-built frame loop", "zh": "得到可修改的动态贴纸，不再只拿静态图或手写帧循环"},
+  "sources": ["README.md:13-20", "README.md:41-55", "skills/fun-isometric/SKILL.md:54-74", "skills/fun-isometric/SKILL.md:163-185", "skills/fun-isometric/kit/Sticker.tsx:15-38"]
+}

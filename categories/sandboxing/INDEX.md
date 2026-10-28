@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Anthropic Sandbox Runtime** | Restrict local agent or MCP subprocesses with native file rules and filtered egress, without a VM image; reads need explicit policy and Windows remains alpha. | A (6/6) | [→](sandbox-runtime.md) |
 | **gVisor** | Use it when untrusted containers must be isolated from the host kernel without running a VM — it needs no KVM and keeps your container workflow. | A (6/6) | [→](gvisor.md) |
 | **Kata Containers** | Use it when every pod should get a real guest kernel in a lightweight VM, while Kubernetes keeps its normal RuntimeClass workflow. | A (6/6) | [→](kata-containers.md) |
 | **Firecracker** | Use it when you are building the sandbox layer yourself and want a minimal KVM microVM primitive with a control API — not a container runtime. | A (6/6) | [→](firecracker.md) |
@@ -23,6 +24,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Anthropic Sandbox Runtime](sandbox-runtime.md) | ✅ | A (6/6) | Local CLI/TypeScript process confinement instead of a fleet; platform semantics differ and it is not a guest-kernel boundary. |
 | [gVisor](gvisor.md) | ✅ | A (6/6) | Isolation without KVM (userspace kernel, filtered syscall surface) — cheaper to adopt than a VM, but syscall semantics and throughput differ from a real kernel. |
 | [Kata Containers](kata-containers.md) | ✅ | A (6/6) | A real kernel per sandbox via lightweight VMs, and a finished Kubernetes integration — at the cost of hardware virtualization on every node and a hypervisor to operate. |
 | [Firecracker](firecracker.md) | ✅ | A (6/6) | The smallest-surface microVM primitive there is, and you build everything above it: images, scheduling, snapshots, multi-tenancy. |

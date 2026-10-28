@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "GOD does", "zh": "GOD 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone GOD and start the local stack", "zh": "克隆 GOD 并启动本地服务", "code": "./scripts/god.sh start"},
+    {"lane": "them", "en": "Install dependencies and open the setup wizard", "zh": "安装依赖并打开配置向导"},
+    {"lane": "you", "en": "Supply your model credentials and choose or edit an experiment", "zh": "填写模型凭据，选择或编辑实验"},
+    {"lane": "them", "en": "Create the current town session and record its first step", "zh": "创建当前小镇会话，记录第一步"},
+    {"lane": "you", "en": "Ask residents, issue an intervention, and advance a step", "zh": "向居民提问，发出干预，再推进一步"},
+    {"lane": "them", "en": "Show resident behavior and operator commands in the recorded town", "zh": "在小镇记录中显示居民行为与操作者命令"}
+  ],
+  "value": {"en": "Inspect how your intervention changes a town without rewriting its driver script", "zh": "不用重写驱动脚本，就能检查插手后的小镇变化"},
+  "sources": [
+    "https://github.com/XiaoLuoLYG/GOD/blob/753f0679758765d002f9dd9581ee37239b4be908/QUICKSTART.md#L31-L91",
+    "https://github.com/XiaoLuoLYG/GOD/blob/753f0679758765d002f9dd9581ee37239b4be908/README.md#L157-L173",
+    "https://github.com/XiaoLuoLYG/GOD/blob/753f0679758765d002f9dd9581ee37239b4be908/agentsociety/packages/agentsociety2/agentsociety2/backend/routers/live_experiments.py#L1020-L1131"
+  ]
+}

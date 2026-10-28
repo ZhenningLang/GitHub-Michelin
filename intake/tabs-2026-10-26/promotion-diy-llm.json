@@ -1,0 +1,186 @@
+{
+  "repo": "datawhalechina/diy-llm",
+  "status": "information entry locally committed; license scope unresolved",
+  "reviewed_sha": "95a3b81d4b2686d33afc2d533b0f91d295ec9b78",
+  "owner_request": "额外再加一个这个：https://github.com/datawhalechina/diy-llm",
+  "source_files": [
+    {
+      "source_id": "datawhalechina/diy-llm@95a3b81d4b2686d33afc2d533b0f91d295ec9b78:README.md",
+      "blob": "5eb8058c9e371b0b1b3f1fcdf66e281f8a24b3f7",
+      "line_count": 271,
+      "tree": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w8/.agent-state/previous-proposal/tree.json"
+    },
+    {
+      "source_id": "datawhalechina/diy-llm@95a3b81d4b2686d33afc2d533b0f91d295ec9b78:coursework/assignment1-basics/CS336_Assignment1_BPE.ipynb",
+      "blob": "d7a94e634b5f2ba1df4513f4fd2fcb25db55b9ab",
+      "line_count": 534,
+      "tree": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w8/.agent-state/previous-proposal/tree.json"
+    },
+    {
+      "source_id": "datawhalechina/diy-llm@95a3b81d4b2686d33afc2d533b0f91d295ec9b78:coursework/assignment1-basics/README.md",
+      "blob": "ab53ae4bf4003e5bdbcb6e3090a6ebcae4316ed0",
+      "line_count": 171,
+      "tree": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w8/.agent-state/previous-proposal/tree.json"
+    },
+    {
+      "source_id": "datawhalechina/diy-llm@95a3b81d4b2686d33afc2d533b0f91d295ec9b78:coursework/assignment1-basics/model.py",
+      "blob": "ab2b933b2e40b44a2c6e053db7ea8d328a796a36",
+      "line_count": 375,
+      "tree": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w8/.agent-state/previous-proposal/tree.json"
+    },
+    {
+      "source_id": "datawhalechina/diy-llm@95a3b81d4b2686d33afc2d533b0f91d295ec9b78:coursework/assignment2-systems/cs336_systems/flash_attention_triton.py",
+      "blob": "0233d8fdfedf55ba9d29e0e5536db3882d57ed62",
+      "line_count": 206,
+      "tree": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w8/.agent-state/previous-proposal/tree.json"
+    },
+    {
+      "source_id": "datawhalechina/diy-llm@95a3b81d4b2686d33afc2d533b0f91d295ec9b78:coursework/assignment2-systems/pyproject.toml",
+      "blob": "595a89f30bac995dbddd3271ed9b4bc67bda92bf",
+      "line_count": 26,
+      "tree": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w8/.agent-state/previous-proposal/tree.json"
+    },
+    {
+      "source_id": "datawhalechina/diy-llm@95a3b81d4b2686d33afc2d533b0f91d295ec9b78:coursework/assignment2-systems/test_and_make_submission.sh",
+      "blob": "8bdbfdf3d943acbc23d354849230957523e5955e",
+      "line_count": 32,
+      "tree": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w8/.agent-state/previous-proposal/tree.json"
+    },
+    {
+      "source_id": "datawhalechina/diy-llm@95a3b81d4b2686d33afc2d533b0f91d295ec9b78:coursework/assignment2-systems/tests/test_attention.py",
+      "blob": "39774689240eab1e8b4d4a1f94214373ed58069a",
+      "line_count": 104,
+      "tree": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w8/.agent-state/previous-proposal/tree.json"
+    },
+    {
+      "source_id": "datawhalechina/diy-llm@95a3b81d4b2686d33afc2d533b0f91d295ec9b78:coursework/assignment4-data/LICENSE",
+      "blob": "49d9c744c8de093674f7b12bb5f532fdc08f00a2",
+      "line_count": 7,
+      "tree": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w8/.agent-state/previous-proposal/tree.json"
+    },
+    {
+      "source_id": "datawhalechina/diy-llm@95a3b81d4b2686d33afc2d533b0f91d295ec9b78:coursework/assignment4-data/pyproject.toml",
+      "blob": "9d15236175101d1dff9a3e12e3ad643e4e619d1d",
+      "line_count": 55,
+      "tree": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w8/.agent-state/previous-proposal/tree.json"
+    },
+    {
+      "source_id": "datawhalechina/diy-llm@95a3b81d4b2686d33afc2d533b0f91d295ec9b78:coursework/assignment5-alignment/cs336_alignment/drgrpo_grader.py",
+      "blob": "d9efcd3ad536720b00171cb31fed7fa96dda1d00",
+      "line_count": 1080,
+      "tree": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w8/.agent-state/previous-proposal/tree.json"
+    },
+    {
+      "source_id": "datawhalechina/diy-llm@95a3b81d4b2686d33afc2d533b0f91d295ec9b78:coursework/assignment5-alignment/cs336_alignment/grpo.py",
+      "blob": "f7d016ec61d6be6997067c8f0a5d581a68926641",
+      "line_count": 458,
+      "tree": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w8/.agent-state/previous-proposal/tree.json"
+    },
+    {
+      "source_id": "datawhalechina/diy-llm@95a3b81d4b2686d33afc2d533b0f91d295ec9b78:coursework/assignment5-alignment/pyproject.toml",
+      "blob": "6e2702a95fd485f218ec6e192213112b14990eee",
+      "line_count": 43,
+      "tree": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w8/.agent-state/previous-proposal/tree.json"
+    },
+    {
+      "source_id": "datawhalechina/diy-llm@95a3b81d4b2686d33afc2d533b0f91d295ec9b78:coursework/assignment6-evaluation/lm_eval_demo.py",
+      "blob": "ea909f10b59483f61aca6948a95962b0dc45ddec",
+      "line_count": 63,
+      "tree": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w8/.agent-state/previous-proposal/tree.json"
+    },
+    {
+      "source_id": "stanford-cs336/assignment2-systems@e495ed740080661ab084914674d3e10048778889:LICENSE",
+      "blob": "49d9c744c8de093674f7b12bb5f532fdc08f00a2",
+      "line_count": 7,
+      "tree": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w8/.agent-state/previous-proposal/source-assignment2-spring2025-tree.json"
+    },
+    {
+      "source_id": "stanford-cs336/assignment2-systems@e495ed740080661ab084914674d3e10048778889:tests/test_attention.py",
+      "blob": "39774689240eab1e8b4d4a1f94214373ed58069a",
+      "line_count": 104,
+      "tree": "/Users/zhenninglang/Projects/oss-atlas-tabs-2026-10-26-w8/.agent-state/previous-proposal/source-assignment2-spring2025-tree.json"
+    }
+  ],
+  "source_map_tree_reference_corrections": [],
+  "bilingual_frontmatter": true,
+  "flow_svg_byte_matches": 2,
+  "mechanism_hash_text_matches": 2,
+  "valid_svg_xml": 6,
+  "health_layout": {
+    "data_unchanged": true,
+    "grade": "D",
+    "axes": [
+      "A",
+      "A",
+      "D",
+      "C",
+      "B",
+      "E"
+    ],
+    "license_axis": "NONE/E",
+    "only_this_entry_layout": "cap note x/y/font split; same text tokens, all non-text geometry and independently reviewed SVG bytes",
+    "shared_generator_modified": false,
+    "regeneration_can_restore_old_layout": true
+  },
+  "readme": {
+    "rows_each": 984,
+    "unique_each": 984,
+    "other983_row_texts_unchanged": true
+  },
+  "report": {
+    "version": 9,
+    "source_sha256": "5804dc34333b5158ffee9fdd1abe0ad3672d80ef357392f3a591b9eaebe3f715",
+    "candidates": 144,
+    "indexed": 142,
+    "identities_added": 0,
+    "other_profiles_and_objects_unchanged": 143,
+    "links": {
+      "local_file_targets": 326,
+      "internal_markdown_anchors": 202,
+      "missing": []
+    }
+  },
+  "tab_close": {
+    "repo": "datawhalechina/diy-llm",
+    "checkpoint_commit": "8066723313cab910649a254ddccd29bab397135f",
+    "operation_head": "8c1f3da71c0a46b68a25aef84b8ee15a4d62ec4f",
+    "target_before": 0,
+    "target_after": 0,
+    "non_target_unchanged": true,
+    "non_target_removed": 0,
+    "non_target_added": 0,
+    "helper_output": "0 tab(s) matched"
+  },
+  "qa_decision": "no leftover Q&A",
+  "tests": {
+    "command": "make test",
+    "key_output": [
+      "Ran 483 tests in 18.998s",
+      "OK"
+    ],
+    "source": "本次复跑 background_process bgp_1786b8b1d001DQm3X6eFVi4Sbn; tool tests, not upstream code"
+  },
+  "semantic_review": {
+    "task": "ses_e87c888acffeN53TVYdYoVB8lb",
+    "files": 6,
+    "findings": [],
+    "source_identity": "16/16"
+  },
+  "upstream_execution": false,
+  "harness_changed": false,
+  "html": "original hash unchanged; renderer/pair/browser not run",
+  "publication": "new branch not pushed; no PR or remote CI; explicit authorization still needed",
+  "evidence_layers": {
+    "inner_loop": "real make gates / pair scoped quality / 483 tool tests",
+    "acceptance": "fixed-source 16 blob/line identities, 6 SVGs, same candidate promoted, other143 objects/raw profiles preserved",
+    "holdout_source_category": "真实捕获：source trees, existing983 master rows and frozenv8 report",
+    "expected_value_source": "用户点名收录、schema及真实v8冻结，不是实现自推成功样例",
+    "relative_to_freeze": "content generation only; no changes to tools/schema/CI or grading rules",
+    "known_gaps": [
+      "assignment2 license scope remains unstated",
+      "no upstream training, safety or commercial-rights audit",
+      "HTML unrefreshed",
+      "new branch publication not authorized"
+    ]
+  }
+}
