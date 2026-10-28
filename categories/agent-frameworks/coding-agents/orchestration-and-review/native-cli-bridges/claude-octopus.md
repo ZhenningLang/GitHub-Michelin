@@ -2,7 +2,7 @@
 name: Claude Octopus
 slug: claude-octopus
 repo: https://github.com/nyldn/claude-octopus
-category: orchestration-and-review
+category: native-cli-bridges
 tags: [claude-code, plugin, multi-model, orchestration, slash-commands, blindspot, mcp]
 language: Shell
 license: MIT
@@ -79,7 +79,7 @@ health:
 
 Claude answers confidently and your blind spot ships with it — a security hole it waved through, a design no second model ever saw. Claude Octopus is a Claude Code plugin that reruns the same task through up to 12 external AI providers (Codex, Copilot, Antigravity, Ollama, Perplexity, OpenRouter, Grok, Kimi Code, …) and gates the result on their disagreement: a 75% consensus check surfaces dissent before you merge, driven by `/octo:*` slash commands.
 
-![claude-octopus — health radar](../../../../assets/health/claude-octopus.svg)
+![claude-octopus — health radar](../../../../../assets/health/claude-octopus.svg)
 
 ## When to use
 
@@ -91,7 +91,7 @@ It fits best when you treat the extra models as a *review/research panel* layere
 
 Octopus is orchestration by dispatch, not a new model. When you run `/octo:debate`, `/octo:council`, `/octo:review`, etc., `orchestrate.sh` fans your prompt out over the provider CLIs/APIs it detected (each provider is an arm — a `codex`, `agy`, `ollama`, OpenRouter HTTP call, …), collects their answers *with per-provider attribution*, and hands them to Claude for synthesis behind a 75% consensus gate, so disagreement is reported rather than averaged away. What stays yours: installing and authenticating each provider, paying for the tokens (per-run cost projections come from `/octo:costs`), and the final merge decision — Octopus never auto-activates on plain prompts by default; you invoke `/octo:*`, it doesn't reach for itself. Lifecycle hooks attach to Claude Code for state (session start/end, tool use, compaction), results and logs land in `~/.claude-octopus/`, and an MCP server exposes the same workflows to non-Claude-Code hosts like Cursor.
 
-![Claude Octopus — backbone user story](../../../../assets/flow/claude-octopus.svg)
+![Claude Octopus — backbone user story](../../../../../assets/flow/claude-octopus.svg)
 
 <!-- flow-steps:begin (generated from flows/claude-octopus.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -125,11 +125,11 @@ Octopus is orchestration by dispatch, not a new model. When you run `/octo:debat
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [oh-my-claudecode](oh-my-claudecode.md) | ✅ | When your bottleneck is *coordinating many Claude agents on one build* (team pipelines, routing, tmux workers), pick oh-my-claudecode; pick Octopus when the bottleneck is *one model's blind spots* and you want rival vendors cross-checking it. | Both are Claude Code plugin layers, but their axis differs: OMC's Team pipeline parallelizes Claude itself; Octopus fans one task across 12 external providers and gates on disagreement. |
-| [DSPy](../../workflow-builders/dspy.md) | ✅ | Choose DSPy when you need model-agnostic prompt/pipeline *optimization* you own in Python — compile-style tuning, not an in-harness review panel; it runs outside any coding-agent CLI. | Programmatic prompt/pipeline optimization framework, model-agnostic and library-shaped; you write Python, not slash commands. Different layer entirely — compilation vs. an in-harness review panel. |
-| [AgentScope](../../agent-runtimes/agent-sdks/agentscope.md) | ✅ | Choose AgentScope when you're *building* a multi-agent application (your own runtime, any model as controller) rather than adding cross-vendor review to a Claude Code session you already run. | General multi-agent runtime/library you build apps on; not a Claude-Code-bound plugin and not opinionated about "blindspot consensus." |
-| [Symphony](../../agent-runtimes/agent-services/symphony.md) | ✅ | Choose Symphony when you want unattended coding-agent runs driven by your Linear board (issue → isolated workspace → Codex run → PR), i.e. *task* orchestration; Octopus is *judgment* orchestration inside one session. | OpenAI's polling orchestrator for Codex runs, Elixir service with tracker integration; vendor-anchored the opposite way (OpenAI conducts) and it runs headless jobs, not a review panel. |
-| [openfang](../../agent-runtimes/agent-services/openfang.md) | ✅ | Choose openfang when you need scheduled autonomous agents running 24/7 as a single Rust binary with channel adapters; Octopus only wakes when you type `/octo:*` inside a Claude Code session. | Rust "agent OS" — scheduler, WASM sandbox, persistence, messaging channels; different execution model (always-on hands on a timer vs. explicit in-session fan-out). |
+| [oh-my-claudecode](../oh-my-claudecode.md) | ✅ | When your bottleneck is *coordinating many Claude agents on one build* (team pipelines, routing, tmux workers), pick oh-my-claudecode; pick Octopus when the bottleneck is *one model's blind spots* and you want rival vendors cross-checking it. | Both are Claude Code plugin layers, but their axis differs: OMC's Team pipeline parallelizes Claude itself; Octopus fans one task across 12 external providers and gates on disagreement. |
+| [DSPy](../../../workflow-builders/dspy.md) | ✅ | Choose DSPy when you need model-agnostic prompt/pipeline *optimization* you own in Python — compile-style tuning, not an in-harness review panel; it runs outside any coding-agent CLI. | Programmatic prompt/pipeline optimization framework, model-agnostic and library-shaped; you write Python, not slash commands. Different layer entirely — compilation vs. an in-harness review panel. |
+| [AgentScope](../../../agent-runtimes/agent-sdks/agentscope.md) | ✅ | Choose AgentScope when you're *building* a multi-agent application (your own runtime, any model as controller) rather than adding cross-vendor review to a Claude Code session you already run. | General multi-agent runtime/library you build apps on; not a Claude-Code-bound plugin and not opinionated about "blindspot consensus." |
+| [Symphony](../../../agent-runtimes/agent-services/symphony.md) | ✅ | Choose Symphony when you want unattended coding-agent runs driven by your Linear board (issue → isolated workspace → Codex run → PR), i.e. *task* orchestration; Octopus is *judgment* orchestration inside one session. | OpenAI's polling orchestrator for Codex runs, Elixir service with tracker integration; vendor-anchored the opposite way (OpenAI conducts) and it runs headless jobs, not a review panel. |
+| [openfang](../../../agent-runtimes/agent-services/openfang.md) | ✅ | Choose openfang when you need scheduled autonomous agents running 24/7 as a single Rust binary with channel adapters; Octopus only wakes when you type `/octo:*` inside a Claude Code session. | Rust "agent OS" — scheduler, WASM sandbox, persistence, messaging channels; different execution model (always-on hands on a timer vs. explicit in-session fan-out). |
 | crystal / claude-squad | 未收录 | Choose crystal or claude-squad when you need multiple parallel Claude Code sessions/worktrees. | Run multiple parallel Claude Code *sessions/worktrees*; parallelism is across Claude instances, not across *different vendors' models* reviewing one task. |
 
 ## Tech stack

@@ -79,7 +79,7 @@ health:
 
 你正要做一个代价高昂、几乎不可逆的决定——砍掉还是保留某条产品线、要不要把内部框架开源、接不接受这个收购报价——而你随便问哪个单模型都能拿到一段流畅的答案。问题从来不是拿不到答案，而是单个模型只给你一个框架，用自信的语气说出来，且完全不记录它忽略了什么。Council 以一条 `/council` 命令安装进来，把你的问题送进 18 个分析人设组成的固定面板，并按剧本走：成员先盲评，然后看到彼此被抹去身份后的立场，且必须先点出自己论证里的具体缺陷才有资格改变立场；最后用一次可数的、按置信度加权的计票判定究竟形成了真共识，还是存在分歧——有分歧就交回给你，而不是被抹成一段「大家基本同意」。
 
-当你要的是**被强制执行的流程**而不是一份可委派角色的名册时，它优于通用 subagent 合集（[Agency-Agents](agency-agents.zh.md)、[awesome-claude-code-subagents](awesome-claude-code-subagents.zh.md)）。当你真正想买的是**协议本身**——固定轮次、反从众规则、可审计的计票——而不只是「有几个厂商的模型在回答」时，它优于多厂商扇出工具（[Claude Octopus](../../agent-frameworks/coding-agents/orchestration-and-review/claude-octopus.zh.md)）。
+当你要的是**被强制执行的流程**而不是一份可委派角色的名册时，它优于通用 subagent 合集（[Agency-Agents](agency-agents.zh.md)、[awesome-claude-code-subagents](awesome-claude-code-subagents.zh.md)）。当你真正想买的是**协议本身**——固定轮次、反从众规则、可审计的计票——而不只是「有几个厂商的模型在回答」时，它优于多厂商扇出工具（[Claude Octopus](../../agent-frameworks/coding-agents/orchestration-and-review/native-cli-bridges/claude-octopus.zh.md)）。
 
 ## 怎么用起来
 
@@ -110,7 +110,7 @@ health:
 
 - **这是个事实查询，或者代价小、可回退。** 去做实验，或者去读一手文档；单次回答就能定的事，议会只会多花轮次和钱。项目自己的 README 也这么说。
 - **你要的是大量可委派的角色人设。** 用 [Agency-Agents](agency-agents.zh.md) 或 [awesome-claude-code-subagents](awesome-claude-code-subagents.zh.md)。Council 的 18 个成员是针对同一个问题的分析**视角**，不是人员目录——你不会从中得到「一个前端工程师」。
-- **你要的是针对代码或研究材料的多厂商模型扇出。** 用 [Claude Octopus](../../agent-frameworks/coding-agents/orchestration-and-review/claude-octopus.zh.md)：它的命令面宽得多（`/octo:*`，里面也有自己的 `/octo:council`），而且它的前提就是别的模型来审你的真实 diff。Council 根本不看你的仓库。
+- **你要的是针对代码或研究材料的多厂商模型扇出。** 用 [Claude Octopus](../../agent-frameworks/coding-agents/orchestration-and-review/native-cli-bridges/claude-octopus.zh.md)：它的命令面宽得多（`/octo:*`，里面也有自己的 `/octo:council`），而且它的前提就是别的模型来审你的真实 diff。Council 根本不看你的仓库。
 - **你要的是一支会写代码、会验证软件的 agent 团队。** 用 [oh-my-claudecode](../../agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.zh.md) 或 [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md)。Council 产出的是裁决文档，永远不是 diff 或测试结果。
 - **你需要的是强制而不是建议。** 这里每一道「强制执行」都是写给协调者模型的提示词；仓库里没有任何东西校验第 2 轮是否真的做了匿名化、加权计票是否真的算了。[推断]如果「静默不遵守」对你构成风险，那这个工具的形状就不对——它不是确定性编排器。
 - **你需要成本或延迟预算。** `--full` 是 18 席 × 3 轮，再加执法性追问，就是几十次模型调用，还可能散在多个付费 provider 上，且没有内置上限。用 `--duo` 或 `--quick`，或者干脆别召集。
@@ -121,7 +121,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Claude Octopus](../../agent-frameworks/coding-agents/orchestration-and-review/claude-octopus.zh.md) | ✅ | 任务是跨厂商审真实代码/研究材料、且你需要对产物做共识门时，选 Octopus；任务是某一个不可逆决定、且你要买的正是审议协议本身时，选 Council。 | Octopus 覆盖面大得多（49+ 命令、32 个人设、安全与研究流程）；Council 在一件事上窄而深，用显式轮次预算和可审计计票替代泛化扇出。 |
+| [Claude Octopus](../../agent-frameworks/coding-agents/orchestration-and-review/native-cli-bridges/claude-octopus.zh.md) | ✅ | 任务是跨厂商审真实代码/研究材料、且你需要对产物做共识门时，选 Octopus；任务是某一个不可逆决定、且你要买的正是审议协议本身时，选 Council。 | Octopus 覆盖面大得多（49+ 命令、32 个人设、安全与研究流程）；Council 在一件事上窄而深，用显式轮次预算和可审计计票替代泛化扇出。 |
 | [oh-my-claudecode](../../agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.zh.md) | ✅ | 你要的是分阶段编码团队（plan→prd→exec→verify）配模型路由和 tmux 并行时，选 oh-my-claudecode；不写代码、交付物是一个可辩护的决定时，选 Council。 | OMC 优化的是对仓库的吞吐，终点是一个已合并的改动；Council 优化的是单次判断的质量，终点是一份裁决文档——前者当决策仪式没用，后者当构建流水线也没用。 |
 | [Agency-Agents](agency-agents.zh.md) | ✅ | 你需要广泛的角色覆盖来委派各种任务时，选 Agency-Agents；你需要一个小的固定面板、且它的分歧是被强制产生并被计数的时，选 Council。 | 广度换流程：232 个按需挑选的角色人设，对 18 个视角加一套决定「谁在何时发言、身份何时被抹去、票分散了怎么办」的协议。 |
 | [wshobson/agents](wshobson-agents.zh.md) | ✅ | 你要一份大型、多 harness 生成的 subagent/skill/command/orchestrator 合集时，选 wshobson/agents；你要的明确是对抗式审议、而不是一个能力市场时，选 Council。 | wshobson 优化的是覆盖面与多工具产物一致性；Council 只有一套有主张的协议，意图更窄，也没有「按需拼装」的面。 |

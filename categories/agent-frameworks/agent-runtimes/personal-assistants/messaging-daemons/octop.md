@@ -113,7 +113,7 @@ Octop is the box; four `harness-*` libraries are the motor. You install, create 
 - **You need a visual workflow builder with inspectable RAG graphs.** Use [Dify](../../../workflow-builders/dify.md) instead of Octop, because Octop is a single-process assistant, not a workflow IDE.
 - **You need to scale past one machine.** Octop's accepted ADR is no queue and no workers; CPU-heavy work blocks the event loop. Use a service-shaped runtime such as [eve](../../agent-services/eve.md) if the agent must live as infrastructure.
 - **You need the agent runtime itself to be a public repository.** `orcakit-harness-agent`, `harness-gateway`, `harness-memory` and `harness-browser` are on PyPI and advertised as TencentCloud GitHub repos; those four GitHub URLs 404 as of 2026-09-22. Use OpenClaw or Open WebUI instead if "I can read the core" is a constraint.
-- **You meant the Claude Code review plugin.** That is [Claude Octopus](../../../coding-agents/orchestration-and-review/claude-octopus.md), a different project; do not install this TencentCloud app for multi-model review.
+- **You meant the Claude Code review plugin.** That is [Claude Octopus](../../../coding-agents/orchestration-and-review/native-cli-bridges/claude-octopus.md), a different project; do not install this TencentCloud app for multi-model review.
 
 ## Comparison
 

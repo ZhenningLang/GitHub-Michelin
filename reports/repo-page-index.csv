@@ -77,7 +77,7 @@ https://github.com/GoogleChrome/modern-web-guidance-src,modern-web-guidance,prod
 https://github.com/GoogleCloudPlatform/scion,scion,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/scion.md
 https://github.com/Graphify-Labs/graphify,graphify,code-intelligence,categories/rag-retrieval/code-intelligence/graphify.md
 https://github.com/GuanYixuan/pyJianYingDraft,pyjianyingdraft,nle-automation,categories/media-processing/nle-automation/pyjianyingdraft.md
-https://github.com/HKUDS/AutoSwarm,autoswarm,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/autoswarm.md
+https://github.com/HKUDS/AutoSwarm,autoswarm,native-cli-bridges,categories/agent-frameworks/coding-agents/orchestration-and-review/native-cli-bridges/autoswarm.md
 https://github.com/HKUDS/CLI-Anything,cli-anything,harness-extensions,categories/agent-tooling/harness-extensions/cli-anything.md
 https://github.com/HKUDS/DeepTutor,deeptutor,education-tutoring,categories/education-tutoring/deeptutor.md
 https://github.com/HTS-Sleeping-Place/skills-scanner,skills-scanner,agent-governance,categories/agent-governance/skills-scanner.md
@@ -740,7 +740,7 @@ https://github.com/nidhinjs/prompt-master,prompt-master,prompt-engineering,categ
 https://github.com/nilbuild/driver.js,driver-js,product-tours,categories/web-ui/product-tours/driver-js.md
 https://github.com/nullmoth/nvidia-macos-driver,nvidia-macos-driver,hackintosh,categories/hackintosh/nvidia-macos-driver.md
 https://github.com/nuxt/nuxt,nuxt,app-frameworks,categories/web-ui/frameworks/app-frameworks/nuxt.md
-https://github.com/nyldn/claude-octopus,claude-octopus,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/claude-octopus.md
+https://github.com/nyldn/claude-octopus,claude-octopus,native-cli-bridges,categories/agent-frameworks/coding-agents/orchestration-and-review/native-cli-bridges/claude-octopus.md
 https://github.com/obra/superpowers,superpowers,coding-agent-harnesses,categories/agent-dev-methodology/coding-agent-harnesses/superpowers.md
 https://github.com/ocrmypdf/OCRmyPDF,ocrmypdf,pdf-transform-signing,categories/pdf-tools/pdf-transform-signing/ocrmypdf.md
 https://github.com/ollama/ollama,ollama,local-runtimes,categories/llm-inference/local-runtimes/ollama.md
@@ -754,7 +754,7 @@ https://github.com/open-webui/open-webui,open-webui,llm-chat-ui,categories/llm-c
 https://github.com/openJiuwen-ai/jiuwenswarm,jiuwenswarm,agent-services,categories/agent-frameworks/agent-runtimes/agent-services/jiuwenswarm.md
 https://github.com/openai/CLIP,clip,vision-and-multimodal,categories/ml-research/vision-and-multimodal/clip.md
 https://github.com/openai/codex,codex,vendor-agents,categories/agent-frameworks/coding-agents/terminal-agents/vendor-agents/codex.md
-https://github.com/openai/codex-plugin-cc,codex-plugin-cc,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/codex-plugin-cc.md
+https://github.com/openai/codex-plugin-cc,codex-plugin-cc,native-cli-bridges,categories/agent-frameworks/coding-agents/orchestration-and-review/native-cli-bridges/codex-plugin-cc.md
 https://github.com/openai/openai-agents-python,openai-agents-sdk,agent-sdks,categories/agent-frameworks/agent-runtimes/agent-sdks/openai-agents-sdk.md
 https://github.com/openai/skills,openai-skills,agent-vendors,categories/agent-skills/vendor-collections/agent-vendors/openai-skills.md
 https://github.com/openai/symphony,symphony,agent-services,categories/agent-frameworks/agent-runtimes/agent-services/symphony.md

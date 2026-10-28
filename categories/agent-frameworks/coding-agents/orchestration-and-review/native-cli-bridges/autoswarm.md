@@ -2,7 +2,7 @@
 name: AutoSwarm
 slug: autoswarm
 repo: https://github.com/HKUDS/AutoSwarm
-category: orchestration-and-review
+category: native-cli-bridges
 tags: [multi-agent, native-cli, delegation, approval-relay, session-resume]
 language: Python
 license: MIT
@@ -79,35 +79,35 @@ health:
 
 You keep pasting work between Codex, Claude Code and other agent terminals. AutoSwarm lets your current agent delegate through their native CLIs and collect results, questions and permission requests in the same conversation.
 
-![AutoSwarm health radar](../../../../assets/health/autoswarm.svg)
+![AutoSwarm health radar](../../../../../assets/health/autoswarm.svg)
 
 ## When to use
 
 You already have authenticated coding agents on your workstation. One should investigate a failure while another reviews the patch, but you keep moving prompts, copying results and reopening the right child conversation. You want a common delegation interface without replacing each agent's native model configuration, tools or session history.
 
-Choose AutoSwarm when the missing piece is this conversation-to-CLI bridge, not a desktop task board or a prescribed development pipeline. Unlike container-oriented [Scion](scion.md), it launches local native processes without a Hub. Unlike [oh-my-claudecode](oh-my-claudecode.md), its core does not impose a Claude-led plan-to-fix pipeline. The parent agent still chooses the work split, prepares separate workspaces and judges the results. This page covers the root v2 implementation, not the frozen v1 company-style application under `autoswarm-v1.0.0/`.
+Choose AutoSwarm when the missing piece is this conversation-to-CLI bridge, not a desktop task board or a prescribed development pipeline. Unlike container-oriented [Scion](../scion.md), it launches local native processes without a Hub. Unlike [oh-my-claudecode](../oh-my-claudecode.md), its core does not impose a Claude-led plan-to-fix pipeline. The parent agent still chooses the work split, prepares separate workspaces and judges the results. This page covers the root v2 implementation, not the frozen v1 company-style application under `autoswarm-v1.0.0/`.
 
 ## When NOT to use
 
-- **You need automatic branch isolation and PR supervision.** Pick [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.md) for task worktrees and CI/review feedback. AutoSwarm accepts an existing working directory; two children can edit the same files unless you separate them.
-- **You need container workspaces and hosted execution infrastructure.** Evaluate [Scion](scion.md). AutoSwarm's file locks serialize session bookkeeping, not untrusted code or filesystem access; native credentials and project configuration remain in use.
-- **You want a ready-made planning, implementation and verification loop.** Pick [oh-my-claudecode](oh-my-claudecode.md) inside Claude Code. AutoSwarm's Skill asks the parent to coordinate and verify; a completed native call is not task acceptance.
+- **You need automatic branch isolation and PR supervision.** Pick [Agent Orchestrator](../../../../agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.md) for task worktrees and CI/review feedback. AutoSwarm accepts an existing working directory; two children can edit the same files unless you separate them.
+- **You need container workspaces and hosted execution infrastructure.** Evaluate [Scion](../scion.md). AutoSwarm's file locks serialize session bookkeeping, not untrusted code or filesystem access; native credentials and project configuration remain in use.
+- **You want a ready-made planning, implementation and verification loop.** Pick [oh-my-claudecode](../oh-my-claudecode.md) inside Claude Code. AutoSwarm's Skill asks the parent to coordinate and verify; a completed native call is not task acceptance.
 - **Every permission must require a human.** Keep the native CLI's direct approval surface rather than adopting this bridge unchanged. Parent-agent approval delegation defaults to enabled; disabling it enforces a parent/user source convention, not independent human identity authentication. The Nanobot bridge additionally defaults to native Full Access, with an explicit restricted-mode option.
-- **You expect every idle desktop app to wake automatically.** Use explicit collection in your existing agent, or [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.md) for visible desktop supervision. AutoSwarm callbacks require a supported binding; a Codex thread ID alone is insufficient, and most hosts use in-turn waiting.
+- **You expect every idle desktop app to wake automatically.** Use explicit collection in your existing agent, or [Agent Orchestrator](../../../../agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.md) for visible desktop supervision. AutoSwarm callbacks require a supported binding; a Codex thread ID alone is insufficient, and most hosts use in-turn waiting.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [oh-my-claudecode](oh-my-claudecode.md) | ✅ | Choose OMC for a Claude-led plan-to-verify workflow; choose AutoSwarm when an existing parent needs native calls and resumes across installed agent products. | OMC supplies process and routing conventions. AutoSwarm keeps the bridge smaller but leaves scheduling and acceptance to the parent. |
-| [Scion](scion.md) | ✅ | Choose Scion when agents need container workspaces and local-to-hosted infrastructure; choose AutoSwarm for delegation on an already configured workstation. | AutoSwarm avoids images and a Hub, but adds no container isolation or workspace provisioning. |
-| [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.md) | ✅ | Choose AO when humans supervise branches, PRs and CI on a desktop; choose AutoSwarm when the coordinating interface should remain the current agent conversation. | AO owns a visual task lifecycle and worktrees. AutoSwarm retains native sessions and lightweight call records, but you arrange branch safety and review. |
+| [oh-my-claudecode](../oh-my-claudecode.md) | ✅ | Choose OMC for a Claude-led plan-to-verify workflow; choose AutoSwarm when an existing parent needs native calls and resumes across installed agent products. | OMC supplies process and routing conventions. AutoSwarm keeps the bridge smaller but leaves scheduling and acceptance to the parent. |
+| [Scion](../scion.md) | ✅ | Choose Scion when agents need container workspaces and local-to-hosted infrastructure; choose AutoSwarm for delegation on an already configured workstation. | AutoSwarm avoids images and a Hub, but adds no container isolation or workspace provisioning. |
+| [Agent Orchestrator](../../../../agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.md) | ✅ | Choose AO when humans supervise branches, PRs and CI on a desktop; choose AutoSwarm when the coordinating interface should remain the current agent conversation. | AO owns a visual task lifecycle and worktrees. AutoSwarm retains native sessions and lightweight call records, but you arrange branch safety and review. |
 
 ## Quick start
 
 The [pinned README](https://github.com/HKUDS/AutoSwarm/blob/5325b6d98dad7a9a12811c0b5fa0817ffbbc71f9/README.md#for-agents-how-to-use-autoswarm) installs the root package with `uv tool install --force .` after cloning, then runs `autoswarm setup --host codex` for a Codex host. Setup copies a Skill and its own runtime; Claude Code setup also writes user hooks, while OpenCode setup writes a plugin. Read the installed Skill and use its exact launcher, then verify the chosen child in the real project with `autoswarm doctor --agent codex --probe --cwd /path/to/project`; this makes paid model calls and tests native resume. Give the host a task; it delegates work and collects intermediate questions, approvals and final results through the launcher. You supply installed and authenticated CLIs, permissions, separate editing directories, model spend and artifact verification; the bridge does not provide a model service or acceptance oracle. Updating the package alone does not refresh the copied Skill runtime: rerun setup and reload the host as documented.
 
-![autoswarm backbone user story](../../../../assets/flow/autoswarm.svg)
+![autoswarm backbone user story](../../../../../assets/flow/autoswarm.svg)
 
 <!-- flow-steps:begin (generated from flows/autoswarm.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -127,7 +127,7 @@ The [pinned README](https://github.com/HKUDS/AutoSwarm/blob/5325b6d98dad7a9a1281
 
 ## Key techniques
 
-![AutoSwarm — mechanism diagram](../../../../assets/mechanism/autoswarm.svg)
+![AutoSwarm — mechanism diagram](../../../../../assets/mechanism/autoswarm.svg)
 
 <!-- mechanism:begin (generated from mechanisms/autoswarm.json by tools/mechanism_card.py; do not edit) -->
 <details>

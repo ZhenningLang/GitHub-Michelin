@@ -97,7 +97,7 @@ health:
 |---|---|---|---|
 | [oh-my-claudecode](oh-my-claudecode.zh.md) | ✅ | 最接近的同类：团队已经在 Claude Code 里、只想加一层分阶段 agent 与模型路由而不想另起运行时，选 oh-my-claudecode；需要每个角色可配后端（Codex + Grok + …）并跨 git worktree 做 commit 级交接，选 SwarmForge。 | 两者都在 tmux 里跑分阶段并行 agent，且都是单人项目；oh-my-claudecode 上手更便宜（插件、MIT、有版本发布）但被 Claude 绑定，SwarmForge 后端更灵活，代价是侵入式安装一套运行时加自研工具链，且不授予任何许可。 |
 | [Symphony](../../agent-runtimes/agent-services/symphony.zh.md) | ✅ | 工作来源是跟踪器、想一个 issue 一个 agent 时，选 Symphony；工作来源是自己的 dashboard、想让多个角色反复迭代同一个任务时，选 SwarmForge。 | Symphony 是 Apache-2.0、背后有强厂商、按 issue 隔离工作区，但硬绑 Codex + Linear；SwarmForge 后端灵活、角色流水线更细，但无许可、单人维护，同样处于 preview 阶段。 |
-| [claude-octopus](claude-octopus.zh.md) | ✅ | 你要的价值是让多个模型对同一个任务做*对抗式评审*时，选 claude-octopus；你要的是带回执文件的顺序角色流水线加操作员看板时，选 SwarmForge。 | Octopus 把一个任务扇出给多个模型、收获分歧；SwarmForge 让角色串行推进、把已提交的代码沿流水线传递。这是两种不同的协调拓扑——按你的瓶颈是盲点还是流程深度来选。 |
+| [claude-octopus](native-cli-bridges/claude-octopus.zh.md) | ✅ | 你要的价值是让多个模型对同一个任务做*对抗式评审*时，选 claude-octopus；你要的是带回执文件的顺序角色流水线加操作员看板时，选 SwarmForge。 | Octopus 把一个任务扇出给多个模型、收获分歧；SwarmForge 让角色串行推进、把已提交的代码沿流水线传递。这是两种不同的协调拓扑——按你的瓶颈是盲点还是流程深度来选。 |
 | [Background Agents（Open-Inspect）](background-agents.zh.md) | ✅ | 需求是给一个可信组织做自托管、沙箱化的后台运行，选 Background Agents；需求是在自己的仓库上做交互式、由操作员把关的角色交接，选 SwarmForge。 | Background Agents 是 MIT 且面向沙箱（隔离叙事更强）；SwarmForge 的隔离只是 worktree 加被绕过的 agent 权限，用安全性换来更紧凑的本地操作循环。 |
 | tmux + git worktree + coding-agent CLI（自搭） | 未收录 | 想用同一套模式、但不要无许可依赖、不要被强推测试工具链时，选自搭——几个 shell 脚本就能做到「一个角色一个 worktree」加一个 handoff 文件。 | SwarmForge 开箱就给你看板、校验过的 handoff 协议、batch 接收模式和 dashboard；自搭这些你都得自己写，但换来的是甩掉许可证、Babashka 和宪法三处锁定。 |
 

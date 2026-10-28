@@ -2,7 +2,7 @@
 name: AutoSwarm
 slug: autoswarm
 repo: https://github.com/HKUDS/AutoSwarm
-category: orchestration-and-review
+category: native-cli-bridges
 tags: [multi-agent, native-cli, delegation, approval-relay, session-resume]
 language: Python
 license: MIT
@@ -79,35 +79,35 @@ health:
 
 你在几个 agent 终端间反复粘贴任务和结果。AutoSwarm 让当前 agent 调用其他产品的原生命令行，并在原对话收回结果、提问和权限请求。
 
-![AutoSwarm 健康度雷达](../../../../assets/health/autoswarm.zh.svg)
+![AutoSwarm 健康度雷达](../../../../../assets/health/autoswarm.zh.svg)
 
 ## 何时使用
 
 你的电脑上已经配置并登录了多种编码 agent。你想让一个查故障，另一个审补丁，却总要手动搬运提示词、复制结果，再找回对应子会话。你缺的是统一委派入口，不想替换每个产品已有的模型配置、工具和会话历史。
 
-当缺口是“当前对话调用其他 CLI”，而非桌面任务看板或固定开发流水线时，选 AutoSwarm。与容器化的 [Scion](scion.zh.md) 相比，它直接启动本机原生进程，不需要控制中心。与 [oh-my-claudecode](oh-my-claudecode.zh.md) 相比，核心不强加 Claude 主导的规划到返工流程。主 agent 仍负责拆任务、分开编辑目录和验收结果。本页介绍根目录的 v2，不把 `autoswarm-v1.0.0/` 中冻结的公司式旧应用混进来。
+当缺口是“当前对话调用其他 CLI”，而非桌面任务看板或固定开发流水线时，选 AutoSwarm。与容器化的 [Scion](../scion.zh.md) 相比，它直接启动本机原生进程，不需要控制中心。与 [oh-my-claudecode](../oh-my-claudecode.zh.md) 相比，核心不强加 Claude 主导的规划到返工流程。主 agent 仍负责拆任务、分开编辑目录和验收结果。本页介绍根目录的 v2，不把 `autoswarm-v1.0.0/` 中冻结的公司式旧应用混进来。
 
 ## 何时不用
 
-- **需要自动隔离分支并监管 PR。** 选 [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.zh.md)，它提供任务工作树和 CI／评审反馈。AutoSwarm 接受已有工作目录；不主动分开时，两个子 agent 可以修改同一份文件。
-- **需要容器工作区与托管执行基础设施。** 评估 [Scion](scion.zh.md)。AutoSwarm 的文件锁保护会话记账，不隔离不可信代码或文件访问；原生凭据和项目配置仍会生效。
-- **需要现成的规划、实现、验证循环。** 在 Claude Code 内选 [oh-my-claudecode](oh-my-claudecode.zh.md)。AutoSwarm 的技能要求主 agent 协调和验证；原生调用完成不等于任务通过验收。
+- **需要自动隔离分支并监管 PR。** 选 [Agent Orchestrator](../../../../agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.zh.md)，它提供任务工作树和 CI／评审反馈。AutoSwarm 接受已有工作目录；不主动分开时，两个子 agent 可以修改同一份文件。
+- **需要容器工作区与托管执行基础设施。** 评估 [Scion](../scion.zh.md)。AutoSwarm 的文件锁保护会话记账，不隔离不可信代码或文件访问；原生凭据和项目配置仍会生效。
+- **需要现成的规划、实现、验证循环。** 在 Claude Code 内选 [oh-my-claudecode](../oh-my-claudecode.zh.md)。AutoSwarm 的技能要求主 agent 协调和验证；原生调用完成不等于任务通过验收。
 - **每次权限都必须由人确认。** 保留原生 CLI 的直接批准界面，不要原样采用此桥接器。主 agent 代批默认开启；关闭后执行的是 parent／user 来源约定，不是独立的人类身份认证。Nanobot 桥接还默认采用原生 Full Access，可显式改用受限模式。
-- **期待所有空闲桌面应用都会自动续跑。** 在现有 agent 中显式收取结果，或用 [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.zh.md) 做可视监管。AutoSwarm 回调需要支持的宿主绑定；仅有 Codex 线程 ID 不够，多数宿主依靠当前轮等待。
+- **期待所有空闲桌面应用都会自动续跑。** 在现有 agent 中显式收取结果，或用 [Agent Orchestrator](../../../../agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.zh.md) 做可视监管。AutoSwarm 回调需要支持的宿主绑定；仅有 Codex 线程 ID 不够，多数宿主依靠当前轮等待。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [oh-my-claudecode](oh-my-claudecode.zh.md) | 已收录 | 要 Claude 主导的规划到验证流程，选 OMC；已有主 agent 只缺跨产品原生调用和续接时，选 AutoSwarm。 | OMC 提供流程与路由约定；AutoSwarm 缩小桥接层，但把调度和验收留给主 agent。 |
-| [Scion](scion.zh.md) | 已收录 | 要容器工作区和本机到托管的基础设施，选 Scion；只在已配置好的电脑上委派任务，选 AutoSwarm。 | AutoSwarm 省去镜像与控制中心，但不提供容器隔离或工作区创建。 |
-| [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.zh.md) | 已收录 | 人在桌面监管分支、PR 和 CI 时选 AO；希望协调入口始终是当前 agent 对话时，选 AutoSwarm。 | AO 接管可视任务生命周期和工作树；AutoSwarm 保留原生会话与轻量调用记录，但分支安全和评审要自己安排。 |
+| [oh-my-claudecode](../oh-my-claudecode.zh.md) | 已收录 | 要 Claude 主导的规划到验证流程，选 OMC；已有主 agent 只缺跨产品原生调用和续接时，选 AutoSwarm。 | OMC 提供流程与路由约定；AutoSwarm 缩小桥接层，但把调度和验收留给主 agent。 |
+| [Scion](../scion.zh.md) | 已收录 | 要容器工作区和本机到托管的基础设施，选 Scion；只在已配置好的电脑上委派任务，选 AutoSwarm。 | AutoSwarm 省去镜像与控制中心，但不提供容器隔离或工作区创建。 |
+| [Agent Orchestrator](../../../../agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.zh.md) | 已收录 | 人在桌面监管分支、PR 和 CI 时选 AO；希望协调入口始终是当前 agent 对话时，选 AutoSwarm。 | AO 接管可视任务生命周期和工作树；AutoSwarm 保留原生会话与轻量调用记录，但分支安全和评审要自己安排。 |
 
 ## 快速上手
 
 [固定版本 README](https://github.com/HKUDS/AutoSwarm/blob/5325b6d98dad7a9a12811c0b5fa0817ffbbc71f9/README.md#for-agents-how-to-use-autoswarm) 的路径是克隆后用 `uv tool install --force .` 安装根包，再为 Codex 宿主执行 `autoswarm setup --host codex`。安装器复制技能和独立运行时；Claude Code 安装还会写用户 hooks，OpenCode 安装会写插件。读取安装后的技能，使用其准确启动参数，再在真实项目中执行 `autoswarm doctor --agent codex --probe --cwd /path/to/project`，它会付费调用模型并检查原生会话续接。把任务交给宿主后，主 agent 用启动器委派任务，收回中途提问、权限请求和最终结果。你提供已安装并认证的 CLI、权限、分开的编辑目录、模型费用和产物验收；桥接器不提供模型服务，也不能自动判断业务正确。仅更新软件包不会更新技能内复制的运行时，还要重新执行安装配置并按文档重载宿主。
 
-![autoswarm 主干用户故事](../../../../assets/flow/autoswarm.zh.svg)
+![autoswarm 主干用户故事](../../../../../assets/flow/autoswarm.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/autoswarm.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -127,7 +127,7 @@ health:
 
 ## 技术要点
 
-![AutoSwarm — 机制图](../../../../assets/mechanism/autoswarm.zh.svg)
+![AutoSwarm — 机制图](../../../../../assets/mechanism/autoswarm.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/autoswarm.json by tools/mechanism_card.py; do not edit) -->
 <details>

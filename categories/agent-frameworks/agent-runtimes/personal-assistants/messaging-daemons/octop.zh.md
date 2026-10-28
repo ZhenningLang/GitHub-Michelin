@@ -113,7 +113,7 @@ Octop 是盒子；四套 `harness-*` 库是马达。你安装、建管理员、�
 - **你需要可视化工作流构建器和可审查的 RAG 图。** 用 [Dify](../../../workflow-builders/dify.zh.md) 代替 Octop，因为 Octop 是单进程助手，不是工作流 IDE。
 - **你需要扩到一台机器以外。** Octop 已接受的 ADR 是无队列、无 worker；CPU 重活会堵事件循环。若 Agent 必须以基础设施形态活着，用 [eve](../../agent-services/eve.zh.md) 这类服务型运行时。
 - **你需要 Agent 运行时本身也是公开仓库。** `orcakit-harness-agent`、`harness-gateway`、`harness-memory`、`harness-browser` 在 PyPI 上，文档写成 TencentCloud 的 GitHub 仓；这四个 GitHub URL 在 2026-09-22 全部 404。若“我能读到内核”是硬条件，改用 OpenClaw 或 Open WebUI。
-- **你其实要的是 Claude Code 的多模型评审插件。** 那是 [Claude Octopus](../../../coding-agents/orchestration-and-review/claude-octopus.zh.md)，另一个项目；不要为这个目的去装腾讯云这个应用。
+- **你其实要的是 Claude Code 的多模型评审插件。** 那是 [Claude Octopus](../../../coding-agents/orchestration-and-review/native-cli-bridges/claude-octopus.zh.md)，另一个项目；不要为这个目的去装腾讯云这个应用。
 
 ## 横向对比
 

@@ -2,7 +2,7 @@
 name: Claude Octopus
 slug: claude-octopus
 repo: https://github.com/nyldn/claude-octopus
-category: orchestration-and-review
+category: native-cli-bridges
 tags: [claude-code, plugin, multi-model, orchestration, slash-commands, blindspot, mcp]
 language: Shell
 license: MIT
@@ -79,7 +79,7 @@ health:
 
 Claude 答得自信，你的盲点就跟着一起上线——它放过的安全漏洞、没人交叉核对的设计。Claude Octopus 是一个 Claude Code 插件，把同一个任务再跑一遍给至多 12 个外部 AI provider（Codex、Copilot、Antigravity、Ollama、Perplexity、OpenRouter、Grok、Kimi Code 等）看，并用它们的分歧来做闸门：75% 共识检查在合并之前就把不一致摆到你面前，全部由 `/octo:*` 斜杠命令驱动。
 
-![claude-octopus — 健康度雷达](../../../../assets/health/claude-octopus.zh.svg)
+![claude-octopus — 健康度雷达](../../../../../assets/health/claude-octopus.zh.svg)
 
 ## 何时使用
 
@@ -91,7 +91,7 @@ Claude 答得自信，你的盲点就跟着一起上线——它放过的安全�
 
 Octopus 的编排靠“分发”，不是新模型。你敲 `/octo:debate`、`/octo:council`、`/octo:review` 这类命令后，`orchestrate.sh` 把你的 prompt 扇给探测到的各家 provider CLI/API（每个 provider 是一条触手——`codex`、`agy`、`ollama`、OpenRouter HTTP 调用……），带着*逐模型署名*收回答案，再交给 Claude 做综合，并套上 75% 共识质量闸门——分歧是被上报的，不是被平均掉的。仍然归你管的：安装并认证每个 provider、付 token 钱（`/octo:costs` 给出跑前花费预估），以及最终合并的决定权——默认它绝不在你的普通 prompt 上自动激活，你敲 `/octo:*`，它不会自己伸手。生命周期 hooks 挂在 Claude Code 上维护状态（会话起止、工具调用、compaction），结果与日志落在 `~/.claude-octopus/`，一个 MCP server 把同样的工作流暴露给 Cursor 等非 Claude Code 宿主。
 
-![Claude Octopus — 主干用户故事](../../../../assets/flow/claude-octopus.zh.svg)
+![Claude Octopus — 主干用户故事](../../../../../assets/flow/claude-octopus.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/claude-octopus.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -125,11 +125,11 @@ Octopus 的编排靠“分发”，不是新模型。你敲 `/octo:debate`、`/o
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [oh-my-claudecode](oh-my-claudecode.zh.md) | ✅ | 瓶颈是*让多个 Claude agent 协同干一个大活*（team 流水线、路由、tmux worker）时，选 oh-my-claudecode；瓶颈是*一个模型的盲点*、要让别的厂商来交叉核对时，选 Octopus。 | 两者都是 Claude Code 插件层，但轴向不同：OMC 的 Team 流水线并行的是 Claude 自己；Octopus 把一个任务扇给 12 个外部 provider 并以分歧为闸门。 |
-| [DSPy](../../workflow-builders/dspy.zh.md) | ✅ | 需要自己用 Python 掌握的、模型无关的 prompt / pipeline*优化*（编译式调参）时选 DSPy——它跑在任何 coding-agent CLI 之外，不是会话内评审组。 | 程序化 prompt / pipeline 优化框架，模型无关、库形态；你写 Python 而非斜杠命令。层次完全不同——是编译，而非 harness 内的评审小组。 |
-| [AgentScope](../../agent-runtimes/agent-sdks/agentscope.zh.md) | ✅ | 当你要*构建*一个多 agent 应用（自己的运行时、任何模型都能当控制器），而不是给已有的 Claude Code 会话加跨厂商评审时，选 AgentScope。 | 通用多 agent 运行时 / 库，你在其上构建应用；不绑 Claude Code，也不对“盲点共识”持立场。 |
-| [Symphony](../../agent-runtimes/agent-services/symphony.zh.md) | ✅ | 要无人值守、由 Linear 看板驱动的 coding-agent 运行（issue → 隔离工作区 → Codex 执行 → PR），即*任务*编排时选 Symphony；Octopus 做的是单个会话内的*判断*编排。 | OpenAI 出品的 Codex 轮询编排器（Elixir 服务、接 tracker）；厂商锚定正好相反（OpenAI 指挥），跑的是无人值守作业而非评审小组。 |
-| [openfang](../../agent-runtimes/agent-services/openfang.zh.md) | ✅ | 需要按计划 7×24 自主跑动的 agent（单个 Rust 二进制、自带消息通道适配）时选 openfang；Octopus 只在你在 Claude Code 会话里敲 `/octo:*` 时才醒。 | Rust「agent 操作系统」——调度器、WASM 沙箱、持久化、消息通道；执行模型完全不同（常驻定时的 Hand vs. 会话内显式扇出）。 |
+| [oh-my-claudecode](../oh-my-claudecode.zh.md) | ✅ | 瓶颈是*让多个 Claude agent 协同干一个大活*（team 流水线、路由、tmux worker）时，选 oh-my-claudecode；瓶颈是*一个模型的盲点*、要让别的厂商来交叉核对时，选 Octopus。 | 两者都是 Claude Code 插件层，但轴向不同：OMC 的 Team 流水线并行的是 Claude 自己；Octopus 把一个任务扇给 12 个外部 provider 并以分歧为闸门。 |
+| [DSPy](../../../workflow-builders/dspy.zh.md) | ✅ | 需要自己用 Python 掌握的、模型无关的 prompt / pipeline*优化*（编译式调参）时选 DSPy——它跑在任何 coding-agent CLI 之外，不是会话内评审组。 | 程序化 prompt / pipeline 优化框架，模型无关、库形态；你写 Python 而非斜杠命令。层次完全不同——是编译，而非 harness 内的评审小组。 |
+| [AgentScope](../../../agent-runtimes/agent-sdks/agentscope.zh.md) | ✅ | 当你要*构建*一个多 agent 应用（自己的运行时、任何模型都能当控制器），而不是给已有的 Claude Code 会话加跨厂商评审时，选 AgentScope。 | 通用多 agent 运行时 / 库，你在其上构建应用；不绑 Claude Code，也不对“盲点共识”持立场。 |
+| [Symphony](../../../agent-runtimes/agent-services/symphony.zh.md) | ✅ | 要无人值守、由 Linear 看板驱动的 coding-agent 运行（issue → 隔离工作区 → Codex 执行 → PR），即*任务*编排时选 Symphony；Octopus 做的是单个会话内的*判断*编排。 | OpenAI 出品的 Codex 轮询编排器（Elixir 服务、接 tracker）；厂商锚定正好相反（OpenAI 指挥），跑的是无人值守作业而非评审小组。 |
+| [openfang](../../../agent-runtimes/agent-services/openfang.zh.md) | ✅ | 需要按计划 7×24 自主跑动的 agent（单个 Rust 二进制、自带消息通道适配）时选 openfang；Octopus 只在你在 Claude Code 会话里敲 `/octo:*` 时才醒。 | Rust「agent 操作系统」——调度器、WASM 沙箱、持久化、消息通道；执行模型完全不同（常驻定时的 Hand vs. 会话内显式扇出）。 |
 | crystal / claude-squad | 未收录 | 需要并行跑多个 Claude Code 会话/worktree 时，选 crystal 或 claude-squad。 | 并行跑多个 Claude Code *会话/worktree*；并行发生在多个 Claude 实例之间，而非*不同厂商模型*评审同一个任务。 |
 
 ## 技术栈

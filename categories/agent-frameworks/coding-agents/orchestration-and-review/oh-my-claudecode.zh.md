@@ -127,7 +127,7 @@ OMC 把你的 Claude Code 会话变成「领队 + 团队」运行时。`/team`�
 |---|---|---|---|
 | [DSPy](../../workflow-builders/dspy.zh.md) | ✅ | 需要供应商无关、嵌在你自己应用里的 Python prompt / pipeline 编程与优化框架时选 DSPy；OMC 只有当 Claude Code 已经是你运行的东西时才成立。 | 供应商无关的 Python 框架，应用由你自己搭。OMC 更窄：Claude Code 会话内的编排，没有模型程序编译。 |
 | [AgentScope](../../agent-runtimes/agent-sdks/agentscope.zh.md) | ✅ | 当你在构建可自托管、任意模型的多 agent 应用时选 AgentScope；OMC 只在你的编辑器会话里协调 Claude agent，CLI 以下什么都不拥有。 | 通用多 agent 平台（任意模型、消息传递、可视化开发）；你要自托管的完整框架。OMC 寄居于 Claude Code 而非独立运行时。 |
-| [claude-octopus](claude-octopus.zh.md) | ✅ | 问题是*让多个 worker 协同交付一个构建*（流水线、路由、tmux）时选 OMC；问题是*单个模型的盲点*时选 claude-octopus——它把同一任务扇给 12 个外部 provider 并以分歧为闸门。 | 两者都是 Claude Code 插件层：OMC 的轴向是 team/并行执行加模型档位路由；Octopus 的是跨厂商共识评审。OMC 也能经 `omc team`/`/ask` 调外部 CLI，但没有共识闸门。 |
+| [claude-octopus](native-cli-bridges/claude-octopus.zh.md) | ✅ | 问题是*让多个 worker 协同交付一个构建*（流水线、路由、tmux）时选 OMC；问题是*单个模型的盲点*时选 claude-octopus——它把同一任务扇给 12 个外部 provider 并以分歧为闸门。 | 两者都是 Claude Code 插件层：OMC 的轴向是 team/并行执行加模型档位路由；Octopus 的是跨厂商共识评审。OMC 也能经 `omc team`/`/ask` 调外部 CLI，但没有共识闸门。 |
 | [Symphony](../../agent-runtimes/agent-services/symphony.zh.md) | ✅ | 当运行应由 Linear 看板无人值守驱动（issue → 隔离工作区 → Codex 执行 → PR）、而非在 Claude Code 会话里交互发起时，选 Symphony。 | OpenAI 出品的 Codex 轮询编排器（Elixir 服务）；厂商锚点不同，且是队列驱动而非会话驱动。 |
 | [openfang](../../agent-runtimes/agent-services/openfang.zh.md) | ✅ | 需要按计划 7×24 自主跑动的 agent（单个 Rust 二进制、带消息通道集成）时选 openfang；OMC 的活要在你唤起 Claude Code 会话之后才开始。 | Rust「agent 操作系统」（调度器、WASM 沙箱、通道适配器）vs. Claude Code 之上的插件层；除了「agent」一词几乎没有重叠。 |
 | claude-flow | 未收录 | 想要更老、更庞大的 Claude Code swarm/编排层（自带 memory/拓扑栈）时选 claude-flow。 | 问题域重叠（Claude Code 多 agent）；抽象不同、配置面大得多——动手前两边都读。 |
