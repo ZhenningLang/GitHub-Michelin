@@ -35,7 +35,7 @@ shape and are deliberately excluded here.
 | [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client) | `categories/networking/amneziawg-installer.md` |
 | [Anatomy](https://github.com/wheresryan22/anatomy) | `categories/agent-skills/design/visual-artifacts/anima.md` |
 | [angristan/wireguard-install](https://github.com/angristan/wireguard-install) | `categories/networking/amneziawg-installer.md` |
-| [Anki](https://github.com/ankitects/anki) | `categories/education-tutoring/word-atlas.md` |
+| [Anki](https://github.com/ankitects/anki) | `categories/education-tutoring/echo-loop.md` |
 | [Apache ECharts](https://github.com/apache/echarts) | `categories/data-visualization/flint-chart.md` |
 | [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox) | `categories/knowledge-base/hister.md` |
 | [Awesome Quant](https://github.com/wilsonfreitas/awesome-quant) | `categories/investment-finance/awesome-deep-trading.md` |

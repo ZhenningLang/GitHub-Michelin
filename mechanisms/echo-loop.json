@@ -1,0 +1,27 @@
+{
+  "schema":1,
+  "direction":"down",
+  "nodes":[
+    {"id":"audio","en":"Recording and local learning progress","zh":"录音与本地学习进度","kind":"input"},
+    {"id":"plan","en":"Per-recording plan version snapshot","zh":"每段录音的计划版本快照","technique":[1]},
+    {"id":"practice","en":"Ordered practice; completed and skipped steps remain distinct","zh":"有序练习；完成和跳过分别记录","technique":[1]},
+    {"id":"due","en":"Actual completion plus fixed stage wait","zh":"实际完成时间加固定阶段等待","technique":[2]},
+    {"id":"next","en":"Next audio review time","zh":"下次音频复习时间","kind":"output","technique":[2]},
+    {"id":"rating","en":"Separate memory-scheduler rating command","zh":"独立记忆调度器的评分命令","kind":"input"},
+    {"id":"fsrs","en":"FSRS adapter computes versioned memory state","zh":"FSRS 适配器计算版本化记忆状态","technique":[3]},
+    {"id":"tx","en":"One transaction checks revision and writes snapshot plus event","zh":"同一事务检查版本并写入快照与事件","kind":"output","technique":[3]}
+  ],
+  "edges":[
+    {"from":"audio","to":"plan"},
+    {"from":"plan","to":"practice"},
+    {"from":"practice","to":"due"},
+    {"from":"due","to":"next"},
+    {"from":"rating","to":"fsrs"},
+    {"from":"fsrs","to":"tx"}
+  ],
+  "sources":[
+    "https://github.com/echo-loop/Echo-Loop/blob/2a8716b2b31481c6a41049f1b4e46e55390abeaf/lib/models/learning_plan.dart#L10-L82",
+    "https://github.com/echo-loop/Echo-Loop/blob/2a8716b2b31481c6a41049f1b4e46e55390abeaf/lib/models/learning_progress.dart#L202-L250",
+    "https://github.com/echo-loop/Echo-Loop/blob/2a8716b2b31481c6a41049f1b4e46e55390abeaf/lib/features/memory_scheduler/data/drift_memory_schedule_repository.dart#L112-L231"
+  ]
+}
