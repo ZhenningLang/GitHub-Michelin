@@ -1,0 +1,21 @@
+{
+  "repo": "HKUDS/DeepTutor",
+  "pages": [
+    {
+      "path": "categories/education-tutoring/deeptutor.md",
+      "mode_type_blob": "100644 blob ed00553938bbdb8671e948aba9c29e35f8cbd3e1",
+      "last_verified": "2026-10-17"
+    },
+    {
+      "path": "categories/education-tutoring/deeptutor.zh.md",
+      "mode_type_blob": "100644 blob 0a30a1c9a46f24847a37e623822e120a7fc59f7b",
+      "last_verified": "2026-10-17"
+    }
+  ],
+  "utc_date": "2026-10-30",
+  "age_days": 13,
+  "gate_days": 90,
+  "result": "fresh-reuse",
+  "date_bumped": false,
+  "original_checkpoint_state": "running"
+}
