@@ -7,6 +7,7 @@
 
 | 集合 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **fihaaade/skills** | 研究屏幕重摄、平面民俗场景、蓝夜圣物三套图像语法；无许可授权，参考图权利未清。 | C（4/5） | [→](fihaaade-skills.zh.md) |
 | **Cinematic Americana Design Skill** | 把中文情绪需求变成电影风壁纸、海报与网站方向；不含生图引擎，未声明复用许可。 | D（3/5） | [→](cinematic-americana-design-skill.zh.md) |
 | **Gathered Scenes Zine** | 个人照片转纸感拼贴或抽象重画；自定义个人非商业许可，另有 macOS 实况照片脚本。 | C（3/5） | [→](gathered-scenes-zine-skill.zh.md) |
 | **Monocolor Editorial Print** | 让助手分配一至两种油墨职责，组织裁切和字图关系；自备生图后端并核清素材权利。 | C（4/5） | [→](mono-color-skill.zh.md) |
@@ -22,6 +23,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [fihaaade/skills](fihaaade-skills.zh.md) | 已收录 | C（4/5） | 三套提示词风格工作流，不是渲染器；仅作介绍，提示词及参考图权利仍未核清。 |
 | [Cinematic Americana Design Skill](cinematic-americana-design-skill.zh.md) | 已收录 | D（3/5） | 五种谱系驱动的美术配方，不是固定卡片模板；采用前仍需准备宿主工具并解决复用授权。 |
 | [Gathered Scenes Zine](gathered-scenes-zine-skill.zh.md) | 已收录 | C（3/5） | 按照片关系做艺术指导，不交付可编辑 HTML；仅限个人非商业使用，含服务上传与可选不透明导入器。 |
 | [Monocolor Editorial Print](mono-color-skill.zh.md) | 已收录 | C（4/5） | 印刷风栅格图的指导规则，不是可编辑 HTML 或印刷分色；MIT 软件许可不覆盖自带美术。 |

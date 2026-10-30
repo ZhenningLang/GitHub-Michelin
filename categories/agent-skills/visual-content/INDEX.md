@@ -7,6 +7,7 @@
 
 | Collection | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **fihaaade/skills** | Study three explicit image grammars: screen re-photography, flat folk-art scenes and blue-night relics; no license grant or cleared reference rights. | C (4/5) | [→](fihaaade-skills.md) |
 | **Cinematic Americana Design Skill** | Turn Chinese mood briefs into cinematic wallpaper, poster and web direction; no generation engine or declared reuse license. | D (3/5) | [→](cinematic-americana-design-skill.md) |
 | **Gathered Scenes Zine** | Personal photo-to-paper collage or abstract reinterpretation; custom personal-only license, optional macOS Live Photo scripts. | C (3/5) | [→](gathered-scenes-zine-skill.md) |
 | **Monocolor Editorial Print** | Assign one or two ink roles and editorial crop/type relationships through an agent; image backend and artwork clearance remain yours. | C (4/5) | [→](mono-color-skill.md) |
@@ -22,6 +23,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [fihaaade/skills](fihaaade-skills.md) | Indexed | C (4/5) | Three prompt-led style workflows, not a renderer; information only, with unresolved prompt and reference-image rights. |
 | [Cinematic Americana Design Skill](cinematic-americana-design-skill.md) | Indexed | D (3/5) | Five profile-based art-direction recipes, not fixed card templates; host tools and reuse permission remain unresolved adoption prerequisites. |
 | [Gathered Scenes Zine](gathered-scenes-zine-skill.md) | Indexed | C (3/5) | Photo-specific art direction rather than editable HTML; non-commercial personal use only, with service uploads and an opaque optional importer. |
 | [Monocolor Editorial Print](mono-color-skill.md) | Indexed | C (4/5) | Print-style raster direction, not editable HTML or plate separation; MIT software excludes bundled artwork. |
