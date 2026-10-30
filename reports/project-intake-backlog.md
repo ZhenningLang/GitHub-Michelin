@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1419
+- Named-but-unindexed alternatives: 1421
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -40,6 +40,8 @@ shape and are deliberately excluded here.
 | [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox) | `categories/knowledge-base/hister.md` |
 | [Awesome Quant](https://github.com/wilsonfreitas/awesome-quant) | `categories/investment-finance/awesome-deep-trading.md` |
 | [Backtesting.py](https://github.com/kernc/backtesting.py) | `categories/investment-finance/backtrader.md` |
+| [Baidu Netdisk MCP](https://github.com/baidu-netdisk/mcp) | `categories/agent-skills/vendor-collections/product-vendors/bdpan-storage.md` |
+| [BaiduPCS-Go](https://github.com/qjfoidnh/BaiduPCS-Go) | `categories/agent-skills/vendor-collections/product-vendors/bdpan-storage.md` |
 | [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
 | [basedpyright](https://github.com/DetachHead/basedpyright) | `categories/dev-utilities/editors-and-runtimes/code-editors/pylance-release.md` |
 | [Binoculars](https://github.com/ahans30/Binoculars) | `categories/llm-eval/chatgpt-comparison-detection.md` |
@@ -50,5 +52,3 @@ shape and are deliberately excluded here.
 | [Blender](https://github.com/blender/blender) | `categories/video-production/creation-workflows/artcraft.md` |
 | [btop](https://github.com/aristocratos/btop) | `categories/observability/mac-performance-monitor.md` |
 | [build123d](https://github.com/gumyr/build123d) | `categories/cad/text-to-cad.md` |
-| [Cedar](https://github.com/cedar-policy/cedar) | `categories/agent-governance/agent-governance-toolkit.md` |
-| [Cedarling (Janssen)](https://github.com/JanssenProject/jans) | `categories/agent-governance/agent-governance-toolkit.md` |

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Baidu Drive skill", "zh": "百度网盘技能"},
+  "steps": [
+    {"lane": "you", "en": "Review and install the skill; approve CLI setup and browser authorization", "zh": "审查安装技能，批准 CLI 安装并完成浏览器授权"},
+    {"lane": "you", "en": "Provide a local report and request an upload", "zh": "提供本地报告，明确要求上传"},
+    {"lane": "them", "en": "Check intent, application-folder destination and any overwrite confirmation", "zh": "检查意图、应用目录目标与覆盖确认"},
+    {"lane": "them", "en": "Invoke the external bdpan CLI to upload the file", "zh": "调用外部 bdpan CLI 上传文件"},
+    {"lane": "them", "en": "Present the actual saved path and service-returned viewing link", "zh": "展示实际保存路径与服务返回的查看链接"}
+  ],
+  "value": {"en": "Deliver the report from the agent conversation without manually copying a cloud link", "zh": "在 agent 对话中交付报告，不再手动复制网盘链接"},
+  "sources": [
+    "https://github.com/baidu-netdisk/bdpan-storage/blob/f5ab379cb6f009da322a295c19608ec144a55ec1/README.md#L25-L57",
+    "https://github.com/baidu-netdisk/bdpan-storage/blob/f5ab379cb6f009da322a295c19608ec144a55ec1/skills/baidu-drive/SKILL.md#L183-L200",
+    "https://github.com/baidu-netdisk/bdpan-storage/blob/f5ab379cb6f009da322a295c19608ec144a55ec1/skills/baidu-drive/SKILL.md#L340-L399"
+  ]
+}

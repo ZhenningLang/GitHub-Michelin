@@ -737,6 +737,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Agent Toolkit for AWS** | 当你的编码 agent 在真实 AWS 账号里干活、你既要 AWS 当前的剧本、又要 IAM 和 CloudTrail 能把 agent 的调用和你的分开时用：约 114 个 skill 加一个托管 MCP 端点；只管 AWS，托管那一半能看到你的流量。 | Apache-2.0 | A（4/5） | [中](categories/agent-skills/vendor-collections/product-vendors/agent-toolkit-for-aws.zh.md) · [EN](categories/agent-skills/vendor-collections/product-vendors/agent-toolkit-for-aws.md) |
 | **Cloudflare Skills** | 当你的编码 agent 在 Cloudflare 上搭东西、总凭过时记忆写时用：16 个官方 skill，帮它选对 Cloudflare 产品并先读当前文档，外加一条托管 MCP 配置；只管 Cloudflare，无 tag，多数是指针，需要联网。 | Apache-2.0 | A（4/5） | [中](categories/agent-skills/vendor-collections/product-vendors/cloudflare-skills.zh.md) · [EN](categories/agent-skills/vendor-collections/product-vendors/cloudflare-skills.md) |
 | **Bright Data Skills** | 当你的 agent 总撞上 403 和验证页、而你已决定花钱让 Bright Data 来过这一关时用：21 个厂商 skill，把每次抓取分给合适的付费产品并检查封锁页；每次调用都计费，有一个 skill 要 agent 停用内置上网工具，没有 tag，README 的 Quick Start 指向已删除的脚本。 | MIT | C（4/5） | [中](categories/agent-skills/vendor-collections/product-vendors/brightdata-skills.zh.md) · [EN](categories/agent-skills/vendor-collections/product-vendors/brightdata-skills.md) |
+| **Baidu Drive Skills** | 将 agent 产物交付到百度网盘应用目录；须审查外部 CLI、原始提问追踪及版本漂移。 | Apache-2.0 | B（5/6） | [中](categories/agent-skills/vendor-collections/product-vendors/bdpan-storage.zh.md) · [EN](categories/agent-skills/vendor-collections/product-vendors/bdpan-storage.md) |
 
 #### agent-skills / subagent-collections
 

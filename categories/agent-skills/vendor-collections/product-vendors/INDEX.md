@@ -14,6 +14,7 @@
 | **Agent Toolkit for AWS** | Use it when your coding agent works in a real AWS account and you want AWS's current playbooks plus agent calls that IAM and CloudTrail can tell apart from yours: ~114 skills and a hosted MCP endpoint; AWS-only, the hosted half sees your traffic. | A (4/5) | [→](agent-toolkit-for-aws.md) |
 | **Cloudflare Skills** | Use it when your coding agent builds on Cloudflare and keeps writing from stale memory: 16 official skills that pick the right Cloudflare product and make the agent read current docs first, plus a hosted MCP entry; Cloudflare-only, no tags, mostly pointers that need network access. | A (4/5) | [→](cloudflare-skills.md) |
 | **Bright Data Skills** | Use it when your agent keeps hitting 403s and challenge pages and you have chosen to pay Bright Data to get past them: 21 vendor skills that route each fetch to the right paid product and check for block pages; every call is metered, one skill tells the agent to drop its built-in web tools, no tags, and the README Quick Start points at deleted scripts. | C (4/5) | [→](brightdata-skills.md) |
+| **Baidu Drive Skills** | Deliver agent-generated files into Baidu Netdisk's application folder; vendor-linked shell skills, external CLI, raw-input tracking and version drift require review. | B (5/6) | [→](bdpan-storage.md) |
 
 ## Comparison matrix
 
@@ -26,6 +27,7 @@
 | [Agent Toolkit for AWS](agent-toolkit-for-aws.md) | ✅ | A (4/5) | AWS's successor to its Labs plugins: skills plus agent-tagged calls via a hosted endpoint; AWS-only, no tags, outside PRs closed, startup plugin carries partner-offer links. |
 | [Cloudflare Skills](cloudflare-skills.md) | ✅ | A (4/5) | Cloudflare's own product router plus doc-pointer skills and one hosted MCP entry; Cloudflare-only, installs track `main` with a hand-bumped version, no hooks or evals, routing skill is written to recommend Cloudflare products. |
 | [Bright Data Skills](brightdata-skills.md) | ✅ | C (4/5) | Operating manual for Bright Data's paid unblocking network, not a scraper: no key, no function, every call metered with no spend cap in the pack; installs track `main`, a pending PR stack would delete 17 of 21 skills, and it says almost nothing about site terms or data law. |
+| [Baidu Drive Skills](bdpan-storage.md) | Indexed | B (5/6) | Conversational upload and returned viewing links, not a source-open transfer engine or atomic backup; separate Wenku PPT skill shares the CLI. |
 
 ## What belongs here
 

@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "request", "en": "File request and selected local files", "zh": "文件请求与选定本地文件", "kind": "input"},
+    {"id": "rules", "en": "Intent, path and confirmation instructions", "zh": "意图、路径与确认指令", "technique": [1]},
+    {"id": "login", "en": "Authorization-code stdin wrapper", "zh": "标准输入授权码包装脚本", "technique": [2]},
+    {"id": "cli", "en": "External bdpan executable; tracking arguments", "zh": "外部 bdpan 程序；追踪参数", "kind": "external", "technique": [4]},
+    {"id": "cloud", "en": "Baidu Netdisk service", "zh": "百度网盘服务", "kind": "external"},
+    {"id": "result", "en": "Actual saved path and returned viewing link", "zh": "实际保存路径与返回查看链接", "kind": "output", "technique": [1]},
+    {"id": "memory", "en": "Selected memory files and manifest", "zh": "选定记忆文件与清单", "technique": [3]},
+    {"id": "restore", "en": "Safety copy then partial-file merge", "zh": "安全副本后逐文件合并", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "request", "to": "rules"},
+    {"from": "rules", "to": "login", "en": "if authorization is needed", "zh": "需要授权时", "style": "dashed"},
+    {"from": "login", "to": "cli", "style": "dashed"},
+    {"from": "rules", "to": "cli"},
+    {"from": "cli", "to": "cloud"},
+    {"from": "cloud", "to": "result"},
+    {"from": "memory", "to": "cli", "en": "explicit backup", "zh": "显式备份", "style": "dashed"},
+    {"from": "cloud", "to": "restore", "en": "explicit restore through helper", "zh": "显式通过助手恢复", "style": "dashed"}
+  ],
+  "sources": ["https://github.com/baidu-netdisk/bdpan-storage/tree/f5ab379cb6f009da322a295c19608ec144a55ec1/skills/baidu-drive"]
+}
