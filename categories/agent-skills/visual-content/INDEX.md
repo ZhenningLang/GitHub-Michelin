@@ -7,6 +7,7 @@
 
 | Collection | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Reality Restaged** | Restage travel photographs around documentary anchors, large color fields and one impossible relationship; prompt-only, with no license grant found. | D (4/5) | [→](reality-restaged.md) |
 | **fun-isometric** | Ask an agent to draw and rig editable canvas stickers with reusable motion keys; includes render checks, not a general animation platform. | C (4/5) | [→](fun-isometric.md) |
 | **Guizang Social Card Skill** | Use it when a coding agent needs art-directed Xiaohongshu carousels or WeChat cover pairs as single-file HTML rendered to PNG. | D (3/5) | [→](guizang-social-card.md) |
 | **ian-xiaohei-illustrations** | Use it when you need consistent hand-drawn 16:9 Chinese article illustrations with a fixed IP. | B (4/5) | [→](ian-illustrations.md) |
@@ -18,6 +19,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Reality Restaged](reality-restaged.md) | Indexed | D (4/5) | Documentary-first surreal art direction for an image-capable host; no renderer or enforceable pixel lock, and licensing is unresolved. |
 | [fun-isometric](fun-isometric.md) | ✅ | C (4/5) | A constrained animated-sticker kit with local rendering; one day old, with browser downloads and license-notice preservation to review. |
 | [Guizang Social Card Skill](guizang-social-card.md) | ✅ | D (3/5) | Platform-sized social cards and covers as HTML-to-PNG artifacts; young and AGPL. |
 | [ian-xiaohei-illustrations](ian-illustrations.md) | ✅ | B (4/5) | Consistent hand-drawn article illustrations with a fixed character/IP; not editable deck/card templates. |

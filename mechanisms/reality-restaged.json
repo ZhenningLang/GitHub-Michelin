@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "photo", "en": "Source photograph", "zh": "原始照片", "kind": "input"},
+    {"id": "anchors", "en": "Preserve documentary anchors", "zh": "保留纪实锚点", "technique": [1]},
+    {"id": "stage", "en": "Simplify scenery; rebuild color and scale", "zh": "简化景物；重建颜色与尺度", "technique": [1]},
+    {"id": "logic", "en": "One impossible relationship", "zh": "一个不可能关系", "technique": [2]},
+    {"id": "check", "en": "Prompt self-check; no measured score", "zh": "提示词自检；无测量评分", "technique": [2]},
+    {"id": "host", "en": "Host image tool; not supplied by pack", "zh": "宿主生图工具；技能未提供", "kind": "external"},
+    {"id": "master", "en": "Approved master and requested local change", "zh": "已批准母版与指定局部修改", "kind": "input"},
+    {"id": "lock", "en": "Master Lock instructions; no pixel lock", "zh": "母版锁定指令；非像素锁", "technique": [3]},
+    {"id": "result", "en": "Image for human review", "zh": "供人检查的图像", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "photo", "to": "anchors"},
+    {"from": "anchors", "to": "stage"},
+    {"from": "stage", "to": "logic"},
+    {"from": "logic", "to": "check"},
+    {"from": "check", "to": "host"},
+    {"from": "master", "to": "lock"},
+    {"from": "lock", "to": "host", "en": "instead of new composition", "zh": "代替新构图"},
+    {"from": "host", "to": "result"}
+  ],
+  "sources": [
+    "https://github.com/traveler0621/reality-restaged/blob/9a5533cb656bba6163714a6f5fc2217a1e6607fb/SKILL.md#L30-L186",
+    "https://github.com/traveler0621/reality-restaged/blob/9a5533cb656bba6163714a6f5fc2217a1e6607fb/SKILL.md#L770-L801",
+    "https://github.com/traveler0621/reality-restaged/blob/9a5533cb656bba6163714a6f5fc2217a1e6607fb/SKILL.md#L1163-L1242"
+  ]
+}
