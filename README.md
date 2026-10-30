@@ -493,6 +493,7 @@ Research engines and scientific workbenches; source access and evidence auditing
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **OSXPhotos** | Export Apple Photos media and albums, with explicit update mode for incremental file archives; private-schema, privacy and mutation limits need care. | MIT | B (6/6) | [EN](categories/dev-utilities/data-tools/osxphotos.md) · [中](categories/dev-utilities/data-tools/osxphotos.zh.md) |
 | **HatchZip** | Unpack replaceable archives on a nearly full disk by consuming input progressively; retained-input mode gives up the space saving. | MIT OR Apache-2.0 core; RAR releases add UnRAR restrictions | C (5/6) | [EN](categories/dev-utilities/data-tools/hatchzip.md) · [中](categories/dev-utilities/data-tools/hatchzip.zh.md) |
 | **App Store Connect CLI** | Script Apple release metadata, TestFlight and review operations; standalone Go binary, credential and approval boundaries remain yours. | MIT | B (6/6) | [EN](categories/dev-utilities/app-store-connect-cli.md) · [中](categories/dev-utilities/app-store-connect-cli.zh.md) |
 | **xtool** | Build and sign SwiftPM iOS apps from Linux, WSL or macOS; Apple SDK and account constraints still apply. | MIT | B (6/6) | [EN](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/xtool.md) · [中](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/xtool.zh.md) |

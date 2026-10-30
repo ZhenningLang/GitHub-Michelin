@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "OSXPhotos does", "zh": "OSXPhotos 做的"},
+  "steps": [
+    {"lane": "you", "en": "Separately authorize setup and select a readable Photos library", "zh": "另行授权安装与访问，选择可读图库"},
+    {"lane": "you", "en": "Choose a dedicated destination and request media with XMP sidecars", "zh": "指定独占目录，要求媒体及 XMP 随附文件", "code": "osxphotos export /path/to/export --sidecar XMP"},
+    {"lane": "them", "en": "Read library metadata and locate original and edited media", "zh": "读取图库信息，定位原片和编辑版"},
+    {"lane": "them", "en": "Write available media, sidecars and the export-state database", "zh": "写出可用媒体、随附文件和导出状态库"},
+    {"lane": "you", "en": "For later incremental runs, enable update and keep other required export options", "zh": "后续增量重跑须启用更新，并保留其他所需导出选项", "code": "osxphotos export /path/to/export --update"}
+  ],
+  "value": {"en": "A file archive carries Photos metadata without manually rebuilding every album", "zh": "文件归档携带照片图库信息，无需手工重建每个相册"},
+  "sources": [
+    "https://github.com/RhetTbull/osxphotos/blob/27c2f9d68e924770ecdc6cdc902d0737f3a16fee/README.md#L455-L469",
+    "https://github.com/RhetTbull/osxphotos/blob/27c2f9d68e924770ecdc6cdc902d0737f3a16fee/README.md#L523-L541"
+  ]
+}

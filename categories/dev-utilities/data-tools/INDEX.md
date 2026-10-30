@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **OSXPhotos** | Extract Apple Photos media and albums, with explicit update mode for incremental archives; the whole CLI is not read-only or a full library backup. | B (6/6) | [→](osxphotos.md) |
 | **HatchZip** | Unpack a replaceable archive on a nearly full disk by progressively consuming input; peak savings depend on archive units and filesystem support. | C (5/6) | [→](hatchzip.md) |
 | **DevToys** | Use it when you want about 30 dev utilities (JWT/Base64 decoding, JSON formatting, diff, hashing) in one offline desktop app so secrets never reach online formatters — but every 2.x build is a prerelease and updates arrive in rare bursts. | B (5/6) | [→](devtoys.md) |
 | **CyberChef** | Use it when you need to chain encode/decode, crypto, compression and data-analysis transforms offline in your browser. | A (6/6) | [→](cyberchef.md) |
@@ -24,6 +25,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [OSXPhotos](osxphotos.md) | Indexed | B (6/6) | MIT Python exporter and query API; portable metadata and opt-in incremental state versus private-schema drift, cloud-only gaps and mutation commands. |
 | [HatchZip](hatchzip.md) | ✅ | C (5/6) | Lower extraction disk peaks by destroying input after durable progress; solid blocks, snapshots and retained-input mode can remove the benefit. |
 | [DevToys](devtoys.md) | ✅ | B (5/6) | Local-only, clipboard-aware convenience in one window, at the cost of one-shot tools without recipe chaining and a slow, prerelease-only release line. |
 | [CyberChef](cyberchef.md) | ✅ | A (6/6) | Use it when you need to chain encode/decode, crypto, compression and data-analysis transforms offline in your browser. |
