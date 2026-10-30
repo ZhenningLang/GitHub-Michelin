@@ -69,6 +69,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [InvokeAI](https://github.com/invoke-ai/InvokeAI),categories/agent-skills/visual-content/image-art-direction/reality-restaged.md,,no
 [iztro](https://github.com/SylarLong/iztro),categories/traditional-divination/ziwei-doushu.md,,no
 [Jedi](https://github.com/davidhalter/jedi),categories/dev-utilities/editors-and-runtimes/code-editors/pylance-release.md,,no
+[Karate](https://github.com/karatelabs/karate),categories/dev-utilities/keploy.md,,no
 [KeePassXC](https://github.com/keepassxreboot/keepassxc),categories/dev-utilities/ops-infra/vaultwarden.md,,no
 [Kokoro](https://github.com/hexgrad/kokoro),categories/speech/kitten-tts.md,,no
 [Lada](https://codeberg.org/ladaapp/lada),categories/media-processing/jasna.md,,no
@@ -157,6 +158,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [whoBIRD](https://github.com/woheller69/whoBIRD),categories/on-device-ml/birdnet-go.md,,no
 [WildFlash1st/cmp90hx-unlock](https://github.com/WildFlash1st/cmp90hx-unlock),categories/gpu-tooling/gpu-unlock.md,,no
 [WireGuard](https://github.com/WireGuard/wireguard-go),categories/networking/openflux.md,,no
+[WireMock](https://github.com/wiremock/wiremock),categories/dev-utilities/keploy.md,,no
 [wiresock/amneziawg-install](https://github.com/wiresock/amneziawg-install),categories/networking/amneziawg-installer.md,,no
 [Woodpecker](https://github.com/woodpecker-ci/woodpecker),categories/dev-utilities/ops-infra/harness-open-source.md,,no
 [WordPress](https://github.com/WordPress/WordPress),categories/content-management/emdash.md,,no
