@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Yichen Skills", "zh": "Yichen Skills"},
+  "steps": [
+    {"lane": "you", "en": "Review the license and install the five research-family skills and required backend", "zh": "核对许可，安装研究家族与所需后端"},
+    {"lane": "you", "en": "Give a bounded research topic, period, geography and languages", "zh": "提供研究主题、时间、地区与语言范围", "code": "$yichen-web-research"},
+    {"lane": "them", "en": "Plan public discovery and return candidate sources", "zh": "规划公开搜索，返回候选来源", "component": {"en": "planner and search adapters", "zh": "计划器与搜索适配器"}},
+    {"lane": "them", "en": "Guide original-source checks and bind claims to evidence", "zh": "引导核对原文，将主张绑定证据", "component": {"en": "agent following research skill", "zh": "按研究技能执行的 agent"}},
+    {"lane": "them", "en": "Check scope and evidence structure; expose blocking gaps before synthesis", "zh": "综合前检查范围与证据结构，披露阻断缺口", "component": {"en": "offline evidence reducer", "zh": "离线证据整理器"}}
+  ],
+  "value": {"en": "Research has an explicit candidate-to-claim trail rather than an untraceable long answer", "zh": "研究留下候选到主张的明确路径，不再只交不可追溯的长答案"},
+  "sources": [
+    "https://github.com/mcncarl/yichen-skills/blob/ed6200f81ff1fddd1482ad6cae7f4a75de5ffc75/README.zh.md#L516-L532",
+    "https://github.com/mcncarl/yichen-skills/blob/ed6200f81ff1fddd1482ad6cae7f4a75de5ffc75/yichen-web-research/SKILL.md#L46-L75"
+  ]
+}

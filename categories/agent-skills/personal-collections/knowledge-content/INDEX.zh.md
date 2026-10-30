@@ -7,6 +7,7 @@
 
 | 合集 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Yichen Skills** | 个人平台调研、已确认链接归档和聊天／内容流程；源码可见、限非商用，不授予公开打包权。 | C（3/5） | [→](yichen-skills.zh.md) |
 | **dbskill** | 一套个人精选的中文 agent skill，聚焦商业模式诊断、内容创作与个人决策。 | C（4/6） | [→](dbskill.zh.md) |
 | **Khazix Skills** | 一个小型中文个人合集，覆盖磁盘清理、AI 资讯查询、文档／记忆同步、长文研究报告和公众号风格写作。 | B（4/5） | [→](khazix-skills.zh.md) |
 | **ljg-skills** | 李继刚的个人 Claude Code skill，面向中文知识工作：阅读、论文／拆书、概念分析、大白话改写和 PNG 卡片。 | B（4/5） | [→](ljg-skills.zh.md) |
@@ -18,6 +19,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Yichen Skills](yichen-skills.zh.md) | 已收录 | C（3/5） | 明确证据交接；注意私有运行时、可选转写的媒体上传及公开 ACL 尝试，以及限制性许可。 |
 | [dbskill](dbskill.zh.md) | ✅ | C（4/6） | 宽泛中文商业／内容／个人决策包；非商业许可限制复用。 |
 | [Khazix Skills](khazix-skills.zh.md) | ✅ | B（4/5） | 更小的中文实用／研究／写作集合，边界更清楚。 |
 | [ljg-skills](ljg-skills.zh.md) | ✅ | B（4/5） | 最适合中文知识工作中的阅读、解释、改写和视觉卡片。 |

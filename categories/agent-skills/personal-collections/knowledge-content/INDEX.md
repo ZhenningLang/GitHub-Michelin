@@ -7,6 +7,7 @@
 
 | Collection | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Yichen Skills** | Personal platform research, confirmed-link archives and chat/content workflows; source-available, non-commercial and no public repackaging grant. | C (3/5) | [→](yichen-skills.md) |
 | **dbskill** | A personal, curated pack of Chinese-language agent skills for business-model diagnosis, content creation, and personal decision-making. | C (4/6) | [→](dbskill.md) |
 | **Khazix Skills** | A small Chinese personal collection for disk cleanup, AI-news lookup, doc/memory reconciliation, long-form research reports, and WeChat-style writing. | B (4/5) | [→](khazix-skills.md) |
 | **ljg-skills** | Li Jigang's personal Claude Code skills for Chinese knowledge work: reading, paper/book deconstruction, concept analysis, plain-language rewriting, and PNG cards. | B (4/5) | [→](ljg-skills.md) |
@@ -18,6 +19,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Yichen Skills](yichen-skills.md) | Indexed | C (3/5) | Explicit evidence handoffs; private-runtime dependencies, optional ASR media uploads and public-ACL attempts, plus restrictive licensing. |
 | [dbskill](dbskill.md) | ✅ | C (4/6) | Broad Chinese business/content/personal-decision pack; non-commercial license limits reuse. |
 | [Khazix Skills](khazix-skills.md) | ✅ | B (4/5) | Smaller Chinese utility/research/writing set with clearer boundaries. |
 | [ljg-skills](ljg-skills.md) | ✅ | B (4/5) | Strongest fit for Chinese knowledge-work reading, explanation, rewriting, and visual cards. |
