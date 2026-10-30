@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Open Design Agent Kit** | 留在当前编码助手里，添加设计模板、浏览器检查与导出，不运行 Open Design 后台。 | C（5/6） | [→](open-design-agent-kit.zh.md) |
 | **json-render** | 当模型必须用你已有的组件在应用里拼界面、而不是发明 JSX 或新设计系统时用它。 | B（6/6） | [→](json-render.zh.md) |
 | **HTML Anything** | 当你本机已登录某个 coding-agent CLI、想要零 API key、local-first 地把 Markdown 变成可交付 HTML 并一键导出微信/X/知乎时用它。 | B（5/6） | [→](html-anything.zh.md) |
 | **Open Design** | 想要一个 local-first、BYOK 的桌面 studio，让编码 agent 产出 HTML 原型、deck、图像和 HTML→MP4 动效时用它。 | B（6/6） | [→](open-design.zh.md) |
@@ -21,6 +22,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Open Design Agent Kit](open-design-agent-kit.zh.md) | 已收录 | C（5/6） | MIT 运行代码加 Apache-2.0 内容；宿主写文件，检查返回问题，PowerPoint 使用幻灯片截图。 |
 | [json-render](json-render.zh.md) | ✅ | B（6/6） | 当模型必须用你已有的组件在应用里拼界面、而不是发明 JSX 或新设计系统时用它。 |
 | [HTML Anything](html-anything.zh.md) | ✅ | B（5/6） | 当你本机已登录某个 coding-agent CLI、想要零 API key、local-first 地把 Markdown 变成可交付 HTML 并一键导出微信/X/知乎时用它。 |
 | [Open Design](open-design.zh.md) | ✅ | B（6/6） | 想要一个 local-first、BYOK 的桌面 studio，让编码 agent 产出 HTML 原型、deck、图像和 HTML→MP4 动效时用它。 |

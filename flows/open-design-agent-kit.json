@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "Agent Kit does", "zh": "Agent Kit 做的"},
+  "steps": [
+    {"lane": "you", "en": "Review and install project-local skills and MCP wiring", "zh": "审查后安装项目技能与 MCP 配置", "code": "npx @feimacode/open-design-agent-kit init --tools claude", "component": {"en": "CLI installer", "zh": "命令行安装器"}},
+    {"lane": "you", "en": "Ask your current agent for a coffee-subscription landing page", "zh": "向当前助手描述咖啡订阅落地页"},
+    {"lane": "them", "en": "Return a recipe, style rules and a suggested output path", "zh": "返回模板、样式规则和建议路径", "component": {"en": "MCP brief composer", "zh": "MCP 任务组装器"}},
+    {"lane": "you", "en": "Let your host agent write the HTML with its own file tools", "zh": "让宿主助手用自己的工具编写 HTML", "component": {"en": "Your coding agent", "zh": "你的编码助手"}},
+    {"lane": "them", "en": "Register the files and render checks for review", "zh": "登记文件并渲染检查，供你复核", "component": {"en": "Registry and browser checker", "zh": "登记与浏览器检查器"}}
+  ],
+  "value": {"en": "Keep a styled, reviewable HTML prototype inside the existing coding session", "zh": "不换编码会话，获得带样式、可复核的 HTML 原型"},
+  "sources": ["https://github.com/feimacode/open-design-agent-kit/blob/e0f829f1f2600491264fca0b7ce28ee646329c1c/docs/getting-started/claude-code.md#L28-L50", "https://github.com/feimacode/open-design-agent-kit/blob/e0f829f1f2600491264fca0b7ce28ee646329c1c/packages/claude-plugin/skills/open-design/SKILL.md#L55-L60"]
+}

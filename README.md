@@ -468,6 +468,7 @@ Research engines and scientific workbenches; source access and evidence auditing
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **Open Design Agent Kit** | Keep your coding agent; add bundled design recipes, browser checks and export without the desktop daemon. | MIT AND Apache-2.0 | C (5/6) | [EN](categories/ai-design-generation/open-design-agent-kit.md) · [中](categories/ai-design-generation/open-design-agent-kit.zh.md) |
 | **json-render** | Use it when a model must assemble in-app UI from your existing components, not invent JSX or a new design system. | Apache-2.0 | B (6/6) | [EN](categories/ai-design-generation/json-render.md) · [中](categories/ai-design-generation/json-render.zh.md) |
 | **HTML Anything** | Use it when you already run a logged-in coding-agent CLI and want local-first, key-free Markdown-to-shippable-HTML generation with one-click WeChat/X/Zhihu export. | Apache-2.0 | B (5/6) | [EN](categories/ai-design-generation/html-anything.md) · [中](categories/ai-design-generation/html-anything.zh.md) |
 | **Open Design** | Use it when you want a local-first, BYOK desktop studio that makes your coding agent generate HTML prototypes, decks, images and HTML→MP4. | Apache-2.0 | B (6/6) | [EN](categories/ai-design-generation/open-design.md) · [中](categories/ai-design-generation/open-design.zh.md) |
