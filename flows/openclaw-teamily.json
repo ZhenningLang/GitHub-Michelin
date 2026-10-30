@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Teamily plugin does", "zh": "Teamily 插件做的"},
+  "steps": [
+    {"lane": "you", "en": "Install on OpenClaw; configure server addresses and a bot token", "zh": "在 OpenClaw 安装并配置服务地址与令牌", "code": "openclaw plugins install @teamilyai/teamily"},
+    {"lane": "them", "en": "Logs in and listens for messages through the OpenIM SDK", "zh": "通过 OpenIM SDK 登录并监听消息", "component": {"en": "account monitor", "zh": "账号监视器"}},
+    {"lane": "you", "en": "Mention the bot with a text request in your Teamily group", "zh": "在 Teamily 群里以文字提及机器人并提问"},
+    {"lane": "them", "en": "Passes the request and buffered group context to OpenClaw", "zh": "把请求和群聊缓存上下文交给 OpenClaw"},
+    {"lane": "them", "en": "Sends OpenClaw's reply back through the same account", "zh": "通过同一账号把 OpenClaw 回复发回群里"}
+  ],
+  "value": {"en": "Your existing assistant answers inside Teamily without a custom transport bridge", "zh": "现有助手在 Teamily 内回答，无需自写消息桥接"},
+  "sources": [
+    "https://github.com/Teamily-Inc/openclaw-teamily/blob/8794b3cc2c3112a3b21c9a0c643cbaeb353f0941/README.md#L5-L68",
+    "https://github.com/Teamily-Inc/openclaw-teamily/blob/8794b3cc2c3112a3b21c9a0c643cbaeb353f0941/src/monitor.ts#L105-L155",
+    "https://github.com/Teamily-Inc/openclaw-teamily/blob/8794b3cc2c3112a3b21c9a0c643cbaeb353f0941/src/channel.ts#L271-L445"
+  ]
+}

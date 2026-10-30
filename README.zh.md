@@ -1098,6 +1098,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **WeChatFerry** | 不要部署：维护者已归档，发版钉在旧版 Windows 微信上，整套方案是客户端注入。 | MIT | D（6/6） | [中](categories/im-automation/wechat/wechatferry.zh.md) · [EN](categories/im-automation/wechat/wechatferry.md) |
 | **Dify on WeChat** | 端到端可源码审查的 Dify 到微信桥接——但自 2025-04 起没有代码变更，且仍带个人号通道风险。 | MIT | B（3/6） | [中](categories/im-automation/wechat/dify-on-wechat.zh.md) · [EN](categories/im-automation/wechat/dify-on-wechat.md) |
 | **OpeniLink Go SDK** | 嵌进现有 Go 服务的原始 iLink 传输层：信任边界最小，持久化、认证、重试与运维由你承担。 | MIT | C（5/6） | [中](categories/im-automation/openilink-sdk-go.zh.md) · [EN](categories/im-automation/openilink-sdk-go.md) |
+| **OpenClaw Teamily** | 把现有 OpenClaw 助手接到 Teamily 文字与媒体；不是 Teamily 主程序源码，且四月后未更新。 | 根许可 Apache-2.0；与 MIT 元数据冲突 | C（4/6） | [中](categories/im-automation/openclaw-teamily.zh.md) · [EN](categories/im-automation/openclaw-teamily.md) |
 ### web-ui
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |

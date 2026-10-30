@@ -1101,6 +1101,7 @@ Enter [Client Routing](categories/api-gateway/client-routing/INDEX.md) for devel
 | **WeChatFerry** | Do not deploy: the maintainer archived it, releases are pinned to an old Windows WeChat build, and the approach is client injection. | MIT | D (6/6) | [EN](categories/im-automation/wechat/wechatferry.md) · [中](categories/im-automation/wechat/wechatferry.zh.md) |
 | **Dify on WeChat** | A source-inspectable Dify-to-WeChat bridge — with no code change since 2025-04 and personal-account channel risk still attached. | MIT | B (3/6) | [EN](categories/im-automation/wechat/dify-on-wechat.md) · [中](categories/im-automation/wechat/dify-on-wechat.zh.md) |
 | **OpeniLink Go SDK** | Raw iLink transport for existing Go services: the smallest trust boundary, with persistence, auth, retrying and operations left to you. | MIT | C (5/6) | [EN](categories/im-automation/openilink-sdk-go.md) · [中](categories/im-automation/openilink-sdk-go.zh.md) |
+| **OpenClaw Teamily** | Connect an existing OpenClaw assistant to Teamily text and media; not the Teamily application source, and quiet since April. | Apache-2.0 root; MIT metadata conflicts | C (4/6) | [EN](categories/im-automation/openclaw-teamily.md) · [中](categories/im-automation/openclaw-teamily.zh.md) |
 ### web-ui
 
 | Project | Use when | License | Health | Page |

@@ -17,6 +17,7 @@
 | **Douyin-Bot** | 仅当你想读一个用 Python 经 ADB 驱动安卓真机（截屏、打分、滑动／点击）的小巧示例时用它——它自 2020 年起已死，硬编码 2018 年抖音界面坐标，依赖的腾讯人脸 API 也已下线，切勿部署。 | D（3/6） | [→](douyin-bot.zh.md) |
 | **OpeniLink Hub** | 当多个接入 iLink 的微信 Bot 需要自托管控制面、持久化、trace 和 App 时用它；项目很年轻，并明确声明与 iLink 官方团队没有关联或背书。 | C（5/6） | [→](openilink-hub.zh.md) |
 | **OpeniLink Go SDK** | 当你需要把原始 iLink 传输层嵌进现有 Go 服务，并愿意用最小信任边界换掉控制面时用它；持久化、认证、重试与运维随后都由你承担。 | C（5/6） | [→](openilink-sdk-go.zh.md) |
+| **OpenClaw Teamily** | 把现有 OpenClaw 助手接到 Teamily 文字与媒体；这是四月后未更新的通道插件，不是 Teamily 主程序。 | C（4/6） | [→](openclaw-teamily.zh.md) |
 
 ## 对比矩阵
 
@@ -25,8 +26,8 @@
 | [Douyin-Bot](douyin-bot.zh.md) | ✅ | D（3/6） | 换来一份简短、知名的“截屏—分析—点击”循环讲解；代价是一切实用价值——目标 app 对不上、后端已没、无测试、单人作者。 |
 | [OpeniLink Hub](openilink-hub.zh.md) | ✅ | C（5/6） | 带持久化、trace 和 App 的年轻多 Bot 控制面，但没有 iLink 官方关联或背书。 |
 | [OpeniLink SDK (Go)](openilink-sdk-go.zh.md) | ✅ | C（5/6） | 已收录 Hub 之下的 Go 版原始 iLink 传输层：信任边界最小，但持久化、认证、重试与运维都要自己扛。 |
+| [OpenClaw Teamily](openclaw-teamily.zh.md) | 已收录 | C（4/6） | 复用 OpenClaw 与 OpenIM 传输，但群媒体绕过提及条件，根 Apache-2.0 与包元数据 MIT 冲突。 |
 
 ## 什么该放这里
 
 面向**即时通讯平台**（微信等 IM）的机器人与自动化。微信专属项目放在 `wechat/`。不含 Web/浏览器自动化（见 `web-automation`），不含团队聊天应用（见 `team-chat`）。
-
