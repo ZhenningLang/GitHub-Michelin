@@ -467,6 +467,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | --- | --- | --- | --- | --- |
 | **Open Design Agent Kit** | 留在当前编码助手，添加设计模板、浏览器检查与导出，无需桌面后台。 | MIT AND Apache-2.0 | C（5/6） | [中](categories/ai-design-generation/open-design-agent-kit.zh.md) · [EN](categories/ai-design-generation/open-design-agent-kit.md) |
 | **json-render** | 当模型必须用你已有的组件在应用里拼界面、而不是发明 JSX 或新设计系统时用它。 | Apache-2.0 | B（6/6） | [中](categories/ai-design-generation/json-render.zh.md) · [EN](categories/ai-design-generation/json-render.md) |
+| **Design Agent** | 从聊天生产团队品牌卡片、幻灯片与影片；托管付费，自托管需高权限 Docker，模型费用与人工审核另负。 | Apache-2.0；第三方条款另计 | C（4/6） | [中](categories/ai-design-generation/design-agent.zh.md) · [EN](categories/ai-design-generation/design-agent.md) |
 | **HTML Anything** | 当你本机已登录某个 coding-agent CLI、想要零 API key、local-first 地把 Markdown 变成可交付 HTML 并一键导出微信/X/知乎时用它。 | Apache-2.0 | B（5/6） | [中](categories/ai-design-generation/html-anything.zh.md) · [EN](categories/ai-design-generation/html-anything.md) |
 | **Open Design** | 想要一个 local-first、BYOK 的桌面 studio，让编码 agent 产出 HTML 原型、deck、图像和 HTML→MP4 动效时用它。 | Apache-2.0 | B（6/6） | [中](categories/ai-design-generation/open-design.zh.md) · [EN](categories/ai-design-generation/open-design.md) |
 | **Impeccable** | 当你的 AI agent 总是产出同质化前端「AI 味」、需要确定性检测加设计 critique 时使用。 | Apache-2.0 | B（6/6） | [中](categories/ai-design-generation/impeccable.zh.md) · [EN](categories/ai-design-generation/impeccable.md) |

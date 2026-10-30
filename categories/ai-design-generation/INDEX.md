@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Design Agent** | Shared branded cards, decks and films from chat; paid managed hosting or privileged Docker self-hosting, with model costs and human review. | C (4/6) | [→](design-agent.md) |
 | **Open Design Agent Kit** | Keep your current coding agent; add bundled design recipes, browser checks and export without the Open Design daemon. | C (5/6) | [→](open-design-agent-kit.md) |
 | **json-render** | Use it when a model must assemble in-app UI from your existing components, not invent JSX or a new design system. | B (6/6) | [→](json-render.md) |
 | **HTML Anything** | Use it when you already run a logged-in coding-agent CLI and want local-first, key-free Markdown-to-shippable-HTML generation with one-click WeChat/X/Zhihu export. | B (5/6) | [→](html-anything.md) |
@@ -22,6 +23,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Design Agent](design-agent.md) | Indexed | C (4/6) | Thread-based content production and artifact checks, not a UI component system; model and sandbox operation remain yours. |
 | [Open Design Agent Kit](open-design-agent-kit.md) | Indexed | C (5/6) | MIT runtime plus Apache-2.0 content; host agent writes files, checks report findings, PowerPoint uses slide images. |
 | [json-render](json-render.md) | ✅ | B (6/6) | Use it when a model must assemble in-app UI from your existing components, not invent JSX or a new design system. |
 | [HTML Anything](html-anything.md) | ✅ | B (5/6) | Use it when you already run a logged-in coding-agent CLI and want local-first, key-free Markdown-to-shippable-HTML generation with one-click WeChat/X/Zhihu export. |
