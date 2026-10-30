@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "photo", "en": "User photograph", "zh": "用户照片", "kind": "input"},
+    {"id": "anchor", "en": "Keep one recognizable anchor", "zh": "保留一个辨识点", "technique": [1]},
+    {"id": "motifs", "en": "Six motifs and three keywords", "zh": "六个图案与三个关键词", "technique": [2]},
+    {"id": "tool", "en": "Host image generation or editing tool", "zh": "宿主生图或改图工具", "kind": "external"},
+    {"id": "check", "en": "Agent visual checks; one instructed retry", "zh": "助手视觉检查；指令要求重试一次", "technique": [3]},
+    {"id": "card", "en": "One finished bitmap card", "zh": "一张成品位图卡片", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "photo", "to": "anchor"},
+    {"from": "photo", "to": "motifs"},
+    {"from": "anchor", "to": "tool"},
+    {"from": "motifs", "to": "tool"},
+    {"from": "tool", "to": "check"},
+    {"from": "check", "to": "tool", "en": "specified check fails", "zh": "指定检查失败", "style": "dashed"},
+    {"from": "check", "to": "card", "en": "deliver after inspection", "zh": "检查后交付"}
+  ],
+  "sources": [
+    "https://github.com/carolinaaafy/travel-memory-sticker-card/blob/25ac9753bae206e452f1501c9a57f93f853df408/SKILL.md",
+    "https://github.com/carolinaaafy/travel-memory-sticker-card/blob/25ac9753bae206e452f1501c9a57f93f853df408/references/style-guide.md"
+  ]
+}
