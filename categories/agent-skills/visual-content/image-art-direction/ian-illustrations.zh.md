@@ -2,7 +2,7 @@
 name: ian-xiaohei-illustrations
 slug: ian-illustrations
 repo: https://github.com/helloianneo/ian-xiaohei-illustrations
-category: visual-content
+category: image-art-direction
 tags: [skill, illustration, hand-drawn, chinese, codex-skill, image-generation, prompt-pack]
 language: Markdown
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 你刚写完的中文文章里有个判断天生「想要一张图」——但图库 banner 词不达意，逐张手写提示词又让画风四处漂移。这个 skill 让你的 coding agent 先读正文、挑出值得配图的段落，再围绕同一个「小黑」墨点角色，用宿主 agent 自带的图像模型渲染出 4–8 张手绘 16:9 配图。
 
-![ian-illustrations — 健康度雷达](../../../assets/health/ian-illustrations.zh.svg)
+![ian-illustrations — 健康度雷达](../../../../assets/health/ian-illustrations.zh.svg)
 
 ## 何时使用
 
@@ -81,7 +81,7 @@ health:
 
 它是一组提示词/风格包，不是软件：一份 `SKILL.md` 流程加上参考文档（风格 DNA、小黑的动作库、构图模式、提示词模板、QA 清单），由你的 agent 按需读取。被调用并拿到文章后，agent 先给出 shot list——候选配图清单，每张只围绕一个「认知锚点」（某段正文承载的判断、流程、前后对比或隐喻）——默认 4–8 张。每张图重新发明一个低科技物理隐喻，按模板拼出提示词，然后逐张调用宿主 agent 内置的图像工具（`image_gen`）；仓库自身不带模型、API key 或渲染器。接着按 QA 清单逐张检查——纯白背景、大量留白、小黑必须真的在承担核心动作、中文批注要短——并把成品存到 `assets/<article-slug>-illustrations/`。仍归你的部分：提供文章、修正 shot list、以及图里中文出错字时按 README 建议减少标注词重新生成。
 
-![ian-illustrations — 主干用户故事](../../../assets/flow/ian-illustrations.zh.svg)
+![ian-illustrations — 主干用户故事](../../../../assets/flow/ian-illustrations.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/ian-illustrations.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -101,7 +101,7 @@ health:
 
 ## 何时不用
 
-- **你需要可编辑的矢量/结构化产物。** 它只输出 PNG，并明确拒绝 PPTX/PDF/Keynote 和 SVG/HTML/Canvas 可编辑图。要可编辑的 deck 或可改模板的卡片，用 [guizang-ppt](../slides-ppt/guizang-ppt.zh.md) 或 [guizang-social-card](guizang-social-card.zh.md) / [html-anything](../../ai-design-generation/html-anything.zh.md)。
+- **你需要可编辑的矢量/结构化产物。** 它只输出 PNG，并明确拒绝 PPTX/PDF/Keynote 和 SVG/HTML/Canvas 可编辑图。要可编辑的 deck 或可改模板的卡片，用 [guizang-ppt](../../slides-ppt/guizang-ppt.zh.md) 或 [guizang-social-card](../guizang-social-card.zh.md) / [html-anything](../../../ai-design-generation/html-anything.zh.md)。
 - **你的内容不是中文（或不是散文）。** 整个 skill 是为中文文章和中文手写批注调校的；英文 deck、数据看板、UI 稿都在范围外。
 - **你想要商业插画、可爱卡通或密集信息图。** skill 刻意**避开**精修商业画风和文字密集的信息图——这是 non-goal，不是可绕过的限制。
 - **你的宿主 agent 没有图像生成工具。** 它是提示词/skill 包，不是渲染器：默认 agent 自带 `image_gen`（仓库按 Codex skill 打包）。没有这个工具，你只能拿到 shot list，没有图。
@@ -112,11 +112,11 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [guizang-social-card](guizang-social-card.zh.md) | ✅ | 需要精修社交/金句卡片而非手绘正文解释草图时，选 guizang-social-card。 | 生成精修的社交/金句卡片（常走可编辑模板），不是手绘的正文解释草图；视觉调性不同。 |
-| [guizang-ppt](../slides-ppt/guizang-ppt.zh.md) | ✅ | 需要结构化多页幻灯片 deck 时，选 guizang-ppt。 | 做幻灯片 deck（结构化、多页）；本 skill 只做单概念正文配图，并拒绝做 deck。 |
-| [html-anything](../../ai-design-generation/html-anything.zh.md) | ✅ | 需要可编辑、可托管的 HTML/CSS 产物时，选 html-anything。 | 产出可编辑、可托管的 HTML/CSS 产物；本 skill 产出固定画风的扁平 PNG。 |
-| [open-design](../../ai-design-generation/open-design.zh.md) | ✅ | 需要可复用 UI/设计系统产物时，选 open-design。 | 偏向可复用的 UI/设计系统产物；与「固定 IP 的中文配图嗓音」是正交诉求。 |
-| [impeccable](../../ai-design-generation/impeccable.zh.md) | ✅ | 目标是通用设计产物而非固定中文插画 voice 时，选 impeccable。 | 生成目标不同（设计类产物），而非固定 IP 的中文插画风格。 |
+| [guizang-social-card](../guizang-social-card.zh.md) | ✅ | 需要精修社交/金句卡片而非手绘正文解释草图时，选 guizang-social-card。 | 生成精修的社交/金句卡片（常走可编辑模板），不是手绘的正文解释草图；视觉调性不同。 |
+| [guizang-ppt](../../slides-ppt/guizang-ppt.zh.md) | ✅ | 需要结构化多页幻灯片 deck 时，选 guizang-ppt。 | 做幻灯片 deck（结构化、多页）；本 skill 只做单概念正文配图，并拒绝做 deck。 |
+| [html-anything](../../../ai-design-generation/html-anything.zh.md) | ✅ | 需要可编辑、可托管的 HTML/CSS 产物时，选 html-anything。 | 产出可编辑、可托管的 HTML/CSS 产物；本 skill 产出固定画风的扁平 PNG。 |
+| [open-design](../../../ai-design-generation/open-design.zh.md) | ✅ | 需要可复用 UI/设计系统产物时，选 open-design。 | 偏向可复用的 UI/设计系统产物；与「固定 IP 的中文配图嗓音」是正交诉求。 |
+| [impeccable](../../../ai-design-generation/impeccable.zh.md) | ✅ | 目标是通用设计产物而非固定中文插画 voice 时，选 impeccable。 | 生成目标不同（设计类产物），而非固定 IP 的中文插画风格。 |
 | nano-banana / gpt-image 提示词包 | 未收录 | 裸模型访问已经足够时，选通用出图提示词包。 | 通用出图提示词集合给你裸的模型访问，但没有本 skill 的文章分析、shot list、一致 IP 这一层。 |
 
 ## 健康度与可持续性

@@ -2,7 +2,7 @@
 name: Gathered Scenes
 slug: gathered-scenes-zine-skill
 repo: https://github.com/Zeejay0/gathered-scenes-zine-skill
-category: visual-content
+category: image-art-direction
 tags: [skill-pack, photo-collage, image-generation, editorial-illustration, live-photo, codex]
 language: Markdown, Python, Swift
 license: Custom personal non-commercial
@@ -66,7 +66,7 @@ health:
 
 Your travel photo becomes a generic illustration and loses the relationship between a person and the horizon. This pack makes the agent identify that relationship before composing a paper collage, or deliberately discard photographic material for an abstract reinterpretation.
 
-![Gathered Scenes Zine health radar](../../../assets/health/gathered-scenes-zine-skill.svg)
+![Gathered Scenes Zine health radar](../../../../assets/health/gathered-scenes-zine-skill.svg)
 
 **License boundary:** source-available, not an OSI open-source grant. The [personal non-commercial license](https://github.com/Zeejay0/gathered-scenes-zine-skill/blob/b9edb836c9dd5c5d80995e89ebcaba34b75fd58f/LICENSE#L10-L61) excludes work for companies, clients, nonprofits and other organizations, and commercial use of generated outputs. Obtain written permission before those uses.
 
@@ -78,8 +78,8 @@ Choose the separate distillation skill when the gesture or emotion matters but t
 
 ## When NOT to use
 
-- **You are making client work or monetized content.** Use an independently authored workflow in [ComfyUI](../../on-device-ml/local-image-generation/comfyui.md), subject to its software and model licenses, or obtain written permission here. This license restricts organizational use even without a fee; attribution alone does not clear it.
-- **You need editable text, exact layout or repeatable typography.** Choose [Guizang Social Card Skill](guizang-social-card.md) for HTML-to-PNG cards. These static zines are model-generated raster images; instructions to preserve faces, text and photographic areas are not pixel-level enforcement.
+- **You are making client work or monetized content.** Use an independently authored workflow in [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.md), subject to its software and model licenses, or obtain written permission here. This license restricts organizational use even without a fee; attribution alone does not clear it.
+- **You need editable text, exact layout or repeatable typography.** Choose [Guizang Social Card Skill](../guizang-social-card.md) for HTML-to-PNG cards. These static zines are model-generated raster images; instructions to preserve faces, text and photographic areas are not pixel-level enforcement.
 - **The photo cannot go to a generation service.** Choose local ComfyUI with reviewed local weights and no networked nodes. Both main zine prompts explicitly send the required reference and prompt to the host's generation service; their privacy instructions are not a technical egress barrier.
 - **You only want a style recipe to paste into another model.** Choose [hand-drawn-styles](hand-drawn-styles.md). This pack defaults to generation and hides the full prompt unless requested; it also instructs the host to append promotional website text after the first three successful generations.
 - **You require a fully inspectable Photos importer or cross-platform Live Photo support.** Prefer Guizang Social Card Skill's file-delivery workflow, after checking its platform requirements. This repository bundles an Apple-silicon importer executable without corresponding application source in the reviewed tree; the Python builder opens it by default unless `--no-import` is supplied. Static zine generation does not need that executable.
@@ -89,15 +89,15 @@ Choose the separate distillation skill when the gesture or emotion matters but t
 
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
-| [Guizang Social Card Skill](guizang-social-card.md) | indexed | Choose Guizang when precise copy and platform-sized editable card layouts decide; choose Gathered Scenes for a personal photo transformed into paper-like illustration. | HTML and optional DOM checks versus generative raster composition; Guizang's AGPL obligations still need review. |
+| [Guizang Social Card Skill](../guizang-social-card.md) | indexed | Choose Guizang when precise copy and platform-sized editable card layouts decide; choose Gathered Scenes for a personal photo transformed into paper-like illustration. | HTML and optional DOM checks versus generative raster composition; Guizang's AGPL obligations still need review. |
 | [hand-drawn-styles](hand-drawn-styles.md) | indexed | Choose hand-drawn-styles when you want to select and preserve a recipe across prompts; choose Gathered Scenes when the source photo should determine the composition. | Verbatim recipe extraction leaves generation to you; Gathered Scenes asks the host to analyze relationships and generate, under a personal-only license. |
-| [ComfyUI](../../on-device-ml/local-image-generation/comfyui.md) | indexed | Choose ComfyUI when local photo handling or a saved inference graph is mandatory; choose Gathered Scenes for a personal experiment inside an image-capable agent. | Model, hardware and node upkeep buy pipeline control; this pack supplies art-direction instructions, not an inference engine. |
+| [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.md) | indexed | Choose ComfyUI when local photo handling or a saved inference graph is mandatory; choose Gathered Scenes for a personal experiment inside an image-capable agent. | Model, hardware and node upkeep buy pipeline control; this pack supplies art-direction instructions, not an inference engine. |
 
 ## Quick start
 
 The [README installation path](https://github.com/Zeejay0/gathered-scenes-zine-skill/blob/b9edb836c9dd5c5d80995e89ebcaba34b75fd58f/README.md#L146-L169) clones the repository and copies the selected static skill folder into `~/.codex/skills/`; restart Codex if discovery needs it. After reviewing the license and prompt instructions, provide your own photo and invoke `$scenes-gathered-zine-v1-3`, naming the relationship and text language to preserve. The host must already provide image generation, including any account, service charge and reference-upload permission; this repository supplies neither model weights nor a generation API client for the two main static skills. The agent compiles a scene-specific prompt and returns a raster poster plus a short rationale. Use `$scene-distillation-zine-v1-3` instead for a newly illustrated image without photographic material; the optional Live branch separately needs Python with NumPy/Pillow, FFmpeg and macOS Swift frameworks, and `--no-import` prevents automatic importer launch.
 
-![gathered-scenes-zine-skill backbone user story](../../../assets/flow/gathered-scenes-zine-skill.svg)
+![gathered-scenes-zine-skill backbone user story](../../../../assets/flow/gathered-scenes-zine-skill.svg)
 
 <!-- flow-steps:begin (generated from flows/gathered-scenes-zine-skill.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -116,7 +116,7 @@ The [README installation path](https://github.com/Zeejay0/gathered-scenes-zine-s
 
 ## Key techniques
 
-![Gathered Scenes — mechanism diagram](../../../assets/mechanism/gathered-scenes-zine-skill.svg)
+![Gathered Scenes — mechanism diagram](../../../../assets/mechanism/gathered-scenes-zine-skill.svg)
 
 <!-- mechanism:begin (generated from mechanisms/gathered-scenes-zine-skill.json by tools/mechanism_card.py; do not edit) -->
 <details>

@@ -65,7 +65,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [google_workspace_mcp](https://github.com/taylorwilsdon/google_workspace_mcp),categories/agent-tooling/harness-extensions/hey-cli.md,,no
 [Hunyuan3D-2](https://github.com/Tencent-Hunyuan/Hunyuan3D-2),categories/3d-generation/modly.md,,no
 [HunyuanVideo](https://github.com/Tencent-Hunyuan/HunyuanVideo),categories/ml-research/vision-and-multimodal/open-sora.md,,no
-[InvokeAI](https://github.com/invoke-ai/InvokeAI),categories/agent-skills/visual-content/reality-restaged.md,,no
+[InvokeAI](https://github.com/invoke-ai/InvokeAI),categories/agent-skills/visual-content/image-art-direction/reality-restaged.md,,no
 [iztro](https://github.com/SylarLong/iztro),categories/traditional-divination/ziwei-doushu.md,,no
 [Jedi](https://github.com/davidhalter/jedi),categories/dev-utilities/editors-and-runtimes/code-editors/pylance-release.md,,no
 [KeePassXC](https://github.com/keepassxreboot/keepassxc),categories/dev-utilities/ops-infra/vaultwarden.md,,no
@@ -884,7 +884,7 @@ Multi-stage / hand-optimized Dockerfile,categories/dev-utilities/ops-infra/slim.
 Multica (multica-ai/multica),categories/agent-tooling/supervision-surfaces/agent-cockpits/paperclip.md,,no
 mypyc,categories/python-tooling/cython.md,,no
 Nango,categories/api-gateway/monid.md,,no
-nano-banana / gpt-image prompt packs,categories/agent-skills/visual-content/ian-illustrations.md,,no
+nano-banana / gpt-image prompt packs,categories/agent-skills/visual-content/image-art-direction/ian-illustrations.md,,no
 nanobot (`HKUDS/nanobot`),categories/agent-frameworks/agent-runtimes/personal-assistants/raven.md,,no
 nanobrew (`justrach/nanobrew`),categories/dev-utilities/package-managers/zerobrew.md,,no
 nanochat,categories/llm-training/study-and-experiments/train-llm-from-scratch.md,,no

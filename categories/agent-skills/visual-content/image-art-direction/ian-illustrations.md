@@ -2,7 +2,7 @@
 name: ian-xiaohei-illustrations
 slug: ian-illustrations
 repo: https://github.com/helloianneo/ian-xiaohei-illustrations
-category: visual-content
+category: image-art-direction
 tags: [skill, illustration, hand-drawn, chinese, codex-skill, image-generation, prompt-pack]
 language: Markdown
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 The Chinese article you just wrote has a judgment that begs for a picture — but a stock banner misses the point, and writing a fresh image prompt per figure makes the visuals drift. This skill has your coding agent read the prose, pick the spots worth illustrating, and render 4–8 hand-drawn 16:9 sketches around one recurring ink character, 小黑, using your host agent's own image model.
 
-![ian-illustrations — health radar](../../../assets/health/ian-illustrations.svg)
+![ian-illustrations — health radar](../../../../assets/health/ian-illustrations.svg)
 
 ## When to use
 
@@ -81,7 +81,7 @@ Reach for it specifically when consistency of *one* visual voice matters across 
 
 It is a prompt/style pack, not software: a `SKILL.md` pipeline plus reference docs (style DNA, the 小黑 IP's action library, composition patterns, a prompt template, a QA checklist) that your agent reads on demand. Once invoked with an article, the agent proposes a shot list — a plan of candidate illustrations, each built around one "cognitive anchor" (the judgment, flow, before/after or metaphor a paragraph carries) — defaulting to 4–8 pictures. For each shot it invents a fresh low-tech physical metaphor, assembles a prompt from the template, and calls the host agent's built-in image tool (`image_gen`) once per picture; the repo ships no model, API key or renderer of its own. It then checks every PNG against the QA checklist — white background, generous margins, 小黑 actually performing the core action, short Chinese annotations — and saves the set under `assets/<article-slug>-illustrations/`. What stays yours: supplying the article, steering the shot list, and re-requesting any shot whose Chinese text came out garbled (the README's advice: cut annotation words and regenerate).
 
-![ian-illustrations — backbone user story](../../../assets/flow/ian-illustrations.svg)
+![ian-illustrations — backbone user story](../../../../assets/flow/ian-illustrations.svg)
 
 <!-- flow-steps:begin (generated from flows/ian-illustrations.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -101,7 +101,7 @@ It is a prompt/style pack, not software: a `SKILL.md` pipeline plus reference do
 
 ## When NOT to use
 
-- **You need editable vector/structured artifacts.** It outputs PNGs only — it explicitly refuses PPTX/PDF/Keynote and SVG/HTML/Canvas editable graphics. If you need an editable deck or a card you can re-template, use [guizang-ppt](../slides-ppt/guizang-ppt.md) or [guizang-social-card](guizang-social-card.md) / [html-anything](../../ai-design-generation/html-anything.md).
+- **You need editable vector/structured artifacts.** It outputs PNGs only — it explicitly refuses PPTX/PDF/Keynote and SVG/HTML/Canvas editable graphics. If you need an editable deck or a card you can re-template, use [guizang-ppt](../../slides-ppt/guizang-ppt.md) or [guizang-social-card](../guizang-social-card.md) / [html-anything](../../../ai-design-generation/html-anything.md).
 - **Your content isn't Chinese (or isn't prose).** The whole skill is tuned for Chinese articles and Chinese handwritten annotations; English decks, data dashboards, or UI mockups are out of scope.
 - **You want commercial illustration, cute cartoons, or dense infographics.** The skill deliberately steers *away* from polished commercial art and text-heavy infographics — that's a non-goal, not a limitation to work around.
 - **Your host agent has no image-generation tool.** This is a prompt/skill pack, not a renderer: it assumes an agent with a built-in `image_gen` (the repo is packaged as a Codex skill). Without that, you get shot lists but no pictures.
@@ -112,11 +112,11 @@ It is a prompt/style pack, not software: a `SKILL.md` pipeline plus reference do
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [guizang-social-card](guizang-social-card.md) | ✅ | Choose guizang-social-card when you need polished social/quote cards rather than hand-drawn article sketches. | Generates polished social/quote cards (often via editable templates), not hand-drawn in-article explanatory sketches; different visual register. |
-| [guizang-ppt](../slides-ppt/guizang-ppt.md) | ✅ | Choose guizang-ppt when you need structured multi-page slide decks. | Builds slide decks (structured, multi-page); this skill makes single-concept inline illustrations and refuses decks. |
-| [html-anything](../../ai-design-generation/html-anything.md) | ✅ | Choose html-anything when you need editable/hostable HTML/CSS artifacts. | Produces HTML/CSS artifacts you can edit and host; this produces flat PNGs in one fixed art style. |
-| [open-design](../../ai-design-generation/open-design.md) | ✅ | Choose open-design when you need reusable UI/design-system artifacts. | Toward reusable UI/design-system artifacts; orthogonal to a hand-drawn article-illustration persona. |
-| [impeccable](../../ai-design-generation/impeccable.md) | ✅ | Choose impeccable when your target is general design artifacts rather than a fixed Chinese illustration voice. | Different generation target (design artifacts) rather than a fixed-IP Chinese illustration voice. |
+| [guizang-social-card](../guizang-social-card.md) | ✅ | Choose guizang-social-card when you need polished social/quote cards rather than hand-drawn article sketches. | Generates polished social/quote cards (often via editable templates), not hand-drawn in-article explanatory sketches; different visual register. |
+| [guizang-ppt](../../slides-ppt/guizang-ppt.md) | ✅ | Choose guizang-ppt when you need structured multi-page slide decks. | Builds slide decks (structured, multi-page); this skill makes single-concept inline illustrations and refuses decks. |
+| [html-anything](../../../ai-design-generation/html-anything.md) | ✅ | Choose html-anything when you need editable/hostable HTML/CSS artifacts. | Produces HTML/CSS artifacts you can edit and host; this produces flat PNGs in one fixed art style. |
+| [open-design](../../../ai-design-generation/open-design.md) | ✅ | Choose open-design when you need reusable UI/design-system artifacts. | Toward reusable UI/design-system artifacts; orthogonal to a hand-drawn article-illustration persona. |
+| [impeccable](../../../ai-design-generation/impeccable.md) | ✅ | Choose impeccable when your target is general design artifacts rather than a fixed Chinese illustration voice. | Different generation target (design artifacts) rather than a fixed-IP Chinese illustration voice. |
 | nano-banana / gpt-image prompt packs | 未收录 | Choose generic image-prompt packs when raw model access is enough. | Generic image-prompt collections give you raw model access with no article-analysis, shot-list, or consistent-IP layer this skill adds. |
 
 ## Health & viability

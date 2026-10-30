@@ -2,7 +2,7 @@
 name: handraw-style
 slug: handraw-style
 repo: https://github.com/yang0/handraw-style
-category: visual-content
+category: image-art-direction
 tags: [skill-pack, image-generation, prompt-library, hand-drawn, style-reference, bilingual, codex-skill, chinese]
 language: HTML
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 让生图 AI 画点「可爱手绘风」，它十次有九次吐回同一款剪贴画味儿的图。handraw-style 把 279 种手绘画风、122 种版面图型、36 种主题色编成号，agent 装上它的 skill 后按编号拼出中英双语提示词，并且看模型下菜：文字能激活画风就纯文字出词，激活不了就垫一张编号参考图兜底。
 
-![handraw-style — 健康度雷达](../../../assets/health/handraw-style.zh.svg)
+![handraw-style — 健康度雷达](../../../../assets/health/handraw-style.zh.svg)
 
 ## 何时使用
 
@@ -81,7 +81,7 @@ health:
 
 仓库不带任何模型，本质是一个 skill 包——Markdown 指令文件、JSON 索引、Python 构建脚本，外加约 500 张 webp 参考图。根目录 `SKILL.md` 是安装入口，把请求路由到三个 skill：`handdraw-style-prompter`（风格/图型/主题色 → 提示词）、`article-illustration-planner`（读文章、判断哪几段值得配图、规划镜头并写提示词）、`poster-prompt-generator`（按 8 个设计字段组装海报指令）。真正的机制在 `references/model_capabilities.json`：逐风格、逐模型记录该画风能否被「名字激活」——即模型只凭画家名/风格名就能画出那味儿；不能就附正向特征描述；还不行就必须垫编号参考图（`images/individual/{bucket}/{number}.webp`），并注入一段固定的「只借画风」指令，要求生图模型只取线条、媒介、配色，忽略参考图里的主体、构图与文字，垫图不会把你的主题带跑。你只负责选编号、给主题；skill 负责组装，默认交付可复制的双语提示词，只有你明确要图它才调用生图。能力矩阵只对 `gpt-image-2` 做了全量标定，其余模型（Midjourney、Flux、SD、Imagen）一律走参考图兜底。
 
-![handraw-style — 主干用户故事](../../../assets/flow/handraw-style.zh.svg)
+![handraw-style — 主干用户故事](../../../../assets/flow/handraw-style.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/handraw-style.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -101,9 +101,9 @@ health:
 
 ## 何时不用
 
-- **要的是确定、可编辑的成品，不是 AI 成图。** handraw-style 交付给生图模型的只是提示词，像素每次 roll 都不同、无法回头改模板。若交付物是能做版本管理、能微调的卡片封面，用 [guizang-social-card](guizang-social-card.zh.md) 或 [html-anything](../../ai-design-generation/html-anything.zh.md)，它们走 HTML→PNG 渲染。
+- **要的是确定、可编辑的成品，不是 AI 成图。** handraw-style 交付给生图模型的只是提示词，像素每次 roll 都不同、无法回头改模板。若交付物是能做版本管理、能微调的卡片封面，用 [guizang-social-card](../guizang-social-card.zh.md) 或 [html-anything](../../../ai-design-generation/html-anything.zh.md)，它们走 HTML→PNG 渲染。
 - **要一套锁死的视觉标识贯穿全部内容。** 279 种画风的「广」正是品牌一致性的反面。要单一固定插画人格反复出场，选 [ian-xiaohei-illustrations](ian-illustrations.zh.md)；本页项目存在的意义恰恰是换着来。
-- **画风控制必须放进自己的管线。** 这里没有训练、没有 LoRA、没有节点图，skill 把提示词交给任何你粘贴的生图 AI，渲染完全外包。要批量化、自托管、管线可控的出图，用 [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md)。
+- **画风控制必须放进自己的管线。** 这里没有训练、没有 LoRA、没有节点图，skill 把提示词交给任何你粘贴的生图 AI，渲染完全外包。要批量化、自托管、管线可控的出图，用 [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.zh.md)。
 - **要编号可复现。** 风格编号是可变内容：提交记录显示 `#257`、`#259`、`#260` 都在几周内被整体*替换*成别的风貌。你存下的「260 号提示词」下次更新后可能指向另一张脸——跨时间依赖编号前先锁版本或 fork。
 - **要商业上干净的画风。** 大量风格直接挂在具名画家身上（David Shrigley、Quentin Blake，在世与否仓库用 `attribution.json` 标了），参考图又是 `scrape_tweet.py` 从 X 帖子抓回的。MIT 只覆盖代码与提示词，覆盖不了打包的美术作品；模仿在世画家的商业风险由使用者自担，许可帮不了你。[推断]
 - **宿主不是 Codex 系。** 首轮会话初始化调用 Codex 专属 MCP 工具（`mcp__codex_app__open_in_codex`）打开画廊，其他 agent 会退化成手动点 `file://` 链接；另外克隆体积约 250 MB 的图片资产，整体语境也默认中文社媒。
@@ -113,9 +113,9 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [ian-xiaohei-illustrations](ian-illustrations.zh.md) | ✅ | 要让一个固定手绘 IP 在整篇中文文章里稳定出场，选 ian；要每篇换画风、要编号化的图型与配色，选 handraw-style。 | 编号化的广度与可复现 vs. 单一 IP 的绝对一致性。 |
-| [Guizang Social Card Skill](guizang-social-card.zh.md) | ✅ | 交付物就是渲染好的卡片本身（HTML→PNG、不经过生图模型）时选 guizang。 | 确定可编辑的产物 vs. 每次 roll 都变、无法回改的 AI 成图。 |
-| [prompts.chat](../prompt-engineering/prompts-chat.zh.md) | ✅ | 要跨工具、社区投票、可自托管的通用提示词平台选 prompts.chat；handraw-style 是单一垂类的策展库，且带 agent skill 接线。 | 策展深度 + 逐模型激活数据 vs. 平台广度、无技能集成。 |
-| [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md) | ✅ | 画风控制必须自托管、进管线（LoRA、ControlNet、批量）时选 ComfyUI；handraw-style 只出提示词，渲染全部外包。 | 对生成的完全控制 vs. 零运行时、随贴随用的提示词包。 |
+| [Guizang Social Card Skill](../guizang-social-card.zh.md) | ✅ | 交付物就是渲染好的卡片本身（HTML→PNG、不经过生图模型）时选 guizang。 | 确定可编辑的产物 vs. 每次 roll 都变、无法回改的 AI 成图。 |
+| [prompts.chat](../../prompt-engineering/prompts-chat.zh.md) | ✅ | 要跨工具、社区投票、可自托管的通用提示词平台选 prompts.chat；handraw-style 是单一垂类的策展库，且带 agent skill 接线。 | 策展深度 + 逐模型激活数据 vs. 平台广度、无技能集成。 |
+| [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.zh.md) | ✅ | 画风控制必须自托管、进管线（LoRA、ControlNet、批量）时选 ComfyUI；handraw-style 只出提示词，渲染全部外包。 | 对生成的完全控制 vs. 零运行时、随贴随用的提示词包。 |
 | Midjourney style reference（`sref`） | 非仓库 | 只在 Midjourney 里生活、要平台原生风格码时选它；handraw-style 跨宿主、双语，其隔离指令正是为了避开 `sref` 常见的内容串味。 | 平台原生便利 vs. 多模型覆盖；`sref` 是闭源服务的功能，不是可 fork 的仓库。 |
 
 ## 健康度与可持续性

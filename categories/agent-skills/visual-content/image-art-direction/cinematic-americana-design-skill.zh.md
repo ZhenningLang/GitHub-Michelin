@@ -2,7 +2,7 @@
 name: Americana Skill
 slug: cinematic-americana-design-skill
 repo: https://github.com/shirleylana/cinematic-americana-design-skill
-category: visual-content
+category: image-art-direction
 tags: [skill-pack, cinematic-americana, art-direction, wallpaper, image-prompts, codex, chinese]
 language: Markdown
 license: Not specified
@@ -65,7 +65,7 @@ health:
 
 你想要忧郁夏日壁纸，模型却只会堆棕榈树和胶片颗粒，甚至把“打雷感”画成闪电。这套技能先选择五种视觉谱系之一，再规定叙事张力、构图和壁纸留白。
 
-![Cinematic Americana Design Skill 健康度雷达](../../../assets/health/cinematic-americana-design-skill.zh.svg)
+![Cinematic Americana Design Skill 健康度雷达](../../../../assets/health/cinematic-americana-design-skill.zh.svg)
 
 ## 何时使用
 
@@ -76,23 +76,23 @@ health:
 ## 何时不用
 
 - **你需要可直接纳入产品或再分发的授权素材。** 完整已读树没有许可证，说明书和技能也没有授权条款。公开可见不等于开源授权。可考察 [hand-drawn-styles](hand-drawn-styles.zh.md)，其代码和配方文字采用 MIT，但仍须单独核查参照画风与产物的权利。
-- **你需要准确海报文字和可编辑卡片版式。** 上游图片配方也建议把关键文字放进确定性排版流程，不依赖生图模型。可选 [Guizang Social Card Skill](guizang-social-card.zh.md)，用 HTML 编排并渲染 PNG，同时遵守其 AGPL 条款。
-- **你在做普通后台或已有品牌规范的产品界面。** 五种艺人相关谱系会强加狭窄审美。可用 [Taste-Skill](../design/ui-taste/taste-skill.zh.md) 做通用前端审美指导，或让现有品牌规则继续作为唯一依据。
-- **你需要生图引擎或现成网站。** 仓库包含指令、参考文档和六张展示图，不含渲染器、模型或网站应用。卡片渲染可选 [Guizang Social Card Skill](guizang-social-card.zh.md)，代码生成指导可选 [Taste-Skill](../design/ui-taste/taste-skill.zh.md)。两者都不替代独立生图服务。
+- **你需要准确海报文字和可编辑卡片版式。** 上游图片配方也建议把关键文字放进确定性排版流程，不依赖生图模型。可选 [Guizang Social Card Skill](../guizang-social-card.zh.md)，用 HTML 编排并渲染 PNG，同时遵守其 AGPL 条款。
+- **你在做普通后台或已有品牌规范的产品界面。** 五种艺人相关谱系会强加狭窄审美。可用 [Taste-Skill](../../design/ui-taste/taste-skill.zh.md) 做通用前端审美指导，或让现有品牌规则继续作为唯一依据。
+- **你需要生图引擎或现成网站。** 仓库包含指令、参考文档和六张展示图，不含渲染器、模型或网站应用。卡片渲染可选 [Guizang Social Card Skill](../guizang-social-card.zh.md)，代码生成指导可选 [Taste-Skill](../../design/ui-taste/taste-skill.zh.md)。两者都不替代独立生图服务。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [hand-drawn-styles](hand-drawn-styles.zh.md) | 已收录 | 已选插画配方不能被助手改写时，选 hand-drawn-styles；需要从情绪与文化参照推导电影场景时，选本项目。 | 前者用 Python 辅助原样提取，后者让模型解释谱系规则；本项目更灵活，但不确定性更高，也没有声明复用许可。 |
-| [Guizang Social Card Skill](guizang-social-card.zh.md) | 已收录 | 需要平台尺寸、可编辑 HTML 和准确文案时，选 Guizang；需要壁纸安全区与电影场景方向时，选本项目。 | 模板和渲染脚本对比提示词美术指导；Guizang 多了 Node 与浏览器维护成本，也有 AGPL 义务。 |
-| [Taste-Skill](../design/ui-taste/taste-skill.zh.md) | 已收录 | 通用前端布局、字体和动效选 Taste-Skill；海报、壁纸与网站要共用一种美式复古谱系时，选本项目。 | 广谱界面审美及可调参数，对比五种特定文化谱系；两者都依赖宿主助手，而本项目尚无复用条款。 |
+| [Guizang Social Card Skill](../guizang-social-card.zh.md) | 已收录 | 需要平台尺寸、可编辑 HTML 和准确文案时，选 Guizang；需要壁纸安全区与电影场景方向时，选本项目。 | 模板和渲染脚本对比提示词美术指导；Guizang 多了 Node 与浏览器维护成本，也有 AGPL 义务。 |
+| [Taste-Skill](../../design/ui-taste/taste-skill.zh.md) | 已收录 | 通用前端布局、字体和动效选 Taste-Skill；海报、壁纸与网站要共用一种美式复古谱系时，选本项目。 | 广谱界面审美及可调参数，对比五种特定文化谱系；两者都依赖宿主助手，而本项目尚无复用条款。 |
 
 ## 快速上手
 
 说明书要求把 `craft-cinematic-americana` 复制到 `~/.codex/skills/craft-cinematic-americana/`，并让 `SKILL.md` 直接位于该目录；采用这条安装路径前，先解决缺失的复用授权。在获得许可的环境中，调用 `$craft-cinematic-americana`，提供媒介、主体、尺寸、准确文字和有权使用的素材。只需要完整设计说明时，明确要求“设计方向”，不要要求立即生图。助手选择谱系后，给出构图、配色、字体角色和英文生图提示词；中文需求配中文解释。真正生图或建站依赖宿主助手已有工具，服务费用、素材授权与部署仍由你负责；工具不可用时，技能要求只交完整说明，不冒称已生成产物。
 
-![cinematic-americana-design-skill 主干用户故事](../../../assets/flow/cinematic-americana-design-skill.zh.svg)
+![cinematic-americana-design-skill 主干用户故事](../../../../assets/flow/cinematic-americana-design-skill.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/cinematic-americana-design-skill.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -110,7 +110,7 @@ health:
 
 ## 技术要点
 
-![Americana Skill — 机制图](../../../assets/mechanism/cinematic-americana-design-skill.zh.svg)
+![Americana Skill — 机制图](../../../../assets/mechanism/cinematic-americana-design-skill.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/cinematic-americana-design-skill.json by tools/mechanism_card.py; do not edit) -->
 <details>

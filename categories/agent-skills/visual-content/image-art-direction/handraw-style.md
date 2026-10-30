@@ -2,7 +2,7 @@
 name: handraw-style
 slug: handraw-style
 repo: https://github.com/yang0/handraw-style
-category: visual-content
+category: image-art-direction
 tags: [skill-pack, image-generation, prompt-library, hand-drawn, style-reference, bilingual, codex-skill, chinese]
 language: HTML
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 You tell an image AI "cute hand-drawn style" and it keeps returning the same generic clip-art look. handraw-style numbers 279 hand-drawn styles, 122 layout templates and 36 theme colors, and its agent skills assemble bilingual prompts with a per-model strategy: activate the style by text when the model understands it, otherwise fall back to a numbered reference image.
 
-![handraw-style — health radar](../../../assets/health/handraw-style.svg)
+![handraw-style — health radar](../../../../assets/health/handraw-style.svg)
 
 ## When to use
 
@@ -81,7 +81,7 @@ Pick it over a generic image-prompt library because the *number* is a stable bri
 
 The repo ships no model; it is a skill pack — Markdown instruction files, JSON indexes, Python builders, and roughly 500 webp reference images. The root `SKILL.md` is the install entrypoint and routes requests between three skills: `handdraw-style-prompter` (style/layout/color → prompt), `article-illustration-planner` (reads an article, decides where illustrations add value, plans shots and writes their prompts), and `poster-prompt-generator` (structured 8-field poster briefs). Its real mechanism is `references/model_capabilities.json`: for each style and each calibrated model, whether the style is *name-activated* — the model reproduces the look just from the artist/style name — or needs positive trait descriptions, or needs a numbered reference image (`images/individual/{bucket}/{number}.webp`). When a reference image is used, the skill attaches a fixed "style-only" instruction block that tells the image model to borrow linework, medium and palette from it and to ignore its subject, composition and text, so the pad image never drags your theme along. You pick numbers and supply a theme; the skill does prompt assembly, and by default stops at copyable prompts — it only generates when you explicitly ask. The capability matrix is fully calibrated for `gpt-image-2` only; every other model (Midjourney, Flux, SD, Imagen) gets the reference-image fallback path.
 
-![handraw-style — backbone user story](../../../assets/flow/handraw-style.svg)
+![handraw-style — backbone user story](../../../../assets/flow/handraw-style.svg)
 
 <!-- flow-steps:begin (generated from flows/handraw-style.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -101,9 +101,9 @@ The repo ships no model; it is a skill pack — Markdown instruction files, JSON
 
 ## When NOT to use
 
-- **You need a deterministic, editable artifact, not an AI image.** handraw-style outputs prompts for image models; the pixels are whatever the AI renders and can't be re-templated. If the deliverable is a card or cover you can version-control and tweak, use [guizang-social-card](guizang-social-card.md) or [html-anything](../../ai-design-generation/html-anything.md), which render HTML→PNG.
+- **You need a deterministic, editable artifact, not an AI image.** handraw-style outputs prompts for image models; the pixels are whatever the AI renders and can't be re-templated. If the deliverable is a card or cover you can version-control and tweak, use [guizang-social-card](../guizang-social-card.md) or [html-anything](../../../ai-design-generation/html-anything.md), which render HTML→PNG.
 - **You want one locked visual identity across everything.** The 279-style breadth is the opposite of brand consistency. For a single fixed illustration persona applied corpus-wide, pick [ian-xiaohei-illustrations](ian-illustrations.md) instead; handraw-style exists precisely to vary.
-- **Style fidelity must live inside your own pipeline.** There is no training, no LoRA, no node graph here — the skill only hands prompts off to whatever image AI you paste into. If you need batch, self-hosted, or pipeline-controllable rendering, use [ComfyUI](../../on-device-ml/local-image-generation/comfyui.md).
+- **Style fidelity must live inside your own pipeline.** There is no training, no LoRA, no node graph here — the skill only hands prompts off to whatever image AI you paste into. If you need batch, self-hosted, or pipeline-controllable rendering, use [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.md).
 - **You need reproducible numbering.** Style numbers are mutable content: commit history shows `#257`, `#259` and `#260` were each *replaced* with different styles within weeks. A prompt you saved as "#260" may mean a different look after the next update — pin a version or fork before relying on an number across time.
 - **You need a cleared commercial look.** Many styles are keyed to named artists (David Shrigley, Quentin Blake, living and deceased — the repo tracks this in `attribution.json`), and reference images were imported from X posts by `scrape_tweet.py`. MIT covers the code and prompts; it cannot convey rights to the bundled artwork, and mimicking a living artist's style commercially carries risk you own, not the license's. [推断]
 - **Your host isn't Codex-friendly.** First-session initialization calls a Codex-only MCP tool (`mcp__codex_app__open_in_codex`) to open the gallery; other agents degrade to a manual `file://` link. Also budget a ~250 MB clone for the image assets, and expect Chinese-social-media framing throughout.
@@ -113,9 +113,9 @@ The repo ships no model; it is a skill pack — Markdown instruction files, JSON
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [ian-xiaohei-illustrations](ian-illustrations.md) | ✅ | Choose ian when one fixed hand-drawn persona must voice a whole Chinese article corpus consistently; choose handraw-style when you want 279 switchable aesthetics plus numbered layouts and palettes. | Breadth and numbered reproducibility vs. the guaranteed coherence of a single IP. |
-| [Guizang Social Card Skill](guizang-social-card.md) | ✅ | Choose guizang when the deliverable is the rendered card itself — art-directed HTML→PNG with no image model in the loop. | Deterministic, editable output vs. AI-generated images that vary per roll and can't be re-templated. |
-| [prompts.chat](../prompt-engineering/prompts-chat.md) | ✅ | Choose prompts.chat when you need a general, community-voted, self-hostable prompt platform across many tools; handraw-style is one curated domain with agent-skill wiring attached. | Curated depth + per-model activation data vs. platform breadth with no skill integration. |
-| [ComfyUI](../../on-device-ml/local-image-generation/comfyui.md) | ✅ | Choose ComfyUI when style control must be self-hosted and pipeline-grade (LoRAs, ControlNet, batch); handraw-style emits prompts and delegates all rendering. | Total control over generation vs. zero-runtime prompt packs that ride any hosted AI. |
+| [Guizang Social Card Skill](../guizang-social-card.md) | ✅ | Choose guizang when the deliverable is the rendered card itself — art-directed HTML→PNG with no image model in the loop. | Deterministic, editable output vs. AI-generated images that vary per roll and can't be re-templated. |
+| [prompts.chat](../../prompt-engineering/prompts-chat.md) | ✅ | Choose prompts.chat when you need a general, community-voted, self-hostable prompt platform across many tools; handraw-style is one curated domain with agent-skill wiring attached. | Curated depth + per-model activation data vs. platform breadth with no skill integration. |
+| [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.md) | ✅ | Choose ComfyUI when style control must be self-hosted and pipeline-grade (LoRAs, ControlNet, batch); handraw-style emits prompts and delegates all rendering. | Total control over generation vs. zero-runtime prompt packs that ride any hosted AI. |
 | Midjourney style references (`sref`) | not a repo | Choose it when you live inside Midjourney and want native code-level style transfer; handraw-style is host-agnostic and bilingual, and its isolation block is designed to avoid exactly the content-bleed `sref` tends to cause. | Platform-native convenience vs. multi-model coverage; `sref` is a feature of a closed service, not an artifact you can fork. |
 
 ## Health & viability

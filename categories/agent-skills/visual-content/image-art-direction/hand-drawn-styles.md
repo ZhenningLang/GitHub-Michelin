@@ -2,7 +2,7 @@
 name: hand-drawn-styles
 slug: hand-drawn-styles
 repo: https://github.com/threerocks/hand-drawn-styles
-category: visual-content
+category: image-art-direction
 tags: [skill-pack, image-generation, prompt-library, hand-drawn, style-reference, prompt-renderer, chinese]
 language: Python
 license: MIT
@@ -73,7 +73,7 @@ health:
 
 You finally coax an image model into the wobbly kid-crayon look you wanted, and the next picture — same request, slightly reworded by your agent — comes back as clean digital clip-art. hand-drawn-styles keeps 22 tested style recipes in one file and has a small script copy the chosen recipe out word for word with your subject dropped in, so the agent cannot paraphrase the look away.
 
-![hand-drawn-styles — health radar](../../../assets/health/hand-drawn-styles.svg)
+![hand-drawn-styles — health radar](../../../../assets/health/hand-drawn-styles.svg)
 
 ## When to use
 
@@ -85,7 +85,7 @@ Pick it over [handraw-style](handraw-style.md) when you want a short list of rec
 
 Nothing here draws. The repository is a skill pack: `STYLES.md` holds the recipes (21 integer-numbered styles plus the variant 3.1), `PROTOCOL.md` is the five-step procedure an agent follows (resolve the style, fetch the recipe, fill the placeholders, handle the aspect ratio, output), and `SKILL.md` / `AGENTS.md` are thin adapters that point Claude Code, Codex and other instruction-reading agents at those two files. The working part is `scripts/render_prompt.py`, a dependency-free Python script that pulls a recipe out of `STYLES.md` verbatim and substitutes placeholders — bracketed slots such as `【主体】` (the subject) that stand for the content you supply. You say what to draw; the agent infers the slot values and is told not to abbreviate, reword or blend recipes. Think of it as a rubber stamp rather than a description of a stamp: the ink pattern is fixed, only the paper underneath changes. For most styles the result is a text prompt you paste into gpt-image, Jimeng or Midjourney yourself. For 3.1, 19 and 20 the result is a JSON "call bundle": the prompt, an anchor image — a reference picture passed to the image model for style only, checked by pixel hash so a swapped file is rejected — and a workflow or scoring contract that your own generation tooling has to execute. A separate shell wrapper can generate style 21 directly through a logged-in Codex CLI; everything else stops at the prompt.
 
-![hand-drawn-styles — backbone user story](../../../assets/flow/hand-drawn-styles.svg)
+![hand-drawn-styles — backbone user story](../../../../assets/flow/hand-drawn-styles.svg)
 
 <!-- flow-steps:begin (generated from flows/hand-drawn-styles.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -107,11 +107,11 @@ Nothing here draws. The repository is a skill pack: `STYLES.md` holds the recipe
 
 - **You want to browse and discover styles.** There are 22 recipes, not hundreds, and no layout or theme-colour catalogue. For a numbered gallery of 279 styles with 122 layouts and 36 palettes, use [handraw-style](handraw-style.md).
 - **You want the pictures, not the prompts.** By design the agent is told not to generate; only style 21 has a direct-to-image script, and that needs a logged-in Codex CLI with image generation, `bun`, macOS `sips` for the default size, and a companion skill named `sweety-image-privacy` for which no public repository was found. If you want an agent that reads an article, plans the shots and renders them with its own image tool, use [ian-xiaohei-illustrations](ian-illustrations.md).
-- **Your image endpoint cannot take reference images or pin a model version.** Styles 3.1, 19 and 20 fail closed without their anchor image, and 19/20 additionally demand the snapshot `gpt-image-2-2026-04-21` — a requirement the maintainer's own bundle marks as not observed in testing (`exact_candidate_snapshot_observed: false`). If style lock must live inside a pipeline you control, train or load a LoRA/IP-Adapter in [ComfyUI](../../on-device-ml/local-image-generation/comfyui.md) instead.
+- **Your image endpoint cannot take reference images or pin a model version.** Styles 3.1, 19 and 20 fail closed without their anchor image, and 19/20 additionally demand the snapshot `gpt-image-2-2026-04-21` — a requirement the maintainer's own bundle marks as not observed in testing (`exact_candidate_snapshot_observed: false`). If style lock must live inside a pipeline you control, train or load a LoRA/IP-Adapter in [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.md) instead.
 - **You need identifiers that stay put across versions.** Style numbers have already moved once: on 2026-08-04 the integers were shifted and `1.1`/`1.2` deleted, so a saved "style 13" (then the sunlit storybook look) now means paper sculpture. The first and only tagged release, v1.0.0, was published on 2026-10-08 — there is no versioned history before it and no stated compatibility policy after it. Call styles by alias and pin the v1.0.0 package; if what you need is one look that cannot be renumbered because it is the only one, use [ian-xiaohei-illustrations](ian-illustrations.md).
-- **You need a deterministic, editable artifact.** A prompt is not a card; every roll differs. For HTML rendered to PNG that you can diff and re-template, use [Guizang Social Card Skill](guizang-social-card.md) or [HTML Anything](../../ai-design-generation/html-anything.md).
-- **You need a commercially cleared look.** `STYLES.md` states that styles 12–17 are gpt-image replicas of specific Midjourney `--sref` codes, and others are keyed to Ghibli and xkcd. MIT covers the recipe text and scripts, not the looks they imitate. [推断] For brand work, build the style from your own artwork in [ComfyUI](../../on-device-ml/local-image-generation/comfyui.md).
-- **You work in English.** Protocol, recipes, menus and error messages are Chinese, and style 21 renders handwritten Chinese copy. For a general, English-first prompt library, use [prompts.chat](../prompt-engineering/prompts-chat.md).
+- **You need a deterministic, editable artifact.** A prompt is not a card; every roll differs. For HTML rendered to PNG that you can diff and re-template, use [Guizang Social Card Skill](../guizang-social-card.md) or [HTML Anything](../../../ai-design-generation/html-anything.md).
+- **You need a commercially cleared look.** `STYLES.md` states that styles 12–17 are gpt-image replicas of specific Midjourney `--sref` codes, and others are keyed to Ghibli and xkcd. MIT covers the recipe text and scripts, not the looks they imitate. [推断] For brand work, build the style from your own artwork in [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.md).
+- **You work in English.** Protocol, recipes, menus and error messages are Chinese, and style 21 renders handwritten Chinese copy. For a general, English-first prompt library, use [prompts.chat](../../prompt-engineering/prompts-chat.md).
 
 ## Comparison
 
@@ -119,8 +119,8 @@ Nothing here draws. The repository is a skill pack: `STYLES.md` holds the recipe
 |---|---|---|---|
 | [handraw-style](handraw-style.md) | ✅ | Choose handraw-style when the job is picking a look from a large numbered gallery with layouts and palettes; choose this page's project when you already know the look and need the same recipe reproduced verbatim, with anchors and acceptance rules on three styles. | 22 recipes with recorded validation rounds and a tested renderer, against 279 styles with per-model activation data but thinner per-style evidence. |
 | [ian-xiaohei-illustrations](ian-illustrations.md) | ✅ | Choose ian when one fixed character must illustrate a whole Chinese article and the agent should also decide where pictures go and render them; choose this project when you bring your own image model and only need the style paragraph held constant. | A complete article-to-PNG loop locked to one persona, against a prompt-only tool that covers several looks and leaves generation to you. |
-| [Baoyu Skills](../ai-writing/content-production/baoyu-skills.md) | ✅ | Choose Baoyu Skills when illustration is one step in a writing-to-publishing pipeline and you want the generation and posting helpers in the same install; choose this project when style fidelity is the only problem and extra skills would just add context. | One bundle spanning translation, formatting, image generation and posting, against a single-purpose recipe pack with no generation backend. |
-| [ComfyUI](../../on-device-ml/local-image-generation/comfyui.md) | ✅ | Choose ComfyUI when style consistency must be enforced by weights and nodes on your own GPU; choose this project when a hosted image model is good enough and you only want to stop prompt drift. | Pipeline-grade control with hardware and workflow upkeep, against zero runtime and whatever fidelity the hosted model gives you. |
+| [Baoyu Skills](../../ai-writing/content-production/baoyu-skills.md) | ✅ | Choose Baoyu Skills when illustration is one step in a writing-to-publishing pipeline and you want the generation and posting helpers in the same install; choose this project when style fidelity is the only problem and extra skills would just add context. | One bundle spanning translation, formatting, image generation and posting, against a single-purpose recipe pack with no generation backend. |
+| [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.md) | ✅ | Choose ComfyUI when style consistency must be enforced by weights and nodes on your own GPU; choose this project when a hosted image model is good enough and you only want to stop prompt drift. | Pipeline-grade control with hardware and workflow upkeep, against zero runtime and whatever fidelity the hosted model gives you. |
 | Midjourney style references (`--sref`) | not a repo | Choose `--sref` when you generate inside Midjourney and a style code is enough; this project exists largely to carry such looks over to gpt-image, where no style code is available. | Native one-flag style transfer inside a closed paid service — a feature, not a forkable artifact — against text recipes that travel across models but need per-model tuning. |
 
 ## Health & viability

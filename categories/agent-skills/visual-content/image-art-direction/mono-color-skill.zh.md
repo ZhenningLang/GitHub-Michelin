@@ -2,7 +2,7 @@
 name: Mono-color
 slug: mono-color-skill
 repo: https://github.com/yanliudesign/mono-color-skill
-category: visual-content
+category: image-art-direction
 tags: [skill-pack, editorial-design, image-generation, halftone, risograph, duotone]
 language: Markdown, Python
 license: MIT (software); proprietary original example images; third-party reference rights reserved
@@ -69,7 +69,7 @@ health:
 
 你想做印刷感海报，模型却总交付一张套色照片，再把标题孤零零放在旁边。Mono-color 要求助手先分配最多两块油墨版，让纸面穿过图像，再让一个主体与文字产生碰撞。
 
-![Monocolor Editorial Print 健康度雷达](../../../assets/health/mono-color-skill.zh.svg)
+![Monocolor Editorial Print 健康度雷达](../../../../assets/health/mono-color-skill.zh.svg)
 
 ## 何时使用
 
@@ -79,8 +79,8 @@ health:
 
 ## 何时不用
 
-- **必须保证准确文字或交付可编辑平台卡片。** 选 [Guizang Social Card Skill](guizang-social-card.zh.md) 的 HTML 到 PNG 排版。Mono-color 让图像模型画字；一次重试仍失败后，它要求交付少文字底图，并建议另行叠字。
-- **需要固定权重与采样控制的本地推理流程。** 选 [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md)。本仓库提供指令和目录规则，不提供图像模型、显卡运行时、接口凭据，也不替上传的照片建立隐私边界。
+- **必须保证准确文字或交付可编辑平台卡片。** 选 [Guizang Social Card Skill](../guizang-social-card.zh.md) 的 HTML 到 PNG 排版。Mono-color 让图像模型画字；一次重试仍失败后，它要求交付少文字底图，并建议另行叠字。
+- **需要固定权重与采样控制的本地推理流程。** 选 [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.zh.md)。本仓库提供指令和目录规则，不提供图像模型、显卡运行时、接口凭据，也不替上传的照片建立隐私边界。
 - **需要多种手绘画风，不是同一套印刷语法。** 选 [hand-drawn-styles](hand-drawn-styles.zh.md) 的具名配方。Mono-color 明确排除贴纸拼贴、光滑场景、全彩照片和两种以上油墨。
 - **想把仓库自带美术直接拿去商用。** 改用 ComfyUI 处理你已获授权的素材。MIT 覆盖软件和指令，不覆盖原创示例图；第三方参考图另有权利，部分署名仍不完整。原创性清单不会授予这些权利。
 - **印厂需要经过验证的分色版与实体色彩。** 用 Guizang 一类可编辑排版流程，再走印厂认可的印前处理。Mono-color 交付图片和提示词；油墨比例与模拟套印偏移只是指令，不是测量后的分色文件。
@@ -89,15 +89,15 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Guizang Social Card Skill](guizang-social-card.zh.md) | 已收录 | 平台卡片的日期和长文必须保持可编辑时选 Guizang；图像主导的印刷构图比受控文字排版更重要时选 mono-color。 | HTML 模板与浏览器渲染需要 Node 和浏览器环境；mono-color 依靠宿主生图工具，也可只交提示词。 |
+| [Guizang Social Card Skill](../guizang-social-card.zh.md) | 已收录 | 平台卡片的日期和长文必须保持可编辑时选 Guizang；图像主导的印刷构图比受控文字排版更重要时选 mono-color。 | HTML 模板与浏览器渲染需要 Node 和浏览器环境；mono-color 依靠宿主生图工具，也可只交提示词。 |
 | [hand-drawn-styles](hand-drawn-styles.zh.md) | 已收录 | 已选定编号画风、只想原样复用配方时选 hand-drawn-styles；要一起决定主体、油墨职责和编辑版面时选 mono-color。 | 固定配方减少助手改写；mono-color 会调整同一套语法，但更依赖模型遵守长流程。 |
-| [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md) | 已收录 | 本地模型与可保存的生成节点图是硬条件时选 ComfyUI；已有生图工具、只缺美术指导时选 mono-color。 | ComfyUI 增加模型、硬件和节点维护；mono-color 没有推理引擎，不能在采样时强制视觉规则。 |
+| [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.zh.md) | 已收录 | 本地模型与可保存的生成节点图是硬条件时选 ComfyUI；已有生图工具、只缺美术指导时选 mono-color。 | ComfyUI 增加模型、硬件和节点维护；mono-color 没有推理引擎，不能在采样时强制视觉规则。 |
 
 ## 快速上手
 
 README 把仓库装入 `~/.claude/skills/mono-color`，并要求重启 Claude Code；其他宿主可把 `SKILL.md` 当作入口。启用前先审指令：技能要求把产物放进 `~/Desktop/Claude skills/mono-color/`，你应让它服从自己的输出目录政策。提供主题或获授权的照片、准确文案，需要单色时明确提出。助手编译提示词，再调用宿主已有的生图工具，交付图片、准确提示词和配方；没有工具时必须说明只交提示词。服务账号、生图费用、素材授权、文字校对和印前处理仍由你负责；本次研究未安装或执行上游，也未实际生图。
 
-![mono-color-skill 主干用户故事](../../../assets/flow/mono-color-skill.zh.svg)
+![mono-color-skill 主干用户故事](../../../../assets/flow/mono-color-skill.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/mono-color-skill.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -116,7 +116,7 @@ README 把仓库装入 `~/.claude/skills/mono-color`，并要求重启 Claude Co
 
 ## 技术要点
 
-![Mono-color — 机制图](../../../assets/mechanism/mono-color-skill.zh.svg)
+![Mono-color — 机制图](../../../../assets/mechanism/mono-color-skill.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/mono-color-skill.json by tools/mechanism_card.py; do not edit) -->
 <details>

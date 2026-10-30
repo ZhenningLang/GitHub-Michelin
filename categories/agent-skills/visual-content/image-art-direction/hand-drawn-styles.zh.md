@@ -2,7 +2,7 @@
 name: hand-drawn-styles
 slug: hand-drawn-styles
 repo: https://github.com/threerocks/hand-drawn-styles
-category: visual-content
+category: image-art-direction
 tags: [skill-pack, image-generation, prompt-library, hand-drawn, style-reference, prompt-renderer, chinese]
 language: Python
 license: MIT
@@ -73,7 +73,7 @@ health:
 
 好不容易让生图模型画出你要的那种歪歪扭扭的儿童蜡笔味儿，下一张图——同样的要求，只是被 agent 顺手改写了几个词——又变回干净的数字剪贴画。hand-drawn-styles 把 22 套实测过的画风配方收在一个文件里，由一个小脚本把选中的配方一字不改地取出来、只把你要画的内容填进去，agent 没有机会把画风“意译”掉。
 
-![hand-drawn-styles — 健康度雷达](../../../assets/health/hand-drawn-styles.zh.svg)
+![hand-drawn-styles — 健康度雷达](../../../../assets/health/hand-drawn-styles.zh.svg)
 
 ## 何时使用
 
@@ -85,7 +85,7 @@ health:
 
 这里没有任何东西会画画。仓库是一个 skill 包：`STYLES.md` 存配方（21 种整数编号画风加一个 3.1 变体），`PROTOCOL.md` 是 agent 要照做的五步流程（定画风、取配方、填占位符、处理比例、输出），`SKILL.md` 和 `AGENTS.md` 只是薄适配层，把 Claude Code、Codex 及其他能读自定义指令的 agent 指向前两个文件。真正干活的是 `scripts/render_prompt.py`：一个不依赖第三方库的 Python 脚本，从 `STYLES.md` 里原样取出配方，再替换占位符——配方里像 `【主体】` 这样用方括号标出的空位，代表由你提供的内容。你只说画什么；空位的值由 agent 推断，并且协议明令它不得缩写、同义改写或混配。可以把它想成一枚橡皮图章，而不是对图章的一段描述：印纹是固定的，变的只有底下那张纸。多数画风的结果是一段文本提示词，由你自己贴进 gpt-image、即梦或 Midjourney。3.1、19、20 的结果则是 JSON“调用包”：提示词，加一张锚点图——只作画风参考传给生图模型的图片，按像素哈希校验，被换过就拒绝——再加一份需要由你自己的出图工具去执行的流程或评分合同。另有一个 shell 脚本可以借已登录的 Codex CLI 直接出 21 号画风的图；其余一律止步于提示词。
 
-![hand-drawn-styles — 主干用户故事](../../../assets/flow/hand-drawn-styles.zh.svg)
+![hand-drawn-styles — 主干用户故事](../../../../assets/flow/hand-drawn-styles.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/hand-drawn-styles.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -107,11 +107,11 @@ health:
 
 - **你想逛着挑画风。** 这里只有 22 套配方，不是几百套，也没有版面图型和主题色目录。要 279 种编号画风外加 122 种图型、36 种配色的图鉴，用 [handraw-style](handraw-style.zh.md)。
 - **你要的是成图，不是提示词。** 协议明确要求 agent 不生图；只有 21 号画风带直接出图脚本，而它需要已登录且支持生图的 Codex CLI、`bun`、默认尺寸要用的 macOS `sips`，以及一个名为 `sweety-image-privacy` 的配套 skill——本次没有找到它的公开仓库。想让 agent 读完文章、排好镜头、再用自带生图工具画出来，用 [ian-xiaohei-illustrations](ian-illustrations.zh.md)。
-- **你的出图接口传不了参考图，或锁不了模型版本。** 3.1、19、20 缺了锚点图就失败关闭，19 和 20 还额外要求模型快照 `gpt-image-2-2026-04-21`——而维护者自己的调用包里把这一条标成测试中未观察到（`exact_candidate_snapshot_observed: false`）。画风锁定必须落在你可控的管线里时，改在 [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md) 里训练或加载 LoRA / IP-Adapter。
+- **你的出图接口传不了参考图，或锁不了模型版本。** 3.1、19、20 缺了锚点图就失败关闭，19 和 20 还额外要求模型快照 `gpt-image-2-2026-04-21`——而维护者自己的调用包里把这一条标成测试中未观察到（`exact_candidate_snapshot_observed: false`）。画风锁定必须落在你可控的管线里时，改在 [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.zh.md) 里训练或加载 LoRA / IP-Adapter。
 - **你需要跨版本不变的标识。** 画风编号已经动过一次：2026-08-04 整数编号整体前移，`1.1`、`1.2` 被删除，你存下的“13 号画风”（当时是暖光童画）现在指向北欧纸雕。第一个也是唯一一个带 tag 的发布 v1.0.0 在 2026-10-08 才出现——此前没有版本历史，此后也没有写明兼容策略。请用别名调用，并锁定 v1.0.0 安装包；如果你要的是一种因为只有它一种、所以不会被重新编号的画风，用 [ian-xiaohei-illustrations](ian-illustrations.zh.md)。
-- **你要确定、可编辑的成品。** 提示词不是卡片，每次生成都不一样。要能 diff、能改模板的 HTML 转 PNG 产物，用 [Guizang Social Card Skill](guizang-social-card.zh.md) 或 [HTML Anything](../../ai-design-generation/html-anything.zh.md)。
-- **你要商业上干净的画风。** `STYLES.md` 写明 12 到 17 号画风是特定 Midjourney `--sref` 风格码的 gpt-image 复刻，另有画风直接挂在吉卜力和 xkcd 名下。MIT 覆盖的是配方文字和脚本，覆盖不了它们模仿的画风。[推断] 做品牌项目，请在 [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md) 里用自己的美术素材建立画风。
-- **你的工作语言是英文。** 协议、配方、菜单和报错信息都是中文，21 号画风画进图里的也是手写中文文案。要通用的、英文优先的提示词库，用 [prompts.chat](../prompt-engineering/prompts-chat.zh.md)。
+- **你要确定、可编辑的成品。** 提示词不是卡片，每次生成都不一样。要能 diff、能改模板的 HTML 转 PNG 产物，用 [Guizang Social Card Skill](../guizang-social-card.zh.md) 或 [HTML Anything](../../../ai-design-generation/html-anything.zh.md)。
+- **你要商业上干净的画风。** `STYLES.md` 写明 12 到 17 号画风是特定 Midjourney `--sref` 风格码的 gpt-image 复刻，另有画风直接挂在吉卜力和 xkcd 名下。MIT 覆盖的是配方文字和脚本，覆盖不了它们模仿的画风。[推断] 做品牌项目，请在 [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.zh.md) 里用自己的美术素材建立画风。
+- **你的工作语言是英文。** 协议、配方、菜单和报错信息都是中文，21 号画风画进图里的也是手写中文文案。要通用的、英文优先的提示词库，用 [prompts.chat](../../prompt-engineering/prompts-chat.zh.md)。
 
 ## 横向对比
 
@@ -119,8 +119,8 @@ health:
 |---|---|---|---|
 | [handraw-style](handraw-style.zh.md) | ✅ | 任务是从带图型和配色的大型编号图鉴里挑一种画风时，选 handraw-style；画风已经定了、要的是同一份配方被原样复现，并且其中三种画风带锚点和验收规则时，选本页项目。 | 22 套留有验证轮次记录、配了测试过的渲染器的配方，对 279 种带逐模型激活数据、但单套证据更薄的画风。 |
 | [ian-xiaohei-illustrations](ian-illustrations.zh.md) | ✅ | 要让一个固定角色为整篇中文文章配图，并且由 agent 决定哪里配图、直接画出来时，选 ian；你自带生图模型、只需要画风段落保持不变时，选本页项目。 | 锁死单一 IP 的“文章到 PNG”完整闭环，对覆盖多种画风、但把出图留给你的纯提示词工具。 |
-| [Baoyu Skills](../ai-writing/content-production/baoyu-skills.zh.md) | ✅ | 配图只是“写作到发布”流水线里的一步、希望出图和发布辅助装在同一个包里时，选 Baoyu Skills；唯一的问题是画风保真、多装的 skill 只会占上下文时，选本页项目。 | 一个横跨翻译、排版、生图、发布的大包，对一个不带出图后端的单用途配方包。 |
-| [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md) | ✅ | 画风一致性必须靠权重和节点在自己的 GPU 上强制保证时，选 ComfyUI；托管生图模型够用、只想止住提示词漂移时，选本页项目。 | 管线级控制加硬件和工作流维护成本，对零运行时、保真度随托管模型而定。 |
+| [Baoyu Skills](../../ai-writing/content-production/baoyu-skills.zh.md) | ✅ | 配图只是“写作到发布”流水线里的一步、希望出图和发布辅助装在同一个包里时，选 Baoyu Skills；唯一的问题是画风保真、多装的 skill 只会占上下文时，选本页项目。 | 一个横跨翻译、排版、生图、发布的大包，对一个不带出图后端的单用途配方包。 |
+| [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.zh.md) | ✅ | 画风一致性必须靠权重和节点在自己的 GPU 上强制保证时，选 ComfyUI；托管生图模型够用、只想止住提示词漂移时，选本页项目。 | 管线级控制加硬件和工作流维护成本，对零运行时、保真度随托管模型而定。 |
 | Midjourney 风格参考（`--sref`） | 非仓库 | 在 Midjourney 里出图、一个风格码就够用时，选 `--sref`；本页项目很大程度上就是为了把这类画风搬到没有风格码的 gpt-image 上。 | 闭源付费服务里一个参数搞定的原生风格迁移——它是功能，不是可 fork 的仓库——对可以跨模型携带、但要逐模型调校的文字配方。 |
 
 ## 健康度与可持续性

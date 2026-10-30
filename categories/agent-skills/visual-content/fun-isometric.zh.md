@@ -81,7 +81,7 @@ health:
 
 - **你需要页面过渡、滚动编排或任意 SVG 动画。** 选 [Anime.js](../../frontend-animation/anime.zh.md)。这里的组件把特定贴纸场景画进画布，不是通用页面动画引擎。
 - **交付物是带解说或多个场景的视频。** 从 [Remotion Agent Skills](../vendor-collections/product-vendors/remotion-skills.zh.md) 入手，再分发前注意该页的技能许可提醒。fun-isometric 导出单个图标循环，不提供视频编辑器、音轨或合成时间线。
-- **你想切换多种插画风格，或生成写实像素。** 用 [handraw-style](handraw-style.zh.md) 组织生图提示词。本技能有意限定厚片造型、按语义配色的平涂和预设动作，不通过生图模型生成位图。
+- **你想切换多种插画风格，或生成写实像素。** 用 [handraw-style](image-art-direction/handraw-style.zh.md) 组织生图提示词。本技能有意限定厚片造型、按语义配色的平涂和预设动作，不通过生图模型生成位图。
 - **执行环境不能下载浏览器或运行本机媒体工具。** 仅需网页实时动画时，优先选不依赖贴纸渲染命令的 [Anime.js](../../frontend-animation/anime.zh.md)。实时画布组件本身不依赖 Lottie 播放器，但所附检查和渲染路径需要 Bun、Chromium；拼帧预览图也调用 ffmpeg，并非只有视频导出才需要。首次使用可能安装 Playwright 并下载 Chromium。
 - **你需要成熟、带版本承诺的动画接口，或保证助手严格执行流程。** 优先看 [Anime.js](../../frontend-animation/anime.zh.md) 的成熟库接口。此仓库在核验前一天才创建，尚无发布；绘图与验收规则是给助手的指令，不是强制执行的编排引擎。
 
@@ -91,7 +91,7 @@ health:
 |---|---|---|---|
 | [Anime.js](../../frontend-animation/anime.zh.md) | 已收录 | 已有网页或 SVG 图形、需要时间线和滚动控制时，选 Anime.js；需要助手按固定外观新画并绑定贴纸时，选 fun-isometric。 | 通用引擎把素材创作留给你；贴纸技能提供绘图示例和动作，但限定外观与场景格式。 |
 | [Remotion Agent Skills](../vendor-collections/product-vendors/remotion-skills.zh.md) | 已收录 | 需要跨场景和媒体的 React 视频合成时，选 Remotion 技能；只需可嵌入页面、还能导出透明视频的物件循环时，选 fun-isometric。 | Remotion 指导依赖独立渲染框架，所链页面另有技能许可提醒；本套件自带画布播放器，却没有完整视频制作流程。 |
-| [handraw-style](handraw-style.zh.md) | 已收录 | 任务在于切换插画风格时，选 handraw-style；交付必须是能修改、分部件运动的绘图代码，而非交给生图模型的提示词时，选 fun-isometric。 | 多种画风和依赖模型的像素，对比单一受限外观及明确的图层、配色槽和动作轨迹。 |
+| [handraw-style](image-art-direction/handraw-style.zh.md) | 已收录 | 任务在于切换插画风格时，选 handraw-style；交付必须是能修改、分部件运动的绘图代码，而非交给生图模型的提示词时，选 fun-isometric。 | 多种画风和依赖模型的像素，对比单一受限外观及明确的图层、配色槽和动作轨迹。 |
 
 ## 快速上手
 

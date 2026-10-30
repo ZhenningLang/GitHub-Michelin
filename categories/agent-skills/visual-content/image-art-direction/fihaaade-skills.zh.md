@@ -2,7 +2,7 @@
 name: fihaaade/skills
 slug: fihaaade-skills
 repo: https://github.com/fihaaade/skills
-category: visual-content
+category: image-art-direction
 tags: [skill-pack, image-generation, prompt-recipes, outsider-art, phosphor-relay, starlit-relic]
 language: Markdown
 license: Unspecified
@@ -69,7 +69,7 @@ health:
 
 你想给照片换一种画法，模型却只会加复古滤镜。这个合集拆出三套明确规则：发光屏幕重摄、平面民俗海报、蓝色夜场中的悬浮物体。
 
-![fihaaade/skills — 健康度雷达](../../../assets/health/fihaaade-skills.zh.svg)
+![fihaaade/skills — 健康度雷达](../../../../assets/health/fihaaade-skills.zh.svg)
 
 > **仅作介绍，不构成复制或商用许可。** 已查整树没有许可授权。包内屏幕参考图来自足球转播，其原作者及复用权利未核清。仓库持有人不等于提示词或图片的已证原创作者。
 
@@ -81,10 +81,10 @@ health:
 
 ## 何时不用
 
-- **要商用权利已清的素材或可再分发技能包。** 已查整树无许可，屏幕参考图还涉及转播来源。应在 [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md) 中使用自有且权利已清的素材；别的仓库的代码许可同样不能替第三方美术授权。
+- **要商用权利已清的素材或可再分发技能包。** 已查整树无许可，屏幕参考图还涉及转播来源。应在 [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.zh.md) 中使用自有且权利已清的素材；别的仓库的代码许可同样不能替第三方美术授权。
 - **要大画风菜单，或原样取出固定配方。** 选 [handraw-style](handraw-style.zh.md) 浏览画廊，或用 [hand-drawn-styles](hand-drawn-styles.zh.md) 的配方渲染器。这里由宿主模型编写提示词，没有脚本锁定最终文字。
-- **要离线生图、批处理调度或可复现像素。** 选 [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md)，固定权重和流程。本仓没有模型、生图客户端、可执行脚本或运行时测试；宿主能力、费用和数据处理由你负责。
-- **人脸或原图裁切必须满足合同要求。** 用经过审查的 [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md) 流程，另建验收测试。屏幕技能禁止可辨认真人，平面海报使用无脸人物。星芒技能自相矛盾：输入规则禁止人脸，人物语法和 v1.4 记录却允许。保留构图也只是屏幕技能的文字指令，不是硬保证。
+- **要离线生图、批处理调度或可复现像素。** 选 [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.zh.md)，固定权重和流程。本仓没有模型、生图客户端、可执行脚本或运行时测试；宿主能力、费用和数据处理由你负责。
+- **人脸或原图裁切必须满足合同要求。** 用经过审查的 [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.zh.md) 流程，另建验收测试。屏幕技能禁止可辨认真人，平面海报使用无脸人物。星芒技能自相矛盾：输入规则禁止人脸，人物语法和 v1.4 记录却允许。保留构图也只是屏幕技能的文字指令，不是硬保证。
 
 ## 横向对比
 
@@ -92,13 +92,13 @@ health:
 |---|---|---|---|
 | [handraw-style](handraw-style.zh.md) | 已收录 | 需要靠编号画风、版面和配色发现方向时选它；已经定下屏幕材质、平面民俗场景或夜场圣物时，再研究本合集。 | 大画廊和模型激活记录，对比三套深入展开的工作流；包内美术权利仍须单独核查。 |
 | [hand-drawn-styles](hand-drawn-styles.zh.md) | 已收录 | 多次请求必须保留同一套验证过的措辞时选它；每个场景要重新编场景卡或材质配方时，把本合集当美术方向参考。 | 确定性的文字提取器，对比模型编写提示词和视觉检查；两者都不保证像素确定性。 |
-| [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md) | 已收录 | 必须掌控渲染、权重和可重复任务配置时选它；本合集仅提供三种画法的提示词指导。 | 持续维护的生图运行时需要硬件和流程维护；本合集只有指令文本，没有后端或许可授权。 |
+| [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.zh.md) | 已收录 | 必须掌控渲染、权重和可重复任务配置时选它；本合集仅提供三种画法的提示词指导。 | 持续维护的生图运行时需要硬件和流程维护；本合集只有指令文本，没有后端或许可授权。 |
 
 ## 快速上手
 
 上游只给调用范例，没有安装器，也没有跨宿主的设置流程。解决复用权利后，才通过宿主自身的技能机制提供选中的已审查目录；本次没有安装。以下用屏幕技能作代表：使用[文档中的请求](https://github.com/fihaaade/skills/blob/1aa85f4a0f426e985659b202efb33c3f7e01e48c/phosphor-relay-style/EXAMPLES.md#L79-L97)，明确要求 `prompt-only`，只取提示词和配方，不生成图片。技能要求宿主模型选择构图和信号参数，再编写四段提示词；它自身不提供生图工具。若以后授权出图，生成和看图能力由宿主提供，模型费用与照片传输由你确认；上游文字中的同意假设不能代替宿主授权规则。
 
-![fihaaade-skills — 主干用户故事](../../../assets/flow/fihaaade-skills.zh.svg)
+![fihaaade-skills — 主干用户故事](../../../../assets/flow/fihaaade-skills.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/fihaaade-skills.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -116,7 +116,7 @@ health:
 
 ## 技术要点
 
-![fihaaade/skills — 机制图](../../../assets/mechanism/fihaaade-skills.zh.svg)
+![fihaaade/skills — 机制图](../../../../assets/mechanism/fihaaade-skills.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/fihaaade-skills.json by tools/mechanism_card.py; do not edit) -->
 <details>

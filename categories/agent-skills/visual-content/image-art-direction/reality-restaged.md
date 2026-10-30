@@ -2,7 +2,7 @@
 name: Reality Restaged
 slug: reality-restaged
 repo: https://github.com/traveler0621/reality-restaged
-category: visual-content
+category: image-art-direction
 tags: [codex-skill, photography, surrealism, image-editing, art-direction, prompt-pack]
 language: Markdown
 license: Unknown
@@ -69,7 +69,7 @@ health:
 
 Your travel-photo edit keeps becoming a generic fantasy scene, losing the people and gestures that made the picture yours. Reality Restaged directs an agent to preserve those anchors while rebuilding the surrounding space with large color fields and one impossible relationship.
 
-![Reality Restaged health radar](../../../assets/health/reality-restaged.svg)
+![Reality Restaged health radar](../../../../assets/health/reality-restaged.svg)
 
 ## When to use
 
@@ -79,9 +79,9 @@ Choose this skill when you already have an image-capable Codex environment and n
 
 ## When NOT to use
 
-- **You must keep the photograph as documentary evidence.** New compositions explicitly move subjects, change horizons, and remove scenery. Keep the original; use a conventional editor such as [PhotoCraft](../../photo-editing/photocraft.md) only for non-generative corrections, accounting for its early-alpha status, rather than presenting a restaged image as reportage.
+- **You must keep the photograph as documentary evidence.** New compositions explicitly move subjects, change horizons, and remove scenery. Keep the original; use a conventional editor such as [PhotoCraft](../../../photo-editing/photocraft.md) only for non-generative corrections, accounting for its early-alpha status, rather than presenting a restaged image as reportage.
 - **You need actual masks or enforceable local edits.** Master Lock is an instruction to preserve an approved composition, not a pixel lock. Choose [InvokeAI](https://github.com/invoke-ai/InvokeAI) for a canvas with brush-based inpainting and outpainting; inspect its outputs too.
-- **You need offline inference or a versioned model pipeline.** Choose [ComfyUI](../../on-device-ml/local-image-generation/comfyui.md) and manage model files and workflows yourself. This repository contains no renderer, model weights, provider configuration, or image-tool adapter.
+- **You need offline inference or a versioned model pipeline.** Choose [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.md) and manage model files and workflows yourself. This repository contains no renderer, model weights, provider configuration, or image-tool adapter.
 - **You need explanatory drawings rather than transformed photographs.** Choose [ian-xiaohei-illustrations](ian-illustrations.md) for article-driven hand-drawn scenes; this skill deliberately seeks photographic surfaces and documentary subjects.
 - **Your organization needs an explicit reuse grant.** The reviewed tree has no LICENSE and neither text file supplies licensing terms. Prefer a workflow with reviewed licenses, such as ComfyUI plus appropriately licensed models, or obtain permission before redistributing this pack or its example artwork.
 
@@ -89,7 +89,7 @@ Choose this skill when you already have an image-capable Codex environment and n
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [ComfyUI](../../on-device-ml/local-image-generation/comfyui.md) | Indexed | Choose ComfyUI when you must control model, conditioning and generation stages; choose Reality Restaged when the missing piece is a source-led surreal composition brief. | ComfyUI supplies executable graphs and local inference but requires hardware, models and workflow design; this pack supplies artistic constraints without that infrastructure. |
+| [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.md) | Indexed | Choose ComfyUI when you must control model, conditioning and generation stages; choose Reality Restaged when the missing piece is a source-led surreal composition brief. | ComfyUI supplies executable graphs and local inference but requires hardware, models and workflow design; this pack supplies artistic constraints without that infrastructure. |
 | [InvokeAI](https://github.com/invoke-ai/InvokeAI) | not indexed | Choose InvokeAI when revising a particular region with a brush matters more than automatically rethinking the whole photograph. | Its local canvas provides inpainting, outpainting and workflow management, not this documentary-first visual grammar; not added in this tab batch. |
 | [ian-xiaohei-illustrations](ian-illustrations.md) | Indexed | Choose ian-xiaohei-illustrations for conceptual article figures; choose Reality Restaged when real clothing, gestures and photographic texture must remain the visual anchors. | The former trades photographic identity for a consistent recurring drawn character; both depend on the host for image generation. |
 
@@ -97,7 +97,7 @@ Choose this skill when you already have an image-capable Codex environment and n
 
 The [README](https://github.com/traveler0621/reality-restaged/blob/9a5533cb656bba6163714a6f5fc2217a1e6607fb/README.md) documents cloning the repository into `~/.codex/skills/reality-restaged` and reopening Codex if needed. In an authorized installation, review the skill first, then provide a source photo and ask `Use reality-restaged on this image.` The skill supplies composition instructions; your host must separately provide image understanding and generation or editing capability. You remain responsible for photograph rights, consent, provider privacy and charges, and judging whether faces and cultural details survived. The repository does not specify a model, tool-call contract, output path, or export format, so installation alone does not establish an end-to-end rendering setup.
 
-![reality-restaged backbone user story](../../../assets/flow/reality-restaged.svg)
+![reality-restaged backbone user story](../../../../assets/flow/reality-restaged.svg)
 
 <!-- flow-steps:begin (generated from flows/reality-restaged.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -115,7 +115,7 @@ The [README](https://github.com/traveler0621/reality-restaged/blob/9a5533cb656bb
 
 ## Key techniques
 
-![Reality Restaged — mechanism diagram](../../../assets/mechanism/reality-restaged.svg)
+![Reality Restaged — mechanism diagram](../../../../assets/mechanism/reality-restaged.svg)
 
 <!-- mechanism:begin (generated from mechanisms/reality-restaged.json by tools/mechanism_card.py; do not edit) -->
 <details>

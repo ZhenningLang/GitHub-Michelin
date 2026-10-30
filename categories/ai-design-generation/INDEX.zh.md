@@ -32,7 +32,7 @@
 | [screenshot-to-code](screenshot-to-code.zh.md) | ✅ | B（5/6） | 换来现成的复刻流水线（裁原图素材、四版本并行、自渲染检查）；代价是每张截图都要付模型 API 费用，产出是要返工的 CDN 单文件。 |
 | [Guizang PPT Skill](../agent-skills/slides-ppt/guizang-ppt.zh.md) | ✅ | C（4/5） | 可移植的 deck 生成 skill；因为消费单元是 skill pack，已迁到 agent-skills。 |
 | [Guizang Social Card Skill](../agent-skills/visual-content/guizang-social-card.zh.md) | ✅ | D（3/5） | 可移植的社交卡片 skill；因为它装进 agent harness，已迁到 agent-skills。 |
-| [ian-xiaohei-illustrations](../agent-skills/visual-content/ian-illustrations.zh.md) | ✅ | B（4/5） | 可移植的文章配图 skill；因为它作为 skill 被选择，已迁到 agent-skills。 |
+| [ian-xiaohei-illustrations](../agent-skills/visual-content/image-art-direction/ian-illustrations.zh.md) | ✅ | B（4/5） | 可移植的文章配图 skill；因为它作为 skill 被选择，已迁到 agent-skills。 |
 | v0 / Lovable / tldraw make-real | 未收录 | — | 各页对比里点到的其他 agent 化 UI/设计生成器。 |
 | [Open Intelligent UI](open-intelligent-ui.zh.md) | ✅ | B（4/6） | 把聊天回答变成计算器、地图和交互图；依赖托管 Jev 路由，生产部署需替换临时检查点。 |
 | [OpenUI](openui.zh.md) | 已收录 | B（6/6） | Thesys 的 MIT SDK：用紧凑组件调用流与响应式查询替代编造 JSX；后端自备，数据外发须单独控制。 |

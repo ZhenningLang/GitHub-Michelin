@@ -2,7 +2,7 @@
 name: Gathered Scenes
 slug: gathered-scenes-zine-skill
 repo: https://github.com/Zeejay0/gathered-scenes-zine-skill
-category: visual-content
+category: image-art-direction
 tags: [skill-pack, photo-collage, image-generation, editorial-illustration, live-photo, codex]
 language: Markdown, Python, Swift
 license: Custom personal non-commercial
@@ -66,7 +66,7 @@ health:
 
 旅行照一变插画，人物与地平线的关系就丢了。这组技能先让助手认清现场关系，再做纸感拼贴；也能主动舍弃摄影画面，只保留情绪与动作。
 
-![Gathered Scenes Zine 健康度雷达](../../../assets/health/gathered-scenes-zine-skill.zh.svg)
+![Gathered Scenes Zine 健康度雷达](../../../../assets/health/gathered-scenes-zine-skill.zh.svg)
 
 **许可边界：** 源码可见，但不是 OSI 开源授权。[个人非商业许可](https://github.com/Zeejay0/gathered-scenes-zine-skill/blob/b9edb836c9dd5c5d80995e89ebcaba34b75fd58f/LICENSE#L10-L61)禁止为公司、客户、非营利机构等组织使用，也限制生成成品的商业用途。这些用途都须事先获得书面许可。
 
@@ -78,8 +78,8 @@ health:
 
 ## 何时不用
 
-- **你要做客户项目或变现内容。** 可在 [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md) 中独立设计流程，并核对软件与模型许可；或者先取得本项目的书面许可。即使不收费，本项目也限制组织用途，署名不等于获准使用。
-- **你要可编辑文字、精确版式或稳定字体。** 选 [Guizang Social Card Skill](guizang-social-card.zh.md) 的 HTML 转 PNG 卡片路线。这里的静态纸刊是模型生成的栅格图；保脸、保字、保摄影区域只是指令，不是逐像素约束。
+- **你要做客户项目或变现内容。** 可在 [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.zh.md) 中独立设计流程，并核对软件与模型许可；或者先取得本项目的书面许可。即使不收费，本项目也限制组织用途，署名不等于获准使用。
+- **你要可编辑文字、精确版式或稳定字体。** 选 [Guizang Social Card Skill](../guizang-social-card.zh.md) 的 HTML 转 PNG 卡片路线。这里的静态纸刊是模型生成的栅格图；保脸、保字、保摄影区域只是指令，不是逐像素约束。
 - **照片不能交给生成服务。** 选本地 ComfyUI，使用审过的本地权重并禁用联网节点。两个主要纸刊提示词都明确把必要参考图与提示词交给宿主的生图服务；隐私文字不是技术出网屏障。
 - **你只想拿画风配方去别处生成。** 选 [hand-drawn-styles](hand-drawn-styles.zh.md)。本项目默认直接生成，除非用户要求，否则不展示完整提示词；它还要求宿主在前三次成功生成后附上推广网站文字。
 - **你要可完整检查的相册导入器，或跨平台实况照片支持。** 优先考虑 Guizang Social Card Skill 的文件交付路线，并核对其平台条件。本仓附带 Apple 芯片导入器可执行文件，所查树中没有对应应用源码；Python 构建器默认启动它，除非传入 `--no-import`。静态纸刊不需要该程序。
@@ -89,15 +89,15 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| [Guizang Social Card Skill](guizang-social-card.zh.md) | 已收录 | 精确文案、平台尺寸和可编辑卡片决定选型时选 Guizang；个人照片要化成纸感插画时选拾景。 | HTML 与可选页面元素检查，对比生成式栅格构图；Guizang 的 AGPL 义务仍须核对。 |
+| [Guizang Social Card Skill](../guizang-social-card.zh.md) | 已收录 | 精确文案、平台尺寸和可编辑卡片决定选型时选 Guizang；个人照片要化成纸感插画时选拾景。 | HTML 与可选页面元素检查，对比生成式栅格构图；Guizang 的 AGPL 义务仍须核对。 |
 | [hand-drawn-styles](hand-drawn-styles.zh.md) | 已收录 | 要选定画风并跨提示词保留配方时选它；希望源照片决定构图时选拾景。 | 原样提取配方，生成由你安排；拾景要求宿主分析关系并出图，但只授权个人非商业用途。 |
-| [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md) | 已收录 | 照片必须本地处理，或必须保存推理流程图时选 ComfyUI；在可生图助手内做个人实验时选拾景。 | 要维护模型、硬件和节点，换来流程控制；拾景只提供艺术指导，不提供推理引擎。 |
+| [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.zh.md) | 已收录 | 照片必须本地处理，或必须保存推理流程图时选 ComfyUI；在可生图助手内做个人实验时选拾景。 | 要维护模型、硬件和节点，换来流程控制；拾景只提供艺术指导，不提供推理引擎。 |
 
 ## 快速上手
 
 [README 的安装路径](https://github.com/Zeejay0/gathered-scenes-zine-skill/blob/b9edb836c9dd5c5d80995e89ebcaba34b75fd58f/README.md#L146-L169)是克隆仓库，再把选中的静态技能目录复制到 `~/.codex/skills/`；若未发现技能，再重启 Codex。先检查许可与提示词，再提供自己的照片，调用 `$scenes-gathered-zine-v1-3`，说明要保留的关系和文字语言。宿主必须已有生图能力，账号、服务费用和参考图上传授权由你负责；本仓没有为两个主要静态技能提供模型权重或生成接口客户端。助手编译场景专属提示词，返回栅格海报与简短创作说明。若要完全重画、不保留摄影画面，改调 `$scene-distillation-zine-v1-3`；可选实况分支另需 Python、NumPy、Pillow、FFmpeg 和 macOS Swift 框架，使用 `--no-import` 才不会自动启动导入器。
 
-![gathered-scenes-zine-skill 主干用户故事](../../../assets/flow/gathered-scenes-zine-skill.zh.svg)
+![gathered-scenes-zine-skill 主干用户故事](../../../../assets/flow/gathered-scenes-zine-skill.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/gathered-scenes-zine-skill.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -116,7 +116,7 @@ health:
 
 ## 技术要点
 
-![Gathered Scenes — 机制图](../../../assets/mechanism/gathered-scenes-zine-skill.zh.svg)
+![Gathered Scenes — 机制图](../../../../assets/mechanism/gathered-scenes-zine-skill.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/gathered-scenes-zine-skill.json by tools/mechanism_card.py; do not edit) -->
 <details>

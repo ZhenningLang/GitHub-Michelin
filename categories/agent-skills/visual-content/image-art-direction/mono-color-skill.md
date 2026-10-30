@@ -2,7 +2,7 @@
 name: Mono-color
 slug: mono-color-skill
 repo: https://github.com/yanliudesign/mono-color-skill
-category: visual-content
+category: image-art-direction
 tags: [skill-pack, editorial-design, image-generation, halftone, risograph, duotone]
 language: Markdown, Python
 license: MIT (software); proprietary original example images; third-party reference rights reserved
@@ -69,7 +69,7 @@ health:
 
 Your poster request keeps coming back as a tinted photograph with a detached headline. Mono-color tells the agent to assign at most two ink plates, cut paper-shaped gaps through the image, and make one object collide with the typography.
 
-![Monocolor Editorial Print - health radar](../../../assets/health/mono-color-skill.svg)
+![Monocolor Editorial Print - health radar](../../../../assets/health/mono-color-skill.svg)
 
 ## When to use
 
@@ -79,8 +79,8 @@ The useful constraint is a visual grammar, not a template: a dominant object, on
 
 ## When NOT to use
 
-- **Exact text or an editable platform card is the deliverable.** Choose [Guizang Social Card Skill](guizang-social-card.md) for HTML-to-PNG composition. Mono-color asks an image model to draw words; after one failed retry it instructs the agent to deliver a text-light image and recommend a separate text overlay.
-- **You need a local inference pipeline with pinned weights and sampling controls.** Choose [ComfyUI](../../on-device-ml/local-image-generation/comfyui.md). This repository supplies instructions and catalogs, not an image model, GPU runtime, API credentials, or privacy boundary for uploaded photographs.
+- **Exact text or an editable platform card is the deliverable.** Choose [Guizang Social Card Skill](../guizang-social-card.md) for HTML-to-PNG composition. Mono-color asks an image model to draw words; after one failed retry it instructs the agent to deliver a text-light image and recommend a separate text overlay.
+- **You need a local inference pipeline with pinned weights and sampling controls.** Choose [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.md). This repository supplies instructions and catalogs, not an image model, GPU runtime, API credentials, or privacy boundary for uploaded photographs.
 - **You want several hand-drawn looks instead of one print grammar.** Choose [hand-drawn-styles](hand-drawn-styles.md) for named recipes. Mono-color deliberately excludes sticker collages, glossy scenes, full-color photography, and more than two inks.
 - **You want to reuse the bundled artwork commercially.** Use your own cleared images in ComfyUI instead. The MIT grant covers software and instructions, not original example images; third-party references have separate rights and some incomplete attribution. The originality checklist does not grant those rights.
 - **The printer needs verified plate files or physical color accuracy.** Use an editable composition workflow such as Guizang for layout, then a printer-approved prepress process. Mono-color returns a raster image and prompt; its ink percentages and simulated registration drift are instructions, not measured print separations.
@@ -89,15 +89,15 @@ The useful constraint is a visual grammar, not a template: a dominant object, on
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Guizang Social Card Skill](guizang-social-card.md) | ✅ | Choose Guizang when dates and long copy must stay editable in platform-sized cards; choose mono-color when an image-led print composition matters more than DOM-controlled type. | HTML templates and browser rendering require a Node/browser setup; mono-color leaves the generation backend to the host and can stop at a prompt. |
+| [Guizang Social Card Skill](../guizang-social-card.md) | ✅ | Choose Guizang when dates and long copy must stay editable in platform-sized cards; choose mono-color when an image-led print composition matters more than DOM-controlled type. | HTML templates and browser rendering require a Node/browser setup; mono-color leaves the generation backend to the host and can stop at a prompt. |
 | [hand-drawn-styles](hand-drawn-styles.md) | ✅ | Choose hand-drawn-styles when you already picked a numbered drawing recipe and want it copied verbatim; choose mono-color when subject, ink roles, and editorial layout should be resolved together. | Fixed recipes reduce agent paraphrasing; mono-color adapts a single grammar but depends on the model following a longer procedure. |
-| [ComfyUI](../../on-device-ml/local-image-generation/comfyui.md) | ✅ | Choose ComfyUI when local models and a saved generation graph decide the job; choose mono-color when art direction is missing but your image tool already exists. | ComfyUI adds model, hardware, and node upkeep; mono-color has no inference engine and cannot enforce its visual rules through sampling. |
+| [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.md) | ✅ | Choose ComfyUI when local models and a saved generation graph decide the job; choose mono-color when art direction is missing but your image tool already exists. | ComfyUI adds model, hardware, and node upkeep; mono-color has no inference engine and cannot enforce its visual rules through sampling. |
 
 ## Quick start
 
 The README installs the repository into `~/.claude/skills/mono-color` and asks you to restart Claude Code; other hosts can read `SKILL.md` as their entry point. Review those instructions before enabling them: the skill requests generated files under `~/Desktop/Claude skills/mono-color/`, which you should reconcile with your own output policy. Supply a subject or authorized photograph, exact wording, and an explicit one-ink request if required. The agent compiles a prompt and uses an image tool already available in its host, returning the raster image, exact prompt, and recipe; without that tool it must disclose prompt-only delivery. You remain responsible for the provider account, any generation charges, source-image rights, text proofing, and print preparation; no upstream installation or image generation was executed for this review.
 
-![mono-color-skill - backbone user story](../../../assets/flow/mono-color-skill.svg)
+![mono-color-skill - backbone user story](../../../../assets/flow/mono-color-skill.svg)
 
 <!-- flow-steps:begin (generated from flows/mono-color-skill.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -116,7 +116,7 @@ The README installs the repository into `~/.claude/skills/mono-color` and asks y
 
 ## Key techniques
 
-![Mono-color — mechanism diagram](../../../assets/mechanism/mono-color-skill.svg)
+![Mono-color — mechanism diagram](../../../../assets/mechanism/mono-color-skill.svg)
 
 <!-- mechanism:begin (generated from mechanisms/mono-color-skill.json by tools/mechanism_card.py; do not edit) -->
 <details>

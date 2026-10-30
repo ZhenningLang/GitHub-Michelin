@@ -2,7 +2,7 @@
 name: Reality Restaged
 slug: reality-restaged
 repo: https://github.com/traveler0621/reality-restaged
-category: visual-content
+category: image-art-direction
 tags: [codex-skill, photography, surrealism, image-editing, art-direction, prompt-pack]
 language: Markdown
 license: Unknown
@@ -69,7 +69,7 @@ health:
 
 旅行照一加超现实效果，人物动作和现场关系就被改没了。Reality Restaged 让助手保留这些记忆锚点，再用大色块和一个不可能的关系重搭周围空间。
 
-![Reality Restaged 健康度雷达](../../../assets/health/reality-restaged.zh.svg)
+![Reality Restaged 健康度雷达](../../../../assets/health/reality-restaged.zh.svg)
 
 ## 何时使用
 
@@ -79,9 +79,9 @@ health:
 
 ## 何时不用
 
-- **照片必须保留纪实证据价值。** 新构图规则明确允许移动人物、改变地平线和删除景物。保留原片，用 [PhotoCraft](../../photo-editing/photocraft.zh.md) 这类常规编辑器仅做非生成式校正，同时注意它尚属早期测试版；不要把重构图当作新闻纪实。
+- **照片必须保留纪实证据价值。** 新构图规则明确允许移动人物、改变地平线和删除景物。保留原片，用 [PhotoCraft](../../../photo-editing/photocraft.zh.md) 这类常规编辑器仅做非生成式校正，同时注意它尚属早期测试版；不要把重构图当作新闻纪实。
 - **你需要真正的蒙版或可强制执行的局部修改。** 母版锁定只是保留已批准构图的指令，不是像素锁。需要画笔局部重绘和画布外扩时，选 [InvokeAI](https://github.com/invoke-ai/InvokeAI)，同时检查生成结果。
-- **你需要离线推理或可版本化的模型管线。** 选 [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md)，自行管理模型文件与工作流。本仓库没有渲染器、模型权重、供应商配置或生图工具适配器。
+- **你需要离线推理或可版本化的模型管线。** 选 [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.zh.md)，自行管理模型文件与工作流。本仓库没有渲染器、模型权重、供应商配置或生图工具适配器。
 - **你要解释概念的插画，而非改造照片。** 选 [ian-xiaohei-illustrations](ian-illustrations.zh.md) 生成文章驱动的手绘场景；本技能刻意保留摄影质感和纪实主体。
 - **组织要求明确的复用授权。** 已审树中没有 LICENSE，两份文本也未提供许可条款。优先选择许可已核实的工作流，例如 ComfyUI 加上授权合适的模型；转发本技能或示例作品前，应取得许可。
 
@@ -89,7 +89,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md) | 已收录 | 必须控制模型、条件输入和生成环节时选 ComfyUI；缺少的是从原片出发的超现实构图方案时选 Reality Restaged。 | ComfyUI 提供可执行节点图和本地推理，但要自备硬件、模型与工作流；本技能只提供艺术约束，不承担这些基础设施。 |
+| [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.zh.md) | 已收录 | 必须控制模型、条件输入和生成环节时选 ComfyUI；缺少的是从原片出发的超现实构图方案时选 Reality Restaged。 | ComfyUI 提供可执行节点图和本地推理，但要自备硬件、模型与工作流；本技能只提供艺术约束，不承担这些基础设施。 |
 | [InvokeAI](https://github.com/invoke-ai/InvokeAI) | 未收录 | 用画笔反复修改指定区域，比自动重构整张照片更重要时，选 InvokeAI。 | 本地画布提供局部重绘、外扩与工作流管理，但不自带这套纪实优先的视觉语法；本标签批次不新增该仓库。 |
 | [ian-xiaohei-illustrations](ian-illustrations.zh.md) | 已收录 | 需要概念型文章配图时选 ian-xiaohei-illustrations；必须以真实服饰、动作和摄影表面为锚点时选 Reality Restaged。 | 前者放弃照片身份，换取固定手绘角色的一致性；两者都依靠宿主完成生图。 |
 
@@ -97,7 +97,7 @@ health:
 
 [README](https://github.com/traveler0621/reality-restaged/blob/9a5533cb656bba6163714a6f5fc2217a1e6607fb/README.md) 的安装方式是克隆到 `~/.codex/skills/reality-restaged`，必要时重新打开 Codex。在获准安装的环境中，应先审查技能，再提供原片并说 `Use reality-restaged on this image.`。技能负责提供构图指令，宿主另行提供看图、生图或修图能力。你负责照片权利、人物同意、供应商隐私与费用，也要检查人脸和文化细节是否保留。仓库没有指定模型、工具调用契约、输出路径或导出格式，因此安装成功不代表已经接通完整生图链路。
 
-![reality-restaged 主干用户故事](../../../assets/flow/reality-restaged.zh.svg)
+![reality-restaged 主干用户故事](../../../../assets/flow/reality-restaged.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/reality-restaged.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -115,7 +115,7 @@ health:
 
 ## 技术要点
 
-![Reality Restaged — 机制图](../../../assets/mechanism/reality-restaged.zh.svg)
+![Reality Restaged — 机制图](../../../../assets/mechanism/reality-restaged.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/reality-restaged.json by tools/mechanism_card.py; do not edit) -->
 <details>

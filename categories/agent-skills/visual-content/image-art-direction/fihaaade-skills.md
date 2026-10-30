@@ -2,7 +2,7 @@
 name: fihaaade/skills
 slug: fihaaade-skills
 repo: https://github.com/fihaaade/skills
-category: visual-content
+category: image-art-direction
 tags: [skill-pack, image-generation, prompt-recipes, outsider-art, phosphor-relay, starlit-relic]
 language: Markdown
 license: Unspecified
@@ -69,7 +69,7 @@ health:
 
 Your photo treatment keeps turning into a generic retro filter. This collection separates three concrete looks: a re-photographed glowing screen, a flat folk-art world, and a small object floating in blue night.
 
-![fihaaade/skills — health radar](../../../assets/health/fihaaade-skills.svg)
+![fihaaade/skills — health radar](../../../../assets/health/fihaaade-skills.svg)
 
 > **Information only, not permission to copy or commercialize.** The reviewed tree has no license grant. Its bundled screen references come from football broadcasts; their original creators and reuse rights are not established here. Repository ownership does not establish authorship of its prompts or images.
 
@@ -81,10 +81,10 @@ Choose this as a **reference for a narrow art direction**, not as a cleared asse
 
 ## When NOT to use
 
-- **You need cleared commercial assets or a redistributable skill bundle.** No license exists in the reviewed tree, and the screen references have broadcast origins. Use your own rights-cleared artwork in [ComfyUI](../../on-device-ml/local-image-generation/comfyui.md); another repository's code license also cannot clear third-party art.
+- **You need cleared commercial assets or a redistributable skill bundle.** No license exists in the reviewed tree, and the screen references have broadcast origins. Use your own rights-cleared artwork in [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.md); another repository's code license also cannot clear third-party art.
 - **You want a large style menu or exact recipe extraction.** Pick [handraw-style](handraw-style.md) for gallery breadth, or [hand-drawn-styles](hand-drawn-styles.md) for its recipe renderer. Here, the host model compiles prose instructions; no script locks the resulting prompt.
-- **You need offline generation, batch scheduling or reproducible pixels.** Use [ComfyUI](../../on-device-ml/local-image-generation/comfyui.md) with pinned weights and workflows. This repository contains no model, generator client, executable scripts or runtime tests. Host capabilities, fees and data handling remain yours.
-- **Faces or crop fidelity are contractual requirements.** Use a reviewed [ComfyUI](../../on-device-ml/local-image-generation/comfyui.md) workflow with your own acceptance tests. Phosphor forbids identifiable real people; Outsider Art uses faceless figures. Starlit contradicts itself: its input rules ban faces, while its figure grammar and v1.4 notes allow them. Treat mode's instruction to preserve composition is not an enforced guarantee.
+- **You need offline generation, batch scheduling or reproducible pixels.** Use [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.md) with pinned weights and workflows. This repository contains no model, generator client, executable scripts or runtime tests. Host capabilities, fees and data handling remain yours.
+- **Faces or crop fidelity are contractual requirements.** Use a reviewed [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.md) workflow with your own acceptance tests. Phosphor forbids identifiable real people; Outsider Art uses faceless figures. Starlit contradicts itself: its input rules ban faces, while its figure grammar and v1.4 notes allow them. Treat mode's instruction to preserve composition is not an enforced guarantee.
 
 ## Comparison
 
@@ -92,13 +92,13 @@ Choose this as a **reference for a narrow art direction**, not as a cleared asse
 |---|---|---|---|
 | [handraw-style](handraw-style.md) | ✅ | Choose handraw-style when you need to discover a look through numbered styles, layouts and palettes; inspect this collection when screen material, flat folk scenes or night relics already define the brief. | Broad gallery and model-activation records versus three deeply specified workflows; bundled artwork rights still need separate review. |
 | [hand-drawn-styles](hand-drawn-styles.md) | ✅ | Choose hand-drawn-styles when the same validated wording must survive repeated requests; choose this collection as an art-direction reference when each scene needs a fresh field card or material recipe. | A deterministic text extractor versus model-written prompts with visual checks; neither establishes deterministic image output. |
-| [ComfyUI](../../on-device-ml/local-image-generation/comfyui.md) | ✅ | Choose ComfyUI when you must own rendering, weights and repeatable job configuration; this collection is useful only as prompt-level guidance for three looks. | A maintained generation runtime with hardware and workflow upkeep versus Markdown instructions with no bundled backend or license grant. |
+| [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.md) | ✅ | Choose ComfyUI when you must own rendering, weights and repeatable job configuration; this collection is useful only as prompt-level guidance for three looks. | A maintained generation runtime with hardware and workflow upkeep versus Markdown instructions with no bundled backend or license grant. |
 
 ## Quick start
 
 Upstream supplies invocation examples, not an installer or a documented cross-host setup procedure. After resolving reuse rights, make only the selected, reviewed folder available through your host's own skill mechanism; this review did not install it. For the representative Phosphor path, use the [documented request](https://github.com/fihaaade/skills/blob/1aa85f4a0f426e985659b202efb33c3f7e01e48c/phosphor-relay-style/EXAMPLES.md#L79-L97) and explicitly request `prompt-only` to receive a prompt and recipe without rendering. The skill instructs the host model to choose composition and signal settings, then compile four paragraphs; it supplies no image tool itself. If you later authorize rendering, your host supplies generation and inspection, you pay model costs and approve any photo transfer; the upstream text's consent assumptions are not a substitute for your host's authorization rules.
 
-![fihaaade-skills — backbone user story](../../../assets/flow/fihaaade-skills.svg)
+![fihaaade-skills — backbone user story](../../../../assets/flow/fihaaade-skills.svg)
 
 <!-- flow-steps:begin (generated from flows/fihaaade-skills.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -116,7 +116,7 @@ Upstream supplies invocation examples, not an installer or a documented cross-ho
 
 ## Key techniques
 
-![fihaaade/skills — mechanism diagram](../../../assets/mechanism/fihaaade-skills.svg)
+![fihaaade/skills — mechanism diagram](../../../../assets/mechanism/fihaaade-skills.svg)
 
 <!-- mechanism:begin (generated from mechanisms/fihaaade-skills.json by tools/mechanism_card.py; do not edit) -->
 <details>

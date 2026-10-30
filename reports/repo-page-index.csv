@@ -261,7 +261,7 @@ https://github.com/Yuan1z0825/nature-skills,nature-skills,scientific-workflows,c
 https://github.com/ZJU-REAL/Easel,easel,social-media-management,categories/social-media-management/easel.md
 https://github.com/ZachSaucier/Just-Read,just-read,reading-tools,categories/reading-tools/just-read.md
 https://github.com/Zagitta/gpu-unlock,gpu-unlock,gpu-tooling,categories/gpu-tooling/gpu-unlock.md
-https://github.com/Zeejay0/gathered-scenes-zine-skill,gathered-scenes-zine-skill,visual-content,categories/agent-skills/visual-content/gathered-scenes-zine-skill.md
+https://github.com/Zeejay0/gathered-scenes-zine-skill,gathered-scenes-zine-skill,image-art-direction,categories/agent-skills/visual-content/image-art-direction/gathered-scenes-zine-skill.md
 https://github.com/Zesty0wl/mac-performance-monitor,mac-performance-monitor,observability,categories/observability/mac-performance-monitor.md
 https://github.com/Zleap-AI/SAG,sag,structured-retrieval,categories/rag-retrieval/structured-retrieval/sag.md
 https://github.com/Zulko/moviepy,moviepy,editing-and-cutting,categories/media-processing/video-audio/editing-and-cutting/moviepy.md
@@ -485,7 +485,7 @@ https://github.com/featherless-ai/simple-jev,simple-jev,decision-models,categori
 https://github.com/feder-cr/invisible_playwright_mcp,invisible-playwright-mcp,stealth-session-tools,categories/web-automation/agent-browser-tools/stealth-session-tools/invisible-playwright-mcp.md
 https://github.com/feigeCode/navop,navop,database-clients,categories/databases/database-clients/navop.md
 https://github.com/feimacode/open-design-agent-kit,open-design-agent-kit,ai-design-generation,categories/ai-design-generation/open-design-agent-kit.md
-https://github.com/fihaaade/skills,fihaaade-skills,visual-content,categories/agent-skills/visual-content/fihaaade-skills.md
+https://github.com/fihaaade/skills,fihaaade-skills,image-art-direction,categories/agent-skills/visual-content/image-art-direction/fihaaade-skills.md
 https://github.com/firecracker-microvm/firecracker,firecracker,sandboxing,categories/sandboxing/firecracker.md
 https://github.com/firecrawl/anydoc,anydoc,document-parsing,categories/document-parsing/anydoc.md
 https://github.com/firecrawl/firecrawl,firecrawl,crawling-tools,categories/web-scraping/crawling-tools/firecrawl.md
@@ -547,7 +547,7 @@ https://github.com/harry0703/MoneyPrinterTurbo,moneyprinter-turbo,creation-workf
 https://github.com/harry7557558/spirula-studio,spirula-studio,3d-reconstruction,categories/3d-reconstruction/spirula-studio.md
 https://github.com/harveyai/harvey-labs,harvey-labs,llm-eval,categories/llm-eval/harvey-labs.md
 https://github.com/headroomlabs-ai/headroom,headroom,work-state,categories/agent-tooling/work-state/headroom.md
-https://github.com/helloianneo/ian-xiaohei-illustrations,ian-illustrations,visual-content,categories/agent-skills/visual-content/ian-illustrations.md
+https://github.com/helloianneo/ian-xiaohei-illustrations,ian-illustrations,image-art-direction,categories/agent-skills/visual-content/image-art-direction/ian-illustrations.md
 https://github.com/herdrdev/herdr,herdr,agent-multiplexers,categories/agent-frameworks/coding-agents/agent-multiplexers/herdr.md
 https://github.com/heygen-com/hyperframes,hyperframes,render-engines,categories/video-production/render-engines/hyperframes.md
 https://github.com/hiyouga/LlamaFactory,llamafactory,llm-training,categories/llm-training/llamafactory.md
@@ -867,7 +867,7 @@ https://github.com/shcherbak-ai/contextgem,contextgem,document-parsing,categorie
 https://github.com/sherlock-project/sherlock,sherlock,osint,categories/osint/sherlock.md
 https://github.com/shibing624/text2vec,text2vec,vector-search,categories/rag-retrieval/vector-search/text2vec.md
 https://github.com/shipshapecode/shepherd,shepherd-js,product-tours,categories/web-ui/product-tours/shepherd-js.md
-https://github.com/shirleylana/cinematic-americana-design-skill,cinematic-americana-design-skill,visual-content,categories/agent-skills/visual-content/cinematic-americana-design-skill.md
+https://github.com/shirleylana/cinematic-americana-design-skill,cinematic-americana-design-skill,image-art-direction,categories/agent-skills/visual-content/image-art-direction/cinematic-americana-design-skill.md
 https://github.com/shuding/nextra,nextra,site-frameworks,categories/web-ui/frameworks/site-frameworks/nextra.md
 https://github.com/siddharthvaddem/openscreen,openscreen,video-editing,categories/media-processing/video-editing/openscreen.md
 https://github.com/simplifaisoul/osiris,osiris,geospatial,categories/geospatial/osiris.md
@@ -916,7 +916,7 @@ https://github.com/temporalio/temporal,temporal,workflow-orchestration,categorie
 https://github.com/tesseract-ocr/tesseract,tesseract,ocr,categories/ocr/tesseract.md
 https://github.com/thedotmack/claude-mem,claude-mem,coding-agent-memory,categories/agent-memory/coding-agent-memory/claude-mem.md
 https://github.com/thesysdev/openui,openui,ai-design-generation,categories/ai-design-generation/openui.md
-https://github.com/threerocks/hand-drawn-styles,hand-drawn-styles,visual-content,categories/agent-skills/visual-content/hand-drawn-styles.md
+https://github.com/threerocks/hand-drawn-styles,hand-drawn-styles,image-art-direction,categories/agent-skills/visual-content/image-art-direction/hand-drawn-styles.md
 https://github.com/tiagozip/cap,capjs,captcha,categories/captcha/capjs.md
 https://github.com/tigerless-labs/autoharness,autoharness,coding-agent-memory,categories/agent-memory/coding-agent-memory/autoharness.md
 https://github.com/tinyhumansai/openhuman,openhuman,personal-assistants,categories/agent-frameworks/agent-runtimes/personal-assistants/openhuman.md
@@ -927,7 +927,7 @@ https://github.com/topoteretes/cognee,cognee,graph-memory,categories/agent-memor
 https://github.com/tphakala/birdnet-go,birdnet-go,on-device-ml,categories/on-device-ml/birdnet-go.md
 https://github.com/tqdm/tqdm,tqdm,data-tools,categories/dev-utilities/data-tools/tqdm.md
 https://github.com/tractordev/webframe,webframe,runtimes-and-compilers,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/webframe.md
-https://github.com/traveler0621/reality-restaged,reality-restaged,visual-content,categories/agent-skills/visual-content/reality-restaged.md
+https://github.com/traveler0621/reality-restaged,reality-restaged,image-art-direction,categories/agent-skills/visual-content/image-art-direction/reality-restaged.md
 https://github.com/trycua/cua,cua,desktop-automation,categories/desktop-automation/cua.md
 https://github.com/trymirai/uzu,uzu,apple-local-inference,categories/on-device-ml/apple-local-inference/uzu.md
 https://github.com/tsinghua-fib-lab/AgentSociety,agentsociety,social-simulation,categories/social-simulation/agentsociety.md
@@ -991,8 +991,8 @@ https://github.com/xpzouying/xiaohongshu-mcp,xiaohongshu-mcp,social-media-manage
 https://github.com/xtool-org/xtool,xtool,runtimes-and-compilers,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/xtool.md
 https://github.com/xueqiu/rdr,rdr,database-clients,categories/databases/database-clients/rdr.md
 https://github.com/xuxueli/xxl-job,xxl-job,task-queue,categories/task-queue/xxl-job.md
-https://github.com/yang0/handraw-style,handraw-style,visual-content,categories/agent-skills/visual-content/handraw-style.md
-https://github.com/yanliudesign/mono-color-skill,mono-color-skill,visual-content,categories/agent-skills/visual-content/mono-color-skill.md
+https://github.com/yang0/handraw-style,handraw-style,image-art-direction,categories/agent-skills/visual-content/image-art-direction/handraw-style.md
+https://github.com/yanliudesign/mono-color-skill,mono-color-skill,image-art-direction,categories/agent-skills/visual-content/image-art-direction/mono-color-skill.md
 https://github.com/yetone/magpie,magpie-model-router,client-routing,categories/api-gateway/client-routing/magpie-model-router.md
 https://github.com/yihong0618/bilingual_book_maker,bilingual-book-maker,reading-tools,categories/reading-tools/bilingual-book-maker.md
 https://github.com/ymybxx/SoloMCN,solomcn,social-media-management,categories/social-media-management/solomcn.md
