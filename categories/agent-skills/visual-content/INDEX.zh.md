@@ -7,6 +7,7 @@
 
 | 集合 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Gathered Scenes Zine** | 个人照片转纸感拼贴或抽象重画；自定义个人非商业许可，另有 macOS 实况照片脚本。 | C（3/5） | [→](gathered-scenes-zine-skill.zh.md) |
 | **Monocolor Editorial Print** | 让助手分配一至两种油墨职责，组织裁切和字图关系；自备生图后端并核清素材权利。 | C（4/5） | [→](mono-color-skill.zh.md) |
 | **Reality Restaged** | 用纪实锚点、大色块和一个不可能关系重构旅行照；只有提示词，未找到许可授权。 | D（4/5） | [→](reality-restaged.zh.md) |
 | **fun-isometric** | 让助手用复用动作帧绘制、绑定可修改的画布贴纸；附渲染检查，不是通用动画平台。 | C（4/5） | [→](fun-isometric.zh.md) |
@@ -20,6 +21,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Gathered Scenes Zine](gathered-scenes-zine-skill.zh.md) | 已收录 | C（3/5） | 按照片关系做艺术指导，不交付可编辑 HTML；仅限个人非商业使用，含服务上传与可选不透明导入器。 |
 | [Monocolor Editorial Print](mono-color-skill.zh.md) | 已收录 | C（4/5） | 印刷风栅格图的指导规则，不是可编辑 HTML 或印刷分色；MIT 软件许可不覆盖自带美术。 |
 | [Reality Restaged](reality-restaged.zh.md) | 已收录 | D（4/5） | 让具备图像能力的宿主做纪实优先的超现实艺术指导；无渲染器或强制像素锁，许可未明。 |
 | [fun-isometric](fun-isometric.zh.md) | 已收录 | C（4/5） | 外观受限的动态贴纸组件，支持本地渲染；仅一天历史，须审查浏览器下载与许可正文保留。 |

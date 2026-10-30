@@ -7,6 +7,7 @@
 
 | Collection | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Gathered Scenes Zine** | Personal photo-to-paper collage or abstract reinterpretation; custom personal-only license, optional macOS Live Photo scripts. | C (3/5) | [→](gathered-scenes-zine-skill.md) |
 | **Monocolor Editorial Print** | Assign one or two ink roles and editorial crop/type relationships through an agent; image backend and artwork clearance remain yours. | C (4/5) | [→](mono-color-skill.md) |
 | **Reality Restaged** | Restage travel photographs around documentary anchors, large color fields and one impossible relationship; prompt-only, with no license grant found. | D (4/5) | [→](reality-restaged.md) |
 | **fun-isometric** | Ask an agent to draw and rig editable canvas stickers with reusable motion keys; includes render checks, not a general animation platform. | C (4/5) | [→](fun-isometric.md) |
@@ -20,6 +21,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Gathered Scenes Zine](gathered-scenes-zine-skill.md) | Indexed | C (3/5) | Photo-specific art direction rather than editable HTML; non-commercial personal use only, with service uploads and an opaque optional importer. |
 | [Monocolor Editorial Print](mono-color-skill.md) | Indexed | C (4/5) | Print-style raster direction, not editable HTML or plate separation; MIT software excludes bundled artwork. |
 | [Reality Restaged](reality-restaged.md) | Indexed | D (4/5) | Documentary-first surreal art direction for an image-capable host; no renderer or enforceable pixel lock, and licensing is unresolved. |
 | [fun-isometric](fun-isometric.md) | ✅ | C (4/5) | A constrained animated-sticker kit with local rendering; one day old, with browser downloads and license-notice preservation to review. |

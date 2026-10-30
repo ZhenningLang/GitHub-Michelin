@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Gathered Scenes via host", "zh": "拾景通过宿主执行"},
+  "steps": [
+    {"lane": "you", "en": "Review the license and copy the static collage skill into Codex", "zh": "核对许可，把静态拼贴技能放进 Codex", "component": {"en": "static skill folder", "zh": "静态技能目录"}},
+    {"lane": "you", "en": "Supply your photo and name the scene relationship to preserve", "zh": "提供自己的照片，说明要保留的现场关系", "code": "$scenes-gathered-zine-v1-3"},
+    {"lane": "them", "en": "Build a Scene Card and reduce detail to source-derived shapes", "zh": "建立场景卡，把细节压缩成源图形状", "component": {"en": "SKILL.md", "zh": "技能提示词"}},
+    {"lane": "them", "en": "Compile the prompt and generate with the photo as reference", "zh": "编译提示词，用照片作参考生成海报", "component": {"en": "host image-generation service", "zh": "宿主生图服务"}},
+    {"lane": "them", "en": "Inspect, correct at most once, and return the poster plus rationale", "zh": "看图，至多修一轮，交付海报与创作说明"}
+  ],
+  "value": {"en": "A scene-specific paper collage without manually placing each illustration and color field", "zh": "得到保留现场关系的纸感拼贴，不必逐块摆放插画与色场"},
+  "sources": [
+    "https://github.com/Zeejay0/gathered-scenes-zine-skill/blob/b9edb836c9dd5c5d80995e89ebcaba34b75fd58f/README.md#L146-L169",
+    "https://github.com/Zeejay0/gathered-scenes-zine-skill/blob/b9edb836c9dd5c5d80995e89ebcaba34b75fd58f/skills/scenes-gathered-zine-v1-3/SKILL.md#L325-L341"
+  ]
+}
