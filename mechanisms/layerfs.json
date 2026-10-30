@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "base", "en": "Shared committed root", "zh": "共享已提交根", "kind": "input", "technique": [1]},
+    {"id": "view", "en": "Workspace: base plus private overlay", "zh": "Workspace：底层加私有覆盖层", "technique": [1]},
+    {"id": "content", "en": "Whole-file or chunked content objects", "zh": "整文件或分块内容对象", "technique": [2]},
+    {"id": "save", "en": "Select deltas and close packed references", "zh": "选择差量，封好打包对象引用", "technique": [2]},
+    {"id": "head", "en": "Check head and merge before publication", "zh": "发布前核对分支头并合并", "technique": [3]},
+    {"id": "conflict", "en": "Reported conflict: retain local result", "zh": "报告冲突时保留本地结果", "kind": "output", "technique": [3]},
+    {"id": "commit", "en": "Publish checkpoint and rebind Workspace", "zh": "发布检查点，再绑定 Workspace", "kind": "output", "technique": [1, 3]},
+    {"id": "store", "en": "SQLite WAL; synchronous OFF", "zh": "SQLite WAL；关闭同步落盘", "kind": "external"}
+  ],
+  "edges": [
+    {"from": "base", "to": "view"},
+    {"from": "view", "to": "content", "en": "explicit commit", "zh": "显式提交"},
+    {"from": "content", "to": "save"},
+    {"from": "save", "to": "head"},
+    {"from": "head", "to": "conflict", "style": "dashed"},
+    {"from": "head", "to": "commit"},
+    {"from": "commit", "to": "store", "en": "no crash durability promise", "zh": "不承诺崩溃耐久性"}
+  ],
+  "sources": [
+    "engine/crates/layerfs-workspace/src/workspace/view.rs at 35d36575c1eb4d23d4b54534a7030d855db890e7",
+    "core/crates/layerfs-content/src/file/construction/bytes.rs at 35d36575c1eb4d23d4b54534a7030d855db890e7",
+    "engine/crates/layerfs-store-service/src/store/commit.rs at 35d36575c1eb4d23d4b54534a7030d855db890e7"
+  ]
+}

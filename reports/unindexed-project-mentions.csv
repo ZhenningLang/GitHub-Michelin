@@ -59,6 +59,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Frigate](https://github.com/blakeblackshear/frigate),categories/on-device-ml/cosmo-edge.md,,no
 [frp](https://github.com/fatedier/frp),categories/networking/opentunnel.md,,no
 [GHC / Haskell](https://github.com/ghc/ghc),categories/programming-languages/unison.md,,no
+[Git worktrees](https://github.com/git/git),categories/agent-tooling/concurrent-editing/layerfs.md,,no
 [Gitea](https://github.com/go-gitea/gitea),categories/dev-utilities/ops-infra/harness-open-source.md,,no
 [Google Gen AI Python SDK](https://github.com/googleapis/python-genai),categories/agent-tooling/harness-extensions/gemini-api-cli.md,,no
 [google_workspace_mcp](https://github.com/taylorwilsdon/google_workspace_mcp),categories/agent-tooling/harness-extensions/hey-cli.md,,no
@@ -135,6 +136,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [tldraw](https://github.com/tldraw/tldraw),categories/diagramming/excalidraw.md,,no
 [TorBot](https://github.com/DedSecInside/TorBot),categories/osint/robin.md,,no
 [TripoSR](https://github.com/VAST-AI-Research/TripoSR),categories/3d-generation/modly.md,,no
+[try](https://github.com/binpash/try),categories/agent-tooling/concurrent-editing/layerfs.md,,no
 [Tuist](https://github.com/tuist/tuist),categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/xtool.md,,no
 [Tweepy](https://github.com/tweepy/tweepy),categories/social-media-management/twitter-cli.md,,no
 [UnifiedPush Android connector](https://github.com/UnifiedPush/android-connector),categories/android-system-services/microg-gmscore.md,,no

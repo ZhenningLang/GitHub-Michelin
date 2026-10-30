@@ -53,6 +53,7 @@ https://github.com/ERGO-Code/HiGHS,highs,optimization-solvers,categories/optimiz
 https://github.com/Edge0-AI/Edge0,edge0,local-runtimes,categories/llm-inference/local-runtimes/edge0.md
 https://github.com/Effect-TS/effect,effect,runtimes-and-compilers,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/effect.md
 https://github.com/Egonex-AI/Understand-Anything,understand-anything,code-intelligence,categories/rag-retrieval/code-intelligence/understand-anything.md
+https://github.com/Ephemeral-AI-Lab/layerfs,layerfs,concurrent-editing,categories/agent-tooling/concurrent-editing/layerfs.md
 https://github.com/EverMind-AI/Raven,raven,personal-assistants,categories/agent-frameworks/agent-runtimes/personal-assistants/raven.md
 https://github.com/EveryInc/compound-engineering-plugin,compound-engineering,coding-agent-harnesses,categories/agent-dev-methodology/coding-agent-harnesses/compound-engineering.md
 https://github.com/FFmpeg/FFmpeg,ffmpeg,transcoding-and-pipelines,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg.md

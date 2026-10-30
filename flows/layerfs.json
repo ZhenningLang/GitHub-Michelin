@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "LayerFS", "zh": "LayerFS"},
+  "steps": [
+    {"lane": "you", "en": "Build local packages and provision a project through the host runtime", "zh": "构建本地包，由宿主运行时预配项目"},
+    {"lane": "them", "en": "Import the complete source directory into the shared Store", "zh": "把完整源目录导入共享 Store"},
+    {"lane": "you", "en": "Open the project and fork a Branch for the attempt", "zh": "打开项目，为本次尝试分支", "code": "await layerfs.branch.fork(\"feature\");"},
+    {"lane": "you", "en": "Create a Sandbox and mount the Branch as a writable Workspace", "zh": "创建 Sandbox，挂载可写分支视图"},
+    {"lane": "them", "en": "Expose the shared base with a private writable overlay", "zh": "提供共享底层与私有写覆盖层"},
+    {"lane": "you", "en": "Run the test command, explicitly commit changes, then unmount", "zh": "执行测试，显式提交改动后卸载"},
+    {"lane": "them", "en": "Retain a reusable full-tree checkpoint on the Branch", "zh": "在分支保留可复用的完整目录检查点"}
+  ],
+  "value": {"en": "Trial workspaces share prepared files instead of copying the base for every attempt", "zh": "多次尝试共享已准备的文件，不必逐次复制底层"},
+  "sources": [
+    "https://github.com/Ephemeral-AI-Lab/layerfs/blob/35d36575c1eb4d23d4b54534a7030d855db890e7/api/docs/agent.md#L21-L38",
+    "https://github.com/Ephemeral-AI-Lab/layerfs/blob/35d36575c1eb4d23d4b54534a7030d855db890e7/api/docs/runtime.md#L14-L34",
+    "https://github.com/Ephemeral-AI-Lab/layerfs/blob/35d36575c1eb4d23d4b54534a7030d855db890e7/api/agent/test/verify/scenario.mjs#L104-L131"
+  ]
+}
