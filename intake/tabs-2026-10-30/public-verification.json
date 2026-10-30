@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "verified": true,
+  "source_revision": "2f37077ad4a10681f1f528a3cb62bc69ff17cb5c",
+  "base": "e1af03a18694ca7af5fcb95abcfefd530f62a535",
+  "replayed_commits": 21,
+  "product_commits": 18,
+  "fresh_receipt_commits": 3,
+  "ledger_only_checkpoints_skipped": 1,
+  "rows": 22,
+  "self_owned_redacted": 1,
+  "private_source_ancestry_absent": true,
+  "product_snapshots_equal": true,
+  "history_trees_messages_scanned": true,
+  "metadata_snapshot_scanned_before_commit": true,
+  "privacy_scope": "zero_new_occurrences_relative_to_public_base",
+  "inherited_matching_file_count": 17,
+  "inherited_matched_line_count": 17,
+  "inherited_sensitive_path_count": 0,
+  "intake_and_commit_messages_absolute_zero": true,
+  "residual_risk": "Old public references are inherited, not cleaned or rewritten; no whole-history-zero claim.",
+  "browser_operations": "private source ledger only; do not scan public ledger"
+}
