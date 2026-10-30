@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Skill-guided agent", "zh": "技能引导的助手"},
+  "steps": [
+    {"lane": "you", "en": "After resolving reuse permission, place the skill folder in Codex", "zh": "解决复用授权后，把技能目录放入 Codex", "code": "~/.codex/skills/craft-cinematic-americana/"},
+    {"lane": "you", "en": "Request a wallpaper design direction; give mood, subject and device", "zh": "请求壁纸设计方向，给出情绪、主体和设备", "code": "$craft-cinematic-americana"},
+    {"lane": "them", "en": "Selects one profile, narrative tension and anchors from distinct categories", "zh": "选择一个主谱系、叙事矛盾与跨类别锚点", "component": {"en": "SKILL.md + era-profiles.md", "zh": "技能入口与谱系参考"}},
+    {"lane": "them", "en": "Returns safe-zone composition and a generation-ready English prompt", "zh": "交付留白构图和可用于生图的英文提示词", "component": {"en": "wallpaper-recipes.md", "zh": "壁纸配方"}}
+  ],
+  "value": {"en": "A concrete cinematic wallpaper brief instead of vague retro adjectives", "zh": "拿到具体电影风壁纸说明，不再只堆复古形容词"},
+  "sources": [
+    "https://github.com/shirleylana/cinematic-americana-design-skill/blob/1abc3e497e6cb555cbea1ec42f2e8794681b834a/README.md",
+    "https://github.com/shirleylana/cinematic-americana-design-skill/blob/1abc3e497e6cb555cbea1ec42f2e8794681b834a/craft-cinematic-americana/SKILL.md",
+    "https://github.com/shirleylana/cinematic-americana-design-skill/blob/1abc3e497e6cb555cbea1ec42f2e8794681b834a/craft-cinematic-americana/references/wallpaper-recipes.md"
+  ]
+}

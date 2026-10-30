@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "brief", "en": "Chinese brief and medium", "zh": "中文需求与媒介", "kind": "input"},
+    {"id": "normalize", "en": "Normalize cultural shorthand", "zh": "理解文化简称", "technique": [1]},
+    {"id": "profile", "en": "One profile; narrative tension and anchors", "zh": "一个谱系；叙事矛盾与锚点", "technique": [2]},
+    {"id": "recipe", "en": "Medium recipe and originality constraints", "zh": "媒介配方与原创性约束", "technique": [2, 3]},
+    {"id": "tool", "en": "Host image or site-building tool", "zh": "宿主生图或建站工具", "kind": "external"},
+    {"id": "inspect", "en": "Inspect artifact; one targeted retry for one failure", "zh": "检查产物；单项失败可定点重试一次", "technique": [3]},
+    {"id": "artifact", "en": "Artifact with a disclosed quality verdict", "zh": "产物及明确质量结论", "kind": "output"},
+    {"id": "direction", "en": "Complete brief; no claim of generation", "zh": "完整设计说明；不冒称已生成", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "brief", "to": "normalize"},
+    {"from": "normalize", "to": "profile"},
+    {"from": "profile", "to": "recipe"},
+    {"from": "recipe", "to": "tool", "en": "authorized and available", "zh": "获得授权且工具可用", "style": "dashed"},
+    {"from": "tool", "to": "inspect"},
+    {"from": "inspect", "to": "artifact", "en": "checks pass", "zh": "检查通过"},
+    {"from": "recipe", "to": "direction", "en": "guidance request or no tool", "zh": "请求指导或工具不可用", "style": "dashed"},
+    {"from": "inspect", "to": "direction", "en": "still fails after correction", "zh": "修正后仍未通过", "style": "dashed"}
+  ],
+  "sources": ["craft-cinematic-americana/SKILL.md at 1abc3e497e6cb555cbea1ec42f2e8794681b834a", "craft-cinematic-americana/references/originality-guardrails.md"]
+}
