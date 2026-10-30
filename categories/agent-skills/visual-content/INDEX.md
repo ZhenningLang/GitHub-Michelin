@@ -7,6 +7,7 @@
 
 | Collection | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Monocolor Editorial Print** | Assign one or two ink roles and editorial crop/type relationships through an agent; image backend and artwork clearance remain yours. | C (4/5) | [→](mono-color-skill.md) |
 | **Reality Restaged** | Restage travel photographs around documentary anchors, large color fields and one impossible relationship; prompt-only, with no license grant found. | D (4/5) | [→](reality-restaged.md) |
 | **fun-isometric** | Ask an agent to draw and rig editable canvas stickers with reusable motion keys; includes render checks, not a general animation platform. | C (4/5) | [→](fun-isometric.md) |
 | **Guizang Social Card Skill** | Use it when a coding agent needs art-directed Xiaohongshu carousels or WeChat cover pairs as single-file HTML rendered to PNG. | D (3/5) | [→](guizang-social-card.md) |
@@ -19,6 +20,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Monocolor Editorial Print](mono-color-skill.md) | Indexed | C (4/5) | Print-style raster direction, not editable HTML or plate separation; MIT software excludes bundled artwork. |
 | [Reality Restaged](reality-restaged.md) | Indexed | D (4/5) | Documentary-first surreal art direction for an image-capable host; no renderer or enforceable pixel lock, and licensing is unresolved. |
 | [fun-isometric](fun-isometric.md) | ✅ | C (4/5) | A constrained animated-sticker kit with local rendering; one day old, with browser downloads and license-notice preservation to review. |
 | [Guizang Social Card Skill](guizang-social-card.md) | ✅ | D (3/5) | Platform-sized social cards and covers as HTML-to-PNG artifacts; young and AGPL. |

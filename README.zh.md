@@ -628,6 +628,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **Monocolor Editorial Print** | 分配一至两种油墨职责，组织裁切与字图关系；自备生图后端和已授权素材。 | 软件 MIT；不含美术 | C（4/5） | [中](categories/agent-skills/visual-content/mono-color-skill.zh.md) · [EN](categories/agent-skills/visual-content/mono-color-skill.md) |
 | **fun-isometric** | 让助手用复用动作帧绘制、绑定可修改的画布贴纸；附渲染检查，不是通用动画平台。 | MIT | C（4/5） | [中](categories/agent-skills/visual-content/fun-isometric.zh.md) · [EN](categories/agent-skills/visual-content/fun-isometric.md) |
 | **Interfaces Skills** | 六领域循证界面评审，明确区分本次退化和未审查领域。 | MIT | B（4/5） | [中](categories/agent-skills/design/ui-taste/jakubkrehel-skills.zh.md) · [EN](categories/agent-skills/design/ui-taste/jakubkrehel-skills.md) |
 | **Plain Writing Skill** | 用平实英文规则改写 agent 回复，并补齐读者背景。 | MIT | B（4/5） | [中](categories/agent-skills/ai-writing/de-ai-writing/plain-writing-skill.zh.md) · [EN](categories/agent-skills/ai-writing/de-ai-writing/plain-writing-skill.md) |

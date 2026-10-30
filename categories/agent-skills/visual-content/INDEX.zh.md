@@ -7,6 +7,7 @@
 
 | 集合 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Monocolor Editorial Print** | 让助手分配一至两种油墨职责，组织裁切和字图关系；自备生图后端并核清素材权利。 | C（4/5） | [→](mono-color-skill.zh.md) |
 | **Reality Restaged** | 用纪实锚点、大色块和一个不可能关系重构旅行照；只有提示词，未找到许可授权。 | D（4/5） | [→](reality-restaged.zh.md) |
 | **fun-isometric** | 让助手用复用动作帧绘制、绑定可修改的画布贴纸；附渲染检查，不是通用动画平台。 | C（4/5） | [→](fun-isometric.zh.md) |
 | **Guizang Social Card Skill** | 当你在 Claude Code/Codex 里想让 agent 用锁定的编辑风/瑞士风生成小红书图文或公众号封面对（单文件 HTML 渲染成 PNG）时使用。 | D（3/5） | [→](guizang-social-card.zh.md) |
@@ -19,6 +20,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Monocolor Editorial Print](mono-color-skill.zh.md) | 已收录 | C（4/5） | 印刷风栅格图的指导规则，不是可编辑 HTML 或印刷分色；MIT 软件许可不覆盖自带美术。 |
 | [Reality Restaged](reality-restaged.zh.md) | 已收录 | D（4/5） | 让具备图像能力的宿主做纪实优先的超现实艺术指导；无渲染器或强制像素锁，许可未明。 |
 | [fun-isometric](fun-isometric.zh.md) | 已收录 | C（4/5） | 外观受限的动态贴纸组件，支持本地渲染；仅一天历史，须审查浏览器下载与许可正文保留。 |
 | [Guizang Social Card Skill](guizang-social-card.zh.md) | ✅ | D（3/5） | 把社交卡片和封面做成 HTML 到 PNG 产物；很年轻且 AGPL。 |
