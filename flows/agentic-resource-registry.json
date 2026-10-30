@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "Agentic Registry", "zh": "Agentic Registry"},
+  "steps": [
+    {"lane": "you", "en": "Deploy the registry and install its CLI", "zh": "部署注册库并安装命令行", "code": "uv tool install observal-cli"},
+    {"lane": "you", "en": "Skip login setup; review global hooks before installing", "zh": "跳过登录后设置，安装前单独审查全局采集", "code": "observal auth login --no-setup"},
+    {"lane": "you", "en": "Choose a published agent and preview a project-scope pull", "zh": "选择已发布 agent，预览项目范围安装"},
+    {"lane": "them", "en": "Return planned tool-native files and setup actions", "zh": "返回目标工具配置文件与配置动作计划", "component": {"en": "version resolver and adapters", "zh": "版本解析器与适配器"}},
+    {"lane": "you", "en": "Review files and telemetry, then apply with strict locks", "zh": "审查文件与采集行为，再严格锁版安装"},
+    {"lane": "them", "en": "Write pinned configuration, session hooks and install locks", "zh": "写入固定版本配置、会话 hook 和安装锁", "component": {"en": "observal agent pull", "zh": "observal agent pull"}}
+  ],
+  "value": {"en": "Install the reviewed resource bundle without hand-translating configuration for each coding tool", "zh": "安装审核过的资源组合，不再为每种编码工具手工翻译配置"},
+  "sources": [
+    "https://github.com/AgenticResourceRegistry/AgenticResourceRegistry/blob/b6019d687393e3e23cf3babafbd78c6262fa1c5b/README.md#L96-L158",
+    "https://github.com/AgenticResourceRegistry/AgenticResourceRegistry/blob/b6019d687393e3e23cf3babafbd78c6262fa1c5b/docs/cli/pull.md#L20-L168",
+    "https://github.com/AgenticResourceRegistry/AgenticResourceRegistry/blob/b6019d687393e3e23cf3babafbd78c6262fa1c5b/docs/cli/pull.md#L222-L224",
+    "https://github.com/AgenticResourceRegistry/AgenticResourceRegistry/blob/b6019d687393e3e23cf3babafbd78c6262fa1c5b/observal_cli/cmd_auth.py#L283-L314",
+    "https://github.com/AgenticResourceRegistry/AgenticResourceRegistry/blob/b6019d687393e3e23cf3babafbd78c6262fa1c5b/observal_cli/cmd_auth.py#L404-L406",
+    "https://github.com/AgenticResourceRegistry/AgenticResourceRegistry/blob/b6019d687393e3e23cf3babafbd78c6262fa1c5b/observal_cli/cmd_auth.py#L1494-L1519"
+  ]
+}

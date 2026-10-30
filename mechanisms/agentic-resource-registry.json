@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "release", "en": "Reviewed agent release", "zh": "审核过的 agent 版本", "kind": "input"},
+    {"id": "pins", "en": "Pinned component versions; strict conflict checks", "zh": "固定组件版本；严格冲突检查", "technique": [1]},
+    {"id": "adapter", "en": "Shared connection context; tool-specific adapter", "zh": "统一连接对象；各工具适配器", "technique": [2]},
+    {"id": "files", "en": "Local configuration and session hooks", "zh": "本地配置与会话 hook", "kind": "output"},
+    {"id": "login", "en": "Interactive login without --no-setup", "zh": "交互登录未传 --no-setup", "kind": "input"},
+    {"id": "global", "en": "Global Claude hooks; applicable Pi extension", "zh": "全局 Claude hook；适用的 Pi 扩展"},
+    {"id": "source", "en": "Conversations, including ordinary unattributed sessions", "zh": "会话记录，包括普通未归属会话", "kind": "input"},
+    {"id": "outbox", "en": "Durable outbox; user and destination binding", "zh": "持久待发队列；绑定用户和目的端", "technique": [3]},
+    {"id": "server", "en": "Your server; acknowledged session ingest", "zh": "自建服务器；确认会话接收", "kind": "output"},
+    {"id": "stats", "en": "Installation ID, company, host; counts, token/credits, flags", "zh": "安装标识、公司、主机；计数、token/credit、开关"},
+    {"id": "collector", "en": "usage.observal.io; identity-linked statistics", "zh": "usage.observal.io；可关联身份的统计", "kind": "external"}
+  ],
+  "edges": [
+    {"from": "release", "to": "pins"},
+    {"from": "pins", "to": "adapter"},
+    {"from": "adapter", "to": "files"},
+    {"from": "files", "to": "source", "en": "hook events", "zh": "hook 事件"},
+    {"from": "login", "to": "global", "en": "detected and eligible; before Doctor confirmation", "zh": "检测到且符合安装条件；早于 Doctor 确认"},
+    {"from": "global", "to": "source", "en": "ordinary sessions too", "zh": "普通会话也采集"},
+    {"from": "source", "to": "outbox"},
+    {"from": "outbox", "to": "server"},
+    {"from": "server", "to": "stats", "en": "separate statistics, not conversation bodies", "zh": "独立统计，不是会话正文", "style": "dashed"},
+    {"from": "stats", "to": "collector", "en": "default every 6 hours; can be disabled", "zh": "默认每六小时；可关闭", "style": "dashed"}
+  ],
+  "sources": [
+    "observal-server/services/agent_lock.py:692-805 at b6019d687393e3e23cf3babafbd78c6262fa1c5b",
+    "observal-server/services/config_generator.py:105-196 at b6019d687393e3e23cf3babafbd78c6262fa1c5b",
+    "observal_cli/sessions/base.py:486-808 at b6019d687393e3e23cf3babafbd78c6262fa1c5b",
+    "docs/self-hosting/usage-reporting.md:7-36 at b6019d687393e3e23cf3babafbd78c6262fa1c5b",
+    "observal_cli/cmd_auth.py:283-314,404-406,1494-1519,1599-1624 at b6019d687393e3e23cf3babafbd78c6262fa1c5b",
+    "observal_cli/cmd_doctor.py:1372-1395 at b6019d687393e3e23cf3babafbd78c6262fa1c5b",
+    "observal_cli/harness/base.py:292-299 at b6019d687393e3e23cf3babafbd78c6262fa1c5b",
+    "observal_cli/pi_extension.py:66-75,165-275 at b6019d687393e3e23cf3babafbd78c6262fa1c5b",
+    "observal-server/services/usage_ping.py:46-125,175-358 at b6019d687393e3e23cf3babafbd78c6262fa1c5b"
+  ]
+}
