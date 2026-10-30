@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "photo", "en": "One uploaded photograph", "zh": "一张上传照片", "kind": "input"},
+    {"id": "roles", "en": "Retain photo; select spatial facts", "zh": "保留原片；筛选空间事实", "technique": [1]},
+    {"id": "marks", "en": "Subject-specific marks and reduced palette", "zh": "按主体收敛标记与配色", "technique": [2]},
+    {"id": "layout", "en": "Adaptive ivory panel and one English title", "zh": "自适应象牙面板与一个英文标题", "technique": [3]},
+    {"id": "host", "en": "External host image generation", "zh": "外部宿主生图", "kind": "external"},
+    {"id": "output", "en": "One composition; fidelity not machine-checked", "zh": "一张拼图；还原度无机器检查", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "photo", "to": "roles"},
+    {"from": "roles", "to": "marks"},
+    {"from": "marks", "to": "layout"},
+    {"from": "layout", "to": "host", "en": "Prompt instructions, not enforced geometry", "zh": "提示词指导，不是强制几何约束"},
+    {"from": "host", "to": "output"}
+  ],
+  "sources": [
+    "https://github.com/ZzzLc0405/photo-abstract-editorial/blob/49e55073d6d0330274d31f75d27f5dd6eb35fd6d/SKILL.md",
+    "https://github.com/ZzzLc0405/photo-abstract-editorial/blob/49e55073d6d0330274d31f75d27f5dd6eb35fd6d/references/photo-abstract-editorial-prompt.en.md"
+  ]
+}

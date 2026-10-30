@@ -7,6 +7,7 @@
 
 | Collection | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Photo Abstract** | Turn one personal photo into a photo-plus-abstract poster; prompt-only, custom noncommercial permission. | C (3/5) | [→](photo-abstract-editorial.md) |
 | **fihaaade/skills** | Study three explicit image grammars: screen re-photography, flat folk-art scenes and blue-night relics; no license grant or cleared reference rights. | C (4/5) | [→](fihaaade-skills.md) |
 | **Cinematic Americana Design Skill** | Turn Chinese mood briefs into cinematic wallpaper, poster and web direction; no generation engine or declared reuse license. | D (3/5) | [→](cinematic-americana-design-skill.md) |
 | **Gathered Scenes Zine** | Personal photo-to-paper collage or abstract reinterpretation; custom personal-only license, optional macOS Live Photo scripts. | C (3/5) | [→](gathered-scenes-zine-skill.md) |
@@ -20,6 +21,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Photo Abstract](photo-abstract-editorial.md) | Indexed | C (3/5) | Photo-derived marks and an English title; no renderer or pixel guarantee, and commercial use needs authorization. |
 | [fihaaade/skills](fihaaade-skills.md) | Indexed | C (4/5) | Three prompt-led style workflows, not a renderer; information only, with unresolved prompt and reference-image rights. |
 | [Cinematic Americana Design Skill](cinematic-americana-design-skill.md) | Indexed | D (3/5) | Five profile-based art-direction recipes, not fixed card templates; host tools and reuse permission remain unresolved adoption prerequisites. |
 | [Gathered Scenes Zine](gathered-scenes-zine-skill.md) | Indexed | C (3/5) | Photo-specific art direction rather than editable HTML; non-commercial personal use only, with service uploads and an opaque optional importer. |

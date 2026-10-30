@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Skill-directed host", "zh": "技能指导的宿主"},
+  "steps": [
+    {"lane": "you", "en": "Check permission; install the folder in an image-capable Codex host", "zh": "核对授权，在能生图的 Codex 宿主中放入技能", "code": "~/.codex/skills/"},
+    {"lane": "you", "en": "Start a new conversation, upload one photograph and invoke the skill", "zh": "开启新对话，上传一张照片并点名技能"},
+    {"lane": "them", "en": "Read the matching reference prompt and select spatial facts", "zh": "读取对应完整提示词，筛选空间事实", "component": {"en": "SKILL.md + reference prompt", "zh": "技能与完整提示词"}},
+    {"lane": "them", "en": "Generate a photo area, abstract panel and English title as one image", "zh": "将摄影区域、抽象面板和英文标题生成为一张图", "component": {"en": "Host image tool, not bundled", "zh": "宿主图像工具，仓库不附带"}}
+  ],
+  "value": {"en": "One photo becomes a constrained editorial composition without writing the visual brief from scratch", "zh": "不用从头写构图要求，把一张照片做成受约束的编辑作品"},
+  "sources": [
+    "https://github.com/ZzzLc0405/photo-abstract-editorial/blob/49e55073d6d0330274d31f75d27f5dd6eb35fd6d/README.md",
+    "https://github.com/ZzzLc0405/photo-abstract-editorial/blob/49e55073d6d0330274d31f75d27f5dd6eb35fd6d/SKILL.md#L10-L35",
+    "https://github.com/ZzzLc0405/photo-abstract-editorial/issues/1#issuecomment-5201168709"
+  ]
+}
