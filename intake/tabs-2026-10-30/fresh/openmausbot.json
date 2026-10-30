@@ -1,0 +1,21 @@
+{
+  "repo": "milind-soni/OpenMausBot",
+  "pages": [
+    {
+      "path": "categories/agent-frameworks/agent-runtimes/personal-assistants/openmausbot.md",
+      "mode_type_blob": "100644 blob 1ed709f8003a51e470421419a4f77c17fb812dce",
+      "last_verified": "2026-10-08"
+    },
+    {
+      "path": "categories/agent-frameworks/agent-runtimes/personal-assistants/openmausbot.zh.md",
+      "mode_type_blob": "100644 blob 8c86840bd18a0e1bb635ccb7bd818a8f1fc6b6d3",
+      "last_verified": "2026-10-08"
+    }
+  ],
+  "utc_date": "2026-10-30",
+  "age_days": 22,
+  "gate_days": 90,
+  "result": "fresh-reuse",
+  "date_bumped": false,
+  "original_checkpoint_state": "running"
+}
