@@ -724,6 +724,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **MCode Stack** | 在已有 agent 流程增加证据审查和上下文审计；私有复盘与视频脚本可选。 | MIT AND CC-BY-3.0 | C（4/5） | [中](categories/agent-skills/vendor-collections/agent-vendors/mcode-stack.zh.md) · [EN](categories/agent-skills/vendor-collections/agent-vendors/mcode-stack.md) |
 | **Anthropic Skills** | Anthropic 官方公开的 Agent Skills 合集——自包含的 SKILL.md 目录（文档编辑、设计、MCP 与 skill 编写、沟通），可装进 Claude Code、Claude.ai 或 Claude API。 | Apache-2.0 | A（3/5） | [中](categories/agent-skills/vendor-collections/agent-vendors/anthropic-skills.zh.md) · [EN](categories/agent-skills/vendor-collections/agent-vendors/anthropic-skills.md) |
 | **Agent Plugins for AWS** | AWS Labs 官方出品的九个 agent 插件集合（serverless、Amplify、SageMaker、迁移、数据库、部署/成本估算等），通过 marketplace 安装、触发短语驱动并接好 AWS MCP server，教 Claude Code / Cursor / Codex 在 AWS 上做架构、部署和运维。 | Apache-2.0 | B（5/6） | [中](categories/agent-skills/vendor-collections/product-vendors/aws-agent-plugins.zh.md) · [EN](categories/agent-skills/vendor-collections/product-vendors/aws-agent-plugins.md) |
 | **Claude Plugins (Official)** | Anthropic 官方的 Claude Code 插件市场：精选的可安装插件目录（命令、agent、skill、MCP server），通过原生 /plugin 系统按名安装。 | Apache-2.0 | A（4/5） | [中](categories/agent-skills/vendor-collections/agent-vendors/claude-plugins-official.zh.md) · [EN](categories/agent-skills/vendor-collections/agent-vendors/claude-plugins-official.md) |

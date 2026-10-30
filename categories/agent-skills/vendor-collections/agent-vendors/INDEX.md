@@ -7,6 +7,7 @@
 
 | Collection | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **MCode Stack** | Add evidence-based review and request-context audits to an existing agent workflow; optional private reflection and video scripts. | C (4/5) | [→](mcode-stack.md) |
 | **OpenAI Skills (historical)** | Inspect and reuse pinned historical Codex skills and helpers; deprecated upstream, with per-skill licenses rather than a repo-wide grant. | C (4/5) | [→](openai-skills.md) |
 | **Anthropic Skills** | Anthropic's official public collection of Agent Skills — self-contained SKILL.md folders (document editing, design, MCP/skill authoring, comms) installable into Claude Code, Claude.ai, or the Claude API. | A (3/5) | [→](anthropic-skills.md) |
 | **Claude Plugins (Official)** | Anthropic's first-party Claude Code plugin marketplace: a curated directory of installable plugins (commands, agents, skills, MCP servers) installed by name via the native /plugin system. | A (4/5) | [→](claude-plugins-official.md) |
@@ -28,6 +29,7 @@
 | [Anthropic Knowledge Work Plugins](knowledge-work-plugins.md) | ✅ | A (4/5) | Use it when you want Anthropic's official open-source plugins aimed at knowledge work (docs, comms, research) for Claude — very young. |
 | [HumanLayer Skills](humanlayer-skills.md) | ✅ | B (4/5) | A vendor's six opinionated dev-process skills, two of which ship runnable CI-loop machinery; Claude-only distribution, no tagged release to pin, and the loop templates default to broad agent permissions. |
 | [SenseNova-Skills](sensenova-skills.md) | ✅ | A (4/5) | File-based office workflow with model helpers; root MIT does not clear the matching third-party styles, and runtime/export acceptance stays with the host. |
+| [MCode Stack](mcode-stack.md) | Indexed | C (4/5) | Targeted engineering habits rather than a whole lifecycle; MIT plus CC-BY-3.0, private-history and installer-overwrite boundaries. |
 
 ## What belongs here
 

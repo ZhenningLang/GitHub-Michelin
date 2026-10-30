@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "diff", "en": "Diff, requirement and test results", "zh": "改动、需求和测试结果", "kind": "input"},
+    {"id": "review", "en": "Fresh-context review procedure", "zh": "新上下文审查步骤", "technique": [1]},
+    {"id": "findings", "en": "Located findings for confirmation", "zh": "待确认的定位发现", "kind": "output"},
+    {"id": "request", "en": "Actual first and later requests", "zh": "真实首轮与后续请求", "kind": "input"},
+    {"id": "audit", "en": "Inventory frequency and prefix placement", "zh": "盘点频率与前缀位置", "technique": [2]},
+    {"id": "measure", "en": "Proposed edits and measurement plan", "zh": "修改建议与测量计划", "kind": "output"},
+    {"id": "history", "en": "Authorized local history", "zh": "获准读取的本地历史", "kind": "input"},
+    {"id": "digest", "en": "Bounded human-turn digest", "zh": "有长度上限的人类消息摘要", "technique": [3]},
+    {"id": "ledger", "en": "Private ledger and proposals", "zh": "私有账本与提案", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "diff", "to": "review"},
+    {"from": "review", "to": "findings"},
+    {"from": "request", "to": "audit"},
+    {"from": "audit", "to": "measure"},
+    {"from": "history", "to": "digest"},
+    {"from": "digest", "to": "ledger"}
+  ],
+  "sources": [
+    "stacks/ronny/skills/independent-review/SKILL.md:15-79",
+    "stacks/ronny/skills/context-tax-audit/SKILL.md:18-74",
+    "stacks/jiachen/skills/lifting-loops/SKILL.md:8-135",
+    "stacks/jiachen/skills/lifting-loops/scripts/digest.py:29-45"
+  ]
+}

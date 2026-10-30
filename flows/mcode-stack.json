@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "MCode Stack", "zh": "MCode Stack"},
+  "steps": [
+    {"lane": "you", "en": "Install the Ronny stack in your existing host", "zh": "在现有宿主安装 Ronny 包", "code": "claude plugin install ronny --marketplace MiniMax-AI/mcode-stack"},
+    {"lane": "them", "en": "Makes independent-review available as a skill", "zh": "提供独立审查技能", "component": {"en": "Ronny skill pack", "zh": "Ronny 技能包"}},
+    {"lane": "you", "en": "Provide diff, requirements and actual test output to a fresh reviewer", "zh": "向新审查上下文交付改动、需求和测试实录"},
+    {"lane": "them", "en": "Guides the reviewer to return located findings with reasons and severity", "zh": "指导审查者返回有位置、理由和严重度的发现"},
+    {"lane": "you", "en": "Confirm findings in the real code before accepting fixes", "zh": "在真实代码中确认发现，再接受修复"}
+  ],
+  "value": {"en": "A review handoff based on evidence rather than the author's inherited explanation", "zh": "用证据交接审查，而非继承作者解释"},
+  "sources": [
+    "https://github.com/MiniMax-AI/mcode-stack/blob/49a3ff4dfd1aa159c8a84579f3ac0ce38e1aaa6d/README.md#L31-L49",
+    "https://github.com/MiniMax-AI/mcode-stack/blob/49a3ff4dfd1aa159c8a84579f3ac0ce38e1aaa6d/stacks/ronny/skills/independent-review/SKILL.md#L15-L79"
+  ]
+}
