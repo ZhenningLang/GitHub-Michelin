@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "options", "en": "Effect module, palette, seed and time", "zh": "特效模块、调色板、种子和时间", "kind": "input"},
+    {"id": "pixels", "en": "Placed pixel drawing with hard fades or translucent paths", "zh": "像素定位及硬淡出或透明路径", "technique": [1]},
+    {"id": "buffers", "en": "Separate color and additive light buffers", "zh": "独立颜色和加法发光缓冲", "technique": [1]},
+    {"id": "live", "en": "RGBA pixels for the caller's game loop", "zh": "交给调用方游戏循环的 RGBA 像素", "kind": "output"},
+    {"id": "check", "en": "Sample metadata, randomness, frames and timing", "zh": "抽查元数据、随机、帧和耗时", "technique": [2]},
+    {"id": "verdict", "en": "Failures control exit; visual warnings remain advisory", "zh": "失败决定退出码，视觉警告仍是提示", "kind": "output"},
+    {"id": "sheet", "en": "Node grid layout with rectangles and durations", "zh": "Node 排布网格并记录矩形与时长", "technique": [3]},
+    {"id": "assets", "en": "Fixed PNG sheet and timing JSON for importer testing", "zh": "供导入测试的固定 PNG 图集和时序 JSON", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "options", "to": "pixels"},
+    {"from": "pixels", "to": "buffers"},
+    {"from": "buffers", "to": "live"},
+    {"from": "options", "to": "check", "en": "explicit check command", "zh": "显式运行检查命令"},
+    {"from": "check", "to": "verdict"},
+    {"from": "buffers", "to": "sheet", "en": "render sampled frames", "zh": "渲染抽样帧"},
+    {"from": "sheet", "to": "assets"}
+  ],
+  "sources": ["src/core/fx.js:8-131", "src/core/painter.js:9-79", "tools/check.mjs:77-216", "tools/render.mjs:19-59", "tools/lib/fxlib.mjs:220-261"]
+}
