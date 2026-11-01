@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **MemPalace** | Recover original coding-agent passages through MCP and auto-save hooks; default Chroma concurrent writes have open corruption reports, and benchmark recall is not answer quality. | B (6/6) | [→](mempalace.md) |
 | **Obsidian Mind** | Study vault-first linked work notes with scoped recall and briefing budgets; information only while copied-skill notices remain unresolved. | B (6/6) | [→](obsidian-mind.md) |
 | **Claude Subconscious** | Use it when you want a background Letta agent to give Claude Code cross-session memory via hooks. | C (5/6) | [→](claude-subconscious.md) |
 | **claude-mem** | Use it when your coding agent loses context across sessions and you want local hook/MCP-captured memory compressed and injected back in. | B (6/6) | [→](claude-mem.md) |
@@ -23,6 +24,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [MemPalace](mempalace.md) | Indexed | B (6/6) | Verbatim archival with semantic-plus-keyword recall instead of condensed observations; heavier local stack and writer coordination remain yours. |
 | [Obsidian Mind](obsidian-mind.md) | ✅ | B (6/6) | Human-editable Obsidian record plus Node hooks and optional QMD; copied upstream MIT notice gap blocks direct installation or redistribution advice. |
 | [Claude Subconscious](claude-subconscious.md) | ✅ | C (5/6) | Background Letta agent whispering memory into Claude Code via hooks; an exploratory demo, not production. |
 | [claude-mem](claude-mem.md) | ✅ | B (6/6) | Hook/MCP memory wired into a coding agent's session lifecycle (not a model-agnostic app memory API); reported star count is unverified. |

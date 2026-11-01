@@ -853,7 +853,6 @@ Megatron-LM,categories/llm-training/colossalai.md,,no
 Memcached,categories/databases/database-engines/valkey.md,,no
 Memgraph,categories/rag-retrieval/structured-retrieval/falkordb.md,,no
 Memobase (memodb-io/memobase),categories/agent-memory/app-memory/supermemory.md,,no
-MemPalace (MemPalace/mempalace),categories/agent-memory/coding-agent-memory/deja-vu.md,,no
 memray (Bloomberg),categories/python-tooling/memory-analyzer.md,,no
 Mercury / Postlight Parser,categories/web-scraping/article-extraction/readability-js.md,,no
 mergiraf,categories/agent-tooling/concurrent-editing/weave.md,,no

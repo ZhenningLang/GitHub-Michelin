@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "src", "kind": "input", "en": "Transcripts and project files", "zh": "会话记录与项目文件"},
+    {"id": "hooks", "en": "Stop every 15 messages; PreCompact before compaction", "zh": "每 15 条消息 Stop；压缩前 PreCompact", "technique": [3]},
+    {"id": "drawers", "en": "Verbatim drawers labeled by wing and room", "zh": "按 wing 与 room 标注的原文抽屉", "technique": [1]},
+    {"id": "closets", "en": "Closet lines: topic, entities, drawer ids", "zh": "closet 行：主题、实体、抽屉 id", "technique": [1]},
+    {"id": "store", "kind": "external", "en": "Vector backend: Chroma default, pluggable", "zh": "向量后端：默认 Chroma，可替换"},
+    {"id": "rank", "en": "Re-rank: 0.6 vector + 0.4 BM25", "zh": "重排：0.6 向量 + 0.4 BM25", "technique": [2]},
+    {"id": "wake", "kind": "output", "en": "Wake-up L0 identity + L1 capped recent story", "zh": "唤醒：L0 身份 + 有上限的 L1 近况", "technique": [4]},
+    {"id": "kg", "en": "SQLite graph with validity windows", "zh": "带有效期的 SQLite 图谱", "technique": [5]},
+    {"id": "out", "kind": "output", "en": "Verbatim passages to the agent over MCP", "zh": "经 MCP 返回原文段落给 agent"}
+  ],
+  "edges": [
+    {"from": "src", "to": "hooks", "en": "new turns", "zh": "新对话"},
+    {"from": "hooks", "to": "drawers", "en": "mine", "zh": "挖掘"},
+    {"from": "drawers", "to": "closets", "en": "pointer lines", "zh": "指针行"},
+    {"from": "drawers", "to": "store", "en": "embeddings", "zh": "向量"},
+    {"from": "store", "to": "rank", "en": "candidates", "zh": "候选"},
+    {"from": "closets", "to": "rank", "en": "closet boost", "zh": "closet 加权", "style": "dashed"},
+    {"from": "rank", "to": "out"},
+    {"from": "store", "to": "wake", "en": "read-only open", "zh": "只读打开"},
+    {"from": "kg", "to": "out", "en": "as-of facts", "zh": "按时点的事实", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/MemPalace/mempalace/blob/4f7745afbd9d0197c6475b4c7ac846d4932eaeda/mempalace/palace/closets.py#L101-L177",
+    "https://github.com/MemPalace/mempalace/blob/4f7745afbd9d0197c6475b4c7ac846d4932eaeda/mempalace/searcher/ranking.py#L170-L238",
+    "https://github.com/MemPalace/mempalace/blob/4f7745afbd9d0197c6475b4c7ac846d4932eaeda/mempalace/hooks_cli.py#L1528-L1600",
+    "https://github.com/MemPalace/mempalace/blob/4f7745afbd9d0197c6475b4c7ac846d4932eaeda/mempalace/layers.py#L1-L20",
+    "https://github.com/MemPalace/mempalace/blob/4f7745afbd9d0197c6475b4c7ac846d4932eaeda/mempalace/knowledge_graph.py#L1-L30"
+  ]
+}
