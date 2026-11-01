@@ -70,7 +70,7 @@ health:
 ---
 # shroom
 
-十人团队用按人头收费的录屏服务，没人录也照样月月付钱，视频还存在别人的服务器上。shroom 是 Mac 菜单栏录屏工具：录像直接传进你自己的 Cloudflare 存储，分享链接由它部署在你账号里的一个小型边缘程序提供，账单只剩 Cloudflare 的存储费。
+十人团队用按人头收费的录屏服务，没人录也照样月月付钱，视频还存在别人的服务器上。shroom 从 Mac 菜单栏录屏，上传到你自己的 Cloudflare 存储和 Worker；费用取决于 Cloudflare 用量及套餐，不是只有存储费或席位费。
 
 ![shroom — 健康度雷达](../../../assets/health/shroom.zh.svg)
 

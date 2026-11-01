@@ -173,7 +173,7 @@ Python gateway with an `aiohttp` HTTP layer, a TypeScript web interface and desk
 ## Health & viability
 
 - **2026-11-01 maintenance:** the latest sampled release is v0.11.1, published 2026-10-31; the reviewed manifest is already 0.12.0. Pin a distribution channel rather than treating main as the released binary.
-- **Governance:** the public repository belongs to the Kiro organization and publishes contribution and security-reporting procedures. The sampled top five contributors all have hundreds of contributions; that is broader visible participation, not proof of independent governance or a support SLA.
+- **Governance:** the public repository belongs to the Kiro organization and publishes contribution and security-reporting procedures. The sampled top five contributors have 572 to 2,717 contributions each; that is broader visible participation, not proof of independent governance or a support SLA.
 - **Age and viability:** created 2026-07-16, it is less than four months old. [推断: based on creation and release dates] Active releases improve short-term confidence, but it has not earned a long-lived maintenance prior.
 - **Measured coverage:** the automatic radar is B with five of six axes scored. Responsiveness has `no_window_signal`, not a measured poor response time; the aggregate is not a security or project-quality verdict.
 - **License and risk:** the root LICENSE is Apache-2.0; external agent accounts, bundled third-party materials and model services retain their separate terms. The principal adoption cost is trusting a fast-changing, persistent host-access application, not merely reading its dashboard.
@@ -183,4 +183,4 @@ Python gateway with an `aiohttp` HTTP layer, a TypeScript web interface and desk
 - [未验证: upstream installation and execution prohibited in this batch] Installation, restart recovery, permission enforcement across every supported backend, and cross-platform behavior were researched statically, not reproduced.
 - [未验证: receiving service not audited] The README's telemetry field list and CDN logging claims describe upstream policy; this page does not independently certify the receiving service or anonymity.
 - [推断: based on creation and release records] Short-term development activity does not establish long-term durability. Full dependency ownership and third-party license compliance were not exhaustively audited.
-- [未验证: upstream moved during scoring] Sources were reviewed at `66a137266f935c4189cda79fb26c4db66b8968a3`; the automatic upstream snapshot records a later observation, not a review of that intervening change.
+- [未验证: upstream moved during scoring] Sources were reviewed at `66a137266f935c4189cda79fb26c4db66b8968a3`; the automatic upstream snapshot records a later observation, not a review of the intervening change. This research did not measure that delta's commit count or touched paths.

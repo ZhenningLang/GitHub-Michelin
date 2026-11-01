@@ -66,7 +66,7 @@ health:
 ---
 # teardown
 
-Ask an agent how a V8 engine works and you get paragraphs, or a 3D model whose gauges show made-up numbers that do not match the moving pistons. teardown is a Claude Code skill that makes the agent build the machine as one offline web page, where every part's position and every on-screen number come from the same calculation, then record its self-running tour to a 60 fps video with a matching soundtrack.
+Ask an agent how a V8 engine works and you may get paragraphs or gauges unrelated to moving pistons. teardown guides an agent to build an offline machine explainer, with shared calculations for parts and readouts, then record a 60 fps tour with sound; that consistency remains an authoring rule, not an enforced guarantee.
 
 ![teardown — health radar](../../../assets/health/teardown.svg)
 
@@ -111,7 +111,7 @@ Install the skill globally for Claude Code with `npx skills add elvarofficial/te
 5. **You**: Ask for the video version
 6. **teardown**: Render a 60 fps MP4 with a score on the same timeline — component: `capture.mjs and sfx`
 
-**Value**: A take-apart 3D page and a video whose numbers agree with the motion, without hand-animating
+**Value**: A take-apart 3D page and film designed to share motion and readout calculations
 
 </details>
 <!-- flow-steps:end -->
@@ -139,7 +139,7 @@ Install the skill globally for Claude Code with `npx skills add elvarofficial/te
 - three.js geometry and panels → Pure render(t); film script on a timeline②
 - Pure render(t); film script on a timeline② → Still sheets per beat; checklist loop③ (sampled stills)
 - Still sheets per beat; checklist loop③ → Maths file: one input poses every joint and readout① (fix and rebuild) [optional/fallback]
-- Pure render(t); film script on a timeline② → One offline HTML: warmed shaders, auto tour, hand-off④ (live mode)
+- three.js geometry and panels → One offline HTML: warmed shaders, auto tour, hand-off④ (real-time loop replays film script, not render(t))
 - Pure render(t); film script on a timeline② → Headless Chromium screenshot per frame to ffmpeg② (capture mode)
 - Headless Chromium screenshot per frame to ffmpeg② → 60 fps MP4 with sound
 - Synthesized score from the same timeline② → 60 fps MP4 with sound (mux)
@@ -151,7 +151,7 @@ Install the skill globally for Claude Code with `npx skills add elvarofficial/te
 
 - **Problem:** Hand-keyframed 3D animation drifts: a gauge says 3,000 rpm while the pistons move at another speed, or a leg passes through the ground.
 - **How:** Each machine has a maths file with real dimensions and no 3D code. One input — crank angle, gear stroke or wind — produces every joint position and every panel value. The Strandbeest solves each joint of Jansen's 11-link leg by intersecting two circles, then samples the foot path at 720 points to move the body without slipping.
-- **Limits:** This is kinematics, not dynamics: masses, forces and wear are not simulated. Accuracy is only as good as the dimensions the agent finds, and the rule to start from a reference is an instruction, not a check.
+- **Limits:** This is kinematics, not dynamics: masses, forces and wear are not simulated. Accuracy depends on correct dimensions. Both "real references first" and "one input drives everything" are instructions, not checked invariants; the bundled live page integrates its own real-time state.
 - **Source:** [Machine layout and rules:37–61](https://github.com/elvarofficial/teardown/blob/a91262ac1109051e014662d42ecb0b7bc1f113b1/SKILL.md#L37-L61), [linkage solver:1–67](https://github.com/elvarofficial/teardown/blob/a91262ac1109051e014662d42ecb0b7bc1f113b1/sims/strandbeest-shared/jansen.js#L1-L67).
 
 ### 2. Make rendering a pure function of time, then capture frame by frame

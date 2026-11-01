@@ -81,7 +81,7 @@ Your pixel-art game needs several readable fire, impact and healing effects, but
 
 You have a small 2D game with a pixel-grid aesthetic, not a blank engine project. You need a family of consistent effects and want to change their palette, placement or seed without redrawing a sheet. The reviewed catalog lists 244 effects across 21 categories, including whole attacks with character wind-up and recovery. Choose pixelfx over hand-painting when reusable parameterized recipes fit the art direction; choose it over an engine-specific emitter when sharing effects across browser games and baked asset pipelines matters.
 
-Its useful contribution is the integration layer around attributed effect recipes: a shared frame format, color and light compositing, reusable placement, an acting-character layer, sheet exporters and source checks. You still supply the game loop, input, collision, gameplay and acceptance of how the effects look. It is a new effects library, not evidence that every animation is production-ready or frame-rate-invariant.
+Its useful contribution is the integration around attributed recipes: reusable placement, acting characters, sheet exporters and checks. The frame shape and back/front drawing contract follow Sprite Fusion's VFX, allowing both libraries to draw into one frame; the two-buffer interface is not claimed as an original invention. You still own the game loop, input, collision, gameplay and visual acceptance. A new library is not evidence that every animation is production-ready or frame-rate-invariant.
 
 ## When NOT to use
 
@@ -144,7 +144,7 @@ The [documented installation](https://github.com/patch-gg/pixelfx/blob/a84159688
 - Separate color and additive light buffers① → RGBA pixels for the caller's game loop
 - Effect module, palette, seed and time → Sample metadata, randomness, frames and timing② (explicit check command)
 - Sample metadata, randomness, frames and timing② → Failures control exit; visual warnings remain advisory
-- Separate color and additive light buffers① → Node grid layout with rectangles and durations③ (render sampled frames)
+- Separate color and additive light buffers① → Node grid layout with rectangles and durations③ (render every frame at fps)
 - Node grid layout with rectangles and durations③ → Fixed PNG sheet and timing JSON for importer testing
 
 </details>
@@ -153,16 +153,16 @@ The [documented installation](https://github.com/patch-gg/pixelfx/blob/a84159688
 ### 1. Separate pigment from additive light
 
 - **Problem:** Ordinary alpha blending can flatten fire and magic, while soft fades can blur an intended pixel-grid silhouette.
-- **How:** `createFrame` allocates separate color and light arrays. The painter places local coordinates on whole pixel cells and uses ordered Bayer thresholds for hard fades; `composite` combines color with a background, then adds light. A separate blending path supports translucent smoke.
+- **How:** `createFrame` allocates color and light arrays in the same frame shape as Sprite Fusion's VFX. The painter places local coordinates on whole pixel cells and uses ordered Bayer thresholds for hard fades; `composite` combines color with a background, then adds light. A separate blending path supports translucent smoke.
 - **Limits:** This is not a rule that all pixels are opaque. Over transparency, light becomes color and alpha; baked glow therefore reads differently over a bright background than a dark one.
-- **Source:** [frame and composite](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/src/core/fx.js#L8-L19), [light composition](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/src/core/fx.js#L95-L131), [dither and translucent paths](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/src/core/painter.js#L9-L79).
+- **Source:** [frame buffers](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/src/core/fx.js#L8-L19), [light composition](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/src/core/fx.js#L95-L131), [dither and translucent paths](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/src/core/painter.js#L9-L79).
 
 ### 2. Distinguish check failures from visual warnings
 
 - **Problem:** An effect can render successfully while spilling outside its frame, leaving a seam or consuming too much time.
 - **How:** The checker rejects malformed metadata, direct `Math.random` calls and sampled nondeterministic results. It also records pixel spill, nonempty endings, loop seams and slow frames as warnings, then prints separate pass/fail/warning counts. Live simulations use substeps no larger than about 1/120 second.
 - **Limits:** Warnings do not make the process fail; exit status depends only on failures. A sampled check and bounded variable substeps do not prove identical output for every seed, time partition or effect implementation.
-- **Source:** [metadata and randomness checks](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/tools/check.mjs#L77-L95), [warnings and sampled determinism](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/tools/check.mjs#L131-L174), [exit policy](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/tools/check.mjs#L195-L216), [substeps](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/src/core/fx.js#L63-L68).
+- **Source:** [metadata and randomness checks](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/tools/check.mjs#L77-L95), [warnings and sampled determinism](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/tools/check.mjs#L131-L174), [exit policy](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/tools/check.mjs#L210-L216), [substeps](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/src/core/fx.js#L63-L68).
 
 ### 3. Export a fixed effect without a browser renderer
 

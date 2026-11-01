@@ -116,7 +116,7 @@ Download the APK from the repository's [Releases](https://github.com/wangzan101/
 3. **Mika**: Pair with wireless debugging and start its shell-level helper — component: `built-in helper`
 4. **You**: Say or type a task in the chat
 5. **Mika**: Open the apps on a hidden screen, read the UI and tap through — component: `background screen`
-6. **Mika**: Ask when the spending heuristic flags a step; hand logins back and report results
+6. **Mika**: In Ask mode, ask about detected spending; hand logins back and report results
 
 **Value**: Errands across API-less apps done from one sentence while you keep using the phone
 
@@ -137,22 +137,23 @@ Download the APK from the repository's [Releases](https://github.com/wangzan101/
 - Model chooses the next tool step
 - Your configured model provider
 - Virtual display mika-agent; screen read and taps②
-- Word-list spending detector and one-shot approval③
+- Ask-mode word-list detector and one-shot approval③
 - Untrusted text fenced in markers④
 - Verifier checks answer against evidence④
-- Reply with result; payment handed to you
+- Reply with the result
 
 - Your sentence in the chat → Learned route replay without the model⑤ (matching route) [optional/fallback]
 - Your sentence in the chat → Model chooses the next tool step
 - Learned route replay without the model⑤ → Model chooses the next tool step (mismatch hands back) [optional/fallback]
 - Model chooses the next tool step → Your configured model provider
 - In-app wireless-debugging pairing; shell-uid helper① → Virtual display mika-agent; screen read and taps② (creates display, launches apps)
-- Model chooses the next tool step → Word-list spending detector and one-shot approval③ (each write action)
-- Word-list spending detector and one-shot approval③ → Virtual display mika-agent; screen read and taps②
+- Model chooses the next tool step → Ask-mode word-list detector and one-shot approval③ (checked writes in Ask mode)
+- Ask-mode word-list detector and one-shot approval③ → Virtual display mika-agent; screen read and taps②
+- Model chooses the next tool step → Virtual display mika-agent; screen read and taps② (Autonomous or unchecked actions) [optional/fallback]
 - Virtual display mika-agent; screen read and taps② → Untrusted text fenced in markers④ (observations)
 - Untrusted text fenced in markers④ → Model chooses the next tool step
 - Model chooses the next tool step → Verifier checks answer against evidence④ (final answer)
-- Verifier checks answer against evidence④ → Reply with result; payment handed to you
+- Verifier checks answer against evidence④ → Reply with the result
 
 </details>
 <!-- mechanism:end -->
@@ -174,9 +175,11 @@ Download the APK from the repository's [Releases](https://github.com/wangzan101/
 ### 3. Gate spending with word lists and a one-shot approval
 
 - **Problem:** A model that misreads a page could place an order or pay without the user noticing.
-- **How:** Before each write action, a deterministic detector matches button names, resource IDs, Enter keys and swipe rows against send/delete/order/pay word lists; a step counts as spending if it is pay/order or an amount in `¥`, `$` or `元` is on screen. In Ask mode the model must declare the step; your approval is used once and only if the same app, action, on-screen target, exact text and amount match within three steps. Payments themselves are always handed to you.
-- **Limits:** Only spending is asked about in Ask mode; Autonomous mode asks nothing; word lists and the amount pattern miss other languages and currencies.
+- **How:** In Ask mode, selected write actions are matched against send/delete/order/pay word lists. Spending requires an existing hit: pay/order, or a non-send hit with a recognized on-screen amount. Approval is tied to the app, action, target, text and amount, usable once within the permitted step window. A flagged payment is not approved through this gate and requires takeover.
+- **Limits:** An amount alone without a word-list hit is insufficient. Autonomous mode returns clear before this gate, including for payments; Ask mode is not universal confirmation for messages, deletion or unknown checkout wording. Language and currency coverage is limited.
 - **Source:** [word lists:30–104](https://github.com/wangzan101/Mika/blob/2c35c9b670a4e8b42430d14bb7d7ac20dc4382c5/core/src/main/kotlin/com/wangzan101/mika/core/gate/IrreversibleDetector.kt#L30-L104), [risk levels:20–42](https://github.com/wangzan101/Mika/blob/2c35c9b670a4e8b42430d14bb7d7ac20dc4382c5/core/src/main/kotlin/com/wangzan101/mika/core/action/RiskJudge.kt#L20-L42), [approval binding:32–96](https://github.com/wangzan101/Mika/blob/2c35c9b670a4e8b42430d14bb7d7ac20dc4382c5/core/src/main/kotlin/com/wangzan101/mika/core/gate/ConfirmationGate.kt#L32-L96), [three-step expiry:203](https://github.com/wangzan101/Mika/blob/2c35c9b670a4e8b42430d14bb7d7ac20dc4382c5/core/src/main/kotlin/com/wangzan101/mika/core/gate/ConfirmationGate.kt#L203-L203).
+
+  [Mode bypass and check selection](https://github.com/wangzan101/Mika/blob/2c35c9b670a4e8b42430d14bb7d7ac20dc4382c5/core/src/main/kotlin/com/wangzan101/mika/core/action/ConfirmDecision.kt#L58-L93).
 
 ### 4. Fence untrusted text and check answers against evidence
 

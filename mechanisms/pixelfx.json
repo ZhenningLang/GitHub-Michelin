@@ -17,7 +17,7 @@
     {"from": "buffers", "to": "live"},
     {"from": "options", "to": "check", "en": "explicit check command", "zh": "显式运行检查命令"},
     {"from": "check", "to": "verdict"},
-    {"from": "buffers", "to": "sheet", "en": "render sampled frames", "zh": "渲染抽样帧"},
+    {"from": "buffers", "to": "sheet", "en": "render every frame at fps", "zh": "按帧率渲染每一帧"},
     {"from": "sheet", "to": "assets"}
   ],
   "sources": ["src/core/fx.js:8-131", "src/core/painter.js:9-79", "tools/check.mjs:77-216", "tools/render.mjs:19-59", "tools/lib/fxlib.mjs:220-261"]

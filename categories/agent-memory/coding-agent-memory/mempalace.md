@@ -96,7 +96,7 @@ Choose it over [claude-mem](claude-mem.md) when exact wording matters more than 
 - **Several writers will hit one palace at once on the default backend.** An open epic (#1963) and issue #1092 track ChromaDB index corruption when hooks, the MCP server and the CLI write concurrently. Use the `sqlite_exact` or a server backend, a single writer, or [Engram](engram.md), whose SQLite file is simpler to reason about.
 - **You want compact distilled facts injected into the prompt.** Verbatim drawers are large and need a search step; that is by design. Use [Mem0](../app-memory/mem0.md) for extracted user facts, or [claude-mem](claude-mem.md) for compressed session observations injected at start.
 - **You need facts that retire automatically when they change.** The SQLite knowledge graph stores validity windows, but a stale fact ends only when something calls `invalidate`; the separate `fact_checker.py` contradiction utility is not called from graph writes. Use [Graphiti](../graph-memory/graphiti.md), which closes old facts as new episodes arrive.
-- **You are choosing on the 96.6% LongMemEval figure.** It is R@5 retrieval recall from ChromaDB's default embedder over one document per session — a baseline any well-configured vector store reaches — and the project's own HISTORY retracted "+34% palace boost", "30x lossless" and its competitor tables. Benchmark your own corpus before relying on it.
+- **You are choosing on the 96.6% LongMemEval figure.** The project's benchmark identifies that R@5 retrieval recall as its raw ChromaDB baseline: default embeddings and one document per session, without palace postprocessing. It does not measure arbitrary vector stores or answer quality. The project's HISTORY retracted "+34% palace boost", "30x lossless" and competitor tables. Benchmark your own corpus.
 - **You want a zero-dependency install or Android-native use.** ChromaDB, ONNX Runtime and a 30–300 MB embedding model are required, and native Termux is unsupported. Use [Engram](engram.md) or [deja-vu](deja-vu.md) for a single local binary.
 
 ## Comparison
@@ -217,11 +217,11 @@ Install the package in an isolated environment with `uv tool install mempalace` 
 - **Maintenance, 2026-11-01:** active. The reviewed `develop` commit `4f7745af` landed 2026-10-31; [v3.11.0](https://github.com/MemPalace/mempalace/releases/tag/v3.11.0) shipped 2026-10-14 and 3.12.0 is being finalized on `develop`. Releases have arrived roughly every two to four weeks.
 - **Governance:** organization repository, MIT license held by "MemPalace Contributors". One maintainer (igorls) authored most commits by a wide margin, so the bus factor is low despite a broad contributor list.
 - **Age and Lindy:** about seven months old. Its launch drew fast attention and public corrections; Lindy gives no durability prior yet. [推断：based on age and commit concentration]
-- **Adoption and risk:** 60.2k stars and 7.6k forks with about 53k PyPI downloads in the last month (2026-11-01). The star count reflects a viral launch more than verified production use. Risk flags are the retracted benchmark claims, open Chroma corruption issues, and impostor domains.
+- **Adoption and risk:** 60.2k stars and 7.6k forks; the automatic snapshot records 53,048 PyPI downloads in the last month (2026-11-01). Stars alone do not establish production use. Risk flags are retracted benchmark claims, open Chroma corruption issues and impostor domains.
 
 ## Caveats (unverified)
 
-- [未验证：no benchmark or palace was run] The 96.6% R@5 and 98.4% held-out figures are the project's numbers; the README cites independent reproductions that this entry did not repeat.
+- [未验证：no benchmark or palace was run] The 96.6% R@5 and 98.4% held-out figures are the project's numbers; `docs/HISTORY.md` cites independent reproductions that this entry did not repeat.
 - [未验证：no concurrency test] The severity and current frequency of Chroma concurrent-writer corruption were read from open issues, not reproduced.
 - [推断：benchmark scripts and product search were read as separate code paths] Product search may not reach the benchmark's hybrid v4 scores on your data.
 - [未验证：adoption signals] Star and download counts were not traced to production users.

@@ -168,7 +168,7 @@ health:
 - **解决：** Claude Code 和 Codex 自带电脑操控、Artifact 和连接器等工具，它们的结果会绕过 Cindy 的守卫，或只在厂商自家界面可见。
 - **做法：** 宿主的路由表把这类能力标成 `disabled`，并写明 Cindy 的替代能力。各 harness 适配层把它们从模型可见面移除（Claude 用禁用工具与拒绝的 MCP 服务器，Codex 用线程级插件与 MCP 配置）。`findUnenforcedCapabilityRoutes` 让任何没有适配层能执行的路由在测试里直接失败。
 - **边界：** Claude 的覆盖按名字匹配，用户自己同名的服务器也会被一起关掉。Pi 不接受任何路由，这张表约束不到它。
-- **源码：** [路由表第 1–60 行](https://github.com/makecindy/cindy/blob/b59490c088cb163666781a769e11749e44a8c87f/apps/desktop/src/main/maker-host/capability-routing.ts#L1-L60)、[执行性检查第 1–35 行](https://github.com/makecindy/cindy/blob/b59490c088cb163666781a769e11749e44a8c87f/packages/maker-core/src/agents/capability-route-support.ts#L1-L35)、[设计规则第 452–480 行](https://github.com/makecindy/cindy/blob/b59490c088cb163666781a769e11749e44a8c87f/docs/dev-rules/maker-core-and-agent-behavior.md#L452-L480)。
+- **源码：** [路由表第 1–60 行](https://github.com/makecindy/cindy/blob/b59490c088cb163666781a769e11749e44a8c87f/apps/desktop/src/main/maker-host/capability-routing.ts#L1-L60)、[执行性检查第 1–33 行](https://github.com/makecindy/cindy/blob/b59490c088cb163666781a769e11749e44a8c87f/packages/maker-core/src/agents/capability-route-support.ts#L1-L33)、[设计规则第 452–480 行](https://github.com/makecindy/cindy/blob/b59490c088cb163666781a769e11749e44a8c87f/docs/dev-rules/maker-core-and-agent-behavior.md#L452-L480)。
 
 ### 3. 先识别工具循环，再请第二个模型决定是否停止
 

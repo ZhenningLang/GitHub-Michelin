@@ -74,8 +74,8 @@
 <rect class="accT" x="472" y="387" width="4" height="72" rx="2"/>
 <circle class="accT" cx="494" cy="411" r="10"/>
 <text class="num" x="494" y="415" text-anchor="middle">6</text>
-<text class="t" x="514" y="416">规则识别花钱步骤才询问；登录交给你，</text>
-<text class="t" x="514" y="438">再回报结果</text>
+<text class="t" x="514" y="416">询问模式只确认识别出的花钱步骤；登录交给</text>
+<text class="t" x="514" y="438">你，再回报结果</text>
 <rect class="val" x="28" y="491" width="824" height="66" rx="10"/>
 <text class="valK" x="48" y="515">价值</text>
 <text class="valT" x="48" y="539">一句话办完没有 API 的 App 里的事，手机照常可用</text>

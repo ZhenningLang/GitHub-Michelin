@@ -70,7 +70,7 @@ health:
 ---
 # shroom
 
-A ten-person team on a per-seat recording service pays every month whether anyone records or not, and the videos sit on someone else's server. shroom is a Mac menu-bar recorder that uploads straight into your own Cloudflare storage and serves each share link from a small web worker it deploys in your account, so the bill is only Cloudflare's storage.
+A ten-person team on a per-seat recording service pays every month even when nobody records, and videos stay on someone else's server. shroom records from the Mac menu bar into your own Cloudflare storage and Worker; costs follow your Cloudflare usage and plans, not just storage or seat count.
 
 ![shroom — health radar](../../../assets/health/shroom.svg)
 

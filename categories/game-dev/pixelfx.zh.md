@@ -81,7 +81,7 @@ health:
 
 你已有一个小型二维像素游戏，不是在找从零建项目的引擎。你需要风格一致的一组特效，希望不重画图集就能改变颜色、位置或种子。已审目录列出 21 类、244 个特效，其中有带角色蓄力和收招的完整攻击。现成配方符合美术方向、参数变化能替代重复绘制时，选它而非逐帧手绘；需要在浏览器游戏和烘焙资产流程间复用时，选它而非只适配单个引擎的发射器。
 
-它的可复用贡献是署名配方周围的集成层：统一帧格式、颜色与发光合成、位置变换、角色动作、图集导出和源码检查。游戏循环、输入、碰撞、玩法和画面验收仍由你负责。它是很新的特效库，不证明每段动画都达到生产标准，也不证明输出完全不受帧率影响。
+它的可复用贡献在署名配方周围的集成：位置变换、角色动作、图集导出和检查。帧格式及前后层绘制接口沿用 Sprite Fusion VFX，两套库能画进同一个帧；双缓冲接口不是本项目独创。游戏循环、输入、碰撞、玩法和画面验收仍由你负责。新库不证明每段动画都达到生产标准，也不证明输出完全不受帧率影响。
 
 ## 何时不用
 
@@ -144,7 +144,7 @@ health:
 - 独立颜色和加法发光缓冲① → 交给调用方游戏循环的 RGBA 像素
 - 特效模块、调色板、种子和时间 → 抽查元数据、随机、帧和耗时②（显式运行检查命令）
 - 抽查元数据、随机、帧和耗时② → 失败决定退出码，视觉警告仍是提示
-- 独立颜色和加法发光缓冲① → Node 排布网格并记录矩形与时长③（渲染抽样帧）
+- 独立颜色和加法发光缓冲① → Node 排布网格并记录矩形与时长③（按帧率渲染每一帧）
 - Node 排布网格并记录矩形与时长③ → 供导入测试的固定 PNG 图集和时序 JSON
 
 </details>
@@ -153,16 +153,16 @@ health:
 ### 1. 把颜料与加法发光分开
 
 - **解决：** 普通透明混合容易让火焰、魔法显得平，而柔和淡出又会模糊像素轮廓。
-- **做法：** `createFrame` 分配独立颜色和发光数组。绘图器把局部坐标落到整像素格，硬淡出使用有序 Bayer 阈值；`composite` 先合成颜色与背景，再加入发光。另有混合路径处理半透明烟雾。
+- **做法：** `createFrame` 按 Sprite Fusion VFX 相同的帧格式分配颜色和发光数组。绘图器把局部坐标落到整像素格，硬淡出使用有序 Bayer 阈值；`composite` 先合成颜色与背景，再加入发光。另有混合路径处理半透明烟雾。
 - **边界：** 这不意味着全部像素都不透明。透明底上的发光会转成颜色和透明度，因此烘焙后在亮背景与暗背景上的观感不同。
-- **源码：** [帧与合成](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/src/core/fx.js#L8-L19)、[发光合成](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/src/core/fx.js#L95-L131)、[抖色和透明路径](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/src/core/painter.js#L9-L79)。
+- **源码：** [帧缓冲](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/src/core/fx.js#L8-L19)、[发光合成](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/src/core/fx.js#L95-L131)、[抖色和透明路径](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/src/core/painter.js#L9-L79)。
 
 ### 2. 区分检查失败与视觉警告
 
 - **解决：** 特效能渲染，不代表它没有越界、接缝或耗时过长。
 - **做法：** 检查器拒绝不合格元数据、直接调用 `Math.random` 和抽样非确定性结果；把像素溢出、结尾不空、循环接缝和慢帧记为警告，分别打印通过、失败和警告数量。实时模拟把步长拆到约 1/120 秒以内。
 - **边界：** 警告不会让进程失败，退出码只看失败数量。抽样检查和有界可变子步长，不证明每个种子、时间切分或特效实现都会完全一致。
-- **源码：** [元数据与随机检查](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/tools/check.mjs#L77-L95)、[警告与抽样确定性](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/tools/check.mjs#L131-L174)、[退出规则](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/tools/check.mjs#L195-L216)、[子步长](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/src/core/fx.js#L63-L68)。
+- **源码：** [元数据与随机检查](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/tools/check.mjs#L77-L95)、[警告与抽样确定性](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/tools/check.mjs#L131-L174)、[退出规则](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/tools/check.mjs#L210-L216)、[子步长](https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/src/core/fx.js#L63-L68)。
 
 ### 3. 不启动浏览器也能导出固定特效
 

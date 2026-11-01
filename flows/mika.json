@@ -7,7 +7,7 @@
     {"lane": "them", "en": "Pair with wireless debugging and start its shell-level helper", "zh": "与无线调试配对，拉起 shell 身份的助手", "component": {"en": "built-in helper", "zh": "内置助手"}},
     {"lane": "you", "en": "Say or type a task in the chat", "zh": "在对话里说或打一句任务"},
     {"lane": "them", "en": "Open the apps on a hidden screen, read the UI and tap through", "zh": "在隐藏的虚拟屏上开 App、读界面、逐步点按", "component": {"en": "background screen", "zh": "后台虚拟屏"}},
-    {"lane": "them", "en": "Ask when the spending heuristic flags a step; hand logins back and report results", "zh": "规则识别花钱步骤才询问；登录交给你，再回报结果"}
+    {"lane": "them", "en": "In Ask mode, ask about detected spending; hand logins back and report results", "zh": "询问模式只确认识别出的花钱步骤；登录交给你，再回报结果"}
   ],
   "value": {"en": "Errands across API-less apps done from one sentence while you keep using the phone", "zh": "一句话办完没有 API 的 App 里的事，手机照常可用"},
   "sources": [

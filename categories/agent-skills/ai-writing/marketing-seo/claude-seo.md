@@ -80,9 +80,9 @@ A site audit usually ends as a 400-row crawler export — "missing H1", "LCP 4.1
 
 ## When to use
 
-You are an in-house SEO or a freelance consultant who already works in Claude Code. A client's Next.js site lost traffic; you need crawlability, Schema.org markup, Core Web Vitals, local and AI-search signals checked in one sitting and turned into "fix this first, because…". Choose Claude SEO when you want that depth as a Claude Code plugin: one `/seo audit` fans out to a technical, content, schema, sitemap, performance, visual, GEO (AI-search citation) and agent-readiness sub-agent, adds Google, backlink, local or e-commerce agents when it detects their credentials or business type, and writes Markdown reports you keep. Its edge over a lighter SEO skill is the bundled Python toolchain — a JavaScript-rendering fetcher, schema validator, drift baselines, Google API reporters — running in an isolated environment. [Orchestration](https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo/SKILL.md#L80-L101).
+You are an in-house SEO or a freelance consultant who already works in Claude Code. A client's Next.js site lost traffic; you need crawlability, Schema.org markup, Core Web Vitals, local and AI-search signals checked together and prioritized. One `/seo audit` starts eight core specialists plus backlinks and search-experience agents, then adds credential- or business-specific specialists when their conditions match. It writes Markdown reports you keep. Its edge over a lighter skill is the bundled Python toolchain: a JavaScript-rendering fetcher, schema validator, drift baselines and Google API reporters in an isolated environment. [Orchestration](https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo/SKILL.md#L80-L101).
 
-The tradeoff is that the reasoning is your Claude plan: pages you audit are sent to the model, and a full audit runs five Opus agents plus Sonnet agents. It does not own a crawl index or backlink database; it explains and prioritizes what scripts and your connected APIs return.
+The tradeoff is that the reasoning uses your Claude plan: audited pages reach the model, and the full audit can involve multiple Opus and Sonnet agents, with optional agents depending on triggers. It does not own a crawl index or backlink database; it explains and prioritizes what scripts and your connected APIs return.
 
 ## When NOT to use
 
@@ -182,13 +182,13 @@ Inside Claude Code 1.0.33 or newer, add the marketplace — the plugin catalogue
 ### 4. Spawn specialists conditionally, then synthesize one plan
 
 - **Problem:** A single prompt that checks speed, schema, content, local and backlinks at once loses depth and runs out of context on real sites.
-- **How:** The orchestrator always starts eight core sub-agents and adds Google, Matomo, local, maps, cluster, e-commerce or drift agents when a credential check, page signal or stored baseline triggers them. Each agent has its own model and turn budget and writes a findings file. The orchestrator scores them 0–100 and buckets recommendations, each with a "how would we know this failed" check.
+- **How:** The orchestrator always includes eight core sub-agents plus backlinks and search experience, then adds Google, Matomo, local, maps, cluster, e-commerce or drift agents when their conditions match. Each agent has its own model and turn budget and writes findings. The orchestrator scores results 0–100 and buckets recommendations with falsifiability checks.
 - **Limits:** Business-type detection uses homepage keyword signals, so mixed sites can get the wrong agent set. Partial findings are merged when an agent hits its turn cap. Major deliverables end with a promotional community footer.
 - **Source:** [Orchestration:80–101](https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo/SKILL.md#L80-L101), [footer rule:152–162](https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo/SKILL.md#L152-L162), [agent budget:1–7](https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/agents/seo-technical.md#L1-L7).
 
 ## Tech stack
 
-Markdown skills and agent definitions for Claude Code, plus 61 Python scripts under `scripts/` (requests, BeautifulSoup/lxml, trafilatura, Playwright, matplotlib/WeasyPrint for PDF, openpyxl, Google API clients and google-ads). A Bash/PowerShell launcher selects Python; a Node wrapper runs the hook. Drift baselines live in SQLite. [requirements.txt](https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/requirements.txt).
+Markdown skills and agent definitions for Claude Code, plus Python scripts and a launcher under `scripts/` (requests, BeautifulSoup/lxml, trafilatura, Playwright, matplotlib/WeasyPrint for PDF, openpyxl, Google API clients and google-ads). A Bash/PowerShell launcher selects Python; a Node wrapper runs the hook. Drift baselines live in SQLite. [requirements.txt](https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/requirements.txt).
 
 ## Dependencies
 

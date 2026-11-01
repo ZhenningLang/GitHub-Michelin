@@ -18,7 +18,7 @@
     {"from": "geo", "to": "render"},
     {"from": "render", "to": "sheets", "en": "sampled stills", "zh": "抽样截图"},
     {"from": "sheets", "to": "math", "en": "fix and rebuild", "zh": "修正后重建", "style": "dashed"},
-    {"from": "render", "to": "page", "en": "live mode", "zh": "在线模式"},
+    {"from": "geo", "to": "page", "en": "real-time loop replays film script, not render(t)", "zh": "实时循环回放影片脚本，不经 render(t)"},
     {"from": "render", "to": "capture", "en": "capture mode", "zh": "录制模式"},
     {"from": "capture", "to": "video"},
     {"from": "score", "to": "video", "en": "mux", "zh": "合流"}

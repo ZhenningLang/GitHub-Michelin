@@ -78,8 +78,8 @@
 <rect class="accT" x="472" y="464" width="4" height="94" rx="2"/>
 <circle class="accT" cx="494" cy="488" r="10"/>
 <text class="num" x="494" y="492" text-anchor="middle">6</text>
-<text class="t" x="514" y="493">Ask when the spending heuristic flags</text>
-<text class="t" x="514" y="515">a step; hand logins back and report</text>
+<text class="t" x="514" y="493">In Ask mode, ask about detected</text>
+<text class="t" x="514" y="515">spending; hand logins back and report</text>
 <text class="t" x="514" y="537">results</text>
 <rect class="val" x="28" y="590" width="824" height="66" rx="10"/>
 <text class="valK" x="48" y="614">VALUE</text>

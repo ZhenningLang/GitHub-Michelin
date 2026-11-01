@@ -80,9 +80,9 @@ health:
 
 ## 何时使用
 
-你是企业内部的 SEO，或者自由职业顾问，平时就在 Claude Code 里干活。客户的 Next.js 网站流量掉了，你要一次性查完可抓取性、Schema.org 标记、Core Web Vitals（谷歌的页面体验指标）、本地 SEO 和 AI 搜索信号，并整理成“先修这个，因为……”。想要以 Claude Code 插件的形式拿到这种深度时选 Claude SEO：一条 `/seo audit` 会派出技术、内容、schema、站点地图、性能、视觉、GEO（被 AI 搜索引用的可能性）和 agent 可用性八个子 agent；检测到对应凭据或业务类型时，再加上 Google、外链、本地或电商 agent，最后写出你能留存的 Markdown 报告。它比轻量 SEO 技能强在自带的 Python 工具链——能渲染 JavaScript 的抓取器、schema 校验器、漂移基线、Google API 报表——都跑在隔离环境里。[编排逻辑](https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo/SKILL.md#L80-L101)。
+你是企业内部的 SEO，或者自由职业顾问，平时就在 Claude Code 里干活。客户的 Next.js 网站流量掉了，你要一起检查可抓取性、Schema.org 标记、Core Web Vitals、本地 SEO 和 AI 搜索信号，再排修复顺序。一条 `/seo audit` 启动八个核心专项 agent，加上外链和搜索体验 agent，再按凭据或业务条件增加其他专项，写出能留存的 Markdown 报告。它比轻量技能强在自带的 Python 工具链：能渲染 JavaScript 的抓取器、schema 校验器、漂移基线和 Google API 报表，都在隔离环境里运行。[编排逻辑](https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo/SKILL.md#L80-L101)。
 
-代价是推理全花你的 Claude 额度：被审计的页面会发给模型，一次完整审计要跑五个 Opus agent 外加若干 Sonnet agent。它没有自己的爬取索引或外链数据库，只负责解释和排序脚本与你接入的 API 返回的内容。
+代价是推理使用你的 Claude 额度：被审页面会发给模型，完整审计可能调用多个 Opus 和 Sonnet agent，可选专项取决于触发条件。它没有自己的爬取索引或外链数据库，只负责解释和排序脚本与你接入的 API 返回的内容。
 
 ## 何时不用
 
@@ -182,13 +182,13 @@ health:
 ### 4. 按条件派出专家，再合成一份计划
 
 - **解决：** 用一个提示词同时查速度、schema、内容、本地和外链，在真实站点上会丢深度、撑爆上下文。
-- **做法：** 编排器总是启动八个核心子 agent；凭据检查、页面信号或已有基线命中时，再加 Google、Matomo、本地、地图、主题聚类、电商或漂移 agent。每个 agent 有自己的模型和轮次预算，并写出一个发现文件。编排器打 0–100 分、把建议分进优先级组，每条建议附一句“怎么知道它失败了”的检验。
+- **做法：** 编排器总包含八个核心子 agent，加上外链和搜索体验，再按条件增加 Google、Matomo、本地、地图、主题聚类、电商或漂移专项。每个 agent 有独立模型和轮次预算，并写出发现。编排器打 0–100 分，把建议按优先级分组，并附上可证伪的检查。
 - **边界：** 业务类型靠首页关键词判断，混合型网站可能派错 agent。agent 用完轮次时，会合并不完整的发现。主要交付物末尾会附上推广社群的页脚。
 - **源码：** [编排逻辑第 80–101 行](https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo/SKILL.md#L80-L101)、[页脚规则第 152–162 行](https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo/SKILL.md#L152-L162)、[agent 预算第 1–7 行](https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/agents/seo-technical.md#L1-L7)。
 
 ## 技术栈
 
-面向 Claude Code 的 Markdown 技能和 agent 定义，加上 `scripts/` 下 61 个 Python 脚本（requests、BeautifulSoup／lxml、trafilatura、Playwright、生成 PDF 的 matplotlib／WeasyPrint、openpyxl、Google API 客户端和 google-ads）。Bash／PowerShell 启动器负责挑选 Python；Node 包装器运行 hook。漂移基线存在 SQLite 里。[requirements.txt](https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/requirements.txt)。
+面向 Claude Code 的 Markdown 技能和 agent 定义，加上 `scripts/` 下的 Python 脚本及启动器（requests、BeautifulSoup／lxml、trafilatura、Playwright、生成 PDF 的 matplotlib／WeasyPrint、openpyxl、Google API 客户端和 google-ads）。Bash／PowerShell 启动器负责挑选 Python；Node 包装器运行 hook。漂移基线存在 SQLite 里。[requirements.txt](https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/requirements.txt)。
 
 ## 依赖
 
