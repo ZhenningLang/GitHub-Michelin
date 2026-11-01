@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Mika** | Let your chosen model operate Android apps on a hidden screen without a computer; shell privileges, provider data egress and heuristic spending-only approvals are the price. | C (5/6) | [→](mika.md) |
 | **iPhone Use** | Let a supervised assistant operate real iPhone apps over USB through MCP and signed WDA. | C (6/6) | [→](iphone-use.md) |
 | **iCTRL** | Give a supervised agent a paired JSON-RPC endpoint on a real iPhone; signing, DDI and broad device authority remain yours. | C (5/6) | [→](ictrl.md) |
 | **baguette** | Use it when you want headless, scriptable control of an Apple-Silicon iOS Simulator — 60fps streaming, host-side gestures, a multi-device farm — but it needs Xcode 26 and rides private SimulatorKit symbols. | B (6/6) | [→](baguette.md) |
@@ -22,6 +23,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Mika](mika.md) | Indexed | C (5/6) | Personal phone errands from a sentence, not deterministic CI tests; the Ask detector does not guard every message, deletion or purchase. |
 | [iPhone Use](iphone-use.md) | ✅ | C (6/6) | Real-iPhone MCP tools, preview and visual recovery without a separate Appium Server; days-old plugin, signing burden and default telemetry. |
 | [iCTRL](ictrl.md) | ✅ | C (5/6) | Phone-hosted manual/schema and authenticated actions; custom protocol, private event APIs and signing burden. |
 | [baguette](baguette.md) | ✅ | B (6/6) | Headless simulator control with streaming + a farm, but Apple-Silicon/Xcode-26-only and on private symbols. |

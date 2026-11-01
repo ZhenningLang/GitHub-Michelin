@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "task", "en": "Your sentence in the chat", "zh": "你在对话里的一句话", "kind": "input"},
+    {"id": "adb", "en": "In-app wireless-debugging pairing;\nshell-uid helper", "zh": "应用内无线调试配对；\nshell 身份的助手", "technique": [1]},
+    {"id": "route", "en": "Learned route replay without the model", "zh": "按学到的路线回放，不调模型", "technique": [5]},
+    {"id": "loop", "en": "Model chooses the next tool step", "zh": "模型选择下一步工具", "kind": "step"},
+    {"id": "llm", "en": "Your configured model provider", "zh": "你配置的模型服务商", "kind": "external"},
+    {"id": "display", "en": "Virtual display mika-agent;\nscreen read and taps", "zh": "虚拟屏 mika-agent；\n读屏与点按", "technique": [2]},
+    {"id": "gate", "en": "Word-list spending detector and one-shot approval", "zh": "词表识别花钱步骤，单次同意", "technique": [3]},
+    {"id": "fence", "en": "Untrusted text fenced in markers", "zh": "不可信文字套上标记", "technique": [4]},
+    {"id": "verify", "en": "Verifier checks answer against evidence", "zh": "核查器对照证据核答案", "technique": [4]},
+    {"id": "answer", "en": "Reply with result; payment handed to you", "zh": "回报结果；付款交给你", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "task", "to": "route", "en": "matching route", "zh": "有匹配路线", "style": "dashed"},
+    {"from": "task", "to": "loop"},
+    {"from": "route", "to": "loop", "en": "mismatch hands back", "zh": "对不上就交还", "style": "dashed"},
+    {"from": "loop", "to": "llm"},
+    {"from": "adb", "to": "display", "en": "creates display, launches apps", "zh": "建虚拟屏、启动 App"},
+    {"from": "loop", "to": "gate", "en": "each write action", "zh": "每个写操作"},
+    {"from": "gate", "to": "display"},
+    {"from": "display", "to": "fence", "en": "observations", "zh": "观察结果"},
+    {"from": "fence", "to": "loop"},
+    {"from": "loop", "to": "verify", "en": "final answer", "zh": "最终回答"},
+    {"from": "verify", "to": "answer"}
+  ],
+  "sources": [
+    "https://github.com/wangzan101/Mika/blob/2c35c9b670a4e8b42430d14bb7d7ac20dc4382c5/core/src/main/kotlin/com/wangzan101/mika/core/adb/AdbPairing.kt#L35-L75",
+    "https://github.com/wangzan101/Mika/blob/2c35c9b670a4e8b42430d14bb7d7ac20dc4382c5/app/src/main/java/com/wangzan101/mika/cap/phone/shell/ShellService.kt#L90-L117",
+    "https://github.com/wangzan101/Mika/blob/2c35c9b670a4e8b42430d14bb7d7ac20dc4382c5/core/src/main/kotlin/com/wangzan101/mika/core/gate/ConfirmationGate.kt#L32-L96",
+    "https://github.com/wangzan101/Mika/blob/2c35c9b670a4e8b42430d14bb7d7ac20dc4382c5/core/src/main/kotlin/com/wangzan101/mika/core/observation/Untrusted.kt#L1-L22",
+    "https://github.com/wangzan101/Mika/blob/2c35c9b670a4e8b42430d14bb7d7ac20dc4382c5/core/src/main/kotlin/com/wangzan101/mika/core/verify/Verifier.kt#L25-L63",
+    "https://github.com/wangzan101/Mika/blob/2c35c9b670a4e8b42430d14bb7d7ac20dc4382c5/core/src/main/kotlin/com/wangzan101/mika/core/replay/Replayer.kt#L39-L53"
+  ]
+}

@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Mika** | 让选定模型在安卓隐藏屏上操作 App，无需电脑；需承担 shell 权限、模型外发和启发式花钱审批的风险。 | C（5/6） | [→](mika.zh.md) |
 | **iPhone Use** | 让受监督的助手通过 USB、MCP 与签名 WDA 操作真实 iPhone App。 | C（6/6） | [→](iphone-use.zh.md) |
 | **iCTRL** | 给受监督助手一个真机 iPhone 配对接口；签名、开发映像和广泛设备权限由你负责。 | C（5/6） | [→](ictrl.zh.md) |
 | **baguette** | 当你想无头、可脚本地控制 Apple Silicon 上的 iOS 模拟器——60fps 投屏、宿主机手势注入、多设备 farm——但它需要 Xcode 26，且骑在 SimulatorKit 私有符号上时使用。 | B（6/6） | [→](baguette.zh.md) |
@@ -22,6 +23,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Mika](mika.zh.md) | 已收录 | C（5/6） | 用一句话办个人手机杂事，不是确定性 CI 测试；询问规则不覆盖全部消息、删除或购买。 |
 | [iPhone Use](iphone-use.zh.md) | ✅ | C（6/6） | 真机 MCP 工具、预览与截图恢复，无需独立 Appium Server；插件仅十几天历史，要管签名且默认遥测。 |
 | [iCTRL](ictrl.zh.md) | ✅ | C（5/6） | 手机自带手册与方法结构、认证操作；代价是自有协议、私有事件接口和签名负担。 |
 | [baguette](baguette.zh.md) | ✅ | B（6/6） | 无头模拟器控制带投屏和 farm，但仅限 Apple Silicon＋Xcode 26，且依赖私有符号。 |

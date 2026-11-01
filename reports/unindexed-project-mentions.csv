@@ -88,6 +88,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [MeshCentral](https://github.com/Ylianst/MeshCentral),categories/dev-utilities/ops-infra/rustdesk.md,,no
 [mihomo](https://github.com/MetaCubeX/mihomo),categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 [Mnemosyne](https://github.com/mnemosyne-proj/mnemosyne),categories/education-tutoring/word-atlas.md,,no
+[Mobilerun](https://github.com/droidrun/mobilerun) (formerly droidrun),categories/mobile-automation/mika.md,,no
 [mwan3](https://github.com/openwrt/packages/tree/master/net/mwan3),categories/networking/net-merge.md,,no
 [neomutt](https://github.com/neomutt/neomutt),categories/agent-tooling/harness-extensions/hey-cli.md,,no
 [Nethereum.Faucet](https://github.com/Nethereum/Nethereum.Faucet),categories/blockchain-dev-infrastructure/powfaucet.md,,no
@@ -99,6 +100,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [OmniVoice](https://github.com/k2-fsa/OmniVoice),categories/speech/voicestudio.md,,no
 [Open GApps](https://github.com/opengapps/opengapps),categories/android-system-services/microg-gmscore.md,,no
 [Open Policy Agent](https://github.com/open-policy-agent/opa),categories/agent-governance/agent-governance-toolkit.md,,no
+[Open-AutoGLM](https://github.com/zai-org/Open-AutoGLM),categories/mobile-automation/mika.md,,no
 [Open-Sora-Plan](https://github.com/PKU-YuanGroup/Open-Sora-Plan),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [OpenAI Plugins](https://github.com/openai/plugins),categories/agent-skills/vendor-collections/agent-vendors/openai-skills.md,,no
 [openclaw/agent-skills](https://github.com/openclaw/agent-skills),categories/agent-skills/personal-collections/engineering-workflows/agent-scripts.md,,no
@@ -130,6 +132,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [SAM 2](https://github.com/facebookresearch/sam2) + an inpainter,categories/ml-research/vision-and-multimodal/see-through.md,,no
 [Self Forcing](https://github.com/guandeh17/Self-Forcing),categories/ml-research/vision-and-multimodal/stable-video-infinity.md,,no
 [Semgrep](https://github.com/semgrep/semgrep),categories/agent-governance/skillspector.md,,no
+[Shizuku](https://github.com/RikkaApps/Shizuku),categories/mobile-automation/mika.md,,no
 [sing-box](https://github.com/SagerNet/sing-box),categories/dev-utilities/ops-infra/open-box.md,,no
 [spcfox/amnezia-wg-easy](https://github.com/spcfox/amnezia-wg-easy),categories/networking/amneziawg-installer.md,,no
 [Stats](https://github.com/exelban/stats),categories/observability/mac-performance-monitor.md,,no

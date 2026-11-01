@@ -1256,6 +1256,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **iPhone Use** | 助手通过 MCP 与签名 WDA，在监督下操作 USB iPhone；要配置 Mac／Xcode，默认遥测，插件很年轻。 | MIT | C（6/6） | [中](categories/mobile-automation/iphone-use.zh.md) · [EN](categories/mobile-automation/iphone-use.md) |
+| **Mika** | 让选定模型在安卓隐藏屏上办事，无需电脑；项目仅数天，需 shell 权限，观察外发模型服务商，只按启发式规则确认花钱。 | Apache-2.0 | C（5/6） | [中](categories/mobile-automation/mika.zh.md) · [EN](categories/mobile-automation/mika.md) |
 | **iCTRL** | 通过手机批准配对和 JSON-RPC，受监督地控制真机 iPhone；不是跨平台测试框架。 | Apache-2.0 | C（5/6） | [中](categories/mobile-automation/ictrl.zh.md) · [EN](categories/mobile-automation/ictrl.md) |
 | **baguette** | 当你想无头、可脚本地控制 Apple Silicon 上的 iOS 模拟器——60fps 投屏、宿主机手势注入、多设备 farm——但它需要 Xcode 26，且骑在 SimulatorKit 私有符号上时使用。 | Apache-2.0 | B（6/6） | [中](categories/mobile-automation/baguette.zh.md) · [EN](categories/mobile-automation/baguette.md) |
 | **idb** | 当你要从远端客户端用细粒度原语自动化 iOS 模拟器**和**真机时用它——但 iOS 26 打坏了它一部分能力，且每个目标要挂一个 companion 进程。 | MIT | B（6/6） | [中](categories/mobile-automation/idb.zh.md) · [EN](categories/mobile-automation/idb.md) |
