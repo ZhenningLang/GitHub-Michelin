@@ -645,6 +645,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | --- | --- | --- | --- | --- |
 | **Monocolor Editorial Print** | 分配一至两种油墨职责，组织裁切与字图关系；自备生图后端和已授权素材。 | 软件 MIT；不含美术 | C（4/5） | [中](categories/agent-skills/visual-content/image-art-direction/mono-color-skill.zh.md) · [EN](categories/agent-skills/visual-content/image-art-direction/mono-color-skill.md) |
 | **fun-isometric** | 让助手用复用动作帧绘制、绑定可修改的画布贴纸；附渲染检查，不是通用动画平台。 | MIT | C（4/5） | [中](categories/agent-skills/visual-content/fun-isometric.zh.md) · [EN](categories/agent-skills/visual-content/fun-isometric.md) |
+| **teardown** | 用同一运动学模板制作可拆解机器讲解网页和 60 帧视频；项目很年轻、单人维护、需要 GPU，不提供工程级物理计算。 | MIT | C（4/5） | [中](categories/agent-skills/visual-content/teardown.zh.md) · [EN](categories/agent-skills/visual-content/teardown.md) |
 | **Interfaces Skills** | 六领域循证界面评审，明确区分本次退化和未审查领域。 | MIT | B（4/5） | [中](categories/agent-skills/design/ui-taste/jakubkrehel-skills.zh.md) · [EN](categories/agent-skills/design/ui-taste/jakubkrehel-skills.md) |
 | **Plain Writing Skill** | 用平实英文规则改写 agent 回复，并补齐读者背景。 | MIT | B（4/5） | [中](categories/agent-skills/ai-writing/de-ai-writing/plain-writing-skill.zh.md) · [EN](categories/agent-skills/ai-writing/de-ai-writing/plain-writing-skill.md) |
 | **SwiftUI Pro** | SwiftUI API 与无障碍专项审查指令；须对照真实 SDK 验证。 | MIT | B（4/5） | [中](categories/agent-skills/engineering/swiftui-agent-skill.zh.md) · [EN](categories/agent-skills/engineering/swiftui-agent-skill.md) |

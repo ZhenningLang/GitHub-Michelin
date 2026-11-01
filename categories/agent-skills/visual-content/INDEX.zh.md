@@ -13,6 +13,7 @@
 
 | 集合 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **teardown** | 让编码 agent 制作可拆解机器讲解网页和 60 帧视频，复用运动学并用截图拼图自查；只是两天大的模板，不是工程仿真。 | C（4/5） | [→](teardown.zh.md) |
 | **fun-isometric** | 让助手用复用动作帧绘制、绑定可修改的画布贴纸；附渲染检查，不是通用动画平台。 | C（4/5） | [→](fun-isometric.zh.md) |
 | **Guizang Social Card Skill** | 当你在 Claude Code/Codex 里想让 agent 用锁定的编辑风/瑞士风生成小红书图文或公众号封面对（单文件 HTML 渲染成 PNG）时使用。 | D（3/5） | [→](guizang-social-card.zh.md) |
 | **Lieflat Charts** | 当你想让编码助手把数据做成模板锁定、可直接发布的单文件 HTML 图表或 12 套中英双语整页报告、整套交付共用一种编辑风视觉语言时用它。 | C（3/5） | [→](lieflat-charts.zh.md) |
@@ -21,6 +22,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [teardown](teardown.zh.md) | 已收录 | C（4/5） | 三个完整 3D 机构和网页转影片流程；需要 GPU 渲染，并手动补回构建时剥离的第三方声明。 |
 | [fun-isometric](fun-isometric.zh.md) | 已收录 | C（4/5） | 外观受限的动态贴纸组件，支持本地渲染；仅一天历史，须审查浏览器下载与许可正文保留。 |
 | [Guizang Social Card Skill](guizang-social-card.zh.md) | ✅ | D（3/5） | 把社交卡片和封面做成 HTML 到 PNG 产物；很年轻且 AGPL。 |
 | [Guizang PPT Skill](../slides-ppt/guizang-ppt.zh.md) | ✅ | C（4/5） | 当产物是完整 deck、不是独立卡片或文章配图时选它。 |

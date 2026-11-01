@@ -395,6 +395,7 @@ claude-code-proxy (1rgs/claude-code-proxy),categories/llm-inference/local-runtim
 claude-cookbooks · openai-cookbook,categories/learning-resources/ai-engineering-hub.md,,no
 claude-diary,categories/agent-memory/coding-agent-memory/backpass.md,,no
 claude-flow,categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
+claude-motion (whaleyxbt/claude-motion),categories/agent-skills/visual-content/teardown.md,,no
 claude-reflect,categories/agent-memory/coding-agent-memory/autoharness.md,,no
 claude-squad,categories/agent-frameworks/coding-agents/agent-multiplexers/tuios.md,,no
 CLAUDE.md (built-in),categories/agent-memory/coding-agent-memory/claude-subconscious.md,,no

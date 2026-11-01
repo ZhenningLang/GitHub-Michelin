@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "ref", "en": "Reference image and real dimensions", "zh": "参考图与真实尺寸", "kind": "input"},
+    {"id": "math", "en": "Maths file: one input poses every joint and readout", "zh": "数学文件：一个输入决定所有关节与读数", "technique": [1]},
+    {"id": "geo", "en": "three.js geometry and panels", "zh": "three.js 几何体与面板"},
+    {"id": "render", "en": "Pure render(t); film script on a timeline", "zh": "纯函数 render(t)；时间线上的影片脚本", "technique": [2]},
+    {"id": "sheets", "en": "Still sheets per beat; checklist loop", "zh": "按节拍截图拼图；清单循环", "technique": [3]},
+    {"id": "page", "en": "One offline HTML: warmed shaders, auto tour, hand-off", "zh": "单个离线网页：预热着色器、自动导览、交出控制", "kind": "output", "technique": [4]},
+    {"id": "capture", "en": "Headless Chromium screenshot per frame to ffmpeg", "zh": "无头 Chromium 每帧截图送 ffmpeg", "technique": [2]},
+    {"id": "score", "en": "Synthesized score from the same timeline", "zh": "按同一时间线合成的配乐", "technique": [2]},
+    {"id": "video", "en": "60 fps MP4 with sound", "zh": "带声音的 60 帧 MP4", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "ref", "to": "math"},
+    {"from": "math", "to": "geo", "en": "poses", "zh": "姿态"},
+    {"from": "geo", "to": "render"},
+    {"from": "render", "to": "sheets", "en": "sampled stills", "zh": "抽样截图"},
+    {"from": "sheets", "to": "math", "en": "fix and rebuild", "zh": "修正后重建", "style": "dashed"},
+    {"from": "render", "to": "page", "en": "live mode", "zh": "在线模式"},
+    {"from": "render", "to": "capture", "en": "capture mode", "zh": "录制模式"},
+    {"from": "capture", "to": "video"},
+    {"from": "score", "to": "video", "en": "mux", "zh": "合流"}
+  ],
+  "sources": [
+    "https://github.com/elvarofficial/teardown/blob/a91262ac1109051e014662d42ecb0b7bc1f113b1/SKILL.md#L37-L117",
+    "https://github.com/elvarofficial/teardown/blob/a91262ac1109051e014662d42ecb0b7bc1f113b1/sims/strandbeest-shared/jansen.js#L1-L67",
+    "https://github.com/elvarofficial/teardown/blob/a91262ac1109051e014662d42ecb0b7bc1f113b1/sims/capture.mjs#L175-L196",
+    "https://github.com/elvarofficial/teardown/blob/a91262ac1109051e014662d42ecb0b7bc1f113b1/sims/kit/warm.js#L1-L40",
+    "https://github.com/elvarofficial/teardown/blob/a91262ac1109051e014662d42ecb0b7bc1f113b1/sims/strandbeest-shared/live.js#L1-L15"
+  ]
+}
