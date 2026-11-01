@@ -7,6 +7,7 @@
 
 | 合集 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Claude SEO** | 在 Claude Code 中派 SEO 专项 agent，把页面检查汇成一份优先级计划；需承担模型用量和 500 页爬取上限。 | B（6/6） | [→](claude-seo.zh.md) |
 | **new-term-radar** | AI 新产品进入关键词面板时，你可能已错过首批讨论。这个工具比较来源快照，每日整理带证据的关键词候选。 | C（5/6） | [→](new-term-radar.zh.md) |
 | **marketingskills** | 面向 product marketing、CRO、copywriting、SEO、analytics、lifecycle email、ads 和 growth execution 的宽营销 skill pack。 | B（4/5） | [→](marketingskills.zh.md) |
 | **open-seo** | 可自托管 SEO app，加 MCP 和 Agent Skills，用于关键词研究、排名跟踪、竞品、反链、审计和 AI visibility。 | B（5/6） | [→](open-seo.zh.md) |
@@ -17,6 +18,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Claude SEO](claude-seo.zh.md) | 已收录 | B（6/6） | 自带抓取器、校验器和专项 agent，比轻量上线技能更深，但不提供持久爬取数据库。 |
 | [new-term-radar](new-term-radar.zh.md) | ✅ | C（5/6） | AI 新产品进入关键词面板时，你可能已错过首批讨论。这个工具比较来源快照，每日整理带证据的关键词候选。 |
 | [marketingskills](marketingskills.zh.md) | ✅ | B（4/5） | 最适合 SaaS／growth marketing；不是通用文章写作 pipeline。 |
 | [open-seo](open-seo.zh.md) | ✅ | B（5/6） | SEO workflow 需要自托管 app、MCP 和 DataForSEO 付费数据时最合适。 |

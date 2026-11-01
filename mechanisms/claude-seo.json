@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "url", "en": "Audit URL from the user", "zh": "用户给的审计网址", "kind": "input"},
+    {"id": "orch", "en": "Business-type detection; conditional sub-agents", "zh": "识别业务类型；按条件派子 agent", "technique": [4]},
+    {"id": "runtime", "en": "Launcher; hashed venv and Chromium", "zh": "启动器；带哈希校验的 venv 与 Chromium", "technique": [3]},
+    {"id": "fetch", "en": "DNS-pinned fetch; redirects re-checked", "zh": "DNS 钉住的抓取；重定向再校验", "technique": [1]},
+    {"id": "browser", "en": "Guarded Chromium: per-request IP check", "zh": "受控 Chromium：逐请求查 IP", "technique": [1]},
+    {"id": "site", "en": "Target website", "zh": "目标网站", "kind": "external"},
+    {"id": "findings", "en": "Per-agent findings files", "zh": "各子 agent 的发现文件"},
+    {"id": "plan", "en": "Scored, prioritized action plan", "zh": "评分并排序的行动计划", "kind": "output"},
+    {"id": "edit", "en": "Agent writes an HTML file", "zh": "agent 写入 HTML 文件", "kind": "input"},
+    {"id": "hook", "en": "PostToolUse schema check; exit 2 returns errors to Claude", "zh": "编辑后 schema 检查；退出码 2 把错误交回 Claude", "technique": [2]}
+  ],
+  "edges": [
+    {"from": "url", "to": "orch"},
+    {"from": "orch", "to": "runtime", "en": "every script call", "zh": "每次调用脚本"},
+    {"from": "runtime", "to": "fetch"},
+    {"from": "runtime", "to": "browser", "en": "JavaScript pages", "zh": "需要 JS 的页面", "style": "dashed"},
+    {"from": "fetch", "to": "site"},
+    {"from": "browser", "to": "site"},
+    {"from": "site", "to": "findings", "en": "parsed signals", "zh": "解析出的信号"},
+    {"from": "findings", "to": "plan", "en": "0-100 score and buckets", "zh": "0-100 分与优先级分组"},
+    {"from": "edit", "to": "hook"},
+    {"from": "hook", "to": "edit", "en": "model fixes the file", "zh": "模型修正文件", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/scripts/url_safety.py#L467-L751",
+    "https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/scripts/url_safety.py#L1020-L1133",
+    "https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/hooks/validate-schema.py#L191-L337",
+    "https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/scripts/runtime.py#L122-L378",
+    "https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo/SKILL.md#L80-L101"
+  ]
+}

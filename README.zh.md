@@ -814,6 +814,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **soul.md** | The best way to build a personality for your agent. Let Claude Code / OpenClaw ingest your data & build your AI soul. | MIT | B（4/5） | [中](categories/agent-skills/context-engineering/soul-md.zh.md) · [EN](categories/agent-skills/context-engineering/soul-md.md) |
 | **marketingskills** | Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering. | MIT | B（4/5） | [中](categories/agent-skills/ai-writing/marketing-seo/marketingskills.zh.md) · [EN](categories/agent-skills/ai-writing/marketing-seo/marketingskills.md) |
 | **AI Copywriter** | 单文件 Markdown 技能：先问清读者和真实故事，再写标题、微文案、邮件主题行和 LinkedIn 帖子，并逐句对照 33 种 AI 写作痕迹审查。 | MIT | C（3/5） | [中](categories/agent-skills/ai-writing/marketing-seo/ai-copywriter.zh.md) · [EN](categories/agent-skills/ai-writing/marketing-seo/ai-copywriter.md) |
+| **Claude SEO** | 在 Claude Code 中执行 SEO 专项审计，把页面检查汇成一份优先级计划；需接受模型用量、500 页爬取上限和单人主导的路线图。 | MIT | B（6/6） | [中](categories/agent-skills/ai-writing/marketing-seo/claude-seo.zh.md) · [EN](categories/agent-skills/ai-writing/marketing-seo/claude-seo.md) |
 | **OPC Skills** | 一人公司的十个上线杂活技能——SEO／AI 搜索体检并给出可粘贴的 schema，外加域名、logo、需求调研和 Reddit／X 查询，用你自己的 API 密钥运行。 | Apache-2.0 | B（4/5） | [中](categories/agent-skills/ai-writing/marketing-seo/opc-skills.zh.md) · [EN](categories/agent-skills/ai-writing/marketing-seo/opc-skills.md) |
 
 ### observability

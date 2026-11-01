@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Claude SEO", "zh": "Claude SEO"},
+  "steps": [
+    {"lane": "you", "en": "Add the marketplace and install the plugin in Claude Code", "zh": "在 Claude Code 里添加插件市场并安装插件", "code": "/plugin install claude-seo@agricidaniel-claude-seo"},
+    {"lane": "you", "en": "Prepare the bundled tools once", "zh": "首次准备内置工具", "code": "/seo setup"},
+    {"lane": "them", "en": "Build a private Python environment and headless Chromium", "zh": "建好独立 Python 环境和无头 Chromium", "component": {"en": "runtime launcher", "zh": "运行时启动器"}},
+    {"lane": "you", "en": "Start a full audit of your site", "zh": "对自己的网站发起完整审计", "code": "/seo audit https://example.com"},
+    {"lane": "them", "en": "Detect the business type and run specialist sub-agents in parallel", "zh": "识别业务类型，并行派出各领域子 agent", "component": {"en": "seo orchestrator skill", "zh": "seo 编排技能"}},
+    {"lane": "them", "en": "Merge findings into a scored, prioritized action plan", "zh": "汇总发现，给出评分和按优先级排序的行动计划", "component": {"en": "ACTION-PLAN.md", "zh": "ACTION-PLAN.md"}}
+  ],
+  "value": {"en": "One explained fix list instead of ranking hundreds of crawler warnings by hand", "zh": "拿到一份讲清原因的修复清单，不用再手工给几百条爬虫警告排序"},
+  "sources": [
+    "https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/README.md#L197-L205",
+    "https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo/SKILL.md#L68-L101",
+    "https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-audit/SKILL.md#L53-L60",
+    "https://github.com/AgriciDaniel/claude-seo/blob/6be93f45064ffbadced572b5d5c95f55fd263af0/scripts/runtime.py#L293-L378"
+  ]
+}
