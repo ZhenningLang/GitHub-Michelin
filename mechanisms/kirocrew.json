@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "task", "en": "Session task", "zh": "会话任务", "kind": "input"},
+    {"id": "recall", "en": "Project evidence into a bounded recall envelope", "zh": "把证据投影到有界召回响应", "technique": [1]},
+    {"id": "runtime", "en": "Configured external agent runtime", "zh": "配置的外部 agent 运行时", "kind": "external"},
+    {"id": "gate", "en": "Recorded tool event and security floor", "zh": "已记录工具事件与安全底线", "technique": [2]},
+    {"id": "check", "en": "Recheck withdrawal and grant deadline before writing", "zh": "写入前重查撤回条件和授权时限", "technique": [2]},
+    {"id": "answer", "en": "Forward approval or restore pending request", "zh": "转发批准或恢复待批准请求", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "task", "to": "recall"},
+    {"from": "recall", "to": "runtime"},
+    {"from": "runtime", "to": "gate", "en": "mediated permission request", "zh": "受中介管理的权限请求"},
+    {"from": "gate", "to": "check"},
+    {"from": "check", "to": "answer"}
+  ],
+  "sources": ["src/kiro_crew/memory_recall.py:92-208", "src/kiro_crew/acp/session_handle_permissions.py:65-189"]
+}

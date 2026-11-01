@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "Kiro Crew", "zh": "Kiro Crew"},
+  "steps": [
+    {"lane": "you", "en": "Install Crew and sign in to its external Kiro CLI backend", "zh": "安装 Crew，登录外部 Kiro CLI 后端", "code": "kiro-cli login"},
+    {"lane": "you", "en": "Configure the workspace and start its gateway", "zh": "配置工作区并启动网关", "code": "kirocrew setup · kirocrew gateway"},
+    {"lane": "them", "en": "Expose the local workspace dashboard", "zh": "提供本地工作区面板", "component": {"en": "Gateway", "zh": "网关"}},
+    {"lane": "you", "en": "Open a session on a project and describe the task", "zh": "为项目打开会话并描述任务"},
+    {"lane": "them", "en": "Route work to the configured runtime and retain workspace state", "zh": "把工作交给配置的运行时并保留工作区状态"}
+  ],
+  "value": {"en": "Continue development work through one persistent workspace rather than rebuilding each session", "zh": "通过常驻工作区继续开发，不必每次重建会话上下文"},
+  "sources": ["https://github.com/kirodotdev/KiroCrew/blob/66a137266f935c4189cda79fb26c4db66b8968a3/README.md#L47-L206"]
+}
