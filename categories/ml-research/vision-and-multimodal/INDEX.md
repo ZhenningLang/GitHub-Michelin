@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **See-through** | Turn one anime character image into named, depth-ordered PSD layers with occlusions painted in; requires CUDA, artist cleanup and weight-specific Open RAIL terms. | B (4/6) | [→](see-through.md) |
 | **CLIP** | Use it when you need zero-shot image classification or image-text retrieval by writing labels as plain text, straight from OpenAI's original checkpoints — but it is a frozen reference with older ViT/ResNet backbones; OpenCLIP or transformers offer more models and maintenance. | C (5/6) | [→](clip.md) |
 | **TaskMatrix** | Use it only to study how Visual ChatGPT routed a text-only ChatGPT to about 20 vision foundation models via prompts — it is abandoned since 2023-06, and modern multimodal LLMs now do the same job natively in one model. | "?" (2/6) | [→](taskmatrix.md) |
 | **PyTorch-GAN** | Use it when you want to read classic 2014–2018 GAN papers as one self-contained PyTorch script each (DCGAN, CycleGAN, WGAN-GP, pix2pix) — but the author calls it stale, nothing has landed since 2021, and diffusion has replaced GANs for real generation. | D (3/6) | [→](pytorch-gan.md) |
@@ -19,6 +20,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [See-through](see-through.md) | Indexed | B (4/6) | Joint part generation and per-layer depth automate a rigging first pass, not deformation meshes or final animation. |
 | [CLIP](clip.md) | ✅ | C (5/6) | Buys the canonical, minimal CLIP code and weights; costs a fixed model set that SigLIP and EVA-CLIP now beat, and it only embeds — no captions or answers. |
 | [TaskMatrix](taskmatrix.md) | ✅ | "?" (2/6) | Buys a runnable historical example of early tool-routing agents; costs hosting a foundation-model zoo for a capability native vision models and modern function-calling tooling now cover better. |
 | [PyTorch-GAN](pytorch-gan.md) | ✅ | D (3/6) | Buys dozens of compact, side-by-side architectures to learn from; costs any library value — no package, no stable API, no modern GANs, and layer configs may differ from the papers. |

@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "img", "en": "Character image, square-padded to 1280", "zh": "角色图，补成 1280 方形画布", "kind": "input"},
+    {"id": "body", "en": "Body pass: 13 tag frames share noise and source;\ncross-frame attention links them", "zh": "身体轮：13 个标签帧共享噪声与原图；\n跨帧注意力相互关联", "technique": [1, 2]},
+    {"id": "head", "en": "Head crop re-run with 11 head tags (group 1)", "zh": "裁出头部，用 11 个头部标签再跑一轮", "technique": [2]},
+    {"id": "depth", "en": "Multi-frame Marigold predicts depth per layer", "zh": "多帧 Marigold 逐层预测深度", "technique": [3]},
+    {"id": "order", "en": "Median-depth sort plus face rules", "zh": "按深度中位数排序，再套面部规则", "technique": [3]},
+    {"id": "split", "en": "Optional left/right and hair depth splits", "zh": "可选左右拆分与头发深度拆分", "technique": [4]},
+    {"id": "lama", "en": "LaMa inpainting checkpoint", "zh": "LaMa 补画权重", "kind": "external", "technique": [4]},
+    {"id": "lowvram", "en": "Embedding cache, offload, NF4 or block swap", "zh": "嵌入缓存、卸载、NF4 或分块换入", "kind": "external", "technique": [5]},
+    {"id": "psd", "en": "Named-layer PSD and depth PSD", "zh": "带部件名的 PSD 与深度 PSD", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "img", "to": "body"},
+    {"from": "body", "to": "head", "en": "head layer bounding box", "zh": "头部图层外框"},
+    {"from": "head", "to": "depth", "en": "pasted back to full canvas", "zh": "贴回整张画布"},
+    {"from": "lowvram", "to": "body", "en": "if VRAM is short", "zh": "显存不足时", "style": "dashed"},
+    {"from": "depth", "to": "order"},
+    {"from": "order", "to": "split", "en": "with --tblr_split", "zh": "开启 --tblr_split 时", "style": "dashed"},
+    {"from": "lama", "to": "split", "style": "dashed"},
+    {"from": "order", "to": "psd"},
+    {"from": "split", "to": "psd", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/shitagaki-lab/see-through/blob/df019de5129d6c4b406587a14c3501669441a783/common/modules/layerdiffuse/transformer3d.py#L95-L150",
+    "https://github.com/shitagaki-lab/see-through/blob/df019de5129d6c4b406587a14c3501669441a783/common/modules/layerdiffuse/diffusers_kdiffusion_sdxl.py#L352-L391",
+    "https://github.com/shitagaki-lab/see-through/blob/df019de5129d6c4b406587a14c3501669441a783/common/utils/inference_utils.py#L104-L180",
+    "https://github.com/shitagaki-lab/see-through/blob/df019de5129d6c4b406587a14c3501669441a783/common/utils/inference_utils.py#L188-L324",
+    "https://github.com/shitagaki-lab/see-through/blob/df019de5129d6c4b406587a14c3501669441a783/common/utils/inference_utils.py#L436-L562",
+    "https://github.com/shitagaki-lab/see-through/blob/df019de5129d6c4b406587a14c3501669441a783/common/utils/torchcv.py#L56-L159",
+    "https://github.com/shitagaki-lab/see-through/blob/df019de5129d6c4b406587a14c3501669441a783/inference/scripts/inference_psd_blockswap.py#L73-L158"
+  ]
+}
