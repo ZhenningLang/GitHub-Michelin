@@ -5,13 +5,13 @@ This receipt covers public repository content only: nine researched additions an
 | Public repository | Action | Canonical page | Reviewed source |
 |---|---|---|---|
 | AgriciDaniel/claude-seo | Add | [EN](../categories/agent-skills/ai-writing/marketing-seo/claude-seo.md) / [ZH](../categories/agent-skills/ai-writing/marketing-seo/claude-seo.zh.md) | `6be93f45064ffbadced572b5d5c95f55fd263af0` |
-| bagrat/shroom | Add | [EN](../categories/media-processing/video-editing/shroom.md) / [ZH](../categories/media-processing/video-editing/shroom.zh.md) | `388dfd72e81478c906174075614aa720d6d470dd` |
+| bagrat/shroom | Add | [EN](../categories/media-processing/video-editing/shroom.md) / [ZH](../categories/media-processing/video-editing/shroom.zh.md) | `c3e64f28aa536df61ac20544116d7df2e87f423a` |
 | elvarofficial/teardown | Add | [EN](../categories/agent-skills/visual-content/teardown.md) / [ZH](../categories/agent-skills/visual-content/teardown.zh.md) | `a91262ac1109051e014662d42ecb0b7bc1f113b1` |
 | kirodotdev/KiroCrew | Add | [EN](../categories/agent-frameworks/coding-agents/orchestration-and-review/kirocrew.md) / [ZH](../categories/agent-frameworks/coding-agents/orchestration-and-review/kirocrew.zh.md) | `66a137266f935c4189cda79fb26c4db66b8968a3` |
 | makecindy/cindy | Add | [EN](../categories/agent-frameworks/agent-runtimes/personal-assistants/cindy.md) / [ZH](../categories/agent-frameworks/agent-runtimes/personal-assistants/cindy.zh.md) | `b59490c088cb163666781a769e11749e44a8c87f` |
 | MemPalace/mempalace | Add | [EN](../categories/agent-memory/coding-agent-memory/mempalace.md) / [ZH](../categories/agent-memory/coding-agent-memory/mempalace.zh.md) | `4f7745afbd9d0197c6475b4c7ac846d4932eaeda` |
 | patch-gg/pixelfx | Add | [EN](../categories/game-dev/pixelfx.md) / [ZH](../categories/game-dev/pixelfx.zh.md) | `a84159688af3ca37a4be05a0d422b94451b2e24e` |
-| shitagaki-lab/see-through | Add | [EN](../categories/ml-research/vision-and-multimodal/see-through.md) / [ZH](../categories/ml-research/vision-and-multimodal/see-through.zh.md) | `1628c774e7a1cd071ea9cb634770efcd9ec5f6a4` |
+| shitagaki-lab/see-through | Add | [EN](../categories/ml-research/vision-and-multimodal/see-through.md) / [ZH](../categories/ml-research/vision-and-multimodal/see-through.zh.md) | `df019de5129d6c4b406587a14c3501669441a783` |
 | wangzan101/Mika | Add | [EN](../categories/mobile-automation/mika.md) / [ZH](../categories/mobile-automation/mika.zh.md) | `2c35c9b670a4e8b42430d14bb7d7ac20dc4382c5` |
 | p-e-w/heretic | Fresh reuse | [EN](../categories/model-editing/heretic.md) / [ZH](../categories/model-editing/heretic.zh.md) | Existing verification date `2026-09-23`; 39 days old on `2026-11-01`, unchanged pair |
 
