@@ -13,6 +13,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Cindy** | Continue one Claude Code, Codex or Pi session from your phone and other computers; multi-device features need a vendor account and relay, with analytics on by default. | B (6/6) | [→](cindy.md) |
 | **LobsterAI** | You want an office task to work on local files and return through your chat channel; LobsterAI adds a desktop session, artifact and approval layer around an OpenClaw runtime. | B (6/6) | [→](lobsterai.md) |
 | **Atomic Agent** | Local-model workstation operator with compact tool prompts; developer preview and default-on analytics. | B (6/6) | [→](atomic-agent.md) |
 | **OpenHuman** | Use it when you want a local-first personal assistant that ingests your mail, calendar and repos into Markdown memory on a 20-minute loop and can be forced offline in its Rust core — but it's 7 months old, one author holds most commits, and it's GPL-3.0-only. | B (6/6) | [→](openhuman.md) |
@@ -29,6 +30,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Cindy](cindy.md) | Indexed | B (6/6) | Full desktop assistant with a phone controller, memory and teams; its account and multi-device backend remain vendor services. |
 | [Messaging daemons](messaging-daemons/INDEX.md) | Sub-category | — | Existing chat channels and scheduled jobs are the primary entry points; phone, voice, desktop and workspace forms remain below. |
 | [LobsterAI](lobsterai.md) | ✅ | B (6/6) | You want an office task to work on local files and return through your chat channel; LobsterAI adds a desktop session, artifact and approval layer around an OpenClaw runtime. |
 | [Atomic Agent](atomic-agent.md) | ✅ | B (6/6) | Managed llama.cpp and session-scoped approvals; model hardware and outbound reporting need explicit choices. |
