@@ -2,7 +2,7 @@
 name: Hex
 slug: hex
 repo: https://github.com/anomalyco/hex
-category: speech
+category: dictation-apps
 tags: [dictation, local-first, speech-recognition, desktop, rust, text-transformations]
 language: Rust
 license: MIT
@@ -68,7 +68,7 @@ health:
 
 你在编辑器、聊天框和浏览器之间切换，总要敲下长段解释。Hex 让你按住快捷键说话，在本机转成文字，再粘贴到当前输入框。
 
-![Hex 健康度雷达](../../assets/health/hex.zh.svg)
+![Hex 健康度雷达](../../../assets/health/hex.zh.svg)
 
 ## 何时使用
 
@@ -78,9 +78,9 @@ health:
 
 ## 何时不用
 
-- **要把整批访谈生成字幕文件。** 选 [OpenAI Whisper](../media-processing/video-audio/speech-and-subtitles/whisper.zh.md) 的文件转写与字幕输出。Hex 的快捷键到粘贴链路，不能替代这类批处理。
-- **要让助手用克隆声音回答。** 选 [Voicebox](voicebox.zh.md)，同时连接听写、语音合成和助手发声。Hex 的核心收益是文字输入，不是声音克隆工作室。
-- **要做视频配音和有声书制作。** 选 [VoiceStudio](voicestudio.zh.md)，接受更重的引擎环境及独立的代码和权重许可，不要把听写工具硬扩成制作工作台。
+- **要把整批访谈生成字幕文件。** 选 [OpenAI Whisper](../../media-processing/video-audio/speech-and-subtitles/whisper.zh.md) 的文件转写与字幕输出。Hex 的快捷键到粘贴链路，不能替代这类批处理。
+- **要让助手用克隆声音回答。** 选 [Voicebox](../voicebox.zh.md)，同时连接听写、语音合成和助手发声。Hex 的核心收益是文字输入，不是声音克隆工作室。
+- **要做视频配音和有声书制作。** 选 [VoiceStudio](../voicestudio.zh.md)，接受更重的引擎环境及独立的代码和权重许可，不要把听写工具硬扩成制作工作台。
 - **不能授予桌面输入权限，或不满足 Linux 图形要求。** 用 Whisper 的文件命令行，避开 Hex 的全局快捷键与粘贴路径。Linux 构建需要 glibc 2.39+，x86_64 需要 AVX2；即使推理走 CPU，窗口仍需 Vulkan，Wayland 粘贴还依赖合成器和门户支持。
 - **要仅装 npm 就得到完整录音组件。** 若现在就要这种集成边界，可在自有服务后使用 Whisper。Hex 的 TypeScript SDK 需要显式提供原生辅助程序；嵌入模式的录音和麦克风同意由宿主负责，复用桌面录音目前仅支持 macOS。
 
@@ -88,15 +88,15 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [OpenAI Whisper](../media-processing/video-audio/speech-and-subtitles/whisper.zh.md) | 已收录 | 录音要生成文字和字幕文件时选 Whisper；说完就要输入当前应用时选 Hex。 | Whisper 提供参考模型与 Python、命令行管线；Hex 补齐桌面录音、模型选择和粘贴，但不替代批量输出流程。 |
-| [Voicebox](voicebox.zh.md) | 已收录 | 同一本地流程还要合成助手回答时选 Voicebox；实际只缺语音输入时选 Hex。 | Voicebox 增加克隆和 Python 语音服务；Hex 把桌面输入路径集中在 Rust 应用，而非维护完整语音工作室。 |
-| [VoiceStudio](voicestudio.zh.md) | 已收录 | 配音和有声书编排选 VoiceStudio；日常口述消息、不想组装制作环境时选 Hex。 | VoiceStudio 带来编辑与多引擎，代码受 AGPL 约束，模型另有条款；Hex 自有代码是 MIT，下载的模型仍有独立许可。 |
+| [OpenAI Whisper](../../media-processing/video-audio/speech-and-subtitles/whisper.zh.md) | 已收录 | 录音要生成文字和字幕文件时选 Whisper；说完就要输入当前应用时选 Hex。 | Whisper 提供参考模型与 Python、命令行管线；Hex 补齐桌面录音、模型选择和粘贴，但不替代批量输出流程。 |
+| [Voicebox](../voicebox.zh.md) | 已收录 | 同一本地流程还要合成助手回答时选 Voicebox；实际只缺语音输入时选 Hex。 | Voicebox 增加克隆和 Python 语音服务；Hex 把桌面输入路径集中在 Rust 应用，而非维护完整语音工作室。 |
+| [VoiceStudio](../voicestudio.zh.md) | 已收录 | 配音和有声书编排选 VoiceStudio；日常口述消息、不想组装制作环境时选 Hex。 | VoiceStudio 带来编辑与多引擎，代码受 AGPL 约束，模型另有条款；Hex 自有代码是 MIT，下载的模型仍有独立许可。 |
 
 ## 快速上手
 
 在 Apple 芯片 Mac 上，README 给出 `brew install --cask anomalyco/tap/hex`；其他支持的桌面有下载链接。启动后，授予所需的麦克风与输入控制权限，让首次设置准备语音模型。选择语言与快捷键，聚焦目标输入框，再按住、说话、松开；Hex 负责录音、本地识别和粘贴。你负责麦克风、兼容硬件，以及检查粘贴结果中的人名和数字。开发者也可在可信的 Node.js 20.3+ 宿主中使用 `@kitlangton/hex`，显式指定 `service --embedded` 原生命令；这条路径返回转写结果，不替宿主录音或粘贴。SDK 尚未提供完整原生分发包，可选的模型服务改写也独立于本地识别。
 
-![hex 主干用户故事](../../assets/flow/hex.zh.svg)
+![hex 主干用户故事](../../../assets/flow/hex.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/hex.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -115,7 +115,7 @@ health:
 
 ## 技术要点
 
-![Hex — 机制图](../../assets/mechanism/hex.zh.svg)
+![Hex — 机制图](../../../assets/mechanism/hex.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/hex.json by tools/mechanism_card.py; do not edit) -->
 <details>

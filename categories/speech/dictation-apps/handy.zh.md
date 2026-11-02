@@ -2,7 +2,7 @@
 name: Handy
 slug: handy
 repo: https://github.com/cjpais/Handy
-category: speech
+category: dictation-apps
 tags: [dictation, speech-to-text, offline, desktop, tauri, whisper]
 language: Rust
 license: MIT
@@ -79,7 +79,7 @@ health:
 
 你只想口述一段提示词，却得切到录音工具再复制回来。Handy 用快捷键录音，在本机识别，再把文字贴进当前应用。
 
-![Handy 健康度雷达](../../assets/health/handy.zh.svg)
+![Handy 健康度雷达](../../../assets/health/handy.zh.svg)
 
 ## 何时使用
 
@@ -89,8 +89,8 @@ health:
 
 ## 何时不用
 
-- **要把一批录音生成字幕文件。** 优先用 [Whisper](../media-processing/video-audio/speech-and-subtitles/whisper.zh.md)，它明确提供文件到文字稿和字幕的命令。Handy 的听写主路径围绕文字插入，不是这套导出流水线。
-- **要让编程助手开口回答。** 需要克隆语音输出和语音接口时，优先看 [Voicebox](voicebox.zh.md)。Handy 处理麦克风到文字的一半，不是声音生成工作室。
+- **要把一批录音生成字幕文件。** 优先用 [Whisper](../../media-processing/video-audio/speech-and-subtitles/whisper.zh.md)，它明确提供文件到文字稿和字幕的命令。Handy 的听写主路径围绕文字插入，不是这套导出流水线。
+- **要让编程助手开口回答。** 需要克隆语音输出和语音接口时，优先看 [Voicebox](../voicebox.zh.md)。Handy 处理麦克风到文字的一半，不是声音生成工作室。
 - **只要嵌入本地推理，不要桌面外壳。** 评估 [whisper.cpp](https://github.com/ggml-org/whisper.cpp)。Handy 带有权限、网页视图、全局快捷键和持久历史，这些不是库集成所必需的。
 - **政策禁止保存录音或向外部服务发送文字。** 用自己控制文件生命周期的 Whisper，或自建原生引擎封装。Handy 会保存 WAV 和历史；可选模型后处理能把文字发给所选服务。粘贴钩子在历史写入后才执行，不能充当存储脱敏屏障。
 - **要求 Wayland 不做桌面专项配置就可靠工作。** 在验证输入注入前，优先用基于文件的 Whisper。Handy 文档明确列出桌面相关快捷键、额外输入工具和悬浮窗抢焦点问题，不能把 Linux 支持视为所有桌面一致。
@@ -99,15 +99,15 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [OpenAI Whisper](../media-processing/video-audio/speech-and-subtitles/whisper.zh.md) | 已收录 | 批量转写和字幕输出选 Whisper；直接向现有桌面输入框口述选 Handy。 | Whisper 暴露 Python 和文件流程；Handy 包办录音控制和粘贴，但增加桌面权限与持久状态。 |
-| [Voicebox](voicebox.zh.md) | 已收录 | 助手既要接收听写又要用克隆声音回答时选 Voicebox；只需要文字输入时选 Handy。 | 语音工作室增加合成引擎和服务集成；Handy 把使用路径集中在本地听写。 |
+| [OpenAI Whisper](../../media-processing/video-audio/speech-and-subtitles/whisper.zh.md) | 已收录 | 批量转写和字幕输出选 Whisper；直接向现有桌面输入框口述选 Handy。 | Whisper 暴露 Python 和文件流程；Handy 包办录音控制和粘贴，但增加桌面权限与持久状态。 |
+| [Voicebox](../voicebox.zh.md) | 已收录 | 助手既要接收听写又要用克隆声音回答时选 Voicebox；只需要文字输入时选 Handy。 | 语音工作室增加合成引擎和服务集成；Handy 把使用路径集中在本地听写。 |
 | [whisper.cpp](https://github.com/ggml-org/whisper.cpp) | 未收录 | 自建原生应用或受控识别服务时选 whisper.cpp；不想自己做录音和文字插入界面时选 Handy。 | 底层 C/C++ 集成把生命周期与输入处理交还给你。本轮标签页批次未补录。 |
 
 ## 快速上手
 
 桌面使用先下载发布包，授予麦克风和辅助功能权限，选择语音模型并配置快捷键。macOS 的 README 也列出 `brew install --cask handy`，但此软件包由社区维护。开发路径见 [BUILD.md](https://github.com/cjpais/Handy/blob/82dfab9fda18c4bc24e1f6e56d36474d38eca0bc/BUILD.md#L75-L102)：准备 Rust、Bun 和平台构建依赖，再运行 `bun install` 与 `bun tauri dev`；贡献文档还要求准备随包的 Silero 人声检测资源。你提供硬件、模型、权限和接收文字的输入框，Handy 负责录音、识别和插入；本地识别不需要语音服务密钥。纯本地路径应关闭可选服务商后处理，在口述命令或敏感内容前，逐个测试目标应用。
 
-![handy 主干用户故事](../../assets/flow/handy.zh.svg)
+![handy 主干用户故事](../../../assets/flow/handy.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/handy.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -127,7 +127,7 @@ health:
 
 ## 技术要点
 
-![Handy — 机制图](../../assets/mechanism/handy.zh.svg)
+![Handy — 机制图](../../../assets/mechanism/handy.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/handy.json by tools/mechanism_card.py; do not edit) -->
 <details>

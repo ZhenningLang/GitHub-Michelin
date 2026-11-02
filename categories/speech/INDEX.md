@@ -3,12 +3,16 @@
 > Category node. Speech processing toolkits (ASR, TTS, speaker tasks).
 > ← back to [category route](../../INDEX.md) · 中文：[INDEX.zh.md](INDEX.zh.md)
 
+## Sub-categories
+
+| Category | Use when | Index |
+| --- | --- | --- |
+| **dictation-apps** | Desktop dictation focused on shortcut → transcription → paste, rather than a broad speech toolkit or production workbench. | [→](dictation-apps/INDEX.md) |
+
 ## Projects in this category
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **Hex** | Dictate into the focused desktop app with local speech models; optional rewriting and custom commands have separate network/trust boundaries. | B (4/6) | [→](hex.md) |
-| **Handy** | Dictate into desktop text fields with local models; test paste permissions and review retained recordings and optional network cleanup. | A (6/6) | [→](handy.md) |
 | **KittenTTS** | You need tiny CPU English speech, or a separate larger cloning model; v2 weights carry commercial registration and revenue/funding limits. | B (5/6) | [→](kitten-tts.md) |
 | **yovoice** | You want to compare cloned narration takes and songs without maintaining a Python model stack; yovoice wraps local audio.cpp inference in a desktop workbench, CLI and MCP service. | B (6/6) | [→](yovoice.md) |
 | **SpeechBrain** | Use it when you need to train and adapt speech models (ASR, speaker ID, separation) on one coherent PyTorch recipe codebase — but it's research-and-training-first, so production serving and cross-version API stability are your job. | B (5/6) | [→](speechbrain.md) |
@@ -25,8 +29,6 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [Hex](hex.md) | ✅ | B (4/6) | Native Rust shortcut-to-paste dictation; Windows/Linux beta requirements and unsandboxed custom handlers need review. |
-| [Handy](handy.md) | Indexed | A (6/6) | Focused local dictation instead of a voice studio; desktop input compatibility and retained history remain your responsibility. |
 | [KittenTTS](kitten-tts.md) | ✅ | B (5/6) | Legacy ONNX prioritizes CPU footprint; v2 adds cloning with a heavier stack and a custom weight license. |
 | [yovoice](yovoice.md) | ✅ | B (6/6) | You want to compare cloned narration takes and songs without maintaining a Python model stack; yovoice wraps local audio.cpp inference in a desktop workbench, CLI and MCP service. |
 | [SpeechBrain](speechbrain.md) | ✅ | B (5/6) | Use it when you need to train and adapt speech models (ASR, speaker ID, separation) on one coherent PyTorch recipe codebase — but it's research-and-training-first, so production serving and cross-version API stability are your job. |
@@ -43,3 +45,5 @@
 ## What belongs here
 
 Toolkits and applications for **speech** — recognition (ASR), synthesis (TTS), speaker/audio tasks.
+
+Broad speech models, research toolkits, speaker tasks and production workbenches remain here. Desktop apps focused on shortcut → transcription → paste belong in [dictation-apps](dictation-apps/INDEX.md).

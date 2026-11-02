@@ -2,7 +2,7 @@
 name: Handy
 slug: handy
 repo: https://github.com/cjpais/Handy
-category: speech
+category: dictation-apps
 tags: [dictation, speech-to-text, offline, desktop, tauri, whisper]
 language: Rust
 license: MIT
@@ -79,7 +79,7 @@ health:
 
 You keep switching from a prompt box to a recorder and back just to dictate a paragraph. Handy records from a shortcut, recognizes speech locally and pastes the words into the app you are using.
 
-![Handy health radar](../../assets/health/handy.svg)
+![Handy health radar](../../../assets/health/handy.svg)
 
 ## When to use
 
@@ -89,8 +89,8 @@ You can also adapt the Rust desktop application or attach a small executable tha
 
 ## When NOT to use
 
-- **A folder of recordings needs subtitle files.** Prefer [Whisper](../media-processing/video-audio/speech-and-subtitles/whisper.md) for its explicit file-to-transcript/subtitle command. Handy's dictation workflow is centered on inserting text, not that export pipeline.
-- **You need speech back from an agent.** Prefer [Voicebox](voicebox.md) when cloned-voice output and a speech API matter. Handy solves the microphone-to-text half, not a voice-generation studio.
+- **A folder of recordings needs subtitle files.** Prefer [Whisper](../../media-processing/video-audio/speech-and-subtitles/whisper.md) for its explicit file-to-transcript/subtitle command. Handy's dictation workflow is centered on inserting text, not that export pipeline.
+- **You need speech back from an agent.** Prefer [Voicebox](../voicebox.md) when cloned-voice output and a speech API matter. Handy solves the microphone-to-text half, not a voice-generation studio.
 - **You need an embedded native inference engine without a desktop shell.** Evaluate [whisper.cpp](https://github.com/ggml-org/whisper.cpp). Handy includes permissions, a webview, global shortcuts and persistent history that a library integration does not need.
 - **Your policy forbids retaining recordings or sending text to external providers.** Use Whisper in a controlled file lifecycle, or a native engine wrapper you operate. Handy saves WAV recordings and history; optional LLM cleanup can send the transcript to your selected provider. A paste hook runs after history is written, so it is not a storage-redaction barrier.
 - **Wayland must work without configuring desktop-specific input tools.** Prefer a file-based Whisper workflow until you can validate input injection. Handy documents compositor-dependent shortcuts, extra typing utilities and overlay focus interference; its Linux support is not uniform across desktops.
@@ -99,15 +99,15 @@ You can also adapt the Rust desktop application or attach a small executable tha
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [OpenAI Whisper](../media-processing/video-audio/speech-and-subtitles/whisper.md) | Indexed | Choose Whisper for repeatable batch transcripts and subtitle outputs; choose Handy for speaking into an existing desktop text field. | Whisper exposes a Python/file workflow; Handy provides microphone controls and paste integration, but adds desktop permissions and retained app state. |
-| [Voicebox](voicebox.md) | Indexed | Choose Voicebox when an agent must speak in a cloned voice as well as accept dictation; choose Handy when text input is the whole requirement. | A broader voice studio adds synthesis engines and service integration; Handy keeps the user journey focused on local dictation. |
+| [OpenAI Whisper](../../media-processing/video-audio/speech-and-subtitles/whisper.md) | Indexed | Choose Whisper for repeatable batch transcripts and subtitle outputs; choose Handy for speaking into an existing desktop text field. | Whisper exposes a Python/file workflow; Handy provides microphone controls and paste integration, but adds desktop permissions and retained app state. |
+| [Voicebox](../voicebox.md) | Indexed | Choose Voicebox when an agent must speak in a cloned voice as well as accept dictation; choose Handy when text input is the whole requirement. | A broader voice studio adds synthesis engines and service integration; Handy keeps the user journey focused on local dictation. |
 | [whisper.cpp](https://github.com/ggml-org/whisper.cpp) | not indexed | Choose whisper.cpp when building a native application or controlled recognition service; choose Handy when you do not want to build the recorder and text-insertion UI. | Lower-level C/C++ integration leaves lifecycle and input handling to you. Not added in this tab batch. |
 
 ## Quick start
 
 For desktop use, download a release, grant microphone and accessibility permissions, select a speech model and configure a shortcut. On macOS, the README also lists `brew install --cask handy`; that cask is community-maintained. For development, [BUILD.md](https://github.com/cjpais/Handy/blob/82dfab9fda18c4bc24e1f6e56d36474d38eca0bc/BUILD.md#L75-L102) specifies Rust, Bun and platform build prerequisites, then `bun install` and `bun tauri dev`; CONTRIBUTING also specifies the bundled Silero VAD resource. You provide the hardware, model files, permissions and receiving text field; Handy records, recognizes and inserts text, with no speech API key needed for local recognition. Keep optional provider-based cleanup disabled for the local-only path, and test the result in each target app before dictating commands or sensitive material.
 
-![handy backbone user story](../../assets/flow/handy.svg)
+![handy backbone user story](../../../assets/flow/handy.svg)
 
 <!-- flow-steps:begin (generated from flows/handy.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -127,7 +127,7 @@ For desktop use, download a release, grant microphone and accessibility permissi
 
 ## Key techniques
 
-![Handy — mechanism diagram](../../assets/mechanism/handy.svg)
+![Handy — mechanism diagram](../../../assets/mechanism/handy.svg)
 
 <!-- mechanism:begin (generated from mechanisms/handy.json by tools/mechanism_card.py; do not edit) -->
 <details>

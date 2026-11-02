@@ -2,7 +2,7 @@
 name: Hex
 slug: hex
 repo: https://github.com/anomalyco/hex
-category: speech
+category: dictation-apps
 tags: [dictation, local-first, speech-recognition, desktop, rust, text-transformations]
 language: Rust
 license: MIT
@@ -68,7 +68,7 @@ health:
 
 You keep moving between an editor, chat and browser to type the same long explanations. Hex records while you hold a shortcut, transcribes locally, and pastes the result into the focused app.
 
-![Hex health radar](../../assets/health/hex.svg)
+![Hex health radar](../../../assets/health/hex.svg)
 
 ## When to use
 
@@ -78,9 +78,9 @@ The deciding tradeoff is a native Rust dictation app rather than a Python voice-
 
 ## When NOT to use
 
-- **You are processing a folder of interviews into subtitle files.** Choose [OpenAI Whisper](../media-processing/video-audio/speech-and-subtitles/whisper.md) for its file-oriented transcription and subtitle outputs. Hex's shortcut-to-paste journey does not replace that batch workflow.
-- **You need your assistant to speak in a cloned voice.** Choose [Voicebox](voicebox.md) for combined dictation, voice synthesis and agent speech. Hex's core payoff is text input, not a voice-cloning studio.
-- **You need video dubbing and audiobook production.** Choose [VoiceStudio](voicestudio.md), accepting its heavier engine stack and separate code/weight licensing, instead of stretching a dictation app into a production studio.
+- **You are processing a folder of interviews into subtitle files.** Choose [OpenAI Whisper](../../media-processing/video-audio/speech-and-subtitles/whisper.md) for its file-oriented transcription and subtitle outputs. Hex's shortcut-to-paste journey does not replace that batch workflow.
+- **You need your assistant to speak in a cloned voice.** Choose [Voicebox](../voicebox.md) for combined dictation, voice synthesis and agent speech. Hex's core payoff is text input, not a voice-cloning studio.
+- **You need video dubbing and audiobook production.** Choose [VoiceStudio](../voicestudio.md), accepting its heavier engine stack and separate code/weight licensing, instead of stretching a dictation app into a production studio.
 - **You cannot grant desktop input access or meet the Linux graphics requirements.** Use Whisper's file CLI rather than Hex's global hotkey and paste path. Linux builds need glibc 2.39+, x86_64 needs AVX2, and even CPU inference still leaves a Vulkan requirement for the window; Wayland paste depends on compositor/portal support.
 - **You want an npm-only, drop-in recording component.** Use Whisper behind a host-owned service if you need that integration boundary today. Hex's TypeScript SDK requires an explicitly supplied native helper; its embedded path leaves recording and microphone consent to your app, and desktop-assisted capture is currently macOS-only.
 
@@ -88,15 +88,15 @@ The deciding tradeoff is a native Rust dictation app rather than a Python voice-
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [OpenAI Whisper](../media-processing/video-audio/speech-and-subtitles/whisper.md) | ✅ | Choose Whisper for recordings that must become transcript/subtitle files; choose Hex for a shortcut that puts words into the app you are already using. | Whisper exposes the reference model and Python/CLI pipeline; Hex supplies desktop capture, model selection and paste, but not Whisper's batch-output workflow. |
-| [Voicebox](voicebox.md) | ✅ | Choose Voicebox when the same local workflow must also synthesize an agent's reply; choose Hex when speech-to-text entry is the actual job. | Voicebox adds cloning and a Python speech server; Hex concentrates the desktop input path in Rust rather than operating a voice studio. |
-| [VoiceStudio](voicestudio.md) | ✅ | Choose VoiceStudio for dubbing and audiobook assembly; choose Hex for everyday dictated messages without assembling that production stack. | VoiceStudio brings editing and many speech engines under AGPL with model-specific terms; Hex's own code is MIT, while its downloaded models still have separate licenses. |
+| [OpenAI Whisper](../../media-processing/video-audio/speech-and-subtitles/whisper.md) | ✅ | Choose Whisper for recordings that must become transcript/subtitle files; choose Hex for a shortcut that puts words into the app you are already using. | Whisper exposes the reference model and Python/CLI pipeline; Hex supplies desktop capture, model selection and paste, but not Whisper's batch-output workflow. |
+| [Voicebox](../voicebox.md) | ✅ | Choose Voicebox when the same local workflow must also synthesize an agent's reply; choose Hex when speech-to-text entry is the actual job. | Voicebox adds cloning and a Python speech server; Hex concentrates the desktop input path in Rust rather than operating a voice studio. |
+| [VoiceStudio](../voicestudio.md) | ✅ | Choose VoiceStudio for dubbing and audiobook assembly; choose Hex for everyday dictated messages without assembling that production stack. | VoiceStudio brings editing and many speech engines under AGPL with model-specific terms; Hex's own code is MIT, while its downloaded models still have separate licenses. |
 
 ## Quick start
 
 On an Apple-silicon Mac, the README documents `brew install --cask anomalyco/tap/hex`; other supported desktops have download links. Launch Hex, grant the requested microphone and input-access permissions, and let first-run setup prepare a speech model. Select the language and shortcut, focus the destination field, then hold, speak and release; Hex handles recording, local recognition and paste. You supply the microphone, compatible hardware and a review of the pasted text, including names and numbers. Developers can alternatively use `@kitlangton/hex` in a trusted Node.js 20.3+ host with an explicit `service --embedded` command; that path returns transcripts instead of capturing or pasting for you. The SDK is not a bundled native distribution, and optional model-provider rewriting is separate from local recognition.
 
-![hex backbone user story](../../assets/flow/hex.svg)
+![hex backbone user story](../../../assets/flow/hex.svg)
 
 <!-- flow-steps:begin (generated from flows/hex.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -115,7 +115,7 @@ On an Apple-silicon Mac, the README documents `brew install --cask anomalyco/tap
 
 ## Key techniques
 
-![Hex — mechanism diagram](../../assets/mechanism/hex.svg)
+![Hex — mechanism diagram](../../../assets/mechanism/hex.svg)
 
 <!-- mechanism:begin (generated from mechanisms/hex.json by tools/mechanism_card.py; do not edit) -->
 <details>

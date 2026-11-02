@@ -306,7 +306,7 @@ https://github.com/amontlabs/lcu,lcu,desktop-automation,categories/desktop-autom
 https://github.com/andrewyng/openworker,openworker,personal-assistants,categories/agent-frameworks/agent-runtimes/personal-assistants/openworker.md
 https://github.com/android/skills,android-skills,product-vendors,categories/agent-skills/vendor-collections/product-vendors/android-skills.md
 https://github.com/angular/angular,angular,view-frameworks,categories/web-ui/frameworks/view-frameworks/angular.md
-https://github.com/anomalyco/hex,hex,speech,categories/speech/hex.md
+https://github.com/anomalyco/hex,hex,dictation-apps,categories/speech/dictation-apps/hex.md
 https://github.com/anomalyco/opencode,opencode,independent-runtimes,categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/opencode.md
 https://github.com/anomalyco/opentunnel,opentunnel,networking,categories/networking/opentunnel.md
 https://github.com/ant-design/ant-design,ant-design,component-libraries,categories/web-ui/component-libraries/ant-design.md
@@ -398,7 +398,7 @@ https://github.com/chakra-ui/chakra-ui,chakra-ui,component-libraries,categories/
 https://github.com/chenfei-wu/TaskMatrix,taskmatrix,vision-and-multimodal,categories/ml-research/vision-and-multimodal/taskmatrix.md
 https://github.com/cisco-ai-defense/mcp-scanner,mcp-scanner,agent-governance,categories/agent-governance/mcp-scanner.md
 https://github.com/cixingguangming55555/wechat-bot,funtool,client-routing,categories/api-gateway/client-routing/funtool.md
-https://github.com/cjpais/Handy,handy,speech,categories/speech/handy.md
+https://github.com/cjpais/Handy,handy,dictation-apps,categories/speech/dictation-apps/handy.md
 https://github.com/clash-verge-rev/clash-verge-rev,clash-verge-rev,ops-infra,categories/dev-utilities/ops-infra/clash-verge-rev.md
 https://github.com/cline/cline,cline,ide-agents,categories/agent-frameworks/coding-agents/ide-agents/cline.md
 https://github.com/cloudflare/computer,cloudflare-computer,sandboxing,categories/sandboxing/cloudflare-computer.md
