@@ -8,6 +8,7 @@
 
 | 分类 | 何时进来 | 路由 |
 |---|---|---|
+| **security-operations** | 关联、调查已接入的安全告警，并约束响应权限。 | [路由](categories/security-operations/INDEX.zh.md) |
 | **gpu-tooling** | 研究显卡硬件配置、固件与指令吞吐实验，先检查风险和授权边界。 | [→](categories/gpu-tooling/INDEX.zh.md) |
 | **android-system-services** | 替换或集成安卓系统服务接口，解决应用兼容问题，不是界面自动化。 | [→](categories/android-system-services/INDEX.zh.md) |
 | **traditional-divination** | 检查传统排盘规则与文化学习数据，不作科学预测。 | [→](categories/traditional-divination/INDEX.zh.md) |

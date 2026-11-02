@@ -42,6 +42,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Cutter](https://github.com/rizinorg/cutter),categories/dev-utilities/binary-analysis/ghidra.md,,no
 [daed](https://github.com/daeuniverse/daed),categories/networking/dae.md,,no
 [darktable](https://github.com/darktable-org/darktable),categories/photo-editing/lightcraft.md,,no
+[DFIR-IRIS](https://github.com/dfir-iris/iris-web),categories/security-operations/aisoc.md,,no
 [Diffusers](https://github.com/huggingface/diffusers),categories/on-device-ml/local-image-generation/iris-c.md,,no
 [Dive into Deep Learning](https://github.com/d2l-ai/d2l-en),categories/learning-resources/torchcode.md,,no
 [doocs/md](https://github.com/doocs/md),categories/agent-skills/ai-writing/content-production/gzh-design-skill.md,,no
@@ -133,6 +134,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Self Forcing](https://github.com/guandeh17/Self-Forcing),categories/ml-research/vision-and-multimodal/stable-video-infinity.md,,no
 [Semgrep](https://github.com/semgrep/semgrep),categories/agent-governance/skillspector.md,,no
 [Shizuku](https://github.com/RikkaApps/Shizuku),categories/mobile-automation/mika.md,,no
+[Shuffle](https://github.com/Shuffle/Shuffle),categories/security-operations/aisoc.md,,no
 [sing-box](https://github.com/SagerNet/sing-box),categories/dev-utilities/ops-infra/open-box.md,,no
 [spcfox/amnezia-wg-easy](https://github.com/spcfox/amnezia-wg-easy),categories/networking/amneziawg-installer.md,,no
 [Stats](https://github.com/exelban/stats),categories/observability/mac-performance-monitor.md,,no
@@ -159,6 +161,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Wan2.1](https://github.com/Wan-Video/Wan2.1),categories/ml-research/vision-and-multimodal/stable-video-infinity.md,,no
 [Wan2.2](https://github.com/Wan-Video/Wan2.2),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [wasmtime](https://github.com/bytecodealliance/wasmtime) (WASI CPython),categories/sandboxing/monty.md,,no
+[Wazuh](https://github.com/wazuh/wazuh),categories/security-operations/aisoc.md,,no
 [wg-easy](https://github.com/wg-easy/wg-easy),categories/networking/amneziawg-installer.md,,no
 [WhisperX](https://github.com/m-bain/whisperX),categories/speech/vibevoice.md,,no
 [whoBIRD](https://github.com/woheller69/whoBIRD),categories/on-device-ml/birdnet-go.md,,no

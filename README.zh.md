@@ -42,6 +42,12 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 完整索引，按分类分组。每个项目有一份英文页（`<slug>.md`）和一份中文页（`<slug>.zh.md`），点击直达。交互式浏览见 [INDEX.zh.md](INDEX.zh.md)；agent 从 [AGENTS.md](AGENTS.md) 开始。
 
+### security-operations
+
+| 项目 | 何时使用 | 许可 | 健康度 | 页面 |
+|---|---|---|---|---|
+| **AiSOC** | 用决策账本、历史重放与可选本地模型调查已接入告警；保留原有采集与留存。 | 代码 MIT；导入规则和模型权重另算 | B（6/6） | [中](categories/security-operations/aisoc.zh.md) · [EN](categories/security-operations/aisoc.md) |
+
 ### gpu-tooling
 
 | 项目 | 何时使用 | 许可 | 健康度 | 页面 |

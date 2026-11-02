@@ -45,6 +45,12 @@ installer surface.
 
 The complete index, grouped by category. Each project has an English page (`<slug>.md`) and a Chinese sibling (`<slug>.zh.md`) — click straight through. Browse interactively from [INDEX.md](INDEX.md); agents start at [AGENTS.md](AGENTS.md).
 
+### security-operations
+
+| Project | Use when | License | Health | Page |
+|---|---|---|---|---|
+| **AiSOC** | Investigate connected alerts with a decision ledger, historical replay and optional local model; keep your collection and retention stack. | MIT code; imported rules and model weights separate | B (6/6) | [EN](categories/security-operations/aisoc.md) · [中](categories/security-operations/aisoc.zh.md) |
+
 ### gpu-tooling
 
 | Project | Use when | License | Health | Page |
