@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Hex", "zh": "Hex"},
+  "steps": [
+    {"lane": "you", "en": "Install Hex, launch it and grant microphone/input access", "zh": "安装并启动 Hex，授予麦克风和输入权限", "code": "brew install --cask anomalyco/tap/hex"},
+    {"lane": "them", "en": "Prepare the local speech model on first run", "zh": "首次运行时准备本地语音模型"},
+    {"lane": "you", "en": "Focus the target input, hold the shortcut, speak and release", "zh": "聚焦目标输入框，按住快捷键说话后松开"},
+    {"lane": "them", "en": "Transcribe the recording on your device", "zh": "在你的设备上把录音转成文字"},
+    {"lane": "them", "en": "Paste the final text into the focused app", "zh": "把最终文字粘贴到当前应用"}
+  ],
+  "value": {"en": "Enter dictated messages without moving audio through a separate transcription window", "zh": "说完即可输入消息，不必再转到独立窗口处理录音"},
+  "sources": [
+    "https://github.com/anomalyco/hex/blob/974b18818c3d9077ffe41814113771d9b43e2648/README.md#L3-L35",
+    "https://github.com/anomalyco/hex/blob/974b18818c3d9077ffe41814113771d9b43e2648/docs/features/dictation.md#L14-L25"
+  ]
+}

@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Hex** | 用本地语音模型口述到当前桌面输入框；可选改写和自定义命令另有联网与信任边界。 | B（4/6） | [→](hex.zh.md) |
 | **KittenTTS** | 需要微型 CPU 英文语音，或独立的较大克隆模型；新版权重要商用登记，并受收入及融资门槛限制。 | B（5/6） | [→](kitten-tts.zh.md) |
 | **yovoice** | 你想比较克隆旁白和歌曲版本，却不想维护 Python 模型环境。yovoice 把本地 audio.cpp 推理接成桌面工作台、命令行和 MCP 服务。 | B（6/6） | [→](yovoice.zh.md) |
 | **SpeechBrain** | 当你需要在一套统一的 PyTorch recipe 代码库上训练和适配语音模型（ASR、说话人识别、语音分离）时用它——但它以研究和训练为先，生产部署和跨版本 API 稳定性得你自己负责。 | B（5/6） | [→](speechbrain.zh.md) |
@@ -23,6 +24,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Hex](hex.zh.md) | 已收录 | B（4/6） | 原生 Rust 快捷键到粘贴链路；要核对 Windows、Linux 测试版要求及无沙箱命令。 |
 | [KittenTTS](kitten-tts.zh.md) | ✅ | B（5/6） | 旧版 ONNX 优先减小 CPU 部署体积；新版增加克隆，也增加依赖和自定义权重许可。 |
 | [yovoice](yovoice.zh.md) | ✅ | B（6/6） | 你想比较克隆旁白和歌曲版本，却不想维护 Python 模型环境。yovoice 把本地 audio.cpp 推理接成桌面工作台、命令行和 MCP 服务。 |
 | [SpeechBrain](speechbrain.zh.md) | ✅ | B（5/6） | 当你需要在一套统一的 PyTorch recipe 代码库上训练和适配语音模型（ASR、说话人识别、语音分离）时用它——但它以研究和训练为先，生产部署和跨版本 API 稳定性得你自己负责。 |

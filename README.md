@@ -1357,6 +1357,7 @@ Enter [Client Routing](categories/api-gateway/client-routing/INDEX.md) for devel
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **Hex** | Dictate into the focused desktop app with local speech models; optional rewriting and custom commands have separate network/trust boundaries. | MIT own code; model-specific terms | B (4/6) | [EN](categories/speech/hex.md) · [中](categories/speech/hex.zh.md) |
 | **KittenTTS** | You need tiny CPU English speech, or a separate larger cloning model; v2 weights carry commercial registration and revenue/funding limits. | Apache-2.0 code; custom v2 weights | B (5/6) | [EN](categories/speech/kitten-tts.md) · [中](categories/speech/kitten-tts.zh.md) |
 | **yovoice** | You want to compare cloned narration takes and songs without maintaining a Python model stack; yovoice wraps local audio.cpp inference in a desktop workbench, CLI and MCP service. | Apache-2.0 | B (6/6) | [EN](categories/speech/yovoice.md) · [中](categories/speech/yovoice.zh.md) |
 | **SpeechBrain** | Use it when you need to train and adapt speech models (ASR, speaker ID, separation) on one coherent PyTorch recipe codebase — but it's research-and-training-first, so production serving and cross-version API stability are your job. | Apache-2.0 | B (5/6) | [EN](categories/speech/speechbrain.md) · [中](categories/speech/speechbrain.zh.md) |

@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Hex** | Dictate into the focused desktop app with local speech models; optional rewriting and custom commands have separate network/trust boundaries. | B (4/6) | [→](hex.md) |
 | **KittenTTS** | You need tiny CPU English speech, or a separate larger cloning model; v2 weights carry commercial registration and revenue/funding limits. | B (5/6) | [→](kitten-tts.md) |
 | **yovoice** | You want to compare cloned narration takes and songs without maintaining a Python model stack; yovoice wraps local audio.cpp inference in a desktop workbench, CLI and MCP service. | B (6/6) | [→](yovoice.md) |
 | **SpeechBrain** | Use it when you need to train and adapt speech models (ASR, speaker ID, separation) on one coherent PyTorch recipe codebase — but it's research-and-training-first, so production serving and cross-version API stability are your job. | B (5/6) | [→](speechbrain.md) |
@@ -23,6 +24,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Hex](hex.md) | ✅ | B (4/6) | Native Rust shortcut-to-paste dictation; Windows/Linux beta requirements and unsandboxed custom handlers need review. |
 | [KittenTTS](kitten-tts.md) | ✅ | B (5/6) | Legacy ONNX prioritizes CPU footprint; v2 adds cloning with a heavier stack and a custom weight license. |
 | [yovoice](yovoice.md) | ✅ | B (6/6) | You want to compare cloned narration takes and songs without maintaining a Python model stack; yovoice wraps local audio.cpp inference in a desktop workbench, CLI and MCP service. |
 | [SpeechBrain](speechbrain.md) | ✅ | B (5/6) | Use it when you need to train and adapt speech models (ASR, speaker ID, separation) on one coherent PyTorch recipe codebase — but it's research-and-training-first, so production serving and cross-version API stability are your job. |
