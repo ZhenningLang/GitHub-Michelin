@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "audio", "en": "Recorded audio samples", "zh": "录音采样", "kind": "input"},
+    {"id": "worker", "en": "Native model in a worker process", "zh": "子进程中的原生模型", "technique": [1]},
+    {"id": "text", "en": "Recognized text", "zh": "识别文字"},
+    {"id": "provider", "en": "Optional local or remote text cleanup", "zh": "可选本地或远程文字整理", "kind": "external"},
+    {"id": "history", "en": "Store pre-hook transcript history", "zh": "保存钩子前的转写历史", "technique": [2]},
+    {"id": "hook", "en": "Optional executable rewrites paste text", "zh": "可选执行程序改写粘贴文字", "technique": [2]},
+    {"id": "paste", "en": "Paste into the current app", "zh": "粘贴进当前应用", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "audio", "to": "worker"},
+    {"from": "worker", "to": "text"},
+    {"from": "text", "to": "history", "en": "without cleanup", "zh": "不整理时"},
+    {"from": "text", "to": "provider", "style": "dashed"},
+    {"from": "provider", "to": "history", "style": "dashed"},
+    {"from": "history", "to": "hook"},
+    {"from": "hook", "to": "paste", "en": "stdout or pre-hook fallback", "zh": "标准输出或钩子前文字回退"}
+  ],
+  "sources": [
+    "https://github.com/cjpais/Handy/blob/82dfab9fda18c4bc24e1f6e56d36474d38eca0bc/src-tauri/src/engine_supervisor/worker.rs#L32-L189",
+    "https://github.com/cjpais/Handy/blob/82dfab9fda18c4bc24e1f6e56d36474d38eca0bc/src-tauri/src/actions.rs#L731-L845",
+    "https://github.com/cjpais/Handy/blob/82dfab9fda18c4bc24e1f6e56d36474d38eca0bc/src-tauri/src/transcription_hook.rs#L13-L64"
+  ]
+}

@@ -163,6 +163,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [wasmtime](https://github.com/bytecodealliance/wasmtime) (WASI CPython),categories/sandboxing/monty.md,,no
 [Wazuh](https://github.com/wazuh/wazuh),categories/security-operations/aisoc.md,,no
 [wg-easy](https://github.com/wg-easy/wg-easy),categories/networking/amneziawg-installer.md,,no
+[whisper.cpp](https://github.com/ggml-org/whisper.cpp),categories/speech/handy.md,,no
 [WhisperX](https://github.com/m-bain/whisperX),categories/speech/vibevoice.md,,no
 [whoBIRD](https://github.com/woheller69/whoBIRD),categories/on-device-ml/birdnet-go.md,,no
 [WildFlash1st/cmp90hx-unlock](https://github.com/WildFlash1st/cmp90hx-unlock),categories/gpu-tooling/gpu-unlock.md,,no
