@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Agent Desktop** | Native accessibility refs for an existing agent via Rust CLI/C; no VM isolation. | B (6/6) | [→](agent-desktop.md) |
 | **Cua** | Use it when an agent must operate a whole computer — native desktop apps and OS dialogs, not just a web page — and the run should be isolated. | B (5/6) | [→](cua.md) |
 | **LCU** | Connect an existing coding harness to the installed ChatGPT app's desktop-control engine; requires the proprietary app and supported macOS/X11 Linux. | C (6/6) | [→](lcu.md) |
 | **PyAutoGUI** | Use it when a Python script must click and type into a GUI-only desktop app on Windows, macOS or Linux — but pixel/coordinate automation breaks silently on DPI, resolution or theme changes, needs a real display, and upstream has been quiet since 2023. | C (4/6) | [→](pyautogui.md) |
@@ -16,6 +17,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Agent Desktop](agent-desktop.md) | indexed | B (6/6) | Native controls and delivery evidence; caller owns planning, approvals and isolation. |
 | [Cua](cua.md) | ✅ | B (5/6) | Use it when an agent must operate a whole computer — native desktop apps and OS dialogs, not just a web page — and the run should be isolated. |
 | [LCU](lcu.md) | ✅ | C (6/6) | Reuses OpenAI's local engine through harness adapters, at the cost of private-runtime coupling and no VM provisioning. |
 | [PyAutoGUI](pyautogui.md) | ✅ | C (4/6) | Buys a dozen-line, cross-platform mouse/keyboard robot with no RPA platform to learn; costs brittleness, no headless mode, and no accessibility-tree awareness. |

@@ -1255,6 +1255,7 @@ Enter [Client Routing](categories/api-gateway/client-routing/INDEX.md) for devel
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **Agent Desktop** | Native accessibility refs for an existing agent via Rust CLI/C; no VM isolation. | Apache-2.0 | B (6/6) | [EN](categories/desktop-automation/agent-desktop.md) · [中](categories/desktop-automation/agent-desktop.zh.md) |
 | **Cua** | Use it when an agent must operate a whole computer — native desktop apps and OS dialogs, not just a web page — and the run should be isolated. | MIT | B (5/6) | [EN](categories/desktop-automation/cua.md) · [中](categories/desktop-automation/cua.zh.md) |
 | **LCU** | Connect an existing coding harness to the installed ChatGPT app's desktop-control engine; proprietary runtime, macOS/X11 Linux. | MIT | C (6/6) | [EN](categories/desktop-automation/lcu.md) · [中](categories/desktop-automation/lcu.zh.md) |
 | **PyAutoGUI** | Use it when a Python script must click and type into a GUI-only desktop app on Windows, macOS or Linux — but pixel/coordinate automation breaks silently on DPI, resolution or theme changes, needs a real display, and upstream has been quiet since 2023. | BSD-3-Clause | C (4/6) | [EN](categories/desktop-automation/pyautogui.md) · [中](categories/desktop-automation/pyautogui.zh.md) |

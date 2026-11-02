@@ -1252,6 +1252,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **Agent Desktop** | 通过 Rust 命令行与 C 库，把无障碍引用交给现有 agent；无虚拟机隔离。 | Apache-2.0 | B（6/6） | [中](categories/desktop-automation/agent-desktop.zh.md) · [EN](categories/desktop-automation/agent-desktop.md) |
 | **Cua** | 当 agent 需要操作整台电脑（原生桌面应用、系统弹窗，而非仅网页）、且这次运行需要隔离时使用。 | MIT | B（5/6） | [中](categories/desktop-automation/cua.zh.md) · [EN](categories/desktop-automation/cua.md) |
 | **LCU** | 把现有编程宿主接到已安装 ChatGPT 应用的桌面控制引擎；依赖闭源运行时，仅支持指定 macOS、X11 Linux。 | MIT | C（6/6） | [中](categories/desktop-automation/lcu.zh.md) · [EN](categories/desktop-automation/lcu.md) |
 | **PyAutoGUI** | 当你要用 Python 脚本在 Windows、macOS 或 Linux 上点击、输入一个只有图形界面的桌面程序时用它——但基于坐标和像素的自动化会因 DPI、分辨率或主题变化静默失效，必须有真实显示器，且上游自 2023 年起已无新提交。 | BSD-3-Clause | C（4/6） | [中](categories/desktop-automation/pyautogui.zh.md) · [EN](categories/desktop-automation/pyautogui.md) |

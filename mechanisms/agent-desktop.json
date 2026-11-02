@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "ui", "en": "OS accessibility controls", "zh": "系统无障碍控件", "kind": "input"},
+    {"id": "snapshot", "en": "Full or shallow snapshot", "zh": "全量或浅层快照", "technique": [2]},
+    {"id": "refs", "en": "Session-scoped qualified refs", "zh": "会话内的限定引用", "technique": [1]},
+    {"id": "drill", "en": "Complete subtree replacement", "zh": "完整子树替换", "technique": [2]},
+    {"id": "resolve", "en": "Strict live identity and actionability checks", "zh": "严格实时身份与可操作性检查", "technique": [1]},
+    {"id": "act", "en": "Platform action dispatch", "zh": "平台动作发送"},
+    {"id": "report", "en": "Delivery evidence and optional state readback", "zh": "发送证据与按需状态回读", "technique": [3]},
+    {"id": "caller", "en": "Caller checks retry and business outcome", "zh": "调用方检查重试与业务结果", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "ui", "to": "snapshot"},
+    {"from": "snapshot", "to": "refs"},
+    {"from": "refs", "to": "drill", "style": "dashed", "en": "requested region", "zh": "请求的区域"},
+    {"from": "drill", "to": "refs", "style": "dashed"},
+    {"from": "refs", "to": "resolve"},
+    {"from": "resolve", "to": "act", "en": "only after checks pass", "zh": "检查通过才发送"},
+    {"from": "act", "to": "report"},
+    {"from": "report", "to": "caller"}
+  ],
+  "sources": [
+    "https://github.com/vercel-labs/agent-desktop/blob/9eb9b296192fcb70bda25e918cd6dd66abfa3d0d/crates/core/src/commands/snapshot.rs#L34-L150",
+    "https://github.com/vercel-labs/agent-desktop/blob/9eb9b296192fcb70bda25e918cd6dd66abfa3d0d/crates/core/src/snapshot/snapshot_ref.rs#L30-L130",
+    "https://github.com/vercel-labs/agent-desktop/blob/9eb9b296192fcb70bda25e918cd6dd66abfa3d0d/crates/core/src/ref_action/mod.rs#L60-L166",
+    "https://github.com/vercel-labs/agent-desktop/blob/9eb9b296192fcb70bda25e918cd6dd66abfa3d0d/crates/core/src/actions/post_action.rs#L6-L138"
+  ]
+}
