@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "photo", "en": "User photo", "zh": "用户照片", "kind": "input"},
+    {"id": "scene", "en": "Scene Card and sparse collage prompt", "zh": "场景卡与稀疏拼贴提示词", "technique": [1]},
+    {"id": "meaning", "en": "Semantic anchors and no-photo prompt", "zh": "语义锚点与无摄影画面提示词", "technique": [2]},
+    {"id": "model", "en": "Host image-generation service", "zh": "宿主生图服务", "kind": "external"},
+    {"id": "static", "en": "Static raster poster", "zh": "静态栅格海报", "kind": "output"},
+    {"id": "frozen", "en": "Separate frozen v1.9 poster module", "zh": "独立冻结的 v1.9 海报模块", "technique": [3]},
+    {"id": "mask", "en": "Path projection and cover-mask reveal", "zh": "路径投影与纸面蒙版揭开", "technique": [3]},
+    {"id": "pair", "en": "Shared identifiers and still-time metadata", "zh": "共享标识与静帧时间元数据", "technique": [3]},
+    {"id": "zip", "en": "One JPG and MOV pair in ZIP", "zh": "压缩包只含一对 JPG 与 MOV", "kind": "output"},
+    {"id": "importer", "en": "Opaque macOS importer; handoff only", "zh": "不透明 macOS 导入器；只确认交接", "kind": "external"}
+  ],
+  "edges": [
+    {"from": "photo", "to": "scene", "en": "real-scene mode", "zh": "实景模式"},
+    {"from": "photo", "to": "meaning", "en": "distillation mode", "zh": "蒸馏模式"},
+    {"from": "scene", "to": "model"},
+    {"from": "meaning", "to": "model"},
+    {"from": "model", "to": "static"},
+    {"from": "photo", "to": "frozen", "en": "separate Live workflow", "zh": "独立实况流程", "style": "dashed"},
+    {"from": "frozen", "to": "model", "style": "dashed"},
+    {"from": "static", "to": "mask", "en": "Live v1.9 output only", "zh": "仅实况 v1.9 产物", "style": "dashed"},
+    {"from": "mask", "to": "pair", "style": "dashed"},
+    {"from": "pair", "to": "zip", "style": "dashed"},
+    {"from": "zip", "to": "importer", "en": "default unless --no-import", "zh": "默认启动，除非 --no-import", "style": "dashed"}
+  ],
+  "sources": [
+    "skills/scenes-gathered-zine-v1-3/SKILL.md",
+    "skills/scene-distillation-zine-v1-3/SKILL.md",
+    "skills/scenes-gathered-zine-live-flow-v1-0/scripts/render_adaptive_flat_tear.py",
+    "skills/scenes-gathered-zine-live-flow-v1-0/scripts/pair_live_photo.swift",
+    "skills/scenes-gathered-zine-live-flow-v1-0/scripts/build_live_zip_and_import.py"
+  ]
+}

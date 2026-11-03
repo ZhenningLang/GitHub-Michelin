@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **pixelfx** | Reuse parameterized pixel effects live in JavaScript or bake sheets for another engine; very young, no game loop, and gallery font rights are separate. | C (5/6) | [→](pixelfx.md) |
 | **Unity-MCP** | Let an agent inspect and change a running Unity project; generated CLI skills and C# execution remove manual handoffs, but require broad editor trust and mixed-license review. | B (6/6) | [→](unity-mcp.md) |
 | **pygame** | Use it when you are learning or teaching programming and want a small 2D Python game — window, event loop, sprites, sound — in a few dozen lines — but it is a CPU-blitting library with no editor or 3D, unreleased since 2024-09. | C (4/6) | [→](pygame.md) |
 | **kaplay** | Use it when you want a jam-scale 2D web game in plain JS/TS with zero engine ceremony — but for a long-lived product or 3D, the stalled stable line and 2D-only scope say look elsewhere. | B (6/6) | [→](kaplay.md) |
@@ -16,6 +17,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [pixelfx](pixelfx.md) | Indexed | C (5/6) | An attributed effect library with compositing and export tools, not an engine; visual warnings do not fail its checker. |
 | [Unity-MCP](unity-mcp.md) | ✅ | B (6/6) | Choose for project-specific C# tools and editor/runtime integration; pay for coupled plugin/server dependencies and review the vendored PolyForm Shield component. |
 | [pygame](pygame.md) | ✅ | C (4/6) | Buys the lowest-friction path from Python to pixels on screen; costs performance and structure — no scene system, physics or asset pipeline, so bigger games outgrow it (Godot, Arcade). |
 | [kaplay](kaplay.md) | ✅ | B (6/6) | Use it when you want a jam-scale 2D web game in plain JS/TS with zero engine ceremony — but for a long-lived product or 3D, the stalled stable line and 2D-only scope say look elsewhere. |

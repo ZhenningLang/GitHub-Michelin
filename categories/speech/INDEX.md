@@ -3,6 +3,12 @@
 > Category node. Speech processing toolkits (ASR, TTS, speaker tasks).
 > ← back to [category route](../../INDEX.md) · 中文：[INDEX.zh.md](INDEX.zh.md)
 
+## Sub-categories
+
+| Category | Use when | Index |
+| --- | --- | --- |
+| **dictation-apps** | Desktop dictation focused on shortcut → transcription → paste, rather than a broad speech toolkit or production workbench. | [→](dictation-apps/INDEX.md) |
+
 ## Projects in this category
 
 | Project | Use when | Health | Page |
@@ -39,3 +45,5 @@
 ## What belongs here
 
 Toolkits and applications for **speech** — recognition (ASR), synthesis (TTS), speaker/audio tasks.
+
+Broad speech models, research toolkits, speaker tasks and production workbenches remain here. Desktop apps focused on shortcut → transcription → paste belong in [dictation-apps](dictation-apps/INDEX.md).

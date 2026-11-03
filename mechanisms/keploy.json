@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "app", "kind": "input", "en": "Application sockets", "zh": "应用套接字"},
+    {"id": "hooks", "en": "Linux eBPF and cgroup redirection", "zh": "Linux eBPF 与 cgroup 重定向", "technique": [1]},
+    {"id": "relay", "en": "Relay owns real socket writes", "zh": "转发器独占真实套接字写入", "technique": [2]},
+    {"id": "upstream", "kind": "external", "en": "Real upstream during recording", "zh": "录制时的真实上游"},
+    {"id": "parser", "en": "Read-only streams and supervised protocol parsers", "zh": "只读流与受监督的协议解析器", "technique": [2]},
+    {"id": "fixture", "kind": "output", "en": "Stored test cases and scoped mocks", "zh": "落盘用例与分作用域的桩", "technique": [3]},
+    {"id": "replay", "en": "Replay uses stored dependency answers", "zh": "重放使用保存的依赖响应", "technique": [3]},
+    {"id": "compare", "kind": "output", "en": "Response comparison with explicit exclusions", "zh": "按显式排除规则对比响应", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "app", "to": "hooks"},
+    {"from": "hooks", "to": "relay"},
+    {"from": "relay", "to": "upstream", "en": "record mode", "zh": "录制模式"},
+    {"from": "relay", "to": "parser", "en": "bounded byte copies", "zh": "有界字节副本"},
+    {"from": "parser", "to": "fixture", "en": "exclude incomplete mocks", "zh": "排除不完整桩"},
+    {"from": "fixture", "to": "replay"},
+    {"from": "replay", "to": "compare", "en": "actual versus recorded", "zh": "实际响应对照录制响应"}
+  ],
+  "sources": [
+    "https://github.com/keploy/keploy/blob/b50e6ff38ea54bdcb50e96c259018de7e94b09b2/pkg/agent/hooks/linux/hooks.go",
+    "https://github.com/keploy/keploy/blob/b50e6ff38ea54bdcb50e96c259018de7e94b09b2/pkg/agent/proxy/README.md",
+    "https://github.com/keploy/keploy/blob/b50e6ff38ea54bdcb50e96c259018de7e94b09b2/pkg/matcher/http/match.go"
+  ]
+}

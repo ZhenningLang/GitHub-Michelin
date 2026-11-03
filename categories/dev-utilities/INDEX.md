@@ -18,12 +18,14 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Keploy** | Record API calls with dependency replies for regression replay; approve kernel privileges and opt into non-JSON body comparison. | A (6/6) | [→](keploy.md) |
 | **App Store Connect CLI** | Script Apple release metadata, TestFlight and review operations with a standalone Go CLI. | B (6/6) | [→](app-store-connect-cli.md) |
 
 ## Comparison matrix
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Keploy](keploy.md) | Indexed | A (6/6) | Captured regression fixtures rather than hand-written mocks; Linux instrumentation, private parsers, service terms and default non-JSON comparison gaps remain. |
 | [App Store Connect CLI](app-store-connect-cli.md) | ✅ | B (6/6) | Apple release API commands without Ruby; still needs credentials, approval and Xcode for local builds, with default-on telemetry. |
 
 | Option | Type | One-line tradeoff |

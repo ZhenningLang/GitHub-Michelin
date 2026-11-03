@@ -7,6 +7,7 @@
 
 | Collection | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Claude SEO** | Run a specialist SEO audit inside Claude Code and turn page checks into one prioritized action plan, accepting model usage and a 500-page crawl cap. | B (6/6) | [→](claude-seo.md) |
 | **new-term-radar** | By the time a new AI product appears in your keyword dashboard, you may have missed its first mentions; this tool compares source snapshots and produces a daily, evidence-linked keyword shortlist. | C (5/6) | [→](new-term-radar.md) |
 | **marketingskills** | Broad marketing skill pack for product marketing, CRO, copywriting, SEO, analytics, lifecycle email, ads, and growth execution. | B (4/5) | [→](marketingskills.md) |
 | **open-seo** | Self-hostable SEO app plus MCP and Agent Skills for keyword research, rank tracking, competitors, backlinks, audits, and AI visibility. | B (5/6) | [→](open-seo.md) |
@@ -17,6 +18,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Claude SEO](claude-seo.md) | Indexed | B (6/6) | Bundled fetchers, validators and specialist agents add depth over a lightweight launch skill, but no persistent crawl database. |
 | [new-term-radar](new-term-radar.md) | ✅ | C (5/6) | By the time a new AI product appears in your keyword dashboard, you may have missed its first mentions; this tool compares source snapshots and produces a daily, evidence-linked keyword shortlist. |
 | [marketingskills](marketingskills.md) | ✅ | B (4/5) | Best for SaaS/growth marketing work; not a general article-writing pipeline. |
 | [open-seo](open-seo.md) | ✅ | B (5/6) | Best when SEO workflows need a self-hosted app, MCP, and paid DataForSEO-backed data. |

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Skill-guided Codex", "zh": "技能引导的 Codex"},
+  "steps": [
+    {"lane": "you", "en": "Review the license and provide the approved skill to an image-capable Codex host", "zh": "核对许可，将获准技能交给有图像工具的 Codex"},
+    {"lane": "you", "en": "Upload your photo and invoke the travel-card skill", "zh": "上传照片，调用旅行卡片技能", "code": "$travel-memory-sticker-card"},
+    {"lane": "them", "en": "Select a recognizable anchor, six photo-derived motifs and three English keywords", "zh": "选辨识点、六个原图图案和三个英文关键词", "component": {"en": "SKILL.md", "zh": "技能指令"}},
+    {"lane": "them", "en": "Ask the host image tool to redraw the scene and compose one memory card", "zh": "让宿主图像工具重绘场景，合成一张记忆卡", "component": {"en": "Host image tool", "zh": "宿主图像工具"}},
+    {"lane": "them", "en": "Inspect, regenerate once if specified checks fail, then show the finished card", "zh": "看图，指定检查失败时重生成一次，再展示卡片"}
+  ],
+  "value": {"en": "A personal photo becomes one illustrated keepsake without hand-arranging its matching sticker motifs", "zh": "照片变成一张插画纪念卡，不用手工摆放呼应场景的贴纸"},
+  "sources": [
+    "https://github.com/carolinaaafy/travel-memory-sticker-card/blob/25ac9753bae206e452f1501c9a57f93f853df408/LICENSE",
+    "https://github.com/carolinaaafy/travel-memory-sticker-card/blob/25ac9753bae206e452f1501c9a57f93f853df408/agents/openai.yaml",
+    "https://github.com/carolinaaafy/travel-memory-sticker-card/blob/25ac9753bae206e452f1501c9a57f93f853df408/SKILL.md"
+  ]
+}

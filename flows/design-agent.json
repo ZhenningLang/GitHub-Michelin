@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Design Agent", "zh": "Design Agent"},
+  "steps": [
+    {"lane": "you", "en": "Configure a model key and brand pack; build the local Docker sandbox", "zh": "配置模型密钥与品牌包，构建本地 Docker 沙箱", "code": "uv run design-agent sandbox build"},
+    {"lane": "you", "en": "Send an example request for a branded launch card", "zh": "提交品牌发布卡片的示例需求", "code": "uv run design-agent ask \"A LinkedIn card\""},
+    {"lane": "them", "en": "Reads skills and brand files, writes and renders the composition", "zh": "读取技能和品牌文件，编写并渲染版面"},
+    {"lane": "them", "en": "Uses visual inspection and file checks to revise the draft", "zh": "用视觉自查与文件检查修改初稿"},
+    {"lane": "them", "en": "Delivers finished files into workspace/out/<thread>/", "zh": "把最终文件交付到 workspace/out/<thread>/"}
+  ],
+  "value": {"en": "A branded artifact without manually joining the model, renderer and file-delivery tools", "zh": "拿到品牌产物，不必手动串联模型、渲染器和文件交付工具"},
+  "sources": [
+    "https://github.com/langchain-ai/design-agent/blob/de9394b9b10b8134d9de06fd29647c1ab2318ba3/README.md#L168-L183",
+    "https://github.com/langchain-ai/design-agent/blob/de9394b9b10b8134d9de06fd29647c1ab2318ba3/instructions.md#L12-L18",
+    "https://github.com/langchain-ai/design-agent/blob/de9394b9b10b8134d9de06fd29647c1ab2318ba3/src/design_agent/tools/delivery.py#L59-L72"
+  ]
+}

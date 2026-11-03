@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "Keploy", "zh": "Keploy"},
+  "steps": [
+    {"lane": "you", "en": "Approve a Linux build, kernel permissions and a test-data capture scope", "zh": "批准 Linux 构建、内核权限和测试数据捕获范围"},
+    {"lane": "you", "en": "Start the application under recording", "zh": "在录制模式下启动应用", "code": "keploy record -c \"python main.py\""},
+    {"lane": "you", "en": "Exercise representative API calls against real dependencies", "zh": "向真实依赖发送有代表性的 API 调用"},
+    {"lane": "them", "en": "Save API requests, expected responses and dependency mocks", "zh": "保存 API 请求、预期响应和依赖桩"},
+    {"lane": "you", "en": "Review fixtures and replay with non-JSON body comparison enabled", "zh": "审核夹具，开启非 JSON 正文比较后重放", "code": "keploy test -c \"CMD_TO_RUN_APP\" --delay 10 --compare-all"},
+    {"lane": "them", "en": "Replay requests, serve saved dependency replies and report response differences", "zh": "重放请求、返回保存的依赖响应并报告差异"}
+  ],
+  "value": {"en": "Regression checks reuse observed dependency replies instead of hand-authoring every mock", "zh": "回归检查复用观察到的依赖响应，不再逐项手写所有桩"},
+  "sources": [
+    "https://github.com/keploy/keploy/blob/b50e6ff38ea54bdcb50e96c259018de7e94b09b2/README.md#L104-L132",
+    "https://github.com/keploy/keploy/blob/b50e6ff38ea54bdcb50e96c259018de7e94b09b2/cli/provider/compat_linux.go#L13-L35",
+    "https://github.com/keploy/keploy/blob/b50e6ff38ea54bdcb50e96c259018de7e94b09b2/config/default.go#L15-L17",
+    "https://github.com/keploy/keploy/blob/b50e6ff38ea54bdcb50e96c259018de7e94b09b2/cli/provider/cmd.go#L624-L625",
+    "https://github.com/keploy/keploy/blob/b50e6ff38ea54bdcb50e96c259018de7e94b09b2/pkg/service/replay/replay.go#L7728-L7742"
+  ]
+}

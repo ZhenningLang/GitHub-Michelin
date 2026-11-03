@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **shroom** | Give a small Apple-silicon team instant recording links backed by its own Cloudflare R2 and Worker; macOS-only, very young and links are bearer access. | C (5/6) | [→](shroom.md) |
 | **OpenScreen Community** | Record and polish software demos with current fixes, native capture and optional agent editing; not the archived original. | B (5/6) | [→](openscreen-community.md) |
 | **Concat** | Use when you want a native, offline, scriptable CapCut-style editor you can install and run today — accepting a 25-day-old 0.2.x beta with a single maintainer. | C (6/6) | [→](concat.md) |
 | **OpenCut** | Use when you want to track or build on the browser/WASM rewrite architecture — not when you need a working editor, because the repository is mid-rewrite and the shipped version lives in an archived classic repo. | B (5/6) | [→](opencut.md) |
@@ -18,6 +19,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [shroom](shroom.md) | Indexed | C (5/6) | Recording, trimming and instant sharing in your Cloudflare account, not a polished-demo editor or authenticated video portal. |
 | [OpenScreen Community](openscreen-community.md) | ✅ | B (5/6) | Maintained MIT continuation with cursor-driven zooms and native export; project/CLI churn and default-on anonymous counts. |
 | [Concat](concat.md) | ✅ | C (6/6) | Pick for a native Rust desktop/mobile editor that bundles FFmpeg and Whisper and exposes an API/CLI/server; the price is beta stability and a one-person bus factor. |
 | [OpenCut](opencut.md) | ✅ | B (5/6) | Pick to follow or build on the next-generation browser/WASM architecture; the price is that this repository currently ships nothing while the rewrite is in progress. |
@@ -29,4 +31,4 @@
 
 ## What belongs here
 
-End-user non-linear video editors with a GUI timeline — applications a person cuts in, not libraries that render for them. Timeline-based motion-graphics compositors in the After Effects mould (EffectCraft) live here too. Codec/transcode toolchains and editing frameworks belong under `video-audio` (FFmpeg, MLT, GStreamer); programmatic rendering engines belong under `video-production` (Remotion, HyperFrames).
+End-user non-linear video editors with a GUI timeline — applications a person cuts in, not libraries that render for them. Screen-recording apps with trimming and sharing, and timeline-based motion-graphics compositors in the After Effects mould (EffectCraft), live here too. Codec/transcode toolchains and editing frameworks belong under `video-audio` (FFmpeg, MLT, GStreamer); programmatic rendering engines belong under `video-production` (Remotion, HyperFrames).

@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "alert", "en": "Connected alert and evidence", "zh": "已接入告警与证据", "kind": "input"},
+    {"id": "agent", "en": "Triage and investigation", "zh": "初筛与调查"},
+    {"id": "ledger", "en": "Sequenced events and hashed artifacts", "zh": "有序事件与材料摘要", "kind": "output", "technique": [1]},
+    {"id": "history", "en": "Historical findings and cutoff context", "zh": "历史结案与截止时点上下文", "kind": "input", "technique": [2]},
+    {"id": "shadow", "en": "Same triage worker; shadow writes", "zh": "同一初筛处理器；影子写入", "technique": [2]},
+    {"id": "report", "en": "Replay decisions and attempted-write counts", "zh": "重放结论与拟写入计数", "kind": "output"},
+    {"id": "dispatch", "en": "Kill switch and capability policy", "zh": "紧急停止与能力策略", "technique": [3]},
+    {"id": "vendor", "en": "Authorized vendor executor", "zh": "获准的厂商执行器", "kind": "external", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "alert", "to": "agent"},
+    {"from": "agent", "to": "ledger"},
+    {"from": "history", "to": "shadow"},
+    {"from": "shadow", "to": "report"},
+    {"from": "agent", "to": "dispatch", "en": "proposed response", "zh": "拟响应动作", "style": "dashed"},
+    {"from": "dispatch", "to": "vendor", "en": "only when permitted", "zh": "仅获准时", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/beenuar/AiSOC/blob/bd3313b9a2e6c2dcf2567f5e6d15c57d3faf0279/services/agents/app/investigator/orchestrator.py",
+    "https://github.com/beenuar/AiSOC/blob/bd3313b9a2e6c2dcf2567f5e6d15c57d3faf0279/services/agents/app/replay/runner.py",
+    "https://github.com/beenuar/AiSOC/blob/bd3313b9a2e6c2dcf2567f5e6d15c57d3faf0279/services/actions/app/live_actions/dispatcher.py"
+  ]
+}

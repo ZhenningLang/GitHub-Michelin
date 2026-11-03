@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "pixelfx", "zh": "pixelfx"},
+  "steps": [
+    {"lane": "you", "en": "Copy reviewed core and effect modules into the game", "zh": "把审过的核心和特效模块复制进游戏"},
+    {"lane": "you", "en": "Create a frame and an effect instance", "zh": "创建帧和特效实例", "code": "createFrame · createFx"},
+    {"lane": "you", "en": "Update, clear and draw in your game loop", "zh": "在自己的游戏循环内更新、清空和绘制", "code": "fx.update(dt)"},
+    {"lane": "them", "en": "Draw color and light buffers, then composite RGBA pixels", "zh": "绘制颜色和发光缓冲，再合成 RGBA 像素", "code": "composite"},
+    {"lane": "you", "en": "For another engine, request a fixed sprite sheet", "zh": "其他引擎则请求固定精灵图集", "code": "node tools/render.mjs ice/frost-nova --sheet"},
+    {"lane": "them", "en": "Write the PNG grid and frame timing JSON", "zh": "写出 PNG 网格和帧时序 JSON"}
+  ],
+  "value": {"en": "Reuse parameterized effect recipes live or as baked assets without repainting every variant", "zh": "把参数化特效配方实时复用或烘焙成资产，不必重画每种变化"},
+  "sources": ["https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/README.md#L54-L87", "https://github.com/patch-gg/pixelfx/blob/a84159688af3ca37a4be05a0d422b94451b2e24e/tools/render.mjs#L33-L52"]
+}

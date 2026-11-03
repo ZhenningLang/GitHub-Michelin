@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **shroom** | 小型 Apple 芯片团队要即时录屏分享链接，视频留在自家 Cloudflare R2 和 Worker；仅支持 macOS，项目很年轻，持链接者即可看。 | C（5/6） | [→](shroom.zh.md) |
 | **OpenScreen Community** | 要当前修复、原生录屏与可选模型编辑的软件演示成片时用它；不是已归档原版。 | B（5/6） | [→](openscreen-community.zh.md) |
 | **Concat** | 需要一款当下就能安装运行、原生、离线、可脚本化的类 CapCut 编辑器时用它——代价是仅有 25 天历史的 0.2.x beta 与单一维护者。 | C（6/6） | [→](concat.zh.md) |
 | **OpenCut** | 想跟进或基于浏览器／WASM 重写架构开发时用它——不适用于需要可用编辑器的场景，因为仓库正在重写，能用的版本在已归档的 classic 仓库里。 | B（5/6） | [→](opencut.zh.md) |
@@ -18,6 +19,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [shroom](shroom.zh.md) | 已收录 | C（5/6） | 在自己的 Cloudflare 账号里录制、裁剪和即时分享，不是成片美化编辑器或带观看者认证的视频门户。 |
 | [OpenScreen Community](openscreen-community.zh.md) | ✅ | B（5/6） | 仍维护的 MIT 续作，光标驱动缩放与原生导出；代价是工程／命令行变更和默认匿名计数。 |
 | [Concat](concat.zh.md) | ✅ | C（6/6） | 需要原生 Rust 桌面／移动编辑器，自带 FFmpeg 与 Whisper 并暴露 API／CLI／server 时选它；代价是 beta 稳定性与单人 bus factor。 |
 | [OpenCut](opencut.zh.md) | ✅ | B（5/6） | 想跟进或基于下一代浏览器／WASM 架构开发时选它；代价是重写期间该仓库不产出可用版本。 |
@@ -29,4 +31,4 @@
 
 ## 什么该放这里
 
-带图形化时间线的面向最终用户的非线性视频编辑器——人用来剪辑的应用，而不是替人渲染的库。仿 After Effects、基于时间线的动态图形合成器（EffectCraft）也放在这里。编解码／转码工具链与编辑框架归入 `video-audio`（FFmpeg、MLT、GStreamer）；程序化渲染引擎归入 `video-production`（Remotion、HyperFrames）。
+带图形化时间线的面向最终用户的非线性视频编辑器——人用来剪辑的应用，而不是替人渲染的库。带裁剪和分享的录屏应用，以及仿 After Effects、基于时间线的动态图形合成器（EffectCraft），也放在这里。编解码／转码工具链与编辑框架归入 `video-audio`（FFmpeg、MLT、GStreamer）；程序化渲染引擎归入 `video-production`（Remotion、HyperFrames）。

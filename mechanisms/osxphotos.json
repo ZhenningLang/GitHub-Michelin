@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "library", "en": "Authorized local Photos library", "zh": "获准读取的本地图库", "kind": "input"},
+    {"id": "reader", "en": "Version adapter and read-only SQLite", "zh": "版本适配与只读 SQLite", "technique": [1]},
+    {"id": "records", "en": "Photo and album records", "zh": "照片和相册记录"},
+    {"id": "template", "en": "Templates select names and metadata", "zh": "模板生成名称和元数据", "technique": [3]},
+    {"id": "state", "en": "Export records and destination signatures", "zh": "导出记录与目标文件签名", "kind": "input", "technique": [2]},
+    {"id": "decision", "en": "Copy; with --update decide copy or skip", "zh": "复制；带 --update 时判定复制或跳过", "technique": [2]},
+    {"id": "archive", "en": "Media, sidecars and updated export state", "zh": "媒体、随附文件和更新后的导出状态", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "library", "to": "reader"},
+    {"from": "reader", "to": "records"},
+    {"from": "records", "to": "template"},
+    {"from": "template", "to": "decision"},
+    {"from": "state", "to": "decision", "en": "--update", "zh": "--update"},
+    {"from": "decision", "to": "archive"}
+  ],
+  "sources": [
+    "osxphotos/photosdb/photosdb.py:319-450",
+    "osxphotos/sqlite_utils.py:55-122",
+    "osxphotos/phototemplate.py:471-632",
+    "osxphotos/photoexporter.py:692-836",
+    "osxphotos/photoexporter.py:1377-1392"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Reality Restaged guides the host", "zh": "Reality Restaged 引导宿主"},
+  "steps": [
+    {"lane": "you", "en": "Review and install the skill in Codex", "zh": "审查后将技能安装到 Codex", "code": "~/.codex/skills/reality-restaged"},
+    {"lane": "you", "en": "Provide a source photograph and invoke the skill", "zh": "提供原片并调用技能", "code": "Use reality-restaged on this image."},
+    {"lane": "them", "en": "Identify documentary anchors and remove secondary visual noise", "zh": "识别纪实锚点并减去次要视觉噪声", "component": {"en": "SKILL.md composition engine", "zh": "SKILL.md 构图引擎"}},
+    {"lane": "them", "en": "Direct a restaged image around color fields and one impossible relationship", "zh": "用色块和一个不可能关系指导图像重构", "component": {"en": "Host image capability", "zh": "宿主图像能力"}}
+  ],
+  "value": {"en": "Source-led surreal art direction without inventing a fresh visual grammar for every photograph", "zh": "从原片出发指导超现实创作，不必为每张照片重想视觉语法"},
+  "sources": [
+    "https://github.com/traveler0621/reality-restaged/blob/9a5533cb656bba6163714a6f5fc2217a1e6607fb/README.md Installation and How to use",
+    "https://github.com/traveler0621/reality-restaged/blob/9a5533cb656bba6163714a6f5fc2217a1e6607fb/SKILL.md#L30-L186",
+    "https://github.com/traveler0621/reality-restaged/blob/9a5533cb656bba6163714a6f5fc2217a1e6607fb/SKILL.md#L1278-L1382"
+  ]
+}

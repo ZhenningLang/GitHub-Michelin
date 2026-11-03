@@ -132,7 +132,7 @@ deja-vu 是一个 Go 单文件程序，我们核对时（2026-09-28）它的 `go
 | [claude-mem](claude-mem.zh.md) | ✅ | 你同时跑多家 harness、要毫秒级召回且中间不过模型时选 deja-vu；只用 Claude Code、宁愿每会话注入压缩摘要而不是自己翻历史时选 claude-mem。 | deja-vu：没有每会话的模型账单、没有向量库、跨工具；代价是原始记录被复制进索引。claude-mem：hook 自动采集加 LLM 压缩加 Chroma 检索，代价是这套管线和对 Claude Code 的偏重。 |
 | [Mem0](../app-memory/mem0.zh.md) | ✅ | 开发者自己的机器历史选 deja-vu；当你要做的产品里，agent 必须按账号记住终端用户时选 Mem0。 | deja-vu：无模型、无服务端、按编码会话归属，答不了应用侧的用户记忆问题。Mem0：换到按用户建模的记忆 API，代价是抽取管线和托管或自托管的平台。 |
 | agentmemory（rohitg00/agentmemory） | 未收录 | 当你需要一个用户基数大、但接受 LLM 参与的记忆工具时，它（GitHub API 2026-09-28 约 2.9 万 star）是 deja-vu 最近的同类，值得对比后再定；“装之前的记录”和零依赖单文件若先定胜负，就留本页。 | 两家都拿 benchmark 说话：deja 的 README 在自家对比里引了 agentmemory 的 95.2%。两者没有第三方的互测；本批 tab-intake 未收录它。 |
-| MemPalace（MemPalace/mempalace） | 未收录 | 当“平台型记忆系统 + 打榜数字”对你的分量，大过“一个不过模型的单文件编码会话索引”时选它，否则留本页。 | 自称“the best-benchmarked open-source AI memory system”（GitHub API 2026-09-28 约 5.9 万 star）；deja 的 README 在自家对比里引了它的 96.6%。它是平台、deja 是记录索引，形状不同；本批 tab-intake 未收录它。 |
+| [MemPalace](mempalace.zh.md) | 已收录 | 要自动原文归档和语义召回，选 MemPalace；要用一个本地二进制按错误字符串检索已有会话，选 deja-vu。 | MemPalace 增加 Python、嵌入模型和自动保存 hook；默认 Chroma 后端有未关闭的并发写入问题。链接页把检索基准与回答质量分开说明。 |
 
 ## 技术栈
 

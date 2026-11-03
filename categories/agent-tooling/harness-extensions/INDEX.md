@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Agentic Registry** | Publish reviewed component versions across coding tools; approve global login-time capture and a separate default-on usage-reporting flow first. | B (6/6) | [→](agentic-resource-registry.md) |
 | **Skills Hub** | Manage one skill library across coding tools, projects and git-synced devices; audit existing links before adoption. | B (6/6) | [→](skills-hub.md) |
 | **Vercel Skills** | Use it when you want an npm-style CLI to install, find, and update SKILL.md packs across many coding agents. | A (6/6) | [→](vercel-skills.md) |
 | **CLI-Anything** | Use it when you want a coding agent to drive GUI-only software through a generated CLI harness backed by the app's own engine — but it's pre-1.0 and each harness is community-maintained. | B (6/6) | [→](cli-anything.md) |
@@ -20,6 +21,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Agentic Registry](agentic-resource-registry.md) | Indexed | B (6/6) | Version-pinned bundles and native config generation; global capture can precede Doctor approval, and identity-linked aggregate reporting is a separate data flow. |
 | [Skills Hub](skills-hub.md) | ✅ | B (6/6) | Tauri desktop and shared CLI, project scopes and git merge; another writer of agent instruction files. |
 | [Vercel Skills](vercel-skills.md) | ✅ | A (6/6) | A package manager for skills: install, find and update `SKILL.md` packs across ~70 agents — it distributes capability, it does not define it. |
 | [CLI-Anything](cli-anything.md) | ✅ | B (6/6) | Generated CLI harnesses over each app's real engine, so an agent can drive GUI-only software — broad reach, per-harness community maintenance. |

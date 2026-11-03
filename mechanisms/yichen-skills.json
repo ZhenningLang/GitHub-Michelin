@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "intent", "en": "Task intent and scope", "zh": "任务意图与范围", "kind": "input"},
+    {"id": "route", "en": "Offline plan; public search only", "zh": "离线计划；仅公开搜索", "technique": [1]},
+    {"id": "backend", "en": "Configured external search services", "zh": "已配置的外部搜索服务", "kind": "external"},
+    {"id": "candidate", "en": "Candidates, coverage and errors", "zh": "候选、覆盖与错误", "kind": "output", "technique": [1]},
+    {"id": "verify", "en": "Agent checks originals; annotates claims", "zh": "agent 核原文；标注主张", "technique": [2]},
+    {"id": "reduce", "en": "Plan-bound offline evidence gates", "zh": "绑定计划的离线证据门", "technique": [2]},
+    {"id": "status", "en": "Ready, disclosed gaps or blocking", "zh": "就绪、披露缺口或阻断", "kind": "output"},
+    {"id": "archive", "en": "Archive only on a separate bounded request", "zh": "单独有界请求才归档", "technique": [1]}
+  ],
+  "edges": [
+    {"from": "intent", "to": "route"},
+    {"from": "route", "to": "backend"},
+    {"from": "backend", "to": "candidate"},
+    {"from": "candidate", "to": "verify"},
+    {"from": "verify", "to": "reduce"},
+    {"from": "reduce", "to": "status"},
+    {"from": "candidate", "to": "archive", "style": "dashed"}
+  ],
+  "sources": [
+    "yichen-unified-search/scripts/route_search.py:1108-1302 at ed6200f81ff1fddd1482ad6cae7f4a75de5ffc75",
+    "yichen-web-research/scripts/assemble_hengzong_evidence.py:1485-1738 at ed6200f81ff1fddd1482ad6cae7f4a75de5ffc75",
+    "yichen-content-archive/SKILL.md:10-35 at ed6200f81ff1fddd1482ad6cae7f4a75de5ffc75"
+  ]
+}

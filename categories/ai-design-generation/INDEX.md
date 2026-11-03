@@ -7,6 +7,8 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Design Agent** | Shared branded cards, decks and films from chat; paid managed hosting or privileged Docker self-hosting, with model costs and human review. | C (4/6) | [→](design-agent.md) |
+| **Open Design Agent Kit** | Keep your current coding agent; add bundled design recipes, browser checks and export without the Open Design daemon. | C (5/6) | [→](open-design-agent-kit.md) |
 | **json-render** | Use it when a model must assemble in-app UI from your existing components, not invent JSX or a new design system. | B (6/6) | [→](json-render.md) |
 | **HTML Anything** | Use it when you already run a logged-in coding-agent CLI and want local-first, key-free Markdown-to-shippable-HTML generation with one-click WeChat/X/Zhihu export. | B (5/6) | [→](html-anything.md) |
 | **Open Design** | Use it when you want a local-first, BYOK desktop studio that makes your coding agent generate HTML prototypes, decks, images and HTML→MP4. | B (6/6) | [→](open-design.md) |
@@ -21,6 +23,8 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Design Agent](design-agent.md) | Indexed | C (4/6) | Thread-based content production and artifact checks, not a UI component system; model and sandbox operation remain yours. |
+| [Open Design Agent Kit](open-design-agent-kit.md) | Indexed | C (5/6) | MIT runtime plus Apache-2.0 content; host agent writes files, checks report findings, PowerPoint uses slide images. |
 | [json-render](json-render.md) | ✅ | B (6/6) | Use it when a model must assemble in-app UI from your existing components, not invent JSX or a new design system. |
 | [HTML Anything](html-anything.md) | ✅ | B (5/6) | Use it when you already run a logged-in coding-agent CLI and want local-first, key-free Markdown-to-shippable-HTML generation with one-click WeChat/X/Zhihu export. |
 | [Open Design](open-design.md) | ✅ | B (6/6) | Use it when you want a local-first, BYOK desktop studio that makes your coding agent generate HTML prototypes, decks, images and HTML→MP4. |
@@ -30,7 +34,7 @@
 | [screenshot-to-code](screenshot-to-code.md) | ✅ | B (5/6) | Buys a ready-made replica pipeline (asset cropping, four variants, self-render check); costs paid model APIs per screenshot and a CDN single-file output you must rework. |
 | [Guizang PPT Skill](../agent-skills/slides-ppt/guizang-ppt.md) | ✅ | C (4/5) | Portable deck-generation skill; moved to agent-skills because the consumable unit is a skill pack. |
 | [Guizang Social Card Skill](../agent-skills/visual-content/guizang-social-card.md) | ✅ | D (3/5) | Portable social-card skill; moved to agent-skills because it is installed into an agent harness. |
-| [ian-xiaohei-illustrations](../agent-skills/visual-content/ian-illustrations.md) | ✅ | B (4/5) | Portable article-illustration skill; moved to agent-skills because it is selected as a skill. |
+| [ian-xiaohei-illustrations](../agent-skills/visual-content/image-art-direction/ian-illustrations.md) | ✅ | B (4/5) | Portable article-illustration skill; moved to agent-skills because it is selected as a skill. |
 | v0 / Lovable / tldraw make-real | 未收录 | — | Other agentic UI/design generators named across the pages. |
 | [Open Intelligent UI](open-intelligent-ui.md) | ✅ | B (4/6) | Build chat answers as interactive calculators, maps and diagrams; requires hosted Jev routing and ephemeral checkpoint storage replacement for production. |
 | [OpenUI](openui.md) | Indexed | B (6/6) | Thesys MIT SDK: compact streamed component calls and reactive queries instead of invented JSX; requires your backend and separate egress controls. |

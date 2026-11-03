@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "shroom", "zh": "shroom"},
+  "steps": [
+    {"lane": "you", "en": "Install the Mac app", "zh": "安装 Mac 应用", "code": "curl -fsSL https://shroom.am/install | sh"},
+    {"lane": "you", "en": "Paste a Cloudflare token with two Workers/R2 permissions into setup", "zh": "设置里粘贴只含两项权限的 Cloudflare token"},
+    {"lane": "them", "en": "Create the bucket, deploy its Worker and claim a workers.dev name", "zh": "建存储桶、部署 Worker、认领 workers.dev 名字", "component": {"en": "setup wizard", "zh": "设置向导"}},
+    {"lane": "you", "en": "Record from the menu bar and press Stop", "zh": "在菜单栏开始录制，然后按停止"},
+    {"lane": "them", "en": "Upload segments while you record and publish the link at Stop", "zh": "边录边传分片，按停止时发布链接", "component": {"en": "uploader and Worker", "zh": "上传器与 Worker"}}
+  ],
+  "value": {"en": "Share a recording link whose video lives in your own Cloudflare account, with no per-seat subscription", "zh": "分享录屏链接，视频存在自己的 Cloudflare 账号里，不用按人头订阅"},
+  "sources": [
+    "https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/README.md#L30-L71",
+    "https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/docs/ARCHITECTURE.md#L679-L741",
+    "https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/docs/ARCHITECTURE.md#L794-L842"
+  ]
+}

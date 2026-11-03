@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "Mika does", "zh": "Mika 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the APK and add a model key or account sign-in", "zh": "装好 APK，填模型 key 或用账号登录"},
+    {"lane": "you", "en": "Turn on debugging switches and type the pairing code once", "zh": "打开调试开关，输入一次配对码", "component": {"en": "Set up phone control wizard", "zh": "设置手机操作向导"}},
+    {"lane": "them", "en": "Pair with wireless debugging and start its shell-level helper", "zh": "与无线调试配对，拉起 shell 身份的助手", "component": {"en": "built-in helper", "zh": "内置助手"}},
+    {"lane": "you", "en": "Say or type a task in the chat", "zh": "在对话里说或打一句任务"},
+    {"lane": "them", "en": "Open the apps on a hidden screen, read the UI and tap through", "zh": "在隐藏的虚拟屏上开 App、读界面、逐步点按", "component": {"en": "background screen", "zh": "后台虚拟屏"}},
+    {"lane": "them", "en": "In Ask mode, ask about detected spending; hand logins back and report results", "zh": "询问模式只确认识别出的花钱步骤；登录交给你，再回报结果"}
+  ],
+  "value": {"en": "Errands across API-less apps done from one sentence while you keep using the phone", "zh": "一句话办完没有 API 的 App 里的事，手机照常可用"},
+  "sources": [
+    "https://github.com/wangzan101/Mika/blob/2c35c9b670a4e8b42430d14bb7d7ac20dc4382c5/README.md#L69-L95",
+    "https://github.com/wangzan101/Mika/blob/2c35c9b670a4e8b42430d14bb7d7ac20dc4382c5/docs/setup-guide.en.md",
+    "https://github.com/wangzan101/Mika/blob/2c35c9b670a4e8b42430d14bb7d7ac20dc4382c5/docs/modes.en.md#L7-L14",
+    "https://github.com/wangzan101/Mika/blob/2c35c9b670a4e8b42430d14bb7d7ac20dc4382c5/core/src/main/kotlin/com/wangzan101/mika/core/action/RiskJudge.kt#L28-L41",
+    "https://github.com/wangzan101/Mika/blob/2c35c9b670a4e8b42430d14bb7d7ac20dc4382c5/core/src/main/kotlin/com/wangzan101/mika/core/shell/BuiltinShell.kt#L5-L55",
+    "https://github.com/wangzan101/Mika/blob/2c35c9b670a4e8b42430d14bb7d7ac20dc4382c5/app/src/main/java/com/wangzan101/mika/cap/phone/display/AgentDisplay.kt#L18-L70"
+  ]
+}

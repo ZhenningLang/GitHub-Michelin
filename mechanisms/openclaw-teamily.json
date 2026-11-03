@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "account", "en": "Bot token and server addresses", "zh": "机器人令牌与服务地址", "kind": "input"},
+    {"id": "sdk", "en": "Authenticated OpenIM SDK monitor", "zh": "已认证的 OpenIM SDK 监视器", "technique": [1]},
+    {"id": "gate", "en": "Group mention or media check", "zh": "群提及或媒体检查", "technique": [2]},
+    {"id": "history", "en": "Buffer unmentioned text in memory", "zh": "内存缓存未提及文字", "technique": [2]},
+    {"id": "agent", "en": "OpenClaw host runs the agent", "zh": "OpenClaw 宿主运行助手", "kind": "external"},
+    {"id": "media", "en": "URL reference or local file upload", "zh": "地址引用或本地文件上传", "technique": [3]},
+    {"id": "reply", "en": "Reply in the original conversation", "zh": "回复原会话", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "account", "to": "sdk"},
+    {"from": "sdk", "to": "gate", "en": "incoming message", "zh": "入站消息"},
+    {"from": "gate", "to": "history", "en": "unmentioned group text", "zh": "未提及的群文字"},
+    {"from": "gate", "to": "agent", "en": "DM, mention, or media", "zh": "私聊、提及或媒体"},
+    {"from": "history", "to": "agent", "en": "context on next dispatch", "zh": "下次分发时附加上下文"},
+    {"from": "agent", "to": "media", "en": "media reply", "zh": "媒体回复", "style": "dashed"},
+    {"from": "media", "to": "reply", "en": "same SDK account", "zh": "同一 SDK 账号"},
+    {"from": "agent", "to": "reply", "en": "text through SDK", "zh": "通过 SDK 发文字"}
+  ],
+  "sources": [
+    "src/monitor.ts:105-164,267-308,449-485 at 8794b3cc2c3112a3b21c9a0c643cbaeb353f0941",
+    "src/channel.ts:189-219,271-445 at 8794b3cc2c3112a3b21c9a0c643cbaeb353f0941"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "brief", "en": "Brief and approved brand pack", "zh": "需求与已批准品牌包", "kind": "input"},
+    {"id": "lead", "en": "Lead agent and host-side tools", "zh": "主代理与宿主工具", "technique": [1]},
+    {"id": "model", "en": "Configured vision and tool-calling model", "zh": "已配置的视觉与工具调用模型", "kind": "external"},
+    {"id": "sandbox", "en": "Per-thread render sandbox; no network by default", "zh": "每线程渲染沙箱；默认断网", "technique": [1]},
+    {"id": "pipeline", "en": "Film pipeline; staged builders and human approval", "zh": "影片流水线；分阶段构建与人工批准", "technique": [3]},
+    {"id": "checks", "en": "Artifact measurements and visual inspection", "zh": "产物测量与视觉自查", "technique": [2]},
+    {"id": "delivery", "en": "Upload and success-only delivery ledger", "zh": "上传与仅记成功的交付账本", "technique": [4]},
+    {"id": "files", "en": "Local files or thread attachments", "zh": "本地文件或线程附件", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "brief", "to": "lead"},
+    {"from": "lead", "to": "model"},
+    {"from": "model", "to": "lead"},
+    {"from": "lead", "to": "sandbox"},
+    {"from": "lead", "to": "pipeline", "style": "dashed", "en": "approved film production", "zh": "已批准的影片生产"},
+    {"from": "pipeline", "to": "sandbox", "style": "dashed"},
+    {"from": "sandbox", "to": "checks", "en": "checks requested by workflow", "zh": "流程要求执行检查"},
+    {"from": "checks", "to": "lead", "en": "findings for revision", "zh": "反馈问题以修订"},
+    {"from": "lead", "to": "delivery", "en": "explicit delivery call", "zh": "显式调用交付"},
+    {"from": "delivery", "to": "files"}
+  ],
+  "sources": [
+    "src/design_agent/runtime/sandbox/docker.py:174-296",
+    "src/design_agent/pipelines/launch_film.py:79-202",
+    "workspace/tools/artifact-contract.mjs:1-21",
+    "src/design_agent/tools/delivery.py:237-334",
+    "instructions.md:12-18"
+  ]
+}

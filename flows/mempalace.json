@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "MemPalace", "zh": "MemPalace"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI in an isolated environment and create a palace", "zh": "在隔离环境装好 CLI，并建一个 palace", "code": "uv tool install mempalace · mempalace init ~/projects/myapp"},
+    {"lane": "you", "en": "Backfill existing Claude Code transcripts", "zh": "把已有的 Claude Code 会话记录回填进去", "code": "mempalace mine ~/.claude/projects/ --mode convos"},
+    {"lane": "them", "en": "Stores chunks verbatim under wings and rooms, with embeddings and closet pointers", "zh": "按 wing 和 room 原文存块，并写入向量和 closet 指针", "component": {"en": "miner", "zh": "挖掘器"}},
+    {"lane": "you", "en": "Register the MCP server and auto-save hooks in your agent", "zh": "在 agent 里注册 MCP 服务器和自动保存 hook", "code": "mempalace-mcp"},
+    {"lane": "them", "en": "Files new turns every 15 messages and before compaction", "zh": "每 15 条消息和压缩上下文前自动归档新对话", "component": {"en": "Stop / PreCompact hooks", "zh": "Stop／PreCompact hook"}},
+    {"lane": "them", "en": "Answers search calls with verbatim passages ranked by vector plus BM25", "zh": "按向量加 BM25 排序，返回原文段落", "component": {"en": "MCP search tools", "zh": "MCP 搜索工具"}}
+  ],
+  "value": {"en": "Your agent gets the original words back instead of a paraphrase, without re-explaining past sessions", "zh": "agent 拿回的是原话而不是转述，不用再重讲过去的会话"},
+  "sources": [
+    "https://github.com/MemPalace/mempalace/blob/4f7745afbd9d0197c6475b4c7ac846d4932eaeda/README.md#L46-L95",
+    "https://github.com/MemPalace/mempalace/blob/4f7745afbd9d0197c6475b4c7ac846d4932eaeda/README.md#L212-L231",
+    "https://github.com/MemPalace/mempalace/blob/4f7745afbd9d0197c6475b4c7ac846d4932eaeda/README.md#L311-L331",
+    "https://github.com/MemPalace/mempalace/blob/4f7745afbd9d0197c6475b4c7ac846d4932eaeda/.mcp.json",
+    "https://github.com/MemPalace/mempalace/blob/4f7745afbd9d0197c6475b4c7ac846d4932eaeda/pyproject.toml#L53-L56"
+  ]
+}

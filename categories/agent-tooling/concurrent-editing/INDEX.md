@@ -7,12 +7,14 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **LayerFS** | Fork complete agent working trees including dependencies, then checkpoint changes without copying the base; Disposable storage and merge review required. | B (6/6) | [→](layerfs.md) |
 | **weave** | Use it when parallel agents or branches keep halting merges on independent same-file edits and you want git to compare functions and keys instead of lines — but it's ~8 months old, pre-1.0, single-core-author, with engine verdicts still changing between releases. | B (6/6) | [→](weave.md) |
 
 ## Comparison matrix
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [LayerFS](layerfs.md) | Indexed | B (6/6) | Shared full-tree content and private writable views, not a Git merge driver or a crash-durable primary store. |
 | [weave](weave.md) | ✅ | B (6/6) | An entity-level merge driver under the git you already run: independent edits stop conflicting, at the cost of trusting a 0.x semantic engine with merge outcomes. |
 | Stock git line merge + rerere | not a repo | — | Zero install and the auditable baseline, but every pair of independent same-file edits is a stop for a human. |
 

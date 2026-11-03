@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "phone", "kind": "input", "en": "Phone or second computer on the same account", "zh": "同账号的手机或另一台电脑"},
+    {"id": "relay", "kind": "external", "en": "Vendor relay routes by account and device", "zh": "厂商中继按账号和设备路由", "technique": [1]},
+    {"id": "allow", "en": "Desktop checks switch and default-deny allowlist", "zh": "桌面端校验开关和默认拒绝白名单", "technique": [1]},
+    {"id": "session", "en": "Session with a chosen harness", "zh": "选定 harness 的会话"},
+    {"id": "routes", "en": "Capability routes remove overlapping vendor tools", "zh": "能力路由移除重叠的厂商工具", "technique": [2]},
+    {"id": "engine", "kind": "external", "en": "Claude Code, Codex or Pi engine", "zh": "Claude Code、Codex 或 Pi 引擎"},
+    {"id": "guard", "en": "Loop guard fingerprints tool calls", "zh": "循环守卫给工具调用打指纹", "technique": [3]},
+    {"id": "review", "kind": "external", "en": "Auxiliary model answers CONTINUE or STOP", "zh": "辅助模型只回答 CONTINUE 或 STOP", "technique": [3]},
+    {"id": "orca", "en": "Orca Lead creates full Worker sessions", "zh": "Orca Lead 创建完整的 Worker 会话", "technique": [4]},
+    {"id": "result", "kind": "output", "en": "Results streamed back to every controller", "zh": "结果回传给各控制端"}
+  ],
+  "edges": [
+    {"from": "phone", "to": "relay", "en": "invoke", "zh": "invoke"},
+    {"from": "relay", "to": "allow"},
+    {"from": "allow", "to": "session", "en": "listed channels only", "zh": "仅白名单通道"},
+    {"from": "session", "to": "routes"},
+    {"from": "routes", "to": "engine", "en": "model-visible tools", "zh": "模型可见工具"},
+    {"from": "engine", "to": "guard", "en": "tool results", "zh": "工具结果"},
+    {"from": "guard", "to": "review", "en": "suspected loop", "zh": "疑似循环", "style": "dashed"},
+    {"from": "session", "to": "orca", "en": "if collaboration is enabled", "zh": "开启协同时", "style": "dashed"},
+    {"from": "engine", "to": "result"},
+    {"from": "result", "to": "relay", "en": "push", "zh": "push"}
+  ],
+  "sources": [
+    "https://github.com/makecindy/cindy/blob/b59490c088cb163666781a769e11749e44a8c87f/packages/device-link/src/allowlist.ts#L1-L25",
+    "https://github.com/makecindy/cindy/blob/b59490c088cb163666781a769e11749e44a8c87f/apps/desktop/src/main/maker-host/capability-routing.ts#L1-L60",
+    "https://github.com/makecindy/cindy/blob/b59490c088cb163666781a769e11749e44a8c87f/packages/maker-core/src/agents/shared/loop-guard.ts#L20-L60",
+    "https://github.com/makecindy/cindy/blob/b59490c088cb163666781a769e11749e44a8c87f/docs/dev-rules/orca-team-architecture.md#L33-L104"
+  ]
+}

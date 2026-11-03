@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Cindy", "zh": "Cindy"},
+  "steps": [
+    {"lane": "you", "en": "Install the desktop app, then sign in or choose Skip Sign-In for local agents", "zh": "装好桌面端，登录或选“跳过登录”只用本地 agent", "component": {"en": "Electron desktop app", "zh": "Electron 桌面端"}},
+    {"lane": "you", "en": "Connect a subscription, API key or local model and pick a harness", "zh": "接入订阅、API key 或本地模型，选一个 harness", "code": "Claude Code · Codex · Pi"},
+    {"lane": "them", "en": "Runs that agent in your project folder, with tool calls and approval cards", "zh": "在项目目录里跑该 agent，展示工具调用和审批卡片", "component": {"en": "maker-core adapters", "zh": "maker-core 适配层"}},
+    {"lane": "you", "en": "Open the same session from your phone or another signed-in computer", "zh": "从手机或另一台已登录电脑打开同一会话", "component": {"en": "mobile controller", "zh": "手机控制端"}},
+    {"lane": "them", "en": "Relays allowlisted session actions to the desktop and streams results back", "zh": "把白名单内的会话操作转给桌面端，并回传结果", "component": {"en": "device-link relay", "zh": "device-link 中继"}}
+  ],
+  "value": {"en": "One agent session follows you across desktops and a phone without renting a server", "zh": "一个 agent 会话跟着你在电脑和手机间接续，不用租服务器"},
+  "sources": [
+    "https://github.com/makecindy/cindy/blob/b59490c088cb163666781a769e11749e44a8c87f/README.md#L52-L70",
+    "https://github.com/makecindy/cindy/blob/b59490c088cb163666781a769e11749e44a8c87f/README.md#L96-L104",
+    "https://github.com/makecindy/cindy/blob/b59490c088cb163666781a769e11749e44a8c87f/README.md#L141-L148",
+    "https://github.com/makecindy/cindy/blob/b59490c088cb163666781a769e11749e44a8c87f/packages/device-link/README.md#L1-L30",
+    "https://github.com/makecindy/cindy/blob/b59490c088cb163666781a769e11749e44a8c87f/packages/device-link/README.md#L106-L130"
+  ]
+}

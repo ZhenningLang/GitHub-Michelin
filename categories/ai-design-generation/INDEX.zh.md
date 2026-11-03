@@ -7,6 +7,8 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Design Agent** | 从聊天生产团队品牌卡片、幻灯片与影片；托管付费，自托管需高权限 Docker，模型费用与人工审核另负。 | C（4/6） | [→](design-agent.zh.md) |
+| **Open Design Agent Kit** | 留在当前编码助手里，添加设计模板、浏览器检查与导出，不运行 Open Design 后台。 | C（5/6） | [→](open-design-agent-kit.zh.md) |
 | **json-render** | 当模型必须用你已有的组件在应用里拼界面、而不是发明 JSX 或新设计系统时用它。 | B（6/6） | [→](json-render.zh.md) |
 | **HTML Anything** | 当你本机已登录某个 coding-agent CLI、想要零 API key、local-first 地把 Markdown 变成可交付 HTML 并一键导出微信/X/知乎时用它。 | B（5/6） | [→](html-anything.zh.md) |
 | **Open Design** | 想要一个 local-first、BYOK 的桌面 studio，让编码 agent 产出 HTML 原型、deck、图像和 HTML→MP4 动效时用它。 | B（6/6） | [→](open-design.zh.md) |
@@ -21,6 +23,8 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Design Agent](design-agent.zh.md) | 已收录 | C（4/6） | 按线程组织内容生产和产物检查，不是 UI 组件系统；模型与沙箱仍需运营。 |
+| [Open Design Agent Kit](open-design-agent-kit.zh.md) | 已收录 | C（5/6） | MIT 运行代码加 Apache-2.0 内容；宿主写文件，检查返回问题，PowerPoint 使用幻灯片截图。 |
 | [json-render](json-render.zh.md) | ✅ | B（6/6） | 当模型必须用你已有的组件在应用里拼界面、而不是发明 JSX 或新设计系统时用它。 |
 | [HTML Anything](html-anything.zh.md) | ✅ | B（5/6） | 当你本机已登录某个 coding-agent CLI、想要零 API key、local-first 地把 Markdown 变成可交付 HTML 并一键导出微信/X/知乎时用它。 |
 | [Open Design](open-design.zh.md) | ✅ | B（6/6） | 想要一个 local-first、BYOK 的桌面 studio，让编码 agent 产出 HTML 原型、deck、图像和 HTML→MP4 动效时用它。 |
@@ -30,7 +34,7 @@
 | [screenshot-to-code](screenshot-to-code.zh.md) | ✅ | B（5/6） | 换来现成的复刻流水线（裁原图素材、四版本并行、自渲染检查）；代价是每张截图都要付模型 API 费用，产出是要返工的 CDN 单文件。 |
 | [Guizang PPT Skill](../agent-skills/slides-ppt/guizang-ppt.zh.md) | ✅ | C（4/5） | 可移植的 deck 生成 skill；因为消费单元是 skill pack，已迁到 agent-skills。 |
 | [Guizang Social Card Skill](../agent-skills/visual-content/guizang-social-card.zh.md) | ✅ | D（3/5） | 可移植的社交卡片 skill；因为它装进 agent harness，已迁到 agent-skills。 |
-| [ian-xiaohei-illustrations](../agent-skills/visual-content/ian-illustrations.zh.md) | ✅ | B（4/5） | 可移植的文章配图 skill；因为它作为 skill 被选择，已迁到 agent-skills。 |
+| [ian-xiaohei-illustrations](../agent-skills/visual-content/image-art-direction/ian-illustrations.zh.md) | ✅ | B（4/5） | 可移植的文章配图 skill；因为它作为 skill 被选择，已迁到 agent-skills。 |
 | v0 / Lovable / tldraw make-real | 未收录 | — | 各页对比里点到的其他 agent 化 UI/设计生成器。 |
 | [Open Intelligent UI](open-intelligent-ui.zh.md) | ✅ | B（4/6） | 把聊天回答变成计算器、地图和交互图；依赖托管 Jev 路由，生产部署需替换临时检查点。 |
 | [OpenUI](openui.zh.md) | 已收录 | B（6/6） | Thesys 的 MIT SDK：用紧凑组件调用流与响应式查询替代编造 JSX；后端自备，数据外发须单独控制。 |

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "AiSOC", "zh": "AiSOC"},
+  "steps": [
+    {"lane": "you", "en": "Review the checkout and start the core stack", "zh": "审阅源码并启动核心服务", "code": "make up"},
+    {"lane": "them", "en": "Generate deployment secrets and prepare the local model", "zh": "生成部署密钥并准备本地模型"},
+    {"lane": "you", "en": "Connect a vendor or send authenticated security events", "zh": "接入厂商或推送已认证的安全事件", "code": "make ingest-token"},
+    {"lane": "them", "en": "Normalize events, detect matches and group alerts", "zh": "归一化事件，检测命中并归组告警"},
+    {"lane": "them", "en": "Triage the alert and record its verdict and investigation steps", "zh": "初筛告警并保存结论与调查步骤"}
+  ],
+  "value": {"en": "Review an alert with its recorded decision path instead of reconstructing a model verdict by hand", "zh": "连同已记录的决策路径复核告警，不再手工还原模型结论"},
+  "sources": [
+    "https://github.com/beenuar/AiSOC/blob/bd3313b9a2e6c2dcf2567f5e6d15c57d3faf0279/README.md#L41-L114",
+    "https://github.com/beenuar/AiSOC/blob/bd3313b9a2e6c2dcf2567f5e6d15c57d3faf0279/docker-compose.yml#L851-L960",
+    "https://github.com/beenuar/AiSOC/blob/bd3313b9a2e6c2dcf2567f5e6d15c57d3faf0279/services/agents/app/investigator/orchestrator.py#L389-L469"
+  ]
+}

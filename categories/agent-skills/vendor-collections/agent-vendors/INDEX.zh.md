@@ -7,6 +7,7 @@
 
 | 合集 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **MCode Stack** | 在已有 agent 流程增加证据审查和请求上下文审计；私有复盘与视频脚本可选。 | C（4/5） | [→](mcode-stack.zh.md) |
 | **OpenAI Skills (historical)** | 审查复用固定版本的旧 Codex 技能与助手；上游已弃用，逐技能授权而非全仓许可。 | C（4/5） | [→](openai-skills.zh.md) |
 | **Anthropic Skills** | Anthropic 官方公开的 Agent Skills 合集——自包含的 SKILL.md 目录（文档编辑、设计、MCP 与 skill 编写、沟通），可装进 Claude Code、Claude.ai 或 Claude API。 | A（3/5） | [→](anthropic-skills.zh.md) |
 | **Claude Plugins (Official)** | Anthropic 官方的 Claude Code 插件市场：精选的可安装插件目录（命令、agent、skill、MCP server），通过原生 /plugin 系统按名安装。 | A（4/5） | [→](claude-plugins-official.zh.md) |
@@ -28,6 +29,7 @@
 | [Anthropic Knowledge Work Plugins](knowledge-work-plugins.zh.md) | ✅ | A（4/5） | 当你想要 Anthropic 官方面向知识工作（文档、沟通、研究）的开源插件集（用于 Claude）时用它——非常年轻。 |
 | [HumanLayer Skills](humanlayer-skills.zh.md) | ✅ | B（4/5） | 厂商出品的六个有主张的开发流程 skill，其中两个附带可运行的 CI 循环机制；仅面向 Claude 生态分发、没有可锁定的 release，循环模板默认使用宽松 agent 权限。 |
 | [SenseNova-Skills](sensenova-skills.zh.md) | ✅ | A（4/5） | 文件交接的办公流程与模型助手；根 MIT 不替同源第三方风格补权，运行和导出仍由宿主验收。 |
+| [MCode Stack](mcode-stack.zh.md) | 已收录 | C（4/5） | 局部工程习惯而非完整开发流程；MIT 加 CC-BY-3.0，注意私有历史与安装覆盖边界。 |
 
 ## 什么该放这里
 

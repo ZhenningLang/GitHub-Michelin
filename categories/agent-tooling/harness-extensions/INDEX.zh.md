@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Agentic Registry** | 跨编码工具发布审核过的组件版本；先批准登录时的全局采集及独立默认开启的用量上报。 | B（6/6） | [→](agentic-resource-registry.zh.md) |
 | **Skills Hub** | 跨工具、项目和 git 同步设备管理技能库；接管前核对已有软链。 | B（6/6） | [→](skills-hub.zh.md) |
 | **Vercel Skills** | 当你想要一个 npm 风格的 CLI 来跨多个编码 agent 安装、查找、更新 SKILL.md 技能包时使用。 | A（6/6） | [→](vercel-skills.zh.md) |
 | **CLI-Anything** | 当你想让编码 agent 驱动只有 GUI 的软件、走由应用自身引擎支撑的生成式 CLI harness 时用它——但它仍在 1.0 之前，且每个 harness 由社区维护。 | B（6/6） | [→](cli-anything.zh.md) |
@@ -20,6 +21,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Agentic Registry](agentic-resource-registry.zh.md) | 已收录 | B（6/6） | 固定版本组合与原生配置生成；全局采集可能早于 Doctor 确认，关联安装身份的汇总上报是另一条数据流。 |
 | [Skills Hub](skills-hub.zh.md) | ✅ | B（6/6） | Tauri 桌面与共享 CLI，支持项目范围和 git 合并；也是 agent 指令文件的额外写入者。 |
 | [Vercel Skills](vercel-skills.zh.md) | ✅ | A（6/6） | 技能包的包管理器：跨约 70 个 agent 安装、查找、更新 `SKILL.md`——它负责分发能力，不负责定义能力。 |
 | [CLI-Anything](cli-anything.zh.md) | ✅ | B（6/6） | 基于应用自身引擎生成的 CLI harness，让 agent 能驱动只有 GUI 的软件——覆盖广，但逐个 harness 由社区维护。 |

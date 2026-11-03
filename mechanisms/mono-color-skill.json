@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "brief", "kind": "input", "en": "Subject, exact words, authorized photo", "zh": "主题、准确文字、授权照片"},
+    {"id": "recipe", "en": "Catalog-backed recipe; not an executable compiler", "zh": "按目录确定配方；不是可执行编译器", "technique": [1]},
+    {"id": "rhythm", "en": "One focal event and one quiet release zone", "zh": "一个焦点与一块安静区域", "technique": [2]},
+    {"id": "depart", "en": "Change at least four reference structures", "zh": "至少改变四项参考图结构", "technique": [3]},
+    {"id": "prompt", "en": "Five-paragraph production prompt", "zh": "五段生成提示词", "technique": [1]},
+    {"id": "tool", "kind": "external", "en": "Host image tool; not bundled", "zh": "宿主生图工具；仓库不附带"},
+    {"id": "inspect", "en": "Agent visual inspection; one retry", "zh": "助手目测；一次重试", "technique": [3]},
+    {"id": "out", "kind": "output", "en": "Raster, prompt, recipe; no press separations", "zh": "图片、提示词、配方；不含印刷分色版"},
+    {"id": "fallback", "kind": "output", "en": "Prompt only when no image tool", "zh": "没有生图工具时只交提示词"}
+  ],
+  "edges": [
+    {"from": "brief", "to": "recipe"},
+    {"from": "recipe", "to": "rhythm"},
+    {"from": "rhythm", "to": "depart"},
+    {"from": "depart", "to": "prompt"},
+    {"from": "prompt", "to": "tool"},
+    {"from": "tool", "to": "inspect"},
+    {"from": "inspect", "to": "out"},
+    {"from": "prompt", "to": "fallback", "style": "dashed"}
+  ],
+  "sources": ["https://github.com/yanliudesign/mono-color-skill/blob/c8ff70597ddedcd65f21a0b528f6a70c35690b0a/SKILL.md"]
+}

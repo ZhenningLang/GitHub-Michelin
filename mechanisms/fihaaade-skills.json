@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "brief", "en": "Photo or text brief", "zh": "照片或文字主题", "kind": "input"},
+    {"id": "phosphor", "en": "Phosphor: inherit crop; override screen material", "zh": "屏幕：继承裁切；覆盖材质", "technique": [1]},
+    {"id": "outsider", "en": "Outsider: semantic card; redraw flat zones", "zh": "海报：提取语义卡；重画平面色区", "technique": [2]},
+    {"id": "starlit", "en": "Starlit: isolate subject; choose material-led light", "zh": "星芒：孤立主体；按材质选光效", "technique": [3]},
+    {"id": "prompt", "en": "Host model compiles a four-paragraph prompt", "zh": "宿主模型编写四段提示词", "kind": "output"},
+    {"id": "image", "en": "Host image generation and visual inspection", "zh": "宿主生图与视觉检查", "kind": "external"},
+    {"id": "repair", "en": "At most one targeted repair; no machine validator", "zh": "最多一次定向修补；无机器验证器", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "brief", "to": "phosphor"},
+    {"from": "brief", "to": "outsider"},
+    {"from": "brief", "to": "starlit"},
+    {"from": "phosphor", "to": "prompt"},
+    {"from": "outsider", "to": "prompt"},
+    {"from": "starlit", "to": "prompt"},
+    {"from": "prompt", "to": "image", "style": "dashed", "en": "rendered path; Phosphor can stop at prompt", "zh": "出图路径；屏幕技能可停在提示词"},
+    {"from": "image", "to": "repair"}
+  ],
+  "sources": [
+    "https://github.com/fihaaade/skills/blob/1aa85f4a0f426e985659b202efb33c3f7e01e48c/phosphor-relay-style/SKILL.md#L28-L48",
+    "https://github.com/fihaaade/skills/blob/1aa85f4a0f426e985659b202efb33c3f7e01e48c/outsider-art/SKILL.md#L193-L209",
+    "https://github.com/fihaaade/skills/blob/1aa85f4a0f426e985659b202efb33c3f7e01e48c/starlit-relic/SKILL.md#L153-L184"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Agent following mono-color", "zh": "遵循 mono-color 的助手"},
+  "steps": [
+    {"lane": "you", "en": "Review the skill, place it in the host's skill directory, and restart the host", "zh": "审阅技能，放入宿主技能目录并重启", "component": {"en": "SKILL.md and design-system", "zh": "技能指令与设计目录"}},
+    {"lane": "you", "en": "Supply a subject or authorized photo, exact text, and any required one-ink constraint", "zh": "提供主题或授权照片、准确文案和单色要求"},
+    {"lane": "them", "en": "Resolves a recipe and compiles the five-paragraph image prompt", "zh": "确定配方并编成五段生图提示词", "component": {"en": "SKILL.md", "zh": "技能指令"}},
+    {"lane": "them", "en": "Uses an available image tool, or discloses prompt-only delivery", "zh": "使用已有生图工具，否则说明只交提示词", "component": {"en": "Host image tool", "zh": "宿主生图工具"}},
+    {"lane": "them", "en": "Inspects the image, retries once on failures, and returns the image, prompt, and recipe", "zh": "检查图片，失败重试一次，交付图片、提示与配方"}
+  ],
+  "value": {"en": "An editorial print direction without rebuilding the ink, crop, and typography brief each time", "zh": "不必每次重新拼装油墨、裁切与字体要求"},
+  "sources": [
+    "https://github.com/yanliudesign/mono-color-skill/blob/c8ff70597ddedcd65f21a0b528f6a70c35690b0a/README.md#install",
+    "https://github.com/yanliudesign/mono-color-skill/blob/c8ff70597ddedcd65f21a0b528f6a70c35690b0a/SKILL.md"
+  ]
+}

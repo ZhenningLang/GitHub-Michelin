@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Agent Desktop does", "zh": "Agent Desktop 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the native CLI and approve required OS access", "zh": "安装原生命令行，批准所需系统访问", "code": "npm install -g agent-desktop"},
+    {"lane": "you", "en": "Request the target app's interactive controls", "zh": "请求目标应用的交互控件", "code": "agent-desktop snapshot --app Finder -i"},
+    {"lane": "them", "en": "Returns JSON controls with snapshot-qualified refs", "zh": "返回 JSON 控件与带快照编号的引用"},
+    {"lane": "you", "en": "Choose an actual returned ref and request its action", "zh": "选取真实返回引用，请求对应操作"},
+    {"lane": "them", "en": "Re-resolves the live target and reports delivery evidence", "zh": "重新解析实时目标，报告发送证据"},
+    {"lane": "you", "en": "Snapshot again and check the intended task outcome", "zh": "再次取快照，检查预期任务结果", "code": "agent-desktop snapshot --app Finder -i"},
+    {"lane": "them", "en": "Returns updated controls for your agent's next decision", "zh": "返回更新控件，供现有 agent 决策"}
+  ],
+  "value": {"en": "Your agent gets native controls and action evidence without hand-built pixel coordinates", "zh": "现有 agent 获得原生控件与动作证据，不必手工维护像素坐标"},
+  "sources": [
+    "https://github.com/vercel-labs/agent-desktop/blob/9eb9b296192fcb70bda25e918cd6dd66abfa3d0d/README.md#L18-L81",
+    "https://github.com/vercel-labs/agent-desktop/blob/9eb9b296192fcb70bda25e918cd6dd66abfa3d0d/crates/core/src/ref_action/mod.rs#L60-L166",
+    "https://github.com/vercel-labs/agent-desktop/blob/9eb9b296192fcb70bda25e918cd6dd66abfa3d0d/docs/json-output.md#L61-L111"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "See-through does", "zh": "See-through 做的"},
+  "steps": [
+    {"lane": "you", "en": "Set up the pinned CUDA Python environment from the repo root", "zh": "在仓库根目录装好固定版本的 CUDA 环境", "code": "pip install -r requirements.txt"},
+    {"lane": "you", "en": "Run the main script on a character image you may use", "zh": "对有权使用的角色图运行主脚本", "code": "python inference/scripts/inference_psd.py"},
+    {"lane": "them", "en": "Download LayerDiff 3D and depth weights from Hugging Face", "zh": "从 Hugging Face 下载分层与深度权重"},
+    {"lane": "them", "en": "Generate body, then head part layers with hidden regions painted", "zh": "先身体后头部生成部件图层并补画被遮挡区"},
+    {"lane": "them", "en": "Predict depth per layer and stack layers far to near", "zh": "逐层预测深度并按远近排序"},
+    {"lane": "them", "en": "Write a named-layer PSD plus a depth PSD", "zh": "写出带部件名的 PSD 和深度 PSD", "component": {"en": "workspace/layerdiff_output", "zh": "workspace/layerdiff_output"}}
+  ],
+  "value": {"en": "A layered, depth-ordered PSD draft without hand-cutting parts or painting occluded areas", "zh": "拿到按深度排好的分层 PSD 初稿，不用手工抠部件、补画遮挡区"},
+  "sources": [
+    "https://github.com/shitagaki-lab/see-through/blob/df019de5129d6c4b406587a14c3501669441a783/README.md#L44-L76",
+    "https://github.com/shitagaki-lab/see-through/blob/df019de5129d6c4b406587a14c3501669441a783/README.md#L124-L141",
+    "https://github.com/shitagaki-lab/see-through/blob/df019de5129d6c4b406587a14c3501669441a783/inference/scripts/inference_psd.py#L22-L60",
+    "https://github.com/shitagaki-lab/see-through/blob/df019de5129d6c4b406587a14c3501669441a783/common/utils/inference_utils.py#L29-L180",
+    "https://github.com/shitagaki-lab/see-through/blob/df019de5129d6c4b406587a14c3501669441a783/common/utils/inference_utils.py#L548-L562"
+  ]
+}

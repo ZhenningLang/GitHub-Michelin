@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "teardown", "zh": "teardown"},
+  "steps": [
+    {"lane": "you", "en": "Install the skill, then its Node dependencies and Chromium once", "zh": "安装技能，再装一次 Node 依赖和 Chromium", "code": "npx skills add elvarofficial/teardown -g -a claude-code"},
+    {"lane": "you", "en": "Ask for a machine, with a reference and real dimensions if you have them", "zh": "说出要的机器，有参考图和真实尺寸就一起给"},
+    {"lane": "them", "en": "Copy the closest example and write kinematics, parts, panels and tour", "zh": "照最接近的示例写运动学、零件、面板和导览", "component": {"en": "SKILL.md recipe", "zh": "SKILL.md 方法"}},
+    {"lane": "them", "en": "Bundle one offline HTML page and check still sheets until clean", "zh": "打包成一个离线网页，反复看截图拼图直到无误", "component": {"en": "build.mjs and capture.mjs", "zh": "build.mjs 与 capture.mjs"}},
+    {"lane": "you", "en": "Ask for the video version", "zh": "要一份视频版"},
+    {"lane": "them", "en": "Render a 60 fps MP4 with a score on the same timeline", "zh": "逐帧渲染 60 帧 MP4，配上同一时间线的音效", "component": {"en": "capture.mjs and sfx", "zh": "capture.mjs 与 sfx"}}
+  ],
+  "value": {"en": "A take-apart 3D page and film designed to share motion and readout calculations", "zh": "得到可拆解 3D 网页和影片，按规则共享动作与读数计算"},
+  "sources": [
+    "https://github.com/elvarofficial/teardown/blob/a91262ac1109051e014662d42ecb0b7bc1f113b1/README.md#L13-L43",
+    "https://github.com/elvarofficial/teardown/blob/a91262ac1109051e014662d42ecb0b7bc1f113b1/SKILL.md#L12-L35",
+    "https://github.com/elvarofficial/teardown/blob/a91262ac1109051e014662d42ecb0b7bc1f113b1/SKILL.md#L87-L109"
+  ]
+}

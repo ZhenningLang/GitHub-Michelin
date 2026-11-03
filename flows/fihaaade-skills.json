@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Phosphor skill via host", "zh": "宿主中的屏幕技能"},
+  "steps": [
+    {"lane": "you", "en": "Resolve reuse rights and expose only the reviewed Phosphor folder to your host", "zh": "解决复用权利，只向宿主提供已审查的屏幕技能目录"},
+    {"lane": "you", "en": "Give a scene brief and explicitly request prompt-only", "zh": "给出场景主题，明确要求只出提示词", "code": "Use $phosphor-relay-style for a bus stop at night"},
+    {"lane": "them", "en": "Select quality anchors and declare the frame, signal, color and focus recipe", "zh": "选择质量锚点，明确构图、信号、色彩与焦点配方", "component": {"en": "SKILL.md + reference index", "zh": "技能文本与参考索引"}},
+    {"lane": "them", "en": "Return the four-paragraph image prompt and recipe without rendering", "zh": "返回四段生图提示词和配方，不执行出图", "component": {"en": "prompt-only path", "zh": "只出提示词路径"}}
+  ],
+  "value": {"en": "A scene-specific screen-material prompt without assembling its visual rules by hand", "zh": "得到贴合场景的屏幕材质提示词，不用手工拼装视觉规则"},
+  "sources": [
+    "https://github.com/fihaaade/skills/blob/1aa85f4a0f426e985659b202efb33c3f7e01e48c/README.md#L3",
+    "https://github.com/fihaaade/skills/blob/1aa85f4a0f426e985659b202efb33c3f7e01e48c/phosphor-relay-style/EXAMPLES.md#L90-L97",
+    "https://github.com/fihaaade/skills/blob/1aa85f4a0f426e985659b202efb33c3f7e01e48c/phosphor-relay-style/SKILL.md#L115-L185",
+    "Rights review is a reader prerequisite, not an upstream license grant; no installer is supplied."
+  ]
+}

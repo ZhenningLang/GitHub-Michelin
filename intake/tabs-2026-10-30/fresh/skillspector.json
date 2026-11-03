@@ -1,0 +1,21 @@
+{
+  "repo": "NVIDIA/SkillSpector",
+  "pages": [
+    {
+      "path": "categories/agent-governance/skillspector.md",
+      "mode_type_blob": "100644 blob 256b469cd1a6712a4fc2cd5d6efce8eed8522fb1",
+      "last_verified": "2026-10-17"
+    },
+    {
+      "path": "categories/agent-governance/skillspector.zh.md",
+      "mode_type_blob": "100644 blob 546646b3a2279ff7c04b300938afda6e69d9e2f7",
+      "last_verified": "2026-10-17"
+    }
+  ],
+  "utc_date": "2026-10-30",
+  "age_days": 13,
+  "gate_days": 90,
+  "result": "fresh-reuse",
+  "date_bumped": false,
+  "original_checkpoint_state": "running"
+}

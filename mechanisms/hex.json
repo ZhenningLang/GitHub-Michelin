@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "audio", "en": "Recorded audio and chosen model", "zh": "录音与所选模型", "kind": "input"},
+    {"id": "load", "en": "Validate, load and warm local model", "zh": "验证、加载并预热本地模型", "technique": [1]},
+    {"id": "cpu", "en": "CPU retry after GPU load failure", "zh": "GPU 加载失败后重试 CPU", "technique": [1]},
+    {"id": "text", "en": "Recognized transcript", "zh": "识别出的文字"},
+    {"id": "mode", "en": "Context mode and text replacements", "zh": "上下文模式与文字替换", "technique": [2]},
+    {"id": "rewrite", "en": "Optional OpenCode provider rewrite", "zh": "可选 OpenCode 模型服务改写", "kind": "external", "technique": [2]},
+    {"id": "trust", "en": "Custom transforms; hash approval for I/O", "zh": "自定义转换；联网与进程需哈希授权", "technique": [3]},
+    {"id": "output", "en": "Final text for desktop paste", "zh": "供桌面粘贴的最终文字", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "audio", "to": "load"},
+    {"from": "load", "to": "cpu", "style": "dashed"},
+    {"from": "load", "to": "text"},
+    {"from": "cpu", "to": "text", "style": "dashed"},
+    {"from": "text", "to": "mode"},
+    {"from": "mode", "to": "rewrite", "style": "dashed"},
+    {"from": "rewrite", "to": "trust", "en": "rewrite or corrected fallback", "zh": "改写稿或回退修正稿", "style": "dashed"},
+    {"from": "mode", "to": "trust", "style": "dashed"},
+    {"from": "mode", "to": "output"},
+    {"from": "rewrite", "to": "output", "style": "dashed"},
+    {"from": "trust", "to": "output"}
+  ],
+  "sources": [
+    "https://github.com/anomalyco/hex/blob/974b18818c3d9077ffe41814113771d9b43e2648/src/transcription/local_transcriber.rs#L228-L383",
+    "https://github.com/anomalyco/hex/blob/974b18818c3d9077ffe41814113771d9b43e2648/src/dictation/processor.rs#L269-L385",
+    "https://github.com/anomalyco/hex/blob/974b18818c3d9077ffe41814113771d9b43e2648/src/personal_commands.rs#L654-L668"
+  ]
+}

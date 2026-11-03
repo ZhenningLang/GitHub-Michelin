@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "token", "en": "Pasted Cloudflare token", "zh": "粘贴的 Cloudflare token", "kind": "input"},
+    {"id": "derive", "en": "Derived S3 pair; admin calls only", "zh": "推导出的 S3 密钥对；只做管理调用", "technique": [1]},
+    {"id": "mint", "en": "Recording-scoped upload JWT: rec/<id>/, 1 hour", "zh": "录像范围的上传 JWT：rec/<id>/，一小时", "technique": [1]},
+    {"id": "capture", "en": "Screen, microphone, camera", "zh": "屏幕、麦克风、摄像头", "kind": "input"},
+    {"id": "encode", "en": "ffmpeg: 6 s fMP4 segments plus fragmented MP4", "zh": "ffmpeg：6 秒 fMP4 分片加分段 MP4", "technique": [2]},
+    {"id": "bucket", "en": "Your R2 bucket", "zh": "你的 R2 存储桶", "kind": "external"},
+    {"id": "worker", "en": "One Worker in your account: page, media, invites", "zh": "你账号里的一个 Worker：页面、媒体、邀请", "technique": [3]},
+    {"id": "viewer", "en": "Anyone with the link", "zh": "拿到链接的人", "kind": "output"},
+    {"id": "release", "en": "GitHub release zip and manifest", "zh": "GitHub 发布包与清单", "kind": "input"},
+    {"id": "verify", "en": "SHA-256 and pinned signer check", "zh": "SHA-256 与固定签名者校验", "technique": [4]},
+    {"id": "app", "en": "Installed or updated app", "zh": "安装或更新后的应用", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "token", "to": "derive"},
+    {"from": "derive", "to": "worker", "en": "deploy and wire", "zh": "部署与接线"},
+    {"from": "derive", "to": "mint", "en": "sign locally", "zh": "本地签名"},
+    {"from": "capture", "to": "encode"},
+    {"from": "encode", "to": "bucket", "en": "settled segments; playlist last", "zh": "已落定分片；播放列表最后"},
+    {"from": "mint", "to": "bucket", "en": "scoped writes", "zh": "限定范围的写入"},
+    {"from": "bucket", "to": "worker", "en": "binding", "zh": "绑定"},
+    {"from": "worker", "to": "viewer", "en": "watch page and media", "zh": "观看页与媒体"},
+    {"from": "release", "to": "verify"},
+    {"from": "verify", "to": "app"}
+  ],
+  "sources": [
+    "https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/worker/src/worker.js#L2288-L2291",
+    "https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/worker/src/worker.js#L2836-L2841",
+    "https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/docs/ARCHITECTURE.md#L694-L709",
+    "https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/crates/shroom-cloud/src/mint.rs#L1-L61",
+    "https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/crates/shroom-upload/src/live.rs#L1-L33",
+    "https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/docs/ARCHITECTURE.md#L743-L792",
+    "https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/installer/install.sh#L157-L167"
+  ]
+}

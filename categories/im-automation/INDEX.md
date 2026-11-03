@@ -17,6 +17,7 @@
 | **Douyin-Bot** | Use it only to read a compact example of driving an Android phone from Python over ADB (screencap, score, input swipe/tap) — it is dead since 2020, hard-codes 2018 Douyin coordinates, and its Tencent face API is gone, so never deploy it. | D (3/6) | [→](douyin-bot.md) |
 | **OpeniLink Hub** | Use it when several iLink-connected WeChat bots need a self-hosted control plane, persistence, tracing, and Apps; it is young and explicitly not affiliated with or endorsed by iLink's official team. | C (5/6) | [→](openilink-hub.md) |
 | **OpeniLink Go SDK** | Use it when you need raw iLink transport inside an existing Go service and prefer the smallest trust boundary over a control plane; you then own persistence, auth, retrying and operations. | C (5/6) | [→](openilink-sdk-go.md) |
+| **OpenClaw Teamily** | Connect an existing OpenClaw assistant to Teamily text and media; this is a quiet-since-April channel plugin, not Teamily's main application. | C (4/6) | [→](openclaw-teamily.md) |
 
 ## Comparison matrix
 
@@ -25,8 +26,8 @@
 | [Douyin-Bot](douyin-bot.md) | ✅ | D (3/6) | Buys a short, famous walkthrough of the screenshot-analyze-tap loop; costs everything practical — no working target, no backend, no tests, single author. |
 | [OpeniLink Hub](openilink-hub.md) | ✅ | C (5/6) | Young multi-bot control plane with persistence, tracing, and Apps, without official iLink affiliation or endorsement. |
 | [OpeniLink SDK (Go)](openilink-sdk-go.md) | ✅ | C (5/6) | The raw iLink transport for Go services underneath the indexed Hub: smallest trust boundary, and you own persistence, auth, retrying and operations. |
+| [OpenClaw Teamily](openclaw-teamily.md) | Indexed | C (4/6) | Reuses OpenClaw and OpenIM transport, but group media bypasses mention gating and root Apache-2.0 conflicts with MIT package metadata. |
 
 ## What belongs here
 
 Bots and automation for **instant-messaging platforms** (WeChat and other IM). WeChat-specific projects live in `wechat/`. Not web/browser automation (see `web-automation`), not team-chat apps (see `team-chat`).
-

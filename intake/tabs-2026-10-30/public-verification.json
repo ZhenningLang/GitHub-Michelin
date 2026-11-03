@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "verified": true,
+  "verification_scope": "Local repository products and no-new-identifier replay privacy; not upstream runtime approval or a claim that a separate user report was updated.",
+  "source_revision": "2f37077ad4a10681f1f528a3cb62bc69ff17cb5c",
+  "base": "e1af03a18694ca7af5fcb95abcfefd530f62a535",
+  "replayed_commits": 21,
+  "product_commits": 18,
+  "fresh_receipt_commits": 3,
+  "ledger_only_checkpoints_skipped": 1,
+  "rows": 22,
+  "self_owned_redacted": 1,
+  "private_source_ancestry_absent": true,
+  "product_snapshots_equal": true,
+  "history_trees_messages_scanned": true,
+  "metadata_snapshot_scanned_before_commit": true,
+  "privacy_scope": "zero_new_occurrences_relative_to_public_base",
+  "inherited_matching_file_count": 17,
+  "inherited_matched_line_count": 17,
+  "inherited_sensitive_path_count": 0,
+  "intake_and_commit_messages_absolute_zero": true,
+  "residual_risk": "Old public references are inherited, not cleaned or rewritten; no whole-history-zero claim.",
+  "browser_operations": "private source ledger only; do not scan public ledger",
+  "repository_intake": {
+    "completed": 20,
+    "added_bilingual_pairs": 17,
+    "fresh_reused_pairs": 3,
+    "skipped": 2,
+    "category_nodes": 216,
+    "canonical_pages": 1024,
+    "chinese_mirrors": 1024,
+    "new_pairs_independently_reviewed": 17,
+    "upstream_programs_executed": false
+  },
+  "machine_evidence": {
+    "make_gates": "0 errors, 1716 warnings; reports are current",
+    "make_test": "Ran 483 tests in 46.778s; OK",
+    "all_new_pair_quality": "17 EN + 17 ZH; No deterministic findings",
+    "fixed_source_authentication": "17 commit-to-root trees; 160 authenticated own-repository source blobs",
+    "stock_health_svg_byte_matches": 34,
+    "old_leaf_files_unchanged": 2006,
+    "old_leaf_files_exact_relocation_inverse": 6,
+    "old_leaf_files_exact_link_only": 2,
+    "tools_tests_ci_schema_modified": false
+  },
+  "browser_acceptance": {
+    "status": "partial_provenance_gap",
+    "initial_tabs": 210,
+    "final_tabs": 190,
+    "completed_repo_tabs_still_open": 0,
+    "non_target_url_fingerprints_missing": 1,
+    "non_target_url_fingerprints_added_at_final": 0,
+    "cause": "Not established. No claim of zero non-target changes; no unknown tab was restored or history read."
+  },
+  "evidence_limits": {
+    "inner_loop": "Repository structural, report freshness, deterministic quality and 483 tool tests passed.",
+    "acceptance": "Static content review, exact artifact/relocation binding, source authentication and privacy replay passed; browser population audit remains partial.",
+    "holdout_origin": "Real captured rolling input plus synthetic privacy counterexamples; not an upstream performance benchmark.",
+    "expected_values": "User intake contract, repository schema, pinned upstream sources and frozen public-base identities.",
+    "position_relative_to_freeze": "Content generation and controlled path relocation after the frozen base; no product validator, schema or test changes.",
+    "runtime": "No upstream installation, image generation, API recording, photo export or service deployment was attempted."
+  },
+  "remote_writes": {
+    "pushed": false,
+    "pull_request_created": false,
+    "merged": false,
+    "current_user_publication_approval": false
+  }
+}

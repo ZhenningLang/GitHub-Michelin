@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Handy", "zh": "Handy"},
+  "steps": [
+    {"lane": "you", "en": "Install the desktop app and grant microphone and input permissions", "zh": "安装桌面应用，授予麦克风和输入权限"},
+    {"lane": "you", "en": "Select a downloaded speech model and configure a shortcut", "zh": "选择已下载语音模型，配置快捷键"},
+    {"lane": "you", "en": "Focus a text field, trigger recording and speak", "zh": "聚焦输入框，触发录音并说话", "code": "handy --toggle-transcription"},
+    {"lane": "them", "en": "Capture microphone audio while recording is active", "zh": "录音期间采集麦克风音频"},
+    {"lane": "you", "en": "Trigger again to stop the recording", "zh": "再次触发，停止录音", "code": "handy --toggle-transcription"},
+    {"lane": "them", "en": "Recognize locally and paste the transcript into the current app", "zh": "在本机识别，把文字贴进当前应用"}
+  ],
+  "value": {"en": "Dictate into an existing text field without moving a recording through a separate tool", "zh": "直接向现有输入框听写，不再跨工具搬运录音"},
+  "sources": [
+    "https://github.com/cjpais/Handy/blob/82dfab9fda18c4bc24e1f6e56d36474d38eca0bc/README.md#L18-L49",
+    "https://github.com/cjpais/Handy/blob/82dfab9fda18c4bc24e1f6e56d36474d38eca0bc/README.md#L92-L123",
+    "https://github.com/cjpais/Handy/blob/82dfab9fda18c4bc24e1f6e56d36474d38eca0bc/README.md#L372-L377",
+    "https://github.com/cjpais/Handy/blob/82dfab9fda18c4bc24e1f6e56d36474d38eca0bc/src-tauri/src/actions.rs#L655-L900"
+  ]
+}
