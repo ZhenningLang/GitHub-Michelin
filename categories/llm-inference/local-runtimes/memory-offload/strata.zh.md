@@ -2,7 +2,7 @@
 name: Strata
 slug: strata
 repo: https://github.com/Niko1221/Strata
-category: local-runtimes
+category: memory-offload
 tags: [local-inference, moe, expert-cache, cpu-gpu, openai-compatible, anthropic-compatible]
 language: C++
 license: MIT
@@ -73,35 +73,35 @@ health:
 
 想用的 Qwen 模型装不进显存，又不想换整台电脑。Strata 把部分专家留在显卡，其余交给 CPU 计算，再用安装向导和本地接口接上编程工具。
 
-![Strata 健康度雷达](../../../assets/health/strata.zh.svg)
+![Strata 健康度雷达](../../../../assets/health/strata.zh.svg)
 
 ## 何时使用
 
 你想让受支持的 Qwen 或 DeepSeek 模型，在自己的工作站回答编程智能体。显存装不下整个模型，但你能提供较大的内存和 SSD 空间。相比直接换小模型，你更想用 Strata 为特定模型设计的内存布局、CPU 与 GPU 专家计算，以及引导式下载。终端和桌面应用提供 OpenAI、Anthropic 兼容接口，方便连接现有客户端。
 
-当硬约束是装下某个受支持模型，而不是拥有庞大模型库时，考虑它而非 [Ollama](ollama.zh.md)。当你想要整理好的安装流程和模型专用混合计算，而不是自己配置引擎时，考虑它而非 [llama.cpp](llama-cpp.zh.md)。这不代表它在你的机器上更快，先核对模型、量化、后端和上下文长度。
+当硬约束是装下某个受支持模型，而不是拥有庞大模型库时，考虑它而非 [Ollama](../ollama.zh.md)。当你想要整理好的安装流程和模型专用混合计算，而不是自己配置引擎时，考虑它而非 [llama.cpp](../llama-cpp.zh.md)。这不代表它在你的机器上更快，先核对模型、量化、后端和上下文长度。
 
 ## 何时不用
 
-- **要运行任意 GGUF 架构。** 选 [llama.cpp](llama-cpp.zh.md) 的广泛模型覆盖。Strata 目录列出特定 Qwen3.8、Qwen3.6、DeepSeekV4.1 家族和量化组合，文件名以 `.gguf` 结尾不等于兼容。
-- **要小下载和少做容量规划。** 在 [Ollama](ollama.zh.md) 选更小的模型。移出显存不等于省掉模型存储，文档中的 DeepSeek 模型包仍需约 197–280 GB 可用磁盘空间。
-- **要建设多人共用的 GPU 服务。** 选 [vLLM](../serving-engines/vllm.zh.md) 的服务端调度。Strata 有并发槽位，但受内存和草稿模式影响，DFlash2 的文档路径一次回答一个请求。接口兼容不等于数据中心吞吐，也不代表完整复刻供应商接口行为。
-- **要更成熟、维护不那么集中的依赖。** 优先考虑 [llama.cpp](llama-cpp.zh.md)，并固定实测版本。核验时 Strata 仅创建 40 天，提交高度集中于作者，近期问题报告了引擎升级后的速度回退。
-- **要隔离不可信代码。** 用 [Ollama](ollama.zh.md) 仅提供推理，把执行工具留给另行控制的智能体。Strata 桌面代理能运行命令、修改文件，聊天目录不是隔离边界，Bypass 会关闭审批。无论选哪个运行时，都不要向网络暴露无鉴权接口。
+- **要运行任意 GGUF 架构。** 选 [llama.cpp](../llama-cpp.zh.md) 的广泛模型覆盖。Strata 目录列出特定 Qwen3.8、Qwen3.6、DeepSeekV4.1 家族和量化组合，文件名以 `.gguf` 结尾不等于兼容。
+- **要小下载和少做容量规划。** 在 [Ollama](../ollama.zh.md) 选更小的模型。移出显存不等于省掉模型存储，文档中的 DeepSeek 模型包仍需约 197–280 GB 可用磁盘空间。
+- **要建设多人共用的 GPU 服务。** 选 [vLLM](../../serving-engines/vllm.zh.md) 的服务端调度。Strata 有并发槽位，但受内存和草稿模式影响，DFlash2 的文档路径一次回答一个请求。接口兼容不等于数据中心吞吐，也不代表完整复刻供应商接口行为。
+- **要更成熟、维护不那么集中的依赖。** 优先考虑 [llama.cpp](../llama-cpp.zh.md)，并固定实测版本。核验时 Strata 仅创建 40 天，提交高度集中于作者，近期问题报告了引擎升级后的速度回退。
+- **要隔离不可信代码。** 用 [Ollama](../ollama.zh.md) 仅提供推理，把执行工具留给另行控制的智能体。Strata 桌面代理能运行命令、修改文件，聊天目录不是隔离边界，Bypass 会关闭审批。无论选哪个运行时，都不要向网络暴露无鉴权接口。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| [llama.cpp](llama-cpp.zh.md) | 已收录 | 要覆盖更多架构或内嵌控制，选 llama.cpp；要为受支持模型提供整理好的安装与 CPU／GPU 专家路径，选 Strata。 | Strata 提供模型准备和桌面、终端管理；llama.cpp 给更宽的后端与模型接口，不带这层产品管理。 |
-| [Ollama](ollama.zh.md) | 已收录 | 模型库与客户端生态更重要时，选 Ollama；装下特定大于显存的 MoE 模型是硬约束时，考虑 Strata。 | Strata 提供模型专用内存和草稿选项，代价是较窄的兼容矩阵和短得多的历史。 |
-| [vLLM](../serving-engines/vllm.zh.md) | 已收录 | GPU 服务要应对大量并发客户端时，选 vLLM；个人工作站要把受支持模型分配到多级存储时，考虑 Strata。 | vLLM 带服务调度器，部署也更重；Strata 带消费级机器安装流程，不是经实测可替代该调度器的方案。 |
+| [llama.cpp](../llama-cpp.zh.md) | 已收录 | 要覆盖更多架构或内嵌控制，选 llama.cpp；要为受支持模型提供整理好的安装与 CPU／GPU 专家路径，选 Strata。 | Strata 提供模型准备和桌面、终端管理；llama.cpp 给更宽的后端与模型接口，不带这层产品管理。 |
+| [Ollama](../ollama.zh.md) | 已收录 | 模型库与客户端生态更重要时，选 Ollama；装下特定大于显存的 MoE 模型是硬约束时，考虑 Strata。 | Strata 提供模型专用内存和草稿选项，代价是较窄的兼容矩阵和短得多的历史。 |
+| [vLLM](../../serving-engines/vllm.zh.md) | 已收录 | GPU 服务要应对大量并发客户端时，选 vLLM；个人工作站要把受支持模型分配到多级存储时，考虑 Strata。 | vLLM 带服务调度器，部署也更重；Strata 带消费级机器安装流程，不是经实测可替代该调度器的方案。 |
 
 ## 快速上手
 
 使用带版本号的桌面发布包，或先阅读[安装指南](https://github.com/Niko1221/Strata/blob/ffa80d73133ea5c548aefe57889a16e8085a938f/docs/INSTALL.md)中的终端脚本再执行。终端入口是 `strata launch`，向导让你选择受支持模型、存储目录、上下文和访问范围。Strata 下载对应引擎及缺失模型组件，然后启动本地服务。运行 `strata connect` 获取现有编程工具的接入说明，再把请求发给显示的地址。你负责磁盘、内存、受支持显卡驱动和客户端配置，大下载和本地耗电仍由你承担。本次只读源码和示例，没有安装或运行 Strata。
 
-![strata 主干用户故事](../../../assets/flow/strata.zh.svg)
+![strata 主干用户故事](../../../../assets/flow/strata.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/strata.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -120,7 +120,7 @@ health:
 
 ## 技术要点
 
-![Strata — 机制图](../../../assets/mechanism/strata.zh.svg)
+![Strata — 机制图](../../../../assets/mechanism/strata.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/strata.json by tools/mechanism_card.py; do not edit) -->
 <details>

@@ -52,7 +52,7 @@ https://github.com/Dragoon0x/markupkit,markupkit,ui-annotation,categories/agent-
 https://github.com/Dryxio/reagent,reagent,binary-analysis,categories/dev-utilities/binary-analysis/reagent.md
 https://github.com/EKKOLearnAI/ekko-studio,ekko-studio,agent-cockpits,categories/agent-tooling/supervision-surfaces/agent-cockpits/ekko-studio.md
 https://github.com/ERGO-Code/HiGHS,highs,optimization-solvers,categories/optimization-solvers/highs.md
-https://github.com/Edge0-AI/Edge0,edge0,local-runtimes,categories/llm-inference/local-runtimes/edge0.md
+https://github.com/Edge0-AI/Edge0,edge0,memory-offload,categories/llm-inference/local-runtimes/memory-offload/edge0.md
 https://github.com/Effect-TS/effect,effect,runtimes-and-compilers,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/effect.md
 https://github.com/Egonex-AI/Understand-Anything,understand-anything,code-intelligence,categories/rag-retrieval/code-intelligence/understand-anything.md
 https://github.com/Ephemeral-AI-Lab/layerfs,layerfs,concurrent-editing,categories/agent-tooling/concurrent-editing/layerfs.md
@@ -63,7 +63,7 @@ https://github.com/FailSpy/abliterator,abliterator,model-editing,categories/mode
 https://github.com/FalkorDB/FalkorDB,falkordb,structured-retrieval,categories/rag-retrieval/structured-retrieval/falkordb.md
 https://github.com/FareedKhan-dev/train-llm-from-scratch,train-llm-from-scratch,study-and-experiments,categories/llm-training/study-and-experiments/train-llm-from-scratch.md
 https://github.com/Fenng/Tech-Doc-Style-Chinese,tech-doc-style-chinese,content-production,categories/agent-skills/ai-writing/content-production/tech-doc-style-chinese.md
-https://github.com/FlashML-org/FreeToken,freetoken,local-runtimes,categories/llm-inference/local-runtimes/freetoken.md
+https://github.com/FlashML-org/FreeToken,freetoken,memory-offload,categories/llm-inference/local-runtimes/memory-offload/freetoken.md
 https://github.com/FlowiseAI/Flowise,flowise,workflow-builders,categories/agent-frameworks/workflow-builders/flowise.md
 https://github.com/FluentRead/FluentRead,fluentread,reading-tools,categories/reading-tools/fluentread.md
 https://github.com/FluidInference/FluidUse,fluiduse,apple-local-inference,categories/on-device-ml/apple-local-inference/fluiduse.md
@@ -147,7 +147,7 @@ https://github.com/NandhaKishorM/vegaml,vegaml,decision-models,categories/decisi
 https://github.com/NationalSecurityAgency/ghidra,ghidra,binary-analysis,categories/dev-utilities/binary-analysis/ghidra.md
 https://github.com/Nebutra/MinerU-Skill,mineru-skill,document-parsing,categories/document-parsing/mineru-skill.md
 https://github.com/Netflix/vmaf,vmaf,quality-metrics,categories/media-processing/quality-metrics/vmaf.md
-https://github.com/Niko1221/Strata,strata,local-runtimes,categories/llm-inference/local-runtimes/strata.md
+https://github.com/Niko1221/Strata,strata,memory-offload,categories/llm-inference/local-runtimes/memory-offload/strata.md
 https://github.com/NopeCHALLC/nopecha-extension,nopecha-extension,captcha,categories/captcha/nopecha-extension.md
 https://github.com/NousResearch/hermes-agent,hermes-agent,messaging-daemons,categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.md
 https://github.com/Nutlope/hallmark,hallmark,ui-taste,categories/agent-skills/design/ui-taste/hallmark.md
@@ -319,7 +319,7 @@ https://github.com/anthropics/commerce-agents,commerce-agents,agent-services,cat
 https://github.com/anthropics/knowledge-work-plugins,knowledge-work-plugins,agent-vendors,categories/agent-skills/vendor-collections/agent-vendors/knowledge-work-plugins.md
 https://github.com/anthropics/sandbox-runtime,sandbox-runtime,sandboxing,categories/sandboxing/sandbox-runtime.md
 https://github.com/anthropics/skills,anthropic-skills,agent-vendors,categories/agent-skills/vendor-collections/agent-vendors/anthropic-skills.md
-https://github.com/antirez/ds4,ds4,local-runtimes,categories/llm-inference/local-runtimes/ds4.md
+https://github.com/antirez/ds4,ds4,memory-offload,categories/llm-inference/local-runtimes/memory-offload/ds4.md
 https://github.com/antirez/iris.c,iris-c,local-image-generation,categories/on-device-ml/local-image-generation/iris-c.md
 https://github.com/anyoptimization/pymoo,pymoo,ml-research,categories/ml-research/pymoo.md
 https://github.com/apache/airflow,airflow,workflow-orchestration,categories/workflow-orchestration/airflow.md
@@ -684,7 +684,7 @@ https://github.com/lovell/sharp,sharp,image-processing,categories/media-processi
 https://github.com/lukas-blecher/LaTeX-OCR,latex-ocr,ocr,categories/ocr/latex-ocr.md
 https://github.com/luolin-ai/Dify-Enterprise-WeChat-bot,dify-enterprise-wechat-bot,wechat,categories/im-automation/wechat/dify-enterprise-wechat-bot.md
 https://github.com/luoluoluo22/jianying-editor-skill,jianying-editor-skill,nle-automation,categories/media-processing/nle-automation/jianying-editor-skill.md
-https://github.com/lyogavin/airllm,airllm,local-runtimes,categories/llm-inference/local-runtimes/airllm.md
+https://github.com/lyogavin/airllm,airllm,memory-offload,categories/llm-inference/local-runtimes/memory-offload/airllm.md
 https://github.com/macro-inc/macro,macro,team-chat,categories/team-chat/macro.md
 https://github.com/magnific0/wondershaper,wondershaper,networking,categories/networking/wondershaper.md
 https://github.com/magnitudedev/magnitude,magnitude,local-runtimes,categories/llm-inference/local-runtimes/magnitude.md

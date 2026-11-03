@@ -2,7 +2,7 @@
 name: Strata
 slug: strata
 repo: https://github.com/Niko1221/Strata
-category: local-runtimes
+category: memory-offload
 tags: [local-inference, moe, expert-cache, cpu-gpu, openai-compatible, anthropic-compatible]
 language: C++
 license: MIT
@@ -73,35 +73,35 @@ health:
 
 Your chosen Qwen model is larger than your graphics memory, yet replacing the whole PC is not an option. Strata keeps selected experts on the GPU and computes the missing ones on the CPU, with a guided installer and local coding-tool APIs.
 
-![Strata health radar](../../../assets/health/strata.svg)
+![Strata health radar](../../../../assets/health/strata.svg)
 
 ## When to use
 
 You want a supported Qwen or DeepSeek model to answer your coding agent on your own workstation. The model cannot fit entirely in graphics memory, but you can supply substantial system RAM and SSD space. Instead of lowering the model size immediately, you want Strata's model-specific memory layout, CPU/GPU expert execution and guided model download. Its Terminal and desktop app expose OpenAI- and Anthropic-compatible interfaces for existing clients.
 
-Choose it over [Ollama](ollama.md) when fitting one of its explicitly supported model packs matters more than a broad model store. Choose it over [llama.cpp](llama-cpp.md) when you want the curated installation and model-specific hybrid path rather than an engine you configure yourself. This is not evidence that it is faster on your machine: check the exact model, quantization, backend and context first.
+Choose it over [Ollama](../ollama.md) when fitting one of its explicitly supported model packs matters more than a broad model store. Choose it over [llama.cpp](../llama-cpp.md) when you want the curated installation and model-specific hybrid path rather than an engine you configure yourself. This is not evidence that it is faster on your machine: check the exact model, quantization, backend and context first.
 
 ## When NOT to use
 
-- **You need arbitrary GGUF architectures.** Choose [llama.cpp](llama-cpp.md) for broad model coverage. Strata's catalog names specific Qwen3.8, Qwen3.6 and DeepSeekV4.1 families and supported quantizations; a file ending in `.gguf` does not establish compatibility.
-- **You want a small download and minimal capacity planning.** Choose a smaller model in [Ollama](ollama.md). Moving work out of VRAM does not eliminate model storage: the documented DeepSeek packs alone need roughly 197–280 GB of free disk, depending on the pack.
-- **You are building a multi-user GPU service.** Choose [vLLM](../serving-engines/vllm.md) for serving-oriented scheduling. Strata has parallel slots, but they interact with memory and drafting; DFlash2's documented path answers one request at a time. Do not equate API compatibility with datacenter throughput or full provider behavior.
-- **You need a mature, less concentrated dependency.** Prefer [llama.cpp](llama-cpp.md) and pin a tested version. Strata was only 40 days old on this review date, has an author-dominated contribution history, and recent issues report speed regressions across engine versions.
-- **You want an untrusted-code sandbox.** Use [Ollama](ollama.md) as an inference-only backend and keep tool execution in your separately controlled agent. Strata's desktop agent can execute commands and edit files; its chat folder is not confinement, and Bypass removes approval prompts. For any runtime, do not expose an unauthenticated server to the network.
+- **You need arbitrary GGUF architectures.** Choose [llama.cpp](../llama-cpp.md) for broad model coverage. Strata's catalog names specific Qwen3.8, Qwen3.6 and DeepSeekV4.1 families and supported quantizations; a file ending in `.gguf` does not establish compatibility.
+- **You want a small download and minimal capacity planning.** Choose a smaller model in [Ollama](../ollama.md). Moving work out of VRAM does not eliminate model storage: the documented DeepSeek packs alone need roughly 197–280 GB of free disk, depending on the pack.
+- **You are building a multi-user GPU service.** Choose [vLLM](../../serving-engines/vllm.md) for serving-oriented scheduling. Strata has parallel slots, but they interact with memory and drafting; DFlash2's documented path answers one request at a time. Do not equate API compatibility with datacenter throughput or full provider behavior.
+- **You need a mature, less concentrated dependency.** Prefer [llama.cpp](../llama-cpp.md) and pin a tested version. Strata was only 40 days old on this review date, has an author-dominated contribution history, and recent issues report speed regressions across engine versions.
+- **You want an untrusted-code sandbox.** Use [Ollama](../ollama.md) as an inference-only backend and keep tool execution in your separately controlled agent. Strata's desktop agent can execute commands and edit files; its chat folder is not confinement, and Bypass removes approval prompts. For any runtime, do not expose an unauthenticated server to the network.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
-| [llama.cpp](llama-cpp.md) | indexed | Pick llama.cpp for broad architectures or embedded engine control; pick Strata for its curated supported-model installation and CPU/GPU expert path. | Strata supplies model preparation and app/Terminal management; llama.cpp offers a wider backend/model surface without this product layer. |
-| [Ollama](ollama.md) | indexed | Pick Ollama when a managed model catalog and client ecosystem decide; pick Strata when the supported oversized MoE model is the hard constraint. | Strata exposes model-specific memory and drafting choices; you pay with a narrower compatibility matrix and a much shorter history. |
-| [vLLM](../serving-engines/vllm.md) | indexed | Pick vLLM for a GPU service handling many concurrent clients; pick Strata for a personal workstation that must split a supported model across memory tiers. | vLLM brings a serving scheduler and heavier deployment; Strata brings consumer-machine setup, not a measured replacement for that scheduler. |
+| [llama.cpp](../llama-cpp.md) | indexed | Pick llama.cpp for broad architectures or embedded engine control; pick Strata for its curated supported-model installation and CPU/GPU expert path. | Strata supplies model preparation and app/Terminal management; llama.cpp offers a wider backend/model surface without this product layer. |
+| [Ollama](../ollama.md) | indexed | Pick Ollama when a managed model catalog and client ecosystem decide; pick Strata when the supported oversized MoE model is the hard constraint. | Strata exposes model-specific memory and drafting choices; you pay with a narrower compatibility matrix and a much shorter history. |
+| [vLLM](../../serving-engines/vllm.md) | indexed | Pick vLLM for a GPU service handling many concurrent clients; pick Strata for a personal workstation that must split a supported model across memory tiers. | vLLM brings a serving scheduler and heavier deployment; Strata brings consumer-machine setup, not a measured replacement for that scheduler. |
 
 ## Quick start
 
 Use a versioned desktop release, or inspect the Terminal installer linked in the [installation guide](https://github.com/Niko1221/Strata/blob/ffa80d73133ea5c548aefe57889a16e8085a938f/docs/INSTALL.md) before executing it. The documented Terminal entry is `strata launch`; its screens let you choose a supported model, storage folder, context and access scope. Strata downloads the matching engine and missing model components, then starts the local server. Run `strata connect` to obtain instructions for your existing coding tool, then send that tool's requests to the displayed address. You supply disk, RAM, the supported GPU driver and the client configuration; downloads are large and local inference still consumes power. This review read the source and examples only; it did not install or run Strata.
 
-![strata backbone user story](../../../assets/flow/strata.svg)
+![strata backbone user story](../../../../assets/flow/strata.svg)
 
 <!-- flow-steps:begin (generated from flows/strata.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -120,7 +120,7 @@ Use a versioned desktop release, or inspect the Terminal installer linked in the
 
 ## Key techniques
 
-![Strata — mechanism diagram](../../../assets/mechanism/strata.svg)
+![Strata — mechanism diagram](../../../../assets/mechanism/strata.svg)
 
 <!-- mechanism:begin (generated from mechanisms/strata.json by tools/mechanism_card.py; do not edit) -->
 <details>

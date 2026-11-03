@@ -3,42 +3,40 @@
 > 分类节点。在你自己的机器上跑模型的消费级硬件运行时——单用户、单机、没有调度器。
 > ← 返回 [llm-inference](../INDEX.zh.md) · 根路由：[分类路由](../../../INDEX.zh.md) · English: [INDEX.md](INDEX.md)
 
+## 子分类
+
+| 子分类 | 何时进入 | 路由 |
+| --- | --- | --- |
+| **权重分层与卸载** | 模型权重超过显存或内存，需要逐层读取、专家缓存，或跨存储层级的 CPU／GPU 计算时进入。 | [→](memory-offload/INDEX.zh.md) |
+
 ## 本分类项目
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **Strata** | 个人工作站要用 CPU 与 GPU 分担专家计算、运行受支持的大于显存的 Qwen 或 DeepSeek 模型时考虑；接受较大内存与 SSD 需求，以及仅 40 天、作者主导的历史。 | B（5/6） | [→](strata.zh.md) |
 | **llama.cpp** | 当你想要那个无依赖的 C/C++ 上游引擎、跑在目前最宽的硬件矩阵上、既能嵌入也能本地起服务时用它——接受没有 semver、没有模型管理、只有 flag 级 API。 | A（6/6） | [→](llama-cpp.zh.md) |
 | **Ollama** | 当你想要托管的本地模型仓库，配 OpenAI/Anthropic 兼容 API、Docker 部署与客户端 SDK 时用它——接受包装层的参数子集、4096 token 的默认上下文，以及没有服务级批处理。 | A（5/6） | [→](ollama.zh.md) |
 | **Magnitude** | 当机器能力未知、你要下载前的速度与内存估算加一键接入已有 coding harness 时用它——接受一个两个月大、单厂商所有、且在 Apple Silicon 上报告比 llama.cpp 慢约 6 倍的仓库。 | B（6/6） | [→](magnitude.zh.md) |
 | **omlx** | 当你想在 Mac（Apple Silicon）上用 MLX 跑带 SSD 分层 KV 缓存的本地 LLM 推理服务时用它——年轻的单人仓库，star 数存疑。 | B（6/6） | [→](omlx.zh.md) |
 | **MTPLX** | 当你想让模型自带的 MTP 头在 Mac 上以精确投机解码把 Qwen 3.8 跑出约 2 倍速、并要 OpenAI/Anthropic 服务器与应用形态时用它——接受约五个月大、作者主导的仓库与产品内署名条款。 | B（6/6） | [→](mtplx.zh.md) |
-| **AirLLM** | 当模型在你需要的形态下装不进显卡、而墙钟时间免费时用它——把检查点从磁盘逐层流式读取的库，显存只需一层的开销，代价是秒到分钟级的每 token 等待。 | B（6/6） | [→](airllm.zh.md) |
 | **Shimmy** | 当磁盘上已有 GGUF 文件、想要单个 Rust 二进制给出 OpenAI／Ollama／Anthropic 兼容 API 时用它——接受一个刚满一年、单人维护、引擎只认证 26 个模型加量化组合的项目。 | B（6/6） | [→](shimmy.zh.md) |
 | **Airframe** | 当要在自己的 Rust 程序里内嵌 GGUF 推理、且要纯 Rust 构建加一种着色器语言覆盖全显卡（WebGPU）时用它——接受一个约六个月大、单贡献者、只认证 12 个架构家族且含 pending 专利子系统的引擎。 | C（4/6） | [→](airframe.zh.md) |
-| **FreeToken** | 当一台 NVIDIA 台式机要把比显存还大的 MoE 模型提供给你的编程智能体时用它——专家放内存、显卡只做缓存——接受一个约两个月大、只支持 Linux 加 NVIDIA、接口无鉴权的 v0.1.x 引擎。 | B（6/6） | [→](freetoken.zh.md) |
 | **Claude Code Local** | 当 Claude Code 额度用完或代码不许上云、想让同一个 `claude` 会话改由 Apple Silicon Mac 上的本地模型回答时用它——接受一个约六个月大、一人维护、一次只服务一个用户、默认用 abliterated 模型的仓库。 | B（6/6） | [→](claude-code-local.zh.md) |
-| **DwarfStar (ds4)** | 当你有一台 96 GB 以上的 Mac、DGX Spark 或 Strix Halo 主机，想让少数几个前沿 MoE 模型（DeepSeek V4、GLM 5.x、Qwen3.8）在本地驱动编程智能体、内存不够时溢出到固态硬盘时用它——接受一个五个月大、单人维护、没有发布版本、只认自家 GGUF 文件的引擎。 | B（6/6） | [→](ds4.zh.md) |
-| **Edge0** | 当你想在 16–24 GB 的 Mac（或手机）上跑 35B 档的 MoE 模型、卡住你的是内存而不是模型选择时用它——专家从固态硬盘流式读取，并由训练过的预测器提前一步取来——接受只有两个预览模型、相对 fp16 有少量精度损失、以及一个只有一个月大且没有发布版本的仓库。 | C（6/6） | [→](edge0.zh.md) |
 
 ## 对比矩阵
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [Strata](strata.zh.md) | 已收录 | B（5/6） | 模型专用分层内存、桌面与终端、编程兼容接口；代价是模型包范围窄、容量依硬件变化、存储大且治理年轻。 |
 | [llama.cpp](llama-cpp.zh.md) | ✅ | A（6/6） | 上游 GGUF 引擎，后端矩阵最宽且无运行时依赖；没有 semver、没有模型管理、只有 flag 级控制。 |
 | [Ollama](ollama.zh.md) | ✅ | A（5/6） | 托管式模型仓库，配 OpenAI/Anthropic 兼容 API、Docker、MLX 与 llama.cpp 双 runner，客户端生态最深；代价是包装层参数子集与 4096 token 默认上下文。 |
 | [Magnitude](magnitude.zh.md) | ✅ | B（6/6） | 下载前的硬件适配估算加一键 harness 接线，面向混合 GPU 机器群；年轻单厂商仓库，Apple Silicon 上报告比 llama.cpp 慢约 6 倍，且只监听回环。 |
 | [omlx](omlx.zh.md) | ✅ | B（6/6） | Mac 专属 MLX 服务端，带 SSD 分层 KV 缓存；年轻、实际单人维护。 |
 | [MTPLX](mtplx.zh.md) | ✅ | B（6/6） | Mac 专属、针对 Qwen 3.8 的精确 MTP 投机解码；作者主导、含署名 NOTICE，Qwen 之外的模型退化为纯 AR。
-| [AirLLM](airllm.zh.md) | ✅ | — | 逐层流式读取的库，靠设备上只留一层在 4–12GB 小卡上跑 70B/671B 级模型；代价是每 token 都要读盘（用户实测 3B 模型 28.6 秒/token），且压缩选项实测更慢而不是更快。 | |
 | [Shimmy](shimmy.zh.md) | ✅ | — | 单 Rust 二进制，从 GGUF 路径直接给出 OpenAI／Ollama／Anthropic 兼容 API，自动发现 Ollama／HF 模型目录；引擎（Airframe）只认证 26 个模型加量化组合，且 LICENSE 文件与 Cargo.toml 互相矛盾（Apache-2.0 对 MIT）。 |
 | [Airframe](airframe.zh.md) | ✅ | — | 纯 Rust WebGPU（WGSL）GGUF 推理引擎——一次 `cargo build` 覆盖 NVIDIA／AMD／Intel／Apple Silicon；年轻、单贡献者、仓库无 LICENSE 文件，FSE 子系统挂着 pending 美国专利。 |
-| [FreeToken](freetoken.zh.md) | ✅ | — | 把专家放在内存、自动分配显卡上的专家缓存，让一张消费级 NVIDIA 显卡跑前沿 MoE 检查点（safetensors），提供 OpenAI／Anthropic 接口和接编程智能体的 `ft launch`；只支持 Linux 加 NVIDIA，内存要装下全部专家，v0.1.x 格式常变，HTTP 接口无鉴权。 |
 | [Claude Code Local](claude-code-local.zh.md) | ✅ | — | 用 Anthropic Messages 接口直接应答 Claude Code、并修补本地模型工具调用的 MLX 服务器，带按内存挑模型的安装脚本和桌面启动器；只限 Mac、单线程、一份全局提示词缓存、没有投机解码。 |
-| [DwarfStar (ds4)](ds4.zh.md) | ✅ | — | 只为少数几个前沿 MoE 模型手工适配的 C 引擎，覆盖 Metal、CUDA 和 ROCm，带 2 比特专家量化、模型比内存大时的 SSD 流式读取、双机 RDMA 张量并行和 OpenAI／Anthropic 接口；只加载自家 GGUF，没有发布版本，单人维护，接口无鉴权。 |
-| [Edge0](edge0.zh.md) | ✅ | — | 用训练过的预路由头加 Recover-LoRA 从固态硬盘流式读取 MoE 专家，35B 档在 Apple 芯片上峰值活跃内存约 3 GiB，并配有 iOS／Android／macOS／Windows 应用；只能跑自家两个预览检查点，Python 框架只支持 macOS，mlx 版本锁死，服务端单槽串行且无鉴权。 |
 
 ## 什么该放这里
 
 主要职责是**在用户自己的机器上为单个用户跑模型**的运行时——桌面应用、单二进制服务端、可嵌入的引擎。不含带批处理与自动扩缩容的服务端级引擎（见 `serving-engines`）、不含手机/边缘运行时（见 `on-device-ml`）。
+
+本地模型管理、通用引擎、内嵌库，以及仅针对 KV 缓存的分层留在本层。决定性约束是权重流式读取或 CPU／GPU 专家卸载时，进入[权重分层与卸载](memory-offload/INDEX.zh.md)。
