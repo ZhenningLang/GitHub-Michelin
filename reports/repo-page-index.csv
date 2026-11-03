@@ -798,6 +798,7 @@ https://github.com/openilink/openilink-sdk-go,openilink-sdk-go,im-automation,cat
 https://github.com/openinterpreter/openinterpreter,open-interpreter,independent-runtimes,categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/open-interpreter.md
 https://github.com/openresty/lua-nginx-module,lua-nginx-module,nginx-modules,categories/nginx-modules/lua-nginx-module.md
 https://github.com/openresty/lua-resty-redis,lua-resty-redis,nginx-modules,categories/nginx-modules/lua-resty-redis.md
+https://github.com/openrewrite/rewrite,openrewrite,dev-utilities,categories/dev-utilities/openrewrite.md
 https://github.com/opensandbox-group/OpenSandbox,opensandbox,sandboxing,categories/sandboxing/opensandbox.md
 https://github.com/outsourc-e/hermes-workspace,hermes-workspace,agent-cockpits,categories/agent-tooling/supervision-surfaces/agent-cockpits/hermes-workspace.md
 https://github.com/oven-sh/bun,bun,runtimes-and-compilers,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/bun.md

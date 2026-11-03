@@ -15,6 +15,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Anki](https://github.com/ankitects/anki),categories/education-tutoring/echo-loop.md,,no
 [Apache ECharts](https://github.com/apache/echarts),categories/data-visualization/flint-chart.md,,no
 [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox),categories/knowledge-base/hister.md,,no
+[ast-grep](https://github.com/ast-grep/ast-grep),categories/dev-utilities/openrewrite.md,,no
 [Awesome Quant](https://github.com/wilsonfreitas/awesome-quant),categories/investment-finance/awesome-deep-trading.md,,no
 [Backtesting.py](https://github.com/kernc/backtesting.py),categories/investment-finance/backtrader.md,,no
 [Baidu Netdisk MCP](https://github.com/baidu-netdisk/mcp),categories/agent-skills/vendor-collections/product-vendors/bdpan-storage.md,,no
@@ -137,6 +138,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Shuffle](https://github.com/Shuffle/Shuffle),categories/security-operations/aisoc.md,,no
 [sing-box](https://github.com/SagerNet/sing-box),categories/dev-utilities/ops-infra/open-box.md,,no
 [spcfox/amnezia-wg-easy](https://github.com/spcfox/amnezia-wg-easy),categories/networking/amneziawg-installer.md,,no
+[Spoon](https://github.com/INRIA/spoon),categories/dev-utilities/openrewrite.md,,no
 [Stats](https://github.com/exelban/stats),categories/observability/mac-performance-monitor.md,,no
 [Sunshine](https://github.com/LizardByte/Sunshine) + [Moonlight](https://github.com/moonlight-stream/moonlight-qt),categories/dev-utilities/ops-infra/rustdesk.md,,no
 [Tensor Puzzles](https://github.com/srush/Tensor-Puzzles),categories/learning-resources/torchcode.md,,no

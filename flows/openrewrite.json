@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenRewrite does", "zh": "OpenRewrite 做的"},
+  "steps": [
+    {"lane": "you", "en": "Configure the Maven plugin and authenticated artifact repository", "zh": "配置 Maven 插件与鉴权制品仓库"},
+    {"lane": "you", "en": "Activate the import-ordering recipe", "zh": "启用导入排序规则", "code": "org.openrewrite.java.OrderImports"},
+    {"lane": "you", "en": "Run the configured recipe on the project", "zh": "对项目执行已配置规则", "code": "mvn rewrite:run"},
+    {"lane": "them", "en": "The plugin supplies sources and dependencies to the engine", "zh": "插件把源码和依赖交给引擎"},
+    {"lane": "them", "en": "Parse, apply the recipe and write changed source files", "zh": "解析、执行规则并写出改动文件"}
+  ],
+  "value": {"en": "Receive a reviewable import-ordering diff instead of editing each file by hand", "zh": "获得可审查的导入排序差异，不再逐文件手改"},
+  "sources": [
+    "https://github.com/openrewrite/rewrite-docs/blob/5d97c74fe42107579eadb784a3ad125ef27c7ff5/docs/running-recipes/getting-started.md",
+    "https://github.com/openrewrite/rewrite/blob/922d548b809dccb0b5aa22b4e23bfb083d37d00b/README.md#L26-L28"
+  ]
+}

@@ -503,6 +503,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **OpenRewrite** | 按类型执行 Java 迁移规则并审查差异；先核对语言模块许可与鉴权制品访问。 | 核心与原有模块 Apache-2.0；新语言模块 MSAL | B（5/6） | [中](categories/dev-utilities/openrewrite.zh.md) · [EN](categories/dev-utilities/openrewrite.md) |
 | **OSXPhotos** | 导出苹果照片媒体与相册信息，显式更新模式维护增量归档；须留意私有结构、隐私及修改边界。 | MIT | B（6/6） | [中](categories/dev-utilities/data-tools/osxphotos.zh.md) · [EN](categories/dev-utilities/data-tools/osxphotos.md) |
 | **HatchZip** | 在快满磁盘上逐步消耗可重新获取的原包来解压；保留原包模式会放弃空间收益。 | 核心 MIT OR Apache-2.0；RAR 发布版另含 UnRAR 限制 | C（5/6） | [中](categories/dev-utilities/data-tools/hatchzip.zh.md) · [EN](categories/dev-utilities/data-tools/hatchzip.md) |
 | **App Store Connect CLI** | 脚本化管理苹果发布文案、TestFlight 与审核；独立 Go 二进制，凭据和审批边界仍由你负责。 | MIT | B（6/6） | [中](categories/dev-utilities/app-store-connect-cli.zh.md) · [EN](categories/dev-utilities/app-store-connect-cli.md) |
