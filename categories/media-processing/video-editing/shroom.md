@@ -78,7 +78,7 @@ A ten-person team on a per-seat recording service pays every month even when nob
 
 You lead a small engineering or support team on Apple-silicon Macs. People record two-minute walkthroughs for pull requests and bug reports, and you want Loom's "press Stop, the link is already in your clipboard" flow without a per-person subscription or a vendor holding the videos. Choose shroom when you already have, or are willing to open, a Cloudflare account: during a guided setup you paste one Cloudflare token, the app creates the R2 bucket (Cloudflare's object storage) and deploys a Worker (code that runs on Cloudflare's edge) to `v.<name>.workers.dev`, and from then on each recording streams up while you talk. The README's cost example is $0.85 a month for 20 people recording an hour each with 30-day cleanup. [Architecture overview](https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/docs/ARCHITECTURE.md#L17-L27), [cost claim](https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/README.md#L52-L61).
 
-The deciding tradeoff against Cap or Loom is storage ownership and per-video pricing versus maturity: shroom has no server of its own to depend on, but it is a two-week-old public repository with one maintainer.
+The deciding tradeoff against Cap or Loom is storage ownership and usage-based Cloudflare costs versus maturity: shroom has no server of its own to depend on, but it is a two-week-old public repository with one maintainer.
 
 ## When NOT to use
 
@@ -94,7 +94,7 @@ The deciding tradeoff against Cap or Loom is storage ownership and per-video pri
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | Cap (CapSoftware/Cap) | not indexed | Choose Cap when you need Windows and macOS clients and a larger active project; choose shroom when videos must live in your own Cloudflare account with no extra server to run. | Cap is mostly AGPLv3 (camera/capture crates MIT) with a hosted cloud or a self-hosted server to operate; shroom is MIT and serverless on your Cloudflare, but macOS-only and two weeks old. Not added in this tab batch. |
-| Loom | not a repo | Choose Loom when per-seat pricing is acceptable and you want enterprise viewer controls, analytics and multi-platform clients; choose shroom to pay only for stored video. | Closed hosted SaaS; mature sharing and permissions, but videos sit on the vendor and every seat is billed. |
+| Loom | not a repo | Choose Loom when per-seat pricing is acceptable and you want enterprise viewer controls, analytics and multi-platform clients; choose shroom to avoid a recorder per-seat subscription while paying your own Cloudflare usage charges. | Closed hosted SaaS; mature sharing and permissions, but videos sit on the vendor and every seat is billed. |
 | [OpenScreen Community](openscreen-community.md) | ✅ | Choose OpenScreen Community when the deliverable is a polished exported demo file; choose shroom when the deliverable is an instant share link for teammates. | Local editing with auto-zoom and no hosting; shroom adds hosting, team invites and live upload but little visual polish. |
 | OBS Studio | not indexed | Choose OBS for cross-platform capture, scenes and streaming; choose shroom when you want recording and link sharing in one step. | GPL desktop compositor with no hosting or link sharing; shroom gives you a link but only a menu-bar recorder's controls. Not added in this tab batch. |
 
@@ -129,7 +129,7 @@ Install with `curl -fsSL https://shroom.am/install | sh` on macOS 14 or newer wi
 
 - Pasted Cloudflare token
 - Derived S3 pair; admin calls only①
-- Per-recording JWT credential: rec/&lt;id&gt;/, 7 days①
+- Recording-scoped upload JWT: rec/&lt;id&gt;/, 1 hour①
 - Screen, microphone, camera
 - ffmpeg: 6 s fMP4 segments plus fragmented MP4②
 - Your R2 bucket
@@ -141,10 +141,10 @@ Install with `curl -fsSL https://shroom.am/install | sh` on macOS 14 or newer wi
 
 - Pasted Cloudflare token → Derived S3 pair; admin calls only①
 - Derived S3 pair; admin calls only① → One Worker in your account: page, media, invites③ (deploy and wire)
-- Derived S3 pair; admin calls only① → Per-recording JWT credential: rec/&lt;id&gt;/, 7 days① (sign locally)
+- Derived S3 pair; admin calls only① → Recording-scoped upload JWT: rec/&lt;id&gt;/, 1 hour① (sign locally)
 - Screen, microphone, camera → ffmpeg: 6 s fMP4 segments plus fragmented MP4②
 - ffmpeg: 6 s fMP4 segments plus fragmented MP4② → Your R2 bucket (settled segments; playlist last)
-- Per-recording JWT credential: rec/&lt;id&gt;/, 7 days① → Your R2 bucket (scoped writes)
+- Recording-scoped upload JWT: rec/&lt;id&gt;/, 1 hour① → Your R2 bucket (scoped writes)
 - Your R2 bucket → One Worker in your account: page, media, invites③ (binding)
 - One Worker in your account: page, media, invites③ → Anyone with the link (watch page and media)
 - GitHub release zip and manifest → SHA-256 and pinned signer check④
@@ -156,9 +156,9 @@ Install with `curl -fsSL https://shroom.am/install | sh` on macOS 14 or newer wi
 ### 1. Derive scoped, short-lived upload keys from one pasted token
 
 - **Problem:** Keeping a full Cloudflare token on every teammate's Mac would let any of them delete the whole account's Workers and buckets.
-- **How:** The token is used for admin calls only. Its S3-style key pair is derived locally (key id = token id, secret = SHA-256 of the token). For each recording, the app signs an HS256 JWT that Cloudflare R2 accepts as a temporary credential, restricted to `rec/<id>/` and that recording's metadata file, valid for seven days; Macs without the token ask the Worker to sign the same JWT under their device key.
+- **How:** The token is used for admin calls only. Its S3-style key pair is derived locally (key id = token id, secret = SHA-256 of the token). Each recording uses an HS256 JWT that Cloudflare R2 accepts as a temporary credential, restricted to `rec/<id>/` and that recording's metadata file. The normal upload issuer uses a one-hour lifetime; the Mac renews credentials as expiry approaches. Macs without the token ask the Worker to sign the JWT under their device key.
 - **Limits:** Removing a member stops new credentials, but one already minted runs until it expires; instant cut-off means rotating the parent token by hand. The derivation depends on Cloudflare's current token-to-S3 mapping.
-- **Source:** [Credential table:679–709](https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/docs/ARCHITECTURE.md#L679-L709), [local JWT mint:1–61](https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/crates/shroom-cloud/src/mint.rs#L1-L61), [S3 pair derivation:164–172](https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/crates/shroom-cloud/src/lib.rs#L164-L172).
+- **Source:** [Upload TTL:2288–2291](https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/worker/src/worker.js#L2288-L2291), [issuance path:2836–2841](https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/worker/src/worker.js#L2836-L2841), [credential scope and renewal:694–709](https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/docs/ARCHITECTURE.md#L694-L709), [local JWT mint:18–50](https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/crates/shroom-cloud/src/mint.rs#L18-L50), [S3 pair derivation:164–172](https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/crates/shroom-cloud/src/lib.rs#L164-L172).
 
 ### 2. Upload HLS segments during the recording, publish the playlist last
 

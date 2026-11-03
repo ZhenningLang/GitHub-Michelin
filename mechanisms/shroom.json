@@ -4,7 +4,7 @@
   "nodes": [
     {"id": "token", "en": "Pasted Cloudflare token", "zh": "粘贴的 Cloudflare token", "kind": "input"},
     {"id": "derive", "en": "Derived S3 pair; admin calls only", "zh": "推导出的 S3 密钥对；只做管理调用", "technique": [1]},
-    {"id": "mint", "en": "Per-recording JWT credential: rec/<id>/, 7 days", "zh": "每段录像的 JWT 凭据：rec/<id>/，七天", "technique": [1]},
+    {"id": "mint", "en": "Recording-scoped upload JWT: rec/<id>/, 1 hour", "zh": "录像范围的上传 JWT：rec/<id>/，一小时", "technique": [1]},
     {"id": "capture", "en": "Screen, microphone, camera", "zh": "屏幕、麦克风、摄像头", "kind": "input"},
     {"id": "encode", "en": "ffmpeg: 6 s fMP4 segments plus fragmented MP4", "zh": "ffmpeg：6 秒 fMP4 分片加分段 MP4", "technique": [2]},
     {"id": "bucket", "en": "Your R2 bucket", "zh": "你的 R2 存储桶", "kind": "external"},
@@ -27,7 +27,9 @@
     {"from": "verify", "to": "app"}
   ],
   "sources": [
-    "https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/docs/ARCHITECTURE.md#L679-L709",
+    "https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/worker/src/worker.js#L2288-L2291",
+    "https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/worker/src/worker.js#L2836-L2841",
+    "https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/docs/ARCHITECTURE.md#L694-L709",
     "https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/crates/shroom-cloud/src/mint.rs#L1-L61",
     "https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/crates/shroom-upload/src/live.rs#L1-L33",
     "https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/docs/ARCHITECTURE.md#L743-L792",

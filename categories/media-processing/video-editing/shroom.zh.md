@@ -78,7 +78,7 @@ health:
 
 你带一个用 Apple 芯片 Mac 的小型研发或客服团队。大家给 PR 和 bug 报告录两分钟的讲解，你想要 Loom 那种“一按停止、链接已在剪贴板”的体验，但不想按人头订阅，也不想让厂商保管视频。已经有、或愿意开一个 Cloudflare 账号时选 shroom：引导设置里你只粘贴一个 Cloudflare token，应用就会建好 R2 存储桶（Cloudflare 的对象存储），把一个 Worker（跑在 Cloudflare 边缘节点上的代码）部署到 `v.<name>.workers.dev`；之后每段录像都边录边传。README 举的成本例子是：20 人每人每月录一小时、30 天自动清理，每月 0.85 美元。[架构概览](https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/docs/ARCHITECTURE.md#L17-L27)、[成本说法](https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/README.md#L52-L61)。
 
-和 Cap、Loom 比，决定性的取舍是“存储自己掌握、按视频量付费”对“成熟度”：shroom 不依赖任何它自己运营的服务器，但公开仓库才两周大，只有一位维护者。
+和 Cap、Loom 比，决定性的取舍是“存储自己掌握、按 Cloudflare 用量付费”对“成熟度”：shroom 不依赖任何它自己运营的服务器，但公开仓库才两周大，只有一位维护者。
 
 ## 何时不用
 
@@ -94,7 +94,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | Cap（CapSoftware/Cap） | 未收录 | 需要 Windows 和 macOS 客户端、要更大更活跃的项目时选 Cap；视频必须放在自己的 Cloudflare 账号、又不想多运维一台服务器时选 shroom。 | Cap 大部分代码是 AGPLv3（摄像头和采集 crate 为 MIT），要用它的托管云或自建服务器；shroom 是 MIT，在你的 Cloudflare 上无服务器运行，但只支持 macOS、才两周大。本批标签收录未加入。 |
-| Loom | 非仓库 | 能接受按人头收费、需要企业级观看权限、数据分析和多平台客户端时选 Loom；只想为存下的视频付钱时选 shroom。 | 闭源托管 SaaS；分享和权限成熟，但视频在厂商那里，每个席位都要付费。 |
+| Loom | 非仓库 | 能接受按人头收费、需要企业级观看权限、数据分析和多平台客户端时选 Loom；不想为录屏工具按席位订阅、愿自行承担 Cloudflare 用量费用时选 shroom。 | 闭源托管 SaaS；分享和权限成熟，但视频在厂商那里，每个席位都要付费。 |
 | [OpenScreen Community](openscreen-community.zh.md) | ✅ | 交付物是精修过的演示成片时选 OpenScreen Community；交付物是发给同事的即时链接时选 shroom。 | 本地编辑、自动缩放、不托管；shroom 多了托管、团队邀请和边录边传，但几乎没有视觉美化。 |
 | OBS Studio | 未收录 | 要跨平台采集、场景合成和直播时选 OBS；要一步完成录制和链接分享时选 shroom。 | GPL 桌面合成器，没有托管和链接分享；shroom 给你链接，但控制项只有菜单栏录屏工具那么多。本批标签收录未加入。 |
 
@@ -129,7 +129,7 @@ health:
 
 - 粘贴的 Cloudflare token
 - 推导出的 S3 密钥对；只做管理调用①
-- 每段录像的 JWT 凭据：rec/&lt;id&gt;/，七天①
+- 录像范围的上传 JWT：rec/&lt;id&gt;/，一小时①
 - 屏幕、麦克风、摄像头
 - ffmpeg：6 秒 fMP4 分片加分段 MP4②
 - 你的 R2 存储桶
@@ -141,10 +141,10 @@ health:
 
 - 粘贴的 Cloudflare token → 推导出的 S3 密钥对；只做管理调用①
 - 推导出的 S3 密钥对；只做管理调用① → 你账号里的一个 Worker：页面、媒体、邀请③（部署与接线）
-- 推导出的 S3 密钥对；只做管理调用① → 每段录像的 JWT 凭据：rec/&lt;id&gt;/，七天①（本地签名）
+- 推导出的 S3 密钥对；只做管理调用① → 录像范围的上传 JWT：rec/&lt;id&gt;/，一小时①（本地签名）
 - 屏幕、麦克风、摄像头 → ffmpeg：6 秒 fMP4 分片加分段 MP4②
 - ffmpeg：6 秒 fMP4 分片加分段 MP4② → 你的 R2 存储桶（已落定分片；播放列表最后）
-- 每段录像的 JWT 凭据：rec/&lt;id&gt;/，七天① → 你的 R2 存储桶（限定范围的写入）
+- 录像范围的上传 JWT：rec/&lt;id&gt;/，一小时① → 你的 R2 存储桶（限定范围的写入）
 - 你的 R2 存储桶 → 你账号里的一个 Worker：页面、媒体、邀请③（绑定）
 - 你账号里的一个 Worker：页面、媒体、邀请③ → 拿到链接的人（观看页与媒体）
 - GitHub 发布包与清单 → SHA-256 与固定签名者校验④
@@ -156,9 +156,9 @@ health:
 ### 1. 从一个粘贴的 token 派生出范围小、时效短的上传密钥
 
 - **解决：** 每个同事的 Mac 上都放一份完整的 Cloudflare token，任何一台都能删掉整个账号的 Worker 和存储桶。
-- **做法：** token 只用于管理类调用。它对应的 S3 式密钥对在本地推导（密钥 id = token id，密钥 = token 的 SHA-256）。每段录像由应用签一个 HS256 JWT，R2 会把它当作临时凭据接受，范围只限 `rec/<id>/` 和这段录像的元数据文件，有效期七天；没有 token 的 Mac 用设备密钥请 Worker 签同样的 JWT。
+- **做法：** token 只用于管理类调用。它对应的 S3 式密钥对在本地推导（密钥 id = token id，密钥 = token 的 SHA-256）。每段录像使用一个 HS256 JWT，R2 会把它当作临时凭据接受，范围只限 `rec/<id>/` 和这段录像的元数据文件。正常上传签发路径的有效期是一小时，Mac 在临近到期时续签；没有 token 的 Mac 用设备密钥请 Worker 签 JWT。
 - **边界：** 移除成员只能阻止新凭据，已签出的要等到过期；想立即切断，只能手动轮换父 token。这种推导依赖 Cloudflare 当前的 token 到 S3 密钥的映射方式。
-- **源码：** [凭据表第 679–709 行](https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/docs/ARCHITECTURE.md#L679-L709)、[本地签 JWT 第 1–61 行](https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/crates/shroom-cloud/src/mint.rs#L1-L61)、[S3 密钥推导第 164–172 行](https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/crates/shroom-cloud/src/lib.rs#L164-L172)。
+- **源码：** [上传时效第 2288–2291 行](https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/worker/src/worker.js#L2288-L2291)、[签发路径第 2836–2841 行](https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/worker/src/worker.js#L2836-L2841)、[范围与续签第 694–709 行](https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/docs/ARCHITECTURE.md#L694-L709)、[本地签 JWT 第 18–50 行](https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/crates/shroom-cloud/src/mint.rs#L18-L50)、[S3 密钥推导第 164–172 行](https://github.com/bagrat/shroom/blob/c3e64f28aa536df61ac20544116d7df2e87f423a/crates/shroom-cloud/src/lib.rs#L164-L172)。
 
 ### 2. 录制中就上传 HLS 分片，最后才发布播放列表
 
