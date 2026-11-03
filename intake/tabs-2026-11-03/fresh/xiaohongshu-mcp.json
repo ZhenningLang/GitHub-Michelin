@@ -1,0 +1,15 @@
+{
+  "repo": "xpzouying/xiaohongshu-mcp",
+  "action": "sync",
+  "result": "fresh",
+  "checked_at_utc_date": "2026-11-03",
+  "last_verified": "2026-10-09",
+  "age_days": 25,
+  "stale_days": 90,
+  "page": "categories/social-media-management/xiaohongshu-mcp.md",
+  "source_commit": "65721ae6f9c9e70e451c291cedfa2fb211003ed4",
+  "english_git_blob": "def322462fc2a649d715f07e9f81924a4de9848c",
+  "chinese_git_blob": "490b49f75c0862b21d401924787d835b0051ddaf",
+  "gates": "make gates: exit 0; 218 category nodes, 1037 EN + 1037 ZH pages, 0 errors, 1734 warnings",
+  "qualification": "The sync-entry 90-day gate reuses this entry without a live upstream reread or a verification-date bump. Existing warnings are not semantic approval."
+}
