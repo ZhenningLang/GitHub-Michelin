@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id":"feed","en":"Signed update feed","zh":"签名更新清单","kind":"input"},
+    {"id":"verify","en":"Verify trust, channel, expiry and sequence","zh":"检查信任、通道、过期和序号","technique":[3]},
+    {"id":"engine","en":"Select hardware-compatible engine","zh":"选择硬件匹配的引擎","technique":[3]},
+    {"id":"routing","en":"Layer routes selected experts","zh":"当前层选择专家","kind":"input"},
+    {"id":"table","en":"Residency table: GPU slot or miss","zh":"驻留表：显卡槽位或未命中","technique":[1]},
+    {"id":"gpu","en":"Launch GPU-resident experts","zh":"启动显卡驻留专家","technique":[2]},
+    {"id":"cpu","en":"CPU pool computes host-held misses","zh":"CPU 池计算内存中的未命中专家","technique":[2]},
+    {"id":"combine","en":"Copy CPU result; combine the same layer","zh":"复制 CPU 结果，合并同一层","kind":"output","technique":[2]}
+  ],
+  "edges": [
+    {"from":"feed","to":"verify"},
+    {"from":"verify","to":"engine"},
+    {"from":"engine","to":"routing","en":"engine execution","zh":"引擎执行"},
+    {"from":"routing","to":"table"},
+    {"from":"table","to":"gpu","en":"hits","zh":"命中"},
+    {"from":"table","to":"cpu","en":"misses","zh":"未命中"},
+    {"from":"gpu","to":"combine"},
+    {"from":"cpu","to":"combine"}
+  ],
+  "sources": [
+    "https://github.com/Niko1221/Strata/blob/ffa80d73133ea5c548aefe57889a16e8085a938f/src/core/expert_cache.cpp#L735-L804",
+    "https://github.com/Niko1221/Strata/blob/ffa80d73133ea5c548aefe57889a16e8085a938f/src/core/session.cpp#L681-L798",
+    "https://github.com/Niko1221/Strata/blob/ffa80d73133ea5c548aefe57889a16e8085a938f/strata_control/feed.py#L335-L461"
+  ]
+}

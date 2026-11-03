@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Strata** | 个人工作站要用 CPU 与 GPU 分担专家计算、运行受支持的大于显存的 Qwen 或 DeepSeek 模型时考虑；接受较大内存与 SSD 需求，以及仅 40 天、作者主导的历史。 | B（5/6） | [→](strata.zh.md) |
 | **llama.cpp** | 当你想要那个无依赖的 C/C++ 上游引擎、跑在目前最宽的硬件矩阵上、既能嵌入也能本地起服务时用它——接受没有 semver、没有模型管理、只有 flag 级 API。 | A（6/6） | [→](llama-cpp.zh.md) |
 | **Ollama** | 当你想要托管的本地模型仓库，配 OpenAI/Anthropic 兼容 API、Docker 部署与客户端 SDK 时用它——接受包装层的参数子集、4096 token 的默认上下文，以及没有服务级批处理。 | A（5/6） | [→](ollama.zh.md) |
 | **Magnitude** | 当机器能力未知、你要下载前的速度与内存估算加一键接入已有 coding harness 时用它——接受一个两个月大、单厂商所有、且在 Apple Silicon 上报告比 llama.cpp 慢约 6 倍的仓库。 | B（6/6） | [→](magnitude.zh.md) |
@@ -24,6 +25,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [Strata](strata.zh.md) | 已收录 | B（5/6） | 模型专用分层内存、桌面与终端、编程兼容接口；代价是模型包范围窄、容量依硬件变化、存储大且治理年轻。 |
 | [llama.cpp](llama-cpp.zh.md) | ✅ | A（6/6） | 上游 GGUF 引擎，后端矩阵最宽且无运行时依赖；没有 semver、没有模型管理、只有 flag 级控制。 |
 | [Ollama](ollama.zh.md) | ✅ | A（5/6） | 托管式模型仓库，配 OpenAI/Anthropic 兼容 API、Docker、MLX 与 llama.cpp 双 runner，客户端生态最深；代价是包装层参数子集与 4096 token 默认上下文。 |
 | [Magnitude](magnitude.zh.md) | ✅ | B（6/6） | 下载前的硬件适配估算加一键 harness 接线，面向混合 GPU 机器群；年轻单厂商仓库，Apple Silicon 上报告比 llama.cpp 慢约 6 倍，且只监听回环。 |

@@ -6,3 +6,4 @@ This public ledger contains completed selection work only. Browser snapshots and
 |:---|:---|:---|:---|:---|:---|
 | xpzouying/xiaohongshu-mcp | sync | done | categories/social-media-management/xiaohongshu-mcp.md | Fresh: 25 days since 2026-10-09; 90-day gate, no upstream reread or date bump; no leftover Q&A | |
 | openrewrite/rewrite | add | done | categories/dev-utilities/openrewrite.md | Fixed source and independent semantic review; Apache/MSAL and commercial-service boundaries retained; no leftover Q&A | |
+| Niko1221/Strata | add | done | categories/llm-inference/local-runtimes/strata.md | Fixed source; optional-key desktop sharing corrected against implementation and re-reviewed; no leftover Q&A | |

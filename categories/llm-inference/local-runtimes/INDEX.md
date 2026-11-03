@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Strata** | Run a supported oversized Qwen or DeepSeek model on a personal workstation with CPU/GPU expert execution and guided setup; accept large RAM/SSD needs and a 40-day, author-dominated history. | B (5/6) | [→](strata.md) |
 | **llama.cpp** | Use it when you want the upstream dependency-free C/C++ engine that runs on the widest hardware matrix and can be embedded or served locally — accepting no semver, no model management, and a flag-level API. | A (6/6) | [→](llama-cpp.md) |
 | **Ollama** | Use it when you want a managed local model store with an OpenAI/Anthropic-compatible API, Docker deployment and client SDKs — accepting a wrapper's flag subset, a 4096-token default context, and no serving-scale batching. | A (5/6) | [→](ollama.md) |
 | **Magnitude** | Use it when the machine's capability is unknown and you want a pre-download speed/memory estimate plus one-click wiring into an existing coding harness — accepting a two-month-old single-vendor repo that reports ~6x slower than llama.cpp on Apple Silicon. | B (6/6) | [→](magnitude.md) |
@@ -24,6 +25,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Strata](strata.md) | indexed | B (5/6) | Curated model-specific memory tiers, desktop/Terminal and compatible coding APIs; narrow model packs, hardware-dependent fit, large storage and very young governance. |
 | [llama.cpp](llama-cpp.md) | ✅ | A (6/6) | The upstream GGUF engine with the widest backend matrix and no runtime dependencies; no semver, no model management, flag-level control. |
 | [Ollama](ollama.md) | ✅ | A (5/6) | Managed model store with OpenAI/Anthropic-compatible API, Docker, MLX+llama.cpp runners and the deepest client ecosystem; wrapper flag subset, 4096-token default context. |
 | [Magnitude](magnitude.md) | ✅ | B (6/6) | Pre-download hardware-fit estimates plus one-click harness wiring for mixed-GPU fleets; young single-vendor repo, ~6x slower than llama.cpp on Apple Silicon, loopback only. |
