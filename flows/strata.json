@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Strata", "zh": "Strata"},
+  "steps": [
+    {"lane": "you", "en": "Install the Terminal from a reviewed release", "zh": "检查发布包后安装终端"},
+    {"lane": "you", "en": "Choose a supported model, folder, context and local access", "zh": "选择受支持模型、目录、上下文和本地访问", "code": "strata launch"},
+    {"lane": "them", "en": "Fetch the matching engine and missing model parts; start the local server", "zh": "下载匹配引擎和缺失模型组件，启动本地服务"},
+    {"lane": "you", "en": "Follow connection instructions in your existing coding tool and send a request", "zh": "按说明配置已有编程工具并发送请求", "code": "strata connect"},
+    {"lane": "them", "en": "Answer through a local OpenAI- or Anthropic-compatible API", "zh": "通过本地 OpenAI 或 Anthropic 兼容接口回答"}
+  ],
+  "value": {"en": "Use a supported oversized model locally without assembling its memory-tier engine yourself", "zh": "在本地使用受支持的大模型，不必自己组装分层推理引擎"},
+  "sources": [
+    "https://github.com/Niko1221/Strata/blob/ffa80d73133ea5c548aefe57889a16e8085a938f/README.md#L112-L170",
+    "https://github.com/Niko1221/Strata/blob/ffa80d73133ea5c548aefe57889a16e8085a938f/docs/TERMINAL_LAUNCH.md#L7-L67"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "input", "en": "Project sources and classpath", "zh": "项目源码与类路径", "kind": "input"},
+    {"id": "tree", "en": "Source tree retains spaces and comments", "zh": "源码树保留空白与注释", "technique": [1]},
+    {"id": "scan", "en": "Scan facts before generating or editing", "zh": "先扫描事实，再生成与编辑", "technique": [3]},
+    {"id": "match", "en": "Match declaring type and method signature", "zh": "匹配声明类型与方法签名", "technique": [2]},
+    {"id": "edit", "en": "Visitor changes matched nodes and type metadata", "zh": "遍历器修改命中节点及类型元数据", "technique": [2]},
+    {"id": "cycles", "en": "Continue only within configured cycle bounds", "zh": "只在已配置轮次边界内继续", "technique": [3]},
+    {"id": "print", "en": "Print retained layout and return changeset", "zh": "输出保留的布局并返回变更集", "kind": "output", "technique": [1, 3]}
+  ],
+  "edges": [
+    {"from": "input", "to": "tree"},
+    {"from": "tree", "to": "scan"},
+    {"from": "scan", "to": "match"},
+    {"from": "match", "to": "edit"},
+    {"from": "edit", "to": "cycles"},
+    {"from": "cycles", "to": "scan", "en": "if another cycle is requested", "zh": "请求下一轮时", "style": "dashed"},
+    {"from": "cycles", "to": "print"}
+  ],
+  "sources": [
+    "https://github.com/openrewrite/rewrite/blob/922d548b809dccb0b5aa22b4e23bfb083d37d00b/rewrite-core/src/main/java/org/openrewrite/RecipeScheduler.java#L66-L147",
+    "https://github.com/openrewrite/rewrite/blob/922d548b809dccb0b5aa22b4e23bfb083d37d00b/rewrite-java/src/main/java/org/openrewrite/java/ChangeMethodName.java#L95-L213",
+    "https://github.com/openrewrite/rewrite/blob/922d548b809dccb0b5aa22b4e23bfb083d37d00b/rewrite-java/src/main/java/org/openrewrite/java/tree/Space.java#L29-L82"
+  ]
+}

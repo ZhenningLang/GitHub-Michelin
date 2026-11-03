@@ -18,6 +18,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **OpenRewrite** | 用类型信息执行 Java 迁移规则并审查差异；先核对新语言模块许可与制品下载权益。 | B（5/6） | [→](openrewrite.zh.md) |
 | **Keploy** | 连同依赖响应录制 API 调用，供回归重放；须批准内核权限，并显式启用非 JSON 正文比较。 | A（6/6） | [→](keploy.zh.md) |
 | **App Store Connect CLI** | 用独立 Go 命令管理苹果发布文案、TestFlight 与审核操作。 | B（6/6） | [→](app-store-connect-cli.zh.md) |
 
@@ -25,6 +26,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [OpenRewrite](openrewrite.zh.md) | 已收录 | B（5/6） | 可复用的 JVM 转换规则，不是 Moderne 多仓库平台；核心 Apache 许可不覆盖所有语言模块。 |
 | [Keploy](keploy.zh.md) | 已收录 | A（6/6） | 用捕获夹具代替手写桩；仍有 Linux 探测、私有解析器、服务条款和默认非 JSON 比较盲区。 |
 | [App Store Connect CLI](app-store-connect-cli.zh.md) | ✅ | B（6/6） | 不需要 Ruby 的苹果发布 API 命令；仍要管理凭据和审批，本地构建需要 Xcode，默认开启遥测。 |
 

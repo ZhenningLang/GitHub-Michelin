@@ -18,6 +18,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **OpenRewrite** | Apply type-aware Java migration recipes with reviewable diffs; check newer language-module licenses and artifact download access. | B (5/6) | [→](openrewrite.md) |
 | **Keploy** | Record API calls with dependency replies for regression replay; approve kernel privileges and opt into non-JSON body comparison. | A (6/6) | [→](keploy.md) |
 | **App Store Connect CLI** | Script Apple release metadata, TestFlight and review operations with a standalone Go CLI. | B (6/6) | [→](app-store-connect-cli.md) |
 
@@ -25,6 +26,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [OpenRewrite](openrewrite.md) | Indexed | B (5/6) | Reusable JVM transformations, not Moderne's fleet platform; core Apache license does not cover every language module. |
 | [Keploy](keploy.md) | Indexed | A (6/6) | Captured regression fixtures rather than hand-written mocks; Linux instrumentation, private parsers, service terms and default non-JSON comparison gaps remain. |
 | [App Store Connect CLI](app-store-connect-cli.md) | ✅ | B (6/6) | Apple release API commands without Ruby; still needs credentials, approval and Xcode for local builds, with default-on telemetry. |
 

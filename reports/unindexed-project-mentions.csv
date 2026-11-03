@@ -15,6 +15,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Anki](https://github.com/ankitects/anki),categories/education-tutoring/echo-loop.md,,no
 [Apache ECharts](https://github.com/apache/echarts),categories/data-visualization/flint-chart.md,,no
 [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox),categories/knowledge-base/hister.md,,no
+[ast-grep](https://github.com/ast-grep/ast-grep),categories/dev-utilities/openrewrite.md,,no
 [Awesome Quant](https://github.com/wilsonfreitas/awesome-quant),categories/investment-finance/awesome-deep-trading.md,,no
 [Backtesting.py](https://github.com/kernc/backtesting.py),categories/investment-finance/backtrader.md,,no
 [Baidu Netdisk MCP](https://github.com/baidu-netdisk/mcp),categories/agent-skills/vendor-collections/product-vendors/bdpan-storage.md,,no
@@ -137,6 +138,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Shuffle](https://github.com/Shuffle/Shuffle),categories/security-operations/aisoc.md,,no
 [sing-box](https://github.com/SagerNet/sing-box),categories/dev-utilities/ops-infra/open-box.md,,no
 [spcfox/amnezia-wg-easy](https://github.com/spcfox/amnezia-wg-easy),categories/networking/amneziawg-installer.md,,no
+[Spoon](https://github.com/INRIA/spoon),categories/dev-utilities/openrewrite.md,,no
 [Stats](https://github.com/exelban/stats),categories/observability/mac-performance-monitor.md,,no
 [Sunshine](https://github.com/LizardByte/Sunshine) + [Moonlight](https://github.com/moonlight-stream/moonlight-qt),categories/dev-utilities/ops-infra/rustdesk.md,,no
 [Tensor Puzzles](https://github.com/srush/Tensor-Puzzles),categories/learning-resources/torchcode.md,,no
@@ -484,7 +486,7 @@ Deep Agents (`langchain-ai/deepagents`),categories/deep-research/open-deep-resea
 DeepKE,categories/ml-research/nlp-and-time-series/agriculture-knowledge-graph.md,,no
 DeepSpeech (Mozilla),categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
 DeepSpeed,categories/llm-training/colossalai.md,,no
-DeepSpeed ZeRO-Inference,categories/llm-inference/local-runtimes/airllm.md,,no
+DeepSpeed ZeRO-Inference,categories/llm-inference/local-runtimes/memory-offload/airllm.md,,no
 degit (`Rich-Harris/degit`),categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-alt-cli.md,,no
 dehydrated,categories/dev-utilities/ops-infra/certbot.md,,no
 Depth Anything V1,categories/ml-research/vision-and-multimodal/depth-anything-v2.md,,no
@@ -541,7 +543,7 @@ Ethereum-Faucet,categories/blockchain-dev-infrastructure/INDEX.md,,no
 EVA-CLIP,categories/ml-research/vision-and-multimodal/clip.md,,no
 Exa / Tavily / SearXNG,categories/deep-research/source-workflows/agent-reach.md,,no
 Excalibur.js,categories/game-dev/kaplay.md,,no
-exo,categories/llm-inference/local-runtimes/ds4.md,,no
+exo,categories/llm-inference/local-runtimes/memory-offload/ds4.md,,no
 Fabric,categories/networking/paramiko.md,,no
 face_recognition (ageitgey/face_recognition),categories/computer-vision/deepface.md,,no
 facenet-pytorch (timesler/facenet-pytorch),categories/computer-vision/deepface.md,,no
@@ -759,7 +761,7 @@ Krita,categories/photo-editing/photocraft.md,,no
 Krita + AI Diffusion plugin,categories/ai-design-generation/sdpaint.md,,no
 KServe,categories/llm-inference/serving-engines/bentoml.md,,no
 KServe (kserve/kserve),categories/llm-inference/serving-engines/llm-d.md,,no
-KTransformers,categories/llm-inference/local-runtimes/freetoken.md,,no
+KTransformers,categories/llm-inference/local-runtimes/memory-offload/freetoken.md,,no
 Kubeflow Pipelines,categories/workflow-orchestration/argo-workflows.md,,no
 Kvrocks (Apache),categories/databases/database-engines/pikiwidb.md,,no
 Kythe,categories/rag-retrieval/code-intelligence/scip.md,,no

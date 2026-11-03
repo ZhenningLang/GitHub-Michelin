@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1436
+- Named-but-unindexed alternatives: 1438
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -38,6 +38,7 @@ shape and are deliberately excluded here.
 | [Anki](https://github.com/ankitects/anki) | `categories/education-tutoring/echo-loop.md` |
 | [Apache ECharts](https://github.com/apache/echarts) | `categories/data-visualization/flint-chart.md` |
 | [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox) | `categories/knowledge-base/hister.md` |
+| [ast-grep](https://github.com/ast-grep/ast-grep) | `categories/dev-utilities/openrewrite.md` |
 | [Awesome Quant](https://github.com/wilsonfreitas/awesome-quant) | `categories/investment-finance/awesome-deep-trading.md` |
 | [Backtesting.py](https://github.com/kernc/backtesting.py) | `categories/investment-finance/backtrader.md` |
 | [Baidu Netdisk MCP](https://github.com/baidu-netdisk/mcp) | `categories/agent-skills/vendor-collections/product-vendors/bdpan-storage.md` |
@@ -51,4 +52,3 @@ shape and are deliberately excluded here.
 | [Bitwarden server](https://github.com/bitwarden/server) | `categories/dev-utilities/ops-infra/vaultwarden.md` |
 | [Blender](https://github.com/blender/blender) | `categories/video-production/creation-workflows/artcraft.md` |
 | [btop](https://github.com/aristocratos/btop) | `categories/observability/mac-performance-monitor.md` |
-| [build123d](https://github.com/gumyr/build123d) | `categories/cad/text-to-cad.md` |

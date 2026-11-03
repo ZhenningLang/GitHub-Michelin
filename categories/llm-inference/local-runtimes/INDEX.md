@@ -3,6 +3,12 @@
 > Category node. Consumer-hardware runtimes that run models on your own machine — one user, one box, no scheduler.
 > ← back to [llm-inference](../INDEX.md) · root: [category route](../../../INDEX.md) · 中文：[INDEX.zh.md](INDEX.zh.md)
 
+## Sub-categories
+
+| Sub-category | Enter when | Route |
+| --- | --- | --- |
+| **Memory Offload** | Your model weights exceed VRAM or RAM and you need layer streaming, expert caching, or CPU/GPU execution across memory tiers. | [→](memory-offload/INDEX.md) |
+
 ## Projects in this category
 
 | Project | Use when | Health | Page |
@@ -12,13 +18,9 @@
 | **Magnitude** | Use it when the machine's capability is unknown and you want a pre-download speed/memory estimate plus one-click wiring into an existing coding harness — accepting a two-month-old single-vendor repo that reports ~6x slower than llama.cpp on Apple Silicon. | B (6/6) | [→](magnitude.md) |
 | **omlx** | Use it when you want a Mac (Apple Silicon) local LLM inference server on MLX with SSD-tiered KV caching — a young single-maintainer repo with a suspicious star count. | B (6/6) | [→](omlx.md) |
 | **MTPLX** | Use it when you want the model's own MTP heads to exact-speculatively decode Qwen 3.8 at ~2x plain speed on a Mac with an OpenAI/Anthropic server and app — accepting a ~5-month-old, author-dominated repo and an in-product attribution NOTICE. | B (6/6) | [→](mtplx.md) |
-| **AirLLM** | Use it when a model will not fit your card in the form you need and wall-clock time is free — a library that streams the checkpoint off disk one layer at a time so VRAM costs one layer, at seconds-to-minutes per token. | B (6/6) | [→](airllm.md) |
 | **Shimmy** | Use it when you have GGUF files on disk and want an OpenAI/Ollama/Anthropic-compatible API from one Rust binary with zero runtime dependencies — accepting a one-year-old single-maintainer project whose engine certifies only 26 model+quant combinations. | B (6/6) | [→](shimmy.md) |
 | **Airframe** | Use it when you embed GGUF inference in your own Rust program and need a pure-Rust build with one-shader-language GPU coverage (WebGPU) — accepting a six-month-old, single-contributor engine with 12 certified architecture families and a pending-patent subsystem. | C (4/6) | [→](airframe.md) |
-| **FreeToken** | Use it when one NVIDIA desktop must serve a Mixture-of-Experts model bigger than its VRAM to your coding agent — experts live in host RAM with a GPU cache — accepting a ~2-month-old, Linux-plus-NVIDIA-only v0.1.x engine with no API auth. | B (6/6) | [→](freetoken.md) |
 | **Claude Code Local** | Use it when Claude Code's usage limit or a no-cloud rule stops you and you want the same `claude` session answered by a local model on an Apple Silicon Mac — accepting a six-month-old single-maintainer repo, one-user-at-a-time serving, and abliterated default models. | B (6/6) | [→](claude-code-local.md) |
-| **DwarfStar (ds4)** | Use it when you own a 96 GB+ Mac, a DGX Spark or a Strix Halo box and want one of a few frontier MoE models (DeepSeek V4, GLM 5.x, Qwen3.8) driving your coding agent locally, spilling to SSD when RAM runs out — accepting a five-month-old, single-maintainer, release-less engine that loads only its own GGUF files. | B (6/6) | [→](ds4.md) |
-| **Edge0** | Use it when you want a 35B-class MoE model on a 16–24 GB Mac (or a phone) and memory, not model choice, is the constraint — experts stream from the SSD with a trained one-step-ahead predictor — accepting exactly two preview models, a small accuracy loss versus fp16, and a one-month-old, release-less repo. | C (6/6) | [→](edge0.md) |
 
 ## Comparison matrix
 
@@ -29,14 +31,12 @@
 | [Magnitude](magnitude.md) | ✅ | B (6/6) | Pre-download hardware-fit estimates plus one-click harness wiring for mixed-GPU fleets; young single-vendor repo, ~6x slower than llama.cpp on Apple Silicon, loopback only. |
 | [omlx](omlx.md) | ✅ | B (6/6) | Mac-only MLX server with SSD-tiered KV caching; young, effectively single-maintainer. |
 | [MTPLX](mtplx.md) | ✅ | B (6/6) | Mac-only exact MTP speculative decoding for Qwen 3.8; author-dominated, attribution NOTICE, non-Qwen models fall back to AR.
-| [AirLLM](airllm.md) | ✅ | — | Layer-streaming library that runs a 70B/671B-class model on a 4–12GB card by keeping one layer on the device; the price is a disk read per token (users report 28.6 s/token on a 3B) and a compression option that measures slower, not faster. | |
 | [Shimmy](shimmy.md) | ✅ | — | Single Rust binary serving OpenAI/Ollama/Anthropic-compatible APIs from a GGUF path, auto-discovering Ollama/HF model dirs; the engine (Airframe) certifies only 26 model+quant combos, and its LICENSE file contradicts its Cargo.toml (Apache-2.0 vs MIT). |
 | [Airframe](airframe.md) | ✅ | — | Pure-Rust WebGPU (WGSL) GGUF inference engine — `cargo build` covers NVIDIA/AMD/Intel/Apple Silicon; young, single-contributor, no LICENSE file, and the FSE subsystem carries a pending US patent. |
-| [FreeToken](freetoken.md) | ✅ | — | Serves frontier MoE checkpoints (safetensors) on one consumer NVIDIA card by keeping experts in host RAM and auto-sizing a GPU expert cache, with OpenAI/Anthropic APIs and `ft launch` for coding agents; Linux+NVIDIA only, needs RAM ≈ expert weights, v0.1.x format churn, no HTTP auth. |
 | [Claude Code Local](claude-code-local.md) | ✅ | — | MLX server that speaks the Anthropic Messages API to Claude Code and repairs local models' tool calls, with a RAM-sized installer and Desktop launchers; Mac-only, single-threaded, one global prompt cache, no speculative decoding. |
-| [DwarfStar (ds4)](ds4.md) | ✅ | — | Narrow C engine hand-fitted to a few frontier MoE models on Metal, CUDA and ROCm, with 2-bit expert quantization, SSD streaming for models larger than RAM, two-machine RDMA tensor parallelism and OpenAI/Anthropic APIs; loads only its own GGUFs, no releases, single maintainer, no API auth. |
-| [Edge0](edge0.md) | ✅ | — | Streams MoE experts from SSD with trained prerouter heads plus Recover-LoRA, so a 35B tier runs in ~3 GiB peak active memory on Apple Silicon, with iOS/Android/macOS/Windows apps; only its own two preview checkpoints, macOS-only Python framework, exact mlx pins, single-slot server with no auth. |
 
 ## What belongs here
 
 Runtimes whose primary job is **running a model for one user on their own machine** — desktop apps, single-binary servers, and embeddable engines. Not server-class serving engines with batching and autoscaling (see `serving-engines`), not phone/edge runtimes (see `on-device-ml`).
+
+Keep local model management, broad engines, embedding libraries, and KV-cache-only tiering here. For weight streaming or CPU/GPU expert offload as the deciding constraint, enter [Memory Offload](memory-offload/INDEX.md).

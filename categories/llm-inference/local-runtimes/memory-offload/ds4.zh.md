@@ -2,7 +2,7 @@
 name: DwarfStar (ds4)
 slug: ds4
 repo: https://github.com/antirez/ds4
-category: local-runtimes
+category: memory-offload
 tags: [llm-inference, local-inference, moe, apple-metal, nvidia-cuda, amd-rocm, ssd-streaming, openai-compatible, anthropic-compatible, local-coding-agents]
 language: C
 license: MIT
@@ -79,19 +79,19 @@ health:
 
 能带得动编程智能体的开源大模型，文件动辄 80 GB 到几百 GB；在你自己买得起的那台机器上，通用推理引擎要么还不认识最新的模型，要么跑得很慢。DwarfStar 是一个只为少数几个模型手工适配的小型 C 引擎：让它们跑在 Mac、NVIDIA DGX Spark 或 AMD Strix Halo 主机上，内存装不下的部分直接从固态硬盘现读。
 
-![DwarfStar (ds4) — 健康度雷达](../../../assets/health/ds4.zh.svg)
+![DwarfStar (ds4) — 健康度雷达](../../../../assets/health/ds4.zh.svg)
 
 ## 何时使用
 
 你有一台 128 GB 内存的 MacBook Pro（或者一台 DGX Spark、一台 Framework Desktop），想让 Claude Code、Codex CLI、OpenCode 或 Pi 接上前沿开源模型——DeepSeek V4 Flash、GLM 5.3 Flash、Qwen3.8 Flash Next——并且任何数据都不出这台机器。你要的那个文件按 2 比特量化约 81 GiB，再大一档是 341 GiB；通用引擎得先支持每一种新架构才能加载它，内存比文件小的机器更是根本起不来。你克隆 ds4，执行 `make`，执行 `./download_model.sh ds4f-q2`，启动 `./ds4-server --ctx 32768`，再把智能体指向 `http://127.0.0.1:8000`。
 
-和 [llama.cpp](llama-cpp.zh.md)、[Ollama](ollama.zh.md) 相比，当你的模型恰好在 ds4 的名单里、又需要那些引擎没有默认提供的路径时选它：模型比内存大时从固态硬盘流式读取、用模型自带的预测头做投机解码、两台 Mac 用 Thunderbolt RDMA 连成一台、或者在较老的 Ada 代 NVIDIA 显卡上跑 DeepSeek V4 Flash。和 [FreeToken](freetoken.zh.md) 相比，当机器是 Mac 或统一内存主机、而不是带独立 NVIDIA 显卡的台式机时选它。决定性的取舍：你换来一个按模型、按机器逐一调过的引擎，放弃的是通用性——它只加载自己脚本产出的 GGUF 文件，没有带版本号的发布，更好的模型出现时旧模型会被移除。
+和 [llama.cpp](../llama-cpp.zh.md)、[Ollama](../ollama.zh.md) 相比，当你的模型恰好在 ds4 的名单里、又需要那些引擎没有默认提供的路径时选它：模型比内存大时从固态硬盘流式读取、用模型自带的预测头做投机解码、两台 Mac 用 Thunderbolt RDMA 连成一台、或者在较老的 Ada 代 NVIDIA 显卡上跑 DeepSeek V4 Flash。和 [FreeToken](freetoken.zh.md) 相比，当机器是 Mac 或统一内存主机、而不是带独立 NVIDIA 显卡的台式机时选它。决定性的取舍：你换来一个按模型、按机器逐一调过的引擎，放弃的是通用性——它只加载自己脚本产出的 GGUF 文件，没有带版本号的发布，更好的模型出现时旧模型会被移除。
 
 ## 怎么用起来
 
 大多数引擎的目标是“什么模型都能跑”，ds4 反着来：它为每个支持的模型、在每类 GPU（苹果 Metal、NVIDIA CUDA、AMD ROCm）上各写了一条专用推理路径。它瞄准的都是 MoE（混合专家）模型——每一层里放着很多小的“专家”子网络，处理每个 token（模型读写的词片段）时只有少数几个专家被激活。ds4 把这些专家压到每个权重约两比特，始终要用的部分保留更高精度，于是一个 2840 亿参数的模型能压进约 81 GiB。连这也装不下时，`--ssd-streaming` 只在内存里留一份有上限的常用专家缓存，其余的用到时再从模型文件里读——就像工坊只把手头在用的工具放在台面上，别的要用再去库房拿。服务端还会记住 KV 状态（模型对已有对话的工作记忆）并可存到磁盘，智能体把整段历史重发过来时，只需处理新增的尾巴。你决定编译目标、下载哪个模型、上下文多长；加载、内存预算、提示词格式、工具调用解析和接口服务由 ds4 完成。另有一条不经过服务端的入口：`ds4-agent` 是内置的终端编程智能体，直接驱动模型，会话存在 `~/.ds4/kvcache` 下。
 
-![ds4 — 主干用户故事](../../../assets/flow/ds4.zh.svg)
+![ds4 — 主干用户故事](../../../../assets/flow/ds4.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/ds4.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -112,25 +112,25 @@ health:
 
 ## 何时不用
 
-- **模型不在 ds4 名单里，改用 [llama.cpp](llama-cpp.zh.md) 或 [Ollama](ollama.zh.md)。** `docs/MODELS.md` 开头就写着“DwarfStar is not a general GGUF runner”：只支持 `download_model.sh` 拉下来的文件（或用 `gguf-tools/` 自己构建的），别的 GGUF“may have unsupported tensor layouts, metadata, or quantization mixes”。
-- **统一内存不到约 64 GB，或只有一张 16–32 GB 的游戏显卡，改用 [FreeToken](freetoken.zh.md)（NVIDIA 台式机加大内存）或在 [Ollama](ollama.zh.md) 下跑小量化模型。** Metal 指南里最小的一档是 64 GB 配 SSD 流式读取，96 GB 才是第一档常驻内存；README 写明首要目标是“Macs with 96 GB or more”。
-- **用 Windows，或没有受支持的 GPU，改用 [llama.cpp](llama-cpp.zh.md)。** 构建指南只覆盖 macOS Metal、Linux CUDA（DGX Spark 与多卡）和 Strix Halo 上的 Linux ROCm。`make cpu` 只是“a reference/debug path, not the production performance target”，`CONTRIBUTING.md` 还提醒在 Mac 上跑 CPU 路径“can crash the system because of a kernel bug in macOS”。
-- **需要可固定版本号的依赖，改用 [Ollama](ollama.zh.md) 或 [llama.cpp](llama-cpp.zh.md)。** 截至 2026-10-08，仓库没有任何 tag，也没有 GitHub release，只能编译 `main`。README 自称“very fast changing … beta quality”，并说模型支持“is intentionally opportunistic”，“a model may be removed when a better replacement arrives”。
-- **服务对象是一个团队而不是你自己，改用 [vLLM](../serving-engines/vllm.zh.md)。** `--batched-session N` 能开多个并发槽位，但好几种模型与后端的组合会退回逐行执行（文档原话：“concurrency and scheduling fairness, not the aggregate speedup”），多用户数据只来自一套八张 L40S 的机器。
-- **端口或集群链路会被不可信的人访问到，就在前面加一层带鉴权的代理（例如 [Kong](../../api-gateway/kong.zh.md)），或改用带 API key 的 [vLLM](../serving-engines/vllm.zh.md)。** `docs/SERVER.md` 要求你“put authentication and TLS in front of the server”；客户端示例里的 `dsv4-local` 只是占位符，分布式模式的“network protocols have no authentication or encryption”。
-- **应用依赖按 schema 约束的 JSON 输出，改用 [vLLM](../serving-engines/vllm.zh.md) 或带语法约束的 [llama.cpp](llama-cpp.zh.md)。** 要求支持 OpenAI 式结构化输出的 issue #210（2026-05-20 提出）到 2026-10-08 仍未关闭。
-- **不能接受推理栈里有 AI 写的代码，改用 [llama.cpp](llama-cpp.zh.md)。** README 的“AI full disclosure”一节说引擎是“developed with strong assistance from AI coding agents”，并直说：“If you are not happy with AI-developed code, this software is not for you.”
+- **模型不在 ds4 名单里，改用 [llama.cpp](../llama-cpp.zh.md) 或 [Ollama](../ollama.zh.md)。** `docs/MODELS.md` 开头就写着“DwarfStar is not a general GGUF runner”：只支持 `download_model.sh` 拉下来的文件（或用 `gguf-tools/` 自己构建的），别的 GGUF“may have unsupported tensor layouts, metadata, or quantization mixes”。
+- **统一内存不到约 64 GB，或只有一张 16–32 GB 的游戏显卡，改用 [FreeToken](freetoken.zh.md)（NVIDIA 台式机加大内存）或在 [Ollama](../ollama.zh.md) 下跑小量化模型。** Metal 指南里最小的一档是 64 GB 配 SSD 流式读取，96 GB 才是第一档常驻内存；README 写明首要目标是“Macs with 96 GB or more”。
+- **用 Windows，或没有受支持的 GPU，改用 [llama.cpp](../llama-cpp.zh.md)。** 构建指南只覆盖 macOS Metal、Linux CUDA（DGX Spark 与多卡）和 Strix Halo 上的 Linux ROCm。`make cpu` 只是“a reference/debug path, not the production performance target”，`CONTRIBUTING.md` 还提醒在 Mac 上跑 CPU 路径“can crash the system because of a kernel bug in macOS”。
+- **需要可固定版本号的依赖，改用 [Ollama](../ollama.zh.md) 或 [llama.cpp](../llama-cpp.zh.md)。** 截至 2026-10-08，仓库没有任何 tag，也没有 GitHub release，只能编译 `main`。README 自称“very fast changing … beta quality”，并说模型支持“is intentionally opportunistic”，“a model may be removed when a better replacement arrives”。
+- **服务对象是一个团队而不是你自己，改用 [vLLM](../../serving-engines/vllm.zh.md)。** `--batched-session N` 能开多个并发槽位，但好几种模型与后端的组合会退回逐行执行（文档原话：“concurrency and scheduling fairness, not the aggregate speedup”），多用户数据只来自一套八张 L40S 的机器。
+- **端口或集群链路会被不可信的人访问到，就在前面加一层带鉴权的代理（例如 [Kong](../../../api-gateway/kong.zh.md)），或改用带 API key 的 [vLLM](../../serving-engines/vllm.zh.md)。** `docs/SERVER.md` 要求你“put authentication and TLS in front of the server”；客户端示例里的 `dsv4-local` 只是占位符，分布式模式的“network protocols have no authentication or encryption”。
+- **应用依赖按 schema 约束的 JSON 输出，改用 [vLLM](../../serving-engines/vllm.zh.md) 或带语法约束的 [llama.cpp](../llama-cpp.zh.md)。** 要求支持 OpenAI 式结构化输出的 issue #210（2026-05-20 提出）到 2026-10-08 仍未关闭。
+- **不能接受推理栈里有 AI 写的代码，改用 [llama.cpp](../llama-cpp.zh.md)。** README 的“AI full disclosure”一节说引擎是“developed with strong assistance from AI coding agents”，并直说：“If you are not happy with AI-developed code, this software is not for you.”
 - **想把一个模型摊到三台以上的 Mac 上并自动发现节点，去看 exo。** ds4 的张量并行固定是两台机器，Thunderbolt RDMA 链路要手工配置；流水线模式要手工分配层范围，而且每个节点必须是同一个 commit。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [llama.cpp](llama-cpp.zh.md) | ✅ | 模型在 ds4 名单里，又要在 Mac、Spark 或 Strix Halo 上用 SSD 流式读取、模型原生投机解码或双机张量并行时选 ds4；其余所有模型、Windows 或纯 CPU 机器、以及需要加载任意 GGUF 时选 llama.cpp。 | ds4 自己说没有 llama.cpp 就不会有它，并沿用了其中一部分量化代码。得到的是按模型、按机器的专门调优；付出的是不到十个模型的名单、没有发布版本、代码每周都在变。 |
+| [llama.cpp](../llama-cpp.zh.md) | ✅ | 模型在 ds4 名单里，又要在 Mac、Spark 或 Strix Halo 上用 SSD 流式读取、模型原生投机解码或双机张量并行时选 ds4；其余所有模型、Windows 或纯 CPU 机器、以及需要加载任意 GGUF 时选 llama.cpp。 | ds4 自己说没有 llama.cpp 就不会有它，并沿用了其中一部分量化代码。得到的是按模型、按机器的专门调优；付出的是不到十个模型的名单、没有发布版本、代码每周都在变。 |
 | [FreeToken](freetoken.zh.md) | ✅ | 机器是带独立 NVIDIA 显卡、内存远大于显存的 Linux 台式机时选 FreeToken；内存是统一的（Apple Silicon、DGX Spark、Strix Halo），或模型比内存本身还大、必须溢出到固态硬盘时选 ds4。 | 两者都利用 MoE 的稀疏性服务单人的编程智能体。FreeToken 直接加载原始 safetensors，把专家卸载到内存；ds4 要用自己的 2 比特或 4 比特 GGUF，把专家卸载到磁盘，并多出 Metal、ROCm 和多机模式。 |
-| [omlx](omlx.zh.md) | ✅ | 想在 Mac 上起一个能跑 MLX 大量模型、带 SSD 分层 KV 缓存的服务时选 omlx；目标是某个前沿 MoE 模型、而 MLX 量化版在你的 Mac 上装不下或跑不动时选 ds4。 | omlx 继承了 MLX 的模型覆盖面；ds4 支持的模型少得多，但从固态硬盘流式读取的是权重本身（不只是 KV 状态），并且也能跑在 NVIDIA 和 AMD 上。 |
-| [MTPLX](mtplx.zh.md) | ✅ | 只关心在 Mac 上跑 Qwen 3.8、要的就是精确投机解码外加一个应用外壳时选 MTPLX；还想跑 DeepSeek 或 GLM、用非 Mac 硬件、或需要 SSD 流式读取时选 ds4。 | 两者都用模型自带的多 token 预测头。ds4 里投机解码要手动打开（`--mtp`），文档也承认“not every workload benefits”；MTPLX 则把它做成了产品本身。 |
-| [vLLM](../serving-engines/vllm.zh.md) | ✅ | 有数据中心级 GPU、显存装得下模型、又要服务很多用户时选 vLLM；硬件是个人机器或几张旧卡、不靠激进的专家量化就装不下模型时选 ds4。 | vLLM 带来连续批处理、结构化输出、API key 和正式发布；ds4 带来的是在消费级硬件上跑比内存还大的模型，共享服务需要的其他东西它几乎都没有。 |
+| [omlx](../omlx.zh.md) | ✅ | 想在 Mac 上起一个能跑 MLX 大量模型、带 SSD 分层 KV 缓存的服务时选 omlx；目标是某个前沿 MoE 模型、而 MLX 量化版在你的 Mac 上装不下或跑不动时选 ds4。 | omlx 继承了 MLX 的模型覆盖面；ds4 支持的模型少得多，但从固态硬盘流式读取的是权重本身（不只是 KV 状态），并且也能跑在 NVIDIA 和 AMD 上。 |
+| [MTPLX](../mtplx.zh.md) | ✅ | 只关心在 Mac 上跑 Qwen 3.8、要的就是精确投机解码外加一个应用外壳时选 MTPLX；还想跑 DeepSeek 或 GLM、用非 Mac 硬件、或需要 SSD 流式读取时选 ds4。 | 两者都用模型自带的多 token 预测头。ds4 里投机解码要手动打开（`--mtp`），文档也承认“not every workload benefits”；MTPLX 则把它做成了产品本身。 |
+| [vLLM](../../serving-engines/vllm.zh.md) | ✅ | 有数据中心级 GPU、显存装得下模型、又要服务很多用户时选 vLLM；硬件是个人机器或几张旧卡、不靠激进的专家量化就装不下模型时选 ds4。 | vLLM 带来连续批处理、结构化输出、API key 和正式发布；ds4 带来的是在消费级硬件上跑比内存还大的模型，共享服务需要的其他东西它几乎都没有。 |
 | exo | 未收录 | 想让多台设备自动互相发现并合并内存时选 exo（其 README 列出自动发现、Thunderbolt RDMA 和最多四台机器的张量并行）；模型在 ds4 名单里、还想用它的 2 比特文件和 SSD 流式读取时选 ds4。 | 真实仓库（exo-explore/exo，Apache-2.0，截至 2026-10 为 4.78 万 star）——本轮标签页批次未收录。两者没有做过对比测试，评价只基于文档描述的搭建方式。 |
 
 ## 技术栈

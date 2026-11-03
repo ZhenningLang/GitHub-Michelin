@@ -2,7 +2,7 @@
 name: AirLLM
 slug: airllm
 repo: https://github.com/lyogavin/airllm
-category: local-runtimes
+category: memory-offload
 tags: [llm-inference, layer-streaming, low-vram, disk-offload, moe, quantization, macos-mlx]
 language: Python
 license: Apache-2.0
@@ -79,11 +79,11 @@ health:
 
 Layer-streaming inference library: it splits a checkpoint into one shard per layer on disk and keeps a single layer on the device at a time, so VRAM is bounded by the largest layer rather than by the model — paid for in disk space and seconds per token.
 
-![AirLLM — health radar](../../../assets/health/airllm.svg)
+![AirLLM — health radar](../../../../assets/health/airllm.svg)
 
 ## When to use
 
-You have one consumer or workstation GPU — 4GB, 8GB, 12GB — and a model that does not fit on it in the form you need: a 70B in full precision, a 671B MoE, or a checkpoint whose exact weights matter because you are scoring or ranking with it rather than chatting. Every other runtime you tried asks you to make the model fit *somewhere* first: [llama.cpp](llama-cpp.md) and [Ollama](ollama.md) want it resident across VRAM plus system RAM in a quantized GGUF format, and [vLLM](../serving-engines/vllm.md) wants it on the card. AirLLM is the one that instead reads the model off disk one layer at a time, so the number that matters is your largest layer, not your model.
+You have one consumer or workstation GPU — 4GB, 8GB, 12GB — and a model that does not fit on it in the form you need: a 70B in full precision, a 671B MoE, or a checkpoint whose exact weights matter because you are scoring or ranking with it rather than chatting. Every other runtime you tried asks you to make the model fit *somewhere* first: [llama.cpp](../llama-cpp.md) and [Ollama](../ollama.md) want it resident across VRAM plus system RAM in a quantized GGUF format, and [vLLM](../../serving-engines/vllm.md) wants it on the card. AirLLM is the one that instead reads the model off disk one layer at a time, so the number that matters is your largest layer, not your model.
 
 You reach for it as a **library inside a Python pipeline**, not as a server: `pip install airllm`, one `AutoModel.from_pretrained(...)`, then `model.generate(...)` exactly as with a plain transformers model. Choose it over llama.cpp/Ollama when the deciding constraint is "the weights stay as they are — no GGUF conversion, no quantization of the parts I care about" and wall-clock time is genuinely free (an overnight batch, a scoring pass, a capability check). Choose it over vLLM when there is one box and one user. If throughput appears anywhere in your requirements, this is the wrong tool — see below.
 
@@ -91,7 +91,7 @@ You reach for it as a **library inside a Python pipeline**, not as a server: `pi
 
 AirLLM does not shrink the model; it stops keeping it in memory. On the first run it splits the checkpoint into one file per layer under a `splitted_model` directory beside your Hugging Face cache, then instantiates the real transformers model on PyTorch's `meta` device — every parameter object exists, and none of them holds data, so the model costs no memory to "load". It then attaches a forward hook to each large module (the embedding, every decoder layer, the final norm, `lm_head`): immediately before that module runs, the hook reads its weights from disk onto the device; immediately after, it frees them again, prefetching the next layer on a background thread so the read overlaps the current layer's compute. transformers itself owns the forward pass and the generation loop, which is why architectures work as soon as transformers supports them. Your side of the deal is install plus one `from_pretrained` call plus a normal `generate`; its side is the splitting, the per-layer load/evict/pipeline, and the disk-space bookkeeping.
 
-![airllm — backbone user story](../../../assets/flow/airllm.svg)
+![airllm — backbone user story](../../../../assets/flow/airllm.svg)
 
 <!-- flow-steps:begin (generated from flows/airllm.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -111,23 +111,23 @@ AirLLM does not shrink the model; it stops keeping it in memory. On the first ru
 
 ## When NOT to use
 
-- **If a human is waiting for the output, use [llama.cpp](llama-cpp.md) or [Ollama](ollama.md) with a GGUF quant instead.** Issue #364 (open since 2026-09-10) measures 28.6 s/token generating 4 tokens from a **3B** model on an RTX 5060 Ti with a local NVMe — a model that fits on that card several times over; the reporter killed the first attempt at 90 s because it looked like a hang.
-- **If you reached for `compression='4bit'` hoping for the README's "3x speed-up", do not use it; quantize with [llama.cpp](llama-cpp.md) instead.** Issue #330 measures the opposite on Qwen2.5-32B: 8bit 3.8x slower and 4bit 8.0x slower than no compression, with *higher* peak GPU memory in every compressed mode, because each layer is dequantized per token and — visible in the source — setting `compression` force-disables prefetching.
-- **If the model already fits at a quant you can accept, use [Ollama](ollama.md) or [llama.cpp](llama-cpp.md).** They keep weights resident and are orders of magnitude faster on identical hardware; AirLLM re-reads them from disk on every generated token, which is the whole trade.
-- **If you need concurrency, an HTTP API, batching, or autoscaling, use [vLLM](../serving-engines/vllm.md) or [SGLang](../serving-engines/sglang.md) instead.** AirLLM is a library: no server, no scheduler, no batching, no health surface — it is not a serving path.
-- **If you are on Apple Silicon and want a usable local service, look at [omlx](omlx.md) or [MTPLX](mtplx.md) instead.** AirLLM auto-selects an MLX-backed class on macOS, but it still streams layer by layer, so it inherits the same latency shape.
-- **If the box is CPU-only and you expect usable speed, prefer [llama.cpp](llama-cpp.md) on CPU with a small quant.** `device='cpu'` works in AirLLM, but you pay the per-token re-read with no GPU to overlap it against.
-- **If you need multi-GPU or mixed-precision training at scale, use [unsloth](../../llm-training/unsloth.md) or a QLoRA stack instead** of AirLLM's new streamed-LoRA path, which ships one hand-written script per model family (`train_qwen38_lora.py`, `train_qwen38_flash_next_lora.py`) rather than a trainer framework.
+- **If a human is waiting for the output, use [llama.cpp](../llama-cpp.md) or [Ollama](../ollama.md) with a GGUF quant instead.** Issue #364 (open since 2026-09-10) measures 28.6 s/token generating 4 tokens from a **3B** model on an RTX 5060 Ti with a local NVMe — a model that fits on that card several times over; the reporter killed the first attempt at 90 s because it looked like a hang.
+- **If you reached for `compression='4bit'` hoping for the README's "3x speed-up", do not use it; quantize with [llama.cpp](../llama-cpp.md) instead.** Issue #330 measures the opposite on Qwen2.5-32B: 8bit 3.8x slower and 4bit 8.0x slower than no compression, with *higher* peak GPU memory in every compressed mode, because each layer is dequantized per token and — visible in the source — setting `compression` force-disables prefetching.
+- **If the model already fits at a quant you can accept, use [Ollama](../ollama.md) or [llama.cpp](../llama-cpp.md).** They keep weights resident and are orders of magnitude faster on identical hardware; AirLLM re-reads them from disk on every generated token, which is the whole trade.
+- **If you need concurrency, an HTTP API, batching, or autoscaling, use [vLLM](../../serving-engines/vllm.md) or [SGLang](../../serving-engines/sglang.md) instead.** AirLLM is a library: no server, no scheduler, no batching, no health surface — it is not a serving path.
+- **If you are on Apple Silicon and want a usable local service, look at [omlx](../omlx.md) or [MTPLX](../mtplx.md) instead.** AirLLM auto-selects an MLX-backed class on macOS, but it still streams layer by layer, so it inherits the same latency shape.
+- **If the box is CPU-only and you expect usable speed, prefer [llama.cpp](../llama-cpp.md) on CPU with a small quant.** `device='cpu'` works in AirLLM, but you pay the per-token re-read with no GPU to overlap it against.
+- **If you need multi-GPU or mixed-precision training at scale, use [unsloth](../../../llm-training/unsloth.md) or a QLoRA stack instead** of AirLLM's new streamed-LoRA path, which ships one hand-written script per model family (`train_qwen38_lora.py`, `train_qwen38_flash_next_lora.py`) rather than a trainer framework.
 - **If this is meant to be a long-lived dependency, weigh the support shape first:** one account produced 352 of 370 commits, there is no `SECURITY.md` / `CODEOWNERS` / `GOVERNANCE.md` on the default branch, and neither of the two speed threads above has a maintainer reply as of 2026-09-22.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [llama.cpp](llama-cpp.md) | ✅ | Pick AirLLM only when the weights must stay unquantized and VRAM is the hard wall; pick llama.cpp when you will accept a GGUF quant, because it then runs the same model orders of magnitude faster by keeping shards resident instead of re-reading them per token. | AirLLM buys you "no conversion, no quantization, VRAM = one layer" and charges disk space plus seconds-to-minutes per token; llama.cpp buys throughput and a GGUF you own. |
-| [Ollama](ollama.md) | ✅ | Pick AirLLM when you need it embedded in a Python pipeline with model weights as-is; pick Ollama when you want a managed local model store with an OpenAI-compatible API and official client SDKs. | AirLLM is a library call, so nothing to run and nothing to operate; Ollama is a daemon with a registry, a server, and a much larger install base. |
-| [vLLM](../serving-engines/vllm.md) | ✅ | Pick AirLLM for a single box where a hobbyist card must hold a model it cannot fit; pick vLLM when the goal is serving throughput, where its weight offload keeps a real API responsive. | Both can move weights off the card, but vLLM stays a serving engine with batching and ops surface, while AirLLM buys a lower VRAM floor by giving up throughput entirely. |
-| [omlx](omlx.md) | ✅ | Pick AirLLM on a Mac only if you must exceed unified memory; pick omlx when the target is Apple Silicon and you want a local MLX server rather than per-token layer streaming. | AirLLM raises the ceiling on model size on any platform, including macOS; omlx is faster and operable but Mac-only and bounded by unified memory. |
+| [llama.cpp](../llama-cpp.md) | ✅ | Pick AirLLM only when the weights must stay unquantized and VRAM is the hard wall; pick llama.cpp when you will accept a GGUF quant, because it then runs the same model orders of magnitude faster by keeping shards resident instead of re-reading them per token. | AirLLM buys you "no conversion, no quantization, VRAM = one layer" and charges disk space plus seconds-to-minutes per token; llama.cpp buys throughput and a GGUF you own. |
+| [Ollama](../ollama.md) | ✅ | Pick AirLLM when you need it embedded in a Python pipeline with model weights as-is; pick Ollama when you want a managed local model store with an OpenAI-compatible API and official client SDKs. | AirLLM is a library call, so nothing to run and nothing to operate; Ollama is a daemon with a registry, a server, and a much larger install base. |
+| [vLLM](../../serving-engines/vllm.md) | ✅ | Pick AirLLM for a single box where a hobbyist card must hold a model it cannot fit; pick vLLM when the goal is serving throughput, where its weight offload keeps a real API responsive. | Both can move weights off the card, but vLLM stays a serving engine with batching and ops surface, while AirLLM buys a lower VRAM floor by giving up throughput entirely. |
+| [omlx](../omlx.md) | ✅ | Pick AirLLM on a Mac only if you must exceed unified memory; pick omlx when the target is Apple Silicon and you want a local MLX server rather than per-token layer streaming. | AirLLM raises the ceiling on model size on any platform, including macOS; omlx is faster and operable but Mac-only and bounded by unified memory. |
 | DeepSpeed ZeRO-Inference | 未收录 | Pick AirLLM when one process on one box must hold a model bigger than its VRAM with no framework around it; pick ZeRO-Inference when you are already inside DeepSpeed and want CPU/NVMe offload as part of a training-and-inference stack. | Deliberately not indexed in this batch: it is a subsystem of a heavy multi-GPU training framework, so its page belongs with training-acceleration tooling rather than here — the smaller per-layer offloader is what this row actually competes with. |
 
 ## Tech stack

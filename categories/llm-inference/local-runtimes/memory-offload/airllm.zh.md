@@ -2,7 +2,7 @@
 name: AirLLM
 slug: airllm
 repo: https://github.com/lyogavin/airllm
-category: local-runtimes
+category: memory-offload
 tags: [llm-inference, layer-streaming, low-vram, disk-offload, moe, quantization, macos-mlx]
 language: Python
 license: Apache-2.0
@@ -79,11 +79,11 @@ health:
 
 按层流式推理的库：把检查点切成一层一个分片落盘，设备上永远只留一层，于是显存上限由最大的那一层决定而不是由模型大小决定——代价是磁盘空间和每秒级的等待。
 
-![AirLLM — 健康度雷达](../../../assets/health/airllm.zh.svg)
+![AirLLM — 健康度雷达](../../../../assets/health/airllm.zh.svg)
 
 ## 何时使用
 
-你只有一张消费级或工作站显卡——4GB、8GB、12GB——而手上这个模型在你要用的形态下装不进去：全精度的 70B、671B 的 MoE，或者一个权重必须原样保留的检查点，因为你是拿它做打分、排序，而不是聊天。你试过的其它运行时都要求你先让模型**装进某个地方**：[llama.cpp](llama-cpp.zh.md) 和 [Ollama](ollama.zh.md) 要求它以 GGUF 量化格式同时驻留在显存和内存里，[vLLM](../serving-engines/vllm.zh.md) 要求它整块待在卡上。AirLLM 是反过来做的那个：从磁盘一层一层地读，所以决定成败的数字是你的最大层，而不是你的模型。
+你只有一张消费级或工作站显卡——4GB、8GB、12GB——而手上这个模型在你要用的形态下装不进去：全精度的 70B、671B 的 MoE，或者一个权重必须原样保留的检查点，因为你是拿它做打分、排序，而不是聊天。你试过的其它运行时都要求你先让模型**装进某个地方**：[llama.cpp](../llama-cpp.zh.md) 和 [Ollama](../ollama.zh.md) 要求它以 GGUF 量化格式同时驻留在显存和内存里，[vLLM](../../serving-engines/vllm.zh.md) 要求它整块待在卡上。AirLLM 是反过来做的那个：从磁盘一层一层地读，所以决定成败的数字是你的最大层，而不是你的模型。
 
 你要把它当作**Python 流水线里的库**来用，而不是当服务：`pip install airllm`，一次 `AutoModel.from_pretrained(...)`，然后像普通 transformers 模型那样 `model.generate(...)`。当决定性约束是“权重必须原样保留，不转 GGUF、不量化我在意的部分”而墙钟时间真的免费时（过夜批处理、跑一遍打分、验证一个能力边界），选它而不是 llama.cpp / Ollama；单机单用户时选它而不是 vLLM。只要吞吐出现在需求里，这就选错工具了——见下一节。
 
@@ -91,7 +91,7 @@ health:
 
 AirLLM 不缩小模型，它只是不再把模型留在内存里。首次运行时它把检查点切成一层一个文件，放在 Hugging Face 缓存旁边的 `splitted_model` 目录里；然后把真正的 transformers 模型实例化在 PyTorch 的 `meta` 设备上——所有参数对象都在，但都不持有数据，所以“加载模型”这一步不占内存。接着它给每个大模块（embedding、每一个 decoder 层、最后的 norm、`lm_head`）挂一个前向 hook：模块执行前，hook 把它的权重从磁盘读到设备上；执行完立刻释放；同时后台线程预取下一层，让读取和当前层的计算重叠。前向与生成循环本身由 transformers 驱动，所以只要 transformers 支持某个架构，它就能跑。你这边只负责安装、一次 `from_pretrained` 和一次普通的 `generate`；它那边负责切分、逐层装载与驱逐、以及磁盘空间的账。
 
-![airllm — 主干用户故事](../../../assets/flow/airllm.zh.svg)
+![airllm — 主干用户故事](../../../../assets/flow/airllm.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/airllm.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -111,23 +111,23 @@ AirLLM 不缩小模型，它只是不再把模型留在内存里。首次运行�
 
 ## 何时不用
 
-- **有人在等输出时，改用 [llama.cpp](llama-cpp.zh.md) 或 [Ollama](ollama.zh.md) 的 GGUF 量化版本。** 议题 #364（2026-09-10 起未关）在 RTX 5060 Ti 上、用本地 NVMe 跑一个 **3B** 模型生成 4 个 token，实测 28.6 秒/token——那个模型在这张卡上能装下好几遍；报告者第一次跑了 90 秒以为卡死就杀掉了。
-- **如果你是想靠 `compression='4bit'` 拿 README 说的“3 倍加速”，别用它，改用 [llama.cpp](llama-cpp.zh.md) 量化。** 议题 #330 在 Qwen2.5-32B 上测到的是相反的结论：8bit 比不压缩慢 3.8 倍，4bit 慢 8.0 倍，而且两种压缩模式的峰值显存都**更高**——因为每一层都要在每个 token 上反量化，而源码里一旦设了 `compression` 就会强制关闭预取。
-- **模型用你能接受的量化就能装下时，用 [Ollama](ollama.zh.md) 或 [llama.cpp](llama-cpp.zh.md)。** 它们把权重常驻，在同样硬件上快几个数量级；AirLLM 每生成一个 token 都要重读一遍权重，这就是它的全部取舍。
-- **需要并发、HTTP API、批处理或自动扩缩容时，改用 [vLLM](../serving-engines/vllm.zh.md) 或 [SGLang](../serving-engines/sglang.zh.md)。** AirLLM 是个库：没有服务端、没有调度、没有批处理、没有健康检查面，它不是服务路径。
-- **在 Apple Silicon 上想要能用的本地服务，看 [omlx](omlx.zh.md) 或 [MTPLX](mtplx.zh.md)。** AirLLM 在 macOS 上会自动选到 MLX 后端，但仍然是逐层流式，延时的形状一模一样。
-- **纯 CPU 机器上还指望速度的，用 [llama.cpp](llama-cpp.zh.md) 在 CPU 上跑小量化模型。** AirLLM 接受 `device='cpu'`，但每个 token 的重读代价照付，而且没有 GPU 帮你把读取藏到计算后面。
-- **要做大规模多卡或混合精度训练，用 [unsloth](../../llm-training/unsloth.zh.md) 或 QLoRA 那套，而不是 AirLLM 新的流式 LoRA。** 它每个模型族只给一个手写脚本（`train_qwen38_lora.py`、`train_qwen38_flash_next_lora.py`），不是训练框架。
+- **有人在等输出时，改用 [llama.cpp](../llama-cpp.zh.md) 或 [Ollama](../ollama.zh.md) 的 GGUF 量化版本。** 议题 #364（2026-09-10 起未关）在 RTX 5060 Ti 上、用本地 NVMe 跑一个 **3B** 模型生成 4 个 token，实测 28.6 秒/token——那个模型在这张卡上能装下好几遍；报告者第一次跑了 90 秒以为卡死就杀掉了。
+- **如果你是想靠 `compression='4bit'` 拿 README 说的“3 倍加速”，别用它，改用 [llama.cpp](../llama-cpp.zh.md) 量化。** 议题 #330 在 Qwen2.5-32B 上测到的是相反的结论：8bit 比不压缩慢 3.8 倍，4bit 慢 8.0 倍，而且两种压缩模式的峰值显存都**更高**——因为每一层都要在每个 token 上反量化，而源码里一旦设了 `compression` 就会强制关闭预取。
+- **模型用你能接受的量化就能装下时，用 [Ollama](../ollama.zh.md) 或 [llama.cpp](../llama-cpp.zh.md)。** 它们把权重常驻，在同样硬件上快几个数量级；AirLLM 每生成一个 token 都要重读一遍权重，这就是它的全部取舍。
+- **需要并发、HTTP API、批处理或自动扩缩容时，改用 [vLLM](../../serving-engines/vllm.zh.md) 或 [SGLang](../../serving-engines/sglang.zh.md)。** AirLLM 是个库：没有服务端、没有调度、没有批处理、没有健康检查面，它不是服务路径。
+- **在 Apple Silicon 上想要能用的本地服务，看 [omlx](../omlx.zh.md) 或 [MTPLX](../mtplx.zh.md)。** AirLLM 在 macOS 上会自动选到 MLX 后端，但仍然是逐层流式，延时的形状一模一样。
+- **纯 CPU 机器上还指望速度的，用 [llama.cpp](../llama-cpp.zh.md) 在 CPU 上跑小量化模型。** AirLLM 接受 `device='cpu'`，但每个 token 的重读代价照付，而且没有 GPU 帮你把读取藏到计算后面。
+- **要做大规模多卡或混合精度训练，用 [unsloth](../../../llm-training/unsloth.zh.md) 或 QLoRA 那套，而不是 AirLLM 新的流式 LoRA。** 它每个模型族只给一个手写脚本（`train_qwen38_lora.py`、`train_qwen38_flash_next_lora.py`），不是训练框架。
 - **如果它要成为长期依赖，先看清支持形态：** 370 次提交里有 352 次来自同一个账号，默认分支上没有 `SECURITY.md` / `CODEOWNERS` / `GOVERNANCE.md`，而上面那两个速度议题到 2026-09-22 都没有维护者回复。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [llama.cpp](llama-cpp.zh.md) | ✅ | 只有“权重必须不量化且显存是硬墙”时才选 AirLLM；能接受 GGUF 量化就选 llama.cpp，因为它让分片常驻而不是每个 token 重读，同一个模型能快几个数量级。 | AirLLM 换来的是“不转换、不量化、显存只需一层”，代价是磁盘空间和每秒到每分钟级的等待；llama.cpp 换来的是吞吐和一个你自己的 GGUF。 |
-| [Ollama](ollama.zh.md) | ✅ | 需要嵌进 Python 流水线且权重原样保留时选 AirLLM；想要带 OpenAI 兼容 API 与官方客户端 SDK 的托管式本地模型仓库时选 Ollama。 | AirLLM 只是一次库调用，没有东西要运行、没有运维负担；Ollama 是带注册表、服务端和更大安装基数的守护进程。 |
-| [vLLM](../serving-engines/vllm.zh.md) | ✅ | 单机、且小卡必须装下装不下的模型时选 AirLLM；目标是服务吞吐时选 vLLM，它的权重下放仍能让 API 保持可用。 | 两者都能把权重挪出显卡，但 vLLM 仍是带批处理和运维面的服务引擎，AirLLM 用完全放弃吞吐换来更低的显存下限。 |
-| [omlx](omlx.zh.md) | ✅ | 只有在 Mac 上要突破统一内存上限才选 AirLLM；目标是 Apple Silicon 且想要本地 MLX 服务时选 omlx。 | AirLLM 在包括 macOS 在内的任何平台都抬高模型尺寸上限；omlx 更快、可运维，但只支持 Mac 且受统一内存限制。 |
+| [llama.cpp](../llama-cpp.zh.md) | ✅ | 只有“权重必须不量化且显存是硬墙”时才选 AirLLM；能接受 GGUF 量化就选 llama.cpp，因为它让分片常驻而不是每个 token 重读，同一个模型能快几个数量级。 | AirLLM 换来的是“不转换、不量化、显存只需一层”，代价是磁盘空间和每秒到每分钟级的等待；llama.cpp 换来的是吞吐和一个你自己的 GGUF。 |
+| [Ollama](../ollama.zh.md) | ✅ | 需要嵌进 Python 流水线且权重原样保留时选 AirLLM；想要带 OpenAI 兼容 API 与官方客户端 SDK 的托管式本地模型仓库时选 Ollama。 | AirLLM 只是一次库调用，没有东西要运行、没有运维负担；Ollama 是带注册表、服务端和更大安装基数的守护进程。 |
+| [vLLM](../../serving-engines/vllm.zh.md) | ✅ | 单机、且小卡必须装下装不下的模型时选 AirLLM；目标是服务吞吐时选 vLLM，它的权重下放仍能让 API 保持可用。 | 两者都能把权重挪出显卡，但 vLLM 仍是带批处理和运维面的服务引擎，AirLLM 用完全放弃吞吐换来更低的显存下限。 |
+| [omlx](../omlx.zh.md) | ✅ | 只有在 Mac 上要突破统一内存上限才选 AirLLM；目标是 Apple Silicon 且想要本地 MLX 服务时选 omlx。 | AirLLM 在包括 macOS 在内的任何平台都抬高模型尺寸上限；omlx 更快、可运维，但只支持 Mac 且受统一内存限制。 |
 | DeepSpeed ZeRO-Inference | 未收录 | 单机单进程要放下超过显存的模型、且外面不套框架时选 AirLLM；已经在 DeepSpeed 里、想把 CPU/NVMe 下放当成训练加推理整套的一部分时选 ZeRO-Inference。 | 本批次有意不收录：它是重型多卡训练框架的一个子系统，它的页面属于训练加速那一类，而不是这里；这一行真正对标的其实是更小的逐层下放器。 |
 
 ## 技术栈
