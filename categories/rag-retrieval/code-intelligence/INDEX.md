@@ -15,6 +15,7 @@
 | **Ix** | Use it when your coding agent keeps grepping a polyglot repo to find callers and blast radius and you can run Docker — accepting a closed-source backend image and a seven-month-old v0.x project. | B (6/6) | [→](ix.md) |
 | **Repowise** | Use it when your agent re-expends context rediscovering a big repo every task and you want one keyless local index answering graph, git, health, dead-code and decision questions over MCP — accepting a six-month-old v0.x AGPL vendor project. | C (6/6) | [→](repowise.md) |
 | **Jevgrep** | Use it when your agent must orient in an unfamiliar repo by asking what the code does — no index to build — accepting per-query API cost and source uploaded to a hosted evaluator model; two days old, solo-maintained, macOS/Linux only. | C (4/6) | [→](jevgrep.md) |
+| **Floorplan** | Use it when you built an app with an AI agent and need a plain-English map of its parts, screens and frontend-to-backend requests across repos, drawn by Claude Code or Codex — accepting model-written descriptions, a three-week-old solo-led plugin, and a heuristic Health check that is not an audit. | C (6/6) | [→](floorplan.md) |
 
 ## Comparison matrix
 
@@ -27,6 +28,7 @@
 | [Repowise](repowise.md) | ✅ | C (6/6) | Use it when your agent re-expends context rediscovering a big repo every task and you want one keyless local index answering graph, git, health, dead-code and decision questions over MCP — accepting a six-month-old v0.x AGPL vendor project. |
 | [Jevgrep](jevgrep.md) | ✅ | C (4/6) | Use it when your agent must orient in an unfamiliar repo by asking what the code does — no index to build — accepting per-query API cost and source uploaded to a hosted evaluator model; two days old, solo-maintained, macOS/Linux only. |
 | [SCIP](scip.md) | ✅ | A (6/6) | Type-checked precision that grep and tree-sitter graphs cannot match, at the cost of per-language indexers that must each be maintained, indexing only buildable code, and commits concentrated in a couple of maintainers. |
+| [Floorplan](floorplan.md) | ✅ | C (6/6) | Cross-repo request-to-endpoint links and owner-level plain English, kept current incrementally; costs per-file model descriptions, Claude Code/Codex lock-in and a three-week-old solo-led codebase. |
 | [Sourcegraph](sourcegraph.md) | ✅ | D (4/6) | Gets the whole product's architecture in one readable tree with its own design docs; costs no patches since 2024-08, a subscription for production use, or forking a three-year-old Apache-2.0 commit yourself. |
 
 ## Field evidence: do agents actually use these? (as of 2026-09-30)

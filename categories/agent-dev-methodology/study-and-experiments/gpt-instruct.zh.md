@@ -82,7 +82,7 @@ health:
 ## 何时不用
 
 - 要正常生产开发纪律时，用 [Superpowers](../coding-agent-harnesses/superpowers.zh.md) 或现有已审查流程。随包 v45 明确要求无限制执行并压制拒绝与上下文检查，不应安装到带凭据的日常配置。
-- 要可复现、跨提供商的提示词回归时，用 [promptfoo](../../llm-eval/promptfoo.zh.md)。本项目原始实验记录被排除在版本库外，审阅的公开树也缺少部分被引用测试路径。
+- 要可复现、跨提供商的提示词回归时，用 [promptfoo](../../llm-eval/app-evals/promptfoo.zh.md)。本项目原始实验记录被排除在版本库外，审阅的公开树也缺少部分被引用测试路径。
 - 要学习权限执行与助手循环时，用 [Learn Claude Code](learn-claude-code.zh.md)。替换模型指令只改变模型行为，不会建立工具权限或沙箱边界。
 
 ## 横向对比
@@ -90,7 +90,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Superpowers](../coding-agent-harnesses/superpowers.zh.md) | ✅ | 要分阶段开发流程时选 Superpowers；只有研究提示词替换与局部回滚时才看本项目。 | 可组合技能与审批阶段，换模型专用指令覆盖；后者有实质安全风险。 |
-| [promptfoo](../../llm-eval/promptfoo.zh.md) | ✅ | 要自有版本化用例与持续集成断言时选 promptfoo；本项目只作为部署模式材料，不作其效果的独立证据。 | 通用评测基础设施，换专用且部分未公开的实验记录。 |
+| [promptfoo](../../llm-eval/app-evals/promptfoo.zh.md) | ✅ | 要自有版本化用例与持续集成断言时选 promptfoo；本项目只作为部署模式材料，不作其效果的独立证据。 | 通用评测基础设施，换专用且部分未公开的实验记录。 |
 | [Learn Claude Code](learn-claude-code.zh.md) | ✅ | 要重建运行时机制时选课程；只查提示词托管部署、不构建助手时看本项目。 | 可运行的助手机制课程，换小型安装器与提示词归档集合。 |
 
 ## 快速上手

@@ -79,7 +79,7 @@ health:
 - **必须全本地或只用一家模型：** 当前路由调用托管 Jev，网页要求同时提供 OpenAI 和 Jev 密钥。[json-render](json-render.zh.md) 允许应用自己选模型路线，但集成要自己做。
 - **不允许模型生成任意界面代码：** 选目录约束的 [json-render](json-render.zh.md)；本应用刻意将 HTML、CSS 与 JavaScript 流入沙箱。
 - **需要多副本持久会话：** 文档中的检查点是最多 200 个线程的进程内存。可选持久保存聊天的 [Open WebUI](../llm-chat-ui/open-webui.zh.md)，或先替换本模板的存储。
-- **要下载原型或发布文件：** 选 [Open Design](open-design.zh.md) 或 [HTML Anything](html-anything.zh.md)；这里的历史回答是独立快照，不是跨轮可编辑工程。
+- **要下载原型或发布文件：** 选 [Open Design](open-design.zh.md)；这里的历史回答是独立快照，不是跨轮可编辑工程。
 
 ## 横向对比
 
@@ -87,7 +87,6 @@ health:
 |---|---|---|---|
 | [json-render](json-render.zh.md) | ✅ | 品牌统一且只能用注册组件，选 json-render；要在聊天里定制模拟器与计算器，选本应用。 | 组件目录缩小代码面；任意生成界面更自由，但增加沙箱和通信桥责任。 |
 | [Open Design](open-design.zh.md) | ✅ | 本地设计工作台与导出文件，选 Open Design；对话中由 agent 选择交互答案，选本应用。 | Open Design 调度已有编程助手并产出文件；本模板运营 Python agent、网页聊天和托管路由。 |
-| [HTML Anything](html-anything.zh.md) | ✅ | 已有 Markdown，要用登录的命令行助手生成可发布 HTML，选 HTML Anything；回答要变成工具，选本应用。 | 发布与导出流程不同于对话状态和框内交互；本应用要两套模型凭据。 |
 
 ## 快速上手
 

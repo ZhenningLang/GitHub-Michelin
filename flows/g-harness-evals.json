@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "harness-evals does", "zh": "harness-evals 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone the public copy and install its pinned Bun dependencies", "zh": "克隆公开副本，按锁文件安装 Bun 依赖", "code": "bun install --frozen-lockfile"},
+    {"lane": "you", "en": "Ask it to rebuild the README ranking tables", "zh": "让它重建 README 里的排名表", "code": "bun scripts/scoreboard/build.ts --check", "component": {"en": "scoreboard generator", "zh": "排名表生成器"}},
+    {"lane": "them", "en": "Recomputes paired cost-per-solve ratios from trial records and diffs the tables", "zh": "从试次记录重算成对的单题成本比，并比对表格", "component": {"en": "scoreboard generator", "zh": "排名表生成器"}},
+    {"lane": "you", "en": "Ask it to replay every published run's analysis", "zh": "让它重放每个已发布运行的分析", "code": "bun run verify", "component": {"en": "verify script", "zh": "复核脚本"}},
+    {"lane": "them", "en": "Reruns each run's analysis on its committed receipts and fails on any changed value", "zh": "在已提交的回执上重跑分析，任何数值不同就失败", "component": {"en": "verify script", "zh": "复核脚本"}}
+  ],
+  "value": {"en": "You can recheck every published harness ranking without an API key, instead of trusting a leaderboard screenshot", "zh": "不用 API key 就能复核每条公开的 harness 排名，不必信一张榜单截图"},
+  "sources": [
+    "https://github.com/garrytan/g-harness-evals/blob/f4dc3dff41f1edc39beedfbe71b50cb0245209d7/README.md#L166-L176",
+    "https://github.com/garrytan/g-harness-evals/blob/f4dc3dff41f1edc39beedfbe71b50cb0245209d7/CONTRIBUTING.md#L64-L72",
+    "https://github.com/garrytan/g-harness-evals/blob/f4dc3dff41f1edc39beedfbe71b50cb0245209d7/scripts/scoreboard/build.ts#L1-L10",
+    "https://github.com/garrytan/g-harness-evals/blob/f4dc3dff41f1edc39beedfbe71b50cb0245209d7/scripts/verify/verify.ts#L1-L12"
+  ]
+}

@@ -110,7 +110,6 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [guizang-ppt](../slides-ppt/guizang-ppt.zh.md) | ✅ | 需要完整多页横滑幻灯片而非单张卡片时，选 guizang-ppt。 | 同作者的同门 skill，定位是完整多页横滑幻灯片而非单张卡片/封面；视觉规则有重叠，产物形态不同。 |
-| [html-anything](../../ai-design-generation/html-anything.zh.md) | ✅ | 需要通用的 agent 驱动 HTML 产物生成时，选 html-anything。 | 通用的 agent 驱动 HTML 产物生成；更宽泛、不带主张，因此缺少这个 skill 自带的锁定卡片版式、Swiss 校验器、平台画布尺寸和图片取材流程。 |
 | [open-design](../../ai-design-generation/open-design.zh.md) | ✅ | 需要更宽的 UI/设计生成而非社交卡片专项时，选 open-design。 | 面向更宽的 UI/设计生成；不是带平台精确海报尺寸和渲染成 PNG 管线的社交卡片专家。 |
 | [Impeccable](../../ai-design-generation/impeccable.zh.md) | ✅ | 需要设计质量 harness 层而非卡片生成时，选 Impeccable。 | 偏设计质量导向的生成；面不同——不是带 Playwright 校验器的单文件 HTML 卡片工作流。 |
 | Canva / 稿定设计 | 未收录 | 需要托管模板 SaaS 而不是仓库时，选 Canva 或稿定设计。 | 托管模板 SaaS，不是仓库——对非 agent 用户更易上手、素材库更丰富，但封闭、无本地 agent 控制、无单文件 HTML 产物，视觉严谨度也低得多。 |

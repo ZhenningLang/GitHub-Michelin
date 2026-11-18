@@ -98,7 +98,7 @@ Markdown 已写完，本地图片、封面和微信草稿还得分头处理。md
 - **你需要可自由商用的排版代码或资产。** 先评估 [doocs/md](https://github.com/doocs/md) 或 MIT 许可的 [Baoyu Skills](../agent-skills/ai-writing/content-production/baoyu-skills.zh.md)。本项目许可覆盖代码、主题、提示词、技能和文档；企业内部营收相关工作、付费客户交付都需书面授权。2030-01-01 是变更日期，不是现在就取得 Apache-2.0 权利。
 - **文章不能交给这家服务商。** 用自托管 doocs/md 编辑器，并审查可选集成。默认 API 路径向 `www.md2wechat.cn` 发送 Markdown；允许换地址，不等于附带可自托管的专业渲染器。AI 模式只返回交给外部模型的提示词，不是本地成品 HTML。
 - **你只想交互式调样式。** 选带主题和 CSS 控制的 doocs/md。对手动复制粘贴流程，API 配置、微信凭据和草稿检查可能得不偿失。
-- **翻译或更多视觉产物主导任务。** 写作翻译优先时选 Baoyu Skills；生成 HTML 设计稿并手动导出微信时，选 [HTML Anything](../ai-design-generation/html-anything.zh.md)。本项目围绕文章准备和创建草稿组织，不是通用设计或翻译工具。
+- **翻译或更多视觉产物主导任务。** 写作翻译优先时选 Baoyu Skills；要 agent 生成 HTML 设计稿时，选 [Open Design](../ai-design-generation/open-design.zh.md)。本项目围绕文章准备和创建草稿组织，不是通用设计或翻译工具。
 - **你期待独立跨平台发布守护进程。** 不能提供已授权、能操作浏览器的宿主时，改用目标平台自带编辑器。`sync prepare` 只准备本地内容；成功不代表远端已有草稿，更不代表文章已发布。
 
 ## 横向对比
@@ -107,7 +107,7 @@ Markdown 已写完，本地图片、封面和微信草稿还得分头处理。md
 |---|---|---|---|
 | [doocs/md](https://github.com/doocs/md) | 未收录 | 人需要在编辑器里调整 Markdown 样式时，选 doocs/md；助手需要结构化检查和显式微信草稿步骤时，选 md2wechat。 | doocs/md 提供编辑器、自定义 CSS、图床集成和自托管；本项目增加 CLI 发布流程，但主要排版路径依赖付费 API。真实仓库；not added in this tab batch。 |
 | [Baoyu Skills](../agent-skills/ai-writing/content-production/baoyu-skills.zh.md) | 已收录 | 翻译及可复用写作、配图技能主导任务时，选 Baoyu Skills；核心契约是检查→预览→微信草稿时，选 md2wechat。 | Baoyu 是范围更广的 MIT 技能集；本项目提供带类型的 Go 命令接口和内置操作规程，但有商用限制及独立排版服务。 |
-| [HTML Anything](../ai-design-generation/html-anything.zh.md) | 已收录 | 要生成并目测设计好的 HTML 时，选 HTML Anything；账号相关检查和创建草稿比交互设计界面更重要时，选 md2wechat。 | HTML Anything 驱动已有编码助手，支持手动导出微信；本项目提供发布命令，但主路径的最终 HTML 需要 API。两者都不保证输出正确。 |
+| [Open Design](../ai-design-generation/open-design.zh.md) | 已收录 | 要用自己的 agent 生成并目测设计好的 HTML 时，选 Open Design；账号相关检查和创建草稿比交互设计界面更重要时，选 md2wechat。 | Open Design 驱动已有编码助手或 BYOK 端点并导出文件，但没有微信草稿这一步；本项目提供发布命令，但主路径的最终 HTML 需要 API。两者都不保证输出正确。 |
 
 ## 快速上手
 

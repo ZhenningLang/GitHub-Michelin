@@ -126,7 +126,6 @@ Impeccable 分两层。你装进去的那层是 skill：`npx impeccable install`
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [html-anything](html-anything.zh.md) | ✅ | 需要 agent 生成 HTML 产物时，选 html-anything。 | 由 agent 生成 HTML 产物；Impeccable 则是 critique/lint agent 已经产出的东西。互补而非替代。 |
 | [open-design](open-design.zh.md) | ✅ | 需要设计语言/生成层而非 lint harness 时，选 open-design。 | 同类目下的设计语言 / 生成层；在“让 agent 设计更好”上有重叠，但分歧在于是 lint 现有产物还是驱动生成。建议直接对照两页。 |
 | [guizang-ppt](../agent-skills/slides-ppt/guizang-ppt.zh.md) | ✅ | 需要幻灯片生成 skill-pack 时，选 guizang-ppt。 | 面向幻灯片生成的 skill-pack；产物类型窄，没有确定性 detector 或 CLI。Impeccable 是更宽的前端质量工具。 |
 | [guizang-social-card](../agent-skills/visual-content/guizang-social-card.zh.md) | ✅ | 需要社交卡片生成 skill-pack 时，选 guizang-social-card。 | 社交卡片生成的 skill-pack；单一产物类型，对比 Impeccable 的通用 UI linting。 |

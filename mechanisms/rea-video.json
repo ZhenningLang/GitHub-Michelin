@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "video", "en": "Reference video file", "zh": "参考视频文件", "kind": "input"},
+    {"id": "probe", "en": "Container scan: AIGC label, C2PA box, camera and transcode tags", "zh": "容器扫描：AIGC 标识、C2PA 盒、相机与转码标记", "technique": [2]},
+    {"id": "measure", "en": "Shot split and per-shot measurements;\nframe cadence, noise, flat blocks, motion", "zh": "切镜与逐镜测量；\n帧率规律、噪声、平涂块、运动"},
+    {"id": "look", "en": "Agent or VLM answers tiled sheets in up to 3 rounds", "zh": "agent 或 VLM 按轮次看拼图作答，最多 3 轮", "technique": [3]},
+    {"id": "fuse", "en": "Trust-weighted fusion: group first, then subtype", "zh": "按可信度加权融合：先定大类，再定细类", "technique": [1]},
+    {"id": "pkg", "en": "VIDEO.md package: card, map, timeline, per-shot files", "zh": "VIDEO.md 拆片包：卡片、地图、时间线、单镜文件", "kind": "output", "technique": [4]},
+    {"id": "report", "en": "report.html for the human reader", "zh": "给人看的 report.html", "kind": "output"},
+    {"id": "caps", "en": "Model capability map: seconds, shots, references per call", "zh": "模型能力地图：单次秒数、镜头数、参考数", "kind": "external", "technique": [5]},
+    {"id": "plan", "en": "Pack shots into the fewest calls and check before paying", "zh": "把镜头装进最少调用，付费前先检查", "kind": "output", "technique": [5]}
+  ],
+  "edges": [
+    {"from": "video", "to": "probe"},
+    {"from": "video", "to": "measure"},
+    {"from": "measure", "to": "look", "en": "if an image reader is available", "zh": "有能看图的一方时", "style": "dashed"},
+    {"from": "probe", "to": "fuse", "en": "strong evidence when present", "zh": "出现时是强证据"},
+    {"from": "measure", "to": "fuse", "en": "tool probabilities", "zh": "工具概率"},
+    {"from": "look", "to": "fuse", "en": "label probabilities", "zh": "类别概率", "style": "dashed"},
+    {"from": "fuse", "to": "pkg"},
+    {"from": "fuse", "to": "report"},
+    {"from": "caps", "to": "plan"},
+    {"from": "fuse", "to": "plan", "en": "with the remake intent", "zh": "加上复刻意图"}
+  ],
+  "sources": [
+    "https://github.com/JuneYaooo/rea-video/blob/e3858539514a51c28e0dd1724ded249a0b01be3d/rea_video/classify.py#L63-L72",
+    "https://github.com/JuneYaooo/rea-video/blob/e3858539514a51c28e0dd1724ded249a0b01be3d/rea_video/classify.py#L517-L577",
+    "https://github.com/JuneYaooo/rea-video/blob/e3858539514a51c28e0dd1724ded249a0b01be3d/rea_video/probe.py#L113-L190",
+    "https://github.com/JuneYaooo/rea-video/blob/e3858539514a51c28e0dd1724ded249a0b01be3d/rea_video/survey.py#L1-L23",
+    "https://github.com/JuneYaooo/rea-video/blob/e3858539514a51c28e0dd1724ded249a0b01be3d/rea_video/videomd.py#L1-L11",
+    "https://github.com/JuneYaooo/rea-video/blob/e3858539514a51c28e0dd1724ded249a0b01be3d/rea_video/generation.py#L1-L19",
+    "https://github.com/JuneYaooo/rea-video/blob/e3858539514a51c28e0dd1724ded249a0b01be3d/rea_video/generation.py#L119-L172"
+  ]
+}

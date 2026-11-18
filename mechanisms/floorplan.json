@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "code", "en": "Your repos, one or several side by side", "zh": "你的仓库，一个或并排多个", "kind": "input"},
+    {"id": "scan", "en": "Scripts scan imports, routes and requests; no model", "zh": "脚本扫描导入、路由和请求；不调模型", "technique": [1]},
+    {"id": "match", "en": "Match each request to an endpoint by learned base path", "zh": "按学到的基础路径把请求配到接口", "technique": [2]},
+    {"id": "sheet", "en": "Worksheets: capped quotes, secrets masked", "zh": "工作单：引用有上限，疑似密钥打码", "technique": [1]},
+    {"id": "agent", "en": "Claude or Codex writes parts and descriptions as JSON", "zh": "Claude 或 Codex 以 JSON 写出分区和描述", "kind": "external", "technique": [1]},
+    {"id": "build", "en": "Build: Health heuristics report what they checked", "zh": "构建：体检规则同时报告查了什么", "technique": [4]},
+    {"id": "map", "en": "Local map: script-hash CSP; read-only Ask", "zh": "本地地图：脚本哈希 CSP；只读提问", "kind": "output", "technique": [5]},
+    {"id": "refresh", "en": "Refresh: content hash vs signature hash", "zh": "刷新：内容哈希对比签名哈希", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "code", "to": "scan"},
+    {"from": "scan", "to": "match"},
+    {"from": "scan", "to": "sheet"},
+    {"from": "sheet", "to": "agent"},
+    {"from": "agent", "to": "build", "en": "architecture.json + descriptions", "zh": "architecture.json 与描述"},
+    {"from": "match", "to": "build", "en": "request edges", "zh": "请求连线"},
+    {"from": "build", "to": "map"},
+    {"from": "code", "to": "refresh", "en": "after later changes", "zh": "之后改了代码", "style": "dashed"},
+    {"from": "refresh", "to": "sheet", "en": "only new or flagged items", "zh": "只含新增或被标记项", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/haydenschmitty/floorplan/blob/94f81b463b7617e06d873ac71323ce71644c8399/docs/how-it-works.md",
+    "https://github.com/haydenschmitty/floorplan/blob/94f81b463b7617e06d873ac71323ce71644c8399/skills/floorplan/scripts/lib/routes.mjs#L394-L463",
+    "https://github.com/haydenschmitty/floorplan/blob/94f81b463b7617e06d873ac71323ce71644c8399/skills/floorplan/scripts/refresh.mjs#L85-L160",
+    "https://github.com/haydenschmitty/floorplan/blob/94f81b463b7617e06d873ac71323ce71644c8399/skills/floorplan/scripts/lib/health.mjs#L2198-L2216",
+    "https://github.com/haydenschmitty/floorplan/blob/94f81b463b7617e06d873ac71323ce71644c8399/skills/floorplan/assets/serve.mjs#L331-L353"
+  ]
+}

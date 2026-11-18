@@ -14,6 +14,7 @@
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **Kiro Crew** | 用常驻网关保存开发会话、记忆和定时工作，并连接外部 agent 运行时；凭据和主机权限仍由你管理。 | B（5/6） | [→](kirocrew.zh.md) |
+| **Agent Autoloop** | 让已登录的 Claude Code 或 Codex 按定时和 Webhook 在后台干活，只把要拍板的事推成飞书或桌面卡片；只有中文界面、没有看板，项目才 15 天。 | C（6/6） | [→](agent-autoloop.zh.md) |
 | **CC Switch** | 当你在 Claude Code、Codex、Gemini CLI、OpenCode 等几个编码 CLI 之间来回换厂商，想用一个桌面应用替你改写它们的配置、MCP 服务器和技能时用它——但它是单用户图形应用，无界面服务器上用不了，也当不了团队网关。 | B（5/6） | [→](cc-switch.zh.md) |
 | **oh-my-claudecode** | 架在 Anthropic Claude Code CLI 之上的多智能体编排层：把一队专职 agent 按阶段串成流水线（plan → prd → exec → verify → fix），为每个子任务路由到更便宜或更强的模型，并在 tmux 下跑并行 worker——以 Claude Code 插件形式安装，或通过 `oh-my-claude-sisyphus` npm 包安装。 | B（6/6） | [→](oh-my-claudecode.zh.md) |
 | **OpenHands** | 当你想用一个自托管的浏览器控制台，在指定机器上跑 OpenHands、Claude Code、Codex 或 Gemini CLI 会话，再加上定时或 webhook 触发的 agent 任务时用它——但这个仓库 2026 年 7 月才改成 beta 版 Agent Canvas，经典的 `openhands-ai` agent 已不在这里。 | B（6/6） | [→](openhands.zh.md) |
@@ -30,6 +31,7 @@
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [Kiro Crew](kirocrew.zh.md) | 已收录 | B（5/6） | 带记忆、应用和后台工作的个人常驻工作区，不只是临时 CLI 会话的浏览器界面。 |
+| [Agent Autoloop](agent-autoloop.zh.md) | 已收录 | C（6/6） | 本机、无界面的中台，按定时和 Webhook 唤起你自己登录的命令行 Agent，把要拍板的事挂成聊天卡片；界面只有中文，项目才 15 天。 |
 | [Scion](scion.zh.md) | ✅ | B（6/6） | 用容器运行混合 agent 团队，并明确选择工作区共享方式；镜像、凭据和本机或托管控制中心归你维护。 |
 
 ## 什么该放这里

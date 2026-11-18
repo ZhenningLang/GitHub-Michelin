@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="839" viewBox="0 0 880 839" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="839" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="703" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="703" rx="10"/>
+<rect class="pillT" x="474" y="40" width="114.4" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Coral 做的</text>
+<path class="edge" d="M62,192 L62,216" marker-end="url(#a)"/>
+<path class="hand" d="M408,254.0 C439.0,254.0 439.0,278 470,278" marker-end="url(#a)"/>
+<path class="hand" d="M472,302.5 C441.0,302.5 441.0,340 410,340" marker-end="url(#a)"/>
+<path class="edge" d="M62,408 L62,432" marker-end="url(#a)"/>
+<path class="hand" d="M408,470.0 C439.0,470.0 439.0,494 470,494" marker-end="url(#a)"/>
+<path class="hand" d="M472,518.5 C441.0,518.5 441.0,556 410,556" marker-end="url(#a)"/>
+<path class="hand" d="M408,568.0 C439.0,568.0 439.0,617 470,617" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="120" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="120" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">装桌面应用，或用 Docker Compose 起</text>
+<text class="t" x="82" y="123">共享服务</text>
+<text class="c" x="82" y="147">docker compose up -d</text>
+<text class="comp" x="82" y="170">组件：桌面应用或 coral 服务</text>
+<rect class="card" x="40" y="218" width="368" height="72" rx="8"/>
+<rect class="accY" x="40" y="218" width="4" height="72" rx="2"/>
+<circle class="accY" cx="62" cy="242" r="10"/>
+<text class="num" x="62" y="246" text-anchor="middle">2</text>
+<text class="t" x="82" y="247">在 Coral 界面添加</text>
+<text class="t" x="82" y="269">provider（目录、OpenAPI 或 MCP）</text>
+<rect class="cardT" x="472" y="254" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="254" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="278" r="10"/>
+<text class="num" x="494" y="282" text-anchor="middle">3</text>
+<text class="t" x="514" y="283">给新 provider 的工具配默认策略：只读直接</text>
+<text class="t" x="514" y="305">跑，其余要审批</text>
+<text class="comp" x="514" y="333">组件：工具策略</text>
+<rect class="card" x="40" y="316" width="368" height="92" rx="8"/>
+<rect class="accY" x="40" y="316" width="4" height="92" rx="2"/>
+<circle class="accY" cx="62" cy="340" r="10"/>
+<text class="num" x="62" y="344" text-anchor="middle">4</text>
+<text class="t" x="82" y="345">把工作区的 MCP 地址加进你的 agent</text>
+<text class="c" x="82" y="369">claude mcp add --scope user --transport</text>
+<text class="c" x="82" y="388">http coral &lt;your-mcp-url&gt;</text>
+<rect class="card" x="40" y="434" width="368" height="72" rx="8"/>
+<rect class="accY" x="40" y="434" width="4" height="72" rx="2"/>
+<circle class="accY" cx="62" cy="458" r="10"/>
+<text class="num" x="62" y="462" text-anchor="middle">5</text>
+<text class="t" x="82" y="463">提一个问题；agent 经 exec 工具发来一段</text>
+<text class="t" x="82" y="485">TypeScript 程序</text>
+<rect class="cardT" x="472" y="470" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="470" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="494" r="10"/>
+<text class="num" x="494" y="498" text-anchor="middle">6</text>
+<text class="t" x="514" y="499">在全新 V8 isolate 里运行，逐次查策略、补凭</text>
+<text class="t" x="514" y="521">据再转发</text>
+<text class="comp" x="514" y="549">组件：V8 isolate 与策略关口</text>
+<rect class="card" x="40" y="532" width="368" height="72" rx="8"/>
+<rect class="accY" x="40" y="532" width="4" height="72" rx="2"/>
+<circle class="accY" cx="62" cy="556" r="10"/>
+<text class="num" x="62" y="560" text-anchor="middle">7</text>
+<text class="t" x="82" y="561">策略为 Ask 时，在 Coral 界面批准这一</text>
+<text class="t" x="82" y="583">次具体调用</text>
+<rect class="cardT" x="472" y="593" width="368" height="120" rx="8"/>
+<rect class="accT" x="472" y="593" width="4" height="120" rx="2"/>
+<circle class="accT" cx="494" cy="617" r="10"/>
+<text class="num" x="494" y="621" text-anchor="middle">8</text>
+<text class="t" x="514" y="622">只回传程序结果；跑通的程序可存成自定</text>
+<text class="t" x="514" y="644">义工具再调</text>
+<text class="c" x="514" y="668">coral.private.&lt;name&gt;({ ... })</text>
+<text class="comp" x="514" y="691">组件：自定义工具</text>
+<rect class="val" x="28" y="745" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="769">价值</text>
+<text class="valT" x="48" y="793">agent 能动真实系统，每次调用受允许／询问／阻止约束，不经手凭据，跑通的能复用</text>
+</svg>

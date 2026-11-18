@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "src", "en": "Hosts, containers, services, devices", "zh": "主机、容器、服务与设备", "kind": "input"},
+    {"id": "plugins", "en": "Collector processes write a text protocol to stdout", "zh": "采集器进程向 stdout 写文本协议", "technique": [4]},
+    {"id": "agent", "en": "Agent daemon: one value per metric per second", "zh": "Agent 守护进程：每指标每秒一个值"},
+    {"id": "ml", "en": "Up to 18 k-means models per metric;\nanomalous only if all agree", "zh": "每指标最多 18 个 k-means 模型；\n全部同意才算异常", "technique": [1]},
+    {"id": "db", "en": "dbengine tiers 0/1/2;\nanomaly bit inside each sample", "zh": "dbengine 三层存储；\n异常位藏在每个样本里", "technique": [1, 2]},
+    {"id": "alerts", "en": "Stock alerts evaluated on the node", "zh": "节点本地评估内置告警", "kind": "output"},
+    {"id": "parent", "en": "Parent receives the stream and backfills gaps", "zh": "Parent 接收流并补齐断档", "technique": [3]},
+    {"id": "ui", "en": "Closed NCUL1 dashboard;\n5-node limit without a paid plan", "zh": "闭源 NCUL1 看板；\n未付费限 5 个节点", "kind": "external"},
+    {"id": "export", "en": "Prometheus scrape or remote-write export", "zh": "Prometheus 抓取或 remote-write 导出", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "src", "to": "plugins"},
+    {"from": "plugins", "to": "agent", "en": "CHART / BEGIN / SET / END", "zh": "CHART / BEGIN / SET / END"},
+    {"from": "agent", "to": "ml"},
+    {"from": "ml", "to": "db", "en": "anomaly bit", "zh": "异常位"},
+    {"from": "agent", "to": "db"},
+    {"from": "db", "to": "alerts"},
+    {"from": "agent", "to": "parent", "en": "binary stream over TCP", "zh": "TCP 二进制流", "style": "dashed"},
+    {"from": "db", "to": "ui", "en": "query API", "zh": "查询 API"},
+    {"from": "db", "to": "export", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/netdata/netdata/blob/72e71a7738e1410a4baee7b2e71d2c268d83ea53/src/ml/ml.cc#L1132-L1271",
+    "https://github.com/netdata/netdata/blob/72e71a7738e1410a4baee7b2e71d2c268d83ea53/src/ml/ml_config.cc#L114-L188",
+    "https://github.com/netdata/netdata/blob/72e71a7738e1410a4baee7b2e71d2c268d83ea53/src/libnetdata/storage_number/storage_number.h#L91-L113",
+    "https://github.com/netdata/netdata/blob/72e71a7738e1410a4baee7b2e71d2c268d83ea53/src/database/engine/README.md#L9-L120",
+    "https://github.com/netdata/netdata/blob/72e71a7738e1410a4baee7b2e71d2c268d83ea53/src/streaming/README.md#L56-L86",
+    "https://github.com/netdata/netdata/blob/72e71a7738e1410a4baee7b2e71d2c268d83ea53/src/plugins.d/README.md#L1-L66",
+    "https://github.com/netdata/netdata/blob/72e71a7738e1410a4baee7b2e71d2c268d83ea53/docs/netdata-oss-limitations.md#L133-L143",
+    "https://github.com/netdata/netdata/blob/72e71a7738e1410a4baee7b2e71d2c268d83ea53/packaging/cmake/Modules/NetdataDashboard.cmake#L1-L50"
+  ]
+}

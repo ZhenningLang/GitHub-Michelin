@@ -1,0 +1,25 @@
+{"schema":1,"direction":"down","nodes":[
+{"id":"objective","en":"Objective and caps","zh":"目标与上限","kind":"input"},
+{"id":"prompt","en":"Fixed round prompt plus notes.md","zh":"固定单轮提示词加 notes.md","technique":[2]},
+{"id":"agent","en":"Your agent CLI, permission prompts off by default","zh":"你的 agent 命令行，默认关闭权限确认","kind":"external"},
+{"id":"verdict","en":"JSON verdict recovered from prose or fences","zh":"从说明文字或代码块中恢复 JSON 结论","technique":[2]},
+{"id":"commit","en":"Success: unsigned commit and append notes","zh":"成功：无签名提交并追加笔记","technique":[1]},
+{"id":"reset","en":"Failure: reset --hard and clean -fd","zh":"失败：reset --hard 与 clean -fd","technique":[1]},
+{"id":"classify","en":"Classify: next round, backoff, or abort","zh":"分类：下一轮、退避或中止","technique":[3]},
+{"id":"usage","en":"Claude usage limit: wait for reset, retry same round","zh":"Claude 用量上限：等重置后重跑同一轮","technique":[4]},
+{"id":"branch","en":"gnhf/ branch of reviewable commits","zh":"可逐个审查的 gnhf/ 分支","kind":"output"}
+],
+"edges":[
+{"from":"objective","to":"prompt"},
+{"from":"prompt","to":"agent","en":"one call per round","zh":"每轮调用一次"},
+{"from":"agent","to":"verdict"},
+{"from":"verdict","to":"commit","en":"success","zh":"成功"},
+{"from":"verdict","to":"reset","en":"failure","zh":"失败"},
+{"from":"agent","to":"usage","en":"rate_limit_event","zh":"限流事件","style":"dashed"},
+{"from":"usage","to":"prompt","style":"dashed"},
+{"from":"commit","to":"branch"},
+{"from":"commit","to":"classify"},
+{"from":"reset","to":"classify"},
+{"from":"classify","to":"prompt","en":"under caps","zh":"未到上限"}
+],
+"sources":["https://github.com/kunchenguid/gnhf/blob/98d6a5f3d588ee6e241558f06dfc0d495e6354d6/src/core/orchestrator.ts","https://github.com/kunchenguid/gnhf/blob/98d6a5f3d588ee6e241558f06dfc0d495e6354d6/src/core/git.ts#L238-L296","https://github.com/kunchenguid/gnhf/blob/98d6a5f3d588ee6e241558f06dfc0d495e6354d6/src/templates/iteration-prompt.ts","https://github.com/kunchenguid/gnhf/blob/98d6a5f3d588ee6e241558f06dfc0d495e6354d6/src/core/agents/claude.ts#L428-L456"]}

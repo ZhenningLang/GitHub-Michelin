@@ -109,7 +109,7 @@ health:
 - **你要的是成图，不是提示词。** 协议明确要求 agent 不生图；只有 21 号画风带直接出图脚本，而它需要已登录且支持生图的 Codex CLI、`bun`、默认尺寸要用的 macOS `sips`，以及一个名为 `sweety-image-privacy` 的配套 skill——本次没有找到它的公开仓库。想让 agent 读完文章、排好镜头、再用自带生图工具画出来，用 [ian-xiaohei-illustrations](ian-illustrations.zh.md)。
 - **你的出图接口传不了参考图，或锁不了模型版本。** 3.1、19、20 缺了锚点图就失败关闭，19 和 20 还额外要求模型快照 `gpt-image-2-2026-04-21`——而维护者自己的调用包里把这一条标成测试中未观察到（`exact_candidate_snapshot_observed: false`）。画风锁定必须落在你可控的管线里时，改在 [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.zh.md) 里训练或加载 LoRA / IP-Adapter。
 - **你需要跨版本不变的标识。** 画风编号已经动过一次：2026-08-04 整数编号整体前移，`1.1`、`1.2` 被删除，你存下的“13 号画风”（当时是暖光童画）现在指向北欧纸雕。第一个也是唯一一个带 tag 的发布 v1.0.0 在 2026-10-08 才出现——此前没有版本历史，此后也没有写明兼容策略。请用别名调用，并锁定 v1.0.0 安装包；如果你要的是一种因为只有它一种、所以不会被重新编号的画风，用 [ian-xiaohei-illustrations](ian-illustrations.zh.md)。
-- **你要确定、可编辑的成品。** 提示词不是卡片，每次生成都不一样。要能 diff、能改模板的 HTML 转 PNG 产物，用 [Guizang Social Card Skill](../guizang-social-card.zh.md) 或 [HTML Anything](../../../ai-design-generation/html-anything.zh.md)。
+- **你要确定、可编辑的成品。** 提示词不是卡片，每次生成都不一样。要能 diff、能改模板的 HTML 转 PNG 产物，用 [Guizang Social Card Skill](../guizang-social-card.zh.md)。
 - **你要商业上干净的画风。** `STYLES.md` 写明 12 到 17 号画风是特定 Midjourney `--sref` 风格码的 gpt-image 复刻，另有画风直接挂在吉卜力和 xkcd 名下。MIT 覆盖的是配方文字和脚本，覆盖不了它们模仿的画风。[推断] 做品牌项目，请在 [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.zh.md) 里用自己的美术素材建立画风。
 - **你的工作语言是英文。** 协议、配方、菜单和报错信息都是中文，21 号画风画进图里的也是手写中文文案。要通用的、英文优先的提示词库，用 [prompts.chat](../../prompt-engineering/prompts-chat.zh.md)。
 

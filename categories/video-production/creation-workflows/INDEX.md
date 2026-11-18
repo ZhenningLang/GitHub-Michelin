@@ -17,6 +17,7 @@
 | **video-shotcraft** | Use it when a coding agent should turn your product or webpage into a cinematic promo — 150+ shot recipe cards, a validated 36.2s Remotion template, real page captures, 2.5D camera moves and beat-synced SFX — rendered locally; ~2 months old, no tagged releases, and it targets Remotion's eligibility-gated license. | B (5/6) | [→](video-shotcraft.md) |
 | **Lemo-Opuscar** | Have a coding agent direct style-led films with deterministic browser frames, sound and reading-time checks; code MIT, gallery media CC BY. | C (4/6) | [→](lemo-opuscar.md) |
 | **ArtCraft** | Stage a camera and character pose before cloud image/video generation; permissive desktop code, separately restricted backend and excluded demo assets. | A (6/6) | [→](artcraft.md) |
+| **OpenFilm** | A coding agent writes the film as HTML pages while you watch and hand-edit it in a local timeline editor; your edits survive the agent's rewrites. Pre-1.0, six weeks old. | B (6/6) | [→](openfilm.md) |
 
 ## Comparison matrix
 
@@ -32,6 +33,7 @@
 | [MoneyPrinterTurbo](moneyprinter-turbo.md) | ✅ | B (6/6) | Topic → narrated stock-footage shorts as a MIT WebUI/API appliance; near-zero marginal cost, generic output, single-maintainer bus factor. |
 | [Lemo-Opuscar](lemo-opuscar.md) | ✅ | C (4/6) | Have a coding agent direct style-led films with deterministic browser frames, sound and reading-time checks; code MIT, gallery media CC BY. |
 | [ArtCraft](artcraft.md) | ✅ | A (6/6) | Visual 2D/3D composition instead of inference-graph authoring; cloud jobs and auto-uploaded captures, not local inference or a wholly permissive service stack. |
+| [OpenFilm](openfilm.md) | ✅ | B (6/6) | Agent and person co-edit one HTML film live, with hand edits merged over agent rewrites; MIT but six weeks old, library assets fetched from openfilm.dev. |
 
 ## What belongs here
 

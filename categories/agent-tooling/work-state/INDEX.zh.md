@@ -17,6 +17,8 @@
 | **LoopX** | 当 agent 的工作要跨天、跨重启、跨运行时持续推进，且需要持久目标、人工门禁、配额与证据治理每一轮时用它。 | B（6/6） | [→](loopx.zh.md) |
 | **Token Optimizer** | 当 coding agent 的 token 烧在工具输出、重复读取和 compaction 丢失上、你又想要钩子层压缩、compaction 检查点和本地美元台账时用它——代价是接受其非商用许可证。 | C（5/6） | [→](token-optimizer.zh.md) |
 | **RTK** | 智能体的上下文被一屏屏“测试通过”和 `git push` 进度行塞满；RTK 挂钩智能体的 shell 命令，只交回失败项和一行确认（只管 Bash 输出；Apache-2.0）。 | A（5/6） | [→](rtk.zh.md) |
+| **gnhf** | 想让 agent 命令行整夜干活、每成功一轮留一个提交、失败轮回滚、并等过 Claude 用量窗口时用它——代价是默认跳过权限确认、默认开启统计。 | B（6/6） | [→](gnhf.zh.md) |
+| **TokenEconomizer** | 同一仓库的会话反复重新摸索命令、带着闲置工具、原地打转；TokenEconomizer 从已结束的会话学习，注入确认过的事实、裁掉闲置工具、提醒卡住的轮次（需要本仓库的历史；hook 路径有未关闭的安全报告）。 | B（6/6） | [→](tokeneconomizer.zh.md) |
 
 ## 对比矩阵
 
@@ -32,6 +34,8 @@
 | [LoopX](loopx.zh.md) | ✅ | B（6/6） | 状态内核加配额门控的多运行时心跳驱动——本分类里治理最完整的一套，代价是 fail-closed 协议和一个极年轻、高速变动的表面。 |
 | [Token Optimizer](token-optimizer.zh.md) | ✅ | C（5/6） | 钩子层压缩加 compaction 检查点加本地美元台账，覆盖约 10 个 coding agent；source-available 非商用许可证，7 个月大的单人维护表面。 |
 | [RTK](rtk.zh.md) | ✅ | A（5/6） | 只压 shell 输出——一个 Apache-2.0 的 Rust 单二进制，改写智能体的 Bash 命令并保留退出码；没有检查点，除 `rtk gain` 外没有台账，读文件会绕过它。 |
+| [gnhf](gnhf.zh.md) | ✅ | B（6/6） | 不绑定 agent 的过夜循环，每轮要么提交要么回滚；成功与否听 agent 自报，状态只有一份只追加的 notes.md。 |
+| [TokenEconomizer](tokeneconomizer.zh.md) | ✅ | B（6/6） | 按仓库跨会话学习（事实、工具裁剪、循环守卫），带按缓存计价的账本；MIT，微软研究院出品，仅五周大，每个仓库要先有历史，agent 版本要在测试范围内。 |
 | Taskmaster / GitHub Issues + gh / Linear | 未收录 | — | 各页对比里点到的其他 agent 任务/工作追踪后端。 |
 
 ## 什么该放这里

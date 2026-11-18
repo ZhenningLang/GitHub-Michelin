@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Floorplan does",
+    "zh": "Floorplan 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Add its marketplace, then install the plugin in Claude Code (Codex has the same pair)",
+      "zh": "先加它的插件市场，再在 Claude Code 里安装（Codex 同理）",
+      "code": "claude plugin install floorplan@floorplan",
+      "component": {
+        "en": "Claude Code / Codex plugin",
+        "zh": "Claude Code／Codex 插件"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Open the folder holding your repos and ask for a map",
+      "zh": "打开装着各仓库的目录，让 agent 画图",
+      "code": "Make me a floorplan of this app."
+    },
+    {
+      "lane": "them",
+      "en": "Scripts list files, imports, endpoints and requests, and match requests to endpoints",
+      "zh": "脚本列出文件、导入、接口和请求，并把请求配到接口",
+      "component": {
+        "en": "scan.mjs",
+        "zh": "scan.mjs"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Its skill has your agent name the parts and describe every file and endpoint plainly",
+      "zh": "它的 skill 让你的 agent 给各部分起名，用白话描述每个文件和接口",
+      "component": {
+        "en": "architecture.json + descriptions",
+        "zh": "architecture.json 与描述文件"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Builds the map with Health and Screens, then opens it in your browser",
+      "zh": "构建带体检和页面视图的地图，并在浏览器里打开",
+      "component": {
+        "en": "floorplan/index.html",
+        "zh": "floorplan/index.html"
+      }
+    }
+  ],
+  "value": {
+    "en": "You can see and ask how your app fits together without reading its code, on your own machine",
+    "zh": "不读代码也能看清、追问应用各部分怎么连在一起，全程在本机"
+  },
+  "sources": [
+    "https://github.com/haydenschmitty/floorplan/blob/94f81b463b7617e06d873ac71323ce71644c8399/README.md (Install, Quick start)",
+    "https://github.com/haydenschmitty/floorplan/blob/94f81b463b7617e06d873ac71323ce71644c8399/docs/how-it-works.md",
+    "https://github.com/haydenschmitty/floorplan/blob/94f81b463b7617e06d873ac71323ce71644c8399/skills/floorplan/SKILL.md"
+  ]
+}

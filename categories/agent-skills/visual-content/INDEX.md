@@ -15,6 +15,7 @@
 | --- | --- | --- | --- |
 | **teardown** | Ask a coding agent for a take-apart machine explainer page plus a 60 fps video, using shared kinematics and still-sheet review; two-day-old template, not engineering simulation. | C (4/5) | [→](teardown.md) |
 | **fun-isometric** | Ask an agent to draw and rig editable canvas stickers with reusable motion keys; includes render checks, not a general animation platform. | C (4/5) | [→](fun-isometric.md) |
+| **Motion Prompt** | Pick named motion, camera, web and slide moves by eye in a gallery so a coding agent ports their exact timings; reference catalog, not a renderer. | C (4/5) | [→](motion-prompt.md) |
 | **Guizang Social Card Skill** | Use it when a coding agent needs art-directed Xiaohongshu carousels or WeChat cover pairs as single-file HTML rendered to PNG. | D (3/5) | [→](guizang-social-card.md) |
 | **Lieflat Charts** | Use it when a coding agent must turn your data into template-locked, publish-ready single-file HTML charts or 12 bilingual full-page reports in one editorial visual language. | C (3/5) | [→](lieflat-charts.md) |
 
@@ -24,9 +25,10 @@
 | --- | --- | --- | --- |
 | [teardown](teardown.md) | Indexed | C (4/5) | Three worked 3D mechanisms and a page-to-film recipe; requires GPU rendering and manual preservation of stripped third-party notices. |
 | [fun-isometric](fun-isometric.md) | ✅ | C (4/5) | A constrained animated-sticker kit with local rendering; one day old, with browser downloads and license-notice preservation to review. |
+| [Motion Prompt](motion-prompt.md) | ✅ | C (4/5) | 240 numbered moves with specs and Canvas reference code for an agent to port into any stack; no runtime, no pipeline, five weeks old. |
 | [Guizang Social Card Skill](guizang-social-card.md) | ✅ | D (3/5) | Platform-sized social cards and covers as HTML-to-PNG artifacts; young and AGPL. |
 | [Guizang PPT Skill](../slides-ppt/guizang-ppt.md) | ✅ | C (4/5) | Choose it when the artifact is a full deck rather than standalone cards or article images. |
-| [HTML Anything](../../ai-design-generation/html-anything.md) | ✅ | B (5/6) | Broader HTML artifact generator; less focused on a specific visual-content surface. |
+| [Open Design](../../ai-design-generation/open-design.md) | ✅ | B (6/6) | Broader local design studio driving your own agent; less focused on a specific visual-content surface. |
 | [Lieflat Charts](lieflat-charts.md) | ✅ | C (3/5) | Data-viz route: template-locked charts and bilingual HTML reports as one double-clickable file; young, single-maintainer, and PolyForm Noncommercial — external commercial use needs a paid license. |
 
 ## What belongs here

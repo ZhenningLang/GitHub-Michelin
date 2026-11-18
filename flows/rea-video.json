@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "rea-video + its skill do",
+    "zh": "rea-video 与它的 skill 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Have your agent install the CLI and skill, then hand it a reference video",
+      "zh": "让 agent 装好命令行和 skill，再交给它一条参考视频",
+      "code": "bash scripts/install_skill.sh",
+      "component": {
+        "en": "install_skill.sh + skill",
+        "zh": "install_skill.sh 与 skill"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Split shots, separate voice, music and effects, and measure each shot",
+      "zh": "切镜头，分离人声、配乐和音效，逐镜测量",
+      "code": "rea-video decompose ref.mp4 -o out/ref",
+      "component": {
+        "en": "decompose CLI",
+        "zh": "decompose 命令"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "The agent looks at low-confidence shots and merges its answers into the verdict",
+      "zh": "agent 看图复核低置信镜头，把答案并入结论",
+      "code": "rea-video review out/ref · rea-video apply-review out/ref",
+      "component": {
+        "en": "review / apply-review",
+        "zh": "review 与 apply-review"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Read report.html, then name the target model and what to swap",
+      "zh": "看 report.html，说出要用的模型和要换的东西",
+      "code": "out/ref/remake/intent.yaml"
+    },
+    {
+      "lane": "them",
+      "en": "Pack generated shots into the fewest model calls and check the plan",
+      "zh": "把要生成的镜头装进最少的模型调用，并检查方案",
+      "code": "rea-video plan out/ref",
+      "component": {
+        "en": "capability map",
+        "zh": "模型能力地图"
+      }
+    }
+  ],
+  "value": {
+    "en": "A per-shot verdict on how the video was made and a remake plan, without scrubbing frames by hand",
+    "zh": "不用逐帧手看，就知道每个镜头怎么做出来、怎么复刻"
+  },
+  "sources": [
+    "https://github.com/JuneYaooo/rea-video/blob/e3858539514a51c28e0dd1724ded249a0b01be3d/README.md#L33-L41",
+    "https://github.com/JuneYaooo/rea-video/blob/e3858539514a51c28e0dd1724ded249a0b01be3d/scripts/install_skill.sh",
+    "https://github.com/JuneYaooo/rea-video/blob/e3858539514a51c28e0dd1724ded249a0b01be3d/docs/cli.md#L35-L50",
+    "https://github.com/JuneYaooo/rea-video/blob/e3858539514a51c28e0dd1724ded249a0b01be3d/skills/rea-video/SKILL.md#L46-L58",
+    "https://github.com/JuneYaooo/rea-video/blob/e3858539514a51c28e0dd1724ded249a0b01be3d/skills/rea-video/SKILL.md#L101-L121"
+  ]
+}

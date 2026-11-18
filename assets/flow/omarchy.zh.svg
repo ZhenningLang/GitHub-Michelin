@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="679" viewBox="0 0 880 679" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.ph{font:600 10px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#6e7781;letter-spacing:.1em}
+@media (prefers-color-scheme: dark){.ph{fill:#8b949e}}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="679" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="543" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="543" rx="10"/>
+<rect class="pillT" x="474" y="40" width="132.7" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Omarchy 做的</text>
+<path class="hand" d="M408,129.0 C439.0,129.0 439.0,153 470,153" marker-end="url(#a)"/>
+<path class="hand" d="M472,186.0 C441.0,186.0 441.0,236 410,236" marker-end="url(#a)"/>
+<path class="hand" d="M408,290.0 C439.0,290.0 439.0,314 470,314" marker-end="url(#a)"/>
+<path class="hand" d="M472,323.5 C441.0,323.5 441.0,418 410,418" marker-end="url(#a)"/>
+<path class="hand" d="M408,439.0 C439.0,439.0 439.0,463 470,463" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="114" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="114" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="ph" x="82" y="101">安装</text>
+<text class="t" x="82" y="118">关掉安全启动，用 U 盘启动 ISO，答完问题选</text>
+<text class="t" x="82" y="140">一块盘</text>
+<text class="comp" x="82" y="168">组件：ISO 安装器</text>
+<rect class="cardT" x="472" y="129" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="129" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="153" r="10"/>
+<text class="num" x="494" y="157" text-anchor="middle">2</text>
+<text class="ph" x="514" y="158">安装</text>
+<text class="t" x="514" y="175">从自家软件源装好加密的 Arch、Hyprland、桌</text>
+<text class="t" x="514" y="197">面外壳和默认应用</text>
+<text class="comp" x="514" y="225">组件：omarchy pacman 包</text>
+<rect class="card" x="40" y="212" width="368" height="156" rx="8"/>
+<rect class="accY" x="40" y="212" width="4" height="156" rx="2"/>
+<circle class="accY" cx="62" cy="236" r="10"/>
+<text class="num" x="62" y="240" text-anchor="middle">3</text>
+<text class="ph" x="82" y="241">定制</text>
+<text class="t" x="82" y="258">把改动写进 ~/.config 下的覆盖文件，比如改</text>
+<text class="t" x="82" y="280">绑一个快捷键</text>
+<text class="c" x="82" y="304">o.rebind(&quot;SUPER + SHIFT + O&quot;, &quot;Joplin&quot;,</text>
+<text class="c" x="82" y="323">&quot;joplin-desktop&quot;)</text>
+<text class="comp" x="82" y="346">组件：hypr/bindings.lua</text>
+<rect class="cardT" x="472" y="290" width="368" height="67" rx="8"/>
+<rect class="accT" x="472" y="290" width="4" height="67" rx="2"/>
+<circle class="accT" cx="494" cy="314" r="10"/>
+<text class="num" x="494" y="318" text-anchor="middle">4</text>
+<text class="ph" x="514" y="319">定制</text>
+<text class="t" x="514" y="336">先加载包里的默认配置，再叠加你的覆盖文件</text>
+<rect class="card" x="40" y="394" width="368" height="90" rx="8"/>
+<rect class="accY" x="40" y="394" width="4" height="90" rx="2"/>
+<circle class="accY" cx="62" cy="418" r="10"/>
+<text class="num" x="62" y="422" text-anchor="middle">5</text>
+<text class="ph" x="82" y="423">更新</text>
+<text class="t" x="82" y="440">用它自己的更新命令，而不是直接跑 pacman</text>
+<text class="c" x="82" y="464">omarchy update</text>
+<rect class="cardT" x="472" y="439" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="439" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="463" r="10"/>
+<text class="num" x="494" y="467" text-anchor="middle">6</text>
+<text class="ph" x="514" y="468">更新</text>
+<text class="t" x="514" y="485">给根分区拍快照、升级软件包、跑待执行迁移、</text>
+<text class="t" x="514" y="507">校验启动文件</text>
+<text class="comp" x="514" y="535">组件：omarchy-update</text>
+<rect class="val" x="28" y="585" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="609">价值</text>
+<text class="valT" x="48" y="633">拿到一套主题统一、开箱能用的平铺桌面，跟着版本更新也不用自己手动合并配置文件</text>
+</svg>

@@ -83,7 +83,7 @@ health:
 
 ## 怎么用起来
 
-SWE-agent 给大模型套上一层 *agent-计算机接口*：一小组 shell 工具（打开文件某一行、搜索、改一段代码、执行命令），装进沙箱环境，再配一段告诉模型怎么用这些工具的系统提示词。你在命令行上给它三样东西——`problem_statement`（issue 链接或文本）、`agent`（用哪个模型、费用上限多少）、`env`（哪个仓库、哪个 Docker 镜像）。随后它通过配套包 SWE-ReX 启动沙箱（默认 Docker，也可以用 Modal 或 AWS Fargate），把工具拷进去，然后循环：模型提出一条命令，SWE-agent 执行并把输出喂回去，直到模型调用 `submit`，SWE-agent 抽出 diff。打个比方：你把一位师傅关进一间工具固定的上锁工坊，再给他一本记录本——你拿回修好的零件和那本记录，装不装上去还是你说了算。评判归你：默认流程里它不会自己去提 PR；做基准测试时，你把补丁交给 [SWE-bench](../../../llm-eval/swe-bench.zh.md) 打分。
+SWE-agent 给大模型套上一层 *agent-计算机接口*：一小组 shell 工具（打开文件某一行、搜索、改一段代码、执行命令），装进沙箱环境，再配一段告诉模型怎么用这些工具的系统提示词。你在命令行上给它三样东西——`problem_statement`（issue 链接或文本）、`agent`（用哪个模型、费用上限多少）、`env`（哪个仓库、哪个 Docker 镜像）。随后它通过配套包 SWE-ReX 启动沙箱（默认 Docker，也可以用 Modal 或 AWS Fargate），把工具拷进去，然后循环：模型提出一条命令，SWE-agent 执行并把输出喂回去，直到模型调用 `submit`，SWE-agent 抽出 diff。打个比方：你把一位师傅关进一间工具固定的上锁工坊，再给他一本记录本——你拿回修好的零件和那本记录，装不装上去还是你说了算。评判归你：默认流程里它不会自己去提 PR；做基准测试时，你把补丁交给 [SWE-bench](../../../llm-eval/benchmarks/swe-bench.zh.md) 打分。
 
 ![swe-agent — 主干用户故事](../../../../assets/flow/swe-agent.zh.svg)
 
@@ -109,14 +109,14 @@ SWE-agent 给大模型套上一层 *agent-计算机接口*：一小组 shell 工
 - **你想要一个在自己工作副本上干活的助手。** SWE-agent 是批处理工具，不是日常编码工具；改用 [Codex](../terminal-agents/vendor-agents/codex.zh.md)、[aider](../terminal-agents/independent-runtimes/aider.zh.md) 或 [OpenCode](../terminal-agents/independent-runtimes/opencode.zh.md)，它们在你的工作副本上交互式修改并逐步请你批准。
 - **你想让 agent 无人值守地处理团队仓库并自动提 PR。** SWE-agent 止步于一个补丁文件；改用 [gh-aw](gh-aw.zh.md) 或 [Background Agents（Open-Inspect）](background-agents.zh.md)，它们负责触发、权限和创建 PR。
 - **你跑不了 Docker（也不想为 Modal/Fargate 付费）。** 默认沙箱是本地 Docker 容器；直接在本机跑虽然可以，但文档不推荐。没有容器运行时，就用托管的评测服务，或者用自带操作系统级沙箱的命令行 agent，比如 [Codex](../terminal-agents/vendor-agents/codex.zh.md)。
-- **你只需要给现成的补丁打分。** 那是 [SWE-bench](../../../llm-eval/swe-bench.zh.md) 的活；SWE-agent 负责生成补丁。
+- **你只需要给现成的补丁打分。** 那是 [SWE-bench](../../../llm-eval/benchmarks/swe-bench.zh.md) 的活；SWE-agent 负责生成补丁。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | mini-swe-agent | 未收录 | 任何新的基准测试或研究工具链都选 mini-swe-agent；只有复现或扩展 SWE-agent 自己已发表的运行时才留着 SWE-agent。 | mini-swe-agent 是维护者推荐的继任者（只用 bash、代码少得多、持续发版）；SWE-agent 保留更丰富的工具界面和 EnIGMA 血统，但已处于维护模式。 |
-| [SWE-bench](../../../llm-eval/swe-bench.zh.md) | ✅ | 用 SWE-bench 给补丁打分，用 SWE-agent（或 mini-swe-agent）生成补丁；两者互补，不是二选一。 | SWE-bench 是评测框架和数据集，得先有某个 agent 生成预测结果。 |
+| [SWE-bench](../../../llm-eval/benchmarks/swe-bench.zh.md) | ✅ | 用 SWE-bench 给补丁打分，用 SWE-agent（或 mini-swe-agent）生成补丁；两者互补，不是二选一。 | SWE-bench 是评测框架和数据集，得先有某个 agent 生成预测结果。 |
 | [aider](../terminal-agents/independent-runtimes/aider.zh.md) | ✅ | 有人在本地工作副本上盯着改，选 aider；运行必须无人值守、带沙箱、留下轨迹日志，选 SWE-agent。 | aider 优化的是带 git 提交的交互式改码循环；SWE-agent 优化的是可复现的批量运行，牺牲了交互上的顺手。 |
 | [Codex](../terminal-agents/vendor-agents/codex.zh.md) | ✅ | 日常编码、要操作系统级沙箱和逐步批准，选 Codex；研究里必须自己控制并公开 agent 接口和提示词，选 SWE-agent。 | Codex 是打磨好、迭代快的产品，绑定 OpenAI Responses API；SWE-agent 能用 YAML 完全配置、经 LiteLLM 接任意模型，但已不再积极开发。 |
 | [OpenHands](openhands.zh.md) | ✅ | 想要一个跨机器派发 agent 和自动化任务的界面，选 OpenHands；想要一个精简、可脚本化的研究工具，选 SWE-agent（或它的继任者）。 | OpenHands 现在是带服务端和网页界面的控制台；SWE-agent 是一个只写补丁和日志的 Python 命令行。 |

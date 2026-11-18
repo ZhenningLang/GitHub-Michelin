@@ -1,0 +1,10 @@
+{"schema":1,"them":{"en":"gnhf","zh":"gnhf"},"steps":[
+{"lane":"you","en":"Install gnhf and sign in to the agent CLI it will drive","zh":"安装 gnhf，并登录它要驱动的 agent 命令行","code":"npm install -g gnhf"},
+{"lane":"you","en":"In a clean git repo, start a run with an objective and a cap","zh":"在干净的 git 仓库里，带目标和上限启动一次运行","code":"gnhf --max-run-time 8h \"improve the test coverage\""},
+{"lane":"them","en":"Creates a gnhf/ branch and a local run folder with prompt.md and notes.md","zh":"新建 gnhf/ 分支和本地运行目录，存好 notes.md","component":{"en":".gnhf/runs/ metadata","zh":".gnhf/runs/ 运行目录"}},
+{"lane":"them","en":"Each round calls your agent; success is committed, failure is hard-reset","zh":"每轮调用你的 agent：成功就提交，失败就硬重置","component":{"en":"orchestrator loop","zh":"编排循环"}},
+{"lane":"them","en":"Waits out usage limits, stops at the cap, prints an exit summary","zh":"等过用量窗口，到上限停下，打印退出摘要"},
+{"lane":"you","en":"In the morning, review the branch commit by commit; keep, revert or cherry-pick","zh":"早上逐个审查分支上的提交，保留、回退或挑拣"}
+],
+"value":{"en":"You wake up to small reviewable commits instead of one tangled diff or a run that died at midnight","zh":"醒来看到的是一串可逐个审查的小提交，而不是一坨混乱改动或半夜就停掉的运行"},
+"sources":["https://github.com/kunchenguid/gnhf/blob/98d6a5f3d588ee6e241558f06dfc0d495e6354d6/README.md#quick-start","https://github.com/kunchenguid/gnhf/blob/98d6a5f3d588ee6e241558f06dfc0d495e6354d6/README.md#install","https://github.com/kunchenguid/gnhf/blob/98d6a5f3d588ee6e241558f06dfc0d495e6354d6/README.md#cli-reference","https://github.com/kunchenguid/gnhf/blob/98d6a5f3d588ee6e241558f06dfc0d495e6354d6/README.md#how-it-works"]}

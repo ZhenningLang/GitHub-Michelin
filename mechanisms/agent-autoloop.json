@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "event", "en": "Event: schedule, GitHub/GitLab webhook or HTTP", "zh": "事件：定时、GitHub/GitLab Webhook 或 HTTP", "kind": "input"},
+    {"id": "door", "en": "Whitelisted fields; only checked type, ID and link reach the prompt", "zh": "字段白名单；只有校验过的类型、编号和链接进提示词", "technique": [3]},
+    {"id": "log", "en": "Pure decision appends facts and projections in one SQLite transaction", "zh": "纯函数决策，事实与投影在同一 SQLite 事务提交", "technique": [2]},
+    {"id": "hops", "en": "Chain deeper than 8 hops is recorded but not dispatched", "zh": "处理链超过 8 层只记录不派发", "technique": [4]},
+    {"id": "run", "en": "Worker runs the agent CLI for one round; the process exits", "zh": "接单程序让 Agent CLI 跑一轮，进程退出", "technique": [1]},
+    {"id": "agent", "en": "Installed Claude Code, Codex, ACP or command agent", "zh": "本机已装的 Claude Code、Codex、ACP 或命令行 Agent", "kind": "external"},
+    {"id": "receipt", "en": "Read the agent-autoloop block in the final message; ask for a rewrite up to twice", "zh": "读最后一条消息里的 agent-autoloop 回执；读不懂最多让它重写两次", "technique": [5]},
+    {"id": "card", "en": "Card to Feishu, desktop or webhook; nothing runs while you decide", "zh": "卡片推到飞书、桌面或 Webhook；你考虑时没有进程在跑", "kind": "output", "technique": [1]},
+    {"id": "answer", "en": "Your answer becomes a card.answered event", "zh": "你的回答变成 card.answered 事件", "kind": "input", "technique": [1]}
+  ],
+  "edges": [
+    {"from": "event", "to": "door"},
+    {"from": "door", "to": "log"},
+    {"from": "log", "to": "hops"},
+    {"from": "hops", "to": "run", "en": "within limit", "zh": "未超限"},
+    {"from": "run", "to": "agent", "en": "new or resumed session", "zh": "新会话或续接会话"},
+    {"from": "agent", "to": "receipt", "en": "final message", "zh": "最后一条消息"},
+    {"from": "receipt", "to": "card", "en": "ask", "zh": "ask"},
+    {"from": "receipt", "to": "door", "en": "emitted events, hops + 1", "zh": "回执发出的事件，层数加一", "style": "dashed"},
+    {"from": "card", "to": "answer"},
+    {"from": "answer", "to": "log", "en": "resume the original session", "zh": "接回原会话"}
+  ],
+  "sources": [
+    "https://github.com/KKKKhazix/agent-autoloop/blob/ca5c0ffe2c92be17502c4f1a75cdb71823eeafef/protocol/validate.ts#L48-L86",
+    "https://github.com/KKKKhazix/agent-autoloop/blob/ca5c0ffe2c92be17502c4f1a75cdb71823eeafef/kernel/store.ts#L10-L49",
+    "https://github.com/KKKKhazix/agent-autoloop/blob/ca5c0ffe2c92be17502c4f1a75cdb71823eeafef/kernel/decide.ts#L226-L253",
+    "https://github.com/KKKKhazix/agent-autoloop/blob/ca5c0ffe2c92be17502c4f1a75cdb71823eeafef/plugins/claude/agent.ts#L28-L47",
+    "https://github.com/KKKKhazix/agent-autoloop/blob/ca5c0ffe2c92be17502c4f1a75cdb71823eeafef/worker/worker.ts#L415-L430",
+    "https://github.com/KKKKhazix/agent-autoloop/blob/ca5c0ffe2c92be17502c4f1a75cdb71823eeafef/kernel/decide.ts#L523-L558"
+  ]
+}

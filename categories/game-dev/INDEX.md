@@ -12,6 +12,7 @@
 | **pygame** | Use it when you are learning or teaching programming and want a small 2D Python game — window, event loop, sprites, sound — in a few dozen lines — but it is a CPU-blitting library with no editor or 3D, unreleased since 2024-09. | C (4/6) | [→](pygame.md) |
 | **kaplay** | Use it when you want a jam-scale 2D web game in plain JS/TS with zero engine ceremony — but for a long-lived product or 3D, the stalled stable line and 2D-only scope say look elsewhere. | B (6/6) | [→](kaplay.md) |
 | **pyxel** | Use it when you want a retro pixel-art game in Python with built-in sprite/sound editors and one-command web export — but for 3D, a modern look, store/console shipping, or a team-owned engine, its fixed specs and single maintainer say look elsewhere. | B (5/6) | [→](pyxel.md) |
+| **GameFactory-3A** | Let a coding agent build a 3D game slice in UE5, Unity, Godot, Blender or three.js with generated meshes, motion, audio and cutscenes; needs paid API keys or an NVIDIA GPU, has no releases and a restructure is announced. | B (6/6) | [→](gamefactory-3a.md) |
 
 ## Comparison matrix
 
@@ -22,6 +23,7 @@
 | [pygame](pygame.md) | ✅ | C (4/6) | Buys the lowest-friction path from Python to pixels on screen; costs performance and structure — no scene system, physics or asset pipeline, so bigger games outgrow it (Godot, Arcade). |
 | [kaplay](kaplay.md) | ✅ | B (6/6) | Use it when you want a jam-scale 2D web game in plain JS/TS with zero engine ceremony — but for a long-lived product or 3D, the stalled stable line and 2D-only scope say look elsewhere. |
 | [pyxel](pyxel.md) | ✅ | B (5/6) | Use it when you want a retro pixel-art game in Python with built-in sprite/sound editors and one-command web export — but for 3D, a modern look, store/console shipping, or a team-owned engine, its fixed specs and single maintainer say look elsewhere. |
+| [GameFactory-3A](gamefactory-3a.md) | ✅ | B (6/6) | Choose for agent-run asset generation plus engine reference projects; pay with several conda environments, GPU or API spend, vendored TRELLIS.2 and Tencent-licensed code, and an unreleased codebase about to be restructured. |
 | (alternatives named across the pages) | 未收录 | — | Substitutes referenced in each page's Comparison. |
 
 ## What belongs here

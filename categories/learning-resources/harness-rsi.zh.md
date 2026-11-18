@@ -80,10 +80,10 @@ health:
 ## 何时不用
 
 - **需要自动生成并评测框架候选。** 版本化实验工作区看 [PenguinHarness](../agent-frameworks/workflow-builders/harness-evolution/penguin-harness.zh.md)，当前任务上的配置搜索看 [Harness²](../agent-frameworks/workflow-builders/harness-evolution/harness2.zh.md)。本仓库没有编辑器、执行沙箱、晋升门或回滚引擎。
-- **需要持续集成判断修改能否发布。** 用 [promptfoo](../llm-eval/promptfoo.zh.md) 接独立冻结的测试。这里的脚本统计给定的文献判定，不评分你的代理产物，不强制安全失败，也不重测筛选后的最终补丁包。
+- **需要持续集成判断修改能否发布。** 用 [promptfoo](../llm-eval/app-evals/promptfoo.zh.md) 接独立冻结的测试。这里的脚本统计给定的文献判定，不评分你的代理产物，不强制安全失败，也不重测筛选后的最终补丁包。
 - **需要可工作的多代理平台。** 选 [JiuwenSwarm](../agent-frameworks/agent-runtimes/agent-services/jiuwenswarm.zh.md)。阅读学习机制论文，不能替代团队执行、工具审批或部署控制。
 - **需要从私密会话提炼规则。** [Headroom](../agent-tooling/work-state/headroom.zh.md) 另有模型分析入口，需要明确授权外发和费用，并另验行为效果。本项目读公开文献，不读取你的历史，也不写代理配置。
-- **需要独立确认的效果榜单。** 回到原论文，再用 [promptfoo](../llm-eval/promptfoo.zh.md) 为自己的工作负载做外部实验。作者明确不声称独立人工标注，四个证据列也不是方法质量排名。
+- **需要独立确认的效果榜单。** 回到原论文，再用 [promptfoo](../llm-eval/app-evals/promptfoo.zh.md) 为自己的工作负载做外部实验。作者明确不声称独立人工标注，四个证据列也不是方法质量排名。
 
 ## 横向对比
 

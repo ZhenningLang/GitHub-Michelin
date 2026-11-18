@@ -112,7 +112,7 @@ health:
 - **你想直接 `pip install`。** README 里的 `pip install skills-scanner` 会失败：这个包名在 PyPI 上返回 404（2026-10-08 查证）。更糟的是 `pip install skillscan` 会成功，但装上的是另一位作者的无关项目。你只能从 git 源码安装。如果“从注册表安装、可钉版本”是硬要求，改用 SkillSpector 或 `cisco-ai-skill-scanner`。
 - **你要在安装前审一个刚下载的 skill。** 发现逻辑只看固定布局（`<root>/.claude/skills/`、`~/.claude/skills/`、marketplace 插件目录）。一个散放的 skill 目录、一个 zip 或一个 GitHub URL 都不是合法的扫描目标。用 SkillSpector，它接受单个目标并给出是否安装的建议。
 - **你的 skill 不在 `.claude/` 之下。** 尽管仓库简介点名了 Codex 和 Gemini，代码里并没有针对 `~/.codex/`、`~/.gemini/`、`.agents/skills/` 或 Cursor rules 的遍历器；所谓“Codex / Gemini”覆盖只是读取通用的 `<root>/.mcp.json` 与 `mcp.json`。Cline 的发现只支持 macOS，Windsurf 只看用户级配置。要扫 Codex 和 Cursor 格式的 skill，Cisco 的 `skill-scanner` 明确声明两者都支持。
-- **你需要对 prompt injection 做语义检测。** 默认流水线是正则加语法树。可选的 `--judge` 只读 skill 的描述和正文前 2000 个字符，模型 id 是写死的，任何 API 错误都会静默退回一个只有六个短语的关键词桩。要 LLM 驱动的多阶段审计，用 [AI-Infra-Guard](../llm-eval/ai-infra-guard.zh.md) 或 SkillSpector 的 LLM 模式。
+- **你需要对 prompt injection 做语义检测。** 默认流水线是正则加语法树。可选的 `--judge` 只读 skill 的描述和正文前 2000 个字符，模型 id 是写死的，任何 API 错误都会静默退回一个只有六个短语的关键词桩。要 LLM 驱动的多阶段审计，用 [AI-Infra-Guard](../llm-eval/security-audits/ai-infra-guard.zh.md) 或 SkillSpector 的 LLM 模式。
 - **你的 MCP 配置里有密钥，而你正打算开 `--judge`。** 对 MCP server，judge 会把该 server 配置条目里的所有字符串值拼起来，其中包含 `env` 的值，然后发给 Anthropic API。保持 `--judge` 关闭，或者用 SkillSpector 的 `--no-llm` 扫。
 - **你想在 agent 运行时拦下一次危险的工具调用。** 这是一个静态文件扫描器。运行时的策略门控和审计用 [agent-governance-toolkit](agent-governance-toolkit.zh.md)。
 - **你需要对依赖或 AI 服务本身做 CVE 匹配。** 这里没有漏洞库。服务 CVE 用 AI-Infra-Guard，依赖的 OSV 查询用 SkillSpector。
@@ -127,7 +127,7 @@ health:
 |---|---|---|---|
 | [SkillSpector](skillspector.zh.md) | ✅ | 问题是“这一个 skill 能不能装”时选 SkillSpector：它接受单个目标，背后是活跃的 NVIDIA 团队，还带 LLM 评审和 OSV 查询。只有当你要的是整机盘点加两次运行之间的漂移、并且愿意自己接管代码时，才选 skills-scanner。 | SkillSpector 依赖树重，LLM 模式有数据外发；skills-scanner 零依赖、默认离线，但检测浅、未发布、无人维护。 |
 | cisco-ai-defense/skill-scanner | 未收录 | 要给 Codex、Cursor 或 Claude 格式的 skill 设一道可依赖的 CI 闸门时选 Cisco 的扫描器：它仍在持续推送（2026-10-05），可从 PyPI 安装，并公布了各预设档位的误报率。skills-scanner 自己的 README 也承认 Cisco 的静态分析更深。 | Cisco 扫的是 skill 包，不主打 MCP 配置盘点、SQLite 漂移基线和告警分发；选它是拿这些换深度和维护。本批标签页收录未添加。 |
-| [AI-Infra-Guard](../llm-eval/ai-infra-guard.zh.md) | ✅ | 审计范围除了 MCP server 和 skill 还要覆盖在线 AI 服务及其 CVE 时选 AI-Infra-Guard。只需要对本地配置文件做一次不起服务、不用模型的清扫时选 skills-scanner。 | AI-Infra-Guard 要部署 Docker，skill 与 MCP 审计还要一把 LLM key；skills-scanner 是单个 CLI、不用模型，判断意图的能力也相应更弱。 |
+| [AI-Infra-Guard](../llm-eval/security-audits/ai-infra-guard.zh.md) | ✅ | 审计范围除了 MCP server 和 skill 还要覆盖在线 AI 服务及其 CVE 时选 AI-Infra-Guard。只需要对本地配置文件做一次不起服务、不用模型的清扫时选 skills-scanner。 | AI-Infra-Guard 要部署 Docker，skill 与 MCP 审计还要一把 LLM key；skills-scanner 是单个 CLI、不用模型，判断意图的能力也相应更弱。 |
 | [agent-governance-toolkit](agent-governance-toolkit.zh.md) | ✅ | 风险在于 agent 运行时做了什么，就选 agent-governance-toolkit；文件扫描能发现一条通配权限，却拦不住它放行的那次调用。skills-scanner 如果要用，只适合作为上运行时策略之前的盘点步骤。 | 该工具包是一整套要集成和运维的运行时栈；skills-scanner 是一次性的静态报告，不做任何强制。 |
 
 ## 技术栈

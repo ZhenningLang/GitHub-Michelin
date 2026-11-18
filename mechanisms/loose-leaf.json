@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "touch", "en": "Pencil or finger stroke", "zh": "Pencil 或手指笔画", "kind": "input"},
+    {"id": "split", "en": "Slice stroke elements against each scrap outline, top scrap first", "zh": "按贴图轮廓逐个切分笔画片段，从最上层贴图开始", "technique": [1]},
+    {"id": "scrapink", "en": "Inside parts go to that scrap's own ink layer", "zh": "落在里面的片段写进该贴图自己的墨迹层", "kind": "output", "technique": [1]},
+    {"id": "pageink", "en": "Leftover parts go to the page ink", "zh": "剩下的片段写进页面墨迹", "kind": "output"},
+    {"id": "scissor", "en": "Scissor path drawn over the page", "zh": "在页面上画出的剪刀路径", "kind": "input"},
+    {"id": "cut", "en": "Slice each scrap outline into unique shapes;\nstamp old ink into new scraps", "zh": "把每张贴图轮廓切成独立形状；\n旧墨迹盖印到新贴图", "technique": [2]},
+    {"id": "cache", "en": "Page cache: save or unload old top page,\nload new one asynchronously", "zh": "页面缓存：保存或卸载旧顶页，\n异步加载新顶页", "technique": [3]},
+    {"id": "gl", "en": "One shared OpenGL drawing view", "zh": "唯一一个共享 OpenGL 绘图视图", "kind": "external", "technique": [3]},
+    {"id": "clone", "en": "Clone gesture copies page files on a background queue", "zh": "克隆手势在后台队列复制页面文件", "technique": [4]},
+    {"id": "newpage", "en": "New page or new scraps on the stack", "zh": "页面叠里出现新页或新贴图", "kind": "output", "technique": [2, 4]}
+  ],
+  "edges": [
+    {"from": "touch", "to": "split"},
+    {"from": "split", "to": "scrapink", "en": "intersection", "zh": "交集"},
+    {"from": "split", "to": "pageink", "en": "difference", "zh": "差集"},
+    {"from": "scissor", "to": "cut"},
+    {"from": "cut", "to": "newpage"},
+    {"from": "cache", "to": "gl", "en": "hands the view to the top page", "zh": "把视图交给顶页"},
+    {"from": "gl", "to": "pageink", "en": "renders", "zh": "渲染"},
+    {"from": "clone", "to": "newpage", "style": "dashed", "en": "when the gesture completes", "zh": "手势完成时"}
+  ],
+  "sources": [
+    "https://github.com/adamwulf/loose-leaf/blob/86c33a5ecfbf8d1dc5bfc9fa92667a6171ed7b0b/Project/LooseLeaf/MMScrappedPaperView.m#L431-L604",
+    "https://github.com/adamwulf/loose-leaf/blob/86c33a5ecfbf8d1dc5bfc9fa92667a6171ed7b0b/Project/LooseLeaf/MMScrappedPaperView.m#L666-L890",
+    "https://github.com/adamwulf/loose-leaf/blob/86c33a5ecfbf8d1dc5bfc9fa92667a6171ed7b0b/Project/LooseLeaf/MMPageCacheManager.m#L203-L250",
+    "https://github.com/adamwulf/loose-leaf/blob/86c33a5ecfbf8d1dc5bfc9fa92667a6171ed7b0b/Project/LooseLeaf/MMEditablePaperView.m#L180-L230",
+    "https://github.com/adamwulf/loose-leaf/blob/86c33a5ecfbf8d1dc5bfc9fa92667a6171ed7b0b/Project/LooseLeaf/MMPageCloner.m#L30-L75"
+  ]
+}

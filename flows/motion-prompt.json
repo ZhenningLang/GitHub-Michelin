@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "them": {"en": "Motion Prompt does", "zh": "Motion Prompt 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the skill into Claude Code, Codex or another skills-aware agent (Node 18+)", "zh": "把技能装进 Claude Code、Codex 等助手（需 Node 18+）", "code": "npx skills add showheyohtaki/motion-prompt"},
+    {"lane": "you", "en": "Ask the agent to open the library instead of naming a move you cannot name", "zh": "叫不出动作名时，直接让助手打开图库", "code": "Open the motion-prompt library."},
+    {"lane": "them", "en": "Opens the moving-sample gallery and waits on a one-time local listener", "zh": "打开动态样例图库，本机一次性监听等待", "component": {"en": "motion-prompt.mjs pick", "zh": "motion-prompt.mjs pick"}},
+    {"lane": "you", "en": "Press Pick on the samples you want, add a note, press Send to AI", "zh": "给想要的样例点 Pick，写备注，再点 Send to AI"},
+    {"lane": "you", "en": "Tell the agent what to do with the picks in your project", "zh": "告诉助手这些选择用在项目哪里", "code": "Edit the opening of this video like this."},
+    {"lane": "them", "en": "Fetches the spec and reference code for exactly those numbers and their pack kits", "zh": "只取这几个编号的规格、参考代码和配套 kit", "component": {"en": "SKILL.md + get / kit", "zh": "SKILL.md 及 get／kit"}},
+    {"lane": "them", "en": "Rebuilds each move in your stack with the published timings, then lists what it used", "zh": "按原定时长和缓动在你的技术栈重建，并列出所用编号", "component": {"en": "references/porting.md", "zh": "references/porting.md"}}
+  ],
+  "value": {"en": "Point at a move you saw instead of describing it, and get its exact timings ported", "zh": "看见就能指名，不用再费力描述动作，原样的时长和缓动直接搬进项目"},
+  "sources": ["README.md: Three ways to use it §1", "README.md: Skill reference / What the agent does", "skills/motion-prompt/SKILL.md: Let the user pick, Workflow", "skills/motion-prompt/scripts/motion-prompt.mjs:610-636", "skills/motion-prompt/references/porting.md"]
+}

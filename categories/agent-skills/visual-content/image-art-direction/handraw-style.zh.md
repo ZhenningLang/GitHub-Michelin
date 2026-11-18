@@ -101,7 +101,7 @@ health:
 
 ## 何时不用
 
-- **要的是确定、可编辑的成品，不是 AI 成图。** handraw-style 交付给生图模型的只是提示词，像素每次 roll 都不同、无法回头改模板。若交付物是能做版本管理、能微调的卡片封面，用 [guizang-social-card](../guizang-social-card.zh.md) 或 [html-anything](../../../ai-design-generation/html-anything.zh.md)，它们走 HTML→PNG 渲染。
+- **要的是确定、可编辑的成品，不是 AI 成图。** handraw-style 交付给生图模型的只是提示词，像素每次 roll 都不同、无法回头改模板。若交付物是能做版本管理、能微调的卡片封面，用 [guizang-social-card](../guizang-social-card.zh.md)，它走 HTML→PNG 渲染。
 - **要一套锁死的视觉标识贯穿全部内容。** 279 种画风的「广」正是品牌一致性的反面。要单一固定插画人格反复出场，选 [ian-xiaohei-illustrations](ian-illustrations.zh.md)；本页项目存在的意义恰恰是换着来。
 - **画风控制必须放进自己的管线。** 这里没有训练、没有 LoRA、没有节点图，skill 把提示词交给任何你粘贴的生图 AI，渲染完全外包。要批量化、自托管、管线可控的出图，用 [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.zh.md)。
 - **要编号可复现。** 风格编号是可变内容：提交记录显示 `#257`、`#259`、`#260` 都在几周内被整体*替换*成别的风貌。你存下的「260 号提示词」下次更新后可能指向另一张脸——跨时间依赖编号前先锁版本或 fork。

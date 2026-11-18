@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "msg", "kind": "input", "en": "Your message in a group or a bot's own chat", "zh": "你在群里或单聊里发的消息"},
+    {"id": "route", "en": "Admin-first routing; @Name calls members", "zh": "管理员优先路由；@名字 点名成员", "technique": [1]},
+    {"id": "pause", "en": "Six idle relays pause the room until you write", "zh": "连续六步空转就暂停，等你开口", "technique": [1]},
+    {"id": "turn", "en": "Bot turn in its own DSH session", "zh": "Bot 在自己的 DSH 会话里跑一轮"},
+    {"id": "llm", "kind": "external", "en": "Model provider", "zh": "模型服务商"},
+    {"id": "redact", "en": "Secret values replaced before saving and sending", "zh": "密钥值在保存和外发前被替换", "technique": [4]},
+    {"id": "steward", "en": "Steward call: switch to a new part or compact in place", "zh": "管家调用：换新段或原地压缩", "technique": [2]},
+    {"id": "review", "en": "Memory review writes own or group memory", "zh": "记忆复盘写入本 Bot 或本群记忆", "technique": [3]},
+    {"id": "frozen", "kind": "output", "en": "Frozen memory section keeps the prompt prefix cacheable", "zh": "冻结的记忆段让提示前缀可缓存", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "msg", "to": "route"},
+    {"from": "route", "to": "turn", "en": "called speakers", "zh": "被叫到的发言者"},
+    {"from": "route", "to": "pause", "en": "zero-tool status posts", "zh": "不调工具的状态贴", "style": "dashed"},
+    {"from": "turn", "to": "redact", "en": "tool results and requests", "zh": "工具结果与请求"},
+    {"from": "redact", "to": "llm"},
+    {"from": "turn", "to": "steward", "en": "past the check line", "zh": "越过检查线时", "style": "dashed"},
+    {"from": "turn", "to": "review", "en": "conversation goes idle", "zh": "对话空闲后"},
+    {"from": "review", "to": "frozen", "en": "next part or update message", "zh": "下一段或更新消息"}
+  ],
+  "sources": [
+    "https://github.com/Fei2411/DS-Bot/blob/5e9b7da8882da3b68d8a0624342708c2150a9156/ds-bot/src/host/groups.js#L1640-L1660",
+    "https://github.com/Fei2411/DS-Bot/blob/5e9b7da8882da3b68d8a0624342708c2150a9156/ds-bot/src/host/steward.js#L25-L96",
+    "https://github.com/Fei2411/DS-Bot/blob/5e9b7da8882da3b68d8a0624342708c2150a9156/ds-bot/src/host/memory.js#L18-L26",
+    "https://github.com/Fei2411/DS-Bot/blob/5e9b7da8882da3b68d8a0624342708c2150a9156/ds-bot/src/host/secrets.js#L41-L66"
+  ]
+}

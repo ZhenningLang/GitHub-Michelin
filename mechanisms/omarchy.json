@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "pkgs", "en": "Omarchy packages own /usr/share/omarchy", "zh": "Omarchy 包拥有 /usr/share/omarchy", "kind": "input", "technique": [1]},
+    {"id": "user", "en": "~/.config override files loaded after defaults", "zh": "~/.config 覆盖文件在默认配置之后加载", "technique": [1]},
+    {"id": "guard", "en": "ALPM hook aborts a raw pacman -Syu", "zh": "ALPM 钩子拦下直接的 pacman -Syu", "technique": [2]},
+    {"id": "update", "en": "omarchy update: prune, snapshot, keyring, packages", "zh": "omarchy update：清缓存、快照、密钥环、升级包", "technique": [2]},
+    {"id": "migrate", "en": "Timestamped migrations, one marker per user", "zh": "时间戳命名的迁移，每个用户一份标记", "technique": [3]},
+    {"id": "boot", "en": "Verify boot files before offering a reboot", "zh": "校验启动文件后才提示重启", "technique": [2]},
+    {"id": "colors", "en": "Theme colors.toml plus app templates", "zh": "主题 colors.toml 加各应用模板", "kind": "input", "technique": [4]},
+    {"id": "filter", "en": "Cloned themes lose Lua and terminal configs", "zh": "克隆来的主题去掉 Lua 与终端配置", "technique": [4]},
+    {"id": "render", "en": "Render missing app configs into staged theme", "zh": "把缺的应用配置渲染进暂存主题", "technique": [4]},
+    {"id": "desktop", "en": "Themed Hyprland and Quickshell desktop", "zh": "主题统一的 Hyprland 与 Quickshell 桌面", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "pkgs", "to": "user", "en": "defaults first", "zh": "默认配置先加载"},
+    {"from": "user", "to": "desktop"},
+    {"from": "guard", "to": "update", "en": "redirects to", "zh": "引导到"},
+    {"from": "update", "to": "pkgs", "en": "new package version", "zh": "新版本包"},
+    {"from": "update", "to": "migrate", "en": "after packages land", "zh": "包装完之后"},
+    {"from": "migrate", "to": "boot"},
+    {"from": "colors", "to": "filter", "en": "if the theme came from git", "zh": "主题来自 git 时", "style": "dashed"},
+    {"from": "filter", "to": "render"},
+    {"from": "colors", "to": "render"},
+    {"from": "render", "to": "desktop", "en": "atomic swap and retint", "zh": "原子替换并重新着色"}
+  ],
+  "sources": [
+    "https://github.com/omacom/omarchy/blob/419a5a7095d118a218d5f84548dbd83ce90067e6/config/hypr/hyprland.lua#L1-L29",
+    "https://github.com/omacom/omarchy/blob/419a5a7095d118a218d5f84548dbd83ce90067e6/default/libalpm/hooks/00-omarchy-update-guard.hook#L1-L11",
+    "https://github.com/omacom/omarchy/blob/419a5a7095d118a218d5f84548dbd83ce90067e6/bin/omarchy-update#L88-L163",
+    "https://github.com/omacom/omarchy/blob/419a5a7095d118a218d5f84548dbd83ce90067e6/bin/omarchy-migrate#L31-L97",
+    "https://github.com/omacom/omarchy/blob/419a5a7095d118a218d5f84548dbd83ce90067e6/bin/omarchy-theme-set#L336-L428",
+    "https://github.com/omacom/omarchy/blob/419a5a7095d118a218d5f84548dbd83ce90067e6/bin/omarchy-theme-set-templates#L330-L345"
+  ]
+}

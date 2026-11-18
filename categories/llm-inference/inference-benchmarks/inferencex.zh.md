@@ -116,7 +116,7 @@ InferenceX 与其说是一个要安装的程序，不如说是放在 Git 仓库�
 - **你的模型不是当下的前沿模型。** 公布的模型集合为一个固定、有限的 GPU 池精挑细选：`docs/MODELS.md` 记录了整批场景和模型被下线（PR #2493 一次删掉 54 个配置键；Kimi-K2.5 在 2026-08-06 之后完全下线）以腾出算力。中等规模或微调过的模型，自己用 GuideLLM/AIPerf 出数。
 - **你需要中立、按规则审计过的结果，用于采购或对外宣称。** InferenceX 由行业分析公司 SemiAnalysis 运营；README 感谢 AMD 和 NVIDIA 捐赠 GPU，各家硬件的配方由厂商自己的工程师编写并拥有（他们是主配置的 CODEOWNER）。这让配方很强，但流程属于一家公司，不是一个联盟。可审计性和提交规则重要时，引用 MLPerf Inference。
 - **你把投机解码的数字当成自己流量上的效果。** 在 AgentX agent 基准上，投机解码的运行通过各引擎的“合成接受率”开关被钉在一条提交进仓库的“黄金”接受长度曲线上（见 `docs/MODELS.md`），所以加速比反映的是那条曲线，而不是你的草稿模型在你的提示词上的表现。接受率要用独立客户端在自己的流量上测。
-- **你要的是模型质量，不是速度。** 它的评测只用来确认配方没有把精度搞坏。应用或模型质量评测用 [promptfoo](../../llm-eval/promptfoo.zh.md) 或 [DeepEval](../../llm-eval/deepeval.zh.md)。
+- **你要的是模型质量，不是速度。** 它的评测只用来确认配方没有把精度搞坏。应用或模型质量评测用 [promptfoo](../../llm-eval/app-evals/promptfoo.zh.md) 或 [DeepEval](../../llm-eval/app-evals/deepeval.zh.md)。
 - **你打算分叉它、发布自己的排行榜。** 代码是 Apache-2.0，但 README 要求分叉把结果标成“Unofficial”并保留免责声明，“InferenceX”带商标标记，仪表板在另一个 GPL-3.0 仓库里。做内部排行榜，基于 AIPerf/GuideLLM 的输出自己搭，别继承那套品牌约束和 GPL 前端。
 
 ## 横向对比

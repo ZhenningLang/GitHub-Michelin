@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Auto Ontology", "zh": "Auto Ontology"},
+  "steps": [
+    {"lane": "you", "en": "Put a model API key, passwords and your database URLs in .env, then start the stack", "zh": "在 .env 填模型 API key、各项密码和数据库连接串，启动整套服务", "code": "docker compose up -d --build"},
+    {"lane": "them", "en": "Reads tables, columns, keys and query history from each source and embeds them", "zh": "从每个数据源读出表、列、键和查询历史，并做向量索引", "component": {"en": "ingestion service", "zh": "摄取服务"}},
+    {"lane": "you", "en": "Turn on Semantic Compilation in Settings", "zh": "在 Settings 里打开 Semantic Compilation"},
+    {"lane": "them", "en": "Samples each table, names business terms and keeps only joins the data confirms", "zh": "抽样每张表，命名业务术语，只保留数据能证实的连接关系", "component": {"en": "semantic compilation", "zh": "语义编译"}},
+    {"lane": "you", "en": "Ask a business question in Chat, or from your agent over MCP", "zh": "在 Chat 里问业务问题，或让你的 agent 通过 MCP 来问", "code": "ask_question"},
+    {"lane": "them", "en": "Resolves terms, follows the joins, checks names against the catalog and runs the SQL", "zh": "把问题落到术语和连接路径上，按目录核对表名列名后执行 SQL", "component": {"en": "ReAct text-to-SQL agent", "zh": "ReAct 文本转 SQL agent"}}
+  ],
+  "value": {"en": "You stop hand-writing schema notes into prompts: answers come back with the SQL and the steps, so you can check the number against the source", "zh": "不用再把表结构说明手抄进提示词：每个回答都带 SQL 和步骤，数字能对回源表核查"},
+  "sources": [
+    "https://github.com/NVIDIA/auto-ontology/blob/7dac5ff7bce3daf42e2115ef392146a542fa15d2/README.md#quickstart",
+    "https://github.com/NVIDIA/auto-ontology/blob/7dac5ff7bce3daf42e2115ef392146a542fa15d2/README.md#mcp-server",
+    "https://github.com/NVIDIA/auto-ontology/blob/7dac5ff7bce3daf42e2115ef392146a542fa15d2/docs/architecture.md#generate-an-ontology",
+    "https://github.com/NVIDIA/auto-ontology/blob/7dac5ff7bce3daf42e2115ef392146a542fa15d2/docs/architecture.md#answer-a-question"
+  ]
+}

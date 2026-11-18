@@ -23,6 +23,7 @@
 | **vLLM Semantic Router** | 当平台团队同时服务多个模型，想按请求内容（领域、难度、越狱、PII）用 YAML 策略在 Envoy 后面逐请求选模型时用它；但它还没到 1.0，密钥和限流仍要靠一个网关。 | B（5/6） | [→](vllm-semantic-router.zh.md) |
 | **Monid** | 当 agent 要调很多付费数据和媒体 API（搜索、爬虫、信息补全、视频），你希望每家厂商都写成同一份声明式契约、由一个引擎统一校验、调用和计量时用它；但 `discover` 路由、单一 key 和定价都在闭源托管侧，仓库也只有约六周大。 | B（6/6） | [→](monid.zh.md) |
 | **Agentgateway** | 多个助手需要一个 MCP 入口，统一配置联邦聚合与列出／调用策略时用它；这不等于沙箱，也不会自动让端点私有。 | B（6/6） | [→](agentgateway.zh.md) |
+| **Coral** | agent 要动公司系统，又要每次调用都受允许／询问／阻止约束、凭据不进上下文时用它：agent 发 TypeScript 程序在 V8 isolate 里跑，跑通的能存成窄范围自定义工具；项目约七个月，公司主导，有 `ee/` 划分。 | B（5/6） | [→](coral.zh.md) |
 
 ## 对比矩阵
 
@@ -38,6 +39,7 @@
 | [vLLM Semantic Router](vllm-semantic-router.zh.md) | ✅ | B（5/6） | 以 Envoy ExtProc 决策层的形式按内容选模型，自带分类器模型；代价是多一跳和一套多服务栈，凭据、限流和副本调度仍归其他层。 |
 | [Monid](monid.zh.md) | ✅ | B（6/6） | “工具版 OpenRouter”背后的开源连接器标准和引擎：约 700 个厂商端点写成声明式文件，自带按次计量；路由、单一 key 和大部分目录留在闭源托管平台。 |
 | [Agentgateway](agentgateway.zh.md) | 已收录 | B（6/6） | 面向 MCP 的联邦聚合与显式列出／调用策略，不提供操作系统隔离；身份、TLS、策略配置和上游信任仍由你负责。 |
+| [Coral](coral.zh.md) | 已收录 | B（5/6） | code mode 的 MCP 网关，逐次审批、宿主侧注入凭据、可保存自定义工具；策略只到工具粒度不到参数，遥测默认开启，v1 是五周前的重写。 |
 | Tyk / KrakenD / New API | 未收录 | — | 各页点到的其他自托管网关。 |
 
 ## 什么该放这里

@@ -1,0 +1,19 @@
+{"schema":1,"direction":"down","nodes":[
+{"id":"film","en":"film.html: tracks of clips; each shot a page with frame(t)","zh":"film.html：轨道与片段；每个镜头是带 frame(t) 的网页","kind":"input"},
+{"id":"clock","en":"Host freezes time, random and animations at t","zh":"宿主把时间、随机数与动画钉在 t","technique":[1]},
+{"id":"look","en":"look draws frames twice in shuffled orders and compares","zh":"look 按两种乱序各画一遍并比对","technique":[2]},
+{"id":"render","en":"Up to 4 browsers render frames, ffmpeg encodes MP4","zh":"最多 4 个浏览器并发出帧，ffmpeg 编码 MP4","kind":"output","technique":[2]},
+{"id":"person","en":"Person edits in Studio, saved as clip overrides","zh":"人在 Studio 手改，存为片段 overrides","technique":[3]},
+{"id":"agentw","en":"Agent rewrites film.html with its own file tools","zh":"agent 用自己的文件工具重写 film.html","kind":"external"},
+{"id":"merge","en":"Three-way merge per clip and field; person wins conflicts","zh":"按片段与字段三方合并；冲突时人的值胜出","technique":[4]},
+{"id":"note","en":"Agent told what was kept; both versions saved in history","zh":"告诉 agent 保留了什么；两版都存进历史","kind":"output","technique":[4]}],
+"edges":[
+{"from":"film","to":"clock"},
+{"from":"clock","to":"look","en":"same t, same picture","zh":"同一 t 同一画面"},
+{"from":"clock","to":"render"},
+{"from":"person","to":"film","en":"overrides attribute","zh":"overrides 属性"},
+{"from":"agentw","to":"merge"},
+{"from":"film","to":"merge","en":"versions Studio has seen","zh":"Studio 见过的版本"},
+{"from":"merge","to":"note"},
+{"from":"merge","to":"film","en":"merged write","zh":"合并后写回"}],
+"sources":["https://github.com/openfilm/openfilm/blob/589953539de2c8c8c119e29f9c6033c1e90ed1fd/packages/openfilm/src/host.mjs#L14-L28","https://github.com/openfilm/openfilm/blob/589953539de2c8c8c119e29f9c6033c1e90ed1fd/packages/openfilm/src/look.mjs#L100-L116","https://github.com/openfilm/openfilm/blob/589953539de2c8c8c119e29f9c6033c1e90ed1fd/packages/openfilm/src/overrides.mjs#L1-L73","https://github.com/openfilm/openfilm/blob/589953539de2c8c8c119e29f9c6033c1e90ed1fd/packages/openfilm/studio/server/person-edits.mjs#L1-L30","https://github.com/openfilm/openfilm/blob/589953539de2c8c8c119e29f9c6033c1e90ed1fd/packages/openfilm/studio/server/person-merge.mjs#L1-L12"]}

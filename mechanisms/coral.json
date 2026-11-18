@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "agent", "en": "Agent sends a TypeScript program via MCP exec", "zh": "agent 经 MCP exec 发来 TypeScript 程序", "kind": "input"},
+    {"id": "admit", "en": "Admission compiles it;\nfinds addCustomTool calls", "zh": "准入时编译；\n找出 addCustomTool 调用", "technique": [3]},
+    {"id": "isolate", "en": "Fresh V8 isolate: no network, files, imports or credentials", "zh": "全新 V8 isolate：无网络、文件、导入与凭据", "technique": [1]},
+    {"id": "search", "en": "coral.search: words + CPU vector model, typed signatures", "zh": "coral.search：词检索加 CPU 向量模型，返回类型签名", "technique": [4]},
+    {"id": "gate", "en": "Per-call policy: Allow, Ask or Block", "zh": "逐次调用查策略：允许、询问或阻止", "technique": [2]},
+    {"id": "human", "en": "Workspace owner approves the exact call", "zh": "工作区所有者批准这一次具体调用", "kind": "external", "technique": [2]},
+    {"id": "creds", "en": "Host adds credentials and forwards", "zh": "宿主补上凭据后转发", "technique": [1]},
+    {"id": "provider", "en": "Provider API: GitHub, Slack, OpenAPI or MCP service", "zh": "Provider API：GitHub、Slack、OpenAPI 或 MCP 服务", "kind": "external"},
+    {"id": "result", "en": "Only the return value goes back to the agent", "zh": "只有返回值回到 agent", "kind": "output", "technique": [1]},
+    {"id": "tools", "en": "Private tool, publishable as shared", "zh": "私有工具，可发布为共享", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "agent", "to": "admit"},
+    {"from": "admit", "to": "isolate", "en": "compiled JavaScript", "zh": "编译后的 JavaScript"},
+    {"from": "isolate", "to": "search", "en": "discover tools", "zh": "发现工具"},
+    {"from": "isolate", "to": "gate", "en": "provider call", "zh": "provider 调用"},
+    {"from": "gate", "to": "human", "en": "Ask: run parks", "zh": "询问：运行挂起", "style": "dashed"},
+    {"from": "human", "to": "gate", "en": "approved", "zh": "已批准", "style": "dashed"},
+    {"from": "gate", "to": "creds", "en": "allowed", "zh": "放行"},
+    {"from": "creds", "to": "provider"},
+    {"from": "provider", "to": "isolate", "en": "response", "zh": "响应"},
+    {"from": "isolate", "to": "result"},
+    {"from": "admit", "to": "tools", "en": "save on success", "zh": "成功后保存", "style": "dashed"},
+    {"from": "tools", "to": "isolate", "en": "coral.private.<name>", "zh": "coral.private.<name>", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/withcoral/coral/blob/88c62f1dd5cdf75fe630ccfe7ecf15dd3fc55b08/crates/coral-v8/src/lib.rs#L1-L16",
+    "https://github.com/withcoral/coral/blob/88c62f1dd5cdf75fe630ccfe7ecf15dd3fc55b08/crates/coral-policy/src/lib.rs#L1130-L1149",
+    "https://github.com/withcoral/coral/blob/88c62f1dd5cdf75fe630ccfe7ecf15dd3fc55b08/crates/coral-run/src/enforcement.rs#L1-L13",
+    "https://github.com/withcoral/coral/blob/88c62f1dd5cdf75fe630ccfe7ecf15dd3fc55b08/docs/adr/0031-agents-save-functions-inside-programs.md#L5-L30",
+    "https://github.com/withcoral/coral/blob/88c62f1dd5cdf75fe630ccfe7ecf15dd3fc55b08/docs/adr/0035-universal-search-adds-a-vector-list-from-a-bundled-cpu-model.md#L5-L20"
+  ]
+}

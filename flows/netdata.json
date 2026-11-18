@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Netdata does",
+    "zh": "Netdata 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Download kickstart.sh from get.netdata.cloud and run it on each machine",
+      "zh": "下载 kickstart.sh 并在每台机器上运行",
+      "code": "sh /tmp/netdata-kickstart.sh",
+      "component": {
+        "en": "kickstart.sh",
+        "zh": "kickstart.sh"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Detects the OS, containers and running services and starts per-second collectors",
+      "zh": "识别系统、容器与在跑服务，启动每秒采集器",
+      "component": {
+        "en": "internal + external plugins",
+        "zh": "内置与外部插件"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Stores samples in tiered dbengine, evaluates stock alerts, scores each metric for anomalies",
+      "zh": "写入分层 dbengine，评估内置告警，给每个指标打异常分",
+      "component": {
+        "en": "netdata daemon",
+        "zh": "netdata 守护进程"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Open the node's dashboard on port 19999",
+      "zh": "打开该节点 19999 端口的看板",
+      "code": "http://localhost:19999"
+    },
+    {
+      "lane": "them",
+      "en": "Serves auto-generated charts with anomaly rates, no queries or dashboard building",
+      "zh": "给出自动生成的图表与异常率，不用写查询或搭看板",
+      "component": {
+        "en": "NCUL1 dashboard",
+        "zh": "NCUL1 看板"
+      }
+    }
+  ],
+  "value": {
+    "en": "Per-second charts, stock alerts and anomaly flags for a machine without writing exporters, queries or dashboards",
+    "zh": "不写 exporter、查询和看板，就能拿到一台机器的每秒图表、内置告警和异常标记"
+  },
+  "sources": [
+    "https://github.com/netdata/netdata/blob/72e71a7738e1410a4baee7b2e71d2c268d83ea53/README.md#L146-L200",
+    "https://github.com/netdata/netdata/blob/72e71a7738e1410a4baee7b2e71d2c268d83ea53/packaging/installer/UPDATE.md#L81",
+    "https://github.com/netdata/netdata/blob/72e71a7738e1410a4baee7b2e71d2c268d83ea53/src/ml/README.md",
+    "https://github.com/netdata/netdata/blob/72e71a7738e1410a4baee7b2e71d2c268d83ea53/src/database/engine/README.md",
+    "https://github.com/netdata/netdata/blob/72e71a7738e1410a4baee7b2e71d2c268d83ea53/README.md#L111-L115"
+  ]
+}

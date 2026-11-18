@@ -113,7 +113,7 @@ health:
 
 - **运行必须扛过崩溃、能暂停好几天。** 这里的人工介入是把暂停的运行序列化（`RunState`），之后由你自己恢复；崩溃恢复需要另外部署 Temporal、Dapr 或 Restate。想在智能体库内部就拿到带检查点、可恢复的状态，改用 [LangGraph](langgraph.zh.md)；智能体只是持久业务流程中的一步时，改用 [Temporal](../../../workflow-orchestration/temporal.zh.md)。
 - **你主要用非 OpenAI 的模型。** README 说“与厂商无关”，但文档推荐走 OpenAI Responses 路径，非 OpenAI 厂商要经过标为 beta、尽力而为的 Any-LLM / LiteLLM 适配器；只有 Responses 才有的功能（托管工具、推理上下文）带不过去。改用 [Pydantic AI](pydantic-ai.zh.md)，多厂商模型支持是它的核心设计。
-- **追踪数据不能出你的网络，或者你的组织签了零数据保留（ZDR）。** 追踪默认开启并导出到 OpenAI；文档写明 ZDR 组织用不了追踪。用 `OPENAI_AGENTS_DISABLE_TRACING=1` 关掉它，改把追踪发到自托管的 [Langfuse](../../../llm-eval/langfuse.zh.md)（它有 OpenAI Agents 集成文档），不要用内置查看器。
+- **追踪数据不能出你的网络，或者你的组织签了零数据保留（ZDR）。** 追踪默认开启并导出到 OpenAI；文档写明 ZDR 组织用不了追踪。用 `OPENAI_AGENTS_DISABLE_TRACING=1` 关掉它，改把追踪发到自托管的 [Langfuse](../../../llm-eval/app-evals/langfuse.zh.md)（它有 OpenAI Agents 集成文档），不要用内置查看器。
 - **你需要把修复合回上游。** 贡献指南写明 PR 只接受仓库协作者，外部 PR 一律不收，连文档也不行。如果自己给框架打补丁很重要，选 [Pydantic AI](pydantic-ai.zh.md) 或 [LangGraph](langgraph.zh.md)，它们的仓库接受社区 PR。
 - **你要稳定的 1.x API。** 包还是 `0.Y.Z`（2026-10-02 发布 0.23.1）；发布策略允许每次次版本号升级都有破坏性变更，截至 2026-10-08 的三个月里发了 17 个版本。锁定次版本，或者在 API 稳定比表面轻量更重要时改用 [LangGraph](langgraph.zh.md)（2025-10 起已是 1.x）。
 - **要做的是按角色分工的团队或可视化流程。** 声明角色和任务用 [CrewAI](crewai.zh.md)；非开发人员要搭流程用 [Dify](../../workflow-builders/dify.zh.md)，因为这个 SDK 是只能写代码、一次一个智能体的库。

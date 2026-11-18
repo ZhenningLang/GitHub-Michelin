@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Agent Autoloop", "zh": "Agent Autoloop"},
+  "steps": [
+    {"lane": "you", "en": "Install it on a machine where your agent CLI is already signed in", "zh": "在已登录 Agent CLI 的电脑上安装", "code": "install.sh · install.ps1"},
+    {"lane": "them", "en": "Clones the latest release, detects your agent and starts the background hub", "zh": "克隆最新 Release，检测已装的 Agent，启动后台中台", "component": {"en": "installer + hub service", "zh": "安装器与中台服务"}},
+    {"lane": "you", "en": "Declare what happened, which agent handles it and in which folder", "zh": "写清发生什么、交给哪个 Agent、在哪个目录", "code": "~/.agent-autoloop/rules.json"},
+    {"lane": "them", "en": "On the event, runs the agent for one round; a question becomes a card and the process exits", "zh": "事件到来时让 Agent 跑一轮；要问的事变成卡片，进程退出", "component": {"en": "kernel + worker", "zh": "内核与接单程序"}},
+    {"lane": "you", "en": "Answer the card in Feishu, a desktop notification or the CLI", "zh": "在飞书、桌面通知或命令行回答卡片", "code": "agent-autoloop answer 1 <number>"},
+    {"lane": "them", "en": "Resumes the original agent session with your answer and finishes the job", "zh": "带着你的回答接回原会话，把活做完"}
+  ],
+  "value": {"en": "You stop babysitting a terminal: work runs in the background and only decisions reach you, with no tokens spent while you think", "zh": "不用守着终端：活在后台跑，只有要你拍板的事才找你，等你时不花 Token"},
+  "sources": [
+    "https://github.com/KKKKhazix/agent-autoloop/blob/ca5c0ffe2c92be17502c4f1a75cdb71823eeafef/README.en.md#L21-L74",
+    "https://github.com/KKKKhazix/agent-autoloop/blob/ca5c0ffe2c92be17502c4f1a75cdb71823eeafef/README.en.md#L76-L128",
+    "https://github.com/KKKKhazix/agent-autoloop/blob/ca5c0ffe2c92be17502c4f1a75cdb71823eeafef/install.sh",
+    "https://github.com/KKKKhazix/agent-autoloop/blob/ca5c0ffe2c92be17502c4f1a75cdb71823eeafef/kernel/decide.ts#L523-L558"
+  ]
+}

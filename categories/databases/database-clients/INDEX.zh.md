@@ -14,6 +14,7 @@
 | **PrettyZoo** | 当你想用桌面 GUI 浏览、轻量编辑 ZooKeeper 的 znode 树、节点数据和 ACL，而不想敲 `zkCli.sh` 时用它——但它已归档，作者 2024-01 宣布停止维护。 | D（5/6） | [→](prettyzoo.zh.md) |
 | **RDR** | 当 Redis 撞上 maxmemory、你要离线解析 RDB 快照找出吃内存的 key 前缀、又不想给生产加负载时用它——但它自 2020 年起冻结，内存数字也只是近似值。 | D（4/6） | [→](rdr.zh.md) |
 | **MCP Toolbox for Databases** | 当生产 agent 要查多种数据库（57 种数据源、Google Cloud 一等公民），且只能走你在 YAML 里声明的参数化语句时用它——但引擎级只读只在 Cloud SQL／AlloyDB／BigQuery 上有，网络默认值也偏宽松。 | A（6/6） | [→](mcp-toolbox.zh.md) |
+| **Auto Ontology** | 当 agent 要在几个互相重叠的 SQL 库上回答开放的业务问题，你又想让“术语、连接、指标”对照图根据元数据自动起草、连接经数据核验、每个答案附 SQL 时用它——但它是七个容器的整套服务，默认把样本发给 NVIDIA 托管模型，且只有十个连接器（没有 BigQuery、SQL Server、Oracle）。 | B（5/6） | [→](auto-ontology.zh.md) |
 
 ## 什么该放这里
 

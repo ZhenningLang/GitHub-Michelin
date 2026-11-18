@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "chat", "en": "Message in Slack, Teams, Discord, Telegram or Mattermost", "zh": "Slack、Teams、Discord、Telegram 或 Mattermost 里的消息", "kind": "input"},
+    {"id": "bridge", "en": "Platform adapter; posts as the sender's puppet", "zh": "平台适配器；以发送人的替身账号发帖", "technique": [4]},
+    {"id": "write", "en": "One INSERT; room seq under a per-room advisory lock", "zh": "一次 INSERT；房间序号在房间级咨询锁下分配", "technique": [1]},
+    {"id": "router", "en": "Router decides each agent's own events in the same transaction", "zh": "路由器在同一事务里决定每个 agent 的事件", "technique": [3]},
+    {"id": "decide", "en": "Optional decision model picks one agent or nobody", "zh": "可选决策模型挑一个 agent 或谁都不选", "kind": "external", "technique": [5]},
+    {"id": "notify", "en": "pg_notify wake-up; readers page from their own cursor", "zh": "pg_notify 只做唤醒；读者从自己的游标翻页", "technique": [2]},
+    {"id": "agent", "en": "Agent session on your provider account", "zh": "用你自己厂商账号跑的 agent 会话", "kind": "external"},
+    {"id": "out", "en": "Reply relayed out; echoes dropped, thread found via message map", "zh": "回复转发出去；回声丢弃，线程靠消息映射表找回", "kind": "output", "technique": [4]}
+  ],
+  "edges": [
+    {"from": "chat", "to": "bridge"},
+    {"from": "bridge", "to": "write"},
+    {"from": "write", "to": "router", "en": "same transaction", "zh": "同一事务"},
+    {"from": "router", "to": "decide", "en": "no rule matched and auto-route on", "zh": "无规则命中且开了自动路由", "style": "dashed"},
+    {"from": "decide", "to": "router", "en": "chosen agent", "zh": "选中的 agent", "style": "dashed"},
+    {"from": "router", "to": "notify", "en": "on commit", "zh": "提交后"},
+    {"from": "notify", "to": "agent", "en": "sequenced event stream", "zh": "带序号的事件流"},
+    {"from": "agent", "to": "write", "en": "reply via Switch tools", "zh": "经 Switch 工具回帖"},
+    {"from": "notify", "to": "out", "en": "bridge client reads the reply", "zh": "桥客户端读到回复"}
+  ],
+  "sources": [
+    "https://github.com/sandbox-quantum/switch/blob/6e0c0ab3fe338217523fba1f62ebd7df1f42cb0e/core/switch_core/db/stores/message_store.py#L160-L198",
+    "https://github.com/sandbox-quantum/switch/blob/6e0c0ab3fe338217523fba1f62ebd7df1f42cb0e/core/switch_core/messages/notify.py#L1-L30",
+    "https://github.com/sandbox-quantum/switch/blob/6e0c0ab3fe338217523fba1f62ebd7df1f42cb0e/core/switch_core/delivery/router.py#L1-L55",
+    "https://github.com/sandbox-quantum/switch/blob/6e0c0ab3fe338217523fba1f62ebd7df1f42cb0e/core/switch_core/bridges/collaboration/collaboration_core.py#L3513-L3530",
+    "https://github.com/sandbox-quantum/switch/blob/6e0c0ab3fe338217523fba1f62ebd7df1f42cb0e/decision/switch_decision/app.py#L274-L300"
+  ]
+}

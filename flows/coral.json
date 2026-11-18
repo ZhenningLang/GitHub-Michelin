@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Coral does",
+    "zh": "Coral 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the desktop app, or run the shared server with Docker Compose",
+      "zh": "装桌面应用，或用 Docker Compose 起共享服务",
+      "code": "docker compose up -d",
+      "component": {
+        "en": "desktop app or coral server",
+        "zh": "桌面应用或 coral 服务"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "In the Coral UI, add a provider from the catalog, an OpenAPI document or an MCP server",
+      "zh": "在 Coral 界面添加 provider（目录、OpenAPI 或 MCP）"
+    },
+    {
+      "lane": "them",
+      "en": "Give the provider's tools a default policy: reads run, everything else waits for approval",
+      "zh": "给新 provider 的工具配默认策略：只读直接跑，其余要审批",
+      "component": {
+        "en": "tool policy",
+        "zh": "工具策略"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Add the workspace MCP URL to your agent",
+      "zh": "把工作区的 MCP 地址加进你的 agent",
+      "code": "claude mcp add --scope user --transport http coral <your-mcp-url>"
+    },
+    {
+      "lane": "you",
+      "en": "Ask a question; your agent sends a short TypeScript program through the exec tool",
+      "zh": "提一个问题；agent 经 exec 工具发来一段 TypeScript 程序"
+    },
+    {
+      "lane": "them",
+      "en": "Run it in a fresh V8 isolate, check each provider call, add credentials and forward it",
+      "zh": "在全新 V8 isolate 里运行，逐次查策略、补凭据再转发",
+      "component": {
+        "en": "V8 isolate + policy gate",
+        "zh": "V8 isolate 与策略关口"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Approve the exact call in the Coral UI when its policy is Ask",
+      "zh": "策略为 Ask 时，在 Coral 界面批准这一次具体调用"
+    },
+    {
+      "lane": "them",
+      "en": "Return only the program's result; a working program can be saved and called again as a custom tool",
+      "zh": "只回传程序结果；跑通的程序可存成自定义工具再调",
+      "code": "coral.private.<name>({ ... })",
+      "component": {
+        "en": "custom tools",
+        "zh": "自定义工具"
+      }
+    }
+  ],
+  "value": {
+    "en": "Your agent acts on real systems with per-call Allow/Ask/Block, never holds the credentials, and reuses what worked",
+    "zh": "agent 能动真实系统，每次调用受允许／询问／阻止约束，不经手凭据，跑通的能复用"
+  },
+  "sources": [
+    "https://github.com/withcoral/coral/blob/88c62f1dd5cdf75fe630ccfe7ecf15dd3fc55b08/README.md (Get started; How Coral works)",
+    "https://github.com/withcoral/coral/blob/88c62f1dd5cdf75fe630ccfe7ecf15dd3fc55b08/apps/docs/getting-started/quickstart.mdx",
+    "https://github.com/withcoral/coral/blob/88c62f1dd5cdf75fe630ccfe7ecf15dd3fc55b08/apps/docs/getting-started/self-host/docker-compose.mdx#L194",
+    "https://github.com/withcoral/coral/blob/88c62f1dd5cdf75fe630ccfe7ecf15dd3fc55b08/crates/coral-policy/src/lib.rs#L1143-L1149",
+    "https://github.com/withcoral/coral/blob/88c62f1dd5cdf75fe630ccfe7ecf15dd3fc55b08/crates/coral-v8/src/lib.rs#L1-L16"
+  ]
+}

@@ -13,6 +13,7 @@
 | **OpenTelemetry Collector** | 当多个服务要把链路、指标、日志发往不止一个后端，并希望采样、脱敏、路由都在一份 YAML 里集中配置、而不是写进每个服务时用它——但只有一个服务、一个 OTLP 后端时，它只是多一个进程。 | A（6/6） | [→](opentelemetry-collector.zh.md) |
 | **Loki** | 当你的 Prometheus + Grafana 体系里，日志账单主要花在没人查的全文索引上，而按应用、命名空间、Pod 这类标签圈定范围的查询就够用时用它——但跨几周的全文检索要扫遍每个块，而且它是 AGPL-3.0。 | B（6/6） | [→](loki.zh.md) |
 | **Jaeger** | 当一个慢请求穿过几十个服务，你想要一个自托管、原生支持 OpenTelemetry、自带界面、由 CNCF 治理的链路追踪后端时用它——但存储数据库得你自己运维，而且 v1 二进制和 jaeger-client 库都已停止维护。 | A（6/6） | [→](jaeger.zh.md) |
+| **Netdata** | 当你想装完几分钟就看到逐秒的主机与服务指标、预置告警和逐指标异常标记，又不想写 exporter、搭看板时用它——但看板闭源，不买 Netdata Cloud 付费套餐时超过五个节点会被锁定。 | A（6/6） | [→](netdata.zh.md) |
 
 
 ## 对比矩阵
@@ -22,6 +23,7 @@
 | [Mac Performance Monitor](mac-performance-monitor.zh.md) | ✅ | B（6/6） | 单机历史证据、自适应告警与只读 MCP；要求 macOS 15 以上，可选特权覆盖，助手读取后可能外发提供商。 |
 | [Grafana](grafana.zh.md) | ✅ | B（5/6） | 多数据源之上的统一看板/告警；是可视化层而非存储（AGPL-3.0）。 |
 | [Telegraf](../dev-utilities/ops-infra/telegraf.zh.md) | ✅ | A（6/6） | 插件驱动的采集/路由 agent，负责把数据喂给 Grafana 读取的后端——分工不同。 |
+| [Netdata](netdata.zh.md) | ✅ | A（6/6） | 零配置的逐秒 agent，自带分层存储、预置告警和节点本地 ML；agent 是 GPL，但看板为闭源 NCUL1，免费查看限 5 个节点。 |
 | Kibana / Datadog / Apache Superset | 部分已收录 | — | 各页对比里点到的其他看板/可观测/BI 方案；其中 Apache Superset 收录在 data-visualization 分类下，Kibana 与 Datadog 尚未收录。 |
 
 ## 什么该放这里

@@ -12,6 +12,7 @@
 | **edulab** | 用同源符号解答和绘图数据制作单题交互课件，或走独立检查的旁白视频路线。 | B（4/5） | [→](edulab.zh.md) |
 | **Word Atlas** | 学习或复用中英雅思插画词库与本地复习调度；先检查备份及离线风险。 | D（3/6） | [→](word-atlas.zh.md) |
 | **Echo Loop** | 把导入录音串成手机精听、跟读与复述；先检查发布版默认遥测。 | C（6/6） | [→](echo-loop.zh.md) |
+| **Jane Street Agent Skills** | AI 讲完你说懂了就算数；这个单文件技能让 agent 先摸底、每次只问一个问题，0–5 级要反复证明才升。 | B（4/5） | [→](janestreet-agent-skills.zh.md) |
 
 
 ## 对比矩阵
@@ -23,6 +24,7 @@
 | [edulab](edulab.zh.md) | ✅ | B（4/5） | 用同源符号解答和绘图数据制作单题交互课件，或走独立检查的旁白视频路线。 |
 | [Word Atlas](word-atlas.zh.md) | ✅ | D（3/6） | 现成词库与免账号静态应用；无自动设备同步，生成内容需审校，持久化及导出有已知风险。 |
 | [Echo Loop](echo-loop.zh.md) | 已收录 | C（6/6） | 原生手机音频练习与本地进度；AGPL、云端 AI 额度、默认 PostHog 回放，桌面端未正式发布。 |
+| [Jane Street Agent Skills](janestreet-agent-skills.zh.md) | ✅ | B（4/5） | 一个 MIT 提示词文件，不用安装也不存数据；评级规则严格，但讲课和判分是同一个模型，进度只在对话或手动粘贴的状态块里。 |
 
 
 ## 什么该放这里

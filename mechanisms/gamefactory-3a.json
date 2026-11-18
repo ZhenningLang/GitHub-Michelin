@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "req", "kind": "input", "en": "Game requirement; agent reads setting_overview.md", "zh": "游戏需求；助手先读 setting_overview.md"},
+    {"id": "route", "en": "Five ordered steps; one engine API context; whitebox first", "zh": "五步顺序；只选一份引擎 API；先做白盒", "technique": [1]},
+    {"id": "gate", "en": "Paid backend: quote cost, wait for the user's key", "zh": "付费后端：报价，等用户给密钥", "technique": [2]},
+    {"id": "cache", "en": "Output-hash cache plus locked task-ID checkpoint", "zh": "按输出哈希缓存，加锁保存远端任务号", "technique": [2]},
+    {"id": "gen", "kind": "external", "en": "Cloud APIs or local GPU models", "zh": "云端 API 或本地 GPU 模型", "technique": [5]},
+    {"id": "orient", "en": "Four rendered views plus geometry; a vision model picks the facing", "zh": "四向渲染图加几何证据；视觉模型判朝向", "technique": [3]},
+    {"id": "packet", "en": "Mechanic/UI: prepare packet, agent edits, finalize", "zh": "玩法／UI：准备任务包，助手改代码，收尾校验", "technique": [4]},
+    {"id": "scan", "en": "Finalize rejects UI code inside gameplay tasks", "zh": "收尾拒收玩法任务里的 UI 代码", "technique": [4]},
+    {"id": "stub", "en": "models → operators → pipeline; CPU stub smoke run", "zh": "模型 → 算子 → 管线；CPU 桩模型冒烟", "technique": [5]},
+    {"id": "play", "en": "Build, play, record a low-res video, review the table", "zh": "构建、游玩、录低清视频、按表审查", "technique": [1]},
+    {"id": "out", "kind": "output", "en": "Game slice and review video under test_data/outputs/", "zh": "test_data/outputs/ 下的游戏切片与审查录像"}
+  ],
+  "edges": [
+    {"from": "req", "to": "route"},
+    {"from": "route", "to": "gate", "en": "asset needed", "zh": "需要资产"},
+    {"from": "gate", "to": "cache", "en": "approved", "zh": "已批准"},
+    {"from": "cache", "to": "gen", "en": "submit or resume", "zh": "提交或续跑"},
+    {"from": "gate", "to": "gen", "en": "declined: local route", "zh": "拒绝：走本地", "style": "dashed"},
+    {"from": "stub", "to": "gen", "en": "contributors test wiring", "zh": "贡献者测接线", "style": "dashed"},
+    {"from": "gen", "to": "orient", "en": "3D meshes", "zh": "3D 网格"},
+    {"from": "route", "to": "packet", "en": "gameplay and UI", "zh": "玩法与 UI"},
+    {"from": "packet", "to": "scan"},
+    {"from": "orient", "to": "play"},
+    {"from": "scan", "to": "play"},
+    {"from": "play", "to": "out", "en": "review passes", "zh": "审查通过"},
+    {"from": "play", "to": "route", "en": "fix in the owning layer", "zh": "回到所属层修", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/OpenDCAI/GameFactory-3A/blob/f9e927c04ed6abd1dd6f805d52638f1ffe884798/agent_skills/setting_overview.md",
+    "https://github.com/OpenDCAI/GameFactory-3A/blob/f9e927c04ed6abd1dd6f805d52638f1ffe884798/agent_skills/asset_qa/README.md#L68-L100",
+    "https://github.com/OpenDCAI/GameFactory-3A/blob/f9e927c04ed6abd1dd6f805d52638f1ffe884798/models/gen_3d_object/tripo_model.py#L404-L528",
+    "https://github.com/OpenDCAI/GameFactory-3A/blob/f9e927c04ed6abd1dd6f805d52638f1ffe884798/engine_adapters/three_js/preview/client.py#L201-L260",
+    "https://github.com/OpenDCAI/GameFactory-3A/blob/f9e927c04ed6abd1dd6f805d52638f1ffe884798/pipeline/code_gen/gen_mechanic/artifacts.py#L124-L170",
+    "https://github.com/OpenDCAI/GameFactory-3A/blob/f9e927c04ed6abd1dd6f805d52638f1ffe884798/agent_skills/develop_harness/README.md#L33-L133"
+  ]
+}

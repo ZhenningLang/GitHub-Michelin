@@ -11,6 +11,7 @@
 | **PicoClaw** | Run a chat-driven assistant on a small ARM, MIPS or RISC-V Linux board without a Python/Node.js core runtime; model inference stays separate, remote exec defaults on and process isolation off. | B (6/6) | [→](picoclaw.md) |
 | **Hermes Agent** | Use it when you want one long-lived assistant on your own VPS that runs shell commands and scheduled jobs, remembers your environment and answers on Telegram or Slack — but its behaviour drifts as skills and memory change, and it is about 15 months old. | A (4/6) | [→](hermes-agent.md) |
 | **OpenClaw** | Use it when you want one personal assistant on your own computer answering across WhatsApp, iMessage, Slack, Telegram and 20+ more channels with shared memory — but one Gateway is one trust domain, so users who do not trust each other must not share it. | B (5/6) | [→](openclaw.md) |
+| **ZeroClaw** | Use it when one always-on assistant on your own host should answer on Telegram, Discord, Matrix or email from a single Rust binary, with unknown senders refused until paired and medium-risk tools held for approval in chat — but it is pre-1.0, Windows has no OS sandbox, and the container image ships with gateway pairing off. | B (6/6) | [→](zeroclaw.md) |
 
 ## Comparison matrix
 
@@ -20,6 +21,7 @@
 | [PicoClaw](picoclaw.md) | ✅ | B (6/6) | Cross-compiled Go core with chat adapters, tools and local state; buys deployability on small boards, not local model inference or an enabled-by-default OS sandbox. |
 | [Hermes Agent](hermes-agent.md) | ✅ | A (4/6) | Buys persistence under your control — bounded memory, self-written skills, session search and a scheduler; costs determinism, enterprise governance (no SSO, RBAC or audit) and any Lindy track record. |
 | [OpenClaw](openclaw.md) | ✅ | B (5/6) | Buys the widest chat-channel coverage plus phone and desktop companion apps; costs tenant isolation, SSO and audit logs, on a project less than a year old. |
+| [ZeroClaw](zeroclaw.md) | ✅ | B (6/6) | Single Rust binary with 30+ channels, deny-by-default pairing and per-tool risk profiles; costs a large config surface, frequent schema migrations and open third-party security findings on a nine-month-old project. |
 
 ## What belongs here
 

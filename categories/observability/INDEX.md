@@ -13,6 +13,7 @@
 | **OpenTelemetry Collector** | Use it when several services send traces, metrics and logs to more than one backend and you want sampling, PII redaction and routing set once in YAML, not per service — but with one service and one OTLP backend it is just an extra process. | A (6/6) | [→](opentelemetry-collector.md) |
 | **Loki** | Use it when your Prometheus-and-Grafana stack's log bill is driven by full-text indexing nobody queries, and label-scoped searches by app, namespace or pod are enough — but full-text search across weeks scans every chunk, and it is AGPL-3.0. | B (6/6) | [→](loki.md) |
 | **Jaeger** | Use it when a slow request crosses dozens of services and you want a self-hosted, OpenTelemetry-native tracing backend with its own UI under CNCF governance — but you must run its storage database, and v1 binaries and jaeger-client libraries are end-of-life. | A (6/6) | [→](jaeger.md) |
+| **Netdata** | Use it when you want per-second host and service metrics, stock alerts and per-metric anomaly flags minutes after install, with no exporters or dashboards to build — but the dashboard is closed-source and locks nodes beyond five without a paid Netdata Cloud plan. | A (6/6) | [→](netdata.md) |
 
 
 ## Comparison matrix
@@ -22,6 +23,7 @@
 | [Mac Performance Monitor](mac-performance-monitor.md) | ✅ | B (6/6) | Single-Mac historical evidence, adaptive alerts and read-only MCP; macOS 15+, optional privileged coverage and provider disclosure if an agent reads it. |
 | [Grafana](grafana.md) | ✅ | B (5/6) | Unified dashboard/alerting over many datasources; a visualization layer, not a datastore (AGPL-3.0). |
 | [Telegraf](../dev-utilities/ops-infra/telegraf.md) | ✅ | A (6/6) | Plugin-driven collection/routing agent that feeds the backends Grafana reads — different job. |
+| [Netdata](netdata.md) | ✅ | A (6/6) | Zero-config per-second agent with its own tiered store, stock alerts and on-node ML; GPL agent but closed NCUL1 dashboard with a 5-node free view limit. |
 | Kibana / Datadog / Apache Superset | partly indexed | — | Other dashboard/observability/BI stacks named across the pages; Apache Superset is indexed under data-visualization, Kibana and Datadog are not. |
 
 ## What belongs here
