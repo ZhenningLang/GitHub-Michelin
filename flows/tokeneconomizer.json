@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "TokenEconomizer does", "zh": "TokenEconomizer 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone the repo, add it as a plugin marketplace and install the plugin", "zh": "克隆仓库，加为插件市场并安装插件", "code": "claude plugin install tokeneconomizer@tokeneconomizer", "component": {"en": "agent plugin (hooks)", "zh": "agent 插件（hooks）"}},
+    {"lane": "you", "en": "Start the agent in your repo, trust the folder, record its tool catalog once", "zh": "在你的仓库启动 agent，信任目录，记录一次工具清单", "code": "/tokeneconomizer:toolprune refresh-catalog"},
+    {"lane": "you", "en": "Keep working in that repository as usual, session after session", "zh": "照常在这个仓库里一轮轮开会话干活"},
+    {"lane": "them", "en": "Folds each finished session log into per-repo evidence on disk", "zh": "把每个结束的会话日志折进本机的仓库证据", "component": {"en": "te-hook + ~/.tokeneconomizer", "zh": "te-hook 与本机状态目录"}},
+    {"lane": "them", "en": "Injects confirmed repo facts at session start; denies long-unused tools", "zh": "会话开头注入已确认的仓库事实，禁掉长期不用的工具"},
+    {"lane": "them", "en": "Watches each turn; a judge redirects a stuck loop once, then tells you", "zh": "逐轮盯循环，判官认定卡住时先提醒一次，再告诉你"}
+  ],
+  "value": {"en": "Later sessions in the same repo stop paying to relearn it, carry fewer tools and loop less", "zh": "同一仓库的后续会话不再花钱重新摸索、少带工具、少空转"},
+  "sources": [
+    "https://github.com/microsoft/TokenEconomizer/blob/f1b91a40e9537c3e5fce146385366cbb009f5ecc/README.md#quick-start",
+    "https://github.com/microsoft/TokenEconomizer/blob/f1b91a40e9537c3e5fce146385366cbb009f5ecc/plugin/hooks/hooks.json",
+    "https://github.com/microsoft/TokenEconomizer/blob/f1b91a40e9537c3e5fce146385366cbb009f5ecc/tokeneconomizer/plugin/README.md"
+  ]
+}

@@ -18,6 +18,7 @@
 | **Token Optimizer** | Use it when a coding agent burns tokens on tool output, re-reads and compaction loss, and you want hook-layer compression, compaction checkpoints and a local dollar ledger — accepting its noncommercial license. | C (5/6) | [→](token-optimizer.md) |
 | **RTK** | Your agent's context fills with passing-test spam and `git push` progress lines; RTK hooks the agent's shell commands and hands back only failures and one-line confirmations (Bash output only; Apache-2.0). | A (5/6) | [→](rtk.md) |
 | **gnhf** | You want your agent CLI to keep working overnight and leave one commit per successful round, rolling back failed rounds and waiting out Claude usage limits — accepting skipped permission prompts and default-on telemetry. | B (6/6) | [→](gnhf.md) |
+| **TokenEconomizer** | The same repo's sessions keep relearning commands, carrying unused tools and looping; TokenEconomizer learns from finished sessions to inject confirmed facts, prune idle tools and redirect stuck turns (needs per-repo history; open hook-path security report). | B (6/6) | [→](tokeneconomizer.md) |
 
 ## Comparison matrix
 
@@ -34,6 +35,7 @@
 | [Token Optimizer](token-optimizer.md) | ✅ | C (5/6) | Hook-layer compression plus compaction checkpoints plus a local dollar ledger across ~10 coding agents; source-available noncommercial license and a 7-month-old single-maintainer surface. |
 | [RTK](rtk.md) | ✅ | A (5/6) | Shell-output compression only — a single Apache-2.0 Rust binary that rewrites the agent's Bash commands and keeps exit codes; no checkpoints, no ledger beyond `rtk gain`, file reads bypass it. |
 | [gnhf](gnhf.md) | ✅ | B (6/6) | Agent-agnostic overnight loop with commit-or-rollback per round; trusts the agent's own success verdict and keeps only an append-only notes.md as state. |
+| [TokenEconomizer](tokeneconomizer.md) | ✅ | B (6/6) | Cross-session learning per repository (facts, tool pruning, loop guard) with a cache-aware ledger; MIT, Microsoft Research, five weeks old, needs history in each repo and a tested agent version. |
 | Taskmaster / GitHub Issues + gh / Linear | 未收录 | — | Other task/work-tracking backends for agents named across the pages. |
 
 ## What belongs here

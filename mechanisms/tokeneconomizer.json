@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "logs", "en": "Finished session logs, read per agent", "zh": "按 agent 格式读取的已结束会话日志", "kind": "input"},
+    {"id": "facts", "en": "Command intent and failure patterns become candidate facts", "zh": "命令意图与失败模式变成候选事实", "technique": [1]},
+    {"id": "life", "en": "3 confirmations to activate; contradiction retires; 40% firing gate", "zh": "3 次确认才生效；被反驳即退役；40% 触发门", "technique": [1]},
+    {"id": "inject", "en": "At most 4 facts, about 150 tokens, at session start", "zh": "会话开头最多 4 条、约 150 token", "kind": "output", "technique": [1]},
+    {"id": "unused", "en": "Unused-tool streaks over prompts and sessions", "zh": "按提示数与会话数累计的未用工具", "technique": [2]},
+    {"id": "deny", "en": "Deny list written into the agent's own settings after an idle window", "zh": "空闲窗口后写进 agent 自己的配置", "kind": "output", "technique": [2]},
+    {"id": "turn", "en": "Per tool call: loop signals and a free gate", "zh": "每次工具调用：循环信号与免费闸门", "technique": [3]},
+    {"id": "env", "en": "Envelope: percentile of turns that ended green", "zh": "包络：正常结束轮次长度的分位数", "technique": [3]},
+    {"id": "judge", "en": "Judge on your own agent CLI, tools off", "zh": "在你自己的 agent CLI 上关工具跑判官", "kind": "external", "technique": [3, 4]},
+    {"id": "nudge", "en": "One redirect, then a notice; never stops the turn", "zh": "提醒一次，再通知人；从不自行停止", "kind": "output", "technique": [3]},
+    {"id": "ledger", "en": "Cache-aware cost ledger that includes the plugin's own calls", "zh": "按缓存计价、含插件自身调用的成本账本", "kind": "output", "technique": [4]}
+  ],
+  "edges": [
+    {"from": "logs", "to": "facts"},
+    {"from": "facts", "to": "life"},
+    {"from": "life", "to": "inject", "en": "next session", "zh": "下一会话"},
+    {"from": "logs", "to": "unused"},
+    {"from": "unused", "to": "deny", "en": "next session", "zh": "下一会话"},
+    {"from": "logs", "to": "env", "en": "green turns only", "zh": "只取正常结束的轮次"},
+    {"from": "turn", "to": "judge", "en": "gate open", "zh": "闸门打开时", "style": "dashed"},
+    {"from": "env", "to": "turn"},
+    {"from": "judge", "to": "nudge"},
+    {"from": "facts", "to": "judge", "en": "optional proposer when microskills=on", "zh": "开启 microskills 时可选的提案模型", "style": "dashed"},
+    {"from": "judge", "to": "ledger"}
+  ],
+  "sources": [
+    "https://github.com/microsoft/TokenEconomizer/blob/f1b91a40e9537c3e5fce146385366cbb009f5ecc/tokeneconomizer/microskills/lifecycle.py#L1-L23",
+    "https://github.com/microsoft/TokenEconomizer/blob/f1b91a40e9537c3e5fce146385366cbb009f5ecc/tokeneconomizer/plugin/fold.py#L143-L152",
+    "https://github.com/microsoft/TokenEconomizer/blob/f1b91a40e9537c3e5fce146385366cbb009f5ecc/tokeneconomizer/loopguard/rules.py#L109-L135",
+    "https://github.com/microsoft/TokenEconomizer/blob/f1b91a40e9537c3e5fce146385366cbb009f5ecc/tokeneconomizer/plugin/sidecall.py#L1-L57"
+  ]
+}

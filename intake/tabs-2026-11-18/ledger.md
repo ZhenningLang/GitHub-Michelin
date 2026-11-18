@@ -17,10 +17,10 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | JuneYaooo/rea-video | add | done | categories/video-production/editing-workflows/rea-video.md |  | juneyaooo/rea-video |
 | KKKKhazix/agent-autoloop | add | done | categories/agent-frameworks/coding-agents/orchestration-and-review/agent-autoloop.md |  | kkkkhazix/agent-autoloop |
 | kunchenguid/gnhf | add | done | categories/agent-tooling/work-state/gnhf.md |  | kunchenguid/gnhf |
-| microsoft/TokenEconomizer | add | running |  |  | microsoft/tokeneconomizer |
+| microsoft/TokenEconomizer | add | done | categories/agent-tooling/work-state/tokeneconomizer.md |  | microsoft/tokeneconomizer |
 | netdata/netdata | add | running |  |  | netdata/netdata |
-| nexu-io/openmotion | add | running |  |  | nexu-io/openmotion |
-| NVIDIA/auto-ontology | add | pending |  |  | nvidia/auto-ontology |
+| nexu-io/openmotion | sync | running | categories/ai-design-generation/html-anything.md | 仓库由 nexu-io/html-anything 改名（同 repo id 1235403234），main 已转为视频工作室；按 sync 重核并改名 | nexu-io/openmotion |
+| NVIDIA/auto-ontology | add | running |  |  | nvidia/auto-ontology |
 | omacom/omarchy | add | pending |  |  | omacom/omarchy |
 | OpenDCAI/GameFactory-3A | add | pending |  |  | opendcai/gamefactory-3a |
 | openfilm/openfilm | add | pending |  |  | openfilm/openfilm |
