@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "in", "en": "Video, character photo and settings", "zh": "视频、角色照片与设置", "kind": "input"},
+    {"id": "prune", "en": "Prune the all-options export and rewire LoRAs", "zh": "裁剪全选项导出图，改接 LoRA 链", "technique": [1]},
+    {"id": "check", "en": "Per-node object_info and model-list check", "zh": "逐节点 object_info 与模型清单检查", "technique": [2]},
+    {"id": "comfy", "en": "comfy-api-proxy and ComfyUI", "zh": "comfy-api-proxy 与 ComfyUI", "kind": "external"},
+    {"id": "mask", "en": "SAM 3.1 tracks; mask with headroom and held poses", "zh": "SAM 3.1 跟踪；遮罩留头顶余量并保持姿势", "technique": [4]},
+    {"id": "grey", "en": "Grey mannequin motion reference", "zh": "灰色人偶动作参考", "technique": [4]},
+    {"id": "loop", "en": "H3 clip loop saved under a settings-keyed run name", "zh": "H3 分段循环，按设置区分 run_name 存盘", "technique": [3]},
+    {"id": "out", "en": "Final MP4 with source soundtrack", "zh": "保留原声的最终 MP4", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "in", "to": "prune"},
+    {"from": "prune", "to": "check", "en": "same graph", "zh": "同一张图"},
+    {"from": "check", "to": "comfy", "en": "upload and submit if ok", "zh": "通过后上传并提交"},
+    {"from": "comfy", "to": "mask"},
+    {"from": "mask", "to": "grey"},
+    {"from": "grey", "to": "loop", "en": "motion reference", "zh": "动作参考"},
+    {"from": "mask", "to": "loop", "en": "edit area", "zh": "重画区域"},
+    {"from": "loop", "to": "loop", "en": "rerun resumes finished clips", "zh": "重跑续上已完成段", "style": "dashed"},
+    {"from": "loop", "to": "out"}
+  ],
+  "sources": [
+    "https://github.com/D3voz/openjutsu/blob/7fe118bb5a61fcfac0148e1bfea3dd29884dbf26/lib/simple.ts#L88-L170",
+    "https://github.com/D3voz/openjutsu/blob/7fe118bb5a61fcfac0148e1bfea3dd29884dbf26/lib/model.ts#L47-L88",
+    "https://github.com/D3voz/openjutsu/blob/7fe118bb5a61fcfac0148e1bfea3dd29884dbf26/lib/setup.ts#L31-L117",
+    "https://github.com/D3voz/comfyui-h3-oneclick-swap/blob/e44a56e92920000e675d14be484aea0d7498d63e/__init__.py#L1224-L1345"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Openjutsu + ComfyUI do",
+    "zh": "Openjutsu 与 ComfyUI 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install ComfyUI 0.41.2+, the listed node packs and the H3, SAM 3.1 and Qwen models",
+      "zh": "装好 ComfyUI 0.41.2+、所列节点包和 H3 等模型",
+      "component": {
+        "en": "ComfyUI",
+        "zh": "ComfyUI"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Start the patched proxy and the app",
+      "zh": "启动打过补丁的代理和应用",
+      "code": "comfy-api-proxy run --max-upload-mb 500 · npm start",
+      "component": {
+        "en": "comfy-api-proxy and Next.js app",
+        "zh": "代理与 Next.js 应用"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Drop a video and a character photo, then press Generate",
+      "zh": "拖入视频和角色照片，点 Generate"
+    },
+    {
+      "lane": "them",
+      "en": "Prune the exported graph and check its nodes and model files against ComfyUI",
+      "zh": "裁剪导出图，并对照 ComfyUI 检查节点和模型文件",
+      "component": {
+        "en": "setup check",
+        "zh": "开跑前检查"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Track the person with SAM, turn them into a grey mannequin and render each clip with H3",
+      "zh": "用 SAM 跟踪人物，转成灰色人偶，再用 H3 逐段渲染",
+      "component": {
+        "en": "oneclick-swap, Context Loop packs",
+        "zh": "oneclick-swap 等节点包"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Assemble the final MP4 with the source soundtrack",
+      "zh": "拼出保留原声的最终 MP4",
+      "component": {
+        "en": "Final Video node",
+        "zh": "Final Video 节点"
+      }
+    }
+  ],
+  "value": {
+    "en": "A character-swapped video without hand-wiring a ComfyUI graph for every run",
+    "zh": "不用每次手接 ComfyUI 节点图，就得到换了角色的视频"
+  },
+  "sources": [
+    "https://github.com/D3voz/openjutsu/blob/7fe118bb5a61fcfac0148e1bfea3dd29884dbf26/README.md#L33-L108",
+    "https://github.com/D3voz/openjutsu/blob/7fe118bb5a61fcfac0148e1bfea3dd29884dbf26/README.md#L136-L146",
+    "https://github.com/D3voz/openjutsu/blob/7fe118bb5a61fcfac0148e1bfea3dd29884dbf26/lib/setup.ts#L76-L117",
+    "https://github.com/D3voz/openjutsu/blob/7fe118bb5a61fcfac0148e1bfea3dd29884dbf26/start_openjutsu.bat"
+  ]
+}

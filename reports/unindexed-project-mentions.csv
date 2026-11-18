@@ -423,6 +423,7 @@ Colab MCP server (`googlecolab/colab-mcp`),categories/python-tooling/google-cola
 collectd,categories/dev-utilities/ops-infra/telegraf.md,,no
 COLMAP,categories/3d-reconstruction/lingbot-map.md,,no
 COLMAP · Meshroom,categories/3d-reconstruction/INDEX.md,,no
+comfy-reshoot,categories/video-production/editing-workflows/openjutsu.md,,no
 Commercial Kubernetes placement / cost-optimization platforms,categories/dev-utilities/ops-infra/descheduler.md,,no
 "Commercial patent SaaS (智慧芽 PatSnap, incoPat, 专利之星)",categories/agent-skills/personal-collections/knowledge-content/patent-disclosure-skill.md,,no
 Commercial solving services (打码平台),categories/captcha/text-select-captcha.md,,no
@@ -546,6 +547,7 @@ Excalibur.js,categories/game-dev/kaplay.md,,no
 exo,categories/llm-inference/local-runtimes/memory-offload/ds4.md,,no
 Fabric,categories/networking/paramiko.md,,no
 face_recognition (ageitgey/face_recognition),categories/computer-vision/deepface.md,,no
+FaceFusion,categories/video-production/editing-workflows/openjutsu.md,,no
 facenet-pytorch (timesler/facenet-pytorch),categories/computer-vision/deepface.md,,no
 FastAPI + Uvicorn,categories/llm-inference/serving-engines/ray-serve.md,,no
 faster-whisper,categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
@@ -1393,6 +1395,7 @@ VSCodeVim,categories/dev-utilities/editors-and-runtimes/code-editors/ideavim.md,
 VSCodium,categories/dev-utilities/editors-and-runtimes/code-editors/vscode.md,,no
 Vue DevTools (`vuejs/devtools`),categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-devtools.md,,no
 VueUse (`vueuse/vueuse`),categories/web-ui/scheduling/tanstack-pacer.md,,no
+Wan2.2 (Animate),categories/video-production/editing-workflows/openjutsu.md,,no
 Warpgate (`warp-tech/warpgate`),categories/dev-utilities/ops-infra/jumpserver.md,,no
 Weaviate,categories/rag-retrieval/vector-search/INDEX.md,,no
 Web Animations API (WAAPI),categories/frontend-animation/anime.md,,no
