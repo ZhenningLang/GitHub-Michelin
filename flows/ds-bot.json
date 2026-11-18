@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "DS Bot", "zh": "DS Bot"},
+  "steps": [
+    {"lane": "you", "en": "Install the desktop app, or add the ds-bot plugin to DeepSeek Harness", "zh": "装桌面应用，或在 DeepSeek Harness 里添加 ds-bot 插件", "component": {"en": "Electron app with pinned DSH", "zh": "自带固定版 DSH 的桌面应用"}},
+    {"lane": "you", "en": "Set up a model provider in Settings", "zh": "在设置里配好一个模型服务商"},
+    {"lane": "them", "en": "Opens with a Main Bot called Chief that walks you through setup", "zh": "首次打开就有名为 Chief 的主 Bot，带你完成设置", "component": {"en": "Main Bot", "zh": "主 Bot"}},
+    {"lane": "you", "en": "Tell Chief which bots and group chats you want", "zh": "告诉 Chief 你要哪些 Bot 和群聊"},
+    {"lane": "them", "en": "Creates each bot with its own model, folder, permission preset and memory", "zh": "逐个建 Bot，各自有模型、目录、权限预设和记忆"},
+    {"lane": "you", "en": "Post in a group, or @ one bot by name to address it directly", "zh": "在群里发消息，或用 @名字 直接点一个 Bot", "code": "@Name"},
+    {"lane": "them", "en": "The group admin answers first and calls in the members the work needs", "zh": "群管理员先回答，再按需叫来相关成员干活", "component": {"en": "group admin", "zh": "群管理员"}}
+  ],
+  "value": {"en": "A standing team that remembers you and hands work between bots, instead of re-briefing a fresh session per task", "zh": "一支记得你、会互相派活的常驻团队，不用每个任务都给新会话重讲一遍"},
+  "sources": [
+    "https://github.com/Fei2411/DS-Bot/blob/5e9b7da8882da3b68d8a0624342708c2150a9156/README.md#L24-L46",
+    "https://github.com/Fei2411/DS-Bot/blob/5e9b7da8882da3b68d8a0624342708c2150a9156/README.md#L68-L80",
+    "https://github.com/Fei2411/DS-Bot/blob/5e9b7da8882da3b68d8a0624342708c2150a9156/ds-bot/README.md#L7-L23",
+    "https://github.com/Fei2411/DS-Bot/blob/5e9b7da8882da3b68d8a0624342708c2150a9156/ds-bot/README.md#L32-L52"
+  ]
+}

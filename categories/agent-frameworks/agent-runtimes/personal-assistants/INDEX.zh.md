@@ -25,6 +25,7 @@
 | **OpenMausBot** | 当你已经在为 Claude Code、Codex 或 Grok CLI 付费，想把它们变成一个聊天应用里的一排 bot——各有自己的模型、电脑和连接的应用，权限请求变成“允许 / 拒绝”卡片——时用它；但审批只是各 CLI 自己的模式，统计默认开启，`enterprise/` 是源码可见许可，而且它只有 8 周大、几乎每天发版。 | B（6/6） | [→](openmausbot.zh.md) |
 | **OpenDots** | 当你想自己托管、自己改几个有名字的 AI 同事——每个有自己的角色、工具、文档空间和可选的容器电脑，能聊天、打电话或在 Slack 里找到，存页面和调 MCP 写操作前先问你——时用它；但每段对话都存在 CopilotKit Intelligence，模型只走兼容 OpenAI 的接口，而且是个 9 天大的 Alpha 模板。 | B（4/6） | [→](opendots.zh.md) |
 | **Jarvis** | 用本地语音模型和短期转写参与房间讨论；代价是非商业许可与桌面音频配置。 | C（5/6） | [→](jarvis.zh.md) |
+| **DS Bot** | 当你想在 DeepSeek Harness 上养一支常驻 Bot 团队——每个有自己的记忆、模型、目录和权限，主 Bot 帮你建好其余成员，群聊由管理员分派工作——时用它；但它是一个只有六周大、锁定 DSH 候选版的插件，安装包未签名，Docker 版默认完全访问。 | C（5/6） | [→](ds-bot.zh.md) |
 
 ## 对比矩阵
 
@@ -43,6 +44,7 @@
 | [OpenMausBot](openmausbot.zh.md) | ✅ | B（6/6） | Milind Soni 做的 Grok Bot 开源替代：在一个类 Telegram 的应用里驱动你已登录的 agent CLI（claude、codex、grok），电脑可选 Boat、Local VM 或你自己的 Mac，应用接入走 Composio；换来自带 agent、运维轻，代价是审批原样透传、统计默认开启、还有一层开源内核外的 `enterprise/`。 |
 | [OpenDots](opendots.zh.md) | ✅ | B（4/6） | CopilotKit 的 MIT 模板：按角色划权限的多个专职 agent，带文档页面、Slack、通话和 OpenBot 电脑；不连云能启动，但不接厂商的 Intelligence 服务就聊不了天。 |
 | [Jarvis](jarvis.zh.md) | ✅ | C（5/6） | 用本地语音模型和短期转写参与房间讨论；代价是非商业许可与桌面音频配置。 |
+| [DS Bot](ds-bot.zh.md) | ✅ | C（5/6） | Fei2411 做的 DSH 插件兼桌面应用，把 DeepSeek Harness 会话变成带复盘记忆、上下文管家和管理员优先群聊的常驻 Bot；换来按量计费模型上的常驻角色，代价是绑定 DSH 候选版、每轮多出模型调用。 |
 
 ## 什么该放这里
 

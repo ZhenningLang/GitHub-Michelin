@@ -335,6 +335,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **kagent** | 当 agent 应该是 Kubernetes 对象时用它——用 YAML 声明、由控制器与引擎运行，带模型配置、MCP 工具服务器与 OpenTelemetry 追踪。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/kubernetes-agents/kagent.zh.md) · [EN](categories/agent-frameworks/kubernetes-agents/kagent.md) |
 | **OpenClaw Enterprise** | 当多个团队的原版 OpenClaw 或 Codex agent 要在共享 Kubernetes 集群上按租户分命名空间、走 IAM、投递密钥、留不可变版本和审计时用它——不适合个人助手，也还不是正式发布的产品。 | MIT | B（5/6） | [中](categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.zh.md) · [EN](categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.md) |
 | **Jarvis** | 用本地语音模型和短期转写参与房间讨论；代价是非商业许可与桌面音频配置。 | LicenseRef-Jarvis-NonCommercial | C（5/6） | [EN](categories/agent-frameworks/agent-runtimes/personal-assistants/jarvis.md) · [中](categories/agent-frameworks/agent-runtimes/personal-assistants/jarvis.zh.md) |
+| **DS Bot** | 当你想在 DeepSeek Harness 上养一支常驻 Bot 团队——每个有自己的记忆、模型、目录和权限，主 Bot 帮你建好其余成员，群聊由管理员分派工作——时用它；但它是一个只有六周大、锁定 DSH 候选版的插件，安装包未签名，Docker 版默认完全访问。 | Apache-2.0 | C（5/6） | [中](categories/agent-frameworks/agent-runtimes/personal-assistants/ds-bot.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/personal-assistants/ds-bot.md) |
 | **FastClaw** | 用一个 Go 服务管理多个助手、分层配置与持久会话；源码可见，自托管默认可在宿主执行。 | LicenseRef-FastClaw-Community | C（4/6） | [EN](categories/agent-frameworks/agent-runtimes/agent-services/fastclaw.md) · [中](categories/agent-frameworks/agent-runtimes/agent-services/fastclaw.zh.md) |
 
 

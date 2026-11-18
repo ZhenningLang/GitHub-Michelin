@@ -489,6 +489,7 @@ ddddocr,categories/captcha/pytorch-captcha-recognition.md,,no
 DEAP,categories/ml-research/pymoo.md,,no
 Deep Agents (`langchain-ai/deepagents`),categories/deep-research/open-deep-research.md,,no
 DeepKE,categories/ml-research/nlp-and-time-series/agriculture-knowledge-graph.md,,no
+DeepSeek Harness,categories/agent-frameworks/agent-runtimes/personal-assistants/ds-bot.md,,no
 DeepSpeech (Mozilla),categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
 DeepSpeed,categories/llm-training/colossalai.md,,no
 DeepSpeed ZeRO-Inference,categories/llm-inference/local-runtimes/memory-offload/airllm.md,,no
