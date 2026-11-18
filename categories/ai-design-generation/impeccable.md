@@ -126,7 +126,6 @@ Impeccable ships in two layers. The layer you install is a skill: `npx impeccabl
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [html-anything](html-anything.md) | ✅ | Choose html-anything when you need agents to generate HTML artifacts. | Generates HTML artifacts from agents; Impeccable instead critiques/lints what an agent already produced. Complementary, not substitute. |
 | [open-design](open-design.md) | ✅ | Choose open-design when you need a design-language/generation layer rather than a lint harness. | A design-language / generation layer in the same category; overlaps on "make agent design better" but differs on whether it lints existing output vs drives generation. Compare the two pages directly. |
 | [guizang-ppt](../agent-skills/slides-ppt/guizang-ppt.md) | ✅ | Choose guizang-ppt when you need slide-deck generation as a skill-pack. | A skill-pack for slide-deck generation; narrow output type, no deterministic detector or CLI. Impeccable is broader frontend-quality tooling. |
 | [guizang-social-card](../agent-skills/visual-content/guizang-social-card.md) | ✅ | Choose guizang-social-card when you need social-card generation as a skill-pack. | Skill-pack for social-card generation; single artifact type vs Impeccable's general UI linting. |

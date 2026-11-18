@@ -86,7 +86,7 @@ health:
 
 你在做聊天产品、内部运维台，或一个必须在**正在跑的应用里**画出仪表盘、表单、发票的 agent 界面。模型总是干两件坏事之一：写出一堆 import 了你从未发布的组件的 JSX，或者吐出带 `GlowCard` 这种你没有的类型的 JSON——屏幕要么崩，要么看起来完全不像你们的品牌。用重试循环去修，既烧 token，偶尔还是会画出你绝不会设计的东西。
 
-选 json-render 的那条取舍是**目录优先，而不是生成源码**。你已经有（或准备写）一套有限的 React / Vue / Svelte / Solid 组件，用 Zod 登记它们的 props，模型只能从这张清单里挑。产出是渲染器会画的 JSON spec，不是你还要 review、合并、再部署的源文件。当界面必须留在应用里、必须用你已经在用的设计系统时，选它而不是 v0 或 Lovable；当交付物是 coding-agent CLI 产出的文件（HTML / PPTX / MP4）而不是运行时的树时，选 [HTML Anything](html-anything.zh.md) 或 [Open Design](open-design.zh.md)。
+选 json-render 的那条取舍是**目录优先，而不是生成源码**。你已经有（或准备写）一套有限的 React / Vue / Svelte / Solid 组件，用 Zod 登记它们的 props，模型只能从这张清单里挑。产出是渲染器会画的 JSON spec，不是你还要 review、合并、再部署的源文件。当界面必须留在应用里、必须用你已经在用的设计系统时，选它而不是 v0 或 Lovable；当交付物是 coding-agent CLI 产出的文件（HTML / PPTX / MP4）而不是运行时的树时，选 [Open Design](open-design.zh.md)。
 
 ## 快问快答
 
@@ -121,7 +121,7 @@ json-render 并不坐进模型的采样循环。你声明一份目录：允许�
 ## 何时不用
 
 - **你要模型写出你会收进 git 的源码。** json-render 吐的是运行时 JSON spec，不是 `.tsx` 文件。交付物是要 review、要自己拥有的代码时，用 v0（托管产品，不是仓库）或 coding agent。
-- **交付物是文件，不是应用内的树。** 要把 Markdown 变成可投的 HTML 并导出微信 / X / 知乎，用 [HTML Anything](html-anything.zh.md)。要本地优先的桌面 studio，顺带做 deck 和 HTML→MP4，用 [Open Design](open-design.zh.md)。
+- **交付物是文件，不是应用内的树。** 要用驱动你自己 agent 的本地优先桌面 studio 产出 HTML 文件、deck 或 HTML→MP4，用 [Open Design](open-design.zh.md)。
 - **你需要 JSON 在 token 这一层就不可能非法。** json-render 的护栏是提示词、一份可选的 JSON Schema，以及事后的 Zod。如果你握着 logits、少一个括号都不能接受，用 [XGrammar](../llm-inference/structured-generation/xgrammar.zh.md)（或供应商的 structured-output），把 json-render 当作上面的 UI 层，而不是约束层。
 - **你不想维护一份组件目录。** 目录本身就是产品。如果更想让模型用自由 HTML/JSX 发明布局，自己写 React 或用 codegen；json-render 不会发明你没登记的组件。
 - **你还在 React 18 或 Zod 3。** `@json-render/react` 0.21.0 的 peer 是 `react@^19.2.3`；`@json-render/core` 的 peer 是 `zod@^4.0.0`。留在现有栈，或把升级算进成本，不要指望包元数据里没有的兼容层。
@@ -134,7 +134,6 @@ json-render 并不坐进模型的采样循环。你声明一份目录：允许�
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [HTML Anything](html-anything.zh.md) | 已收录 | 当已登录的 coding-agent CLI 要把 Markdown 变成可投 HTML 文件时选 HTML Anything；当模型必须在你正在跑的应用里、用你已有的组件拼界面时选 json-render。 | HTML Anything 经 spawn CLI 产出文件，从不进入你的产品运行时；json-render 是你嵌入的库，目录和模型调用都得自己扛。 |
 | [Open Design](open-design.zh.md) | 已收录 | 要本地优先的桌面 studio（原型、deck、图像、HTML→MP4）时选 Open Design；当生成式 UI 是现有 web/mobile 应用的一项功能、而不是单独 studio 时选 json-render。 | Open Design 是你操作的 Electron 应用；json-render 是你 import 的包。studio 的广度对上进程内的控制权。 |
 | [XGrammar](../llm-inference/structured-generation/xgrammar.zh.md) | 已收录 | 当你握着 logits、畸形 token 必须不可能出现时选 XGrammar；当问题是「模型可以点名哪些组件」、而 JSON 字符串已经存在时选 json-render。 | XGrammar 在生成过程里掩 token；json-render 用提示词、JSON Schema 和 Zod 约束组件词表。两者可叠：XGrammar（或托管 structured output）管形状，json-render 管零件箱。 |
 | CopilotKit（`CopilotKit/CopilotKit`） | 未收录 | 要整套把 agent 塞进应用的 SDK（聊天 UI、共享状态、人在环里、Slack/Teams）时选 CopilotKit；你已经有聊天、只需要模型用你的目录拼界面时选 json-render。 | CopilotKit 是 agent 和用户之间的产品层；json-render 是你嵌入的、编过目的 JSON 渲染器。本次不收录，因为这次只把阅读对话补进已有页。 |

@@ -18,7 +18,6 @@
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [Guizang PPT Skill](guizang-ppt.md) | ✅ | C (4/5) | Opinionated single-file HTML deck skill with locked editorial and Swiss visual systems. |
-| [HTML Anything](../../ai-design-generation/html-anything.md) | ✅ | B (5/6) | Broader Markdown-to-HTML artifact generator; less deck-specific and less constrained. |
 | [Open Design](../../ai-design-generation/open-design.md) | ✅ | B (6/6) | Broader local design studio; use it when decks are one artifact type among UI, cards, images, and video. |
 | Slidev / Marp | 未收录 | — | More mature developer deck frameworks; not agent-skill-first and less opinionated about art direction. |
 | [ppt-master](ppt-master.md) | ✅ | B (5/6) | Best when editable `.pptx` is mandatory; heavier local Python/model workflow than HTML deck skills. |

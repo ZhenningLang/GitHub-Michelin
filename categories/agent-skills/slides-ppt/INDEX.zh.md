@@ -18,7 +18,6 @@
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [Guizang PPT Skill](guizang-ppt.zh.md) | ✅ | C（4/5） | 有强审美约束的单文件 HTML deck skill，锁定编辑杂志风与瑞士风视觉系统。 |
-| [HTML Anything](../../ai-design-generation/html-anything.zh.md) | ✅ | B（5/6） | 更宽的 Markdown 到 HTML 产物生成器；不如本叶子的 deck 工作流专门，也没这么强约束。 |
 | [Open Design](../../ai-design-generation/open-design.zh.md) | ✅ | B（6/6） | 更宽的本地设计 studio；当 deck 只是 UI、卡片、图像、视频中的一种产物时选它。 |
 | Slidev / Marp | 未收录 | — | 更成熟的开发者 deck 框架；不是 agent skill 优先，也没有内建强 art direction。 |
 | [ppt-master](ppt-master.zh.md) | ✅ | B（5/6） | `.pptx` 可编辑性是硬约束时最合适；比 HTML deck skills 更重，依赖本地 Python 和模型质量。 |

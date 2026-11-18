@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenMotion does", "zh": "OpenMotion 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone the repo, install locked deps, build Studio and start the local service", "zh": "克隆仓库、装锁定依赖、构建 Studio 并启动本机服务", "code": "npm ci · npm run build:studio · npm start"},
+    {"lane": "you", "en": "Register its stdio MCP server in your agent, pointing at the same data directory", "zh": "在你的 agent 里登记它的 stdio MCP 服务，指向同一个数据目录", "code": "MOTION_DATA_DIR", "component": {"en": "mcp.ts", "zh": "mcp.ts"}},
+    {"lane": "you", "en": "Hand the agent a reference clip or template, your brand kit and copy", "zh": "把参考视频或模板、品牌资料和文案交给 agent"},
+    {"lane": "them", "en": "Its skills guide the agent to break the reference down and write HTML scenes into a project", "zh": "它的 skill 引导 agent 拆解参考片，把 HTML 场景写进工程", "component": {"en": "openmotion-recreate skill", "zh": "openmotion-recreate skill"}},
+    {"lane": "you", "en": "Review in Studio; move clips yourself or ask the agent for another revision", "zh": "在 Studio 里看片，自己挪片段或让 agent 再改一版"},
+    {"lane": "them", "en": "Renders the saved revision to MP4 and checks codec, size, fps, duration and decoding", "zh": "把保存的版本渲染成 MP4，并检查编码、尺寸、帧率、时长和解码", "component": {"en": "export worker + verifier", "zh": "导出任务与校验器"}}
+  ],
+  "value": {"en": "An MP4 remake in your brand with its HTML source kept editable, without keyframing it by hand or paying a per-render fee", "zh": "得到套上你品牌的 MP4 复刻片，HTML 源码仍可再改，不用手调关键帧，也不按渲染次数付费"},
+  "sources": [
+    "README.md @ bd26bbc9 'Run the repository locally': npm ci; npm run build:studio; npm start; open the printed studioUrl",
+    "README.md @ bd26bbc9 'Connect a local agent' manual MCP JSON: command node, args --experimental-strip-types /absolute/openmotion/mcp.ts, env MOTION_DATA_DIR; 'Use npm start for the app and npm run mcp for stdio'",
+    "README.md @ bd26bbc9 recreation brief ('Use OpenMotion to reverse-engineer the attached reference for our brand ... Open it in Studio ... export an MP4') and skills table (openmotion-recreate)",
+    "docs/hyperframes.md @ bd26bbc9 export chain; server.ts L128-160 (lint, render, ftyp check, verifyExport)"
+  ]
+}

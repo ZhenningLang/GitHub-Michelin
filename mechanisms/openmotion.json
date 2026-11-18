@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "motionmd", "en": "Motion.md: shot order, timing, Brand Kit, review rules", "zh": "Motion.md：镜头顺序、节奏、品牌资料、验收规则", "kind": "input", "technique": [5]},
+    {"id": "agent", "en": "Your local agent via stdio MCP tools", "zh": "你的本机 agent，经 stdio MCP 工具", "kind": "input"},
+    {"id": "studio", "en": "Studio timeline edits by hand", "zh": "在 Studio 时间线上手工编辑", "kind": "input"},
+    {"id": "project", "en": "Native HTML project;\nSHA-256 content revision over all files", "zh": "原生 HTML 工程；\n对全部文件求 SHA-256 内容版本", "technique": [1]},
+    {"id": "snapshot", "en": "Export snapshot copied, then re-hashed against the revision", "zh": "复制导出快照，再按版本号重新校验", "technique": [2]},
+    {"id": "runtime", "en": "Pinned Node, Chromium, FFmpeg, HyperFrames 0.9.7 with in-memory patch", "zh": "锁定的 Node、Chromium、FFmpeg、HyperFrames 0.9.7 及内存补丁", "kind": "external", "technique": [4]},
+    {"id": "render", "en": "Lint the snapshot, then HyperFrames render", "zh": "先 lint 快照，再交 HyperFrames 渲染", "technique": [2, 4]},
+    {"id": "verify", "en": "ffprobe and ffmpeg checks: codec, size, fps, duration, full decode, seeks", "zh": "ffprobe 与 ffmpeg 检查：编码、尺寸、帧率、时长、完整解码、跳帧", "technique": [3]},
+    {"id": "mp4", "en": "MP4 plus SHA-256 report;\ncreative review stays with you", "zh": "MP4 与 SHA-256 报告；\n创意验收仍归你", "kind": "output", "technique": [3]}
+  ],
+  "edges": [
+    {"from": "motionmd", "to": "agent", "en": "guides the remake", "zh": "指导复刻"},
+    {"from": "agent", "to": "project", "en": "write with expectedRevision", "zh": "带 expectedRevision 写入"},
+    {"from": "studio", "to": "project", "en": "same files", "zh": "同一批文件"},
+    {"from": "project", "to": "agent", "en": "VERSION_CONFLICT: re-read", "zh": "VERSION_CONFLICT：重新读取", "style": "dashed"},
+    {"from": "project", "to": "snapshot", "en": "export request at a revision", "zh": "按某个版本请求导出"},
+    {"from": "snapshot", "to": "render"},
+    {"from": "runtime", "to": "render"},
+    {"from": "render", "to": "verify", "en": "only after an MP4 header is found", "zh": "确认有 MP4 文件头之后"},
+    {"from": "verify", "to": "mp4"}
+  ],
+  "sources": [
+    "https://github.com/nexu-io/openmotion/blob/bd26bbc992572c5a96ff16b67f6f933f3512a126/workspace.ts#L432",
+    "https://github.com/nexu-io/openmotion/blob/bd26bbc992572c5a96ff16b67f6f933f3512a126/phase1.ts#L470-L500",
+    "https://github.com/nexu-io/openmotion/blob/bd26bbc992572c5a96ff16b67f6f933f3512a126/workspace.ts#L555-L582",
+    "https://github.com/nexu-io/openmotion/blob/bd26bbc992572c5a96ff16b67f6f933f3512a126/server.ts#L128-L160",
+    "https://github.com/nexu-io/openmotion/blob/bd26bbc992572c5a96ff16b67f6f933f3512a126/scripts/verify-export.ts#L45-L145",
+    "https://github.com/nexu-io/openmotion/blob/bd26bbc992572c5a96ff16b67f6f933f3512a126/scripts/runtime-lock.json",
+    "https://github.com/nexu-io/openmotion/blob/bd26bbc992572c5a96ff16b67f6f933f3512a126/shared/hyperframes-capture-fix.mjs",
+    "https://github.com/nexu-io/openmotion/blob/bd26bbc992572c5a96ff16b67f6f933f3512a126/docs/motion-md.md"
+  ]
+}

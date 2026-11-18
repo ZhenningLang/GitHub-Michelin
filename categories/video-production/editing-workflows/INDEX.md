@@ -14,6 +14,7 @@
 | **SeeCut** | Use it when a coding agent should polish your talking-head or AI-avatar A-roll into a high-energy motion short — real evidence screenshots on screen, every version gated by a video-native judge (Gemini via Antigravity CLI) — delivered as MP4 plus an editable JianYing layered draft; PolyForm noncommercial, 4 days old at verification. | D (4/6) | [→](seecut.md) |
 | **Openjutsu** | Swap the person in an existing clip for your character photo on your own NVIDIA GPU: a local web app over a MiniMax H3 ComfyUI workflow; a dozen node packs, minutes per clip, 23 days old. | B (4/6) | [→](openjutsu.md) |
 | **rea-video** | Before paying for generation or a shoot, find out shot by shot whether a reference video was filmed, AI-generated or code-built, and get a remake plan sized to your model; analysis only, 20 days old, sponsor pitch in the skill. | C (6/6) | [→](rea-video.md) |
+| **OpenMotion** | Your agent rebuilds a reference clip or template as an editable HTML project in your brand; you trim it in Studio and render a checked MP4 locally. Apache-2.0, product about a week old on main (renamed from HTML Anything). | B (5/6) | [→](openmotion.md) |
 
 ## Comparison matrix
 
@@ -26,6 +27,7 @@
 | [SeeCut](seecut.md) | ✅ | D (4/6) | Edits existing A-roll with a video-watching AI judge loop on HyperFrames render; hard agy/Google-account dependency, PolyForm noncommercial, 4 days old — vs video-use's transcript-only MIT cut or HyperFrames' engine-only Apache. |
 | [Openjutsu](openjutsu.md) | ✅ | B (4/6) | Local full-person swap behind buttons with preflight checks and resumable clips; needs a 16 GB GPU plus 64 GB RAM, model licenses gate commercial use, upstream unreleased and not merging PRs. |
 | [rea-video](rea-video.md) | ✅ | C (6/6) | Per-shot production verdict (filmed / AI / code) from measured evidence plus agent review, and a model-limit-aware remake plan; Apache-2.0, renders nothing, one maintainer, format renamed within a week. |
+| [OpenMotion](openmotion.md) | ✅ | B (5/6) | Agent-driven reference recreation with a hand-editable Studio timeline on a pinned HyperFrames 0.9.7; Apache-2.0, default-on telemetry, plaintext provider keys, one export at a time, a product switched on main in 2026-11. |
 
 ## What belongs here
 

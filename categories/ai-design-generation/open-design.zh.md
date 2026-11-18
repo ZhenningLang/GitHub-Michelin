@@ -123,7 +123,7 @@ OpenDesign 是一个本地 daemon，上面罩着设计工作台面——Electron
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [html-anything](html-anything.zh.md) | ✅ | 只需要把 prompt 变成独立 HTML 产物时，选 html-anything。 | 同类目下专注把 prompt 变成独立 HTML 产物的同胞；Open Design 是围绕这一想法更重的完整桌面 studio（deck/视频/设计系统/导出）。 |
+| [OpenMotion](../video-production/editing-workflows/openmotion.zh.md) | ✅ | 交付物是照参考片重建、在时间线上剪好的 MP4 时，选 OpenMotion；做原型、deck 和其他设计产物时，选 Open Design。 | 同一团队的仓库，原名 html-anything：把 prompt 变成 HTML 的旧应用只留在 `legacy` 分支，`main` 现在是基于 HyperFrames 的视频工作室，比 Open Design 窄，但有工程版本和导出校验。 |
 | [Impeccable](impeccable.zh.md) | ✅ | 任务只要求高精度 UI 生成时，选 Impeccable。 | 同胞，主打高精度 UI 生成；Open Design 覆盖更广（幻灯片、图像、视频、MP4）且以本地应用而非更窄的生成器形态交付。 |
 | [guizang-ppt-skill](../agent-skills/slides-ppt/guizang-ppt.zh.md) | ✅ | 只需要 deck 生成这个单一 Skill 时，选 guizang-ppt-skill。 | 单一用途的 deck 生成 Skill；Open Design 把 deck 生成作为众多产物类型之一，并自带运行时/导出。 |
 | [guizang-social-card-skill](../agent-skills/visual-content/guizang-social-card.zh.md) | ✅ | 产物明确是社交卡片时，选 guizang-social-card-skill。 | 专注社交卡片的 Skill；Open Design 在一个打包应用里覆盖卡片/图像等多种产物类型。 |

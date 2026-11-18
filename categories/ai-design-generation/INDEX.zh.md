@@ -10,7 +10,6 @@
 | **Design Agent** | 从聊天生产团队品牌卡片、幻灯片与影片；托管付费，自托管需高权限 Docker，模型费用与人工审核另负。 | C（4/6） | [→](design-agent.zh.md) |
 | **Open Design Agent Kit** | 留在当前编码助手里，添加设计模板、浏览器检查与导出，不运行 Open Design 后台。 | C（5/6） | [→](open-design-agent-kit.zh.md) |
 | **json-render** | 当模型必须用你已有的组件在应用里拼界面、而不是发明 JSX 或新设计系统时用它。 | B（6/6） | [→](json-render.zh.md) |
-| **HTML Anything** | 当你本机已登录某个 coding-agent CLI、想要零 API key、local-first 地把 Markdown 变成可交付 HTML 并一键导出微信/X/知乎时用它。 | B（5/6） | [→](html-anything.zh.md) |
 | **Open Design** | 想要一个 local-first、BYOK 的桌面 studio，让编码 agent 产出 HTML 原型、deck、图像和 HTML→MP4 动效时用它。 | B（6/6） | [→](open-design.zh.md) |
 | **Impeccable** | 当你的 AI agent 总是产出同质化前端「AI 味」、需要确定性检测加设计 critique 时使用。 | B（6/6） | [→](impeccable.zh.md) |
 | **open-slide** | 想让编码 agent 在固定 1920×1080 画布上写 React 幻灯片、你靠点选元素留言来改稿时用它——deck 要作为可编辑 PowerPoint 文件流转、或要在 CI 里无头导出时不适合。 | C（6/6） | [→](open-slide.zh.md) |
@@ -26,7 +25,6 @@
 | [Design Agent](design-agent.zh.md) | 已收录 | C（4/6） | 按线程组织内容生产和产物检查，不是 UI 组件系统；模型与沙箱仍需运营。 |
 | [Open Design Agent Kit](open-design-agent-kit.zh.md) | 已收录 | C（5/6） | MIT 运行代码加 Apache-2.0 内容；宿主写文件，检查返回问题，PowerPoint 使用幻灯片截图。 |
 | [json-render](json-render.zh.md) | ✅ | B（6/6） | 当模型必须用你已有的组件在应用里拼界面、而不是发明 JSX 或新设计系统时用它。 |
-| [HTML Anything](html-anything.zh.md) | ✅ | B（5/6） | 当你本机已登录某个 coding-agent CLI、想要零 API key、local-first 地把 Markdown 变成可交付 HTML 并一键导出微信/X/知乎时用它。 |
 | [Open Design](open-design.zh.md) | ✅ | B（6/6） | 想要一个 local-first、BYOK 的桌面 studio，让编码 agent 产出 HTML 原型、deck、图像和 HTML→MP4 动效时用它。 |
 | [Impeccable](impeccable.zh.md) | ✅ | B（6/6） | 当你的 AI agent 总是产出同质化前端「AI 味」、需要确定性检测加设计 critique 时使用。 |
 | [open-slide](open-slide.zh.md) | ✅ | C（6/6） | 想让编码 agent 在固定 1920×1080 画布上写 React 幻灯片、你靠点选元素留言来改稿时用它——deck 要作为可编辑 PowerPoint 文件流转、或要在 CI 里无头导出时不适合。 |

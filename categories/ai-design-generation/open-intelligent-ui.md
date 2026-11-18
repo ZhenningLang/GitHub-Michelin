@@ -79,7 +79,7 @@ You are building an educational or decision-support chat where a slider, map or 
 - **You require local-only or one-provider inference:** the current routing code calls hosted Jev and the browser asks for both OpenAI and Jev keys. [json-render](json-render.md) lets your application choose its own model path, but you build the integration.
 - **The model must never generate arbitrary UI code:** choose [json-render](json-render.md) for catalog-based rendering. This app deliberately streams custom HTML, CSS and JavaScript into a sandbox.
 - **Durable multi-instance chat storage:** the documented checkpoint store is process memory with a 200-thread bound. Use a product with persistent chat storage such as [Open WebUI](../llm-chat-ui/open-webui.md), or replace this template's storage before production.
-- **A downloadable prototype or publishing artifact:** choose [Open Design](open-design.md) or [HTML Anything](html-anything.md); prior answers here are separate snapshots, not a cross-turn editable project.
+- **A downloadable prototype or publishing artifact:** choose [Open Design](open-design.md); prior answers here are separate snapshots, not a cross-turn editable project.
 
 ## Comparison
 
@@ -87,7 +87,6 @@ You are building an educational or decision-support chat where a slider, map or 
 |---|---|---|---|
 | [json-render](json-render.md) | ✅ | Pick json-render when brand-safe registered components decide the design; pick this app when users need custom generated simulations or calculators in chat. | A component catalog narrows the code surface; arbitrary generated UI is more expressive but adds sandbox and bridge responsibilities. |
 | [Open Design](open-design.md) | ✅ | Pick Open Design for a local artifact studio and file exports; pick this app for agent-chosen interactive answers during a conversation. | Open Design orchestrates existing coding agents and output files; this template operates a Python agent plus a web chat and hosted router. |
-| [HTML Anything](html-anything.md) | ✅ | Pick HTML Anything to turn existing Markdown into publishable HTML with your logged-in CLI; pick this app when the answer itself must become an interactive tool. | Publishing/export workflows differ from conversation-state and in-frame interaction; this app requires two provider credentials. |
 
 ## Quick start
 

@@ -26,7 +26,7 @@
 | [fun-isometric](fun-isometric.zh.md) | 已收录 | C（4/5） | 外观受限的动态贴纸组件，支持本地渲染；仅一天历史，须审查浏览器下载与许可正文保留。 |
 | [Guizang Social Card Skill](guizang-social-card.zh.md) | ✅ | D（3/5） | 把社交卡片和封面做成 HTML 到 PNG 产物；很年轻且 AGPL。 |
 | [Guizang PPT Skill](../slides-ppt/guizang-ppt.zh.md) | ✅ | C（4/5） | 当产物是完整 deck、不是独立卡片或文章配图时选它。 |
-| [HTML Anything](../../ai-design-generation/html-anything.zh.md) | ✅ | B（5/6） | 更宽的 HTML 产物生成器；不如本叶子聚焦某个视觉内容表面。 |
+| [Open Design](../../ai-design-generation/open-design.zh.md) | ✅ | B（6/6） | 驱动你自己 agent 的更宽本地设计工作室；不如本叶子聚焦某个视觉内容表面。 |
 | [Lieflat Charts](lieflat-charts.zh.md) | ✅ | C（3/5） | 数据可视化路线：模板锁定的图表与双语 HTML 报告，双击即开的单文件；很年轻、单人维护，PolyForm Noncommercial 许可让对外商用要付费授权。 |
 
 ## 什么该放这里

@@ -26,7 +26,7 @@
 | [fun-isometric](fun-isometric.md) | ✅ | C (4/5) | A constrained animated-sticker kit with local rendering; one day old, with browser downloads and license-notice preservation to review. |
 | [Guizang Social Card Skill](guizang-social-card.md) | ✅ | D (3/5) | Platform-sized social cards and covers as HTML-to-PNG artifacts; young and AGPL. |
 | [Guizang PPT Skill](../slides-ppt/guizang-ppt.md) | ✅ | C (4/5) | Choose it when the artifact is a full deck rather than standalone cards or article images. |
-| [HTML Anything](../../ai-design-generation/html-anything.md) | ✅ | B (5/6) | Broader HTML artifact generator; less focused on a specific visual-content surface. |
+| [Open Design](../../ai-design-generation/open-design.md) | ✅ | B (6/6) | Broader local design studio driving your own agent; less focused on a specific visual-content surface. |
 | [Lieflat Charts](lieflat-charts.md) | ✅ | C (3/5) | Data-viz route: template-locked charts and bilingual HTML reports as one double-clickable file; young, single-maintainer, and PolyForm Noncommercial — external commercial use needs a paid license. |
 
 ## What belongs here

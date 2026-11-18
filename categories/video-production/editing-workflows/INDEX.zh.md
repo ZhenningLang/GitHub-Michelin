@@ -14,6 +14,7 @@
 | **SeeCut** | 当 coding agent 该把真人/数字人口播 A-roll 精剪成高网感动效短视频时用它：画面铺真证据截图，每版都要过一个能看视频的 AI 评委（agy 调 Gemini），交付成片加可选的剪映分层草稿；PolyForm 非商用，验证时仅 4 天龄。 | D（4/6） | [→](seecut.zh.md) |
 | **Openjutsu** | 在自己的 NVIDIA 显卡上把现成视频里的人换成你的角色照片：MiniMax H3 ComfyUI 流程外的本地网页；要装十几个节点包，每段要几分钟，仅 23 天龄。 | B（4/6） | [→](openjutsu.zh.md) |
 | **rea-video** | 在花钱生成或开拍之前，逐镜查清参考视频哪里是实拍、哪里是 AI 生成、哪里是代码做的，并拿到按你的模型排好的复刻方案；只分析不出片，20 天龄，skill 里带赞助商推广。 | C（6/6） | [→](rea-video.zh.md) |
+| **OpenMotion** | 让 agent 把参考片或模板重建成换上你品牌的可编辑 HTML 工程，你在 Studio 里微调，在本机渲染出经过校验的 MP4；Apache-2.0，`main` 上的产品才一周左右（由 HTML Anything 改名而来）。 | B（5/6） | [→](openmotion.zh.md) |
 
 ## 对比矩阵
 
@@ -26,6 +27,7 @@
 | [SeeCut](seecut.zh.md) | ✅ | D（4/6） | 剪已有 A-roll：看片 AI 评委循环加 HyperFrames 渲染；硬依赖 agy/Google 账号、PolyForm 非商用、仅 4 天龄——对比 video-use 的纯转写 MIT 剪辑或 HyperFrames 的纯引擎 Apache。 |
 | [Openjutsu](openjutsu.zh.md) | ✅ | B（4/6） | 把整人替换做成按钮，带开跑前检查和可续跑分段；需要 16 GB 显卡加 64 GB 内存，模型许可证限制商用，上游无发布、也不合并 PR。 |
 | [rea-video](rea-video.zh.md) | ✅ | C（6/6） | 用测量证据加 agent 看图复核给出逐镜制作方式（实拍／AI／代码），再按模型限制排复刻方案；Apache-2.0，不出片，单人维护，输出格式一周内就改过名。 |
+| [OpenMotion](openmotion.zh.md) | 已收录 | B（5/6） | agent 驱动的参考片复刻，带可手动编辑的 Studio 时间线，底层锁定 HyperFrames 0.9.7；Apache-2.0，默认开启遥测，服务商密钥明文存放，一次只导出一个，`main` 在 2026-11 换了产品。 |
 
 ## 什么该放这里
 

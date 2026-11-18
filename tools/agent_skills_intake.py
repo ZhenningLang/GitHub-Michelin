@@ -236,7 +236,7 @@ def comparison_en(item: dict) -> str:
     elif cat == "slides-ppt":
         rows += [
             "| [Guizang PPT Skill](guizang-ppt.md) | ✅ | Choose Guizang PPT when a constrained single-file HTML deck with strong art direction is acceptable; choose this page when editable PowerPoint or a different deck workflow is the key constraint. | Guizang is opinionated and already reviewed; this entry expands the deck-skill surface but needs deeper review. |",
-            "| [HTML Anything](../../ai-design-generation/html-anything.md) | ✅ | Choose HTML Anything for broad Markdown-to-HTML artifacts; choose a slide-specific skill when the whole job is a presentation deck. | Broader artifact coverage vs narrower deck-specific constraints. |",
+            "| [Open Design](../../ai-design-generation/open-design.md) | ✅ | Choose Open Design for broad agent-generated HTML design artifacts; choose a slide-specific skill when the whole job is a presentation deck. | Broader artifact coverage vs narrower deck-specific constraints. |",
         ]
     elif cat in AGENT_SKILL_LEAVES:
         rows += [
@@ -262,7 +262,7 @@ def comparison_zh(item: dict) -> str:
     elif cat == "slides-ppt":
         rows += [
             "| [Guizang PPT Skill](guizang-ppt.zh.md) | ✅ | 能接受强审美约束的单文件 HTML deck 时选 Guizang PPT；当可编辑 PowerPoint 或另一种 deck 流程是硬约束时再选本页项目。 | Guizang 更有主张且已审过；本页扩展 deck skill 选择面，但仍需更深复核。 |",
-            "| [HTML Anything](../../ai-design-generation/html-anything.zh.md) | ✅ | 需要宽口径 Markdown 到 HTML 产物时选 HTML Anything；整个任务都是演示文稿时选专门的 slide skill。 | 更宽的产物覆盖 vs 更窄的 deck 专用约束。 |",
+            "| [Open Design](../../ai-design-generation/open-design.zh.md) | ✅ | 需要宽口径、由 agent 生成的 HTML 设计产物时选 Open Design；整个任务都是演示文稿时选专门的 slide skill。 | 更宽的产物覆盖 vs 更窄的 deck 专用约束。 |",
         ]
     elif cat in AGENT_SKILL_LEAVES:
         rows += [

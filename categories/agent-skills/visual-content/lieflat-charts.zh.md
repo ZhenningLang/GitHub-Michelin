@@ -101,7 +101,7 @@ health:
 
 - **图表要嵌进你自己开发的应用里。** skill 的产物是一次性 HTML 文件，不是组件：没有响应式数据绑定，也没有 API 面。该直接集成 Apache ECharts 或 Chart.js 就别绕 agent 对话。
 - **团队要一个会自己刷新的在线看板。** 产物是静态文件、不接数据源；用 [Evidence](../../data-visualization/evidence.zh.md)（版本化 SQL 页面、数仓定时重渲染）或 Metabase，别让报表靠人肉重跑。
-- **成品要对外商用。** PolyForm Noncommercial 1.0.0 禁止商用，须另行取得授权；作者在 issue 里的答复（2026-09-21：「内部可以直接使用，对外需要看具体使用场景收费授权」）证实对外场景是邮件/微信私聊的收费交易。法务姿态必须默认干净的，选 [HTML Anything](../../ai-design-generation/html-anything.zh.md)（Apache-2.0）这类宽松许可生成器。
+- **成品要对外商用。** PolyForm Noncommercial 1.0.0 禁止商用，须另行取得授权；作者在 issue 里的答复（2026-09-21：「内部可以直接使用，对外需要看具体使用场景收费授权」）证实对外场景是邮件/微信私聊的收费交易。法务姿态必须默认干净的，选 [Open Design](../../ai-design-generation/open-design.zh.md)（Apache-2.0）这类宽松许可生成器。
 - **交付环境离线或内网。** 只有手写 SVG 家族不依赖外部资源；Glance/Interactive 模板与报告 R11/R12 要从 jsDelivr、Google Fonts 拉依赖（README 与 THIRD_PARTY_NOTICES.md，2026-09-28），要么自己内联，要么换方案。
 - **你要的是流程图、时序图、架构图。** 那是 text-to-diagram 的活，用 [Mermaid](../../diagramming/mermaid.zh.md) 或 [D2](../../diagramming/d2.zh.md)；本 skill 按数据形状驱动，没有图形语法。
 - **你想要自由的可视化设计。** skill 禁止「差不多」的图：每张成品必须能追溯到锁定的图型编号与 gallery 骨架。数据形状超出那 63 张时，它的库外翻译流程是阻力而不是特性。
@@ -112,7 +112,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [HTML Anything](../../ai-design-generation/html-anything.zh.md) | ✅ | 交付物是数据优先、必须守同一套锁定视觉语言的图表页或双语报告时选本 skill；还要顺手生成 deck、社交卡片、杂志排版时选 HTML Anything。 | HTML Anything 是更宽品类且 Apache-2.0 可商用；本 skill 用产品面和许可自由度换来强制模板复用与逐份色彩锁定。 |
+| [Open Design](../../ai-design-generation/open-design.zh.md) | ✅ | 交付物是数据优先、必须守同一套锁定视觉语言的图表页或双语报告时选本 skill；还要顺手生成 deck、原型和其他设计产物时选 Open Design。 | Open Design 是更宽品类且 Apache-2.0 可商用；本 skill 用产品面和许可自由度换来强制模板复用与逐份色彩锁定。 |
 | [Evidence](../../data-visualization/evidence.zh.md) | ✅ | 非程序员用对话把数据一次性做成图，选本 skill；图表要落在版本化 SQL 上、团队按期刷新，选 Evidence。 | Evidence 是接数仓的构建框架（MIT），有工程化的数据口径；本 skill 出静态 HTML、不接数据源——上手几乎零配置，也零自动刷新。 |
 | [Mermaid](../../diagramming/mermaid.zh.md) | ✅ | 答案该直接长在 Markdown 文档里（流程、架构、时序）用 Mermaid；面向发布的量化图表成品用本 skill。 | Mermaid 在文档渲染器里内联出图、完全不经 HTML 工序；但没有数据形状到图型的目录、没有编辑风色彩系统、没有整页报告版式。 |
 | Apache ECharts | 未收录 | 要「成品图」不要「图表库」时选本 skill；可视化是你软件的一部分、需要直接编码时选 ECharts。 | 它是本 skill 多数 Glance/Interactive 模板驱动的引擎；Apache-2.0 可商用、完全可配置，但设计规则得你自己定——本批未收录该仓库。 |

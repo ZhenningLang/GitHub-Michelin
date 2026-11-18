@@ -101,7 +101,7 @@ The repo ships no model; it is a skill pack — Markdown instruction files, JSON
 
 ## When NOT to use
 
-- **You need a deterministic, editable artifact, not an AI image.** handraw-style outputs prompts for image models; the pixels are whatever the AI renders and can't be re-templated. If the deliverable is a card or cover you can version-control and tweak, use [guizang-social-card](../guizang-social-card.md) or [html-anything](../../../ai-design-generation/html-anything.md), which render HTML→PNG.
+- **You need a deterministic, editable artifact, not an AI image.** handraw-style outputs prompts for image models; the pixels are whatever the AI renders and can't be re-templated. If the deliverable is a card or cover you can version-control and tweak, use [guizang-social-card](../guizang-social-card.md), which renders HTML→PNG.
 - **You want one locked visual identity across everything.** The 279-style breadth is the opposite of brand consistency. For a single fixed illustration persona applied corpus-wide, pick [ian-xiaohei-illustrations](ian-illustrations.md) instead; handraw-style exists precisely to vary.
 - **Style fidelity must live inside your own pipeline.** There is no training, no LoRA, no node graph here — the skill only hands prompts off to whatever image AI you paste into. If you need batch, self-hosted, or pipeline-controllable rendering, use [ComfyUI](../../../on-device-ml/local-image-generation/comfyui.md).
 - **You need reproducible numbering.** Style numbers are mutable content: commit history shows `#257`, `#259` and `#260` were each *replaced* with different styles within weeks. A prompt you saved as "#260" may mean a different look after the next update — pin a version or fork before relying on an number across time.

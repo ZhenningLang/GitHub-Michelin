@@ -123,7 +123,7 @@ OpenDesign is a local daemon with a design-studio surface on top — Electron de
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [html-anything](html-anything.md) | ✅ | Pick html-anything when you only need prompt-to-standalone-HTML artifacts. | Sibling focused on turning prompts into standalone HTML artifacts; Open Design is the heavier full desktop studio (decks/video/design-systems/export) around that idea. |
+| [OpenMotion](../video-production/editing-workflows/openmotion.md) | ✅ | Pick OpenMotion when the deliverable is an MP4 rebuilt from a reference clip and edited on a timeline; pick Open Design for prototypes, decks and other design artifacts. | Same team's repo, formerly html-anything: its prompt-to-HTML app survives only on the `legacy` branch, and `main` is now a HyperFrames-based video studio, narrower than Open Design but with project revisions and export checks. |
 | [Impeccable](impeccable.md) | ✅ | Pick Impeccable when high-polish UI generation is the whole job. | Sibling aimed at high-polish UI generation; Open Design is broader (slides, images, video, MP4) and ships as a local app rather than a narrower generator. |
 | [guizang-ppt-skill](../agent-skills/slides-ppt/guizang-ppt.md) | ✅ | Pick guizang-ppt-skill when you need only deck generation as a Skill. | A single-purpose deck-generation Skill; Open Design includes deck generation as one of several artifact types plus its own runtime/export. |
 | [guizang-social-card-skill](../agent-skills/visual-content/guizang-social-card.md) | ✅ | Pick guizang-social-card-skill when the artifact is a focused social card. | A focused social-card Skill; Open Design covers cards/images among many artifact types inside a packaged app. |

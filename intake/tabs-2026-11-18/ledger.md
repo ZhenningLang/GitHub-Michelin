@@ -19,14 +19,14 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | kunchenguid/gnhf | add | done | categories/agent-tooling/work-state/gnhf.md |  | kunchenguid/gnhf |
 | microsoft/TokenEconomizer | add | done | categories/agent-tooling/work-state/tokeneconomizer.md |  | microsoft/tokeneconomizer |
 | netdata/netdata | add | done | categories/observability/netdata.md |  | netdata/netdata |
-| nexu-io/openmotion | sync | running | categories/ai-design-generation/html-anything.md | 仓库由 nexu-io/html-anything 改名（同 repo id 1235403234），main 已转为视频工作室；按 sync 重核并改名 | nexu-io/openmotion |
+| nexu-io/openmotion | sync | done | categories/video-production/editing-workflows/openmotion.md | 仓库由 nexu-io/html-anything 改名（同 repo id 1235403234），main 已转为视频工作室；按 sync 重核并改名 | nexu-io/openmotion |
 | NVIDIA/auto-ontology | add | done | categories/databases/database-clients/auto-ontology.md |  | nvidia/auto-ontology |
 | omacom/omarchy | add | done | categories/linux-desktop/omarchy.md |  | omacom/omarchy |
 | OpenDCAI/GameFactory-3A | add | done | categories/game-dev/gamefactory-3a.md |  | opendcai/gamefactory-3a |
 | openfilm/openfilm | add | running |  |  | openfilm/openfilm |
 | ReScienceLab/opc-skills | sync | done | categories/agent-skills/ai-writing/marketing-seo/opc-skills.md | fresh：last_verified 距今 ≤90 天，sync-entry 不重核，无改动 | resciencelab/opc-skills |
 | sandbox-quantum/switch | add | running |  |  | sandbox-quantum/switch |
-| showheyohtaki/motion-prompt | add | pending |  |  | showheyohtaki/motion-prompt |
+| showheyohtaki/motion-prompt | add | running |  |  | showheyohtaki/motion-prompt |
 | thesysdev/openui | sync | done | categories/ai-design-generation/openui.md | fresh：last_verified 距今 ≤90 天，sync-entry 不重核，无改动 | thesysdev/openui |
 | withcoral/coral | add | pending |  |  | withcoral/coral |
 | zeroclaw-labs/zeroclaw | add | pending |  |  | zeroclaw-labs/zeroclaw |

@@ -860,9 +860,7 @@ MapServer,categories/geospatial/qgis.md,,no
 Marigold (SD-based),categories/ml-research/vision-and-multimodal/depth-anything-v2.md,,no
 Markdown Here Revival (fork/successor),categories/markdown-tools/markdown-here.md,,no
 Markdown plus a hand-rolled template layer,categories/markdown-tools/mdx.md,,no
-markdown-nice (mdnice),categories/ai-design-generation/html-anything.md,,no
 markdown-rs,categories/markdown-tools/micromark.md,,no
-markdown-to-image (gcui-art),categories/ai-design-generation/html-anything.md,,no
 Marp,categories/agent-skills/slides-ppt/guizang-ppt.md,,no
 Mastra (`mastra-ai/mastra`),categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.md,,no
 Material React Table (`KevinVandy/material-react-table`),categories/web-ui/component-libraries/tanstack-table.md,,no
