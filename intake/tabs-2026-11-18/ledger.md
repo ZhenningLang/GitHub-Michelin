@@ -16,9 +16,9 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | janestreet/agent_skills | add | done | categories/education-tutoring/janestreet-agent-skills.md |  | janestreet/agent_skills |
 | JuneYaooo/rea-video | add | done | categories/video-production/editing-workflows/rea-video.md |  | juneyaooo/rea-video |
 | KKKKhazix/agent-autoloop | add | running |  |  | kkkkhazix/agent-autoloop |
-| kunchenguid/gnhf | add | running |  |  | kunchenguid/gnhf |
+| kunchenguid/gnhf | add | done | categories/agent-tooling/work-state/gnhf.md |  | kunchenguid/gnhf |
 | microsoft/TokenEconomizer | add | running |  |  | microsoft/tokeneconomizer |
-| netdata/netdata | add | pending |  |  | netdata/netdata |
+| netdata/netdata | add | running |  |  | netdata/netdata |
 | nexu-io/openmotion | add | pending |  |  | nexu-io/openmotion |
 | NVIDIA/auto-ontology | add | pending |  |  | nvidia/auto-ontology |
 | omacom/omarchy | add | pending |  |  | omacom/omarchy |
