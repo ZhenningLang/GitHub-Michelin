@@ -2,7 +2,7 @@
 name: OpenMausBot
 slug: openmausbot
 repo: https://github.com/milind-soni/OpenMausBot
-category: personal-assistants
+category: ai-teammates
 tags: [personal-ai, ai-teammates, multi-agent-chat, byo-agent-cli, claude-code, codex, computer-use, electron, local-first, open-core]
 language: TypeScript
 license: Apache-2.0
@@ -84,7 +84,7 @@ health:
 
 你已经在为 Claude Code 或 Codex 付费，可它们每个都只活在一个终端窗口里：一次一段对话，没有固定身份，还得有人守着回答“可以执行这条命令吗？”。OpenMausBot 把你已经登录好的这些 agent 命令行工具，变成一个类似 Telegram 的聊天应用里的一排 bot——每个都有自己的性格、模型、电脑和连接的应用——它们要权限时，会在聊天里弹出“允许 / 拒绝”卡片给你点。
 
-![OpenMausBot — 健康度雷达](../../../../assets/health/openmausbot.zh.svg)
+![OpenMausBot — 健康度雷达](../../../../../assets/health/openmausbot.zh.svg)
 
 > **安装前先看这两点。** 使用统计（PostHog）默认开启，首次启动的界面会请你填邮箱；统计可以在 设置 → 通用 里关掉。`enterprise/` 目录是源码可见许可，不是 Apache-2.0。详见“何时不用”。
 
@@ -92,13 +92,13 @@ health:
 
 你是独立开发者或小团队，每天都在用 Claude Code、Codex 或 Grok CLI，而且已经开始同时跑好几个：一个终端里是“研究员”，另一个是“运维”，还有一个 Codex 窗口在改仓库——标签页混成一团，你分不清哪个正卡在 `Allow this bash command? (y/n)`，哪个用的是哪个模型，而且它们谁也看不到你的 Gmail，也没有一台自己的桌面电脑。你想要 xAI 的 Grok Bot 卖的那种“和一队 bot 聊天”的形态，但要用你已经付费的订阅，聊天记录也要留在自己的硬盘上。OpenMausBot 就是围绕你现有 CLI 做成的这种桌面应用：装上之后，它找到的 CLI 会出现在模型选择器里；每个 bot 是一个你发消息的联系人，可以和别的 bot 一起拉进频道，可以给它一台云桌面或者你自己的 Mac，它要动手时你在卡片上批准。
 
-选它而不是 [Rakazo](rakazo.zh.md)（另一个开源的 Grok Bot 替代品），关键在“自带 agent”：OpenMausBot 用你现有的登录态去跑真正的 `claude` / `codex` / `grok` 命令行，而 Rakazo 用自己的 Pi agent 循环加一个模型 key，并给每个 bot 一台自托管、会备份的 Docker 桌面。选它而不是 [OpenMuse](openmuse.zh.md)，是因为启动时不需要任何托管服务——本地聊天连 key 都不用填。如果你想复刻的是 OpenAI 的 dots 而不是 Grok Bot，CopilotKit 的 OpenDots 和 Anil-matcha 的 open-dots 更直接地对准那种形态。
+选它而不是 [Rakazo](rakazo.zh.md)（另一个开源的 Grok Bot 替代品），关键在“自带 agent”：OpenMausBot 用你现有的登录态去跑真正的 `claude` / `codex` / `grok` 命令行，而 Rakazo 用自己的 Pi agent 循环加一个模型 key，并给每个 bot 一台自托管、会备份的 Docker 桌面。选它而不是 [OpenMuse](../openmuse.zh.md)，是因为启动时不需要任何托管服务——本地聊天连 key 都不用填。如果你想复刻的是 OpenAI 的 dots 而不是 Grok Bot，CopilotKit 的 OpenDots 和 Anil-matcha 的 open-dots 更直接地对准那种形态。
 
 ## 怎么用起来
 
 OpenMausBot 由两个进程组成。应用本身——Electron 里的一个 React 聊天窗口——不含任何 agent 逻辑：它通过 HTTP 把指令发给一个绑定在 `127.0.0.1` 上的小型 **harness 服务**，再根据一条实时事件流（SSE，即服务端单向持续往外推的数据流）刷新界面。harness 管着所有 agent 进程：每个 bot 回合，对应 provider 的“驱动”会启动你已经装好的命令行工具（`claude`、`codex`、`grok`，或任何支持 ACP——即 Agent Client Protocol，一种 agent 与客户端之间的通信协议——的 CLI），把这个 CLI 自己的输出格式翻译成统一的事件流，并按对话存到你的硬盘上。CLI 请求权限时，“权限代理”把请求变成聊天里的一张卡片。OpenMausBot 自己不评判动作——文档写明应用里没有白名单或分类器，每个审批级别都只是把 provider 自己的权限模式原样传过去。可以把它想成办公楼和对讲机，而那些 CLI 是你已经在发工资的员工。你负责提供 CLI 的登录态，以及可选的各种 key：Composio 用来连 Gmail、Slack、GitHub 等应用，Boat 提供云端 Linux 桌面，或者经你明确同意后通过内置的 Cua Driver 操作你自己的 Mac。之后就是给 bot 发消息、回答它们的卡片。
 
-![openmausbot — 主干用户故事](../../../../assets/flow/openmausbot.zh.svg)
+![openmausbot — 主干用户故事](../../../../../assets/flow/openmausbot.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/openmausbot.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -119,14 +119,14 @@ OpenMausBot 由两个进程组成。应用本身——Electron 里的一个 Reac
 
 ## 何时不用
 
-- **你希望由应用本身来把安全关。** 审批级别只是把每个 CLI 的原生模式原样传过去（Claude 的 `default` 到 `bypassPermissions`）；“完全访问”会替你回答剩下的权限提示，而且“幕僚长” bot 的级别会传给它委派任务的其他 bot。需要应用自己掌控的分级授权加逐次调用审计，用 [OpenWorker](openworker.zh.md)；想要一个不联网、非 root 的终端，用 [OpenMuse](openmuse.zh.md)。
+- **你希望由应用本身来把安全关。** 审批级别只是把每个 CLI 的原生模式原样传过去（Claude 的 `default` 到 `bypassPermissions`）；“完全访问”会替你回答剩下的权限提示，而且“幕僚长” bot 的级别会传给它委派任务的其他 bot。需要应用自己掌控的分级授权加逐次调用审计，用 [OpenWorker](../openworker.zh.md)；想要一个不联网、非 root 的终端，用 [OpenMuse](../openmuse.zh.md)。
 - **你要求默认什么都不出本机。** `src/lib/analytics.ts` 只要没存过退出标记就会初始化 PostHog，发送 `app_first_open` / `app_opened` 事件，并把首次启动界面里填的邮箱关联到一个 PostHog 用户；退出开关在 设置 → 通用。在不允许出网的环境里，要么从源码构建并把这个模块换成空实现，要么在首次启动前就在网络层屏蔽 PostHog 的地址——或者改用 [Rakazo](rakazo.zh.md)，它的电脑和数据按设计就是自托管的（它的遥测本页没有审计）。
-- **你手上没有任何 agent CLI 订阅。** 主路径默认你装好并登录了 `claude`、`codex` 或 `grok`；按 API key 接入的 provider（OpenRouter、DeepSeek、OpenAI 兼容接口）是文档里的附加方式，不是核心。只想要一个能切换很多模型的聊天窗口，用 [Open WebUI](../../../llm-chat-ui/open-webui.zh.md)。
+- **你手上没有任何 agent CLI 订阅。** 主路径默认你装好并登录了 `claude`、`codex` 或 `grok`；按 API key 接入的 provider（OpenRouter、DeepSeek、OpenAI 兼容接口）是文档里的附加方式，不是核心。只想要一个能切换很多模型的聊天窗口，用 [Open WebUI](../../../../llm-chat-ui/open-webui.zh.md)。
 - **你要每个 bot 的桌面默认自托管、长期保留。** README 主推的云电脑是 Boat，一个试用期后收费的第三方服务；本地选项是 Local VM（一个托管的容器）或者你自己的机器。如果重点是在自己的 Docker 主机上给每个 bot 一台持久、会备份的图形电脑，用 [Rakazo](rakazo.zh.md)。
 - **你打算把它做成自己品牌或多租户的产品。** 白标、SSO、管理后台、预算和计费都在 `enterprise/` 里，那是源码可见许可：生产环境要许可证 key，替第三方托管要签合作协议；OpenMausBot 名称和吉祥物是 Supamaus Software Private Limited 的商标。从纯 Apache 的底子起步，比如 [Rakazo](rakazo.zh.md)，或者直接基于 agent SDK 来做。
-- **你需要一条稳定的发布线。** 八周里发了约 100 个小版本（2026-10-02 到 10-07 之间从 v0.1.93 到 v0.1.100），每周 300–800 个提交，还带自动更新；2026-10-08 新开的 #2478 报告：`routines.json` 损坏时会被当成空文件读入，下一次保存就把它清掉。升级必须平稳的话，等稳定版；只要成熟的聊天界面、不要 agent 团队，用 [Open WebUI](../../../llm-chat-ui/open-webui.zh.md)。
-- **你在 Linux Wayland 上，或者需要签名的 Windows 安装包。** Ubuntu 版还是 beta；操作本机在 Xorg 上要手动开启，在 Wayland 上直接禁用；Windows 安装包没有代码签名（SmartScreen 会警告）。不靠这个应用、在 Linux 上做电脑操作，直接用 [Cua](../../../desktop-automation/cua.zh.md)。
-- **你真正要做的是监督在分支上干活的编码 agent。** 它的界面是聊天、审批和电脑，不是 worktree、diff 和 CI；那种需求用 [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.zh.md) 或 [CloudCLI](../../../agent-tooling/supervision-surfaces/agent-cockpits/claudecodeui.zh.md)。
+- **你需要一条稳定的发布线。** 八周里发了约 100 个小版本（2026-10-02 到 10-07 之间从 v0.1.93 到 v0.1.100），每周 300–800 个提交，还带自动更新；2026-10-08 新开的 #2478 报告：`routines.json` 损坏时会被当成空文件读入，下一次保存就把它清掉。升级必须平稳的话，等稳定版；只要成熟的聊天界面、不要 agent 团队，用 [Open WebUI](../../../../llm-chat-ui/open-webui.zh.md)。
+- **你在 Linux Wayland 上，或者需要签名的 Windows 安装包。** Ubuntu 版还是 beta；操作本机在 Xorg 上要手动开启，在 Wayland 上直接禁用；Windows 安装包没有代码签名（SmartScreen 会警告）。不靠这个应用、在 Linux 上做电脑操作，直接用 [Cua](../../../../desktop-automation/cua.zh.md)。
+- **你真正要做的是监督在分支上干活的编码 agent。** 它的界面是聊天、审批和电脑，不是 worktree、diff 和 CI；那种需求用 [Agent Orchestrator](../../../../agent-tooling/supervision-surfaces/agent-cockpits/agent-orchestrator.zh.md) 或 [CloudCLI](../../../../agent-tooling/supervision-surfaces/agent-cockpits/claudecodeui.zh.md)。
 
 ## 横向对比
 
@@ -134,9 +134,9 @@ OpenMausBot 由两个进程组成。应用本身——Electron 里的一个 Reac
 | --- | --- | --- | --- |
 | Grok Bot（xAI） | 非仓库 | 想要零配置的 bot 名册产品、接受只用 Grok 模型和 xAI 的共享云电脑，就付费用 Grok Bot；想每个 bot 自选模型、用自己的 CLI 订阅、聊天记录留在本机，选 OpenMausBot。 | 闭源托管产品；你放弃 xAI 托管的电脑和打磨好的体验，换来自己装一个 8 周大的桌面应用、自己跑 CLI。 |
 | [Rakazo](rakazo.zh.md) | ✅ | bot 要用你已有登录态去跑真正的 Claude Code / Codex 命令行时，选 OpenMausBot；要一台服务端、每个 bot 一台自托管且会备份的 Docker 桌面、代码全是 Apache 许可时，选 Rakazo。 | OpenMausBot 以桌面为先、自带 agent、运维更轻，但电脑依赖 Boat 或你自己的 Mac，还有一层开源内核外的商业代码；Rakazo 更重（Postgres、worker、桌面镜像），用的是它自己的 agent 循环。 |
-| [OpenMuse](openmuse.zh.md) | ✅ | 一个人把跑腿活委派出去、要审批门和不联网的终端，选 OpenMuse；要在聊天应用里跑好几个 bot、启动不需要托管 key，选 OpenMausBot。 | OpenMuse 需要 CopilotKit 云端 key，但给终端设了边界；OpenMausBot 本地就能启动，但动作安全交给了各 CLI 自己的权限模式。 |
-| [Ekko Studio](../../../agent-tooling/supervision-surfaces/agent-cockpits/ekko-studio.zh.md) | ✅ | 想要一个本地控制台同时管 Hermes 和编码 agent CLI、还要工作流画布，并且能接受非商用许可，Ekko Studio 合适；想要消费级的 bot 名册，带电脑、连接应用和语音，并且是 Apache-2.0，选 OpenMausBot。 | Ekko Studio 是 BSL-1.1（2029 年前不可商用）、有工作流画布；OpenMausBot 在 `enterprise/` 之外是 Apache-2.0、贡献者更多，但没有工作流画布。 |
-| [OpenClaw](messaging-daemons/openclaw.zh.md) | ✅ | 助手必须在 WhatsApp、Telegram 等聊天软件里回你，选 OpenClaw；想要一个自己的聊天应用、每个联系人都是一个带电脑的独立 CLI agent，选 OpenMausBot。 | OpenClaw 在你已有的渠道里找你、社区大得多；OpenMausBot 是独立应用，增加的是 agent 数量而不是渠道数量。 |
+| [OpenMuse](../openmuse.zh.md) | ✅ | 一个人把跑腿活委派出去、要审批门和不联网的终端，选 OpenMuse；要在聊天应用里跑好几个 bot、启动不需要托管 key，选 OpenMausBot。 | OpenMuse 需要 CopilotKit 云端 key，但给终端设了边界；OpenMausBot 本地就能启动，但动作安全交给了各 CLI 自己的权限模式。 |
+| [Ekko Studio](../../../../agent-tooling/supervision-surfaces/agent-cockpits/ekko-studio.zh.md) | ✅ | 想要一个本地控制台同时管 Hermes 和编码 agent CLI、还要工作流画布，并且能接受非商用许可，Ekko Studio 合适；想要消费级的 bot 名册，带电脑、连接应用和语音，并且是 Apache-2.0，选 OpenMausBot。 | Ekko Studio 是 BSL-1.1（2029 年前不可商用）、有工作流画布；OpenMausBot 在 `enterprise/` 之外是 Apache-2.0、贡献者更多，但没有工作流画布。 |
+| [OpenClaw](../messaging-daemons/openclaw.zh.md) | ✅ | 助手必须在 WhatsApp、Telegram 等聊天软件里回你，选 OpenClaw；想要一个自己的聊天应用、每个联系人都是一个带电脑的独立 CLI agent，选 OpenMausBot。 | OpenClaw 在你已有的渠道里找你、社区大得多；OpenMausBot 是独立应用，增加的是 agent 数量而不是渠道数量。 |
 
 ## 技术栈
 

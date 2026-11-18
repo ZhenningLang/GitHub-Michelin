@@ -83,21 +83,21 @@ health:
 
 你已经在付 Claude Code 或 Codex 的订阅，日常在公司的 Mac、家里的 Windows 台式机和手机之间来回。离开办公室时，那台电脑上的 agent 重构到一半；在地铁上你只看到一条 Slack 消息：`Allow this bash command? (y/n)`。你想在手机上批准它、调整方向、翻它改的文件，又不想租服务器，也不想把仓库推到云端工作区。Cindy 正对这个场景：桌面端在你的文件旁边跑 agent，手机端只是那台桌面的遥控器。
 
-和 [OpenMausBot](openmausbot.zh.md) 比，跨设备接续、手机操控和远程桌面比“聊天式机器人花名册”更重要时选 Cindy。和 [Nezha](../../../agent-tooling/supervision-surfaces/agent-cockpits/nezha.zh.md) 比，你要的是完整的助手产品（记忆、自动化、插件、Lead/Worker 协同），而不只是本机监工窗口时选 Cindy。代价是：所有多设备功能都依赖厂商账号和中继，官方构建内置统计 SDK，代码库年轻且变化极快。
+和 [OpenMausBot](ai-teammates/openmausbot.zh.md) 比，跨设备接续、手机操控和远程桌面比“聊天式机器人花名册”更重要时选 Cindy。和 [Nezha](../../../agent-tooling/supervision-surfaces/agent-cockpits/nezha.zh.md) 比，你要的是完整的助手产品（记忆、自动化、插件、Lead/Worker 协同），而不只是本机监工窗口时选 Cindy。代价是：所有多设备功能都依赖厂商账号和中继，官方构建内置统计 SDK，代码库年轻且变化极快。
 
 ## 何时不用
 
 - **你要多设备操控，又不能用厂商账号。** 中继和后端在另一个未公开的仓库；“跳过登录”只跑本地 agent，依赖服务端的功能都不可用。只要本机监工窗口，用 [Nezha](../../../agent-tooling/supervision-surfaces/agent-cockpits/nezha.zh.md)；能自己托管服务端，用 [Kandev](../../../agent-tooling/supervision-surfaces/agent-cockpits/kandev.zh.md)。
 - **你的合规要求禁止产品统计或默认厂商端点。** 官方构建带 TapDB 统计，统计开关默认打开；README 还写明手机端企业 SSO 路径可能在没走隐私政策步骤时就记下同意。默认端点指向 Cindy 云。要么从源码构建并关掉统计，要么选不强制厂商账号、自带 key 的桌面助手 [OpenWorker](openworker.zh.md)。
 - **你会用 2026-10-31 之前的构建打开不受信任的仓库。** 公开的静态审计（issue #8237）报告：项目里的 `.cindy/automations/schedules.json` 可能被自动导入，并在没有确认的情况下执行前置 shell 命令。主干在 2026-10-31 修复（提交 `63397cd7` 与 `e3a530e0`），晚于 v0.1.121 发布。包含修复的版本发布前，只打开可信仓库，或从主干构建。
-- **你要一个稳定、精简的 agent 运行时。** 仓库公开约 100 天，有 12,540 个提交、1,936 个未关闭 issue、438 个未合并 PR（2026-11-01），几乎每天发版。版本之间行为会变。直接用厂商 CLI，或只需要轻量包一层时用 [OpenMausBot](openmausbot.zh.md)。
+- **你要一个稳定、精简的 agent 运行时。** 仓库公开约 100 天，有 12,540 个提交、1,936 个未关闭 issue、438 个未合并 PR（2026-11-01），几乎每天发版。版本之间行为会变。直接用厂商 CLI，或只需要轻量包一层时用 [OpenMausBot](ai-teammates/openmausbot.zh.md)。
 - **你要托管的多租户团队平台。** Cindy 是个人客户端：远程控制只限同一账号下的设备，Orca 协同属于某台桌面上的一个 Lead 会话。要团队共享 agent 的聊天工作区，去看 [team-chat](../../../team-chat/INDEX.zh.md) 分类。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [OpenMausBot](openmausbot.zh.md) | ✅ | 想把已登录的 CLI 变成带“允许／拒绝”卡片的聊天机器人，选 OpenMausBot；一个会话必须跟着你在多台电脑和手机间接续，选 Cindy。 | OpenMausBot 只有本机 harness，运维轻，但没有设备中继；Cindy 多了远程桌面、模型共享和协同，代价是厂商账号与中继。 |
+| [OpenMausBot](ai-teammates/openmausbot.zh.md) | ✅ | 想把已登录的 CLI 变成带“允许／拒绝”卡片的聊天机器人，选 OpenMausBot；一个会话必须跟着你在多台电脑和手机间接续，选 Cindy。 | OpenMausBot 只有本机 harness，运维轻，但没有设备中继；Cindy 多了远程桌面、模型共享和协同，代价是厂商账号与中继。 |
 | [LobsterAI](lobsterai.zh.md) | ✅ | 围绕 OpenClaw 做办公交付物、经 IM 回传，选 LobsterAI；工作是 Claude Code、Codex 或 Pi 的编码会话，选 Cindy。 | LobsterAI 以产物和 IM 渠道为中心；Cindy 以 harness 适配、手机操控和多 agent 协同为中心，面更大、变化更快。 |
 | [OpenWorker](openworker.zh.md) | ✅ | 要免登录、自带 key、带审批门和审计溯源的桌面助手，选 OpenWorker；现有 Claude Code／Codex 订阅和多设备访问是决定因素时，选 Cindy。 | OpenWorker 不强制厂商账号；Cindy 复用厂商 CLI 订阅并能跨设备，但默认走厂商端点并开启统计。 |
 | [Nezha](../../../agent-tooling/supervision-surfaces/agent-cockpits/nezha.zh.md) | ✅ | 只想在本机用终端、会话和 Git 视图监工 Claude Code／Codex，选 Nezha；还要手机遥控、记忆和自动化，选 Cindy。 | Nezha 是更窄的本地驾驶舱；Cindy 是完整助手产品，跨设备功能依赖它的云。 |

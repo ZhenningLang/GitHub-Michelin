@@ -2,7 +2,7 @@
 name: DS Bot
 slug: ds-bot
 repo: https://github.com/Fei2411/DS-Bot
-category: personal-assistants
+category: ai-teammates
 tags: [deepseek-harness, dsh-plugin, ai-teammates, multi-agent-chat, agent-memory, electron, local-first]
 language: JavaScript
 license: Apache-2.0
@@ -79,21 +79,21 @@ health:
 
 在 DeepSeek Harness 里，每个任务都从一个全新的会话开始：“用中文回答、保留表格、存到 ~/notes”这句话得一遍遍重贴；想让“写手”和“程序员”配合，只能你自己在几个窗口之间搬文字。DS Bot 在你自己的电脑上养一支常驻的 Bot 团队，每个 Bot 有自己的记忆、模型和工作目录，能和你单聊、互相发消息派活，也能进群聊，由担任管理员的 Bot 决定谁来回答。
 
-![DS Bot — 健康度雷达](../../../../assets/health/ds-bot.zh.svg)
+![DS Bot — 健康度雷达](../../../../../assets/health/ds-bot.zh.svg)
 
 ## 何时使用
 
 你已经在用 DeepSeek 开源的 agent 运行框架 DeepSeek Harness（DSH），或者愿意让一个桌面应用替你装好它，并且按 token 付 API 费用。你的工作是反复出现的：每周的周报、一个业余项目的代码、一份阅读清单。在普通的 DSH 会话里，agent 记不住你要把周报放进 `~/notes/weekly/`、开头先放一张汇总表；你让一个会话起草、另一个会话核数字，来回传话的人还是你。DS Bot 把 DSH 变成一份常驻 Bot 名单：名叫 Chief 的主 Bot 听你描述需求后建出其他 Bot；每个 Bot 跨对话记住你的纠正；群聊里由管理员先回应你，只在需要时才叫其他成员上场。
 
-如果你想让 Bot 跑在 DSH 能接的任意模型上、按 token 计费，并由应用自己管记忆和长对话，选它而不是 [OpenMausBot](openmausbot.zh.md)。OpenMausBot 的重心是驱动你已订阅的 Claude Code、Codex 或 Grok CLI；DS Bot 也能把这类 CLI 接成 Bot，但它原生的 Bot 运行在 DSH 里。如果你要的是桌面上几个分工明确的 Bot，而不是服务器上一个通过 Telegram 联系的助手，选它而不是 [Hermes Agent](messaging-daemons/hermes-agent.zh.md)。代价是硬依赖一个 DSH 候选发布版，而且项目只有约六周大。
+如果你想让 Bot 跑在 DSH 能接的任意模型上、按 token 计费，并由应用自己管记忆和长对话，选它而不是 [OpenMausBot](openmausbot.zh.md)。OpenMausBot 的重心是驱动你已订阅的 Claude Code、Codex 或 Grok CLI；DS Bot 也能把这类 CLI 接成 Bot，但它原生的 Bot 运行在 DSH 里。如果你要的是桌面上几个分工明确的 Bot，而不是服务器上一个通过 Telegram 联系的助手，选它而不是 [Hermes Agent](../messaging-daemons/hermes-agent.zh.md)。代价是硬依赖一个 DSH 候选发布版，而且项目只有约六周大。
 
 ## 何时不用
 
-- **你不想在助手底下垫一层 DeepSeek Harness。** DS Bot 是 DSH 插件：每个 Bot 都是一个 DSH 会话，桌面应用锁定的 DSH 版本是候选发布版 `0.2.2-rc.1`。项目专门记了一本账，列出 15 处绕开 DSH 限制的做法。例如：DSH 升级后 Bot 团队可能起不来，要靠 `npx ds-bot doctor --fix` 清掉过期的版本锁定；模型流卡死时没有看门狗，只能你手动停掉那个 Bot。想要不依赖底层 harness 的 Bot 名单，用 [OpenMausBot](openmausbot.zh.md)；想要自带运行时的单个助手，用 [Hermes Agent](messaging-daemons/hermes-agent.zh.md)。
-- **你需要把 Bot 和系统或模型隔开。** “私密 Bot”只把它和其他 Bot 隔开。README 明说这不是操作系统沙箱：给了 shell 和网络权限，它照样能读写系统文件、访问网络，模型服务商也照样收到对话。Docker 版让所有 Bot 以 `danger-full-access`、审批 `never` 运行，监听 `0.0.0.0:13080`，容器是唯一边界。密钥遮蔽只替换原样出现的值，Bot 把密钥编码后仍能打印出来。每个 Bot 需要一台独立可丢弃的电脑，用 [Rakazo](rakazo.zh.md)；要有审核关卡、受限的终端，用 [OpenMuse](openmuse.zh.md)。
-- **你的 token 预算很紧。** 群聊一条消息会调用多个模型；除了回复本身，每段对话还会触发额外的模型调用：空闲后的一次记忆复盘，变长后的一次上下文管家判断，外加一份检查点或交接说明。用量页只显示 token，不显示花费。一个 agent 会话就够用的话，直接跑 DSH，或用 [dsh-TUI](../../../agent-tooling/supervision-surfaces/agent-cockpits/dsh-tui.zh.md) 在终端里把这个会话看得更清楚。
-- **你要的是一直在线、主要通过聊天软件联系的助手。** 微信、飞书、钉钉、企业微信、QQ、Telegram、Discord 和 Slack 的桥接，只在你电脑醒着且 DS Bot 在运行时才收发消息，微信还只支持私聊。要一个住在聊天软件里的服务端助手，用 [OpenClaw](messaging-daemons/openclaw.zh.md) 或 [Hermes Agent](messaging-daemons/hermes-agent.zh.md)。
-- **你需要稳定、有治理的发布线。** 仓库创建于 2026-10-07；到 2026-11-18，npm 上已有 23 个版本，开着 289 个 issue，近九成提交出自一位维护者。桌面安装包没有签名，Windows SmartScreen 和 macOS Gatekeeper 首次打开都会警告。只需要一个可靠的多模型聊天窗口，用 [Open WebUI](../../../llm-chat-ui/open-webui.zh.md)。
+- **你不想在助手底下垫一层 DeepSeek Harness。** DS Bot 是 DSH 插件：每个 Bot 都是一个 DSH 会话，桌面应用锁定的 DSH 版本是候选发布版 `0.2.2-rc.1`。项目专门记了一本账，列出 15 处绕开 DSH 限制的做法。例如：DSH 升级后 Bot 团队可能起不来，要靠 `npx ds-bot doctor --fix` 清掉过期的版本锁定；模型流卡死时没有看门狗，只能你手动停掉那个 Bot。想要不依赖底层 harness 的 Bot 名单，用 [OpenMausBot](openmausbot.zh.md)；想要自带运行时的单个助手，用 [Hermes Agent](../messaging-daemons/hermes-agent.zh.md)。
+- **你需要把 Bot 和系统或模型隔开。** “私密 Bot”只把它和其他 Bot 隔开。README 明说这不是操作系统沙箱：给了 shell 和网络权限，它照样能读写系统文件、访问网络，模型服务商也照样收到对话。Docker 版让所有 Bot 以 `danger-full-access`、审批 `never` 运行，监听 `0.0.0.0:13080`，容器是唯一边界。密钥遮蔽只替换原样出现的值，Bot 把密钥编码后仍能打印出来。每个 Bot 需要一台独立可丢弃的电脑，用 [Rakazo](rakazo.zh.md)；要有审核关卡、受限的终端，用 [OpenMuse](../openmuse.zh.md)。
+- **你的 token 预算很紧。** 群聊一条消息会调用多个模型；除了回复本身，每段对话还会触发额外的模型调用：空闲后的一次记忆复盘，变长后的一次上下文管家判断，外加一份检查点或交接说明。用量页只显示 token，不显示花费。一个 agent 会话就够用的话，直接跑 DSH，或用 [dsh-TUI](../../../../agent-tooling/supervision-surfaces/agent-cockpits/dsh-tui.zh.md) 在终端里把这个会话看得更清楚。
+- **你要的是一直在线、主要通过聊天软件联系的助手。** 微信、飞书、钉钉、企业微信、QQ、Telegram、Discord 和 Slack 的桥接，只在你电脑醒着且 DS Bot 在运行时才收发消息，微信还只支持私聊。要一个住在聊天软件里的服务端助手，用 [OpenClaw](../messaging-daemons/openclaw.zh.md) 或 [Hermes Agent](../messaging-daemons/hermes-agent.zh.md)。
+- **你需要稳定、有治理的发布线。** 仓库创建于 2026-10-07；到 2026-11-18，npm 上已有 23 个版本，开着 289 个 issue，近九成提交出自一位维护者。桌面安装包没有签名，Windows SmartScreen 和 macOS Gatekeeper 首次打开都会警告。只需要一个可靠的多模型聊天窗口，用 [Open WebUI](../../../../llm-chat-ui/open-webui.zh.md)。
 
 ## 横向对比
 
@@ -101,15 +101,15 @@ health:
 | --- | --- | --- | --- |
 | [OpenMausBot](openmausbot.zh.md) | ✅ | 如果你的 Bot 就该是你已订阅的 Claude Code、Codex 或 Grok CLI，选 OpenMausBot；如果 Bot 通过 DSH 跑按量计费的模型，并且你要应用自管的记忆和群管理员，选 DS Bot。 | OpenMausBot 复用 CLI 订阅，审批直接沿用各 CLI 自己的模式；DS Bot 多了记忆复盘、上下文管家和角色权限，但把你绑在 DSH 的候选版上。 |
 | [Rakazo](rakazo.zh.md) | ✅ | 每个 Bot 需要服务器上一台可回滚的独立 Linux 电脑时，选 Rakazo；要一支在你自己目录里干活、不用维护容器栈的桌面团队，选 DS Bot。 | Rakazo 用 Postgres、worker 和桌面镜像换来隔离；DS Bot 在桌面上很轻，但除非用 Docker 版，shell 权限落在你本机上。 |
-| [Hermes Agent](messaging-daemons/hermes-agent.zh.md) | ✅ | 要一个在 VPS 上长期运行、通过 Telegram 或 Slack 联系的助手，选 Hermes Agent；要桌面上几个有名字、能群聊和互相交接的 Bot，选 DS Bot。 | Hermes Agent 无界面、一直在线；DS Bot 的聊天软件桥接随电脑休眠中断，但每个 Bot 有各自的记忆、目录和权限。 |
-| [dsh-TUI](../../../agent-tooling/supervision-surfaces/agent-cockpits/dsh-tui.zh.md) | ✅ | 只想把一个 DSH 会话看得更清、管得更顺，选 dsh-TUI；要的是几个常驻、能互相点名的 DSH Bot，选 DS Bot。 | dsh-TUI 加的是终端视图，不多花模型调用；DS Bot 加的是团队、记忆和群聊路由，代价是更多 token 和更大的插件面。 |
+| [Hermes Agent](../messaging-daemons/hermes-agent.zh.md) | ✅ | 要一个在 VPS 上长期运行、通过 Telegram 或 Slack 联系的助手，选 Hermes Agent；要桌面上几个有名字、能群聊和互相交接的 Bot，选 DS Bot。 | Hermes Agent 无界面、一直在线；DS Bot 的聊天软件桥接随电脑休眠中断，但每个 Bot 有各自的记忆、目录和权限。 |
+| [dsh-TUI](../../../../agent-tooling/supervision-surfaces/agent-cockpits/dsh-tui.zh.md) | ✅ | 只想把一个 DSH 会话看得更清、管得更顺，选 dsh-TUI；要的是几个常驻、能互相点名的 DSH Bot，选 DS Bot。 | dsh-TUI 加的是终端视图，不多花模型调用；DS Bot 加的是团队、记忆和群聊路由，代价是更多 token 和更大的插件面。 |
 | DeepSeek Harness | 未收录 | 一个任务一个会话就够时，直接用原版 DSH，不装插件；同样的偏好和角色在任务之间反复出现时，再加 DS Bot（本批标签未收录）。 | 原版 DSH 部件更少，没有插件兼容账本；DS Bot 在 DSH 会话之上叠加了常驻身份、记忆和群聊。 |
 
 ## 快速上手
 
 多数用户从 GitHub Releases 页面下载桌面安装包；它自带 DSH，不需要先装别的。如果你已经在用 DSH，就改装插件：在 DSH Desktop 的“插件 → 添加插件”里输入 `ds-bot`，DSH Web 则运行 `npx @deepseek-ai/dsh@0.2.2-rc.1 plugin --profile web add ds-bot`。接着在“设置 → 模型”里配好模型服务商（也就是负责回答 Bot 请求的公司及其 API key）。第一次打开时，名叫 Chief 的主 Bot 会跟你打招呼；你描述想要哪些 Bot 和群聊，Chief 就把它们建出来，每个 Bot 带一个模型、一个工作目录和一档权限预设（只读、工作区或完全访问）。之后你可以直接和某个 Bot 单聊，也可以在群里发消息，用 `@` 加名字点某个 Bot。路由、记忆和长对话压缩由 DS Bot 负责；模型账单、你授予的目录和权限、以及重要操作的核对归你。要放在 NAS 或服务器上，`docker/` 目录会在容器里跑带插件的 `dsh web`。
 
-![ds-bot — 主干用户故事](../../../../assets/flow/ds-bot.zh.svg)
+![ds-bot — 主干用户故事](../../../../../assets/flow/ds-bot.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/ds-bot.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -130,7 +130,7 @@ health:
 
 ## 技术要点
 
-![DS Bot — 机制图](../../../../assets/mechanism/ds-bot.zh.svg)
+![DS Bot — 机制图](../../../../../assets/mechanism/ds-bot.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/ds-bot.json by tools/mechanism_card.py; do not edit) -->
 <details>

@@ -2,7 +2,7 @@
 name: DS Bot
 slug: ds-bot
 repo: https://github.com/Fei2411/DS-Bot
-category: personal-assistants
+category: ai-teammates
 tags: [deepseek-harness, dsh-plugin, ai-teammates, multi-agent-chat, agent-memory, electron, local-first]
 language: JavaScript
 license: Apache-2.0
@@ -79,21 +79,21 @@ health:
 
 Every task in DeepSeek Harness starts as a fresh agent session: you paste "answer in Chinese, keep tables, save to ~/notes" again, and getting a "writer" and a "coder" to cooperate means copying text between windows yourself. DS Bot keeps a standing team of named bots on your own machine, each with its own memory, model and folder, and lets them talk to you, message each other, and work in group chats where an admin bot decides who answers.
 
-![DS Bot — health radar](../../../../assets/health/ds-bot.svg)
+![DS Bot — health radar](../../../../../assets/health/ds-bot.svg)
 
 ## When to use
 
 You already use DeepSeek Harness (DSH), DeepSeek's open agent harness, or you are happy to let a desktop app install it for you, and you pay for model tokens through an API key. Your work recurs: a weekly report, a side project's code, a reading list. In a plain DSH session the agent forgets that you want reports in `~/notes/weekly/` with a summary table on top, and when you ask one session to draft and another to check numbers, you are the one carrying text between them. DS Bot turns DSH into a roster of long-lived bots. A Main Bot called Chief creates the others when you describe what you need. Each bot remembers corrections across chats. A group chat's admin answers you first and pulls in other members only when the work calls for them.
 
-Pick it over [OpenMausBot](openmausbot.md) when you want bots on any model DSH can serve, billed per token, with memory and long-chat handling done by the app itself. OpenMausBot centres on driving Claude Code, Codex or Grok CLIs you already subscribe to; DS Bot can also attach such CLIs as bots, but its native bots run inside DSH. Pick it over [Hermes Agent](messaging-daemons/hermes-agent.md) when you want several specialised bots on your desktop rather than one assistant on a server reached through Telegram. The price is a hard dependency on a DSH release candidate and a project about six weeks old.
+Pick it over [OpenMausBot](openmausbot.md) when you want bots on any model DSH can serve, billed per token, with memory and long-chat handling done by the app itself. OpenMausBot centres on driving Claude Code, Codex or Grok CLIs you already subscribe to; DS Bot can also attach such CLIs as bots, but its native bots run inside DSH. Pick it over [Hermes Agent](../messaging-daemons/hermes-agent.md) when you want several specialised bots on your desktop rather than one assistant on a server reached through Telegram. The price is a hard dependency on a DSH release candidate and a project about six weeks old.
 
 ## When NOT to use
 
-- **You do not want DeepSeek Harness under your assistant.** DS Bot is a DSH plugin: every bot is a DSH session, and the desktop app pins DSH `0.2.2-rc.1`, a release candidate. The project keeps a ledger of 15 places where it works around DSH limits. Examples: a DSH upgrade can leave the bot team unstarted until `npx ds-bot doctor --fix` removes stale pins, and a stuck model stream has no watchdog, so you stop the bot yourself. If you want a bot roster without a harness underneath, use [OpenMausBot](openmausbot.md); if you want one assistant on its own runtime, use [Hermes Agent](messaging-daemons/hermes-agent.md).
-- **You need bots isolated from your system or from the model.** A "private bot" only isolates it from other bots. The README says it is not an OS sandbox: shell and network access still reach system files, and the provider still receives the conversation. The Docker edition runs every bot with `danger-full-access` and approval `never`, listening on `0.0.0.0:13080`; the container is the only boundary. Secret masking replaces exact copies only, so a bot that encodes a key can still print it. If each bot needs its own disposable computer, use [Rakazo](rakazo.md); for a bounded terminal behind a review gate, use [OpenMuse](openmuse.md).
-- **Your token budget is tight.** Group chats call several models per message, and beyond the reply itself each conversation triggers extra model calls: a memory review after it goes idle, and a context-steward decision plus a checkpoint or handoff note when it grows long. The Usage page shows tokens, not cost. If one agent session is enough, run DSH directly, or use [dsh-TUI](../../../agent-tooling/supervision-surfaces/agent-cockpits/dsh-tui.md) for a richer terminal view of that session.
-- **You want an always-on assistant reached mainly through chat apps.** The IM bridges to WeChat, Feishu, DingTalk, WeCom, QQ, Telegram, Discord and Slack only pass messages while your computer is awake and DS Bot is running, and WeChat supports private chat only. For a server-side assistant that lives in messengers, use [OpenClaw](messaging-daemons/openclaw.md) or [Hermes Agent](messaging-daemons/hermes-agent.md).
-- **You need a stable, governed release line.** The repository was created 2026-10-07; npm shows 23 versions by 2026-11-18, there are 289 open issues, and one maintainer wrote close to 90% of the commits. Desktop installers are unsigned, so Windows SmartScreen and macOS Gatekeeper warn on first open. If you only need a dependable multi-model chat window, use [Open WebUI](../../../llm-chat-ui/open-webui.md).
+- **You do not want DeepSeek Harness under your assistant.** DS Bot is a DSH plugin: every bot is a DSH session, and the desktop app pins DSH `0.2.2-rc.1`, a release candidate. The project keeps a ledger of 15 places where it works around DSH limits. Examples: a DSH upgrade can leave the bot team unstarted until `npx ds-bot doctor --fix` removes stale pins, and a stuck model stream has no watchdog, so you stop the bot yourself. If you want a bot roster without a harness underneath, use [OpenMausBot](openmausbot.md); if you want one assistant on its own runtime, use [Hermes Agent](../messaging-daemons/hermes-agent.md).
+- **You need bots isolated from your system or from the model.** A "private bot" only isolates it from other bots. The README says it is not an OS sandbox: shell and network access still reach system files, and the provider still receives the conversation. The Docker edition runs every bot with `danger-full-access` and approval `never`, listening on `0.0.0.0:13080`; the container is the only boundary. Secret masking replaces exact copies only, so a bot that encodes a key can still print it. If each bot needs its own disposable computer, use [Rakazo](rakazo.md); for a bounded terminal behind a review gate, use [OpenMuse](../openmuse.md).
+- **Your token budget is tight.** Group chats call several models per message, and beyond the reply itself each conversation triggers extra model calls: a memory review after it goes idle, and a context-steward decision plus a checkpoint or handoff note when it grows long. The Usage page shows tokens, not cost. If one agent session is enough, run DSH directly, or use [dsh-TUI](../../../../agent-tooling/supervision-surfaces/agent-cockpits/dsh-tui.md) for a richer terminal view of that session.
+- **You want an always-on assistant reached mainly through chat apps.** The IM bridges to WeChat, Feishu, DingTalk, WeCom, QQ, Telegram, Discord and Slack only pass messages while your computer is awake and DS Bot is running, and WeChat supports private chat only. For a server-side assistant that lives in messengers, use [OpenClaw](../messaging-daemons/openclaw.md) or [Hermes Agent](../messaging-daemons/hermes-agent.md).
+- **You need a stable, governed release line.** The repository was created 2026-10-07; npm shows 23 versions by 2026-11-18, there are 289 open issues, and one maintainer wrote close to 90% of the commits. Desktop installers are unsigned, so Windows SmartScreen and macOS Gatekeeper warn on first open. If you only need a dependable multi-model chat window, use [Open WebUI](../../../../llm-chat-ui/open-webui.md).
 
 ## Comparison
 
@@ -101,15 +101,15 @@ Pick it over [OpenMausBot](openmausbot.md) when you want bots on any model DSH c
 | --- | --- | --- | --- |
 | [OpenMausBot](openmausbot.md) | ✅ | If your bots should be the Claude Code, Codex or Grok CLIs you already subscribe to, pick OpenMausBot; pick DS Bot when bots run on API-billed models through DSH and you want app-managed memory and group admins. | OpenMausBot reuses CLI subscriptions and passes each CLI's own approvals through; DS Bot adds memory review, a context steward and role rights, but ties you to DSH's release candidate. |
 | [Rakazo](rakazo.md) | ✅ | When each bot needs its own checkpointed Linux computer on a server, pick Rakazo; pick DS Bot for a desktop team that works in your own folders with no container stack to run. | Rakazo pays for isolation with Postgres, a worker and a desktop image; DS Bot runs light on the desktop, but shell access is your machine unless you use its Docker edition. |
-| [Hermes Agent](messaging-daemons/hermes-agent.md) | ✅ | For one long-lived assistant on a VPS that you reach through Telegram or Slack, pick Hermes Agent; pick DS Bot when you want several named bots with group chats and handoffs on your desktop. | Hermes Agent runs headless and always on; DS Bot's IM bridges stop when your computer sleeps, but it gives each bot separate memory, folder and permissions. |
-| [dsh-TUI](../../../agent-tooling/supervision-surfaces/agent-cockpits/dsh-tui.md) | ✅ | If you only want to watch and steer one DSH session better, pick dsh-TUI; pick DS Bot when the point is several persistent DSH bots that address each other. | dsh-TUI adds a terminal view without extra model calls; DS Bot adds a team, memory and group routing at the cost of more tokens and a larger plugin surface. |
+| [Hermes Agent](../messaging-daemons/hermes-agent.md) | ✅ | For one long-lived assistant on a VPS that you reach through Telegram or Slack, pick Hermes Agent; pick DS Bot when you want several named bots with group chats and handoffs on your desktop. | Hermes Agent runs headless and always on; DS Bot's IM bridges stop when your computer sleeps, but it gives each bot separate memory, folder and permissions. |
+| [dsh-TUI](../../../../agent-tooling/supervision-surfaces/agent-cockpits/dsh-tui.md) | ✅ | If you only want to watch and steer one DSH session better, pick dsh-TUI; pick DS Bot when the point is several persistent DSH bots that address each other. | dsh-TUI adds a terminal view without extra model calls; DS Bot adds a team, memory and group routing at the cost of more tokens and a larger plugin surface. |
 | DeepSeek Harness | not indexed | When one agent session per task is enough, use plain DSH and skip the plugin; add DS Bot when the same preferences and roles keep recurring across tasks (not added in this tab batch). | Plain DSH has fewer moving parts and no plugin-compat ledger; DS Bot layers persistent identity, memory and group chats onto DSH's sessions. |
 
 ## Quick start
 
 Most users download the desktop installer from the GitHub Releases page; it bundles its own DSH, so nothing else is installed first. If you already run DSH, add the plugin instead: in DSH Desktop enter `ds-bot` under Plugins → Add plugin, or for DSH Web run `npx @deepseek-ai/dsh@0.2.2-rc.1 plugin --profile web add ds-bot`. You then set up a model provider (the company and API key that answer the bot's requests) in Settings → Models. On first open, a Main Bot called Chief greets you; you describe the bots and group chats you want, and Chief creates them, each with a model, a working folder and a permission preset (read only, workspace or full access). After that you chat with a bot directly or post in a group and `@` a bot by name. DS Bot handles routing, memory and long-chat condensing. Your responsibilities are the model bill, the folders and permissions you grant, and checking important actions. For a NAS or server, the `docker/` folder runs `dsh web` with the plugin in a container.
 
-![ds-bot — backbone user story](../../../../assets/flow/ds-bot.svg)
+![ds-bot — backbone user story](../../../../../assets/flow/ds-bot.svg)
 
 <!-- flow-steps:begin (generated from flows/ds-bot.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -130,7 +130,7 @@ Most users download the desktop installer from the GitHub Releases page; it bund
 
 ## Key techniques
 
-![DS Bot — mechanism diagram](../../../../assets/mechanism/ds-bot.svg)
+![DS Bot — mechanism diagram](../../../../../assets/mechanism/ds-bot.svg)
 
 <!-- mechanism:begin (generated from mechanisms/ds-bot.json by tools/mechanism_card.py; do not edit) -->
 <details>
