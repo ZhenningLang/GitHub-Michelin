@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1450
+- Named-but-unindexed alternatives: 1452
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -51,4 +51,4 @@ shape and are deliberately excluded here.
 | [BirdNET-Pi (Nachtzuster fork)](https://github.com/Nachtzuster/BirdNET-Pi) | `categories/on-device-ml/birdnet-go.md` |
 | [Bitwarden server](https://github.com/bitwarden/server) | `categories/dev-utilities/ops-infra/vaultwarden.md` |
 | [Blender](https://github.com/blender/blender) | `categories/video-production/creation-workflows/artcraft.md` |
-| [btop](https://github.com/aristocratos/btop) | `categories/observability/mac-performance-monitor.md` |
+| [BloomTutor](https://github.com/Li-Evan/BloomTutor) | `categories/education-tutoring/janestreet-agent-skills.md` |

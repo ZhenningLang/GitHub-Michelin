@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "socratic-tutor makes the agent do", "zh": "这个技能让 agent 做的"},
+  "steps": [
+    {"lane": "you", "en": "Copy the skill directory into your agent's skills folder, or paste SKILL.md into a chatbot", "zh": "把技能目录复制进 agent 的技能目录，或把 SKILL.md 粘进聊天机器人", "component": {"en": "socratic-tutor/SKILL.md", "zh": "socratic-tutor/SKILL.md"}},
+    {"lane": "you", "en": "Ask to be taught a topic", "zh": "说要学一个主题", "code": "teach me X"},
+    {"lane": "them", "en": "Splits the topic into 4–10 subskills and asks 3–5 diagnostic questions, one at a time", "zh": "把主题拆成 4–10 个子技能，逐个问 3–5 道摸底题"},
+    {"lane": "them", "en": "Shows a 0–5 skill map and proposes where to start", "zh": "展示 0–5 级技能图，建议从哪开始"},
+    {"lane": "you", "en": "Answer one question per turn", "zh": "每轮回答一个问题"},
+    {"lane": "them", "en": "Narrows the question instead of giving the answer; levels up only after 2+ checks", "zh": "答错就追问得更窄，不直接给答案；两次以上检验才升级"},
+    {"lane": "them", "en": "Runs a final mixed assessment once every subskill reaches the target level", "zh": "所有子技能达标后做一次综合测验"}
+  ],
+  "value": {"en": "You find out what you can do unprompted, not what you nodded along to", "zh": "你知道自己不靠提示能做出什么，而不是听懂时点过的头"},
+  "sources": [
+    "https://github.com/janestreet/agent_skills/blob/469868f4489cbdbe178c775a0af05bb6bef63689/README.md#L13-L20 (copy the skill directory; paste SKILL.md into a chatbot; \"teach me X\")",
+    "https://github.com/janestreet/agent_skills/blob/469868f4489cbdbe178c775a0af05bb6bef63689/socratic-tutor/SKILL.md#L21-L91 (session start, skill map, teaching loop, evaluation rules, final assessment)"
+  ]
+}

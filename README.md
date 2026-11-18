@@ -1542,6 +1542,7 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | **edulab** | Make one supported problem into an interactive lesson using shared symbolic solution and drawing data, or a separately checked narrated video. | Apache-2.0 | B (4/5) | [EN](categories/education-tutoring/edulab.md) · [中](categories/education-tutoring/edulab.zh.md) |
 | **Word Atlas** | Illustrated English–Chinese IELTS study and reusable data; local progress, manual backups and known offline/export hazards. | MIT AND CC-BY-4.0 | D (3/6) | [EN](categories/education-tutoring/word-atlas.md) · [中](categories/education-tutoring/word-atlas.zh.md) |
 | **Echo Loop** | Guided mobile listening-to-speaking practice with imported audio; default release telemetry needs review. | AGPL-3.0 | C (6/6) | [EN](categories/education-tutoring/echo-loop.md) · [中](categories/education-tutoring/echo-loop.zh.md) |
+| **Jane Street Agent Skills** | An AI lectures and accepts "makes sense" as understanding; this one-file skill makes the agent diagnose first, ask one question at a time and raise 0–5 levels only after repeated proof. | MIT | B (4/5) | [EN](categories/education-tutoring/janestreet-agent-skills.md) · [中](categories/education-tutoring/janestreet-agent-skills.zh.md) |
 
 ### agent-governance
 

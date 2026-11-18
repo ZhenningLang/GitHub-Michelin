@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "req", "en": "Learner request", "zh": "学习者的请求", "kind": "input"},
+    {"id": "guard", "en": "Intent guard: tutoring or one-off question", "zh": "意图确认：开课还是一次性提问", "technique": [1]},
+    {"id": "plain", "en": "Normal answer, no session", "zh": "正常回答，不开课", "kind": "output", "technique": [1]},
+    {"id": "diag", "en": "4–10 subskills and a 3–5 question diagnostic", "zh": "4–10 个子技能与 3–5 道摸底题", "technique": [2]},
+    {"id": "map", "en": "0–5 skill map, re-rendered on every change", "zh": "0–5 级技能图，每次变动都重画", "technique": [2]},
+    {"id": "loop", "en": "One question per message; narrower question when wrong", "zh": "每条只问一个问题；答错就追问更窄", "technique": [3]},
+    {"id": "grade", "en": "Level up after 2+ checks incl. unprompted recall;\nsurprise review can lower it.", "zh": "两次以上检验且含无提示回忆才升级；\n突击回测可降级。", "technique": [4]},
+    {"id": "final", "en": "Final mixed assessment at target level", "zh": "达标后的综合测验", "kind": "output", "technique": [4]},
+    {"id": "state", "en": "save state block, pasted after resume from:", "zh": "save state 文本块，粘在 resume from: 之后", "kind": "output", "technique": [5]}
+  ],
+  "edges": [
+    {"from": "req", "to": "guard"},
+    {"from": "guard", "to": "plain", "en": "explain X / what is X", "zh": "解释 X／X 是什么", "style": "dashed"},
+    {"from": "guard", "to": "diag", "en": "teach me / quiz me", "zh": "teach me／quiz me"},
+    {"from": "diag", "to": "map"},
+    {"from": "map", "to": "loop"},
+    {"from": "loop", "to": "grade", "en": "learner answers", "zh": "学习者作答"},
+    {"from": "grade", "to": "map", "en": "level change", "zh": "等级变动"},
+    {"from": "grade", "to": "final", "en": "all subskills at target", "zh": "全部子技能达标"},
+    {"from": "map", "to": "state", "en": "user types save state", "zh": "用户输入 save state", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/janestreet/agent_skills/blob/469868f4489cbdbe178c775a0af05bb6bef63689/socratic-tutor/SKILL.md"
+  ]
+}
