@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "msg", "kind": "input", "en": "Message on Telegram, Discord, Matrix, email…", "zh": "Telegram、Discord、Matrix、邮件等渠道的消息"},
+    {"id": "peers", "en": "Peer-group check; empty set means pairing code only", "zh": "对端组核对；集合为空则只认配对码", "technique": [1]},
+    {"id": "agent", "en": "Agent loop bound to that channel", "zh": "绑定该渠道的 agent 循环"},
+    {"id": "model", "kind": "external", "en": "Configured model provider", "zh": "配置好的模型提供方"},
+    {"id": "gate", "en": "Risk profile: tool approval and shell risk rating", "zh": "风险档：工具审批与 shell 风险评级", "technique": [2]},
+    {"id": "ask", "en": "Approve or deny in the originating chat", "zh": "在发起对话的聊天里批准或拒绝", "technique": [2]},
+    {"id": "sandbox", "en": "OS sandbox if detected;\nelse runs as your user", "zh": "探测到系统沙箱就用；\n否则以你的用户身份运行", "technique": [3]},
+    {"id": "receipt", "en": "Optional HMAC receipt on success", "zh": "成功时可选的 HMAC 回执", "technique": [4]},
+    {"id": "reply", "kind": "output", "en": "Reply in the same chat", "zh": "在原聊天里回复"}
+  ],
+  "edges": [
+    {"from": "msg", "to": "peers"},
+    {"from": "peers", "to": "agent", "en": "authorized sender", "zh": "已授权的发送者"},
+    {"from": "agent", "to": "model"},
+    {"from": "model", "to": "gate", "en": "tool call", "zh": "工具调用"},
+    {"from": "gate", "to": "ask", "en": "medium risk", "zh": "中风险", "style": "dashed"},
+    {"from": "ask", "to": "sandbox", "en": "approved", "zh": "获批", "style": "dashed"},
+    {"from": "gate", "to": "sandbox", "en": "low risk or auto-approved", "zh": "低风险或自动批准"},
+    {"from": "sandbox", "to": "receipt", "style": "dashed"},
+    {"from": "receipt", "to": "agent", "en": "tool result for the next model call", "zh": "工具结果供下一次模型调用"},
+    {"from": "model", "to": "reply", "en": "final answer", "zh": "最终回答"}
+  ],
+  "sources": [
+    "https://github.com/zeroclaw-labs/zeroclaw/blob/cda933e6b9937deacbcc0d4d2cd7f1ae5bb4500e/crates/zeroclaw-channels/src/telegram.rs#L2699-L2730",
+    "https://github.com/zeroclaw-labs/zeroclaw/blob/cda933e6b9937deacbcc0d4d2cd7f1ae5bb4500e/crates/zeroclaw-runtime/src/approval/mod.rs#L233-L270",
+    "https://github.com/zeroclaw-labs/zeroclaw/blob/cda933e6b9937deacbcc0d4d2cd7f1ae5bb4500e/crates/zeroclaw-config/src/policy.rs#L4127-L4170",
+    "https://github.com/zeroclaw-labs/zeroclaw/blob/cda933e6b9937deacbcc0d4d2cd7f1ae5bb4500e/crates/zeroclaw-runtime/src/security/detect.rs#L228-L275",
+    "https://github.com/zeroclaw-labs/zeroclaw/blob/cda933e6b9937deacbcc0d4d2cd7f1ae5bb4500e/crates/zeroclaw-runtime/src/agent/tool_receipts.rs#L40-L108"
+  ]
+}

@@ -11,6 +11,7 @@
 | **PicoClaw** | 小型 ARM、MIPS、RISC-V Linux 板子要用聊天接任务，又不想维护解释器环境时选它；模型推理另配，远程命令默认开启，进程隔离默认关闭。 | B（6/6） | [→](picoclaw.zh.md) |
 | **Hermes Agent** | 当你想在自己的 VPS 上养一个长期在线的助手，能跑 shell 和定时任务、记得你的环境、在 Telegram 或 Slack 上回你时用它——但技能和记忆一变它的做法就跟着变，项目也才约 15 个月大。 | A（4/6） | [→](hermes-agent.zh.md) |
 | **OpenClaw** | 当你想在自己电脑上跑一个个人助手，在 WhatsApp、iMessage、Slack、Telegram 等 20 多个渠道里带着同一份记忆应答你时用它——但一个 Gateway 就是一个信任域，互不信任的人不能共用一套部署。 | B（5/6） | [→](openclaw.zh.md) |
+| **ZeroClaw** | 想在自己主机上用一个 Rust 二进制跑常驻助手，在 Telegram、Discord、Matrix 或邮件里应答，陌生人先配对才放行、中风险工具先在聊天里等你批准时选它——但它还在 1.0 之前，Windows 没有系统沙箱，容器镜像默认关闭网关配对。 | B（6/6） | [→](zeroclaw.zh.md) |
 
 ## 对比矩阵
 
@@ -20,6 +21,7 @@
 | [PicoClaw](picoclaw.zh.md) | ✅ | B（6/6） | 可交叉编译的 Go 核心带聊天接入、工具和本地状态；换来小板子上的部署便利，不是本地模型推理，也不是默认开启的系统沙箱。 |
 | [Hermes Agent](hermes-agent.zh.md) | ✅ | A（4/6） | 换来由你掌控的持续积累：有上限的记忆、自己写的技能、会话搜索和定时器；代价是行为不确定、没有企业治理（无 SSO、RBAC、审计），也没有 Lindy 记录。 |
 | [OpenClaw](openclaw.zh.md) | ✅ | B（5/6） | 换来最广的聊天渠道覆盖，外加手机和桌面配套 App；代价是没有租户隔离、SSO 和审计日志，而且项目还不满一岁。 |
+| [ZeroClaw](zeroclaw.zh.md) | ✅ | B（6/6） | 单个 Rust 二进制，30 多个渠道，默认拒绝的配对和逐工具风险档；代价是配置面大、配置结构频繁迁移，九个月大的项目还挂着未答复的第三方安全报告。 |
 
 ## 什么该放这里
 

@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "ZeroClaw does", "zh": "ZeroClaw 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install, then pick a model provider, risk profile, memory and agent", "zh": "安装后选定模型提供方、风险档、记忆和 agent", "code": "zeroclaw quickstart"},
+    {"lane": "you", "en": "Store the Telegram bot token, enable the channel and bind it to the agent", "zh": "保存 Telegram 机器人 token，启用渠道并绑定到 agent", "code": "zeroclaw config set channels.telegram.home.bot_token"},
+    {"lane": "you", "en": "Start the daemon and send the printed one-time code to your bot", "zh": "启动守护进程，把打印出的一次性码发给机器人", "code": "zeroclaw daemon"},
+    {"lane": "them", "en": "Admits only bound senders and routes each message to the agent and model", "zh": "只放行已绑定的发送者，把消息交给 agent 和模型", "component": {"en": "channel adapter", "zh": "渠道适配器"}},
+    {"lane": "them", "en": "Rates each tool call by the risk profile and asks you in chat for medium-risk ones", "zh": "按风险档给工具调用评级，中风险的在聊天里问你", "component": {"en": "approval manager", "zh": "审批管理器"}},
+    {"lane": "them", "en": "Runs approved tools, in a sandbox when one is available, and replies in the same chat", "zh": "执行获批工具，有沙箱时在沙箱里跑，并在原聊天回复"}
+  ],
+  "value": {"en": "One always-on assistant on your host that acts through chat, with risky steps waiting for your OK", "zh": "主机上的常驻助手通过聊天办事，有风险的步骤先等你点头"},
+  "sources": [
+    "https://github.com/zeroclaw-labs/zeroclaw/blob/cda933e6b9937deacbcc0d4d2cd7f1ae5bb4500e/README.md#L44-L60",
+    "https://github.com/zeroclaw-labs/zeroclaw/blob/cda933e6b9937deacbcc0d4d2cd7f1ae5bb4500e/docs/book/src/getting-started/quickstart.md",
+    "https://github.com/zeroclaw-labs/zeroclaw/blob/cda933e6b9937deacbcc0d4d2cd7f1ae5bb4500e/docs/book/src/_snippets/quickstart-steps.md",
+    "https://github.com/zeroclaw-labs/zeroclaw/blob/cda933e6b9937deacbcc0d4d2cd7f1ae5bb4500e/docs/book/src/channels/telegram.md#L45-L200",
+    "https://github.com/zeroclaw-labs/zeroclaw/blob/cda933e6b9937deacbcc0d4d2cd7f1ae5bb4500e/docs/book/src/security/autonomy.md#L21-L35",
+    "https://github.com/zeroclaw-labs/zeroclaw/blob/cda933e6b9937deacbcc0d4d2cd7f1ae5bb4500e/docs/book/src/security/sandboxing.md#L27-L70"
+  ]
+}

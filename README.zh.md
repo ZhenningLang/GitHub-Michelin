@@ -350,6 +350,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **PicoClaw** | 小型 ARM、MIPS、RISC-V Linux 板子要用聊天接任务，又不想维护解释器环境时选它；模型推理另配，远程命令默认开启，进程隔离默认关闭。 | MIT | B（6/6） | [中](categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/picoclaw.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/picoclaw.md) |
 | **Octop** | 家里或小团队要在飞书/企微上共用隔离 Agent、对话留在本机磁盘时用它——不是现成办公技能，LangGraph 内核仍是未公开源码的 wheel。 | MIT | B（5/6） | [中](categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/octop.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/octop.md) |
 | **Hermes Agent** | 当你想在自己的 VPS 上养一个长期在线的助手，能跑 shell 和定时任务、记得你的环境、在 Telegram 或 Slack 上回你时用它——但技能和记忆一变它的做法就跟着变，项目也才约 15 个月大。 | MIT | A（4/6） | [中](categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/hermes-agent.md) |
+| **ZeroClaw** | 想在自己主机上用一个 Rust 二进制跑常驻助手，在 Telegram、Discord、Matrix 或邮件里应答，陌生人先配对才放行、中风险工具先在聊天里等你批准时选它——但它还在 1.0 之前，Windows 没有系统沙箱，容器镜像默认关闭网关配对。 | MIT OR Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/zeroclaw.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/personal-assistants/messaging-daemons/zeroclaw.md) |
 
 ### agent-memory
 
