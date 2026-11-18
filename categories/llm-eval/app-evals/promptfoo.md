@@ -2,7 +2,7 @@
 name: promptfoo
 slug: promptfoo
 repo: https://github.com/promptfoo/promptfoo
-category: llm-eval
+category: app-evals
 tags: [llm-eval, red-teaming, prompt-testing, ci-cd, rag, vulnerability-scanning, cli, local-first]
 language: TypeScript
 license: MIT
@@ -79,7 +79,7 @@ health:
 
 You tweak a prompt, eyeball a few outputs in a playground, and ship on vibes — until a model update quietly degrades your agent. promptfoo turns that into a test suite: a YAML of prompts × models × assertions that `promptfoo eval` grades on your machine, fails CI on regressions, and can attack your own app with red-team probes before users do.
 
-![promptfoo — health radar](../../assets/health/promptfoo.svg)
+![promptfoo — health radar](../../../assets/health/promptfoo.svg)
 
 ## When to use
 
@@ -91,7 +91,7 @@ You also reach for it when security review asks "is this agent jailbreakable / w
 
 Under the hood promptfoo is a Node/TypeScript CLI that behaves like a tiny test runner whose "unit under test" is an LLM call. You declare in `promptfooconfig.yaml` which prompts to try (files or templates with variables), which providers to send them to (OpenAI, Anthropic, local Ollama, …), and which test inputs and assertions must pass: deterministic checks (exact match, regex, JSON schema), embedding-similarity thresholds, or a judge LLM that scores the output against a written rubric (`llm-rubric`). The engine fans out the prompts × providers × tests matrix, calls each provider directly with your own API keys, and grades every cell; results land in a local SQLite file, and `promptfoo view` starts a bundled web server that shows the pass/fail matrix side by side. The `redteam` subcommands reuse the same engine to generate adversarial inputs — prompt-injection, jailbreak, PII probes — run them against your target, and compile the landed attacks into a vulnerability report. What promptfoo does for you: the fan-out, the grading, the viewer, the scan reports. What stays yours: curating the prompts, test cases and assertions, supplying provider keys (your eval runs incur real API spend), and wiring `promptfoo eval` into CI so it can be the gate.
 
-![promptfoo — backbone user story](../../assets/flow/promptfoo.svg)
+![promptfoo — backbone user story](../../../assets/flow/promptfoo.svg)
 
 <!-- flow-steps:begin (generated from flows/promptfoo.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -124,7 +124,7 @@ Under the hood promptfoo is a Node/TypeScript CLI that behaves like a tiny test 
 | [Langfuse](langfuse.md) | ✅ | Choose Langfuse when production tracing, datasets, trend history, and a self-hostable UI are the main platform needs; choose promptfoo for a lighter CLI-first regression/red-team gate in CI. | Tracing/observability + eval platform (self-hostable, with a UI and datasets backend); strong for production monitoring and trend history. promptfoo is lighter, CLI-first, and red-team-oriented rather than an observability backend. |
 | LangSmith | not indexed | Choose LangSmith for hosted LangChain-centric evals and observability; choose promptfoo when OSS, local-first execution, and framework-agnostic providers are hard requirements. | Hosted LangChain eval/observability SaaS; deep LangChain integration and managed dashboards, but proprietary and cloud-centric. promptfoo is OSS, local-first, framework-agnostic. |
 | Braintrust | not indexed | Choose Braintrust when a commercial experiment platform with hosted scoring, logging, and polished team workflows is worth the managed dependency; choose promptfoo for an open self-run CLI. | Commercial eval/experiment platform with hosted scoring and logging; polished team UX. promptfoo trades the managed platform for an open, self-run CLI. |
-| [Garak](garak.md) | ✅ | Choose Garak when the task is dedicated Python red-team scanning only; choose promptfoo when red-team checks must sit beside general eval assertions in one workflow. | Dedicated LLM vulnerability scanner (red-team only, Python). Overlaps promptfoo's `redteam` scope but isn't a general eval/assertion harness. |
+| [Garak](../security-audits/garak.md) | ✅ | Choose Garak when the task is dedicated Python red-team scanning only; choose promptfoo when red-team checks must sit beside general eval assertions in one workflow. | Dedicated LLM vulnerability scanner (red-team only, Python). Overlaps promptfoo's `redteam` scope but isn't a general eval/assertion harness. |
 | [Giskard](giskard.md) | ✅ | Choose Giskard when your tests should be Python code that calls your agent function directly (scenarios with LLM-judge checks, plus a generated red-team scan); choose promptfoo when prompt and CI regression workflows driven by a YAML matrix are the center. | Giskard v3 (a 2026 rewrite, GA 2026-08) targets LLM agents and needs Python ≥ 3.12; its automatic tabular/ML-model scan stayed in v2, which is no longer maintained. promptfoo is a Node CLI that sits outside your Python environment and is more prompt/CI-workflow focused. |
 
 ## Tech stack

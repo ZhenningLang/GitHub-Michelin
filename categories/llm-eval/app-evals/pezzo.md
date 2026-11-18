@@ -2,7 +2,7 @@
 name: Pezzo
 slug: pezzo
 repo: https://github.com/pezzolabs/pezzo
-category: llm-eval
+category: app-evals
 tags: [llmops, prompt-management, observability, prompt-versioning, self-hosted, typescript]
 language: TypeScript
 license: Apache-2.0
@@ -75,7 +75,7 @@ health:
 
 Your prompts live as inline strings in the codebase — nobody knows which version is live, and editing one means a redeploy. Pezzo is a self-hosted console that versions prompts, fetches them into your app at call time, and traces what every LLM request cost and how long it took.
 
-![pezzo — health radar](../../assets/health/pezzo.svg)
+![pezzo — health radar](../../../assets/health/pezzo.svg)
 
 ## When to use
 
@@ -85,7 +85,7 @@ You're a developer on a small product team that's started shipping LLM features,
 
 Pezzo sits between your app and the LLM providers as a control plane. The server (a Node/GraphQL backend) stores prompts with versions and per-environment deployments in PostgreSQL; your app fetches the deployed prompt version through the Node or Python client and reports each call back — prompt version, tokens, cost, latency, errors — into ClickHouse, which is what the observability dashboards read. Redis serves response caching (the "save up to 90% on costs" pitch) and Supertokens handles console auth. What Pezzo does for you: prompt authoring, versioning and rollout/rollback, request tracing, and caching of repeat calls. What stays yours: running the stack (Docker Compose brings up all four services plus the console at `localhost:4200`), instrumenting your app with the SDK, and supplying the provider API keys — and, given the project's near-dormant state, the security patches.
 
-![Pezzo — backbone user story](../../assets/flow/pezzo.svg)
+![Pezzo — backbone user story](../../../assets/flow/pezzo.svg)
 
 <!-- flow-steps:begin (generated from flows/pezzo.json by tools/flow_card.py — do not edit) -->
 <details>

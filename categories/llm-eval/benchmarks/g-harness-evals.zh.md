@@ -3,7 +3,7 @@ name: g-harness-evals
 slug: g-harness-evals
 aka: harness-evals
 repo: https://github.com/garrytan/g-harness-evals
-category: llm-eval
+category: benchmarks
 tags: [llm-eval, benchmark, agent-harness, coding-agents, cost-per-solve, preregistration, reproducibility, multi-user-agents]
 language: TypeScript
 license: MIT (code) + CC-BY-4.0 (reports, findings, docs, data)
@@ -76,7 +76,7 @@ health:
 
 团队要在 Claude Code、Codex、OpenClaw、Hermes Agent、Pi 里定一个，可网上的对比把模型、任务、价格混在一起，分不清差距来自外壳还是模型。这个仓库固定模型、只换 harness（包在模型外面的那层程序），公开每题通过率和“每解出一题花多少钱”，连同每次试跑的原始记录，让你自己复核排名。
 
-![g-harness-evals — 健康度雷达](../../assets/health/g-harness-evals.zh.svg)
+![g-harness-evals — 健康度雷达](../../../assets/health/g-harness-evals.zh.svg)
 
 ## 何时使用
 
@@ -86,7 +86,7 @@ health:
 
 ## 何时不用
 
-- **你要在 CI 里测自己的 agent、提示词或应用。** 用 [promptfoo](promptfoo.zh.md) 自己写用例。harness-evals 是在它自己的固定任务上给现成 harness 排名，加一个 harness 要写适配器、做 Docker 镜像、再做预注册，它不是给你产品用的测试工具。
+- **你要在 CI 里测自己的 agent、提示词或应用。** 用 [promptfoo](../app-evals/promptfoo.zh.md) 自己写用例。harness-evals 是在它自己的固定任务上给现成 harness 排名，加一个 harness 要写适配器、做 Docker 镜像、再做预注册，它不是给你产品用的测试工具。
 - **你要选的是模型，不是 harness。** 用 [SWE-bench](swe-bench.zh.md) 或模型排行榜。这里模型是固定的（Opus 5.5 或 GPT-6.1 Sol），README 也从不拿 Claude Code 和 Codex 互比，因为两者跑不了同一个模型。
 - **你要给自己的 agent 跑 Terminal-Bench 分数。** 用 Harbor（未收录），这批编码任务就是用它跑的 Terminal-Bench 2.1。harness-evals 在其上加了计量、预注册和排名，但只覆盖作者登记过的 harness 版本。
 - **你要把结论用到别的版本、更难的任务或别的模型上。** 每个数字只对固定版本成立（例如 OpenClaw 2026.10.6、Pi 1.5.0）；参与排名的任务是作者开发时就能看到的公开“dev”任务；多用户任务集里 20 题有 14 题在所有组合上得分相同，7.7 到 14.2 个百分点以内的通过率差距可能看不出来。定标准之前，拿你自己的工作做一次每题成本对比。
@@ -102,13 +102,13 @@ health:
 | Harbor（`harbor-framework/harbor`） | 未收录 | 要对自己的 agent 跑 Terminal-Bench 类任务，选 Harbor；要读现成的、预注册过且按成本排序的结论，选 harness-evals。 | Harbor 是要你自己运维的通用运行器；harness-evals 是部分建在它上面的一项研究，它的适配器、代理和统计你得自己重做。本批未收录。 |
 | Inspect AI（`UKGovernmentBEIS/inspect_ai`） | 未收录 | 要自己编写带自定义 solver 和 scorer 的 agent 评测，选 Inspect AI；问题已经是“哪个现成 harness 每题最便宜”，选 harness-evals。 | Inspect AI 灵活、框架活跃，但没有固定的 harness 版本和公开的成本排名；harness-evals 给出排名，但出了它自己的实验就很难复用。本批未收录。 |
 | gbrain-evals（`garrytan/gbrain-evals`） | 未收录 | 要在模拟公司里评测 agent 的记忆系统，选 gbrain-evals；要比较在同一家公司里驱动模型的 harness，选 harness-evals。 | 同一作者、同一份世界数据；gbrain-evals 关注记忆检索，harness-evals 复用了它的统计工具、代理和预算账本来比较 harness。本批未收录。 |
-| [promptfoo](promptfoo.zh.md) | ✅ | 要在 CI 里卡住自己的提示词和 agent 输出，选 promptfoo；写这些测试之前先决定用哪个 agent harness，选 harness-evals。 | promptfoo 轻量、跑你自己的用例；harness-evals 是一份重型、固定的研究，结论不覆盖你的工作负载。 |
+| [promptfoo](../app-evals/promptfoo.zh.md) | ✅ | 要在 CI 里卡住自己的提示词和 agent 输出，选 promptfoo；写这些测试之前先决定用哪个 agent harness，选 harness-evals。 | promptfoo 轻量、跑你自己的用例；harness-evals 是一份重型、固定的研究，结论不覆盖你的工作负载。 |
 
 ## 快速上手
 
 不需要 API key 就能复核已公布的数字：装好 [Bun](https://bun.sh/) 和 git，克隆 `https://github.com/garrytan/g-harness-evals.git`，运行 `bun install --frozen-lockfile`。`bun scripts/scoreboard/build.ts --check` 从已提交的结果重建 README 排名表；`bun run verify` 把每个已发布运行的分析（把原始试次变成表格的那些脚本）放在临时副本里，基于已提交的回执重跑一遍。任何公布数字对不上，两条命令都以非零状态退出。完整的免 key 测试（`bun test tests/`）在 4 核机器上约需 25 分钟。付费复跑是另一件工具：`bun scripts/replicate.ts` 用你的 key 加一个硬性上限 `--max-usd`，复跑一个已登记的 held-out 组合，最后打印 `WITHIN BAND`、`OUTSIDE BAND`、`NO BAND` 或 `INCOMPLETE`。机器、厂商 key，以及“这些任务像不像你的工作”的判断由你负责；任务、固定版本的 harness 镜像、计量、判分和统计由项目提供。本页没有实际执行这些命令。
 
-![g-harness-evals — 主干用户故事](../../assets/flow/g-harness-evals.zh.svg)
+![g-harness-evals — 主干用户故事](../../../assets/flow/g-harness-evals.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/g-harness-evals.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -127,7 +127,7 @@ health:
 
 ## 技术要点
 
-![g-harness-evals — 机制图](../../assets/mechanism/g-harness-evals.zh.svg)
+![g-harness-evals — 机制图](../../../assets/mechanism/g-harness-evals.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/g-harness-evals.json by tools/mechanism_card.py; do not edit) -->
 <details>

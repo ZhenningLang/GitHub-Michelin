@@ -2,7 +2,7 @@
 name: DeepEval
 slug: deepeval
 repo: https://github.com/confident-ai/deepeval
-category: llm-eval
+category: app-evals
 tags: [llm-eval, testing, deepeval, library]
 language: Python
 license: Apache-2.0
@@ -79,7 +79,7 @@ health:
 
 Last week your support bot said "You have 30 days to get a full refund"; after a prompt tweak it says "Refunds are not possible", and nobody notices until a customer does. DeepEval turns that check into a pytest-style test: you write the question, the answer you expect, and a grading rule, and another LLM scores each answer so the build fails when quality drops.
 
-![DeepEval — health radar](../../assets/health/deepeval.svg)
+![DeepEval — health radar](../../../assets/health/deepeval.svg)
 
 ## When to use
 
@@ -91,7 +91,7 @@ You pick it over [promptfoo](promptfoo.md) when your team lives in Python and wa
 
 DeepEval is a Python library plus a CLI that wraps pytest. **It ships the metrics and the judging prompts** — most metrics are "LLM-as-a-judge": DeepEval sends your app's output, the expected output, and the criteria to a separate model (OpenAI by default; any model you wrap works) and gets back a score between 0 and 1 with a written reason. You supply the test data and decide the threshold below which a test fails. For agents, you put the `@observe` decorator on your own functions; DeepEval records each step (LLM calls, tool calls, retrieval) as a trace and can score the whole trajectory or a single step. It can also generate synthetic test datasets from your documents and run standard benchmarks such as MMLU. Results print locally; `deepeval login` optionally uploads them to Confident AI, the company's hosted dashboard.
 
-![deepeval — backbone user story](../../assets/flow/deepeval.svg)
+![deepeval — backbone user story](../../../assets/flow/deepeval.svg)
 
 <!-- flow-steps:begin (generated from flows/deepeval.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -112,7 +112,7 @@ DeepEval is a Python library plus a CLI that wraps pytest. **It ships the metric
 
 - **Your team is not on Python.** The engine and docs are Python-first; a TypeScript SDK exists but its releases are still `0.9.x` and partly pre-release. Use [promptfoo](promptfoo.md), whose YAML suites and CLI do not care what language your app is in.
 - **You need cheap, deterministic checks.** Most DeepEval metrics call a judge LLM on every run, so each CI run costs tokens and scores can wobble between runs. For "the reply must be valid JSON / must contain the order ID", use [promptfoo](promptfoo.md)'s deterministic assertions or plain pytest asserts and keep LLM judging for what really needs it.
-- **You are red-teaming a model for jailbreaks and prompt injection.** Red teaming moved out of DeepEval into the separate DeepTeam package in v3.0; for a dedicated vulnerability scanner use [garak](garak.md).
+- **You are red-teaming a model for jailbreaks and prompt injection.** Red teaming moved out of DeepEval into the separate DeepTeam package in v3.0; for a dedicated vulnerability scanner use [garak](../security-audits/garak.md).
 - **You want a self-hosted dashboard for production traces and online evals.** DeepEval's own UI is Confident AI, a hosted commercial platform. If traces and eval history must stay on your servers, use [Langfuse](langfuse.md) and keep DeepEval as the scoring library in CI.
 - **Nothing may leave the machine by default.** Anonymous PostHog telemetry is on until you set `DEEPEVAL_TELEMETRY_OPT_OUT=1`, and the default judge is OpenAI's API. In an air-gapped setting, opt out and wrap a local model as the judge — or choose [Ragas](ragas.md) if you only need RAG metrics and prefer a library with no vendor platform attached.
 
@@ -124,7 +124,7 @@ DeepEval is a Python library plus a CLI that wraps pytest. **It ships the metric
 | [Ragas](ragas.md) | ✅ | Pick Ragas when RAG retrieval and answer metrics are all you need; pick DeepEval when you also test agents, multi-turn chats, and want a pass/fail test runner. | Ragas is narrower and RAG-focused; DeepEval is broader but tied to a vendor's hosted platform for reporting. |
 | [Giskard OSS](giskard.md) | ✅ | Pick Giskard when you want automated scans that hunt for failure categories in an agent; pick DeepEval when you already know the cases and want them as regression tests. | Giskard leans toward discovery and scanning; DeepEval toward test cases you write and gate on. |
 | [Langfuse](langfuse.md) | ✅ | Pick Langfuse for self-hosted tracing, prompt management, and eval history in production; pick DeepEval for metric scoring in tests and CI. | Langfuse is a platform you operate; DeepEval is a library — they are often used together. |
-| [garak](garak.md) | ✅ | Pick garak to probe a model for jailbreaks, leakage, and injection; pick DeepEval to check that your app answers correctly. | Different questions: garak asks "can it be made to fail?", DeepEval asks "does it do its job?". |
+| [garak](../security-audits/garak.md) | ✅ | Pick garak to probe a model for jailbreaks, leakage, and injection; pick DeepEval to check that your app answers correctly. | Different questions: garak asks "can it be made to fail?", DeepEval asks "does it do its job?". |
 
 ## Tech stack
 

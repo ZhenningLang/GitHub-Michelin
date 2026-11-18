@@ -3,7 +3,7 @@ name: AI-Infra-Guard
 slug: ai-infra-guard
 repo: https://github.com/Tencent/AI-Infra-Guard
 homepage: https://tencent.github.io/AI-Infra-Guard/
-category: llm-eval
+category: security-audits
 tags: [ai-security, red-teaming, vulnerability-scanning, mcp-security, agent-security, jailbreak-eval, cve-scan]
 language: Python
 license: Apache-2.0
@@ -79,7 +79,7 @@ health:
 
 你的 AI 基础设施是东拼西凑起来的：这边一个 vLLM，那边一个 Ollama，外加从陌生仓库拉下来的 MCP server 和 Agent Skill，没人说得清里面躺着哪些已知 CVE 或恶意指令。AI-Infra-Guard（A.I.G）是腾讯朱雀实验室开源的自托管 AI 红队平台：把运行中的 AI 服务地址、MCP 仓库或 Skill 目录交给它，它会指纹识别组件、比对 2000 多条规则的 CVE 库，并跑 LLM 驱动的审计，结果汇总在一个 Web 界面里。
 
-![AI-Infra-Guard — 健康度雷达](../../assets/health/ai-infra-guard.zh.svg)
+![AI-Infra-Guard — 健康度雷达](../../../assets/health/ai-infra-guard.zh.svg)
 
 ## 何时使用
 
@@ -99,7 +99,7 @@ A.I.G 的触发场景，是审计面覆盖**整个 AI 资产清单**而不是单
 
 部署形态是两个容器，不是一队服务：一个 Go 写的 webserver 装着 Web 界面、API 和一个 SQLite 任务库；一个 agent 容器负责执行扫描，里面打包了 nmap 和无头 Chromium，所以 Compose 文件给它开了 `SYS_ADMIN` 和 `seccomp:unconfined`。CVE 扫描不需要任何模型：指纹规则和漏洞规则都是本地 YAML（在 `data/fingerprints/` 和 `data/vuln/` 下），离线也能跑。平台的另一半是 LLM 驱动的：MCP server、Skill、Agent 三类扫描走「信息收集→代码审计→漏洞复核」的多阶段流水线，用你自己配置的 LLM 端点——skill-scan 命令行默认指向 OpenRouter，所以扫私有代码前，先把 `LLM_API_KEY` 和 base URL 换成你的数据策略允许的端点。越狱评测同理，打的是你在设置里登记的那个模型。有一条边界必须记住：**平台没有鉴权**，上游明确说它只供内部使用，不能暴露到公网。如果你只需要 Skill 审计，可以不部署平台：`pip install aig-skill-scan` 就是同一条流水线的独立命令行，输出 SARIF，可以直接接 CI。
 
-![AI-Infra-Guard — 主干用户故事](../../assets/flow/ai-infra-guard.zh.svg)
+![AI-Infra-Guard — 主干用户故事](../../../assets/flow/ai-infra-guard.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/ai-infra-guard.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -119,7 +119,7 @@ A.I.G 的触发场景，是审计面覆盖**整个 AI 资产清单**而不是单
 
 ## 何时不用
 
-- **你要给自己 LLM 应用的 prompt 和输出设 CI 门禁。** A.I.G 没有断言／测试用例模型，管不了应用回归——那是 [promptfoo](promptfoo.zh.md)（YAML 评测加 `redteam` 进 CI）或 [DeepEval](deepeval.zh.md) 的地盘；A.I.G 审的是基础设施和资产，不是你的应用在一组测试上的表现。
+- **你要给自己 LLM 应用的 prompt 和输出设 CI 门禁。** A.I.G 没有断言／测试用例模型，管不了应用回归——那是 [promptfoo](../app-evals/promptfoo.zh.md)（YAML 评测加 `redteam` 进 CI）或 [DeepEval](../app-evals/deepeval.zh.md) 的地盘；A.I.G 审的是基础设施和资产，不是你的应用在一组测试上的表现。
 - **你只想用 Python 脚本红队一个模型端点。** 用 [garak](garak.zh.md) 或 PyRIT：两者都能直接对端点跑探针模块，不用部署双容器平台。A.I.G 的越狱评测和它们有重叠，但单为这件事把平台立起来太重了。
 - **你要在生产流量里实时拦截攻击。** A.I.G 是离线扫描器，请求路径上什么都没有。要在运行时做输入输出护栏，看 NeMo Guardrails 那类项目。
 - **你想把它挂到内网给团队用。** 它没有内建鉴权、RBAC 和多人审计日志，上游明确警告不要公开部署。要么自己套一层 SSO／VPN，要么看托管 Pro 版（aigsec.ai）——但那是独立的商业产品，不是这个仓库。
@@ -132,8 +132,8 @@ A.I.G 的触发场景，是审计面覆盖**整个 AI 资产清单**而不是单
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [garak](garak.zh.md) | 已收录 | 目标是单个模型端点、想在 Python／CI 里跑可编程探针时选 garak；要在一个界面里审整套自托管栈（服务 CVE、MCP server、Skill）时选 A.I.G。 | garak 是一条命令行，零运维，但眼里只有模型；A.I.G 看得见模型周围的基础设施，代价是 Docker 部署和半数扫描要烧 LLM key。 |
-| [promptfoo](promptfoo.zh.md) | 已收录 | 给自己应用的发布设 YAML 断言和红队门禁时选 promptfoo；定期给应用周围的基础设施和第三方 agent 资产做安全自查时选 A.I.G。 | promptfoo 是本地优先的命令行，有断言模型，但没有资产清单和 CVE 比对；A.I.G 有持久报告库和界面，却没有应用回归测试模型。 |
-| [Giskard](giskard.zh.md) | 已收录 | 在 Python 开发循环里给 LLM agent 的行为写场景测试、跑自动生成的红队扫描时选 Giskard；问题是「我们基础设施上躺着哪些已知 CVE 和恶意 Skill」而不是「模型行为是否异常」时选 A.I.G。 | Giskard 测的是应用／agent 行为，贴合 Python 工作流（v3 是 2026 年的重写版，面向 agent，要求 Python ≥ 3.12）；A.I.G 做的是部署中服务的指纹识别和供应链资产审计，这块 Giskard 不覆盖。 |
+| [promptfoo](../app-evals/promptfoo.zh.md) | 已收录 | 给自己应用的发布设 YAML 断言和红队门禁时选 promptfoo；定期给应用周围的基础设施和第三方 agent 资产做安全自查时选 A.I.G。 | promptfoo 是本地优先的命令行，有断言模型，但没有资产清单和 CVE 比对；A.I.G 有持久报告库和界面，却没有应用回归测试模型。 |
+| [Giskard](../app-evals/giskard.zh.md) | 已收录 | 在 Python 开发循环里给 LLM agent 的行为写场景测试、跑自动生成的红队扫描时选 Giskard；问题是「我们基础设施上躺着哪些已知 CVE 和恶意 Skill」而不是「模型行为是否异常」时选 A.I.G。 | Giskard 测的是应用／agent 行为，贴合 Python 工作流（v3 是 2026 年的重写版，面向 agent，要求 Python ≥ 3.12）；A.I.G 做的是部署中服务的指纹识别和供应链资产审计，这块 Giskard 不覆盖。 |
 | PyRIT | 未收录 | 想用代码编排多轮越狱攻击时选 PyRIT（微软的 Python 风险识别工具箱）；A.I.G 把同类攻击（PAIR、GOAT、ActorAttack）装进了界面，但它是平台，不是编程工具箱。 | 本批次未收录（控制范围只写一篇，记为 backlog）。PyRIT 提供库级的灵活度和编排原语，但没有基础设施 CVE 扫描、没有 Web 界面、没有报告管理。 |
 | mcp-scan（Invariant Labs） | 未收录 | 只想快速查 MCP 配置和工具劫持、什么都不想部署时选它；MCP 扫描只是一长串 AI 资产审计清单里的一项时选 A.I.G。 | 本批次未收录（同上记为 backlog）。mcp-scan 是单一用途命令行，几分钟跑完、零运维；A.I.G 的 MCP 扫描是 LLM 驱动、平台集成的，所以要付出一次部署加一个 API key。 |
 

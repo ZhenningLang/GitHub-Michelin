@@ -2,7 +2,7 @@
 name: Pezzo
 slug: pezzo
 repo: https://github.com/pezzolabs/pezzo
-category: llm-eval
+category: app-evals
 tags: [llmops, prompt-management, observability, prompt-versioning, self-hosted, typescript]
 language: TypeScript
 license: Apache-2.0
@@ -75,7 +75,7 @@ health:
 
 你的 prompt 以内联字符串躺在代码库里——没人知道线上跑的是哪个版本，改一个字就要重新部署。Pezzo 是一个自托管控制台：prompt 在那里版本化、被应用按环境拉取，每次 LLM 调用花了多少钱、耗时多久也都有迹可循。
 
-![pezzo — 健康度雷达](../../assets/health/pezzo.zh.svg)
+![pezzo — 健康度雷达](../../../assets/health/pezzo.zh.svg)
 
 ## 何时使用
 
@@ -85,7 +85,7 @@ health:
 
 Pezzo 是夹在你的应用和 LLM 提供方之间的控制面。服务端（Node/GraphQL 后端）把 prompt 连同版本和按环境的部署记录存进 PostgreSQL；你的应用经 Node 或 Python 客户端拉取部署好的版本，并把每次调用上报回来——prompt 版本、token、成本、延迟、错误——写进 ClickHouse，可观测性看板读的就是它。Redis 负责响应缓存（“省下 90% 成本”的说法来自这里），Supertokens 负责控制台登录。它替你做的：prompt 编写、版本化与按环境发布/回滚、请求追踪、重复调用缓存。要你自己在做的：跑起这套栈（Docker Compose 会把四个服务连同控制台一起拉起，控制台在 `localhost:4200`）、用 SDK 给应用埋点、自备各家 provider 的 API key——外加鉴于项目近乎休眠，安全补丁也得你来接。
 
-![Pezzo — 主干用户故事](../../assets/flow/pezzo.zh.svg)
+![Pezzo — 主干用户故事](../../../assets/flow/pezzo.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/pezzo.json by tools/flow_card.py — do not edit) -->
 <details>

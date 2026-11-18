@@ -93,7 +93,7 @@ You maintain an agent that repeatedly fails the same document or coding tasks. Y
 
 - For a Python pipeline compiled from typed inputs and outputs, choose [DSPy](../dspy.md). PenguinHarness brings an entire agent runtime and project layout.
 - For one deployable skill document with a separate validation gate, examine [SkillOpt](../skillopt.md). The default Penguin toolkit accepts a strictly higher score on its frozen benchmark; that is not evidence of unseen-task improvement.
-- For a CI regression matrix without an autonomous editor, use [promptfoo](../../../llm-eval/promptfoo.md). Optimization adds model calls and a mutable target state.
+- For a CI regression matrix without an autonomous editor, use [promptfoo](../../../llm-eval/app-evals/promptfoo.md). Optimization adds model calls and a mutable target state.
 - For model-weight training, use a training framework such as [Unsloth](../../../llm-training/unsloth.md). Here self-improvement changes the harness, not the model weights.
 
 ## Comparison
@@ -102,7 +102,7 @@ You maintain an agent that repeatedly fails the same document or coding tasks. Y
 |---|---|---|---|
 | [DSPy](../dspy.md) | ✅ | Choose DSPy for Python program optimization; choose PenguinHarness for an interactive agent workspace with versioned evaluations. | A smaller embedded programming model versus an integrated CLI, server and UI. |
 | [SkillOpt](../skillopt.md) | ✅ | Choose SkillOpt when a portable skill file and held-out validation decide acceptance. | Narrower optimization artifact; Penguin can revise a broader harness surface. |
-| [promptfoo](../../../llm-eval/promptfoo.md) | ✅ | Choose promptfoo when CI must detect regressions rather than propose changes. | Explicit assertions and provider matrices without an autonomous candidate editor. |
+| [promptfoo](../../../llm-eval/app-evals/promptfoo.md) | ✅ | Choose promptfoo when CI must detect regressions rather than propose changes. | Explicit assertions and provider matrices without an autonomous candidate editor. |
 
 ## Quick start
 

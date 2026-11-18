@@ -80,10 +80,10 @@ The reusable artifacts are a bilingual literature map, structured audit records 
 ## When NOT to use
 
 - **You need generated and evaluated harness candidates.** Inspect [PenguinHarness](../agent-frameworks/workflow-builders/harness-evolution/penguin-harness.md) for a versioned experiment workspace, or [Harness²](../agent-frameworks/workflow-builders/harness-evolution/harness2.md) for task-time configuration search. This repository supplies neither an editor nor an execution sandbox, promotion gate or rollback engine.
-- **You want CI to decide whether a change may ship.** Use [promptfoo](../llm-eval/promptfoo.md) around independently frozen tests. Here the scripts count supplied literature judgments; they do not grade your agent's outputs, enforce safety failures or retest a filtered final patch bundle.
+- **You want CI to decide whether a change may ship.** Use [promptfoo](../llm-eval/app-evals/promptfoo.md) around independently frozen tests. Here the scripts count supplied literature judgments; they do not grade your agent's outputs, enforce safety failures or retest a filtered final patch bundle.
 - **You want an operating multi-agent workbench.** Choose [JiuwenSwarm](../agent-frameworks/agent-runtimes/agent-services/jiuwenswarm.md). Reading its learning literature does not provide team execution, tool approvals or deployment controls.
 - **You need rules mined from private session history.** [Headroom](../agent-tooling/work-state/headroom.md) has a separate model-backed learning path, requiring explicit data/spending authorization and external behavioral validation. Harness-RSI reads public literature; it does not inspect your history or write agent configuration.
-- **You need independently verified effectiveness rankings.** Use primary reports and an external [promptfoo](../llm-eval/promptfoo.md) experiment for your workload. The corpus explicitly disclaims independent human annotation; its four evidence columns are not a method-quality leaderboard.
+- **You need independently verified effectiveness rankings.** Use primary reports and an external [promptfoo](../llm-eval/app-evals/promptfoo.md) experiment for your workload. The corpus explicitly disclaims independent human annotation; its four evidence columns are not a method-quality leaderboard.
 
 ## Comparison
 

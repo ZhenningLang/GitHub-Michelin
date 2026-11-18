@@ -93,7 +93,7 @@ health:
 
 - 要优化具有类型化输入输出的 Python 流水线，选 [DSPy](../dspy.zh.md)。PenguinHarness 会带入整套代理运行时和项目目录。
 - 要交付单份技能文件，并用独立验证集决定接纳，先看 [SkillOpt](../skillopt.zh.md)。Penguin 默认工具包按固定评测集上的严格涨分接纳，不证明新任务也会变好。
-- 只要持续集成中的回归矩阵，不需要自动改指令，选 [promptfoo](../../../llm-eval/promptfoo.zh.md)。优化会增加模型调用和可变状态。
+- 只要持续集成中的回归矩阵，不需要自动改指令，选 [promptfoo](../../../llm-eval/app-evals/promptfoo.zh.md)。优化会增加模型调用和可变状态。
 - 要训练模型权重，选 [Unsloth](../../../llm-training/unsloth.zh.md) 等训练框架。这里改的是运行框架，不是权重。
 
 ## 横向对比
@@ -102,7 +102,7 @@ health:
 |---|---|---|---|
 | [DSPy](../dspy.zh.md) | ✅ | 优化 Python 程序选 DSPy；要交互式代理工作区和版本评测选 PenguinHarness。 | 嵌入式编程模型更轻；本项目整合命令行、服务端和网页。 |
 | [SkillOpt](../skillopt.zh.md) | ✅ | 交付可移植技能文件，且独立验证集决定接纳时，选 SkillOpt。 | 优化产物更窄；Penguin 可修改更多运行框架组件。 |
-| [promptfoo](../../../llm-eval/promptfoo.zh.md) | ✅ | 持续集成只需发现退化，不需提出改动时，选 promptfoo。 | 提供显式断言和模型矩阵，不带自动候选编辑器。 |
+| [promptfoo](../../../llm-eval/app-evals/promptfoo.zh.md) | ✅ | 持续集成只需发现退化，不需提出改动时，选 promptfoo。 | 提供显式断言和模型矩阵，不带自动候选编辑器。 |
 
 ## 快速上手
 

@@ -32,7 +32,7 @@
 | [Improve](improve.zh.md) | ✅ | B（4/5） | 只读顾问：审计完九个类别后，为便宜执行器写出可交接的计划——与规格优先或角色优先的方法不同，它从不亲自实现。 |
 | [Agent OS](agent-os.zh.md) | ✅ | B（4/5） | 薄薄的 standards + spec 层，安装项目约定并按需选择性注入；发布线自 v3.0.0（2026-01）后一直很安静。 |
 | [Elephant-Goldfish Model (EGM)](elephant-goldfish-model.zh.md) | 已收录 | C（5/6） | 适合只做设计的作者与审查上下文分离，不执行代码也不证明正确；需要全新子代理能力与人工裁决。 |
-| [SWE-bench](../../llm-eval/swe-bench.zh.md) | ✅ | B（6/6） | benchmark 基础设施，收录在 `llm-eval` 而不是本类目——它给补丁打分，不是开发方法。 |
+| [SWE-bench](../../llm-eval/benchmarks/swe-bench.zh.md) | ✅ | B（6/6） | benchmark 基础设施，收录在 `llm-eval` 而不是本类目——它给补丁打分，不是开发方法。 |
 | LTBL 实现组 / Beam | 未收录 | — | `study-and-experiments/` 里点到的 LTBL 实现仓库。`Beam` 刻意不收录：名字搜索命中的是 apache/beam，而各页指的是另一个项目——要先把仓库人工认准。 |
 
 ## 什么该放这里

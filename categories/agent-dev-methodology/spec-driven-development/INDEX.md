@@ -32,7 +32,7 @@
 | [Improve](improve.md) | ✅ | B (4/5) | Read-only advisor: audits nine categories, then writes handoff plans a cheap executor runs — unlike spec-first or role-first methods, it never implements. |
 | [Agent OS](agent-os.md) | ✅ | B (4/5) | Thin standards-and-spec layer that installs project conventions and injects them selectively; the release line has been quiet since v3.0.0 (2026-01). |
 | [Elephant-Goldfish Model (EGM)](elephant-goldfish-model.md) | Indexed | C (5/6) | Choose for design-only author/reviewer context separation, not code execution or correctness proof; fresh-context tools and human decisions are required. |
-| [SWE-bench](../../llm-eval/swe-bench.md) | ✅ | B (6/6) | Benchmark infrastructure, indexed under `llm-eval` rather than here — it grades patches, it is not a development method. |
+| [SWE-bench](../../llm-eval/benchmarks/swe-bench.md) | ✅ | B (6/6) | Benchmark infrastructure, indexed under `llm-eval` rather than here — it grades patches, it is not a development method. |
 | LTBL implementation groups / Beam | 未收录 | — | The LTBL implementation repos named in `study-and-experiments/`. `Beam` is deliberately unauthored: the name search matched apache/beam, while the pages mean a different project — pin the repository by hand first. |
 
 ## What belongs here

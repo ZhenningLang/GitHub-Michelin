@@ -125,7 +125,7 @@ agent-guard 在它调用的扫描器之上加的就是这层“分派加闸门�
 |---|---|---|---|
 | [SkillSpector](skillspector.zh.md) | ✅ | 只装 skill，或者扫描跑在 CI 里，就直接选 SkillSpector；同一道闸门还要管 MCP 包、命令行包、二进制和安装脚本，并且要把结果链接进多个 agent 时，才选 agent-guard。 | SkillSpector 是 NVIDIA 名下的引擎，自带 baseline 和 SARIF，中间没有包装层；agent-guard 多了分派、按 commit 下载和跨 agent 安装，代价是一层单人维护、紧跟 SkillSpector 内部实现、可能落后于其发版的代码。 |
 | [Snyk Agent Scan](agent-scan.zh.md) | ✅ | 要一条命令、零准备地清点并评估各 agent 里**已经装好**的东西，选 Agent Scan；要给**新的**安装加一道判定逻辑可读、LLM 评审走自己 CLI 登录的闸门，选 agent-guard。 | Agent Scan 什么都能发现，由厂商维护，但结论来自 Snyk 闭源的托管接口，并且会启动它检查的 MCP server；agent-guard 把决定权留在本地、把目标关进沙箱，但需要 uv、Docker，以及你对一层没人评审过的包装的信任。 |
-| [AI-Infra-Guard](../llm-eval/ai-infra-guard.zh.md) | ✅ | 团队想要一个部署起来、带 Web 界面、顺带覆盖模型服务已知 CVE 和越狱测试的平台，选 AI-Infra-Guard；想要一个嵌在 agent 安装步骤里、每个开发者各自跑的闸门，选 agent-guard。 | AI-Infra-Guard 是自托管服务，有自己的规则库和大量用户，但需要部署和运维；agent-guard 只是一个脚本目录，不用托管任何东西，也没有属于自己的检测能力可以兜底。 |
+| [AI-Infra-Guard](../llm-eval/security-audits/ai-infra-guard.zh.md) | ✅ | 团队想要一个部署起来、带 Web 界面、顺带覆盖模型服务已知 CVE 和越狱测试的平台，选 AI-Infra-Guard；想要一个嵌在 agent 安装步骤里、每个开发者各自跑的闸门，选 agent-guard。 | AI-Infra-Guard 是自托管服务，有自己的规则库和大量用户，但需要部署和运维；agent-guard 只是一个脚本目录，不用托管任何东西，也没有属于自己的检测能力可以兜底。 |
 | GuardDog（`DataDog/guarddog`） | 未收录 | 目标只有 npm、PyPI、Go 或 cargo 包时，直接跑 GuardDog；还想要沙箱里的安装行为分析，并且和 skill、MCP 扫描共用同一套退出码约定时，agent-guard 这层才值得加。 | 单用 GuardDog 是一个有人维护的工具（Apache-2.0，截至 2026-10 约 1.2k star），finding 原样给出；agent-guard 把大部分 `capability-*` 命中降级为提示信息，并加了动态分析阶段，这有用，但那是包装层作者的判断，不是 Datadog 的。本批次标签页收录未添加。 |
 | [Vercel Skills](../agent-tooling/harness-extensions/vercel-skills.zh.md) | ✅ | 来源可信、只需要把 skill 放进多个 agent 时，单用 `skills` CLI 就够；来源是陌生人的仓库时，在它前面加上 agent-guard。 | `skills` CLI 是广泛使用的分发工具，不做任何安全扫描；agent-guard 在给出结论之后调用的正是锁定版本的同一个 CLI，所以你为这道闸门付出的是扫描时间和工具链的重量。 |
 

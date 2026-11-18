@@ -120,7 +120,7 @@ Every box on the canvas is a component: a Python class (many of them wrap LangCh
 - **You prefer pure code.** If your team finds node-based GUIs limiting, use LangChain or [CrewAI](../agent-runtimes/agent-sdks/crewai.md) instead of Langflow, because the visual layer adds friction rather than value for code-first teams.
 - **One-off scripts or single API calls.** Use a direct Python script or HTTP client instead of Langflow, because standing up a Langflow server for a trivial task is overkill.
 - **You need strict git-based review of workflow changes.** Use LangChain or [Prefect](../../workflow-orchestration/prefect.md) instead of Langflow, because flows saved as JSON are harder to diff, review and merge than code.
-- **You need a full MLOps / observability stack.** Langflow integrates with tracing tools (LangSmith, Langfuse) but is not one. Pair it with [Langfuse](../../llm-eval/langfuse.md) or MLflow (not indexed) for monitoring, tracing and evaluation, because Langflow doesn't replace them.
+- **You need a full MLOps / observability stack.** Langflow integrates with tracing tools (LangSmith, Langfuse) but is not one. Pair it with [Langfuse](../../llm-eval/app-evals/langfuse.md) or MLflow (not indexed) for monitoring, tracing and evaluation, because Langflow doesn't replace them.
 - **Strict multi-tenant isolation is a hard requirement.** Several 2026 advisories were cross-user access bugs (IDOR in `/api/v1/responses`, cross-user flow access via the deprecated build endpoints, cross-project file disclosure via MCP resources). Use Dify or a commercial platform with audited tenancy instead, or run one Langflow instance per trust boundary, because per-user isolation inside one instance has been the weak spot.
 
 ## Comparison

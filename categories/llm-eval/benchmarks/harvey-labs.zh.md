@@ -3,7 +3,7 @@ name: Harvey LAB
 slug: harvey-labs
 repo: https://github.com/harveyai/harvey-labs
 homepage: https://www.harvey.ai/blog/introducing-harveys-legal-agent-benchmark
-category: llm-eval
+category: benchmarks
 tags: [llm-eval, benchmark, legal, agents, llm-as-judge, rubric-grading, podman]
 language: Python
 license: MIT
@@ -78,19 +78,19 @@ health:
 
 你想知道一个 AI agent 能不能真干初级律师的活——读完 60 份文件的数据室、交回一份风险备忘录——可现有法律基准大多只问一句话、答“是 / 否”。Harvey LAB 把一整套虚构案卷放进断网的隔离容器交给 agent，再让两个大模型评委拿律师写好的逐条合格清单去对它写出的文件打勾；漏一条，整题判零分。
 
-![Harvey LAB — 健康度雷达](../../assets/health/harvey-labs.zh.svg)
+![Harvey LAB — 健康度雷达](../../../assets/health/harvey-labs.zh.svg)
 
 ## 何时使用
 
 你在做或在采购法律 AI：比如企业法务科技团队要在 Claude、GPT、Gemini 之间为尽调助手选模型，或者研究者要证明某次 agent 改动真的让长篇法律任务变好了。你手里现有的证据只是印象——有人在聊天窗口里让模型“审一下这些合同”，出来的备忘录看着像样，但没人核对它有没有抓到第 37 份文件里那条控制权变更须经同意的条款。Harvey LAB 提供约 1,660 道固定任务，覆盖 24 个执业领域加合同类，每题带自己的文件夹、指定的交付物（`red-flag-memorandum.docx`、一份修订稿、一份动议）和专家写的逐条 PASS/FAIL 评分标准——教程那一道题就有 60 份文件、68 条标准。
 
-当你要问的是“agent 能不能把一整套多文件任务做完并交出能用的文件”，而不是“模型孤立地懂不懂法律推理”时，选它而不是 LegalBench；当你想要现成的法律任务库和可比的总分、而不想每个用例和断言都自己写时，选它而不是 [promptfoo](promptfoo.zh.md) 这类通用框架。关键取舍是：你接受 Harvey 定好的任务、执行框架、评委组合和全对才得分的计分方式，换来短题型法律数据集没有的真实度。
+当你要问的是“agent 能不能把一整套多文件任务做完并交出能用的文件”，而不是“模型孤立地懂不懂法律推理”时，选它而不是 LegalBench；当你想要现成的法律任务库和可比的总分、而不想每个用例和断言都自己写时，选它而不是 [promptfoo](../app-evals/promptfoo.zh.md) 这类通用框架。关键取舍是：你接受 Harvey 定好的任务、执行框架、评委组合和全对才得分的计分方式，换来短题型法律数据集没有的真实度。
 
 ## 怎么用起来
 
 仓库只有两样东西，全放在磁盘上，没有数据库也没有 Web 服务：一棵 `tasks/` 目录树（每道题是一个 `task.json`，写着指令、交付物文件名和评分标准，外加一个装虚构案卷的 `documents/` 文件夹），以及负责运行和评分的 Python 包 `lab_core`。你选一道题和一个模型；LAB 自带的执行框架随后跑一个工具调用循环——模型提出要做的动作，框架替它执行、把结果喂回去——可用的工具有七个（`bash`、`read`、`write`、`edit`、`glob`、`grep`、`finish`），全部在一个断网启动的 Podman 容器里执行，案卷只读挂载，只有 `output/` 可写。评分是你另外触发的一步：每条标准连同它点名的那几个交付文件，分别发给一个 Claude 评委和一个 GPT 评委，各自给出通过或不通过并附理由；只有全部标准都通过这道题才得 1 分（两个评委的结果取平均，所以单题得分只可能是 0、0.5 或 1）。可以把它想成两位考官拿核对清单批改的律考论述题，而不是一张选择题答题卡。API 密钥、选哪个模型、轮数上限和结论解读归你；案卷、沙箱、对话记录、评分、HTML 报告和对比看板归 LAB。
 
-![harvey-labs — 主干用户故事](../../assets/flow/harvey-labs.zh.svg)
+![harvey-labs — 主干用户故事](../../../assets/flow/harvey-labs.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/harvey-labs.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -112,10 +112,10 @@ health:
 
 - **你只想便宜、快速地看一眼模型的法律推理能力，而不是跑一整轮 agent。** 改用 LegalBench（未收录）：它的 162 道短题（传闻证据判断、规则问答、定义抽取）按标准答案比对计分；而 LAB 的一道题就是一次多轮 agent 运行，外加对整套标准的几十次评委调用。
 - **你评测的是写代码的 agent 或代码补丁。** 改用 [SWE-bench](swe-bench.zh.md)：它靠仓库里可执行的测试判分，LAB 的任务是法律文书、判分靠大模型的判断。
-- **你要给自家法律产品的提示词、检索或行文风格做回归测试。** 改用 [promptfoo](promptfoo.zh.md) 或 Inspect AI（未收录）这类框架，用你自己（脱敏后）的案子写用例；LAB 的题库是固定的、虚构的、由 Harvey 编写，LAB 分数高并不说明它懂你所的先例或你的 RAG 流水线。你确实可以按 `task.json` 格式自己加题，但那就意味着你要维护一个 2 GB 仓库的分叉。
+- **你要给自家法律产品的提示词、检索或行文风格做回归测试。** 改用 [promptfoo](../app-evals/promptfoo.zh.md) 或 Inspect AI（未收录）这类框架，用你自己（脱敏后）的案子写用例；LAB 的题库是固定的、虚构的、由 Harvey 编写，LAB 分数高并不说明它懂你所的先例或你的 RAG 流水线。你确实可以按 `task.json` 格式自己加题，但那就意味着你要维护一个 2 GB 仓库的分叉。
 - **你的 agent 是自带工具和检索的产品，而不是一个裸模型 API。** LAB 的执行框架通过自己的适配器（Anthropic、OpenAI、Google、Mistral、Fireworks）驱动模型、用的是它自己那七个工具。要测别的 agent，要么写一个 `ModelAdapter`，要么把你的 agent 产出的交付物放进 `results/<run-id>/output/`、只跑评分器——评分器只要求这个运行目录存在（[推断] 读 `run_eval.py` 得出，没实际跑）。如果你要的是专为接入任意 agent 设计的评测框架，Inspect AI 更通用。
 - **你需要确定性的、不靠评委的分数，或者一个官方排行榜。** 这里每个分数都是大模型的判定：默认是 `claude-sonnet-4-6` 加 `gpt-5.5`，所以 Anthropic 和 OpenAI 两把密钥都得有，每重评一次都要花 API 费用。答案波动和评委波动怎么分开，上游还挂着一个未解决的 issue（#158，2026-09-04）；仓库也不附带托管排行榜。要精确匹配式评分，用 LegalBench 这类题型。
-- **你跑不了容器，或者拉不动几个 GB 的仓库。** 每次运行都在 Podman 沙箱里执行（macOS 要起 Podman machine，Windows 要 Windows 11 加 WSL2）；GitHub 报告的仓库体积约 2.1 GB，全是普通 git 对象，没用 Git LFS。在没有 Podman 的受限 CI 里，[promptfoo](promptfoo.zh.md) 这类轻量框架才现实。
+- **你跑不了容器，或者拉不动几个 GB 的仓库。** 每次运行都在 Podman 沙箱里执行（macOS 要起 Podman machine，Windows 要 Windows 11 加 WSL2）；GitHub 报告的仓库体积约 2.1 GB，全是普通 git 对象，没用 Git LFS。在没有 Podman 的受限 CI 里，[promptfoo](../app-evals/promptfoo.zh.md) 这类轻量框架才现实。
 - **你要拿不同提交、或别人跑出来的数字做对比。** 评分标准还在修正中（#149、#152、#165 都报告了某些标准凭给出的文件根本无法满足），而像 2026-09-03 加入的 `finish` 工具这类框架改动，按项目自己的 CHANGELOG 说法会让前后结果“不能直接比较”。引用任何对比之前，先固定提交、读 `CHANGELOG.md`。
 
 ## 横向对比
@@ -126,7 +126,7 @@ health:
 | LegalBench | 未收录 | 要快速、可复现地测短小的法律推理能力，选 LegalBench；要测 agent 从头到尾处理一整套案卷，选 Harvey LAB。 | LegalBench 有标准答案、单题便宜，但只有单轮；LAB 长链路、贴近实务，但慢且依赖评委。本批 tab 收录未添加。 |
 | BigLaw Bench（`harveyai/biglaw-bench`） | 未收录 | 把 BigLaw Bench 当作 Harvey 早先的基准说明加样例题；要可运行的执行框架、沙箱和完整题库，选 Harvey LAB。 | BigLaw Bench 描述了核心、工作流、检索三类任务，但它的 README 是在介绍任务而不是提供可比的执行框架[推断]；LAB 是可运行的后继者。本批 tab 收录未添加。 |
 | Inspect AI | 未收录 | 要一个通用评测框架、用自定义 solver 和 scorer 搭自己的 agent 评测，选 Inspect AI；要现成的法律题库、不想自己出题，选 Harvey LAB。 | Inspect AI 灵活、自带很多评测，但没有这种深度的法律题库；LAB 有题库，但执行框架的形状是定死的。本批 tab 收录未添加。 |
-| [promptfoo](promptfoo.zh.md) | ✅ | 要在 CI 里用自己写的断言守住自家法律应用的提示词和输出，选 promptfoo；要在一套外部编写、大家共用的法律题库上给模型或 agent 做基准，选 Harvey LAB。 | promptfoo 轻量、贴合具体应用，但不自带法律题；LAB 自带 1,600 多道题，但要 Podman、两把评委密钥和长时间运行。 |
+| [promptfoo](../app-evals/promptfoo.zh.md) | ✅ | 要在 CI 里用自己写的断言守住自家法律应用的提示词和输出，选 promptfoo；要在一套外部编写、大家共用的法律题库上给模型或 agent 做基准，选 Harvey LAB。 | promptfoo 轻量、贴合具体应用，但不自带法律题；LAB 自带 1,600 多道题，但要 Podman、两把评委密钥和长时间运行。 |
 
 ## 技术栈
 

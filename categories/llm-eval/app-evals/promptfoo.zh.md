@@ -2,7 +2,7 @@
 name: promptfoo
 slug: promptfoo
 repo: https://github.com/promptfoo/promptfoo
-category: llm-eval
+category: app-evals
 tags: [llm-eval, red-teaming, prompt-testing, ci-cd, rag, vulnerability-scanning, cli, local-first]
 language: TypeScript
 license: MIT
@@ -79,7 +79,7 @@ health:
 
 你改完 prompt，在 playground 里扫几眼输出就凭感觉上线——直到某次模型更新悄悄把你的 agent 拖垮。promptfoo 把这件事变成测试套件：一份 prompt × 模型 × 断言的 YAML，`promptfoo eval` 在你本机判分、让回归在 CI 里失败，还能赶在用户动手前用红队探针攻击你自己的应用。
 
-![promptfoo — 健康度雷达](../../assets/health/promptfoo.zh.svg)
+![promptfoo — 健康度雷达](../../../assets/health/promptfoo.zh.svg)
 
 ## 何时使用
 
@@ -91,7 +91,7 @@ health:
 
 拆开看，promptfoo 就是一个「被测对象是一次 LLM 调用」的迷你测试运行器（Node/TypeScript CLI）。你在 `promptfooconfig.yaml` 里声明：试哪些 prompt（文件或带变量的模板）、发给哪些 provider（OpenAI、Anthropic、本地 Ollama 等）、哪些测试输入必须通过哪些断言——确定性检查（精确匹配、正则、JSON schema）、向量相似度阈值，或让一个裁判 LLM 按你写的量规打分（`llm-rubric`）。引擎把 prompt × provider × 测试的矩阵展开，用你自己的 API key 逐个调用并给每格打分；结果存进本地 SQLite 文件，`promptfoo view` 起一个内置 Web 服务，把通过/失败矩阵并排展示。`redteam` 子命令复用同一引擎生成对抗性输入——prompt 注入、越狱、PII 探针——打到你的目标上，再把得手的攻击汇编成漏洞报告。它替你做的：矩阵展开、判分、查看器、扫描报告。留给你做的：维护 prompt、测试用例与断言，自备 provider key（评测会产生真实 API 花费），以及把 `promptfoo eval` 接进 CI 让它当闸门。
 
-![promptfoo — 主干用户故事](../../assets/flow/promptfoo.zh.svg)
+![promptfoo — 主干用户故事](../../../assets/flow/promptfoo.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/promptfoo.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -124,7 +124,7 @@ health:
 | [Langfuse](langfuse.zh.md) | ✅ | 当生产追踪、数据集、趋势历史和可自托管 UI 是主要平台需求时，选 Langfuse；当只要更轻的 CLI 优先 CI 回归/红队闸门时，选 promptfoo。 | 追踪/可观测性 + 评测平台（可自托管，带 UI 和数据集后端）；强在生产监控和趋势历史。promptfoo 更轻、CLI 优先、偏红队，而非可观测性后端。 |
 | LangSmith | 未收录 | 当你要托管的 LangChain 中心 eval 和可观测性时，选 LangSmith；当开源、local-first 运行和框架无关 provider 是硬要求时，选 promptfoo。 | 托管的 LangChain 评测/可观测性 SaaS;LangChain 集成深、看板托管，但闭源、以云为中心。promptfoo 开源、local-first、框架无关。 |
 | Braintrust | 未收录 | 当商业实验平台、托管打分、日志和打磨过的团队流程值得引入托管依赖时，选 Braintrust；当你要开放、自跑的 CLI 时，选 promptfoo。 | 商业评测/实验平台，托管打分与日志；团队 UX 打磨好。promptfoo 用开放、自跑的 CLI 换掉这套托管平台。 |
-| [Garak](garak.zh.md) | ✅ | 当任务只是专门的 Python 红队扫描时，选 Garak；当红队检查需要和通用 eval 断言放在同一工作流里时，选 promptfoo。 | 专门的 LLM 漏洞扫描器（只做红队，Python）。与 promptfoo 的 `redteam` 范围重叠，但不是通用评测/断言 harness。 |
+| [Garak](../security-audits/garak.zh.md) | ✅ | 当任务只是专门的 Python 红队扫描时，选 Garak；当红队检查需要和通用 eval 断言放在同一工作流里时，选 promptfoo。 | 专门的 LLM 漏洞扫描器（只做红队，Python）。与 promptfoo 的 `redteam` 范围重叠，但不是通用评测/断言 harness。 |
 | [Giskard](giskard.zh.md) | ✅ | 当你希望测试就是直接调用 agent 函数的 Python 代码（带 LLM 评审检查的场景，加上自动生成的红队扫描）时，选 Giskard；当以 YAML 矩阵驱动的 prompt 和 CI 回归工作流是中心时，选 promptfoo。 | Giskard v3（2026 年重写，2026-08 正式发布）面向 LLM agent，要求 Python ≥ 3.12；它对表格／传统 ML 模型的自动扫描只留在 v2，而 v2 已不再维护。promptfoo 是 Node CLI，不进你的 Python 环境，更聚焦 prompt／CI 工作流。 |
 
 ## 技术栈

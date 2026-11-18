@@ -1,41 +1,25 @@
 # llm-eval
 
 > Category node. Test, benchmark, and security-scan (red-team) prompts, agents, and RAG systems.
+> Split into sub-categories by **what is under test**: your own LLM app's quality over time, the security and governance posture of a model, agent or AI stack, or a fixed public task set used to rank models, agents or harnesses against each other.
 > ← back to [category route](../../INDEX.md) · 中文：[INDEX.zh.md](INDEX.zh.md)
 
-## Projects in this category
+## Sub-categories
 
-| Project | Use when | Health | Page |
-| --- | --- | --- | --- |
-| **promptfoo** | Use it when you need declarative YAML evals plus red-teaming for your LLM app in CI. | A (6/6) | [→](promptfoo.md) |
-| **Pezzo** | Use it when a small team wants one self-hosted control plane for prompt versioning plus cost/latency observability — but it looks stalled since mid-2025, so assume you'll maintain it yourself. | C (5/6) | [→](pezzo.md) |
-| **DeepEval** | Use it when a Python team wants pytest-style regression tests for a RAG app or agent, scored in CI by LLM-judge metrics such as faithfulness and hallucination — but each run costs judge tokens, scores wobble, and the dashboard is the vendor's hosted platform. | A (6/6) | [→](deepeval.md) |
-| **Ragas** | Use it when you change chunking, embeddings or the generator in a RAG pipeline and need per-change faithfulness and context recall/precision scores from a judge LLM — but it returns scores, not CI pass/fail gates, and no PR has merged since 2026-02. | B (6/6) | [→](ragas.md) |
-| **garak** | Use it when you must sign off a model before launch and want a repeatable scan of known jailbreak, injection, data-leak and malware-generation attacks with per-probe failure rates — but it tests the model, not your app's answer quality or whole deployment. | A (6/6) | [→](garak.md) |
-| **Giskard OSS** | Use it when a Python 3.12+ team wants to pin RAG or agent failures as scenario tests with LLM-judge checks and generate attack prompts before launch — but the tabular ML scan exists only in unmaintained v2, and v3 has been GA for weeks. | B (6/6) | [→](giskard.md) |
-| **Langfuse** | Use it when an LLM feature in production needs nested traces of every request plus scoring, prompt versions and datasets in a self-hostable web app — but self-hosting means running Postgres, ClickHouse, Redis and S3 storage, and some admin features are enterprise-licensed. | A (5/6) | [→](langfuse.md) |
-| **chatgpt-comparison-detection** | Human ChatGPT Comparison Corpus (HC3), detectors, and related AI-text detection resources. | E (4/6) | [→](chatgpt-comparison-detection.md) |
-| **SWE-bench** | Use it when you need to grade coding-agent patches against real GitHub issues and their tests — each evaluation run needs Docker and a lot of disk. | B (6/6) | [→](swe-bench.md) |
-| **Harvey LAB** | Use it when you need to benchmark an agent on long legal assignments — a synthetic case file in, a memo or markup out, graded by two LLM judges against a lawyer's checklist; needs Podman and both Anthropic and OpenAI keys. | B (6/6) | [→](harvey-labs.md) |
-| **AI-Infra-Guard** | Use it when the audit surface is your whole self-hosted AI stack — live-service CVEs, MCP servers, agent skills, jailbreak evals — from one Tencent-built platform, not a single model endpoint. | B (6/6) | [→](ai-infra-guard.md) |
-| **iFixAi** | Use it when you need a fast, off-the-shelf audit of whether an agent stays inside its declared roles, tool permissions and honesty rules — 60 fixed inspections, a judge from a different vendor, an A–F grade; young and LLM-judged, with an 18k-star count its usage numbers do not back up. | B (4/6) | [→](ifixai.md) |
-| **g-harness-evals** | Use it when you must pick an agent harness (Claude Code, Codex, OpenClaw, Hermes Agent, Pi) and want same-model, cost-per-solved-task rankings whose every number you can recheck keylessly — but it is one author's young, conflict-disclosed study on pinned versions and easy public tasks. | C (5/6) | [→](g-harness-evals.md) |
-
+| Sub-category | Enter when | Route |
+| --- | --- | --- |
+| **App Evals** | You change prompts, retrieval or models in your own LLM app and need regression tests, RAG scores, or production traces and prompt versions to see what broke. | [→](app-evals/INDEX.md) |
+| **Security Audits** | Before launch or review you must show a model, agent or AI stack resists known attacks and stays inside its declared roles and permissions. | [→](security-audits/INDEX.md) |
+| **Benchmarks** | You need to compare models, agents or harnesses on a fixed public task set or corpus, not test your own app. | [→](benchmarks/INDEX.md) |
 
 ## Comparison matrix
 
-| Option | Indexed | Health | One-line tradeoff |
-| --- | --- | --- | --- |
-| [promptfoo](promptfoo.md) | ✅ | A (6/6) | Use it when you need declarative YAML evals plus red-teaming for your LLM app in CI. |
-| [Pezzo](pezzo.md) | ✅ | C (5/6) | Use it when a small team wants one self-hosted control plane for prompt versioning plus cost/latency observability — but it looks stalled since mid-2025, so assume you'll maintain it yourself. |
-| Ragas / OpenAI Evals | partly indexed | — | Other LLM eval / red-team frameworks named across the pages; Ragas is indexed in this category, OpenAI Evals is not. |
-| [chatgpt-comparison-detection](chatgpt-comparison-detection.md) | ✅ | E (4/6) | Dataset/detector resources for AI-text comparison; use eval frameworks when you need a maintained test runner. |
-| [AI-Infra-Guard](ai-infra-guard.md) | ✅ | B (6/6) | Whole-stack AI security self-examination (infra CVEs, MCP, skills, jailbreaks) as a deployed platform; pick garak/promptfoo when a CLI against one model or your own app is enough. |
-| [iFixAi](ifixai.md) | ✅ | B (4/6) | Fixed governance checklist for agents (roles, tool permissions, honesty) with a cross-vendor LLM judge; pick promptfoo when you need your own assertions in CI, garak for attack breadth. |
-| [g-harness-evals](g-harness-evals.md) | ✅ | C (5/6) | Fixed-model harness comparison ranked by paired cost per solved task with preregistration and receipts; pick SWE-bench to compare models, promptfoo to test your own app. |
-| [Harvey LAB](harvey-labs.md) | ✅ | B (6/6) | Legal-agent benchmark with 1,600+ synthetic matter tasks and all-or-nothing LLM-judge grading; pick SWE-bench for coding agents or promptfoo for your own app's regression tests. |
-
+| Option | Type | One-line tradeoff |
+| --- | --- | --- |
+| [App Evals](app-evals/INDEX.md) | Sub-category | promptfoo, DeepEval, Ragas, Giskard, Langfuse, Pezzo — tests and traces you author for your own app; scores come from LLM judges you pay for and that wobble. |
+| [Security Audits](security-audits/INDEX.md) | Sub-category | garak, AI-Infra-Guard, iFixAi — fixed attack or governance catalogs against a model, agent or whole stack; they audit posture, not your app's answer quality. |
+| [Benchmarks](benchmarks/INDEX.md) | Sub-category | SWE-bench, Harvey LAB, g-harness-evals, HC3 — ready-made task sets and grading for ranking; heavy to run and only as good as their task mix. |
 
 ## What belongs here
 
-Tools whose primary job is to **evaluate, benchmark, or red-team** LLM prompts/agents/RAG. Not code review (see `ai-code-review`), not training (see `llm-training`).
+Tools whose primary job is to **evaluate, benchmark, or red-team** LLM prompts/agents/RAG. Not code review (see `ai-code-review`), not training (see `llm-training`). Pick a sub-category by what you are testing: your own app (`app-evals`), whether it can be attacked or breaks its rules (`security-audits`), or how it ranks on a shared task set (`benchmarks`).

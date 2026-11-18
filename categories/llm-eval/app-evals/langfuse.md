@@ -2,7 +2,7 @@
 name: Langfuse
 slug: langfuse
 repo: https://github.com/langfuse/langfuse
-category: llm-eval
+category: app-evals
 tags: [llm-eval, observability, tracing, prompt-management, self-hosted, langfuse, app]
 language: TypeScript
 license: NOASSERTION (MIT core; ee/ directories under the commercial Langfuse Enterprise License)
@@ -74,7 +74,7 @@ health:
 
 A user reports that your agent gave a wrong answer yesterday; behind that one answer were a dozen model calls, two tool calls and a retrieval, and all your logs kept was the final text. Langfuse records every request as a nested trace (each call's prompt, output, tokens, cost and latency) in a web app you can self-host, then lets you score those traces with LLM judges, human labels or user feedback.
 
-![Langfuse — health radar](../../assets/health/langfuse.svg)
+![Langfuse — health radar](../../../assets/health/langfuse.svg)
 
 ## When to use
 
@@ -86,7 +86,7 @@ Langfuse is the platform for that loop. You instrument once (the `@observe()` de
 
 Langfuse has two halves: an SDK inside your app and a server you run (or rent as Langfuse Cloud). The SDK wraps your functions so each step becomes a *span* — a timed record of one step with its inputs, outputs, model and token counts — nested under one *trace* per request, like a flight recorder for a single user question. The SDK sends those records to the server: a web container receives them, and a separate worker container processes them asynchronously and writes them to ClickHouse (a column database built for scanning millions of rows quickly), with Postgres holding app data such as users, prompts and settings, Redis queuing events, and S3-compatible storage holding large payloads. The UI then shows trace trees, sessions, cost and latency views; evaluators you configure score traces in the background, and prompt management and datasets reuse the same data. What Langfuse does for you: ingest, store, index, display, calculate cost, and run the judges you configured. What you do: instrument your code, run (or pay for) the multi-service stack, and decide what is worth scoring.
 
-![langfuse — backbone user story](../../assets/flow/langfuse.svg)
+![langfuse — backbone user story](../../../assets/flow/langfuse.svg)
 
 <!-- flow-steps:begin (generated from flows/langfuse.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -111,7 +111,7 @@ Langfuse has two halves: an SDK inside your app and a server you run (or rent as
 - **You need SSO configuration, an audit-log viewer, data-retention policies, ingestion masking, FIPS mode or UI customization on a self-hosted instance.** Those live under the `ee/` directories with a commercial Enterprise License; the MIT core does not include them. If they are hard requirements and you won't buy a licence, evaluate Opik or Phoenix (both not indexed) against your list.
 - **Your security posture forbids phone-home by default.** Self-hosted instances report usage statistics to PostHog unless you set `TELEMETRY_ENABLED=false`; make that part of your deployment config.
 - **You can't absorb major-version migrations.** v2→v3 (2024-12) added ClickHouse, Redis, S3 and a worker; v3→v4 (2026-07-29) needs its own upgrade guide. Plan upgrades as projects, or use the hosted service.
-- **You need adversarial security testing.** Langfuse scores what your traffic did; it does not attack your app. Use [garak](garak.md) or [Giskard OSS](giskard.md).
+- **You need adversarial security testing.** Langfuse scores what your traffic did; it does not attack your app. Use [garak](../security-audits/garak.md) or [Giskard OSS](giskard.md).
 
 ## Comparison
 

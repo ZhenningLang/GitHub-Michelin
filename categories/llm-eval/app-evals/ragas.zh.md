@@ -2,7 +2,7 @@
 name: Ragas
 slug: ragas
 repo: https://github.com/vibrantlabsai/ragas
-category: llm-eval
+category: app-evals
 tags: [llm-eval, rag, llm-as-judge, testing, python]
 language: Python
 license: Apache-2.0
@@ -83,7 +83,7 @@ health:
 
 你改了 RAG 链路里的分块大小或向量模型，手动试了三个问题，还是说不清到底变好了没有——更说不清机器人会不会在检索段落写着 3 月 14 日的情况下，回答“爱因斯坦生于 1879 年 3 月 20 日”。Ragas 给这件事打分：让一个评审大模型把每条回答拆成一条条论断，逐条对照检索到的段落核对；配套的指标再给“检索有没有找到回答所需的段落”打分。
 
-![Ragas — 健康度雷达](../../assets/health/ragas.zh.svg)
+![Ragas — 健康度雷达](../../../assets/health/ragas.zh.svg)
 
 ## 何时使用
 
@@ -95,7 +95,7 @@ Ragas 就是围绕这些 RAG 专属指标做的库。你把一行行“问题、
 
 Ragas 的多数指标是“大模型当评委”：另一个由你挑选、由你付费的模型读你的数据，回答一些很窄的问题。**问题怎么问、分数怎么算是 Ragas 的事；数据和评审模型由你提供。** 拿忠实度来说：Ragas 先让评审模型列出回答里的事实性论断，再一条条问“检索段落支不支持这一条”；得分等于被支持的论断数除以论断总数，所以落在 0 到 1 之间。回答相关性反过来做——评审模型根据回答反推几个它能回答的问题，Ragas 再用向量嵌入（把文本变成一串数字，意思相近的文本数字也相近）比较这些问题和真实问题有多像。`evaluate()` 把每个指标在每一行上并发跑完，返回一张表，可以求平均，也可以逐行看。仍归你管的事：从应用里收集这些行、选评审模型（换个评委分数就会变）、决定多少分算合格。
 
-![ragas — 主干用户故事](../../assets/flow/ragas.zh.svg)
+![ragas — 主干用户故事](../../../assets/flow/ragas.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/ragas.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -117,7 +117,7 @@ Ragas 的多数指标是“大模型当评委”：另一个由你挑选、由�
 - **你要的是能让构建失败的质量闸门，或者还要测智能体和多轮对话。** Ragas 只给分数，把分数变成 CI 里的通过 / 失败阈值得你自己写。改用 [DeepEval](deepeval.zh.md)：它把类似的大模型评审指标包进带阈值的 pytest 运行器，也覆盖对话和智能体轨迹。
 - **团队想在配置里比较“提示词 × 模型”，或者要做红队探测。** 改用 [promptfoo](promptfoo.zh.md)：一份 YAML 矩阵、一条命令打分，还带对抗测试，不用写 Python。
 - **你需要线上请求的追踪、看板和人工标注。** Ragas 评的是你自己攒的数据集，不记录生产环境发生了什么。追踪和标注用 [Langfuse](langfuse.zh.md)——Ragas 有个 `tracing` 可选依赖会装上 Langfuse 和 MLflow 的客户端，两者是互补关系。
-- **要查的是安全（提示词注入、有害输出），不是回答质量。** 用 [Giskard](giskard.zh.md) 或 [garak](garak.zh.md)；Ragas 没有攻击生成器。
+- **要查的是安全（提示词注入、有害输出），不是回答质量。** 用 [Giskard](giskard.zh.md) 或 [garak](../security-audits/garak.zh.md)；Ragas 没有攻击生成器。
 - **分数必须可复现、不花钱，或者数据不能发给外部 API。** 每个大模型评审指标在每一行上都要调用好几次模型，分数还会随评审模型及其版本漂移。固定检查请用精确匹配或字符串类指标（Ragas 自带 BLEU / ROUGE 这类不调大模型的指标），或者跑一个你自己掌控的本地评审模型。
 - **你需要一个此刻明显还在发修复的库。** 截至 2026-10-08，`main` 自 2026-02-24 之后没有合入任何东西，同时挂着约 245 个未合并的 PR，而在此之前是每隔几周发一版；0.x 的 API 也已经破坏性变更过两次（有 0.1→0.2 和 0.3→0.4 两份迁移指南）。请钉死版本；如果上游活跃度是硬要求，选 DeepEval。
 

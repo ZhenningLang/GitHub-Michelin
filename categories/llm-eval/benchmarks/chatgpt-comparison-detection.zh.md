@@ -2,7 +2,7 @@
 name: chatgpt-comparison-detection
 slug: chatgpt-comparison-detection
 repo: https://github.com/Hello-SimpleAI/chatgpt-comparison-detection
-category: llm-eval
+category: benchmarks
 tags: [llm-eval, ai-text-detection, dataset, detector]
 language: Python
 license: NOASSERTION
@@ -70,7 +70,7 @@ health:
 
 你要比较人类和早期 ChatGPT 对同一问题的回答，却只有互不相关的样本；HC3 提供双语对比语料和检测器训练脚本。
 
-![chatgpt-comparison-detection — 健康度雷达](../../assets/health/chatgpt-comparison-detection.zh.svg)
+![chatgpt-comparison-detection — 健康度雷达](../../../assets/health/chatgpt-comparison-detection.zh.svg)
 
 ## 何时使用
 
@@ -98,7 +98,7 @@ health:
 
 先走语料路径：打开 [README.md:22–32](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/README.md#L22-L32) 的英文或中文数据入口，下载前核各来源许可。需要论文整理好的训练与测试数据时，沿 [HC3/README.md:26–33](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/HC3/README.md#L26-L33) 选择一种语言、全文或句子，以及是否过滤身份提示词。查看相应的人类与生成回答样本，比较检测器时固定这份切分。HC3 提供对比材料和研究基线，你负责实现评测、核误报、保存来源和授权记录。数据访问使用外部 Hugging Face、ModelScope 或 Drive 服务；这条阅读路径不调用付费模型，后续本地训练另需你的算力和模型授权复核。
 
-![chatgpt-comparison-detection — 主干用户故事](../../assets/flow/chatgpt-comparison-detection.zh.svg)
+![chatgpt-comparison-detection — 主干用户故事](../../../assets/flow/chatgpt-comparison-detection.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/chatgpt-comparison-detection.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -116,7 +116,7 @@ health:
 
 ## 技术要点
 
-![chatgpt-comparison-detection — 机制图](../../assets/mechanism/chatgpt-comparison-detection.zh.svg)
+![chatgpt-comparison-detection — 机制图](../../../assets/mechanism/chatgpt-comparison-detection.zh.svg)
 
 <!-- mechanism:begin (generated from mechanisms/chatgpt-comparison-detection.json by tools/mechanism_card.py; do not edit) -->
 <details>

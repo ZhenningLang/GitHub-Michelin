@@ -2,7 +2,7 @@
 name: DeepEval
 slug: deepeval
 repo: https://github.com/confident-ai/deepeval
-category: llm-eval
+category: app-evals
 tags: [llm-eval, testing, deepeval, library]
 language: Python
 license: Apache-2.0
@@ -79,7 +79,7 @@ health:
 
 上周你的客服机器人还说“30 天内可全额退款”，改了一版提示词后它说“不支持退款”，直到客户投诉才有人发现。DeepEval 把这种检查写成 pytest 式的测试：你写下问题、期望答案和评分标准，由另一个大模型给每条回答打分，质量一掉，构建就失败。
 
-![DeepEval — 健康度雷达](../../assets/health/deepeval.zh.svg)
+![DeepEval — 健康度雷达](../../../assets/health/deepeval.zh.svg)
 
 ## 何时使用
 
@@ -91,7 +91,7 @@ health:
 
 DeepEval 是一个 Python 库，外加一个包装 pytest 的命令行。**指标和评审提示词都是它自带的**——大多数指标是“LLM 当评委”：DeepEval 把应用的实际输出、期望输出和评分标准发给另一个模型（默认 OpenAI，也可以包装任何模型），拿回一个 0 到 1 的分数和一段文字理由。你负责提供测试数据，并决定分数低于多少算失败。测智能体时，你在自己的函数上加 `@observe` 装饰器，DeepEval 把每一步（LLM 调用、工具调用、检索）记成一条追踪，可以给整条轨迹或单个步骤打分。它还能从你的文档生成合成测试集，也能跑 MMLU 之类的标准基准。结果在本地打印；`deepeval login` 可选地把结果上传到 Confident AI——这家公司的托管看板。
 
-![deepeval — 主干用户故事](../../assets/flow/deepeval.zh.svg)
+![deepeval — 主干用户故事](../../../assets/flow/deepeval.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/deepeval.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -112,7 +112,7 @@ DeepEval 是一个 Python 库，外加一个包装 pytest 的命令行。**指�
 
 - **你的团队不用 Python。** 引擎和文档都以 Python 为先；虽然有 TypeScript SDK，但版本还在 `0.9.x`，部分仍是预发布。改用 [promptfoo](promptfoo.zh.md)，它的 YAML 用例集和 CLI 不在乎你的应用用什么语言写。
 - **你要便宜、确定的检查。** DeepEval 多数指标每次运行都要调用评审模型，CI 每跑一次都花 token，分数在两次运行之间也会浮动。对“回复必须是合法 JSON、必须包含订单号”这类要求，用 [promptfoo](promptfoo.zh.md) 的确定性断言或普通 pytest 断言，把 LLM 评审留给真正需要它的地方。
-- **你要对模型做越狱、提示注入这类红队测试。** 红队功能在 v3.0 起已经从 DeepEval 拆到独立的 DeepTeam 包；要专门的漏洞扫描器，用 [garak](garak.zh.md)。
+- **你要对模型做越狱、提示注入这类红队测试。** 红队功能在 v3.0 起已经从 DeepEval 拆到独立的 DeepTeam 包；要专门的漏洞扫描器，用 [garak](../security-audits/garak.zh.md)。
 - **你要一个自托管的生产追踪和在线评测看板。** DeepEval 自己的界面是 Confident AI，一个托管的商业平台。追踪和评测历史必须留在自己服务器上时，用 [Langfuse](langfuse.zh.md)，DeepEval 只在 CI 里当打分库。
 - **默认情况下任何数据都不许出机器。** 匿名的 PostHog 遥测默认开启，要设 `DEEPEVAL_TELEMETRY_OPT_OUT=1` 才关；默认评审模型走 OpenAI 的 API。在隔离网络里，先关遥测再包装一个本地模型当评审——如果只需要 RAG 指标、又不想背后挂着厂商平台，选 [Ragas](ragas.zh.md)。
 
@@ -124,7 +124,7 @@ DeepEval 是一个 Python 库，外加一个包装 pytest 的命令行。**指�
 | [Ragas](ragas.zh.md) | ✅ | 只需要 RAG 检索和回答指标时，选 Ragas；还要测智能体、多轮对话，并要判通过／失败的测试运行器时，选 DeepEval。 | Ragas 范围更窄、专注 RAG；DeepEval 更全，但报告功能绑在厂商的托管平台上。 |
 | [Giskard OSS](giskard.zh.md) | ✅ | 想让工具自动扫描、找出智能体会在哪类问题上出错，选 Giskard；已经知道要测哪些用例、想把它们变成回归测试，选 DeepEval。 | Giskard 偏向发现和扫描；DeepEval 偏向你自己写用例、拿来卡门禁。 |
 | [Langfuse](langfuse.zh.md) | ✅ | 生产环境要自托管的追踪、提示词管理和评测历史，选 Langfuse；测试和 CI 里要指标打分，选 DeepEval。 | Langfuse 是要自己运维的平台；DeepEval 是库——两者常常一起用。 |
-| [garak](garak.zh.md) | ✅ | 要探测模型会不会被越狱、泄露、注入，选 garak；要检查你的应用是否答得对，选 DeepEval。 | 问题不同：garak 问“能不能让它出错”，DeepEval 问“它有没有把活干好”。 |
+| [garak](../security-audits/garak.zh.md) | ✅ | 要探测模型会不会被越狱、泄露、注入，选 garak；要检查你的应用是否答得对，选 DeepEval。 | 问题不同：garak 问“能不能让它出错”，DeepEval 问“它有没有把活干好”。 |
 
 ## 技术栈
 

@@ -82,7 +82,7 @@ You are auditing prompt deployment in a disposable agent environment. A full con
 ## When NOT to use
 
 - Need ordinary production development discipline? Use [Superpowers](../coding-agent-harnesses/superpowers.md) or your existing reviewed workflow. The shipped v45 prompt explicitly requests unrestricted execution and suppresses refusal/context checks; do not put it in a credentialed daily profile.
-- Need reproducible cross-provider prompt regression tests? Use [promptfoo](../../llm-eval/promptfoo.md). This project's reported experiments use local raw evidence excluded from git, and some referenced test paths are absent from the reviewed public tree.
+- Need reproducible cross-provider prompt regression tests? Use [promptfoo](../../llm-eval/app-evals/promptfoo.md). This project's reported experiments use local raw evidence excluded from git, and some referenced test paths are absent from the reviewed public tree.
 - Want to learn permission enforcement and the agent loop? Use [Learn Claude Code](learn-claude-code.md). Replacing model instructions changes model behavior, not tool permissions or sandbox boundaries.
 
 ## Comparison
@@ -90,7 +90,7 @@ You are auditing prompt deployment in a disposable agent environment. A full con
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [Superpowers](../coding-agent-harnesses/superpowers.md) | ✅ | Choose Superpowers for a staged development workflow; study gpt-instruct only when prompt replacement and scoped rollback are the research subject. | Composable skills and approval stages versus a model-specific instruction override with material safety risk. |
-| [promptfoo](../../llm-eval/promptfoo.md) | ✅ | Choose promptfoo for your own versioned cases and CI assertions; use gpt-instruct as a source of deployment patterns, not independent proof of its published gains. | General evaluation infrastructure versus project-specific, partly unpublished experimental evidence. |
+| [promptfoo](../../llm-eval/app-evals/promptfoo.md) | ✅ | Choose promptfoo for your own versioned cases and CI assertions; use gpt-instruct as a source of deployment patterns, not independent proof of its published gains. | General evaluation infrastructure versus project-specific, partly unpublished experimental evidence. |
 | [Learn Claude Code](learn-claude-code.md) | ✅ | Choose the course to rebuild runtime mechanisms; choose this corpus to inspect managed prompt deployment without building an agent runtime. | Runnable harness lessons versus a small installer and prompt archive collection. |
 
 ## Quick start

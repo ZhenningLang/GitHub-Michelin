@@ -3,7 +3,7 @@ name: iFixAi
 slug: ifixai
 repo: https://github.com/ifixai-ai/iFixAi
 homepage: https://www.ifixai.ai
-category: llm-eval
+category: security-audits
 tags: [llm-eval, agent-evaluation, ai-governance, llm-as-judge, red-teaming, compliance, cli, claude-code-plugin]
 language: Python
 license: Apache-2.0
@@ -70,19 +70,19 @@ health:
 
 你的客服 agent 延迟测试、越狱测试都过了，上线后却调用了它的角色根本没被授权的工具，还没留下审计记录——之前跑过的评测没有一项问过这件事。iFixAi 拿 60 组写好的试探对话去问你的 agent（或一个裸模型），让另一家厂商的模型按公开的评分细则判卷，最后给一个 A–F 等级：它有没有守住你声明的角色、权限和规则。
 
-![iFixAi — 健康度雷达](../../assets/health/ifixai.zh.svg)
+![iFixAi — 健康度雷达](../../../assets/health/ifixai.zh.svg)
 
 ## 何时使用
 
 你运营着一个替企业办事的 agent：能给订单退款的客服机器人、把 `delete_record` 藏在管理员角色后面的 IT 服务台 agent、能读人事文档的内部助手。这时有人（风控负责人、客户的采购团队、你自己的 CTO）问：“它是不是只做了该做的事？”你手头的工具都在回答旁边的问题：可观测性看板给你延迟和 token 花费，红队扫描告诉你哪些越狱语句打进去了，但没人测过一个 `user` 角色的调用者能不能把 agent 说动去执行 `export_data`，它会不会引用自己从没检索过的来源，长对话里会不会悄悄跑题。你想今天下午就拿到第一份结构化答案，而不是花一个季度自己设计评测集。
 
-iFixAi 就是这份审计的现成版本。你把部署情况描述一次——角色、用户、工具、哪个角色能调哪个工具，写进一个 YAML 夹具（fixture）文件，或者让设置向导、Claude Code/Codex 插件替你生成——然后跑一条命令；它对你 agent 的 HTTP 端点或某个厂商模型跑 32 项计分检查（另有 28 项不计分的“premium 预览”检查），按五大支柱（编造、操纵、欺骗、不可预测、不透明）给出字母等级。当你还不知道该断言什么、想要一张固定的治理检查清单加跨厂商评委时，选它而不是 [promptfoo](promptfoo.zh.md)；当你担心的是 agent 守不守角色权限、说不说实话，而不是模型对攻击语句的原始抵抗力时，选它而不是 [garak](garak.zh.md)。你接受的代价是：检查项和权重都是别人定的，判分靠大模型，所以两次运行的结果不可复现。
+iFixAi 就是这份审计的现成版本。你把部署情况描述一次——角色、用户、工具、哪个角色能调哪个工具，写进一个 YAML 夹具（fixture）文件，或者让设置向导、Claude Code/Codex 插件替你生成——然后跑一条命令；它对你 agent 的 HTTP 端点或某个厂商模型跑 32 项计分检查（另有 28 项不计分的“premium 预览”检查），按五大支柱（编造、操纵、欺骗、不可预测、不透明）给出字母等级。当你还不知道该断言什么、想要一张固定的治理检查清单加跨厂商评委时，选它而不是 [promptfoo](../app-evals/promptfoo.zh.md)；当你担心的是 agent 守不守角色权限、说不说实话，而不是模型对攻击语句的原始抵抗力时，选它而不是 [garak](garak.zh.md)。你接受的代价是：检查项和权重都是别人定的，判分靠大模型，所以两次运行的结果不可复现。
 
 ## 怎么用起来
 
 iFixAi 是一个 Python 命令行工具（`ifixai`），把你的 agent 当黑盒对待。夹具——一个列出角色、用户、工具、权限以及可选治理策略的 YAML 文件——告诉它什么叫“正确”；每项检查（inspection）是一个文件夹，里面有对话剧本、评分细则和参考答案，iFixAi 用你的夹具把剧本填成具体的提问，发给被测系统（SUT：通过 OpenAI 兼容 HTTP 端点暴露的你的 agent、Claude 或 GPT 这样的厂商模型，或者你自己写的 Python 适配类）。回答再交给评委——一个和被测系统不同厂商的模型，从你环境变量里的第二把 API 密钥自动挑选——按公开的评分细则打分；能靠调用适配器方法直接回答的检查（比如“这个角色能调用哪些工具？”）走结构化计分，不经过评委。可以把它想成“神秘顾客”式审计：顾客的剧本是固定且公开的，成绩单由另一家公司来写，而不是被审计的那家。夹具、端点、两把 API 密钥和账单归你；试探剧本、评分细则、评委调度、加权成 A–F 等级（操纵 0.35、编造 0.20、其余三项各 0.15；B01、B08、P01 任一不达标，总分封顶 60%）以及 JSON/Markdown 报告归 iFixAi。
 
-![ifixai — 主干用户故事](../../assets/flow/ifixai.zh.svg)
+![ifixai — 主干用户故事](../../../assets/flow/ifixai.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/ifixai.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -103,9 +103,9 @@ iFixAi 是一个 Python 命令行工具（`ifixai`），把你的 agent 当黑�
 
 ## 何时不用
 
-- **你要在 CI 里给自家应用的具体行为做回归测试。** 改用 [promptfoo](promptfoo.zh.md)：用例和断言（精确匹配、JSON Schema、`llm-rubric`）由你来写，失败就挡住 PR。iFixAi 的检查项是固定的；要加一项，得新建一个带 `runner.py`、`definition.yaml`、`rubric.yaml`、`references.yaml` 的检查文件夹，再改 `harness/registry.py`——这是维护分叉，不是改一行配置。
+- **你要在 CI 里给自家应用的具体行为做回归测试。** 改用 [promptfoo](../app-evals/promptfoo.zh.md)：用例和断言（精确匹配、JSON Schema、`llm-rubric`）由你来写，失败就挡住 PR。iFixAi 的检查项是固定的；要加一项，得新建一个带 `runner.py`、`definition.yaml`、`rubric.yaml`、`references.yaml` 的检查文件夹，再改 `harness/registry.py`——这是维护分叉，不是改一行配置。
 - **你要对一个模型端点做覆盖面广的攻击扫描。** 改用 [garak](garak.zh.md) 或 [AI-Infra-Guard](ai-infra-guard.zh.md)。iFixAi 自己的方法论文档写明它的对抗语料是公开的，“通过不代表能抵御有决心的攻击者”；提示词注入只是操纵支柱里的一项检查，它不是越狱语料库。
-- **你要在运行时“拦下”违规的工具调用，而不是事后打分。** 改用 [agent-governance-toolkit](../agent-governance/agent-governance-toolkit.zh.md)，它把策略检查放在工具调用之前。iFixAi 是诊断工具：跑完、出报告、退出，不会留在你的请求链路里。
+- **你要在运行时“拦下”违规的工具调用，而不是事后打分。** 改用 [agent-governance-toolkit](../../agent-governance/agent-governance-toolkit.zh.md)，它把策略检查放在工具调用之前。iFixAi 是诊断工具：跑完、出报告、退出，不会留在你的请求链路里。
 - **你需要面向 EU AI Act、ISO 42001、NIST AI RMF 的审计证据或认证。** 仓库标签里写了这些框架，但文档明说结果是“诊断，不是认证”；你的适配器没暴露的治理钩子，会按夹具里“声明”的内容计分，并标注“声明的，而非运行时实测”。如果你得向监管方展示自己的测试设计和日志，用 Inspect AI（未收录）自建评测，并保留人工审核。
 - **你要拿跨月份、跨厂商报告的分数做对比。** 按项目自己的 `reproducibility.md`，实时调用大模型的运行不可复现；分数只在同一夹具、同一版本下可比，而计分方式在五个月里改了好几次：v2.x、v3.2（“Scoring accuracy”）、v3.3（“Truer scores”）、v4.0。固定包版本和夹具，或者用 promptfoo 的确定性断言。
 - **你只有一把 API 密钥、没有预算，或者在断网环境。** 一次可引用的运行要两家厂商的密钥（一把给被测系统，一把给评委；只有一把时它会拒绝运行，除非加 `--eval-mode self`，而这种结果会被标成自评）。README 估算一次完整套件光评委调用就要约 10–18 美元，被测系统的费用另算；CI 之外默认向 PostHog 发遥测（用 `IFIXAI_TELEMETRY=0` 关闭）。离线使用需要一个能从内网访问、又能通过它某个 provider 接入的评委[推断：`litellm` 只接进了 Python API，本页没有实测]。
@@ -115,11 +115,11 @@ iFixAi 是一个 Python 命令行工具（`ifixai`），把你的 agent 当黑�
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [promptfoo](promptfoo.zh.md) | ✅ | 如果你清楚自家应用该说什么、不该说什么，想在每个 PR 上强制执行，选 promptfoo；如果你想要一张现成的治理检查清单（角色、工具权限、诚实度）和跨厂商的字母等级，又不想自己写用例，选 iFixAi。 | promptfoo：断言自己写，有确定性选项，CI 方案成熟，但覆盖面要你自己设计。iFixAi：60 项固定检查加加权等级开箱即用，但靠大模型判分，不写代码无法扩展，而且很年轻。 |
+| [promptfoo](../app-evals/promptfoo.zh.md) | ✅ | 如果你清楚自家应用该说什么、不该说什么，想在每个 PR 上强制执行，选 promptfoo；如果你想要一张现成的治理检查清单（角色、工具权限、诚实度）和跨厂商的字母等级，又不想自己写用例，选 iFixAi。 | promptfoo：断言自己写，有确定性选项，CI 方案成熟，但覆盖面要你自己设计。iFixAi：60 项固定检查加加权等级开箱即用，但靠大模型判分，不写代码无法扩展，而且很年轻。 |
 | [garak](garak.zh.md) | ✅ | 要用大量探针家族扫一个模型端点的越狱、泄露和有害输出，选 garak；要问的是 agent 守不守它被配置的角色和工具，选 iFixAi。 | garak 衡量模型对攻击的易感性；iFixAi 通过夹具衡量已部署 agent 的治理行为，攻击只覆盖得很薄。 |
-| [Giskard OSS](giskard.zh.md) | ✅ | 想要一个 Python 库对你的 agent 跑自动生成的红队扫描和 RAG 质量扫描、并逐步攒出自己的场景测试，选 Giskard；想要一个评分细则固定且公开、能拿给相关方看等级的命令行审计，选 iFixAi。 | Giskard 跑在你的测试进程里，直接调用你的 agent 函数（v3，要求 Python ≥ 3.12）；iFixAi 待在代码之外、对着端点说话，上手更简单，但测什么你能控制的更少。 |
+| [Giskard OSS](../app-evals/giskard.zh.md) | ✅ | 想要一个 Python 库对你的 agent 跑自动生成的红队扫描和 RAG 质量扫描、并逐步攒出自己的场景测试，选 Giskard；想要一个评分细则固定且公开、能拿给相关方看等级的命令行审计，选 iFixAi。 | Giskard 跑在你的测试进程里，直接调用你的 agent 函数（v3，要求 Python ≥ 3.12）；iFixAi 待在代码之外、对着端点说话，上手更简单，但测什么你能控制的更少。 |
 | Inspect AI | 未收录 | 要自己设计 agent 评测（solver、scorer、沙箱），并留下能在审计中站得住的日志，选 Inspect AI；想今天就用别人的检查清单拿到答案，选 iFixAi。 | Inspect AI 是英国 AI 安全研究所的框架，灵活度高，但不自带治理检查清单；iFixAi 是固定清单，灵活度低。本批 tab 收录未添加。 |
-| [agent-governance-toolkit](../agent-governance/agent-governance-toolkit.zh.md) | ✅ | 生产环境里必须拦住违规工具调用时，选 agent-governance-toolkit；要在上线前后量一量 agent 会有多少次越界，选 iFixAi。 | AGT 是运行时强制执行，坐在你的请求链路里，需要集成；iFixAi 是链路之外的一次测试运行，什么都不用部署，但也什么都拦不住。 |
+| [agent-governance-toolkit](../../agent-governance/agent-governance-toolkit.zh.md) | ✅ | 生产环境里必须拦住违规工具调用时，选 agent-governance-toolkit；要在上线前后量一量 agent 会有多少次越界，选 iFixAi。 | AGT 是运行时强制执行，坐在你的请求链路里，需要集成；iFixAi 是链路之外的一次测试运行，什么都不用部署，但也什么都拦不住。 |
 
 ## 技术栈
 

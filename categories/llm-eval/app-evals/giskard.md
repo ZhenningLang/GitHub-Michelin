@@ -2,7 +2,7 @@
 name: Giskard OSS
 slug: giskard
 repo: https://github.com/Giskard-AI/giskard-oss
-category: llm-eval
+category: app-evals
 tags: [llm-eval, testing, red-teaming, rag-evaluation, giskard, library]
 language: Python
 license: Apache-2.0
@@ -83,7 +83,7 @@ health:
 
 Your support agent looks fine in the demo, then in production it quotes a 60-day return window when the policy says 30, or obeys an "ignore your instructions" line hidden in a customer's email, and you only hear about it from a screenshot. Giskard turns those failures into Python tests: you write scenarios whose checks include an LLM judge ("is this answer backed by the source text?"), and its scanner writes attack prompts for you from a one-sentence description of your agent.
 
-![Giskard OSS — health radar](../../assets/health/giskard.svg)
+![Giskard OSS — health radar](../../../assets/health/giskard.svg)
 
 ## When to use
 
@@ -95,7 +95,7 @@ Giskard v3 gives you both from Python. In `giskard-checks` you wrap your agent a
 
 Giskard v3 is a family of small Python packages: `giskard-checks` for writing tests, `giskard-scan` for generated attack and RAG-quality suites, both sitting on `giskard-llm`, a provider-agnostic client (one interface over OpenAI, Anthropic, Google, Azure, or anything LiteLLM reaches). Your system is a *target*: any function that takes inputs and returns outputs. A *scenario* is a script of interactions plus checks; Giskard calls your function, records the exchange as a *trace* (the log of what went in and what came out), then grades every check against it. Deterministic checks run locally; LLM-as-judge checks send the trace to a second model that grades the answer, like a teacher marking an essay against the textbook page, using your API key (default `openai/gpt-4o-mini`). What Giskard does for you: run the scenarios, record, judge, report, and for scans invent the attack prompts. What you do: wrap your agent, write the scenarios, rules and reference context, pay for the judge calls, and decide which failures block a release.
 
-![giskard — backbone user story](../../assets/flow/giskard.svg)
+![giskard — backbone user story](../../../assets/flow/giskard.svg)
 
 <!-- flow-steps:begin (generated from flows/giskard.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -119,7 +119,7 @@ Giskard v3 is a family of small Python packages: `giskard-checks` for writing te
 - **You are on Python older than 3.12.** v3 requires `>=3.12`. If you cannot upgrade, run [promptfoo](promptfoo.md), which is a Node CLI that sits outside your Python environment.
 - **You need production tracing, dashboards and trend history of live traffic.** Giskard runs tests; it is not an observability backend. Use [Langfuse](langfuse.md) to record and score real traffic, and keep Giskard for pre-release suites.
 - **Your test suite should be declarative config that non-Python reviewers can edit, run as a prompt × provider matrix in CI.** That is [promptfoo](promptfoo.md)'s shape; Giskard scenarios are Python code.
-- **You want the widest library of attacks against a model endpoint, independent of your app code.** Use [garak](garak.md); Giskard can even call it as an optional scan backend (`giskard[garak]`), but the probe breadth lives in garak.
+- **You want the widest library of attacks against a model endpoint, independent of your app code.** Use [garak](../security-audits/garak.md); Giskard can even call it as an optional scan backend (`giskard[garak]`), but the probe breadth lives in garak.
 - **You have existing v2 code (`giskard.scan`, `giskard.Model`, RAGET `generate_testset`).** v3 is a rewrite, not an upgrade: the APIs changed, v3.0.0 only went GA on 2026-08-26, and the meta-package still carries a "Development Status :: 4 - Beta" classifier. Pin versions and budget a migration, or stay on [DeepEval](deepeval.md) if you need an API that has not just been reset.
 - **Prompts may not leave your network.** LLM-judge checks and scan generators call an LLM provider; without one you are left with the deterministic checks. Routing the judge to a self-hosted model through the `litellm` extra is possible in principle, but judge quality then depends on that model.
 
@@ -129,7 +129,7 @@ Giskard v3 is a family of small Python packages: `giskard-checks` for writing te
 |---|---|---|---|
 | [DeepEval](deepeval.md) | ✅ | Choose DeepEval when you want a pytest-native metric suite with an API that has been stable for longer; choose Giskard when you want agent scenarios and an auto-generated red-team scan from one Python package family. | DeepEval keeps evals in the pytest idiom; Giskard's v3 API is younger (GA 2026-08) but bundles multi-turn scenarios with `vulnerability_scan`. |
 | [promptfoo](promptfoo.md) | ✅ | Choose promptfoo when evals should be declarative YAML run as a CI gate across many providers; choose Giskard when tests must call your Python agent directly as code. | promptfoo is config-first and language-agnostic (Node CLI); Giskard is code-first and requires Python 3.12+. |
-| [garak](garak.md) | ✅ | Choose garak for breadth of known attacks against a model endpoint; choose Giskard when attacks should be generated for your agent's described role and run next to your functional tests. | garak's probe library is wider; Giskard's probes are tailored but depend on an LLM generator and its quality. |
+| [garak](../security-audits/garak.md) | ✅ | Choose garak for breadth of known attacks against a model endpoint; choose Giskard when attacks should be generated for your agent's described role and run next to your functional tests. | garak's probe library is wider; Giskard's probes are tailored but depend on an LLM generator and its quality. |
 | [Ragas](ragas.md) | ✅ | Choose Ragas when the job is RAG metrics over a dataset (faithfulness, context precision); choose Giskard when RAG quality is one part of agent tests that also need safety scans. | Ragas is metric-centric and RAG-specialized; Giskard covers RAG via `Groundedness` and `quality_scan` but is broader and less metric-deep. |
 | PyRIT | 未收录 | Choose PyRIT for operator-driven, multi-turn red-team campaigns with attack orchestration; choose Giskard when the red-team pass should be one function call inside your test code. | PyRIT gives a red-teamer more manual control; Giskard automates suite generation but offers less campaign steering. |
 

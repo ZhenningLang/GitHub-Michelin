@@ -115,7 +115,7 @@ health:
 - **一个带类型输出的智能体就够了。** 角色、目标、背景这套脚手架每次调用都要花 token 和时延，对单次抽取或单个工具调用任务毫无帮助。改用 [Pydantic AI](pydantic-ai.zh.md) 或 [OpenAI Agents SDK](openai-agents-sdk.zh.md)，它们的基本单位是一个输出经过校验的智能体。
 - **你要很小的依赖面。** 核心包 `crewai`（1.15.25）在你加任何工具之前就会拉进 `chromadb`、`lancedb`、`pdfplumber`、`openai`、`instructor`、`mcp` 和 OpenTelemetry SDK。如果一个短小、可审计的安装比内置记忆和知识库更重要，改用 [smolagents](smolagents.zh.md)。
 - **你的运行时是 Python 3.14，或者根本不是 Python。** CrewAI 声明 `requires-python >=3.10, <3.14`，也没有官方 TypeScript 版。TypeScript 代码库改用 [TanStack AI](tanstack-ai.zh.md) 或 LangGraph 的 JavaScript 版。
-- **你需要托管控制台，但买不了。** 托管部署、追踪界面和治理功能在商业版 CrewAI AMP 套件里，不在这个仓库。改用自托管的 [Langfuse](../../../llm-eval/langfuse.zh.md) 做追踪（它的文档里有 CrewAI 集成），不要依赖 AMP。
+- **你需要托管控制台，但买不了。** 托管部署、追踪界面和治理功能在商业版 CrewAI AMP 套件里，不在这个仓库。改用自托管的 [Langfuse](../../../llm-eval/app-evals/langfuse.zh.md) 做追踪（它的文档里有 CrewAI 集成），不要依赖 AMP。
 - **你在微软 / .NET 技术栈里。** CrewAI 只有 Python。改用 [Microsoft Agent Framework](agent-framework.zh.md)，它在 Python 和 .NET 里都提供同类多智能体模式，并支持 Azure / Foundry 托管。
 - **你承受不了频繁升级。** 2026-07-08 到 2026-10-07 之间发了 27 个版本，`crewai create crew` 的默认脚手架也换成了 JSON 优先的布局（旧的 Python/YAML 布局现在要加 `--classic`）。锁定版本、每次升级都读更新日志；如果这不可接受，像 [Pydantic AI](pydantic-ai.zh.md) 这样变化更慢的库更容易跟上。
 

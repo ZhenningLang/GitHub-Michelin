@@ -3,7 +3,7 @@ name: SWE-bench
 slug: swe-bench
 repo: https://github.com/SWE-bench/SWE-bench
 homepage: https://www.swebench.com
-category: llm-eval
+category: benchmarks
 tags: [llm-eval, coding-agents, benchmark, software-engineering, github-issues, docker]
 language: Python
 license: MIT
@@ -80,19 +80,19 @@ health:
 
 A Docker-based benchmark harness that grades model-generated patches against tests for real software issues collected from GitHub.
 
-![SWE-bench — health radar](../../assets/health/swe-bench.svg)
+![SWE-bench — health radar](../../../assets/health/swe-bench.svg)
 
 ## When to use
 
 You evaluate a coding model or agent and need evidence that it can repair existing repositories, not merely complete isolated functions or satisfy an app-specific prompt rubric. Choose SWE-bench when the deciding requirement is a standardized corpus of real GitHub issues whose candidate patches are applied and graded by repository tests inside reproducible containers.
 
-This fit is narrower than a general model benchmark and heavier than an application regression suite: SWE-bench measures issue-to-patch software engineering, while lm-evaluation-harness focuses on broad language-model tasks and [promptfoo](promptfoo.md) focuses on tests you author for your own LLM application.
+This fit is narrower than a general model benchmark and heavier than an application regression suite: SWE-bench measures issue-to-patch software engineering, while lm-evaluation-harness focuses on broad language-model tasks and [promptfoo](../app-evals/promptfoo.md) focuses on tests you author for your own LLM application.
 
 ## How it works
 
 You choose a SWE-bench dataset, produce one JSONL prediction per task, and give the harness each generated patch. SWE-bench obtains the task metadata, builds or pulls its Docker image, applies the patch to the target repository state, runs the task's test script, and records whether the required tests pass. You own prediction generation, compute capacity, Docker safety, run identifiers, and interpretation of failures; the harness owns task materialization, isolated execution, log capture, and resolved/unresolved reports. The dataset may come from Hugging Face or a local v5 task repository, but the evaluation itself runs on infrastructure you provide unless you opt into a separate cloud path.
 
-![swe-bench — backbone user story](../../assets/flow/swe-bench.svg)
+![swe-bench — backbone user story](../../../assets/flow/swe-bench.svg)
 
 <!-- flow-steps:begin (generated from flows/swe-bench.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -112,7 +112,7 @@ You choose a SWE-bench dataset, produce one JSONL prediction per task, and give 
 ## When NOT to use
 
 - **You need broad few-shot model evaluation across knowledge, reasoning, and language tasks.** Choose lm-evaluation-harness instead; SWE-bench spends substantial compute on repository repair and does not replace a general benchmark battery.
-- **You need regression tests for your own prompt, RAG pipeline, or production agent behavior.** Choose [promptfoo](promptfoo.md) or [DeepEval](deepeval.md); SWE-bench supplies a public coding corpus rather than assertions tied to your application.
+- **You need regression tests for your own prompt, RAG pipeline, or production agent behavior.** Choose [promptfoo](../app-evals/promptfoo.md) or [DeepEval](../app-evals/deepeval.md); SWE-bench supplies a public coding corpus rather than assertions tied to your application.
 - **You need multi-environment agent evaluation beyond software maintenance.** Choose AgentBench; SWE-bench deliberately centers issue-to-patch work in versioned code repositories.
 - **You need terminal tasks that include system administration, data processing, or other shell workflows rather than GitHub issue resolution.** Choose Terminal-Bench; its task boundary is the terminal environment rather than a patch validated against a repository issue.
 - **You cannot provide isolated Docker capacity.** Start with a smaller non-container benchmark or use a separately operated cloud evaluation path; upstream recommends x86_64, 120 GB free storage, 16 GB RAM, and 8 CPU cores for local runs, and calls ARM support experimental.
@@ -122,7 +122,7 @@ You choose a SWE-bench dataset, produce one JSONL prediction per task, and give 
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [promptfoo](promptfoo.md) | ✅ | Choose SWE-bench to compare coding systems on a shared real-issue corpus; choose promptfoo when the release gate must encode your own prompts, providers, assertions, and red-team cases. | SWE-bench adds standardized repository repair and test-based grading at high container cost; promptfoo is lighter and application-specific but does not provide the same coding benchmark. |
+| [promptfoo](../app-evals/promptfoo.md) | ✅ | Choose SWE-bench to compare coding systems on a shared real-issue corpus; choose promptfoo when the release gate must encode your own prompts, providers, assertions, and red-team cases. | SWE-bench adds standardized repository repair and test-based grading at high container cost; promptfoo is lighter and application-specific but does not provide the same coding benchmark. |
 | lm-evaluation-harness | not indexed | Choose SWE-bench when issue-to-patch repository repair is the outcome that matters; choose lm-evaluation-harness when you need broad few-shot evaluation across many conventional language-model tasks. | lm-evaluation-harness offers wider task coverage with lighter examples; SWE-bench provides more realistic software-maintenance environments and much higher execution cost. |
 | AgentBench | not indexed | Choose SWE-bench for coding-agent repair quality measured by repository tests; choose AgentBench when the research question spans agents acting across several interactive environments. | AgentBench broadens agent behaviors and environments; SWE-bench narrows scope to obtain concrete patches and executable software tests. |
 | Terminal-Bench | not indexed | Choose SWE-bench when tasks must originate from real GitHub issues and end in repository patches; choose Terminal-Bench when success should cover complicated terminal work beyond software issue repair. | Terminal-Bench broadens shell-level task variety; SWE-bench ties evaluation to issue context, code history, and project test suites. |

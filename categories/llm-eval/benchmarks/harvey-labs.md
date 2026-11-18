@@ -3,7 +3,7 @@ name: Harvey LAB
 slug: harvey-labs
 repo: https://github.com/harveyai/harvey-labs
 homepage: https://www.harvey.ai/blog/introducing-harveys-legal-agent-benchmark
-category: llm-eval
+category: benchmarks
 tags: [llm-eval, benchmark, legal, agents, llm-as-judge, rubric-grading, podman]
 language: Python
 license: MIT
@@ -78,19 +78,19 @@ health:
 
 You want to know whether an AI agent can do a junior lawyer's actual work — read a 60-document data room and hand back the red-flag memo — but most legal benchmarks only ask one-line questions with a Yes/No answer. Harvey LAB gives the agent a synthetic case file inside a locked, offline container, then has two LLM judges tick a lawyer-written pass/fail checklist against the memo it wrote; one missed item fails the whole task.
 
-![Harvey LAB — health radar](../../assets/health/harvey-labs.svg)
+![Harvey LAB — health radar](../../../assets/health/harvey-labs.svg)
 
 ## When to use
 
 You build or buy legal AI — an in-house legal-tech team choosing between Claude, GPT and Gemini for a diligence assistant, or a researcher who needs to show that an agent change actually helps with long legal assignments. Your current evidence is anecdotes: someone tried "review these contracts" in a chat window and the memo *looked* good, yet nobody checked whether it caught the change-of-control consent buried in document 37. Harvey LAB gives you about 1,660 fixed tasks across 24 practice areas plus contracting, each with its own document folder, a named deliverable (`red-flag-memorandum.docx`, a markup, a motion) and an expert-written rubric of explicit PASS/FAIL criteria — the tutorial task alone has 60 documents and 68 criteria.
 
-Reach for it over LegalBench when the question is "can the agent finish a multi-document assignment and produce a usable file", not "does the model know legal reasoning in isolation"; and over a general framework such as [promptfoo](promptfoo.md) when you want a ready-made legal task corpus with a comparable headline number instead of writing every case and assertion yourself. The deciding tradeoff: you inherit Harvey's tasks, harness, judge pair and all-or-nothing scoring, in exchange for realism that short-form legal datasets do not have.
+Reach for it over LegalBench when the question is "can the agent finish a multi-document assignment and produce a usable file", not "does the model know legal reasoning in isolation"; and over a general framework such as [promptfoo](../app-evals/promptfoo.md) when you want a ready-made legal task corpus with a comparable headline number instead of writing every case and assertion yourself. The deciding tradeoff: you inherit Harvey's tasks, harness, judge pair and all-or-nothing scoring, in exchange for realism that short-form legal datasets do not have.
 
 ## How it works
 
 The repository is two things kept on disk, with no database or web service: a `tasks/` tree (each task is a `task.json` with instructions, deliverable names and rubric criteria, plus a `documents/` folder of synthetic matter files) and the `lab_core` Python package that runs and grades agents. You pick a task and a model; LAB's own harness then runs a tool-calling loop — the model asks for an action, the harness performs it and feeds the result back — with seven tools (`bash`, `read`, `write`, `edit`, `glob`, `grep`, `finish`) inside a Podman container started with no network access, where the documents are mounted read-only and only the `output/` folder is writable. Grading is a separate step you trigger: each criterion is sent, together with only the deliverable files it names, to a Claude judge and a GPT judge, each returns pass or fail with reasoning, and the task scores 1.0 only if every criterion passes (the two judges' results are averaged, so one task scores 0, 0.5 or 1). Think of it as a bar-exam essay graded against a checklist by two examiners, rather than a multiple-choice sheet. You own the API keys, model choice, turn limits and interpretation; LAB owns the case files, sandbox, transcripts, scoring and the HTML report and comparison dashboards.
 
-![harvey-labs — backbone user story](../../assets/flow/harvey-labs.svg)
+![harvey-labs — backbone user story](../../../assets/flow/harvey-labs.svg)
 
 <!-- flow-steps:begin (generated from flows/harvey-labs.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -112,10 +112,10 @@ The repository is two things kept on disk, with no database or web service: a `t
 
 - **You want a cheap, quick read on a model's legal reasoning, not a long agent run.** Use LegalBench (not indexed) instead: its 162 short input/output tasks (hearsay, rule QA, definition extraction) score by matching expected answers, while one LAB task means an agent run of many turns plus dozens of judge calls per criterion set.
 - **You are evaluating a coding agent or code patches.** Use [SWE-bench](swe-bench.md): its grading is executable repository tests, whereas LAB's tasks are legal documents and its grading is LLM judgment.
-- **You need regression tests for your own legal product's prompts, retrieval, or house style.** Use [promptfoo](promptfoo.md) or a framework such as Inspect AI (not indexed) and write cases from your own (sanitised) matters; LAB's corpus is fixed, synthetic and Harvey-authored, so a high LAB score says little about your firm's precedents or your RAG pipeline. You *can* add tasks in LAB's `task.json` format, but then you maintain a fork of a 2 GB repo.
+- **You need regression tests for your own legal product's prompts, retrieval, or house style.** Use [promptfoo](../app-evals/promptfoo.md) or a framework such as Inspect AI (not indexed) and write cases from your own (sanitised) matters; LAB's corpus is fixed, synthetic and Harvey-authored, so a high LAB score says little about your firm's precedents or your RAG pipeline. You *can* add tasks in LAB's `task.json` format, but then you maintain a fork of a 2 GB repo.
 - **Your agent is a product with its own tools and retrieval, not a bare model API.** LAB's harness drives models through its own adapters (Anthropic, OpenAI, Google, Mistral, Fireworks) and its own seven tools. To test a different agent you either write a `ModelAdapter` or drop your agent's deliverables into `results/<run-id>/output/` and run only the grader — the evaluator only requires that the run directory exist [推断: read from `run_eval.py`, not run]. If you need a harness designed around plugging in arbitrary agents, Inspect AI is the more general choice.
 - **You need deterministic, judge-free scores or an official leaderboard.** Every score here is an LLM verdict: by default `claude-sonnet-4-6` plus `gpt-5.5`, so both an Anthropic and an OpenAI key are required and every re-grade costs API money. Judge-vs-answer variance is still an open question upstream (issue #158, 2026-09-04), and the repository ships no hosted leaderboard. If you need exact-match grading, use LegalBench-style tasks.
-- **You cannot run containers or fetch a multi-gigabyte repository.** Every run executes in a Podman sandbox (macOS needs a Podman machine; Windows needs Windows 11 + WSL2), and the GitHub-reported repository size is about 2.1 GB of plain git blobs with no Git LFS. In a locked-down CI runner without Podman, a lighter framework such as [promptfoo](promptfoo.md) is the practical choice.
+- **You cannot run containers or fetch a multi-gigabyte repository.** Every run executes in a Podman sandbox (macOS needs a Podman machine; Windows needs Windows 11 + WSL2), and the GitHub-reported repository size is about 2.1 GB of plain git blobs with no Git LFS. In a locked-down CI runner without Podman, a lighter framework such as [promptfoo](../app-evals/promptfoo.md) is the practical choice.
 - **You will compare numbers produced at different commits or by other people.** Task rubrics are still being corrected (open reports that criteria in #149, #152 and #165 are unsatisfiable from the provided documents), and harness changes such as the 2026-09-03 `finish` tool made earlier results "not directly comparable" by the project's own CHANGELOG. Pin a commit and read `CHANGELOG.md` before citing any comparison.
 
 ## Comparison
@@ -126,7 +126,7 @@ The repository is two things kept on disk, with no database or web service: a `t
 | LegalBench | not indexed | Pick LegalBench for fast, reproducible measurement of short legal reasoning skills; pick Harvey LAB when you need to test an agent working through a whole matter file end to end. | LegalBench is exact-answer and cheap per item but single-turn; LAB is long-horizon and realistic but slow and judge-dependent. Not added in this tab-intake batch. |
 | BigLaw Bench (`harveyai/biglaw-bench`) | not indexed | Treat BigLaw Bench as Harvey's earlier benchmark description with sample tasks; pick Harvey LAB when you want the runnable harness, sandbox and full task corpus. | BigLaw Bench documents core, workflow and retrieval task families but its README describes them rather than shipping a comparable execution harness [推断]; LAB is the runnable successor. Not added in this tab-intake batch. |
 | Inspect AI | not indexed | Pick Inspect AI when you need a general evaluation framework to build your own agent evals with custom solvers and scorers; pick Harvey LAB when you want a ready legal task set and do not want to author it. | Inspect AI gives full flexibility and many built-in evals but no legal corpus of this depth; LAB gives the corpus but a fixed harness shape. Not added in this tab-intake batch. |
-| [promptfoo](promptfoo.md) | ✅ | Pick promptfoo to gate your own legal app's prompts and outputs in CI with assertions you write; pick Harvey LAB to benchmark models or agents on a shared, externally authored legal corpus. | promptfoo is lightweight and app-specific with no legal tasks built in; LAB brings 1,600+ tasks but requires Podman, two judge keys and long runs. |
+| [promptfoo](../app-evals/promptfoo.md) | ✅ | Pick promptfoo to gate your own legal app's prompts and outputs in CI with assertions you write; pick Harvey LAB to benchmark models or agents on a shared, externally authored legal corpus. | promptfoo is lightweight and app-specific with no legal tasks built in; LAB brings 1,600+ tasks but requires Podman, two judge keys and long runs. |
 
 ## Tech stack
 

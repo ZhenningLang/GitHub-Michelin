@@ -3,7 +3,7 @@ name: g-harness-evals
 slug: g-harness-evals
 aka: harness-evals
 repo: https://github.com/garrytan/g-harness-evals
-category: llm-eval
+category: benchmarks
 tags: [llm-eval, benchmark, agent-harness, coding-agents, cost-per-solve, preregistration, reproducibility, multi-user-agents]
 language: TypeScript
 license: MIT (code) + CC-BY-4.0 (reports, findings, docs, data)
@@ -76,7 +76,7 @@ health:
 
 You are about to standardize on Claude Code, Codex, OpenClaw, Hermes Agent or Pi for a team, and every comparison you find mixes models, tasks and prices, so you cannot tell whether the wrapper or the model made the difference. This repository holds the model fixed, swaps only the harness — the program around the model — and publishes pass rate and cost per solved task with every trial record, so you can recheck the ranking yourself.
 
-![g-harness-evals — health radar](../../assets/health/g-harness-evals.svg)
+![g-harness-evals — health radar](../../../assets/health/g-harness-evals.svg)
 
 ## When to use
 
@@ -86,7 +86,7 @@ Pick it over a model leaderboard such as [SWE-bench](swe-bench.md) when the deci
 
 ## When NOT to use
 
-- **You want to test your own agent, prompts or app in CI.** Use [promptfoo](promptfoo.md) and write your own cases. harness-evals ranks off-the-shelf harnesses on its fixed tasks, and adding a harness requires the adapter contract plus Docker image and a preregistration; it is not a test runner for your product.
+- **You want to test your own agent, prompts or app in CI.** Use [promptfoo](../app-evals/promptfoo.md) and write your own cases. harness-evals ranks off-the-shelf harnesses on its fixed tasks, and adding a harness requires the adapter contract plus Docker image and a preregistration; it is not a test runner for your product.
 - **You are choosing a model, not a harness.** Use [SWE-bench](swe-bench.md) or a model leaderboard. Here the model stays fixed (Opus 5.5 or GPT-6.1 Sol) and the README never compares Claude Code with Codex, because they cannot run the same model.
 - **You need Terminal-Bench scores for an agent of your own.** Use Harbor (not indexed), the runner these coding cells used for Terminal-Bench 2.1. harness-evals adds metering, preregistration and ranking on top, but only for the harness pins that the author registered.
 - **You will act on results for different versions, harder tasks or another model.** Every number applies to pinned releases (for example OpenClaw 2026.10.6 and Pi 1.5.0). The ranked task sets are public "dev" tasks that the author could see while building. On the multi-user set, 14 of 20 tasks scored the same in every cell, so pass-rate gaps under 7.7–14.2 points can hide. Run your own work through a cost-per-solve comparison before standardizing.
@@ -102,13 +102,13 @@ Pick it over a model leaderboard such as [SWE-bench](swe-bench.md) when the deci
 | Harbor (`harbor-framework/harbor`) | not indexed | Choose Harbor to run Terminal-Bench-style tasks against your own agent; choose harness-evals to read preregistered, cost-ranked results for the harnesses it already pinned. | Harbor is a general runner that you operate; harness-evals is one study built partly on it, with adapters, a proxy and statistics you would have to rebuild. Not added in this tab batch. |
 | Inspect AI (`UKGovernmentBEIS/inspect_ai`) | not indexed | Choose Inspect AI when you must author your own agent evaluations with custom solvers and scorers; choose harness-evals when the question is already "which off-the-shelf harness costs least per solve". | Inspect AI gives full flexibility and an active framework, but no harness pins or published cost ranking; harness-evals gives the ranking but little reuse outside its own experiments. Not added in this tab batch. |
 | gbrain-evals (`garrytan/gbrain-evals`) | not indexed | Choose gbrain-evals to evaluate agent memory systems on its simulated company; choose harness-evals to compare the harnesses that drive a model inside that company. | Same author and world data. gbrain-evals focuses on memory retrieval, while harness-evals reuses its statistics kit, proxy and ledger for harness comparisons. Not added in this tab batch. |
-| [promptfoo](promptfoo.md) | ✅ | Choose promptfoo to gate your own prompts and agent outputs in CI; choose harness-evals to decide which agent harness to adopt before you write those tests. | promptfoo is lightweight and runs on your cases; harness-evals is a heavy, fixed study whose results do not cover your workload. |
+| [promptfoo](../app-evals/promptfoo.md) | ✅ | Choose promptfoo to gate your own prompts and agent outputs in CI; choose harness-evals to decide which agent harness to adopt before you write those tests. | promptfoo is lightweight and runs on your cases; harness-evals is a heavy, fixed study whose results do not cover your workload. |
 
 ## Quick start
 
 To check the published numbers without an API key, install [Bun](https://bun.sh/) and git, clone `https://github.com/garrytan/g-harness-evals.git`, and run `bun install --frozen-lockfile`. `bun scripts/scoreboard/build.ts --check` rebuilds the README ranking tables from committed results, and `bun run verify` replays every published run's analysis — the scripts that turn raw trials into tables — on its committed receipts in a scratch copy. Each command exits non-zero if a published number differs. The full keyless test suite (`bun test tests/`) takes about 25 minutes on a 4-core machine. Paid replication is a separate tool. `bun scripts/replicate.ts` with your key and a hard `--max-usd` cap reruns one registered held-out cell, then prints `WITHIN BAND`, `OUTSIDE BAND`, `NO BAND` or `INCOMPLETE`. You supply the machine, the provider key and the judgment about whether these tasks resemble your work; the project supplies tasks, pinned harness images, metering, grading and the statistics. None of these commands were executed for this page.
 
-![g-harness-evals — backbone user story](../../assets/flow/g-harness-evals.svg)
+![g-harness-evals — backbone user story](../../../assets/flow/g-harness-evals.svg)
 
 <!-- flow-steps:begin (generated from flows/g-harness-evals.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -127,7 +127,7 @@ To check the published numbers without an API key, install [Bun](https://bun.sh/
 
 ## Key techniques
 
-![g-harness-evals — mechanism diagram](../../assets/mechanism/g-harness-evals.svg)
+![g-harness-evals — mechanism diagram](../../../assets/mechanism/g-harness-evals.svg)
 
 <!-- mechanism:begin (generated from mechanisms/g-harness-evals.json by tools/mechanism_card.py; do not edit) -->
 <details>

@@ -109,7 +109,7 @@ RRSI 是套在你 agent 外面的一个搜索循环，分工很清楚：你提�
 ## 何时不用
 
 - **你用不了 Google Vertex AI 上的 Claude。** 提议者、分析者、评审三个角色直接调用 `AnthropicVertex`（`rrsi/llm.py`），没设 `RRSI_VERTEX_PROJECTS` 就无法启动；搜索角色没有 OpenAI、Anthropic 直连或本地模型的路径（只有被冻结的*策略*模型是 LiteLLM 模型串）。模型在别处的话，用 GEPA 或 [SkillOpt](../../agent-frameworks/workflow-builders/skillopt.zh.md)，它们支持多种后端。
-- **你还没有能打分的任务集。** 每个决定都靠多次试验的实测通过率；没有基准、没有 Domain 适配器（任务划分、`run`、`score`、轨迹读取、泄题模式），就完全没有信号。先把评测搭起来——提示词和 agent 测试集用 [promptfoo](../../llm-eval/promptfoo.zh.md)——能给 harness 打分了再来。
+- **你还没有能打分的任务集。** 每个决定都靠多次试验的实测通过率；没有基准、没有 Domain 适配器（任务划分、`run`、`score`、轨迹读取、泄题模式），就完全没有信号。先把评测搭起来——提示词和 agent 测试集用 [promptfoo](../../llm-eval/app-evals/promptfoo.zh.md)——能给 harness 打分了再来。
 - **你的预算只有几美元。** 仓库自带的 coding 配置每轮要把 2 个候选各在 89 个任务 × 2 次试验上跑一遍，共 20 轮，外加一次基线——在算上提议者和评审的调用之前，就已是约 7000 次完整的 Claude Opus agent 运行 [推断：由 `domains/coding/rrsi.json` 的 T、k、m 与任务数相乘得出，未实际计费]。只想便宜地先调一份提示词，[DSPy](../../agent-frameworks/workflow-builders/dspy.zh.md) 的优化器或 SkillOpt 在小开发集上跑，成本低几个数量级。
 - **你只需要调一份提示词或 skill 文档。** RRSI 的那套机制（git worktree、组件标签、对工具、记忆、子 agent 的新颖度奖励）在改动对象是 harness *代码*时才值回票价。单份文本用 SkillOpt 的有界文本编辑或 DSPy 的提示词编译更简单，也不绑云厂商。
 - **你想让模型本身变强。** RRSI 从不碰权重，只改冻结模型外面那层脚手架。要用强化学习训练 agent 的策略模型，选 [Agent Lightning](../../llm-training/agent-lightning.zh.md) 或 ART。

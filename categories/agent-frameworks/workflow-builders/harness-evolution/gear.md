@@ -78,7 +78,7 @@ Choose it over DSPy when the editable object is an existing agent's resource bun
 
 ## When NOT to use
 
-- **You only need a release regression check.** Use [promptfoo](../../../llm-eval/promptfoo.md) with reviewed changes. Gear adds an autonomous editor, repeated task execution and model spending, not just assertions in CI.
+- **You only need a release regression check.** Use [promptfoo](../../../llm-eval/app-evals/promptfoo.md) with reviewed changes. Gear adds an autonomous editor, repeated task execution and model spending, not just assertions in CI.
 - **You want a small typed Python extraction pipeline.** Use [DSPy](../dspy.md). Gear's separate Meta and Target profiles, candidate resources and evaluation runtime are extra machinery for that problem.
 - **You want to compare many adapter-learning methods under one host-export interface.** Consider [Hermit](hermit.md). Gear's current native target resource contracts are DSH and Pi; host skill installation is a different surface from native target adaptation.
 - **You expect automatic model training or task invention to be finished.** Start with DSPy's supported optimization path for a model program. Gear's README explicitly calls model training experimental and the full joint loop and automatic seed-task generation unfinished.
@@ -90,7 +90,7 @@ Choose it over DSPy when the editable object is an existing agent's resource bun
 |---|---|---|---|
 | [DSPy](../dspy.md) | ✅ | Pick DSPy for a typed Python model pipeline; pick Gear to evolve a sealed bundle of agent tools and instructions. | DSPy owns program and prompt abstractions; Gear adds target adapters, execution identities and a durable candidate/evidence lifecycle. |
 | [Hermit](hermit.md) | ✅ | Pick Hermit to compare multiple external adapter learners and export host files; pick Gear when the runtime must enforce frozen budgets and a final evidence gate. | Hermit's structure checks are not a universal score gate; Gear requires comparable seed gains and, in holdout mode, independent final checks. |
-| [promptfoo](../../../llm-eval/promptfoo.md) | ✅ | Pick promptfoo when a human supplies changes and CI decides whether they regress; pick Gear when the experiment itself must propose candidates. | A regression matrix is simpler to operate; search adds evaluation cost, mutation boundaries and recovery state. |
+| [promptfoo](../../../llm-eval/app-evals/promptfoo.md) | ✅ | Pick promptfoo when a human supplies changes and CI decides whether they regress; pick Gear when the experiment itself must propose candidates. | A regression matrix is simpler to operate; search adds evaluation cost, mutation boundaries and recovery state. |
 
 ## Quick start
 

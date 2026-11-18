@@ -2,7 +2,7 @@
 name: chatgpt-comparison-detection
 slug: chatgpt-comparison-detection
 repo: https://github.com/Hello-SimpleAI/chatgpt-comparison-detection
-category: llm-eval
+category: benchmarks
 tags: [llm-eval, ai-text-detection, dataset, detector]
 language: Python
 license: NOASSERTION
@@ -70,7 +70,7 @@ health:
 
 You need human and early ChatGPT answers to the same questions, not unrelated text samples; HC3 supplies bilingual comparison data and detector-training scripts.
 
-![chatgpt-comparison-detection — health radar](../../assets/health/chatgpt-comparison-detection.svg)
+![chatgpt-comparison-detection — health radar](../../../assets/health/chatgpt-comparison-detection.svg)
 
 ## When to use
 
@@ -98,7 +98,7 @@ The corpus, model links and research scripts are separate artifacts. The reposit
 
 Use the corpus path first: open the English or Chinese dataset links in [README.md:22–32](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/README.md#L22-L32), and check the source-specific permissions before downloading. For the paper's prepared training/test data, follow [HC3/README.md:26–33](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/HC3/README.md#L26-L33) and select one language plus full-answer or sentence data, with or without identifying-phrase filtering. Read the corresponding human/generated answer examples and keep the chosen split fixed when comparing your detector. HC3 supplies the comparison material and research baselines; you implement evaluation, check false positives and retain provenance and permission records. Dataset access uses external Hugging Face, ModelScope or Drive services; this reading path does not call a paid model, while later local training requires your compute and separate model-permission review.
 
-![chatgpt-comparison-detection — backbone user story](../../assets/flow/chatgpt-comparison-detection.svg)
+![chatgpt-comparison-detection — backbone user story](../../../assets/flow/chatgpt-comparison-detection.svg)
 
 <!-- flow-steps:begin (generated from flows/chatgpt-comparison-detection.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -116,7 +116,7 @@ Use the corpus path first: open the English or Chinese dataset links in [README.
 
 ## Key techniques
 
-![chatgpt-comparison-detection — mechanism diagram](../../assets/mechanism/chatgpt-comparison-detection.svg)
+![chatgpt-comparison-detection — mechanism diagram](../../../assets/mechanism/chatgpt-comparison-detection.svg)
 
 <!-- mechanism:begin (generated from mechanisms/chatgpt-comparison-detection.json by tools/mechanism_card.py; do not edit) -->
 <details>

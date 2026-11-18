@@ -117,7 +117,7 @@ health:
 - **你要的是拦在实时工具调用前面的闸门。** 这是一个清点加报告的扫描器。v0.2 时期的 `mcp-scan proxy` 运行时护栏模式已不在命令行的命令列表里，`guard` 钩子只能配合 Snyk 租户使用。要开源的运行时策略执行，用 [agent-governance-toolkit](agent-governance-toolkit.zh.md)。
 - **要扫的配置不可信，而你又没有沙箱。** 扫描会*执行* stdio 类 MCP 服务的启动命令来获取工具列表——扫描器自己就可能把你要找的恶意程序跑起来。README 要求对第三方配置在容器或虚拟机里运行；做不到的话，只传 skill 路径（例如 `~/.claude/skills`），这样不会启动任何服务，或改用 SkillSpector 这类从不执行目标的静态扫描器。
 - **你需要稳定的 CI 契约。** README 明说风险名、分数、JSON 字段和响应结构“属于实验性质，可能不经通知就变”，整条 v0.5.x 问题码产品线也计划废弃。`--ci` 还强制要求 `--dangerously-run-mcp-servers`。要输出 SARIF、退出码有文档保证的闸门，用 SkillSpector 或 Cisco skill-scanner。
-- **你打算扫一个注册表或成千上万个 skill。** 公共接口有每日用量上限，README 把通过它做大规模扫描称为“滥用”，会封号；批量使用需要商业协议。自托管的扫描器（[AI-Infra-Guard](../llm-eval/ai-infra-guard.zh.md)、SkillSpector）没有这种上限。
+- **你打算扫一个注册表或成千上万个 skill。** 公共接口有每日用量上限，README 把通过它做大规模扫描称为“滥用”，会封号；批量使用需要商业协议。自托管的扫描器（[AI-Infra-Guard](../llm-eval/security-audits/ai-infra-guard.zh.md)、SkillSpector）没有这种上限。
 - **编译后的 Python 载荷在你的威胁模型里。** 未关闭的 issue #421 和 #462（2026-08、2026-09）报告 `.pyc`／`__pycache__` 文件会被忽略，把载荷藏在字节码里的 skill 会被报告为安全。请搭配能检查二进制的扫描器，或人工审查。
 - **你指望自己给上游修 bug。** 仓库不接受外部贡献；遇到误报或缺少某个 agent 路径，只能提 issue 然后等。需要自己改检测逻辑时，选接受 PR 的扫描器（SkillSpector、AI-Infra-Guard）。
 
@@ -126,7 +126,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [SkillSpector](skillspector.zh.md) | ✅ | 安装前给单个 skill 把关，并且需要本地、可检查的规则和 SARIF 时选 SkillSpector；先得搞清楚多个 agent 里已经装了什么，并能接受托管判定时选 Agent Scan。 | SkillSpector 从不执行目标，可以完全断网运行，但只扫你指给它的东西，也不查询运行中的 MCP 服务；Agent Scan 能发现全部并读到真实的工具描述，代价是 Snyk 账号、数据外传和闭源检测器。 |
-| [AI-Infra-Guard](../llm-eval/ai-infra-guard.zh.md) | ✅ | 审计范围是整套自托管 AI 资产（带 CVE 的模型服务、MCP 仓库、skill、越狱测试），并且愿意部署一个平台时选 AI-Infra-Guard；只想一条命令检查开发者笔记本时选 Agent Scan。 | A.I.G 自托管、覆盖面更宽，但要两个容器加一个 LLM 密钥，审计的是 MCP 的*源码仓库*；Agent Scan 不用部署任何东西，检查的是*已配置、在运行*的服务，分析由 Snyk 完成。 |
+| [AI-Infra-Guard](../llm-eval/security-audits/ai-infra-guard.zh.md) | ✅ | 审计范围是整套自托管 AI 资产（带 CVE 的模型服务、MCP 仓库、skill、越狱测试），并且愿意部署一个平台时选 AI-Infra-Guard；只想一条命令检查开发者笔记本时选 Agent Scan。 | A.I.G 自托管、覆盖面更宽，但要两个容器加一个 LLM 密钥，审计的是 MCP 的*源码仓库*；Agent Scan 不用部署任何东西，检查的是*已配置、在运行*的服务，分析由 Snyk 完成。 |
 | [agent-governance-toolkit](agent-governance-toolkit.zh.md) | ✅ | 要求在 agent 运行时拦截或审计工具调用时选 AGT；想在运行之前或两次运行之间弄清哪些已装组件有风险时选 Agent Scan。 | AGT 在运行时执行策略，但必须接进你的 agent 框架；Agent Scan 不往 agent 里装任何东西，因此也拦不住任何东西——它只报告。 |
 | cisco-ai-defense/skill-scanner | 未收录 | 想要开放的规则集（YARA-X、AST 与数据流、可选 LLM 裁判）、公开的召回率与误报率数字，以及给 CI 用的 SARIF 时选 Cisco skill-scanner；想要整机发现、不维护任何规则时选 Agent Scan。 | Cisco 的扫描器自己公布了并不高的实测召回（仅靠规则，在一个恶意样本基准上以 HIGH 级别抓到 7.7%），并允许你调策略；Agent Scan 不公布准确率，也不公开规则，但不用任何配置。Apache-2.0，约 2.6 千星（2026-10）；本批未收录。 |
 | [Cisco MCP Scanner](mcp-scanner.zh.md) | ✅ | MCP 服务必须离线检查，或在 CI 里对预先生成的 JSON 检查，并且要用自己掌控的 YARA 规则、可选的源码与依赖扫描时选 Cisco mcp-scanner；更看重一次跑完、自动发现各 agent 和 skill 时选 Agent Scan。 | mcp-scanner 的各种 API key 都是可选的，还有静态离线模式，但只能自动发现四种客户端的配置，而且不覆盖 skill；Agent Scan 在 14 种 agent 上两样都覆盖，但离不开 Snyk 的服务。Apache-2.0，约 1.1 千星（2026-10）。 |

@@ -3,7 +3,7 @@ name: AI-Infra-Guard
 slug: ai-infra-guard
 repo: https://github.com/Tencent/AI-Infra-Guard
 homepage: https://tencent.github.io/AI-Infra-Guard/
-category: llm-eval
+category: security-audits
 tags: [ai-security, red-teaming, vulnerability-scanning, mcp-security, agent-security, jailbreak-eval, cve-scan]
 language: Python
 license: Apache-2.0
@@ -79,7 +79,7 @@ health:
 
 Your AI stack grew by accretion — a vLLM here, an Ollama there, MCP servers and agent skills pulled from strangers' repos — and nobody can say which known CVEs or malicious instructions are sitting inside it. AI-Infra-Guard (A.I.G) is Tencent Zhuque Lab's self-hosted AI red-teaming platform: point it at a live AI service, an MCP repository, or a skill directory and it fingerprints the component, matches a 2,000+ rule CVE library, and runs LLM-driven audits, with results in one web UI.
 
-![ai-infra-guard — health radar](../../assets/health/ai-infra-guard.svg)
+![ai-infra-guard — health radar](../../../assets/health/ai-infra-guard.svg)
 
 ## When to use
 
@@ -99,7 +99,7 @@ A.I.G is the reach-for when the audit surface is the *whole AI asset inventory*,
 
 The deployment is two containers, not a fleet: a Go webserver holding the web UI, API, and a SQLite task database, plus an agent container that executes scans — it bundles nmap and a headless Chromium, which is why the Compose file grants it `SYS_ADMIN` and `seccomp:unconfined`. The CVE scan needs no model: fingerprint rules and vulnerability rules are local YAML under `data/fingerprints/` and `data/vuln/`, so it works against an offline rule snapshot. The other half of the platform is LLM-driven: MCP-server, skill, and agent scans run multi-stage audits (info collection, code audit, vulnerability review) through an LLM endpoint you configure — by default the skill-scan CLI points at OpenRouter, so set `LLM_API_KEY` and a base URL your data policy allows before scanning proprietary code. The jailbreak evaluator likewise attacks whatever model endpoint you register in Settings. One boundary matters: there is **no authentication** — upstream says the platform is for internal use and must not be exposed on a public network. If you only need the skill audit, skip the platform entirely: `pip install aig-skill-scan` runs the same pipeline as a standalone CLI with SARIF output for CI.
 
-![ai-infra-guard — backbone user story](../../assets/flow/ai-infra-guard.svg)
+![ai-infra-guard — backbone user story](../../../assets/flow/ai-infra-guard.svg)
 
 <!-- flow-steps:begin (generated from flows/ai-infra-guard.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -119,7 +119,7 @@ The deployment is two containers, not a fleet: a Go webserver holding the web UI
 
 ## When NOT to use
 
-- **You want a CI gate on your own LLM app's prompts and outputs.** A.I.G has no assertion/test-case model for app regressions — use [promptfoo](promptfoo.md) (YAML evals plus `redteam` in CI) or [DeepEval](deepeval.md) for that; A.I.G audits infrastructure and assets, not your app's behavior on a test suite.
+- **You want a CI gate on your own LLM app's prompts and outputs.** A.I.G has no assertion/test-case model for app regressions — use [promptfoo](../app-evals/promptfoo.md) (YAML evals plus `redteam` in CI) or [DeepEval](../app-evals/deepeval.md) for that; A.I.G audits infrastructure and assets, not your app's behavior on a test suite.
 - **You only need to red-team one model endpoint from a Python script.** Use [garak](garak.md) or PyRIT: both run probe modules against an endpoint without deploying a two-container platform. A.I.G's jailbreak evaluation overlaps them, but standing up the platform for that alone is overweight.
 - **You need attacks blocked at runtime, in production.** A.I.G is an offline scanner; nothing sits in the request path. For inline guardrails (input/output filtering on live traffic) look at NeMo Guardrails instead.
 - **You want to give a team access over the network.** There is no built-in auth, RBAC, or audit log for multi-user use, and upstream explicitly warns against public deployment. Either front it with your own SSO/VPN, or look at the hosted Pro version (aigsec.ai) — but that is a separate commercial offering, not this repo.
@@ -132,8 +132,8 @@ The deployment is two containers, not a fleet: a Go webserver holding the web UI
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [garak](garak.md) | ✅ | Choose garak when the target is a single model endpoint and you want scriptable probe modules in Python/CI; choose A.I.G when the audit must cover the whole self-hosted stack — service CVEs, MCP servers, and skills — from one UI. | garak is a CLI with nothing to operate but only sees the model; A.I.G sees the infrastructure around the model, at the cost of a Docker deployment and an LLM key for half its scans. |
-| [promptfoo](promptfoo.md) | ✅ | Choose promptfoo to gate releases of your own LLM app with YAML assertions and red-team probes in CI; choose A.I.G for periodic security self-examination of the infrastructure and third-party agent assets around the app. | promptfoo is a local-first CLI with an assertion model but no asset inventory or CVE matching; A.I.G keeps a persistent report database and UI but has no app-regression test model. |
-| [Giskard](giskard.md) | ✅ | Choose Giskard for scenario tests and generated red-team scans of LLM-agent behavior inside a Python dev loop; choose A.I.G when the question is "what known CVEs and malicious skills sit on our infra" rather than "does the model behave badly". | Giskard tests app/agent behavior and integrates with Python workflows (v3, a 2026 rewrite, is agent-focused and needs Python ≥ 3.12); A.I.G fingerprints deployed services and audits supply-chain assets, which Giskard does not cover. |
+| [promptfoo](../app-evals/promptfoo.md) | ✅ | Choose promptfoo to gate releases of your own LLM app with YAML assertions and red-team probes in CI; choose A.I.G for periodic security self-examination of the infrastructure and third-party agent assets around the app. | promptfoo is a local-first CLI with an assertion model but no asset inventory or CVE matching; A.I.G keeps a persistent report database and UI but has no app-regression test model. |
+| [Giskard](../app-evals/giskard.md) | ✅ | Choose Giskard for scenario tests and generated red-team scans of LLM-agent behavior inside a Python dev loop; choose A.I.G when the question is "what known CVEs and malicious skills sit on our infra" rather than "does the model behave badly". | Giskard tests app/agent behavior and integrates with Python workflows (v3, a 2026 rewrite, is agent-focused and needs Python ≥ 3.12); A.I.G fingerprints deployed services and audits supply-chain assets, which Giskard does not cover. |
 | PyRIT | 未收录 | Choose PyRIT (Microsoft's Python Risk Identification Toolkit) when you want to compose multi-turn jailbreak campaigns in code; A.I.G bundles comparable attacks (PAIR, GOAT, ActorAttack) behind a UI but is a platform, not a programming toolkit. | Left unindexed in this batch (scope kept to one page; recorded as backlog). PyRIT gives library-level flexibility and orchestration primitives; it has no infra CVE scanning, no web UI, and no report management. |
 | mcp-scan (Invariant Labs) | 未收录 | Choose it for a fast MCP-only configuration and tool-pinning check without deploying anything; choose A.I.G when MCP scanning is one item on a longer AI-asset audit list. | Left unindexed in this batch (same backlog note). mcp-scan is a single-purpose CLI — minutes to run, nothing to operate; A.I.G's MCP scan is LLM-driven and platform-integrated, so it costs a deployment plus an API key. |
 

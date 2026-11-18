@@ -2,7 +2,7 @@
 name: Giskard OSS
 slug: giskard
 repo: https://github.com/Giskard-AI/giskard-oss
-category: llm-eval
+category: app-evals
 tags: [llm-eval, testing, red-teaming, rag-evaluation, giskard, library]
 language: Python
 license: Apache-2.0
@@ -83,7 +83,7 @@ health:
 
 你的客服 agent 演示时好好的，上线后却告诉用户“退货期 60 天”（政策写的是 30 天），或者照着客户邮件里藏的一句“忽略你之前的指令”去做，你要等用户截图才知道。Giskard 把这些故障写成 Python 测试：场景里的检查可以请一个大模型当裁判（“这个回答有没有原文依据？”），它的扫描器还能根据一句话的 agent 描述替你编出攻击提示词。
 
-![Giskard OSS — 健康度雷达](../../assets/health/giskard.zh.svg)
+![Giskard OSS — 健康度雷达](../../../assets/health/giskard.zh.svg)
 
 ## 何时使用
 
@@ -95,7 +95,7 @@ Giskard v3 在 Python 里同时给你这两样。在 `giskard-checks` 里，你�
 
 Giskard v3 是一组小的 Python 包：`giskard-checks` 用来写测试，`giskard-scan` 负责生成攻击和 RAG 质量测试集，两者都建在 `giskard-llm` 上——一个不绑定厂商的大模型客户端（同一套接口接 OpenAI、Anthropic、Google、Azure，或任何 LiteLLM 能接的服务）。你的系统叫“目标”（target）：任何接收输入、返回输出的函数都行。“场景”（scenario）是一串交互加一组检查；Giskard 调用你的函数，把这次往来记成一条“轨迹”（trace，即进去了什么、出来了什么的记录），再逐条按检查打分。确定性检查在本地跑；“大模型当裁判”的检查会用你的 API key 把轨迹交给第二个模型去评分（默认 `openai/gpt-4o-mini`），就像老师拿着课本那一页批改作文。Giskard 替你做的：跑场景、记录、评判、出报告，扫描时还替你想攻击提示词。你要做的：包装 agent，写场景、规则和参考上下文，承担裁判调用的费用，并决定哪些失败要挡住发版。
 
-![giskard — 主干用户故事](../../assets/flow/giskard.zh.svg)
+![giskard — 主干用户故事](../../../assets/flow/giskard.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/giskard.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -119,7 +119,7 @@ Giskard v3 是一组小的 Python 包：`giskard-checks` 用来写测试，`gisk
 - **你的 Python 低于 3.12。** v3 要求 `>=3.12`。升级不了就用 [promptfoo](promptfoo.zh.md)，它是 Node CLI，不进你的 Python 环境。
 - **你要的是生产链路追踪、看板和线上流量的趋势历史。** Giskard 只跑测试，不是可观测性后端。用 [Langfuse](langfuse.zh.md) 记录并给真实流量打分，Giskard 留给发版前的测试集。
 - **测试集应该是不懂 Python 的评审也能改的声明式配置，在 CI 里按 prompt × provider 矩阵跑。** 那是 [promptfoo](promptfoo.zh.md) 的形态；Giskard 的场景是 Python 代码。
-- **你要的是对模型端点覆盖面最广的攻击库，与应用代码无关。** 用 [garak](garak.zh.md)；Giskard 甚至可以把它当可选扫描后端调用（`giskard[garak]`），但探针的广度在 garak 那边。
+- **你要的是对模型端点覆盖面最广的攻击库，与应用代码无关。** 用 [garak](../security-audits/garak.zh.md)；Giskard 甚至可以把它当可选扫描后端调用（`giskard[garak]`），但探针的广度在 garak 那边。
 - **你手上有 v2 代码（`giskard.scan`、`giskard.Model`、RAGET 的 `generate_testset`）。** v3 是重写而不是升级：API 变了，v3.0.0 在 2026-08-26 才正式发布，元包的分类标记仍是“Development Status :: 4 - Beta”。要么锁版本并预留迁移工作量，要么在需要一套没被推倒重来过的 API 时留在 [DeepEval](deepeval.zh.md)。
 - **提示词不能出你的网络。** 裁判检查和扫描生成器都要调用大模型服务；没有它，你只剩确定性检查。理论上可以通过 `litellm` 扩展把裁判指向自托管模型，但裁判质量就取决于那个模型了。
 
@@ -129,7 +129,7 @@ Giskard v3 是一组小的 Python 包：`giskard-checks` 用来写测试，`gisk
 |---|---|---|---|
 | [DeepEval](deepeval.zh.md) | ✅ | 想要贴合 pytest 写法、API 稳定得更久的指标套件，选 DeepEval；想在同一组 Python 包里拿到 agent 场景测试和自动生成的红队扫描，选 Giskard。 | DeepEval 让评测保持 pytest 的习惯写法；Giskard 的 v3 API 更年轻（2026-08 才正式发布），但把多轮场景和 `vulnerability_scan` 打包在一起。 |
 | [promptfoo](promptfoo.zh.md) | ✅ | 评测应该是声明式 YAML、在 CI 里跨多家 provider 当闸门跑，选 promptfoo；测试必须作为代码直接调用你的 Python agent，选 Giskard。 | promptfoo 以配置为先、与语言无关（Node CLI）；Giskard 以代码为先，且要求 Python 3.12+。 |
-| [garak](garak.zh.md) | ✅ | 要对模型端点覆盖尽量多的已知攻击，选 garak；要针对你 agent 的职责描述生成攻击、并和功能测试放在一起跑，选 Giskard。 | garak 的探针库更广；Giskard 的探针更贴合场景，但依赖一个大模型生成器及其质量。 |
+| [garak](../security-audits/garak.zh.md) | ✅ | 要对模型端点覆盖尽量多的已知攻击，选 garak；要针对你 agent 的职责描述生成攻击、并和功能测试放在一起跑，选 Giskard。 | garak 的探针库更广；Giskard 的探针更贴合场景，但依赖一个大模型生成器及其质量。 |
 | [Ragas](ragas.zh.md) | ✅ | 任务是在数据集上算 RAG 指标（忠实度、上下文精确率），选 Ragas；RAG 质量只是 agent 测试的一部分、还要做安全扫描，选 Giskard。 | Ragas 以指标为中心、专攻 RAG；Giskard 用 `Groundedness` 和 `quality_scan` 覆盖 RAG，面更广但指标没那么深。 |
 | PyRIT | 未收录 | 要由红队人员主导、带攻击编排的多轮红队行动，选 PyRIT；要让红队检查只是测试代码里的一次函数调用，选 Giskard。 | PyRIT 给红队人员更多手动控制；Giskard 自动生成测试集，但对整场行动的操控更少。 |
 

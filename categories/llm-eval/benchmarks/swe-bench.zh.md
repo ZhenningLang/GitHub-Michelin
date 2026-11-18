@@ -3,7 +3,7 @@ name: SWE-bench
 slug: swe-bench
 repo: https://github.com/SWE-bench/SWE-bench
 homepage: https://www.swebench.com
-category: llm-eval
+category: benchmarks
 tags: [llm-eval, coding-agents, benchmark, software-engineering, github-issues, docker]
 language: Python
 license: MIT
@@ -80,19 +80,19 @@ health:
 
 一个基于 Docker 的 benchmark harness：把模型生成的 patch 放进真实 GitHub 软件问题对应的仓库环境，再用测试判分。
 
-![SWE-bench — 健康度雷达](../../assets/health/swe-bench.zh.svg)
+![SWE-bench — 健康度雷达](../../../assets/health/swe-bench.zh.svg)
 
 ## 何时使用
 
 你要评估 coding model 或 agent，需要证明它能修复已有仓库，而不只是补全孤立函数或满足某个应用自定义的 prompt rubric。当决定性要求是一套标准化真实 GitHub issue 语料，并且候选 patch 必须在可复现容器中应用、再由仓库测试判分时，选 SWE-bench。
 
-它比通用模型 benchmark 更窄，也比应用回归测试套件更重：SWE-bench 测量从 issue 到 patch 的软件工程能力，lm-evaluation-harness 面向更广的语言模型任务，[promptfoo](promptfoo.zh.md) 则面向你为自家 LLM 应用编写的测试。
+它比通用模型 benchmark 更窄，也比应用回归测试套件更重：SWE-bench 测量从 issue 到 patch 的软件工程能力，lm-evaluation-harness 面向更广的语言模型任务，[promptfoo](../app-evals/promptfoo.zh.md) 则面向你为自家 LLM 应用编写的测试。
 
 ## 怎么用起来
 
 你选择一个 SWE-bench 数据集，为每个任务生成一条 JSONL prediction，再把生成的 patch 交给 harness。SWE-bench 获取任务元数据，构建或拉取 Docker image，把 patch 应用到目标仓库状态，执行任务测试脚本，最后记录所要求的测试是否通过。prediction 生成、计算资源、Docker 安全、run ID 和失败解释由你负责；任务实例化、隔离执行、日志采集与 resolved/unresolved 报告由 harness 负责。数据集可以来自 Hugging Face，也可以来自本地 v5 task repository；除非另选云端路径，评测本身仍跑在你提供的基础设施上。
 
-![swe-bench — 主干用户故事](../../assets/flow/swe-bench.zh.svg)
+![swe-bench — 主干用户故事](../../../assets/flow/swe-bench.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/swe-bench.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -112,7 +112,7 @@ health:
 ## 何时不用
 
 - **你需要覆盖知识、推理和语言任务的通用 few-shot 模型评测。** 改用 lm-evaluation-harness；SWE-bench 把大量计算花在仓库修复上，不能替代通用 benchmark battery。
-- **你需要为自家 prompt、RAG pipeline 或生产 agent 行为做回归测试。** 改用 [promptfoo](promptfoo.zh.md) 或 [DeepEval](deepeval.zh.md)；SWE-bench 提供公共 coding 语料，不提供绑定你应用的 assertions。
+- **你需要为自家 prompt、RAG pipeline 或生产 agent 行为做回归测试。** 改用 [promptfoo](../app-evals/promptfoo.zh.md) 或 [DeepEval](../app-evals/deepeval.zh.md)；SWE-bench 提供公共 coding 语料，不提供绑定你应用的 assertions。
 - **你需要超出软件维护场景的多环境 agent 评测。** 改用 AgentBench；SWE-bench 刻意聚焦版本化代码仓库里的 issue-to-patch 工作。
 - **你需要覆盖系统管理、数据处理等非 GitHub issue 修复的 terminal 任务。** 改用 Terminal-Bench；它以 terminal environment 为任务边界，而不是以仓库 issue 和测试验证 patch 为边界。
 - **你无法提供隔离的 Docker 资源。** 先用较小的非容器 benchmark，或使用独立运营的云评测路径；上游建议本地环境使用 x86_64、至少 120 GB 空闲存储、16 GB RAM 和 8 个 CPU core，并把 ARM 支持标为实验性。
@@ -122,7 +122,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [promptfoo](promptfoo.zh.md) | ✅ | 要在共享的真实 issue 语料上比较 coding system 时选 SWE-bench；发布闸门必须编码自家 prompts、providers、assertions 和 red-team cases 时选 promptfoo。 | SWE-bench 以高容器成本换来标准化仓库修复与测试判分；promptfoo 更轻、更贴近应用，但不提供同一种 coding benchmark。 |
+| [promptfoo](../app-evals/promptfoo.zh.md) | ✅ | 要在共享的真实 issue 语料上比较 coding system 时选 SWE-bench；发布闸门必须编码自家 prompts、providers、assertions 和 red-team cases 时选 promptfoo。 | SWE-bench 以高容器成本换来标准化仓库修复与测试判分；promptfoo 更轻、更贴近应用，但不提供同一种 coding benchmark。 |
 | lm-evaluation-harness | 未收录 | 结果必须体现 issue-to-patch 仓库修复能力时选 SWE-bench；需要覆盖大量传统语言模型任务的通用 few-shot 评测时选 lm-evaluation-harness。 | lm-evaluation-harness 用较轻样本换更广任务覆盖；SWE-bench 提供更真实的软件维护环境，也付出高得多的执行成本。 |
 | AgentBench | 未收录 | 要用仓库测试衡量 coding-agent 修复质量时选 SWE-bench；研究问题横跨 agent 在多个交互环境中的行动能力时选 AgentBench。 | AgentBench 扩大 agent 行为与环境范围；SWE-bench 缩窄范围，以得到具体 patch 和可执行软件测试。 |
 | Terminal-Bench | 未收录 | 任务必须源自真实 GitHub issue 并以仓库 patch 结束时选 SWE-bench；成功标准需要覆盖软件 issue 修复之外的复杂 terminal 工作时选 Terminal-Bench。 | Terminal-Bench 扩大 shell 任务种类；SWE-bench 把评测绑定到 issue 上下文、代码历史和项目测试套件。 |

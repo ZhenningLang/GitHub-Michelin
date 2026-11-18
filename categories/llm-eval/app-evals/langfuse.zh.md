@@ -2,7 +2,7 @@
 name: Langfuse
 slug: langfuse
 repo: https://github.com/langfuse/langfuse
-category: llm-eval
+category: app-evals
 tags: [llm-eval, observability, tracing, prompt-management, self-hosted, langfuse, app]
 language: TypeScript
 license: NOASSERTION (MIT core; ee/ directories under the commercial Langfuse Enterprise License)
@@ -74,7 +74,7 @@ health:
 
 用户说你的 agent 昨天答错了；那一个回答背后是十几次模型调用、两次工具调用和一次检索，而你的日志只留下了最终那段文字。Langfuse 把每个请求记成一棵嵌套的调用轨迹（每次调用的提示词、输出、token、费用和耗时），放进一个可以自托管的 Web 应用里，再让你用大模型裁判、人工标注或用户反馈给这些轨迹打分。
 
-![Langfuse — 健康度雷达](../../assets/health/langfuse.zh.svg)
+![Langfuse — 健康度雷达](../../../assets/health/langfuse.zh.svg)
 
 ## 何时使用
 
@@ -86,7 +86,7 @@ Langfuse 就是为这个闭环做的平台。你只接一次（`@observe()` 装�
 
 Langfuse 分两半：嵌在你应用里的 SDK，和你自己运行（或者租用 Langfuse Cloud）的服务端。SDK 把你的函数包起来，让每一步变成一个“span”（一段带时间的记录，含这一步的输入、输出、模型和 token 数），同一个请求的所有 span 挂在一条“trace”（轨迹）下面，就像单个用户提问的飞行记录仪。SDK 把这些记录发给服务端：Web 容器负责接收，另一个 worker 容器异步处理并写进 ClickHouse（一种擅长快速扫描海量行的列式数据库），Postgres 存用户、提示词、设置这类应用数据，Redis 给事件排队，S3 兼容存储放大块载荷。之后界面里能看到调用树、会话、费用和耗时视图；你配置的评估器在后台给轨迹打分，提示词管理和数据集复用同一份数据。Langfuse 替你做的：接收、存储、建索引、展示、算费用，以及运行你配好的裁判。你要做的：给代码接入埋点，运行（或付费使用）这套多服务的系统，并决定哪些东西值得打分。
 
-![langfuse — 主干用户故事](../../assets/flow/langfuse.zh.svg)
+![langfuse — 主干用户故事](../../../assets/flow/langfuse.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/langfuse.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -111,7 +111,7 @@ Langfuse 分两半：嵌在你应用里的 SDK，和你自己运行（或者租�
 - **你在自托管实例上需要 SSO 配置、审计日志查看器、数据保留策略、接入数据脱敏、FIPS 模式或界面定制。** 这些在 `ee/` 目录下，走商业企业许可证，MIT 核心里没有。如果它们是硬需求而你又不打算买许可证，拿你的清单去评估 Opik 或 Phoenix（均未收录）。
 - **你的安全要求不允许默认向外回传。** 自托管实例默认会把使用统计发到 PostHog，除非设置 `TELEMETRY_ENABLED=false`；把它写进你的部署配置。
 - **你扛不住大版本迁移。** v2→v3（2024-12）加入了 ClickHouse、Redis、S3 和 worker；v3→v4（2026-07-29）也要按专门的升级指南来。把升级当成项目来排期，或者改用托管服务。
-- **你需要对抗性的安全测试。** Langfuse 给你的流量做了什么打分，但它不会去攻击你的应用。用 [garak](garak.zh.md) 或 [Giskard OSS](giskard.zh.md)。
+- **你需要对抗性的安全测试。** Langfuse 给你的流量做了什么打分，但它不会去攻击你的应用。用 [garak](../security-audits/garak.zh.md) 或 [Giskard OSS](giskard.zh.md)。
 
 ## 横向对比
 

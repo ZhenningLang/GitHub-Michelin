@@ -2,7 +2,7 @@
 name: garak
 slug: garak
 repo: https://github.com/NVIDIA/garak
-category: llm-eval
+category: security-audits
 tags: [llm-eval, testing, garak, tool]
 language: Python
 license: Apache-2.0
@@ -79,19 +79,19 @@ health:
 
 Before a model goes behind a public chat box, someone has to ask: will it write malware if the request is base64-encoded, repeat chunks of its training data, or obey a "DAN" jailbreak? garak fires hundreds of known attack prompts at the model, has detectors judge every reply, and reports a failure rate per attack type — roughly what nmap does for a network, aimed at an LLM.
 
-![garak — health radar](../../assets/health/garak.svg)
+![garak — health radar](../../../assets/health/garak.svg)
 
 ## When to use
 
 You are the security engineer or ML platform owner who has to sign off a model before launch — a fine-tuned Llama behind your own endpoint, or a vendor model you are about to expose to customers. Trying a few jailbreaks by hand proves nothing; you need the same scan you can rerun next month on the next model version and compare. garak is a command-line scanner from NVIDIA with a catalog of attack families (encoding-based injection, DAN-style jailbreaks, training-data replay, package hallucination, malware generation, cross-site exfiltration, toxicity prompts and more), each paired with detectors that decide whether a reply counts as a failure. One command like `python3 -m garak --target_type openai --target_name gpt-5-nano --spec probes.encoding` yields per-probe failure rates and a log of exactly which prompts got through.
 
-You pick it over [promptfoo](promptfoo.md) when the question is "how does this model hold up against the known attack literature?" rather than "does my app still pass its test suite?" — garak's value is its research-derived probe catalog and plugin model, not assertions about your app. You pick it over [AI-Infra-Guard](ai-infra-guard.md) when the target is one model endpoint: garak is a pip-installed CLI with nothing to operate, while A.I.G is a deployed platform that also audits the infrastructure around the model.
+You pick it over [promptfoo](../app-evals/promptfoo.md) when the question is "how does this model hold up against the known attack literature?" rather than "does my app still pass its test suite?" — garak's value is its research-derived probe catalog and plugin model, not assertions about your app. You pick it over [AI-Infra-Guard](ai-infra-guard.md) when the target is one model endpoint: garak is a pip-installed CLI with nothing to operate, while A.I.G is a deployed platform that also audits the infrastructure around the model.
 
 ## How it works
 
 garak is built from four kinds of plugin. **Generators** connect to the model under test (Hugging Face models run locally, OpenAI, Bedrock, NIM, LiteLLM, Ollama, GGUF via llama.cpp, or any REST endpoint described in a small YAML file). **Probes** each carry a set of attack prompts; **detectors** read the replies and decide whether the model misbehaved — some are string or pattern checks, some are classifier models; and a **harness** wires them together. You choose the target and which probes to run (all of them if you don't say); garak sends each prompt several times (10 generations by default, because the same prompt can pass once and fail the next time), scores every reply with the probe's recommended detectors, and prints a FAIL count and failure rate per probe and detector. Everything is also written to a JSONL report and a hit log of the attempts that succeeded, which you can rerun and diff between model versions. New attacks are new plugin classes inheriting from a base class, so you extend it by writing Python, not by forking.
 
-![garak — backbone user story](../../assets/flow/garak.svg)
+![garak — backbone user story](../../../assets/flow/garak.svg)
 
 <!-- flow-steps:begin (generated from flows/garak.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -110,20 +110,20 @@ garak is built from four kinds of plugin. **Generators** connect to the model un
 
 ## When NOT to use
 
-- **You want to know whether your app gives correct answers.** garak only asks "can this model be made to fail?"; for functional quality of a RAG app or agent, use [DeepEval](deepeval.md) (pytest-style metrics) or [promptfoo](promptfoo.md) (YAML evals).
-- **Red-team checks must live inside your app's CI test suite, next to ordinary assertions.** Use [promptfoo](promptfoo.md), whose `redteam` mode generates attacks against your actual prompts and app and reports in the same pipeline as your evals.
+- **You want to know whether your app gives correct answers.** garak only asks "can this model be made to fail?"; for functional quality of a RAG app or agent, use [DeepEval](../app-evals/deepeval.md) (pytest-style metrics) or [promptfoo](../app-evals/promptfoo.md) (YAML evals).
+- **Red-team checks must live inside your app's CI test suite, next to ordinary assertions.** Use [promptfoo](../app-evals/promptfoo.md), whose `redteam` mode generates attacks against your actual prompts and app and reports in the same pipeline as your evals.
 - **The audit surface is your whole AI deployment, not one model.** Exposed inference servers, MCP servers, and agent skills are out of garak's view; use [AI-Infra-Guard](ai-infra-guard.md).
-- **You need a light install or a Windows-first workflow.** garak pulls in PyTorch, transformers, datasets, LangChain, LiteLLM, and a dozen provider SDKs, requires Python 3.11+, and is developed on Linux and macOS. For a lighter red-team pass on a laptop or Windows CI runner, [promptfoo](promptfoo.md)'s Node CLI is the smaller footprint.
+- **You need a light install or a Windows-first workflow.** garak pulls in PyTorch, transformers, datasets, LangChain, LiteLLM, and a dozen provider SDKs, requires Python 3.11+, and is developed on Linux and macOS. For a lighter red-team pass on a laptop or Windows CI runner, [promptfoo](../app-evals/promptfoo.md)'s Node CLI is the smaller footprint.
 - **You need adaptive multi-turn attacks against an agent with tools.** Most garak probes are fixed prompt sets; its LLM-driven attacker (`atkgen`) is documented as a prototype. For orchestrated multi-turn campaigns, look at Microsoft's PyRIT (`Azure/PyRIT`, not indexed).
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [promptfoo](promptfoo.md) | ✅ | To benchmark a model against a broad catalog of published attacks, pick garak; to red-team your own app's prompts inside the same CI suite as your evals, pick promptfoo. | garak has deeper research-derived probes and Python plugins but no app-level assertions; promptfoo combines evals and red teaming with a lighter Node install. |
+| [promptfoo](../app-evals/promptfoo.md) | ✅ | To benchmark a model against a broad catalog of published attacks, pick garak; to red-team your own app's prompts inside the same CI suite as your evals, pick promptfoo. | garak has deeper research-derived probes and Python plugins but no app-level assertions; promptfoo combines evals and red teaming with a lighter Node install. |
 | [AI-Infra-Guard](ai-infra-guard.md) | ✅ | Pick garak for one model endpoint from a CLI; pick AI-Infra-Guard when the audit must cover service CVEs, MCP servers, and skills from one UI. | garak has nothing to operate but only sees the model; A.I.G sees the stack around it at the cost of a Docker deploy. |
-| [DeepEval](deepeval.md) | ✅ | Pick DeepEval to test that your app does its job; pick garak to test whether the model can be pushed into harmful behavior. | Complementary questions; DeepEval's own red teaming moved to the separate DeepTeam package. |
-| [Giskard OSS](giskard.md) | ✅ | Pick Giskard for scans that mix quality and safety issues of an agent with a testing-library workflow; pick garak for a dedicated, attack-focused scanner. | Giskard is broader and app-oriented; garak is narrower and deeper on attacks. |
+| [DeepEval](../app-evals/deepeval.md) | ✅ | Pick DeepEval to test that your app does its job; pick garak to test whether the model can be pushed into harmful behavior. | Complementary questions; DeepEval's own red teaming moved to the separate DeepTeam package. |
+| [Giskard OSS](../app-evals/giskard.md) | ✅ | Pick Giskard for scans that mix quality and safety issues of an agent with a testing-library workflow; pick garak for a dedicated, attack-focused scanner. | Giskard is broader and app-oriented; garak is narrower and deeper on attacks. |
 | PyRIT (`Azure/PyRIT`) | not indexed | Pick PyRIT when a red team needs to script multi-turn, orchestrated attack campaigns; pick garak for a ready-made scan with a fixed catalog. | PyRIT is a framework you build campaigns in; garak is a scanner you run. Positioning from general knowledge, not read here. |
 
 ## Tech stack

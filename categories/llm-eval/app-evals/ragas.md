@@ -2,7 +2,7 @@
 name: Ragas
 slug: ragas
 repo: https://github.com/vibrantlabsai/ragas
-category: llm-eval
+category: app-evals
 tags: [llm-eval, rag, llm-as-judge, testing, python]
 language: Python
 license: Apache-2.0
@@ -83,7 +83,7 @@ health:
 
 You change the chunk size or the embedding model in your RAG pipeline, try three questions by hand, and still cannot say whether it got better — or whether the bot now writes "Einstein was born on 20 March 1879" when the passage it retrieved says 14 March. Ragas puts numbers on that: a judge LLM breaks each answer into claims and checks them against the retrieved passages, and sibling metrics score whether retrieval found the passages the answer needed.
 
-![Ragas — health radar](../../assets/health/ragas.svg)
+![Ragas — health radar](../../../assets/health/ragas.svg)
 
 ## When to use
 
@@ -95,7 +95,7 @@ Ragas is the library built around exactly those RAG-specific metrics. You hand i
 
 Most Ragas metrics are "LLM-as-judge": another model, which you choose and pay for, reads your data and answers narrow questions about it. **Ragas supplies the questions and the arithmetic; you supply the data and the judge.** Take faithfulness: Ragas asks the judge to list the factual claims in an answer, then asks, claim by claim, whether the retrieved passages support it; the score is supported claims divided by all claims, so 0 to 1. Answer relevancy works the other way round — the judge writes questions the answer would fit, and Ragas compares them with the real question using embeddings (number vectors where similar text lands close together). `evaluate()` runs every metric over every row concurrently and returns a table you can average or inspect row by row. What you still own: collecting the rows from your app, choosing the judge model (a different judge gives different scores), and deciding what score is good enough.
 
-![ragas — backbone user story](../../assets/flow/ragas.svg)
+![ragas — backbone user story](../../../assets/flow/ragas.svg)
 
 <!-- flow-steps:begin (generated from flows/ragas.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -117,7 +117,7 @@ Most Ragas metrics are "LLM-as-judge": another model, which you choose and pay f
 - **You want quality gates that fail a build, or you also test agents and multi-turn chats.** Ragas returns scores; turning them into pass/fail thresholds in CI is your code. Use [DeepEval](deepeval.md), which wraps similar LLM-judged metrics in a pytest runner with thresholds and covers conversations and agent traces.
 - **Your team compares prompts × models in config, or wants red-team probes.** Use [promptfoo](promptfoo.md): a YAML matrix graded by one CLI command, plus adversarial testing, without writing Python.
 - **You need production traces, dashboards and human labels over live traffic.** Ragas evaluates a dataset you assembled; it does not record what happened in production. Use [Langfuse](langfuse.md) for tracing and annotation — Ragas ships a `tracing` extra that installs the Langfuse and MLflow clients, so the two are complementary.
-- **The question is safety (prompt injection, harmful output), not answer quality.** Use [Giskard](giskard.md) or [garak](garak.md); Ragas has no attack generator.
+- **The question is safety (prompt injection, harmful output), not answer quality.** Use [Giskard](giskard.md) or [garak](../security-audits/garak.md); Ragas has no attack generator.
 - **Scores must be reproducible, free, or computed without sending data to an API.** Every LLM-judged metric costs several model calls per row and drifts with the judge model and its version. For fixed checks use exact-match or string metrics (Ragas includes BLEU/ROUGE-style non-LLM metrics), or run a local judge model you control.
 - **You need a library that is visibly shipping fixes right now.** As of 2026-10-08 nothing has been merged to `main` since 2026-02-24 while about 245 pull requests sit open, after a run of releases every few weeks; the 0.x API has also broken twice (migration guides for 0.1→0.2 and 0.3→0.4). Pin the version, or prefer DeepEval if upstream activity is a hard requirement.
 

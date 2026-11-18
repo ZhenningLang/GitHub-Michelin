@@ -120,7 +120,7 @@ health:
 - **你偏爱纯代码。** 如果团队觉得节点式图形界面束手束脚，请用 LangChain 或 [CrewAI](../agent-runtimes/agent-sdks/crewai.zh.md) 而不用 Langflow，因为对代码优先的团队来说，可视化层只增加摩擦。
 - **一次性脚本或单次 API 调用。** 请直接写 Python 脚本或用 HTTP 客户端，因为为这点小事起一个 Langflow 服务是杀鸡用牛刀。
 - **你要求对工作流变更做严格的 git 评审。** 请用 LangChain 或 [Prefect](../../workflow-orchestration/prefect.zh.md) 而不用 Langflow，因为存成 JSON 的流程比代码更难做 diff、评审和合并。
-- **你需要完整的 MLOps / 可观测性体系。** Langflow 能对接 tracing 工具（LangSmith、Langfuse），但它自己不是。请搭配 [Langfuse](../../llm-eval/langfuse.zh.md) 或 MLflow（未收录）来做监控、tracing 和评测，因为 Langflow 替代不了它们。
+- **你需要完整的 MLOps / 可观测性体系。** Langflow 能对接 tracing 工具（LangSmith、Langfuse），但它自己不是。请搭配 [Langfuse](../../llm-eval/app-evals/langfuse.zh.md) 或 MLflow（未收录）来做监控、tracing 和评测，因为 Langflow 替代不了它们。
 - **严格的多租户隔离是硬需求。** 2026 年有好几条公告是跨用户访问类问题（`/api/v1/responses` 的越权访问、经已弃用构建接口的跨用户流程访问、经 MCP 资源处理器的跨项目文件泄露）。请改用 Dify 或经过租户隔离审计的商业平台，或者按信任边界一组人一个 Langflow 实例，因为单实例内的用户隔离一直是它的薄弱点。
 
 ## 横向对比
