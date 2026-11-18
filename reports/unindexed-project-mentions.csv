@@ -841,6 +841,7 @@ Looker,categories/data-visualization/superset.md,,no
 LSIF,categories/rag-retrieval/code-intelligence/scip.md,,no
 LTBL implementation groups / Beam,categories/agent-dev-methodology/spec-driven-development/INDEX.md,,no
 lua-resty-redis-cluster,categories/nginx-modules/lua-resty-redis.md,,no
+Lucian UX/UI Prompt (`Seokwoooo/lucian-uxui`),categories/agent-skills/visual-content/motion-prompt.md,,no
 lucidrains' implementations,categories/ml-research/vision-and-multimodal/pytorch-gan.md,,no
 Luckysheet,categories/office-editors/fortune-sheets.md,,no
 Luigi,categories/workflow-orchestration/airflow.md,,no

@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "src", "en": "pack.js + meta.json per pack", "zh": "每个包的 pack.js 与 meta.json", "kind": "input", "technique": [1]},
+    {"id": "build", "en": "build.mjs cuts marker blocks;\nrejects malformed packs", "zh": "build.mjs 按标记切块；\n格式不符即报错", "technique": [1]},
+    {"id": "api", "en": "Static api/v1: catalog, element files, pack kits", "zh": "静态 api/v1：目录、单元素文件、包 kit", "kind": "output", "technique": [1, 2]},
+    {"id": "cli", "en": "CLI source order: env, local clone, Pages, raw; disk cache", "zh": "CLI 取数顺序：环境变量、本地克隆、Pages、raw；磁盘缓存", "technique": [2]},
+    {"id": "gallery", "en": "Gallery on GitHub Pages", "zh": "GitHub Pages 上的图库", "kind": "external", "technique": [3]},
+    {"id": "listener", "en": "One-time 127.0.0.1 listener checks token", "zh": "127.0.0.1 一次性监听校验令牌", "technique": [3]},
+    {"id": "agent", "en": "Agent runs get + kit for exactly the picks", "zh": "助手只对所选编号执行 get 与 kit", "technique": [4]},
+    {"id": "out", "en": "Ported move: Canvas, Remotion, CSS, AE or a model prompt", "zh": "搬进项目的动作：Canvas、Remotion、CSS、AE 或模型提示词", "kind": "output", "technique": [4]}
+  ],
+  "edges": [
+    {"from": "src", "to": "build"},
+    {"from": "build", "to": "api"},
+    {"from": "api", "to": "cli", "en": "GET only", "zh": "只发 GET"},
+    {"from": "cli", "to": "listener", "en": "pick", "zh": "pick"},
+    {"from": "listener", "to": "gallery", "en": "opens with callback URL", "zh": "带回调地址打开"},
+    {"from": "gallery", "to": "listener", "en": "Send to AI: ids + note", "zh": "Send to AI：编号与备注"},
+    {"from": "listener", "to": "agent", "en": "printed picks", "zh": "打印所选"},
+    {"from": "cli", "to": "agent", "en": "spec + code", "zh": "规格与代码"},
+    {"from": "agent", "to": "out"}
+  ],
+  "sources": [
+    "https://github.com/showheyohtaki/motion-prompt/blob/683ecca0548a1754ada141d10dc3a009d4c59bef/FORMAT.md#L48-L95",
+    "https://github.com/showheyohtaki/motion-prompt/blob/683ecca0548a1754ada141d10dc3a009d4c59bef/tools/build.mjs#L79-L120",
+    "https://github.com/showheyohtaki/motion-prompt/blob/683ecca0548a1754ada141d10dc3a009d4c59bef/skills/motion-prompt/scripts/motion-prompt.mjs#L85-L237",
+    "https://github.com/showheyohtaki/motion-prompt/blob/683ecca0548a1754ada141d10dc3a009d4c59bef/skills/motion-prompt/scripts/motion-prompt.mjs#L527-L636",
+    "https://github.com/showheyohtaki/motion-prompt/blob/683ecca0548a1754ada141d10dc3a009d4c59bef/skills/motion-prompt/references/porting.md#L21-L30"
+  ]
+}
