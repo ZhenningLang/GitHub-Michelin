@@ -584,6 +584,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **vLLM Semantic Router** | 挂在 Envoy ExtProc 上的决策层，用自带分类器算出的领域、难度、越狱、PII 信号，按 YAML 策略逐请求选模型；还没到 1.0（v0.4，建于 2025-08），密钥和限流仍要靠网关。 | Apache-2.0 | B（5/6） | [中](categories/api-gateway/vllm-semantic-router.zh.md) · [EN](categories/api-gateway/vllm-semantic-router.md) |
 | **Monid** | “工具版 OpenRouter”的开源连接器标准和引擎：约 700 个数据和媒体厂商端点写成声明式文件，自带按次用量计量——`discover` 路由、单一 key 和定价在闭源托管侧；仓库约六周大。 | MIT | B（6/6） | [中](categories/api-gateway/monid.zh.md) · [EN](categories/api-gateway/monid.md) |
 | **Agentgateway** | 多个助手需要一个 MCP 入口，统一配置联邦聚合与列出／调用策略时用它；这不等于沙箱，也不会自动让端点私有。 | Apache-2.0 | B（6/6） | [中](categories/api-gateway/agentgateway.zh.md) · [EN](categories/api-gateway/agentgateway.md) |
+| **Coral** | agent 通过在 V8 isolate 里运行的 TypeScript 程序操作公司系统，逐次允许／询问／阻止、宿主侧注入凭据、可保存自定义工具；项目约七个月，公司主导，遥测默认开启。 | Apache-2.0（核心）＋ `ee/` 源码可见 | B（5/6） | [中](categories/api-gateway/coral.zh.md) · [EN](categories/api-gateway/coral.md) |
 
 #### api-gateway / client-routing
 

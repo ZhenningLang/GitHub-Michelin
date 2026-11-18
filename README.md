@@ -587,6 +587,7 @@ Research engines and scientific workbenches; source access and evidence auditing
 | **vLLM Semantic Router** | Envoy ExtProc decision layer that picks the model per request from its content — domain, difficulty, jailbreak, PII signals from its own classifiers — by YAML policy; pre-1.0 (v0.4, created 2025-08) and needs a gateway for keys and rate limits. | Apache-2.0 | B (5/6) | [EN](categories/api-gateway/vllm-semantic-router.md) · [中](categories/api-gateway/vllm-semantic-router.zh.md) |
 | **Monid** | Open connector standard and engine for an "OpenRouter for agent tools": ~700 data and media vendor endpoints as declarative files with per-call usage metering — the `discover` routing, single key and pricing are hosted and closed; about six weeks old. | MIT | B (6/6) | [EN](categories/api-gateway/monid.md) · [中](categories/api-gateway/monid.zh.md) |
 | **Agentgateway** | Several assistants need one MCP endpoint with configured federation and list/call policy; this is not a sandbox or automatic endpoint privacy. | Apache-2.0 | B (6/6) | [EN](categories/api-gateway/agentgateway.md) · [中](categories/api-gateway/agentgateway.zh.md) |
+| **Coral** | Agents act on company systems through TypeScript programs run in a V8 isolate, with per-call Allow/Ask/Block, host-side credentials and saved custom tools — about seven months old, company-run, default-on telemetry. | Apache-2.0 (core) + `ee/` source-available | B (5/6) | [EN](categories/api-gateway/coral.md) · [中](categories/api-gateway/coral.zh.md) |
 
 #### api-gateway / client-routing
 

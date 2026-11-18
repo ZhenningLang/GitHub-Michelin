@@ -23,6 +23,7 @@
 | **vLLM Semantic Router** | Use it when a platform team serves several models and wants the model chosen per request from its content (domain, difficulty, jailbreak, PII) by YAML policy behind Envoy — it is pre-1.0 and still needs a gateway for keys and rate limits. | B (5/6) | [→](vllm-semantic-router.md) |
 | **Monid** | Use it when your agent calls many paid data and media APIs (search, scraping, enrichment, video) and you want each vendor described in one declarative contract that a single engine validates, calls and meters — but the `discover` routing, single key and pricing are hosted and closed, and the repo is about six weeks old. | B (6/6) | [→](monid.md) |
 | **Agentgateway** | Several assistants need one MCP endpoint with configured federation and list/call policy; this is not a sandbox or automatic endpoint privacy. | B (6/6) | [→](agentgateway.md) |
+| **Coral** | Agents must act on company systems with per-call Allow/Ask/Block and no credentials in context: they send TypeScript programs that run in a V8 isolate and can be saved as narrow custom tools — about seven months old, company-run, `ee/` carve-out. | B (5/6) | [→](coral.md) |
 
 ## Comparison matrix
 
@@ -38,6 +39,7 @@
 | [vLLM Semantic Router](vllm-semantic-router.md) | ✅ | B (5/6) | Content-aware model selection as an Envoy ExtProc decision layer with its own classifier models; adds a hop and a multi-service stack, and leaves credentials, rate limits and replica scheduling to other layers. |
 | [Monid](monid.md) | ✅ | B (6/6) | Open connector standard and engine behind an "OpenRouter for agent tools": ~700 vendor endpoints as declarative files with per-call metering; routing, single key and most of the catalog stay in the closed hosted platform. |
 | [Agentgateway](agentgateway.md) | Yes | B (6/6) | MCP-aware federation and explicit list/call policy, not OS isolation; identities, TLS, policy configuration and upstream trust remain your responsibility. |
+| [Coral](coral.md) | ✅ | B (5/6) | Code-mode MCP gateway with per-call approval, host-side credentials and saved custom tools; policy is per tool, not per argument, telemetry is on by default, and v1 is a five-week-old rewrite. |
 | Tyk / KrakenD / New API | 未收录 | — | Other self-hosted gateways named across the pages. |
 
 ## What belongs here

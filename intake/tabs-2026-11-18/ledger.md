@@ -28,6 +28,6 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | sandbox-quantum/switch | add | done | categories/team-chat/switch.md |  | sandbox-quantum/switch |
 | showheyohtaki/motion-prompt | add | done | categories/agent-skills/visual-content/motion-prompt.md |  | showheyohtaki/motion-prompt |
 | thesysdev/openui | sync | done | categories/ai-design-generation/openui.md | fresh：last_verified 距今 ≤90 天，sync-entry 不重核，无改动 | thesysdev/openui |
-| withcoral/coral | add | running |  |  | withcoral/coral |
+| withcoral/coral | add | done | categories/api-gateway/coral.md |  | withcoral/coral |
 | zeroclaw-labs/zeroclaw | add | running |  |  | zeroclaw-labs/zeroclaw |
 | ZhenningLang/cpu-gpu-basic | skip | skipped |  | owner 是 ZhenningLang，标签不动 | zhenninglang/cpu-gpu-basic |
