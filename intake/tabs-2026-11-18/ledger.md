@@ -12,9 +12,9 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | Edge0-AI/Edge0 | sync | done | categories/llm-inference/local-runtimes/memory-offload/edge0.md | fresh：last_verified 距今 ≤90 天，sync-entry 不重核，无改动 | edge0-ai/edge0 |
 | Fei2411/DS-Bot | add | done | categories/agent-frameworks/agent-runtimes/personal-assistants/ds-bot.md |  | fei2411/ds-bot |
 | garrytan/g-harness-evals | add | running |  |  | garrytan/g-harness-evals |
-| haydenschmitty/floorplan | add | running |  |  | haydenschmitty/floorplan |
+| haydenschmitty/floorplan | add | done | categories/rag-retrieval/code-intelligence/floorplan.md |  | haydenschmitty/floorplan |
 | janestreet/agent_skills | add | running |  |  | janestreet/agent_skills |
-| JuneYaooo/rea-video | add | pending |  |  | juneyaooo/rea-video |
+| JuneYaooo/rea-video | add | running |  |  | juneyaooo/rea-video |
 | KKKKhazix/agent-autoloop | add | pending |  |  | kkkkhazix/agent-autoloop |
 | kunchenguid/gnhf | add | pending |  |  | kunchenguid/gnhf |
 | microsoft/TokenEconomizer | add | pending |  |  | microsoft/tokeneconomizer |
