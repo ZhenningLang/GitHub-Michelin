@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Claude Code Game Studios does", "zh": "游戏工作室模板做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone the template as your game's repo and start Claude Code at its root", "zh": "把模板克隆成游戏仓库，在根目录启动 Claude Code", "code": "claude", "component": {"en": "project template", "zh": "项目模板"}},
+    {"lane": "you", "en": "Describe the game you want in one line", "zh": "用一句话描述想要的游戏", "code": "/prototype", "component": {"en": "/prototype skill", "zh": "/prototype 技能"}},
+    {"lane": "them", "en": "Asks one round of genre questions and writes a one-page brief", "zh": "按题材问一轮问题，写出一页游戏简报", "component": {"en": "genre sheets", "zh": "题材问题表"}},
+    {"lane": "you", "en": "Read the brief and say Build it, or change a line first", "zh": "读简报，说开做，或先改其中一行"},
+    {"lane": "them", "en": "Builds a browser game, replays scripted keys headless and marks each brief line", "zh": "写出浏览器游戏，无头回放按键，逐行标注简报", "component": {"en": "one-shot-check.sh", "zh": "one-shot-check.sh"}}
+  ],
+  "value": {"en": "A playable browser game checked against your brief, without writing the design doc or code yourself", "zh": "拿到一个对照简报检查过的可玩浏览器游戏，不用自己写设计文档和代码"},
+  "sources": [
+    "https://github.com/Donchitos/Claude-Code-Game-Studios/blob/abc0de79d6ceb0b5d7aa693945849b3937afbe6a/README.md#L20-L64",
+    "https://github.com/Donchitos/Claude-Code-Game-Studios/blob/abc0de79d6ceb0b5d7aa693945849b3937afbe6a/README.md#L117-L141",
+    "https://github.com/Donchitos/Claude-Code-Game-Studios/blob/abc0de79d6ceb0b5d7aa693945849b3937afbe6a/.claude/skills/prototype/SKILL.md",
+    "https://github.com/Donchitos/Claude-Code-Game-Studios/blob/abc0de79d6ceb0b5d7aa693945849b3937afbe6a/.claude/skills/prototype/references/one-shot-2c-self-check.md"
+  ]
+}

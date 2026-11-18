@@ -9,6 +9,7 @@
 | --- | --- | --- | --- |
 | **ub-mode** | Inspect a compact test-first engineering checklist linked to separate quality tools; no executable gates or stated license. | D (4/5) | [→](ub-mode.md) |
 | **Claude Code Templates** | Use it when you want to browse a large catalog and à-la-carte install ready-made Claude Code agents, commands, hooks, MCPs, and skills instead of writing them yourself. | B (6/6) | [→](claude-code-templates.md) |
+| **Claude Code Game Studios** | Turn a game idea into a checked, playable browser prototype inside Claude Code, then grow it; a clone-me template from one maintainer, Claude Code only. | C (5/6) | [→](claude-code-game-studios.md) |
 | **Compound Engineering** | Use it when you want a turnkey brainstorm→plan→work→review→compound loop that persists learnings across coding-agent sessions. | B (4/5) | [→](compound-engineering.md) |
 | **ECC** | Use it when you want a maintained, batteries-included Claude Code harness of skills, agents, hooks, memory, and a security scanner. | B (6/6) | [→](ecc.md) |
 | **LifeOS** | Use it when you want your coding agent to carry *you* across sessions — a captured personal profile, memory, and a current→ideal state dashboard — rather than more coding workflows. | B (6/6) | [→](lifeos.md) |
@@ -21,6 +22,7 @@
 | --- | --- | --- | --- |
 | [ub-mode](ub-mode.md) | Yes | D (4/5) | One prompt instead of a plugin runtime; review push/cleanup instructions and unresolved reuse permission. |
 | [Claude Code Templates](claude-code-templates.md) | ✅ | B (6/6) | Use it when you want to browse a large catalog and à-la-carte install ready-made Claude Code agents, commands, hooks, MCPs, and skills instead of writing them yourself. |
+| [Claude Code Game Studios](claude-code-game-studios.md) | ✅ | C (5/6) | Buys a game-specific idea→brief→build→headless-check loop with hooks and director gates; costs Claude Code lock-in, per-repo manual upgrades and a bus factor of 1. |
 | [Compound Engineering](compound-engineering.md) | ✅ | B (4/5) | Use it when you want a turnkey brainstorm→plan→work→review→compound loop that persists learnings across coding-agent sessions. |
 | [ECC](ecc.md) | ✅ | B (6/6) | Use it when you want a maintained, batteries-included Claude Code harness of skills, agents, hooks, memory, and a security scanner. |
 | [LifeOS](lifeos.md) | ✅ | B (6/6) | Use it when you want an always-on personal life layer (TELOS profile, memory, Pulse dashboard) in Claude Code; ECC for cross-harness engineering substrate. |

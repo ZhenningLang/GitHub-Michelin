@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "idea", "kind": "input", "en": "Game idea typed to /prototype", "zh": "输入 /prototype 的游戏想法"},
+    {"id": "config", "en": "modes.rigor expands to six knobs; values injected before the skill loads", "zh": "modes.rigor 展开成六个开关；技能加载前注入取值", "technique": [1]},
+    {"id": "build", "en": "One-page brief, then a browser game in prototypes/", "zh": "一页简报，再在 prototypes/ 写浏览器游戏"},
+    {"id": "replay", "en": "Seeded headless replay of scripted keys; TSV rows and screenshots", "zh": "固定种子无头回放脚本按键；输出 TSV 行与截图", "technique": [2]},
+    {"id": "record", "en": "--record refuses a pass the rows do not show", "zh": "--record 拒收行数据撑不住的通过", "technique": [2]},
+    {"id": "gates", "en": "Director gates by review_mode: solo, lean or full", "zh": "按 review_mode 跑总监门禁：solo、lean 或 full", "technique": [3]},
+    {"id": "receipts", "en": "Content-hash receipts decide what to re-review", "zh": "内容哈希回执决定哪些要重审", "technique": [3]},
+    {"id": "hooks", "kind": "external", "en": "Hooks: 40 KB design-doc read guard, commit and push checks", "zh": "钩子：设计文档 40 KB 读取守卫，提交与推送检查", "technique": [4]},
+    {"id": "card", "kind": "output", "en": "Handover card: passed, still broken, guessed; not yet played by a person", "zh": "交接卡：通过、仍坏、靠猜；尚无人试玩"}
+  ],
+  "edges": [
+    {"from": "idea", "to": "config"},
+    {"from": "config", "to": "build", "en": "rigor minimal: no GDD required", "zh": "minimal：不要求 GDD"},
+    {"from": "build", "to": "replay"},
+    {"from": "replay", "to": "record", "en": "one fix round", "zh": "一轮修复"},
+    {"from": "record", "to": "card"},
+    {"from": "config", "to": "gates", "en": "studio mode only", "zh": "仅工作室模式", "style": "dashed"},
+    {"from": "gates", "to": "receipts", "style": "dashed"},
+    {"from": "hooks", "to": "build", "en": "every tool call", "zh": "每次工具调用", "style": "dashed"}
+  ],
+  "sources": [
+    "https://github.com/Donchitos/Claude-Code-Game-Studios/blob/abc0de79d6ceb0b5d7aa693945849b3937afbe6a/.claude/hooks/yaml-helper.sh#L1240-L1283",
+    "https://github.com/Donchitos/Claude-Code-Game-Studios/blob/abc0de79d6ceb0b5d7aa693945849b3937afbe6a/.claude/hooks/yaml-helper.sh#L1366-L1417",
+    "https://github.com/Donchitos/Claude-Code-Game-Studios/blob/abc0de79d6ceb0b5d7aa693945849b3937afbe6a/.claude/docs/config-resolution.md#L1-L25",
+    "https://github.com/Donchitos/Claude-Code-Game-Studios/blob/abc0de79d6ceb0b5d7aa693945849b3937afbe6a/.claude/scripts/one-shot-run.sh#L1-L10",
+    "https://github.com/Donchitos/Claude-Code-Game-Studios/blob/abc0de79d6ceb0b5d7aa693945849b3937afbe6a/.claude/scripts/one-shot-check.sh#L20-L40",
+    "https://github.com/Donchitos/Claude-Code-Game-Studios/blob/abc0de79d6ceb0b5d7aa693945849b3937afbe6a/.claude/docs/director-gates.md#L60-L82",
+    "https://github.com/Donchitos/Claude-Code-Game-Studios/blob/abc0de79d6ceb0b5d7aa693945849b3937afbe6a/.claude/scripts/review-receipts.sh#L1-L30",
+    "https://github.com/Donchitos/Claude-Code-Game-Studios/blob/abc0de79d6ceb0b5d7aa693945849b3937afbe6a/.claude/hooks/validate-read.sh#L15-L28"
+  ]
+}
