@@ -1,0 +1,10 @@
+{"schema":1,"them":{"en":"OpenFilm does","zh":"OpenFilm 做的"},"steps":[
+{"lane":"you","en":"Add the skill (Node 22.2+ and ffmpeg) or install the desktop app","zh":"加技能（Node 22.2+ 与 ffmpeg）或装桌面应用","code":"npx skills add openfilm/openfilm"},
+{"lane":"you","en":"Ask your coding agent for a film in plain words","zh":"用一句话向编程 agent 要一条片子"},
+{"lane":"them","en":"Prints the manual and opens the film folder in local Studio","zh":"打印说明书，在本地 Studio 打开影片目录","component":{"en":"openfilm CLI + Studio","zh":"openfilm 命令与 Studio"}},
+{"lane":"them","en":"The agent writes film.html and shot pages, then checks frames with look","zh":"agent 写 film.html 与镜头页，再用 look 查帧","component":{"en":"manual skills (edit, media)","zh":"内置技能（edit、media）"}},
+{"lane":"you","en":"Watch it land live; retype, move, trim or restyle anything by hand","zh":"实时看改动落地；亲手改字、挪位、剪辑或换样式","component":{"en":"Studio editor","zh":"Studio 编辑器"}},
+{"lane":"them","en":"Keeps your edits as overrides and merges them over the agent's next write","zh":"把手改存为 overrides，合并在 agent 下次重写之上"},
+{"lane":"them","en":"Renders the MP4 beside film.html","zh":"在 film.html 旁渲染出 MP4","code":"openfilm render"}],
+"value":{"en":"A film you and the agent both edit, without re-prompting for each small fix or losing hand edits","zh":"片子你和 agent 都能改，小修不用重新提示，手改也不会被冲掉"},
+"sources":["https://github.com/openfilm/openfilm/blob/589953539de2c8c8c119e29f9c6033c1e90ed1fd/README.md#installation","https://github.com/openfilm/openfilm/blob/589953539de2c8c8c119e29f9c6033c1e90ed1fd/skills/openfilm/SKILL.md","https://github.com/openfilm/openfilm/blob/589953539de2c8c8c119e29f9c6033c1e90ed1fd/packages/openfilm/MANUAL.md","https://github.com/openfilm/openfilm/blob/589953539de2c8c8c119e29f9c6033c1e90ed1fd/packages/openfilm/bin/openfilm.mjs#L5-L17","https://github.com/openfilm/openfilm/blob/589953539de2c8c8c119e29f9c6033c1e90ed1fd/packages/openfilm/studio/server/person-edits.mjs#L1-L30"]}

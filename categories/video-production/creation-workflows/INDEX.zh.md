@@ -17,6 +17,7 @@
 | **video-shotcraft** | 当 coding agent 应该把你的产品或网页做成电影感宣传片——150+ 张镜头配方卡、一支已验收的 36.2 秒 Remotion 模板、真实页面截图、2.5D 运镜与卡点音效——并在本机渲染时用它；仅约 2 个月历史、无 tagged release，且面向 Remotion 那个带资格门槛的许可。 | B（5/6） | [→](video-shotcraft.zh.md) |
 | **Lemo-Opuscar** | 让编程助手按风格导演短片，逐帧渲染、配音并检查阅读时间；代码 MIT，画廊媒体另用 CC BY。 | C（4/6） | [→](lemo-opuscar.zh.md) |
 | **ArtCraft** | 先摆机位和人物姿势，再交云端生成图片／视频；桌面代码宽松授权，后端另有限制，演示素材存在排除项。 | A（6/6） | [→](artcraft.zh.md) |
+| **OpenFilm** | 编程 agent 把片子写成 HTML 网页，你在本地时间线编辑器里实时看、亲手改，手改能扛住 agent 的重写；1.0 之前，仅六周。 | B（6/6） | [→](openfilm.zh.md) |
 
 ## 对比矩阵
 
@@ -32,6 +33,7 @@
 | [MoneyPrinterTurbo](moneyprinter-turbo.zh.md) | ✅ | B（6/6） | 主题→口播库存素材短视频的 MIT WebUI/API 家电；边际成本近零、画面通用、单维护者 bus factor。 |
 | [Lemo-Opuscar](lemo-opuscar.zh.md) | ✅ | C（4/6） | 让编程助手按风格导演短片，逐帧渲染、配音并检查阅读时间；代码 MIT，画廊媒体另用 CC BY。 |
 | [ArtCraft](artcraft.zh.md) | ✅ | A（6/6） | 用二维／三维构图代替推理图编排；任务在云端执行，截图自动上传，不是本机推理或整套宽松授权的服务。 |
+| [OpenFilm](openfilm.zh.md) | ✅ | B（6/6） | agent 与人实时合改同一条 HTML 影片，手改合并在 agent 重写之上；MIT，但仅六周，素材库从 openfilm.dev 下载。 |
 
 ## 什么该放这里
 

@@ -996,6 +996,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **claude-video** | 让 Claude “看视频”的 `/watch` skill：下载视频、抽帧、转录，并把这些证据交给 Claude。 | MIT | C（6/6） | [中](categories/media-processing/video-audio/speech-and-subtitles/claude-video.zh.md) · [EN](categories/media-processing/video-audio/speech-and-subtitles/claude-video.md) |
 | **Lemo-Opuscar** | 让编程助手按风格导演短片，逐帧渲染、配音并检查阅读时间；代码 MIT，画廊媒体另用 CC BY。 | MIT | C（4/6） | [EN](categories/video-production/creation-workflows/lemo-opuscar.md) · [中](categories/video-production/creation-workflows/lemo-opuscar.zh.md) |
 | **ArtCraft** | 先摆机位和人物姿势，再交云端生成图片／视频；桌面许可不覆盖受限后端和排除授权的演示素材。 | MIT OR Apache-2.0 | A（6/6） | [中](categories/video-production/creation-workflows/artcraft.zh.md) · [EN](categories/video-production/creation-workflows/artcraft.md) |
+| **OpenFilm** | 编程 agent 把片子写成 HTML 网页，你在本地时间线编辑器里实时看、亲手改，手改能扛住 agent 的重写。 | MIT | B（6/6） | [中](categories/video-production/creation-workflows/openfilm.zh.md) · [EN](categories/video-production/creation-workflows/openfilm.md) |
 
 
 #### video-production / render-engines

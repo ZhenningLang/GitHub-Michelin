@@ -23,11 +23,11 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | NVIDIA/auto-ontology | add | done | categories/databases/database-clients/auto-ontology.md |  | nvidia/auto-ontology |
 | omacom/omarchy | add | done | categories/linux-desktop/omarchy.md |  | omacom/omarchy |
 | OpenDCAI/GameFactory-3A | add | done | categories/game-dev/gamefactory-3a.md |  | opendcai/gamefactory-3a |
-| openfilm/openfilm | add | running |  |  | openfilm/openfilm |
+| openfilm/openfilm | add | done | categories/video-production/creation-workflows/openfilm.md |  | openfilm/openfilm |
 | ReScienceLab/opc-skills | sync | done | categories/agent-skills/ai-writing/marketing-seo/opc-skills.md | fresh：last_verified 距今 ≤90 天，sync-entry 不重核，无改动 | resciencelab/opc-skills |
 | sandbox-quantum/switch | add | running |  |  | sandbox-quantum/switch |
 | showheyohtaki/motion-prompt | add | running |  |  | showheyohtaki/motion-prompt |
 | thesysdev/openui | sync | done | categories/ai-design-generation/openui.md | fresh：last_verified 距今 ≤90 天，sync-entry 不重核，无改动 | thesysdev/openui |
-| withcoral/coral | add | pending |  |  | withcoral/coral |
+| withcoral/coral | add | running |  |  | withcoral/coral |
 | zeroclaw-labs/zeroclaw | add | pending |  |  | zeroclaw-labs/zeroclaw |
 | ZhenningLang/cpu-gpu-basic | skip | skipped |  | owner 是 ZhenningLang，标签不动 | zhenninglang/cpu-gpu-basic |

@@ -999,6 +999,7 @@ Enter [Client Routing](categories/api-gateway/client-routing/INDEX.md) for devel
 | **claude-video** | Give Claude the ability to watch any video. /watch downloads, extracts frames, transcribes, hands it all to Claude. | MIT | C (6/6) | [EN](categories/media-processing/video-audio/speech-and-subtitles/claude-video.md) · [中](categories/media-processing/video-audio/speech-and-subtitles/claude-video.zh.md) |
 | **Lemo-Opuscar** | Have a coding agent direct style-led films with deterministic browser frames, sound and reading-time checks; code MIT, gallery media CC BY. | MIT | C (4/6) | [EN](categories/video-production/creation-workflows/lemo-opuscar.md) · [中](categories/video-production/creation-workflows/lemo-opuscar.zh.md) |
 | **ArtCraft** | Stage a camera and character pose before cloud image/video generation; desktop license does not cover the restricted backend or excluded demo assets. | MIT OR Apache-2.0 | A (6/6) | [EN](categories/video-production/creation-workflows/artcraft.md) · [中](categories/video-production/creation-workflows/artcraft.zh.md) |
+| **OpenFilm** | A coding agent writes the film as HTML pages while you watch and hand-edit it in a local timeline editor; your edits survive the agent's rewrites. | MIT | B (6/6) | [EN](categories/video-production/creation-workflows/openfilm.md) · [中](categories/video-production/creation-workflows/openfilm.zh.md) |
 
 
 #### video-production / render-engines
