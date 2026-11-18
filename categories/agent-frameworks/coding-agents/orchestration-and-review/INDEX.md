@@ -14,6 +14,7 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **Kiro Crew** | Keep development sessions, memory and scheduled work in a persistent gateway over external agent runtimes; you still operate credentials and host permissions. | B (5/6) | [→](kirocrew.md) |
+| **Agent Autoloop** | Run your signed-in Claude Code or Codex in the background from schedules and webhooks, and get only the decisions as Feishu or desktop cards; Chinese-only interface, no dashboard, 15 days old. | C (6/6) | [→](agent-autoloop.md) |
 | **CC Switch** | Use it when you juggle several AI coding CLIs (Claude Code, Codex, Gemini CLI, OpenCode) across providers and want one desktop app to rewrite their configs, MCP servers and skills — but it is a single-user GUI, useless headless or as a team gateway. | B (5/6) | [→](cc-switch.md) |
 | **oh-my-claudecode** | A multi-agent orchestration layer for Anthropic's Claude Code CLI: it stages teams of specialized agents (plan → prd → exec → verify → fix), routes each subtask to a cheaper or stronger model, and runs parallel workers under tmux — installed as a Claude Code plugin or via the `oh-my-claude-sisyphus` npm package. | B (6/6) | [→](oh-my-claudecode.md) |
 | **OpenHands** | Use it when you want one self-hosted browser console to run OpenHands, Claude Code, Codex or Gemini CLI sessions on chosen machines plus scheduled agent jobs — but this repo became the beta Agent Canvas in July 2026, and the classic `openhands-ai` agent is gone. | B (6/6) | [→](openhands.md) |
@@ -30,6 +31,7 @@
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [Kiro Crew](kirocrew.md) | Indexed | B (5/6) | Persistent personal workspace with memory, apps and background jobs rather than only a browser over transient CLI sessions. |
+| [Agent Autoloop](agent-autoloop.md) | Indexed | C (6/6) | A local, UI-less hub that wakes your own signed-in CLIs from schedules and webhooks and parks decisions as chat cards; Chinese-only interface text and 15 days old. |
 | [Scion](scion.md) | ✅ | B (6/6) | Containerized mixed-harness teams with explicit workspace sharing; you operate images, credentials and the local or hosted Hub. |
 
 ## What belongs here
