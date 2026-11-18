@@ -616,6 +616,7 @@ GitHub Issues (+ `gh` CLI),categories/agent-tooling/work-state/beads.md,,no
 GitHub Projects / Issues + `gh` by hand,categories/agent-tooling/work-state/ccpm.md,,no
 Gitleaks (`gitleaks/gitleaks`),categories/agent-governance/claude-skill-audit.md,,no
 GitNexus,categories/rag-retrieval/code-intelligence/ix.md,,no
+Glances,categories/observability/netdata.md,,no
 Glean,categories/rag-retrieval/code-intelligence/scip.md,,no
 GLiClass (knowledgator/GLiClass),categories/decision-models/laya.md,,no
 GLiNER,categories/healthcare-ai/openmed.md,,no
@@ -1441,6 +1442,7 @@ Your own hand-written slash commands,categories/agent-skills/personal-collection
 Your own modern PyTorch baseline,categories/captcha/pytorch-captcha-recognition.md,,no
 YouTube Data API v3 (Captions),categories/media-download/youtube-transcript-api.md,,no
 yq (mikefarah),categories/dev-utilities/data-tools/jq.md,,no
+Zabbix,categories/observability/netdata.md,,no
 zhlint,categories/agent-skills/ai-writing/content-production/tech-doc-style-chinese.md,,no
 zijie0/HumanSystemOptimization (健康学习到150岁),categories/learning-resources/how-to-live-longer.md,,no
 Zipkin,categories/observability/jaeger.md,,no

@@ -845,6 +845,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **OpenTelemetry Collector** | 当多个服务要把链路、指标、日志发往不止一个后端，并希望采样、脱敏、路由都在一份 YAML 里集中配置、而不是写进每个服务时用它——但只有一个服务、一个 OTLP 后端时，它只是多一个进程。 | Apache-2.0 | A（6/6） | [EN](categories/observability/opentelemetry-collector.md) · [中](categories/observability/opentelemetry-collector.zh.md) |
 | **Loki** | 当你的 Prometheus + Grafana 体系里，日志账单主要花在没人查的全文索引上，而按应用、命名空间、Pod 这类标签圈定范围的查询就够用时用它——但跨几周的全文检索要扫遍每个块，而且它是 AGPL-3.0。 | AGPL-3.0 | B（6/6） | [EN](categories/observability/loki.md) · [中](categories/observability/loki.zh.md) |
 | **Jaeger** | 当一个慢请求穿过几十个服务，你想要一个自托管、原生支持 OpenTelemetry、自带界面、由 CNCF 治理的链路追踪后端时用它——但存储数据库得你自己运维，而且 v1 二进制和 jaeger-client 库都已停止维护。 | Apache-2.0 | A（6/6） | [EN](categories/observability/jaeger.md) · [中](categories/observability/jaeger.zh.md) |
+| **Netdata** | 当你想装完几分钟就看到逐秒的主机与服务指标、预置告警和逐指标异常标记，又不想写 exporter、搭看板时用它——但看板闭源，不买 Netdata Cloud 付费套餐时超过五个节点会被锁定。 | GPL-3.0-or-later | A（6/6） | [中](categories/observability/netdata.zh.md) · [EN](categories/observability/netdata.md) |
 
 ### data-visualization
 
