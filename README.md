@@ -1746,3 +1746,9 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **Modly** | Generate draft 3D meshes from images through reviewed local model extensions; not measured reconstruction. | LicenseRef-MIT-Attribution | B (5/6) | [EN](categories/3d-generation/modly.md) · [中](categories/3d-generation/modly.zh.md) |
+
+### handwritten-notes
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **Loose Leaf** | Use it as the complete source of a shipped iPad ink app — strokes that split onto imported photos, scissors that cut them, gesture-driven page stacks — to study or fork; not as a maintained daily note app. | MIT | D (3/6) | [EN](categories/handwritten-notes/loose-leaf.md) · [中](categories/handwritten-notes/loose-leaf.zh.md) |

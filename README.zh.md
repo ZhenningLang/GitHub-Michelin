@@ -1727,3 +1727,9 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时使用 | 许可证 | 健康度 | 页面 |
 |---|---|---|---|---|
 | **microG Services** | 兼容自定义系统上的现有应用需要 Google 服务，但你要自由客户端替代实现，并接受逐应用验证。 | Apache-2.0 | A（6/6） | [中](categories/android-system-services/microg-gmscore.zh.md) · [EN](categories/android-system-services/microg-gmscore.md) |
+
+### handwritten-notes
+
+| 项目 | 何时使用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **Loose Leaf** | 想拿一个真正上架过的 iPad 手写应用的完整源码来研究或改造时用它——笔画会切分到导入的照片上、剪刀能把照片剪开、页面靠手势成叠整理；不要把它当成仍在维护的日常笔记应用。 | MIT | D（3/6） | [中](categories/handwritten-notes/loose-leaf.zh.md) · [EN](categories/handwritten-notes/loose-leaf.md) |

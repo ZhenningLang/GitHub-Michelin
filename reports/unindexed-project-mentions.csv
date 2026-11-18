@@ -71,6 +71,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [InvokeAI](https://github.com/invoke-ai/InvokeAI),categories/agent-skills/visual-content/image-art-direction/reality-restaged.md,,no
 [iztro](https://github.com/SylarLong/iztro),categories/traditional-divination/ziwei-doushu.md,,no
 [Jedi](https://github.com/davidhalter/jedi),categories/dev-utilities/editors-and-runtimes/code-editors/pylance-release.md,,no
+[JotUI](https://github.com/adamwulf/JotUI),categories/handwritten-notes/loose-leaf.md,,no
 [Karate](https://github.com/karatelabs/karate),categories/dev-utilities/keploy.md,,no
 [KeePassXC](https://github.com/keepassxreboot/keepassxc),categories/dev-utilities/ops-infra/vaultwarden.md,,no
 [Kokoro](https://github.com/hexgrad/kokoro),categories/speech/kitten-tts.md,,no
@@ -131,6 +132,8 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [rebrowser-patches](https://github.com/rebrowser/rebrowser-patches),categories/web-automation/agent-browser-tools/stealth-session-tools/playwright-bot-bypass.md,,no
 [Redis](https://github.com/redis/redis),categories/databases/database-engines/kividb.md,,no
 [RetDec](https://github.com/avast/retdec),categories/dev-utilities/binary-analysis/reagent.md,,no
+[Rnote](https://github.com/flxzt/rnote),categories/handwritten-notes/loose-leaf.md,,no
+[Saber](https://github.com/saber-notes/saber),categories/handwritten-notes/loose-leaf.md,,no
 [SAM 2](https://github.com/facebookresearch/sam2) + an inpainter,categories/ml-research/vision-and-multimodal/see-through.md,,no
 [Self Forcing](https://github.com/guandeh17/Self-Forcing),categories/ml-research/vision-and-multimodal/stable-video-infinity.md,,no
 [Semgrep](https://github.com/semgrep/semgrep),categories/agent-governance/skillspector.md,,no
@@ -176,6 +179,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [WordPress](https://github.com/WordPress/WordPress),categories/content-management/emdash.md,,no
 [World Monitor](https://github.com/koala73/worldmonitor),categories/geospatial/osiris.md,,no
 [XcodeGen](https://github.com/yonaskolb/XcodeGen),categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/xtool.md,,no
+[Xournal++](https://github.com/xournalpp/xournalpp),categories/handwritten-notes/loose-leaf.md,,no
 "`/guard-secure`, `/guard-threat-model` style security skills in a personal/team skill stack",categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
 `bdeansrowe/beam`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
 `bdeansrowe/ltbl-brute`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
@@ -1188,6 +1192,7 @@ reveal.js (`hakimel/reveal.js`),categories/ai-design-generation/open-slide.md,,n
 rich.progress,categories/dev-utilities/data-tools/tqdm.md,,no
 RipMe,categories/media-download/gallery-dl.md,,no
 rivet-dev/sandbox-agent,categories/agent-frameworks/agent-runtimes/agent-services/openagentcore.md,,no
+Rnote,categories/handwritten-notes/INDEX.md,,no
 Rocket.Chat Cloud,categories/team-chat/rocket-chat.md,,no
 Roll-your-own YOLO + Siamese,categories/captcha/text-select-captcha.md,,no
 RouteLLM,categories/api-gateway/vllm-semantic-router.md,,no
@@ -1201,6 +1206,7 @@ Rust + PyO3,categories/python-tooling/cython.md,,no
 rust-av/ssimulacra2,categories/media-processing/quality-metrics/ssimulacra2.md,,no
 RxDB (`pubkey/rxdb`),categories/web-ui/data-fetching/tanstack-db.md,,no
 RYS / `mergekit` passthrough (layer-stacking model merges),categories/ml-research/llm-circuit-finder.md,,no
+Saber,categories/handwritten-notes/INDEX.md,,no
 SAGA GIS,categories/geospatial/qgis.md,,no
 Sandpack (CodeSandbox),categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-container.md,,no
 Sarama (Go),categories/kafka-tools/kafka-python.md,,no
@@ -1418,6 +1424,7 @@ WisprFlow,categories/speech/voicebox.md,,no
 workerd (Cloudflare Workers runtime),categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/deno.md,,no
 x1xhlol/system-prompts-and-models-of-ai-tools,categories/agent-skills/prompt-engineering/claude-code-system-prompts.md,,no
 Xinference (xorbitsai/inference),categories/llm-inference/serving-engines/sie.md,,no
+Xournal++,categories/handwritten-notes/INDEX.md,,no
 Yeoman (`yeoman/yo`),categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-alt-cli.md,,no
 Your harness's built-in review / simplify commands,categories/agent-skills/personal-collections/engineering-workflows/dimillian-skills.md,,no
 Your own global `CLAUDE.md` / Anthropic built-in guidance,categories/agent-skills/personal-collections/engineering-workflows/karpathy-skills.md,,no

@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "Loose Leaf does", "zh": "Loose Leaf 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone over SSH and pull in the library submodules", "zh": "用 SSH 克隆，并拉取各个库子模块", "code": "git submodule update --recursive --init"},
+    {"lane": "you", "en": "Copy the service-key template; blank keys still build", "zh": "复制服务密钥模板；密钥留空也能编译", "code": "cp Project/LooseLeaf/AppIds-Template.plist Project/LooseLeaf/AppIds.plist"},
+    {"lane": "you", "en": "Build in Xcode and run it on an iPad", "zh": "在 Xcode 里编译，装到 iPad 上运行"},
+    {"lane": "them", "en": "Open page stacks with one shared drawing surface on the top page", "zh": "打开成叠的页面，只给最上面一页挂共享绘图面", "component": {"en": "JotUI drawing view", "zh": "JotUI 绘图视图"}},
+    {"lane": "you", "en": "Import a photo or PDF, then draw and cut with gestures", "zh": "导入照片或 PDF，再用手势书写、剪切"},
+    {"lane": "them", "en": "Split ink onto the scraps underneath and cut scraps into new pieces", "zh": "把墨迹分给下面的贴图，把贴图剪成新碎片", "component": {"en": "ClippingBezier", "zh": "ClippingBezier"}}
+  ],
+  "value": {"en": "A working iPad ink app whose scrap, scissor and page-memory code you can read and change", "zh": "一个能跑的 iPad 手写应用，贴图、剪刀和页面内存管理的代码都能读、能改"},
+  "sources": [
+    "https://github.com/adamwulf/loose-leaf/blob/86c33a5ecfbf8d1dc5bfc9fa92667a6171ed7b0b/README.md#L32-L51",
+    "https://github.com/adamwulf/loose-leaf/blob/86c33a5ecfbf8d1dc5bfc9fa92667a6171ed7b0b/.gitmodules",
+    "https://github.com/adamwulf/loose-leaf/blob/86c33a5ecfbf8d1dc5bfc9fa92667a6171ed7b0b/Project/LooseLeaf/AppIds-Template.plist",
+    "https://github.com/adamwulf/loose-leaf/blob/86c33a5ecfbf8d1dc5bfc9fa92667a6171ed7b0b/Project/LooseLeaf/MMPageCacheManager.m#L203-L250",
+    "https://github.com/adamwulf/loose-leaf/blob/86c33a5ecfbf8d1dc5bfc9fa92667a6171ed7b0b/Project/LooseLeaf/MMScrappedPaperView.m#L431-L604",
+    "https://github.com/adamwulf/loose-leaf/blob/86c33a5ecfbf8d1dc5bfc9fa92667a6171ed7b0b/Project/LooseLeaf/MMScrappedPaperView.m#L666-L890"
+  ]
+}
