@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "GameFactory-3A does", "zh": "GameFactory-3A 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone the repository and open a coding agent at its root", "zh": "克隆仓库，在根目录打开编码助手", "code": "cd GameFactory-3A"},
+    {"lane": "you", "en": "Give your game requirement and ask the agent to read the routing guide first", "zh": "交代游戏需求，让助手先读路由指南", "code": "agent_skills/setting_overview.md", "component": {"en": "routing guide", "zh": "路由指南"}},
+    {"lane": "them", "en": "Confirms engine and style, plans chapters and builds a playable whitebox", "zh": "确认引擎和画风，规划章节，搭出可玩白盒", "component": {"en": "game_design skill, engine docs", "zh": "game_design 技能与引擎 API 文档"}},
+    {"lane": "you", "en": "Approve the quoted cost and export the provider key, or decline for local models", "zh": "同意报出的费用并导出密钥，或拒绝改用本地模型", "code": "export TRIPO_API_KEY=..."},
+    {"lane": "them", "en": "Generates assets, checks them visually and swaps them into the engine project", "zh": "生成资产、做视觉检查，替换进引擎项目", "component": {"en": "asset_qa skills and pipelines", "zh": "asset_qa 技能与生成管线"}},
+    {"lane": "them", "en": "Builds, plays, records a short gameplay video and fixes until the review passes", "zh": "构建、游玩、录短视频，修到审查通过", "component": {"en": "engine adapters", "zh": "引擎适配层"}}
+  ],
+  "value": {"en": "A playable game slice in your chosen engine with generated assets and a review video, without wiring each generator and engine API yourself", "zh": "在所选引擎里拿到带生成资产和审查录像的可玩切片，不用自己逐个接生成器和引擎 API"},
+  "sources": [
+    "https://github.com/OpenDCAI/GameFactory-3A/blob/f9e927c04ed6abd1dd6f805d52638f1ffe884798/README.md#L150-L166",
+    "https://github.com/OpenDCAI/GameFactory-3A/blob/f9e927c04ed6abd1dd6f805d52638f1ffe884798/agent_skills/setting_overview.md#L22-L60",
+    "https://github.com/OpenDCAI/GameFactory-3A/blob/f9e927c04ed6abd1dd6f805d52638f1ffe884798/agent_skills/asset_qa/README.md#L68-L100",
+    "https://github.com/OpenDCAI/GameFactory-3A/blob/f9e927c04ed6abd1dd6f805d52638f1ffe884798/scripts/asset_env_setup/cloud_api_install.sh",
+    "https://github.com/OpenDCAI/GameFactory-3A/blob/f9e927c04ed6abd1dd6f805d52638f1ffe884798/agent_skills/setting_overview.md#L139-L195"
+  ]
+}

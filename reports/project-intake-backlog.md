@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1461
+- Named-but-unindexed alternatives: 1462
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -32,6 +32,7 @@ shape and are deliberately excluded here.
 | @xstate/store (`statelyai/xstate`) | `categories/web-ui/state-management/tanstack-store.md` |
 | [12306-skill](https://github.com/Joooook/12306-skill) | `categories/travel-planning/12306-mcp.md` |
 | [7-Zip](https://github.com/ip7z/7zip) | `categories/dev-utilities/data-tools/hatchzip.md` |
+| [ahujasid/blender-mcp](https://github.com/ahujasid/blender-mcp) | `categories/game-dev/gamefactory-3a.md` |
 | [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client) | `categories/networking/amneziawg-installer.md` |
 | [Anatomy](https://github.com/wheresryan22/anatomy) | `categories/agent-skills/design/visual-artifacts/anima.md` |
 | [angristan/wireguard-install](https://github.com/angristan/wireguard-install) | `categories/networking/amneziawg-installer.md` |
@@ -51,4 +52,3 @@ shape and are deliberately excluded here.
 | [BirdNET-Pi (Nachtzuster fork)](https://github.com/Nachtzuster/BirdNET-Pi) | `categories/on-device-ml/birdnet-go.md` |
 | [Bitwarden server](https://github.com/bitwarden/server) | `categories/dev-utilities/ops-infra/vaultwarden.md` |
 | [Blender](https://github.com/blender/blender) | `categories/video-production/creation-workflows/artcraft.md` |
-| [BloomTutor](https://github.com/Li-Evan/BloomTutor) | `categories/education-tutoring/janestreet-agent-skills.md` |

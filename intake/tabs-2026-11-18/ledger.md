@@ -22,8 +22,8 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | nexu-io/openmotion | sync | running | categories/ai-design-generation/html-anything.md | 仓库由 nexu-io/html-anything 改名（同 repo id 1235403234），main 已转为视频工作室；按 sync 重核并改名 | nexu-io/openmotion |
 | NVIDIA/auto-ontology | add | done | categories/databases/database-clients/auto-ontology.md |  | nvidia/auto-ontology |
 | omacom/omarchy | add | running |  |  | omacom/omarchy |
-| OpenDCAI/GameFactory-3A | add | running |  |  | opendcai/gamefactory-3a |
-| openfilm/openfilm | add | pending |  |  | openfilm/openfilm |
+| OpenDCAI/GameFactory-3A | add | done | categories/game-dev/gamefactory-3a.md |  | opendcai/gamefactory-3a |
+| openfilm/openfilm | add | running |  |  | openfilm/openfilm |
 | ReScienceLab/opc-skills | sync | done | categories/agent-skills/ai-writing/marketing-seo/opc-skills.md | fresh：last_verified 距今 ≤90 天，sync-entry 不重核，无改动 | resciencelab/opc-skills |
 | sandbox-quantum/switch | add | pending |  |  | sandbox-quantum/switch |
 | showheyohtaki/motion-prompt | add | pending |  |  | showheyohtaki/motion-prompt |

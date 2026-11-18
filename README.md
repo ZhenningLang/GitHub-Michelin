@@ -1299,6 +1299,7 @@ Enter [Client Routing](categories/api-gateway/client-routing/INDEX.md) for devel
 | **kaplay** | Use it when you want a jam-scale 2D web game in plain JS/TS with zero engine ceremony — but for a long-lived product or 3D, the stalled stable line and 2D-only scope say look elsewhere. | MIT | B (6/6) | [EN](categories/game-dev/kaplay.md) · [中](categories/game-dev/kaplay.zh.md) |
 | **pixelfx** | Reuse parameterized pixel effects live in JavaScript or bake sprite sheets; two-day-old library, not an engine, with attributed MIT code and a separately licensed gallery font. | MIT (code and effects; gallery font excluded) | C (5/6) | [EN](categories/game-dev/pixelfx.md) · [中](categories/game-dev/pixelfx.zh.md) |
 | **pyxel** | Use it when you want a retro pixel-art game in Python with built-in sprite/sound editors and one-command web export — but for 3D, a modern look, store/console shipping, or a team-owned engine, its fixed specs and single maintainer say look elsewhere. | MIT | B (5/6) | [EN](categories/game-dev/pyxel.md) · [中](categories/game-dev/pyxel.zh.md) |
+| **GameFactory-3A** | Let a coding agent build a 3D game slice in UE5, Unity, Godot, Blender or three.js with generated meshes, motion, audio and cutscenes; needs paid API keys or an NVIDIA GPU, has no releases and a restructure is announced. | Apache-2.0 + Tencent HunyuanWorld-Mirror Community License (vendored scene module) | B (6/6) | [EN](categories/game-dev/gamefactory-3a.md) · [中](categories/game-dev/gamefactory-3a.zh.md) |
 
 ### games
 

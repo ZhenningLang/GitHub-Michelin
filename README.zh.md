@@ -1296,6 +1296,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **kaplay** | 想用纯 JS/TS 零仪式感地做一个 Jam 规模的 2D 网页游戏时用它——但要做长生命周期产品或 3D，停滞的稳定线和纯 2D 定位说明该另寻它路。 | MIT | B（6/6） | [中](categories/game-dev/kaplay.zh.md) · [EN](categories/game-dev/kaplay.md) |
 | **pixelfx** | 在 JavaScript 中复用参数化像素特效，或烘焙精灵图集；才两天的库，不是引擎，代码保留 MIT 来源署名，画廊字体许可独立。 | MIT (code and effects; gallery font excluded) | C（5/6） | [中](categories/game-dev/pixelfx.zh.md) · [EN](categories/game-dev/pixelfx.md) |
 | **pyxel** | 想用 Python 做复古像素风小游戏、要自带精灵／音乐编辑器和一条命令导出网页时用它——但做 3D、现代画风、上商店或主机，或需要团队接手引擎时，固定规格和单人维护说明该另寻它路。 | MIT | B（5/6） | [中](categories/game-dev/pyxel.zh.md) · [EN](categories/game-dev/pyxel.md) |
+| **GameFactory-3A** | 让编码助手在 UE5、Unity、Godot、Blender 或 three.js 里做出带生成网格、动作、音频和过场的 3D 游戏切片；需要付费 API 密钥或 NVIDIA GPU，没有发版，且已宣布重构。 | Apache-2.0 + Tencent HunyuanWorld-Mirror Community License (vendored scene module) | B（6/6） | [中](categories/game-dev/gamefactory-3a.zh.md) · [EN](categories/game-dev/gamefactory-3a.md) |
 
 ### games
 
