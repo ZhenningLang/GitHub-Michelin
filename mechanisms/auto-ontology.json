@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "src", "en": "Source databases: schema, keys, query history", "zh": "源数据库：表结构、键、查询历史", "kind": "input"},
+    {"id": "pass", "en": "Each pass picks only tables without a term yet", "zh": "每轮编译只挑还没有术语的表", "technique": [2]},
+    {"id": "profile", "en": "Sample up to 1,000 rows; model names terms", "zh": "每表最多抽 1000 行；模型命名术语", "technique": [1]},
+    {"id": "fk", "en": "Inferred join kept only if values match and the join returns a row", "zh": "推断的连接要值能对上、实际连接有结果才保留", "technique": [1]},
+    {"id": "onto", "en": "Ontology in Postgres + pgvector; people edit and certify", "zh": "本体存在 Postgres + pgvector；人工修改和认证", "kind": "output", "technique": [2]},
+    {"id": "llm", "en": "Model endpoints: NVIDIA API by default", "zh": "模型端点：默认 NVIDIA 托管 API", "kind": "external"},
+    {"id": "cover", "en": "check_answerable: share of question entities the ontology covers", "zh": "check_answerable：问题里的实体有多少被本体覆盖", "technique": [4]},
+    {"id": "agent", "en": "ReAct loop: retrieve, run_sql, submit", "zh": "ReAct 循环：retrieve、run_sql、submit"},
+    {"id": "gate", "en": "sqlglot check: one read query, known names, tables retrieve showed", "zh": "sqlglot 检查：单条只读查询、名字都在目录里、表都由 retrieve 展示过", "technique": [3]},
+    {"id": "answer", "en": "Answer with its SQL and steps, or a refusal", "zh": "带 SQL 和步骤的回答，或拒答", "kind": "output"}
+  ],
+  "edges": [
+    {"from": "src", "to": "pass"},
+    {"from": "pass", "to": "profile"},
+    {"from": "profile", "to": "fk"},
+    {"from": "profile", "to": "llm", "en": "column samples and names", "zh": "列的样本值和名称", "style": "dashed"},
+    {"from": "fk", "to": "onto"},
+    {"from": "onto", "to": "pass", "en": "edited terms are skipped next time", "zh": "改过的术语下轮不再重编", "style": "dashed"},
+    {"from": "onto", "to": "cover", "en": "external agent asks first", "zh": "外部 agent 先问", "style": "dashed"},
+    {"from": "onto", "to": "agent", "en": "terms, definitions, join paths", "zh": "术语、定义、连接路径"},
+    {"from": "agent", "to": "gate", "en": "draft SQL", "zh": "SQL 草稿"},
+    {"from": "gate", "to": "agent", "en": "unknown names and closest matches", "zh": "未知名字及最接近的真名", "style": "dashed"},
+    {"from": "gate", "to": "answer", "en": "clean run", "zh": "执行通过"}
+  ],
+  "sources": [
+    "https://github.com/NVIDIA/auto-ontology/blob/7dac5ff7bce3daf42e2115ef392146a542fa15d2/auto_ontology/semantic/semantic_fk.py#L5-L36",
+    "https://github.com/NVIDIA/auto-ontology/blob/7dac5ff7bce3daf42e2115ef392146a542fa15d2/auto_ontology/semantic/visit_enter.py#L61-L77",
+    "https://github.com/NVIDIA/auto-ontology/blob/7dac5ff7bce3daf42e2115ef392146a542fa15d2/auto_ontology/ingestion_service/ingest.py#L266-L290",
+    "https://github.com/NVIDIA/auto-ontology/blob/7dac5ff7bce3daf42e2115ef392146a542fa15d2/auto_ontology/retrieval/text_to_sql/react/run_sql.py#L251-L318",
+    "https://github.com/NVIDIA/auto-ontology/blob/7dac5ff7bce3daf42e2115ef392146a542fa15d2/auto_ontology/retrieval/entity_coverage/agents/coverage.py#L24-L67",
+    "https://github.com/NVIDIA/auto-ontology/blob/7dac5ff7bce3daf42e2115ef392146a542fa15d2/docs/architecture.md#L304-L318"
+  ]
+}

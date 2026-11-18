@@ -461,6 +461,7 @@ CreepJS,categories/networking/one-ip.md,,no
 CRNN + CTC implementations,categories/captcha/pytorch-captcha-recognition.md,,no
 crystal / claude-squad,categories/agent-frameworks/coding-agents/orchestration-and-review/native-cli-bridges/claude-octopus.md,,no
 CSS `@keyframes` / transitions,categories/frontend-animation/anime.md,,no
+Cube (`cube-js/cube`),categories/databases/database-clients/auto-ontology.md,,no
 Custom creator toolkit,categories/agent-skills/ai-writing/content-production/huashu-skills.md,,no
 Custom DataForSEO scripts,categories/agent-skills/ai-writing/marketing-seo/open-seo.md,,no
 Custom editorial checklist,categories/agent-skills/ai-writing/de-ai-writing/stop-slop.md,,no
@@ -1384,7 +1385,7 @@ v0 (Vercel),categories/ai-design-generation/open-design.md,,no
 v0 / Lovable / other AI UI generators,categories/agent-skills/design/design-to-code/stitch-skills.md,,no
 v0 / Lovable / tldraw make-real,categories/ai-design-generation/INDEX.md,,no
 Vale,categories/agent-skills/ai-writing/de-ai-writing/asd-ste100-skill.md,,no
-Vanna (`vanna-ai/vanna`),categories/databases/database-clients/mcp-toolbox.md,,no
+Vanna (`vanna-ai/vanna`),categories/databases/database-clients/auto-ontology.md,,no
 Vector,categories/observability/opentelemetry-collector.md,,no
 Vector (Datadog),categories/dev-utilities/ops-infra/telegraf.md,,no
 VeeValidate (`logaretm/vee-validate`),categories/web-ui/forms/tanstack-form.md,,no
@@ -1432,6 +1433,7 @@ Windows Terminal,categories/terminal-ui/pebrel.md,,no
 Wiring MDX into your own Next.js app by hand,categories/web-ui/frameworks/site-frameworks/nextra.md,,no
 WisprFlow,categories/speech/voicebox.md,,no
 workerd (Cloudflare Workers runtime),categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/deno.md,,no
+WrenAI (`Canner/WrenAI`),categories/databases/database-clients/auto-ontology.md,,no
 x1xhlol/system-prompts-and-models-of-ai-tools,categories/agent-skills/prompt-engineering/claude-code-system-prompts.md,,no
 Xinference (xorbitsai/inference),categories/llm-inference/serving-engines/sie.md,,no
 Xournal++,categories/handwritten-notes/INDEX.md,,no

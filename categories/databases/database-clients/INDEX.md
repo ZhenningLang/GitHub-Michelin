@@ -14,6 +14,7 @@
 | **PrettyZoo** | Use it when you want a desktop GUI to browse and lightly edit a ZooKeeper znode tree, node data and ACLs instead of typing zkCli.sh commands — but it is archived; the author stopped maintenance in 2024-01. | D (5/6) | [→](prettyzoo.md) |
 | **RDR** | Use it when Redis hit maxmemory and you need to find which key prefixes eat memory by parsing an RDB snapshot offline, with no load on production — but it has been frozen since 2020 and its memory figures are approximate. | D (4/6) | [→](rdr.md) |
 | **MCP Toolbox for Databases** | Use it when production agents must query many databases (57 source types, Google Cloud first-class) only through parameterized statements you declared in YAML — but engine-level read-only exists only on Cloud SQL/AlloyDB/BigQuery and network defaults are permissive. | A (6/6) | [→](mcp-toolbox.md) |
+| **Auto Ontology** | Use it when agents must answer open-ended business questions over several overlapping SQL databases and you want the term/join/metric map drafted from metadata and data-checked joins, with SQL returned per answer — but it is a seven-container stack, sends samples to NVIDIA-hosted models by default, and has ten connectors (no BigQuery/SQL Server/Oracle). | B (5/6) | [→](auto-ontology.md) |
 
 ## What belongs here
 
