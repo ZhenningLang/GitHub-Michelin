@@ -105,6 +105,7 @@
 | **photo-editing** | 编辑你自己的照片——RAW 冲洗、用于挑片和无损编辑的照片图库，以及在本机运行的位图编辑，用来替代按月租用的 Lightroom 或 Photoshop。 | [→](categories/photo-editing/INDEX.zh.md) |
 | **hackintosh** | 在苹果从没卖过的 PC 硬件上跑 macOS——OpenCore 引导配置，以及让不受支持的硬件（首先是显卡）在它下面工作的内核扩展和驱动。 | [→](categories/hackintosh/INDEX.zh.md) |
 | **handwritten-notes** | 用手写笔手写笔记、在照片或 PDF 上做批注——以墨迹为主、自己编译或运行的笔记本应用，不是打字型知识库。 | [→](categories/handwritten-notes/INDEX.zh.md) |
+| **linux-desktop** | 装一整套固执己见的 Linux 桌面——替你配好窗口管理器、应用、主题和更新的发行版或安装器。 | [→](categories/linux-desktop/INDEX.zh.md) |
 
 
 

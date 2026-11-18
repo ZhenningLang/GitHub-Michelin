@@ -1744,3 +1744,9 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时使用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **Loose Leaf** | 想拿一个真正上架过的 iPad 手写应用的完整源码来研究或改造时用它——笔画会切分到导入的照片上、剪刀能把照片剪开、页面靠手势成叠整理；不要把它当成仍在维护的日常笔记应用。 | MIT | D（3/6） | [中](categories/handwritten-notes/loose-leaf.zh.md) · [EN](categories/handwritten-notes/loose-leaf.md) |
+
+### linux-desktop
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **Omarchy** | 想用一个 ISO 装好 Arch 加一整套统一主题的 Hyprland 桌面、并由它自己的更新命令保持最新时用它——代价是关掉安全启动、pacman 被它拦着、默认预装专有软件、大版本重写频繁。 | MIT | B（5/6） | [中](categories/linux-desktop/omarchy.zh.md) · [EN](categories/linux-desktop/omarchy.md) |

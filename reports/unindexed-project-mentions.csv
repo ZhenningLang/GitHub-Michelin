@@ -32,6 +32,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [BloomTutor](https://github.com/Li-Evan/BloomTutor),categories/education-tutoring/janestreet-agent-skills.md,,no
 [btop](https://github.com/aristocratos/btop),categories/observability/mac-performance-monitor.md,,no
 [build123d](https://github.com/gumyr/build123d),categories/cad/text-to-cad.md,,no
+[CachyOS](https://github.com/CachyOS/CachyOS-Live-ISO),categories/linux-desktop/omarchy.md,,no
 [Cedar](https://github.com/cedar-policy/cedar),categories/agent-governance/agent-governance-toolkit.md,,no
 [Cedarling (Janssen)](https://github.com/JanssenProject/jans),categories/agent-governance/agent-governance-toolkit.md,,no
 [Cipher](https://github.com/campfirein/cipher),categories/agent-memory/coding-agent-memory/claude-subconscious.md,,no
@@ -53,6 +54,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Dragonfly](https://github.com/dragonflydb/dragonfly),categories/databases/database-engines/kividb.md,,no
 [electerm](https://github.com/electerm/electerm),categories/databases/database-clients/navop.md,,no
 [Elixir](https://github.com/elixir-lang/elixir),categories/programming-languages/unison.md,,no
+[end-4/dots-hyprland](https://github.com/end-4/dots-hyprland),categories/linux-desktop/omarchy.md,,no
 [ExifTool](https://github.com/exiftool/exiftool),categories/dev-utilities/data-tools/osxphotos.md,,no
 [Fast-DetectGPT](https://github.com/baoguangsheng/fast-detect-gpt),categories/llm-eval/chatgpt-comparison-detection.md,,no
 [FaucETH](https://github.com/komputing/FaucETH),categories/blockchain-dev-infrastructure/powfaucet.md,,no
@@ -93,6 +95,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Meetily](https://github.com/Zackriya-Solutions/meeting-minutes),categories/meeting-intelligence/biscotti.md,,no
 [MeshCentral](https://github.com/Ylianst/MeshCentral),categories/dev-utilities/ops-infra/rustdesk.md,,no
 [mihomo](https://github.com/MetaCubeX/mihomo),categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
+[ML4W dotfiles](https://github.com/mylinuxforwork/dotfiles),categories/linux-desktop/omarchy.md,,no
 [Mnemosyne](https://github.com/mnemosyne-proj/mnemosyne),categories/education-tutoring/word-atlas.md,,no
 [Mobilerun](https://github.com/droidrun/mobilerun) (formerly droidrun),categories/mobile-automation/mika.md,,no
 [Mr. Ranedeer AI Tutor](https://github.com/JushBJJ/Mr.-Ranedeer-AI-Tutor),categories/education-tutoring/janestreet-agent-skills.md,,no
@@ -104,6 +107,8 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [OCaml](https://github.com/ocaml/ocaml),categories/programming-languages/unison.md,,no
 [Official Codex (openai/codex)](https://github.com/openai/codex),categories/agent-tooling/harness-extensions/codex-chatgpt-web.md,,no
 [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex),categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/oh-my-openagent.md,,no
+[Omakub](https://github.com/omacom/omakub),categories/linux-desktop/omarchy.md,,no
+[omarchy-nix](https://github.com/henrysipp/omarchy-nix),categories/linux-desktop/omarchy.md,,no
 [OmniVoice](https://github.com/k2-fsa/OmniVoice),categories/speech/voicestudio.md,,no
 [Open GApps](https://github.com/opengapps/opengapps),categories/android-system-services/microg-gmscore.md,,no
 [Open Policy Agent](https://github.com/open-policy-agent/opa),categories/agent-governance/agent-governance-toolkit.md,,no
@@ -544,6 +549,7 @@ ElectricSQL (`electric-sql/electric`),categories/web-ui/data-fetching/tanstack-d
 Electron,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/tauri.md,,no
 ElevenLabs,categories/speech/coqui-ai-tts.md,,no
 Emscripten,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/netwasm.md,,no
+end-4/dots-hyprland,categories/linux-desktop/INDEX.md,,no
 endesive,categories/pdf-tools/pdf-transform-signing/pyhanko.md,,no
 endolith/open-interpreter (the old Python OI),categories/agent-frameworks/coding-agents/terminal-agents/independent-runtimes/open-interpreter.md,,no
 Ente,categories/document-management/immich.md,,no
@@ -895,6 +901,7 @@ Miniflux,categories/reading-tools/freshrss.md,,no
 MinIO,categories/document-management/copyparty.md,,no
 mistral.rs,categories/llm-inference/local-runtimes/airframe.md,,no
 MITRE ATT&CK Navigator / framework docs (read the source mappings yourself),categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
+ML4W dotfiles,categories/linux-desktop/INDEX.md,,no
 MLC LLM (`mlc-ai/mlc-llm`),categories/on-device-ml/apple-local-inference/uzu.md,,no
 MLC LLM / ONNX Runtime,categories/on-device-ml/INDEX.md,,no
 MLPerf Inference (mlcommons/inference),categories/llm-inference/inference-benchmarks/inferencex.md,,no
@@ -982,6 +989,7 @@ Obsidian / editor Markdown plugins,categories/markdown-tools/markdown-here.md,,n
 Official WeChat (no plugin),categories/im-automation/wechat/wechatplugin-macos.md,,no
 Okular,categories/pdf-tools/pdf-transform-signing/pdfcraft.md,,no
 Ollama,categories/on-device-ml/ai-edge-gallery.md,,no
+Omakub,categories/linux-desktop/INDEX.md,,no
 One API,categories/api-gateway/client-routing/cliproxyapi.md,,no
 One-off summary prompt,categories/agent-skills/context-engineering/cangjie-skill.md,,no
 ONLYOFFICE Desktop Editors (`ONLYOFFICE/DesktopEditors`),categories/office-editors/deckcraft.md,,no

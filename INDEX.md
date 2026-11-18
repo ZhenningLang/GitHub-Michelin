@@ -106,6 +106,7 @@
 | **photo-editing** | Edit your own photographs — raw development, photo libraries for culling and non-destructive edits, and raster image editing you run locally instead of renting Lightroom or Photoshop. | [→](categories/photo-editing/INDEX.md) |
 | **hackintosh** | Run macOS on PC hardware Apple never sold — OpenCore boot setup, and the kexts and drivers that make unsupported hardware (GPUs first of all) work under it. | [→](categories/hackintosh/INDEX.md) |
 | **handwritten-notes** | Write by hand and mark up photos or PDFs with a stylus — ink-first notebook apps you build or run yourself, not typed-text knowledge bases. | [→](categories/handwritten-notes/INDEX.md) |
+| **linux-desktop** | Install a complete, opinionated Linux desktop — a distribution or installer that sets up the window manager, apps, theming and updates for you. | [→](categories/linux-desktop/INDEX.md) |
 
 
 

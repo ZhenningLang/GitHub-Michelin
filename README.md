@@ -1763,3 +1763,9 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **Loose Leaf** | Use it as the complete source of a shipped iPad ink app — strokes that split onto imported photos, scissors that cut them, gesture-driven page stacks — to study or fork; not as a maintained daily note app. | MIT | D (3/6) | [EN](categories/handwritten-notes/loose-leaf.md) · [中](categories/handwritten-notes/loose-leaf.zh.md) |
+
+### linux-desktop
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **Omarchy** | Use it when you want Arch plus a fully themed Hyprland desktop installed from one ISO and kept current by its own update command — accepting Secure Boot off, a guarded pacman, proprietary defaults and fast-moving major rewrites. | MIT | B (5/6) | [EN](categories/linux-desktop/omarchy.md) · [中](categories/linux-desktop/omarchy.zh.md) |

@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "them": {"en": "Omarchy does", "zh": "Omarchy 做的"},
+  "steps": [
+    {"lane": "you", "phase": {"en": "Install", "zh": "安装"},
+     "en": "Boot the Omarchy ISO from USB with Secure Boot off, answer the questions, pick a drive",
+     "zh": "关掉安全启动，用 U 盘启动 ISO，答完问题选一块盘",
+     "component": {"en": "ISO installer", "zh": "ISO 安装器"}},
+    {"lane": "them",
+     "en": "Installs encrypted Arch, Hyprland, its desktop shell and default apps from its own repos",
+     "zh": "从自家软件源装好加密的 Arch、Hyprland、桌面外壳和默认应用",
+     "component": {"en": "omarchy pacman packages", "zh": "omarchy pacman 包"}},
+    {"lane": "you", "phase": {"en": "Customize", "zh": "定制"},
+     "en": "Put your changes in the override files under ~/.config, e.g. rebind a hotkey",
+     "zh": "把改动写进 ~/.config 下的覆盖文件，比如改绑一个快捷键",
+     "code": "o.rebind(\"SUPER + SHIFT + O\", \"Joplin\", \"joplin-desktop\")",
+     "component": {"en": "hypr/bindings.lua", "zh": "hypr/bindings.lua"}},
+    {"lane": "them",
+     "en": "Loads its packaged defaults first, then your override files on top",
+     "zh": "先加载包里的默认配置，再叠加你的覆盖文件"},
+    {"lane": "you", "phase": {"en": "Update", "zh": "更新"},
+     "en": "Update through its own updater, not raw pacman",
+     "zh": "用它自己的更新命令，而不是直接跑 pacman",
+     "code": "omarchy update"},
+    {"lane": "them",
+     "en": "Snapshots the root, upgrades packages, runs pending migrations, verifies boot files",
+     "zh": "给根分区拍快照、升级软件包、跑待执行迁移、校验启动文件",
+     "component": {"en": "omarchy-update", "zh": "omarchy-update"}}
+  ],
+  "value": {
+    "en": "A themed, working tiling desktop that keeps up with releases without you re-merging dotfiles by hand",
+    "zh": "拿到一套主题统一、开箱能用的平铺桌面，跟着版本更新也不用自己手动合并配置文件"
+  },
+  "sources": [
+    "https://github.com/omacom/omarchy/blob/419a5a7095d118a218d5f84548dbd83ce90067e6/manual/02-getting-started.md",
+    "https://github.com/omacom/omarchy/blob/419a5a7095d118a218d5f84548dbd83ce90067e6/manual/31-dotfiles.md",
+    "https://github.com/omacom/omarchy/blob/419a5a7095d118a218d5f84548dbd83ce90067e6/manual/30-updates.md",
+    "https://github.com/omacom/omarchy/blob/419a5a7095d118a218d5f84548dbd83ce90067e6/config/hypr/hyprland.lua#L16-L26",
+    "https://github.com/omacom/omarchy/blob/419a5a7095d118a218d5f84548dbd83ce90067e6/bin/omarchy-update#L88-L163"
+  ]
+}
