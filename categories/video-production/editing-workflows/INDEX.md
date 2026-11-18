@@ -13,6 +13,7 @@
 | **video-use** | Use it when a coding agent should cut a folder of raw takes from a packed transcript — confirm the plan, then ffmpeg — not generate footage; needs ElevenLabs Scribe, 22 commits under 27k stars. | B (4/5) | [→](video-use.md) |
 | **SeeCut** | Use it when a coding agent should polish your talking-head or AI-avatar A-roll into a high-energy motion short — real evidence screenshots on screen, every version gated by a video-native judge (Gemini via Antigravity CLI) — delivered as MP4 plus an editable JianYing layered draft; PolyForm noncommercial, 4 days old at verification. | D (4/6) | [→](seecut.md) |
 | **Openjutsu** | Swap the person in an existing clip for your character photo on your own NVIDIA GPU: a local web app over a MiniMax H3 ComfyUI workflow; a dozen node packs, minutes per clip, 23 days old. | B (4/6) | [→](openjutsu.md) |
+| **rea-video** | Before paying for generation or a shoot, find out shot by shot whether a reference video was filmed, AI-generated or code-built, and get a remake plan sized to your model; analysis only, 20 days old, sponsor pitch in the skill. | C (6/6) | [→](rea-video.md) |
 
 ## Comparison matrix
 
@@ -24,6 +25,7 @@
 | [video-use](video-use.md) | ✅ | B (4/5) | Coding-agent editor for existing takes: packed Scribe transcript, strategy gate, ffmpeg render. MIT skill-pack, hard ElevenLabs dep, 22 commits / ~27k stars. |
 | [SeeCut](seecut.md) | ✅ | D (4/6) | Edits existing A-roll with a video-watching AI judge loop on HyperFrames render; hard agy/Google-account dependency, PolyForm noncommercial, 4 days old — vs video-use's transcript-only MIT cut or HyperFrames' engine-only Apache. |
 | [Openjutsu](openjutsu.md) | ✅ | B (4/6) | Local full-person swap behind buttons with preflight checks and resumable clips; needs a 16 GB GPU plus 64 GB RAM, model licenses gate commercial use, upstream unreleased and not merging PRs. |
+| [rea-video](rea-video.md) | ✅ | C (6/6) | Per-shot production verdict (filmed / AI / code) from measured evidence plus agent review, and a model-limit-aware remake plan; Apache-2.0, renders nothing, one maintainer, format renamed within a week. |
 
 ## What belongs here
 

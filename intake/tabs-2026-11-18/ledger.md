@@ -14,10 +14,10 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | garrytan/g-harness-evals | add | done | categories/llm-eval/g-harness-evals.md |  | garrytan/g-harness-evals |
 | haydenschmitty/floorplan | add | done | categories/rag-retrieval/code-intelligence/floorplan.md |  | haydenschmitty/floorplan |
 | janestreet/agent_skills | add | done | categories/education-tutoring/janestreet-agent-skills.md |  | janestreet/agent_skills |
-| JuneYaooo/rea-video | add | running |  |  | juneyaooo/rea-video |
+| JuneYaooo/rea-video | add | done | categories/video-production/editing-workflows/rea-video.md |  | juneyaooo/rea-video |
 | KKKKhazix/agent-autoloop | add | running |  |  | kkkkhazix/agent-autoloop |
 | kunchenguid/gnhf | add | running |  |  | kunchenguid/gnhf |
-| microsoft/TokenEconomizer | add | pending |  |  | microsoft/tokeneconomizer |
+| microsoft/TokenEconomizer | add | running |  |  | microsoft/tokeneconomizer |
 | netdata/netdata | add | pending |  |  | netdata/netdata |
 | nexu-io/openmotion | add | pending |  |  | nexu-io/openmotion |
 | NVIDIA/auto-ontology | add | pending |  |  | nvidia/auto-ontology |

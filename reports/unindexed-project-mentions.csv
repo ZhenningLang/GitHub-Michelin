@@ -362,6 +362,7 @@ Built-in browser Reader Mode (Firefox/Safari/Edge),categories/reading-tools/just
 Built-in file reading / grep retrieval,categories/agent-skills/context-engineering/notebooklm-skill.md,,no
 Butteraugli (in libjxl),categories/media-processing/quality-metrics/ssimulacra2.md,,no
 Byobu,categories/terminal-ui/tmux.md,,no
+C2PA tooling (contentauth/c2pa-rs),categories/video-production/editing-workflows/rea-video.md,,no
 Caddy (automatic HTTPS),categories/dev-utilities/ops-infra/certbot.md,,no
 Caddy + plugins (Go),categories/nginx-modules/lua-nginx-module.md,,no
 Cadence,categories/workflow-orchestration/temporal.md,,no
@@ -1123,6 +1124,7 @@ PyPy,categories/python-tooling/cython.md,,no
 pyrasite vs gdb + python-gdb,categories/python-tooling/pyrasite.md,,no
 PyRIT,categories/llm-eval/ai-infra-guard.md,,no
 PyRIT (`Azure/PyRIT`),categories/llm-eval/garak.md,,no
+PySceneDetect,categories/video-production/editing-workflows/rea-video.md,,no
 Python (IPython) kernel,categories/python-tooling/gophernotes.md,,no
 Python `Faker`,categories/dev-utilities/data-tools/faker-js.md,,no
 python-docx-template,categories/legal-documents/legal-templates.md,,no
