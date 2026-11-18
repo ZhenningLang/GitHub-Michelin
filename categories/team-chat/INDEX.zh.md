@@ -13,6 +13,7 @@
 | **Buzz** | 自托管 Nostr 工作区，人和 AI agent 是同一条事件日志上的签名同等成员——agent 原生、pre-1.0、基础设施重。 | B（4/6） | [→](buzz.zh.md) |
 | **Macro** | 用一个工作区替换 Slack + Linear + Notion + CRM + Gmail 客户端，所有东西在同一个库里互相 @ 链接，并通过 MCP 开放给 agent——AGPL、以托管为主，自托管仍是开发者环境。 | B（6/6） | [→](macro.zh.md) |
 | **HiveChat** | 当一个 5–50 人的团队需要自托管聊天前端、由管理员统一握住多家大模型的 API key 并按分组控制可见模型和 token 配额时用它——但它自 2025-09 起再无提交，版本仍是 v0.1.0。 | D（3/6） | [→](hivechat.zh.md) |
+| **Switch (Agent Switch)** | 团队留在 Slack／Teams／Discord／Telegram／Mattermost 里，想让已经在跑的编码 agent（Claude Code、Codex……）作为可点名的成员加入频道时用它——但它是源码可见许可（Commons Clause，禁止转售和收费托管），才四个月、pre-1.0。 | B（5/6） | [→](switch.zh.md) |
 
 ## 对比矩阵
 
@@ -24,6 +25,7 @@
 | [Buzz](buzz.zh.md) | ✅ | B（4/6） | 唯一让 agent 成为与人同处一条签名日志的持钥成员，但项目仅约 6 个月、pre-1.0，且需要 Postgres + Redis + S3。 |
 | [Macro](macro.zh.md) | ✅ | B（6/6） | 把聊天、Gmail、任务、文档和 CRM 连成一张 agent 可读的图，但它是一家年轻厂商以托管为主的产品，自托管要从源码编译约 40 个服务。 |
 | [HiveChat](hivechat.zh.md) | ✅ | D（3/6） | 换来集中保管 key、分组配额和飞书/钉钉/企业微信登录，一次部署全有；代价是必须配 Postgres、项目停在没发过版的 v0.1.0 且已休眠，许可证还限制分发衍生作品。 |
+| [Switch (Agent Switch)](switch.zh.md) | ✅ | B（5/6） | 把现有聊天应用桥接到你已有的 agent，按 agent 设寻址规则，底下是一条 Postgres 房间日志；代价是一个服务器加 Postgres、Commons Clause 许可和快速变动的 0.x 升级路径。 |
 | [LobeHub](../llm-chat-ui/lobehub.zh.md) | ✅ | B（5/6） | 多模型 agent 团队与页面；已读 OSS 工作区角色检查直通，不是组织 RBAC。 |
 | Slack / Discord / Microsoft Teams | 未收录 | — | 各页面点到的托管 SaaS 团队聊天。 |
 

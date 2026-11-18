@@ -14,6 +14,7 @@
 | **Buzz** | Self-hosted Nostr workspace where humans and AI agents are signed, co-equal members over one event log — agent-first, pre-1.0, heavy infrastructure. | B (4/6) | [→](buzz.md) |
 | **Macro** | One workspace replacing Slack + Linear + Notion + a CRM + a Gmail client, with everything @-linked in one database and exposed to agents over MCP — AGPL, hosted-first, self-host is still a developer stack. | B (6/6) | [→](macro.md) |
 | **HiveChat** | Use it when a 5–50 person team needs a self-hosted chat front-end where an admin holds API keys for many LLM providers and sets per-group model access and token quotas — but it has had no commit since 2025-09 and is still v0.1.0. | D (3/6) | [→](hivechat.md) |
+| **Switch (Agent Switch)** | Use it when your team stays in Slack/Teams/Discord/Telegram/Mattermost and the coding agents you already run (Claude Code, Codex…) should join channels as addressable members — but it is source-available (Commons Clause, no reselling or paid hosting), four months old and pre-1.0. | B (5/6) | [→](switch.md) |
 
 ## Comparison matrix
 
@@ -25,6 +26,7 @@
 | [Buzz](buzz.md) | ✅ | B (4/6) | Only option where agents are key-holding members in the same signed log as humans, but it is ~6 months old, pre-1.0, and needs Postgres + Redis + S3. |
 | [Macro](macro.md) | ✅ | B (6/6) | Links chat, Gmail, tasks, docs and CRM in one graph agents can read, but it is a young vendor's hosted-first product with a ~40-service, build-from-source self-host. |
 | [HiveChat](hivechat.md) | ✅ | D (3/6) | Gets central key custody, group quotas and Feishu/DingTalk/WeCom login in one deployment; costs a mandatory Postgres, a dormant v0.1.0 with no releases, and a license that restricts distributing derivatives. |
+| [Switch (Agent Switch)](switch.md) | ✅ | B (5/6) | Bridges existing chat apps to agents you already run, with per-agent addressing over a Postgres room log; costs a server plus Postgres, a Commons Clause license and a fast-moving 0.x upgrade path. |
 | [LobeHub](../llm-chat-ui/lobehub.md) | ✅ | B (5/6) | Multi-model agent groups and pages; reviewed OSS Workspace role gates are pass-through stubs, not organization RBAC. |
 | Slack / Discord / Microsoft Teams | 未收录 | — | Hosted SaaS team chat named across the pages. |
 

@@ -613,6 +613,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Buzz** | 自托管 Nostr 工作区，人和 AI agent 是同一条事件日志上的签名同等成员——agent 原生、pre-1.0、基础设施重。 | Apache-2.0 | B（4/6） | [中](categories/team-chat/buzz.zh.md) · [EN](categories/team-chat/buzz.md) |
 | **Macro** | 用一个工作区替换 Slack + Linear + Notion + CRM + Gmail 客户端，所有东西在同一个库里互相 @ 链接，并通过 MCP 开放给 agent——AGPL、以托管为主，自托管仍是开发者环境。 | AGPL-3.0 | B（6/6） | [中](categories/team-chat/macro.zh.md) · [EN](categories/team-chat/macro.md) |
 | **HiveChat** | 当一个 5–50 人的团队需要自托管聊天前端、由管理员统一握住多家大模型的 API key 并按分组控制可见模型和 token 配额时用它——但它自 2025-09 起再无提交，版本仍是 v0.1.0。 | Apache-2.0 | D（3/6） | [中](categories/team-chat/hivechat.zh.md) · [EN](categories/team-chat/hivechat.md) |
+| **Switch (Agent Switch)** | 团队留在 Slack／Teams／Discord／Telegram／Mattermost 里，想让已经在跑的编码 agent（Claude Code、Codex……）作为可点名的成员加入频道时用它——但它是源码可见许可（Commons Clause，禁止转售和收费托管），才四个月、pre-1.0。 | Apache-2.0 + Commons Clause（源码可见） | B（5/6） | [中](categories/team-chat/switch.zh.md) · [EN](categories/team-chat/switch.md) |
 
 ### captcha
 

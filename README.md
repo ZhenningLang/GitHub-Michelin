@@ -616,6 +616,7 @@ Enter [Client Routing](categories/api-gateway/client-routing/INDEX.md) for devel
 | **Buzz** | Self-hosted Nostr workspace where humans and AI agents are signed, co-equal members over one event log — agent-first, pre-1.0, heavy infrastructure. | Apache-2.0 | B (4/6) | [EN](categories/team-chat/buzz.md) · [中](categories/team-chat/buzz.zh.md) |
 | **Macro** | One workspace replacing Slack + Linear + Notion + a CRM + a Gmail client, with everything @-linked in one database and exposed to agents over MCP — AGPL, hosted-first, self-host is still a developer stack. | AGPL-3.0 | B (6/6) | [EN](categories/team-chat/macro.md) · [中](categories/team-chat/macro.zh.md) |
 | **HiveChat** | Use it when a 5–50 person team needs a self-hosted chat front-end where an admin holds API keys for many LLM providers and sets per-group model access and token quotas — but it has had no commit since 2025-09 and is still v0.1.0. | Apache-2.0 | D (3/6) | [EN](categories/team-chat/hivechat.md) · [中](categories/team-chat/hivechat.zh.md) |
+| **Switch (Agent Switch)** | Use it when your team stays in Slack/Teams/Discord/Telegram/Mattermost and the coding agents you already run (Claude Code, Codex…) should join channels as addressable members — but it is source-available (Commons Clause, no reselling or paid hosting), four months old and pre-1.0. | Apache-2.0 + Commons Clause (source-available) | B (5/6) | [EN](categories/team-chat/switch.md) · [中](categories/team-chat/switch.zh.md) |
 
 ### captcha
 

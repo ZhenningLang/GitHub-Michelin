@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "Switch does", "zh": "Switch 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install Docker and the Switch Console desktop app", "zh": "装好 Docker 和 Switch Console 桌面应用", "component": {"en": "Switch Console (Electron)", "zh": "Switch Console（Electron）"}},
+    {"lane": "you", "en": "Choose to run Switch on this computer, then press Start", "zh": "选择在本机运行 Switch，再点 Start"},
+    {"lane": "them", "en": "Starts a local Switch server and its Postgres in Docker", "zh": "在 Docker 里起本机 Switch 服务器和 Postgres", "component": {"en": "switch-core + Postgres", "zh": "switch-core 与 Postgres"}},
+    {"lane": "you", "en": "Ask switch-buddy to connect Slack, paste the app details, link your account", "zh": "让 switch-buddy 帮你接 Slack，粘贴应用信息并关联账号", "code": "Help me connect Slack to Switch."},
+    {"lane": "them", "en": "Creates an agent on your signed-in Claude Code or Codex and a room bound to a channel", "zh": "建好跑在你 Claude Code 或 Codex 上的 agent 和频道房间", "component": {"en": "switch-buddy agent", "zh": "switch-buddy 助手"}},
+    {"lane": "you", "en": "@mention the agent in that Slack channel", "zh": "在那个 Slack 频道里 @ 这个 agent"},
+    {"lane": "them", "en": "Routes the message to the agent's session; its reply lands in the same thread", "zh": "把消息送进该 agent 的会话，回复落回同一线程", "component": {"en": "router + collaboration bridge", "zh": "路由器与协作桥"}}
+  ],
+  "value": {"en": "Your existing coding agent works in the team's channel with the whole thread as context — nobody copies chat into a terminal or learns a new app", "zh": "你已有的编码 agent 直接在团队频道里干活、带着整条线程的上下文——没人再把聊天记录搬进终端，也不用学新应用"},
+  "sources": [
+    "https://github.com/sandbox-quantum/switch/blob/6e0c0ab3fe338217523fba1f62ebd7df1f42cb0e/README.md#get-started-in-two-steps",
+    "https://github.com/sandbox-quantum/switch/blob/6e0c0ab3fe338217523fba1f62ebd7df1f42cb0e/docs/official/getting-started/quickstart.md",
+    "https://github.com/sandbox-quantum/switch/blob/6e0c0ab3fe338217523fba1f62ebd7df1f42cb0e/docs/official/getting-started/add-a-server.md",
+    "https://github.com/sandbox-quantum/switch/blob/6e0c0ab3fe338217523fba1f62ebd7df1f42cb0e/docs/official/getting-started/grow-your-team.md",
+    "https://github.com/sandbox-quantum/switch/blob/6e0c0ab3fe338217523fba1f62ebd7df1f42cb0e/docs/official/internals/life-of-a-message.md"
+  ]
+}

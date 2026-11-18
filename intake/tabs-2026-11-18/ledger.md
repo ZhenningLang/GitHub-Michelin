@@ -25,7 +25,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | OpenDCAI/GameFactory-3A | add | done | categories/game-dev/gamefactory-3a.md |  | opendcai/gamefactory-3a |
 | openfilm/openfilm | add | done | categories/video-production/creation-workflows/openfilm.md |  | openfilm/openfilm |
 | ReScienceLab/opc-skills | sync | done | categories/agent-skills/ai-writing/marketing-seo/opc-skills.md | fresh：last_verified 距今 ≤90 天，sync-entry 不重核，无改动 | resciencelab/opc-skills |
-| sandbox-quantum/switch | add | running |  |  | sandbox-quantum/switch |
+| sandbox-quantum/switch | add | done | categories/team-chat/switch.md |  | sandbox-quantum/switch |
 | showheyohtaki/motion-prompt | add | done | categories/agent-skills/visual-content/motion-prompt.md |  | showheyohtaki/motion-prompt |
 | thesysdev/openui | sync | done | categories/ai-design-generation/openui.md | fresh：last_verified 距今 ≤90 天，sync-entry 不重核，无改动 | thesysdev/openui |
 | withcoral/coral | add | running |  |  | withcoral/coral |
