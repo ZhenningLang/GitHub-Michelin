@@ -11,12 +11,12 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | Donchitos/Claude-Code-Game-Studios | add | done | categories/agent-dev-methodology/coding-agent-harnesses/claude-code-game-studios.md |  | donchitos/claude-code-game-studios |
 | Edge0-AI/Edge0 | sync | done | categories/llm-inference/local-runtimes/memory-offload/edge0.md | fresh：last_verified 距今 ≤90 天，sync-entry 不重核，无改动 | edge0-ai/edge0 |
 | Fei2411/DS-Bot | add | done | categories/agent-frameworks/agent-runtimes/personal-assistants/ds-bot.md |  | fei2411/ds-bot |
-| garrytan/g-harness-evals | add | running |  |  | garrytan/g-harness-evals |
+| garrytan/g-harness-evals | add | done | categories/llm-eval/g-harness-evals.md |  | garrytan/g-harness-evals |
 | haydenschmitty/floorplan | add | done | categories/rag-retrieval/code-intelligence/floorplan.md |  | haydenschmitty/floorplan |
 | janestreet/agent_skills | add | done | categories/education-tutoring/janestreet-agent-skills.md |  | janestreet/agent_skills |
 | JuneYaooo/rea-video | add | running |  |  | juneyaooo/rea-video |
 | KKKKhazix/agent-autoloop | add | running |  |  | kkkkhazix/agent-autoloop |
-| kunchenguid/gnhf | add | pending |  |  | kunchenguid/gnhf |
+| kunchenguid/gnhf | add | running |  |  | kunchenguid/gnhf |
 | microsoft/TokenEconomizer | add | pending |  |  | microsoft/tokeneconomizer |
 | netdata/netdata | add | pending |  |  | netdata/netdata |
 | nexu-io/openmotion | add | pending |  |  | nexu-io/openmotion |

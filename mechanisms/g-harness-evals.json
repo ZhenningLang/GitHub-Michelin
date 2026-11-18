@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "direction": "down",
+  "nodes": [
+    {"id": "prereg", "en": "Committed preregistration on origin", "zh": "已提交并推到 origin 的预注册", "kind": "input", "technique": [1]},
+    {"id": "runner", "en": "Runner attests it, then opens a ledger lease", "zh": "运行器先核验预注册，再开预算租约", "technique": [1, 2]},
+    {"id": "harness", "en": "Pinned harness container with a per-trial token", "zh": "固定版本的 harness 容器，只拿单次令牌"},
+    {"id": "proxy", "en": "Metering proxy: real key, priced models, worst-case reservation", "zh": "计量代理：持真 key、只放已定价模型、按最坏情况预扣", "technique": [2]},
+    {"id": "provider", "en": "Model provider API", "zh": "模型厂商 API", "kind": "external"},
+    {"id": "world", "en": "Simulated company: Slack mock and append-only event log", "zh": "模拟公司：Slack 仿真与只追加事件日志", "technique": [3]},
+    {"id": "grader", "en": "Predicates grade world state and the event log", "zh": "谓词按世界状态与事件日志判分", "technique": [3]},
+    {"id": "records", "en": "Trial records: grade, termination, metered spend", "zh": "试次记录：判分、终止原因、计量花费"},
+    {"id": "ratio", "en": "Task-paired bootstrap cost-per-solve ratio", "zh": "按任务配对的自助法单题成本比", "technique": [4]},
+    {"id": "tables", "en": "Generated README ranks, rechecked by verify", "zh": "生成的 README 排名，由 verify 复核", "kind": "output", "technique": [4]}
+  ],
+  "edges": [
+    {"from": "prereg", "to": "runner"},
+    {"from": "runner", "to": "harness", "en": "start trial", "zh": "启动试次"},
+    {"from": "harness", "to": "proxy", "en": "model calls", "zh": "模型调用"},
+    {"from": "proxy", "to": "provider", "en": "forward after reserving", "zh": "预扣后转发"},
+    {"from": "harness", "to": "world", "en": "world MCP tools", "zh": "世界 MCP 工具"},
+    {"from": "world", "to": "grader"},
+    {"from": "proxy", "to": "records", "en": "usage lines", "zh": "用量行"},
+    {"from": "grader", "to": "records"},
+    {"from": "records", "to": "ratio"},
+    {"from": "ratio", "to": "tables"}
+  ],
+  "sources": [
+    "https://github.com/garrytan/g-harness-evals/blob/f4dc3dff41f1edc39beedfbe71b50cb0245209d7/runner/prereg/prereg.ts#L1-L30",
+    "https://github.com/garrytan/g-harness-evals/blob/f4dc3dff41f1edc39beedfbe71b50cb0245209d7/runner/proxy/metering-proxy.ts#L1-L60",
+    "https://github.com/garrytan/g-harness-evals/blob/f4dc3dff41f1edc39beedfbe71b50cb0245209d7/world/services/events.ts#L1-L30",
+    "https://github.com/garrytan/g-harness-evals/blob/f4dc3dff41f1edc39beedfbe71b50cb0245209d7/runner/grade/predicates.ts#L1-L3",
+    "https://github.com/garrytan/g-harness-evals/blob/f4dc3dff41f1edc39beedfbe71b50cb0245209d7/scripts/scoreboard/build.ts#L256-L274",
+    "https://github.com/garrytan/g-harness-evals/blob/f4dc3dff41f1edc39beedfbe71b50cb0245209d7/runner/stats/frontier.ts#L92-L117"
+  ]
+}

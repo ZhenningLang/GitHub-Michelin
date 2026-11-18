@@ -19,6 +19,7 @@
 | **Harvey LAB** | Use it when you need to benchmark an agent on long legal assignments — a synthetic case file in, a memo or markup out, graded by two LLM judges against a lawyer's checklist; needs Podman and both Anthropic and OpenAI keys. | B (6/6) | [→](harvey-labs.md) |
 | **AI-Infra-Guard** | Use it when the audit surface is your whole self-hosted AI stack — live-service CVEs, MCP servers, agent skills, jailbreak evals — from one Tencent-built platform, not a single model endpoint. | B (6/6) | [→](ai-infra-guard.md) |
 | **iFixAi** | Use it when you need a fast, off-the-shelf audit of whether an agent stays inside its declared roles, tool permissions and honesty rules — 60 fixed inspections, a judge from a different vendor, an A–F grade; young and LLM-judged, with an 18k-star count its usage numbers do not back up. | B (4/6) | [→](ifixai.md) |
+| **g-harness-evals** | Use it when you must pick an agent harness (Claude Code, Codex, OpenClaw, Hermes Agent, Pi) and want same-model, cost-per-solved-task rankings whose every number you can recheck keylessly — but it is one author's young, conflict-disclosed study on pinned versions and easy public tasks. | C (5/6) | [→](g-harness-evals.md) |
 
 
 ## Comparison matrix
@@ -31,6 +32,7 @@
 | [chatgpt-comparison-detection](chatgpt-comparison-detection.md) | ✅ | E (4/6) | Dataset/detector resources for AI-text comparison; use eval frameworks when you need a maintained test runner. |
 | [AI-Infra-Guard](ai-infra-guard.md) | ✅ | B (6/6) | Whole-stack AI security self-examination (infra CVEs, MCP, skills, jailbreaks) as a deployed platform; pick garak/promptfoo when a CLI against one model or your own app is enough. |
 | [iFixAi](ifixai.md) | ✅ | B (4/6) | Fixed governance checklist for agents (roles, tool permissions, honesty) with a cross-vendor LLM judge; pick promptfoo when you need your own assertions in CI, garak for attack breadth. |
+| [g-harness-evals](g-harness-evals.md) | ✅ | C (5/6) | Fixed-model harness comparison ranked by paired cost per solved task with preregistration and receipts; pick SWE-bench to compare models, promptfoo to test your own app. |
 | [Harvey LAB](harvey-labs.md) | ✅ | B (6/6) | Legal-agent benchmark with 1,600+ synthetic matter tasks and all-or-nothing LLM-judge grading; pick SWE-bench for coding agents or promptfoo for your own app's regression tests. |
 
 
